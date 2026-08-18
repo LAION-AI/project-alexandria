@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-alexandria"
+version = "0.1.0"
+description = "Extract factual, style-agnostic Knowledge Units from documents"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "Project Alexandria contributors"}]
+license = {text = "Apache-2.0"}
+dependencies = []
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.optional-dependencies]
+pdf = ["pypdf>=4"]
+minhash = ["datasketch>=1.6", "numpy>=1.24"]
+vllm = ["vllm>=0.8"]
+dev = ["pytest>=7", "ruff>=0.6"]
+
+[project.scripts]
+alexandria = "project_alexandria.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
