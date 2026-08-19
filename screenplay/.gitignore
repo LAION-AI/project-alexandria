@@ -1,0 +1,25 @@
+# Third-party source text. This pipeline reads a copyrighted screenplay to derive
+# structure; it publishes results BY REFERENCE (offsets, digests, MinHash) and never
+# copies the prose.
+#
+# The patterns match by filename ANYWHERE in the tree, not by directory. In the sibling
+# storytree repo a narrower, directory-scoped pattern failed to cover a newly created
+# run directory, a full screenplay was committed, and history had to be purged. Do not
+# narrow these.
+**/script.normalized.txt
+**/script.raw.txt
+**/matrix.txt
+**/*_screenplay.txt
+**/*screenplay*.txt
+runs/**/*.txt
+**/source/
+*.pdf
+
+# Per-call logs carry full prompts, which contain source spans.
+**/logs/
+**/calls/
+*.jsonl
+
+# MCQ generation intermediates hold the scene excerpts questions were written from.
+**/mcq_source_excerpts*.json
+**/quarantine/
