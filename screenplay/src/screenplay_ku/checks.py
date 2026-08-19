@@ -242,6 +242,46 @@ def check_verbatim_overlap(
 
 _NUMBER = re.compile(r"\b\d[\d,.:]*\b")
 
+# Speaker cues that are roles, not names. A screenplay labels an unnamed character by
+# function, and a unit that says "a police officer" rather than "COP" has recorded the
+# fact correctly. Requiring these verbatim measured the check's own over-reach: on the
+# first dry run every one of C3's name misses was one of these or a parse artifact.
+_GENERIC_SPEAKER_ROLES = {
+    "man", "woman", "boy", "girl", "cop", "big cop", "guard", "officer", "voice",
+    "lieutenant", "pilot", "priestess", "operator", "agent", "guard #4", "fedex guy",
+    "spoon boy", "monitor", "child", "driver", "soldier", "nurse", "doctor", "clerk",
+}
+
+
+def _is_requirable_name(speaker: str) -> bool:
+    """A speaker cue counts as a proper name only if it plausibly is one.
+
+    The scene map's speaker list is derived by a parser and contains residue such as
+    ``CLICK.`` and ``MONITORS SNAP FLATLINE.``. Requiring those to appear in a unit would
+    fail the run for the parser's mistakes rather than the model's.
+    """
+    cleaned = speaker.strip()
+    if not cleaned or cleaned.endswith((".", "-", "--")):
+        return False
+    if not re.fullmatch(r"[A-Za-z][A-Za-z .'#-]*", cleaned):
+        return False
+    if len(cleaned.split()) > 2:
+        return False
+    return cleaned.casefold() not in _GENERIC_SPEAKER_ROLES
+
+
+def _requirable_numbers(scene: Scene, source: str) -> Set[str]:
+    """Numbers that are facts, excluding structural residue.
+
+    The pre-slugline head carries the title block and scene numbering, whose digits are
+    typography rather than content, and a scene's heading line can carry a scene number.
+    """
+    if scene.kind == "PRE":
+        return set()
+    text = scene.text(source)
+    body = "\n".join(text.splitlines()[1:]) if "\n" in text else text
+    return set(_NUMBER.findall(body))
+
 
 def check_fact_fidelity(
     units: Sequence[Dict],
@@ -254,6 +294,11 @@ def check_fact_fidelity(
 
     Extracted from the **source text** by a deterministic pass, never from the units — a
     check that grades against a list its own apparatus generated measures compliance.
+
+    What counts as *required* is narrowed deliberately: see ``_is_requirable_name`` and
+    ``_requirable_numbers``. The first dry run failed this check 5 times and all 5 were the
+    check's fault, which is the reason the narrowing exists and is documented here rather
+    than tuned silently into a threshold.
     """
     number_hit = number_total = 0
     name_hit = name_total = 0
@@ -268,7 +313,7 @@ def check_fact_fidelity(
         blob_tokens = set(_tokens(blob))
         blob_numbers = set(_NUMBER.findall(blob))
 
-        for number in set(_NUMBER.findall(scene.text(source))):
+        for number in _requirable_numbers(scene, source):
             number_total += 1
             if number in blob_numbers:
                 number_hit += 1
@@ -276,6 +321,8 @@ def check_fact_fidelity(
                 violations.append({"kind": "number", "scene_id": scene.scene_id, "value": number})
 
         for speaker in set(scene.speakers):
+            if not _is_requirable_name(speaker):
+                continue
             head = _tokens(speaker)
             if not head:
                 continue
@@ -379,10 +426,26 @@ def check_referential_integrity(units: Sequence[Dict]) -> CheckResult:
             for relationship in entity.get("relationships") or []:
                 note(sid, "relationships.target_id", relationship.get("target_id"))
 
+    # Reference closure synthesizes empty records for ids the model used but never
+    # declared. That keeps the graph closed, but it must not be invisible: an artifact
+    # where most entities were auto-declared has a real quality problem that a green
+    # "referential integrity: pass" would hide.
+    auto_declared = sum(
+        1
+        for unit in units
+        for entity in unit.get("entities") or []
+        if (entity.get("attributes") or {}).get("declared_by") == "reference_closure"
+    )
+    total_entity_records = sum(len(unit.get("entities") or []) for unit in units)
+    auto_share = auto_declared / total_entity_records if total_entity_records else 0.0
     return CheckResult(
-        "C5", "referential_integrity", "fail" if violations else "pass", gate=False,
+        "C5", "referential_integrity",
+        "fail" if violations else ("warn" if auto_share > 0.5 else "pass"), gate=False,
         detail={"declared_entity_ids": len(declared), "referenced_entity_ids": len(referenced),
-                "dangling": len(violations)},
+                "dangling": len(violations),
+                "auto_declared_records": auto_declared,
+                "entity_records": total_entity_records,
+                "auto_declared_share": round(auto_share, 3)},
         violations=violations[:40],
     )
 

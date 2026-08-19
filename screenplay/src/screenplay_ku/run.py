@@ -18,7 +18,7 @@ from typing import Any, Dict, List, Optional, Sequence
 from .checks import run_all
 from .client import EndpointPool
 from .fingerprint import minhash, sha256_text
-from .pipeline import Stage1, Stage2, apply_seam_patches
+from .pipeline import Stage1, Stage2, apply_seam_patches, repair_overlap_fields
 from .prompts import SYSTEM_PROMPT
 from .scenes import Scene, attribution_report, load_scenes, load_source, source_digest
 from .windows import build_page_windows, build_windows, canary_window
@@ -222,9 +222,32 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     verified = _negative_cases_ran(Path(__file__).resolve().parents[2])
     print("  verified: {}".format(verified or "none"))
 
+    # Grade coverage against the scenes actually dispatched. On a full run this is every
+    # scene; on a subset run it is the subset. Grading 225 scenes when 3 windows ran
+    # reports a confident failure about work that was never requested.
+    dispatched_ids = {sid for window in windows for sid in window.scene_ids}
+    graded_scenes = [scene for scene in scenes if scene.scene_id in dispatched_ids]
+    if len(graded_scenes) != len(scenes):
+        print("  (subset run: grading {} of {} scenes)".format(len(graded_scenes), len(scenes)))
+
+    # Pre-gate overlap sweep, then a targeted restatement of only what it flags. The gate
+    # below re-runs on the repaired units and still blocks, so this reduces the number of
+    # fields carrying source phrasing without weakening the threshold that decides.
+    from .checks import check_verbatim_overlap
+
+    scenes_for_overlap = {scene.scene_id: scene for scene in graded_scenes}
+    pre = check_verbatim_overlap(units, scenes_for_overlap, source)
+    repair: Dict[str, Any] = {"targeted": 0, "restated": 0, "failed": 0}
+    if pre.violations:
+        print("overlap repair: {} flagged field(s), longest {} tokens".format(
+            len(pre.violations), pre.detail.get("longest_ngram_adjudicated")))
+        repair = repair_overlap_fields(pool, units, pre.violations, max_workers=args.workers)
+        print("  restated {}/{} ({} failed)".format(
+            repair["restated"], repair["targeted"], repair["failed"]))
+
     print("checks...")
     report = run_all(
-        units, scenes, source, canary_result=canary, negative_cases_ran=verified
+        units, graded_scenes, source, canary_result=canary, negative_cases_ran=verified
     )
     for check in report["checks"]:
         print("  {} {:22s} {}".format(check["check_id"], check["name"], check["status"]))

@@ -12,6 +12,7 @@ from .client import EndpointPool, run_parallel
 from .kuschema import (
     ValidationError,
     canary_schema,
+    close_entity_references,
     extraction_schema,
     grammar_safe,
     seam_schema,
@@ -96,6 +97,9 @@ class Stage1:
                     if window.is_canary
                     else validate_units(payload, scene_ids)
                 )
+                # Close references deterministically after validation, recording every
+                # synthesized id, rather than rejecting the window for a repairable defect.
+                closed = sum(len(close_entity_references(unit)) for unit in units)
                 if window.is_canary:
                     emitted = payload.get("knowledge_units") or []
                     return {
@@ -115,6 +119,7 @@ class Stage1:
                         "seconds": round(result.seconds, 2),
                         "port": result.port,
                         "attempts": result.attempts + attempt,
+                        "auto_declared_entities": closed,
                     },
                 }
             except (ValidationError, json.JSONDecodeError, KeyError, TypeError) as error:
@@ -212,6 +217,96 @@ class Stage2:
             else:
                 seams.append({"seam_index": index, **result})
         return {"seams": seams, "failures": failures, "seconds": round(time.time() - started, 1)}
+
+
+_REPAIR_SYSTEM = (
+    "You restate factual records in different words while preserving every fact exactly. "
+    "You return only valid JSON."
+)
+
+_REPAIR_PROMPT = """\
+The RECORD below reuses wording from the source document it was derived from. Restate it so
+no distinctive phrasing from the source survives, while preserving every fact.
+
+Rules:
+  - Keep every number, date, name, and place EXACTLY as written. Change nothing factual.
+  - Change the sentence structure and vocabulary around them.
+  - Do not shorten it into a vaguer statement; a restatement that loses a fact is worse
+    than the original problem.
+  - A span of {length} consecutive words in this record matches the source. Rewrite so that
+    no run of more than four ordinary words could match.
+
+RECORD:
+{record}
+
+Return {{"restated": "..."}}
+"""
+
+_REPAIR_SCHEMA = {
+    "type": "object",
+    "properties": {"restated": {"type": "string", "minLength": 10}},
+    "required": ["restated"],
+    "additionalProperties": False,
+}
+
+
+def repair_overlap_fields(
+    pool: EndpointPool,
+    units: List[Dict[str, Any]],
+    violations: Sequence[Dict[str, Any]],
+    *,
+    max_workers: int = 16,
+) -> Dict[str, Any]:
+    """Regenerate only the fields the overlap gate flagged.
+
+    The repair model is given the unit's own sentence and the length of the matching span,
+    never the source text. It therefore restates a record it already has rather than
+    re-reading the original, which is the only way a repair here can be honest: an agent
+    that could see the source would simply extract it again.
+
+    This does not soften the gate. The gate re-runs afterwards on the repaired units and
+    still blocks the artifact if anything remains over the threshold.
+    """
+    by_id = {unit["scene_id"]: unit for unit in units}
+    targets = []
+    for violation in violations:
+        unit = by_id.get(violation.get("scene_id"))
+        path = violation.get("path") or ""
+        if unit is None:
+            continue
+        match = re.match(r"beats\[(\d+)\]\.content$", path)
+        if match:
+            order = int(match.group(1))
+            beat = next((b for b in unit.get("beats") or [] if b.get("order") == order), None)
+            if beat and isinstance(beat.get("content"), str):
+                targets.append((unit, beat, "content", violation.get("length", 8)))
+        elif path in ("context_before", "context_after", "style"):
+            targets.append((unit, unit, path, violation.get("length", 8)))
+
+    def work(target):
+        holder, container, key, length = target
+        result = pool.call(
+            _REPAIR_SYSTEM,
+            _REPAIR_PROMPT.format(length=length, record=container[key]),
+            schema=_REPAIR_SCHEMA,
+            max_tokens=1024,
+            temperature=0.4,
+        )
+        payload = _parse_json(result.text)
+        restated = (payload.get("restated") or "").strip()
+        return (container, key, restated) if len(restated) >= 10 else None
+
+    results = run_parallel(targets, work, max_workers=max_workers)
+    applied = 0
+    failed = 0
+    for result in results:
+        if isinstance(result, Exception) or result is None:
+            failed += 1
+            continue
+        container, key, restated = result
+        container[key] = restated
+        applied += 1
+    return {"targeted": len(targets), "restated": applied, "failed": failed}
 
 
 def apply_seam_patches(

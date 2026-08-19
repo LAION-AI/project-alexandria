@@ -205,6 +205,59 @@ class ValidationError(ValueError):
     pass
 
 
+def close_entity_references(unit: Dict[str, Any]) -> List[str]:
+    """Declare any entity id a unit uses but never defines. Returns the ids synthesized.
+
+    The model reliably names minor actors inline — ``phone``, ``flashlight``, ``system`` —
+    without adding them to ``entities``. Rejecting the window for that discarded two of
+    three windows on a dry run, which is a bad trade for a defect that is mechanically
+    repairable.
+
+    This is not the forbidden kind of repair. Nothing is invented: the id was already
+    asserted by the model, the record is created empty rather than guessed, and every
+    synthesized id is recorded in ``extraction_warnings`` so C5 reports the count instead
+    of hiding it. A guard that substituted *missing* content with empty content would be
+    worse than no guard; this substitutes nothing, it only closes a reference.
+    """
+    declared = {
+        entity.get("entity_id")
+        for entity in unit.get("entities") or []
+        if entity.get("entity_id")
+    }
+    referenced = set()
+    for beat in unit.get("beats") or []:
+        for key in ("actor", "addressee"):
+            if beat.get(key):
+                referenced.add(beat[key])
+        for change in beat.get("state_changes") or []:
+            if change.get("entity"):
+                referenced.add(change["entity"])
+    for value in (unit.get("present") or []) + (unit.get("referenced") or []):
+        if value:
+            referenced.add(value)
+
+    missing = sorted(referenced - declared)
+    if not missing:
+        return []
+    entities = unit.setdefault("entities", [])
+    for entity_id in missing:
+        entities.append({
+            "name": entity_id.replace("_", " "),
+            "entity_id": entity_id,
+            "type": "other",
+            "aliases": [],
+            "attributes": {"declared_by": "reference_closure"},
+            "relationships": [],
+        })
+    warnings = unit.setdefault("extraction_warnings", [])
+    warnings.append(
+        "auto-declared {} entity id(s) referenced but not defined: {}".format(
+            len(missing), ", ".join(missing)
+        )
+    )
+    return missing
+
+
 def validate_units(payload: Dict[str, Any], expected_scene_ids: Sequence[str]) -> List[Dict[str, Any]]:
     """Full post-hoc validation. Raises rather than repairing or substituting.
 
