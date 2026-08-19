@@ -242,12 +242,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     _attach_source_refs(units, scenes_by_id, source)
     _link_chain(units)
 
-    # Dump before grading. A twelve-minute run whose checks fail should not have to be
-    # repeated to re-measure a check; this makes check iteration free and keeps the
-    # expensive part reproducible. Intermediate, gitignored, structure only.
-    (out_dir / "units.raw.json").write_text(
-        json.dumps({"units": units, "canary": canary}, indent=1), encoding="utf-8")
-
     print("running negative suite before grading...")
     verified = _negative_cases_ran(Path(__file__).resolve().parents[2])
     print("  verified: {}".format(verified or "none"))
@@ -283,6 +277,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             outcome["restated"], outcome["targeted"], outcome["failed"]))
     repair = {"rounds": repair_rounds,
               "total_restated": sum(item["restated"] for item in repair_rounds)}
+
+    # Dump the exact units the checks will grade. Placed after repair, not before: a dump
+    # taken pre-repair re-grades to a different verdict than the run produced, which makes
+    # offline iteration measure a state the pipeline never emits.
+    (out_dir / "units.raw.json").write_text(
+        json.dumps({"units": units, "canary": canary}, indent=1), encoding="utf-8")
 
     print("checks...")
     report = run_all(

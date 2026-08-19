@@ -235,6 +235,13 @@ def close_entity_references(unit: Dict[str, Any]) -> List[str]:
     for value in (unit.get("present") or []) + (unit.get("referenced") or []):
         if value:
             referenced.add(value)
+    # Relationship targets too. C5 validates these, so omitting them here meant closure
+    # reported success while leaving exactly the references the check would then fail on.
+    # A closure pass and its check must cover the same fields or the pass is theatre.
+    for entity in unit.get("entities") or []:
+        for relationship in entity.get("relationships") or []:
+            if relationship.get("target_id"):
+                referenced.add(relationship["target_id"])
 
     missing = sorted(referenced - declared)
     if not missing:

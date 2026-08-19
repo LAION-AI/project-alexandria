@@ -11,6 +11,7 @@ Run: python3 screenplay/tests/run_checks_tests.py   (no third-party deps)
 from __future__ import annotations
 
 import copy
+import re
 import sys
 from pathlib import Path
 
@@ -164,6 +165,26 @@ def test_c3_rejects_drifted_number():
     units[0]["beats"][1]["content"] = units[0]["beats"][1]["content"].replace("47", "48")
     units[0]["beats"][1]["facts"]["quantities"] = ["48"]
     assert check_fact_fidelity(units, BY_ID, SOURCE).status == "fail"
+
+
+def test_c3_fails_on_a_drifted_number():
+    """Drift is corruption: the unit asserts what the source contradicts. Must fail."""
+    units = _units()
+    units[0]["beats"][1]["facts"]["quantities"] = ["48"]   # source says 47
+    result = check_fact_fidelity(units, BY_ID, SOURCE)
+    assert result.status == "fail", result.detail
+    assert result.detail["numbers_drifted"] == 1
+
+
+def test_c3_warns_but_does_not_fail_on_mere_omission():
+    """Omission is incompleteness, not corruption: the reader is not misled."""
+    units = _units()
+    for beat in units[0]["beats"]:
+        beat["content"] = re.sub(r"\b47\b", "", beat["content"])
+        beat["facts"]["quantities"] = []
+    result = check_fact_fidelity(units, BY_ID, SOURCE)
+    assert result.status == "warn", (result.status, result.detail)
+    assert result.detail["numbers_drifted"] == 0
 
 
 def test_c3_rejects_dropped_character_name():

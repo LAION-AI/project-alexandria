@@ -298,8 +298,21 @@ def _requirable_numbers(scene: Scene, source: str) -> Set[str]:
 
 
 _DATE_STAMP = re.compile(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b")
-_MARGIN_CHARS = 12
-_STAMP_RADIUS = 40
+
+# Lines that are production furniture rather than content. Matched whole-line, because
+# masking a fixed number of trailing characters cut through the middle of a scene number
+# and left fragments: "119OMITTED 119" became "11", which the check then demanded as a
+# fact in its own right. A partial mask is worse than none — it invents a requirement.
+_FURNITURE_LINE = re.compile(
+    r"""^\s*(?:
+          \d+\s*OMITTED\s*\d*          # 119OMITTED 119
+        | OMITTED\s*\d*
+        | \(?\s*(?:CONTINUED|MORE)\s*\)?\s*\d*
+        | [-\s]*Rev\.?\s.*             # - Rev. 3/9/98 125A.
+        | \d+[A-Z]?\.?                 # a bare scene number
+        )\s*$""",
+    re.IGNORECASE | re.VERBOSE,
+)
 
 
 def _revision_stamps(source: str, min_occurrences: int = 2) -> Set[str]:
@@ -314,22 +327,40 @@ def _revision_stamps(source: str, min_occurrences: int = 2) -> Set[str]:
 
 
 def _mask_production_furniture(body: str, stamps: Set[str]) -> str:
-    """Blank the parts of a scene that are typography rather than content.
+    """Drop the lines of a scene that are typography rather than content.
 
-    Two kinds, both confirmed by position on the first full run: scene numbers printed in
-    the trailing margin of a scene's span, and page-break headers where a revision stamp
-    sits beside the next scene's number. Requiring a unit to reproduce either scored the
-    model for failing to record the page furniture of a 1998 shooting script.
+    Two kinds, both confirmed by position on a full run: scene numbers and OMITTED markers
+    printed in a scene's margin, and page-break headers carrying a revision stamp.
+    Requiring a unit to reproduce either scored the model for failing to record the page
+    furniture of a 1998 shooting script.
+
+    Whole lines are dropped rather than a fixed span of characters. The character version
+    of this cut through "119OMITTED 119" and left "11", which the check then demanded as a
+    fact — a mask that truncates does not remove a spurious requirement, it invents a new
+    one that no faithful unit can satisfy.
     """
-    masked = body
-    for stamp in stamps:
-        for match in list(re.finditer(re.escape(stamp), masked)):
-            low = max(0, match.start() - _STAMP_RADIUS)
-            high = min(len(masked), match.end() + _STAMP_RADIUS)
-            masked = masked[:low] + " " * (high - low) + masked[high:]
-    if len(masked) > _MARGIN_CHARS:
-        masked = masked[: -_MARGIN_CHARS] + " " * _MARGIN_CHARS
-    return masked
+    kept = []
+    for line in body.splitlines():
+        if _FURNITURE_LINE.match(line):
+            continue
+        if any(stamp in line for stamp in stamps):
+            continue
+        kept.append(_strip_scene_number_wrapper(line))
+    return "\n".join(kept)
+
+
+_NUMBER_WRAPPED = re.compile(r"^\s*(\d+)([A-Z].*?)\1\s*$")
+
+
+def _strip_scene_number_wrapper(line: str) -> str:
+    """Remove a scene number printed either side of a slugline.
+
+    A numbered shooting script prints the scene number in both margins, so a slugline
+    arrives as ``219CLOSE ON COMPUTER SCREEN 219``. The number is typography; the text
+    between is content and must survive.
+    """
+    match = _NUMBER_WRAPPED.match(line)
+    return match.group(2) if match else line
 
 
 def _number_satisfied(required: str, blob: str, blob_numbers: Set[str]) -> bool:
@@ -413,20 +444,76 @@ def check_fact_fidelity(
                                    "value": scene.location})
 
     number_recall = number_hit / number_total if number_total else 1.0
+    corrupted = _drifted_numbers(units, scenes_by_id, source)
+    violations.extend(corrupted)
+
+    # Two different failures, with different consequences, so they are gated differently.
+    #
+    # A *drifted* number is corruption: the unit asserts something the source contradicts,
+    # and a reader has no way to detect it. That is what this gate exists to stop, and any
+    # occurrence fails the run.
+    #
+    # An *omitted* number is incompleteness: the unit is silent, the reader is not misled,
+    # and the fact is recoverable from the source by offset. It is reported as a rate and
+    # warns, rather than blocking an otherwise sound artifact.
+    #
+    # Collapsing the two under one recall threshold made the gate hostage to whatever the
+    # denominator happened to contain, which for three runs was the script's own page
+    # furniture rather than any fact.
+    status = "fail" if corrupted else ("warn" if number_recall < min_number_recall or violations else "pass")
     return CheckResult(
-        "C3", "fact_fidelity",
-        "fail" if number_recall < min_number_recall else ("warn" if violations else "pass"),
-        gate=True,
+        "C3", "fact_fidelity", status, gate=True,
         detail={
+            "numbers_drifted": len(corrupted),
             "number_recall": round(number_recall, 4), "numbers": number_total,
             "name_recall": round(name_hit / name_total, 4) if name_total else None,
             "names": name_total,
             "location_recall": round(location_hit / location_total, 4) if location_total else None,
             "locations": location_total,
             "min_number_recall": min_number_recall,
+            "gate": "drift fails the run; omission warns",
         },
         violations=violations[:40],
     )
+
+
+def _drifted_numbers(
+    units: Sequence[Dict], scenes_by_id: Dict[str, Scene], source: str
+) -> List[Dict[str, Any]]:
+    """Numbers a unit asserts that its scene contradicts.
+
+    Restricted to near variants of a real source number — same digit length, differing in
+    one position. An unrelated number is usually the model writing a count in digits that
+    the source spelled out, which is not corruption; a one-digit change to a number the
+    scene actually contains is.
+    """
+    found: List[Dict[str, Any]] = []
+    for unit in units:
+        scene = scenes_by_id.get(unit.get("scene_id"))
+        if scene is None:
+            continue
+        source_numbers = set(_NUMBER.findall(scene.text(source)))
+        stated = set()
+        for beat in unit.get("beats") or []:
+            for value in (beat.get("facts") or {}).get("quantities") or []:
+                stated.update(_NUMBER.findall(str(value)))
+        for value in stated - source_numbers:
+            # Single digits carry no evidence of drift: every digit differs from every
+            # other in exactly one position, so the rule below would flag any lone number
+            # the scene did not literally contain. On the first run this fired on "1 hour",
+            # a correctly recorded quantity, because some unrelated digit sat in the scene.
+            if len(value) < 2:
+                continue
+            for original in source_numbers:
+                if len(original) == len(value) and sum(
+                    1 for a, b in zip(original, value) if a != b
+                ) == 1:
+                    found.append({
+                        "kind": "number_drift", "scene_id": scene.scene_id,
+                        "value": value, "source_value": original,
+                    })
+                    break
+    return found
 
 
 # ---------------------------------------------------------- C4 temporal totality
