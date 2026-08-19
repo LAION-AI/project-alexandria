@@ -13,7 +13,12 @@
 **/*screenplay*.txt
 runs/**/*.txt
 **/source/
+
+# Third-party screenplay PDFs stay out. The rule is deliberately broad, so the one PDF that
+# IS meant to ship needs an explicit exception rather than a narrowed rule — narrowing this
+# pattern is how a full screenplay reached a commit in the sibling repository.
 *.pdf
+!reference/CogniTino-whitepaper.pdf
 
 # Per-call logs carry full prompts, which contain source spans.
 **/logs/
