@@ -187,9 +187,56 @@ def check_tom_depth(nodes: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
                     "scenes": len(nodes)})
 
 
+def check_verbatim_overlap(nodes, source: str, *, fail_at: int = 8, warn_at: int = 6):
+    """The check this layer was missing entirely, and the reason it was missing is instructive.
+
+    The Perception layer has a hard verbatim gate (C2) because the whole artifact's premise is
+    that no source expression is redistributed. Seven checks were written for the Abstraction
+    layer and not one of them checked overlap — the property was enforced on layer 1 and
+    assumed to survive composition. It did not: the first full run put 15-word verbatim runs
+    into `reasoning` fields, because a field asking *why you believe this* invites quoting the
+    line that made you believe it.
+
+    A guarantee that holds for a component and is assumed for the composed system is not a
+    guarantee. This is now a gate on the same terms as C2.
+    """
+    words = _tokens(source)
+    index = {n: {tuple(words[i:i + n]) for i in range(len(words) - n + 1)}
+             for n in range(warn_at, 26)}
+    worst = 0
+    flagged = []
+    for node in nodes:
+        for obj in node["abstraction"]:
+            for field in ("statement", "reasoning", "falsifier"):
+                tokens = _tokens(obj.get(field))
+                for n in range(min(25, len(tokens)), warn_at - 1, -1):
+                    hit = next((tuple(tokens[i:i + n]) for i in range(len(tokens) - n + 1)
+                                if tuple(tokens[i:i + n]) in index[n]), None)
+                    if hit:
+                        worst = max(worst, n)
+                        if n >= warn_at:
+                            flagged.append({"ao_id": obj.get("ao_id"), "field": field,
+                                            "length": n, "scene_id": node["scene_id"]})
+                        break
+    over = [f for f in flagged if f["length"] >= fail_at]
+    result = _result("G8", "verbatim_overlap",
+                   "fail" if over else ("warn" if flagged else "pass"), True,
+                   {"longest_run": worst, "fail_at": fail_at, "warn_at": warn_at,
+                    "fields_at_or_above_warn": len(flagged),
+                    "fields_at_or_above_fail": len(over)},
+                   sorted(flagged, key=lambda f: -f["length"]))
+    # The display list is capped at 25 for readability. The repair pass must see all of
+    # them: feeding it the truncated list made it fix 25 fields per round forever while the
+    # reported count sat at exactly the cap, which looked like non-convergence and was
+    # actually the check hiding its own tail from the thing meant to act on it.
+    result["all_violations"] = sorted(flagged, key=lambda f: -f["length"])
+    return result
+
+
 def run_ao_checks(nodes: Sequence[Dict[str, Any]], units: Sequence[Dict[str, Any]],
                   merge: Dict[str, Any],
-                  negative_cases_ran: Sequence[str] = ()) -> Dict[str, Any]:
+                  negative_cases_ran: Sequence[str] = (),
+                  source: str = "") -> Dict[str, Any]:
     results = [
         check_grounding(nodes, units),
         check_not_restatement(nodes, units),
@@ -199,6 +246,8 @@ def run_ao_checks(nodes: Sequence[Dict[str, Any]], units: Sequence[Dict[str, Any
         check_coverage(nodes),
         check_tom_depth(nodes),
     ]
+    if source:
+        results.append(check_verbatim_overlap(nodes, source))
     verified = set(negative_cases_ran)
     for result in results:
         if result["status"] == "pass" and result["id"] not in verified:

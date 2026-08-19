@@ -94,6 +94,26 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     for obj in live:
         by_scene.setdefault(obj["scene_id"], []).append(obj)
 
+    # Verbatim-overlap repair, on the same terms as the Perception layer: the gate re-runs
+    # after each round and still blocks, so this lowers the count without moving the bar.
+    from .checks import check_verbatim_overlap
+    repair_rounds = []
+    for round_index in range(3):
+        probe_nodes = [{"scene_id": sid, "abstraction": objs}
+                       for sid, objs in by_scene.items()]
+        pre = check_verbatim_overlap(probe_nodes, source)
+        targets = [v for v in pre["all_violations"] if v["length"] >= 8] or \
+                  ([] if pre["status"] == "pass" else pre["all_violations"])
+        if not targets:
+            break
+        print("  overlap repair {}: {} field(s) at/over the bar, longest {}".format(
+            round_index + 1, len(targets), pre["detail"]["longest_run"]), flush=True)
+        outcome = pipeline.repair_overlap(pool, windows, targets,
+                                          max_workers=args.workers)
+        outcome["round"] = round_index + 1
+        repair_rounds.append(outcome)
+        print("    restated {}/{}".format(outcome["restated"], outcome["targeted"]), flush=True)
+
     # Grade only the scenes actually dispatched. On a full run this is every scene; on a
     # subset run it is the subset. Grading all 225 when 4 windows ran reports a confident
     # failure about work nobody requested — the same defect the KU layer's C1 had.
@@ -125,7 +145,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             print("negative suite FAILED; no check will be reported as passing")
     print("  negative cases verified: {}".format(verified or "none"))
 
-    checks = run_ao_checks(scene_nodes, units, merge, negative_cases_ran=verified)
+    checks = run_ao_checks(scene_nodes, units, merge, negative_cases_ran=verified,
+                           source=source)
     graph = {
         "schema_version": "cognitino-screenplay-1.0",
         "document": document,
@@ -144,13 +165,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "alias_map": editor["alias_map"],
         "scene_nodes": scene_nodes,
     }
+    # A failing gate must not produce an artifact. The Perception layer already works this
+    # way; writing the graph before checking it meant a gate failure produced a file anyway,
+    # which is the one behaviour a gate exists to prevent.
+    if not checks["gate_passed"]:
+        (out_dir / "protocol.json").write_text(json.dumps({"checks": checks}, indent=1),
+                                               encoding="utf-8")
+        print("\nGATE FAILED: {} — no artifact written".format(", ".join(checks["blocking"])))
+        return 1
     (out_dir / "scene_graph.json").write_text(json.dumps(graph, indent=1), encoding="utf-8")
 
     protocol = {
         "seconds": round(time.time() - started, 1),
         "modules": {"generation": draft, "researcher": research,
                     "semantic_connection": {k: v for k, v in merge.items() if k != "arcs"},
-                    "editor": {k: v for k, v in editor.items() if k != "alias_map"}},
+                    "editor": {k: v for k, v in editor.items() if k != "alias_map"},
+                    "overlap_repair": repair_rounds},
         "graph": {
             "scene_nodes": len(scene_nodes),
             "abstraction_objects": len(live),

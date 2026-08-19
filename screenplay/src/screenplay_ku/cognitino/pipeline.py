@@ -301,6 +301,76 @@ def merge_tree(pool: EndpointPool, windows: Sequence[Window], *, levels: int = 3
     return report
 
 
+# --------------------------------------------------- overlap repair (post-hoc)
+
+
+_REPAIR_SYSTEM = ("You restate reasoning in different words while preserving every claim "
+                  "exactly. You return only valid JSON.")
+
+_REPAIR_PROMPT = """\
+The TEXT below reuses wording from the document it was derived from. Restate it so no
+distinctive phrasing from that document survives, while preserving the meaning completely.
+
+  - Keep every name, number and beat reference exactly as written.
+  - Change the sentence structure and vocabulary around them.
+  - Do not shorten into vagueness; a restatement that loses the argument is worse than the
+    original problem.
+  - A span of {length} consecutive words currently matches the source. Rewrite so no run of
+    more than four ordinary words could match.
+
+**If the text quotes a line of dialogue, that quote is the problem.** Do not reproduce it,
+not even partially, and not in quotation marks. Say what the line *did* — what was asserted,
+asked, conceded, threatened — in your own words, and point at the beat reference instead.
+"He told her the way out was still open" is a correct replacement for a quoted line; repeating
+the line inside quotation marks is not, however apt the quotation feels.
+
+TEXT:
+{text}
+
+Return {{"restated": "..."}}
+"""
+
+_REPAIR_SCHEMA = {"type": "object",
+                  "properties": {"restated": {"type": "string", "minLength": 10}},
+                  "required": ["restated"], "additionalProperties": False}
+
+
+def repair_overlap(pool: EndpointPool, windows, violations, *, max_workers: int = 14):
+    """Regenerate only the fields the overlap gate flagged.
+
+    The repair model sees the offending field and the length of the matching run, never the
+    screenplay. It restates text it already holds rather than re-reading the original, which
+    is the only way this repair can be honest.
+    """
+    by_id = {o["ao_id"]: o for w in windows for o in w.objects}
+    targets = []
+    for violation in violations:
+        obj = by_id.get(violation.get("ao_id"))
+        field = violation.get("field")
+        if obj and field in ("statement", "reasoning", "falsifier") and obj.get(field):
+            targets.append((obj, field, violation.get("length", 8)))
+
+    def work(target):
+        obj, field, length = target
+        result = pool.call(_REPAIR_SYSTEM,
+                           _REPAIR_PROMPT.format(length=length, text=obj[field]),
+                           schema=grammar_safe(_REPAIR_SCHEMA), max_tokens=1024,
+                           temperature=0.4)
+        restated = (_parse(result.text).get("restated") or "").strip()
+        return (obj, field, restated) if len(restated) >= 10 else None
+
+    results = run_parallel(targets, work, max_workers=max_workers)
+    applied = failed = 0
+    for item in results:
+        if isinstance(item, Exception) or item is None:
+            failed += 1
+            continue
+        obj, field, restated = item
+        obj[field] = restated
+        applied += 1
+    return {"targeted": len(targets), "restated": applied, "failed": failed}
+
+
 # ------------------------------------------------------------------ module 4
 
 

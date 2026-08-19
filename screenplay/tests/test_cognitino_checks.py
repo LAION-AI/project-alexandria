@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from screenplay_ku.cognitino.checks import (  # noqa: E402
     check_calibration,
+    check_verbatim_overlap,
     check_connectivity,
     check_contradiction_sought,
     check_coverage,
@@ -69,7 +70,12 @@ def _nodes(objects=None):
              "abstraction": objects}]
 
 
-ALL_IDS = ["G1", "G2", "G3", "G4", "G5", "G6", "G7"]
+SOURCE = ("INT. HARBOUR OFFICE - NIGHT\n"
+          "Ana steps inside. The manifest is open on the desk.\n"
+          "ANA\nContainer 47 never reached Pier 9 on the 14th.\n"
+          "BORIS\nI moved it because they were watching me.\n")
+
+ALL_IDS = ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8"]
 
 
 # ------------------------------------------------------------------ baseline
@@ -172,22 +178,40 @@ def test_g7_warns_when_no_theory_of_mind_was_produced():
     assert check_tom_depth(_nodes(objects))["status"] == "warn"
 
 
+# --------------------------------------------------------- G8 verbatim overlap
+
+
+def test_g8_rejects_quoted_source_in_reasoning():
+    """The defect this check was added for: `reasoning` invites quoting the line that convinced you."""
+    obj = _obj(reasoning="He says I moved it because they were watching me, which is a confession.")
+    assert check_verbatim_overlap(_nodes([obj]), SOURCE)["status"] == "fail"
+
+
+def test_g8_rejects_quoted_source_in_statement():
+    obj = _obj(statement="The claim that Container 47 never reached Pier 9 on the 14th is a deflection.")
+    assert check_verbatim_overlap(_nodes([obj]), SOURCE)["status"] == "fail"
+
+
+def test_g8_passes_paraphrase():
+    assert check_verbatim_overlap(_nodes(), SOURCE)["status"] == "pass"
+
+
 # ------------------------------------------------------- the gate on the gate
 
 
 def test_run_all_refuses_to_pass_unverified_checks():
-    report = run_ao_checks(_nodes(), UNITS, MERGE)
+    report = run_ao_checks(_nodes(), UNITS, MERGE, source=SOURCE)
     assert all(c["status"] != "pass" for c in report["checks"])
 
 
 def test_run_all_passes_once_negative_cases_declared():
-    report = run_ao_checks(_nodes(), UNITS, MERGE, negative_cases_ran=ALL_IDS)
+    report = run_ao_checks(_nodes(), UNITS, MERGE, negative_cases_ran=ALL_IDS, source=SOURCE)
     assert report["gate_passed"] is True
     assert all(c["status"] == "pass" for c in report["checks"])
 
 
 def test_run_all_blocks_on_a_gate_failure():
     report = run_ao_checks(_nodes([_obj(grounded_in=[])]), UNITS, MERGE,
-                           negative_cases_ran=ALL_IDS)
+                           negative_cases_ran=ALL_IDS, source=SOURCE)
     assert report["gate_passed"] is False
     assert "G1" in report["blocking"]

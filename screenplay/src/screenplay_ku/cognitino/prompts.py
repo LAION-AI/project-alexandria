@@ -76,7 +76,13 @@ a competent reader could not reasonably decline. Uniform high confidence is a fa
 **5. Make it this scene.** An object that would fit any thriller is worthless. Name the
 specific pressures, the specific stakes, the specific people.
 
-**6. State assumptions.** `assumptions` lists what must hold for the inference to stand —
+**6. Never quote the screenplay.** Not in `statement`, and especially not in `reasoning` —
+a field asking why you believe something invites pasting the line that convinced you, and
+that is how source text escapes into an artifact built to contain none. Describe what was
+said or shown in your own words. If you need to point at a line, cite its beat reference
+instead; that is what the reference is for.
+
+**7. State assumptions.** `assumptions` lists what must hold for the inference to stand —
 including cultural or genre assumptions you are importing.
 """
 
