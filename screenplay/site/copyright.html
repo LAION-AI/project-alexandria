@@ -1,0 +1,555 @@
+<title>Sharing Screenplay Knowledge Units</title>
+<style>
+  :root{
+    --ground:#f4f6f8; --surface:#ffffff; --surface-2:#eef1f5;
+    --ink:#171a22; --ink-2:#3d4453; --muted:#606879; --faint:#8b93a3;
+    --rule:#dde1e8; --rule-strong:#c3c9d4;
+    --accent:#7b2d3a; --accent-soft:#f3e6e8;
+    --ok:#2c6249; --ok-soft:#e4efe9;
+    --warn:#8a6212; --warn-soft:#f6eeda;
+    --risk:#a03535; --risk-soft:#f7e5e4;
+    --shadow:0 1px 2px rgba(23,26,34,.05),0 8px 24px -12px rgba(23,26,34,.18);
+    --serif:ui-serif,Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#12141a; --surface:#191c24; --surface-2:#20242e;
+      --ink:#e7eaf0; --ink-2:#c2c8d4; --muted:#98a0b0; --faint:#727a8a;
+      --rule:#2a2f3a; --rule-strong:#3a4150;
+      --accent:#d08a94; --accent-soft:#2e1f23;
+      --ok:#7fc0a2; --ok-soft:#1a2823;
+      --warn:#d7ae5e; --warn-soft:#2a2418;
+      --risk:#e08b86; --risk-soft:#2d1e1e;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#12141a; --surface:#191c24; --surface-2:#20242e;
+    --ink:#e7eaf0; --ink-2:#c2c8d4; --muted:#98a0b0; --faint:#727a8a;
+    --rule:#2a2f3a; --rule-strong:#3a4150;
+    --accent:#d08a94; --accent-soft:#2e1f23;
+    --ok:#7fc0a2; --ok-soft:#1a2823;
+    --warn:#d7ae5e; --warn-soft:#2a2418;
+    --risk:#e08b86; --risk-soft:#2d1e1e;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--serif); font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+  header.masthead{border-bottom:1px solid var(--rule-strong);padding:56px 0 28px;margin-bottom:8px}
+  .kicker{
+    font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin:0 0 14px
+  }
+  h1{
+    font-family:var(--serif);font-weight:600;font-size:clamp(30px,4.6vw,46px);
+    line-height:1.13;letter-spacing:-.015em;margin:0 0 16px;text-wrap:balance;max-width:22ch
+  }
+  .standfirst{font-size:19px;color:var(--ink-2);max-width:64ch;margin:0 0 22px}
+  .meta{
+    font-family:var(--sans);font-size:12.5px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:8px 22px;padding-top:6px
+  }
+  .meta b{color:var(--ink-2);font-weight:600}
+
+  .disclaimer{
+    border:1px solid var(--rule-strong);border-left:3px solid var(--accent);
+    background:var(--surface);border-radius:3px;padding:16px 20px;margin:28px 0 44px;
+    font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--ink-2);box-shadow:var(--shadow)
+  }
+  .disclaimer strong{color:var(--ink)}
+
+  main{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+  section{padding:38px 0;border-top:1px solid var(--rule)}
+  section:first-of-type{border-top:none}
+  .sec-head{display:flex;gap:16px;align-items:baseline;margin:0 0 18px}
+  .sec-num{
+    font-family:var(--sans);font-size:12px;font-weight:700;color:var(--faint);
+    letter-spacing:.08em;flex:none;padding-top:6px;font-variant-numeric:tabular-nums
+  }
+  h2{font-size:clamp(21px,2.6vw,27px);font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.25;text-wrap:balance}
+  h3{font-size:18px;font-weight:600;margin:30px 0 10px;letter-spacing:-.005em}
+  p{margin:0 0 15px;max-width:68ch}
+  .body-indent{padding-left:38px}
+  @media(max-width:640px){.body-indent{padding-left:0}}
+  strong{font-weight:600}
+  em{font-style:italic}
+  a{color:var(--accent);text-underline-offset:2px}
+  a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  .lede{font-size:18.5px;color:var(--ink-2)}
+  .pull{
+    font-size:20px;line-height:1.45;color:var(--ink);border-left:3px solid var(--accent);
+    padding:4px 0 4px 20px;margin:24px 0;max-width:60ch;font-style:italic
+  }
+
+  ul,ol{margin:0 0 16px;padding-left:20px;max-width:68ch}
+  li{margin:0 0 8px}
+  li::marker{color:var(--faint)}
+
+  .tablewrap{overflow-x:auto;margin:22px 0;border:1px solid var(--rule);border-radius:4px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:13.5px;min-width:660px}
+  th{
+    text-align:left;font-weight:600;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--rule-strong);white-space:nowrap
+  }
+  td{padding:13px 16px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-2);line-height:1.5}
+  tr:last-child td{border-bottom:none}
+  tr.here{background:var(--accent-soft)}
+  tr.here td{color:var(--ink)}
+  .band{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:3px 9px;border-radius:2px;white-space:nowrap
+  }
+  .b-ok{background:var(--ok-soft);color:var(--ok)}
+  .b-warn{background:var(--warn-soft);color:var(--warn)}
+  .b-risk{background:var(--risk-soft);color:var(--risk)}
+  .youarehere{
+    font-family:var(--sans);font-size:10.5px;font-weight:700;letter-spacing:.07em;
+    color:var(--accent);text-transform:uppercase;white-space:nowrap
+  }
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px;margin:22px 0}
+  .card{
+    background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:18px 20px;
+    box-shadow:var(--shadow)
+  }
+  .card h4{
+    font-family:var(--sans);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+    margin:0 0 10px;color:var(--muted);font-weight:600
+  }
+  .card p{font-size:15px;margin:0;color:var(--ink-2)}
+  .card.against{border-top:2px solid var(--risk)}
+  .card.forr{border-top:2px solid var(--ok)}
+
+  .case{
+    border:1px solid var(--rule);border-radius:4px;background:var(--surface);
+    padding:16px 20px;margin:14px 0;box-shadow:var(--shadow)
+  }
+  .case .cite{
+    font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink);
+    display:block;margin-bottom:6px
+  }
+  .case .cite span{color:var(--muted);font-weight:400}
+  .case p{font-size:15.5px;margin:0;color:var(--ink-2)}
+  .case.key{border-left:3px solid var(--risk)}
+
+  .steps{counter-reset:step;list-style:none;padding:0;margin:22px 0;max-width:none}
+  .steps li{
+    counter-increment:step;display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;
+    padding:16px 0;border-top:1px solid var(--rule);margin:0;align-items:start
+  }
+  .steps li:first-child{border-top:none}
+  .steps li::before{
+    content:counter(step);font-family:var(--sans);font-size:12px;font-weight:700;
+    color:var(--surface);background:var(--accent);width:24px;height:24px;border-radius:50%;
+    display:grid;place-items:center;margin-top:2px
+  }
+  .steps h4{margin:0 0 5px;font-size:16.5px;font-weight:600;color:var(--ink)}
+  .steps p{margin:0;font-size:15.5px;color:var(--ink-2)}
+  .steps .verdict{
+    font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ok);margin-left:8px
+  }
+  .steps .verdict.partial{color:var(--warn)}
+
+  .measured{
+    background:var(--surface-2);border:1px solid var(--rule);border-radius:4px;
+    padding:18px 20px;margin:22px 0
+  }
+  .measured .row{
+    display:flex;justify-content:space-between;gap:20px;padding:8px 0;
+    border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:14px
+  }
+  .measured .row:last-child{border-bottom:none}
+  .measured .row span:last-child{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);text-align:right}
+  .measured .row span:first-child{color:var(--muted)}
+
+  details{border:1px solid var(--rule);border-radius:4px;background:var(--surface);padding:0;margin:14px 0}
+  summary{
+    cursor:pointer;padding:13px 18px;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink)
+  }
+  details[open] summary{border-bottom:1px solid var(--rule)}
+  .details-body{padding:14px 18px 4px}
+  .details-body p{font-size:15px}
+
+  footer{
+    border-top:1px solid var(--rule-strong);margin-top:52px;padding-top:24px;
+    font-family:var(--sans);font-size:13px;color:var(--muted)
+  }
+  footer p{max-width:68ch;margin:0 0 10px}
+  code{font-family:var(--mono);font-size:.88em;background:var(--surface-2);padding:1.5px 5px;border-radius:3px;color:var(--ink-2)}
+</style>
+
+<div class="wrap">
+<header class="masthead">
+  <p class="kicker">Project Alexandria · Screenplay extension</p>
+  <h1>Can screenplay Knowledge Units be shared?</h1>
+  <p class="standfirst">
+    An honest reading of where structured narrative extraction sits under copyright — including
+    the part of the original Alexandria argument that does <em>not</em> carry over from scientific
+    papers to dramatic works.
+  </p>
+  <div class="meta">
+    <span><b>Prepared for</b> LAION research &amp; counsel</span>
+    <span><b>Subject</b> <code>screenplay/</code> KU chain</span>
+    <span><b>Date</b> 19 August 2026</span>
+  </div>
+</header>
+
+<div class="disclaimer">
+  <strong>Not legal advice.</strong> This is a technical author's structured summary of the
+  considerations, written to give counsel a starting point and to stop the engineering work from
+  making claims it cannot support. It is not written by a lawyer, it does not cover every
+  jurisdiction, and nothing here should be relied on for a release decision.
+</div>
+
+<main>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§1</span><h2>The question actually being asked</h2></div>
+  <div class="body-indent">
+    <p class="lede">
+      The pipeline converts a screenplay into 225 Knowledge Units: ordered beats, entity states,
+      per-scene context. No dialogue survives as dialogue — the longest verbatim run anywhere in
+      the artifact is seven words, measured across 14,989 fields by an independently written audit.
+    </p>
+    <p>
+      That measurement answers one question well and a different question not at all. It shows the
+      artifact does not redistribute the screenplay's <strong>language</strong>. It says nothing
+      about whether the artifact redistributes the screenplay's <strong>structure</strong> — and for
+      a dramatic work, structure is protected too.
+    </p>
+    <p class="pull">
+      The overlap gate is evidence about expression, not a copyright clearance. Reporting it as
+      the latter would be the same category error the project has spent its checks trying to avoid.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§2</span><h2>Where the Alexandria argument stops working</h2></div>
+  <div class="body-indent">
+    <p>
+      The original paper rests on a clean and correct principle: facts are not protectable
+      expression. That photosynthesis releases oxygen is not owned by the textbook that states it,
+      so a Knowledge Unit capturing it redistributes nothing protectable, no matter how complete.
+    </p>
+    <p>
+      Fiction breaks the principle at its root. The events of a screenplay are not discovered facts
+      about the world — they are <strong>authored inventions</strong>. Courts call them
+      &ldquo;fictional facts&rdquo; and treat them as expression, precisely because there was
+      nothing there to discover.
+    </p>
+    <div class="cards">
+      <div class="card forr">
+        <h4>Scientific paper</h4>
+        <p>The fact existed before the paper. Extracting it takes something the author never owned.
+        Completeness is not an aggravating factor.</p>
+      </div>
+      <div class="card against">
+        <h4>Screenplay</h4>
+        <p>The &ldquo;fact&rdquo; was invented by the author. Extracting it takes the authored thing
+        itself. Completeness makes the taking larger, not safer.</p>
+      </div>
+    </div>
+    <p>
+      This is the single most important line in this document, and it inverts the intuition the
+      engineering work naturally builds: <strong>the more faithfully and completely the units capture
+      the narrative, the more of the protected work they carry.</strong> Fidelity is a legal
+      liability here in a way it never was for the paper corpus.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§3</span><h2>The authorities that cut against</h2></div>
+  <div class="body-indent">
+    <p>
+      US case law is unusually direct on this, and the closest case is close indeed.
+    </p>
+
+    <div class="case key">
+      <span class="cite">Castle Rock Entertainment v. Carol Publishing Group <span>— 150 F.3d 132 (2d Cir. 1998)</span></span>
+      <p>
+        A trivia book of questions about <em>Seinfeld</em> — pure facts <em>about</em> the show,
+        no script reproduced — was held infringing, and fair use was rejected. The court held the
+        &ldquo;fictional facts&rdquo; were original expression owned by the rightsholder. This is
+        the nearest analogue to an MCQ instrument plus a fact extraction, and it went against the
+        defendant.
+      </p>
+    </div>
+    <div class="case key">
+      <span class="cite">Twin Peaks Productions v. Publications International <span>— 996 F.2d 1366 (2d Cir. 1993)</span></span>
+      <p>
+        Detailed plot summaries of episodes exceeded fair use. Abridgement was found to be a
+        derivative work where it recounted the plot in sufficient detail — which is a fair
+        description of an ordered scene-by-scene beat chain.
+      </p>
+    </div>
+    <div class="case">
+      <span class="cite">Nichols v. Universal Pictures <span>— 45 F.2d 119 (2d Cir. 1930)</span></span>
+      <p>
+        Learned Hand's abstractions test: protection extends beyond literal text to the pattern of
+        incident and character, up to the level where it becomes unprotected abstraction. A beat
+        chain deliberately sits <em>below</em> that line — it is specific by design.
+      </p>
+    </div>
+    <div class="case">
+      <span class="cite">Warner Bros. v. RDR Books <span>— 575 F. Supp. 2d 513 (S.D.N.Y. 2008)</span></span>
+      <p>
+        The Harry Potter Lexicon. Useful in both directions: a reference work reorganising a
+        fictional universe was held <em>capable</em> of being transformative in purpose, but
+        infringed because the amount taken exceeded what that purpose required. The lesson is that
+        purpose alone does not save volume.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§4</span><h2>The grounds that support sharing</h2></div>
+  <div class="body-indent">
+    <p>
+      These are real and, for a non-profit research organisation, substantial — but note carefully
+      what each one covers.
+    </p>
+
+    <h3>Text and data mining exemptions</h3>
+    <p>
+      EU DSM Directive <strong>Article 3</strong> permits reproductions and extractions by research
+      organisations for scientific TDM, cannot be overridden by contract, and permits retention for
+      verification. Article 4 offers a broader exemption subject to rightsholder opt-out. Germany
+      implements at UrhG §60d; Japan's Article 30-4 is broader still.
+    </p>
+    <p>
+      <strong>The limit that matters:</strong> Article 3 authorises <em>making the copies needed to
+      do the analysis</em>. It is not, on its face, a publication right for outputs that themselves
+      contain protected expression. It protects the extraction; it does not automatically protect
+      the redistribution.
+    </p>
+
+    <h3>Non-expressive / non-consumptive use</h3>
+    <p>
+      <em>Authors Guild v. Google</em> (804 F.3d 202, 2d Cir. 2015) and <em>Authors Guild v.
+      HathiTrust</em> (755 F.3d 87, 2d Cir. 2014) sustained mass digitisation for search and
+      analysis. The strength of those holdings tracks how little of the expression reached the
+      public: Google Books won substantially because snippet view was deliberately crippled as a
+      substitute for reading the book.
+    </p>
+    <p>
+      That is the operative test to apply here, and it is a good one: <strong>does the artifact
+      substitute for experiencing the work?</strong> A frequency table does not. A complete ordered
+      account of every scene begins to.
+    </p>
+
+    <h3>Transformation of purpose</h3>
+    <p>
+      <em>Google v. Oracle</em> (141 S. Ct. 1183, 2021) affirmed that reuse for a genuinely
+      different function weighs heavily. Training data for narrative understanding is a different
+      purpose from entertainment — but <em>Castle Rock</em> is the reminder that a different purpose
+      did not save a work that repackaged the fictional content itself.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§5</span><h2>A risk gradient, by what you release</h2></div>
+  <div class="body-indent">
+    <p>
+      Risk is not binary across the artifact — it varies sharply with granularity and with whether
+      narrative order is preserved. Ordering is the hinge: it is what turns a set of facts into a
+      recounting.
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Release form</th><th>Band</th><th>Reasoning</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Model weights trained on the units; aggregate statistics</td>
+            <td><span class="band b-ok">Lowest</span></td>
+            <td>No expression recoverable; squarely non-expressive use.</td><td></td>
+          </tr>
+          <tr>
+            <td>The pipeline, schema, checks and MCQ instrument — no corpus</td>
+            <td><span class="band b-ok">Lowest</span></td>
+            <td>Nothing derived from the protected work is distributed at all.</td><td></td>
+          </tr>
+          <tr>
+            <td>Entity inventory, character graph, unordered attributes</td>
+            <td><span class="band b-ok">Low</span></td>
+            <td>Closest to unprotected idea; no narrative recounted.</td><td></td>
+          </tr>
+          <tr>
+            <td>Per-scene facts with scene order removed or coarsened</td>
+            <td><span class="band b-warn">Medium</span></td>
+            <td>Substantial detail, but does not recount the work as a sequence.</td><td></td>
+          </tr>
+          <tr class="here">
+            <td><strong>Ordered scene-by-scene beat chain</strong> — the current artifact</td>
+            <td><span class="band b-risk">Medium-high</span></td>
+            <td>Functionally a very detailed scene-by-scene synopsis. This is the <em>Twin Peaks</em> zone, and completeness is what puts it there.</td>
+            <td><span class="youarehere">← we are here</span></td>
+          </tr>
+          <tr>
+            <td>Anything permitting reconstruction of dialogue or prose</td>
+            <td><span class="band b-risk">Highest</span></td>
+            <td>Direct substitution; no exemption reaches it.</td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The uncomfortable observation is that the project's quality goal and its legal exposure point
+      the same way. Every improvement that makes the units better at preserving the narrative moves
+      the artifact <em>down</em> this table.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§6</span><h2>What the artifact actually contains</h2></div>
+  <div class="body-indent">
+    <p>The facts a lawyer would want, measured rather than asserted:</p>
+    <div class="measured">
+      <div class="row"><span>Source prose redistributed</span><span>none</span></div>
+      <div class="row"><span>Longest verbatim run, whole artifact</span><span>7 words</span></div>
+      <div class="row"><span>Fields at or above the 8-word bar</span><span>0 of 14,989</span></div>
+      <div class="row"><span>Scenes covered, in source order</span><span>225 of 225</span></div>
+      <div class="row"><span>Ordered beats reconstructing presentation sequence</span><span>1,021</span></div>
+      <div class="row"><span>Source text in worked-examples doc</span><span>3 scenes (&lt;2%)</span></div>
+      <div class="row"><span>Scene text stored in the chain</span><span>offsets + SHA-256 only</span></div>
+    </div>
+    <p>
+      Rows one to three are strong evidence for the expression question. Rows four and five are the
+      ones that create the structural exposure — and they are, deliberately, the project's central
+      achievement.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§7</span><h2>Options, ranked by how much they actually solve</h2></div>
+  <div class="body-indent">
+    <ol class="steps">
+      <li>
+        <div>
+          <h4>Ship the pipeline, not the corpus <span class="verdict">solves it</span></h4>
+          <p>
+            Release the code, schema, checks and instrument; let each research group derive units
+            locally from a copy they lawfully hold. Nothing derived from a protected work is
+            distributed, the TDM exemption covers each group's own extraction, and reproducibility
+            survives intact via <code>source_url</code> and <code>source_sha256</code>. This is the
+            strongest available answer and costs the project almost nothing.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Move to public-domain or licensed source texts <span class="verdict">solves it</span></h4>
+          <p>
+            The method is not specific to <em>The Matrix</em>. Demonstrating it on a public-domain
+            play or an openly licensed screenplay removes the question entirely and makes the
+            published corpus reusable without caveat.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Seek permission for the demonstration corpus <span class="verdict">solves it</span></h4>
+          <p>
+            A single rightsholder clearance for one screenplay, used as a published worked example,
+            converts the whole question into a licensing fact.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Gate access to research organisations <span class="verdict partial">reduces it</span></h4>
+          <p>
+            Aligns distribution with the population Article 3 contemplates and limits substitution.
+            It narrows exposure; it does not resolve whether the artifact is a derivative work.
+          </p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Publish a reduced form: drop global ordering <span class="verdict partial">reduces it</span></h4>
+          <p>
+            Ordering is what makes the chain a recounting. Releasing per-scene units without the
+            cross-scene sequence moves up the gradient — but it also removes the temporal spine that
+            is the extension's main contribution, so this is a real cost, not a free mitigation.
+          </p>
+        </div>
+      </li>
+    </ol>
+    <p>
+      The first three are genuine solutions and two of them are nearly free. Given that, there is
+      little reason to rest the project on the contested ground at all.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§8</span><h2>Questions for counsel</h2></div>
+  <div class="body-indent">
+    <ol>
+      <li>Does an ordered, complete, scene-by-scene beat chain constitute a derivative work under
+        <em>Twin Peaks</em>, notwithstanding that no protected language survives?</li>
+      <li>Does Article 3 DSM support <em>publishing</em> TDM outputs of this granularity, or only
+        performing the analysis and retaining copies for verification?</li>
+      <li>How much does <em>Castle Rock</em> constrain publishing an MCQ instrument built from a
+        copyrighted fictional work, even where the questions quote nothing?</li>
+      <li>Does the three-scene worked-examples exhibit qualify as scholarly quotation in the
+        jurisdictions LAION publishes from (including InfoSoc Art. 5(3)(d) quotation)?</li>
+      <li>Does releasing pipeline-only, with the corpus derived locally by each recipient, fully
+        discharge the concern — and is that conclusion stable across the EU, US and UK?</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-num">§9</span><h2>Recommendation</h2></div>
+  <div class="body-indent">
+    <p class="lede">
+      Publish the method, withhold the corpus, and move the demonstration to a source that carries
+      no question.
+    </p>
+    <p>
+      The scientific contribution here is the pipeline, the check design, and the finding that
+      retrieval dominates representation — none of which requires distributing units derived from a
+      copyrighted screenplay. The <em>Matrix</em> chain can stay on the machine that made it and be
+      cited by digest, with the numbers fully reproducible by anyone holding their own lawful copy.
+    </p>
+    <p>
+      What should <strong>not</strong> happen is publishing the chain while citing the seven-word
+      overlap figure as the justification. That number is true, it was hard won, and it answers a
+      question nobody is going to ask.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    Prepared alongside <code>screenplay/docs/05-provenance-and-scope.md</code>, which records the
+    same limitation in the repository itself. Measurements from
+    <code>screenplay/results/matrix/</code>; the overlap audit was written independently of the
+    gate it verifies.
+  </p>
+  <p>
+    Case citations are given for orientation and have not been shepardised. Jurisdictions differ
+    materially and this note does not address moral rights, contract terms attached to the source
+    copy, or database rights.
+  </p>
+</footer>
+</div>

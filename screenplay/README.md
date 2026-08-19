@@ -78,7 +78,15 @@ Two effects, separated by the scene-local text control:
   of the copyright-safe transformation, a consistent penalty this sample cannot quite separate
   from zero.
 
-Full numbers and caveats in [results](docs/06-results.md).
+**Closing the gap.** The deficit traced to over-compression of short scenes — a 35-word scene
+lost a speaker entirely, a 31-word scene lost the physical detail a question asked about.
+Narrower windows (3 scenes, not 12) plus a granularity prompt take scene-local units to
+**0.926**, no longer distinguishable from the source-text ceiling (p≈0.5), **with verbatim
+overlap unchanged at 6–7 words** — the gains are not bought with source text. Neither change
+works alone. Costs 5× the extraction time and does not help the whole-chain arm at all.
+
+Full numbers, the selection caveat, and the mechanistic check in
+[results](docs/06-results.md).
 
 ## Status
 

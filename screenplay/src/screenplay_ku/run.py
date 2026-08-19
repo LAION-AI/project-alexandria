@@ -148,6 +148,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--limit-windows", type=int, default=0, help="smoke-test subset")
     parser.add_argument("--skip-stage2", action="store_true")
+    parser.add_argument("--prompt-variant", choices=["base", "detail"], default="base")
+    parser.add_argument("--speaker-hints", action="store_true")
     parser.add_argument("--repair-rounds", type=int, default=3,
                         help="max overlap-repair passes; the gate re-runs after each")
     args = parser.parse_args(argv)
@@ -194,7 +196,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print("unhealthy endpoints: {}".format(unhealthy))
         return 2
 
-    stage1 = Stage1(pool, source, scenes, document)
+    stage1 = Stage1(pool, source, scenes, document,
+                    prompt_variant=args.prompt_variant, speaker_hints=args.speaker_hints)
 
     print("warming shared prefix on {} endpoints...".format(len(ports)))
     warm = pool.warm(SYSTEM_PROMPT, "=== FULL SCREENPLAY ===\n" + source)
@@ -299,6 +302,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             "model": args.model, "ports": ports, "windowing": args.windowing,
             "pages_target": args.pages_target, "pages_context": args.pages_context,
             "max_scenes": args.max_scenes, "temperature": args.temperature,
+            "prompt_variant": args.prompt_variant, "speaker_hints": args.speaker_hints,
         },
         "document": document,
         "attribution": attribution,

@@ -119,6 +119,100 @@ the headline numbers are the non-leaky ones, and why the calibration arm runs fi
 
 ---
 
+## Closing the gap: KU generation variants
+
+The 8-point matched-retrieval deficit is a defect with a cause, so the first step was to find
+it rather than guess. Of the 9 non-leaky questions where `text_scene` beats `ku_scene` by 40
+points or more, **5 are `state_change`** questions, and the failures share a shape:
+
+| Scene | Words | What the source has | What the baseline unit recorded |
+|---|---|---|---|
+| `sc-150` | 35 | Tank speaks to Neo over the phone | 2 beats, **Tank absent entirely** — only Neo |
+| `sc-125` | 31 | cover cracks → eyes appear → truck passes → cover opens → Trinity climbs out | 2 beats, physical detail merged away |
+
+Both are ~30-word scenes, and the median scene in this screenplay is 45 words. The failure is
+**over-compression of short scenes**: merged beats, dropped minor speakers, summarised physical
+state. A short scene is not a simple scene, and the baseline prompt treated it as one.
+
+### Four variants, run in parallel
+
+| Variant | Change |
+|---|---|
+| `narrow` | 3 scenes per window instead of 12 |
+| `detail` | prompt demanding one beat per distinct action, every speaker recorded, physical state captured |
+| `both` | narrow + detail |
+| `both_spk` | both, plus the scene map's own speaker list injected as a per-scene checklist |
+
+### Results, with the control that matters
+
+| Variant | Beats | **Longest overlap** | `ku_scene` | vs baseline | vs `text_scene` ceiling |
+|---|---|---|---|---|---|
+| baseline | 1,021 | 7 | 0.871 | — | −0.077 (p=**0.059**) |
+| `narrow` | 1,126 | 6 | 0.903 | +0.032 (p=0.40) | −0.045 (p=0.15) |
+| `detail` | 1,359 | 7 | 0.848 | −0.023 (p=0.60) | −0.100 (p=**0.014**) |
+| **`both`** | 1,453 | 7 | **0.926** | +0.055 (p=0.15) | **−0.023 (p=0.47)** |
+| **`both_spk`** | 1,472 | 7 | **0.926** | +0.055 (p=0.11) | **−0.023 (p=0.54)** |
+
+**The overlap column is the point of the table.** A variant can always raise its score by
+copying more of the source, which would destroy the artifact while appearing to improve it.
+Every variant holds at 6–7 words with **zero fields at or above the 8-word bar** — identical to
+baseline. The gains are not bought with source text.
+
+**The gap is no longer detectable.** The baseline sat 7.7 points below reading the source
+itself, marginally (p=0.059). `both` and `both_spk` sit 2.3 points below, nowhere near
+significance (p≈0.5). At matched retrieval, units built this way are indistinguishable from the
+screenplay for answering questions about it.
+
+**Neither ingredient works alone.** `narrow` alone is +0.032 and not significant; `detail` alone
+is *worse* than baseline and is the only variant significantly below the ceiling (p=0.014).
+Granularity instructions given to a model reading 12 scenes at once produce longer records
+without better ones — the attention has to be there first for the instruction to land. The
+speaker checklist added nothing beyond `both` (identical 0.926), so the prompt was already
+sufficient once the window was narrow.
+
+### Mechanistic confirmation
+
+The two diagnosed failures, under `both`:
+
+- **`sc-150`** — 2 beats → 3. **Tank now appears** as the actor of his own speech beat and in
+  `present`. The question asks whose voice Neo hears; it is now answerable.
+- **`sc-125`** — 2 beats → 5, recovering cover cracks → eyes peek → truck passes → cover opens →
+  Trinity climbs out. The question asks the cover's state; it is now recorded.
+
+The fix reached the specific facts the diagnosis predicted, which is stronger evidence than the
+aggregate movement alone.
+
+### What it costs, and what it does not fix
+
+| | baseline | `both` |
+|---|---|---|
+| Extraction wall clock | 424 s | ~2,070 s (**5×**) |
+| Rendered chain | 52k tokens | 73k tokens (**+40%**) |
+| `ku_chain` (whole-document) | 0.729 | 0.719 — **unchanged** (p=0.85) |
+
+The improvement is **entirely in the retrieved condition**. Dumping the richer chain whole is if
+anything slightly worse, because the extra detail also makes the haystack larger. This sharpens
+rather than complicates the earlier finding: detail helps when it is retrieved and hurts when it
+is dumped, so the granularity and the serving strategy have to be chosen together.
+
+### The caveat this section needs
+
+**Four variants were tried and the best was selected on the same 100 questions used to measure
+it.** Uncorrected, `both` improves on baseline at p=0.15; with a Bonferroni correction for four
+comparisons the bar is p<0.0125 and it does not clear it. The defensible claims are therefore
+narrower than the table suggests:
+
+1. The best variants are **not distinguishable from the source-text ceiling** (p≈0.5), where the
+   baseline was marginally below it. This does not depend on selection — it is a comparison
+   against a fixed reference.
+2. The gains are **not from copying**, which the overlap column establishes directly.
+3. The mechanism is confirmed on the specific diagnosed cases.
+
+What is *not* established is that `both` beats the baseline by a specific margin. That needs a
+confirmatory run on a freshly generated instrument, which has not been done.
+
+---
+
 ## Honest limits
 
 - **One film, one student, one extraction model.** Nothing here generalizes to other
@@ -136,6 +230,9 @@ the headline numbers are the non-leaky ones, and why the calibration arm runs fi
   contextualization and structure per scene. No compression claim is available here.
 - **MCQ measures recognition, not reconstruction.** That the temporal order is recoverable is
   established mechanically by C4, not by this instrument.
+- **Variant selection is uncorrected.** The best of four variants was chosen on the same
+  instrument used to score it; see the caveat above. A confirmatory run on fresh questions is
+  the obvious next step and has not been run.
 - **3 numbers are genuinely missing** from the units — an `M-16`, a `.45`, and the `4` in
   `GUARD #4`. Reported rather than tuned away.
 

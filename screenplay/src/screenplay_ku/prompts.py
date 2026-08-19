@@ -146,6 +146,43 @@ the passage. Note what they preserve exactly: Pier 9, and the 14th.
 """
 
 
+_DETAIL_ADDENDUM = """\
+## Granularity — read this twice for short scenes
+
+The most common failure in this task is COMPRESSION. A short scene is not a simple scene.
+A thirty-word scene routinely contains four or five distinct beats, and merging them
+destroys exactly the detail this record exists to preserve.
+
+Rules, all of them mandatory:
+
+1. **One beat per distinct action or utterance.** Never merge two things that happen into
+   one beat. If the passage says a cover cracks open, then eyes appear, then a vehicle
+   passes, then someone climbs out — that is four beats, not one.
+
+2. **Every character who speaks gets a speech beat naming them as `actor`**, including
+   voices heard over a phone or from off screen. If a passage contains two speakers, it
+   contains at least two speech beats. Losing the identity of a speaker loses who knew
+   what, which is the spine of the whole record.
+
+3. **Everyone present goes in `present`**, including characters who are named only in a
+   speaker cue and do nothing else. A character standing silently in the passage is still
+   in the passage.
+
+4. **Record the physical state of objects and surroundings** when the passage describes
+   them: what is open or closed, lit or dark, intact or broken, held or dropped. These are
+   facts about the world and they are frequently the only thing distinguishing this moment
+   from a similar one elsewhere.
+
+5. **When the passage withholds something deliberately** — an identity not yet revealed, a
+   speaker not yet named — record what is actually shown, and mark it `ambiguous` rather
+   than filling in the answer from later in the document. What the audience does not yet
+   know is itself a fact about this moment.
+
+Do not summarise. A reader with only your record and no access to the passage must be able
+to answer detailed questions about what physically happened, in what order, and to whom.
+"""
+
+
 def extraction_prompt(
     window: Window,
     source: str,
@@ -153,6 +190,8 @@ def extraction_prompt(
     document: Dict[str, object],
     scene_index_table: str,
     known_entity_ids: Sequence[str] = (),
+    prompt_variant: str = "base",
+    speaker_hint: str = "",
 ) -> str:
     """Build a stage-1 prompt.
 
@@ -192,6 +231,7 @@ def extraction_prompt(
 
 === SCENES TO EMIT ({count}) ===
 {scenes}
+{speakers}
 
 === ENTITY IDS ALREADY IN USE ===
 {known}
@@ -211,8 +251,9 @@ for each scene above, in that order. Every fact must be asserted in TARGET SPAN.
         target=window.target_text(source) or "[EMPTY]",
         count=len(window.scenes),
         scenes=json.dumps(scene_rows, ensure_ascii=False, indent=1),
+        speakers=speaker_hint,
         known=", ".join(sorted(known_entity_ids)) or "[none yet]",
-        task=_TASK,
+        task=_TASK + (_DETAIL_ADDENDUM if prompt_variant == "detail" else ""),
         example=_EXAMPLE,
     )
 

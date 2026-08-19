@@ -56,12 +56,16 @@ class Stage1:
         *,
         max_tokens: int = 16384,
         log_dir: Optional[Path] = None,
+        prompt_variant: str = "base",
+        speaker_hints: bool = False,
     ) -> None:
         self.pool = pool
         self.source = source
         self.scenes = list(scenes)
         self.document = document
         self.max_tokens = max_tokens
+        self.prompt_variant = prompt_variant
+        self.speaker_hints = speaker_hints
         self.index_table = scene_index_listing(self.scenes)
         self.log_dir = log_dir
         if log_dir:
@@ -69,8 +73,21 @@ class Stage1:
 
     def _prompt(self, window: Window, known_ids: Sequence[str]) -> str:
         builder = canary_prompt if window.is_canary else extraction_prompt
+        hint = ""
+        if self.speaker_hints and not window.is_canary:
+            # The scene map already knows who speaks in each scene. Supplying it turns
+            # "record every speaker" from an instruction the model may overlook into a
+            # checklist it can see, which is the cheapest available fix for the dropped
+            # speaker that caused several evaluation failures.
+            rows = [
+                "  {}: {}".format(scene.scene_id, ", ".join(scene.speakers) or "(none)")
+                for scene in window.scenes
+            ]
+            hint = ("\n=== SPEAKERS DETECTED PER SCENE (each must appear as the actor of a "
+                    "speech beat, and in `present`) ===\n" + "\n".join(rows))
         return builder(
-            window, self.source, self.scenes, self.document, self.index_table, known_ids
+            window, self.source, self.scenes, self.document, self.index_table, known_ids,
+            prompt_variant=self.prompt_variant, speaker_hint=hint,
         )
 
     def extract_window(self, window: Window, known_ids: Sequence[str] = ()) -> Dict[str, Any]:
