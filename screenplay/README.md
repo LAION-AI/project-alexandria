@@ -43,7 +43,8 @@ that proves it fires.
 | [Checks](docs/03-checks.md) | Six checks and their negative cases |
 | [Evaluation](docs/04-evaluation.md) | 100-question MCQ, four arms |
 | [Provenance and scope](docs/05-provenance-and-scope.md) | Source by reference, and an honest limit |
-| [**Results**](docs/06-results.md) | **The Matrix run: artifact, gate, and four-arm evaluation** |
+| [**Results**](docs/06-results.md) | **The Matrix run: artifact, gate, and five-arm evaluation** |
+| [**Worked examples**](docs/07-worked-examples.md) | **Three scenes end to end: source, unit, questions** |
 
 ## Source handling
 
@@ -58,20 +59,26 @@ narrative that does not carry over from the paper's argument about scientific fa
 state changes, 109 entities. An independent audit over 14,989 fields finds the **longest
 verbatim run from the source is 7 words**.
 
-On 98 questions with a small 4B student, five samples each, non-leaky stratum:
+On 100 questions with a small 4B student, five samples each, non-leaky stratum (n=62):
 
 | Arm | Accuracy |
 |---|---|
 | no context | *floor is chance, 0.25* |
-| full screenplay | 0.756 |
-| full KU chain | 0.641 |
-| **scene-local KUs** | **0.848** |
+| whole screenplay | 0.787 |
+| whole KU chain | 0.729 |
+| **scene-local source text** | **0.948** |
+| **scene-local KUs** | **0.871** |
 
-The knowledge is in the units — scene-local KUs are indistinguishable from handing over the
-whole screenplay (p=0.13), and beat the flat chain by 21 points (p<0.001). But the flat 52k
-chain scores *below* the source (p=0.020). That is a retrieval problem, not a representation
-problem: serve a KU chain through retrieval, not in bulk. Full numbers and caveats in
-[results](docs/06-results.md).
+Two effects, separated by the scene-local text control:
+
+- **Retrieval dominates, and is representation-independent.** Narrowing to the relevant five
+  scenes is worth +0.161 for source text and +0.142 for units, both p<0.001. Serve a KU chain
+  through retrieval, never in bulk.
+- **At matched retrieval the units cost about 8 points** (−0.077, p=0.059) — the honest price
+  of the copyright-safe transformation, a consistent penalty this sample cannot quite separate
+  from zero.
+
+Full numbers and caveats in [results](docs/06-results.md).
 
 ## Status
 

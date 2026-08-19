@@ -153,6 +153,21 @@ def test_c2_exemption_cannot_hide_a_copied_span():
     assert check_verbatim_overlap(units, BY_ID, SOURCE).status == "fail"
 
 
+def test_c2_sees_through_quotation_marks():
+    """A copied span wrapped in quotes must still register.
+
+    The tokenizer originally captured apostrophes inside tokens, so 'I became a different
+    token from I and any quoted span was invisible to the check. Quoted dialogue is the
+    single most likely way for source text to reach an artifact, so this is the case the
+    gate most needs to catch.
+    """
+    units = _units()
+    units[0]["beats"][0]["content"] = (
+        "Boris was recorded saying 'I moved it because they were watching me' that night."
+    )
+    assert check_verbatim_overlap(units, BY_ID, SOURCE).status == "fail"
+
+
 def test_c2_passes_genuine_paraphrase():
     assert check_verbatim_overlap(_units(), BY_ID, SOURCE).status == "pass"
 

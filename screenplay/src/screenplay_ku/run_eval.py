@@ -16,7 +16,7 @@ from .client import EndpointPool
 from .evaluate import find_leaky, run_arm, summarise
 from .mcq import Question
 from .render import estimate_tokens, neighbourhood, render_chain
-from .scenes import load_source
+from .scenes import load_scenes, load_source
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
@@ -30,13 +30,18 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--samples", type=int, default=5)
     parser.add_argument("--workers", type=int, default=24)
     parser.add_argument("--context-budget-tokens", type=int, default=110000)
-    parser.add_argument("--arms", default="none,full_text,ku_chain,ku_scene")
+    parser.add_argument("--arms", default="none,full_text,text_scene,ku_chain,ku_scene")
+    parser.add_argument("--scene-map", default="", help="required for the text_scene arm")
     args = parser.parse_args(argv)
 
     payload = json.loads(Path(args.questions).read_text(encoding="utf-8"))
     questions = [Question.from_dict(item) for item in payload["questions"]]
     artifact = json.loads(Path(args.ku_chain).read_text(encoding="utf-8"))
     source = load_source(Path(args.source))
+    scenes_by_id = {}
+    if args.scene_map:
+        scenes_by_id = {scene.scene_id: scene for scene in
+                        load_scenes(Path(args.scene_map), source)}
 
     chain_text = render_chain(artifact)
     budget_chars = args.context_budget_tokens * 4
@@ -81,6 +86,24 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             return lambda question: render_chain(
                 artifact, scene_ids=neighbourhood(artifact, question.scene_id, radius=2)
             )
+        if arm == "text_scene":
+            # The honest control for ku_scene. Comparing scene-local KUs against the whole
+            # screenplay confounds two things at once: representation (units vs prose) and
+            # retrieval (five scenes vs two hundred). This arm gives the source text the
+            # same retrieval advantage, so the remaining difference is representation alone.
+            if not scenes_by_id:
+                raise ValueError("--scene-map is required for the text_scene arm")
+
+            def scene_local_text(question):
+                wanted = neighbourhood(artifact, question.scene_id, radius=2)
+                parts = []
+                for scene_id in wanted:
+                    scene = scenes_by_id.get(scene_id)
+                    if scene is not None:
+                        parts.append(scene.text(source))
+                return "SCREENPLAY EXCERPT:\n" + "\n".join(parts)
+
+            return scene_local_text
         raise ValueError("unknown arm: {}".format(arm))
 
     for arm in arms:

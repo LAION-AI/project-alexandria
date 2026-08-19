@@ -37,7 +37,14 @@ class CheckResult:
         return self.gate and self.status == "fail"
 
 
-_WORD = re.compile(r"[a-z0-9']+")
+# An apostrophe only counts as part of a word when it sits *between* characters, as in
+# "don't". The first version was [a-z0-9']+, which swallowed surrounding quote marks into
+# the token, so 'still became a different token from still and any span wrapped in quotes
+# was invisible to the overlap check. That is the exact case the check exists to catch —
+# quoted dialogue — and a question quoting six words of source passed the gate because of
+# it. Punctuation-blind tokenisation defeating a leak detector is error #2 in the sibling
+# project's list; this is the same error with the polarity reversed.
+_WORD = re.compile(r"[a-z0-9]+(?:'[a-z0-9]+)*")
 
 
 def _tokens(text: str) -> List[str]:

@@ -59,6 +59,21 @@ This is flagged, not blocking. The research purpose is legitimate, the source is
 artifact is structure, and the measurement is worth having. It is a caveat for the write-up
 and a question for LAION's counsel, not a reason to build something different.
 
+## The one exception: worked examples
+
+[`07-worked-examples.md`](07-worked-examples.md) reproduces **three scenes of 225** — under 2%
+of the work — alongside the units derived from them and the questions generated from them.
+
+This is a deliberate exception to the rule above, and it is a scholarly quotation rather than
+a redistribution: a reader cannot judge whether a Knowledge Unit preserves what it claims to
+without seeing, for at least a few cases, what it was derived from. The scenes were chosen to
+span the method's regimes — a dialogue-heavy exchange, a dense action scene, and a 23-word
+scene that shows the floor — not for narrative interest.
+
+No other file in the repository contains source prose, and the exception does not extend to
+the corpus: it is three scenes for method illustration, not a sample anyone could assemble a
+screenplay from.
+
 ## Scope of the published artifact
 
 Published to the repo: the KU chain, the MCQ instrument, all check results, `protocol.json`,
