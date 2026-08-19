@@ -3,8 +3,9 @@
 This is a smoke/quality run of the consolidated implementation, not a reproduction of the paper’s
 aggregate numbers. The source was the first 5,357-word physics record in the historical
 `physics_qa_pairs_expanded_clean.csv` dataset (SHA-256
-`f24a3eb65a39e3926a5da00a5c493ca27943ded2ee3eaefb8957d1c7807fe160`). The source text is not
-included in this repository.
+`f24a3eb65a39e3926a5da00a5c493ca27943ded2ee3eaefb8957d1c7807fe160`). The source is now available
+inside the owner-authorized long-paper evaluation Parquet; generated KU JSON still omits source
+chunks.
 
 ## Runtime
 

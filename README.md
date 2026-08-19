@@ -42,6 +42,7 @@ python -m pip install -e .
 
 Add `.[pdf]` for PDF input or `.[vllm]` for offline vLLM. No API key is needed for a local server.
 For a protected compatible endpoint, set `ALEXANDRIA_API_KEY`; do not put keys in source files.
+Add `.[eval]` to read the released MCQ Parquets and run the reproduction command.
 
 ## Sequential paper-style extraction
 
@@ -96,8 +97,11 @@ documented in [running Qwen3.8-27B](docs/running-qwen38.md).
 - [Unpublished report results](docs/results/unpublished-report.md)
 - [Embedding similarity caveat](docs/results/embedding-similarity.md)
 - [Local Qwen3.8 validation and independent review](docs/results/qwen38-validation.md)
+- [Qwen3.8 MCQ pilot](docs/results/qwen38-mcq-pilot.md)
 - [Historical-code provenance](docs/provenance.md)
 - [Reproducibility guide](docs/reproducibility.md)
+- [Released evaluation datasets](data/evaluation/README.md)
+- [MCQ reproduction and historical judge](docs/reproducing-mcq.md)
 
 ## Scope and legal caution
 

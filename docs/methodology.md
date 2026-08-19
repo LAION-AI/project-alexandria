@@ -43,6 +43,35 @@ text is available only to resolve local references; a fact is eligible for the o
 is asserted in the target. This is important because otherwise overlapping windows would duplicate
 facts and make provenance ambiguous.
 
+## Scheduling and continuous batching
+
+For one document, the implementation first computes all sentence-aware target chunks and their
+read-only neighbor windows. It then submits every target prompt through `generate_batch`. With an
+OpenAI-compatible vLLM server this means several concurrent HTTP requests; vLLM continuously fills
+freed decode slots rather than waiting for the longest sequence in a rigid batch.
+
+`KnowledgeUnitPipeline.extract_many` extends the same idea across documents:
+
+1. split each document independently and derive its own abstract/opening context;
+2. flatten `(document, chunk)` prompts into one scheduling batch;
+3. run at most the configured client concurrency while vLLM performs continuous batching;
+4. restore responses to their original document/chunk positions;
+5. validate JSON, attach offsets and fingerprints, and retry malformed chunks;
+6. reconcile aliases separately within each document; and
+7. atomically checkpoint evaluation results after a document batch.
+
+No target sees KUs from another target or another document. Parallelism therefore changes
+scheduling, not the evidence available to extraction. Neighbor text may disambiguate the target but
+cannot contribute facts. The document-level resolver sees generated metadata only after extraction.
+
+### Throughput model
+
+Concurrency reduces idle time and tail latency; it does not multiply GPU token throughput. Runtime
+is dominated by generated KU tokens, then canonicalization, then MCQ context prefill. Record all
+three separately when optimizing. Increasing concurrency beyond the server's KV-cache capacity can
+cause preemption and make throughput worse. The tested two-3090 server remained healthy at eight
+active requests with no scheduler queue.
+
 ## Entity reconciliation
 
 After all independent KUs exist, a single call receives the title, abstract, KU summaries, and

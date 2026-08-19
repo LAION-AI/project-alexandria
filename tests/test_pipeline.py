@@ -89,3 +89,21 @@ def test_document_result_round_trip():
     original = pipeline.extract("Alice wrote a paper.")
     restored = DocumentResult.from_dict(original.to_dict())
     assert restored.to_dict() == original.to_dict()
+
+
+def test_parallel_extract_many_batches_chunks_and_resolvers():
+    backend = FakeBackend()
+    pipeline = KnowledgeUnitPipeline(
+        backend,
+        ExtractionConfig(mode="parallel", chunk_words=3, context_words=1, canonicalize=True),
+    )
+    results = pipeline.extract_many(
+        [
+            {"text": "A B C. D E F.", "title": "one", "abstract": ""},
+            {"text": "G H I. J K L.", "title": "two", "abstract": ""},
+        ]
+    )
+    assert [len(result.knowledge_units) for result in results] == [2, 2]
+    # Four extraction prompts and two independent document resolver prompts.
+    assert len(backend.batch_prompts) == 6
+    assert not backend.prompts

@@ -32,6 +32,10 @@ validity from 0–5 using `experiments.quality.evaluate_unit` or an independent 
 
 ## 5. Reproduce evaluation
 
+Install `.[eval]` and use the exact released Parquets under `data/evaluation/`; their checksums and
+known malformed rows are documented in the dataset card. Do not regenerate questions for a model
+comparison.
+
 The paper’s main protocol generates source-grounded MCQs, then compares answering accuracy under:
 
 1. no context (lower bound);
@@ -41,6 +45,10 @@ The paper’s main protocol generates source-grounded MCQs, then compares answer
 
 Use the same question set and answering model for every condition. Repeatedly regenerate question
 sets to estimate variance. The paper reported 3–5% variation across question sets.
+
+The historical roles and the resumable `alexandria evaluate` command are documented in
+[reproducing the MCQ evaluation](reproducing-mcq.md). Calibrate a restored judge by reproducing the
+full no-context lower bound before comparing new KUs.
 
 For expression overlap, strip generated context summaries before running Sherlock and 5/7/11-gram
 Jaccard comparisons. Treat these as diagnostics, not legal standards.

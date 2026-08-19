@@ -6,7 +6,7 @@ import hashlib
 import re
 import unicodedata
 from collections import Counter
-from typing import Dict, List, Sequence, Tuple
+from typing import Dict, List, Optional, Sequence, Tuple
 
 from .backends import GenerationBackend
 from .parsing import extract_json, normalize_entity_types
@@ -114,6 +114,13 @@ def canonicalize_units(
         canonicalization_prompt(units, title, abstract),
         max_tokens=max_tokens,
     )
+    return apply_canonicalization_response(units, response)
+
+
+def apply_canonicalization_response(
+    units: Sequence[KnowledgeUnit], response: str
+) -> Tuple[List[KnowledgeUnit], List[CanonicalEntity]]:
+    """Validate one resolver response and deterministically rewrite its document units."""
     try:
         value = extract_json(response)
         groups = []
@@ -172,3 +179,40 @@ def canonicalize_units(
                     relationship.target = target_group.canonical_name
                     relationship.target_id = target_group.canonical_id
     return list(units), groups
+
+
+def canonicalize_many(
+    documents: Sequence[Sequence[KnowledgeUnit]],
+    backend: GenerationBackend,
+    titles: Sequence[str],
+    abstracts: Sequence[str],
+    max_tokens: int = 4096,
+) -> List[Tuple[List[KnowledgeUnit], List[CanonicalEntity]]]:
+    """Continuously batch independent document-level resolver calls."""
+    if not (len(documents) == len(titles) == len(abstracts)):
+        raise ValueError("documents, titles, and abstracts must have matching lengths")
+    prompts = []
+    prompt_indices = []
+    results: List[Optional[Tuple[List[KnowledgeUnit], List[CanonicalEntity]]]] = [
+        None for _ in documents
+    ]
+    for index, (units, title, abstract) in enumerate(zip(documents, titles, abstracts)):
+        for unit in units:
+            warnings = normalize_entity_types(unit.entities)
+            unit.extraction_warnings.extend(
+                warning for warning in warnings if warning not in unit.extraction_warnings
+            )
+        if any(unit.entities for unit in units):
+            prompts.append(canonicalization_prompt(units, title, abstract))
+            prompt_indices.append(index)
+        else:
+            results[index] = (list(units), [])
+    responses = backend.generate_batch(SYSTEM_PROMPT, prompts, max_tokens=max_tokens)
+    if len(responses) != len(prompts):
+        raise RuntimeError("backend returned a different number of resolver responses")
+    for index, response in zip(prompt_indices, responses):
+        results[index] = apply_canonicalization_response(documents[index], response)
+    return [
+        result if result is not None else (list(documents[i]), [])
+        for i, result in enumerate(results)
+    ]

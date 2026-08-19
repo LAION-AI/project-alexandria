@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from typing import List, Optional
+from typing import Dict, List, Optional, Sequence
 
 from .backends import GenerationBackend
-from .canonicalize import canonical_id, canonicalize_units
+from .canonicalize import canonical_id, canonicalize_many, canonicalize_units
 from .chunking import TextChunk, add_neighbor_context, split_text
 from .fingerprints import sentence_minhash, sha256_text
 from .parsing import parse_unit_response
@@ -130,3 +130,83 @@ class KnowledgeUnitPipeline:
             knowledge_units=units,
             canonical_entities=canonical_entities,
         )
+
+    def extract_many(self, documents: Sequence[Dict[str, str]]) -> List[DocumentResult]:
+        """Extract several documents while sharing one continuous vLLM prompt batch.
+
+        Parallel mode flattens every target chunk across the document batch. This keeps the
+        server busy at document boundaries while preserving independent per-document context and
+        canonicalization. Sequential mode intentionally retains its dependency chain.
+        """
+        if self.config.mode != "parallel":
+            return [
+                self.extract(
+                    document["text"],
+                    document.get("title", ""),
+                    document.get("abstract", ""),
+                )
+                for document in documents
+            ]
+        prepared = []
+        flat_prompts = []
+        for document in documents:
+            text = document["text"]
+            chunks = split_text(text, self.config.chunk_words)
+            if not chunks:
+                raise ValueError("input text is empty")
+            prompt_abstract = document.get("abstract", "")
+            if not prompt_abstract and len(chunks) > 1:
+                prompt_abstract = " ".join(text.split()[:350])
+            chunks = add_neighbor_context(chunks, self.config.context_words)
+            prompts = [
+                parallel_prompt(chunk, document.get("title", ""), prompt_abstract)
+                for chunk in chunks
+            ]
+            prepared.append((document, prompt_abstract, chunks, prompts))
+            flat_prompts.extend(prompts)
+
+        flat_responses = self.backend.generate_batch(SYSTEM_PROMPT, flat_prompts)
+        if len(flat_responses) != len(flat_prompts):
+            raise RuntimeError("backend returned a different number of responses than prompts")
+
+        extracted = []
+        cursor = 0
+        for document, prompt_abstract, chunks, prompts in prepared:
+            responses = flat_responses[cursor : cursor + len(chunks)]
+            cursor += len(chunks)
+            units = [
+                self._unit(chunk, response, prompt)
+                for chunk, response, prompt in zip(chunks, responses, prompts)
+            ]
+            extracted.append((document, prompt_abstract, units))
+
+        if self.config.canonicalize:
+            resolved = canonicalize_many(
+                [item[2] for item in extracted],
+                self.backend,
+                [item[0].get("title", "") for item in extracted],
+                [item[1] for item in extracted],
+                max_tokens=self.config.canonicalization_max_tokens,
+            )
+        else:
+            resolved = [(item[2], []) for item in extracted]
+
+        results = []
+        for (document, prompt_abstract, _), (units, canonical_entities) in zip(
+            extracted, resolved
+        ):
+            results.append(
+                DocumentResult(
+                    schema_version="1.0",
+                    title=document.get("title", ""),
+                    abstract_sha256=(
+                        sha256_text(prompt_abstract) if prompt_abstract else ""
+                    ),
+                    mode=self.config.mode,
+                    model=self.backend.model_name,
+                    config=asdict(self.config),
+                    knowledge_units=units,
+                    canonical_entities=canonical_entities,
+                )
+            )
+        return results

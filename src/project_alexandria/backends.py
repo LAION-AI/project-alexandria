@@ -37,6 +37,8 @@ class OpenAICompatibleBackend:
         concurrency: int = 8,
         retries: int = 3,
         thinking: bool = False,
+        frequency_penalty: float = 0.0,
+        presence_penalty: float = 0.0,
     ) -> None:
         self.model_name = model
         self.base_url = base_url.rstrip("/")
@@ -47,6 +49,8 @@ class OpenAICompatibleBackend:
         self.concurrency = concurrency
         self.retries = retries
         self.thinking = thinking
+        self.frequency_penalty = frequency_penalty
+        self.presence_penalty = presence_penalty
 
     def generate(self, system: str, prompt: str, max_tokens: Optional[int] = None) -> str:
         payload = json.dumps(
@@ -59,6 +63,8 @@ class OpenAICompatibleBackend:
                 "max_tokens": max_tokens or self.max_tokens,
                 "temperature": self.temperature,
                 "top_p": 0.95,
+                "frequency_penalty": self.frequency_penalty,
+                "presence_penalty": self.presence_penalty,
                 "chat_template_kwargs": {"enable_thinking": self.thinking},
             }
         ).encode("utf-8")

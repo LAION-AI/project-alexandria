@@ -20,6 +20,9 @@ every file contributed to the paper. The source audit used three evidence layers
 | `extract_answers.py`, `multiple_choice_question.py` | MCQ generation and cloze scoring | `experiments/mcq.py` |
 | `cossim/cossims.py` | Embedding controls and scrambling | `experiments/similarity.py` |
 | `cossim/sherlock/sherlpy3.py` | Sherlock and 5/7/11-gram overlap | `experiments/overlap.py` |
+| `makeqa.py` | Abstract MCQ dataset assembly | released Abstract Parquets |
+| `makeqalong.py`, `expand.py` | Gemini 1.5 Pro 002 long MCQs and row expansion | released Long Parquets |
+| `extract_answers.py`, `evaluate.py` | Fixed answerer and exact-letter scoring | `experiments/reproduce.py` |
 
 The original prompt’s core constraints and cross-domain few-shot strategy are retained, but its
 very large repeated template was edited into strict JSON examples. The historical code used
@@ -40,9 +43,9 @@ while newly generated artifacts use schema version 1.0 JSON.
 ## Security note
 
 The historical worktree contains a hard-coded HyperLab credential and a second local API-key file.
-They are not included here and should be considered compromised and revoked. Dataset/output files
-were not copied wholesale because many are large, may include source text, and need a separate
-license and privacy review before publication.
+They are not included here and should be considered compromised and revoked. Only the ten canonical
+evaluation Parquets authorized by the project owner were copied. Derived CSVs, duplicate source
+extracts, raw model outputs, and files containing credentials remain excluded.
 
 ## Results provenance
 
@@ -51,3 +54,4 @@ license and privacy review before publication.
 - `docs/results/embedding-similarity.md`: PDF Table 13 plus a clearly labeled later aggregate from
   `cossim/all_embedding_stats.csv` (74,411 rows).
 - `results/*.csv`: machine-readable transcriptions, not regenerated measurements.
+- `data/evaluation/`: canonical abstract, long-paper, and error-detection Parquets with SHA-256s.
