@@ -47,18 +47,33 @@ def sample_scenes(scenes: Sequence[Scene], count: int = 25, seed: int = 20260819
     thirds = [ordered[i::3] for i in range(3)]  # act position, interleaved to stay spread
 
     rng = random.Random(seed)
-    picked: List[Scene] = []
-    per_third = max(1, count // 3)
+    # Nine strata: three act positions by three length terciles. Distribute `count` across
+    # them and then top up from whatever is left, because integer division across nine
+    # cells silently loses scenes — the first version of this asked for 25 and returned 18,
+    # which would have made the instrument smaller than reported without saying so.
+    strata: List[List[Scene]] = []
     for group in thirds:
         by_length = sorted(group, key=lambda scene: scene.word_count)
-        terciles = [by_length[i::3] for i in range(3)]
-        for tercile in terciles:
-            if not tercile:
+        strata.extend(tercile for tercile in (by_length[i::3] for i in range(3)) if tercile)
+
+    picked: List[Scene] = []
+    taken = {id(stratum): 0 for stratum in strata}
+    while len(picked) < count:
+        progressed = False
+        for stratum in strata:
+            if len(picked) >= count:
+                break
+            position = taken[id(stratum)]
+            if position >= len(stratum):
                 continue
-            take = max(1, per_third // 3)
-            picked.extend(rng.sample(tercile, min(take, len(tercile))))
-    rng.shuffle(picked)
-    picked = picked[:count]
+            pool = [scene for scene in stratum if scene not in picked]
+            if not pool:
+                continue
+            picked.append(rng.choice(pool))
+            taken[id(stratum)] = position + 1
+            progressed = True
+        if not progressed:
+            break  # every stratum exhausted; fewer eligible scenes than requested
     return sorted(picked, key=lambda scene: scene.index)
 
 
