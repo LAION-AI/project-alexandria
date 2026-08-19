@@ -102,6 +102,22 @@ def _attach_source_refs(
         }
 
 
+def _redact_source_spans(report: Dict[str, Any]) -> None:
+    """Strip matched source text from check violations before the protocol is written.
+
+    The overlap check records the n-gram it matched, which is by definition a span of the
+    source. That is useful while debugging on this machine and unacceptable in a published
+    protocol, whose whole premise is that structure travels and text does not. The length
+    and a short digest keep the finding auditable without carrying the words.
+    """
+    for check in report.get("checks") or []:
+        for violation in check.get("violations") or []:
+            span = violation.pop("ngram", None)
+            if span:
+                violation["ngram_sha256"] = sha256_text(span)[:16]
+                violation["ngram_words"] = len(span.split())
+
+
 def _link_chain(units: List[Dict[str, Any]]) -> None:
     units.sort(key=lambda unit: unit.get("scene_index", 0))
     for position, unit in enumerate(units):
@@ -131,6 +147,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--limit-windows", type=int, default=0, help="smoke-test subset")
     parser.add_argument("--skip-stage2", action="store_true")
+    parser.add_argument("--repair-rounds", type=int, default=3,
+                        help="max overlap-repair passes; the gate re-runs after each")
     args = parser.parse_args(argv)
 
     out_dir = Path(args.out)
@@ -236,14 +254,23 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     from .checks import check_verbatim_overlap
 
     scenes_for_overlap = {scene.scene_id: scene for scene in graded_scenes}
-    pre = check_verbatim_overlap(units, scenes_for_overlap, source)
-    repair: Dict[str, Any] = {"targeted": 0, "restated": 0, "failed": 0}
-    if pre.violations:
-        print("overlap repair: {} flagged field(s), longest {} tokens".format(
-            len(pre.violations), pre.detail.get("longest_ngram_adjudicated")))
-        repair = repair_overlap_fields(pool, units, pre.violations, max_workers=args.workers)
+    repair_rounds: List[Dict[str, Any]] = []
+    for round_index in range(args.repair_rounds):
+        pre = check_verbatim_overlap(units, scenes_for_overlap, source)
+        if not pre.violations:
+            break
+        print("overlap repair {}/{}: {} flagged field(s), longest {} tokens".format(
+            round_index + 1, args.repair_rounds, len(pre.violations),
+            pre.detail.get("longest_ngram_adjudicated")))
+        outcome = repair_overlap_fields(pool, units, pre.violations, max_workers=args.workers)
+        outcome["round"] = round_index + 1
+        outcome["flagged_before"] = len(pre.violations)
+        outcome["longest_before"] = pre.detail.get("longest_ngram_adjudicated")
+        repair_rounds.append(outcome)
         print("  restated {}/{} ({} failed)".format(
-            repair["restated"], repair["targeted"], repair["failed"]))
+            outcome["restated"], outcome["targeted"], outcome["failed"]))
+    repair = {"rounds": repair_rounds,
+              "total_restated": sum(item["restated"] for item in repair_rounds)}
 
     print("checks...")
     report = run_all(
@@ -251,6 +278,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     )
     for check in report["checks"]:
         print("  {} {:22s} {}".format(check["check_id"], check["name"], check["status"]))
+
+    _redact_source_spans(report)
 
     protocol = {
         "run": {
@@ -272,6 +301,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "stage2": {"seconds": seam_result["seconds"], "failures": seam_result["failures"],
                    "seams": seam_result["seams"], "applied": patch_report.get("applied"),
                    "alias_map": patch_report.get("alias_map")},
+        "overlap_repair": repair,
         "checks": report,
     }
     (out_dir / "protocol.json").write_text(json.dumps(protocol, indent=1), encoding="utf-8")

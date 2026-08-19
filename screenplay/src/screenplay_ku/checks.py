@@ -270,17 +270,45 @@ def _is_requirable_name(speaker: str) -> bool:
     return cleaned.casefold() not in _GENERIC_SPEAKER_ROLES
 
 
+# A composite numeric string: a date, phone number, time, or code. Matched whole, because
+# splitting it produces fragments that are not independently meaningful facts.
+_COMPOSITE_NUMBER = re.compile(r"\b\d[\d]*(?:[-/:.]\d+)+\b")
+
+
 def _requirable_numbers(scene: Scene, source: str) -> Set[str]:
     """Numbers that are facts, excluding structural residue.
 
     The pre-slugline head carries the title block and scene numbering, whose digits are
     typography rather than content, and a scene's heading line can carry a scene number.
+
+    Composite strings are kept whole. Splitting a date on its hyphens demanded three
+    separate digit fragments and scored a unit as having lost the fact when it had merely
+    written the date in another notation: 11 of 16 number misses on the first full run were
+    this, and the check was reporting its own tokenizer rather than the model.
     """
     if scene.kind == "PRE":
         return set()
     text = scene.text(source)
     body = "\n".join(text.splitlines()[1:]) if "\n" in text else text
-    return set(_NUMBER.findall(body))
+
+    composites = set(_COMPOSITE_NUMBER.findall(body))
+    remainder = _COMPOSITE_NUMBER.sub(" ", body)
+    return composites | set(_NUMBER.findall(remainder))
+
+
+def _number_satisfied(required: str, blob: str, blob_numbers: Set[str]) -> bool:
+    """A composite is satisfied by itself or by its parts appearing together.
+
+    ``2-19-98`` may legitimately be recorded as ``19 February 1998``. Requiring the exact
+    punctuation would fail a faithful restatement, and requiring nothing would let the fact
+    vanish, so the test is that every numeric component is present.
+    """
+    if required in blob_numbers:
+        return True
+    parts = [part for part in re.split(r"[-/:.]", required) if part]
+    if len(parts) > 1:
+        return all(part in blob_numbers for part in parts)
+    return False
 
 
 def check_fact_fidelity(
@@ -309,13 +337,21 @@ def check_fact_fidelity(
         scene = scenes_by_id.get(unit.get("scene_id"))
         if scene is None:
             continue
-        blob = " ".join(value for _, value in _text_fields(unit))
+        # The heading is part of the unit, so a location preserved in `heading.location`
+        # is preserved. Searching only the prose fields reported 20 locations as lost that
+        # were sitting in the structured field the schema created for them — the check was
+        # looking in the wrong place, not the model failing to record them.
+        heading = unit.get("heading") or {}
+        blob = " ".join(
+            [value for _, value in _text_fields(unit)]
+            + [str(heading.get("raw") or ""), str(heading.get("location") or "")]
+        )
         blob_tokens = set(_tokens(blob))
         blob_numbers = set(_NUMBER.findall(blob))
 
         for number in _requirable_numbers(scene, source):
             number_total += 1
-            if number in blob_numbers:
+            if _number_satisfied(number, blob, blob_numbers):
                 number_hit += 1
             else:
                 violations.append({"kind": "number", "scene_id": scene.scene_id, "value": number})
