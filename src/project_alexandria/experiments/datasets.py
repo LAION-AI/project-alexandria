@@ -18,6 +18,11 @@ class EvaluationDocument:
     answers: List[str]
 
 
+def _document_id(text_digest: str, source_index: int) -> str:
+    """Identify a dataset row/group without conflating duplicate source texts."""
+    return "{}:{}".format(text_digest, source_index)
+
+
 def _valid_pairs(
     questions: Sequence[Any], answers: Sequence[Any]
 ) -> List[Tuple[str, str]]:
@@ -48,7 +53,7 @@ def load_evaluation_parquet(
             digest = hashlib.sha256(record["text"].encode("utf-8")).hexdigest()
             documents.append(
                 EvaluationDocument(
-                    digest,
+                    _document_id(digest, index),
                     index,
                     record["text"],
                     [pair[0] for pair in pairs],
@@ -64,7 +69,9 @@ def load_evaluation_parquet(
                 continue
             digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
             if digest not in grouped:
-                grouped[digest] = EvaluationDocument(digest, index, text, [], [])
+                grouped[digest] = EvaluationDocument(
+                    _document_id(digest, index), index, text, [], []
+                )
             grouped[digest].questions.append(pairs[0][0])
             grouped[digest].answers.append(pairs[0][1])
         documents = list(grouped.values())
@@ -82,9 +89,14 @@ def dataset_manifest(path: str, documents: Sequence[EvaluationDocument]) -> Dict
     with source.open("rb") as handle:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
+    selection = hashlib.sha256()
+    for document in documents:
+        selection.update(document.document_id.encode("utf-8"))
+        selection.update(b"\n")
     return {
         "filename": source.name,
         "sha256": digest.hexdigest(),
         "selected_documents": len(documents),
         "selected_questions": sum(len(document.questions) for document in documents),
+        "ordered_selection_sha256": selection.hexdigest(),
     }

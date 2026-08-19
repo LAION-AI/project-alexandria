@@ -104,7 +104,8 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         judge = OpenAICompatibleBackend(
             model=args.judge_model,
             base_url=args.judge_base_url or args.base_url,
-            api_key=os.getenv("ALEXANDRIA_JUDGE_API_KEY"),
+            # Never inherit the extractor credential for a potentially different provider.
+            api_key=os.getenv("ALEXANDRIA_JUDGE_API_KEY", ""),
             max_tokens=100,
             temperature=args.judge_temperature,
             concurrency=args.concurrency,

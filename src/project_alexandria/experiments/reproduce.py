@@ -158,8 +158,14 @@ def reproduce(
     destination = Path(output_path)
     if destination.exists():
         loaded = json.loads(destination.read_text(encoding="utf-8"))
-        if loaded.get("dataset", {}).get("sha256") != output["dataset"]["sha256"]:
+        loaded_dataset = loaded.get("dataset", {})
+        if loaded_dataset.get("sha256") != output["dataset"]["sha256"]:
             raise ValueError("resume artifact belongs to a different dataset")
+        if (
+            loaded_dataset.get("ordered_selection_sha256")
+            != output["dataset"]["ordered_selection_sha256"]
+        ):
+            raise ValueError("resume artifact has a different ordered document selection")
         for field in ("extractor_model", "judge_model", "extraction_config"):
             if loaded.get(field) != output[field]:
                 raise ValueError("resume artifact has incompatible {}".format(field))
@@ -171,10 +177,6 @@ def reproduce(
             }
             if stable_loaded != stable_sampling:
                 raise ValueError("resume artifact has incompatible sampling settings")
-        selected_ids = {document.document_id for document in documents}
-        loaded_ids = {row["document_id"] for row in loaded.get("rows", [])}
-        if not loaded_ids.issubset(selected_ids):
-            raise ValueError("resume selection does not contain every completed document")
         output = loaded
         output["schema_version"] = "1.1"
         output["dataset"] = dataset_manifest(dataset_path, documents)

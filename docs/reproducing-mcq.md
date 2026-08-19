@@ -44,7 +44,8 @@ alexandria evaluate data/evaluation/long/physics_qa_pairs_expanded.parquet \
 Set `ALEXANDRIA_JUDGE_API_KEY` in the environment for a protected judge endpoint. Never put it in
 the command, an output artifact, or version control. The extractor and judge can use different
 OpenAI-compatible endpoints. Checkpoints are atomic after each document batch; rerunning the same
-command skips completed document IDs.
+command skips completed document IDs. A digest of the exact ordered selection prevents accidental
+resume with a changed seed, shuffle order, limit, or dataset.
 
 For a diagnostic self-judge run, set `--judge-model qwen38` and use the local base URL. Those scores
 measure the full Qwen system but are **not** directly comparable to the historical fixed-judge table.

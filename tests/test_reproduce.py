@@ -1,5 +1,11 @@
 import json
 
+from project_alexandria.backends import OpenAICompatibleBackend
+from project_alexandria.experiments.datasets import (
+    EvaluationDocument,
+    _document_id,
+    dataset_manifest,
+)
 from project_alexandria.experiments.mcq import (
     extract_historical_choice,
     historical_answer_prompt,
@@ -50,3 +56,24 @@ def test_ku_context_does_not_include_source_metadata():
     value = json.loads(knowledge_unit_context(document))
     assert value[0]["entities"][0]["name"] == "Alice"
     assert "source-hash" not in knowledge_unit_context(document)
+
+
+def test_duplicate_text_rows_get_distinct_document_ids():
+    digest = "a" * 64
+    assert _document_id(digest, 7) != _document_id(digest, 8)
+
+
+def test_selection_manifest_is_order_sensitive(tmp_path):
+    dataset = tmp_path / "dataset.parquet"
+    dataset.write_bytes(b"fixture")
+    first = EvaluationDocument("hash:1", 1, "text", ["q"], ["A"])
+    second = EvaluationDocument("hash:2", 2, "text", ["q"], ["A"])
+    forward = dataset_manifest(str(dataset), [first, second])
+    reverse = dataset_manifest(str(dataset), [second, first])
+    assert forward["ordered_selection_sha256"] != reverse["ordered_selection_sha256"]
+
+
+def test_explicit_empty_api_key_does_not_inherit_extractor_key(monkeypatch):
+    monkeypatch.setenv("ALEXANDRIA_API_KEY", "extractor-only-secret")
+    backend = OpenAICompatibleBackend(model="judge", api_key="")
+    assert backend.api_key == ""

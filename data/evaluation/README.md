@@ -24,13 +24,14 @@ historical tree but is not the provenance of these canonical Parquets.
 
 | File | Domain | Expanded rows | Unique papers | Valid MCQs |
 |---|---|---:|---:|---:|
-| `long/physics_qa_pairs_expanded.parquet` | Physics | 973 | **100** | 970 |
-| `long/medical_qa_pairs_expanded.parquet` | Medical | 991 | **100** | 988 |
+| `long/physics_qa_pairs_expanded.parquet` | Physics | 973 | **100** (97 evaluable) | 970 |
+| `long/medical_qa_pairs_expanded.parquet` | Medical | 991 | **100** (99 evaluable) | 988 |
 
 Each source was truncated to 30,000 characters. The historical `makeqalong.py` used
 `gemini-1.5-pro-002` to request ten MCQs per paper. Expansion produced one row per question. Three
-Physics and one Medical records contain only an incomplete one-row group; the loader groups rows by
-the SHA-256 of `text` and validates each gold letter.
+Physics and one Medical source groups contain no valid MCQ and are excluded by the loader. Two of
+the 99 evaluable Medical papers have nine rather than ten valid MCQs. The loader groups expanded
+rows by the SHA-256 of `text` and validates each gold letter.
 
 ## Error-detection judge study
 

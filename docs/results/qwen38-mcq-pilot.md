@@ -51,8 +51,9 @@ and does not imply that KUs contain more information than the source.
 
 The two runs average 1,834 seconds per ten papers, or 3:03 per paper end to end. They used the older
 serial document-resolver implementation; the repository now batches those independent resolver
-calls. A conservative projection for all 200 long papers is therefore approximately 9–11 hours for
-KU extraction, reconciliation, and local diagnostic scoring. A remote fixed judge adds its own
+calls. A conservative projection for the 196 evaluable long papers (from 200 stored source groups)
+is therefore approximately 9–11 hours for KU extraction, reconciliation, and local diagnostic
+scoring. A remote fixed judge adds its own
 provider throughput and rate-limit cost. A 1,200-token compact KU cap may reduce this further, but
 must pass a separate fidelity/coverage check before it replaces the 2,500-token baseline.
 
