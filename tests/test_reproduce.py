@@ -11,6 +11,7 @@ from project_alexandria.experiments.mcq import (
     historical_answer_prompt,
 )
 from project_alexandria.experiments.reproduce import (
+    _extract_resilient,
     extract_ku_cache,
     judge_ku_cache,
     knowledge_unit_context,
@@ -120,3 +121,17 @@ def test_two_stage_cache_and_judge(tmp_path):
         str(dataset), documents, str(cache_path), judge, str(tmp_path / "scores.json")
     )
     assert output["summary"]["knowledge_units"]["accuracy"] == 1.0
+
+
+def test_resilient_extraction_isolates_a_failed_batch():
+    class SplitPipeline:
+        def extract_many(self, payloads):
+            if len(payloads) > 1:
+                raise ValueError("malformed chunk")
+            return [DocumentResult("1.0", "", "", "parallel", "model", {}, [])]
+
+    documents = [
+        EvaluationDocument("hash:0", 0, "one", ["q"], ["A"]),
+        EvaluationDocument("hash:1", 1, "two", ["q"], ["A"]),
+    ]
+    assert len(_extract_resilient(SplitPipeline(), documents)) == 2

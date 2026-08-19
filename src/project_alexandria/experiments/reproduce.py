@@ -120,6 +120,34 @@ def summarize(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     return summary
 
 
+def _extract_resilient(
+    pipeline: KnowledgeUnitPipeline,
+    documents: Sequence[EvaluationDocument],
+    single_document_attempts: int = 3,
+) -> List[DocumentResult]:
+    """Isolate malformed generations so one chunk cannot discard a whole document batch."""
+    payloads = [{"text": item.text, "title": "", "abstract": ""} for item in documents]
+    try:
+        return pipeline.extract_many(payloads)
+    except ValueError:
+        if len(documents) > 1:
+            midpoint = len(documents) // 2
+            return _extract_resilient(
+                pipeline, documents[:midpoint], single_document_attempts
+            ) + _extract_resilient(pipeline, documents[midpoint:], single_document_attempts)
+        last_error = None
+        for _ in range(single_document_attempts - 1):
+            try:
+                return pipeline.extract_many(payloads)
+            except ValueError as error:
+                last_error = error
+        raise ValueError(
+            "document {} repeatedly returned invalid structured output".format(
+                documents[0].document_id
+            )
+        ) from last_error
+
+
 def extract_ku_cache(
     dataset_path: str,
     documents: Sequence[EvaluationDocument],
@@ -154,9 +182,7 @@ def extract_ku_cache(
     started = time.time()
     for start in range(0, len(remaining), document_batch_size):
         batch = remaining[start : start + document_batch_size]
-        results = pipeline.extract_many(
-            [{"text": item.text, "title": "", "abstract": ""} for item in batch]
-        )
+        results = _extract_resilient(pipeline, batch)
         output["documents"].extend(
             {"document_id": document.document_id, "result": result.to_dict()}
             for document, result in zip(batch, results)
