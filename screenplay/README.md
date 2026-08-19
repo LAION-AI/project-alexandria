@@ -43,6 +43,7 @@ that proves it fires.
 | [Checks](docs/03-checks.md) | Six checks and their negative cases |
 | [Evaluation](docs/04-evaluation.md) | 100-question MCQ, four arms |
 | [Provenance and scope](docs/05-provenance-and-scope.md) | Source by reference, and an honest limit |
+| [**Results**](docs/06-results.md) | **The Matrix run: artifact, gate, and four-arm evaluation** |
 
 ## Source handling
 
@@ -51,6 +52,28 @@ structure, offsets, digests, and a **link** to the public source — never its t
 [provenance and scope](docs/05-provenance-and-scope.md), which also records a limit specific to
 narrative that does not carry over from the paper's argument about scientific facts.
 
+## Results in brief
+
+*The Matrix*, 225 scenes, extracted in **424 seconds** on 8×A100: 1,021 ordered beats, 323
+state changes, 109 entities. An independent audit over 14,989 fields finds the **longest
+verbatim run from the source is 7 words**.
+
+On 98 questions with a small 4B student, five samples each, non-leaky stratum:
+
+| Arm | Accuracy |
+|---|---|
+| no context | *floor is chance, 0.25* |
+| full screenplay | 0.756 |
+| full KU chain | 0.641 |
+| **scene-local KUs** | **0.848** |
+
+The knowledge is in the units — scene-local KUs are indistinguishable from handing over the
+whole screenplay (p=0.13), and beat the flat chain by 21 points (p<0.001). But the flat 52k
+chain scores *below* the source (p=0.020). That is a retrieval problem, not a representation
+problem: serve a KU chain through retrieval, not in bulk. Full numbers and caveats in
+[results](docs/06-results.md).
+
 ## Status
 
-Planning complete. Implementation next.
+Implemented and run end to end. Artifact, instrument, protocol and evaluation in
+[`results/matrix/`](results/matrix/).

@@ -136,4 +136,16 @@ Neither stage has a barrier inside it.
 
 ## Status
 
-Planning complete. Implementation not yet started.
+Implemented and run. See [06-results.md](06-results.md).
+
+Two things the plan got wrong, recorded because the plan is a document of intent and the
+results are what happened:
+
+**The windowing cap was missing.** Word count alone let a window hold 31 short scenes, which
+would have meant 31 units in one response and a real risk of silent truncation. A 12-scene
+cap was added, taking 26 windows to 30.
+
+**The evaluation's headline arm was the wrong one to lead with.** The plan treated
+`ku_scene` as a diagnostic. It turned out to be the result: the flat chain underperforms the
+source while the scene-local view matches it, which makes retrieval the finding rather than a
+footnote.

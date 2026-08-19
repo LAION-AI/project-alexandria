@@ -1,0 +1,2989 @@
+{
+ "instrument": {
+  "scenes_sampled": 25,
+  "scene_ids": [
+   "sc-008",
+   "sc-010",
+   "sc-011",
+   "sc-024",
+   "sc-036",
+   "sc-038",
+   "sc-041",
+   "sc-057",
+   "sc-060",
+   "sc-064",
+   "sc-075",
+   "sc-083",
+   "sc-087",
+   "sc-101",
+   "sc-116",
+   "sc-117",
+   "sc-123",
+   "sc-125",
+   "sc-142",
+   "sc-150",
+   "sc-164",
+   "sc-170",
+   "sc-182",
+   "sc-183",
+   "sc-224"
+  ],
+  "per_scene_requested": 4,
+  "questions": 98,
+  "seed": 20260819,
+  "generator_model": "qwen3.8-27b",
+  "generated_from": "source scene text (never from Knowledge Units)",
+  "failures": [],
+  "leak_gate": {
+   "rounds": [
+    {
+     "round": 1,
+     "leaking": 11,
+     "scenes_regenerated": 8
+    },
+    {
+     "round": 2,
+     "leaking": 6,
+     "scenes_regenerated": 5
+    },
+    {
+     "round": 3,
+     "leaking": 5,
+     "scenes_regenerated": 3
+    }
+   ],
+   "dropped": [
+    {
+     "question_id": "sc-075-q1",
+     "run_words": 11
+    },
+    {
+     "question_id": "sc-117-q1",
+     "run_words": 7
+    }
+   ]
+  },
+  "leak_gate_note": "questions quoting >=6 consecutive source words are regenerated, then dropped"
+ },
+ "student": {
+  "model": "student-4b",
+  "port": 8107,
+  "samples_per_question": 5,
+  "temperature": 0.7
+ },
+ "context_sizes": {
+  "full_text_tokens": 37204,
+  "ku_chain_tokens": 52091,
+  "budget_tokens": 110000
+ },
+ "leaky_question_ids": [
+  "sc-008-q1",
+  "sc-008-q2",
+  "sc-008-q4",
+  "sc-010-q3",
+  "sc-011-q3",
+  "sc-024-q3",
+  "sc-038-q3",
+  "sc-041-q2",
+  "sc-041-q4",
+  "sc-057-q1",
+  "sc-057-q4",
+  "sc-060-q4",
+  "sc-064-q2",
+  "sc-064-q3",
+  "sc-075-q3",
+  "sc-083-q1",
+  "sc-083-q4",
+  "sc-101-q1",
+  "sc-101-q3",
+  "sc-117-q2",
+  "sc-117-q4",
+  "sc-123-q1",
+  "sc-125-q2",
+  "sc-142-q1",
+  "sc-142-q4",
+  "sc-150-q3",
+  "sc-150-q4",
+  "sc-170-q1",
+  "sc-170-q2",
+  "sc-170-q4",
+  "sc-182-q1",
+  "sc-182-q2",
+  "sc-182-q4",
+  "sc-224-q2",
+  "sc-224-q3"
+ ],
+ "leaky_fraction": 0.3571,
+ "arms": {
+  "none": {
+   "arm": "none",
+   "all": {
+    "questions": 98,
+    "samples_answered": 490,
+    "accuracy": 0.3633,
+    "ci95": [
+     0.2878,
+     0.4429
+    ],
+    "unparseable": 0
+   },
+   "non_leaky": {
+    "questions": 63,
+    "samples_answered": 315,
+    "accuracy": 0.0762,
+    "ci95": [
+     0.0444,
+     0.1111
+    ],
+    "unparseable": 0
+   },
+   "position_bias": {
+    "A": 0.208,
+    "B": 0.21,
+    "C": 0.327,
+    "D": 0.255
+   }
+  },
+  "full_text": {
+   "arm": "full_text",
+   "all": {
+    "questions": 98,
+    "samples_answered": 490,
+    "accuracy": 0.8245,
+    "ci95": [
+     0.7551,
+     0.8878
+    ],
+    "unparseable": 0
+   },
+   "non_leaky": {
+    "questions": 63,
+    "samples_answered": 315,
+    "accuracy": 0.7556,
+    "ci95": [
+     0.6508,
+     0.8508
+    ],
+    "unparseable": 0
+   },
+   "position_bias": {
+    "A": 0.224,
+    "B": 0.233,
+    "C": 0.288,
+    "D": 0.255
+   }
+  },
+  "ku_chain": {
+   "arm": "ku_chain",
+   "all": {
+    "questions": 98,
+    "samples_answered": 490,
+    "accuracy": 0.7265,
+    "ci95": [
+     0.649,
+     0.8061
+    ],
+    "unparseable": 0
+   },
+   "non_leaky": {
+    "questions": 63,
+    "samples_answered": 315,
+    "accuracy": 0.6413,
+    "ci95": [
+     0.5302,
+     0.746
+    ],
+    "unparseable": 0
+   },
+   "position_bias": {
+    "A": 0.2,
+    "B": 0.243,
+    "C": 0.318,
+    "D": 0.239
+   }
+  },
+  "ku_scene": {
+   "arm": "ku_scene",
+   "all": {
+    "questions": 98,
+    "samples_answered": 490,
+    "accuracy": 0.8306,
+    "ci95": [
+     0.7633,
+     0.8918
+    ],
+    "unparseable": 0
+   },
+   "non_leaky": {
+    "questions": 63,
+    "samples_answered": 315,
+    "accuracy": 0.8476,
+    "ci95": [
+     0.7651,
+     0.9206
+    ],
+    "unparseable": 0
+   },
+   "position_bias": {
+    "A": 0.218,
+    "B": 0.251,
+    "C": 0.292,
+    "D": 0.239
+   }
+  }
+ },
+ "cells": {
+  "none": [
+   {
+    "question_id": "sc-008-q1",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q2",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q3",
+    "scene_id": "sc-008",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q4",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q1",
+    "scene_id": "sc-010",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q2",
+    "scene_id": "sc-010",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q3",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q4",
+    "scene_id": "sc-010",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q1",
+    "scene_id": "sc-024",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q2",
+    "scene_id": "sc-024",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q3",
+    "scene_id": "sc-024",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q4",
+    "scene_id": "sc-024",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q1",
+    "scene_id": "sc-036",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q2",
+    "scene_id": "sc-036",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q3",
+    "scene_id": "sc-036",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q4",
+    "scene_id": "sc-036",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q1",
+    "scene_id": "sc-057",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q2",
+    "scene_id": "sc-057",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q3",
+    "scene_id": "sc-057",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q4",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q1",
+    "scene_id": "sc-060",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q2",
+    "scene_id": "sc-060",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q3",
+    "scene_id": "sc-060",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q4",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q1",
+    "scene_id": "sc-064",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q2",
+    "scene_id": "sc-064",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q3",
+    "scene_id": "sc-064",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q4",
+    "scene_id": "sc-064",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q1",
+    "scene_id": "sc-083",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q2",
+    "scene_id": "sc-083",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q3",
+    "scene_id": "sc-083",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q4",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q1",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q2",
+    "scene_id": "sc-101",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q3",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q4",
+    "scene_id": "sc-101",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q1",
+    "scene_id": "sc-116",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q2",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q3",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q4",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q1",
+    "scene_id": "sc-123",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q2",
+    "scene_id": "sc-123",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q3",
+    "scene_id": "sc-123",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q4",
+    "scene_id": "sc-123",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q1",
+    "scene_id": "sc-125",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q2",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q3",
+    "scene_id": "sc-125",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q4",
+    "scene_id": "sc-125",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q1",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q2",
+    "scene_id": "sc-142",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q3",
+    "scene_id": "sc-142",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q4",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q1",
+    "scene_id": "sc-150",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q2",
+    "scene_id": "sc-150",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q3",
+    "scene_id": "sc-150",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q4",
+    "scene_id": "sc-150",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q1",
+    "scene_id": "sc-164",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q2",
+    "scene_id": "sc-164",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q3",
+    "scene_id": "sc-164",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q4",
+    "scene_id": "sc-164",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q1",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q2",
+    "scene_id": "sc-170",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q3",
+    "scene_id": "sc-170",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q4",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q1",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q2",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q3",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q4",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q1",
+    "scene_id": "sc-011",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q2",
+    "scene_id": "sc-011",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q3",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q4",
+    "scene_id": "sc-011",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q1",
+    "scene_id": "sc-041",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q2",
+    "scene_id": "sc-041",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q3",
+    "scene_id": "sc-041",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q4",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q1",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q2",
+    "scene_id": "sc-182",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q3",
+    "scene_id": "sc-182",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q4",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q1",
+    "scene_id": "sc-038",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q2",
+    "scene_id": "sc-038",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q3",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q4",
+    "scene_id": "sc-038",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q1",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q2",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q3",
+    "scene_id": "sc-087",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q4",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q2",
+    "scene_id": "sc-075",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q3",
+    "scene_id": "sc-075",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q4",
+    "scene_id": "sc-075",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q2",
+    "scene_id": "sc-117",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q3",
+    "scene_id": "sc-117",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q4",
+    "scene_id": "sc-117",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q1",
+    "scene_id": "sc-224",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q2",
+    "scene_id": "sc-224",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q3",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q4",
+    "scene_id": "sc-224",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   }
+  ],
+  "full_text": [
+   {
+    "question_id": "sc-008-q1",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q2",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q3",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q4",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q1",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q2",
+    "scene_id": "sc-010",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q3",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q4",
+    "scene_id": "sc-010",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q1",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q2",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q3",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q4",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q1",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q2",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q3",
+    "scene_id": "sc-036",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q4",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q1",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q2",
+    "scene_id": "sc-057",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q3",
+    "scene_id": "sc-057",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q4",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q1",
+    "scene_id": "sc-060",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q2",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q3",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q4",
+    "scene_id": "sc-060",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q1",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q2",
+    "scene_id": "sc-064",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q3",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q4",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q1",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q2",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q3",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q4",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q1",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q2",
+    "scene_id": "sc-101",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q3",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q4",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q1",
+    "scene_id": "sc-116",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q2",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q3",
+    "scene_id": "sc-116",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q4",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q1",
+    "scene_id": "sc-123",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q2",
+    "scene_id": "sc-123",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q3",
+    "scene_id": "sc-123",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q4",
+    "scene_id": "sc-123",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q1",
+    "scene_id": "sc-125",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q2",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q3",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q4",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q1",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q2",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q3",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q4",
+    "scene_id": "sc-142",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q1",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q2",
+    "scene_id": "sc-150",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q3",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q4",
+    "scene_id": "sc-150",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q1",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q2",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q3",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q4",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q1",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q2",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q3",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q4",
+    "scene_id": "sc-170",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q1",
+    "scene_id": "sc-183",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q2",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q3",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q4",
+    "scene_id": "sc-183",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q1",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q2",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q3",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q4",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q1",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q2",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q3",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q4",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q1",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q2",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q3",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q4",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q1",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q2",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q3",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q4",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q1",
+    "scene_id": "sc-087",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q2",
+    "scene_id": "sc-087",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q3",
+    "scene_id": "sc-087",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q4",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q2",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q3",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q4",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q2",
+    "scene_id": "sc-117",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q3",
+    "scene_id": "sc-117",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q4",
+    "scene_id": "sc-117",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q1",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q2",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q3",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q4",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   }
+  ],
+  "ku_chain": [
+   {
+    "question_id": "sc-008-q1",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q2",
+    "scene_id": "sc-008",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q3",
+    "scene_id": "sc-008",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q4",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q1",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q2",
+    "scene_id": "sc-010",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q3",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q4",
+    "scene_id": "sc-010",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q1",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q2",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q3",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q4",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q1",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q2",
+    "scene_id": "sc-036",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q3",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q4",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q1",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q2",
+    "scene_id": "sc-057",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q3",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q4",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q1",
+    "scene_id": "sc-060",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q2",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q3",
+    "scene_id": "sc-060",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q4",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q1",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q2",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q3",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q4",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q1",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q2",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q3",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q4",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q1",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q2",
+    "scene_id": "sc-101",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q3",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q4",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q1",
+    "scene_id": "sc-116",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q2",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q3",
+    "scene_id": "sc-116",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q4",
+    "scene_id": "sc-116",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q1",
+    "scene_id": "sc-123",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q2",
+    "scene_id": "sc-123",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q3",
+    "scene_id": "sc-123",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q4",
+    "scene_id": "sc-123",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q1",
+    "scene_id": "sc-125",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q2",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q3",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q4",
+    "scene_id": "sc-125",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q1",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q2",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q3",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q4",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q1",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q2",
+    "scene_id": "sc-150",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q3",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q4",
+    "scene_id": "sc-150",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q1",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q2",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q3",
+    "scene_id": "sc-164",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q4",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q1",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q2",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q3",
+    "scene_id": "sc-170",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q4",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q1",
+    "scene_id": "sc-183",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q2",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q3",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q4",
+    "scene_id": "sc-183",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q1",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q2",
+    "scene_id": "sc-011",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q3",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q4",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q1",
+    "scene_id": "sc-041",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q2",
+    "scene_id": "sc-041",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q3",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q4",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q1",
+    "scene_id": "sc-182",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q2",
+    "scene_id": "sc-182",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q3",
+    "scene_id": "sc-182",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q4",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q1",
+    "scene_id": "sc-038",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q2",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q3",
+    "scene_id": "sc-038",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q4",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q1",
+    "scene_id": "sc-087",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q2",
+    "scene_id": "sc-087",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q3",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q4",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q2",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q3",
+    "scene_id": "sc-075",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q4",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q2",
+    "scene_id": "sc-117",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q3",
+    "scene_id": "sc-117",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q4",
+    "scene_id": "sc-117",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q1",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q2",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q3",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q4",
+    "scene_id": "sc-224",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   }
+  ],
+  "ku_scene": [
+   {
+    "question_id": "sc-008-q1",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q2",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q3",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-008-q4",
+    "scene_id": "sc-008",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q1",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q2",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q3",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-010-q4",
+    "scene_id": "sc-010",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q1",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q2",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q3",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-024-q4",
+    "scene_id": "sc-024",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q1",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q2",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q3",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-036-q4",
+    "scene_id": "sc-036",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q1",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q2",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q3",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-057-q4",
+    "scene_id": "sc-057",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q1",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q2",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q3",
+    "scene_id": "sc-060",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-060-q4",
+    "scene_id": "sc-060",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q1",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q2",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q3",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-064-q4",
+    "scene_id": "sc-064",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q1",
+    "scene_id": "sc-083",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q2",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q3",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-083-q4",
+    "scene_id": "sc-083",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q1",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q2",
+    "scene_id": "sc-101",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q3",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-101-q4",
+    "scene_id": "sc-101",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q1",
+    "scene_id": "sc-116",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q2",
+    "scene_id": "sc-116",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q3",
+    "scene_id": "sc-116",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-116-q4",
+    "scene_id": "sc-116",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q1",
+    "scene_id": "sc-123",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q2",
+    "scene_id": "sc-123",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q3",
+    "scene_id": "sc-123",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-123-q4",
+    "scene_id": "sc-123",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q1",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q2",
+    "scene_id": "sc-125",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q3",
+    "scene_id": "sc-125",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-125-q4",
+    "scene_id": "sc-125",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q1",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q2",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q3",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-142-q4",
+    "scene_id": "sc-142",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q1",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q2",
+    "scene_id": "sc-150",
+    "correct": 4,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q3",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-150-q4",
+    "scene_id": "sc-150",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q1",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q2",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q3",
+    "scene_id": "sc-164",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-164-q4",
+    "scene_id": "sc-164",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q1",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q2",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q3",
+    "scene_id": "sc-170",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-170-q4",
+    "scene_id": "sc-170",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q1",
+    "scene_id": "sc-183",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q2",
+    "scene_id": "sc-183",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q3",
+    "scene_id": "sc-183",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-183-q4",
+    "scene_id": "sc-183",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q1",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q2",
+    "scene_id": "sc-011",
+    "correct": 2,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q3",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-011-q4",
+    "scene_id": "sc-011",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q1",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q2",
+    "scene_id": "sc-041",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q3",
+    "scene_id": "sc-041",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-041-q4",
+    "scene_id": "sc-041",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q1",
+    "scene_id": "sc-182",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q2",
+    "scene_id": "sc-182",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q3",
+    "scene_id": "sc-182",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-182-q4",
+    "scene_id": "sc-182",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q1",
+    "scene_id": "sc-038",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q2",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q3",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-038-q4",
+    "scene_id": "sc-038",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q1",
+    "scene_id": "sc-087",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q2",
+    "scene_id": "sc-087",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q3",
+    "scene_id": "sc-087",
+    "correct": 0,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-087-q4",
+    "scene_id": "sc-087",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q2",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q3",
+    "scene_id": "sc-075",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-075-q4",
+    "scene_id": "sc-075",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q2",
+    "scene_id": "sc-117",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q3",
+    "scene_id": "sc-117",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-117-q4",
+    "scene_id": "sc-117",
+    "correct": 3,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q1",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q2",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q3",
+    "scene_id": "sc-224",
+    "correct": 5,
+    "total": 5,
+    "unparseable": 0
+   },
+   {
+    "question_id": "sc-224-q4",
+    "scene_id": "sc-224",
+    "correct": 1,
+    "total": 5,
+    "unparseable": 0
+   }
+  ]
+ }
+}
