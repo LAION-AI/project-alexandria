@@ -10,7 +10,13 @@ from project_alexandria.experiments.mcq import (
     extract_historical_choice,
     historical_answer_prompt,
 )
-from project_alexandria.experiments.reproduce import knowledge_unit_context, summarize
+from project_alexandria.experiments.reproduce import (
+    extract_ku_cache,
+    judge_ku_cache,
+    knowledge_unit_context,
+    summarize,
+)
+from project_alexandria.pipeline import ExtractionConfig, KnowledgeUnitPipeline
 from project_alexandria.schema import (
     DocumentResult,
     Entity,
@@ -77,3 +83,40 @@ def test_explicit_empty_api_key_does_not_inherit_extractor_key(monkeypatch):
     monkeypatch.setenv("ALEXANDRIA_API_KEY", "extractor-only-secret")
     backend = OpenAICompatibleBackend(model="judge", api_key="")
     assert backend.api_key == ""
+
+
+class _BatchBackend:
+    def __init__(self, model_name, response):
+        self.model_name = model_name
+        self.response = response
+        self.temperature = 0.0
+        self.frequency_penalty = 1.05
+        self.presence_penalty = 1.05
+
+    def generate_batch(self, system, prompts, max_tokens=None):
+        del system, max_tokens
+        return [self.response for _ in prompts]
+
+
+def test_two_stage_cache_and_judge(tmp_path):
+    dataset = tmp_path / "dataset.parquet"
+    dataset.write_bytes(b"fixture")
+    documents = [EvaluationDocument("hash:0", 0, "Alice measured 3.", ["question"], ["A"])]
+    extractor = _BatchBackend(
+        "extractor",
+        '{"context_summary":"measurement","entities":[]}',
+    )
+    pipeline = KnowledgeUnitPipeline(
+        extractor,
+        ExtractionConfig(mode="parallel", chunk_words=500, canonicalize=False),
+    )
+    cache_path = tmp_path / "kus.json"
+    cache = extract_ku_cache(str(dataset), documents, pipeline, str(cache_path))
+    assert len(cache["documents"]) == 1
+    assert "Alice measured 3" not in cache_path.read_text()
+
+    judge = _BatchBackend("judge", ";A;")
+    output = judge_ku_cache(
+        str(dataset), documents, str(cache_path), judge, str(tmp_path / "scores.json")
+    )
+    assert output["summary"]["knowledge_units"]["accuracy"] == 1.0

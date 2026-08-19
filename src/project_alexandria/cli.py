@@ -62,15 +62,21 @@ def _parser() -> argparse.ArgumentParser:
         "evaluate", help="reproduce no-context/original/KU scores from a Parquet MCQ dataset"
     )
     evaluate.add_argument("input", help="released Alexandria evaluation Parquet")
-    evaluate.add_argument("--output", "-o", required=True)
+    evaluate.add_argument("--output", "-o")
     evaluate.add_argument("--limit", type=int, default=10, help="documents, not expanded rows")
     evaluate.add_argument("--shuffle", action="store_true")
     evaluate.add_argument("--seed", type=int, default=250219413)
     evaluate.add_argument("--document-batch-size", type=int, default=8)
     evaluate.add_argument("--model", required=True, help="KU extraction model")
     evaluate.add_argument("--base-url", default="http://127.0.0.1:8000/v1")
-    evaluate.add_argument("--judge-model", required=True)
+    evaluate.add_argument("--judge-model")
     evaluate.add_argument("--judge-base-url", default=None)
+    evaluate.add_argument(
+        "--ku-cache", help="source-free KU cache used by --extract-only or --judge-only"
+    )
+    phase = evaluate.add_mutually_exclusive_group()
+    phase.add_argument("--extract-only", action="store_true")
+    phase.add_argument("--judge-only", action="store_true")
     evaluate.add_argument("--chunk-words", type=int, default=500)
     evaluate.add_argument("--context-words", type=int, default=1000)
     evaluate.add_argument("--concurrency", type=int, default=8)
@@ -91,7 +97,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = _parser().parse_args(argv)
     if args.command == "evaluate":
         from .experiments.datasets import load_evaluation_parquet
-        from .experiments.reproduce import reproduce
+        from .experiments.reproduce import extract_ku_cache, judge_ku_cache, reproduce
 
         extractor = OpenAICompatibleBackend(
             model=args.model,
@@ -100,18 +106,6 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
             temperature=args.temperature,
             concurrency=args.concurrency,
             thinking=args.thinking,
-        )
-        judge = OpenAICompatibleBackend(
-            model=args.judge_model,
-            base_url=args.judge_base_url or args.base_url,
-            # Never inherit the extractor credential for a potentially different provider.
-            api_key=os.getenv("ALEXANDRIA_JUDGE_API_KEY", ""),
-            max_tokens=100,
-            temperature=args.judge_temperature,
-            concurrency=args.concurrency,
-            thinking=False,
-            frequency_penalty=1.05,
-            presence_penalty=1.05,
         )
         pipeline = KnowledgeUnitPipeline(
             extractor,
@@ -126,6 +120,55 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         documents = load_evaluation_parquet(
             args.input, limit=args.limit, seed=args.seed, shuffle=args.shuffle
         )
+        if args.extract_only:
+            if not args.ku_cache:
+                raise SystemExit("--extract-only requires --ku-cache")
+            result = extract_ku_cache(
+                args.input,
+                documents,
+                pipeline,
+                args.ku_cache,
+                document_batch_size=args.document_batch_size,
+            )
+            print(
+                json.dumps(
+                    {
+                        "completed_documents": len(result["documents"]),
+                        "elapsed_seconds": result["elapsed_seconds"],
+                    },
+                    indent=2,
+                )
+            )
+            return 0
+        if not args.judge_model:
+            raise SystemExit("evaluation requires --judge-model")
+        if not args.output:
+            raise SystemExit("evaluation requires --output")
+        judge = OpenAICompatibleBackend(
+            model=args.judge_model,
+            base_url=args.judge_base_url or args.base_url,
+            # Never inherit the extractor credential for a potentially different provider.
+            api_key=os.getenv("ALEXANDRIA_JUDGE_API_KEY", ""),
+            max_tokens=100,
+            temperature=args.judge_temperature,
+            concurrency=args.concurrency,
+            thinking=False,
+            frequency_penalty=1.05,
+            presence_penalty=1.05,
+        )
+        if args.judge_only:
+            if not args.ku_cache:
+                raise SystemExit("--judge-only requires --ku-cache")
+            result = judge_ku_cache(
+                args.input,
+                documents,
+                args.ku_cache,
+                judge,
+                args.output,
+                document_batch_size=args.document_batch_size,
+            )
+            print(json.dumps(result["summary"], indent=2))
+            return 0
         result = reproduce(
             args.input,
             documents,

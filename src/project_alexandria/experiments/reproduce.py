@@ -120,6 +120,137 @@ def summarize(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     return summary
 
 
+def extract_ku_cache(
+    dataset_path: str,
+    documents: Sequence[EvaluationDocument],
+    pipeline: KnowledgeUnitPipeline,
+    output_path: str,
+    document_batch_size: int = 8,
+) -> Dict[str, Any]:
+    """Extract source-free KUs in resumable batches for a later fixed-judge pass."""
+    if document_batch_size < 1:
+        raise ValueError("document_batch_size must be positive")
+    manifest = dataset_manifest(dataset_path, documents)
+    output: Dict[str, Any] = {
+        "schema_version": "1.0",
+        "dataset": manifest,
+        "extractor_model": pipeline.backend.model_name,
+        "extraction_config": asdict(pipeline.config),
+        "documents": [],
+        "elapsed_seconds": 0.0,
+    }
+    destination = Path(output_path)
+    if destination.exists():
+        output = json.loads(destination.read_text(encoding="utf-8"))
+        for field, expected in (
+            ("dataset", manifest),
+            ("extractor_model", pipeline.backend.model_name),
+            ("extraction_config", asdict(pipeline.config)),
+        ):
+            if output.get(field) != expected:
+                raise ValueError("KU cache has incompatible {}".format(field))
+    completed = {item["document_id"] for item in output.get("documents", [])}
+    remaining = [document for document in documents if document.document_id not in completed]
+    started = time.time()
+    for start in range(0, len(remaining), document_batch_size):
+        batch = remaining[start : start + document_batch_size]
+        results = pipeline.extract_many(
+            [{"text": item.text, "title": "", "abstract": ""} for item in batch]
+        )
+        output["documents"].extend(
+            {"document_id": document.document_id, "result": result.to_dict()}
+            for document, result in zip(batch, results)
+        )
+        output["elapsed_seconds"] = float(output.get("elapsed_seconds", 0.0)) + (
+            time.time() - started
+        )
+        started = time.time()
+        write_json_atomic(output_path, output)
+    if not remaining:
+        write_json_atomic(output_path, output)
+    return output
+
+
+def judge_ku_cache(
+    dataset_path: str,
+    documents: Sequence[EvaluationDocument],
+    ku_cache_path: str,
+    judge_backend: GenerationBackend,
+    output_path: str,
+    document_batch_size: int = 8,
+) -> Dict[str, Any]:
+    """Evaluate an extracted KU cache with a fixed answerer, resumably."""
+    if document_batch_size < 1:
+        raise ValueError("document_batch_size must be positive")
+    manifest = dataset_manifest(dataset_path, documents)
+    cache = json.loads(Path(ku_cache_path).read_text(encoding="utf-8"))
+    if cache.get("dataset") != manifest:
+        raise ValueError("KU cache belongs to a different dataset selection")
+    cached_results = {
+        item["document_id"]: DocumentResult.from_dict(item["result"])
+        for item in cache.get("documents", [])
+    }
+    missing = [item.document_id for item in documents if item.document_id not in cached_results]
+    if missing:
+        raise ValueError("KU cache is incomplete ({} documents missing)".format(len(missing)))
+
+    output: Dict[str, Any] = {
+        "schema_version": "1.1",
+        "dataset": manifest,
+        "extractor_model": cache["extractor_model"],
+        "judge_model": judge_backend.model_name,
+        "extraction_config": cache["extraction_config"],
+        "sampling": {
+            "judge_temperature": getattr(judge_backend, "temperature", None),
+            "judge_max_tokens": 100,
+            "judge_top_p": 0.95,
+            "judge_frequency_penalty": getattr(judge_backend, "frequency_penalty", None),
+            "judge_presence_penalty": getattr(judge_backend, "presence_penalty", None),
+            "judge_prompt": "historical_semicolon_v1",
+            "legacy_ascii_sanitizer": True,
+            "document_batch_size": document_batch_size,
+        },
+        "rows": [],
+        "summary": {},
+        "elapsed_seconds": 0.0,
+    }
+    destination = Path(output_path)
+    if destination.exists():
+        loaded = json.loads(destination.read_text(encoding="utf-8"))
+        for field in ("dataset", "extractor_model", "judge_model", "extraction_config"):
+            if loaded.get(field) != output[field]:
+                raise ValueError("judge checkpoint has incompatible {}".format(field))
+        stable_sampling = {k: v for k, v in output["sampling"].items() if k != "document_batch_size"}
+        stable_loaded = {
+            k: v for k, v in loaded.get("sampling", {}).items() if k != "document_batch_size"
+        }
+        if stable_loaded != stable_sampling:
+            raise ValueError("judge checkpoint has incompatible sampling settings")
+        output = loaded
+
+    completed = {row["document_id"] for row in output.get("rows", [])}
+    remaining = [document for document in documents if document.document_id not in completed]
+    started = time.time()
+    for start in range(0, len(remaining), document_batch_size):
+        batch = remaining[start : start + document_batch_size]
+        output["rows"].extend(
+            _answer_batch(
+                judge_backend,
+                batch,
+                [cached_results[item.document_id] for item in batch],
+            )
+        )
+        output["summary"] = summarize(output["rows"])
+        output["elapsed_seconds"] = float(output.get("elapsed_seconds", 0.0)) + (
+            time.time() - started
+        )
+        started = time.time()
+        write_json_atomic(output_path, output)
+    if not remaining:
+        write_json_atomic(output_path, output)
+    return output
+
+
 def reproduce(
     dataset_path: str,
     documents: Sequence[EvaluationDocument],

@@ -50,6 +50,31 @@ resume with a changed seed, shuffle order, limit, or dataset.
 For a diagnostic self-judge run, set `--judge-model qwen38` and use the local base URL. Those scores
 measure the full Qwen system but are **not** directly comparable to the historical fixed-judge table.
 
+## Two-stage local-model run
+
+When extractor and fixed judge do not fit in GPU memory together, persist source-free KUs first:
+
+```bash
+alexandria evaluate data/evaluation/long/physics_qa_pairs_expanded.parquet \
+  --extract-only --ku-cache outputs/physics-qwen38-kus.json \
+  --model qwen38 --base-url http://127.0.0.1:8010/v1 \
+  --limit 0 --document-batch-size 8 --concurrency 8
+```
+
+After replacing the inference server with the fixed judge, evaluate without re-extraction:
+
+```bash
+alexandria evaluate data/evaluation/long/physics_qa_pairs_expanded.parquet \
+  --judge-only --ku-cache outputs/physics-qwen38-kus.json \
+  --output outputs/physics-qwen38-qwen25-judge.json \
+  --model qwen38 --judge-model Qwen/Qwen2.5-7B-Instruct \
+  --judge-base-url http://127.0.0.1:8010/v1 \
+  --limit 0 --document-batch-size 8 --concurrency 8
+```
+
+Both phases checkpoint after every document batch. The KU cache contains generated structured
+content and source hashes, but no source passages or questions.
+
 ## Conditions and denominators
 
 - `no_context`: the question plus an explicit empty-context marker;
