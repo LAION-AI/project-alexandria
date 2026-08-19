@@ -290,10 +290,46 @@ def _requirable_numbers(scene: Scene, source: str) -> Set[str]:
         return set()
     text = scene.text(source)
     body = "\n".join(text.splitlines()[1:]) if "\n" in text else text
+    masked = _mask_production_furniture(body, stamps=_revision_stamps(source))
 
-    composites = set(_COMPOSITE_NUMBER.findall(body))
-    remainder = _COMPOSITE_NUMBER.sub(" ", body)
+    composites = set(_COMPOSITE_NUMBER.findall(masked))
+    remainder = _COMPOSITE_NUMBER.sub(" ", masked)
     return composites | set(_NUMBER.findall(remainder))
+
+
+_DATE_STAMP = re.compile(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b")
+_MARGIN_CHARS = 12
+_STAMP_RADIUS = 40
+
+
+def _revision_stamps(source: str, min_occurrences: int = 2) -> Set[str]:
+    """Date strings that recur across a shooting script are page furniture, not facts.
+
+    A production draft stamps revision dates into its page headers. A date that is part of
+    the story appears once, in dialogue or action; a date printed on every revised page
+    appears many times in identical form.
+    """
+    counts = Counter(_DATE_STAMP.findall(source))
+    return {value for value, count in counts.items() if count >= min_occurrences}
+
+
+def _mask_production_furniture(body: str, stamps: Set[str]) -> str:
+    """Blank the parts of a scene that are typography rather than content.
+
+    Two kinds, both confirmed by position on the first full run: scene numbers printed in
+    the trailing margin of a scene's span, and page-break headers where a revision stamp
+    sits beside the next scene's number. Requiring a unit to reproduce either scored the
+    model for failing to record the page furniture of a 1998 shooting script.
+    """
+    masked = body
+    for stamp in stamps:
+        for match in list(re.finditer(re.escape(stamp), masked)):
+            low = max(0, match.start() - _STAMP_RADIUS)
+            high = min(len(masked), match.end() + _STAMP_RADIUS)
+            masked = masked[:low] + " " * (high - low) + masked[high:]
+    if len(masked) > _MARGIN_CHARS:
+        masked = masked[: -_MARGIN_CHARS] + " " * _MARGIN_CHARS
+    return masked
 
 
 def _number_satisfied(required: str, blob: str, blob_numbers: Set[str]) -> bool:

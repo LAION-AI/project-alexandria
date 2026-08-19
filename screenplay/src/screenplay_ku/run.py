@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence
 
 from .checks import run_all
+from .kuschema import close_entity_references
 from .client import EndpointPool
 from .fingerprint import minhash, sha256_text
 from .pipeline import Stage1, Stage2, apply_seam_patches, repair_overlap_fields
@@ -230,11 +231,22 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         print("  {} seams in {}s ({} failures)".format(
             len(seam_result["seams"]), seam_result["seconds"], len(seam_result["failures"])))
         patch_report = apply_seam_patches(units, seam_result["seams"])
+        # Alias resolution rewrites ids in beats and relationships. If a merge target was
+        # only ever a relationship target and never a declared entity, the rewrite leaves a
+        # dangling reference, so close again after patching rather than before only.
+        reclosed = sum(len(close_entity_references(unit)) for unit in units)
+        patch_report["applied"]["reclosed_entities"] = reclosed
         print("  applied: {}".format(patch_report["applied"]))
 
     scenes_by_id = {scene.scene_id: scene for scene in scenes}
     _attach_source_refs(units, scenes_by_id, source)
     _link_chain(units)
+
+    # Dump before grading. A twelve-minute run whose checks fail should not have to be
+    # repeated to re-measure a check; this makes check iteration free and keeps the
+    # expensive part reproducible. Intermediate, gitignored, structure only.
+    (out_dir / "units.raw.json").write_text(
+        json.dumps({"units": units, "canary": canary}, indent=1), encoding="utf-8")
 
     print("running negative suite before grading...")
     verified = _negative_cases_ran(Path(__file__).resolve().parents[2])
