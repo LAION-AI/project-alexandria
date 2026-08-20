@@ -158,6 +158,50 @@ As everywhere else in this repository, `run_ao_checks` reports `unverified` rath
 
 ---
 
+---
+
+## Outcome: the adaptation was tested blind and it did not work
+
+Recorded here so a reader of this design document does not have to find the result elsewhere.
+
+Three blind rounds, fifteen scenes, three independent judges, the same six-dimension rubric
+used for the storytree V-series. Full numbers in
+`bookwriter/docs/cognitino/results.md`.
+
+| System | Mean |
+|---|---|
+| V5 (single-pass baseline) | 3.66 – 3.74 |
+| **V4 (single-pass baseline)** | **3.63 – 3.88** |
+| CogniTino, 2-scene windows | 3.37 |
+| CogniTino, 5-scene windows | 3.29 |
+| V4 + a separate deepening pass | 2.57 |
+
+**Where the abstraction layer helps.** Against V4 it wins emotional intelligence by +0.37 —
+the one dimension requiring implicit perspective-taking, and precisely what the
+Perception/Abstraction split was built for. The mechanism works.
+
+**Where it hurts.** Against the same arm: fidelity −0.53, specificity −0.50, calibration
+−1.13. The pattern is consistent across rounds: routing the work through an intermediate
+knowledge layer appears to disorient the agents on everything that is *not*
+perspective-taking. A plausible mechanism, not isolated by any experiment here, is that the
+agent is handed a structured summary as its object of study, so questions whose answer is
+simply *what the page says* get answered from the summary rather than from the page. The
+judges' findings fit: changes asserted on states a scene never touches, and characters
+credited with knowledge the story withholds.
+
+**What it costs.** Per scene: 1.9× the calls and roughly 17× the input tokens of the
+single-pass baseline, because every abstraction agent is shown the whole screenplay. Cheap in
+wall-clock here under vLLM prefix caching (15.8 s cold, 0.8 s warm), not cheap against a
+metered API.
+
+**Conclusion.** The knowledge layer is a lens: it sharpens one thing and blurs the rest. The
+transferable finding is that a pass aimed at inner life does raise the dimension it targets —
+the intermediate layer is not what delivers it, and is not worth its cost here.
+
+This says nothing against CogniTino as a design for its intended domain. It is a result about
+one adaptation, on one screenplay, judged by one model family on a rubric written for a
+different pipeline.
+
 ## Attribution
 
 The architecture, the Perception/Abstraction distinction, the traceability principle, the

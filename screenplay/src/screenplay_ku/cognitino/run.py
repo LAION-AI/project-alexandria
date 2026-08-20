@@ -30,6 +30,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     parser.add_argument("--model", default="qwen3.8-27b")
     parser.add_argument("--workers", type=int, default=14)
     parser.add_argument("--limit-windows", type=int, default=0)
+    parser.add_argument("--repair-rounds", type=int, default=6,
+                        help="overlap-repair passes; the gate re-runs after each")
+    parser.add_argument("--no-ku-patch", action="store_true",
+                        help="disable Perception-layer repair by the abstraction pass")
     args = parser.parse_args(argv)
 
     out_dir = Path(args.out)
@@ -63,9 +67,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     print("\nmodule 2 — Abstraction Object Generation ({} windows)".format(len(windows)))
     draft = pipeline.draft_all(pool, windows, source, document,
-                               workers=args.workers, progress=progress)
-    print("  {} objects in {}s ({} failures)".format(
-        draft["objects"], draft["seconds"], len(draft["failures"])), flush=True)
+                               workers=args.workers, progress=progress,
+                               allow_patch=not args.no_ku_patch)
+    print("  {} objects in {}s ({} failures) | perception patch: {}".format(
+        draft["objects"], draft["seconds"], len(draft["failures"]),
+        draft.get("perception_patch") or {}), flush=True)
 
     print("\nmodule 3 — Abstraction Object Researcher ({} rounds)".format(args.research_rounds))
     research = pipeline.research_all(pool, windows, source, rounds=args.research_rounds,
@@ -98,7 +104,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # after each round and still blocks, so this lowers the count without moving the bar.
     from .checks import check_verbatim_overlap
     repair_rounds = []
-    for round_index in range(3):
+    for round_index in range(args.repair_rounds):
         probe_nodes = [{"scene_id": sid, "abstraction": objs}
                        for sid, objs in by_scene.items()]
         pre = check_verbatim_overlap(probe_nodes, source)
@@ -169,9 +175,16 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # way; writing the graph before checking it meant a gate failure produced a file anyway,
     # which is the one behaviour a gate exists to prevent.
     if not checks["gate_passed"]:
+        # Quarantine, do not discard. The gate exists to prevent *publication*, not to
+        # destroy work: a single unrepaired field threw away a complete 22-minute run once,
+        # and the graph was still 99.9% sound and repairable offline. The quarantined name
+        # is deliberately not the name any downstream reader looks for.
         (out_dir / "protocol.json").write_text(json.dumps({"checks": checks}, indent=1),
                                                encoding="utf-8")
-        print("\nGATE FAILED: {} — no artifact written".format(", ".join(checks["blocking"])))
+        (out_dir / "scene_graph.QUARANTINE.json").write_text(
+            json.dumps(graph, indent=1), encoding="utf-8")
+        print("\nGATE FAILED: {} — quarantined to scene_graph.QUARANTINE.json, "
+              "not published".format(", ".join(checks["blocking"])))
         return 1
     (out_dir / "scene_graph.json").write_text(json.dumps(graph, indent=1), encoding="utf-8")
 

@@ -87,13 +87,77 @@ def build_windows(units: Sequence[Dict[str, Any]], scenes_by_id, source: str,
 # ------------------------------------------------------------------ module 2
 
 
+def apply_perception_patch(window: Window, patch: Dict[str, Any]) -> Dict[str, int]:
+    """Apply the agent's repairs to the Perception layer, marked and auditable.
+
+    Every applied item carries `added_by: "abstraction_pass"` so the observation layer's
+    provenance stays honest: a later reader can separate what the extractor recorded from
+    what the abstraction agent noticed it had missed, and can strip the latter if the
+    distinction matters to them.
+    """
+    by_scene = {u["scene_id"]: u for u in window.units}
+    tally = {"state_changes_added": 0, "beats_added": 0, "flagged": 0}
+
+    for item in patch.get("missing_state_changes") or []:
+        ref = item.get("beat_ref") or ""
+        scene_id, _, order = ref.partition("#")
+        unit = by_scene.get(scene_id)
+        if not unit or not order.isdigit():
+            continue
+        beat = next((b for b in unit.get("beats") or [] if b.get("order") == int(order)), None)
+        if beat is None:
+            continue
+        beat.setdefault("state_changes", []).append({
+            "entity": item["entity"], "field": item["field"],
+            "from": item["from"], "to": item["to"],
+            "added_by": "abstraction_pass", "stated_where": item["stated_where"],
+        })
+        tally["state_changes_added"] += 1
+
+    for item in patch.get("missing_beats") or []:
+        unit = by_scene.get(item.get("scene_id"))
+        if not unit:
+            continue
+        beats = unit.setdefault("beats", [])
+        position = min(max(0, int(item.get("after_order", 0))), len(beats))
+        beats.insert(position, {
+            "order": 0, "type": item["type"], "actor": item["actor"],
+            "addressee": item.get("addressee"), "content": item["content"],
+            "facts": {"quantities": [], "dates": [], "proper_nouns": [], "locations": []},
+            "state_changes": [], "causes": [], "certainty": "stated",
+            "added_by": "abstraction_pass", "stated_where": item["stated_where"],
+        })
+        # Renumber so the beat order stays contiguous from 1, which C4 requires.
+        for index, beat in enumerate(beats, start=1):
+            beat["order"] = index
+        tally["beats_added"] += 1
+
+    for item in patch.get("wrong_state_changes") or []:
+        ref = item.get("beat_ref") or ""
+        scene_id, _, order = ref.partition("#")
+        unit = by_scene.get(scene_id)
+        if not unit or not order.isdigit():
+            continue
+        beat = next((b for b in unit.get("beats") or [] if b.get("order") == int(order)), None)
+        if beat is None:
+            continue
+        for change in beat.get("state_changes") or []:
+            if change.get("entity") == item.get("entity") and change.get("field") == item.get("field"):
+                change["flagged"] = {"problem": item["problem"], "correction": item["correction"],
+                                     "by": "abstraction_pass"}
+                tally["flagged"] += 1
+    return tally
+
+
 def draft_all(pool: EndpointPool, windows: Sequence[Window], source: str,
               document: Dict[str, Any], *, workers: int = 14,
-              max_tokens: int = 16384, progress=None) -> Dict[str, Any]:
+              max_tokens: int = 16384, progress=None,
+              allow_patch: bool = True) -> Dict[str, Any]:
     started = time.time()
 
     def work(window: Window):
-        schema = draft_schema(window.beat_refs, window.entity_ids)
+        schema = draft_schema(window.beat_refs, window.entity_ids,
+                              scene_ids=window.scene_ids, allow_ku_patch=allow_patch)
         prompt = prompts.draft_prompt(source, document, window.text, window.units,
                                       window.beat_refs, window.entity_ids)
         last = None
@@ -112,6 +176,7 @@ def draft_all(pool: EndpointPool, windows: Sequence[Window], source: str,
                     obj["_window"] = window.index
                     obj["provenance"] = {"stage": "draft", "window": window.index}
                 return {"window": window.index, "objects": objects,
+                        "patch": payload.get("perception_patch") or {},
                         "usage": {"prompt_tokens": result.prompt_tokens,
                                   "completion_tokens": result.completion_tokens,
                                   "seconds": round(result.seconds, 1), "port": result.port}}
@@ -121,13 +186,18 @@ def draft_all(pool: EndpointPool, windows: Sequence[Window], source: str,
 
     results = run_parallel(list(windows), work, max_workers=workers, on_done=progress)
     failures, usage = [], []
+    patch_tally: Dict[str, int] = {}
     for window, result in zip(windows, results):
         if isinstance(result, Exception):
             failures.append({"window": window.index, "error": str(result)})
             continue
         window.objects = result["objects"]
+        if allow_patch and result.get("patch"):
+            outcome = apply_perception_patch(window, result["patch"])
+            for key, value in outcome.items():
+                patch_tally[key] = patch_tally.get(key, 0) + value
         usage.append({"window": window.index, **result["usage"]})
-    return {"failures": failures, "usage": usage,
+    return {"failures": failures, "usage": usage, "perception_patch": patch_tally,
             "objects": sum(len(w.objects) for w in windows),
             "seconds": round(time.time() - started, 1)}
 

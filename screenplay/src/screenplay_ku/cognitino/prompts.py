@@ -84,6 +84,83 @@ instead; that is what the reference is for.
 
 **7. State assumptions.** `assumptions` lists what must hold for the inference to stand —
 including cultural or genre assumptions you are importing.
+
+---
+
+## What a good scene record is judged on
+
+These are the qualities that make this record useful to the layer above. Give the first two
+the most attention; they are the ones most often done badly.
+
+**Emotional intelligence — the hardest and the most valuable.** Is what people want, fear
+and *conceal* read plausibly? The bar is not naming an emotion. Anyone can write "Neo is
+afraid". The bar is reading a concealed motive or an unspoken pressure from behaviour, and
+reading it briefly:
+
+  weak   — "Trinity is tense during the escape."
+  strong — "Trinity keeps working the trace after the line is compromised, which means she
+            has decided the information is worth more than her own extraction, and she has
+            not told anyone she made that decision."
+
+For a scene with people in it, an empty inner life is a failure. For a scene with no people
+in it, do not manufacture one. Where a character conceals something, say what they are
+concealing *and from whom*.
+
+**Change reality — are the changes real, and do they matter?** A change is a genuine state
+transition the story uses later, not a restatement of the action.
+
+  not a change — `door: closed -> open` (that is the action, restated)
+  not a change — `before: "not explicitly stated"` (an unstated before is not a before)
+  not a change — a state this scene does not touch
+  a change    — `neo.trust_in_morpheus: provisional -> staked` — different after, and later
+                 scenes depend on which side of it we are on
+
+If you notice a real change the observation layer failed to record, put it in
+`perception_patch` rather than smuggling it in as an inference.
+
+**Completeness.** Could a reader rebuild what this scene *does for the story* from your
+record alone? Every load-bearing change and participant should be present. A missing
+participant or a missing turn is a hole.
+
+**Specificity.** Could your record be pasted onto a different scene and still read as true?
+If so it is worthless. Name the particular pressures, objects, and people of this scene.
+Never write filler like "idle or observing".
+
+**Fidelity.** Everything you assert must be true of *this* scene. Do not import a fact from a
+neighbouring scene and present it as happening here. If your evidence comes from elsewhere,
+say so in `reasoning` and keep `grounded_in` honest.
+
+**Calibration — length and confidence proportionate to the scene.** This is where records
+most often fail, in both directions.
+
+  - A twelve-word establishing shot does not support four inferences about anyone's psyche.
+    One object, or none, is the right answer. Writing a long analysis of a tiny scene is a
+    failure even if every sentence is defensible.
+  - A five-hundred-word scene built on a confrontation is under-served by two objects.
+  - Confidence must track evidence. `near-certain` is for what a competent reader could not
+    reasonably decline. Second-order belief — what A thinks B thinks — is rarely above
+    `plausible`. If most of your objects carry the same confidence band, you are not
+    calibrating, you are decorating.
+"""
+
+
+_PATCH_TASK = """\
+## Repairing the observation layer
+
+You are reading the scene text and the Knowledge Units together, which makes you the first
+reader able to see where the extraction missed something. Use `perception_patch` to say so.
+
+  `missing_state_changes` — a transition the script states outright that no beat records.
+                            `stated_where` must say where in the scene text it is stated.
+  `missing_beats`         — something that happens which no beat records at all.
+                            `after_order` places it; use 0 to put it first.
+  `wrong_state_changes`   — a recorded change that is a no-op, restates the action, or
+                            changes a state this scene never touches.
+
+**The observation layer records only what the script states.** A patch that adds an inference
+would break that guarantee and will be rejected. If it needs interpreting, it is an
+abstraction object, not a patch. Leave the arrays empty when the extraction is sound; an
+empty patch is a normal and correct answer.
 """
 
 
@@ -134,7 +211,7 @@ Note that none of these restate a beat. Each names something the beats imply.
 
 def draft_prompt(source: str, document: Dict[str, Any], scene_text: str,
                  units: Sequence[Dict[str, Any]], beat_refs: Sequence[str],
-                 entity_ids: Sequence[str]) -> str:
+                 entity_ids: Sequence[str], allow_patch: bool = True) -> str:
     compact = [
         {
             "scene_id": u["scene_id"],
@@ -172,12 +249,17 @@ def draft_prompt(source: str, document: Dict[str, Any], scene_text: str,
 
 {task}
 
+{patch_task}
+
 {example}
 
-Return one JSON object with an "abstraction_objects" array covering every scene you own.
-Aim for depth on what matters rather than uniform coverage: a scene that turns on a
-character's misreading of another deserves several nested theory-of-mind objects; a
-transitional scene may deserve two.
+Return one JSON object with an "abstraction_objects" array covering every scene you own, and
+a "perception_patch" object (empty arrays if the observation layer needs no repair).
+
+Depth should follow what the scene supports, not a quota. A scene that turns on one character
+misreading another deserves several nested theory-of-mind objects; a twelve-word establishing
+shot deserves one or none. **Every scene with a person in it needs at least one reading of
+that person's inner life** — silence there is not restraint, it is an omission.
 """.format(
         full=source,
         doc=json.dumps(document, ensure_ascii=False, indent=1),
@@ -186,6 +268,7 @@ transitional scene may deserve two.
         refs=", ".join(beat_refs),
         ents=", ".join(sorted(entity_ids)) or "[none]",
         task=_DRAFT_TASK,
+        patch_task=_PATCH_TASK if allow_patch else "",
         example=_DRAFT_EXAMPLE,
     )
 

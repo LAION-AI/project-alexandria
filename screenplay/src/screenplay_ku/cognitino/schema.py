@@ -92,21 +92,101 @@ def _ao(beat_refs: Sequence[str], entity_ids: Sequence[str], ao_ids: Sequence[st
     }
 
 
-def draft_schema(beat_refs: Sequence[str], entity_ids: Sequence[str],
-                 min_items: int = 6, max_items: int = 60) -> Dict[str, Any]:
+def _ku_patch(scene_ids: Sequence[str], beat_refs: Sequence[str]) -> Dict[str, Any]:
+    """Corrections and additions the abstraction agent may propose to the Perception layer.
+
+    The agent reads the scene text, so it is the first reader positioned to notice that the
+    extraction missed a state change the script states outright. Letting it say so is
+    cheaper than a separate repair pass and better grounded, because it is already holding
+    the scene.
+
+    Every patch is marked with its origin when applied. The Perception layer's guarantee is
+    that it records only what the script *states*; a patch that smuggles an inference in
+    would break that, so patches carry `stated_where` and are validated against the scene.
+    """
+    scene_ref = {"type": "string", "enum": list(scene_ids)} if scene_ids else {"type": "string"}
+    beat_ref = {"type": "string", "enum": list(beat_refs)} if beat_refs else {"type": "string"}
     return {
         "type": "object",
         "properties": {
-            "abstraction_objects": {
+            "missing_state_changes": {
                 "type": "array",
-                "items": _ao(beat_refs, entity_ids),
-                "minItems": min_items,
-                "maxItems": max_items,
-            }
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "beat_ref": beat_ref,
+                        "entity": {"type": "string", "minLength": 1},
+                        "field": {"type": "string", "minLength": 3},
+                        "from": {"type": "string", "minLength": 1},
+                        "to": {"type": "string", "minLength": 1},
+                        "stated_where": {"type": "string", "minLength": 15},
+                    },
+                    "required": ["beat_ref", "entity", "field", "from", "to", "stated_where"],
+                    "additionalProperties": False,
+                },
+                "maxItems": 20,
+            },
+            "missing_beats": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "scene_id": scene_ref,
+                        "after_order": {"type": "integer", "minimum": 0},
+                        "type": {"type": "string", "enum": BEAT_TYPES},
+                        "actor": {"type": "string", "minLength": 1},
+                        "addressee": {"type": ["string", "null"]},
+                        "content": {"type": "string", "minLength": 15},
+                        "stated_where": {"type": "string", "minLength": 15},
+                    },
+                    "required": ["scene_id", "after_order", "type", "actor", "addressee",
+                                 "content", "stated_where"],
+                    "additionalProperties": False,
+                },
+                "maxItems": 12,
+            },
+            "wrong_state_changes": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "beat_ref": beat_ref,
+                        "entity": {"type": "string"},
+                        "field": {"type": "string"},
+                        "problem": {"type": "string", "minLength": 20},
+                        "correction": {"type": "string", "minLength": 5},
+                    },
+                    "required": ["beat_ref", "entity", "field", "problem", "correction"],
+                    "additionalProperties": False,
+                },
+                "maxItems": 12,
+            },
         },
-        "required": ["abstraction_objects"],
+        "required": ["missing_state_changes", "missing_beats", "wrong_state_changes"],
         "additionalProperties": False,
     }
+
+
+BEAT_TYPES = ["action", "speech", "revelation", "state_change", "movement", "perception"]
+
+
+def draft_schema(beat_refs: Sequence[str], entity_ids: Sequence[str],
+                 scene_ids: Sequence[str] = (), min_items: int = 4,
+                 max_items: int = 60, allow_ku_patch: bool = True) -> Dict[str, Any]:
+    properties = {
+        "abstraction_objects": {
+            "type": "array",
+            "items": _ao(beat_refs, entity_ids),
+            "minItems": min_items,
+            "maxItems": max_items,
+        }
+    }
+    required = ["abstraction_objects"]
+    if allow_ku_patch:
+        properties["perception_patch"] = _ku_patch(scene_ids, beat_refs)
+        required.append("perception_patch")
+    return {"type": "object", "properties": properties, "required": required,
+            "additionalProperties": False}
 
 
 def research_schema(beat_refs: Sequence[str], entity_ids: Sequence[str],
