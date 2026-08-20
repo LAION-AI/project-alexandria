@@ -198,6 +198,14 @@ metered API.
 transferable finding is that a pass aimed at inner life does raise the dimension it targets —
 the intermediate layer is not what delivers it, and is not worth its cost here.
 
+**Postscript: what did work.** After three scaffold changes failed, the single-pass baseline
+was re-run with a larger model behind the same unmodified code — Ornith-1.5-397B in place of
+Qwen3.8-27B. That gained **+0.383 (CI95 [0.133, 0.628], p = 0.0019)** pooled over two disjoint
+fifteen-scene samples, and it is the only change in this line of work that reproduced. The
+bottleneck was the model, not the scaffold. Emotional intelligence — the dimension the
+abstraction layer was built to lift — moved from 2.67 to 3.60 and from 2.93 to 3.80 on the two
+samples, without any abstraction layer at all.
+
 This says nothing against CogniTino as a design for its intended domain. It is a result about
 one adaptation, on one screenplay, judged by one model family on a rubric written for a
 different pipeline.
