@@ -60,6 +60,9 @@ RTX-3090 GPU-hours total, or 0.150 extraction GPU-hour per evaluable paper.
 Code used by the final answer pass includes parser commit `c0860b0`. The final documentation and
 release commit is newer; exact artifact digests are in `SHA256SUMS`.
 
+Regenerate the reported table with `python bootstrap_summary.py > regenerated.csv`; the output is
+byte-identical to `summary.csv`.
+
 ## Artifact boundary and overlap disclosure
 
 The two `*-judge.json` files contain hashes, row indices, gold/predicted letters, configuration,
