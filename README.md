@@ -102,6 +102,7 @@ documented in [running Qwen3.8-27B](docs/running-qwen38.md).
 - [Reproducibility guide](docs/reproducibility.md)
 - [Released evaluation datasets](data/evaluation/README.md)
 - [MCQ reproduction and historical judge](docs/reproducing-mcq.md)
+- [Throughput and JUPITER planning estimates](docs/scaling-estimates.md)
 
 ## Scope and legal caution
 
