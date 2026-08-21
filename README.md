@@ -98,6 +98,7 @@ documented in [running Qwen3.8-27B](docs/running-qwen38.md).
 - [Embedding similarity caveat](docs/results/embedding-similarity.md)
 - [Local Qwen3.8 validation and independent review](docs/results/qwen38-validation.md)
 - [Qwen3.8 MCQ pilot](docs/results/qwen38-mcq-pilot.md)
+- [Full Qwen3.8 KUs + fixed Qwen2.5 evaluation](results/full/qwen38-qwen25/README.md)
 - [Historical-code provenance](docs/provenance.md)
 - [Reproducibility guide](docs/reproducibility.md)
 - [Released evaluation datasets](data/evaluation/README.md)
