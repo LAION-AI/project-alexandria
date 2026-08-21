@@ -72,6 +72,10 @@ alexandria evaluate data/evaluation/long/physics_qa_pairs_expanded.parquet \
   --limit 0 --document-batch-size 8 --concurrency 8
 ```
 
+The Qwen2.5 command above is a useful new controlled benchmark requested after publication; it is
+not the historical fixed-Gemini reproduction. Label its outputs “Qwen3.8 KUs evaluated by fixed
+Qwen2.5-7B” rather than comparing their absolute accuracies directly with the paper table.
+
 Both phases checkpoint after every document batch. The KU cache contains generated structured
 content and source hashes, but no source passages or questions.
 
@@ -81,7 +85,10 @@ content and source hashes, but no source passages or questions.
 - `original`: the question plus the original abstract or 30,000-character paper text;
 - `knowledge_units`: the question plus compact KU summaries, entities, attributes, and relations.
 
-The output contains no source text or question text: only dataset digest, document hash, source row
-index, question index, gold/predicted letters, configuration, counts, scores, and elapsed time. An
-invalid answer remains null and counts as incorrect. With 30 abstract-pilot questions, one answer is
-3.33 percentage points; a ten-paper long pilot has 100 questions, so one answer is one point.
+The judge output contains no source text or question text: only dataset digest, document hash,
+source row index, question index, gold/predicted letters, configuration, counts, scores, and elapsed
+time. KU caches do not embed raw source fields, but generated summaries, names, and relations can
+still contain phrases that overlap the source and must be screened and disclosed before public
+release. An invalid answer remains null and counts as incorrect. With 30 abstract-pilot questions,
+one answer is 3.33 percentage points; a ten-paper long pilot has 100 questions, so one answer is one
+point.

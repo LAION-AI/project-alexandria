@@ -59,8 +59,9 @@ must pass a separate fidelity/coverage check before it replaces the 2,500-token 
 
 ## Historical comparison boundary
 
-The paper's Qwen 2.5 7B fixed-judge long scores were Physics `[52.23–89.69], KU 79.04` and Medical
-`[50.45–93.24], KU 88.29`. Comparing those directly with the self-judge pilot would confound both
-the extractor and answerer. A proper reproduction will hold the recovered
-`gemini-1.5-flash-8b` judge fixed and first require its full-dataset no-context score to match the
-historical lower bound within the stated tolerance.
+The paper's Qwen 2.5 7B *extractor row* reported Physics `[52.23–89.69], KU 79.04` and Medical
+`[50.45–93.24], KU 88.29`. The recovered driver indicates that the MCQ answerer behind those rows
+was fixed Gemini Flash, so “Qwen row” must not be shortened to “Qwen judge.” Comparing the row
+directly with this self-judge pilot would confound both extraction and answering. A strict paper
+reproduction must hold the recovered `gemini-1.5-flash-8b` answerer fixed and first require its
+full-dataset no-context score to approach the historical lower bound.
