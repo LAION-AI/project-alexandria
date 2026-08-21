@@ -57,6 +57,20 @@ class FakeBackend:
         ]
 
 
+class TruncatedThenValidBackend(FakeBackend):
+    def __init__(self):
+        super().__init__()
+        self.max_tokens = 2500
+        self.requested_max_tokens = []
+
+    def generate(self, system, prompt, max_tokens=None):
+        del system, prompt
+        self.requested_max_tokens.append(max_tokens)
+        if len(self.requested_max_tokens) == 1:
+            return '{"context_summary":"cut off"'
+        return json.dumps({"context_summary": "repaired", "entities": []})
+
+
 def test_sequential_passes_previous_units_and_canonicalizes():
     backend = FakeBackend()
     pipeline = KnowledgeUnitPipeline(
@@ -79,6 +93,17 @@ def test_parallel_uses_batch_and_neighbor_context():
     assert len(backend.batch_prompts) == 3
     assert "CONTEXT BEFORE:\nB C." in backend.batch_prompts[1]
     assert not backend.prompts
+
+
+def test_invalid_chunk_repair_gets_larger_output_budget():
+    backend = TruncatedThenValidBackend()
+    pipeline = KnowledgeUnitPipeline(
+        backend,
+        ExtractionConfig(mode="sequential", chunk_words=10, canonicalize=False),
+    )
+    result = pipeline.extract("A short document.")
+    assert result.knowledge_units[0].context_summary == "repaired"
+    assert backend.requested_max_tokens == [None, 5000]
 
 
 def test_document_result_round_trip():

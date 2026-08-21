@@ -55,11 +55,21 @@ class KnowledgeUnitPipeline:
                     raise ValueError(
                         "chunk {} returned invalid structured output: {}".format(chunk.index, error)
                     )
+                # A structurally valid answer can be cut off at the normal generation limit.
+                # Repair only the failed chunk, with enough room to close a verbose JSON object,
+                # instead of forcing the caller to regenerate every chunk in the document.
+                normal_max_tokens = getattr(self.backend, "max_tokens", None)
+                repair_max_tokens = (
+                    min(normal_max_tokens * 2, 8192)
+                    if isinstance(normal_max_tokens, int) and normal_max_tokens > 0
+                    else None
+                )
                 response = self.backend.generate(
                     SYSTEM_PROMPT,
                     prompt
                     + "\n\nYour previous response was invalid. Return compact, complete JSON only; "
                     "omit no closing braces.",
+                    max_tokens=repair_max_tokens,
                 )
         else:  # pragma: no cover - loop always breaks or raises
             raise RuntimeError(str(last_error))
