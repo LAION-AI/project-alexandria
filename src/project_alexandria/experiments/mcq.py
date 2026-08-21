@@ -80,7 +80,7 @@ def extract_historical_choice(response: str) -> Optional[str]:
     accepts one-sided delimiters such as ``C;`` and ``;C`` without accepting a
     letter embedded in free-form prose.
     """
-    for field in response.upper().split(";"):
+    for field in response.split(";"):
         choice = field.strip()
         if choice in {"A", "B", "C", "D"}:
             return choice
