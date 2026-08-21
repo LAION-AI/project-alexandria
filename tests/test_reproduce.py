@@ -31,6 +31,9 @@ def test_historical_prompt_and_summary():
     assert ";A;" not in prompt
     assert "α" not in prompt
     assert extract_historical_choice("; C ;") == "C"
+    assert extract_historical_choice("C;") == "C"
+    assert extract_historical_choice(";C") == "C"
+    assert extract_historical_choice("preface; C ;postscript") == "C"
     assert extract_historical_choice("I think answer A is likely") is None
     rows = [
         {"gold": "A", "predictions": {"no_context": "A", "original": "A", "knowledge_units": "B"}},

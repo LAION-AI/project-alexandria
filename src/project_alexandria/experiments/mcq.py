@@ -73,9 +73,15 @@ def extract_choice(response: str) -> Optional[str]:
 
 
 def extract_historical_choice(response: str) -> Optional[str]:
-    """Accept the historical ``;A;`` shape or a bare single-letter response."""
-    marked = re.search(r";\s*([ABCD])\s*;", response.upper())
-    if marked:
-        return marked.group(1)
-    bare = response.strip().upper()
-    return bare if bare in {"A", "B", "C", "D"} else None
+    """Reproduce the paper evaluator's semicolon-split answer extraction.
+
+    The original implementation split the response on semicolons and selected
+    the first field whose stripped value was exactly A, B, C, or D. This also
+    accepts one-sided delimiters such as ``C;`` and ``;C`` without accepting a
+    letter embedded in free-form prose.
+    """
+    for field in response.upper().split(";"):
+        choice = field.strip()
+        if choice in {"A", "B", "C", "D"}:
+            return choice
+    return None
