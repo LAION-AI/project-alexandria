@@ -87,7 +87,13 @@ class OpenAICompatibleBackend:
                         "disable thinking or increase max_tokens".format(choice.get("finish_reason"))
                     )
                 return content
-            except (urllib.error.URLError, KeyError, json.JSONDecodeError) as error:
+            except (
+                urllib.error.URLError,
+                TimeoutError,
+                KeyError,
+                json.JSONDecodeError,
+                RuntimeError,
+            ) as error:
                 last_error = error
                 if attempt + 1 < self.retries:
                     time.sleep(2**attempt)
