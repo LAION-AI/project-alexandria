@@ -52,9 +52,17 @@ class KnowledgeUnitPipeline:
             except (ValueError, TypeError) as error:
                 last_error = error
                 if attempt >= self.config.parse_retries:
-                    raise ValueError(
-                        "chunk {} returned invalid structured output: {}".format(chunk.index, error)
-                    )
+                    try:
+                        summary, entities, warnings = parse_unit_response(
+                            response, allow_truncated=True
+                        )
+                        break
+                    except (ValueError, TypeError):
+                        raise ValueError(
+                            "chunk {} returned invalid structured output: {}".format(
+                                chunk.index, error
+                            )
+                        )
                 # A structurally valid answer can be cut off at the normal generation limit.
                 # Repair only the failed chunk, with enough room to close a verbose JSON object,
                 # instead of forcing the caller to regenerate every chunk in the document.

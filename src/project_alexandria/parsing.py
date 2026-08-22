@@ -37,7 +37,44 @@ def normalize_entity_types(entities: List[Entity]) -> List[str]:
     return warnings
 
 
-def extract_json(text: str) -> Dict[str, Any]:
+def _recover_truncated_object(cleaned: str) -> Dict[str, Any]:
+    """Recover complete top-level KU fields without inventing truncated content."""
+    decoder = json.JSONDecoder()
+    summary = ""
+    summary_match = re.search(r'"context_summary"\s*:\s*', cleaned)
+    if summary_match:
+        try:
+            value, _ = decoder.raw_decode(cleaned, summary_match.end())
+            if isinstance(value, str):
+                summary = value
+        except json.JSONDecodeError:
+            pass
+
+    entities_match = re.search(r'"entities"\s*:\s*\[', cleaned)
+    entities = []
+    if entities_match:
+        cursor = entities_match.end()
+        while cursor < len(cleaned):
+            while cursor < len(cleaned) and (cleaned[cursor].isspace() or cleaned[cursor] == ","):
+                cursor += 1
+            if cursor >= len(cleaned) or cleaned[cursor] == "]":
+                break
+            try:
+                entity, cursor = decoder.raw_decode(cleaned, cursor)
+            except json.JSONDecodeError:
+                break
+            if isinstance(entity, dict):
+                entities.append(entity)
+    if not entities:
+        raise ValueError("truncated model response contains no complete entity objects")
+    return {
+        "context_summary": summary,
+        "entities": entities,
+        "_alexandria_recovered_truncated_json": True,
+    }
+
+
+def extract_json(text: str, allow_truncated: bool = False) -> Dict[str, Any]:
     cleaned = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL).strip()
     fenced = re.search(r"```(?:json)?\s*(.*?)```", cleaned, flags=re.DOTALL | re.IGNORECASE)
     if fenced:
@@ -47,16 +84,28 @@ def extract_json(text: str) -> Dict[str, Any]:
     except json.JSONDecodeError:
         start, end = cleaned.find("{"), cleaned.rfind("}")
         if start < 0 or end <= start:
-            raise ValueError("model response contains no JSON object")
-        value = json.loads(cleaned[start : end + 1])
+            if not allow_truncated:
+                raise ValueError("model response contains no JSON object")
+            value = _recover_truncated_object(cleaned)
+        else:
+            try:
+                value = json.loads(cleaned[start : end + 1])
+            except json.JSONDecodeError:
+                if not allow_truncated:
+                    raise
+                value = _recover_truncated_object(cleaned)
     if not isinstance(value, dict):
         raise ValueError("model response must be a JSON object")
     return value
 
 
-def parse_unit_response(text: str) -> Tuple[str, List[Entity], List[str]]:
-    value = extract_json(text)
+def parse_unit_response(
+    text: str, allow_truncated: bool = False
+) -> Tuple[str, List[Entity], List[str]]:
+    value = extract_json(text, allow_truncated=allow_truncated)
     warnings = []
+    if value.get("_alexandria_recovered_truncated_json"):
+        warnings.append("recovered complete entity objects from truncated JSON")
     entities_value = value.get("entities") or []
     if isinstance(entities_value, dict):
         entities_value = [dict(body, name=name) for name, body in entities_value.items()]
