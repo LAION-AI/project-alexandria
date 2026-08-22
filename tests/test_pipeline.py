@@ -64,7 +64,8 @@ class TruncatedThenValidBackend(FakeBackend):
         self.requested_max_tokens = []
 
     def generate(self, system, prompt, max_tokens=None):
-        del system, prompt
+        del system
+        self.prompts.append(prompt)
         self.requested_max_tokens.append(max_tokens)
         if len(self.requested_max_tokens) == 1:
             return '{"context_summary":"cut off"'
@@ -104,6 +105,7 @@ def test_invalid_chunk_repair_gets_larger_output_budget():
     result = pipeline.extract("A short document.")
     assert result.knowledge_units[0].context_summary == "repaired"
     assert backend.requested_max_tokens == [None, 5000]
+    assert "at most 12 entities" in backend.prompts[-1]
 
 
 def test_document_result_round_trip():

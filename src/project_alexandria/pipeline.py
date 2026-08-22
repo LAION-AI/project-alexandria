@@ -64,11 +64,22 @@ class KnowledgeUnitPipeline:
                     if isinstance(normal_max_tokens, int) and normal_max_tokens > 0
                     else None
                 )
+                if attempt == self.config.parse_retries - 1:
+                    repair_instruction = (
+                        "\n\nYour previous response was invalid or too long. Return one COMPLETE "
+                        "JSON object only, using at most 12 entities. Keep the context summary under "
+                        "120 words. Give each entity at most 4 short attributes and 4 relationships; "
+                        "omit quotations, evidence passages, commentary, and duplicate facts. Use "
+                        "compact one-line strings and close every array and object."
+                    )
+                else:
+                    repair_instruction = (
+                        "\n\nYour previous response was invalid. Return compact, complete JSON only; "
+                        "omit no closing braces."
+                    )
                 response = self.backend.generate(
                     SYSTEM_PROMPT,
-                    prompt
-                    + "\n\nYour previous response was invalid. Return compact, complete JSON only; "
-                    "omit no closing braces.",
+                    prompt + repair_instruction,
                     max_tokens=repair_max_tokens,
                 )
         else:  # pragma: no cover - loop always breaks or raises
