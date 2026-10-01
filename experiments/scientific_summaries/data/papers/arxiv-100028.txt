@@ -1,0 +1,602 @@
+arXiv:1009.1307v1  [cond-mat.str-el]  7 Sep 2010
+Critical Correlations for Short-Range Valence-Bond Wavefunctions on the Square Lattice
+A. Fabricio Albuquerque1 and Fabien Alet1
+1Laboratoire de Physique Th´eorique, Universit´e de Toulouse and CNRS, UPS (IRSAMC), F-31062 Toulouse, France
+(Dated: February 5, 2014)
+We investigate the arguably simplest SU(2)-invariant wavefunctions capable of accounting for spin-liquid
+behavior, expressed in terms of nearest-neighbor valence-bond states on the square lattice and characterized by
+different topological invariants. While such wave-functions are known to exhibit short-range spin correlations,
+we perform Monte Carlo simulations and show that four-point correlations decay algebraically with an exponent
+1.16(4). This is reminiscent of the classical dimer problem, albeit with a slower decay. Furthermore, these
+correlators are found to be spatially modulated according to a wave-vector related to the topological invariants.
+We conclude that a recently proposed spin Hamiltonian that stabilizes the here considered wave-function(s) as
+its (degenerate) ground-state(s) should exhibit gapped spin and gapless non-magnetic excitations.
+PACS numbers: 75.10.Kt,75.10.Jm,75.40.Mg
+Introduction — The quest for quantum spin-liquid (QSL)
+states of matter [1] is a longstanding research topic that can
+be traced back to Anderson’s proposal [2]. Building on earlier
+work [3], he conjectured that strong quantum ﬂuctuations, en-
+hanced by frustration and/or low coordination, would weaken
+SU(2)-broken order and occasionally drive an antiferromag-
+net towards a “disordered” state with exponentially decaying
+spin correlations, describable in terms of short-ranged spin-
+singlet, or valence-bond (VB), degrees of freedom [2, 4]. In-
+terest in Anderson’s insight was further triggered in connec-
+tion with the cuprates since, soon after their discovery, spin-
+singlets in a QSL were interpreted as “pre-formed Cooper
+pairs” that would superconduct upon doping [5].
+Major advances (for reviews, see Refs. 1, 6, 7) have taken
+place since the original proposal [2], including a classiﬁcation
+of possible QSL states [8] and explicit realizations in lattice
+models in dimension d > 1 [9–17]. Also, theoretical ideas
+put forward in the early days of high-Tc [18, 19] have been
+considerably developed and resulted in a full-ﬂedged formal-
+ism [20] as well as efﬁcient numerical approaches [21] for
+handling VB states. On the experimental side, a number of
+compounds have been shown not to display magnetic order
+down to the lowest accessible temperatures (see the review
+Ref. 1), much below the energy scale set by exchange inter-
+actions, and are thus candidates for the realization of QSLs.
+However, in spite of such advances, a complete characteriza-
+tion of QSL states is still missing, precluding unambiguous
+identiﬁcation of experimental realizations, since absence of
+magnetic order does not exclude the occurrence of, for in-
+stance, more conventional valence-bond crystals (VBC) that
+break lattice symmetries (see e.g. [22]).
+Within this context, we investigate a family of nearest-
+neighbor VB (NN-VB) states on the square lattice by per-
+forming Monte Carlo (MC) simulations based on a recently
+introduced algorithm [23]. We revisit the pioneering work
+by Sutherland [19], where a closely related NN-VB state
+was introduced, and provide a thorough characterization of
+the arguably simplest SU(2)-invariant wave-functions capa-
+ble of accounting for QSL behavior. Although it has long
+been known that NN-VB states on the square lattice are non-
+magnetic [18], the possibility of other types of order, such
+as VBC, has not yet been excluded. Despite their simplicity,
+and consequent theoretical appeal, the NN-VB states possess
+highly non-trivial properties, that we explore in what follows.
+Wave-functions — NN-VB states are obtained by contract-
+ing spins attached to NN sites i and j of a lattice into a singlet
+state, [i, j] =
+1
+√
+2(| ↑i↓j⟩−| ↓i↑j⟩). Since each spin only
+pairs with one of its neighbors at a time, there is a one-to-one
+correspondence between NN-VB conﬁgurations and those of
+hard-core classical dimers on the same lattice, a system long
+studied in statistical mechanics [24–27].
+A crucial property of VB states is their non-orthogonality.
+Indeed, the overlap between two VB conﬁgurations is given
+by ⟨Ψ1|Ψ2⟩= ±2NL−N
+2 [19], where N = L2 is the number
+of sites and NL the number of loops in the transition graph
+obtained by superposing the dimer conﬁgurations associated
+to |Ψ1⟩and |Ψ2⟩[Fig. 1(a)]. For bipartite lattices such as the
+square lattice, where sites can be split into two sublattices A
+and B, overlaps between arbitrary VB states can be ensured to
+be always positive, so that stochastic methods are applicable
+(see below), by ﬁxing the convention i ∈A and j ∈B in the
+anti-symmetric singlet [i, j].
+An additional important point concerns the fact that dimer
+conﬁgurations can be split into topological sectors [7]. On a
+torus, the transition graph for two dimer coverings belonging
+to different topological sectors displays non-local loops that
+wind around the system [Fig. 1(a)], so that one dimer conﬁg-
+uration can not be continuously deformed onto the other via
+local dimer rearrangements. For bipartite lattices the num-
+ber of topological sectors is extensive and each sector can
+be labelled by topological invariants termed winding num-
+bers, w = (wx, wy): wx (wy) is deﬁned as the difference
+between the number of B ←A and A →B dimers along
+a reference line in the x (y) direction [Fig. 1(a)]. VB con-
+ﬁgurations characterized by different w are orthogonal in the
+thermodynamic limit: the transition graph between two such
+conﬁgurations, |cw1⟩and |cw2⟩, contains at least one wind-
+ing loop that comprises a minimum of L dimers, so that
+NL ≤(N −L)/2, implying that ⟨cw1|cw2⟩≤2−L
+2 and van-
+ishes when L →∞[28].
+
+2
+y
+w
+(a)
+(b)
+w x
+0
+0.02
+0.04
+0.06
+L
+-1
+-0.3
+-0.295
+-0.29
+-0.285
+〈Sr . Sr + eα〉
+(0, 0)
+ex: (0, 1) - ey: (1, 0)
+ey: (0, 1) - ex: (1, 0)
+(1, 1)
+FIG. 1: (Color online) (a) Transition graph between two NN-VB
+conﬁgurations on the square lattice (sublattices A/B are indicated by
+ﬁlled/open circles). Winding numbers w = (wx, wy) are given by
+the difference between the number of B ←A and A →B VBs along
+reference (dashed) lines: conﬁgurations with w = (1, 0) (thick-blue
+lines) and w = (0, 1) (thick-red lines) are shown. Trivial loops with
+coinciding VBs are depicted as thick-black lines and the presence of
+a loop winding in both directions is evident. (b) NN spin correlations
+versus L−1 (from MC simulations) for winding sectors w = (0, 0),
+(0, 1), (1, 0) and (1, 1). For w = (0, 1) and (1, 0), correlations
+along ex and ey are discriminated. Lines are quadratic ﬁts.
+Having introduced the ingredients, we are able to write
+down the NN-VB wave-functions we wish to investigate:
+|Ψw⟩=
+X
+cw
+|cw⟩.
+(1)
+In contrast to the wave-function analyzed by Sutherland [19],
+who did not take the existence of topological sectors into ac-
+count and considered an equal amplitude superposition of all
+NN-VB states, each |Ψw⟩is an equal amplitude superposi-
+tion of VB conﬁgurations |cw⟩with ﬁxed winding numbers
+w = (wx, wy). Our motivation for doing so is our previous
+remark that ⟨Ψw1|Ψw2⟩= 0 for w1 ̸= w2 in the thermo-
+dynamic limit. Interestingly, this implies that each |Ψw⟩is a
+(degenerate) ground-state on a torus of the local spin Hamilto-
+nian recently proposed by Cano and Fendley [29]. The num-
+ber of winding sectors is extensive on the torus, but we will
+show that it is possible to infer the properties of arbitrary states
+|Ψw⟩by focusing on a few sectors with low w.
+Algorithms — We brieﬂy discuss now the MC procedure for
+sampling Eq. (1). The expectation value of an observable O
+in Eq. (1) is measured by evaluating
+⟨O⟩w = 1
+Z
+X
+cw,1,cw,2
+⟨cw,1|O|cw,2⟩
+⟨cw,1|cw,2⟩⟨cw,1|cw,2⟩,
+(2)
+where Z = ⟨Ψw|Ψw⟩stands for the normalization. As ﬁrst
+pointed out in Ref. 18, ⟨O⟩w can be efﬁciently computed in a
+stochastic manner: the estimator ⟨cw,1|O|cw,2⟩/⟨cw,1|cw,2⟩,
+that for most observables of interest is readily evaluated by
+analyzing the loop structure in the transition graphs [20], is
+sampled by generating pairs of NN-VB conﬁgurations |cw,1⟩
+and |cw,2⟩according to the statistical weight given by their
+overlap ⟨cw,1|cw,2⟩= 2NL(w;1,2)−N
+2 [NL(w; 1, 2) denotes
+the number of loops in the transition graph ⟨cw,1|cw,2⟩].
+log10 [ (-1)x + y 〈S0 . Sr 〉]
+(a)
+-12
+-8
+-4
+ 0
+ 4
+ 8
+ 12
+x
+-12
+-8
+-4
+ 0
+ 4
+ 8
+ 12
+y
+-8
+-6
+-4
+-2
+ 0
+0
+5
+10
+15
+20
+r
+10
+-9
+10
+-8
+10
+-7
+10
+-6
+10
+-5
+10
+-4
+10
+-3
+10
+-2
+10
+-1
+1
+(-1)
+x + y 〈S0 . Sr 〉
+(b)
+ξ = 1.35(1)
+FIG. 2: (Color online) (a) Spin correlation (−1)r⟨S0 · Sr⟩between
+the spin at the origin and spins located at r = xex + yey. (b)
+(−1)r⟨S0 · Sr⟩versus distance r. An exponential ﬁt, (−1)r⟨S0 ·
+Sr⟩∼exp(−r/ξ), yields the correlation length ξ = 1.35(1). Data
+for L = 128 and w = (0, 0).
+Major advances in sampling techniques have been achieved
+since the work by Liang et al. [18] and particularly well suited
+to our purposes is the efﬁcient algorithm recently introduced
+in Ref. 23. Basically (we refer to Ref. 23 for details), one
+combines non-local updates for the underlying dimer conﬁg-
+urations, so to ensure small auto-correlations times, with spin
+updates that allow for an efﬁcient sampling of the overlap
+weight, with unitary acceptance rate. By relying on this al-
+gorithm, we simulate systems with periodic boundary condi-
+tions (PBC) of sizes of up to L = 128. Topological symmetry
+is easily implemented in the simulations by starting from a
+conﬁguration in a given winding sector and refusing all MC
+moves that change w: for large L winding updates are expo-
+nentially rare and this only causes small efﬁciency losses.
+Short-range spin order — We start by analyzing the spin
+texture in wavefunction Eq. (1). NN spin correlations, ⟨Sr ·
+Sr+eα⟩(eα is the unit vector in the α = x, y direction) are
+plotted as a function of inverse system size L−1 in Fig. 1(b)
+for winding numbers w = (0, 0), (1, 0), (0, 1) and (1, 1).
+Small deviations among results for different w are observed
+for small systems, and in particular anisotropy is evident
+for sectors (1, 0) and (0, 1).
+However, all data converge
+to the same value in the thermodynamic limit with a best-
+ﬁt ﬁnite-size correction that vanishes as L−2. Although we
+have no rigorous justiﬁcation for such scaling, we obtain
+⟨Sr · Sr+eα⟩= −0.295953(7) when L →∞for all sectors.
+Spin correlations ⟨S0·Sr⟩as a function of distance are plotted
+in Fig. 2(a-b) for L = 128 and w = (0, 0) (virtually identical
+results are obtained for other L and w) and display a perfect
+staggered pattern consistent with (isotropic) short-range N´eel
+order. ⟨S0·Sr⟩decays very fast with |r| and an exponential ﬁt
+[Fig. 2(b)] yields ξ = 1.35(1) for the spin correlation length.
+Critical correlations — Having conﬁrmed [18, 30] the ab-
+sence of long-range spin order in Eq. (1), we proceed to the
+characterization of “dimer order” by analyzing the four-point
+connected correlators Cijkl = ⟨(Si · Sj)(Sk · Sl)⟩−⟨Si ·
+Sj⟩⟨Sk·Sl⟩, where both i, j and k, l are NN sites on the square
+lattice. In Fig. 3 we show MC data for the spatial dependence
+
+3
+(c) − (0, 1)
+(d) − (1, 1)
+(a) − (0, 0)
+(b) − (1, 0)
+FIG. 3: (Color online) MC results for rCijkl, for L = 16 (PBC) and
+winding numbers w = (0, 0) (a), (1, 0) (b), (0, 1) (c) and (1, 1) (d).
+In all panels, the reference bond is indicated by a thick-black line
+and the thickness of the remaining ones is proportional to rCijkl:
+blue (pale-red) lines indicate positive (negative) values. Lines along
+which Cijkl is strongest are indicated by ﬁlled circles.
+of rCijkl (r is the distance between dimers) for L = 16 and
+winding sectors w = (0, 0), (1, 0), (0, 1) and (1, 1). We con-
+sider ﬁrst the results for w = (0, 0) [Fig. 3(a)] and notice that
+no clear spatial dependence is noticeable for rCijkl
+∥
+, suggest-
+ing that longitudinal correlations Cijkl
+∥
+(correlations for par-
+allel dimers i, j and k, l) decay algebraically with r with an
+exponent close to unity (see below). Rather surprisingly, we
+also notice that Cijkl
+∥
+is spatially modulated for sectors with
+non-zero w [Fig. 3(b-d)]. Inspection of the results in Fig. 3,
+and similar ones for higher w (not shown), allows us to de-
+duce that modulation for Cijkl
+∥
+is entirely accounted for by a
+phase factor cos(Q · r), with a wave-vector given in terms of
+the winding numbers, Q =
+2π
+L (wy, wx). This inference is
+conﬁrmed by our quantitative analysis below [31].
+In Fig. 4(a-b) we plot Cijkl
+∥
+(r) along the anti-nodal lines
+with strongest correlations (where relative errors are the
+smallest), highlighted in Fig. 3, for: (a) w = (0, 0) and vari-
+ous system sizes L and (b) L = 128 and w = (0, 0), (1, 0),
+(0, 1) and (1, 1). Results are consistent with power-law decay,
+Cijkl
+∥
+∼r−α∥, as ﬁrst suggested in Refs. 19, 32. Fitting the
+data in Fig. 4(b) we arrive at α∥= 1.16(4). Although small
+deviations from algebraic behavior are seen for large distances
+in Fig. 4(a-c), the value of r at which they start to take place
+increases linearly with L (not shown) and we thus conclude
+that this “upturn” in Fig. 4(a-c) is merely a ﬁnite-size effect.
+We analyze the aforementioned spatial modulations for lon-
+gitudinal correlations and in Fig. 4(c) we plot Cijkl
+∥
+(r) for
+L = 128 and w = (0, 1), along the anti-nodal line at
+1
+10
+100
+r
+10
+-3
+10
+-2
+10
+-1
+C||
+ijkl (r)
+L = 16
+L = 32
+L = 48
+L = 64
+L = 80
+L = 96
+L = 112
+L = 128
+1
+10
+100
+r
+10
+-3
+10
+-2
+10
+-1
+C||
+ijkl (r )
+(1, 1)
+(0, 1)
+(1, 0)
+(0, 0)
+(a) -   = (0, 0)
+w
+(b) - L = 128
+1
+10
+100
+r
+10
+-3
+10
+-2
+10
+-1
+C||
+ijkl (r ) / cos (Qx dx)
+dx = 64
+dx = 60
+dx = 56
+dx = 52
+dx = 48
+dx = 44
+dx = 40
+dx = 36
+dx = 28
+dx = 24
+dx = 20
+dx = 16
+dx = 12
+dx = 8
+dx = 4
+dx = 0
+1
+10
+100
+r
+10
+-6
+10
+-5
+10
+-4
+10
+-3
+10
+-2
+10
+-1
+| C⊥
+ijkl (r ) |
+Negative
+Positive
+L = 128
+(c) -   = (0, 1)
+w
+(d) -   = (0, 0)
+w
+L = 128
+FIG. 4: (Color online) MC results for Cijkl as a function of distance.
+(a) Longitudinal correlations Cijkl
+∥
+for w = (0, 0) and various sys-
+tem sizes. (b) Cijkl
+∥
+along zero-phase anti-nodal directions (indi-
+cated by ﬁlled circles in Fig. 3) for L = 128 and w = (0, 0), (1, 0),
+(0, 1) and (1, 1). (c) Cijkl
+∥
+divided by the phase factor cos(Q·r) for
+w = (0, 1) and L = 128, for the various indicated values of dx. (d)
+Transverse correlations Cijkl
+⊥
+for w = (0, 0) and L = 128. Positive
+(negative) correlations are represented by squares (circles). In (a-c)
+the line indicates our best ﬁt yielding the exponent α∥= 1.16(4)
+and in (d) the ﬁt yielding α⊥= 2.53(5).
+dx = 0 [Fig. 3(c)] and parallel ones displaced by dx, up
+to the anti-nodal line with phase Q · r = π at dx = L/2.
+Values of Cijkl
+∥
+(r) for each dx are divided by cos(Qxdx)
+[Q = 2π
+L (1, 0) in this case] and we notice that all curves col-
+lapse onto the one with dx = 0, conﬁrming that Cijkl
+∥
+is in-
+deed modulated according to the phase factor cos(Q · r), with
+Q = 2π
+L (wy, wx).
+Weaker transverse dimer correlations, Cijkl
+⊥
+(i, j and k, l
+are NN sites in relative perpendicular orientation), are plotted
+as a function of r in Fig. 4(d), for L = 128 and w = (0, 0),
+and also display algebraic behavior, Cijkl
+⊥
+∼r−α⊥, albeit
+with a considerably faster decay: a ﬁt yields α⊥= 2.53(5).
+Finally, we adress the point of what speciﬁc type of quasi-
+long-range dimer order is encoded in Eq. (1). In doing so,
+we analyze the dimer order parameter D deﬁned by Dα =
+N −1 P
+r(−1)rαSr · Sr+eα. Due to the absence of long-range
+order, ⟨D⟩is expected to vanish when L →∞. However,
+information concerning the symmetry of the quasi-ordered
+state is obtainable by analyzing the angular dependence on
+φ = arctan(Dy/Dx) in the histogram P(Dx, Dy) for occur-
+rences of Dx and Dy in the simulations. In Fig. 5 we plot
+P(Dx, Dy) for L = 96 and w = (0, 0). Commonly observed
+
+4
+L = 96
+w = (0, 0)
+-0.05
+ 0
+ 0.05
+Dx
+-0.05
+ 0
+ 0.05
+Dy
+0
+5!10-5
+1!10-4
+FIG. 5: (Color online) Histogram P(Dx, Dy) for L = 96 and w =
+(0, 0).
+VBCs on the square lattice, “columnar” and “plaquette” states
+(for a detailed account see [22]), would display, respectively,
+peaks located at φ = {0, ±π/2, π} and φ = {±π/4, ±3π/4}.
+However, no angular structure is evident in Fig. 5 and data are
+in favor of a continuous U(1) symmetry.
+Conclusions — Summarizing, we have investigated NN-VB
+wave-functions on the square lattice [Eq. (1)], characterized
+by topologically invariant winding numbers w, by performing
+MC simulations. We conﬁrm earlier ﬁndings in favor of short-
+ranged spin order [18, 30] and, more interestingly, we ﬁnd that
+dimer-dimer correlations are critical, a situation reminiscent
+of the one encountered for classical dimers [27]. However,
+such correlations decay considerably slower for Eq. (1) than
+in the classical case, suggesting increased tendency towards
+VBC order: the exponent for longitudinal [transverse] corre-
+lations for all w is found to be α∥= 1.16(4) [α⊥= 2.53(5)],
+while in the classical case one has αc
+∥= 2 [αc
+⊥= 3] [27].
+Additionally, longitudinal correlations are spatially modulated
+according to a wave-vector ﬁxed by w.
+From a broader perspective, we analyze how the wave-
+function Eq. (1) ﬁts into the general classiﬁcation of QSL
+states [8].
+While we stress that our work concerns wave-
+functions and not the full spectrum of a given Hamiltonian,
+we notice that each |Ψw⟩[Eq. (1)] is a (degenerate) ground-
+state of the local model of Ref. 29 on a torus. Applying stan-
+dard arguments [19], we thus predict such SU(2)-invariant
+Hamiltonian to display gapped spin excitations (due to short-
+ranged spin order) and gapless non-magnetic excitations (due
+to critical four-point correlations).
+Adopting the terminol-
+ogy of Ref. [8], the later correspond to gapless gauge modes
+and altogether our results suggest that the ground-state of the
+model of Ref. 29 is a gapped U(1) or SU(2) spin liquid [8],
+a state believed to be unstable for a generic local spin model.
+In this context, the complete characterization of the spectrum
+of the model of Ref. 29 and of perturbations thereof would be
+of high interest.
+Directions for further research opened up by our work in-
+clude the study of wave-functions similar to Eq. (1) in differ-
+ent geometries. In d = 3, we expect NN-VB states on bipar-
+tite lattices to display spin order, as it happens for the sim-
+ple cubic lattice [30], but it would be interesting to search for
+traces of the Coulomb phase of dimer models in d = 3 [33].
+NN-VB wave-functions on d = 2 geometrically frustrated
+lattices also deserve investigation [13, 14]. However, a sign
+problem precludes MC simulations as we perform here and
+alternative approaches are called for in this case.
+Note Added — While preparing this manuscript we became
+aware of similar work by Tang, Sandvik and Henley [34].
+We thank P. Fendley, M. Mambrini and G. Misguich for
+useful discussions. Our MC codes are based upon the ALPS
+libraries [35, 36]. This work was performed using HPC re-
+sources from GENCI-CCRT (Grant 2010-x2010050225) and
+CALMIP, and is supported by the French ANR program
+ANR-08-JCJC-0056-01.
+[1] L. Balents, Nature 464, 199 (2010).
+[2] P. W. Anderson, Mater. Res. Bull. 8, 153 (1973).
+[3] P. W. Anderson, Phys. Today 61, 8 (2008).
+[4] P. Fazekas and P. W. Anderson, Philos. Mag. 30, 474 (1974).
+[5] P. W. Anderson, Science 235, 1196 (1987).
+[6] G. Misguich, in Exact Methods in Low-dimensional Statisti-
+cal Physics and Quantum Computing, edited by J. Jacobsen,
+S. Ouvry, V. Pasquier, D. Serban, and L. Cugliandolo (Oxford
+Univ. Press, Oxford, 2010).
+[7] G. Misguich and C. Lhuillier, in Frustrated spin systems, edited
+by H. T. Diep (World-Scientiﬁc, Singapore, 2005).
+[8] X.-G. Wen, Phys. Rev. B 65, 165113 (2002).
+[9] G. Misguich, C. Lhuillier, B. Bernu, and C. Waldtmann, Phys.
+Rev. B 60, 1064 (1999).
+[10] L. Balents, M. P. A. Fisher, and S. M. Girvin, Phys. Rev. B 65,
+224412 (2002).
+[11] M. Hermele, M. P. A. Fisher, and L. Balents, Phys. Rev. B 69,
+064404 (2004).
+[12] S. Fujimoto, Phys. Rev. B 72, 024429 (2005).
+[13] K. S. Raman, R. Moessner, and S. L. Sondhi, Phys. Rev. B 72,
+064413 (2005).
+[14] A. Seidel, Phys. Rev. B 80, 165131 (2009).
+[15] A. Kitaev, Ann. Phys. 321, 2 (2006).
+[16] H. Yao and S. A. Kivelson, Phys. Rev. Lett. 99, 247203 (2007).
+[17] Z. Y. Meng, T. C. Lang, S. Wessel, F. F. Assaad, and A. Mura-
+matsu, Nature 464, 847 (2010).
+[18] S. Liang, B. Douc¸ot, and P. W. Anderson, Phys. Rev. Lett. 61,
+365 (1988).
+[19] B. Sutherland, Phys. Rev. B 37, 3786 (1988).
+[20] K. S. D. Beach and A. W. Sandvik, Nucl. Phys. B 750, 142
+(2006).
+[21] J. Lou and A. W. Sandvik, Phys. Rev. B 76, 104432 (2007).
+[22] M. Mambrini, A. L¨auchli, D. Poilblanc, and F. Mila, Phys. Rev.
+B 74, 144422 (2006).
+[23] A. W. Sandvik and H. G. Evertz, Phys. Rev. B 82, 024407
+(2010).
+[24] P. W. Kasteleyn, Physica 27, 1209 (1961).
+[25] H. N. V. Temperley and M. E. Fisher, Philos. Mag. 6, 1061
+(1961).
+[26] M. E. Fisher, Phys. Rev. 124, 1664 (1961).
+[27] M. E. Fisher and J. Stephenson, Phys. Rev. 132, 1411 (1963).
+[28] N. E. Bonesteel, Phys. Rev. B 40, 8954 (1989).
+[29] J. Cano and P. Fendley, Phys. Rev. Lett. 105, 067205 (2010).
+[30] K. S. D. Beach (2007), cond-mat: 0707.0297.
+[31] Similar effects are seen in correlators for classical dimers with
+
+5
+ﬁxed w, yet with a different spatial structure (unpublished).
+[32] H. Tasaki, Phys. Rev. B 40, 9183 (1989).
+[33] D. A. Huse, W. Krauth, R. Moessner, and S. L. Sondhi, Phys.
+Rev. Lett. 91, 167004 (2003).
+[34] Y. Tang, A. W. Sandvik, and C. L. Henley, (unpublished). Pre-
+liminary results were announced in: Y. Tang and A. W. Sandvik,
+Bull. Am. Phys. Soc. 55, P38.12 (2010).
+[35] M. Troyer, B. Ammon, and E. Heeb, Lecture Notes in Comput.
+Sci. 1505, 191 (1998).
+[36] A. F. Albuquerque, F. Alet, P. Dayal, A. Feiguin, S. Fuchs,
+L. Gamper, E. Gull, S. G¨urtler, A. Honecker, R. Igarashi, et al.,
+J. Magn. Magn. Mater. 310, 1187 (2007).

@@ -1,0 +1,32 @@
+Scientific-Summaries QA authoring protocol (executed by three gpt-6-luna agents)
+
+Read the complete saved paper text assigned in your shard. Do not read its summary,
+other authors' questions, judge responses, or benchmark scores. Generate exactly
+ten English multiple-choice questions per paper. Each has four choices A–D and
+one unambiguous correct answer. Questions should be difficult and require specific
+knowledge from this paper, not general scientific trivia. Prefer quantitative
+results, experimental/mathematical methods, interpretation, mechanisms, and caveats.
+Use plausible, specific distractors; do not add obviously absurd options.
+
+For every question provide:
+- question and options {A, B, C, D}
+- answer: A, B, C, or D
+- rationale explaining why the gold answer follows from the paper
+- evidence_quote: a contiguous exact passage containing the supporting facts
+- evidence_start and evidence_end: null (filled by deterministic source alignment)
+- difficulty: hard
+- category: result, method, limitation, or mechanism
+
+Save one JSON file per document:
+{document_id, author_model: "gpt-6-luna", questions: [...]}
+Use only the saved fulltext as evidence. Quotes may retain PDF wrapping or ligatures;
+alignment allows whitespace and Unicode NFKC normalization, never fuzzy matching.
+Evidence must include the relevant numbers/formulas/facts, not just a sentence intro.
+Full sentences or paragraphs are acceptable. Validate all quotes with evidence_span
+from evaluate.py; repair any failure before considering a document complete.
+
+Root assigns balanced gold positions deterministically without changing option
+content. Gold answers, evidence, and rationales are never included in judge prompts.
+Judge evaluation proceeds while authors are still producing other papers' questions.
+Question/option/gold changes invalidate that paper's checkpoint; evidence-only edits
+do not change judge inputs and can be merged without repeating inference.

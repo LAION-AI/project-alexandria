@@ -1,0 +1,1429 @@
+{
+  "document_id": "bethgelab-102",
+  "fulltext_sha256": "1b3d72a8d054071cfc4bad937f01f5f0897ced27d1c4395ad1998a289462c389",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "270cc579497a070dd84c8d284fd74340ea61db6da944419c4e1a51380ce479fd",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study develops a high-throughput freeze-float system for measuring ice nucleation, improving upon a previous proof-of-concept by increasing throughput, accuracy, and temperature uniformity. The system utilizes automated droplet generation, a controlled-rate freezer, and semi-automated detection to overcome thermal lag issues associated with silicone oil. It aims to replicate the efficiency of high-throughput screening (HTS) methods in multi-well plates for ice nucleation assays.",
+        "entities": [
+          {
+            "name": "Freeze-Float System",
+            "entity_id": "freeze_float_system",
+            "entity_type": "method",
+            "aliases": [
+              "Freeze-Float System",
+              "freeze-float selection system"
+            ],
+            "attributes": {
+              "purpose": "High-throughput measurement of ice nucleation",
+              "improvements": [
+                "Increased efficiency with fewer manipulation steps",
+                "Increased accuracy due to increased sample size",
+                "Increased uniformity of temperature distribution"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "developed_by",
+                "target": "Yuki Kamijo",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "developed_by",
+                "target": "Ratmir Derda",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "Asymptote controlled-rate freezer",
+                "attributes": {},
+                "target_id": "asymptote_controlled_rate_freezer"
+              },
+              {
+                "predicate": "uses",
+                "target": "automated droplets generation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "semi-automated droplets detection program",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Previous Proof-of-Concept Freeze-Float System",
+            "entity_id": "previous_proof_of_concept_freeze_float_system",
+            "entity_type": "method",
+            "aliases": [
+              "Previous Proof-of-Concept Freeze-Float System"
+            ],
+            "attributes": {
+              "geometry": "1 cm^2 cuvette",
+              "capacity": "Up to 50 1 μL droplets",
+              "limitation": "Low thermal conductivity of silicone oil caused thermal lag and non-uniform results with multiple cuvettes"
+            },
+            "relationships": [
+              {
+                "predicate": "identified",
+                "target": "ice-nucleation events",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "superseded_by",
+                "target": "Freeze-Float System",
+                "attributes": {},
+                "target_id": "freeze_float_system"
+              }
+            ]
+          },
+          {
+            "name": "High Throughput Screening (HTS)",
+            "entity_id": "high_throughput_screening_hts",
+            "entity_type": "method",
+            "aliases": [
+              "High Throughput Screening (HTS)"
+            ],
+            "attributes": {
+              "application": "Miniaturization and automation of biochemical assays",
+              "origin": "Drug discovery in laboratory or pharmaceutical industry",
+              "advantages": [
+                "Shortened screening time",
+                "Reduced sample and reagent amount",
+                "Lower costs"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "multi-well plates",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enables",
+                "target": "large number of parallel measurements",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "3456-well microtiter plate",
+            "entity_id": "3456_well_microtiter_plate",
+            "entity_type": "measurement",
+            "aliases": [
+              "3456-well microtiter plate"
+            ],
+            "attributes": {
+              "throughput": "More than 100,000 assays per day",
+              "volume": "Less than 5 μL"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "High Throughput Screening (HTS)",
+                "attributes": {},
+                "target_id": "high_throughput_screening_hts"
+              }
+            ]
+          },
+          {
+            "name": "Silicone Oil",
+            "entity_id": "silicone_oil",
+            "entity_type": "other",
+            "aliases": [
+              "Silicone Oil"
+            ],
+            "attributes": {
+              "property": "Low thermal conductivity",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "causes",
+                "target": "thermal lag",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "limits",
+                "target": "increase in container footprint",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Asymptote controlled-rate freezer",
+            "entity_id": "asymptote_controlled_rate_freezer",
+            "entity_type": "other",
+            "aliases": [
+              "Asymptote VIA freezer",
+              "Asymptote controlled-rate freezer",
+              "Controlled-Rate Freezer"
+            ],
+            "attributes": {
+              "function": "Improves uniformity of temperature distribution",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "incorporated_into",
+                "target": "Freeze-Float System",
+                "attributes": {},
+                "target_id": "freeze_float_system"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 494,
+          "word_count": 494,
+          "sha256": "1ece052d85ba22237a37a7eb55ee3a06c29e23bcd10e4d3cab07e6d034068fcb",
+          "sentence_minhash": [
+            143470254565919416,
+            18551641988871988,
+            51922314523444973,
+            27604728792422157,
+            117184690827267154,
+            158958986694878040,
+            23718652799488495,
+            193843072490878690,
+            23186992072861914,
+            3380668174306445,
+            109663494900214489,
+            11317338413054220,
+            143321097378062624,
+            132529644835130180,
+            47189708136034628,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'Silicone Oil'",
+          "normalized unsupported entity type 'equipment' for 'Controlled-Rate Freezer'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "Droplet-based assays offer compartmentalization advantages over high-throughput screening (HTS) plates, reducing reagent consumption and increasing throughput, though polydispersity affects freezing temperature accuracy. The study utilizes a robotic liquid transfer system to generate uniform droplets and calculates sample size requirements for reliable freezing temperature measurements.",
+        "entities": [
+          {
+            "name": "droplet-based assays",
+            "entity_id": "droplet_based_assays",
+            "entity_type": "method",
+            "aliases": [
+              "droplet-based assays"
+            ],
+            "attributes": {
+              "advantage": "chemical and physical compartmentalization to avoid cross-contamination",
+              "mechanism": "segmenting uniform droplets by immiscible carrier fluid"
+            },
+            "relationships": [
+              {
+                "predicate": "reported_reagent_reduction",
+                "target": "million fold reduction compared to HTS-multiwell assays",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reported_throughput_increase",
+                "target": "300-folds increase compared to HTS-multiwell assays",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "applied_to",
+                "target": "crystallization study",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "applied_to",
+                "target": "single cell screening of enzyme production",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "applied_to",
+                "target": "ice nucleation events measurement",
+                "attributes": {
+                  "scale": "tens of thousands per experiment"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "applied_to",
+                "target": "microfluidic droplet based cell and virion counting",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "commercial_success_in",
+                "target": "digital polymerase chain reaction (dPCR)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "commercial_success_in",
+                "target": "single-cell genomics",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increased_sensitivity_of",
+                "target": "absolute nucleic acid quantification",
+                "attributes": {
+                  "method": "compartmentalizing individual DNA molecule into uniform droplets"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "drawback",
+                "target": "difficulty in measuring large number of droplets of arbitrary compositions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "high throughput screening (HTS) multi-well assays",
+            "entity_id": "high_throughput_screening_hts_multi_well_assays",
+            "entity_type": "method",
+            "aliases": [
+              "high throughput screening (HTS) multi-well assays"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "compared_against",
+                "target": "droplet-based assays",
+                "attributes": {},
+                "target_id": "droplet_based_assays"
+              }
+            ]
+          },
+          {
+            "name": "polydisperse silicone oil emulsions",
+            "entity_id": "polydisperse_silicone_oil_emulsions",
+            "entity_type": "other",
+            "aliases": [
+              "polydisperse silicone oil emulsions"
+            ],
+            "attributes": {
+              "preparation": "simple mixing",
+              "application": "biochemical applications",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "detrimental_to",
+                "target": "ice nucleation studies",
+                "attributes": {
+                  "reason": "freezing temperature is directly proportional to the logarithm of droplets diameter"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "influences",
+                "target": "accuracy of freezing measurement",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "homogeneous freezing temperature relationship",
+            "entity_id": "homogeneous_freezing_temperature_relationship",
+            "entity_type": "concept",
+            "aliases": [
+              "homogeneous freezing temperature relationship"
+            ],
+            "attributes": {
+              "formula": "y = ln(x) - 26.8",
+              "variable_y": "nucleation temperature",
+              "variable_x": "droplet radius",
+              "source": "Swanson and co-worker"
+            },
+            "relationships": [
+              {
+                "predicate": "predicts_temperature_difference",
+                "target": "2.3 °C",
+                "attributes": {
+                  "between": "1 mm diameter and 0.1 mm diameter droplets"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "microfluidics",
+            "entity_id": "microfluidics",
+            "entity_type": "method",
+            "aliases": [
+              "microfluidics"
+            ],
+            "attributes": {
+              "capability": "produce uniform droplets"
+            },
+            "relationships": [
+              {
+                "predicate": "limitation",
+                "target": "interfacing with microtiter well plates used in HTS is not obvious and not trivial",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "automated pipetting system",
+            "entity_id": "automated_pipetting_system",
+            "entity_type": "method",
+            "aliases": [
+              "automated pipetting system"
+            ],
+            "attributes": {
+              "availability": "commercially available",
+              "purpose": "produce uniform size droplets"
+            },
+            "relationships": [
+              {
+                "predicate": "verified_by",
+                "target": "image analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "confidence interval formula for freezing temperature",
+            "entity_id": "confidence_interval_formula_for_freezing_temperature",
+            "entity_type": "measurement",
+            "aliases": [
+              "confidence interval formula for freezing temperature"
+            ],
+            "attributes": {
+              "formula": "n ≈ (2k CI / s)^2",
+              "variable_n": "sample number",
+              "variable_k": "value for desired confidence level (1.96 for 95% confidence)",
+              "variable_CI": "confidence interval",
+              "variable_s": "standard deviation of the outcome of interest"
+            },
+            "relationships": [
+              {
+                "predicate": "concluded_minimum_sample_size",
+                "target": "more than 30 droplets",
+                "attributes": {
+                  "purpose": "observe reliable freezing temperature"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Biomek 3000",
+            "entity_id": "biomek_3000",
+            "entity_type": "other",
+            "aliases": [
+              "Biomek 3000",
+              "Biomek 3000 liquid handling system",
+              "Biomek® 3000"
+            ],
+            "attributes": {
+              "manufacturer": "Beckman Coulter",
+              "location": "Indianapolis, IN",
+              "type": "robotic liquid transfer system",
+              "capability": "automated parallel generation of droplets in wells of a multi-well plate",
+              "spatial_positioning": "compatible with many multi-well plate geometries",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "replaced",
+                "target": "manual generation of droplets by repeat pipetting",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "allows_modification_of",
+                "target": "droplets number or droplets size",
+                "attributes": {
+                  "method": "simple modification to the Biomek program"
+                },
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 494,
+          "end_word": 971,
+          "word_count": 477,
+          "sha256": "0c8f277d151c82a264704dd04d982a58c145155ee876010bde3e2c2b8a312eb4",
+          "sentence_minhash": [
+            167200217492106239,
+            1306423125707224,
+            9474107729748345,
+            37498130448765965,
+            86228397836362165,
+            62667647458868521,
+            23718652799488495,
+            63183425104977485,
+            23186992072861914,
+            53310063724274912,
+            78280491562202942,
+            11317338413054220,
+            49568730582519212,
+            83535461897877455,
+            21633903934502347,
+            165397845756828972
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'polydisperse silicone oil emulsions'",
+          "normalized unsupported entity type 'equipment' for 'Biomek® 3000'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study expands the freeze-float system's throughput by transitioning from 1 cm² cuvettes to 48 cryovials, increasing capacity to 1920 droplets. It employs the Biomek 3000 robotic system for automated droplet generation and the Asymptote VIA freezer for precise, constant-rate cooling to ensure uniform temperature distribution.",
+        "entities": [
+          {
+            "name": "Freeze-Float System",
+            "entity_id": "freeze_float_system",
+            "entity_type": "method",
+            "aliases": [
+              "Freeze-Float System",
+              "freeze-float selection system"
+            ],
+            "attributes": {
+              "purpose": "high-throughput measurement of ice nucleation",
+              "throughput_increase_factor": 38
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "Biomek 3000",
+                "attributes": {},
+                "target_id": "biomek_3000"
+              },
+              {
+                "predicate": "uses",
+                "target": "Asymptote controlled-rate freezer",
+                "attributes": {},
+                "target_id": "asymptote_controlled_rate_freezer"
+              },
+              {
+                "predicate": "replaces",
+                "target": "1 cm² footprint cuvette",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Biomek 3000",
+            "entity_id": "biomek_3000",
+            "entity_type": "other",
+            "aliases": [
+              "Biomek 3000",
+              "Biomek 3000 liquid handling system",
+              "Biomek® 3000"
+            ],
+            "attributes": {
+              "manufacturer": "Beckman Coulter",
+              "function": "automated parallel generation of droplets",
+              "dispensing_rate": "1 droplet per 2 seconds",
+              "generation_time": "~15 minutes for 40 uniform droplets in 96 wells",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "generates",
+                "target": "30 × 1 μL droplets",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compatible_with",
+                "target": "96 deep well plate",
+                "attributes": {},
+                "target_id": "96_deep_well_plate"
+              }
+            ]
+          },
+          {
+            "name": "Asymptote controlled-rate freezer",
+            "entity_id": "asymptote_controlled_rate_freezer",
+            "entity_type": "other",
+            "aliases": [
+              "Asymptote VIA freezer",
+              "Asymptote controlled-rate freezer",
+              "Controlled-Rate Freezer"
+            ],
+            "attributes": {
+              "manufacturer": "Asymptote",
+              "location": "Cambridge, UK",
+              "cooling_precision": "down to -0.5 °C/min",
+              "capacity": "up to 48 × 1 mL cryovials",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "provides",
+                "target": "constant rate cooling",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "equipped_with",
+                "target": "custom-made glass lid",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "96 deep well plate",
+            "entity_id": "96_deep_well_plate",
+            "entity_type": "other",
+            "aliases": [
+              "96 deep well plate"
+            ],
+            "attributes": {
+              "capacity": "up to ~3800 droplets at once",
+              "droplet_volume": "1 μL",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "filled_with",
+                "target": "silicone oil with 1% silicone surfactant",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "HFE-7500 cushion layer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Droplet_Dispersion.m",
+            "entity_id": "droplet_dispersion_m",
+            "entity_type": "other",
+            "aliases": [
+              "Droplet_Dispersion.m"
+            ],
+            "attributes": {
+              "language": "Matlab",
+              "function": "automated circle detection and diameter analysis",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzes",
+                "target": "fluorescent images of droplets",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ChemiDoc MP",
+            "entity_id": "chemidoc_mp",
+            "entity_type": "other",
+            "aliases": [
+              "ChemiDoc MP"
+            ],
+            "attributes": {
+              "manufacturer": "Bio-Rad",
+              "location": "CA",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "acquires",
+                "target": "fluorescent images",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "stochastic freezing behavior",
+            "entity_id": "stochastic_freezing_behavior",
+            "entity_type": "concept",
+            "aliases": [
+              "stochastic freezing behavior"
+            ],
+            "attributes": {
+              "characteristic": "inherent distribution of freezing temperatures",
+              "cause": "random nucleation process"
+            },
+            "relationships": [
+              {
+                "predicate": "results_in",
+                "target": "spread of freezing temperature among identical droplets",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 971,
+          "end_word": 1456,
+          "word_count": 485,
+          "sha256": "7c9b48d3f62c8d97116fe41e656db72bd80e73392b9badf1e83d3f6d16850200",
+          "sentence_minhash": [
+            21343157284432945,
+            232593725413697090,
+            142504170772246792,
+            176145074706553768,
+            148925132169520149,
+            30500191475291153,
+            149017575652778032,
+            41678443202000680,
+            159488635667786167,
+            76931577636070685,
+            199371367846538830,
+            7735249562228291,
+            21933493368060407,
+            161945415629665627,
+            17469704625235337,
+            134779886041920657
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'equipment' for 'Biomek 3000'",
+          "normalized unsupported entity type 'equipment' for 'Asymptote VIA freezer'",
+          "normalized unsupported entity type 'equipment' for '96 deep well plate'",
+          "normalized unsupported entity type 'software' for 'Droplet_Dispersion.m'",
+          "normalized unsupported entity type 'equipment' for 'ChemiDoc MP'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study quantified the uniformity of droplets generated by a robotic system and assessed thermal gradients in a 96-well plate. It identified static electricity as a cause of droplet coalescence and used a Kolmogorov-Smirnov test to compare freezing distributions. The results indicated that constant temperature cooling in a generic freezer produced significant thermal gradients compared to linear cooling.",
+        "entities": [
+          {
+            "name": "60 droplets sample",
+            "entity_id": "60_droplets_sample",
+            "entity_type": "measurement",
+            "aliases": [
+              "60 droplets sample"
+            ],
+            "attributes": {
+              "standard_deviation_of_radii": "2.86e-5",
+              "mean_radius": "3.10e-4 m",
+              "polydispersity": "9.2%"
+            },
+            "relationships": [
+              {
+                "predicate": "generated_by",
+                "target": "Biomek 3000",
+                "attributes": {},
+                "target_id": "biomek_3000"
+              },
+              {
+                "predicate": "indicates",
+                "target": "sufficiently uniform volume",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Swanson and co-worker",
+            "entity_id": "swanson_and_co_worker",
+            "entity_type": "person",
+            "aliases": [
+              "Swanson and co-worker"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "observed_relation",
+                "target": "y = ln(x) - 26.8",
+                "attributes": {
+                  "y_definition": "nucleation temperature",
+                  "x_definition": "droplet radius"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "nucleation temperature dispersion",
+            "entity_id": "nucleation_temperature_dispersion",
+            "entity_type": "measurement",
+            "aliases": [
+              "nucleation temperature dispersion"
+            ],
+            "attributes": {
+              "expected_max_dispersion": "±0.09 °C"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on",
+                "target": "standard deviation of the radii of the droplets",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HFE-7500",
+            "entity_id": "hfe_7500",
+            "entity_type": "other",
+            "aliases": [
+              "HFE-7500"
+            ],
+            "attributes": {
+              "role": "cushion layer",
+              "position": "bottom of the system"
+            },
+            "relationships": [
+              {
+                "predicate": "prevents",
+                "target": "droplet destabilization from contact with plastic wall",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Auto-set Ion Pump",
+            "entity_id": "auto_set_ion_pump",
+            "entity_type": "method",
+            "aliases": [
+              "Auto-set Ion Pump"
+            ],
+            "attributes": {
+              "model_number": "#19500",
+              "manufacturer": "Charles Water, MA",
+              "type": "bench-top equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "removes",
+                "target": "static electricity of the Biomek 3000",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "discharges",
+                "target": "static potential accumulation caused by Biomek 3000 operation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "wet filter paper",
+            "entity_id": "wet_filter_paper",
+            "entity_type": "other",
+            "aliases": [
+              "wet filter paper"
+            ],
+            "attributes": {
+              "placement": "below the plastic plate"
+            },
+            "relationships": [
+              {
+                "predicate": "minimizes",
+                "target": "accumulation of static electricity during system movement",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "freeze-float validation experiment",
+            "entity_id": "freeze_float_validation_experiment",
+            "entity_type": "event",
+            "aliases": [
+              "freeze-float validation experiment"
+            ],
+            "attributes": {
+              "system": "Biomek 3000",
+              "sample": "30 aqueous droplets with 1 mg/mL Snomax colored with yellow fluorescein dye",
+              "container": "96 deep well system",
+              "freezer": "commodity freezer employed in the previous publication"
+            },
+            "relationships": [
+              {
+                "predicate": "result",
+                "target": "INA droplets showed freezing behaviour with good agreement with previous report",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "KStest.ipynb",
+            "entity_id": "kstest_ipynb",
+            "entity_type": "method",
+            "aliases": [
+              "KStest.ipynb"
+            ],
+            "attributes": {
+              "language": "Python",
+              "source_code_reference": "Source Code S3"
+            },
+            "relationships": [
+              {
+                "predicate": "compares",
+                "target": "cumulative distributions of the freezing temperature from two samples",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "calculates",
+                "target": "p-value using Kolmogorov-Smirnov test",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "96 deep well plate thermal gradient",
+            "entity_id": "96_deep_well_plate_thermal_gradient",
+            "entity_type": "measurement",
+            "aliases": [
+              "96 deep well plate thermal gradient"
+            ],
+            "attributes": {
+              "constant_temperature_p_value": "4.4e-7",
+              "constant_temperature_condition": "-28 °C generic freezer",
+              "linear_cooling_p_value": "0.31",
+              "linear_cooling_rate": "-0.25 °C/min",
+              "mean_freezing_time_cell_1": "47.4 min",
+              "mean_freezing_time_cell_2": "50.6 min"
+            },
+            "relationships": [
+              {
+                "predicate": "caused_by",
+                "target": "low thermal conductivity of silicone oil and geometry of 96 deep well plate",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "effect_of_linear_cooling",
+                "target": "significantly increased range of freezing time",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1456,
+          "end_word": 1954,
+          "word_count": 498,
+          "sha256": "17931ae23ace9e255e72a4fabc603358bed863db97315993ba2318943d3076d7",
+          "sentence_minhash": [
+            21343157284432945,
+            18551641988871988,
+            9474107729748345,
+            61919449716151556,
+            73459400946278211,
+            99436724310786061,
+            123741237026114870,
+            113354842177960025,
+            34383880606747972,
+            42586453371797899,
+            78280491562202942,
+            11317338413054220,
+            91759520063933247,
+            77299741254660326,
+            130171456524034480,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The Asymptote controlled-rate freezer accommodates 48 cryovials and provides superior temperature uniformity compared to generic freezers. Droplets containing ice-nucleating agents (INA) freeze at significantly higher temperatures than those without INA. The system demonstrates improved differentiation accuracy and reduced well-to-well variability in freezing temperatures.",
+        "entities": [
+          {
+            "name": "Asymptote controlled-rate freezer",
+            "entity_id": "asymptote_controlled_rate_freezer",
+            "entity_type": "other",
+            "aliases": [
+              "Asymptote VIA freezer",
+              "Asymptote controlled-rate freezer",
+              "Controlled-Rate Freezer"
+            ],
+            "attributes": {
+              "capacity": "up to 48 1 mL cryovials",
+              "holder_type": "instrument-specific metal holder",
+              "cooling_characteristic": "high accuracy control of cooling temperature",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "provides_better_detection_than",
+                "target": "commodity freezer system",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_less_well_to_well_difference_than",
+                "target": "96 deep well system in generic freezer",
+                "attributes": {},
+                "target_id": "96_deep_well_system_in_generic_freezer"
+              }
+            ]
+          },
+          {
+            "name": "cryovial setup in Asymptote freezer",
+            "entity_id": "cryovial_setup_in_asymptote_freezer",
+            "entity_type": "other",
+            "aliases": [
+              "cryovial setup in Asymptote freezer"
+            ],
+            "attributes": {
+              "bottom_layer": "50 µL HFE-7500 cushion",
+              "floating_layer": "1 mL silicone oil with 1% surfactant",
+              "sample_content": "20 aqueous droplets with 1 mg/mL Snomax (fluorescein) and 20 droplets of INA-free milli Q water (Coomassie Brilliant Blue)",
+              "model_entity_type": "experimental_configuration"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Snomax droplets (1 mg/mL)",
+            "entity_id": "snomax_droplets_1_mg_ml",
+            "entity_type": "other",
+            "aliases": [
+              "Snomax droplets (1 mg/mL)"
+            ],
+            "attributes": {
+              "marker": "fluorescein",
+              "freezing_temperature_in_asymptote": "-7.1 ± 0.59 °C",
+              "freezing_temperature_in_commodity_freezer": "-7.5 ± 0.97 °C",
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "ice-nucleating agents (INA)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "freezes_at_higher_temperature_than",
+                "target": "INA-free milli Q water droplets",
+                "attributes": {},
+                "target_id": "ina_free_milli_q_water_droplets"
+              }
+            ]
+          },
+          {
+            "name": "INA-free milli Q water droplets",
+            "entity_id": "ina_free_milli_q_water_droplets",
+            "entity_type": "other",
+            "aliases": [
+              "INA-free milli Q water droplets"
+            ],
+            "attributes": {
+              "marker": "Coomassie Brilliant Blue dye",
+              "freezing_threshold_in_asymptote": "-12.3 °C",
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "does_not_freeze_until",
+                "target": "-12.3 °C",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "96 deep well system in generic freezer",
+            "entity_id": "96_deep_well_system_in_generic_freezer",
+            "entity_type": "other",
+            "aliases": [
+              "96 deep well system in generic freezer"
+            ],
+            "attributes": {
+              "well_to_well_p_value": "0.31",
+              "standard_deviation": "1.6",
+              "model_entity_type": "experimental_configuration"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_higher_dispersion_than",
+                "target": "Asymptote freezer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Asymptote freezer droplet distribution",
+            "entity_id": "asymptote_freezer_droplet_distribution",
+            "entity_type": "other",
+            "aliases": [
+              "Asymptote freezer droplet distribution"
+            ],
+            "attributes": {
+              "well_to_well_p_value": "0.83",
+              "standard_deviation": "0.73",
+              "dispersion_reduction": "36% lower than 96 deep well system",
+              "model_entity_type": "measurement_result"
+            },
+            "relationships": []
+          },
+          {
+            "name": "KStest.ipynb",
+            "entity_id": "kstest_ipynb",
+            "entity_type": "method",
+            "aliases": [
+              "KStest.ipynb"
+            ],
+            "attributes": {
+              "function": "compares freezing temperature distributions using Kolmogorov-Smirnov test",
+              "model_entity_type": "software_script"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_compare",
+                "target": "freezing temperature distributions in Asymptote and 96 deep well systems",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Biomek 3000",
+            "entity_id": "biomek_3000",
+            "entity_type": "other",
+            "aliases": [
+              "Biomek 3000",
+              "Biomek 3000 liquid handling system",
+              "Biomek® 3000"
+            ],
+            "attributes": {
+              "theoretical_capacity": "~3800 uniform 1 µL droplets in 96 well plate",
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "automated droplets dispensing",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "limited_by",
+                "target": "droplet stability issues during transfer due to static electricity",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1954,
+          "end_word": 2420,
+          "word_count": 466,
+          "sha256": "3bab4b4b8a334b1440bbe764377ca89deef82f579905d941510e3444bfc1f7b6",
+          "sentence_minhash": [
+            255494821542092551,
+            60839570084396778,
+            365220491043541866,
+            201948566748835051,
+            298813117830076870,
+            62667647458868521,
+            23718652799488495,
+            113354842177960025,
+            34383880606747972,
+            175293825418971190,
+            128047967744972732,
+            171596837418463449,
+            12488864069851856,
+            256811852691509790,
+            169401128176801393,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'equipment' for 'Asymptote controlled-rate freezer'",
+          "normalized unsupported entity type 'experimental_configuration' for 'cryovial setup in Asymptote freezer'",
+          "normalized unsupported entity type 'sample' for 'Snomax droplets (1 mg/mL)'",
+          "normalized unsupported entity type 'sample' for 'INA-free milli Q water droplets'",
+          "normalized unsupported entity type 'experimental_configuration' for '96 deep well system in generic freezer'",
+          "normalized unsupported entity type 'measurement_result' for 'Asymptote freezer droplet distribution'",
+          "normalized unsupported entity type 'software_script' for 'KStest.ipynb'",
+          "normalized unsupported entity type 'equipment' for 'Biomek 3000 liquid handling system'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "biomek_3000",
+        "canonical_name": "Biomek 3000",
+        "aliases": [
+          "Biomek 3000",
+          "Biomek® 3000",
+          "Biomek 3000 liquid handling system"
+        ]
+      },
+      {
+        "canonical_id": "freeze_float_system",
+        "canonical_name": "Freeze-Float System",
+        "aliases": [
+          "Freeze-Float System",
+          "freeze-float selection system"
+        ]
+      },
+      {
+        "canonical_id": "asymptote_controlled_rate_freezer",
+        "canonical_name": "Asymptote controlled-rate freezer",
+        "aliases": [
+          "Asymptote controlled-rate freezer",
+          "Controlled-Rate Freezer",
+          "Asymptote VIA freezer"
+        ]
+      },
+      {
+        "canonical_id": "previous_proof_of_concept_freeze_float_system",
+        "canonical_name": "Previous Proof-of-Concept Freeze-Float System",
+        "aliases": [
+          "Previous Proof-of-Concept Freeze-Float System"
+        ]
+      },
+      {
+        "canonical_id": "high_throughput_screening_hts",
+        "canonical_name": "High Throughput Screening (HTS)",
+        "aliases": [
+          "High Throughput Screening (HTS)"
+        ]
+      },
+      {
+        "canonical_id": "3456_well_microtiter_plate",
+        "canonical_name": "3456-well microtiter plate",
+        "aliases": [
+          "3456-well microtiter plate"
+        ]
+      },
+      {
+        "canonical_id": "silicone_oil",
+        "canonical_name": "Silicone Oil",
+        "aliases": [
+          "Silicone Oil"
+        ]
+      },
+      {
+        "canonical_id": "droplet_based_assays",
+        "canonical_name": "droplet-based assays",
+        "aliases": [
+          "droplet-based assays"
+        ]
+      },
+      {
+        "canonical_id": "high_throughput_screening_hts_multi_well_assays",
+        "canonical_name": "high throughput screening (HTS) multi-well assays",
+        "aliases": [
+          "high throughput screening (HTS) multi-well assays"
+        ]
+      },
+      {
+        "canonical_id": "polydisperse_silicone_oil_emulsions",
+        "canonical_name": "polydisperse silicone oil emulsions",
+        "aliases": [
+          "polydisperse silicone oil emulsions"
+        ]
+      },
+      {
+        "canonical_id": "homogeneous_freezing_temperature_relationship",
+        "canonical_name": "homogeneous freezing temperature relationship",
+        "aliases": [
+          "homogeneous freezing temperature relationship"
+        ]
+      },
+      {
+        "canonical_id": "microfluidics",
+        "canonical_name": "microfluidics",
+        "aliases": [
+          "microfluidics"
+        ]
+      },
+      {
+        "canonical_id": "automated_pipetting_system",
+        "canonical_name": "automated pipetting system",
+        "aliases": [
+          "automated pipetting system"
+        ]
+      },
+      {
+        "canonical_id": "confidence_interval_formula_for_freezing_temperature",
+        "canonical_name": "confidence interval formula for freezing temperature",
+        "aliases": [
+          "confidence interval formula for freezing temperature"
+        ]
+      },
+      {
+        "canonical_id": "96_deep_well_plate",
+        "canonical_name": "96 deep well plate",
+        "aliases": [
+          "96 deep well plate"
+        ]
+      },
+      {
+        "canonical_id": "droplet_dispersion_m",
+        "canonical_name": "Droplet_Dispersion.m",
+        "aliases": [
+          "Droplet_Dispersion.m"
+        ]
+      },
+      {
+        "canonical_id": "chemidoc_mp",
+        "canonical_name": "ChemiDoc MP",
+        "aliases": [
+          "ChemiDoc MP"
+        ]
+      },
+      {
+        "canonical_id": "stochastic_freezing_behavior",
+        "canonical_name": "stochastic freezing behavior",
+        "aliases": [
+          "stochastic freezing behavior"
+        ]
+      },
+      {
+        "canonical_id": "60_droplets_sample",
+        "canonical_name": "60 droplets sample",
+        "aliases": [
+          "60 droplets sample"
+        ]
+      },
+      {
+        "canonical_id": "swanson_and_co_worker",
+        "canonical_name": "Swanson and co-worker",
+        "aliases": [
+          "Swanson and co-worker"
+        ]
+      },
+      {
+        "canonical_id": "nucleation_temperature_dispersion",
+        "canonical_name": "nucleation temperature dispersion",
+        "aliases": [
+          "nucleation temperature dispersion"
+        ]
+      },
+      {
+        "canonical_id": "hfe_7500",
+        "canonical_name": "HFE-7500",
+        "aliases": [
+          "HFE-7500"
+        ]
+      },
+      {
+        "canonical_id": "auto_set_ion_pump",
+        "canonical_name": "Auto-set Ion Pump",
+        "aliases": [
+          "Auto-set Ion Pump"
+        ]
+      },
+      {
+        "canonical_id": "wet_filter_paper",
+        "canonical_name": "wet filter paper",
+        "aliases": [
+          "wet filter paper"
+        ]
+      },
+      {
+        "canonical_id": "freeze_float_validation_experiment",
+        "canonical_name": "freeze-float validation experiment",
+        "aliases": [
+          "freeze-float validation experiment"
+        ]
+      },
+      {
+        "canonical_id": "kstest_ipynb",
+        "canonical_name": "KStest.ipynb",
+        "aliases": [
+          "KStest.ipynb"
+        ]
+      },
+      {
+        "canonical_id": "96_deep_well_plate_thermal_gradient",
+        "canonical_name": "96 deep well plate thermal gradient",
+        "aliases": [
+          "96 deep well plate thermal gradient"
+        ]
+      },
+      {
+        "canonical_id": "cryovial_setup_in_asymptote_freezer",
+        "canonical_name": "cryovial setup in Asymptote freezer",
+        "aliases": [
+          "cryovial setup in Asymptote freezer"
+        ]
+      },
+      {
+        "canonical_id": "snomax_droplets_1_mg_ml",
+        "canonical_name": "Snomax droplets (1 mg/mL)",
+        "aliases": [
+          "Snomax droplets (1 mg/mL)"
+        ]
+      },
+      {
+        "canonical_id": "ina_free_milli_q_water_droplets",
+        "canonical_name": "INA-free milli Q water droplets",
+        "aliases": [
+          "INA-free milli Q water droplets"
+        ]
+      },
+      {
+        "canonical_id": "96_deep_well_system_in_generic_freezer",
+        "canonical_name": "96 deep well system in generic freezer",
+        "aliases": [
+          "96 deep well system in generic freezer"
+        ]
+      },
+      {
+        "canonical_id": "asymptote_freezer_droplet_distribution",
+        "canonical_name": "Asymptote freezer droplet distribution",
+        "aliases": [
+          "Asymptote freezer droplet distribution"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study develops a high-throughput freeze-float system for measuring ice nucleation, improving upon a previous proof-of-concept by increasing throughput, accuracy, and temperature uniformity. The system utilizes automated droplet generation, a controlled-rate freezer, and semi-automated detection to overcome thermal lag issues associated with silicone oil. It aims to replicate the efficiency of high-throughput screening (HTS) methods in multi-well plates for ice nucleation assays.\",\"entities\":[{\"name\":\"Freeze-Float System\",\"type\":\"method\",\"attributes\":{\"purpose\":\"High-throughput measurement of ice nucleation\",\"improvements\":[\"Increased efficiency with fewer manipulation steps\",\"Increased accuracy due to increased sample size\",\"Increased uniformity of temperature distribution\"]},\"relationships\":[{\"predicate\":\"developed_by\",\"target\":\"Yuki Kamijo\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"developed_by\",\"target\":\"Ratmir Derda\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"Asymptote controlled-rate freezer\",\"attributes\":{},\"target_id\":\"asymptote_controlled_rate_freezer\"},{\"predicate\":\"uses\",\"target\":\"automated droplets generation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"semi-automated droplets detection program\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Previous Proof-of-Concept Freeze-Float System\",\"type\":\"method\",\"attributes\":{\"geometry\":\"1 cm^2 cuvette\",\"capacity\":\"Up to 50 1 μL droplets\",\"limitation\":\"Low thermal conductivity of silicone oil caused thermal lag and non-uniform results with multiple cuvettes\"},\"relationships\":[{\"predicate\":\"identified\",\"target\":\"ice-nucleation events\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"superseded_by\",\"target\":\"Freeze-Float System\",\"attributes\":{},\"target_id\":\"freeze_float_system\"}]},{\"name\":\"High Throughput Screening (HTS)\",\"type\":\"method\",\"attributes\":{\"application\":\"Miniaturization and automation of biochemical assays\",\"origin\":\"Drug discovery in laboratory or pharmaceutical industry\",\"advantages\":[\"Shortened screening time\",\"Reduced sample and reagent amount\",\"Lower costs\"]},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"multi-well plates\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enables\",\"target\":\"large number of parallel measurements\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"3456-well microtiter plate\",\"type\":\"measurement\",\"attributes\":{\"throughput\":\"More than 100,000 assays per day\",\"volume\":\"Less than 5 μL\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"High Throughput Screening (HTS)\",\"attributes\":{},\"target_id\":\"high_throughput_screening_hts\"}]},{\"name\":\"Silicone Oil\",\"type\":\"other\",\"attributes\":{\"property\":\"Low thermal conductivity\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"causes\",\"target\":\"thermal lag\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"limits\",\"target\":\"increase in container footprint\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Asymptote controlled-rate freezer\",\"type\":\"other\",\"attributes\":{\"function\":\"Improves uniformity of temperature distribution\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"incorporated_into\",\"target\":\"Freeze-Float System\",\"attributes\":{},\"target_id\":\"freeze_float_system\"}]}]},{\"context_summary\":\"Droplet-based assays offer compartmentalization advantages over high-throughput screening (HTS) plates, reducing reagent consumption and increasing throughput, though polydispersity affects freezing temperature accuracy. The study utilizes a robotic liquid transfer system to generate uniform droplets and calculates sample size requirements for reliable freezing temperature measurements.\",\"entities\":[{\"name\":\"droplet-based assays\",\"type\":\"method\",\"attributes\":{\"advantage\":\"chemical and physical compartmentalization to avoid cross-contamination\",\"mechanism\":\"segmenting uniform droplets by immiscible carrier fluid\"},\"relationships\":[{\"predicate\":\"reported_reagent_reduction\",\"target\":\"million fold reduction compared to HTS-multiwell assays\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"reported_throughput_increase\",\"target\":\"300-folds increase compared to HTS-multiwell assays\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"applied_to\",\"target\":\"crystallization study\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"applied_to\",\"target\":\"single cell screening of enzyme production\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"applied_to\",\"target\":\"ice nucleation events measurement\",\"attributes\":{\"scale\":\"tens of thousands per experiment\"},\"target_id\":null},{\"predicate\":\"applied_to\",\"target\":\"microfluidic droplet based cell and virion counting\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"commercial_success_in\",\"target\":\"digital polymerase chain reaction (dPCR)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"commercial_success_in\",\"target\":\"single-cell genomics\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"increased_sensitivity_of\",\"target\":\"absolute nucleic acid quantification\",\"attributes\":{\"method\":\"compartmentalizing individual DNA molecule into uniform droplets\"},\"target_id\":null},{\"predicate\":\"drawback\",\"target\":\"difficulty in measuring large number of droplets of arbitrary compositions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"high throughput screening (HTS) multi-well assays\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"compared_against\",\"target\":\"droplet-based assays\",\"attributes\":{},\"target_id\":\"droplet_based_assays\"}]},{\"name\":\"polydisperse silicone oil emulsions\",\"type\":\"other\",\"attributes\":{\"preparation\":\"simple mixing\",\"application\":\"biochemical applications\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"detrimental_to\",\"target\":\"ice nucleation studies\",\"attributes\":{\"reason\":\"freezing temperature is directly proportional to the logarithm of droplets diameter\"},\"target_id\":null},{\"predicate\":\"influences\",\"target\":\"accuracy of freezing measurement\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"homogeneous freezing temperature relationship\",\"type\":\"concept\",\"attributes\":{\"formula\":\"y = ln(x) - 26.8\",\"variable_y\":\"nucleation temperature\",\"variable_x\":\"droplet radius\",\"source\":\"Swanson and co-worker\"},\"relationships\":[{\"predicate\":\"predicts_temperature_difference\",\"target\":\"2.3 °C\",\"attributes\":{\"between\":\"1 mm diameter and 0.1 mm diameter droplets\"},\"target_id\":null}]},{\"name\":\"microfluidics\",\"type\":\"method\",\"attributes\":{\"capability\":\"produce uniform droplets\"},\"relationships\":[{\"predicate\":\"limitation\",\"target\":\"interfacing with microtiter well plates used in HTS is not obvious and not trivial\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"automated pipetting system\",\"type\":\"method\",\"attributes\":{\"availability\":\"commercially available\",\"purpose\":\"produce uniform size droplets\"},\"relationships\":[{\"predicate\":\"verified_by\",\"target\":\"image analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"confidence interval formula for freezing temperature\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"n ≈ (2k CI / s)^2\",\"variable_n\":\"sample number\",\"variable_k\":\"value for desired confidence level (1.96 for 95% confidence)\",\"variable_CI\":\"confidence interval\",\"variable_s\":\"standard deviation of the outcome of interest\"},\"relationships\":[{\"predicate\":\"concluded_minimum_sample_size\",\"target\":\"more than 30 droplets\",\"attributes\":{\"purpose\":\"observe reliable freezing temperature\"},\"target_id\":null}]},{\"name\":\"Biomek 3000\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"Beckman Coulter\",\"location\":\"Indianapolis, IN\",\"type\":\"robotic liquid transfer system\",\"capability\":\"automated parallel generation of droplets in wells of a multi-well plate\",\"spatial_positioning\":\"compatible with many multi-well plate geometries\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"replaced\",\"target\":\"manual generation of droplets by repeat pipetting\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"allows_modification_of\",\"target\":\"droplets number or droplets size\",\"attributes\":{\"method\":\"simple modification to the Biomek program\"},\"target_id\":null}]}]},{\"context_summary\":\"The study expands the freeze-float system's throughput by transitioning from 1 cm² cuvettes to 48 cryovials, increasing capacity to 1920 droplets. It employs the Biomek 3000 robotic system for automated droplet generation and the Asymptote VIA freezer for precise, constant-rate cooling to ensure uniform temperature distribution.\",\"entities\":[{\"name\":\"Freeze-Float System\",\"type\":\"method\",\"attributes\":{\"purpose\":\"high-throughput measurement of ice nucleation\",\"throughput_increase_factor\":38},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"Biomek 3000\",\"attributes\":{},\"target_id\":\"biomek_3000\"},{\"predicate\":\"uses\",\"target\":\"Asymptote controlled-rate freezer\",\"attributes\":{},\"target_id\":\"asymptote_controlled_rate_freezer\"},{\"predicate\":\"replaces\",\"target\":\"1 cm² footprint cuvette\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Biomek 3000\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"Beckman Coulter\",\"function\":\"automated parallel generation of droplets\",\"dispensing_rate\":\"1 droplet per 2 seconds\",\"generation_time\":\"~15 minutes for 40 uniform droplets in 96 wells\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"generates\",\"target\":\"30 × 1 μL droplets\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compatible_with\",\"target\":\"96 deep well plate\",\"attributes\":{},\"target_id\":\"96_deep_well_plate\"}]},{\"name\":\"Asymptote controlled-rate freezer\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"Asymptote\",\"location\":\"Cambridge, UK\",\"cooling_precision\":\"down to -0.5 °C/min\",\"capacity\":\"up to 48 × 1 mL cryovials\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"provides\",\"target\":\"constant rate cooling\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"equipped_with\",\"target\":\"custom-made glass lid\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"96 deep well plate\",\"type\":\"other\",\"attributes\":{\"capacity\":\"up to ~3800 droplets at once\",\"droplet_volume\":\"1 μL\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"filled_with\",\"target\":\"silicone oil with 1% silicone surfactant\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"HFE-7500 cushion layer\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Droplet_Dispersion.m\",\"type\":\"other\",\"attributes\":{\"language\":\"Matlab\",\"function\":\"automated circle detection and diameter analysis\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"analyzes\",\"target\":\"fluorescent images of droplets\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ChemiDoc MP\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"Bio-Rad\",\"location\":\"CA\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"acquires\",\"target\":\"fluorescent images\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"stochastic freezing behavior\",\"type\":\"concept\",\"attributes\":{\"characteristic\":\"inherent distribution of freezing temperatures\",\"cause\":\"random nucleation process\"},\"relationships\":[{\"predicate\":\"results_in\",\"target\":\"spread of freezing temperature among identical droplets\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study quantified the uniformity of droplets generated by a robotic system and assessed thermal gradients in a 96-well plate. It identified static electricity as a cause of droplet coalescence and used a Kolmogorov-Smirnov test to compare freezing distributions. The results indicated that constant temperature cooling in a generic freezer produced significant thermal gradients compared to linear cooling.\",\"entities\":[{\"name\":\"60 droplets sample\",\"type\":\"measurement\",\"attributes\":{\"standard_deviation_of_radii\":\"2.86e-5\",\"mean_radius\":\"3.10e-4 m\",\"polydispersity\":\"9.2%\"},\"relationships\":[{\"predicate\":\"generated_by\",\"target\":\"Biomek 3000\",\"attributes\":{},\"target_id\":\"biomek_3000\"},{\"predicate\":\"indicates\",\"target\":\"sufficiently uniform volume\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Swanson and co-worker\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"observed_relation\",\"target\":\"y = ln(x) - 26.8\",\"attributes\":{\"y_definition\":\"nucleation temperature\",\"x_definition\":\"droplet radius\"},\"target_id\":null}]},{\"name\":\"nucleation temperature dispersion\",\"type\":\"measurement\",\"attributes\":{\"expected_max_dispersion\":\"±0.09 °C\"},\"relationships\":[{\"predicate\":\"based_on\",\"target\":\"standard deviation of the radii of the droplets\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HFE-7500\",\"type\":\"other\",\"attributes\":{\"role\":\"cushion layer\",\"position\":\"bottom of the system\"},\"relationships\":[{\"predicate\":\"prevents\",\"target\":\"droplet destabilization from contact with plastic wall\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Auto-set Ion Pump\",\"type\":\"method\",\"attributes\":{\"model_number\":\"#19500\",\"manufacturer\":\"Charles Water, MA\",\"type\":\"bench-top equipment\"},\"relationships\":[{\"predicate\":\"removes\",\"target\":\"static electricity of the Biomek 3000\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"discharges\",\"target\":\"static potential accumulation caused by Biomek 3000 operation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"wet filter paper\",\"type\":\"other\",\"attributes\":{\"placement\":\"below the plastic plate\"},\"relationships\":[{\"predicate\":\"minimizes\",\"target\":\"accumulation of static electricity during system movement\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"freeze-float validation experiment\",\"type\":\"event\",\"attributes\":{\"system\":\"Biomek 3000\",\"sample\":\"30 aqueous droplets with 1 mg/mL Snomax colored with yellow fluorescein dye\",\"container\":\"96 deep well system\",\"freezer\":\"commodity freezer employed in the previous publication\"},\"relationships\":[{\"predicate\":\"result\",\"target\":\"INA droplets showed freezing behaviour with good agreement with previous report\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"KStest.ipynb\",\"type\":\"method\",\"attributes\":{\"language\":\"Python\",\"source_code_reference\":\"Source Code S3\"},\"relationships\":[{\"predicate\":\"compares\",\"target\":\"cumulative distributions of the freezing temperature from two samples\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"calculates\",\"target\":\"p-value using Kolmogorov-Smirnov test\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"96 deep well plate thermal gradient\",\"type\":\"measurement\",\"attributes\":{\"constant_temperature_p_value\":\"4.4e-7\",\"constant_temperature_condition\":\"-28 °C generic freezer\",\"linear_cooling_p_value\":\"0.31\",\"linear_cooling_rate\":\"-0.25 °C/min\",\"mean_freezing_time_cell_1\":\"47.4 min\",\"mean_freezing_time_cell_2\":\"50.6 min\"},\"relationships\":[{\"predicate\":\"caused_by\",\"target\":\"low thermal conductivity of silicone oil and geometry of 96 deep well plate\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"effect_of_linear_cooling\",\"target\":\"significantly increased range of freezing time\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The Asymptote controlled-rate freezer accommodates 48 cryovials and provides superior temperature uniformity compared to generic freezers. Droplets containing ice-nucleating agents (INA) freeze at significantly higher temperatures than those without INA. The system demonstrates improved differentiation accuracy and reduced well-to-well variability in freezing temperatures.\",\"entities\":[{\"name\":\"Asymptote controlled-rate freezer\",\"type\":\"other\",\"attributes\":{\"capacity\":\"up to 48 1 mL cryovials\",\"holder_type\":\"instrument-specific metal holder\",\"cooling_characteristic\":\"high accuracy control of cooling temperature\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"provides_better_detection_than\",\"target\":\"commodity freezer system\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_less_well_to_well_difference_than\",\"target\":\"96 deep well system in generic freezer\",\"attributes\":{},\"target_id\":\"96_deep_well_system_in_generic_freezer\"}]},{\"name\":\"cryovial setup in Asymptote freezer\",\"type\":\"other\",\"attributes\":{\"bottom_layer\":\"50 µL HFE-7500 cushion\",\"floating_layer\":\"1 mL silicone oil with 1% surfactant\",\"sample_content\":\"20 aqueous droplets with 1 mg/mL Snomax (fluorescein) and 20 droplets of INA-free milli Q water (Coomassie Brilliant Blue)\",\"model_entity_type\":\"experimental_configuration\"},\"relationships\":[]},{\"name\":\"Snomax droplets (1 mg/mL)\",\"type\":\"other\",\"attributes\":{\"marker\":\"fluorescein\",\"freezing_temperature_in_asymptote\":\"-7.1 ± 0.59 °C\",\"freezing_temperature_in_commodity_freezer\":\"-7.5 ± 0.97 °C\",\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"ice-nucleating agents (INA)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"freezes_at_higher_temperature_than\",\"target\":\"INA-free milli Q water droplets\",\"attributes\":{},\"target_id\":\"ina_free_milli_q_water_droplets\"}]},{\"name\":\"INA-free milli Q water droplets\",\"type\":\"other\",\"attributes\":{\"marker\":\"Coomassie Brilliant Blue dye\",\"freezing_threshold_in_asymptote\":\"-12.3 °C\",\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"does_not_freeze_until\",\"target\":\"-12.3 °C\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"96 deep well system in generic freezer\",\"type\":\"other\",\"attributes\":{\"well_to_well_p_value\":\"0.31\",\"standard_deviation\":\"1.6\",\"model_entity_type\":\"experimental_configuration\"},\"relationships\":[{\"predicate\":\"shows_higher_dispersion_than\",\"target\":\"Asymptote freezer\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Asymptote freezer droplet distribution\",\"type\":\"other\",\"attributes\":{\"well_to_well_p_value\":\"0.83\",\"standard_deviation\":\"0.73\",\"dispersion_reduction\":\"36% lower than 96 deep well system\",\"model_entity_type\":\"measurement_result\"},\"relationships\":[]},{\"name\":\"KStest.ipynb\",\"type\":\"method\",\"attributes\":{\"function\":\"compares freezing temperature distributions using Kolmogorov-Smirnov test\",\"model_entity_type\":\"software_script\"},\"relationships\":[{\"predicate\":\"used_to_compare\",\"target\":\"freezing temperature distributions in Asymptote and 96 deep well systems\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Biomek 3000\",\"type\":\"other\",\"attributes\":{\"theoretical_capacity\":\"~3800 uniform 1 µL droplets in 96 well plate\",\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"automated droplets dispensing\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"limited_by\",\"target\":\"droplet stability issues during transfer due to static electricity\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

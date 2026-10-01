@@ -1,0 +1,1648 @@
+{
+  "document_id": "arxiv-1000038",
+  "fulltext_sha256": "1d94ea2f41736241eee87a5cf9912c731985b0db95c2bd110a04f9caee97a949",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "f313584f179244be6c6431847cfd5fe12b3172eccc162d3d932dc2ca703e314d",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study investigates the spectro-temporal properties of the neutron star low-mass X-ray binary GX 9+9 using AstroSat data. The source was observed in the soft state, exhibiting a disk-dominated spectrum and broad Lorentzian noise components. The authors estimate source characteristics such as inner-disk radius, flux, and temperature, noting the source's classification as an atoll source with specific modulation and distance parameters.",
+        "entities": [
+          {
+            "name": "GX 9+9",
+            "entity_id": "gx_9_9",
+            "entity_type": "other",
+            "aliases": [
+              "GX 9+9"
+            ],
+            "attributes": {
+              "classification": "neutron star low-mass X-ray binary (NS-LMXB)",
+              "source_type": "atoll source",
+              "modulation_period": "4.2 hours in X-ray and optical wavebands",
+              "distance_range": "5 kpc to 10 kpc",
+              "compact_object_mass_range": "0.2-0.45 solar masses",
+              "compact_object_radius_range": "0.3-0.6 solar radii",
+              "typical_xray_flux": "~220 mCrab in 2-20 keV band",
+              "observed_state": "soft state"
+            },
+            "relationships": [
+              {
+                "predicate": "identified_during",
+                "target": "Galactic center's sounding rocket mission",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "traces_pattern_in",
+                "target": "Hardness-Intensity Diagram (HID)",
+                "attributes": {},
+                "target_id": "hardness_intensity_diagram_hid"
+              },
+              {
+                "predicate": "exhibits_spectrum_in_range",
+                "target": "0.7-25.0 keV",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "modeled_with",
+                "target": "power law, blackbody and Comptonization model, disk component with Comptonized blackbody, double blackbody with broad iron line",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "AstroSat",
+            "entity_id": "astrosat",
+            "entity_type": "organization",
+            "aliases": [
+              "AstroSat"
+            ],
+            "attributes": {
+              "description": "India's first multi-wavelength observatory"
+            },
+            "relationships": [
+              {
+                "predicate": "hosts_instrument",
+                "target": "Large Area X-ray Proportional Counter (LAXPC)",
+                "attributes": {},
+                "target_id": "large_area_x_ray_proportional_counter_laxpc"
+              },
+              {
+                "predicate": "hosts_instrument",
+                "target": "Soft X-ray Telescope (SXT)",
+                "attributes": {},
+                "target_id": "soft_x_ray_telescope_sxt"
+              }
+            ]
+          },
+          {
+            "name": "Large Area X-ray Proportional Counter (LAXPC)",
+            "entity_id": "large_area_x_ray_proportional_counter_laxpc",
+            "entity_type": "measurement",
+            "aliases": [
+              "LAXPC",
+              "Large Area X-ray Proportional Counter (LAXPC)"
+            ],
+            "attributes": {
+              "energy_range": "3-80 keV",
+              "timing_resolution": "microseconds"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "spectro-temporal investigation of GX 9+9",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "showed_noise_components",
+                "target": "broad Lorentzian components",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Soft X-ray Telescope (SXT)",
+            "entity_id": "soft_x_ray_telescope_sxt",
+            "entity_type": "method",
+            "aliases": [
+              "SXT",
+              "Soft X-ray Telescope (SXT)"
+            ],
+            "attributes": {
+              "energy_range": "0.3-8.0 keV"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "spectro-temporal investigation of GX 9+9",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "atoll source",
+            "entity_id": "atoll_source",
+            "entity_type": "concept",
+            "aliases": [
+              "atoll source"
+            ],
+            "attributes": {
+              "states": "hard/island state (IS) and soft/banana state (BS)",
+              "spectral_changes_duration": "days to weeks"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "GX 9+9",
+                "attributes": {},
+                "target_id": "gx_9_9"
+              },
+              {
+                "predicate": "characterized_by",
+                "target": "C-pattern in hardness-intensity diagram",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "hard/island state (IS)",
+            "entity_id": "hard_island_state_is",
+            "entity_type": "concept",
+            "aliases": [
+              "hard/island state (IS)"
+            ],
+            "attributes": {
+              "luminosity": "lower luminosities",
+              "dominant_component": "Comptonization"
+            },
+            "relationships": []
+          },
+          {
+            "name": "soft/banana state (BS)",
+            "entity_id": "soft_banana_state_bs",
+            "entity_type": "concept",
+            "aliases": [
+              "soft/banana state (BS)"
+            ],
+            "attributes": {
+              "luminosity": "higher luminosities",
+              "dominant_component": "accretion disk's thermal emission",
+              "substates": "upper and lower banana states"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Sree Bhattacherjee",
+            "entity_id": "sree_bhattacherjee",
+            "entity_type": "person",
+            "aliases": [
+              "Sree Bhattacherjee"
+            ],
+            "attributes": {
+              "role": "corresponding author",
+              "affiliation": "Department of Applied Sciences, Tezpur University"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Arbind Pradhan",
+            "entity_id": "arbind_pradhan",
+            "entity_type": "person",
+            "aliases": [
+              "Arbind Pradhan"
+            ],
+            "attributes": {
+              "role": "co-author",
+              "affiliation": "Department of Applied Sciences, Tezpur University"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Biplob Sarkar",
+            "entity_id": "biplob_sarkar",
+            "entity_type": "person",
+            "aliases": [
+              "Biplob Sarkar"
+            ],
+            "attributes": {
+              "role": "co-author",
+              "affiliation": "Department of Applied Sciences, Tezpur University"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 481,
+          "word_count": 481,
+          "sha256": "8ab0f9094b1a41ce476a738979d840f5d77190842a1cdbe2f7f6193f2f866987",
+          "sentence_minhash": [
+            171176742994364815,
+            6188274951872988,
+            89450601222235340,
+            61919449716151556,
+            43671268334127607,
+            30500191475291153,
+            76197433036625096,
+            96292850158067112,
+            159241164405977169,
+            64310616786040597,
+            67831053780325945,
+            141641739251419598,
+            11610845633202285,
+            132529644835130180,
+            98254322503569589,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study utilizes AstroSat's LAXPC and SXT instruments to analyze the spectro-temporal properties of the X-ray binary GX 9+9, specifically using data from a July 2020 observation. The analysis prioritizes LAXPC data for timing due to its microsecond resolution and wide energy range, while SXT data is processed with specific background and response files to manage pileup. The work compares these results with previous RXTE and SAAO investigations to estimate source characteristics like inner-disk radius and flux.",
+        "entities": [
+          {
+            "name": "GX 9+9",
+            "entity_id": "gx_9_9",
+            "entity_type": "other",
+            "aliases": [
+              "GX 9+9"
+            ],
+            "attributes": {
+              "classification": "neutron star low-mass X-ray binary",
+              "observation_date": "July 25, 2020",
+              "observation_id": "A09_018T01_9000003774"
+            },
+            "relationships": [
+              {
+                "predicate": "studied_with",
+                "target": "AstroSat",
+                "attributes": {},
+                "target_id": "astrosat"
+              },
+              {
+                "predicate": "previously_studied_with",
+                "target": "Rossi Timing Explorer (RXTE)",
+                "attributes": {},
+                "target_id": "rossi_timing_explorer_rxte"
+              },
+              {
+                "predicate": "previously_studied_with",
+                "target": "South African Astronomical Observatory (SAAO)",
+                "attributes": {},
+                "target_id": "south_african_astronomical_observatory_saao"
+              }
+            ]
+          },
+          {
+            "name": "AstroSat",
+            "entity_id": "astrosat",
+            "entity_type": "organization",
+            "aliases": [
+              "AstroSat"
+            ],
+            "attributes": {
+              "description": "India's first multi-wavelength observatory"
+            },
+            "relationships": [
+              {
+                "predicate": "hosts_instrument",
+                "target": "Large Area X-ray Proportional Counter (LAXPC)",
+                "attributes": {},
+                "target_id": "large_area_x_ray_proportional_counter_laxpc"
+              },
+              {
+                "predicate": "hosts_instrument",
+                "target": "Soft X-ray Telescope (SXT)",
+                "attributes": {},
+                "target_id": "soft_x_ray_telescope_sxt"
+              }
+            ]
+          },
+          {
+            "name": "Large Area X-ray Proportional Counter (LAXPC)",
+            "entity_id": "large_area_x_ray_proportional_counter_laxpc",
+            "entity_type": "measurement",
+            "aliases": [
+              "LAXPC",
+              "Large Area X-ray Proportional Counter (LAXPC)"
+            ],
+            "attributes": {
+              "energy_range": "3-80 keV",
+              "timing_resolution": "microseconds",
+              "counter_status": "Counters 10 and 30 suffered abnormal gains from 2018 onwards; Counter 20 used for analysis"
+            },
+            "relationships": [
+              {
+                "predicate": "superior_to",
+                "target": "Rossi Timing Explorer (RXTE)",
+                "attributes": {},
+                "target_id": "rossi_timing_explorer_rxte"
+              },
+              {
+                "predicate": "used_for",
+                "target": "timing analysis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "spectral analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Soft X-ray Telescope (SXT)",
+            "entity_id": "soft_x_ray_telescope_sxt",
+            "entity_type": "method",
+            "aliases": [
+              "SXT",
+              "Soft X-ray Telescope (SXT)"
+            ],
+            "attributes": {
+              "energy_range": "0.3-8.0 keV",
+              "type": "imaging instrument",
+              "pileup_threshold": "40 counts/sec"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "spectral analysis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "processed_with",
+                "target": "AS1SXTLevel2-1.4b SXTpipeline",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Rossi Timing Explorer (RXTE)",
+            "entity_id": "rossi_timing_explorer_rxte",
+            "entity_type": "organization",
+            "aliases": [
+              "Rossi Timing Explorer (RXTE)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "previously_used_for",
+                "target": "simultaneous X-ray and optical band timing investigation of GX 9+9",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "South African Astronomical Observatory (SAAO)",
+            "entity_id": "south_african_astronomical_observatory_saao",
+            "entity_type": "organization",
+            "aliases": [
+              "South African Astronomical Observatory (SAAO)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "previously_used_for",
+                "target": "simultaneous X-ray and optical band timing investigation of GX 9+9",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "LAXPC software",
+            "entity_id": "laxpc_software",
+            "entity_type": "method",
+            "aliases": [
+              "LAXPC software"
+            ],
+            "attributes": {
+              "version": "Oct. 13, 2022"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_extract",
+                "target": "scientific level-2 data",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "produces",
+                "target": "light curves, spectrums, background spectrums, and response files",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SXT pipeline",
+            "entity_id": "sxt_pipeline",
+            "entity_type": "method",
+            "aliases": [
+              "SXT pipeline"
+            ],
+            "attributes": {
+              "version": "AS1SXTLevel2-1.4b"
+            },
+            "relationships": [
+              {
+                "predicate": "processes",
+                "target": "level-1 SXT data",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "generates",
+                "target": "cleaned level-2 event files",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "XSELECT",
+            "entity_id": "xselect",
+            "entity_type": "method",
+            "aliases": [
+              "XSELECT"
+            ],
+            "attributes": {
+              "version": "V2.5b"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_extract",
+                "target": "light curves and spectrum",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "sxtARFModule",
+            "entity_id": "sxtarfmodule",
+            "entity_type": "method",
+            "aliases": [
+              "sxtARFModule"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "creates",
+                "target": "ancillary response files",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SXT background and response files",
+            "entity_id": "sxt_background_and_response_files",
+            "entity_type": "measurement",
+            "aliases": [
+              "SXT background and response files"
+            ],
+            "attributes": {
+              "background_file": "SkyBkg_comb_EL3p5_Cl_Rd16p0_v01.pha",
+              "response_file": "sxt_pc_mat_g0to12.rmf",
+              "source": "SXT payload operational center (POC)"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "SXT analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SXT annular zone",
+            "entity_id": "sxt_annular_zone",
+            "entity_type": "measurement",
+            "aliases": [
+              "SXT annular zone"
+            ],
+            "attributes": {
+              "outer_radius": "13 arcmin",
+              "inner_radius": "2 arcmin",
+              "purpose": "limit counts/sec below pileup limit"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SXT gain fit",
+            "entity_id": "sxt_gain_fit",
+            "entity_type": "method",
+            "aliases": [
+              "SXT gain fit"
+            ],
+            "attributes": {
+              "slope": 1,
+              "offset_range": "0.02-0.09"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "SXT data",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 481,
+          "end_word": 975,
+          "word_count": 494,
+          "sha256": "13d87f5449954834d0280d8c612401629ebf870bf343cca5c671f966a7259687",
+          "sentence_minhash": [
+            357503878952995394,
+            1306423125707224,
+            140583634530242717,
+            61919449716151556,
+            43671268334127607,
+            62667647458868521,
+            54849466411915970,
+            96292850158067112,
+            166844233492045914,
+            9462436175016187,
+            30078602055368083,
+            177343633896795225,
+            11610845633202285,
+            28533777509585461,
+            98254322503569589,
+            32456254970081927
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study performs flux-resolved spectral analysis of GX 9+9 using combined SXT and LAXPC data from AstroSat. The source was identified in the banana state, and spectra were divided into three flux levels for fitting. A best-fit model incorporating thermal Comptonization and disk blackbody emission was established to characterize the source's spectral properties.",
+        "entities": [
+          {
+            "name": "GX 9+9",
+            "entity_id": "gx_9_9",
+            "entity_type": "other",
+            "aliases": [
+              "GX 9+9"
+            ],
+            "attributes": {
+              "classification": "neutron star low-mass X-ray binary",
+              "state_during_observation": "banana state (BS)",
+              "spectral_characteristic": "disk dominating energy spectrum"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_with",
+                "target": "AstroSat",
+                "attributes": {},
+                "target_id": "astrosat"
+              },
+              {
+                "predicate": "analyzed_in_energy_range",
+                "target": "0.7–25 keV",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "AstroSat",
+            "entity_id": "astrosat",
+            "entity_type": "organization",
+            "aliases": [
+              "AstroSat"
+            ],
+            "attributes": {
+              "description": "India's first multi-wavelength observatory"
+            },
+            "relationships": [
+              {
+                "predicate": "hosts_instruments",
+                "target": "LAXPC and SXT",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Large Area X-ray Proportional Counter (LAXPC)",
+            "entity_id": "large_area_x_ray_proportional_counter_laxpc",
+            "entity_type": "measurement",
+            "aliases": [
+              "LAXPC",
+              "Large Area X-ray Proportional Counter (LAXPC)"
+            ],
+            "attributes": {
+              "full_name": "Large Area X-ray Proportional Counter",
+              "energy_range": "3-80 keV",
+              "specific_counter_used": "LAXPC 20"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "spectral and timing analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Soft X-ray Telescope (SXT)",
+            "entity_id": "soft_x_ray_telescope_sxt",
+            "entity_type": "method",
+            "aliases": [
+              "SXT",
+              "Soft X-ray Telescope (SXT)"
+            ],
+            "attributes": {
+              "full_name": "Soft X-ray Telescope",
+              "energy_range": "0.3-8.0 keV"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "spectral analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Flux Level 1 (FL1)",
+            "entity_id": "flux_level_1_fl1",
+            "entity_type": "measurement",
+            "aliases": [
+              "Flux Level 1 (FL1)"
+            ],
+            "attributes": {
+              "count_rate_range": "450 to 570 counts/s"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "flux-resolved spectral analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Flux Level 2 (FL2)",
+            "entity_id": "flux_level_2_fl2",
+            "entity_type": "measurement",
+            "aliases": [
+              "Flux Level 2 (FL2)"
+            ],
+            "attributes": {
+              "count_rate_range": "570 to 650 counts/s"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "flux-resolved spectral analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Flux Level 3 (FL3)",
+            "entity_id": "flux_level_3_fl3",
+            "entity_type": "measurement",
+            "aliases": [
+              "Flux Level 3 (FL3)"
+            ],
+            "attributes": {
+              "count_rate_range": "650 to 770 counts/s"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "flux-resolved spectral analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Best-fit spectral model",
+            "entity_id": "best_fit_spectral_model",
+            "entity_type": "method",
+            "aliases": [
+              "Best-fit spectral model"
+            ],
+            "attributes": {
+              "formula": "const*tbabs*(thcomp*diskbb)",
+              "software": "XSPEC (version: 12.13.0c) within HEASOFT (6.31.1)",
+              "confidence_level": "90%"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_seed_photon_source",
+                "target": "accretion disk (diskbb)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_comptonization_model",
+                "target": "ThComp",
+                "attributes": {},
+                "target_id": "thcomp"
+              },
+              {
+                "predicate": "fixes_optical_depth_at",
+                "target": "9",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_edge_model_at",
+                "target": "2.4 keV",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ThComp",
+            "entity_id": "thcomp",
+            "entity_type": "method",
+            "aliases": [
+              "ThComp"
+            ],
+            "attributes": {
+              "description": "Thermal Comptonization model, an improved version of nThComp",
+              "parameter_definition": "Covering fraction indicates the amount of seed photons that will be Comptonized"
+            },
+            "relationships": [
+              {
+                "predicate": "extended_energy_range",
+                "target": "0.01 to 500 keV with 1000 log bins",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Hardness-Intensity Diagram (HID)",
+            "entity_id": "hardness_intensity_diagram_hid",
+            "entity_type": "concept",
+            "aliases": [
+              "Hardness-Intensity Diagram (HID)"
+            ],
+            "attributes": {
+              "x_axis": "overall count rate in 3−20 keV band",
+              "y_axis": "X-ray photon count ratio in 6–20 keV vs 3–6 keV"
+            },
+            "relationships": [
+              {
+                "predicate": "indicates_state",
+                "target": "banana state (BS)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 975,
+          "end_word": 1456,
+          "word_count": 481,
+          "sha256": "f05278b5df75374a7c274c2f6d2b66c594cc8fcbb947d2e0d98444162a1797b9",
+          "sentence_minhash": [
+            69893552701969153,
+            24905490170095690,
+            140583634530242717,
+            61919449716151556,
+            47924981268581445,
+            39127440086368283,
+            149017575652778032,
+            96292850158067112,
+            159241164405977169,
+            9462436175016187,
+            33732523426331811,
+            198103974943790947,
+            36614597716428605,
+            132529644835130180,
+            303264414993015767,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study estimates the inner-disk radius and unabsorbed flux of the X-ray binary GX 9+9 using AstroSat spectral data. Timing analysis reveals broad-band noise variability centered at approximately 0.1 Hz, with energy-dependent trends in rms and phase lag.",
+        "entities": [
+          {
+            "name": "GX 9+9",
+            "entity_id": "gx_9_9",
+            "entity_type": "other",
+            "aliases": [
+              "GX 9+9"
+            ],
+            "attributes": {
+              "classification": "neutron star low-mass X-ray binary",
+              "state_during_observation": "soft state"
+            },
+            "relationships": [
+              {
+                "predicate": "has_estimated_inner_disk_radius",
+                "target": "16.57±1.29 km",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "has_disk_inclination_angle",
+                "target": "60 degrees",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "has_assumed_distance",
+                "target": "10 kpc",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "inner-disk radius estimation method",
+            "entity_id": "inner_disk_radius_estimation_method",
+            "entity_type": "method",
+            "aliases": [
+              "inner-disk radius estimation method"
+            ],
+            "attributes": {
+              "formula": "Rin = k^2 (Ndbb / cos(theta))^(1/2) * D10",
+              "color_correction_factor_k": "1.7"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_parameter",
+                "target": "disk-normalization (Ndbb)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_parameter",
+                "target": "disk-inclination angle (theta)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_parameter",
+                "target": "source distance (D)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "total unabsorbed flux",
+            "entity_id": "total_unabsorbed_flux",
+            "entity_type": "measurement",
+            "aliases": [
+              "total unabsorbed flux",
+              "total unabsorbed flux measurement"
+            ],
+            "attributes": {
+              "energy_range": "0.01-100 keV",
+              "instrument_model": "XSPEC cflux"
+            },
+            "relationships": [
+              {
+                "predicate": "value_in_FL1",
+                "target": "5.94×10^-9 ergs s^-1 cm^-2",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "value_in_FL2",
+                "target": "6.51×10^-9 ergs s^-1 cm^-2",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "value_in_FL3",
+                "target": "7.30×10^-9 ergs s^-1 cm^-2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "broad-band noise (BBN) variability",
+            "entity_id": "broad_band_noise_bbn_variability",
+            "entity_type": "concept",
+            "aliases": [
+              "broad-band noise (BBN) variability",
+              "broad-band noise variability"
+            ],
+            "attributes": {
+              "centroid_frequency_nu0": "~0.04 Hz",
+              "characteristic_frequency_nuc": "~0.1 Hz",
+              "half_width_at_half_maximum_HWHM": "~0.09 Hz"
+            },
+            "relationships": [
+              {
+                "predicate": "detected_in",
+                "target": "power density spectrum (PDS)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "fitted_with",
+                "target": "two Lorentzians",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_rms_trend",
+                "target": "increasing with energy",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_phase_lag_trend",
+                "target": "decreasing with energy",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Large Area X-ray Proportional Counter (LAXPC)",
+            "entity_id": "large_area_x_ray_proportional_counter_laxpc",
+            "entity_type": "measurement",
+            "aliases": [
+              "LAXPC",
+              "Large Area X-ray Proportional Counter (LAXPC)"
+            ],
+            "attributes": {
+              "full_name": "Large Area X-ray Proportional Counter",
+              "energy_range": "3-80 keV"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_timing_analysis",
+                "target": "GX 9+9",
+                "attributes": {},
+                "target_id": "gx_9_9"
+              },
+              {
+                "predicate": "uses_subroutine",
+                "target": "laxpc_find_freqlag",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1456,
+          "end_word": 1934,
+          "word_count": 478,
+          "sha256": "64ae7cd14469011175b7a1040d8ccb5fa49ce43ee42a47cf0079bc6cd7a4f6fc",
+          "sentence_minhash": [
+            270639400509159762,
+            24905490170095690,
+            23103724853578534,
+            96623370395310752,
+            38201871231368399,
+            39127440086368283,
+            89633613770379075,
+            41678443202000680,
+            96635883400075078,
+            54311698401709539,
+            67831053780325945,
+            49775578613387123,
+            11610845633202285,
+            82994074713067288,
+            169401128176801393,
+            368930568483898578
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study applies a propagative model based on a truncated disk and hot corona to analyze the energy-dependent temporal properties of GX 9+9. The best-fit model identifies variations in inner-disk temperature and fractional scattering as the origin of the observed broad-band noise. The analysis yields specific spectral and temporal parameters, including a reduced chi-squared value of approximately 0.80 for the temporal model.",
+        "entities": [
+          {
+            "name": "Garg et al. [29] formalism",
+            "entity_id": "garg_et_al_29_formalism",
+            "entity_type": "method",
+            "aliases": [
+              "Garg et al. [29] formalism",
+              "Garg et al. formalism"
+            ],
+            "attributes": {
+              "basis": "propagative model",
+              "assumptions": [
+                "truncated disk",
+                "hot electron plasma (corona) between inner radius and ISCO"
+              ],
+              "mechanism": "coronal region acts as Comptonizing medium; soft seed photons originate from truncated disk"
+            },
+            "relationships": [
+              {
+                "predicate": "relates",
+                "target": "spectral parameters with physical parameters",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "explains",
+                "target": "stochastic variability (QPOs and BBN)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "successfully_incorporated_in",
+                "target": "GRS 1915+105",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "successfully_incorporated_in",
+                "target": "MAXI 1535-571",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "successfully_incorporated_in",
+                "target": "H 1743-322",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "successfully_incorporated_in",
+                "target": "4U 1608-52",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Best-fit temporal model for GX 9+9",
+            "entity_id": "best_fit_temporal_model_for_gx_9_9",
+            "entity_type": "method",
+            "aliases": [
+              "Best-fit temporal model for GX 9+9"
+            ],
+            "attributes": {
+              "reduced_chi_squared": "~0.80",
+              "varying_parameters": [
+                "kTin (inner-disk temperature)",
+                "fs (fraction of seed photons Comptonized)"
+              ],
+              "rejected_variations": "combination of heating rate and optical depth (chi-squared > 2)"
+            },
+            "relationships": [
+              {
+                "predicate": "indicates_origin_of_variability",
+                "target": "variation in inner-disk temperature moving towards coronal region",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "characterized_by",
+                "target": "positive phase lag",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "GX 9+9 spectral and temporal parameters",
+            "entity_id": "gx_9_9_spectral_and_temporal_parameters",
+            "entity_type": "measurement",
+            "aliases": [
+              "GX 9+9 spectral and temporal parameters"
+            ],
+            "attributes": {
+              "spectral_NH_FL1": "0.16 ± 0.01 (10^22 cm^-2)",
+              "spectral_NH_FL2": "0.16 ± 0.02 (10^22 cm^-2)",
+              "spectral_NH_FL3": "0.16 ± 0.02 (10^22 cm^-2)",
+              "spectral_NH_full_flux": "0.15 ± 0.01 (10^22 cm^-2)",
+              "spectral_kTe_FL1": "4.14 ± 0.20 keV",
+              "spectral_kTe_FL2": "4.12 ± 0.26 keV",
+              "spectral_kTe_FL3": "3.69 ± 0.22 keV",
+              "spectral_kTe_full_flux": "4.17 ± 0.20 keV",
+              "spectral_fs_FL1": "0.14 ± 0.02",
+              "spectral_fs_FL2": "0.17 ± 0.04",
+              "spectral_fs_FL3": "0.34 ± 0.10",
+              "spectral_fs_full_flux": "0.15 ± 0.03",
+              "spectral_Tin_FL1": "1.87 ± 0.03 keV",
+              "spectral_Tin_FL2": "2.02 ± 0.06 keV",
+              "spectral_Tin_FL3": "2.04 ± 0.12 keV",
+              "spectral_Tin_full_flux": "1.95 ± 0.04 keV",
+              "spectral_Ndbb_FL1": "19.67 ± 1.35",
+              "spectral_Ndbb_FL2": "16.07 ± 1.68",
+              "spectral_Ndbb_FL3": "15.57 ± 2.03",
+              "spectral_Ndbb_full_flux": "16.96 ± 1.15",
+              "spectral_Rin_FL1": "18.18 ± 0.62 km",
+              "spectral_Rin_FL2": "15.96 ± 1.02 km",
+              "spectral_Rin_FL3": "15.50 ± 1.92 km",
+              "spectral_Rin_full_flux": "16.83 ± 0.54 km",
+              "temporal_delta_kTin": "0.56 ± 0.10 %",
+              "temporal_delta_fs": "81 ± 32 %",
+              "temporal_phase_lag": "0.11 ± 0.08",
+              "temporal_chi_squared_dof": "6.39/8"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "Garg et al. [29] formalism",
+                "attributes": {},
+                "target_id": "garg_et_al_29_formalism"
+              }
+            ]
+          },
+          {
+            "name": "Phase lag to time lag relation",
+            "entity_id": "phase_lag_to_time_lag_relation",
+            "entity_type": "concept",
+            "aliases": [
+              "Phase lag to time lag relation"
+            ],
+            "attributes": {
+              "formula": "time lag = phase lag / (2 * pi * f)",
+              "f_definition": "peak/central frequency in milliseconds"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1934,
+          "end_word": 2434,
+          "word_count": 500,
+          "sha256": "246426112e6c96cba834d017510f8305d6acb69eaaa8e3f5270ab31a813ebf88",
+          "sentence_minhash": [
+            78394354238995921,
+            195891812068562125,
+            23103724853578534,
+            208823991573236229,
+            206465312184221804,
+            39127440086368283,
+            12889371146897231,
+            41678443202000680,
+            113198931733945138,
+            107048872566759164,
+            67831053780325945,
+            141641739251419598,
+            11610845633202285,
+            62445563022006556,
+            169401128176801393,
+            32456254970081927
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study concludes that the X-ray binary GX 9+9 exhibits broad-band noise variability centered at 0.1 Hz, driven by changes in inner-disk temperature and fractional scattering. Spectral analysis indicates the source is transitioning to a softer state, with an estimated inner-disk radius of 16.54 km and a maximum unabsorbed flux of 7.30 × 10⁻⁹ ergs s⁻¹ cm⁻².",
+        "entities": [
+          {
+            "name": "GX 9+9",
+            "entity_id": "gx_9_9",
+            "entity_type": "other",
+            "aliases": [
+              "GX 9+9"
+            ],
+            "attributes": {
+              "classification": "neutron star low-mass X-ray binary",
+              "study_status": "not well-studied",
+              "data_quality": "poor"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_with",
+                "target": "AstroSat",
+                "attributes": {},
+                "target_id": "astrosat"
+              },
+              {
+                "predicate": "exhibits_variability",
+                "target": "broad-band noise",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "transitioning_to",
+                "target": "softer state",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "AstroSat",
+            "entity_id": "astrosat",
+            "entity_type": "organization",
+            "aliases": [
+              "AstroSat"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "used_for_observation",
+                "target": "GX 9+9",
+                "attributes": {},
+                "target_id": "gx_9_9"
+              }
+            ]
+          },
+          {
+            "name": "broad-band noise (BBN) variability",
+            "entity_id": "broad_band_noise_bbn_variability",
+            "entity_type": "concept",
+            "aliases": [
+              "broad-band noise (BBN) variability",
+              "broad-band noise variability"
+            ],
+            "attributes": {
+              "center_frequency": "~0.1 Hz"
+            },
+            "relationships": [
+              {
+                "predicate": "detected_in",
+                "target": "GX 9+9",
+                "attributes": {},
+                "target_id": "gx_9_9"
+              },
+              {
+                "predicate": "caused_by",
+                "target": "fractional scattering",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "caused_by",
+                "target": "change in inner-disk temperature",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "inner-disk radius (Rin)",
+            "entity_id": "inner_disk_radius_rin",
+            "entity_type": "measurement",
+            "aliases": [
+              "inner-disk radius (Rin)"
+            ],
+            "attributes": {
+              "average_estimated_value": "16.54±1.78 km"
+            },
+            "relationships": [
+              {
+                "predicate": "measured_for",
+                "target": "GX 9+9",
+                "attributes": {},
+                "target_id": "gx_9_9"
+              },
+              {
+                "predicate": "consistent_with",
+                "target": "27±4 km",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "total unabsorbed flux",
+            "entity_id": "total_unabsorbed_flux",
+            "entity_type": "measurement",
+            "aliases": [
+              "total unabsorbed flux",
+              "total unabsorbed flux measurement"
+            ],
+            "attributes": {
+              "energy_band": "0.01-100 keV",
+              "maximum_value": "7.30 × 10⁻⁹ ergs s⁻¹ cm⁻²"
+            },
+            "relationships": [
+              {
+                "predicate": "measured_for",
+                "target": "GX 9+9",
+                "attributes": {},
+                "target_id": "gx_9_9"
+              },
+              {
+                "predicate": "increases_from",
+                "target": "FL1 to FL3",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "comparable_to",
+                "target": "7.8 × 10⁻⁹ ergs s⁻¹ cm⁻²",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Garg et al. [29] formalism",
+            "entity_id": "garg_et_al_29_formalism",
+            "entity_type": "method",
+            "aliases": [
+              "Garg et al. [29] formalism",
+              "Garg et al. formalism"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "used_to_model",
+                "target": "broad-band noise (BBN) variability",
+                "attributes": {},
+                "target_id": "broad_band_noise_bbn_variability"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2434,
+          "end_word": 2751,
+          "word_count": 317,
+          "sha256": "a6f797685c5b0bf9cb37cad2264beff7a3dbde91d0ee98b8dd134b4dbc84111b",
+          "sentence_minhash": [
+            281462379775636926,
+            18551641988871988,
+            17545158402493677,
+            127052980271901118,
+            43671268334127607,
+            39127440086368283,
+            12889371146897231,
+            112251467330100539,
+            96919201420187385,
+            76931577636070685,
+            67831053780325945,
+            349049285607931085,
+            51125582506972287,
+            230446152249264501,
+            169401128176801393,
+            198511648123840329
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "large_area_x_ray_proportional_counter_laxpc",
+        "canonical_name": "Large Area X-ray Proportional Counter (LAXPC)",
+        "aliases": [
+          "Large Area X-ray Proportional Counter (LAXPC)",
+          "LAXPC"
+        ]
+      },
+      {
+        "canonical_id": "soft_x_ray_telescope_sxt",
+        "canonical_name": "Soft X-ray Telescope (SXT)",
+        "aliases": [
+          "Soft X-ray Telescope (SXT)",
+          "SXT"
+        ]
+      },
+      {
+        "canonical_id": "garg_et_al_29_formalism",
+        "canonical_name": "Garg et al. [29] formalism",
+        "aliases": [
+          "Garg et al. [29] formalism",
+          "Garg et al. formalism"
+        ]
+      },
+      {
+        "canonical_id": "broad_band_noise_bbn_variability",
+        "canonical_name": "broad-band noise (BBN) variability",
+        "aliases": [
+          "broad-band noise (BBN) variability",
+          "broad-band noise variability"
+        ]
+      },
+      {
+        "canonical_id": "total_unabsorbed_flux",
+        "canonical_name": "total unabsorbed flux",
+        "aliases": [
+          "total unabsorbed flux",
+          "total unabsorbed flux measurement"
+        ]
+      },
+      {
+        "canonical_id": "gx_9_9",
+        "canonical_name": "GX 9+9",
+        "aliases": [
+          "GX 9+9"
+        ]
+      },
+      {
+        "canonical_id": "astrosat",
+        "canonical_name": "AstroSat",
+        "aliases": [
+          "AstroSat"
+        ]
+      },
+      {
+        "canonical_id": "atoll_source",
+        "canonical_name": "atoll source",
+        "aliases": [
+          "atoll source"
+        ]
+      },
+      {
+        "canonical_id": "hard_island_state_is",
+        "canonical_name": "hard/island state (IS)",
+        "aliases": [
+          "hard/island state (IS)"
+        ]
+      },
+      {
+        "canonical_id": "soft_banana_state_bs",
+        "canonical_name": "soft/banana state (BS)",
+        "aliases": [
+          "soft/banana state (BS)"
+        ]
+      },
+      {
+        "canonical_id": "sree_bhattacherjee",
+        "canonical_name": "Sree Bhattacherjee",
+        "aliases": [
+          "Sree Bhattacherjee"
+        ]
+      },
+      {
+        "canonical_id": "arbind_pradhan",
+        "canonical_name": "Arbind Pradhan",
+        "aliases": [
+          "Arbind Pradhan"
+        ]
+      },
+      {
+        "canonical_id": "biplob_sarkar",
+        "canonical_name": "Biplob Sarkar",
+        "aliases": [
+          "Biplob Sarkar"
+        ]
+      },
+      {
+        "canonical_id": "rossi_timing_explorer_rxte",
+        "canonical_name": "Rossi Timing Explorer (RXTE)",
+        "aliases": [
+          "Rossi Timing Explorer (RXTE)"
+        ]
+      },
+      {
+        "canonical_id": "south_african_astronomical_observatory_saao",
+        "canonical_name": "South African Astronomical Observatory (SAAO)",
+        "aliases": [
+          "South African Astronomical Observatory (SAAO)"
+        ]
+      },
+      {
+        "canonical_id": "laxpc_software",
+        "canonical_name": "LAXPC software",
+        "aliases": [
+          "LAXPC software"
+        ]
+      },
+      {
+        "canonical_id": "sxt_pipeline",
+        "canonical_name": "SXT pipeline",
+        "aliases": [
+          "SXT pipeline"
+        ]
+      },
+      {
+        "canonical_id": "xselect",
+        "canonical_name": "XSELECT",
+        "aliases": [
+          "XSELECT"
+        ]
+      },
+      {
+        "canonical_id": "sxtarfmodule",
+        "canonical_name": "sxtARFModule",
+        "aliases": [
+          "sxtARFModule"
+        ]
+      },
+      {
+        "canonical_id": "sxt_background_and_response_files",
+        "canonical_name": "SXT background and response files",
+        "aliases": [
+          "SXT background and response files"
+        ]
+      },
+      {
+        "canonical_id": "sxt_annular_zone",
+        "canonical_name": "SXT annular zone",
+        "aliases": [
+          "SXT annular zone"
+        ]
+      },
+      {
+        "canonical_id": "sxt_gain_fit",
+        "canonical_name": "SXT gain fit",
+        "aliases": [
+          "SXT gain fit"
+        ]
+      },
+      {
+        "canonical_id": "flux_level_1_fl1",
+        "canonical_name": "Flux Level 1 (FL1)",
+        "aliases": [
+          "Flux Level 1 (FL1)"
+        ]
+      },
+      {
+        "canonical_id": "flux_level_2_fl2",
+        "canonical_name": "Flux Level 2 (FL2)",
+        "aliases": [
+          "Flux Level 2 (FL2)"
+        ]
+      },
+      {
+        "canonical_id": "flux_level_3_fl3",
+        "canonical_name": "Flux Level 3 (FL3)",
+        "aliases": [
+          "Flux Level 3 (FL3)"
+        ]
+      },
+      {
+        "canonical_id": "best_fit_spectral_model",
+        "canonical_name": "Best-fit spectral model",
+        "aliases": [
+          "Best-fit spectral model"
+        ]
+      },
+      {
+        "canonical_id": "thcomp",
+        "canonical_name": "ThComp",
+        "aliases": [
+          "ThComp"
+        ]
+      },
+      {
+        "canonical_id": "hardness_intensity_diagram_hid",
+        "canonical_name": "Hardness-Intensity Diagram (HID)",
+        "aliases": [
+          "Hardness-Intensity Diagram (HID)"
+        ]
+      },
+      {
+        "canonical_id": "inner_disk_radius_estimation_method",
+        "canonical_name": "inner-disk radius estimation method",
+        "aliases": [
+          "inner-disk radius estimation method"
+        ]
+      },
+      {
+        "canonical_id": "best_fit_temporal_model_for_gx_9_9",
+        "canonical_name": "Best-fit temporal model for GX 9+9",
+        "aliases": [
+          "Best-fit temporal model for GX 9+9"
+        ]
+      },
+      {
+        "canonical_id": "gx_9_9_spectral_and_temporal_parameters",
+        "canonical_name": "GX 9+9 spectral and temporal parameters",
+        "aliases": [
+          "GX 9+9 spectral and temporal parameters"
+        ]
+      },
+      {
+        "canonical_id": "phase_lag_to_time_lag_relation",
+        "canonical_name": "Phase lag to time lag relation",
+        "aliases": [
+          "Phase lag to time lag relation"
+        ]
+      },
+      {
+        "canonical_id": "inner_disk_radius_rin",
+        "canonical_name": "inner-disk radius (Rin)",
+        "aliases": [
+          "inner-disk radius (Rin)"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study investigates the spectro-temporal properties of the neutron star low-mass X-ray binary GX 9+9 using AstroSat data. The source was observed in the soft state, exhibiting a disk-dominated spectrum and broad Lorentzian noise components. The authors estimate source characteristics such as inner-disk radius, flux, and temperature, noting the source's classification as an atoll source with specific modulation and distance parameters.\",\"entities\":[{\"name\":\"GX 9+9\",\"type\":\"other\",\"attributes\":{\"classification\":\"neutron star low-mass X-ray binary (NS-LMXB)\",\"source_type\":\"atoll source\",\"modulation_period\":\"4.2 hours in X-ray and optical wavebands\",\"distance_range\":\"5 kpc to 10 kpc\",\"compact_object_mass_range\":\"0.2-0.45 solar masses\",\"compact_object_radius_range\":\"0.3-0.6 solar radii\",\"typical_xray_flux\":\"~220 mCrab in 2-20 keV band\",\"observed_state\":\"soft state\"},\"relationships\":[{\"predicate\":\"identified_during\",\"target\":\"Galactic center's sounding rocket mission\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"traces_pattern_in\",\"target\":\"Hardness-Intensity Diagram (HID)\",\"attributes\":{},\"target_id\":\"hardness_intensity_diagram_hid\"},{\"predicate\":\"exhibits_spectrum_in_range\",\"target\":\"0.7-25.0 keV\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"modeled_with\",\"target\":\"power law, blackbody and Comptonization model, disk component with Comptonized blackbody, double blackbody with broad iron line\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"AstroSat\",\"type\":\"organization\",\"attributes\":{\"description\":\"India's first multi-wavelength observatory\"},\"relationships\":[{\"predicate\":\"hosts_instrument\",\"target\":\"Large Area X-ray Proportional Counter (LAXPC)\",\"attributes\":{},\"target_id\":\"large_area_x_ray_proportional_counter_laxpc\"},{\"predicate\":\"hosts_instrument\",\"target\":\"Soft X-ray Telescope (SXT)\",\"attributes\":{},\"target_id\":\"soft_x_ray_telescope_sxt\"}]},{\"name\":\"Large Area X-ray Proportional Counter (LAXPC)\",\"type\":\"measurement\",\"attributes\":{\"energy_range\":\"3-80 keV\",\"timing_resolution\":\"microseconds\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"spectro-temporal investigation of GX 9+9\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"showed_noise_components\",\"target\":\"broad Lorentzian components\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Soft X-ray Telescope (SXT)\",\"type\":\"method\",\"attributes\":{\"energy_range\":\"0.3-8.0 keV\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"spectro-temporal investigation of GX 9+9\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"atoll source\",\"type\":\"concept\",\"attributes\":{\"states\":\"hard/island state (IS) and soft/banana state (BS)\",\"spectral_changes_duration\":\"days to weeks\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"GX 9+9\",\"attributes\":{},\"target_id\":\"gx_9_9\"},{\"predicate\":\"characterized_by\",\"target\":\"C-pattern in hardness-intensity diagram\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"hard/island state (IS)\",\"type\":\"concept\",\"attributes\":{\"luminosity\":\"lower luminosities\",\"dominant_component\":\"Comptonization\"},\"relationships\":[]},{\"name\":\"soft/banana state (BS)\",\"type\":\"concept\",\"attributes\":{\"luminosity\":\"higher luminosities\",\"dominant_component\":\"accretion disk's thermal emission\",\"substates\":\"upper and lower banana states\"},\"relationships\":[]},{\"name\":\"Sree Bhattacherjee\",\"type\":\"person\",\"attributes\":{\"role\":\"corresponding author\",\"affiliation\":\"Department of Applied Sciences, Tezpur University\"},\"relationships\":[]},{\"name\":\"Arbind Pradhan\",\"type\":\"person\",\"attributes\":{\"role\":\"co-author\",\"affiliation\":\"Department of Applied Sciences, Tezpur University\"},\"relationships\":[]},{\"name\":\"Biplob Sarkar\",\"type\":\"person\",\"attributes\":{\"role\":\"co-author\",\"affiliation\":\"Department of Applied Sciences, Tezpur University\"},\"relationships\":[]}]},{\"context_summary\":\"The study utilizes AstroSat's LAXPC and SXT instruments to analyze the spectro-temporal properties of the X-ray binary GX 9+9, specifically using data from a July 2020 observation. The analysis prioritizes LAXPC data for timing due to its microsecond resolution and wide energy range, while SXT data is processed with specific background and response files to manage pileup. The work compares these results with previous RXTE and SAAO investigations to estimate source characteristics like inner-disk radius and flux.\",\"entities\":[{\"name\":\"GX 9+9\",\"type\":\"other\",\"attributes\":{\"classification\":\"neutron star low-mass X-ray binary\",\"observation_date\":\"July 25, 2020\",\"observation_id\":\"A09_018T01_9000003774\"},\"relationships\":[{\"predicate\":\"studied_with\",\"target\":\"AstroSat\",\"attributes\":{},\"target_id\":\"astrosat\"},{\"predicate\":\"previously_studied_with\",\"target\":\"Rossi Timing Explorer (RXTE)\",\"attributes\":{},\"target_id\":\"rossi_timing_explorer_rxte\"},{\"predicate\":\"previously_studied_with\",\"target\":\"South African Astronomical Observatory (SAAO)\",\"attributes\":{},\"target_id\":\"south_african_astronomical_observatory_saao\"}]},{\"name\":\"AstroSat\",\"type\":\"organization\",\"attributes\":{\"description\":\"India's first multi-wavelength observatory\"},\"relationships\":[{\"predicate\":\"hosts_instrument\",\"target\":\"Large Area X-ray Proportional Counter (LAXPC)\",\"attributes\":{},\"target_id\":\"large_area_x_ray_proportional_counter_laxpc\"},{\"predicate\":\"hosts_instrument\",\"target\":\"Soft X-ray Telescope (SXT)\",\"attributes\":{},\"target_id\":\"soft_x_ray_telescope_sxt\"}]},{\"name\":\"Large Area X-ray Proportional Counter (LAXPC)\",\"type\":\"measurement\",\"attributes\":{\"energy_range\":\"3-80 keV\",\"timing_resolution\":\"microseconds\",\"counter_status\":\"Counters 10 and 30 suffered abnormal gains from 2018 onwards; Counter 20 used for analysis\"},\"relationships\":[{\"predicate\":\"superior_to\",\"target\":\"Rossi Timing Explorer (RXTE)\",\"attributes\":{},\"target_id\":\"rossi_timing_explorer_rxte\"},{\"predicate\":\"used_for\",\"target\":\"timing analysis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"spectral analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Soft X-ray Telescope (SXT)\",\"type\":\"method\",\"attributes\":{\"energy_range\":\"0.3-8.0 keV\",\"type\":\"imaging instrument\",\"pileup_threshold\":\"40 counts/sec\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"spectral analysis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"processed_with\",\"target\":\"AS1SXTLevel2-1.4b SXTpipeline\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Rossi Timing Explorer (RXTE)\",\"type\":\"organization\",\"attributes\":{},\"relationships\":[{\"predicate\":\"previously_used_for\",\"target\":\"simultaneous X-ray and optical band timing investigation of GX 9+9\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"South African Astronomical Observatory (SAAO)\",\"type\":\"organization\",\"attributes\":{},\"relationships\":[{\"predicate\":\"previously_used_for\",\"target\":\"simultaneous X-ray and optical band timing investigation of GX 9+9\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"LAXPC software\",\"type\":\"method\",\"attributes\":{\"version\":\"Oct. 13, 2022\"},\"relationships\":[{\"predicate\":\"used_to_extract\",\"target\":\"scientific level-2 data\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"produces\",\"target\":\"light curves, spectrums, background spectrums, and response files\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SXT pipeline\",\"type\":\"method\",\"attributes\":{\"version\":\"AS1SXTLevel2-1.4b\"},\"relationships\":[{\"predicate\":\"processes\",\"target\":\"level-1 SXT data\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"generates\",\"target\":\"cleaned level-2 event files\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"XSELECT\",\"type\":\"method\",\"attributes\":{\"version\":\"V2.5b\"},\"relationships\":[{\"predicate\":\"used_to_extract\",\"target\":\"light curves and spectrum\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"sxtARFModule\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"creates\",\"target\":\"ancillary response files\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SXT background and response files\",\"type\":\"measurement\",\"attributes\":{\"background_file\":\"SkyBkg_comb_EL3p5_Cl_Rd16p0_v01.pha\",\"response_file\":\"sxt_pc_mat_g0to12.rmf\",\"source\":\"SXT payload operational center (POC)\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"SXT analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SXT annular zone\",\"type\":\"measurement\",\"attributes\":{\"outer_radius\":\"13 arcmin\",\"inner_radius\":\"2 arcmin\",\"purpose\":\"limit counts/sec below pileup limit\"},\"relationships\":[]},{\"name\":\"SXT gain fit\",\"type\":\"method\",\"attributes\":{\"slope\":1,\"offset_range\":\"0.02-0.09\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"SXT data\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study performs flux-resolved spectral analysis of GX 9+9 using combined SXT and LAXPC data from AstroSat. The source was identified in the banana state, and spectra were divided into three flux levels for fitting. A best-fit model incorporating thermal Comptonization and disk blackbody emission was established to characterize the source's spectral properties.\",\"entities\":[{\"name\":\"GX 9+9\",\"type\":\"other\",\"attributes\":{\"classification\":\"neutron star low-mass X-ray binary\",\"state_during_observation\":\"banana state (BS)\",\"spectral_characteristic\":\"disk dominating energy spectrum\"},\"relationships\":[{\"predicate\":\"observed_with\",\"target\":\"AstroSat\",\"attributes\":{},\"target_id\":\"astrosat\"},{\"predicate\":\"analyzed_in_energy_range\",\"target\":\"0.7–25 keV\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"AstroSat\",\"type\":\"organization\",\"attributes\":{\"description\":\"India's first multi-wavelength observatory\"},\"relationships\":[{\"predicate\":\"hosts_instruments\",\"target\":\"LAXPC and SXT\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Large Area X-ray Proportional Counter (LAXPC)\",\"type\":\"measurement\",\"attributes\":{\"full_name\":\"Large Area X-ray Proportional Counter\",\"energy_range\":\"3-80 keV\",\"specific_counter_used\":\"LAXPC 20\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"spectral and timing analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Soft X-ray Telescope (SXT)\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Soft X-ray Telescope\",\"energy_range\":\"0.3-8.0 keV\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"spectral analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Flux Level 1 (FL1)\",\"type\":\"measurement\",\"attributes\":{\"count_rate_range\":\"450 to 570 counts/s\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"flux-resolved spectral analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Flux Level 2 (FL2)\",\"type\":\"measurement\",\"attributes\":{\"count_rate_range\":\"570 to 650 counts/s\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"flux-resolved spectral analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Flux Level 3 (FL3)\",\"type\":\"measurement\",\"attributes\":{\"count_rate_range\":\"650 to 770 counts/s\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"flux-resolved spectral analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Best-fit spectral model\",\"type\":\"method\",\"attributes\":{\"formula\":\"const*tbabs*(thcomp*diskbb)\",\"software\":\"XSPEC (version: 12.13.0c) within HEASOFT (6.31.1)\",\"confidence_level\":\"90%\"},\"relationships\":[{\"predicate\":\"uses_seed_photon_source\",\"target\":\"accretion disk (diskbb)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_comptonization_model\",\"target\":\"ThComp\",\"attributes\":{},\"target_id\":\"thcomp\"},{\"predicate\":\"fixes_optical_depth_at\",\"target\":\"9\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_edge_model_at\",\"target\":\"2.4 keV\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ThComp\",\"type\":\"method\",\"attributes\":{\"description\":\"Thermal Comptonization model, an improved version of nThComp\",\"parameter_definition\":\"Covering fraction indicates the amount of seed photons that will be Comptonized\"},\"relationships\":[{\"predicate\":\"extended_energy_range\",\"target\":\"0.01 to 500 keV with 1000 log bins\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Hardness-Intensity Diagram (HID)\",\"type\":\"concept\",\"attributes\":{\"x_axis\":\"overall count rate in 3−20 keV band\",\"y_axis\":\"X-ray photon count ratio in 6–20 keV vs 3–6 keV\"},\"relationships\":[{\"predicate\":\"indicates_state\",\"target\":\"banana state (BS)\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study estimates the inner-disk radius and unabsorbed flux of the X-ray binary GX 9+9 using AstroSat spectral data. Timing analysis reveals broad-band noise variability centered at approximately 0.1 Hz, with energy-dependent trends in rms and phase lag.\",\"entities\":[{\"name\":\"GX 9+9\",\"type\":\"other\",\"attributes\":{\"classification\":\"neutron star low-mass X-ray binary\",\"state_during_observation\":\"soft state\"},\"relationships\":[{\"predicate\":\"has_estimated_inner_disk_radius\",\"target\":\"16.57±1.29 km\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"has_disk_inclination_angle\",\"target\":\"60 degrees\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"has_assumed_distance\",\"target\":\"10 kpc\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"inner-disk radius estimation method\",\"type\":\"method\",\"attributes\":{\"formula\":\"Rin = k^2 (Ndbb / cos(theta))^(1/2) * D10\",\"color_correction_factor_k\":\"1.7\"},\"relationships\":[{\"predicate\":\"uses_parameter\",\"target\":\"disk-normalization (Ndbb)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_parameter\",\"target\":\"disk-inclination angle (theta)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_parameter\",\"target\":\"source distance (D)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"total unabsorbed flux\",\"type\":\"measurement\",\"attributes\":{\"energy_range\":\"0.01-100 keV\",\"instrument_model\":\"XSPEC cflux\"},\"relationships\":[{\"predicate\":\"value_in_FL1\",\"target\":\"5.94×10^-9 ergs s^-1 cm^-2\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"value_in_FL2\",\"target\":\"6.51×10^-9 ergs s^-1 cm^-2\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"value_in_FL3\",\"target\":\"7.30×10^-9 ergs s^-1 cm^-2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"broad-band noise (BBN) variability\",\"type\":\"concept\",\"attributes\":{\"centroid_frequency_nu0\":\"~0.04 Hz\",\"characteristic_frequency_nuc\":\"~0.1 Hz\",\"half_width_at_half_maximum_HWHM\":\"~0.09 Hz\"},\"relationships\":[{\"predicate\":\"detected_in\",\"target\":\"power density spectrum (PDS)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"fitted_with\",\"target\":\"two Lorentzians\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_rms_trend\",\"target\":\"increasing with energy\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_phase_lag_trend\",\"target\":\"decreasing with energy\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Large Area X-ray Proportional Counter (LAXPC)\",\"type\":\"measurement\",\"attributes\":{\"full_name\":\"Large Area X-ray Proportional Counter\",\"energy_range\":\"3-80 keV\"},\"relationships\":[{\"predicate\":\"used_for_timing_analysis\",\"target\":\"GX 9+9\",\"attributes\":{},\"target_id\":\"gx_9_9\"},{\"predicate\":\"uses_subroutine\",\"target\":\"laxpc_find_freqlag\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study applies a propagative model based on a truncated disk and hot corona to analyze the energy-dependent temporal properties of GX 9+9. The best-fit model identifies variations in inner-disk temperature and fractional scattering as the origin of the observed broad-band noise. The analysis yields specific spectral and temporal parameters, including a reduced chi-squared value of approximately 0.80 for the temporal model.\",\"entities\":[{\"name\":\"Garg et al. [29] formalism\",\"type\":\"method\",\"attributes\":{\"basis\":\"propagative model\",\"assumptions\":[\"truncated disk\",\"hot electron plasma (corona) between inner radius and ISCO\"],\"mechanism\":\"coronal region acts as Comptonizing medium; soft seed photons originate from truncated disk\"},\"relationships\":[{\"predicate\":\"relates\",\"target\":\"spectral parameters with physical parameters\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"explains\",\"target\":\"stochastic variability (QPOs and BBN)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"successfully_incorporated_in\",\"target\":\"GRS 1915+105\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"successfully_incorporated_in\",\"target\":\"MAXI 1535-571\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"successfully_incorporated_in\",\"target\":\"H 1743-322\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"successfully_incorporated_in\",\"target\":\"4U 1608-52\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Best-fit temporal model for GX 9+9\",\"type\":\"method\",\"attributes\":{\"reduced_chi_squared\":\"~0.80\",\"varying_parameters\":[\"kTin (inner-disk temperature)\",\"fs (fraction of seed photons Comptonized)\"],\"rejected_variations\":\"combination of heating rate and optical depth (chi-squared > 2)\"},\"relationships\":[{\"predicate\":\"indicates_origin_of_variability\",\"target\":\"variation in inner-disk temperature moving towards coronal region\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"characterized_by\",\"target\":\"positive phase lag\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"GX 9+9 spectral and temporal parameters\",\"type\":\"measurement\",\"attributes\":{\"spectral_NH_FL1\":\"0.16 ± 0.01 (10^22 cm^-2)\",\"spectral_NH_FL2\":\"0.16 ± 0.02 (10^22 cm^-2)\",\"spectral_NH_FL3\":\"0.16 ± 0.02 (10^22 cm^-2)\",\"spectral_NH_full_flux\":\"0.15 ± 0.01 (10^22 cm^-2)\",\"spectral_kTe_FL1\":\"4.14 ± 0.20 keV\",\"spectral_kTe_FL2\":\"4.12 ± 0.26 keV\",\"spectral_kTe_FL3\":\"3.69 ± 0.22 keV\",\"spectral_kTe_full_flux\":\"4.17 ± 0.20 keV\",\"spectral_fs_FL1\":\"0.14 ± 0.02\",\"spectral_fs_FL2\":\"0.17 ± 0.04\",\"spectral_fs_FL3\":\"0.34 ± 0.10\",\"spectral_fs_full_flux\":\"0.15 ± 0.03\",\"spectral_Tin_FL1\":\"1.87 ± 0.03 keV\",\"spectral_Tin_FL2\":\"2.02 ± 0.06 keV\",\"spectral_Tin_FL3\":\"2.04 ± 0.12 keV\",\"spectral_Tin_full_flux\":\"1.95 ± 0.04 keV\",\"spectral_Ndbb_FL1\":\"19.67 ± 1.35\",\"spectral_Ndbb_FL2\":\"16.07 ± 1.68\",\"spectral_Ndbb_FL3\":\"15.57 ± 2.03\",\"spectral_Ndbb_full_flux\":\"16.96 ± 1.15\",\"spectral_Rin_FL1\":\"18.18 ± 0.62 km\",\"spectral_Rin_FL2\":\"15.96 ± 1.02 km\",\"spectral_Rin_FL3\":\"15.50 ± 1.92 km\",\"spectral_Rin_full_flux\":\"16.83 ± 0.54 km\",\"temporal_delta_kTin\":\"0.56 ± 0.10 %\",\"temporal_delta_fs\":\"81 ± 32 %\",\"temporal_phase_lag\":\"0.11 ± 0.08\",\"temporal_chi_squared_dof\":\"6.39/8\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"Garg et al. [29] formalism\",\"attributes\":{},\"target_id\":\"garg_et_al_29_formalism\"}]},{\"name\":\"Phase lag to time lag relation\",\"type\":\"concept\",\"attributes\":{\"formula\":\"time lag = phase lag / (2 * pi * f)\",\"f_definition\":\"peak/central frequency in milliseconds\"},\"relationships\":[]}]},{\"context_summary\":\"The study concludes that the X-ray binary GX 9+9 exhibits broad-band noise variability centered at 0.1 Hz, driven by changes in inner-disk temperature and fractional scattering. Spectral analysis indicates the source is transitioning to a softer state, with an estimated inner-disk radius of 16.54 km and a maximum unabsorbed flux of 7.30 × 10⁻⁹ ergs s⁻¹ cm⁻².\",\"entities\":[{\"name\":\"GX 9+9\",\"type\":\"other\",\"attributes\":{\"classification\":\"neutron star low-mass X-ray binary\",\"study_status\":\"not well-studied\",\"data_quality\":\"poor\"},\"relationships\":[{\"predicate\":\"observed_with\",\"target\":\"AstroSat\",\"attributes\":{},\"target_id\":\"astrosat\"},{\"predicate\":\"exhibits_variability\",\"target\":\"broad-band noise\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"transitioning_to\",\"target\":\"softer state\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"AstroSat\",\"type\":\"organization\",\"attributes\":{},\"relationships\":[{\"predicate\":\"used_for_observation\",\"target\":\"GX 9+9\",\"attributes\":{},\"target_id\":\"gx_9_9\"}]},{\"name\":\"broad-band noise (BBN) variability\",\"type\":\"concept\",\"attributes\":{\"center_frequency\":\"~0.1 Hz\"},\"relationships\":[{\"predicate\":\"detected_in\",\"target\":\"GX 9+9\",\"attributes\":{},\"target_id\":\"gx_9_9\"},{\"predicate\":\"caused_by\",\"target\":\"fractional scattering\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"caused_by\",\"target\":\"change in inner-disk temperature\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"inner-disk radius (Rin)\",\"type\":\"measurement\",\"attributes\":{\"average_estimated_value\":\"16.54±1.78 km\"},\"relationships\":[{\"predicate\":\"measured_for\",\"target\":\"GX 9+9\",\"attributes\":{},\"target_id\":\"gx_9_9\"},{\"predicate\":\"consistent_with\",\"target\":\"27±4 km\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"total unabsorbed flux\",\"type\":\"measurement\",\"attributes\":{\"energy_band\":\"0.01-100 keV\",\"maximum_value\":\"7.30 × 10⁻⁹ ergs s⁻¹ cm⁻²\"},\"relationships\":[{\"predicate\":\"measured_for\",\"target\":\"GX 9+9\",\"attributes\":{},\"target_id\":\"gx_9_9\"},{\"predicate\":\"increases_from\",\"target\":\"FL1 to FL3\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"comparable_to\",\"target\":\"7.8 × 10⁻⁹ ergs s⁻¹ cm⁻²\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Garg et al. [29] formalism\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"used_to_model\",\"target\":\"broad-band noise (BBN) variability\",\"attributes\":{},\"target_id\":\"broad_band_noise_bbn_variability\"}]}]}]"
+}

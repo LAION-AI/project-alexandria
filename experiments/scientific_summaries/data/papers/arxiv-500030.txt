@@ -1,0 +1,657 @@
+1
+Deep-Learning-based Millimeter-Wave Massive
+MIMO for Hybrid Precoding
+Hongji Huang, Member, IEEE, Yiwei Song, Jie Yang, Member, IEEE,
+Guan Gui, Senior Member, IEEE, and Fumiyuki Adachi, Life Fellow, IEEE
+Abstract—Millimeter wave (mmWave) massive multiple-input
+multiple-output (MIMO) has been regarded to be an emerging so-
+lution for the next generation of communications, in which hybrid
+analog and digital precoding is an important method for reducing
+the hardware complexity and energy consumption associated with
+mixed signal components. However, the fundamental limitations
+of the existing hybrid precoding schemes is that they have high
+computational complexity and fail to fully exploit the spatial
+information. To overcome these limitations, this paper proposes
+a deep-learning-enabled mmWave massive MIMO framework
+for effective hybrid precoding, in which each selection of the
+precoders for obtaining the optimized decoder is regarded as a
+mapping relation in the deep neural network (DNN). Speciﬁcally,
+the hybrid precoder is selected through training based on the
+DNN for optimizing precoding process of the mmWave massive
+MIMO. Additionally, we present extensive simulation results
+to validate the excellent performance of the proposed scheme.
+The results exhibit that the DNN-based approach is capable of
+minimizing the bit error ratio (BER) and enhancing spectrum
+efﬁciency of the mmWave massive MIMO, which achieves better
+performance in hybrid precoding compared with conventional
+schemes while substantially reducing the required computational
+complexity.
+Index Terms—Millimeter wave (mmWave), massive multiple-
+input multiple-output (MIMO), deep learning, hybrid precoding.
+I. INTRODUCTION
+W
+IRELESS data trafﬁc is predicted to improve 1000-fold
+by the year 2020 and may increase by over 10 000-fold
+by the year 2030 [1], thus promoting the development of the
+ﬁfth generation (5G) concept to cope with the explosive data
+increase. As one of the most highly efﬁcient techniques to meet
+the 5G requirements, the use of enormous chunks of under-
+utilized spectrum in the ultra-high-frequency bands, such as
+the millimeter-wave (mmWave) band, has recently attracted
+considerable interest in the research community [2]. Compare
+with current wireless systems, one evolutionary progress of
+mmWave communications is that the ten-fold increase in
+carrier frequency. In another words, mmWave signals bring an
+orders-of-magnitude enhancement in free-space pathloss [3].
+Inspired
+by
+massive
+multiple-input
+multiple-output
+(MIMO), a mmWave massive MIMO system is considered
+to be a potential technique for enhancing system throughput.
+H. Huang, Y. Song, J. Yang, and G. Gui are with College of Telecommuni-
+cation and Information Engineering, Nanjing University of Posts and Telecom-
+munications, Nanjing 210003, P. R. China. (e-mail: b14111829@njupt.edu.cn,
+b15080234@njupt.edu.cn, guiguan@njupt.edu.cn, hikmet@njupt.edu.cn)
+F. Adachi is with Wireless Signal Processing Research Group, Research Or-
+ganization of Electrical Communication (ROEC), Tohoku University, Sendai
+980-8577, Japan. (e-mail: adachi@ecei.tohoku.ac.jp)
+To multiplex a large amount of data streams and achieve
+more accurate beamforming in mmWave massive MIMO,
+hybrid precoding was proposed [1]. In [4], a successive
+interference cancellation-based hybrid precoding that can
+realize excellent performance with low complexity was
+presented, in which the sum rate optimization problem with
+non-convex constraints was divided into several sub-rate
+optimization issues. Then, the authors in [5] designed a
+low-complexity hybrid analog/digital precoding for multiuser
+mmWave systems by conﬁguring a hybrid precoder. However,
+these precoding schemes proposed in the previous works
+have high commotional complexity and require a complicated
+bit allocation strategy since the previously proposed hybrid
+anlog/digital precoding schemes are based on singular value
+decomposition (SVD). Additionally, the newly proposed
+geometric mean decomposition (GMD)-based scheme [6]
+can avoid the bit allocation issue, but it still brings great
+challenges in addressing the non-convex constraint on the
+analog precoder and in exploiting the structural characteristics
+of the mmWave massive MIMO systems.
+However, in the context of the mmWave massive MIMO
+systems, though a quantity of researches have been devoted to
+enhancing the hybrid precoding performance, there are still
+a lot of problems remaining and two major challenge are
+the extraordinarily high computational complexity and poor
+system performance. In the past few years, many scholars have
+realized this gap and they have provided different methods
+for reducing the computational complexity or improving the
+precoding performance, such as the (GMD)-based scheme
+[6], the matrix factorization-based hybrid precoding mean
+[7], a precoding method based on radio-frequency (RF) and
+baseband signal processing [8], and hybrid spatial processing
+architecture aided precoding approach [9], et al. Also, for the
+sake of realizing high spectrum efﬁciency with low complex-
+ity, an alternating minimization scheme for effectively design-
+ing hybrid precoder was provided [10]. Then, by exploiting
+low-dimensional beamspace channel state information (CSI)
+processed by compressive sensing (CS) detectors, paper [11]
+presented a beamspace-SVD based hybrid precoding method
+for reducing complexity. In general, these works are based on
+conventional mathematical means such as the SVD and the
+GMD, which are too weak to exploit the sparsity statistics
+of the mmWave massive MIMO. Simultaneously, since the
+traditional methods are inadequate to leverage the structural
+characteristics of such mmWave systems, traditional low-
+complexity schemes are realized at the cost of degrading the
+hybrid precoding of the systems. Therefore, previous works
+arXiv:1901.06537v1  [eess.SP]  19 Jan 2019
+
+2
+fail to deal with these issues fundamentally and new methods
+are urgent need to be put forward for enhancing the hybrid
+precoding performance of the mmWave massive MIMO.
+Recently, the emerging solution called deep learning [12]
+is an extraordinarily remarkable technology for handling ex-
+plosive data and addressing complicated nonlinear problems.
+It has been proved that deep learning is an excellent tool to
+deal with complex non-convex problems and high-computation
+issues, which is dedicated by its super-excellent recognition
+and representation abilities. Some previous works which in-
+corporate deep learning into communications have been in-
+vestigated, including beam selection, heterogeneous network,
+non-orthogonal multiple access (NOMA), massive MIMO, and
+heterogeneous network [13]–[18]. Additionally, deep learning
+has been applied to intelligent trafﬁc control area [19]–[22],
+showing great advancements resulting from the deep-learning-
+based communication schemes.
+Thus, this study investigates a framework which integrates
+deep learning into hybrid precoding in mmWave MIMO sys-
+tems. The main contributions of this paper are summarized as
+follows.
+1) First, this is the ﬁrst work to design a framework that
+incorporates the deep learning technique into hybrid
+precoding. Speciﬁcally, we regard a deep neural network
+(DNN) as an autoencoder, and this model is regarded
+as a black box, where activation functions optimize
+multiple layers of the network and create corresponding
+mapping relations.
+2) In our work, a hybrid precoding scheme based on deep
+learning is provided. Here, the DNN is capable of cap-
+turing structural information of hybrid precoding scheme
+through the training stage, contributing to lowering
+the computational complexity. Additionally, simulation
+results and comparisons have veriﬁed the superiority of
+the proposed methods.
+The rest of this paper is organized as follows. To begin
+with, we establish a mmWave massive MIMO model, in which
+many antennas are implemented at the base station (BS). Then,
+in Section III, to achieve hybrid precoding with good perfor-
+mance, we develop a DNN framework and provide a deep
+learning-enabled scheme. Simulation results for assessing the
+performance of the deep learning-based method are provided
+in Section IV, and conclusions are presented in Section V.
+Notations: Ns is denoted as independent data streams,
+Nt and Nr are deﬁned as the transmitted antennas and the
+received antennas. Also, N RF
+t
+and N RF
+r
+represent RF chains.
+Furthermore, N is denoted as the number of samples.
+II. SYSTEM MODEL
+We consider a typical mmWave massive MIMO system,
+in which one BS with a uniform linear array (ULA) of Nt
+antennas and user with Nr received antennas are designed.
+Here, the BS sends Ns independent data streams to the
+user, and it is assumed to have no information on all the
+communication links. Additionally, it is assumed that the BS
+and the user have N RF
+t
+and N RF
+r
+RF chains, respectively,
+which meet the requirements that Ns ≤N RF
+t
+≤Nt and
+Nt ≤N RF
+r
+≤Nr [3]. Furthermore, we introduce the well-
+known Saleh-Valenzuela (SV) channel model [3], and the
+channel matrix H ∈CNt×Nr is written by
+H =
+r
+NtNr
+P
+ 
+α0at(θt
+0)ar(θr
+0) +
+P
+X
+p=1
+αpat(θt
+p)ar(θr
+p)
+!
+,
+(1)
+Here, P denotes the number of non-line-of-sight (NLoS)
+components. Additionally, the steering vectors at(θt
+p) and
+ar(θr
+p) are deﬁned as the array responses at the BS and the
+user, respectively. Furthermore, θt
+p and θr
+p represent the angle
+of departure (AoD) at the BS and the angle of arrival (AoA)
+at the user, respectively. For a ULA, at(θpt) ∈CNt×1 and
+ar(θpr) ∈CNr×1 can be expressed as
+at(θt
+p) =
+1
+√Nt
+[1, e−j2π d
+λ sin θt
+p, · · ·, e−j2π d
+λ (Nt−1) sin θt
+p]T ,
+(2)
+ar(θr
+p) =
+1
+√Nr
+[1, e−j2π d
+λ sin θr
+p, · · ·, e−j2π d
+λ (Nr−1) sin θr
+p]T ,
+(3)
+Here, d is supposed as the antenna spacing, while the wave-
+length of the carrier frequency is deﬁned by λ. As reported in
+[23], H has low-rank characteristic since the limited scattering
+feature in the mmWave massive MIMO channel, indicating
+that near-optimal throughput is achieved by leveraging limited
+amounts of RF chains.
+Then, we assume a high-dimensional analog precoder and
+a low-dimensional digital precoder as DA ∈CNt×NRF
+t
+and
+DD
+∈CNRF
+t
+×Ns, respectively, and a hybrid decoder is
+denoted as D = DADD ∈CNt×Ns. Hence, the transmitted
+signal x is given as
+x = Ds = DADDs,
+(4)
+where s ∈CNs×1 is the source signal with normalized power
+E[ssH] = INs, and we assume that tr{DDH} ≤Ns to
+satisfy the constraint of transmit power [24]. Subsequently,
+the received signal vector is deﬁned as
+y = BHHx + BHn
+= (BH
+DBH
+A )HDADDs + BH
+DBH
+A n,
+(5)
+Here, n ∼CN(0, σ2INs) denotes the additive white Gaussian
+noise (AWGN). Additionally, BH = BH
+DBH
+A is a hybrid
+combiner, in which BD ∈CN RF
+r
+×Ns and BA ∈CNr×NRF
+r
+are deﬁned as the digital combiner and the analog combiner,
+respectively. Note that the analog precoder/combiner is always
+installed by analog phase shifters, and all elements of DA and
+BA are supposed to meet the requirement as
+|{DA}i,j| =
+1
+√Nt
+, |{BA}i,j| =
+1
+√Nr
+,
+(6)
+In mmWave massive MIMO system, fully utilizing the
+sparsity of the mmWave channel can greatly enhance the
+performance of the hybrid precoding [23], and thus, we
+employ a state-of-the-art DNN to construct a novel precoding
+framework.
+
+3
+Fig. 1. DNN architecture in the proposed scheme.
+III. PROPOSED DEEP-LEARNING-BASED HYBRID
+PRECODING SCHEME
+This part provides a model in which deep learning can be
+adopted in the mmWave massive MIMO for achieving end-to-
+end highly efﬁcient hybrid precoding. The splendid learning
+ability of deep learning enables the spatial features to be
+exploited of the mmWave massive MIMO system and regard
+the entire system as a black box to capture useful features for
+hybrid precoding. We develop the proposed DNN framework
+and describe how the nonlinear operation can be mapped to the
+hybrid precoder, and then we provide a novel training policy
+for facilitating the performance of the DNN.
+A. Proposed Deep Neural Network Architecture
+Recently, with the aid of deep learning, considerable process
+has been achieved in a wide range of areas, including natural
+language processing (NLP), computer vision (CV), automated
+driving, and so on. Additionally, deep-learning-based methods
+can be performed by massively concurrent architectures with
+distributed memory architectures, such as graphics processing
+units (GPUs), which have been highlighted for their energy
+efﬁciency and impressive computational throughput, arousing
+great interest in industrial communities.
+Deep neural networks (DNNs), the most universal structure
+of deep learning frameworks, and it can be considered as a
+multiple layers perceptron (MLP). Speciﬁcally, in contrast to
+an conventional artiﬁcial neural network (ANN), many hidden
+layers are present in a DNN to enhance its learning and
+mapping abilities. In a DNN, many units are deployed in
+each hidden layer, and the output can be generated based
+on the output of these units with the aids of activation
+functions. In most cases, the rectiﬁed linear unit (ReLU)
+function and the Sigmoid function are used in the nonlinear
+operation. Assuming a as the argument, they are deﬁned as
+ReLU(a) = max(0, a) and Sigmoid(a) =
+1
+1+e−a , respectively.
+The output of the network is denoted as o and that v denotes
+the input data, the mapping operation can be presented as
+z = f(v, w) = f (n−1)(f (n−2)(· · ·f 1(v))),
+(7)
+where n and w represent the number of layers in the neural
+network and the weights of the neural network, respectively.
+To realize hybrid precoding, we construct a DNN frame-
+work, as exhibited in Fig. 1. Here, in the input layer, the length
+of each training sequence is determined by its dimension,
+which is a fully connected (FC) layer with 128 units for
+capturing features of the input data. The next two hidden
+layers for processing encoding operation are also FC layers
+comprising 400 units and 256 units, respectively. Following
+by this, to disturb the signals with the AWGN or other
+distortion, a noise layer which is consisted of 200 units for
+mixing distortion. Subsequently, for the sake of achieving
+decoding, we design the remaining two hidden layers with
+128 units and 64 units, respectively. In addition, the output
+layer is deployed to generate expected output signals of the
+network. Moreover, note that ReLU function is introduced as
+the activation function of the input layer and the hidden layers.
+However, for enforcing the power constraint in the output
+layer, a special activation is designed as
+f(s) = min(max(s, 0), Ns),
+(8)
+B. Learning Policy
+For simplifying the mapping relation of the hybrid cod-
+ing, we adopt the GMD method to decompose the complex
+mmWave massive MIMO channel matrix, and H is reformu-
+lated by
+y = WQRH
+= [W1, W2]
+ Q1
+∗
+0
+Q2
+  RH
+1
+RH
+2
+
+,
+(9)
+Here, W1 ∈CNr×Ns is a semi-unitary matrix, which is
+regarded as the combiner. Additionally, R1 ∈CNt×Ns is
+deﬁned as the precoder, and it is also a semi-unitary ma-
+trix. Furthermore, Q1 ∈CNs×Ns is an upper triangular
+matrix, while ∗is an arbitrary matrix that can be neglected.
+Speciﬁcally, the largest Ns singular values are formulated as
+qi,i = (δ1, δ2, · · ·, δNs)
+1
+Ns ∈¯q, ∀i, where qi,j represent the
+elements in matrix Q1. Afterwards, we obtain the received
+signal as
+y = BHHx + BHn
+= WH
+1 HR1s + WH
+1 n
+= Q1s + WH
+1 n,
+(10)
+To train the hybrid precoder to realize precoding, the loss
+function is written as
+loss = ∥R1 −RARD∥F
+=
+q
+tr((R1 −RARD)(R1 −RARD)H)
+=
+v
+u
+u
+t
+min{Nt,Ns}
+X
+i=1
+δ2
+i (R1 −RARD),
+(11)
+where ∥· ∥F
+denotes the Frobenius norm and RA and
+RD represent the GMD-based analog precoder and the
+GMD-based digital precoder, respectively. Additionally, Eq.
+(11) should satisfy the constraint |{RA}i,j| =
+1
+√Nt } and
+tr(RARDRH
+DRH
+A ) ≤Ns. Moreover, δi(R1 −RARD) denote
+the singular values of matrix (R1 −RARD).
+Next, we employ the DNN framework to construct an
+autoencoder, which is given by
+R1 = f(RARD; Ω),
+(12)
+
+4
+f(·) denotes the mapping relation, for which the detailed
+training procedure is provided as follows, and Ωis deﬁned
+as the dataset of the samples.
+We consider the proposed deep-learning-based scheme as a
+mapping operation, and a training mechanism is formulated
+for extracting the structural statistics of the mmWave-based
+model. First, we initialize RA and RD as empty matrices,
+and then we generate random data sequences in the DNN.
+Based on different channel conditions, the DNN is trained with
+the input data sequences, and RA and RD can be updated.
+Synchronously, the physical AOA θr
+p and AOD θt
+p can be
+generated randomly, and we can obtain the bias between R1
+and RARD from the output layer of the DNN based on the
+input signals in different cases through a large number of
+iterations. Thus, the training dataset Ωis acquired, consisting
+of the structural features of the mmWave massive MIMO
+model and the input data sequences, as well as the output of the
+DNN. This is an unsupervised learning training approach. In
+the next stage, the DNN needs to be tested after being trained
+thoroughly. For each channel condition, the optimal analog
+precoder RA and digital precoder RD can be obtained based
+on the given input signal vectors without requiring iterations.
+Then, based on the proposed methhod, the stochastic gradient
+descent (SGD) algorithm with momentum is employed to
+process the loss function, which is given by
+Rj+1
+A
+= Rj
+A + v,
+(13)
+Rj+1
+D
+= Rj
+D + v,
+(14)
+Here, v is denoted as the velocity for facilitating the gradient
+element. Additionally, the iteration number is denoted as j,
+and R0
+A and R0
+D are assumed to be the randomly generated
+initial solution. Speciﬁcally, the update procedure of v can be
+given by
+v = αv −ϵg
+= αv −ϵ 1
+N ▽RA,RD
+v
+u
+u
+t
+min{Nt,Ns}
+X
+i=1
+δ2
+i (R1 −RARD),
+(15)
+where α denotes the momentum parameter and ϵ denotes the
+learning rate. Synchronously, g and N represent the gradient
+element and the number of samples, respectively. Concretely,
+the learning framework for super hybrid precoding is described
+in Algorithm 1.
+In addition, to investigate the precoding performance of the
+deep learning-based precoding strategy, we introduce the mean
+square error (MSE) to analyze its performance, which can be
+given as
+MSE = E∥R1 −RARD∥2,
+(16)
+C. Complexity Analysis
+One of the key advantages of the proposed hybrid precoding
+mean is that this method lowers the computational complexity.
+Noted that the matrix multiplication is a Ns × N 2
+t space,
+TABLE I
+COMPUTATIONAL COMPLEXITY OF SEVERAL PRECODING SCHEMES OF
+MMWAVE MASSIVE MIMO.
+Methods
+Computational complexity
+Proposed deep learning based scheme
+O(L2NsN2
+t )
+SIC-based hybrid precoding scheme [4]
+O(2NrNs(N2
+t (K + NsNr)))
+Spatially sparse precoding method [3]
+O(2N3
+r (N4
+r Nt + N2
+r L2 + N2
+r N2
+t L))
+the complexity of the deep-learning-based method is only
+O(L2NsN 2
+t ), achieving technical advancement compared with
+that of previous researches, such as the conventional SVD
+based method. To verify the low computational complexity of
+the deep-learning-based scheme intuitively, we deﬁne K as the
+number of users, and we present the computational complexity
+of the proposed method and that of other typical precoding
+approaches, which is illustrated as TABLE I.
+Algorithm 1 DNN based hybrid precoding algorithm in
+massive MIMO.
+Input: The physical AOA θr
+p and AOD θt
+p, environment
+simulator.
+Output: Optimized precoder R1.
+1: Initialization: The amount of iteration is initialed as j =
+0 and the weight is w = 0. Meanwhile, initialize error
+threshold as τ = 10−7. Furthermore, we set RA = 0 and
+RD = 0.
+2: Produce a series of training sequences. Also, θr
+p and θt
+p
+are generated randomly.
+3: Construct the proposed DNN framework.
+4: Process the environment simulator to simulate wireless
+channel with artiﬁcial distortion or noise.
+5: while (error ≥τ): Train the DNN by processing the SGD
+with momentum according to Eq. (13), Eq. (14), and Eq.
+(15).
+6: Update RA and RD.
+7: Obtain the bias between R1 and RARD from the output
+layer of the network.
+8: end while
+9: return: Optimized precoder R1.
+IV. NUMERICAL RESULTS AND ANALYSIS
+In this section, we assess the performance of our proposed
+DNN-based mmWave massive MIMO scheme with numerical
+analysis. Here, Keras is used to construct and process the
+DNN framework. Without loss of generality, we generate
+the channel model according to the models derived in [1].
+Additionally, P = 3, and the carrier frequency is given as
+28 GHz. Speciﬁcally, the bit error ratio (BER) performance is
+evaluated with different learning rates and various batch sizes
+of the training dataset, and its performance is compared with
+several typical methods. Additionally, the network has been
+trained for 45000 iterations in the simulation.
+To evaluate the superiority of the proposed approach, we
+investigate the BER performance of the DNN-based scheme
+compared with those of the SVD-based hybrid precoding
+scheme [3], fully digital SVD-based precoding method, fully
+
+5
+Fig. 2.
+BER versus SNR in the case of the proposed DNN-based scheme,
+SVD-based hybrid precoding scheme [3], fully digital SVD-based precoding
+method, fully GMD-based precoding method, and new GMD-based precoding
+scheme [24].
+Fig. 3. BER versus SNR with in the proposed method when the batch size
+is 10, 20, 50, and 100.
+GMD-based precoding method, and new GMD-based precod-
+ing scheme [24]. As shown in Fig. 2, the deep-learning-based
+method outperforms the conventional schemes. Furthermore,
+the performance improvement is more apparent between the
+deep-learning-based strategy and conventional methods, which
+is attributed to the excellent representation ability of deep
+learning.Additionally, since the DNN utilizes the structural
+information and can approach each iteration of the algorithm
+for hybrid precoding, it is veriﬁed that the proposed mmWave
+massive MIMO strategy is superior to the fully GMD-based
+digital precoding mean, implying that the existing non-convex
+optimization in hybrid precoding can be solved with the aid
+of deep learning.
+In Fig. 3, the performance of the proposed mmWave
+massive MIMO scheme is thoroughly investigated when the
+Fig. 4. BER performance versus SNR in the proposed method with various
+learning rates.
+Fig. 5.
+Spectrum efﬁciency versus SNR in the case of the proposed deep
+learning based hybrid precoding scheme, the spatially sparse precoding
+method [3], and the fully digital GMD based precoding scheme.
+BER performance is evaluated with various batch sizes. It
+is observed that the performance of the deep-learning-based
+strategy degrades with increasing batch size in terms of BER,
+for the reason that slower convergence may be induced by a
+larger batch size. However, we further observe that too small
+batch size will lead to unstable convergence. Therefore, it is
+noted that we should choose batch size carefully for achieving
+the optimal performance in the proposed precoding mean.
+Fig. 4 presents the BER versus SNR in the DNN-based
+mmWave massive MIMO scheme with different learning rates.
+It can be witnessed in Fig. 4 that the performance of hybrid
+precoding in the DNN-based method is optimized by adopting
+a lower learning rate, which occurs because a larger learning
+rate causes a higher validation error. Note, however, that
+slower convergence behavior will be induced by using a lower
+
+6
+Fig. 6. MSE versus iterations in the case of the deep learning-based method,
+the analog precoding approach, and the sparse precoding method.
+learning rate, though it does enhance the system performance.
+Hence, in order to realize better performance, how to select the
+best learning rate is an open issue in the proposed framework
+for hybrid precoding.
+In Fig. 5, we show the spectrum efﬁciency performance
+against the SNR of the DNN-based hybrid precoding scheme,
+the spatially sparse precoding method [3], and the fully digital
+GMD based precoding scheme. As shown in Fig. 5, we
+observe that the spectrum efﬁciency is improving as the SNR
+increases in all the schemes. Also, it can be seen from Fig. 5
+that the proposed hybrid precoding scheme outperforms other
+strategies, which achieves better hybrid precoding performance
+dedicated by the excellent mapping and learning capacities
+of the deep learning. Furthermore, when the SNR increases,
+the performance gap of the deep learning based scheme and
+that of other approaches is becoming larger. This superior
+performance further demonstrates the effectiveness of the
+proposed hybrid precoding scheme.
+Finally, for the purpose of investigating the robustness
+and stability of the proposed hybrid precoding approach, we
+explore the relationship between the MSE and the iterations
+of the deep learning-based strategy compared with the analog
+precoding scheme, and the sparse precoding method. Here,
+the learning rate is set as 0.001. As can be seen from Fig.
+6, we observe that the MSE performance is stirred with the
+increasing iterations, which is dedicated by the fact that all
+these algorithms are approaching to conversion with more
+iterations. Also, it can be seen from Fig. 6 that the proposed
+deep learning based scheme and the sparse precoding method
+both convert at around 11 iterations, whereas the analog
+precoding scheme requires about 22 iterations. Furthermore,
+we can further observe that the MSE performance of the
+proposed deep learning based scheme is superior than that of
+other means. Hence, it comes to a conclusion that the proposed
+deep learning-based approach realizes superior performance
+in terms of the hybrid precoding accuracy and conversion
+compared to other schemes.
+V. CONCLUSIONS
+In this paper, we considered a super approach in enhancing
+the hybrid precoding performance, including cutting down the
+computational complexity and leveraging the spatial statistics
+of the large antenna systems in mmWave massive MIMO
+scenario. We ﬁrst provided a detailed deep-learning-based
+hybrid precoding method. Analytical results were presented to
+verify the performance of the DNN-based method, revealing
+that the DNN can facilitate the hybrid precoding because of
+its great recognition and mapping abilities. Another promising
+direction is to apply deep learning in the channel feedback
+issue to alleviate the issues related to codebook size and
+feedback overhead.

@@ -1,0 +1,712 @@
+Estimating the size of the solution space of metabolic net-
+works
+Alfredo Braunstein1,2, Roberto Mulet2, Andrea Pagnani3
+1ISI Foundation Viale Settimio Severo 65, Villa Gualino, I-10133 Torino, Italy
+2“Henri-Poincar´e-Group” of Complex Systems and Department of Theoretical Physics, Physics Faculty, University of Havana, La
+Habana, CP 10400, Cuba
+3Politecnico di Torino, Corso Duca degli Abruzzi 34, I-10129, Torino, Italy
+Email: Alfredo Braunstein - alfredo.braunstein@polito.it; Roberto Mulet∗- mulet@ﬁsica.uh.cu; Andrea Pagnani∗- pagnani@isi.it;
+∗Corresponding author
+Abstract
+Background: Cellular metabolism is one of the most investigated system of biological interactions. While the
+topological nature of individual reactions and pathways in the network is quite well understood there is still a lack
+of comprehension regarding the global functional behavior of the system. To get some insight in this direction, in
+the last few years powerful theoretical methods such as extreme pathways calculation and ﬂux-balance analysis
+(FBA) have been introduced. These methods strongly rely on the hypothesis that the organism maximizes an
+objective function. However only under very speciﬁc biological conditions (e.g. maximization of biomass for E-Coli
+in reach nutrient medium) the cell seems to obey such optimization law. A more reﬁned analysis not assuming
+extremization remains an elusive task for large metabolic systems due to algorithmic constraints.
+Results: In this work we propose a novel algorithmic strategy that allows for an eﬃcient characterization of
+the whole set of stable ﬂuxes compatible with the metabolic constraints. Using a technique derived from the
+ﬁelds of statistical physics and information theory we designed a stochastic algorithm to estimate the size of the
+aﬃne space containing all possible steady-state ﬂux distributions of metabolic networks. The algorithm, based
+on the well-known Bethe approximation, allows the computation in polynomial time of the volume of a non
+full-dimensional convex polytope in high dimensions. We show results for toy models that compare very well with
+the results of exact algorithms. The result of our algorithm match closely the prediction of Monte Carlo based
+estimations of the ﬂux distributions of the Red Blood Cell metabolic network. It is then used to analyze the
+statistical properties of the average ﬂuxes of the reactions in the E-Coli metabolic network and ﬁnally to test the
+eﬀect of gene knock-outs on the size of the solution space of the E-Coli central metabolism.
+Conclusions: We propose a novel eﬃcient algorithmic strategy to estimate the size and shape of the aﬃne space
+of a non full-dimensional convex polytope in high dimensions. The method is shown to obtain, quantitatively and
+qualitatively compatible results compared with known algorithms (where this comparison is possible) being still
+eﬃcient on the analysis of large biological systems, where all other known strategies experience an explosion in
+algorithmic time.
+1
+arXiv:0709.0922v1  [cond-mat.dis-nn]  6 Sep 2007
+
+Background
+Cellular metabolism is a complex biological problem.
+It can be viewed as a chemical engine that trans-
+forms available raw materials into energy or into the
+building blocks needed for the biological function of
+the cells. In more speciﬁc terms a metabolic net-
+work is indeed a processing system transforming in-
+put metabolites (nutrients), into output metabolites
+(amino acids, lipids, sugars etc.) according to very
+strict molecular proportions, often referred as stoi-
+chiometric coeﬃcients of the reactions.
+Although the general topological properties of
+these networks are well characterized, see for exam-
+ple [1–3], and non-trivial pathways are well known
+for many species [4] the cooperative role of these
+pathways is hard to comprehend. In fact, the large
+sizes of these networks, usually containing hundreds
+of metabolites and even more reactions, makes the
+comprehension of the principles that govern their
+global function a challenging task. Therefore, a nec-
+essary step to achieve this goal is the use of mathe-
+matical models and the development of novel statis-
+tical techniques to characterize and simulate these
+networks.
+For example, it is well known that under evo-
+lutionary pressure, prokaryotes cells like E-Coli be-
+have optimizing their growth performance [5]. Flux
+Balance Analysis (FBA) provides a powerful tool to
+predict, from the whole space of phenotipic states,
+which one will these cells acquire. In few words one
+may say that FBA maximizes a linear function (usu-
+ally the growth rate of the cell) subject to biochemi-
+cal and thermodynamic constraints [6]. On the other
+hand, cells with genetically engineered knockouts or
+bacterial strains that were not exposed to evolution
+pressures, need not to optimize their growth. In fact,
+the method of minimization metabolic adjustment
+(MOMA) [7] has shown that knockout metabolic
+ﬂuxes undergo a minimal redistribution with respect
+to the ﬂux conﬁguration of the wild type.
+Yet,
+in more general situations, the results are unpre-
+dictable, therefore, a tool to characterize the shape
+and volume of the whole space of possible phenotipic
+solutions must be welcome.
+Unfortunately,
+this
+characterization
+has
+re-
+mained an elusive task. As far as we know the at-
+tempts to obtain such a characterization were always
+based on the Monte Carlo sampling of the steady-
+state ﬂux space [8]. But unfortunately, it appeared
+that this kind of sampling is a very expensive calcu-
+lation and is unsuitable for very large networks. To
+address this problem we propose, using a technique
+derived from the ﬁelds of statistical physics and in-
+formation theory, an algorithm that may eﬃciently
+characterize the whole set of stable ﬂuxes compati-
+bles with the stoichiometric constraints.
+Mathematical Model
+As already mentioned, a metabolic network is an
+engine that converts metabolites into other metabo-
+lites through a series of intra-cellular intermediate
+steps. The fundamental equation characterizing all
+functional states of a reconstructed biochemical re-
+action network is a mass conservation law that im-
+poses simple linear constraints between the incoming
+and outcoming ﬂuxes at any chemical reaction. It is
+call the dynamic mass balance equation:
+∂ρ
+∂t = i + ˆS · ν −o
+(1)
+where ρ is the vector of the M metabolite concen-
+trations in the network. i (o) is the input (output)
+vector of ﬂuxes, and ν are the reaction ﬂuxes gov-
+erned by the M ×N stoichiometric linear operator ˆS
+(usually named stoichiometric matrix) encoding the
+coeﬃcient of the M intra-cellular relations among
+the N ﬂuxes.
+As long as just steady-state cellular properties
+are concerned one can assume that a variation in
+the concentration of metabolites in a cell can be ig-
+nored and considered as constant. Therefore in case
+of ﬁxed external conditions one can assume metabo-
+lites (quasi) stationarity and consequently the lhs of
+1 can be set to zero. Under these hypotheses the
+problem of ﬁnding the metabolic ﬂuxes compatible
+with ﬂux-balance is mathematically described by the
+linear system of equations
+ˆS · ν = o −i ≡b
+(2)
+where b is the net metabolite uptake by the cell.
+Without loss of generality we can assume that the
+stoichiometric matrix ˆS has full rows rank, i.e. that
+rank( ˆS) = M, since linearly dependent equations
+can be easily identiﬁed and removed. Knowing that
+the number of metabolites M is lower than the
+number of ﬂuxes N the subspace of solutions is a
+(N −M)-dimensional manifold embedded in the N-
+dimensional space of ﬂuxes.
+In addition, the pos-
+itivity of ﬂuxes, together with the experimentally
+2
+
+accessible values for the maximal ﬂuxes, limit fur-
+ther the space of feasible solutions. This fact may
+be expressed by the following inequalities:
+0 ≤ν ≤νmax
+(3)
+in such a way that together, 2 and 3, deﬁne the
+convex set of all the allowed time-independent phe-
+notipic states of a given metabolic network.
+Sub-dimensional volumes
+Mathematically speaking, the space of feasible solu-
+tions consistent with the equations 2 constitutes an
+aﬃne space V ⊂RN of dimension N −M. The set of
+inequalities 3 then deﬁnes a convex polytope Π ⊂V
+that, from the metabolic point of view, may be con-
+sidered as the allowed conﬁguration space for the cell
+states. With the scope of describing it, we will be
+interested in computing the volume of this space and
+certain volumes of subspaces of it. Although concep-
+tually simple, the notion of sub-dimensional volume
+like that of Π requires some new deﬁnitions.
+Consider
+any
+linear
+parameterization
+φ
+:
+RN−M →V ⊂RN. A popular choice for φ is, for
+instance, the inverse of the so called lexicographical
+projection i.e., the projection over the ﬁrst N −M
+coordinates such that its restriction to V has an in-
+verse. Being φ linear, the (N −M) × N Jacobian
+matrix ˆλ is constant and coincides with the matrix of
+φ in the canonical bases. Denoting λ = det(ˆλ†ˆλ)
+1
+2 ,
+the Euclidean metric in RN induces a measure on V
+(which does not depend on φ):
+Z
+V
+f(ν)dν ≡λ
+Z
+f(φ(u))du
+(4)
+allowing to compute the volume of our polytope
+volV (Π) ≡
+Z
+V
+1Π(ν)dν = λ
+Z
+1φ−1(Π)(u)du
+(5)
+where 1Π (·) is the indicator function of the set Π. It
+is worth pointing out that given the linear structure
+of the metabolic equations, the determinant of the
+mapping is a (scalar) constant.
+Probabilistic framework
+The problem of describing the polytope Π can for-
+mulated in a probabilistic framework. We deﬁne the
+probability density P as:
+P(ν) = volV (Π)−11Π(ν)
+(6)
+Marginal ﬂux probabilities over a given set of ﬂuxes
+are obtained by integrating out all remaining de-
+grees of freedom. In particular we can deﬁne sin-
+gle ﬂux marginal probability densities as integrals
+on the aﬃne subspace W = V ∩{νi = ν}:
+Pi(νi) =
+Z
+W
+P(ν)
+Y
+j̸=i
+dνj = volW (Π ∩W)
+(7)
+i.e.
+the (sub dimensional) volume of the intersec-
+tion between the polytope Π and the hyperplane
+{νi = ν}.
+Results and Discussion
+Performance on low dimensional systems
+In this section we will analyze the performance of
+our algorithm against an exact algorithm on low di-
+mensional polytopes. Among the diﬀerent packages
+available in the Internet, we have chosen LRS [9], a
+program based on the reverse search algorithm pre-
+sented by Avis and Fukuda in [10] that can compute
+the volume of non-full dimensional polytopes. Actu-
+ally, it computes the volume of the lexicographically
+smallest representation of the polytope, that for the
+benchmark used below, coincides with the conven-
+tional volume estimated by our algorithm.
+We have devised a speciﬁc benchmark generating
+random diluted stoichiometric matrices at a given
+ratio α = M/N and ﬁxed number of terms diﬀerent
+from zero K in each of the reactions. All ﬂuxes were
+constrained inside the hypercube 0 ≤νi ≤1. As a
+general strategy we have calculated several random
+instances of the problem and measured the volume
+(entropy) of the polytope using the LRS and BP al-
+gorithm. In particular, we have ﬁrst generated 1000
+realizations of random stoichiometric matrices with
+N = 12, M = 4. Note that N = 12 is around the
+maximum that allows simulations with LRS in rea-
+sonable time (around one hour per instance). For
+each polytope then we have computed the two en-
+tropies SLRS and SBP with both algorithms, ﬁx-
+ing the same maximum value for the discretization
+qmax = 1024 for all ﬂuxes.
+In Figure 1.2 we show how the quality of the
+BP measure is aﬀected by the discretization, by
+displaying the histogram of the relative diﬀerences
+δS = SBP −SLRS
+SLRS
+with an increasing number of bins
+per variable qmax = 16, 64, 256, 1024. One can see
+how a ﬁner binning of messages improves the qual-
+ity of the approximation, seeminlgy converging to a
+3
+
+single distribution of errors. It is expected that for
+larger N the histograms would shrink: upon increas-
+ing the number of ﬂuxes, loops become larger and
+the overall topology of the graph becomes more lo-
+cally tree-like, validating the hypothesis behind the
+Bethe approximation. Unfortunately, the huge in-
+crease of computer time experimented in the calcu-
+lation of the volumes using LRS made impossible to
+test systems large enough to make any reasonable
+scaling analysis.
+Finally we address the issue of the computational
+complexity of the algorithm which is a crucial one if
+one is interested in approaching real world metabolic
+networks whose size typically is at least 50 times the
+size of the largest network that can be analyzed with
+exact algorithms. In Figure 1.1 we display the run-
+ning time of both LRS and BP as a function of the
+number of ﬂuxes N. Interesting, LRS outperforms
+BP up to sizes N ∼12 where the running time of
+LRS explodes exponentially while BP maintains a
+modest almost-linear behavior.
+Distribution of ﬂuxes in Red Blood Cell
+The algorithm was used to obtain the distribution
+of ﬂux values for each of the reactions of the Red
+Blood Cell metabolism. The maximum allowed val-
+ues for the ﬂuxes, as well as the corresponding sto-
+ichiometric matrix were extracted directly from [8].
+The network contained 46 reactions and 34 metabo-
+lites.
+Our distributions appear in Figure 1.3 and
+as can be checked by direct comparison they are
+almost identical to those obtained with the Monte
+Carlo method in with the Figure 5 in [8]. However,
+while the Monte Carlo method appears to be quite
+expensive in computational resources (the authors
+of [8] reported one week of computer computation
+in a Dell Dimension 8200 to obtain their distribu-
+tions) our algorithm converged to the same results
+in a couple of minutes of computation on a similar
+machine.
+Analysis of gene knock-out in E-Coli
+Then, we analyze the distribution function of the av-
+erage ﬂuxes of the metabolic network of the E-Coli.
+The network used contains, in its original format,
+1035 reactions and 626 metabolites, [11]. From this
+network we eliminated all those reactions with frac-
+tional stoichiometric indexes, since our algorithm in
+its present form is unable to deal with them, and all
+those metabolites with connectivity larger than 40.
+These metabolites are cofactors of the metabolism
+and their elimination helps to sparse the matrix im-
+proving the convergence of the algorithm. Finally
+we checked for inconsistencies (i.e. metabolites that
+after the previous transformations are only produced
+or consumed), and we obtain a matrix with 1005 re-
+actions and 560 metabolites. We ran our algorithm
+on this network and computed the average ﬂuxes in
+each reaction. The probability distribution function
+(pdf) of these average values appears in Figure 1.4.
+As can be clearly seen the distribution is large and
+may be ﬁtted with a power law with exponent close
+to 1, a result that compares very well with previous
+simulations [12, 13] in real networks and with the
+approach followed by Bianconi and Zecchina [14].
+Moreover, it most be mentioned that a more careful
+analysis of the data may suggest that the distribu-
+tion of averages ﬂuxes has a richer structure.
+In
+Figure 1.5 is presented the integrated distribution
+function of the average ﬂuxes of the reactions and a
+clear jump appears for ν ≈0.5, and smaller ones for
+ν ≈0.4 and µ ≈0.6. Whether these jumps are just
+due to normal statistical ﬂuctuations (and are cor-
+rectly smeared out in the usual binning process done
+to plot the pdf in log-log scale) or reﬂect relevant bi-
+ological or structural information of the network is
+not yet known.
+Finally, we concentrated our eﬀorts in the study
+the E-Coli central metabolism [11]. To simplify the
+analysis of the results, all cofactors were removed
+with the exception of ATP and ADP that have been
+thus considered as output and input ﬂuxes respec-
+tively.
+Under these conditions, the network has
+40 metabolites, 74 internal reactions and 10 exter-
+nal ﬂuxes that were considered irreversible following
+their nominal directions. The maximum ﬂuxes of all
+the reactions were considered equal to 1.
+We then studied the inﬂuence of knockouts on
+the volume of the solution space. In each simulation
+the values of the maximum ﬂux was kept constant
+and equal to 1 for all the reactions but the one with
+a knockout. For each knockout we assumed a reduc-
+tion of the maximum permitted ﬂux qmax equal to
+the 0.25 of the original value. We assumed that each
+reaction is knockout independently, this, despite the
+fact that it is known that some reactions are associ-
+ated with the same enzyme.
+The distribution of entropy change (∆S = SKO−
+S0) of the solution space for the diﬀerent reaction
+knock-outs turns out to show two possibilities: while
+4
+
+most of the reactions have ∆S > −3 and show little
+and similar impact in the size of the solution space
+a relevant fraction of them, has ∆S < −3 but with
+a very uniform distribution. To understand if there
+is any connection between these reactions with large
+∆S and the structure of the network, we show in
+Figure 1.6 the changes in S for the diﬀerent reaction
+knock-outs. In the x−axis we plot the reactions nu-
+merated and the lines indicate the values of ∆S for
+each reaction. We annotate also these reactions with
+∆S < −3. Most of them are associated with the
+glycolysis pathway, being more speciﬁc, with those
+reactions of the glycolysis process that show little
+redundancy in the topology of the network. Other
+reactions, like FUM, ACONT, SUC and SUCCD1i
+appear in the Krebb cycle and again show little path-
+way redundancy in the network.
+Finally in Figure 1.7 we display the correlations
+between the changes in the entropy for diﬀerent re-
+action knock-outs and the most probable values ν∗
+and the average values ¯ν of the ﬂuxes in the wild
+network. As can be seen, two kinds of regimes are
+divided by a clear threshold at ν ∼0.6 : A ﬁrst one,
+for small ﬂuxes, that show consistent and slowly in-
+creasing correlations between ν and ∆S, and a sec-
+ond one for large ﬂuxes, where the correlations in-
+crease rapidly but with large ﬂuctuations. The pres-
+ence of this threshold can be understood noting that
+reactions belonging to the linear (glycolysis) an cir-
+cular (Krebb cycle) pathways are, in the wild cell,
+fast-ﬂux reactions, with average values for the ﬂuxes
+larger than 0.5. Therefore once they are knock-out,
+the metabolic capacities of the network are highly
+aﬀected.
+Conclusions
+We proposed a novel algorithm to estimate the
+size and shape of the aﬃne space of a non full-
+dimensional convex polytope in high dimensions.
+The algorithm was tested in speciﬁc benchmark, i.e.
+random diluted stoichiometric matrices at a given
+ratio α = M/N and ﬁxed number of terms diﬀer-
+ent from zero K, in each of the reactions, with re-
+sults that compare very well with those of exact al-
+gorithms. Moreover, we show that while the run-
+ning time of exact algorithms increases more than
+exponentially for already moderate sizes, our algo-
+rithm keeps a polynomial behavior for sizes as large
+as N = 120.
+The program was run on the Red
+Blood Cell metabolism, showing with less compu-
+tational eﬀort, results that compare very well with
+those previously obtained using Monte Carlo meth-
+ods. Then, we calculate the distribution of the av-
+erage values of the ﬂuxes in the metabolism of the
+E-Coli and present results that are consistent with
+those of the literature.
+Finally, our program was
+used to study the E-Coli central metabolism, and
+we show that, as expected, reactions with little re-
+dundancy are the ones with more impact in the size
+of the space of the metabolic solutions. Speciﬁcally,
+most of the reactions associated with the transfor-
+mation of glucose in pyruvate, belong to this set, as
+well as some reactions in the citric cycle. In addition
+we show strong correlations between the characteris-
+tics of the ﬂux distributions of the wild type network
+and the changes in size of the space of solutions after
+reaction knock-outs.
+Let us conclude by noting that in principle the
+presented approach can be extended to deal with
+constraints whose functional form is more general
+than linear, provided that the number of variables
+involved in each of the constraints remains small, as
+in the case of inequalities enforcing the second low
+of thermodynamics for the considered reactions [15].
+Work is in progress in this direction.
+Methods
+Volume computation
+From a computational point of view, the problem of
+the exact computation of the volume of a polytope
+with current methods requires the enumeration of
+all its vertexes. The vertex enumeration problem is
+#P-hard [16,17], but even the problem of computing
+the volume, given the set of all vertexes is a big com-
+putational challenge.
+Various algorithms exist for
+calculating the exact volume of a polytope from its
+vertexes (for a review see [18]), and many software
+packages are available in the Internet.
+Computa-
+tional limitations restrict however exact algorithmic
+strategies to cope with polytopes in relatively few di-
+mensions (e.g N −M around 10 or so). To overcome
+such severe limitations we will introduce a very eﬃ-
+cient approximate computational strategy that will
+allow us to compute the volume and the shape of the
+space of solutions for real-world metabolic networks.
+Although the coeﬃcient λ could be explicitely
+calculated, it turns out that as far as only relative
+volume quantities are concerned, as in the case of the
+5
+
+in silico ﬂux knock-outs introduced below, this term
+factors out and therefore we will drop it from the rest
+of the computation. If one is not interested in con-
+stant prefactors, one can proceed as follows for the
+integration of Eq. 6. Consider the regular orthogonal
+grid Λϵ of side ϵ partitioning RN. This grid maps via
+φ−1 into a partition Γϵ of φ−1(Π). The number of
+cells Nϵ of Λϵ intersecting Π is equal to the numbers
+of cells of Γϵ intersecting φ−1(Π). Finally, the vol-
+ume in Eq. 5 is proportional to limϵ→0 ϵN−MNϵ. The
+same applies to the computation of the marginal of
+Eq. 7, now noting that the constant pre-factor does
+not depend on νi. The reader may wonder why one
+does not directly integrate Eq. 5 by using its right
+hand side, the problem is that the change of coor-
+dinates induced by φ may destruct the sparsity of
+the original matrix sa,i, a condition that turns out
+to be crucial for the kind of approximation that we
+will use.
+When dealing with integer coeﬃcients si,a, as the
+ones appearing in stoichiometric relations, a further
+simpliﬁcation in the approximate volume computa-
+tion is possible: one can (always ingoring a constant
+pre-factor) restrict further to integer solutions of the
+system of equations. Geometrically, the space is tiled
+with small hypercubes and we are actually counting
+the number of hypercubes exactly fulﬁlling the sto-
+ichiometric equations.
+In summary, for any ϵ the
+computation of an ϵ-approximation of the volume
+has been recast into a discrete combinatorial opti-
+mization problem that can described (with a slight
+abuse of notation) by the same Eqs. 2 with now dis-
+crete variables νi ∈{0, 1, ..., qmax
+i
+}, for qmax
+i
+equal to
+the integer part of qmax × νmax
+i
+, where the integer
+qmax is the granularity of the approximation.
+Belief Propagation
+The metabolic problem can be cast into a constraint
+satisfaction framework where the M stoichiometric
+relations impose a constraint onto a subset of the
+metabolic ﬂuxes. Let A be the set of equations and
+I the set of ﬂuxes. Consider the a-th row of ˆS, and
+let {i1, . . . , ina} ≡{i ∈a} ⊂I be the labels of the
+ﬂuxes involved in the considered equation having
+stoichiometric coeﬃcients diﬀerent from zero.
+Let
+also {a1, · · · , ani} ≡{a ∈i} ⊂A be the labels of the
+equations in which ﬂux i participates. The emerg-
+ing structure is a bipartite graph, with two types
+of nodes: variable nodes representing the ﬂuxes of
+the reactions and factor nodes imposing mass con-
+servation.
+In this case marginals become q-modal
+probability densities that for large values of qmax
+i
+will approximate better and better the continuous
+set of probabilities.
+Under the hypothesis that the factor graph is a
+tree it can be shown [19,20] that a given ﬂux vector
+ν satisfying all ﬂux-balance constraints can be ex-
+pressed as a product of ﬂux and reaction marginals
+[20–22]:
+P(ν) =
+Y
+a∈A
+Pa({νl}l∈a)
+Y
+i∈I
+Pi(νi)1−di
+(8)
+where di is the number of equations in which ﬂux νi
+participates (i.e. the degree of site i). The marginal
+probabilities are deﬁned as:
+Pi(νi)
+=
+X
+{νj}j̸=i
+P(ν)
+Pa({νl}l∈a)
+=
+X
+{νj}j̸∈a
+P(ν) .
+(9)
+Belief Propagation (BP) is a local iterative algo-
+rithm that allows for the computations of marginal
+probability distributions, which is exact on trees,
+and perform reasonably well on locally tree-like
+structures [20–23]. This approximation scheme al-
+lows the computation of the (logarithm of the) num-
+ber of solutions via the entropy that can be expressed
+in terms of ﬂux marginals:
+S
+≡
+−
+X
+ν
+P(ν) ln P(ν)
+=
+X
+a∈A
+X
+{νj}j∈a
+Pa({νj∈a}) log Pa({νj∈a})
+−
+X
+i∈I
+X
+νi
+(di −1)Pi(νi) log Pi(νi)
+(10)
+One may wonder how such an approach could be
+useful in a real-world situation where the graph is
+not a tree. Interestingly enough, metabolic networks
+are sparse, i.e. the number of metabolites that typ-
+ically participate to a certain reaction is small with
+respect to the number of metabolites M, moreover
+one can reasonably assume the typical loop length
+to be large enough to ensure weak statistical depen-
+dence of neighboring sites which lay at the heart of
+the Bethe approximation [24, 25]. The algorithm is
+based on two type of messages exchanged from vari-
+able nodes to functional nodes, and vice versa:
+• µi→a(ν): the probability that ﬂux i takes value
+ν in the absence of reaction a.
+6
+
+• ma→i(ν): the non-normalized probability that
+the balance in reaction a is fulﬁlled given that
+ﬂux i takes value ν.
+The two quantities satisfy the following set of func-
+tional equations:
+ma→i(νi)
+=
+X
+{νl}l∈a\i
+µl→a(νl) δ
+ X
+l∈a
+sa,lνl ; ba
+
+µi→a(νi)
+=
+Ci→a
+Y
+b∈i\a
+mb→i(νi)
+(11)
+where Ci→a is a constant enforcing the normaliza-
+tion of the probability µi→a(ν) and δ(· ; ·) is the Kro-
+necker delta function. The set of equations 11 can
+be solved iteratively and upon convergence of the
+algorithm one can compute the marginal ﬂux distri-
+butions as:
+Pa({νl}l∈a)
+=
+X
+{νl}l∈a
+µl→a(νl) δ
+ X
+l∈a
+sa,lνl ; ba
+
+Pi(ν)
+=
+Y
+l∈i
+ml→i(ν) .
+(12)
+A brute force integration of the discrete set of equa-
+tion would be much too ineﬃcient for analyzing large
+networks, due to the multiple dimensional sum over
+{0, . . . , qmax
+l
+}l∈a\i in the previous equation. A rel-
+evant speed-up in the convergence of these equa-
+tions can be achieved by noting that the convolution
+product in 11 can be eﬃciently solved with a recur-
+sion. Let us relabel the set of ﬂuxes in equation a as
+{l ∈a} ≡{1, . . . , na} and let assume for the sake of
+clarity that ba = 0:
+R(k+1)(ν) =
+qmax
+kX
+t=0
+R(k)(ν −sa,kt)µk→a(t)
+(13)
+for k
+∈
+{0, . . . , na −1} and initial condition
+R(0)(0) = 1.
+The last step of the recursion gives
+us ma→i(ν) = R(na)(ν).
+The increase of perfor-
+mance is substantial since brute force integration
+involves a sum over Q
+l∈a\i qmax
+l
+terms, while itera-
+tion in Eq. refeq:iteration scales just as P
+l∈a\i qmax
+l
+.
+In some cases a faster convergence was met follow-
+ing a reﬁnement strategy in the variable qmax
+i
+. In-
+stead of choosing a large qmax
+i
+from scratch and to
+solve the BP equations from random initial condi-
+tions, the simulation starts using small qmax
+i
+that
+are increased after convergence. Each time qmax
+i
+is
+increased the BP equations are solved starting from
+a function that ﬁts the previous solution. With this
+strategy, networks as large as 40 metabolites and
+120 reactions could be simulated in a couple min-
+utes using a standard laptop.
+It should be noted
+that when the number na is large, the computations
+of ma→i can be done substantially faster by means
+of discrete Fourier transforms, reducing the compu-
+tation time of all messages ma→i for i →a from the
+needed na × P
+l∈a\i qmax
+l
+operations to just around
+2 × (P
+l∈a qmax
+l
+)log(P
+l∈a qmax
+l
+).
+Authors contributions
+Authors equally contributed to this work.

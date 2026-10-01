@@ -1,0 +1,1492 @@
+{
+  "document_id": "arxiv-10024",
+  "fulltext_sha256": "53e0b1725cb5a75993acc2d9a053ebfbccabab6198d7da1c710d31441855428c",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "f1ce0762b52bdccba6e8b6bea160aaa9207d66bc6336155999bf43e0636a78a4",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper introduces RIDGE, a data analysis pipeline for triggered gravitational wave searches that leverages prior astronomical information and smaller data volumes to employ computationally expensive algorithms. The pipeline includes data conditioning using running median noise floor estimation and MBLT line removal, followed by a detection statistic based on regularized maximum likelihood.",
+        "entities": [
+          {
+            "name": "RIDGE",
+            "entity_id": "ridge",
+            "entity_type": "method",
+            "aliases": [
+              "RIDGE"
+            ],
+            "attributes": {
+              "description": "Data analysis pipeline for triggered gravitational wave searches",
+              "implementation_language": "matlab",
+              "components": [
+                "data pre-processing (conditioning)",
+                "search part"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "described_in",
+                "target": "arXiv:0709.0940v1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "regularized maximum likelihood",
+                "attributes": {},
+                "target_id": "regularized_maximum_likelihood"
+              }
+            ]
+          },
+          {
+            "name": "triggered gravitational wave searches",
+            "entity_id": "triggered_gravitational_wave_searches",
+            "entity_type": "concept",
+            "aliases": [
+              "triggered gravitational wave search",
+              "triggered gravitational wave searches"
+            ],
+            "attributes": {
+              "trigger_source": "observation of astronomical events",
+              "data_volume": "usually small",
+              "prior_information": "much more available than in un-triggered searches",
+              "sensitivity": "higher than un-triggered searches due to reduced parameter space search volume"
+            },
+            "relationships": [
+              {
+                "predicate": "differs_from",
+                "target": "all-sky, blind searches",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "allows_use_of",
+                "target": "computationally more expensive algorithms",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Gamma-ray Burst (GRB) trigger",
+            "entity_id": "gamma_ray_burst_grb_trigger",
+            "entity_type": "event",
+            "aliases": [
+              "Gamma-ray Burst (GRB) trigger"
+            ],
+            "attributes": {
+              "known_parameters": [
+                "sky location",
+                "distance to source (sometimes)"
+              ],
+              "types": [
+                "long-soft",
+                "short-hard"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "guides_search_for",
+                "target": "short duration bursts (for long-soft)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "guides_search_for",
+                "target": "binary inspiral signals (for short-hard)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "LIGO Scientific Collaboration (LSC)",
+            "entity_id": "ligo_scientific_collaboration_lsc",
+            "entity_type": "organization",
+            "aliases": [
+              "LIGO Scientific Collaboration (LSC)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "manages",
+                "target": "trigger information collection mechanism",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "GCN triggers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "LIGO, GEO, and Virgo detectors",
+            "entity_id": "ligo_geo_and_virgo_detectors",
+            "entity_type": "measurement",
+            "aliases": [
+              "LIGO, GEO, and Virgo detectors"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "data_source_for",
+                "target": "RIDGE pipeline experiment",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "running median",
+            "entity_id": "running_median",
+            "entity_type": "method",
+            "aliases": [
+              "running median"
+            ],
+            "attributes": {
+              "purpose": "Estimate noise floor of power spectral density (PSD)",
+              "advantage": "Ability to reject outliers such as narrowband noise artifacts"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "RIDGE data conditioning",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_in",
+                "target": "MBLT line estimation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MBLT",
+            "entity_id": "mblt",
+            "entity_type": "method",
+            "aliases": [
+              "MBLT"
+            ],
+            "attributes": {
+              "purpose": "Line estimation and removal to reduce narrowband noise features",
+              "mechanism": "Estimates amplitude and phase modulation of line features at a given carrier frequency"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "RIDGE data conditioning",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "running median",
+                "attributes": {},
+                "target_id": "running_median"
+              }
+            ]
+          },
+          {
+            "name": "regularized maximum likelihood",
+            "entity_id": "regularized_maximum_likelihood",
+            "entity_type": "method",
+            "aliases": [
+              "regularized maximum likelihood"
+            ],
+            "attributes": {
+              "purpose": "Coherent network analysis detection statistic",
+              "reason_for_regularization": "Inverting detector responses to obtain polarization waveforms is an ill-posed problem"
+            },
+            "relationships": [
+              {
+                "predicate": "implemented_in",
+                "target": "RIDGE",
+                "attributes": {},
+                "target_id": "ridge"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 497,
+          "word_count": 497,
+          "sha256": "5165b84374168fbe9415dec251bd2306436a7bd22ddd45ef3d9d4fa3de384878",
+          "sentence_minhash": [
+            63608400554476078,
+            1306423125707224,
+            140583634530242717,
+            37498130448765965,
+            195448626114915635,
+            143618200413190815,
+            46992937528651961,
+            206893249295165974,
+            166844233492045914,
+            76931577636070685,
+            78280491562202942,
+            76722032415124302,
+            150189081694465448,
+            151893148825358067,
+            278095972097033011,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The text discusses the limited progress in using prior information for triggered gravitational wave searches, citing the SGR-1806-20 event as a notable example. It details the data conditioning process in the RIDGE pipeline, which uses a running median to estimate the noise floor and FIR filters for whitening, followed by MBLT for line noise removal.",
+        "entities": [
+          {
+            "name": "triggered gravitational wave searches",
+            "entity_id": "triggered_gravitational_wave_searches",
+            "entity_type": "concept",
+            "aliases": [
+              "triggered gravitational wave search",
+              "triggered gravitational wave searches"
+            ],
+            "attributes": {
+              "status": "limited advances in using prior information"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "data conditioning",
+                "attributes": {},
+                "target_id": "data_conditioning"
+              },
+              {
+                "predicate": "requires",
+                "target": "generation of a detection statistic",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SGR-1806-20 event",
+            "entity_id": "sgr_1806_20_event",
+            "entity_type": "event",
+            "aliases": [
+              "SGR-1806-20 event"
+            ],
+            "attributes": {
+              "type": "Gamma-ray Burst trigger"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of_prior_information",
+                "target": "X-ray intensity oscillations",
+                "attributes": {},
+                "target_id": "x_ray_intensity_oscillations"
+              }
+            ]
+          },
+          {
+            "name": "X-ray intensity oscillations",
+            "entity_id": "x_ray_intensity_oscillations",
+            "entity_type": "measurement",
+            "aliases": [
+              "X-ray intensity oscillations"
+            ],
+            "attributes": {
+              "association": "flare of SGR-1806-20"
+            },
+            "relationships": [
+              {
+                "predicate": "motivated_search_for",
+                "target": "quasi-monochromatic signals at specific frequencies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Bayesian approaches",
+            "entity_id": "bayesian_approaches",
+            "entity_type": "method",
+            "aliases": [
+              "Bayesian approaches"
+            ],
+            "attributes": {
+              "model_basis": "GWs from known pulsars in the Galaxy"
+            },
+            "relationships": [
+              {
+                "predicate": "needed_for",
+                "target": "triggered gravitational wave searches",
+                "attributes": {},
+                "target_id": "triggered_gravitational_wave_searches"
+              }
+            ]
+          },
+          {
+            "name": "RIDGE",
+            "entity_id": "ridge",
+            "entity_type": "method",
+            "aliases": [
+              "RIDGE"
+            ],
+            "attributes": {
+              "description": "data analysis pipeline for triggered searches"
+            },
+            "relationships": [
+              {
+                "predicate": "includes_step",
+                "target": "data conditioning",
+                "attributes": {},
+                "target_id": "data_conditioning"
+              }
+            ]
+          },
+          {
+            "name": "data conditioning",
+            "entity_id": "data_conditioning",
+            "entity_type": "method",
+            "aliases": [
+              "data conditioning"
+            ],
+            "attributes": {
+              "purpose": "mitigate the effect of known instrumental artifacts"
+            },
+            "relationships": [
+              {
+                "predicate": "implemented_in",
+                "target": "RIDGE",
+                "attributes": {},
+                "target_id": "ridge"
+              },
+              {
+                "predicate": "consists_of",
+                "target": "two step process",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "running median",
+            "entity_id": "running_median",
+            "entity_type": "method",
+            "aliases": [
+              "running median"
+            ],
+            "attributes": {
+              "advantage": "ability to reject outliers"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_estimate",
+                "target": "noise floor of the power spectral density (PSD)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "rejects",
+                "target": "narrowband noise artifacts",
+                "attributes": {},
+                "target_id": "narrowband_noise_artifacts"
+              }
+            ]
+          },
+          {
+            "name": "narrowband noise artifacts",
+            "entity_id": "narrowband_noise_artifacts",
+            "entity_type": "concept",
+            "aliases": [
+              "narrowband noise artifacts"
+            ],
+            "attributes": {
+              "sources": "power line interference",
+              "model": "sinusoids"
+            },
+            "relationships": [
+              {
+                "predicate": "rejected_by",
+                "target": "running median",
+                "attributes": {},
+                "target_id": "running_median"
+              }
+            ]
+          },
+          {
+            "name": "digital filter",
+            "entity_id": "digital_filter",
+            "entity_type": "method",
+            "aliases": [
+              "digital filter"
+            ],
+            "attributes": {
+              "transfer_function": "|T(f)| = 1/sqrt(S(f))",
+              "purpose": "whiten the data"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on",
+                "target": "running median estimate of the PSD",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Finite Impulse Response (FIR) filters",
+            "entity_id": "finite_impulse_response_fir_filters",
+            "entity_type": "method",
+            "aliases": [
+              "Finite Impulse Response (FIR) filters"
+            ],
+            "attributes": {
+              "usage_in_RIDGE": "whitening filters"
+            },
+            "relationships": [
+              {
+                "predicate": "coefficients_obtained_from",
+                "target": "PSD from user-specified training data segment",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "applied_to",
+                "target": "longer stretch of data",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "non-stationarity in noise floor",
+            "entity_id": "non_stationarity_in_noise_floor",
+            "entity_type": "concept",
+            "aliases": [
+              "non-stationarity in noise floor"
+            ],
+            "attributes": {
+              "timescale": "shorter than the gap between training and processed data"
+            },
+            "relationships": [
+              {
+                "predicate": "creates_discrepancy_in",
+                "target": "trained filter vs required filter",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MBLT",
+            "entity_id": "mblt",
+            "entity_type": "method",
+            "aliases": [
+              "MBLT"
+            ],
+            "attributes": {
+              "purpose": "line estimation and removal",
+              "effect": "reduces or eliminates strong narrowband noise features (line noise)"
+            },
+            "relationships": [
+              {
+                "predicate": "follows",
+                "target": "whitening step",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "targets",
+                "target": "power line interference or violin modes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 497,
+          "end_word": 972,
+          "word_count": 475,
+          "sha256": "e24195a5d8a150077d19ab945e6175ac3cb4a803789e4db1bad36a6800ec5a03",
+          "sentence_minhash": [
+            437139705243465412,
+            1306423125707224,
+            110182565901905120,
+            37189290192816055,
+            60043449279178472,
+            62667647458868521,
+            17569386251192142,
+            2807370142377393,
+            11981104696144652,
+            50103995870700205,
+            76448546797533030,
+            127332288920535677,
+            66824309535235066,
+            906306679132868,
+            272625288340415489,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The MBLT method estimates and removes line noise by tracking amplitude and phase modulation at a manually identified carrier frequency. It uses a running median to reject transient signals as outliers, ensuring they are not removed during the line subtraction process. The resulting whitened and line-removed data is then passed to the next stage of the RIDGE analysis pipeline.",
+        "entities": [
+          {
+            "name": "MBLT",
+            "entity_id": "mblt",
+            "entity_type": "method",
+            "aliases": [
+              "MBLT"
+            ],
+            "attributes": {
+              "function": "line estimation and removal",
+              "estimation_method": "running median",
+              "input": "whitened data",
+              "output": "line removed data"
+            },
+            "relationships": [
+              {
+                "predicate": "estimates",
+                "target": "amplitude and phase modulation of a line feature",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_manual_input_for",
+                "target": "carrier frequency",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "rejects",
+                "target": "transient signals",
+                "attributes": {
+                  "reason": "appear as outliers in amplitude/phase time series"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "preserves",
+                "target": "injected signals",
+                "attributes": {
+                  "effect": "no significant impact"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "feeds_into",
+                "target": "RIDGE pipeline next step",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RIDGE",
+            "entity_id": "ridge",
+            "entity_type": "method",
+            "aliases": [
+              "RIDGE"
+            ],
+            "attributes": {
+              "description": "data analysis pipeline for triggered searches"
+            },
+            "relationships": [
+              {
+                "predicate": "receives_input_from",
+                "target": "MBLT",
+                "attributes": {},
+                "target_id": "mblt"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 972,
+          "end_word": 1455,
+          "word_count": 483,
+          "sha256": "02e6705acd020e589a99aa68aab8184aad3082033751df644514a0e20d8db6ef",
+          "sentence_minhash": [
+            309903189411467198,
+            60839570084396778,
+            90405184177364570,
+            25188414276899338,
+            26384097017582652,
+            57869492297846635,
+            90091420669208294,
+            152326886699586849,
+            249356920820546271,
+            42586453371797899,
+            59581572940983686,
+            251326492970133096,
+            8649321992247620,
+            906306679132868,
+            51481571093603818,
+            39494469675869371
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text describes the regularization methods used in the RIDGE pipeline for coherent network analysis, noting that the hard constraint algorithm is a limit of the regulator used in reference [10]. It defines the sky-map output S(θ, φ) as the maximized likelihood over waveforms for a given sky location and introduces a detection statistic Rmm based on the ratio of maximum to minimum sky-map values.",
+        "entities": [
+          {
+            "name": "regularized maximum likelihood",
+            "entity_id": "regularized_maximum_likelihood",
+            "entity_type": "method",
+            "aliases": [
+              "regularized maximum likelihood"
+            ],
+            "attributes": {
+              "role": "basic algorithm for coherent network analysis in RIDGE"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "regularization",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "input",
+                "target": "equal length, conditioned data segments from detectors in a given network",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "output",
+                "target": "sky-map S(θ, φ)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "hard constraint algorithm",
+            "entity_id": "hard_constraint_algorithm",
+            "entity_type": "method",
+            "aliases": [
+              "hard constraint algorithm"
+            ],
+            "attributes": {
+              "source_reference": "[9]"
+            },
+            "relationships": [
+              {
+                "predicate": "obtained_in_limit_of",
+                "target": "infinitely large gain factor for the regulator of [10]",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "sky-map",
+            "entity_id": "sky_map",
+            "entity_type": "measurement",
+            "aliases": [
+              "sky-map"
+            ],
+            "attributes": {
+              "symbol": "S(θ, φ)",
+              "definition": "value of the likelihood of the data maximized over all possible h+ and h× waveforms with durations less than or equal to the data segments, as a function of θ and φ"
+            },
+            "relationships": [
+              {
+                "predicate": "generated_by",
+                "target": "regularized maximum likelihood",
+                "attributes": {},
+                "target_id": "regularized_maximum_likelihood"
+              },
+              {
+                "predicate": "used_to_construct",
+                "target": "detection statistic",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Rmm",
+            "entity_id": "rmm",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rmm"
+            ],
+            "attributes": {
+              "formula": "max_{θ,φ} S(θ, φ) / min_{θ,φ} S(θ, φ)",
+              "description": "detection statistic representing the ratio of the maximum to minimum value of S(θ, φ) on the θ–φ plane"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "sky-map",
+                "attributes": {},
+                "target_id": "sky_map"
+              }
+            ]
+          },
+          {
+            "name": "LIGO-Virgo network",
+            "entity_id": "ligo_virgo_network",
+            "entity_type": "organization",
+            "aliases": [
+              "LIGO-Virgo network"
+            ],
+            "attributes": {
+              "composition": "two 4km LIGO interferometers and the 2km LIGO interferometer"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "sky-map generation examples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1455,
+          "end_word": 1907,
+          "word_count": 452,
+          "sha256": "0186bd201d58cc06c60f2d1f29e02c73258adb40f6bbd15251786ee06b63dc69",
+          "sentence_minhash": [
+            307371230980015862,
+            57152229130338686,
+            4901304760856621,
+            159448631219318875,
+            50154285776315358,
+            30500191475291153,
+            108181934044425938,
+            34584616103928807,
+            64333332902950267,
+            54311698401709539,
+            78280491562202942,
+            492889311779443939,
+            164575269931903557,
+            45089631646447382,
+            51481571093603818,
+            244104220892088096
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study defines a radial detection statistic, Rrad, based on the deviation of observed sky-map values from their noise-only ensemble average. Monte Carlo simulations using a LIGO-Virgo network evaluated the performance of Rrad and Rmm statistics with injected sine-Gaussian signals. The simulations utilized design sensitivity curves for detector noise and specific instrumental artifacts to characterize detection capabilities.",
+        "entities": [
+          {
+            "name": "Rrad",
+            "entity_id": "rrad",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rrad"
+            ],
+            "attributes": {
+              "definition": "Radial distance of observed values in a scaled (Rmm, max S) plane from the mean location in the absence of a signal",
+              "formula_components": "max S, max S0, Rmm, min S0, max S0"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "Rmm",
+                "attributes": {},
+                "target_id": "rmm"
+              },
+              {
+                "predicate": "evaluated_in",
+                "target": "Monte Carlo simulations",
+                "attributes": {},
+                "target_id": "monte_carlo_simulations"
+              }
+            ]
+          },
+          {
+            "name": "Rmm",
+            "entity_id": "rmm",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rmm"
+            ],
+            "attributes": {
+              "definition": "Ratio of the maximum to the minimum value of the sky-map S(theta, phi)"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "Rrad",
+                "attributes": {},
+                "target_id": "rrad"
+              },
+              {
+                "predicate": "evaluated_in",
+                "target": "Monte Carlo simulations",
+                "attributes": {},
+                "target_id": "monte_carlo_simulations"
+              }
+            ]
+          },
+          {
+            "name": "S0(theta, phi)",
+            "entity_id": "s0_theta_phi",
+            "entity_type": "measurement",
+            "aliases": [
+              "S0(theta, phi)"
+            ],
+            "attributes": {
+              "definition": "Ensemble average of sky-maps taken over realizations with no GW signals"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in_calculation_of",
+                "target": "Rrad",
+                "attributes": {},
+                "target_id": "rrad"
+              }
+            ]
+          },
+          {
+            "name": "Monte Carlo simulations",
+            "entity_id": "monte_carlo_simulations",
+            "entity_type": "method",
+            "aliases": [
+              "Monte Carlo simulations"
+            ],
+            "attributes": {
+              "purpose": "Characterize performance of detection statistics Rmm and Rrad",
+              "network_composition": "4km LIGO detectors (H1, L1), 2km LIGO detector (H2), Virgo detector (V1)"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_noise_model",
+                "target": "Design sensitivity curves for LIGO and Virgo",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_artifacts",
+                "target": "Sinusoids at 54, 60, 120, 180, 344, 349, 407 Hz",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "injects_signal",
+                "target": "Sine-Gaussian signals",
+                "attributes": {},
+                "target_id": "sine_gaussian_signals"
+              }
+            ]
+          },
+          {
+            "name": "Sine-Gaussian signals",
+            "entity_id": "sine_gaussian_signals",
+            "entity_type": "concept",
+            "aliases": [
+              "Sine-Gaussian signals"
+            ],
+            "attributes": {
+              "center_frequency": "235 Hz",
+              "quality_factor_Q": "9",
+              "phase_relationship": "h_x(t) has an added phase of pi/2 relative to h_+(t)",
+              "source_location_theta": "-30 degrees",
+              "source_location_phi": "167.0 degrees",
+              "reference_event": "GRB060813"
+            },
+            "relationships": [
+              {
+                "predicate": "injected_into",
+                "target": "Simulated noise",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "strength_specified_by",
+                "target": "hrss",
+                "attributes": {},
+                "target_id": "hrss"
+              }
+            ]
+          },
+          {
+            "name": "hrss",
+            "entity_id": "hrss",
+            "entity_type": "measurement",
+            "aliases": [
+              "hrss"
+            ],
+            "attributes": {
+              "definition": "Square root of the integral of the sum of squared h_+(t) and h_x(t) waveforms over time",
+              "test_values": "3 x 10^-22, 5 x 10^-22, 7 x 10^-22 Hz^-1/2"
+            },
+            "relationships": [
+              {
+                "predicate": "specifies_strength_of",
+                "target": "Sine-Gaussian signals",
+                "attributes": {},
+                "target_id": "sine_gaussian_signals"
+              }
+            ]
+          },
+          {
+            "name": "Simulated detector noise",
+            "entity_id": "simulated_detector_noise",
+            "entity_type": "measurement",
+            "aliases": [
+              "Simulated detector noise"
+            ],
+            "attributes": {
+              "type": "Gaussian, stationary",
+              "duration": "~3000 sec",
+              "generation_method": "White noise passed through FIR filters matching design curves",
+              "sampling_frequency": "16384 Hz",
+              "frequency_resolution": "2.0 Hz"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on",
+                "target": "Design sensitivity curves for LIGO and Virgo",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_artifacts",
+                "target": "Sinusoids at 54, 60, 120, 180, 344, 349, 407 Hz",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1907,
+          "end_word": 2393,
+          "word_count": 486,
+          "sha256": "b239a1971a87f01623a9368afa6fc9bf47d9f5b5abd270a8a88e39852f0106b8",
+          "sentence_minhash": [
+            176802238795285977,
+            1306423125707224,
+            40863640610520970,
+            33999329797272176,
+            124128223152102806,
+            109221678111449513,
+            149017575652778032,
+            152326886699586849,
+            11981104696144652,
+            340113061338910250,
+            76448546797533030,
+            356631250106938027,
+            12488864069851856,
+            9141700450698078,
+            197615480788769561,
+            244104220892088096
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The RIDGE pipeline uses regularized maximum likelihood network analysis for triggered gravitational wave searches. Monte Carlo simulations indicate that the Rrad statistic outperforms the Rmm statistic in detection performance. A signal with an hrss of 5 × 10^-22 Hz^-1/2 is detected with approximately 62% probability at a false alarm rate of 2 × 10^-2 Hz.",
+        "entities": [
+          {
+            "name": "RIDGE",
+            "entity_id": "ridge",
+            "entity_type": "method",
+            "aliases": [
+              "RIDGE"
+            ],
+            "attributes": {
+              "description": "Analysis pipeline implementing regularized maximum likelihood based network analysis for triggered searches",
+              "function": "Serves as a platform for trying out new regulators and provides an independent check for results from other pipelines"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "regularized maximum likelihood based network analysis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "differs_from",
+                "target": "other network analysis pipelines [14, 15]",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Rrad statistic",
+            "entity_id": "rrad_statistic",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rrad statistic"
+            ],
+            "attributes": {
+              "description": "Detection statistic incorporating information from the full sky-map"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms",
+                "target": "Rmm statistic",
+                "attributes": {},
+                "target_id": "rmm_statistic"
+              }
+            ]
+          },
+          {
+            "name": "Rmm statistic",
+            "entity_id": "rmm_statistic",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rmm statistic"
+            ],
+            "attributes": {
+              "description": "Naive detection statistic based on max/min ratio of sky-map values"
+            },
+            "relationships": [
+              {
+                "predicate": "outperformed_by",
+                "target": "Rrad statistic",
+                "attributes": {},
+                "target_id": "rrad_statistic"
+              }
+            ]
+          },
+          {
+            "name": "LIGO-Virgo network",
+            "entity_id": "ligo_virgo_network",
+            "entity_type": "organization",
+            "aliases": [
+              "LIGO-Virgo network"
+            ],
+            "attributes": {
+              "components": "LIGO and Virgo detectors"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in_simulation",
+                "target": "Monte Carlo simulations",
+                "attributes": {},
+                "target_id": "monte_carlo_simulations"
+              }
+            ]
+          },
+          {
+            "name": "Monte Carlo simulations",
+            "entity_id": "monte_carlo_simulations",
+            "entity_type": "method",
+            "aliases": [
+              "Monte Carlo simulations"
+            ],
+            "attributes": {
+              "purpose": "Characterize performance of detection statistics Rmm and Rrad",
+              "data_type": "Simulated detector noise"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "RIDGE",
+                "attributes": {},
+                "target_id": "ridge"
+              },
+              {
+                "predicate": "finds_detection_probability",
+                "target": "62% for hrss = 5 × 10^-22 Hz^-1/2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "hrss = 5 × 10^-22 Hz^-1/2",
+            "entity_id": "hrss_5_10_22_hz_1_2",
+            "entity_type": "measurement",
+            "aliases": [
+              "hrss = 5 × 10^-22 Hz^-1/2"
+            ],
+            "attributes": {
+              "value": "5 × 10^-22 Hz^-1/2"
+            },
+            "relationships": [
+              {
+                "predicate": "detected_with_probability",
+                "target": "62%",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_false_alarm_rate",
+                "target": "2 × 10^-2 Hz",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2393,
+          "end_word": 2883,
+          "word_count": 490,
+          "sha256": "5ed2ad12be9d9471bd9707885376595b64ec5e752f6d0d9b3c4769f3cd1d7c76",
+          "sentence_minhash": [
+            138742571471211904,
+            18551641988871988,
+            153262400589127199,
+            201948566748835051,
+            43671268334127607,
+            62667647458868521,
+            149017575652778032,
+            63183425104977485,
+            11981104696144652,
+            9462436175016187,
+            78280491562202942,
+            177343633896795225,
+            8649321992247620,
+            54964128323631462,
+            37122965930226008,
+            244104220892088096
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The RIDGE pipeline is designed to reconstruct gravitational wave waveforms at arbitrary sky locations. Future work will integrate a specific waveform estimation method to assess the accuracy of derived astrophysical information.",
+        "entities": [
+          {
+            "name": "RIDGE pipeline",
+            "entity_id": "ridge_pipeline",
+            "entity_type": "method",
+            "aliases": [
+              "RIDGE pipeline"
+            ],
+            "attributes": {
+              "function": "reconstructs h+ and h× waveforms at arbitrary sky locations"
+            },
+            "relationships": [
+              {
+                "predicate": "planned_integration_of",
+                "target": "waveform estimation method [16]",
+                "attributes": {},
+                "target_id": "waveform_estimation_method_16"
+              }
+            ]
+          },
+          {
+            "name": "waveform estimation method [16]",
+            "entity_id": "waveform_estimation_method_16",
+            "entity_type": "method",
+            "aliases": [
+              "waveform estimation method [16]"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "integrated_into",
+                "target": "RIDGE pipeline",
+                "attributes": {},
+                "target_id": "ridge_pipeline"
+              }
+            ]
+          },
+          {
+            "name": "astrophysical information",
+            "entity_id": "astrophysical_information",
+            "entity_type": "concept",
+            "aliases": [
+              "astrophysical information"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "accuracy_investigated_via",
+                "target": "waveform estimation method [16]",
+                "attributes": {},
+                "target_id": "waveform_estimation_method_16"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2883,
+          "end_word": 2925,
+          "word_count": 42,
+          "sha256": "68adf6b586963cb295ae07e331f1458a3f4657cb2e891010c57187e8cdd1a665",
+          "sentence_minhash": [
+            874738707489554217,
+            18551641988871988,
+            254850878413439315,
+            64513941377847126,
+            60043449279178472,
+            246459635910105627,
+            1629135607290269006,
+            1980499232365176477,
+            266927695903760850,
+            636851558991118210,
+            1430769632938098856,
+            535808518788226615,
+            664028302003966064,
+            1503419081956979019,
+            399525438426612735,
+            125971077141044521
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "triggered_gravitational_wave_searches",
+        "canonical_name": "triggered gravitational wave searches",
+        "aliases": [
+          "triggered gravitational wave searches",
+          "triggered gravitational wave search"
+        ]
+      },
+      {
+        "canonical_id": "ridge",
+        "canonical_name": "RIDGE",
+        "aliases": [
+          "RIDGE"
+        ]
+      },
+      {
+        "canonical_id": "gamma_ray_burst_grb_trigger",
+        "canonical_name": "Gamma-ray Burst (GRB) trigger",
+        "aliases": [
+          "Gamma-ray Burst (GRB) trigger"
+        ]
+      },
+      {
+        "canonical_id": "ligo_scientific_collaboration_lsc",
+        "canonical_name": "LIGO Scientific Collaboration (LSC)",
+        "aliases": [
+          "LIGO Scientific Collaboration (LSC)"
+        ]
+      },
+      {
+        "canonical_id": "ligo_geo_and_virgo_detectors",
+        "canonical_name": "LIGO, GEO, and Virgo detectors",
+        "aliases": [
+          "LIGO, GEO, and Virgo detectors"
+        ]
+      },
+      {
+        "canonical_id": "running_median",
+        "canonical_name": "running median",
+        "aliases": [
+          "running median"
+        ]
+      },
+      {
+        "canonical_id": "mblt",
+        "canonical_name": "MBLT",
+        "aliases": [
+          "MBLT"
+        ]
+      },
+      {
+        "canonical_id": "regularized_maximum_likelihood",
+        "canonical_name": "regularized maximum likelihood",
+        "aliases": [
+          "regularized maximum likelihood"
+        ]
+      },
+      {
+        "canonical_id": "sgr_1806_20_event",
+        "canonical_name": "SGR-1806-20 event",
+        "aliases": [
+          "SGR-1806-20 event"
+        ]
+      },
+      {
+        "canonical_id": "x_ray_intensity_oscillations",
+        "canonical_name": "X-ray intensity oscillations",
+        "aliases": [
+          "X-ray intensity oscillations"
+        ]
+      },
+      {
+        "canonical_id": "bayesian_approaches",
+        "canonical_name": "Bayesian approaches",
+        "aliases": [
+          "Bayesian approaches"
+        ]
+      },
+      {
+        "canonical_id": "data_conditioning",
+        "canonical_name": "data conditioning",
+        "aliases": [
+          "data conditioning"
+        ]
+      },
+      {
+        "canonical_id": "narrowband_noise_artifacts",
+        "canonical_name": "narrowband noise artifacts",
+        "aliases": [
+          "narrowband noise artifacts"
+        ]
+      },
+      {
+        "canonical_id": "digital_filter",
+        "canonical_name": "digital filter",
+        "aliases": [
+          "digital filter"
+        ]
+      },
+      {
+        "canonical_id": "finite_impulse_response_fir_filters",
+        "canonical_name": "Finite Impulse Response (FIR) filters",
+        "aliases": [
+          "Finite Impulse Response (FIR) filters"
+        ]
+      },
+      {
+        "canonical_id": "non_stationarity_in_noise_floor",
+        "canonical_name": "non-stationarity in noise floor",
+        "aliases": [
+          "non-stationarity in noise floor"
+        ]
+      },
+      {
+        "canonical_id": "hard_constraint_algorithm",
+        "canonical_name": "hard constraint algorithm",
+        "aliases": [
+          "hard constraint algorithm"
+        ]
+      },
+      {
+        "canonical_id": "sky_map",
+        "canonical_name": "sky-map",
+        "aliases": [
+          "sky-map"
+        ]
+      },
+      {
+        "canonical_id": "rmm",
+        "canonical_name": "Rmm",
+        "aliases": [
+          "Rmm"
+        ]
+      },
+      {
+        "canonical_id": "ligo_virgo_network",
+        "canonical_name": "LIGO-Virgo network",
+        "aliases": [
+          "LIGO-Virgo network"
+        ]
+      },
+      {
+        "canonical_id": "rrad",
+        "canonical_name": "Rrad",
+        "aliases": [
+          "Rrad"
+        ]
+      },
+      {
+        "canonical_id": "s0_theta_phi",
+        "canonical_name": "S0(theta, phi)",
+        "aliases": [
+          "S0(theta, phi)"
+        ]
+      },
+      {
+        "canonical_id": "monte_carlo_simulations",
+        "canonical_name": "Monte Carlo simulations",
+        "aliases": [
+          "Monte Carlo simulations"
+        ]
+      },
+      {
+        "canonical_id": "sine_gaussian_signals",
+        "canonical_name": "Sine-Gaussian signals",
+        "aliases": [
+          "Sine-Gaussian signals"
+        ]
+      },
+      {
+        "canonical_id": "hrss",
+        "canonical_name": "hrss",
+        "aliases": [
+          "hrss"
+        ]
+      },
+      {
+        "canonical_id": "simulated_detector_noise",
+        "canonical_name": "Simulated detector noise",
+        "aliases": [
+          "Simulated detector noise"
+        ]
+      },
+      {
+        "canonical_id": "rrad_statistic",
+        "canonical_name": "Rrad statistic",
+        "aliases": [
+          "Rrad statistic"
+        ]
+      },
+      {
+        "canonical_id": "rmm_statistic",
+        "canonical_name": "Rmm statistic",
+        "aliases": [
+          "Rmm statistic"
+        ]
+      },
+      {
+        "canonical_id": "hrss_5_10_22_hz_1_2",
+        "canonical_name": "hrss = 5 × 10^-22 Hz^-1/2",
+        "aliases": [
+          "hrss = 5 × 10^-22 Hz^-1/2"
+        ]
+      },
+      {
+        "canonical_id": "ridge_pipeline",
+        "canonical_name": "RIDGE pipeline",
+        "aliases": [
+          "RIDGE pipeline"
+        ]
+      },
+      {
+        "canonical_id": "waveform_estimation_method_16",
+        "canonical_name": "waveform estimation method [16]",
+        "aliases": [
+          "waveform estimation method [16]"
+        ]
+      },
+      {
+        "canonical_id": "astrophysical_information",
+        "canonical_name": "astrophysical information",
+        "aliases": [
+          "astrophysical information"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The paper introduces RIDGE, a data analysis pipeline for triggered gravitational wave searches that leverages prior astronomical information and smaller data volumes to employ computationally expensive algorithms. The pipeline includes data conditioning using running median noise floor estimation and MBLT line removal, followed by a detection statistic based on regularized maximum likelihood.\",\"entities\":[{\"name\":\"RIDGE\",\"type\":\"method\",\"attributes\":{\"description\":\"Data analysis pipeline for triggered gravitational wave searches\",\"implementation_language\":\"matlab\",\"components\":[\"data pre-processing (conditioning)\",\"search part\"]},\"relationships\":[{\"predicate\":\"described_in\",\"target\":\"arXiv:0709.0940v1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"regularized maximum likelihood\",\"attributes\":{},\"target_id\":\"regularized_maximum_likelihood\"}]},{\"name\":\"triggered gravitational wave searches\",\"type\":\"concept\",\"attributes\":{\"trigger_source\":\"observation of astronomical events\",\"data_volume\":\"usually small\",\"prior_information\":\"much more available than in un-triggered searches\",\"sensitivity\":\"higher than un-triggered searches due to reduced parameter space search volume\"},\"relationships\":[{\"predicate\":\"differs_from\",\"target\":\"all-sky, blind searches\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"allows_use_of\",\"target\":\"computationally more expensive algorithms\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Gamma-ray Burst (GRB) trigger\",\"type\":\"event\",\"attributes\":{\"known_parameters\":[\"sky location\",\"distance to source (sometimes)\"],\"types\":[\"long-soft\",\"short-hard\"]},\"relationships\":[{\"predicate\":\"guides_search_for\",\"target\":\"short duration bursts (for long-soft)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"guides_search_for\",\"target\":\"binary inspiral signals (for short-hard)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"LIGO Scientific Collaboration (LSC)\",\"type\":\"organization\",\"attributes\":{},\"relationships\":[{\"predicate\":\"manages\",\"target\":\"trigger information collection mechanism\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"GCN triggers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"LIGO, GEO, and Virgo detectors\",\"type\":\"measurement\",\"attributes\":{},\"relationships\":[{\"predicate\":\"data_source_for\",\"target\":\"RIDGE pipeline experiment\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"running median\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Estimate noise floor of power spectral density (PSD)\",\"advantage\":\"Ability to reject outliers such as narrowband noise artifacts\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"RIDGE data conditioning\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_in\",\"target\":\"MBLT line estimation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MBLT\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Line estimation and removal to reduce narrowband noise features\",\"mechanism\":\"Estimates amplitude and phase modulation of line features at a given carrier frequency\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"RIDGE data conditioning\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"running median\",\"attributes\":{},\"target_id\":\"running_median\"}]},{\"name\":\"regularized maximum likelihood\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Coherent network analysis detection statistic\",\"reason_for_regularization\":\"Inverting detector responses to obtain polarization waveforms is an ill-posed problem\"},\"relationships\":[{\"predicate\":\"implemented_in\",\"target\":\"RIDGE\",\"attributes\":{},\"target_id\":\"ridge\"}]}]},{\"context_summary\":\"The text discusses the limited progress in using prior information for triggered gravitational wave searches, citing the SGR-1806-20 event as a notable example. It details the data conditioning process in the RIDGE pipeline, which uses a running median to estimate the noise floor and FIR filters for whitening, followed by MBLT for line noise removal.\",\"entities\":[{\"name\":\"triggered gravitational wave searches\",\"type\":\"concept\",\"attributes\":{\"status\":\"limited advances in using prior information\"},\"relationships\":[{\"predicate\":\"requires\",\"target\":\"data conditioning\",\"attributes\":{},\"target_id\":\"data_conditioning\"},{\"predicate\":\"requires\",\"target\":\"generation of a detection statistic\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SGR-1806-20 event\",\"type\":\"event\",\"attributes\":{\"type\":\"Gamma-ray Burst trigger\"},\"relationships\":[{\"predicate\":\"source_of_prior_information\",\"target\":\"X-ray intensity oscillations\",\"attributes\":{},\"target_id\":\"x_ray_intensity_oscillations\"}]},{\"name\":\"X-ray intensity oscillations\",\"type\":\"measurement\",\"attributes\":{\"association\":\"flare of SGR-1806-20\"},\"relationships\":[{\"predicate\":\"motivated_search_for\",\"target\":\"quasi-monochromatic signals at specific frequencies\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Bayesian approaches\",\"type\":\"method\",\"attributes\":{\"model_basis\":\"GWs from known pulsars in the Galaxy\"},\"relationships\":[{\"predicate\":\"needed_for\",\"target\":\"triggered gravitational wave searches\",\"attributes\":{},\"target_id\":\"triggered_gravitational_wave_searches\"}]},{\"name\":\"RIDGE\",\"type\":\"method\",\"attributes\":{\"description\":\"data analysis pipeline for triggered searches\"},\"relationships\":[{\"predicate\":\"includes_step\",\"target\":\"data conditioning\",\"attributes\":{},\"target_id\":\"data_conditioning\"}]},{\"name\":\"data conditioning\",\"type\":\"method\",\"attributes\":{\"purpose\":\"mitigate the effect of known instrumental artifacts\"},\"relationships\":[{\"predicate\":\"implemented_in\",\"target\":\"RIDGE\",\"attributes\":{},\"target_id\":\"ridge\"},{\"predicate\":\"consists_of\",\"target\":\"two step process\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"running median\",\"type\":\"method\",\"attributes\":{\"advantage\":\"ability to reject outliers\"},\"relationships\":[{\"predicate\":\"used_to_estimate\",\"target\":\"noise floor of the power spectral density (PSD)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"rejects\",\"target\":\"narrowband noise artifacts\",\"attributes\":{},\"target_id\":\"narrowband_noise_artifacts\"}]},{\"name\":\"narrowband noise artifacts\",\"type\":\"concept\",\"attributes\":{\"sources\":\"power line interference\",\"model\":\"sinusoids\"},\"relationships\":[{\"predicate\":\"rejected_by\",\"target\":\"running median\",\"attributes\":{},\"target_id\":\"running_median\"}]},{\"name\":\"digital filter\",\"type\":\"method\",\"attributes\":{\"transfer_function\":\"|T(f)| = 1/sqrt(S(f))\",\"purpose\":\"whiten the data\"},\"relationships\":[{\"predicate\":\"based_on\",\"target\":\"running median estimate of the PSD\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Finite Impulse Response (FIR) filters\",\"type\":\"method\",\"attributes\":{\"usage_in_RIDGE\":\"whitening filters\"},\"relationships\":[{\"predicate\":\"coefficients_obtained_from\",\"target\":\"PSD from user-specified training data segment\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"applied_to\",\"target\":\"longer stretch of data\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"non-stationarity in noise floor\",\"type\":\"concept\",\"attributes\":{\"timescale\":\"shorter than the gap between training and processed data\"},\"relationships\":[{\"predicate\":\"creates_discrepancy_in\",\"target\":\"trained filter vs required filter\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MBLT\",\"type\":\"method\",\"attributes\":{\"purpose\":\"line estimation and removal\",\"effect\":\"reduces or eliminates strong narrowband noise features (line noise)\"},\"relationships\":[{\"predicate\":\"follows\",\"target\":\"whitening step\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"targets\",\"target\":\"power line interference or violin modes\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The MBLT method estimates and removes line noise by tracking amplitude and phase modulation at a manually identified carrier frequency. It uses a running median to reject transient signals as outliers, ensuring they are not removed during the line subtraction process. The resulting whitened and line-removed data is then passed to the next stage of the RIDGE analysis pipeline.\",\"entities\":[{\"name\":\"MBLT\",\"type\":\"method\",\"attributes\":{\"function\":\"line estimation and removal\",\"estimation_method\":\"running median\",\"input\":\"whitened data\",\"output\":\"line removed data\"},\"relationships\":[{\"predicate\":\"estimates\",\"target\":\"amplitude and phase modulation of a line feature\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"requires_manual_input_for\",\"target\":\"carrier frequency\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"rejects\",\"target\":\"transient signals\",\"attributes\":{\"reason\":\"appear as outliers in amplitude/phase time series\"},\"target_id\":null},{\"predicate\":\"preserves\",\"target\":\"injected signals\",\"attributes\":{\"effect\":\"no significant impact\"},\"target_id\":null},{\"predicate\":\"feeds_into\",\"target\":\"RIDGE pipeline next step\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RIDGE\",\"type\":\"method\",\"attributes\":{\"description\":\"data analysis pipeline for triggered searches\"},\"relationships\":[{\"predicate\":\"receives_input_from\",\"target\":\"MBLT\",\"attributes\":{},\"target_id\":\"mblt\"}]}]},{\"context_summary\":\"The text describes the regularization methods used in the RIDGE pipeline for coherent network analysis, noting that the hard constraint algorithm is a limit of the regulator used in reference [10]. It defines the sky-map output S(θ, φ) as the maximized likelihood over waveforms for a given sky location and introduces a detection statistic Rmm based on the ratio of maximum to minimum sky-map values.\",\"entities\":[{\"name\":\"regularized maximum likelihood\",\"type\":\"method\",\"attributes\":{\"role\":\"basic algorithm for coherent network analysis in RIDGE\"},\"relationships\":[{\"predicate\":\"requires\",\"target\":\"regularization\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"input\",\"target\":\"equal length, conditioned data segments from detectors in a given network\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"output\",\"target\":\"sky-map S(θ, φ)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"hard constraint algorithm\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[9]\"},\"relationships\":[{\"predicate\":\"obtained_in_limit_of\",\"target\":\"infinitely large gain factor for the regulator of [10]\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"sky-map\",\"type\":\"measurement\",\"attributes\":{\"symbol\":\"S(θ, φ)\",\"definition\":\"value of the likelihood of the data maximized over all possible h+ and h× waveforms with durations less than or equal to the data segments, as a function of θ and φ\"},\"relationships\":[{\"predicate\":\"generated_by\",\"target\":\"regularized maximum likelihood\",\"attributes\":{},\"target_id\":\"regularized_maximum_likelihood\"},{\"predicate\":\"used_to_construct\",\"target\":\"detection statistic\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Rmm\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"max_{θ,φ} S(θ, φ) / min_{θ,φ} S(θ, φ)\",\"description\":\"detection statistic representing the ratio of the maximum to minimum value of S(θ, φ) on the θ–φ plane\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"sky-map\",\"attributes\":{},\"target_id\":\"sky_map\"}]},{\"name\":\"LIGO-Virgo network\",\"type\":\"organization\",\"attributes\":{\"composition\":\"two 4km LIGO interferometers and the 2km LIGO interferometer\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"sky-map generation examples\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study defines a radial detection statistic, Rrad, based on the deviation of observed sky-map values from their noise-only ensemble average. Monte Carlo simulations using a LIGO-Virgo network evaluated the performance of Rrad and Rmm statistics with injected sine-Gaussian signals. The simulations utilized design sensitivity curves for detector noise and specific instrumental artifacts to characterize detection capabilities.\",\"entities\":[{\"name\":\"Rrad\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Radial distance of observed values in a scaled (Rmm, max S) plane from the mean location in the absence of a signal\",\"formula_components\":\"max S, max S0, Rmm, min S0, max S0\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"Rmm\",\"attributes\":{},\"target_id\":\"rmm\"},{\"predicate\":\"evaluated_in\",\"target\":\"Monte Carlo simulations\",\"attributes\":{},\"target_id\":\"monte_carlo_simulations\"}]},{\"name\":\"Rmm\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Ratio of the maximum to the minimum value of the sky-map S(theta, phi)\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"Rrad\",\"attributes\":{},\"target_id\":\"rrad\"},{\"predicate\":\"evaluated_in\",\"target\":\"Monte Carlo simulations\",\"attributes\":{},\"target_id\":\"monte_carlo_simulations\"}]},{\"name\":\"S0(theta, phi)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Ensemble average of sky-maps taken over realizations with no GW signals\"},\"relationships\":[{\"predicate\":\"used_in_calculation_of\",\"target\":\"Rrad\",\"attributes\":{},\"target_id\":\"rrad\"}]},{\"name\":\"Monte Carlo simulations\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Characterize performance of detection statistics Rmm and Rrad\",\"network_composition\":\"4km LIGO detectors (H1, L1), 2km LIGO detector (H2), Virgo detector (V1)\"},\"relationships\":[{\"predicate\":\"uses_noise_model\",\"target\":\"Design sensitivity curves for LIGO and Virgo\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_artifacts\",\"target\":\"Sinusoids at 54, 60, 120, 180, 344, 349, 407 Hz\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"injects_signal\",\"target\":\"Sine-Gaussian signals\",\"attributes\":{},\"target_id\":\"sine_gaussian_signals\"}]},{\"name\":\"Sine-Gaussian signals\",\"type\":\"concept\",\"attributes\":{\"center_frequency\":\"235 Hz\",\"quality_factor_Q\":\"9\",\"phase_relationship\":\"h_x(t) has an added phase of pi/2 relative to h_+(t)\",\"source_location_theta\":\"-30 degrees\",\"source_location_phi\":\"167.0 degrees\",\"reference_event\":\"GRB060813\"},\"relationships\":[{\"predicate\":\"injected_into\",\"target\":\"Simulated noise\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"strength_specified_by\",\"target\":\"hrss\",\"attributes\":{},\"target_id\":\"hrss\"}]},{\"name\":\"hrss\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Square root of the integral of the sum of squared h_+(t) and h_x(t) waveforms over time\",\"test_values\":\"3 x 10^-22, 5 x 10^-22, 7 x 10^-22 Hz^-1/2\"},\"relationships\":[{\"predicate\":\"specifies_strength_of\",\"target\":\"Sine-Gaussian signals\",\"attributes\":{},\"target_id\":\"sine_gaussian_signals\"}]},{\"name\":\"Simulated detector noise\",\"type\":\"measurement\",\"attributes\":{\"type\":\"Gaussian, stationary\",\"duration\":\"~3000 sec\",\"generation_method\":\"White noise passed through FIR filters matching design curves\",\"sampling_frequency\":\"16384 Hz\",\"frequency_resolution\":\"2.0 Hz\"},\"relationships\":[{\"predicate\":\"based_on\",\"target\":\"Design sensitivity curves for LIGO and Virgo\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_artifacts\",\"target\":\"Sinusoids at 54, 60, 120, 180, 344, 349, 407 Hz\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The RIDGE pipeline uses regularized maximum likelihood network analysis for triggered gravitational wave searches. Monte Carlo simulations indicate that the Rrad statistic outperforms the Rmm statistic in detection performance. A signal with an hrss of 5 × 10^-22 Hz^-1/2 is detected with approximately 62% probability at a false alarm rate of 2 × 10^-2 Hz.\",\"entities\":[{\"name\":\"RIDGE\",\"type\":\"method\",\"attributes\":{\"description\":\"Analysis pipeline implementing regularized maximum likelihood based network analysis for triggered searches\",\"function\":\"Serves as a platform for trying out new regulators and provides an independent check for results from other pipelines\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"regularized maximum likelihood based network analysis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"differs_from\",\"target\":\"other network analysis pipelines [14, 15]\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Rrad statistic\",\"type\":\"measurement\",\"attributes\":{\"description\":\"Detection statistic incorporating information from the full sky-map\"},\"relationships\":[{\"predicate\":\"outperforms\",\"target\":\"Rmm statistic\",\"attributes\":{},\"target_id\":\"rmm_statistic\"}]},{\"name\":\"Rmm statistic\",\"type\":\"measurement\",\"attributes\":{\"description\":\"Naive detection statistic based on max/min ratio of sky-map values\"},\"relationships\":[{\"predicate\":\"outperformed_by\",\"target\":\"Rrad statistic\",\"attributes\":{},\"target_id\":\"rrad_statistic\"}]},{\"name\":\"LIGO-Virgo network\",\"type\":\"organization\",\"attributes\":{\"components\":\"LIGO and Virgo detectors\"},\"relationships\":[{\"predicate\":\"used_in_simulation\",\"target\":\"Monte Carlo simulations\",\"attributes\":{},\"target_id\":\"monte_carlo_simulations\"}]},{\"name\":\"Monte Carlo simulations\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Characterize performance of detection statistics Rmm and Rrad\",\"data_type\":\"Simulated detector noise\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"RIDGE\",\"attributes\":{},\"target_id\":\"ridge\"},{\"predicate\":\"finds_detection_probability\",\"target\":\"62% for hrss = 5 × 10^-22 Hz^-1/2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"hrss = 5 × 10^-22 Hz^-1/2\",\"type\":\"measurement\",\"attributes\":{\"value\":\"5 × 10^-22 Hz^-1/2\"},\"relationships\":[{\"predicate\":\"detected_with_probability\",\"target\":\"62%\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_false_alarm_rate\",\"target\":\"2 × 10^-2 Hz\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The RIDGE pipeline is designed to reconstruct gravitational wave waveforms at arbitrary sky locations. Future work will integrate a specific waveform estimation method to assess the accuracy of derived astrophysical information.\",\"entities\":[{\"name\":\"RIDGE pipeline\",\"type\":\"method\",\"attributes\":{\"function\":\"reconstructs h+ and h× waveforms at arbitrary sky locations\"},\"relationships\":[{\"predicate\":\"planned_integration_of\",\"target\":\"waveform estimation method [16]\",\"attributes\":{},\"target_id\":\"waveform_estimation_method_16\"}]},{\"name\":\"waveform estimation method [16]\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"integrated_into\",\"target\":\"RIDGE pipeline\",\"attributes\":{},\"target_id\":\"ridge_pipeline\"}]},{\"name\":\"astrophysical information\",\"type\":\"concept\",\"attributes\":{},\"relationships\":[{\"predicate\":\"accuracy_investigated_via\",\"target\":\"waveform estimation method [16]\",\"attributes\":{},\"target_id\":\"waveform_estimation_method_16\"}]}]}]"
+}

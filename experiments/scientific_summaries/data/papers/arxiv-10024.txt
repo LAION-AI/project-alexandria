@@ -1,0 +1,445 @@
+arXiv:0709.0940v1  [gr-qc]  6 Sep 2007
+Coherent network analysis for triggered
+gravitational wave burst searches
+K Hayama1, S D Mohanty1, M Rakhmanov2, S Desai2
+1The University of Texas at Brownsville, 80 Fort Brown, Brownsville, Texas,
+78520, USA.
+2 Department of Physics, Pennsylvania State University, University Park, PA
+16802, USA.
+E-mail: kazu@phys.utb.edu
+Abstract.
+Searches for gravitational wave bursts that are triggered by the
+observation of astronomical events require a diﬀerent mode of analysis than all-
+sky, blind searches. For one, much more prior information is usually available in
+a triggered search which can and should be used in the analysis. Second, since
+the data volume is usually small in a triggered search, it is also possible to use
+computationally more expensive algorithms for tasks such as data pre-processing
+that can consume signiﬁcant computing resources in a high data-volume un-
+triggered search. From the statistical point of view, the reduction in the parameter
+space search volume leads to higher sensitivity than an un-triggered search. We
+describe here a data analysis pipeline for triggered searches, called RIDGE, and
+present preliminary results for simulated noise and signals.
+1. Introduction
+Gravitational wave (GW) searches that are triggered by the observation of an
+astronomical event have some aspects that are fundamentally diﬀerent from all-sky
+or un-triggered searches. First of all, the non-GW observations furnish a wealth of
+prior information that can guide the GW data analysis. For instance, in the case of a
+Gamma-ray Burst (GRB) trigger, we usually know the sky location and, sometimes,
+the distance to the source. Based on the type of GRB, long-soft or short-hard, one can
+look for qualitatively diﬀerent signals: short duration bursts for the former and binary
+inspiral signals for the latter. Second, there are many data pre-processing algorithms
+available in the literature that have been demonstrated to be useful but have not been
+used in untriggered searches because of a natural selection eﬀect: ﬁnite computational
+resources pick the computationally least expensive algorithm. Triggered searches, on
+the other hand, usually involve much smaller data volumes and, consequently, allow
+us the freedom to experiment with algorithms.
+In this paper, we describe results from one such ongoing experiment of using new
+algorithms for analyzing data from the LIGO, GEO and Virgo detectors for triggered
+searches. We use new algorithms for both the data pre-processing (conditioning) and
+the search part of the analysis pipeline. The code for the pipeline, called RIDGE, is
+written mostly in matlab. We will not describe the code in any detail in this paper
+but focus on the algorithms and results.
+
+Network analysis for triggered searches
+2
+2. Data analysis components
+A typical triggered search involves several components [1].
+First, a mechanism is
+required to collect trigger information.
+This is already well developed and nearly
+automated within the LIGO Scientiﬁc Collaboration (LSC), at least as far as GCN [2]
+triggers are concerned. Second, given the wealth of astrophysical prior information
+associated with most triggers, we need proper mathematical tools to incorporate this
+information into our analysis. So far, this aspect of a triggered search has seen only
+limited advances. The most detailed use of prior information has been in the search [3]
+for GWs from the SGR-1806–20 event [4] where X-ray intensity oscillations associated
+with the ﬂare were used to motivate a search for quasi-monochromatic signals at
+speciﬁc frequencies. However, more work is needed in this area, especially on the use
+of Bayesian approaches modeled after the ones used for a diﬀerent type of “triggered”
+search [5], namely GWs from known pulsars in the Galaxy. The other components
+required in a typical triggered search, as in any other search, are data conditioning
+and the generation of a detection statistic.
+2.1. Data conditioning in RIDGE
+The purpose of data conditioning is to mitigate the eﬀect of known instrumental
+artifacts in the data. In RIDGE this is done in a two step process. First, the noise ﬂoor
+of the power spectral density (PSD) of noise is estimated using a running median [6].
+Fig. 1 shows the PSD of 2 sec of simulated detector noise with a power spectral
+density approximating the LIGO SRD curve for the 4km detectors. Superimposed
+on the estimated PSD is the running median estimate of the noise ﬂoor. The main
+advantage of the running median is its ability to reject outliers. In this particular case,
+the outliers are the narrowband noise artifacts arising from sources such as power line
+interference (modeled as sinusoids in this particular example).
+If S(f) denotes the running median estimate of the PSD, a digital ﬁlter with a
+transfer function T (f) such that |T (f)| = 1/
+p
+S(f) will whiten the data. Fig. 1 also
+shows the PSD of the output of such a digital ﬁlter. In RIDGE, the whitening ﬁlters
+are Finite Impulse Response (FIR) ﬁlters and the ﬁlter coeﬃcients are obtained using
+the PSD obtained from a user-speciﬁed training data segment. The digital ﬁlter is
+then applied to a longer stretch of data. It is clear that any non-stationarity in the
+noise ﬂoor on timescales shorter than the gap between the training and the processed
+data can create a discrepancy in the trained ﬁlter and the ﬁlter that is required for
+whitening the longer stretch. To the knowledge of the authors, not much concrete work
+exists in the GW literature on handling this issue robustly in any analysis pipeline.
+However, tools already exist that can monitor the behaviour of the noise ﬂoor in real
+time [7], and characterize burst-like non-stationary components [8].
+We intend to
+integrate these information into our pipeline in the future.
+The whitening step above is followed by a line estimation and removal step which
+reduces or, in some cases, eliminates the eﬀect of strong narrowband noise features
+(line noise) arising from power line interference or violin modes. The method used
+here, called MBLT, is described in [6]. Essentially, the method consists of estimating
+the amplitude and phase modulation of a line feature at a given carrier frequency
+(which have to be found manually). Fig. 2 shows spectrograms of the whitened data
+before and after line removal. In this example, signals were injected into the data
+prior to line removal. As can be seen, the line removal does not aﬀect the signals in
+
+Network analysis for triggered searches
+3
+0
+200
+400
+600
+800
+1000
+1200
+−430
+−425
+−420
+−415
+−410
+−405
+−400
+−395
+−390
+Power spectral density (dB)
+Frequency (Hz)
+Input data PSD
+running median
+1 σ error bar
+0
+200
+400
+600
+800
+1000
+1200
+−430
+−420
+−410
+−400
+−390
+PSD (dB)
+0
+200
+400
+600
+800
+1000
+1200
+−20
+−10
+0
+10
+20
+Frequency (Hz)
+PSD (dB)
+Figure 1.
+A sample power spectral density and the corresponding running
+median estimate of the noise (top plot).
+Note that the noise ﬂoor estimation
+was not aﬀected by the large outlier due to a strong sinusoidal signal. The plot
+at the bottom shows the psd of raw data (top) and the psd (bottom) of the data
+after passing it through the whitening ﬁlter. The whitened data has variance 1,
+which explains the change in level to 0 dB in the bottom plot.
+any signiﬁcant way. This is an inbuilt feature of MBLT which uses the running median
+for estimation of the line amplitude and phase functions. Transients signals appear as
+outliers in the amplitude/phase time series and are rejected by the running median
+estimate. The whitened and line removed data is then passed on to the next step of
+RIDGE.
+2.2. Detection statistic
+The basic algorithm implemented for coherent network analysis in RIDGE is regularized
+maximum likelihood, described in several recent papers [9, 10, 11]. The GW response
+of any one detector is a linear combination of the two unknown polarization waveforms
+h+(t) and h×(t) arriving at the detector from a certain direction θ0, φ0 on the sky. We
+assume the Earth-centered, ecliptic reference frame here for deﬁning the polar angle,
+θ, and azimuthal angle, φ. It was shown in [9] that the problem of inverting a set
+of detector responses to obtain h+(t) and h×(t) is an ill-posed one and needs to be
+
+Network analysis for triggered searches
+4
+Time
+Frequency
+Whitened data
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+5.5
+150
+200
+250
+300
+350
+Time
+Frequency
+Whitened data with line removed
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+5.5
+150
+200
+250
+300
+350
+400
+Figure 2. Spectrograms of simulated data with (top) line present in the data
+along with two transient signals and (bottom) same data with the line removed
+using MBLT. This simulation actually consisted of more lines but due to the
+limitations of the graphics used, we show only a zoomed in view of a particular
+region of the time-frequency plane.
+The simulated line feature appears as the
+straight horizontal line in the upper plot near 350 Hz; the feature actually consists
+of two closely spaced sinusoids at 344 and 349 Hz.
+solved by using some kind of regularization. Alternatives to the regularization used
+in [9] were proposed in [10, 11]. The theoretical aspects of regularization related to
+the direction dependent antenna patterns of the detectors in a network is fairly well
+understood now.
+The particular regularization scheme used to obtain the results reported here was
+developed in [10]. It is quite easily shown that the hard constraint algorithm presented
+in [9] is actually obtained in the limit of an inﬁnitely large gain factor for the regulator
+of [10]. The input to the algorithm is a set of equal length, conditioned data segments
+from the detectors in a given network. The output, for a given sky location θ and
+φ, is the value of the likelihood of the data maximized over all possible h+ and h×
+waveforms with durations less than or equal to the data segments. The maximum
+likelihood values are obtained as a function of θ and φ – this two dimensional output,
+S(θ, φ), is called a sky-map.
+Fig. 3 shows examples of sky-maps obtained for the network consisting of the two
+4km LIGO interferometers and the 2km LIGO interferometer. As can be seen from
+the ﬁgure, the presence of a signal can “ring oﬀ” the entire sky. As the direction to a
+trigger will usually be well known in advance from electromagnetic observations, say,
+there is no necessity in a triggered search to restrict ourselves only to a part of the
+sky-map for the purpose of detection. We can construct a detection statistic using the
+entire sky map. In the present paper, we consider two diﬀerent choices. The obvious
+
+Network analysis for triggered searches
+5
+φ
+θ
+−150
+−100
+−50
+0
+50
+100
+150
+−50
+0
+50
+4500
+5000
+5500
+6000
+φ
+θ
+−150
+−100
+−50
+0
+50
+100
+150
+−50
+0
+50
+4500
+5000
+5500
+6000
+Figure 3. Plots of the sky-map for noise only case (top) and signal plus noise
+case (bottom). The detector network used was H1, H2, L1 and V1. The top plot
+was made by averaging the sky-maps for 100 noise realizations. The bottom plot
+is an average over sky-maps made with 4 independent realizations of noise plus
+a signal with hrss = 5 × 10−22 Hz−1/2 (c.f., Eq. 4). The magnitude scale is in
+arbitrary units. The test statistics are constructed by normalizing the maps.
+one is (1),
+Rmm = maxθ,φ S(θ, φ)
+minθ,φ S(θ, φ) .
+(1)
+[max / min]θ,φS(θ, φ) represents a [maximum/minimum] value of S(θ, φ) on the θ–φ
+plane. A less obvious choice is (2),
+Rrad
+=
+" maxθ,φ S(θ, φ)
+maxθ,φ S0(θ, φ) −1
+2
++
+
+Rmm
+minθ,φ S0(θ, φ)
+maxθ,φ S0(θ, φ) −1
+2#1/2
+,
+(2)
+S0(θ, φ) = E [S(θ, φ)|no signal in data] ,
+(3)
+where E[S(θ, φ)|no signal in data] denotes an ensemble average taken over realizations
+of sky-maps that do not have any GW signals. The second statistic, Rrad, is the radial
+distance of the observed values, in an appropriately scaled (Rmm, maxθ,φ S(θ, φ))
+plane, from the mean location of the same quantities in the absence of a signal.
+3. Results
+We carried out Monte Carlo simulations to characterize the performance of the
+detection statistics Rmm and Rrad. The network consisted of the 4km LIGO detectors
+
+Network analysis for triggered searches
+6
+10
+2
+10
+3
+10
+−22
+10
+−21
+frequency (Hz)
+power spectrum density Hz1/2
+ 
+ 
+H2
+V1
+H1,L1
+Figure 4. Power Spectral Densities of simulated detector noise for H1 (L1), H2
+and V1. The power spectral densities were computed with a frequency resolution
+of 2.0 Hz.
+(H1 and L1), the 2km LIGO detector (H2) and the Virgo detector (V1). For the
+detector noise PSD, we used the design sensitivity curves for the LIGO and Virgo
+detectors as given in
+[12, 13] and kept the locations and orientations the same
+as the real detectors.
+Gaussian, stationary noise was generated (∼3000 sec) by
+ﬁrst generating 4 independent realizations of white noise and then passing them
+through FIR ﬁlters having transfer functions that approximately match the design
+curves. To simulate instrumental artifacts, we added sinusoids with large amplitudes
+at (54, 60, 120, 180, 344, 349, 407) Hz. The resulting PSDs of the simulated data are
+shown in Fig. 4.
+Signals of constant amplitude were added to the simulated noise at regular
+intervals. The injected signals corresponded to a single source located at θ = −30◦
+and φ = 167.0◦, which was the location of a real trigger, GRB060813. We assumed
+that the h+(t) and h×(t) waveforms were both sine-Gaussian signals having center
+frequency 235 Hz and a Q = 9. The h×(t) waveform has an added phase of π/2
+relative to the phase of h+(t). Fig. 5 shows the signals, i.e., the detector responses,
+that were added to the noise. The signal strength is speciﬁed in terms of the hrss
+value, deﬁned as
+hrss =
+Z ∞
+−∞
+dt
+ h2
++(t) + h2
+×(t)
+1/2
+.
+(4)
+In our results we use hrss values of 3 × 10−22, 5 × 10−22 and 7 × 10−22 Hz−1/2.
+The simulated data were generated at a sampling frequency of 16384 Hz and
+then passed through the data conditioning pipeline. Besides downsampling the data
+by applying the same anti-aliasing ﬁlter to all data streams, the data conditioning
+pipeline applies time domain whitening ﬁlters that were trained, as described earlier,
+on the ﬁrst two seconds of data for each detector (without any injected signals). The
+
+Network analysis for triggered searches
+7
+0
+0.02
+0.04
+0.06
+0.08
+0.1
+0.12
+0.14
+−1.5
+−1
+−0.5
+0
+0.5
+1
+1.5 x 10
+−20
+time (sec)
+amplitude
+H1
+L1
+V1
+Figure 5. The detector responses to the injection signal used in the Monte Carlo
+simulations.
+The strain response for H1 and H2 are identical because of their
+co-location and co-alignment.
+conditioned data is then passed to the sky-map generation code in segments of length
+0.5 sec. This integration time is much larger than the ∼40 msec duration of the
+injected signals and, hence, the performance estimates we obtain here should be taken
+as lower bounds. The reason behind the large choice of 0.5 sec was to accomodate the
+ﬁlter delays introduced into the data. In a future version of the pipeline, these delays,
+which are known since the ﬁlters are all FIR ﬁlters, will be removed carefully. This
+will allow us to shrink the integration time for short duration signals.
+Fig. 6 shows the Receiver Operating Characteristic (ROC) curve for the
+simulation described above. ROC curves for both Rmm and Rrad are shown. Clearly,
+the Rrad statistics performs better than the more naive choice Rmm, demonstrating
+that a judicious choice of a statistic that incorporates information from the full sky-
+map is deﬁnitely required for triggered searches.
+We believe that more eﬀective
+full sky-map statistics can be derived that can push performance to even better
+levels. For the current simulation and choice of parameters, we ﬁnd that an hrss of
+5 × 10−22 Hz−1/2 can be detected with ≃62% probability at a false alarm probability
+of 10−2. The false alarm probability corresponds to a rate of 1 false event in 50 sec.
+4. Conclusion
+We describe here an analysis pipeline, RIDGE, that implements regularized maximum
+likelihood based network analysis for triggered searches. Monte Carlo simulations with
+simulated detector noise show that the pipeline is quite sensitive: For a LIGO-Virgo
+network, a ≃62% detection probability is obtained for a signal hrss = 5×10−22 Hz−1/2
+at a false alarm rate of 2 × 10−2 Hz. All the algorithms used in this pipeline are
+signiﬁcantly diﬀerent from other network analysis pipelines [14, 15] that are also
+currently being applied to triggered searches.
+(The basic statistic used in [15] is
+the hard constraint statistic introduced in [9].) Thus, at both the level of algorithms
+
+Network analysis for triggered searches
+8
+10
+−4
+10
+−3
+10
+−2
+10
+−1
+10
+0
+0
+0.2
+0.4
+0.6
+0.8
+1
+false alarm probability
+detection probability
+Figure 6. Receiver Operating Characteristics for Rmm (dashed) and Rrad (solid)
+for hrss = 3 × 10−22 (bottom), 5 × 10−22 (middle) and 7 × 10−22 Hz−1/2 (top).
+The enhancement when going from Rmm to Rrad is shown by the arrows.
+and the associated software, RIDGE should provide an independent check for results
+obtained with other pipelines. RIDGE is also being designed to serve as a platform for
+trying out new regulators. In future work, since RIDGE pipeline does not only extract
+candidates of gravitational wave signals, but also reconstruct h+ and h× waveform at
+arbitrary sky location, we integrate a waveform estimation method [16] and investigate
+how accurately astrophysical information can be obtained.

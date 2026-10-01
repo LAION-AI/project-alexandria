@@ -1,0 +1,1947 @@
+{
+  "document_id": "bethgelab-200004",
+  "fulltext_sha256": "d7535eed5d733ab833691ced999c404380d4967457d1ed8b9198f1296b8dab6f",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "e9cfc649dfa9885ee72d8f5cffb1b1ac7ff313d11fb0cdfb1966f36a3562b5bf",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study demonstrates that the enzyme SERCA regulates paramyxovirus replication and that its inhibitor, Thapsigargin, reduces viral entry and protein localization. While Newcastle disease virus (NDV) acquired resistance to Thapsigargin after long-term passage, Peste des petits ruminants virus (PPRV) did not.",
+        "entities": [
+          {
+            "name": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+            "entity_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca",
+            "entity_type": "concept",
+            "aliases": [
+              "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)"
+            ],
+            "attributes": {
+              "classification": "membrane bound cytosolic enzyme",
+              "function": "regulates uptake of calcium into the sarco/endoplasmic reticulum",
+              "role_in_study": "regulates paramyxovirus replication"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibited_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "expression_induced_by",
+                "target": "PPRV/NDV infection",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "overexpression_rescues",
+                "target": "inhibitory effect of Thapsigargin on virus replication",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "classification": "SERCA specific inhibitor",
+              "effect": "significantly reduced virus replication at nontoxic concentrations",
+              "specific_inhibition": "viral entry and subcellular localization of viral proteins"
+            },
+            "relationships": [
+              {
+                "predicate": "blocks",
+                "target": "SERCA expression induced by PPRV/NDV infection",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resistance_acquired_by",
+                "target": "Newcastle disease virus (NDV)",
+                "attributes": {
+                  "condition": "long-term passage (P=70) in Vero cells"
+                },
+                "target_id": "newcastle_disease_virus_ndv"
+              },
+              {
+                "predicate": "no_resistance_acquired_by",
+                "target": "Peste des petits ruminants virus (PPRV)",
+                "attributes": {},
+                "target_id": "peste_des_petits_ruminants_virus_pprv"
+              }
+            ]
+          },
+          {
+            "name": "Peste des petits ruminants virus (PPRV)",
+            "entity_id": "peste_des_petits_ruminants_virus_pprv",
+            "entity_type": "other",
+            "aliases": [
+              "Peste des petits ruminants virus (PPRV)"
+            ],
+            "attributes": {
+              "classification": "paramyxovirus"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_regulated_by",
+                "target": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+                "attributes": {},
+                "target_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca"
+              },
+              {
+                "predicate": "induces_expression_of",
+                "target": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+                "attributes": {},
+                "target_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca"
+              }
+            ]
+          },
+          {
+            "name": "Newcastle disease virus (NDV)",
+            "entity_id": "newcastle_disease_virus_ndv",
+            "entity_type": "other",
+            "aliases": [
+              "Newcastle disease virus (NDV)"
+            ],
+            "attributes": {
+              "classification": "paramyxovirus"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_regulated_by",
+                "target": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+                "attributes": {},
+                "target_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca"
+              },
+              {
+                "predicate": "induces_expression_of",
+                "target": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+                "attributes": {},
+                "target_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca"
+              },
+              {
+                "predicate": "acquired_resistance_to",
+                "target": "Thapsigargin",
+                "attributes": {
+                  "condition": "long-term passage (P=70) in Vero cells"
+                },
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Vero cells",
+            "entity_id": "vero_cells",
+            "entity_type": "other",
+            "aliases": [
+              "Vero cells"
+            ],
+            "attributes": {
+              "role": "cell line used for treatment and infection assays"
+            },
+            "relationships": [
+              {
+                "predicate": "treated_with",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "infected_with",
+                "target": "PPRV/NDV",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 497,
+          "word_count": 497,
+          "sha256": "d8d834bbbeac01c3faeaaa8dcc57496d3f66f5e5a055834fb4b34c12fda92037",
+          "sentence_minhash": [
+            78394354238995921,
+            1306423125707224,
+            34198699738764482,
+            156724176001679222,
+            202131088475134628,
+            30500191475291153,
+            24705362828007687,
+            41678443202000680,
+            156861035207300699,
+            54790780434347236,
+            78280491562202942,
+            171596837418463449,
+            51125582506972287,
+            58558631451210278,
+            179419218640736053,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "Vertebrate P-type calcium ATPases, including SERCA, PMCA, and SPCA, regulate intracellular calcium homeostasis in specific organelles. SERCA is encoded by three genes that undergo alternative splicing to produce ten isoforms with varying expression patterns. Thapsigargin, a non-competitive SERCA inhibitor, was identified from a kinase inhibitor library as a compound that blocks paramyxovirus replication.",
+        "entities": [
+          {
+            "name": "P-type Ca2+-ATPases",
+            "entity_id": "p_type_ca2_atpases",
+            "entity_type": "other",
+            "aliases": [
+              "P-type Ca2+-ATPases"
+            ],
+            "attributes": {
+              "function": "regulate homeostasis of intracellular Ca2+ level",
+              "vertebrate_families": 3,
+              "model_entity_type": "protein_family"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "Plasma membrane Ca2+-ATPase (PMCA)",
+                "attributes": {},
+                "target_id": "plasma_membrane_ca2_atpase_pmca"
+              },
+              {
+                "predicate": "includes",
+                "target": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+                "attributes": {},
+                "target_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca"
+              },
+              {
+                "predicate": "includes",
+                "target": "Secretory pathway calcium ATPase (SPCA)",
+                "attributes": {},
+                "target_id": "secretory_pathway_calcium_atpase_spca"
+              }
+            ]
+          },
+          {
+            "name": "Plasma membrane Ca2+-ATPase (PMCA)",
+            "entity_id": "plasma_membrane_ca2_atpase_pmca",
+            "entity_type": "other",
+            "aliases": [
+              "Plasma membrane Ca2+-ATPase (PMCA)"
+            ],
+            "attributes": {
+              "location": "plasma membrane",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "role_in_virus_replication",
+                "target": "unknown",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+            "entity_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca",
+            "entity_type": "concept",
+            "aliases": [
+              "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)"
+            ],
+            "attributes": {
+              "location": "endoplasmic reticulum",
+              "function": "transports Ca2+ from cytosol to intracellular compartments",
+              "cellular_functions": [
+                "signal transduction",
+                "apoptosis",
+                "exocytosis",
+                "cell motility",
+                "transcription"
+              ],
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "encoded_by",
+                "target": "ATP2A1-3 genes",
+                "attributes": {},
+                "target_id": "atp2a1_3_genes"
+              },
+              {
+                "predicate": "inhibited_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "facilitates",
+                "target": "paramyxovirus replication",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Secretory pathway calcium ATPase (SPCA)",
+            "entity_id": "secretory_pathway_calcium_atpase_spca",
+            "entity_type": "other",
+            "aliases": [
+              "Secretory pathway calcium ATPase (SPCA)"
+            ],
+            "attributes": {
+              "location": "Golgi apparatus",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "supports",
+                "target": "virus replication",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ATP2A1-3 genes",
+            "entity_id": "atp2a1_3_genes",
+            "entity_type": "other",
+            "aliases": [
+              "ATP2A1-3 genes"
+            ],
+            "attributes": {
+              "count": 3,
+              "organism": "vertebrates",
+              "model_entity_type": "gene_family"
+            },
+            "relationships": [
+              {
+                "predicate": "code_for",
+                "target": "SERCA1-3 isoforms",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SERCA isoforms",
+            "entity_id": "serca_isoforms",
+            "entity_type": "other",
+            "aliases": [
+              "SERCA isoforms"
+            ],
+            "attributes": {
+              "total_proteins": 10,
+              "splicing_mechanism": "alternative splicing",
+              "distribution": "two from SERCA1, two from SERCA2, six from SERCA3",
+              "model_entity_type": "protein_variant"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "SERCA2",
+                "attributes": {},
+                "target_id": "serca2"
+              }
+            ]
+          },
+          {
+            "name": "SERCA2",
+            "entity_id": "serca2",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA2"
+            ],
+            "attributes": {
+              "expression_pattern": "ubiquitous in most cell types",
+              "model_entity_type": "protein_variant"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "source": "Thapsia garganica",
+              "chemical_class": "sesquiterpene lactone",
+              "inhibition_type": "non-competitive",
+              "supplier": "Sigma (Catalog Number-T9033, Steinheim, Germany)",
+              "model_entity_type": "chemical_compound"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibits",
+                "target": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+                "attributes": {},
+                "target_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca"
+              },
+              {
+                "predicate": "blocks",
+                "target": "NDV and PPRV replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "identified_from",
+                "target": "library of kinase and phosphate inhibitors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Peste des petits ruminants virus (PPRV)",
+            "entity_id": "peste_des_petits_ruminants_virus_pprv",
+            "entity_type": "other",
+            "aliases": [
+              "Peste des petits ruminants virus (PPRV)"
+            ],
+            "attributes": {
+              "classification": "paramyxovirus-morbillivirus",
+              "model_entity_type": "virus"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_blocked_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Newcastle disease virus (NDV)",
+            "entity_id": "newcastle_disease_virus_ndv",
+            "entity_type": "other",
+            "aliases": [
+              "Newcastle disease virus (NDV)"
+            ],
+            "attributes": {
+              "classification": "avulavirus",
+              "model_entity_type": "virus"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_blocked_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 497,
+          "end_word": 997,
+          "word_count": 500,
+          "sha256": "de07a2d08ae2af8b7d34ab2c32a5d4151f0787a87d2feddc556865a8fca83b33",
+          "sentence_minhash": [
+            138742571471211904,
+            1306423125707224,
+            11159017263463814,
+            68675899103345008,
+            34249088398280546,
+            30500191475291153,
+            55818656945972009,
+            273504803824844808,
+            166844233492045914,
+            41183111660975745,
+            26923319136078092,
+            171596837418463449,
+            658788749398560,
+            99752131931818450,
+            77455367540820264,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein_family' for 'P-type Ca2+-ATPases'",
+          "normalized unsupported entity type 'protein' for 'Plasma membrane Ca2+-ATPase (PMCA)'",
+          "normalized unsupported entity type 'protein' for 'Sarco/endoplasmic reticulum calcium-ATPase (SERCA)'",
+          "normalized unsupported entity type 'protein' for 'Secretory pathway calcium ATPase (SPCA)'",
+          "normalized unsupported entity type 'gene_family' for 'ATP2A1-3 genes'",
+          "normalized unsupported entity type 'protein_variant' for 'SERCA isoforms'",
+          "normalized unsupported entity type 'protein_variant' for 'SERCA2'",
+          "normalized unsupported entity type 'chemical_compound' for 'Thapsigargin'",
+          "normalized unsupported entity type 'virus' for 'Peste des petits ruminants virus (PPRV)'",
+          "normalized unsupported entity type 'virus' for 'Newcastle disease virus (NDV)'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text details experimental protocols for assessing the antiviral efficacy of Thapsigargin against PPRV and NDV, including virucidal assays, SERCA overexpression, and selection of resistant mutants. Specific methods for immunofluorescence and virus step-specific assays are described to analyze viral entry and protein localization.",
+        "entities": [
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "role": "SERCA inhibitor",
+              "concentration_for_resistance_selection": "0.25 µM",
+              "application_time_in_immunofluorescence_NDV": "3 hpi",
+              "application_time_in_immunofluorescence_PPRV": "10 hpi"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Virucidal activity assay",
+                "attributes": {},
+                "target_id": "virucidal_activity_assay"
+              },
+              {
+                "predicate": "used_in",
+                "target": "Selection of Thapsigargin-resistant viral mutants",
+                "attributes": {},
+                "target_id": "selection_of_thapsigargin_resistant_viral_mutants"
+              },
+              {
+                "predicate": "used_in",
+                "target": "Immunofluorescence assay",
+                "attributes": {},
+                "target_id": "immunofluorescence_assay"
+              }
+            ]
+          },
+          {
+            "name": "Virucidal activity assay",
+            "entity_id": "virucidal_activity_assay",
+            "entity_type": "method",
+            "aliases": [
+              "Virucidal activity assay"
+            ],
+            "attributes": {
+              "virus_concentration": "~10^6 pfu",
+              "incubation_time": "1.5 h",
+              "incubation_temperature": "37°C",
+              "dilution_range": "10^-3 to 10^-5",
+              "cell_type": "Vero/MDBK cells",
+              "plate_format": "6-well plates"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "relative infectivity of virions",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Virus step-specific assays",
+            "entity_id": "virus_step_specific_assays",
+            "entity_type": "method",
+            "aliases": [
+              "Virus step-specific assays"
+            ],
+            "attributes": {
+              "steps_tested": "attachment, entry, RNA synthesis, budding"
+            },
+            "relationships": [
+              {
+                "predicate": "conducted_as",
+                "target": "previously described (24)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SERCA2 overexpression",
+            "entity_id": "serca2_overexpression",
+            "entity_type": "method",
+            "aliases": [
+              "SERCA2 overexpression"
+            ],
+            "attributes": {
+              "cell_types": "HeLa/goat kidney cells",
+              "plate_format": "24 well plates",
+              "replicates": "triplicates",
+              "vector_control": "1 µg empty vector (pCR3)",
+              "expression_plasmid": "pCR3-SERCA2",
+              "transfection_reagent": "Lipofectamine 3000",
+              "infection_time_post_transfection": "48 h",
+              "infection_moi": "1"
+            },
+            "relationships": [
+              {
+                "predicate": "harvest_time_NDV",
+                "target": "24 hpi",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "harvest_time_PPRV",
+                "target": "96 hpi",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "quantifies",
+                "target": "virus particles released in supernatant",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Immunofluorescence assay",
+            "entity_id": "immunofluorescence_assay",
+            "entity_type": "method",
+            "aliases": [
+              "Immunofluorescence assay"
+            ],
+            "attributes": {
+              "cell_type": "Vero cells",
+              "confluency": "~20%",
+              "infection_moi": "5",
+              "infection_duration": "2 h",
+              "fixative": "4% paraformaldehyde",
+              "fixation_time": "15 min",
+              "blocking_agent": "1% bovine serum albumin",
+              "blocking_time": "30 min",
+              "primary_antibody_incubation": "30 min",
+              "permeabilization_agent": "0.2% saponin",
+              "secondary_antibody_incubation": "30 min",
+              "mounting_medium": "DAPI"
+            },
+            "relationships": [
+              {
+                "predicate": "detects",
+                "target": "intracellular localization of viral proteins",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_primary_antibodies",
+                "target": "rabbit anti-NDV/rabbit anti-PPRV or mouse SERCA2 ATPase",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_secondary_antibodies",
+                "target": "fluorescein isothiocyanate-conjugated anti-rabbit or Rhodamine-conjugated anti-mouse",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Selection of Thapsigargin-resistant viral mutants",
+            "entity_id": "selection_of_thapsigargin_resistant_viral_mutants",
+            "entity_type": "method",
+            "aliases": [
+              "Selection of Thapsigargin-resistant viral mutants"
+            ],
+            "attributes": {
+              "passage_number": "70",
+              "cell_type": "Vero cells",
+              "inhibitor_concentration": "0.25 µM Thapsigargin",
+              "control_concentration": "0.05% DMSO",
+              "wash_steps": "5 times with PBS",
+              "incubation_duration": "72-120 h or until CPE in ≥75% cells",
+              "passage_infection_moi": "0.01"
+            },
+            "relationships": [
+              {
+                "predicate": "targets_viruses",
+                "target": "PPRV and NDV",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "defines_passage_1",
+                "target": "virus released in supernatant after first infection",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 997,
+          "end_word": 1473,
+          "word_count": 476,
+          "sha256": "0e0bd25f0fe65632d0a5e1a93fdbc7778893d71d8bb5cf3743917e3720c21ec3",
+          "sentence_minhash": [
+            143470254565919416,
+            76492366708779561,
+            11159017263463814,
+            61919449716151556,
+            117184690827267154,
+            30500191475291153,
+            32849703842496801,
+            620985562297928476,
+            250103587932991025,
+            24537202398246178,
+            128047967744972732,
+            164106874145936476,
+            41370646449631505,
+            906306679132868,
+            137798680373924202,
+            138298175047530767
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "Thapsigargin, a SERCA inhibitor, was tested for cytotoxicity and antiviral efficacy against paramyxoviruses and DNA viruses. The study found that Thapsigargin inhibits paramyxovirus replication without direct virucidal effects, and that SERCA2 overexpression rescues this inhibition. PPRV infection was shown to induce SERCA2 expression in Vero cells.",
+        "entities": [
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "function": "SERCA inhibitor",
+              "source": "protein kinase inhibitor library",
+              "cytotoxicity_threshold": ">2 µM",
+              "non_cytotoxic_concentration": "0.5 µM"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibits",
+                "target": "NDV replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibits",
+                "target": "PPRV replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibits",
+                "target": "BHV-1 replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_inhibit",
+                "target": "BPXV replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "lacks_virucidal_effect_on",
+                "target": "prototype viruses",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SERCA2",
+            "entity_id": "serca2",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA2"
+            ],
+            "attributes": {
+              "expression_pattern": "expressed by most cell types",
+              "role": "supports paramyxovirus replication"
+            },
+            "relationships": [
+              {
+                "predicate": "overexpression_rescues",
+                "target": "inhibitory effect of Thapsigargin on virus replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "induced_by",
+                "target": "PPRV infection",
+                "attributes": {},
+                "target_id": "pprv_infection"
+              }
+            ]
+          },
+          {
+            "name": "PPRV infection",
+            "entity_id": "pprv_infection",
+            "entity_type": "event",
+            "aliases": [
+              "PPRV infection"
+            ],
+            "attributes": {
+              "host_cell": "Vero cells"
+            },
+            "relationships": [
+              {
+                "predicate": "induces",
+                "target": "SERCA2 expression",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "peak_expression_timeframe",
+                "target": "24-72 hpi",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expression_decline_time",
+                "target": "96 hpi",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "GAPDH",
+            "entity_id": "gapdh",
+            "entity_type": "concept",
+            "aliases": [
+              "GAPDH"
+            ],
+            "attributes": {
+              "role": "house keeping control gene"
+            },
+            "relationships": [
+              {
+                "predicate": "levels_stable_across",
+                "target": "all time points",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BHV-1",
+            "entity_id": "bhv_1",
+            "entity_type": "other",
+            "aliases": [
+              "BHV-1"
+            ],
+            "attributes": {
+              "classification": "DNA virus"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_inhibited_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "BPXV",
+            "entity_id": "bpxv",
+            "entity_type": "other",
+            "aliases": [
+              "BPXV"
+            ],
+            "attributes": {
+              "classification": "DNA virus"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_not_inhibited_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1473,
+          "end_word": 1973,
+          "word_count": 500,
+          "sha256": "6e31f7bda873bcaa92fd3bb128bd3d8a0bac823a1633a4aa5794af08d1b6bbfc",
+          "sentence_minhash": [
+            143470254565919416,
+            18551641988871988,
+            11159017263463814,
+            61919449716151556,
+            5648917133444430,
+            30500191475291153,
+            32849703842496801,
+            81285259065511028,
+            143616283985015953,
+            24537202398246178,
+            19416574622547768,
+            102193620383965101,
+            21933493368060407,
+            156334388133831069,
+            33944539345369897,
+            251498163250050664
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "Thapsigargin treatment blocks virus-induced SERCA2 expression and specifically inhibits paramyxovirus entry and protein localization. Time-of-addition assays indicate that the inhibitor affects pre-budding stages of the viral life cycle for both NDV and PPRV. Immunofluorescence reveals that SERCA inhibition causes defective subcellular localization of viral proteins, trapping them in cytoplasmic foci rather than at the cell surface.",
+        "entities": [
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "role": "SERCA inhibitor",
+              "effect_on_serca_expression": "blocks virus-induced SERCA2 expression"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibits",
+                "target": "paramyxovirus entry",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "causes_defective_localization_of",
+                "target": "viral proteins",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_affect",
+                "target": "virus attachment, RNA synthesis, and budding",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SERCA2",
+            "entity_id": "serca2",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA2"
+            ],
+            "attributes": {
+              "expression_pattern": "induced by PPRV infection in Vero cells"
+            },
+            "relationships": [
+              {
+                "predicate": "expression_blocked_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Newcastle disease virus (NDV)",
+            "entity_id": "newcastle_disease_virus_ndv",
+            "entity_type": "other",
+            "aliases": [
+              "Newcastle disease virus (NDV)"
+            ],
+            "attributes": {
+              "replication_cycle_length": "~10 h"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibited_by_thapsigargin_at",
+                "target": "30 min before infection (highest inhibition)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibition_decreases_from",
+                "target": "1 hpi to 6 hpi",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "not_inhibited_by_thapsigargin_at",
+                "target": "10 hpi",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "entry_blocked_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "shows_defective_protein_localization_with",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Peste des petits ruminants virus (PPRV)",
+            "entity_id": "peste_des_petits_ruminants_virus_pprv",
+            "entity_type": "other",
+            "aliases": [
+              "Peste des petits ruminants virus (PPRV)"
+            ],
+            "attributes": {
+              "replication_cycle_length": "~24 h"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibited_by_thapsigargin_at",
+                "target": "30 min before infection (highest inhibition)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibition_decreases_from",
+                "target": "4 hpi to 24 hpi",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "entry_blocked_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "shows_defective_protein_localization_with",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Time-of-addition assay",
+            "entity_id": "time_of_addition_assay",
+            "entity_type": "method",
+            "aliases": [
+              "Time-of-addition assay"
+            ],
+            "attributes": {
+              "purpose": "ascertain viral life cycle stages impaired by Thapsigargin"
+            },
+            "relationships": [
+              {
+                "predicate": "indicates_inhibition_of",
+                "target": "multiple pre-budding steps of paramyxovirus replication",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Viral protein subcellular localization",
+            "entity_id": "viral_protein_subcellular_localization",
+            "entity_type": "measurement",
+            "aliases": [
+              "Viral protein subcellular localization"
+            ],
+            "attributes": {
+              "normal_state": "localized at cell surface in DMSO-treated cells",
+              "defective_state": "cytoplasmic foci in Thapsigargin-treated cells"
+            },
+            "relationships": [
+              {
+                "predicate": "affected_by",
+                "target": "SERCA inhibition",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1973,
+          "end_word": 2454,
+          "word_count": 481,
+          "sha256": "769e3406446e27b0fb77887d3817d5f698a673e9d2c77a85648a0cbef6ac9216",
+          "sentence_minhash": [
+            84989070151237717,
+            18551641988871988,
+            11159017263463814,
+            59527879293337615,
+            250033150587566678,
+            30500191475291153,
+            46992937528651961,
+            112431168531669094,
+            136272958199538397,
+            54790780434347236,
+            19416574622547768,
+            535808518788226615,
+            51125582506972287,
+            272671702087015607,
+            281201072623188781,
+            249823048461182166
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "Thapsigargin treatment causes defective subcellular localization of viral proteins in approximately 70% of infected cells, compared to 10-30% in controls. Sequential passage of Newcastle disease virus (NDV) in the presence of Thapsigargin leads to partial resistance, whereas Peste des petits ruminants virus (PPRV) does not develop resistance. The study suggests that host-targeting agents like SERCA inhibitors impose a higher genetic barrier to resistance than direct viral targets.",
+        "entities": [
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "role": "SERCA inhibitor",
+              "target": "host factor"
+            },
+            "relationships": [
+              {
+                "predicate": "causes_defective_localization_in",
+                "target": "~70% of cells",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for_selection_of",
+                "target": "Thapsigargin-resistant viral mutants",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DMSO control",
+            "entity_id": "dmso_control",
+            "entity_type": "measurement",
+            "aliases": [
+              "DMSO control"
+            ],
+            "attributes": {
+              "role": "vehicle control"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_defective_localization_in",
+                "target": "10-30% of cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SERCA",
+            "entity_id": "serca",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA"
+            ],
+            "attributes": {
+              "function": "required for proper localization of viral proteins from cytoplasm to cell surface"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibited_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "Newcastle disease virus (NDV)",
+            "entity_id": "newcastle_disease_virus_ndv",
+            "entity_type": "other",
+            "aliases": [
+              "Newcastle disease virus (NDV)"
+            ],
+            "attributes": {
+              "type": "paramyxovirus"
+            },
+            "relationships": [
+              {
+                "predicate": "acquires_partial_resistance_to",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "resistance_onset_at",
+                "target": "~P25",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "significant_resistance_at",
+                "target": "P35",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resistance_level_at_P35",
+                "target": "~100 fold-inhibition",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "baseline_inhibition_at_P0",
+                "target": "~10,000 fold inhibition",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_generate_complete_resistance_by",
+                "target": "70 passages",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Peste des petits ruminants virus (PPRV)",
+            "entity_id": "peste_des_petits_ruminants_virus_pprv",
+            "entity_type": "other",
+            "aliases": [
+              "Peste des petits ruminants virus (PPRV)"
+            ],
+            "attributes": {
+              "type": "paramyxovirus"
+            },
+            "relationships": [
+              {
+                "predicate": "does_not_develop_resistance_to",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "maintains_sensitivity_at",
+                "target": "passage level 70",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Host-targeting agents",
+            "entity_id": "host_targeting_agents",
+            "entity_type": "concept",
+            "aliases": [
+              "Host-targeting agents"
+            ],
+            "attributes": {
+              "advantage": "higher genetic barrier to resistance due to low host genetic variability"
+            },
+            "relationships": [
+              {
+                "predicate": "provide_perspective_for",
+                "target": "novel antiviral strategies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "can_provide_broad_spectrum_inhibition_against",
+                "target": "different families of viruses using same cellular pathways",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2454,
+          "end_word": 2920,
+          "word_count": 466,
+          "sha256": "6b52d6fbafdf8464ee954bd30058ba6652eb2987740b87cf05029fb5be79ff16",
+          "sentence_minhash": [
+            82316180561614159,
+            2260377214732726,
+            11159017263463814,
+            6030917650204451,
+            38019880870462680,
+            30500191475291153,
+            152126274708299453,
+            180608800321290621,
+            80930235405919187,
+            24537202398246178,
+            78280491562202942,
+            164106874145936476,
+            11610845633202285,
+            906306679132868,
+            169401128176801393,
+            138298175047530767
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The study demonstrates that Thapsigargin, a SERCA inhibitor, blocks paramyxovirus replication by interfering with viral entry and protein localization. While NDV acquired partial resistance to Thapsigargin after long-term passage, PPRV did not, suggesting a unique mechanism of host-factor dependency bypass in NDV.",
+        "entities": [
+          {
+            "name": "SERCA",
+            "entity_id": "serca",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA"
+            ],
+            "attributes": {
+              "full_name": "Sarco/endoplasmic reticulum calcium-ATPase",
+              "function": "Ca2+ ATPase",
+              "role": "Host factor for paramyxovirus replication",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibited_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "required_for",
+                "target": "paramyxovirus replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "overexpression_rescues",
+                "target": "inhibitory effect of Thapsigargin",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "type": "small molecule chemical inhibitor",
+              "target": "SERCA",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "blocks",
+                "target": "paramyxovirus replication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibits",
+                "target": "viral entry",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibits",
+                "target": "localization of viral proteins",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "paramyxovirus",
+            "entity_id": "paramyxovirus",
+            "entity_type": "other",
+            "aliases": [
+              "paramyxovirus"
+            ],
+            "attributes": {
+              "examples": "PPRV, NDV",
+              "model_entity_type": "virus_family"
+            },
+            "relationships": [
+              {
+                "predicate": "replication_blocked_by",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "depends_on",
+                "target": "SERCA",
+                "attributes": {},
+                "target_id": "serca"
+              }
+            ]
+          },
+          {
+            "name": "Newcastle disease virus (NDV)",
+            "entity_id": "newcastle_disease_virus_ndv",
+            "entity_type": "other",
+            "aliases": [
+              "Newcastle disease virus (NDV)"
+            ],
+            "attributes": {
+              "family": "Paramyxoviridae",
+              "model_entity_type": "virus"
+            },
+            "relationships": [
+              {
+                "predicate": "acquired_resistance_to",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              },
+              {
+                "predicate": "resistance_level",
+                "target": "partial (not complete) after 70 passages",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Peste des petits ruminants virus (PPRV)",
+            "entity_id": "peste_des_petits_ruminants_virus_pprv",
+            "entity_type": "other",
+            "aliases": [
+              "Peste des petits ruminants virus (PPRV)"
+            ],
+            "attributes": {
+              "family": "Paramyxoviridae",
+              "model_entity_type": "virus"
+            },
+            "relationships": [
+              {
+                "predicate": "did_not_acquire_resistance_to",
+                "target": "Thapsigargin",
+                "attributes": {},
+                "target_id": "thapsigargin"
+              }
+            ]
+          },
+          {
+            "name": "SPCA1",
+            "entity_id": "spca1",
+            "entity_type": "other",
+            "aliases": [
+              "SPCA1"
+            ],
+            "attributes": {
+              "function": "secretory pathway calcium transporter",
+              "role": "Facilitates Ca2+ and Mn2+ uptake into trans-Golgi network",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "facilitates_replication_of",
+                "target": "Flaviviridae, Togaviridae, Paramyxoviridae",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Coxsackievirus B3 (CVB3)",
+            "entity_id": "coxsackievirus_b3_cvb3",
+            "entity_type": "other",
+            "aliases": [
+              "Coxsackievirus B3 (CVB3)"
+            ],
+            "attributes": {
+              "model_entity_type": "virus"
+            },
+            "relationships": [
+              {
+                "predicate": "acquired_resistance_to",
+                "target": "PI4KIIIα inhibitors",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resistance_mechanism",
+                "target": "single point mutation in viral 3A protein",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PI4KIIIα",
+            "entity_id": "pi4kiii",
+            "entity_type": "other",
+            "aliases": [
+              "PI4KIIIα"
+            ],
+            "attributes": {
+              "full_name": "phosphatidylinositol-4-kinase IIIα",
+              "role": "key cellular factor for CVB3 replication",
+              "model_entity_type": "protein"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Hepatitis C virus (HCV)",
+            "entity_id": "hepatitis_c_virus_hcv",
+            "entity_type": "other",
+            "aliases": [
+              "Hepatitis C virus (HCV)"
+            ],
+            "attributes": {
+              "model_entity_type": "virus"
+            },
+            "relationships": [
+              {
+                "predicate": "acquired_resistance_to",
+                "target": "cyclosporine A (CsA)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_entry_factor",
+                "target": "CLDN1",
+                "attributes": {},
+                "target_id": "cldn1"
+              }
+            ]
+          },
+          {
+            "name": "CLDN1",
+            "entity_id": "cldn1",
+            "entity_type": "other",
+            "aliases": [
+              "CLDN1"
+            ],
+            "attributes": {
+              "full_name": "claudin-1",
+              "type": "tight junction protein",
+              "role": "entry factor for HCV",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "alternative_factors_for_HCV",
+                "target": "CLDN6, CLDN9",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2920,
+          "end_word": 3404,
+          "word_count": 484,
+          "sha256": "1b4a878ac79ae9301e97d7daf41638f3c37179de012321ca7ed7047bb8da68c2",
+          "sentence_minhash": [
+            143470254565919416,
+            1306423125707224,
+            689476677141556,
+            156724176001679222,
+            46272253601755651,
+            30500191475291153,
+            24705362828007687,
+            41678443202000680,
+            117786617714702441,
+            54790780434347236,
+            78280491562202942,
+            172329349945641913,
+            21933493368060407,
+            35497458387925530,
+            162701305109361964,
+            138298175047530767
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'SERCA'",
+          "normalized unsupported entity type 'chemical' for 'Thapsigargin'",
+          "normalized unsupported entity type 'virus_family' for 'paramyxovirus'",
+          "normalized unsupported entity type 'virus' for 'Newcastle disease virus (NDV)'",
+          "normalized unsupported entity type 'virus' for 'Peste des petits ruminants virus (PPRV)'",
+          "normalized unsupported entity type 'protein' for 'SPCA1'",
+          "normalized unsupported entity type 'virus' for 'Coxsackievirus B3 (CVB3)'",
+          "normalized unsupported entity type 'protein' for 'PI4KIIIα'",
+          "normalized unsupported entity type 'virus' for 'Hepatitis C virus (HCV)'",
+          "normalized unsupported entity type 'protein' for 'CLDN1'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study concludes that SERCA is a crucial host factor for paramyxoviral replication and a valid target for antiviral therapeutics. A Western blot experiment demonstrated that Thapsigargin inhibits the expression of SERCA2 induced by Newcastle disease virus in Vero cells.",
+        "entities": [
+          {
+            "name": "SERCA",
+            "entity_id": "serca",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA"
+            ],
+            "attributes": {
+              "role": "crucial host factor",
+              "function": "facilitates optimal paramyxoviral replication",
+              "therapeutic_status": "candidate drug target for antiviral therapeutics"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Thapsigargin",
+            "entity_id": "thapsigargin",
+            "entity_type": "method",
+            "aliases": [
+              "Thapsigargin"
+            ],
+            "attributes": {
+              "type": "SERCA inhibitor"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibits",
+                "target": "NDV-induced SERCA2 expression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Newcastle disease virus (NDV)",
+            "entity_id": "newcastle_disease_virus_ndv",
+            "entity_type": "other",
+            "aliases": [
+              "Newcastle disease virus (NDV)"
+            ],
+            "attributes": {
+              "class": "paramyxovirus"
+            },
+            "relationships": [
+              {
+                "predicate": "induces",
+                "target": "SERCA2 expression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SERCA2",
+            "entity_id": "serca2",
+            "entity_type": "concept",
+            "aliases": [
+              "SERCA2"
+            ],
+            "attributes": {
+              "expression": "induced by NDV infection"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Vero cells",
+            "entity_id": "vero_cells",
+            "entity_type": "other",
+            "aliases": [
+              "Vero cells"
+            ],
+            "attributes": {
+              "role": "host cell line for infection and assay"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Western blot analysis protocol for SERCA2",
+            "entity_id": "western_blot_analysis_protocol_for_serca2",
+            "entity_type": "method",
+            "aliases": [
+              "Western blot analysis protocol for SERCA2"
+            ],
+            "attributes": {
+              "infection_conditions": "NDV at MOI 5 for 1 h",
+              "post_infection_treatment": "Washing with PBS, addition of fresh medium with Thapsigargin or vehicle control",
+              "lysis_time": "16 hpi",
+              "probes": "SERCA2 and GAPDH"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3404,
+          "end_word": 3544,
+          "word_count": 140,
+          "sha256": "214bfee1cac0991f05f9ada8a4294a8fc8e39842a3879d96ac6620d3acbf9937",
+          "sentence_minhash": [
+            219206476112022537,
+            232593725413697090,
+            11159017263463814,
+            201948566748835051,
+            592863633475653930,
+            428209587723997907,
+            175774020269814206,
+            41678443202000680,
+            266927695903760850,
+            54790780434347236,
+            266886699043579987,
+            164139328288138412,
+            157018458019500101,
+            159490809513219556,
+            189031387661036747,
+            75406061484379541
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "sarco_endoplasmic_reticulum_calcium_atpase_serca",
+        "canonical_name": "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)",
+        "aliases": [
+          "Sarco/endoplasmic reticulum calcium-ATPase (SERCA)"
+        ]
+      },
+      {
+        "canonical_id": "thapsigargin",
+        "canonical_name": "Thapsigargin",
+        "aliases": [
+          "Thapsigargin"
+        ]
+      },
+      {
+        "canonical_id": "peste_des_petits_ruminants_virus_pprv",
+        "canonical_name": "Peste des petits ruminants virus (PPRV)",
+        "aliases": [
+          "Peste des petits ruminants virus (PPRV)"
+        ]
+      },
+      {
+        "canonical_id": "newcastle_disease_virus_ndv",
+        "canonical_name": "Newcastle disease virus (NDV)",
+        "aliases": [
+          "Newcastle disease virus (NDV)"
+        ]
+      },
+      {
+        "canonical_id": "vero_cells",
+        "canonical_name": "Vero cells",
+        "aliases": [
+          "Vero cells"
+        ]
+      },
+      {
+        "canonical_id": "p_type_ca2_atpases",
+        "canonical_name": "P-type Ca2+-ATPases",
+        "aliases": [
+          "P-type Ca2+-ATPases"
+        ]
+      },
+      {
+        "canonical_id": "plasma_membrane_ca2_atpase_pmca",
+        "canonical_name": "Plasma membrane Ca2+-ATPase (PMCA)",
+        "aliases": [
+          "Plasma membrane Ca2+-ATPase (PMCA)"
+        ]
+      },
+      {
+        "canonical_id": "secretory_pathway_calcium_atpase_spca",
+        "canonical_name": "Secretory pathway calcium ATPase (SPCA)",
+        "aliases": [
+          "Secretory pathway calcium ATPase (SPCA)"
+        ]
+      },
+      {
+        "canonical_id": "atp2a1_3_genes",
+        "canonical_name": "ATP2A1-3 genes",
+        "aliases": [
+          "ATP2A1-3 genes"
+        ]
+      },
+      {
+        "canonical_id": "serca_isoforms",
+        "canonical_name": "SERCA isoforms",
+        "aliases": [
+          "SERCA isoforms"
+        ]
+      },
+      {
+        "canonical_id": "serca2",
+        "canonical_name": "SERCA2",
+        "aliases": [
+          "SERCA2"
+        ]
+      },
+      {
+        "canonical_id": "virucidal_activity_assay",
+        "canonical_name": "Virucidal activity assay",
+        "aliases": [
+          "Virucidal activity assay"
+        ]
+      },
+      {
+        "canonical_id": "virus_step_specific_assays",
+        "canonical_name": "Virus step-specific assays",
+        "aliases": [
+          "Virus step-specific assays"
+        ]
+      },
+      {
+        "canonical_id": "serca2_overexpression",
+        "canonical_name": "SERCA2 overexpression",
+        "aliases": [
+          "SERCA2 overexpression"
+        ]
+      },
+      {
+        "canonical_id": "immunofluorescence_assay",
+        "canonical_name": "Immunofluorescence assay",
+        "aliases": [
+          "Immunofluorescence assay"
+        ]
+      },
+      {
+        "canonical_id": "selection_of_thapsigargin_resistant_viral_mutants",
+        "canonical_name": "Selection of Thapsigargin-resistant viral mutants",
+        "aliases": [
+          "Selection of Thapsigargin-resistant viral mutants"
+        ]
+      },
+      {
+        "canonical_id": "pprv_infection",
+        "canonical_name": "PPRV infection",
+        "aliases": [
+          "PPRV infection"
+        ]
+      },
+      {
+        "canonical_id": "gapdh",
+        "canonical_name": "GAPDH",
+        "aliases": [
+          "GAPDH"
+        ]
+      },
+      {
+        "canonical_id": "bhv_1",
+        "canonical_name": "BHV-1",
+        "aliases": [
+          "BHV-1"
+        ]
+      },
+      {
+        "canonical_id": "bpxv",
+        "canonical_name": "BPXV",
+        "aliases": [
+          "BPXV"
+        ]
+      },
+      {
+        "canonical_id": "time_of_addition_assay",
+        "canonical_name": "Time-of-addition assay",
+        "aliases": [
+          "Time-of-addition assay"
+        ]
+      },
+      {
+        "canonical_id": "viral_protein_subcellular_localization",
+        "canonical_name": "Viral protein subcellular localization",
+        "aliases": [
+          "Viral protein subcellular localization"
+        ]
+      },
+      {
+        "canonical_id": "dmso_control",
+        "canonical_name": "DMSO control",
+        "aliases": [
+          "DMSO control"
+        ]
+      },
+      {
+        "canonical_id": "serca",
+        "canonical_name": "SERCA",
+        "aliases": [
+          "SERCA"
+        ]
+      },
+      {
+        "canonical_id": "host_targeting_agents",
+        "canonical_name": "Host-targeting agents",
+        "aliases": [
+          "Host-targeting agents"
+        ]
+      },
+      {
+        "canonical_id": "paramyxovirus",
+        "canonical_name": "paramyxovirus",
+        "aliases": [
+          "paramyxovirus"
+        ]
+      },
+      {
+        "canonical_id": "spca1",
+        "canonical_name": "SPCA1",
+        "aliases": [
+          "SPCA1"
+        ]
+      },
+      {
+        "canonical_id": "coxsackievirus_b3_cvb3",
+        "canonical_name": "Coxsackievirus B3 (CVB3)",
+        "aliases": [
+          "Coxsackievirus B3 (CVB3)"
+        ]
+      },
+      {
+        "canonical_id": "pi4kiii",
+        "canonical_name": "PI4KIIIα",
+        "aliases": [
+          "PI4KIIIα"
+        ]
+      },
+      {
+        "canonical_id": "hepatitis_c_virus_hcv",
+        "canonical_name": "Hepatitis C virus (HCV)",
+        "aliases": [
+          "Hepatitis C virus (HCV)"
+        ]
+      },
+      {
+        "canonical_id": "cldn1",
+        "canonical_name": "CLDN1",
+        "aliases": [
+          "CLDN1"
+        ]
+      },
+      {
+        "canonical_id": "western_blot_analysis_protocol_for_serca2",
+        "canonical_name": "Western blot analysis protocol for SERCA2",
+        "aliases": [
+          "Western blot analysis protocol for SERCA2"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study demonstrates that the enzyme SERCA regulates paramyxovirus replication and that its inhibitor, Thapsigargin, reduces viral entry and protein localization. While Newcastle disease virus (NDV) acquired resistance to Thapsigargin after long-term passage, Peste des petits ruminants virus (PPRV) did not.\",\"entities\":[{\"name\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"type\":\"concept\",\"attributes\":{\"classification\":\"membrane bound cytosolic enzyme\",\"function\":\"regulates uptake of calcium into the sarco/endoplasmic reticulum\",\"role_in_study\":\"regulates paramyxovirus replication\"},\"relationships\":[{\"predicate\":\"inhibited_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"expression_induced_by\",\"target\":\"PPRV/NDV infection\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"overexpression_rescues\",\"target\":\"inhibitory effect of Thapsigargin on virus replication\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"classification\":\"SERCA specific inhibitor\",\"effect\":\"significantly reduced virus replication at nontoxic concentrations\",\"specific_inhibition\":\"viral entry and subcellular localization of viral proteins\"},\"relationships\":[{\"predicate\":\"blocks\",\"target\":\"SERCA expression induced by PPRV/NDV infection\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resistance_acquired_by\",\"target\":\"Newcastle disease virus (NDV)\",\"attributes\":{\"condition\":\"long-term passage (P=70) in Vero cells\"},\"target_id\":\"newcastle_disease_virus_ndv\"},{\"predicate\":\"no_resistance_acquired_by\",\"target\":\"Peste des petits ruminants virus (PPRV)\",\"attributes\":{},\"target_id\":\"peste_des_petits_ruminants_virus_pprv\"}]},{\"name\":\"Peste des petits ruminants virus (PPRV)\",\"type\":\"other\",\"attributes\":{\"classification\":\"paramyxovirus\"},\"relationships\":[{\"predicate\":\"replication_regulated_by\",\"target\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"attributes\":{},\"target_id\":\"sarco_endoplasmic_reticulum_calcium_atpase_serca\"},{\"predicate\":\"induces_expression_of\",\"target\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"attributes\":{},\"target_id\":\"sarco_endoplasmic_reticulum_calcium_atpase_serca\"}]},{\"name\":\"Newcastle disease virus (NDV)\",\"type\":\"other\",\"attributes\":{\"classification\":\"paramyxovirus\"},\"relationships\":[{\"predicate\":\"replication_regulated_by\",\"target\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"attributes\":{},\"target_id\":\"sarco_endoplasmic_reticulum_calcium_atpase_serca\"},{\"predicate\":\"induces_expression_of\",\"target\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"attributes\":{},\"target_id\":\"sarco_endoplasmic_reticulum_calcium_atpase_serca\"},{\"predicate\":\"acquired_resistance_to\",\"target\":\"Thapsigargin\",\"attributes\":{\"condition\":\"long-term passage (P=70) in Vero cells\"},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Vero cells\",\"type\":\"other\",\"attributes\":{\"role\":\"cell line used for treatment and infection assays\"},\"relationships\":[{\"predicate\":\"treated_with\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"infected_with\",\"target\":\"PPRV/NDV\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Vertebrate P-type calcium ATPases, including SERCA, PMCA, and SPCA, regulate intracellular calcium homeostasis in specific organelles. SERCA is encoded by three genes that undergo alternative splicing to produce ten isoforms with varying expression patterns. Thapsigargin, a non-competitive SERCA inhibitor, was identified from a kinase inhibitor library as a compound that blocks paramyxovirus replication.\",\"entities\":[{\"name\":\"P-type Ca2+-ATPases\",\"type\":\"other\",\"attributes\":{\"function\":\"regulate homeostasis of intracellular Ca2+ level\",\"vertebrate_families\":3,\"model_entity_type\":\"protein_family\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"Plasma membrane Ca2+-ATPase (PMCA)\",\"attributes\":{},\"target_id\":\"plasma_membrane_ca2_atpase_pmca\"},{\"predicate\":\"includes\",\"target\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"attributes\":{},\"target_id\":\"sarco_endoplasmic_reticulum_calcium_atpase_serca\"},{\"predicate\":\"includes\",\"target\":\"Secretory pathway calcium ATPase (SPCA)\",\"attributes\":{},\"target_id\":\"secretory_pathway_calcium_atpase_spca\"}]},{\"name\":\"Plasma membrane Ca2+-ATPase (PMCA)\",\"type\":\"other\",\"attributes\":{\"location\":\"plasma membrane\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"role_in_virus_replication\",\"target\":\"unknown\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"type\":\"concept\",\"attributes\":{\"location\":\"endoplasmic reticulum\",\"function\":\"transports Ca2+ from cytosol to intracellular compartments\",\"cellular_functions\":[\"signal transduction\",\"apoptosis\",\"exocytosis\",\"cell motility\",\"transcription\"],\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"encoded_by\",\"target\":\"ATP2A1-3 genes\",\"attributes\":{},\"target_id\":\"atp2a1_3_genes\"},{\"predicate\":\"inhibited_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"facilitates\",\"target\":\"paramyxovirus replication\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Secretory pathway calcium ATPase (SPCA)\",\"type\":\"other\",\"attributes\":{\"location\":\"Golgi apparatus\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"supports\",\"target\":\"virus replication\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ATP2A1-3 genes\",\"type\":\"other\",\"attributes\":{\"count\":3,\"organism\":\"vertebrates\",\"model_entity_type\":\"gene_family\"},\"relationships\":[{\"predicate\":\"code_for\",\"target\":\"SERCA1-3 isoforms\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SERCA isoforms\",\"type\":\"other\",\"attributes\":{\"total_proteins\":10,\"splicing_mechanism\":\"alternative splicing\",\"distribution\":\"two from SERCA1, two from SERCA2, six from SERCA3\",\"model_entity_type\":\"protein_variant\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"SERCA2\",\"attributes\":{},\"target_id\":\"serca2\"}]},{\"name\":\"SERCA2\",\"type\":\"concept\",\"attributes\":{\"expression_pattern\":\"ubiquitous in most cell types\",\"model_entity_type\":\"protein_variant\"},\"relationships\":[]},{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"source\":\"Thapsia garganica\",\"chemical_class\":\"sesquiterpene lactone\",\"inhibition_type\":\"non-competitive\",\"supplier\":\"Sigma (Catalog Number-T9033, Steinheim, Germany)\",\"model_entity_type\":\"chemical_compound\"},\"relationships\":[{\"predicate\":\"inhibits\",\"target\":\"Sarco/endoplasmic reticulum calcium-ATPase (SERCA)\",\"attributes\":{},\"target_id\":\"sarco_endoplasmic_reticulum_calcium_atpase_serca\"},{\"predicate\":\"blocks\",\"target\":\"NDV and PPRV replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"identified_from\",\"target\":\"library of kinase and phosphate inhibitors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Peste des petits ruminants virus (PPRV)\",\"type\":\"other\",\"attributes\":{\"classification\":\"paramyxovirus-morbillivirus\",\"model_entity_type\":\"virus\"},\"relationships\":[{\"predicate\":\"replication_blocked_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Newcastle disease virus (NDV)\",\"type\":\"other\",\"attributes\":{\"classification\":\"avulavirus\",\"model_entity_type\":\"virus\"},\"relationships\":[{\"predicate\":\"replication_blocked_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]}]},{\"context_summary\":\"The text details experimental protocols for assessing the antiviral efficacy of Thapsigargin against PPRV and NDV, including virucidal assays, SERCA overexpression, and selection of resistant mutants. Specific methods for immunofluorescence and virus step-specific assays are described to analyze viral entry and protein localization.\",\"entities\":[{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"role\":\"SERCA inhibitor\",\"concentration_for_resistance_selection\":\"0.25 µM\",\"application_time_in_immunofluorescence_NDV\":\"3 hpi\",\"application_time_in_immunofluorescence_PPRV\":\"10 hpi\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Virucidal activity assay\",\"attributes\":{},\"target_id\":\"virucidal_activity_assay\"},{\"predicate\":\"used_in\",\"target\":\"Selection of Thapsigargin-resistant viral mutants\",\"attributes\":{},\"target_id\":\"selection_of_thapsigargin_resistant_viral_mutants\"},{\"predicate\":\"used_in\",\"target\":\"Immunofluorescence assay\",\"attributes\":{},\"target_id\":\"immunofluorescence_assay\"}]},{\"name\":\"Virucidal activity assay\",\"type\":\"method\",\"attributes\":{\"virus_concentration\":\"~10^6 pfu\",\"incubation_time\":\"1.5 h\",\"incubation_temperature\":\"37°C\",\"dilution_range\":\"10^-3 to 10^-5\",\"cell_type\":\"Vero/MDBK cells\",\"plate_format\":\"6-well plates\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"relative infectivity of virions\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Virus step-specific assays\",\"type\":\"method\",\"attributes\":{\"steps_tested\":\"attachment, entry, RNA synthesis, budding\"},\"relationships\":[{\"predicate\":\"conducted_as\",\"target\":\"previously described (24)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SERCA2 overexpression\",\"type\":\"method\",\"attributes\":{\"cell_types\":\"HeLa/goat kidney cells\",\"plate_format\":\"24 well plates\",\"replicates\":\"triplicates\",\"vector_control\":\"1 µg empty vector (pCR3)\",\"expression_plasmid\":\"pCR3-SERCA2\",\"transfection_reagent\":\"Lipofectamine 3000\",\"infection_time_post_transfection\":\"48 h\",\"infection_moi\":\"1\"},\"relationships\":[{\"predicate\":\"harvest_time_NDV\",\"target\":\"24 hpi\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"harvest_time_PPRV\",\"target\":\"96 hpi\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"quantifies\",\"target\":\"virus particles released in supernatant\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Immunofluorescence assay\",\"type\":\"method\",\"attributes\":{\"cell_type\":\"Vero cells\",\"confluency\":\"~20%\",\"infection_moi\":\"5\",\"infection_duration\":\"2 h\",\"fixative\":\"4% paraformaldehyde\",\"fixation_time\":\"15 min\",\"blocking_agent\":\"1% bovine serum albumin\",\"blocking_time\":\"30 min\",\"primary_antibody_incubation\":\"30 min\",\"permeabilization_agent\":\"0.2% saponin\",\"secondary_antibody_incubation\":\"30 min\",\"mounting_medium\":\"DAPI\"},\"relationships\":[{\"predicate\":\"detects\",\"target\":\"intracellular localization of viral proteins\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_primary_antibodies\",\"target\":\"rabbit anti-NDV/rabbit anti-PPRV or mouse SERCA2 ATPase\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_secondary_antibodies\",\"target\":\"fluorescein isothiocyanate-conjugated anti-rabbit or Rhodamine-conjugated anti-mouse\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Selection of Thapsigargin-resistant viral mutants\",\"type\":\"method\",\"attributes\":{\"passage_number\":\"70\",\"cell_type\":\"Vero cells\",\"inhibitor_concentration\":\"0.25 µM Thapsigargin\",\"control_concentration\":\"0.05% DMSO\",\"wash_steps\":\"5 times with PBS\",\"incubation_duration\":\"72-120 h or until CPE in ≥75% cells\",\"passage_infection_moi\":\"0.01\"},\"relationships\":[{\"predicate\":\"targets_viruses\",\"target\":\"PPRV and NDV\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"defines_passage_1\",\"target\":\"virus released in supernatant after first infection\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Thapsigargin, a SERCA inhibitor, was tested for cytotoxicity and antiviral efficacy against paramyxoviruses and DNA viruses. The study found that Thapsigargin inhibits paramyxovirus replication without direct virucidal effects, and that SERCA2 overexpression rescues this inhibition. PPRV infection was shown to induce SERCA2 expression in Vero cells.\",\"entities\":[{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"function\":\"SERCA inhibitor\",\"source\":\"protein kinase inhibitor library\",\"cytotoxicity_threshold\":\">2 µM\",\"non_cytotoxic_concentration\":\"0.5 µM\"},\"relationships\":[{\"predicate\":\"inhibits\",\"target\":\"NDV replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibits\",\"target\":\"PPRV replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibits\",\"target\":\"BHV-1 replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_inhibit\",\"target\":\"BPXV replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"lacks_virucidal_effect_on\",\"target\":\"prototype viruses\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SERCA2\",\"type\":\"concept\",\"attributes\":{\"expression_pattern\":\"expressed by most cell types\",\"role\":\"supports paramyxovirus replication\"},\"relationships\":[{\"predicate\":\"overexpression_rescues\",\"target\":\"inhibitory effect of Thapsigargin on virus replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"induced_by\",\"target\":\"PPRV infection\",\"attributes\":{},\"target_id\":\"pprv_infection\"}]},{\"name\":\"PPRV infection\",\"type\":\"event\",\"attributes\":{\"host_cell\":\"Vero cells\"},\"relationships\":[{\"predicate\":\"induces\",\"target\":\"SERCA2 expression\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"peak_expression_timeframe\",\"target\":\"24-72 hpi\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expression_decline_time\",\"target\":\"96 hpi\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"GAPDH\",\"type\":\"concept\",\"attributes\":{\"role\":\"house keeping control gene\"},\"relationships\":[{\"predicate\":\"levels_stable_across\",\"target\":\"all time points\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BHV-1\",\"type\":\"other\",\"attributes\":{\"classification\":\"DNA virus\"},\"relationships\":[{\"predicate\":\"replication_inhibited_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"BPXV\",\"type\":\"other\",\"attributes\":{\"classification\":\"DNA virus\"},\"relationships\":[{\"predicate\":\"replication_not_inhibited_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]}]},{\"context_summary\":\"Thapsigargin treatment blocks virus-induced SERCA2 expression and specifically inhibits paramyxovirus entry and protein localization. Time-of-addition assays indicate that the inhibitor affects pre-budding stages of the viral life cycle for both NDV and PPRV. Immunofluorescence reveals that SERCA inhibition causes defective subcellular localization of viral proteins, trapping them in cytoplasmic foci rather than at the cell surface.\",\"entities\":[{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"role\":\"SERCA inhibitor\",\"effect_on_serca_expression\":\"blocks virus-induced SERCA2 expression\"},\"relationships\":[{\"predicate\":\"inhibits\",\"target\":\"paramyxovirus entry\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"causes_defective_localization_of\",\"target\":\"viral proteins\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_affect\",\"target\":\"virus attachment, RNA synthesis, and budding\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SERCA2\",\"type\":\"concept\",\"attributes\":{\"expression_pattern\":\"induced by PPRV infection in Vero cells\"},\"relationships\":[{\"predicate\":\"expression_blocked_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Newcastle disease virus (NDV)\",\"type\":\"other\",\"attributes\":{\"replication_cycle_length\":\"~10 h\"},\"relationships\":[{\"predicate\":\"inhibited_by_thapsigargin_at\",\"target\":\"30 min before infection (highest inhibition)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibition_decreases_from\",\"target\":\"1 hpi to 6 hpi\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"not_inhibited_by_thapsigargin_at\",\"target\":\"10 hpi\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"entry_blocked_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"shows_defective_protein_localization_with\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Peste des petits ruminants virus (PPRV)\",\"type\":\"other\",\"attributes\":{\"replication_cycle_length\":\"~24 h\"},\"relationships\":[{\"predicate\":\"inhibited_by_thapsigargin_at\",\"target\":\"30 min before infection (highest inhibition)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibition_decreases_from\",\"target\":\"4 hpi to 24 hpi\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"entry_blocked_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"shows_defective_protein_localization_with\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Time-of-addition assay\",\"type\":\"method\",\"attributes\":{\"purpose\":\"ascertain viral life cycle stages impaired by Thapsigargin\"},\"relationships\":[{\"predicate\":\"indicates_inhibition_of\",\"target\":\"multiple pre-budding steps of paramyxovirus replication\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Viral protein subcellular localization\",\"type\":\"measurement\",\"attributes\":{\"normal_state\":\"localized at cell surface in DMSO-treated cells\",\"defective_state\":\"cytoplasmic foci in Thapsigargin-treated cells\"},\"relationships\":[{\"predicate\":\"affected_by\",\"target\":\"SERCA inhibition\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Thapsigargin treatment causes defective subcellular localization of viral proteins in approximately 70% of infected cells, compared to 10-30% in controls. Sequential passage of Newcastle disease virus (NDV) in the presence of Thapsigargin leads to partial resistance, whereas Peste des petits ruminants virus (PPRV) does not develop resistance. The study suggests that host-targeting agents like SERCA inhibitors impose a higher genetic barrier to resistance than direct viral targets.\",\"entities\":[{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"role\":\"SERCA inhibitor\",\"target\":\"host factor\"},\"relationships\":[{\"predicate\":\"causes_defective_localization_in\",\"target\":\"~70% of cells\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for_selection_of\",\"target\":\"Thapsigargin-resistant viral mutants\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DMSO control\",\"type\":\"measurement\",\"attributes\":{\"role\":\"vehicle control\"},\"relationships\":[{\"predicate\":\"shows_defective_localization_in\",\"target\":\"10-30% of cells\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SERCA\",\"type\":\"concept\",\"attributes\":{\"function\":\"required for proper localization of viral proteins from cytoplasm to cell surface\"},\"relationships\":[{\"predicate\":\"inhibited_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"Newcastle disease virus (NDV)\",\"type\":\"other\",\"attributes\":{\"type\":\"paramyxovirus\"},\"relationships\":[{\"predicate\":\"acquires_partial_resistance_to\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"resistance_onset_at\",\"target\":\"~P25\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"significant_resistance_at\",\"target\":\"P35\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resistance_level_at_P35\",\"target\":\"~100 fold-inhibition\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"baseline_inhibition_at_P0\",\"target\":\"~10,000 fold inhibition\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_generate_complete_resistance_by\",\"target\":\"70 passages\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Peste des petits ruminants virus (PPRV)\",\"type\":\"other\",\"attributes\":{\"type\":\"paramyxovirus\"},\"relationships\":[{\"predicate\":\"does_not_develop_resistance_to\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"maintains_sensitivity_at\",\"target\":\"passage level 70\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Host-targeting agents\",\"type\":\"concept\",\"attributes\":{\"advantage\":\"higher genetic barrier to resistance due to low host genetic variability\"},\"relationships\":[{\"predicate\":\"provide_perspective_for\",\"target\":\"novel antiviral strategies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"can_provide_broad_spectrum_inhibition_against\",\"target\":\"different families of viruses using same cellular pathways\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study demonstrates that Thapsigargin, a SERCA inhibitor, blocks paramyxovirus replication by interfering with viral entry and protein localization. While NDV acquired partial resistance to Thapsigargin after long-term passage, PPRV did not, suggesting a unique mechanism of host-factor dependency bypass in NDV.\",\"entities\":[{\"name\":\"SERCA\",\"type\":\"concept\",\"attributes\":{\"full_name\":\"Sarco/endoplasmic reticulum calcium-ATPase\",\"function\":\"Ca2+ ATPase\",\"role\":\"Host factor for paramyxovirus replication\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"inhibited_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"required_for\",\"target\":\"paramyxovirus replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"overexpression_rescues\",\"target\":\"inhibitory effect of Thapsigargin\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"type\":\"small molecule chemical inhibitor\",\"target\":\"SERCA\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"blocks\",\"target\":\"paramyxovirus replication\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibits\",\"target\":\"viral entry\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibits\",\"target\":\"localization of viral proteins\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"paramyxovirus\",\"type\":\"other\",\"attributes\":{\"examples\":\"PPRV, NDV\",\"model_entity_type\":\"virus_family\"},\"relationships\":[{\"predicate\":\"replication_blocked_by\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"depends_on\",\"target\":\"SERCA\",\"attributes\":{},\"target_id\":\"serca\"}]},{\"name\":\"Newcastle disease virus (NDV)\",\"type\":\"other\",\"attributes\":{\"family\":\"Paramyxoviridae\",\"model_entity_type\":\"virus\"},\"relationships\":[{\"predicate\":\"acquired_resistance_to\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"},{\"predicate\":\"resistance_level\",\"target\":\"partial (not complete) after 70 passages\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Peste des petits ruminants virus (PPRV)\",\"type\":\"other\",\"attributes\":{\"family\":\"Paramyxoviridae\",\"model_entity_type\":\"virus\"},\"relationships\":[{\"predicate\":\"did_not_acquire_resistance_to\",\"target\":\"Thapsigargin\",\"attributes\":{},\"target_id\":\"thapsigargin\"}]},{\"name\":\"SPCA1\",\"type\":\"other\",\"attributes\":{\"function\":\"secretory pathway calcium transporter\",\"role\":\"Facilitates Ca2+ and Mn2+ uptake into trans-Golgi network\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"facilitates_replication_of\",\"target\":\"Flaviviridae, Togaviridae, Paramyxoviridae\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Coxsackievirus B3 (CVB3)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"virus\"},\"relationships\":[{\"predicate\":\"acquired_resistance_to\",\"target\":\"PI4KIIIα inhibitors\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resistance_mechanism\",\"target\":\"single point mutation in viral 3A protein\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PI4KIIIα\",\"type\":\"other\",\"attributes\":{\"full_name\":\"phosphatidylinositol-4-kinase IIIα\",\"role\":\"key cellular factor for CVB3 replication\",\"model_entity_type\":\"protein\"},\"relationships\":[]},{\"name\":\"Hepatitis C virus (HCV)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"virus\"},\"relationships\":[{\"predicate\":\"acquired_resistance_to\",\"target\":\"cyclosporine A (CsA)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_entry_factor\",\"target\":\"CLDN1\",\"attributes\":{},\"target_id\":\"cldn1\"}]},{\"name\":\"CLDN1\",\"type\":\"other\",\"attributes\":{\"full_name\":\"claudin-1\",\"type\":\"tight junction protein\",\"role\":\"entry factor for HCV\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"alternative_factors_for_HCV\",\"target\":\"CLDN6, CLDN9\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study concludes that SERCA is a crucial host factor for paramyxoviral replication and a valid target for antiviral therapeutics. A Western blot experiment demonstrated that Thapsigargin inhibits the expression of SERCA2 induced by Newcastle disease virus in Vero cells.\",\"entities\":[{\"name\":\"SERCA\",\"type\":\"concept\",\"attributes\":{\"role\":\"crucial host factor\",\"function\":\"facilitates optimal paramyxoviral replication\",\"therapeutic_status\":\"candidate drug target for antiviral therapeutics\"},\"relationships\":[]},{\"name\":\"Thapsigargin\",\"type\":\"method\",\"attributes\":{\"type\":\"SERCA inhibitor\"},\"relationships\":[{\"predicate\":\"inhibits\",\"target\":\"NDV-induced SERCA2 expression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Newcastle disease virus (NDV)\",\"type\":\"other\",\"attributes\":{\"class\":\"paramyxovirus\"},\"relationships\":[{\"predicate\":\"induces\",\"target\":\"SERCA2 expression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SERCA2\",\"type\":\"concept\",\"attributes\":{\"expression\":\"induced by NDV infection\"},\"relationships\":[]},{\"name\":\"Vero cells\",\"type\":\"other\",\"attributes\":{\"role\":\"host cell line for infection and assay\"},\"relationships\":[]},{\"name\":\"Western blot analysis protocol for SERCA2\",\"type\":\"method\",\"attributes\":{\"infection_conditions\":\"NDV at MOI 5 for 1 h\",\"post_infection_treatment\":\"Washing with PBS, addition of fresh medium with Thapsigargin or vehicle control\",\"lysis_time\":\"16 hpi\",\"probes\":\"SERCA2 and GAPDH\"},\"relationships\":[]}]}]"
+}

@@ -1,0 +1,1948 @@
+{
+  "document_id": "bethgelab-100048",
+  "fulltext_sha256": "894ece07744c3dff9486aad1b6536dbe0bef2872acbdf6fa5c7a027af65b2b72",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "f8bd02c425eda37d9d46b57bad3737fbe5b8b5880d503fe8e36aa1a25b7f54bd",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study introduces SPOT-Contact-Single, a method for predicting protein contact maps using ESM-1b language model outputs and residual neural networks. It demonstrates significant F1-score improvements over single-sequence and evolutionary-profile-based predictors on independent test sets. The method addresses the computational intensity and data limitations of traditional evolutionary profile generation.",
+        "entities": [
+          {
+            "name": "SPOT-Contact-Single",
+            "entity_id": "spot_contact_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact-Single",
+              "SPOT-Contact-Single model"
+            ],
+            "attributes": {
+              "description": "A contact-map predictor utilizing ESM-1b output, a large training set, and an ensemble of residual neural networks",
+              "advantage": "Faster and reasonably accurate alternative to evolution-based methods for large-scale prediction"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_input_from",
+                "target": "ESM-1b",
+                "attributes": {},
+                "target_id": "esm_1b"
+              },
+              {
+                "predicate": "uses_architecture",
+                "target": "ensemble of residual neural networks",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "outperforms",
+                "target": "SSCpred",
+                "attributes": {},
+                "target_id": "sscpred"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "TrRosetta",
+                "attributes": {},
+                "target_id": "trrosetta"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "SPOT-Contact",
+                "attributes": {},
+                "target_id": "spot_contact"
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b",
+            "entity_id": "esm_1b",
+            "entity_type": "method",
+            "aliases": [
+              "ESM-1b"
+            ],
+            "attributes": {
+              "type": "pre-trained language model"
+            },
+            "relationships": [
+              {
+                "predicate": "provides_input_to",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SSCpred",
+            "entity_id": "sscpred",
+            "entity_type": "method",
+            "aliases": [
+              "SSCpred"
+            ],
+            "attributes": {
+              "type": "single-sequence-based predictor"
+            },
+            "relationships": [
+              {
+                "predicate": "outperformed_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "performance_improvement_metric",
+                "target": "15% improvement in F1-score on CASP14-FM test set",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "TrRosetta",
+            "entity_id": "trrosetta",
+            "entity_type": "method",
+            "aliases": [
+              "TrRosetta"
+            ],
+            "attributes": {
+              "type": "evolutionary-profile-based method"
+            },
+            "relationships": [
+              {
+                "predicate": "outperformed_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "performance_improvement_metric",
+                "target": "48.7% improvement in F1-score on proteins without homologs (Neff=1) in SPOT-2018 set",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SPOT-Contact",
+            "entity_id": "spot_contact",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact"
+            ],
+            "attributes": {
+              "type": "evolutionary-profile-based method"
+            },
+            "relationships": [
+              {
+                "predicate": "outperformed_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "performance_improvement_metric",
+                "target": "48.5% improvement in F1-score on proteins without homologs (Neff=1) in SPOT-2018 set",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CASP14-FM test set",
+            "entity_id": "casp14_fm_test_set",
+            "entity_type": "measurement",
+            "aliases": [
+              "CASP14-FM dataset",
+              "CASP14-FM test set"
+            ],
+            "attributes": {
+              "type": "independent test set"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_evaluation_of",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SPOT-2018 test set",
+            "entity_id": "spot_2018_test_set",
+            "entity_type": "measurement",
+            "aliases": [
+              "SPOT-2018 set",
+              "SPOT-2018 test set"
+            ],
+            "attributes": {
+              "type": "independent test set"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_evaluation_of",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "protein contact map prediction",
+            "entity_id": "protein_contact_map_prediction",
+            "entity_type": "concept",
+            "aliases": [
+              "protein contact map prediction"
+            ],
+            "attributes": {
+              "importance": "Essential for accurate protein structure and function prediction"
+            },
+            "relationships": [
+              {
+                "predicate": "limited_by",
+                "target": "lack of naturally occurring homologous sequences",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "limited_by",
+                "target": "computational intensity of generating evolutionary profiles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 497,
+          "word_count": 497,
+          "sha256": "6fabd2d75426bedbecf2d86b6b0faede264cc2cdf17bcd84074077159597bda2",
+          "sentence_minhash": [
+            240855860890647139,
+            18551641988871988,
+            49420926592012815,
+            47819791530178085,
+            94503440286705849,
+            199236404224234765,
+            37454594769646853,
+            89378082673251536,
+            266927695903760850,
+            36985613895599861,
+            78280491562202942,
+            48555013328710317,
+            58797953823323897,
+            58558631451210278,
+            78051714689848052,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study addresses the limitation of single-sequence contact map predictors by incorporating unsupervised features from the ESM-1b language model. It demonstrates that combining ESM-1b attention maps with one-hot encoding and SPOT-1D-Single outputs improves prediction accuracy for proteins with few homologs. The method was validated using a curated dataset derived from ProteinNet and independent test sets.",
+        "entities": [
+          {
+            "name": "SSCpred",
+            "entity_id": "sscpred",
+            "entity_type": "method",
+            "aliases": [
+              "SSCpred"
+            ],
+            "attributes": {
+              "category": "single-sequence-based predictor",
+              "input_features": "one-hot encoding of fasta sequence, SPIDER3-Single outputs",
+              "architecture": "fully convolutional model with 30 ResNet blocks"
+            },
+            "relationships": [
+              {
+                "predicate": "performs_poorly_for",
+                "target": "proteins with more effective homologs",
+                "attributes": {
+                  "comparison": "MSA-based techniques"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "outperformed_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b",
+            "entity_id": "esm_1b",
+            "entity_type": "method",
+            "aliases": [
+              "ESM-1b"
+            ],
+            "attributes": {
+              "category": "unsupervised deep learning method",
+              "architecture": "Transformer-34",
+              "training_data": "Uniref50",
+              "outputs": "embedding, attention maps"
+            },
+            "relationships": [
+              {
+                "predicate": "used_as_input_feature_source",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SPOT-Contact-Single",
+            "entity_id": "spot_contact_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact-Single",
+              "SPOT-Contact-Single model"
+            ],
+            "attributes": {
+              "category": "single-sequence-based contact-map predictor",
+              "input_features": "ESM-1b attention maps, one-hot encoding, SPOT-1D-Single outputs",
+              "architecture": "ensemble of residual neural networks"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms",
+                "target": "SSCpred",
+                "attributes": {
+                  "condition": "proteins with low effective number of homologous proteins (Neff)"
+                },
+                "target_id": "sscpred"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "MSA-based predictors",
+                "attributes": {
+                  "condition": "proteins with low effective number of homologous proteins (Neff)"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SPOT-1D-Single",
+            "entity_id": "spot_1d_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-1D-Single"
+            ],
+            "attributes": {
+              "category": "single-sequence-based predictor"
+            },
+            "relationships": [
+              {
+                "predicate": "outputs_used_in",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "ProteinNet benchmark dataset",
+            "entity_id": "proteinnet_benchmark_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "ProteinNet benchmark dataset"
+            ],
+            "attributes": {
+              "source": "ProteinNet (AlQuraishi, 2019)",
+              "initial_count": "50914 proteins",
+              "resolution_cutoff": "< 2.5 Å",
+              "sequence_identity_cutoff": "95%",
+              "clustering_tool": "MMseqs2",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_curating",
+                "target": "training and validation sets",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Final training set",
+            "entity_id": "final_training_set",
+            "entity_type": "other",
+            "aliases": [
+              "Final training set"
+            ],
+            "attributes": {
+              "count": "34691 proteins",
+              "length_cutoff": "< 500 residues",
+              "derivation": "ProteinNet set minus validation proteins and long proteins",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "ProteinNet benchmark dataset",
+                "attributes": {},
+                "target_id": "proteinnet_benchmark_dataset"
+              }
+            ]
+          },
+          {
+            "name": "Validation set",
+            "entity_id": "validation_set",
+            "entity_type": "other",
+            "aliases": [
+              "Validation set"
+            ],
+            "attributes": {
+              "count": "88 proteins",
+              "length_cutoff": "< 500 residues",
+              "selection_criteria": "100 proteins separated from ProteinNet, filtered by HHblits e-value < 0.1 against training set",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "ProteinNet benchmark dataset",
+                "attributes": {},
+                "target_id": "proteinnet_benchmark_dataset"
+              }
+            ]
+          },
+          {
+            "name": "Independent test set (pre-2020)",
+            "entity_id": "independent_test_set_pre_2020",
+            "entity_type": "other",
+            "aliases": [
+              "Independent test set (pre-2020)"
+            ],
+            "attributes": {
+              "time_range": "May 2018 to April 2020",
+              "source": "PDB releases",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "independent testing and comparison",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 497,
+          "end_word": 975,
+          "word_count": 478,
+          "sha256": "1274ee7a57eb762754d6fbee3621f584debcba4019386a4e36328320dba908f6",
+          "sentence_minhash": [
+            473584906916716317,
+            1306423125707224,
+            115461717461310760,
+            47819791530178085,
+            50154285776315358,
+            54472148556262696,
+            27336945931145765,
+            63183425104977485,
+            41676720148055362,
+            42586453371797899,
+            78280491562202942,
+            28666392324694538,
+            24998895482691181,
+            906306679132868,
+            83872309250699693,
+            2053954557942567
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'ProteinNet benchmark dataset'",
+          "normalized unsupported entity type 'dataset' for 'Final training set'",
+          "normalized unsupported entity type 'dataset' for 'Validation set'",
+          "normalized unsupported entity type 'dataset' for 'Independent test set (pre-2020)'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study defines three independent test sets: SPOT-2018, Neff1-2018, and CASP14-FM, to evaluate protein contact map predictors on sequentially isolated and homolog-free proteins. Input features for the neural network ensemble include one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps, with specific preprocessing applied to the attention maps. Performance is evaluated using standard CASP contact definitions and metrics such as F1-score, MCC, and AUC across short, medium, and long-range contacts.",
+        "entities": [
+          {
+            "name": "SPOT-2018 test set",
+            "entity_id": "spot_2018_test_set",
+            "entity_type": "measurement",
+            "aliases": [
+              "SPOT-2018 set",
+              "SPOT-2018 test set"
+            ],
+            "attributes": {
+              "size": "669 proteins",
+              "source": "Proteins released between May 2018 and April 2020",
+              "filtering_method": "Removal of potential homologs to pre-2018 training set using HHblits with e-value < 0.1",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "contains_subset",
+                "target": "Neff1-2018 test set",
+                "attributes": {},
+                "target_id": "neff1_2018_test_set"
+              }
+            ]
+          },
+          {
+            "name": "Neff1-2018 test set",
+            "entity_id": "neff1_2018_test_set",
+            "entity_type": "other",
+            "aliases": [
+              "Neff1-2018 test set"
+            ],
+            "attributes": {
+              "size": "46 proteins",
+              "characteristic": "Proteins with Neff=1 (no homologs)",
+              "purpose": "Test predictor performance on de-novo proteins and proteins without homologs",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "subset_of",
+                "target": "SPOT-2018 test set",
+                "attributes": {},
+                "target_id": "spot_2018_test_set"
+              }
+            ]
+          },
+          {
+            "name": "CASP14-FM test set",
+            "entity_id": "casp14_fm_test_set",
+            "entity_type": "measurement",
+            "aliases": [
+              "CASP14-FM dataset",
+              "CASP14-FM test set"
+            ],
+            "attributes": {
+              "size": "15 free modelling targets",
+              "source": "CASP14",
+              "characteristic": "Proteins without known structural templates in the protein databank at release",
+              "model_entity_type": "dataset"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Neff",
+            "entity_id": "neff",
+            "entity_type": "measurement",
+            "aliases": [
+              "Neff"
+            ],
+            "attributes": {
+              "definition": "Effective number of homologous proteins",
+              "reference_dataset": "Uniclust30 (Published Feb 2020)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "HHblits",
+            "entity_id": "hhblits",
+            "entity_type": "other",
+            "aliases": [
+              "HHblits"
+            ],
+            "attributes": {
+              "function": "Comparison of Hidden Markov Models",
+              "parameter": "e-value cut-off < 0.1",
+              "model_entity_type": "tool"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "Removal of homologs in SPOT-2018 test set",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b",
+            "entity_id": "esm_1b",
+            "entity_type": "method",
+            "aliases": [
+              "ESM-1b"
+            ],
+            "attributes": {
+              "type": "Unsupervised deep learning method / Transformer language model",
+              "output_used": "Attention maps"
+            },
+            "relationships": [
+              {
+                "predicate": "provides_input_feature",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SPOT-1D-Single",
+            "entity_id": "spot_1d_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-1D-Single"
+            ],
+            "attributes": {
+              "type": "Single-sequence-based predictor",
+              "outputs_used": [
+                "Probabilities of three-state-secondary-structure (SS3)",
+                "Probabilities of eight-state-secondary structure (SS8)",
+                "Solvent Accessible Surface Area (ASA)",
+                "Half-Sphere-Exposure (HSE)",
+                "Protein backbone torsion angles (psi, phi, theta, tau)"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "provides_input_feature",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SPOT-Contact-Single",
+            "entity_id": "spot_contact_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact-Single",
+              "SPOT-Contact-Single model"
+            ],
+            "attributes": {
+              "architecture": "Ensemble of neural networks",
+              "input_features": [
+                "One-hot encoding of amino acids",
+                "SPOT-1D-Single outputs",
+                "ESM-1b attention maps"
+              ],
+              "feature_processing": "One-dimensional features converted to two-dimensional via outer concatenation; ESM-1b attention maps symmetrized and APC applied"
+            },
+            "relationships": [
+              {
+                "predicate": "evaluated_on",
+                "target": "SPOT-2018 test set",
+                "attributes": {},
+                "target_id": "spot_2018_test_set"
+              },
+              {
+                "predicate": "evaluated_on",
+                "target": "Neff1-2018 test set",
+                "attributes": {},
+                "target_id": "neff1_2018_test_set"
+              },
+              {
+                "predicate": "evaluated_on",
+                "target": "CASP14-FM test set",
+                "attributes": {},
+                "target_id": "casp14_fm_test_set"
+              }
+            ]
+          },
+          {
+            "name": "Protein contact definition",
+            "entity_id": "protein_contact_definition",
+            "entity_type": "concept",
+            "aliases": [
+              "Protein contact definition"
+            ],
+            "attributes": {
+              "standard": "CASP definition (Ezkurdia et al., 2009)",
+              "criterion": "Inter-residue distance <= 8.0 Angstrom between two C-beta atoms"
+            },
+            "relationships": [
+              {
+                "predicate": "classified_into",
+                "target": "Long-range contacts",
+                "attributes": {},
+                "target_id": "long_range_contacts"
+              },
+              {
+                "predicate": "classified_into",
+                "target": "Medium-range contacts",
+                "attributes": {},
+                "target_id": "medium_range_contacts"
+              },
+              {
+                "predicate": "classified_into",
+                "target": "Short-range contacts",
+                "attributes": {},
+                "target_id": "short_range_contacts"
+              }
+            ]
+          },
+          {
+            "name": "Long-range contacts",
+            "entity_id": "long_range_contacts",
+            "entity_type": "concept",
+            "aliases": [
+              "Long-range contacts"
+            ],
+            "attributes": {
+              "distance_range": "At least 24 residues apart"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Medium-range contacts",
+            "entity_id": "medium_range_contacts",
+            "entity_type": "concept",
+            "aliases": [
+              "Medium-range contacts"
+            ],
+            "attributes": {
+              "distance_range": "Between 12 to 23 residues apart"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Short-range contacts",
+            "entity_id": "short_range_contacts",
+            "entity_type": "concept",
+            "aliases": [
+              "Short-range contacts"
+            ],
+            "attributes": {
+              "distance_range": "Between 7-11 residues apart"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Performance metrics",
+            "entity_id": "performance_metrics",
+            "entity_type": "measurement",
+            "aliases": [
+              "Performance metrics"
+            ],
+            "attributes": {
+              "metrics_listed": [
+                "Top L/10, L/5, L/2, L/1 precision",
+                "Overall F1-score",
+                "Matthews Correlation Coefficient (MCC)",
+                "Sensitivity",
+                "Area Under Curve of Precision-Recall Curve (AUC)",
+                "Area Under Curve of Receiver Operating Characteristic (ROC)"
+              ],
+              "scope": "Calculated for short, medium, and long-range contacts together"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 975,
+          "end_word": 1464,
+          "word_count": 489,
+          "sha256": "db0f66a822aa464dfe9eb20670bbfaa820d4c8e260b658844d63881f9f5e763b",
+          "sentence_minhash": [
+            84989070151237717,
+            18551641988871988,
+            159697597401521628,
+            37498130448765965,
+            37626633843728580,
+            70552965485228298,
+            46992937528651961,
+            67257714571907172,
+            16209829508375640,
+            42586453371797899,
+            78280491562202942,
+            8566262517653704,
+            66824309535235066,
+            28533777509585461,
+            83872309250699693,
+            101008368693020292
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'SPOT-2018 test set'",
+          "normalized unsupported entity type 'dataset' for 'Neff1-2018 test set'",
+          "normalized unsupported entity type 'dataset' for 'CASP14-FM test set'",
+          "normalized unsupported entity type 'tool' for 'HHblits'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study details the architecture of a 12-block ResNet model used for protein contact map prediction, utilizing specific hyperparameters and loss functions. It describes an ensemble of six models trained on different feature combinations, including ESM-1b attention maps and one-hot encodings. The method is compared against other predictors like SSCpred and TrRosetta, with a focus on feature importance and training strategies.",
+        "entities": [
+          {
+            "name": "SPOT-Contact-Single neural network architecture",
+            "entity_id": "spot_contact_single_neural_network_architecture",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact-Single neural network architecture"
+            ],
+            "attributes": {
+              "architecture_type": "12 block ResNet",
+              "inspiration": "ResNet architecture in protein contact-map and RNA secondary structure prediction",
+              "ResNet_version": "Duta et al., 2020 improved version",
+              "convolutional_layer_channel_size": 64,
+              "convolutional_layer_kernel_size": 3,
+              "optimizer": "Adam",
+              "learning_rate": 0.001,
+              "batch_size": 1,
+              "early_stopping": 3
+            },
+            "relationships": [
+              {
+                "predicate": "trains",
+                "target": "six models with different input feature combinations",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_loss_function",
+                "target": "Binary Cross-Entropy for direct contact prediction",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_loss_function",
+                "target": "Cross-Entropy for distogram-based prediction",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Model1",
+            "entity_id": "model1",
+            "entity_type": "method",
+            "aliases": [
+              "Model1"
+            ],
+            "attributes": {
+              "features": "Attention map (last layer)",
+              "training_strategy": "Direct inter-residue contact prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Model2",
+            "entity_id": "model2",
+            "entity_type": "method",
+            "aliases": [
+              "Model2"
+            ],
+            "attributes": {
+              "features": "Attention map (all layers)",
+              "training_strategy": "Direct inter-residue contact prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Model3",
+            "entity_id": "model3",
+            "entity_type": "method",
+            "aliases": [
+              "Model3"
+            ],
+            "attributes": {
+              "features": "Attention map (all layers) + one-hot encoding + SPOT-1D-Single",
+              "training_strategy": "Direct inter-residue contact prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Model4",
+            "entity_id": "model4",
+            "entity_type": "method",
+            "aliases": [
+              "Model4"
+            ],
+            "attributes": {
+              "features": "Attention map (last layer)",
+              "training_strategy": "Inter-residue distance bin prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Model5",
+            "entity_id": "model5",
+            "entity_type": "method",
+            "aliases": [
+              "Model5"
+            ],
+            "attributes": {
+              "features": "Attention map (all layers)",
+              "training_strategy": "Inter-residue distance bin prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Model6",
+            "entity_id": "model6",
+            "entity_type": "method",
+            "aliases": [
+              "Model6"
+            ],
+            "attributes": {
+              "features": "Attention map (all layers) + one-hot encoding + SPOT-1D-Single",
+              "training_strategy": "Inter-residue distance bin prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Feature importance analysis model",
+            "entity_id": "feature_importance_analysis_model",
+            "entity_type": "method",
+            "aliases": [
+              "Feature importance analysis model"
+            ],
+            "attributes": {
+              "architecture": "ResNet12",
+              "input_feature": "one-hot encoding of the fasta sequence only",
+              "validation_f1_score": 0.15,
+              "validation_mcc": 0.14
+            },
+            "relationships": [
+              {
+                "predicate": "evaluated_on",
+                "target": "Validation set",
+                "attributes": {},
+                "target_id": "validation_set"
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b",
+            "entity_id": "esm_1b",
+            "entity_type": "method",
+            "aliases": [
+              "ESM-1b"
+            ],
+            "attributes": {
+              "type": "language model's supervised regression contact-map predictor",
+              "availability": "stand-alone program available online"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SSCpred",
+            "entity_id": "sscpred",
+            "entity_type": "method",
+            "aliases": [
+              "SSCpred"
+            ],
+            "attributes": {
+              "type": "single-sequence-based predictor",
+              "availability": "web-server available online"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "TrRosetta",
+            "entity_id": "trrosetta",
+            "entity_type": "method",
+            "aliases": [
+              "TrRosetta"
+            ],
+            "attributes": {
+              "type": "profile-based-predictor",
+              "availability": "stand-alone program available online"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "input_source",
+                "target": "SPOT-Contact MSA generation pipeline",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SPOT-Contact",
+            "entity_id": "spot_contact",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact"
+            ],
+            "attributes": {
+              "type": "profile-based-predictor",
+              "availability": "stand-alone program available online"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "input_source",
+                "target": "SPOT-Contact MSA generation pipeline",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1464,
+          "end_word": 1958,
+          "word_count": 494,
+          "sha256": "4b0a59ab251a555475cc2578a5cd4c88703149ad3e576f5a103317b1935e1644",
+          "sentence_minhash": [
+            372299260625802888,
+            1306423125707224,
+            49420926592012815,
+            37498130448765965,
+            50154285776315358,
+            52325769646537220,
+            27336945931145765,
+            96292850158067112,
+            21579496338166870,
+            9462436175016187,
+            56649603857963699,
+            30828592349773787,
+            51125582506972287,
+            83535461897877455,
+            84258266176112060,
+            249823048461182166
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study evaluates feature combinations for protein contact map prediction, finding that ESM-1b attention maps significantly outperform one-hot encoding and SPOT-1D-Single outputs. An ensemble of six models using direct and distogram-based strategies achieved higher F1-scores than individual models. On proteins without homologs, the proposed method outperforms evolutionary-based predictors and ESM-1b.",
+        "entities": [
+          {
+            "name": "SPOT-Contact-Single",
+            "entity_id": "spot_contact_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact-Single",
+              "SPOT-Contact-Single model"
+            ],
+            "attributes": {
+              "description": "Ensemble of six models using direct and distogram-based contact prediction",
+              "performance_on_no_homologs": "F1-score of 0.32"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms",
+                "target": "SPOT-Contact",
+                "attributes": {
+                  "metric": "F1-score",
+                  "improvement": "45%"
+                },
+                "target_id": "spot_contact"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "TrRosetta",
+                "attributes": {
+                  "metric": "F1-score",
+                  "improvement": "45%"
+                },
+                "target_id": "trrosetta"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "ESM-1b",
+                "attributes": {
+                  "metric": "F1-score",
+                  "improvement": "45%"
+                },
+                "target_id": "esm_1b"
+              },
+              {
+                "predicate": "improves_over",
+                "target": "second-best individual model",
+                "attributes": {
+                  "metric": "F1-score",
+                  "improvement": "4%"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b",
+            "entity_id": "esm_1b",
+            "entity_type": "method",
+            "aliases": [
+              "ESM-1b"
+            ],
+            "attributes": {
+              "type": "unsupervised learning method",
+              "performance_on_no_homologs": "F1-score of about 0.22"
+            },
+            "relationships": [
+              {
+                "predicate": "provides",
+                "target": "attention maps",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b attention maps (last layer)",
+            "entity_id": "esm_1b_attention_maps_last_layer",
+            "entity_type": "measurement",
+            "aliases": [
+              "ESM-1b attention maps (last layer)"
+            ],
+            "attributes": {
+              "F1": "0.51",
+              "MCC": "0.50",
+              "precision": "0.56",
+              "AUC_of_ROC": "0.95"
+            },
+            "relationships": [
+              {
+                "predicate": "improves_F1_over",
+                "target": "one-hot encoding model",
+                "attributes": {
+                  "improvement": "242%"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "improves_F1_over",
+                "target": "SPOT-1D-Single + one-hot encoding model",
+                "attributes": {
+                  "improvement": "178%"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SPOT-1D-Single",
+            "entity_id": "spot_1d_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-1D-Single"
+            ],
+            "attributes": {
+              "type": "single-sequence-based predictor"
+            },
+            "relationships": [
+              {
+                "predicate": "improves_F1_when_added_to_one_hot_encoding",
+                "target": "one-hot encoding",
+                "attributes": {
+                  "improvement": "22.90%"
+                },
+                "target_id": "one_hot_encoding"
+              }
+            ]
+          },
+          {
+            "name": "one-hot encoding",
+            "entity_id": "one_hot_encoding",
+            "entity_type": "method",
+            "aliases": [
+              "one-hot encoding"
+            ],
+            "attributes": {},
+            "relationships": []
+          },
+          {
+            "name": "combined features (one-hot + SPOT-1D-Single + ESM-1b all layers)",
+            "entity_id": "combined_features_one_hot_spot_1d_single_esm_1b_all_layers",
+            "entity_type": "measurement",
+            "aliases": [
+              "combined features (one-hot + SPOT-1D-Single + ESM-1b all layers)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "improves_F1_over",
+                "target": "ESM-1b attention maps (all layers)",
+                "attributes": {
+                  "improvement": "2.92%"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "improves_precision_for",
+                "target": "medium- and long-range contacts",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "direct contact-map prediction",
+            "entity_id": "direct_contact_map_prediction",
+            "entity_type": "method",
+            "aliases": [
+              "direct contact-map prediction"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "performs_slightly_better_than",
+                "target": "distogram-based contact-map prediction",
+                "attributes": {},
+                "target_id": "distogram_based_contact_map_prediction"
+              }
+            ]
+          },
+          {
+            "name": "distogram-based contact-map prediction",
+            "entity_id": "distogram_based_contact_map_prediction",
+            "entity_type": "method",
+            "aliases": [
+              "distogram-based contact-map prediction"
+            ],
+            "attributes": {},
+            "relationships": []
+          },
+          {
+            "name": "SPOT-Contact",
+            "entity_id": "spot_contact",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact"
+            ],
+            "attributes": {
+              "type": "evolution-based predictor",
+              "performance_on_no_homologs": "F1-score of about 0.22"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TrRosetta",
+            "entity_id": "trrosetta",
+            "entity_type": "method",
+            "aliases": [
+              "TrRosetta"
+            ],
+            "attributes": {
+              "type": "evolution-based predictor",
+              "performance_on_no_homologs": "F1-score of about 0.22"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1958,
+          "end_word": 2450,
+          "word_count": 492,
+          "sha256": "7bad9c8f29ef9079a109a59c87458af4a1b6dd06474cc55bb35d7ca890f5d79c",
+          "sentence_minhash": [
+            177206373619834726,
+            1306423125707224,
+            115461717461310760,
+            47819791530178085,
+            335208187202550412,
+            224593560600374663,
+            23718652799488495,
+            152326886699586849,
+            34383880606747972,
+            67885135535576213,
+            78280491562202942,
+            139309872259060027,
+            24998895482691181,
+            58558631451210278,
+            303264414993015767,
+            101008368693020292
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "SPOT-Contact-Single outperforms profile-based predictors and SSCpred on low-homology proteins, achieving higher F1-scores and significantly faster inference times. The method utilizes ESM-1b attention maps and an ensemble of ResNet architectures to predict contact maps without evolutionary information.",
+        "entities": [
+          {
+            "name": "SPOT-Contact-Single",
+            "entity_id": "spot_contact_single",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact-Single",
+              "SPOT-Contact-Single model"
+            ],
+            "attributes": {
+              "input_features": "ESM-1b attention maps, one-hot encoding, SPOT-1D-Single output",
+              "architecture": "Ensemble of ResNet-based architectures",
+              "training_set_size": "almost 35000 proteins",
+              "evolutionary_information_usage": "none",
+              "length_limitation": "cannot directly predict contact maps for proteins with more than 1024 amino acids",
+              "cpu_inference_time_casp14_fm": "116 seconds",
+              "gpu_inference_time_casp14_fm": "42 times faster than TrRosetta"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms",
+                "target": "SPOT-Contact",
+                "attributes": {
+                  "metric": "F1-score",
+                  "context": "low Neff proteins"
+                },
+                "target_id": "spot_contact"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "TrRosetta",
+                "attributes": {
+                  "metric": "F1-score",
+                  "context": "low Neff proteins"
+                },
+                "target_id": "trrosetta"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "ESM-1b",
+                "attributes": {
+                  "metric": "F1-score",
+                  "context": "CASP14-FM dataset"
+                },
+                "target_id": "esm_1b"
+              },
+              {
+                "predicate": "outperforms",
+                "target": "SSCpred",
+                "attributes": {
+                  "metric": "F1-score",
+                  "improvement": "15%",
+                  "long_range_precision_improvement": "~100%"
+                },
+                "target_id": "sscpred"
+              },
+              {
+                "predicate": "predicts_contact_map_for",
+                "target": "5YKZ_A",
+                "attributes": {
+                  "f1_score": 0.388
+                },
+                "target_id": "5ykz_a"
+              }
+            ]
+          },
+          {
+            "name": "SPOT-Contact",
+            "entity_id": "spot_contact",
+            "entity_type": "method",
+            "aliases": [
+              "SPOT-Contact"
+            ],
+            "attributes": {
+              "type": "evolutionary-profile-based predictor"
+            },
+            "relationships": [
+              {
+                "predicate": "predicts_contact_map_for",
+                "target": "5YKZ_A",
+                "attributes": {
+                  "f1_score": 0.215
+                },
+                "target_id": "5ykz_a"
+              },
+              {
+                "predicate": "slower_than",
+                "target": "SPOT-Contact-Single",
+                "attributes": {
+                  "cpu_inference_time_casp14_fm": "22 times slower"
+                },
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "TrRosetta",
+            "entity_id": "trrosetta",
+            "entity_type": "method",
+            "aliases": [
+              "TrRosetta"
+            ],
+            "attributes": {
+              "type": "evolutionary-profile-based predictor",
+              "gpu_inference_time_casp14_fm": "1926 seconds"
+            },
+            "relationships": [
+              {
+                "predicate": "predicts_contact_map_for",
+                "target": "5YKZ_A",
+                "attributes": {
+                  "f1_score": 0.235
+                },
+                "target_id": "5ykz_a"
+              },
+              {
+                "predicate": "slower_than",
+                "target": "SPOT-Contact-Single",
+                "attributes": {
+                  "gpu_inference_time_casp14_fm": "42 times slower"
+                },
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "ESM-1b",
+            "entity_id": "esm_1b",
+            "entity_type": "method",
+            "aliases": [
+              "ESM-1b"
+            ],
+            "attributes": {
+              "type": "transformer language model",
+              "role": "source of attention map features"
+            },
+            "relationships": [
+              {
+                "predicate": "predicts_contact_map_for",
+                "target": "5YKZ_A",
+                "attributes": {
+                  "f1_score": 0.252
+                },
+                "target_id": "5ykz_a"
+              },
+              {
+                "predicate": "outperformed_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {
+                  "metric": "F1-score",
+                  "context": "CASP14-FM dataset"
+                },
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "SSCpred",
+            "entity_id": "sscpred",
+            "entity_type": "method",
+            "aliases": [
+              "SSCpred"
+            ],
+            "attributes": {
+              "type": "single-sequence-based contact-map predictor",
+              "training_data_cutoff": "proteins released till 2019 April"
+            },
+            "relationships": [
+              {
+                "predicate": "outperformed_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {
+                  "metric": "F1-score",
+                  "improvement": "15%",
+                  "long_range_precision_improvement": "~100%"
+                },
+                "target_id": "spot_contact_single"
+              }
+            ]
+          },
+          {
+            "name": "5YKZ_A",
+            "entity_id": "5ykz_a",
+            "entity_type": "other",
+            "aliases": [
+              "5YKZ_A"
+            ],
+            "attributes": {
+              "description": "example protein from Neff1-2018",
+              "homology_level": "low Neff"
+            },
+            "relationships": [
+              {
+                "predicate": "contact_map_predicted_by",
+                "target": "SPOT-Contact-Single",
+                "attributes": {
+                  "f1_score": 0.388
+                },
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "contact_map_predicted_by",
+                "target": "SPOT-Contact",
+                "attributes": {
+                  "f1_score": 0.215
+                },
+                "target_id": "spot_contact"
+              },
+              {
+                "predicate": "contact_map_predicted_by",
+                "target": "TrRosetta",
+                "attributes": {
+                  "f1_score": 0.235
+                },
+                "target_id": "trrosetta"
+              },
+              {
+                "predicate": "contact_map_predicted_by",
+                "target": "ESM-1b",
+                "attributes": {
+                  "f1_score": 0.252
+                },
+                "target_id": "esm_1b"
+              }
+            ]
+          },
+          {
+            "name": "CASP14-FM test set",
+            "entity_id": "casp14_fm_test_set",
+            "entity_type": "measurement",
+            "aliases": [
+              "CASP14-FM dataset",
+              "CASP14-FM test set"
+            ],
+            "attributes": {
+              "protein_count": 15
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_benchmarking",
+                "target": "SPOT-Contact-Single",
+                "attributes": {},
+                "target_id": "spot_contact_single"
+              },
+              {
+                "predicate": "used_for_benchmarking",
+                "target": "SSCpred",
+                "attributes": {},
+                "target_id": "sscpred"
+              },
+              {
+                "predicate": "used_for_benchmarking",
+                "target": "ESM-1b",
+                "attributes": {},
+                "target_id": "esm_1b"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2450,
+          "end_word": 2945,
+          "word_count": 495,
+          "sha256": "fa3a4ed02ddfadabcae169d8b28c3fc5b007ae03ff901607d0c30967af11ea51",
+          "sentence_minhash": [
+            84989070151237717,
+            1306423125707224,
+            115461717461310760,
+            30000034310197413,
+            34249088398280546,
+            99436724310786061,
+            108181934044425938,
+            300350091375620443,
+            266927695903760850,
+            107048872566759164,
+            78280491562202942,
+            34538575912147783,
+            51125582506972287,
+            6668399353053118,
+            83872309250699693,
+            101008368693020292
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text suggests that future improvements in protein contact-map prediction without evolutionary information could be achieved by adopting advanced architectural models. Specifically, Transformer and Performer architectures are cited as potential candidates for this enhancement.",
+        "entities": [
+          {
+            "name": "protein contact-map prediction without evolutionary information",
+            "entity_id": "protein_contact_map_prediction_without_evolutionary_information",
+            "entity_type": "concept",
+            "aliases": [
+              "protein contact-map prediction without evolutionary information"
+            ],
+            "attributes": {
+              "status": "subject of potential further improvement"
+            },
+            "relationships": [
+              {
+                "predicate": "may_be_improved_by",
+                "target": "advanced architectural models",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Transformer",
+            "entity_id": "transformer",
+            "entity_type": "method",
+            "aliases": [
+              "Transformer"
+            ],
+            "attributes": {
+              "citation": "Vaswani et al., 2017"
+            },
+            "relationships": [
+              {
+                "predicate": "is_an_example_of",
+                "target": "advanced architectural models",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Performer",
+            "entity_id": "performer",
+            "entity_type": "method",
+            "aliases": [
+              "Performer"
+            ],
+            "attributes": {
+              "citation": "Choromanski et al., 2020"
+            },
+            "relationships": [
+              {
+                "predicate": "is_an_example_of",
+                "target": "advanced architectural models",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2945,
+          "end_word": 2979,
+          "word_count": 34,
+          "sha256": "1d7d22df40f8e30aa446d34434fdd1631c54add171ecc56b8e191279445b2742",
+          "sentence_minhash": [
+            371401328801777202,
+            917748524370642352,
+            611347955889946192,
+            297700529877598300,
+            1248300832298466072,
+            199236404224234765,
+            175774020269814206,
+            162920141463466572,
+            307524911828800870,
+            416814915244980077,
+            141479479946104613,
+            1416888068582913661,
+            207344944241130455,
+            988234782563400217,
+            83872309250699693,
+            1944766879925552860
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "spot_contact_single",
+        "canonical_name": "SPOT-Contact-Single",
+        "aliases": [
+          "SPOT-Contact-Single",
+          "SPOT-Contact-Single model"
+        ]
+      },
+      {
+        "canonical_id": "casp14_fm_test_set",
+        "canonical_name": "CASP14-FM test set",
+        "aliases": [
+          "CASP14-FM test set",
+          "CASP14-FM dataset"
+        ]
+      },
+      {
+        "canonical_id": "spot_2018_test_set",
+        "canonical_name": "SPOT-2018 test set",
+        "aliases": [
+          "SPOT-2018 set",
+          "SPOT-2018 test set"
+        ]
+      },
+      {
+        "canonical_id": "esm_1b",
+        "canonical_name": "ESM-1b",
+        "aliases": [
+          "ESM-1b"
+        ]
+      },
+      {
+        "canonical_id": "sscpred",
+        "canonical_name": "SSCpred",
+        "aliases": [
+          "SSCpred"
+        ]
+      },
+      {
+        "canonical_id": "trrosetta",
+        "canonical_name": "TrRosetta",
+        "aliases": [
+          "TrRosetta"
+        ]
+      },
+      {
+        "canonical_id": "spot_contact",
+        "canonical_name": "SPOT-Contact",
+        "aliases": [
+          "SPOT-Contact"
+        ]
+      },
+      {
+        "canonical_id": "protein_contact_map_prediction",
+        "canonical_name": "protein contact map prediction",
+        "aliases": [
+          "protein contact map prediction"
+        ]
+      },
+      {
+        "canonical_id": "spot_1d_single",
+        "canonical_name": "SPOT-1D-Single",
+        "aliases": [
+          "SPOT-1D-Single"
+        ]
+      },
+      {
+        "canonical_id": "proteinnet_benchmark_dataset",
+        "canonical_name": "ProteinNet benchmark dataset",
+        "aliases": [
+          "ProteinNet benchmark dataset"
+        ]
+      },
+      {
+        "canonical_id": "final_training_set",
+        "canonical_name": "Final training set",
+        "aliases": [
+          "Final training set"
+        ]
+      },
+      {
+        "canonical_id": "validation_set",
+        "canonical_name": "Validation set",
+        "aliases": [
+          "Validation set"
+        ]
+      },
+      {
+        "canonical_id": "independent_test_set_pre_2020",
+        "canonical_name": "Independent test set (pre-2020)",
+        "aliases": [
+          "Independent test set (pre-2020)"
+        ]
+      },
+      {
+        "canonical_id": "neff1_2018_test_set",
+        "canonical_name": "Neff1-2018 test set",
+        "aliases": [
+          "Neff1-2018 test set"
+        ]
+      },
+      {
+        "canonical_id": "neff",
+        "canonical_name": "Neff",
+        "aliases": [
+          "Neff"
+        ]
+      },
+      {
+        "canonical_id": "hhblits",
+        "canonical_name": "HHblits",
+        "aliases": [
+          "HHblits"
+        ]
+      },
+      {
+        "canonical_id": "protein_contact_definition",
+        "canonical_name": "Protein contact definition",
+        "aliases": [
+          "Protein contact definition"
+        ]
+      },
+      {
+        "canonical_id": "long_range_contacts",
+        "canonical_name": "Long-range contacts",
+        "aliases": [
+          "Long-range contacts"
+        ]
+      },
+      {
+        "canonical_id": "medium_range_contacts",
+        "canonical_name": "Medium-range contacts",
+        "aliases": [
+          "Medium-range contacts"
+        ]
+      },
+      {
+        "canonical_id": "short_range_contacts",
+        "canonical_name": "Short-range contacts",
+        "aliases": [
+          "Short-range contacts"
+        ]
+      },
+      {
+        "canonical_id": "performance_metrics",
+        "canonical_name": "Performance metrics",
+        "aliases": [
+          "Performance metrics"
+        ]
+      },
+      {
+        "canonical_id": "spot_contact_single_neural_network_architecture",
+        "canonical_name": "SPOT-Contact-Single neural network architecture",
+        "aliases": [
+          "SPOT-Contact-Single neural network architecture"
+        ]
+      },
+      {
+        "canonical_id": "model1",
+        "canonical_name": "Model1",
+        "aliases": [
+          "Model1"
+        ]
+      },
+      {
+        "canonical_id": "model2",
+        "canonical_name": "Model2",
+        "aliases": [
+          "Model2"
+        ]
+      },
+      {
+        "canonical_id": "model3",
+        "canonical_name": "Model3",
+        "aliases": [
+          "Model3"
+        ]
+      },
+      {
+        "canonical_id": "model4",
+        "canonical_name": "Model4",
+        "aliases": [
+          "Model4"
+        ]
+      },
+      {
+        "canonical_id": "model5",
+        "canonical_name": "Model5",
+        "aliases": [
+          "Model5"
+        ]
+      },
+      {
+        "canonical_id": "model6",
+        "canonical_name": "Model6",
+        "aliases": [
+          "Model6"
+        ]
+      },
+      {
+        "canonical_id": "feature_importance_analysis_model",
+        "canonical_name": "Feature importance analysis model",
+        "aliases": [
+          "Feature importance analysis model"
+        ]
+      },
+      {
+        "canonical_id": "esm_1b_attention_maps_last_layer",
+        "canonical_name": "ESM-1b attention maps (last layer)",
+        "aliases": [
+          "ESM-1b attention maps (last layer)"
+        ]
+      },
+      {
+        "canonical_id": "one_hot_encoding",
+        "canonical_name": "one-hot encoding",
+        "aliases": [
+          "one-hot encoding"
+        ]
+      },
+      {
+        "canonical_id": "combined_features_one_hot_spot_1d_single_esm_1b_all_layers",
+        "canonical_name": "combined features (one-hot + SPOT-1D-Single + ESM-1b all layers)",
+        "aliases": [
+          "combined features (one-hot + SPOT-1D-Single + ESM-1b all layers)"
+        ]
+      },
+      {
+        "canonical_id": "direct_contact_map_prediction",
+        "canonical_name": "direct contact-map prediction",
+        "aliases": [
+          "direct contact-map prediction"
+        ]
+      },
+      {
+        "canonical_id": "distogram_based_contact_map_prediction",
+        "canonical_name": "distogram-based contact-map prediction",
+        "aliases": [
+          "distogram-based contact-map prediction"
+        ]
+      },
+      {
+        "canonical_id": "5ykz_a",
+        "canonical_name": "5YKZ_A",
+        "aliases": [
+          "5YKZ_A"
+        ]
+      },
+      {
+        "canonical_id": "protein_contact_map_prediction_without_evolutionary_information",
+        "canonical_name": "protein contact-map prediction without evolutionary information",
+        "aliases": [
+          "protein contact-map prediction without evolutionary information"
+        ]
+      },
+      {
+        "canonical_id": "transformer",
+        "canonical_name": "Transformer",
+        "aliases": [
+          "Transformer"
+        ]
+      },
+      {
+        "canonical_id": "performer",
+        "canonical_name": "Performer",
+        "aliases": [
+          "Performer"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study introduces SPOT-Contact-Single, a method for predicting protein contact maps using ESM-1b language model outputs and residual neural networks. It demonstrates significant F1-score improvements over single-sequence and evolutionary-profile-based predictors on independent test sets. The method addresses the computational intensity and data limitations of traditional evolutionary profile generation.\",\"entities\":[{\"name\":\"SPOT-Contact-Single\",\"type\":\"method\",\"attributes\":{\"description\":\"A contact-map predictor utilizing ESM-1b output, a large training set, and an ensemble of residual neural networks\",\"advantage\":\"Faster and reasonably accurate alternative to evolution-based methods for large-scale prediction\"},\"relationships\":[{\"predicate\":\"uses_input_from\",\"target\":\"ESM-1b\",\"attributes\":{},\"target_id\":\"esm_1b\"},{\"predicate\":\"uses_architecture\",\"target\":\"ensemble of residual neural networks\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"outperforms\",\"target\":\"SSCpred\",\"attributes\":{},\"target_id\":\"sscpred\"},{\"predicate\":\"outperforms\",\"target\":\"TrRosetta\",\"attributes\":{},\"target_id\":\"trrosetta\"},{\"predicate\":\"outperforms\",\"target\":\"SPOT-Contact\",\"attributes\":{},\"target_id\":\"spot_contact\"}]},{\"name\":\"ESM-1b\",\"type\":\"method\",\"attributes\":{\"type\":\"pre-trained language model\"},\"relationships\":[{\"predicate\":\"provides_input_to\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SSCpred\",\"type\":\"method\",\"attributes\":{\"type\":\"single-sequence-based predictor\"},\"relationships\":[{\"predicate\":\"outperformed_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"performance_improvement_metric\",\"target\":\"15% improvement in F1-score on CASP14-FM test set\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"TrRosetta\",\"type\":\"method\",\"attributes\":{\"type\":\"evolutionary-profile-based method\"},\"relationships\":[{\"predicate\":\"outperformed_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"performance_improvement_metric\",\"target\":\"48.7% improvement in F1-score on proteins without homologs (Neff=1) in SPOT-2018 set\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SPOT-Contact\",\"type\":\"method\",\"attributes\":{\"type\":\"evolutionary-profile-based method\"},\"relationships\":[{\"predicate\":\"outperformed_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"performance_improvement_metric\",\"target\":\"48.5% improvement in F1-score on proteins without homologs (Neff=1) in SPOT-2018 set\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CASP14-FM test set\",\"type\":\"measurement\",\"attributes\":{\"type\":\"independent test set\"},\"relationships\":[{\"predicate\":\"used_for_evaluation_of\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SPOT-2018 test set\",\"type\":\"measurement\",\"attributes\":{\"type\":\"independent test set\"},\"relationships\":[{\"predicate\":\"used_for_evaluation_of\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"protein contact map prediction\",\"type\":\"concept\",\"attributes\":{\"importance\":\"Essential for accurate protein structure and function prediction\"},\"relationships\":[{\"predicate\":\"limited_by\",\"target\":\"lack of naturally occurring homologous sequences\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"limited_by\",\"target\":\"computational intensity of generating evolutionary profiles\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study addresses the limitation of single-sequence contact map predictors by incorporating unsupervised features from the ESM-1b language model. It demonstrates that combining ESM-1b attention maps with one-hot encoding and SPOT-1D-Single outputs improves prediction accuracy for proteins with few homologs. The method was validated using a curated dataset derived from ProteinNet and independent test sets.\",\"entities\":[{\"name\":\"SSCpred\",\"type\":\"method\",\"attributes\":{\"category\":\"single-sequence-based predictor\",\"input_features\":\"one-hot encoding of fasta sequence, SPIDER3-Single outputs\",\"architecture\":\"fully convolutional model with 30 ResNet blocks\"},\"relationships\":[{\"predicate\":\"performs_poorly_for\",\"target\":\"proteins with more effective homologs\",\"attributes\":{\"comparison\":\"MSA-based techniques\"},\"target_id\":null},{\"predicate\":\"outperformed_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"ESM-1b\",\"type\":\"method\",\"attributes\":{\"category\":\"unsupervised deep learning method\",\"architecture\":\"Transformer-34\",\"training_data\":\"Uniref50\",\"outputs\":\"embedding, attention maps\"},\"relationships\":[{\"predicate\":\"used_as_input_feature_source\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SPOT-Contact-Single\",\"type\":\"method\",\"attributes\":{\"category\":\"single-sequence-based contact-map predictor\",\"input_features\":\"ESM-1b attention maps, one-hot encoding, SPOT-1D-Single outputs\",\"architecture\":\"ensemble of residual neural networks\"},\"relationships\":[{\"predicate\":\"outperforms\",\"target\":\"SSCpred\",\"attributes\":{\"condition\":\"proteins with low effective number of homologous proteins (Neff)\"},\"target_id\":\"sscpred\"},{\"predicate\":\"outperforms\",\"target\":\"MSA-based predictors\",\"attributes\":{\"condition\":\"proteins with low effective number of homologous proteins (Neff)\"},\"target_id\":null}]},{\"name\":\"SPOT-1D-Single\",\"type\":\"method\",\"attributes\":{\"category\":\"single-sequence-based predictor\"},\"relationships\":[{\"predicate\":\"outputs_used_in\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"ProteinNet benchmark dataset\",\"type\":\"other\",\"attributes\":{\"source\":\"ProteinNet (AlQuraishi, 2019)\",\"initial_count\":\"50914 proteins\",\"resolution_cutoff\":\"< 2.5 Å\",\"sequence_identity_cutoff\":\"95%\",\"clustering_tool\":\"MMseqs2\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for_curating\",\"target\":\"training and validation sets\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Final training set\",\"type\":\"other\",\"attributes\":{\"count\":\"34691 proteins\",\"length_cutoff\":\"< 500 residues\",\"derivation\":\"ProteinNet set minus validation proteins and long proteins\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"ProteinNet benchmark dataset\",\"attributes\":{},\"target_id\":\"proteinnet_benchmark_dataset\"}]},{\"name\":\"Validation set\",\"type\":\"other\",\"attributes\":{\"count\":\"88 proteins\",\"length_cutoff\":\"< 500 residues\",\"selection_criteria\":\"100 proteins separated from ProteinNet, filtered by HHblits e-value < 0.1 against training set\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"ProteinNet benchmark dataset\",\"attributes\":{},\"target_id\":\"proteinnet_benchmark_dataset\"}]},{\"name\":\"Independent test set (pre-2020)\",\"type\":\"other\",\"attributes\":{\"time_range\":\"May 2018 to April 2020\",\"source\":\"PDB releases\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"independent testing and comparison\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study defines three independent test sets: SPOT-2018, Neff1-2018, and CASP14-FM, to evaluate protein contact map predictors on sequentially isolated and homolog-free proteins. Input features for the neural network ensemble include one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps, with specific preprocessing applied to the attention maps. Performance is evaluated using standard CASP contact definitions and metrics such as F1-score, MCC, and AUC across short, medium, and long-range contacts.\",\"entities\":[{\"name\":\"SPOT-2018 test set\",\"type\":\"measurement\",\"attributes\":{\"size\":\"669 proteins\",\"source\":\"Proteins released between May 2018 and April 2020\",\"filtering_method\":\"Removal of potential homologs to pre-2018 training set using HHblits with e-value < 0.1\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"contains_subset\",\"target\":\"Neff1-2018 test set\",\"attributes\":{},\"target_id\":\"neff1_2018_test_set\"}]},{\"name\":\"Neff1-2018 test set\",\"type\":\"other\",\"attributes\":{\"size\":\"46 proteins\",\"characteristic\":\"Proteins with Neff=1 (no homologs)\",\"purpose\":\"Test predictor performance on de-novo proteins and proteins without homologs\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"subset_of\",\"target\":\"SPOT-2018 test set\",\"attributes\":{},\"target_id\":\"spot_2018_test_set\"}]},{\"name\":\"CASP14-FM test set\",\"type\":\"measurement\",\"attributes\":{\"size\":\"15 free modelling targets\",\"source\":\"CASP14\",\"characteristic\":\"Proteins without known structural templates in the protein databank at release\",\"model_entity_type\":\"dataset\"},\"relationships\":[]},{\"name\":\"Neff\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Effective number of homologous proteins\",\"reference_dataset\":\"Uniclust30 (Published Feb 2020)\"},\"relationships\":[]},{\"name\":\"HHblits\",\"type\":\"other\",\"attributes\":{\"function\":\"Comparison of Hidden Markov Models\",\"parameter\":\"e-value cut-off < 0.1\",\"model_entity_type\":\"tool\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"Removal of homologs in SPOT-2018 test set\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ESM-1b\",\"type\":\"method\",\"attributes\":{\"type\":\"Unsupervised deep learning method / Transformer language model\",\"output_used\":\"Attention maps\"},\"relationships\":[{\"predicate\":\"provides_input_feature\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SPOT-1D-Single\",\"type\":\"method\",\"attributes\":{\"type\":\"Single-sequence-based predictor\",\"outputs_used\":[\"Probabilities of three-state-secondary-structure (SS3)\",\"Probabilities of eight-state-secondary structure (SS8)\",\"Solvent Accessible Surface Area (ASA)\",\"Half-Sphere-Exposure (HSE)\",\"Protein backbone torsion angles (psi, phi, theta, tau)\"]},\"relationships\":[{\"predicate\":\"provides_input_feature\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SPOT-Contact-Single\",\"type\":\"method\",\"attributes\":{\"architecture\":\"Ensemble of neural networks\",\"input_features\":[\"One-hot encoding of amino acids\",\"SPOT-1D-Single outputs\",\"ESM-1b attention maps\"],\"feature_processing\":\"One-dimensional features converted to two-dimensional via outer concatenation; ESM-1b attention maps symmetrized and APC applied\"},\"relationships\":[{\"predicate\":\"evaluated_on\",\"target\":\"SPOT-2018 test set\",\"attributes\":{},\"target_id\":\"spot_2018_test_set\"},{\"predicate\":\"evaluated_on\",\"target\":\"Neff1-2018 test set\",\"attributes\":{},\"target_id\":\"neff1_2018_test_set\"},{\"predicate\":\"evaluated_on\",\"target\":\"CASP14-FM test set\",\"attributes\":{},\"target_id\":\"casp14_fm_test_set\"}]},{\"name\":\"Protein contact definition\",\"type\":\"concept\",\"attributes\":{\"standard\":\"CASP definition (Ezkurdia et al., 2009)\",\"criterion\":\"Inter-residue distance <= 8.0 Angstrom between two C-beta atoms\"},\"relationships\":[{\"predicate\":\"classified_into\",\"target\":\"Long-range contacts\",\"attributes\":{},\"target_id\":\"long_range_contacts\"},{\"predicate\":\"classified_into\",\"target\":\"Medium-range contacts\",\"attributes\":{},\"target_id\":\"medium_range_contacts\"},{\"predicate\":\"classified_into\",\"target\":\"Short-range contacts\",\"attributes\":{},\"target_id\":\"short_range_contacts\"}]},{\"name\":\"Long-range contacts\",\"type\":\"concept\",\"attributes\":{\"distance_range\":\"At least 24 residues apart\"},\"relationships\":[]},{\"name\":\"Medium-range contacts\",\"type\":\"concept\",\"attributes\":{\"distance_range\":\"Between 12 to 23 residues apart\"},\"relationships\":[]},{\"name\":\"Short-range contacts\",\"type\":\"concept\",\"attributes\":{\"distance_range\":\"Between 7-11 residues apart\"},\"relationships\":[]},{\"name\":\"Performance metrics\",\"type\":\"measurement\",\"attributes\":{\"metrics_listed\":[\"Top L/10, L/5, L/2, L/1 precision\",\"Overall F1-score\",\"Matthews Correlation Coefficient (MCC)\",\"Sensitivity\",\"Area Under Curve of Precision-Recall Curve (AUC)\",\"Area Under Curve of Receiver Operating Characteristic (ROC)\"],\"scope\":\"Calculated for short, medium, and long-range contacts together\"},\"relationships\":[]}]},{\"context_summary\":\"The study details the architecture of a 12-block ResNet model used for protein contact map prediction, utilizing specific hyperparameters and loss functions. It describes an ensemble of six models trained on different feature combinations, including ESM-1b attention maps and one-hot encodings. The method is compared against other predictors like SSCpred and TrRosetta, with a focus on feature importance and training strategies.\",\"entities\":[{\"name\":\"SPOT-Contact-Single neural network architecture\",\"type\":\"method\",\"attributes\":{\"architecture_type\":\"12 block ResNet\",\"inspiration\":\"ResNet architecture in protein contact-map and RNA secondary structure prediction\",\"ResNet_version\":\"Duta et al., 2020 improved version\",\"convolutional_layer_channel_size\":64,\"convolutional_layer_kernel_size\":3,\"optimizer\":\"Adam\",\"learning_rate\":0.001,\"batch_size\":1,\"early_stopping\":3},\"relationships\":[{\"predicate\":\"trains\",\"target\":\"six models with different input feature combinations\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_loss_function\",\"target\":\"Binary Cross-Entropy for direct contact prediction\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_loss_function\",\"target\":\"Cross-Entropy for distogram-based prediction\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Model1\",\"type\":\"method\",\"attributes\":{\"features\":\"Attention map (last layer)\",\"training_strategy\":\"Direct inter-residue contact prediction\"},\"relationships\":[]},{\"name\":\"Model2\",\"type\":\"method\",\"attributes\":{\"features\":\"Attention map (all layers)\",\"training_strategy\":\"Direct inter-residue contact prediction\"},\"relationships\":[]},{\"name\":\"Model3\",\"type\":\"method\",\"attributes\":{\"features\":\"Attention map (all layers) + one-hot encoding + SPOT-1D-Single\",\"training_strategy\":\"Direct inter-residue contact prediction\"},\"relationships\":[]},{\"name\":\"Model4\",\"type\":\"method\",\"attributes\":{\"features\":\"Attention map (last layer)\",\"training_strategy\":\"Inter-residue distance bin prediction\"},\"relationships\":[]},{\"name\":\"Model5\",\"type\":\"method\",\"attributes\":{\"features\":\"Attention map (all layers)\",\"training_strategy\":\"Inter-residue distance bin prediction\"},\"relationships\":[]},{\"name\":\"Model6\",\"type\":\"method\",\"attributes\":{\"features\":\"Attention map (all layers) + one-hot encoding + SPOT-1D-Single\",\"training_strategy\":\"Inter-residue distance bin prediction\"},\"relationships\":[]},{\"name\":\"Feature importance analysis model\",\"type\":\"method\",\"attributes\":{\"architecture\":\"ResNet12\",\"input_feature\":\"one-hot encoding of the fasta sequence only\",\"validation_f1_score\":0.15,\"validation_mcc\":0.14},\"relationships\":[{\"predicate\":\"evaluated_on\",\"target\":\"Validation set\",\"attributes\":{},\"target_id\":\"validation_set\"}]},{\"name\":\"ESM-1b\",\"type\":\"method\",\"attributes\":{\"type\":\"language model's supervised regression contact-map predictor\",\"availability\":\"stand-alone program available online\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SSCpred\",\"type\":\"method\",\"attributes\":{\"type\":\"single-sequence-based predictor\",\"availability\":\"web-server available online\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"TrRosetta\",\"type\":\"method\",\"attributes\":{\"type\":\"profile-based-predictor\",\"availability\":\"stand-alone program available online\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"input_source\",\"target\":\"SPOT-Contact MSA generation pipeline\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SPOT-Contact\",\"type\":\"method\",\"attributes\":{\"type\":\"profile-based-predictor\",\"availability\":\"stand-alone program available online\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"input_source\",\"target\":\"SPOT-Contact MSA generation pipeline\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study evaluates feature combinations for protein contact map prediction, finding that ESM-1b attention maps significantly outperform one-hot encoding and SPOT-1D-Single outputs. An ensemble of six models using direct and distogram-based strategies achieved higher F1-scores than individual models. On proteins without homologs, the proposed method outperforms evolutionary-based predictors and ESM-1b.\",\"entities\":[{\"name\":\"SPOT-Contact-Single\",\"type\":\"method\",\"attributes\":{\"description\":\"Ensemble of six models using direct and distogram-based contact prediction\",\"performance_on_no_homologs\":\"F1-score of 0.32\"},\"relationships\":[{\"predicate\":\"outperforms\",\"target\":\"SPOT-Contact\",\"attributes\":{\"metric\":\"F1-score\",\"improvement\":\"45%\"},\"target_id\":\"spot_contact\"},{\"predicate\":\"outperforms\",\"target\":\"TrRosetta\",\"attributes\":{\"metric\":\"F1-score\",\"improvement\":\"45%\"},\"target_id\":\"trrosetta\"},{\"predicate\":\"outperforms\",\"target\":\"ESM-1b\",\"attributes\":{\"metric\":\"F1-score\",\"improvement\":\"45%\"},\"target_id\":\"esm_1b\"},{\"predicate\":\"improves_over\",\"target\":\"second-best individual model\",\"attributes\":{\"metric\":\"F1-score\",\"improvement\":\"4%\"},\"target_id\":null}]},{\"name\":\"ESM-1b\",\"type\":\"method\",\"attributes\":{\"type\":\"unsupervised learning method\",\"performance_on_no_homologs\":\"F1-score of about 0.22\"},\"relationships\":[{\"predicate\":\"provides\",\"target\":\"attention maps\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ESM-1b attention maps (last layer)\",\"type\":\"measurement\",\"attributes\":{\"F1\":\"0.51\",\"MCC\":\"0.50\",\"precision\":\"0.56\",\"AUC_of_ROC\":\"0.95\"},\"relationships\":[{\"predicate\":\"improves_F1_over\",\"target\":\"one-hot encoding model\",\"attributes\":{\"improvement\":\"242%\"},\"target_id\":null},{\"predicate\":\"improves_F1_over\",\"target\":\"SPOT-1D-Single + one-hot encoding model\",\"attributes\":{\"improvement\":\"178%\"},\"target_id\":null}]},{\"name\":\"SPOT-1D-Single\",\"type\":\"method\",\"attributes\":{\"type\":\"single-sequence-based predictor\"},\"relationships\":[{\"predicate\":\"improves_F1_when_added_to_one_hot_encoding\",\"target\":\"one-hot encoding\",\"attributes\":{\"improvement\":\"22.90%\"},\"target_id\":\"one_hot_encoding\"}]},{\"name\":\"one-hot encoding\",\"type\":\"method\",\"attributes\":{},\"relationships\":[]},{\"name\":\"combined features (one-hot + SPOT-1D-Single + ESM-1b all layers)\",\"type\":\"measurement\",\"attributes\":{},\"relationships\":[{\"predicate\":\"improves_F1_over\",\"target\":\"ESM-1b attention maps (all layers)\",\"attributes\":{\"improvement\":\"2.92%\"},\"target_id\":null},{\"predicate\":\"improves_precision_for\",\"target\":\"medium- and long-range contacts\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"direct contact-map prediction\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"performs_slightly_better_than\",\"target\":\"distogram-based contact-map prediction\",\"attributes\":{},\"target_id\":\"distogram_based_contact_map_prediction\"}]},{\"name\":\"distogram-based contact-map prediction\",\"type\":\"method\",\"attributes\":{},\"relationships\":[]},{\"name\":\"SPOT-Contact\",\"type\":\"method\",\"attributes\":{\"type\":\"evolution-based predictor\",\"performance_on_no_homologs\":\"F1-score of about 0.22\"},\"relationships\":[]},{\"name\":\"TrRosetta\",\"type\":\"method\",\"attributes\":{\"type\":\"evolution-based predictor\",\"performance_on_no_homologs\":\"F1-score of about 0.22\"},\"relationships\":[]}]},{\"context_summary\":\"SPOT-Contact-Single outperforms profile-based predictors and SSCpred on low-homology proteins, achieving higher F1-scores and significantly faster inference times. The method utilizes ESM-1b attention maps and an ensemble of ResNet architectures to predict contact maps without evolutionary information.\",\"entities\":[{\"name\":\"SPOT-Contact-Single\",\"type\":\"method\",\"attributes\":{\"input_features\":\"ESM-1b attention maps, one-hot encoding, SPOT-1D-Single output\",\"architecture\":\"Ensemble of ResNet-based architectures\",\"training_set_size\":\"almost 35000 proteins\",\"evolutionary_information_usage\":\"none\",\"length_limitation\":\"cannot directly predict contact maps for proteins with more than 1024 amino acids\",\"cpu_inference_time_casp14_fm\":\"116 seconds\",\"gpu_inference_time_casp14_fm\":\"42 times faster than TrRosetta\"},\"relationships\":[{\"predicate\":\"outperforms\",\"target\":\"SPOT-Contact\",\"attributes\":{\"metric\":\"F1-score\",\"context\":\"low Neff proteins\"},\"target_id\":\"spot_contact\"},{\"predicate\":\"outperforms\",\"target\":\"TrRosetta\",\"attributes\":{\"metric\":\"F1-score\",\"context\":\"low Neff proteins\"},\"target_id\":\"trrosetta\"},{\"predicate\":\"outperforms\",\"target\":\"ESM-1b\",\"attributes\":{\"metric\":\"F1-score\",\"context\":\"CASP14-FM dataset\"},\"target_id\":\"esm_1b\"},{\"predicate\":\"outperforms\",\"target\":\"SSCpred\",\"attributes\":{\"metric\":\"F1-score\",\"improvement\":\"15%\",\"long_range_precision_improvement\":\"~100%\"},\"target_id\":\"sscpred\"},{\"predicate\":\"predicts_contact_map_for\",\"target\":\"5YKZ_A\",\"attributes\":{\"f1_score\":0.388},\"target_id\":\"5ykz_a\"}]},{\"name\":\"SPOT-Contact\",\"type\":\"method\",\"attributes\":{\"type\":\"evolutionary-profile-based predictor\"},\"relationships\":[{\"predicate\":\"predicts_contact_map_for\",\"target\":\"5YKZ_A\",\"attributes\":{\"f1_score\":0.215},\"target_id\":\"5ykz_a\"},{\"predicate\":\"slower_than\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{\"cpu_inference_time_casp14_fm\":\"22 times slower\"},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"TrRosetta\",\"type\":\"method\",\"attributes\":{\"type\":\"evolutionary-profile-based predictor\",\"gpu_inference_time_casp14_fm\":\"1926 seconds\"},\"relationships\":[{\"predicate\":\"predicts_contact_map_for\",\"target\":\"5YKZ_A\",\"attributes\":{\"f1_score\":0.235},\"target_id\":\"5ykz_a\"},{\"predicate\":\"slower_than\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{\"gpu_inference_time_casp14_fm\":\"42 times slower\"},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"ESM-1b\",\"type\":\"method\",\"attributes\":{\"type\":\"transformer language model\",\"role\":\"source of attention map features\"},\"relationships\":[{\"predicate\":\"predicts_contact_map_for\",\"target\":\"5YKZ_A\",\"attributes\":{\"f1_score\":0.252},\"target_id\":\"5ykz_a\"},{\"predicate\":\"outperformed_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{\"metric\":\"F1-score\",\"context\":\"CASP14-FM dataset\"},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"SSCpred\",\"type\":\"method\",\"attributes\":{\"type\":\"single-sequence-based contact-map predictor\",\"training_data_cutoff\":\"proteins released till 2019 April\"},\"relationships\":[{\"predicate\":\"outperformed_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{\"metric\":\"F1-score\",\"improvement\":\"15%\",\"long_range_precision_improvement\":\"~100%\"},\"target_id\":\"spot_contact_single\"}]},{\"name\":\"5YKZ_A\",\"type\":\"other\",\"attributes\":{\"description\":\"example protein from Neff1-2018\",\"homology_level\":\"low Neff\"},\"relationships\":[{\"predicate\":\"contact_map_predicted_by\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{\"f1_score\":0.388},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"contact_map_predicted_by\",\"target\":\"SPOT-Contact\",\"attributes\":{\"f1_score\":0.215},\"target_id\":\"spot_contact\"},{\"predicate\":\"contact_map_predicted_by\",\"target\":\"TrRosetta\",\"attributes\":{\"f1_score\":0.235},\"target_id\":\"trrosetta\"},{\"predicate\":\"contact_map_predicted_by\",\"target\":\"ESM-1b\",\"attributes\":{\"f1_score\":0.252},\"target_id\":\"esm_1b\"}]},{\"name\":\"CASP14-FM test set\",\"type\":\"measurement\",\"attributes\":{\"protein_count\":15},\"relationships\":[{\"predicate\":\"used_for_benchmarking\",\"target\":\"SPOT-Contact-Single\",\"attributes\":{},\"target_id\":\"spot_contact_single\"},{\"predicate\":\"used_for_benchmarking\",\"target\":\"SSCpred\",\"attributes\":{},\"target_id\":\"sscpred\"},{\"predicate\":\"used_for_benchmarking\",\"target\":\"ESM-1b\",\"attributes\":{},\"target_id\":\"esm_1b\"}]}]},{\"context_summary\":\"The text suggests that future improvements in protein contact-map prediction without evolutionary information could be achieved by adopting advanced architectural models. Specifically, Transformer and Performer architectures are cited as potential candidates for this enhancement.\",\"entities\":[{\"name\":\"protein contact-map prediction without evolutionary information\",\"type\":\"concept\",\"attributes\":{\"status\":\"subject of potential further improvement\"},\"relationships\":[{\"predicate\":\"may_be_improved_by\",\"target\":\"advanced architectural models\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Transformer\",\"type\":\"method\",\"attributes\":{\"citation\":\"Vaswani et al., 2017\"},\"relationships\":[{\"predicate\":\"is_an_example_of\",\"target\":\"advanced architectural models\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Performer\",\"type\":\"method\",\"attributes\":{\"citation\":\"Choromanski et al., 2020\"},\"relationships\":[{\"predicate\":\"is_an_example_of\",\"target\":\"advanced architectural models\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

@@ -1,0 +1,2188 @@
+{
+  "document_id": "arxiv-500028",
+  "fulltext_sha256": "081560f8dd75126479ea817a0aad4ef1f7c90b9becafc12485cc1ef16eb40dc7",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "c4e45d942b80668843352653ab40c897b4170167956feea0d8890fcd9fd46828",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper presents a new algorithm for imposing macroscopic stress or mixed stress/deformation control in non-linear Galerkin-based FFT homogenization. The method utilizes a modified projection operator to enforce control types without requiring additional iterations compared to strain control. Computational homogenization is described as a technique to simulate material response in a periodic representative volume element (RVE).",
+        "entities": [
+          {
+            "name": "S. Lucarini",
+            "entity_id": "s_lucarini",
+            "entity_type": "person",
+            "aliases": [
+              "S. Lucarini"
+            ],
+            "attributes": {
+              "affiliation": "IMDEA Materials Institute; Technical University of Madrid"
+            },
+            "relationships": [
+              {
+                "predicate": "co_author_of",
+                "target": "Algorithm for stress and mixed control in Galerkin based FFT homogenization",
+                "attributes": {},
+                "target_id": "algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization"
+              }
+            ]
+          },
+          {
+            "name": "J. Segurado",
+            "entity_id": "j_segurado",
+            "entity_type": "person",
+            "aliases": [
+              "J. Segurado"
+            ],
+            "attributes": {
+              "affiliation": "IMDEA Materials Institute; Technical University of Madrid",
+              "role": "Corresponding author",
+              "email": "javier.segurado@imdea.org"
+            },
+            "relationships": [
+              {
+                "predicate": "co_author_of",
+                "target": "Algorithm for stress and mixed control in Galerkin based FFT homogenization",
+                "attributes": {},
+                "target_id": "algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization"
+              }
+            ]
+          },
+          {
+            "name": "Algorithm for stress and mixed control in Galerkin based FFT homogenization",
+            "entity_id": "algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization",
+            "entity_type": "method",
+            "aliases": [
+              "Algorithm for stress and mixed control in Galerkin based FFT homogenization"
+            ],
+            "attributes": {
+              "publication_date": "January 23, 2019",
+              "purpose": "Impose macroscopic stress or mixed stress/deformation gradient history in non-linear Galerkin based FFT homogenization"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on",
+                "target": "modified projection operator",
+                "attributes": {},
+                "target_id": "modified_projection_operator"
+              },
+              {
+                "predicate": "demonstrated_with",
+                "target": "polycrystal",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "demonstrated_with",
+                "target": "particle reinforced hyperelastic material",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "modified projection operator",
+            "entity_id": "modified_projection_operator",
+            "entity_type": "concept",
+            "aliases": [
+              "modified projection operator"
+            ],
+            "attributes": {
+              "function": "Enforces type of control (stress or strain) for each component of macroscopic first Piola stress or deformation gradient via null frequencies"
+            },
+            "relationships": [
+              {
+                "predicate": "component_of",
+                "target": "Algorithm for stress and mixed control in Galerkin based FFT homogenization",
+                "attributes": {},
+                "target_id": "algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization"
+              }
+            ]
+          },
+          {
+            "name": "Computational homogenization",
+            "entity_id": "computational_homogenization",
+            "entity_type": "method",
+            "aliases": [
+              "Computational homogenization"
+            ],
+            "attributes": {
+              "aim": "Simulate mechanical response of a material under macroscopic stress, strain, or mixed loading path"
+            },
+            "relationships": [
+              {
+                "predicate": "solves_boundary_problem_in",
+                "target": "periodic representative volume element (RVE)",
+                "attributes": {},
+                "target_id": "periodic_representative_volume_element_rve"
+              }
+            ]
+          },
+          {
+            "name": "periodic representative volume element (RVE)",
+            "entity_id": "periodic_representative_volume_element_rve",
+            "entity_type": "concept",
+            "aliases": [
+              "periodic representative volume element (RVE)"
+            ],
+            "attributes": {
+              "description": "Microstructure domain used to solve boundary problems in computational homogenization"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Finite element method (FE)",
+            "entity_id": "finite_element_method_fe",
+            "entity_type": "method",
+            "aliases": [
+              "Finite element method (FE)"
+            ],
+            "attributes": {
+              "usage": "Traditionally used to solve boundary value problems in homogenization"
+            },
+            "relationships": [
+              {
+                "predicate": "allows_imposition_of",
+                "target": "any macroscopic load history combining control of strain and stress average fields",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Fast Fourier transform (FFT) based homogenization",
+            "entity_id": "fast_fourier_transform_fft_based_homogenization",
+            "entity_type": "method",
+            "aliases": [
+              "Fast Fourier transform (FFT) based homogenization"
+            ],
+            "attributes": {
+              "status": "Popular alternative to FE",
+              "mechanism": "Replaces differential operators in governing PDEs with Fourier space counterparts",
+              "advantage": "High computational performance for complex geometries with millions of degrees of freedom"
+            },
+            "relationships": [
+              {
+                "predicate": "limitation",
+                "target": "Imposing macroscopic stress or mixed loading path is not a direct task",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "H. Moulinec",
+            "entity_id": "h_moulinec",
+            "entity_type": "person",
+            "aliases": [
+              "H. Moulinec"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "proposed_original_fft_homogenization_with",
+                "target": "P. Suquet",
+                "attributes": {},
+                "target_id": "p_suquet"
+              }
+            ]
+          },
+          {
+            "name": "P. Suquet",
+            "entity_id": "p_suquet",
+            "entity_type": "person",
+            "aliases": [
+              "P. Suquet"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "proposed_original_fft_homogenization_with",
+                "target": "H. Moulinec",
+                "attributes": {},
+                "target_id": "h_moulinec"
+              }
+            ]
+          },
+          {
+            "name": "Lippmann-Schwinger equation",
+            "entity_id": "lippmann_schwinger_equation",
+            "entity_type": "concept",
+            "aliases": [
+              "Lippmann-Schwinger equation"
+            ],
+            "attributes": {
+              "role": "Basis for original FFT homogenization proposal by Moulinec and Suquet (1994, 1998)"
+            },
+            "relationships": [
+              {
+                "predicate": "solved_using",
+                "target": "fixed-point algorithm",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 468,
+          "word_count": 468,
+          "sha256": "66a8b91ddc923ea040dcfe5703d9634c254776a4a433b6c04ef627c6c82e9879",
+          "sentence_minhash": [
+            115938774645118459,
+            76987600409896885,
+            40863640610520970,
+            64513941377847126,
+            74802720633040107,
+            27741664684022985,
+            76197433036625096,
+            83380741823150537,
+            75549790165615653,
+            9462436175016187,
+            128047967744972732,
+            77272953743708039,
+            834909112744454,
+            204861047514024312,
+            40269443686420072,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "Classical FFT homogenization schemes typically impose full macroscopic strain tensors, requiring iterative corrections for stress or mixed control which increases computational cost. An alternative method by Kabel et al. uses projection tensors and Krylov solvers but still relies on a reference medium. The Galerkin-based FFT approach uses weak formulations and projection operators to ensure strain compatibility without a reference medium, utilizing material tangents for convergence.",
+        "entities": [
+          {
+            "name": "classical FFT homogenization schemes",
+            "entity_id": "classical_fft_homogenization_schemes",
+            "entity_type": "method",
+            "aliases": [
+              "classical FFT homogenization schemes"
+            ],
+            "attributes": {
+              "load_introduction": "imposes full macroscopic strain tensor",
+              "stress_mixed_control_strategy": "iterative correction of strain to match imposed stress"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "iterative approaches for stress or mixed control",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "result_in",
+                "target": "increased number of iterations per step compared to strain control",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Kabel et al. (2016) method",
+            "entity_id": "kabel_et_al_2016_method",
+            "entity_type": "method",
+            "aliases": [
+              "Kabel et al. (2016) method"
+            ],
+            "attributes": {
+              "basis": "modification of Moulinec and Suquet (1994) scheme",
+              "mechanism": "introduction of projection tensors for load control",
+              "solver": "iterative Krylov solver"
+            },
+            "relationships": [
+              {
+                "predicate": "is_more_efficient_than",
+                "target": "iterative approaches",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires",
+                "target": "reference medium",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "convergence_influenced_by",
+                "target": "properties of reference medium",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Galerkin based FFT approach",
+            "entity_id": "galerkin_based_fft_approach",
+            "entity_type": "method",
+            "aliases": [
+              "Galerkin based FFT approach",
+              "Galerkin based FFT method"
+            ],
+            "attributes": {
+              "derivation": "weak formulation similar to finite elements",
+              "compatibility_enforcement": "projection operators",
+              "reference_medium_requirement": "none",
+              "convergence_improvement": "direct use of material behavior tangents"
+            },
+            "relationships": [
+              {
+                "predicate": "adaptable_to",
+                "target": "complex non-linear constitutive equations",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "adaptable_to",
+                "target": "crystal plasticity model",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "original_formulation_imposes",
+                "target": "history of macroscopic deformation gradient",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "proposed algorithm",
+            "entity_id": "proposed_algorithm",
+            "entity_type": "method",
+            "aliases": [
+              "new algorithm for FFT homogenization",
+              "proposed FFT homogenization algorithm",
+              "proposed algorithm"
+            ],
+            "attributes": {
+              "extension_of": "variational algorithm for finite strains (de Geus et al., 2017)",
+              "control_types": "stress and mixed control",
+              "mechanism": "direct method based on modified projection operator",
+              "performance": "preserves computational performance of original method"
+            },
+            "relationships": [
+              {
+                "predicate": "extends",
+                "target": "Galerkin based FFT approach",
+                "attributes": {},
+                "target_id": "galerkin_based_fft_approach"
+              }
+            ]
+          },
+          {
+            "name": "periodic representative volume element (RVE)",
+            "entity_id": "periodic_representative_volume_element_rve",
+            "entity_type": "concept",
+            "aliases": [
+              "periodic representative volume element (RVE)"
+            ],
+            "attributes": {
+              "composition": "heterogeneous material with spatial arrangement of two or more phases",
+              "discretization": "nx ny nz voxels"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "finding deformation gradient and stress values",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "linear momentum balance",
+            "entity_id": "linear_momentum_balance",
+            "entity_type": "other",
+            "aliases": [
+              "discrete linear momentum balance",
+              "linear momentum balance"
+            ],
+            "attributes": {
+              "form": "weak form in reference configuration",
+              "model_entity_type": "physical_law"
+            },
+            "relationships": [
+              {
+                "predicate": "imposed_via",
+                "target": "test functions",
+                "attributes": {},
+                "target_id": "test_functions"
+              }
+            ]
+          },
+          {
+            "name": "test functions",
+            "entity_id": "test_functions",
+            "entity_type": "other",
+            "aliases": [
+              "test functions"
+            ],
+            "attributes": {
+              "definition": "virtual deformation gradients premultiplied by a projector operator",
+              "model_entity_type": "mathematical_object"
+            },
+            "relationships": [
+              {
+                "predicate": "enforce",
+                "target": "compatibility of strain fields",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 468,
+          "end_word": 968,
+          "word_count": 500,
+          "sha256": "fc873b7e8f737c83028f2736c2ab651040c1ec887c5e143b2c27ce7d7f4c12aa",
+          "sentence_minhash": [
+            115938774645118459,
+            49057088880437681,
+            40863640610520970,
+            53442166147602330,
+            124451168301198796,
+            99436724310786061,
+            108181934044425938,
+            63183425104977485,
+            75549790165615653,
+            107048872566759164,
+            78280491562202942,
+            173183913504899203,
+            8649321992247620,
+            57886933871476667,
+            98254322503569589,
+            205893516960207536
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'physical_law' for 'linear momentum balance'",
+          "normalized unsupported entity type 'mathematical_object' for 'test functions'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The discrete linear momentum balance in Galerkin-based FFT homogenization is formulated as a convolution in Fourier space using a projection operator. Under strain control, the macroscopic deformation gradient is fixed, and the system solves for the fluctuation of the deformation gradient. For non-linear materials, the problem is solved iteratively by linearizing the stress around the previous deformation gradient state using the tangent stiffness tensor.",
+        "entities": [
+          {
+            "name": "linear momentum balance",
+            "entity_id": "linear_momentum_balance",
+            "entity_type": "other",
+            "aliases": [
+              "discrete linear momentum balance",
+              "linear momentum balance"
+            ],
+            "attributes": {
+              "form": "G(P(F, alpha)) = 0",
+              "description": "Discrete form of linear momentum balance in Galerkin based FFT homogenization",
+              "model_entity_type": "equation"
+            },
+            "relationships": [
+              {
+                "predicate": "involves",
+                "target": "First Piola-Kirchhoff stress",
+                "attributes": {},
+                "target_id": "first_piola_kirchhoff_stress"
+              },
+              {
+                "predicate": "involves",
+                "target": "deformation gradient field",
+                "attributes": {},
+                "target_id": "deformation_gradient_field"
+              },
+              {
+                "predicate": "involves",
+                "target": "internal variables",
+                "attributes": {},
+                "target_id": "internal_variables"
+              },
+              {
+                "predicate": "involves",
+                "target": "linear map G",
+                "attributes": {},
+                "target_id": "linear_map_g"
+              }
+            ]
+          },
+          {
+            "name": "First Piola-Kirchhoff stress",
+            "entity_id": "first_piola_kirchhoff_stress",
+            "entity_type": "other",
+            "aliases": [
+              "First Piola-Kirchhoff stress",
+              "first Piola Kirchhoff stress"
+            ],
+            "attributes": {
+              "symbol": "P",
+              "definition": "Stress tensor dependent on deformation gradient and internal variables",
+              "model_entity_type": "physical_quantity"
+            },
+            "relationships": []
+          },
+          {
+            "name": "deformation gradient field",
+            "entity_id": "deformation_gradient_field",
+            "entity_type": "other",
+            "aliases": [
+              "deformation gradient field"
+            ],
+            "attributes": {
+              "symbol": "F",
+              "decomposition": "Sum of average value <F>_Omega and fluctuation eF",
+              "model_entity_type": "physical_quantity"
+            },
+            "relationships": [
+              {
+                "predicate": "is_unknown_in",
+                "target": "algebraic system of 9 nx ny nz equations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "internal variables",
+            "entity_id": "internal_variables",
+            "entity_type": "other",
+            "aliases": [
+              "internal variables"
+            ],
+            "attributes": {
+              "symbol": "alpha",
+              "function": "Define the history of the material",
+              "model_entity_type": "physical_quantity"
+            },
+            "relationships": []
+          },
+          {
+            "name": "linear map G",
+            "entity_id": "linear_map_g",
+            "entity_type": "other",
+            "aliases": [
+              "linear map G"
+            ],
+            "attributes": {
+              "domain": "Voxel tensor field P defined in R9 nx ny nz",
+              "codomain": "New voxel tensor field in the same space",
+              "fourier_space_form": "Convolution computed as F^-1 bG : F {P(F, alpha)}",
+              "model_entity_type": "operator"
+            },
+            "relationships": [
+              {
+                "predicate": "corresponds_to",
+                "target": "convolution in real space",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "projection operator in Fourier space",
+            "entity_id": "projection_operator_in_fourier_space",
+            "entity_type": "other",
+            "aliases": [
+              "projection operator in Fourier space"
+            ],
+            "attributes": {
+              "symbol": "bG",
+              "type": "Fourth order tensor field",
+              "model_entity_type": "operator"
+            },
+            "relationships": []
+          },
+          {
+            "name": "strain control boundary condition",
+            "entity_id": "strain_control_boundary_condition",
+            "entity_type": "other",
+            "aliases": [
+              "strain control boundary condition"
+            ],
+            "attributes": {
+              "constraint": "Value of F = <F>_Omega is given",
+              "model_entity_type": "condition"
+            },
+            "relationships": [
+              {
+                "predicate": "results_in_problem",
+                "target": "Finding value of fluctuations of deformation gradient eF",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "non-linear algebraic equation",
+            "entity_id": "non_linear_algebraic_equation",
+            "entity_type": "other",
+            "aliases": [
+              "non-linear algebraic equation"
+            ],
+            "attributes": {
+              "source": "Discrete expression of weak form of equilibrium (Equation 2)",
+              "condition": "Non-linear material behavior",
+              "model_entity_type": "equation"
+            },
+            "relationships": [
+              {
+                "predicate": "solved_by",
+                "target": "Iterative linearization",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "tangent stiffness tensor",
+            "entity_id": "tangent_stiffness_tensor",
+            "entity_type": "other",
+            "aliases": [
+              "tangent stiffness tensor"
+            ],
+            "attributes": {
+              "symbol": "Ki",
+              "definition": "Partial derivative of P with respect to Fi",
+              "model_entity_type": "physical_quantity"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Linearization of stress",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "linear system for deformation gradient correction",
+            "entity_id": "linear_system_for_deformation_gradient_correction",
+            "entity_type": "other",
+            "aliases": [
+              "linear system for deformation gradient correction"
+            ],
+            "attributes": {
+              "form": "G(Ki : deltaF) = -G(P(Fi))",
+              "unknown": "Correction at iteration i of deformation gradient deltaF",
+              "model_entity_type": "equation"
+            },
+            "relationships": [
+              {
+                "predicate": "solved_using",
+                "target": "Conjugate gradient method",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "deformation gradient correction",
+            "entity_id": "deformation_gradient_correction",
+            "entity_type": "other",
+            "aliases": [
+              "deformation gradient correction",
+              "deformation gradient correction (δF)"
+            ],
+            "attributes": {
+              "symbol": "deltaF",
+              "property": "Fluctuation term (average free)",
+              "model_entity_type": "physical_quantity"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 968,
+          "end_word": 1448,
+          "word_count": 480,
+          "sha256": "29422da057a213b7f29a9b9e30859ec92d67fe3b8e0150274159b80c20540409",
+          "sentence_minhash": [
+            354004913527949963,
+            203489951193090737,
+            30511896872232165,
+            64513941377847126,
+            73459400946278211,
+            20257807012622824,
+            19965364006988868,
+            96292850158067112,
+            19874090017850400,
+            53218444842501593,
+            78280491562202942,
+            171596837418463449,
+            164575269931903557,
+            906306679132868,
+            98254322503569589,
+            467773112651423712
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'equation' for 'discrete linear momentum balance'",
+          "normalized unsupported entity type 'physical_quantity' for 'first Piola Kirchhoff stress'",
+          "normalized unsupported entity type 'physical_quantity' for 'deformation gradient field'",
+          "normalized unsupported entity type 'physical_quantity' for 'internal variables'",
+          "normalized unsupported entity type 'operator' for 'linear map G'",
+          "normalized unsupported entity type 'operator' for 'projection operator in Fourier space'",
+          "normalized unsupported entity type 'condition' for 'strain control boundary condition'",
+          "normalized unsupported entity type 'equation' for 'non-linear algebraic equation'",
+          "normalized unsupported entity type 'physical_quantity' for 'tangent stiffness tensor'",
+          "normalized unsupported entity type 'equation' for 'linear system for deformation gradient correction'",
+          "normalized unsupported entity type 'physical_quantity' for 'deformation gradient correction'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text defines the projection operator used in Galerkin-based FFT homogenization, which enforces field compatibility via Helmholtz decomposition in Fourier space. It specifies that the operator is zero at null and Nyquist frequencies to ensure zero mean and symmetry, corresponding to a Green function for an isotropic reference medium with specific Lamé constants. The section introduces a modification to this operator to enable macroscopic stress control, distinguishing it from the original strain control formulation.",
+        "entities": [
+          {
+            "name": "projection operator bG",
+            "entity_id": "projection_operator_bg",
+            "entity_type": "method",
+            "aliases": [
+              "projection operator bG"
+            ],
+            "attributes": {
+              "mathematical_form": "Fourth order tensor",
+              "function": "Enforces compatibility of tensor fields via convolution in real space",
+              "fourier_space_definition": "bG_ijkl = (delta_ik * xi_j * xi_l) / (xi dot xi) for non-null/non-Nyquist frequencies",
+              "null_frequency_value": "Zero fourth order tensor",
+              "nyquist_frequency_value": "Approximated to zero fourth order tensor",
+              "symmetry_property": "Major symmetry (bG_ijkl = bG_klij)",
+              "equivalent_green_function": "Isotropic reference medium with Lamé constants lambda=0, mu=0.5"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "Helmholtz decomposition",
+                "attributes": {},
+                "target_id": "helmholtz_decomposition"
+              },
+              {
+                "predicate": "projects_to",
+                "target": "curl-free component A_parallel",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Helmholtz decomposition",
+            "entity_id": "helmholtz_decomposition",
+            "entity_type": "concept",
+            "aliases": [
+              "Helmholtz decomposition"
+            ],
+            "attributes": {
+              "definition": "Expresses an arbitrary tensor field A(x) as the sum of a curl-free component A_parallel(x), a divergence-free component A_perp(x), and the average A",
+              "fourier_space_form": "bA(xi) = cA_parallel(xi) + dA_perp(xi) + bA"
+            },
+            "relationships": [
+              {
+                "predicate": "defines_component",
+                "target": "curl-free component A_parallel",
+                "attributes": {
+                  "property": "compatible",
+                  "formula": "(bA(xi) dot xi / |xi|) tensor (xi / |xi|)"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "defines_component",
+                "target": "divergence-free component A_perp",
+                "attributes": {
+                  "property": "incompatible"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "velocity gradient Lk",
+            "entity_id": "velocity_gradient_lk",
+            "entity_type": "measurement",
+            "aliases": [
+              "velocity gradient Lk"
+            ],
+            "attributes": {
+              "formula": "Lk = (1 / (tk - tk-1)) * [Fk - Fk-1] dot Fk^-1",
+              "context": "Defined for rate-dependent constitutive equations where stress depends on deformation gradient F and velocity gradient L"
+            },
+            "relationships": [
+              {
+                "predicate": "depends_on",
+                "target": "deformation gradient Fk",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "depends_on",
+                "target": "time increment tk",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Galerkin based FFT approach",
+            "entity_id": "galerkin_based_fft_approach",
+            "entity_type": "method",
+            "aliases": [
+              "Galerkin based FFT approach",
+              "Galerkin based FFT method"
+            ],
+            "attributes": {
+              "original_purpose": "Provide solution under given macroscopic deformation gradient (strain control)",
+              "proposed_modification": "Modification of projection operator to simulate behavior under macroscopic stress history"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "projection operator bG",
+                "attributes": {},
+                "target_id": "projection_operator_bg"
+              },
+              {
+                "predicate": "applies_to",
+                "target": "creep test or uniaxial test under stress control",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1448,
+          "end_word": 1890,
+          "word_count": 442,
+          "sha256": "f3517ff4feed310079e3d5ddb3e8bc16666aa18f5761cf918403ee521e218e1c",
+          "sentence_minhash": [
+            82755901695001421,
+            232593725413697090,
+            151260943597763167,
+            64513941377847126,
+            124451168301198796,
+            99436724310786061,
+            25110483832463077,
+            9218414904890064,
+            73319139196083834,
+            53218444842501593,
+            128047967744972732,
+            173183913504899203,
+            8649321992247620,
+            58558631451210278,
+            197615480788769561,
+            182436882559467158
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The text derives a modified projection operator for FFT homogenization to enforce macroscopic stress control. It demonstrates that the standard operator eliminates the mean stress, while the new operator preserves it to match a target stress. The final operator definition sets the null frequency to the identity tensor and the Nyquist frequency to zero.",
+        "entities": [
+          {
+            "name": "First Piola-Kirchhoff stress",
+            "entity_id": "first_piola_kirchhoff_stress",
+            "entity_type": "other",
+            "aliases": [
+              "First Piola-Kirchhoff stress",
+              "first Piola Kirchhoff stress"
+            ],
+            "attributes": {
+              "decomposition": "average part plus fluctuating part"
+            },
+            "relationships": [
+              {
+                "predicate": "decomposed_into",
+                "target": "average stress and fluctuating stress",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "standard projection operator",
+            "entity_id": "standard_projection_operator",
+            "entity_type": "method",
+            "aliases": [
+              "standard projection operator"
+            ],
+            "attributes": {
+              "behavior_on_mean": "eliminates the mean part of the field"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "equilibrium equation for strain control",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "alternative projection operator G*",
+            "entity_id": "alternative_projection_operator_g",
+            "entity_type": "method",
+            "aliases": [
+              "alternative projection operator G*"
+            ],
+            "attributes": {
+              "definition": "projects tensor field into sum of compatible and mean parts",
+              "null_frequency_value": "fourth order identity tensor",
+              "nyquist_frequency_value": "zero fourth order tensor",
+              "non_null_non_nyquist_value": "delta_ik * xi_j * xi_l / (xi dot xi)"
+            },
+            "relationships": [
+              {
+                "predicate": "enforces",
+                "target": "macroscopic stress control",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "identical_to_standard_operator_for",
+                "target": "zero average tensor fields",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "macroscopic stress control equilibrium equation",
+            "entity_id": "macroscopic_stress_control_equilibrium_equation",
+            "entity_type": "method",
+            "aliases": [
+              "macroscopic stress control equilibrium equation"
+            ],
+            "attributes": {
+              "form": "G*(P(F, alpha)) = G*(P)"
+            },
+            "relationships": [
+              {
+                "predicate": "solves_for",
+                "target": "full deformation gradient F",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "input_data",
+                "target": "target macroscopic stress P",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1890,
+          "end_word": 2356,
+          "word_count": 466,
+          "sha256": "b27cd9b86adfc4ad4ae45103f3487e5503596a762bf4ff9b824118846b2ef5fc",
+          "sentence_minhash": [
+            289172954785630178,
+            18551641988871988,
+            40863640610520970,
+            19201187096025140,
+            202131088475134628,
+            20257807012622824,
+            76197433036625096,
+            9218414904890064,
+            75549790165615653,
+            76931577636070685,
+            423381767168678701,
+            171596837418463449,
+            21933493368060407,
+            109183215498568511,
+            278614866765861159,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The text describes an iterative algorithm for solving equilibrium under macroscopic stress and mixed control in FFT homogenization. It defines a modified projection operator that enforces specific boundary conditions at null frequencies. A benchmark simulation of a particle-reinforced hyperelastic composite is presented to validate the method.",
+        "entities": [
+          {
+            "name": "deformation gradient correction",
+            "entity_id": "deformation_gradient_correction",
+            "entity_type": "other",
+            "aliases": [
+              "deformation gradient correction",
+              "deformation gradient correction (δF)"
+            ],
+            "attributes": {
+              "mean_value": "included",
+              "solution_method": "solved via linear system G*(K : δF) = -G*(P(Fi) - P)"
+            },
+            "relationships": [
+              {
+                "predicate": "converges_to",
+                "target": "0",
+                "attributes": {
+                  "condition": "equilibrium reached"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "average stress",
+            "entity_id": "average_stress",
+            "entity_type": "measurement",
+            "aliases": [
+              "average stress"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reaches",
+                "target": "objective macroscopic stress",
+                "attributes": {
+                  "condition": "when δF approaches 0"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "algorithm summarized in equation (20)",
+            "entity_id": "algorithm_summarized_in_equation_20",
+            "entity_type": "method",
+            "aliases": [
+              "algorithm summarized in equation (20)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "has_convergence_rate_equal_to",
+                "target": "original scheme",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "mixed control of macroscopic stress and strain",
+            "entity_id": "mixed_control_of_macroscopic_stress_and_strain",
+            "entity_type": "concept",
+            "aliases": [
+              "mixed control of macroscopic stress and strain"
+            ],
+            "attributes": {
+              "application": "uniaxial or biaxial tests where strain is imposed in some directions and others are free"
+            },
+            "relationships": [
+              {
+                "predicate": "input_data_stress",
+                "target": "P_IJ = <P>_IJ for stress-imposed components IJ",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "input_data_strain",
+                "target": "F_ij = <F>_ij for strain-controlled components ij",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "modified projection operator for mixed control (G*)",
+            "entity_id": "modified_projection_operator_for_mixed_control_g",
+            "entity_type": "method",
+            "aliases": [
+              "modified projection operator for mixed control (G*)"
+            ],
+            "attributes": {
+              "null_frequency_stress_terms": "identity tensor (δikδjl)",
+              "null_frequency_strain_terms": "zero tensor (0ijkl)",
+              "nyquist_frequency": "zero tensor (0ijkl)",
+              "non_null_frequency": "δik ξjξl / (ξ·ξ)"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "equilibrium equation (21)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "solution field F'",
+            "entity_id": "solution_field_f",
+            "entity_type": "measurement",
+            "aliases": [
+              "solution field F'"
+            ],
+            "attributes": {
+              "ij_components": "fluctuation term (F'_ij = eFij)",
+              "IJ_components": "full deformation gradient term (F'_IJ = FIJ)"
+            },
+            "relationships": [
+              {
+                "predicate": "solved_by",
+                "target": "Newton method",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "particle reinforced hyperelastic matrix benchmark",
+            "entity_id": "particle_reinforced_hyperelastic_matrix_benchmark",
+            "entity_type": "event",
+            "aliases": [
+              "particle reinforced hyperelastic matrix benchmark"
+            ],
+            "attributes": {
+              "material_type": "non-linear elastic composite",
+              "test_type": "uniaxial monotonic test",
+              "control_schemes": "5 macroscopic strain, stress, and mixed control schemes"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_rve",
+                "target": "periodic cubic RVE",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "periodic cubic RVE for particle composite",
+            "entity_id": "periodic_cubic_rve_for_particle_composite",
+            "entity_type": "place",
+            "aliases": [
+              "periodic cubic RVE for particle composite"
+            ],
+            "attributes": {
+              "particle_count": 4,
+              "particle_volume_fraction": 0.2,
+              "discretization": "64^3 voxels"
+            },
+            "relationships": [
+              {
+                "predicate": "matrix_model",
+                "target": "Saint Venant-Kirchhoff hyperelastic model",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "particle_model",
+                "target": "Saint Venant-Kirchhoff hyperelastic model",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "matrix material properties",
+            "entity_id": "matrix_material_properties",
+            "entity_type": "measurement",
+            "aliases": [
+              "matrix material properties"
+            ],
+            "attributes": {
+              "shear_modulus_mu": "28 Pa",
+              "bulk_modulus_k": "46.67 Pa"
+            },
+            "relationships": []
+          },
+          {
+            "name": "particle material properties",
+            "entity_id": "particle_material_properties",
+            "entity_type": "measurement",
+            "aliases": [
+              "particle material properties"
+            ],
+            "attributes": {
+              "stiffness_relative_to_matrix": "10 times larger moduli"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2356,
+          "end_word": 2845,
+          "word_count": 489,
+          "sha256": "ac851893964c99880729e6241451c6d67dcbbdc4d48bb727a55ab3334602f58e",
+          "sentence_minhash": [
+            176802238795285977,
+            18551641988871988,
+            40863640610520970,
+            19201187096025140,
+            124451168301198796,
+            62667647458868521,
+            13744107436164425,
+            295906451915772505,
+            75549790165615653,
+            107048872566759164,
+            78280491562202942,
+            165121444977496021,
+            38547084288257781,
+            57886933871476667,
+            112485739989784148,
+            124943914096872385
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The uniaxial tensile test on a particle-reinforced hyperelastic RVE is simulated using three distinct control schemes: mixed, full stress, and full strain. All cases reach the same final elongation but follow different loading paths, with stress and mixed controls producing superposed macroscopic stress responses due to the material's path-independent behavior.",
+        "entities": [
+          {
+            "name": "uniaxial tensile test",
+            "entity_id": "uniaxial_tensile_test",
+            "entity_type": "event",
+            "aliases": [
+              "uniaxial tensile test"
+            ],
+            "attributes": {
+              "final_elongation": "0.2",
+              "loading_direction": "x",
+              "transverse_directions": "unconstrained",
+              "load_increments": "100"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "mixed control (Case 1)",
+                "attributes": {},
+                "target_id": "mixed_control_case_1"
+              },
+              {
+                "predicate": "uses",
+                "target": "full stress control (Case 2)",
+                "attributes": {},
+                "target_id": "full_stress_control_case_2"
+              },
+              {
+                "predicate": "uses",
+                "target": "full strain control (Case 3)",
+                "attributes": {},
+                "target_id": "full_strain_control_case_3"
+              }
+            ]
+          },
+          {
+            "name": "mixed control (Case 1)",
+            "entity_id": "mixed_control_case_1",
+            "entity_type": "method",
+            "aliases": [
+              "mixed control (Case 1)"
+            ],
+            "attributes": {
+              "description": "Macroscopic deformation gradient imposed in x-direction as a ramp; other terms stress-free"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_path_with",
+                "target": "full stress control (Case 2)",
+                "attributes": {},
+                "target_id": "full_stress_control_case_2"
+              },
+              {
+                "predicate": "produces_superposed_macroscopic_stress_with",
+                "target": "full stress control (Case 2)",
+                "attributes": {},
+                "target_id": "full_stress_control_case_2"
+              }
+            ]
+          },
+          {
+            "name": "full stress control (Case 2)",
+            "entity_id": "full_stress_control_case_2",
+            "entity_type": "method",
+            "aliases": [
+              "full stress control (Case 2)"
+            ],
+            "attributes": {
+              "description": "Stress applied as a linear ramp from 0 to the final stress obtained from Case 1"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_path_with",
+                "target": "mixed control (Case 1)",
+                "attributes": {},
+                "target_id": "mixed_control_case_1"
+              },
+              {
+                "predicate": "produces_superposed_macroscopic_stress_with",
+                "target": "mixed control (Case 1)",
+                "attributes": {},
+                "target_id": "mixed_control_case_1"
+              }
+            ]
+          },
+          {
+            "name": "full strain control (Case 3)",
+            "entity_id": "full_strain_control_case_3",
+            "entity_type": "method",
+            "aliases": [
+              "full strain control (Case 3)"
+            ],
+            "attributes": {
+              "description": "Standard FFT boundary conditions; full deformation gradient imposed using a linear ramp to the final solution of Case 1"
+            },
+            "relationships": [
+              {
+                "predicate": "follows_different_path_than",
+                "target": "mixed control (Case 1)",
+                "attributes": {},
+                "target_id": "mixed_control_case_1"
+              },
+              {
+                "predicate": "follows_different_path_than",
+                "target": "full stress control (Case 2)",
+                "attributes": {},
+                "target_id": "full_stress_control_case_2"
+              }
+            ]
+          },
+          {
+            "name": "hyperelastic material",
+            "entity_id": "hyperelastic_material",
+            "entity_type": "concept",
+            "aliases": [
+              "hyperelastic material"
+            ],
+            "attributes": {
+              "behavior": "path independent",
+              "non_linearity": "depends on deformation gradient value"
+            },
+            "relationships": [
+              {
+                "predicate": "causes_superposition_of_stress_in",
+                "target": "mixed control (Case 1) and full stress control (Case 2)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2845,
+          "end_word": 3324,
+          "word_count": 479,
+          "sha256": "2c21b8bfe094e0164e7a826c0676883e6058b31929ec9f09c333cc4e0ed7fcdf",
+          "sentence_minhash": [
+            253677105005985737,
+            207625406180840718,
+            69729176314767099,
+            61919449716151556,
+            73459400946278211,
+            50522247457492762,
+            141264710915394906,
+            63183425104977485,
+            75549790165615653,
+            92715222163426349,
+            78280491562202942,
+            165121444977496021,
+            91759520063933247,
+            125868614717906679,
+            112485739989784148,
+            1911076096632273
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The text presents numerical benchmarks for a stress and mixed control algorithm in FFT homogenization, comparing hyperelastic and polycrystalline materials. It demonstrates that while endpoint results are consistent across control types, the loading path significantly affects intermediate responses, particularly in polycrystals where pseudo-uniaxial strain control yields inaccurate transverse stresses compared to true uniaxial tension.",
+        "entities": [
+          {
+            "name": "Particle reinforced hyperelastic RVE",
+            "entity_id": "particle_reinforced_hyperelastic_rve",
+            "entity_type": "other",
+            "aliases": [
+              "Particle reinforced hyperelastic RVE"
+            ],
+            "attributes": {
+              "composition": "Hyperelastic matrix reinforced by stiff spherical particles",
+              "particle_count": 4,
+              "particle_volume_fraction": 0.2,
+              "discretization": "64^3 voxels",
+              "constitutive_model": "Saint Venant-Kirchhoff hyperelastic model",
+              "matrix_shear_modulus": "28 Pa",
+              "matrix_bulk_modulus": "46.67 Pa",
+              "particle_stiffness_ratio": "10 times stiffer than matrix"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_with",
+                "target": "Uniaxial monotonic test",
+                "attributes": {
+                  "final_elongation": "0.2",
+                  "load_increments": 100
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "exhibits_behavior",
+                "target": "Path-independent hyperelastic response",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Polycrystalline RVE",
+            "entity_id": "polycrystalline_rve",
+            "entity_type": "other",
+            "aliases": [
+              "Polycrystalline RVE"
+            ],
+            "attributes": {
+              "composition": "Polycrystal with randomly oriented grains",
+              "grain_count": "around 200",
+              "discretization": "64^3 voxels",
+              "constitutive_model": "Crystal plasticity elasto-visco-plastic behavior",
+              "model_reference": "Lucarini and Segurado, 2018"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_with",
+                "target": "uniaxial tensile test",
+                "attributes": {
+                  "final_elongation": "0.02",
+                  "duration": "200 s",
+                  "strain_rate": "5e-5",
+                  "time_increments": 20
+                },
+                "target_id": "uniaxial_tensile_test"
+              },
+              {
+                "predicate": "exhibits_behavior",
+                "target": "Loading path and strain rate dependencies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Pseudo-uniaxial tensile test (Case 4)",
+            "entity_id": "pseudo_uniaxial_tensile_test_case_4",
+            "entity_type": "method",
+            "aliases": [
+              "Pseudo-uniaxial tensile test (Case 4)"
+            ],
+            "attributes": {
+              "control_type": "Full strain control",
+              "deformation_type": "Isochoric deformation at final stage",
+              "purpose": "Emulate uniaxial stress in nearly incompressible materials"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "Polycrystalline RVE",
+                "attributes": {},
+                "target_id": "polycrystalline_rve"
+              },
+              {
+                "predicate": "produces_result",
+                "target": "Non-zero compressive transverse stresses that grow with strain",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "indicated_as",
+                "target": "Potentially inaccurate for emulating uniaxial tension",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Transverse stress response comparison",
+            "entity_id": "transverse_stress_response_comparison",
+            "entity_type": "measurement",
+            "aliases": [
+              "Transverse stress response comparison"
+            ],
+            "attributes": {
+              "hyperelastic_stress_mixed_control": "Zero transverse stresses",
+              "hyperelastic_strain_control": "Small compressive stresses developed",
+              "polycrystal_strain_control": "Compressive transverse stresses developed",
+              "polycrystal_pseudo_uniaxial": "Compressive transverse stresses not zero and grow with applied strain"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrates",
+                "target": "Difference in loading paths affects intermediate transverse response",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3324,
+          "end_word": 3812,
+          "word_count": 488,
+          "sha256": "c3a1b41024781f0afdfec87f6da36007a78101383ab1fdbdac90af21989b9d64",
+          "sentence_minhash": [
+            65591232293994243,
+            24905490170095690,
+            40863640610520970,
+            201948566748835051,
+            124451168301198796,
+            50522247457492762,
+            141264710915394906,
+            96292850158067112,
+            75549790165615653,
+            17444917348060025,
+            78280491562202942,
+            165121444977496021,
+            12488864069851856,
+            132529644835130180,
+            202314690151145042,
+            206818097014773517
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 8,
+        "context_summary": "The study compares the computational performance of stress, mixed, and strain control methods in FFT homogenization. Convergence criteria and tolerances are defined for linear and Newton solvers. Results show that stress and mixed controls achieve similar iteration counts and simulation times to strain control, with specific advantages in elastic regimes for polycrystals.",
+        "entities": [
+          {
+            "name": "iterative linear solver convergence criterion",
+            "entity_id": "iterative_linear_solver_convergence_criterion",
+            "entity_type": "method",
+            "aliases": [
+              "iterative linear solver convergence criterion"
+            ],
+            "attributes": {
+              "definition": "voxel averaged value of the L2 norm of the residual"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Newton solver convergence criterion",
+            "entity_id": "newton_solver_convergence_criterion",
+            "entity_type": "method",
+            "aliases": [
+              "Newton solver convergence criterion"
+            ],
+            "attributes": {
+              "definition": "maximum deformation gradient correction relative to the averaged deformation gradient"
+            },
+            "relationships": []
+          },
+          {
+            "name": "solver tolerances",
+            "entity_id": "solver_tolerances",
+            "entity_type": "measurement",
+            "aliases": [
+              "solver tolerances"
+            ],
+            "attributes": {
+              "linear_solver_tolerance": "10^-8",
+              "newton_solver_tolerance": "10^-6"
+            },
+            "relationships": []
+          },
+          {
+            "name": "hyperelastic model performance",
+            "entity_id": "hyperelastic_model_performance",
+            "entity_type": "other",
+            "aliases": [
+              "hyperelastic model performance"
+            ],
+            "attributes": {
+              "iteration_count_comparison": "stress and mixed controlled simulations took approximately the same number of iterations as full strain control",
+              "simulation_time_comparison": "almost identical times for every boundary condition",
+              "model_entity_type": "finding"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrates",
+                "target": "very good performance of the proposed approach",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "polycrystal performance",
+            "entity_id": "polycrystal_performance",
+            "entity_type": "other",
+            "aliases": [
+              "polycrystal performance"
+            ],
+            "attributes": {
+              "case_2_behavior": "most load increments are elastic and solved in one Newton iteration",
+              "plastic_regime_behavior": "few steps require much higher number of iterations",
+              "simulation_time_comparison": "case (2) is clearly faster than others due to fast elastic steps compensating for slower plastic steps",
+              "model_entity_type": "finding"
+            },
+            "relationships": [
+              {
+                "predicate": "depends_on",
+                "target": "fixed time step",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "would_require_similar_times_if",
+                "target": "adaptive time stepping",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "proposed algorithm",
+            "entity_id": "proposed_algorithm",
+            "entity_type": "method",
+            "aliases": [
+              "new algorithm for FFT homogenization",
+              "proposed FFT homogenization algorithm",
+              "proposed algorithm"
+            ],
+            "attributes": {
+              "purpose": "impose macroscopic stress or mixed stress/deformation gradient history",
+              "context": "non-linear Galerkin based FFT homogenization"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 8,
+          "start_word": 3812,
+          "end_word": 4302,
+          "word_count": 490,
+          "sha256": "15d68bcd7b30cf1d3691eda8b3591ade3d08d42830e772cbee51f57b8a7cf06f",
+          "sentence_minhash": [
+            714432309599997694,
+            98558294268950137,
+            148787920402385570,
+            252855061968564437,
+            148925132169520149,
+            57869492297846635,
+            23718652799488495,
+            104958767080549687,
+            75549790165615653,
+            92715222163426349,
+            78280491562202942,
+            512902766398956616,
+            51125582506972287,
+            906306679132868,
+            98254322503569589,
+            296703126451676242
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'finding' for 'hyperelastic model performance'",
+          "normalized unsupported entity type 'finding' for 'polycrystal performance'"
+        ]
+      },
+      {
+        "chunk_index": 9,
+        "context_summary": "The proposed algorithm for FFT-based homogenization imposes macroscopic stress or mixed loading histories without requiring additional iterations compared to traditional schemes. It is applicable to various constitutive models, including those demonstrated in the examples, and maintains the computational efficiency advantages of FFT methods.",
+        "entities": [
+          {
+            "name": "proposed algorithm",
+            "entity_id": "proposed_algorithm",
+            "entity_type": "method",
+            "aliases": [
+              "new algorithm for FFT homogenization",
+              "proposed FFT homogenization algorithm",
+              "proposed algorithm"
+            ],
+            "attributes": {
+              "computational_cost": "no extra iterations compared to traditional schemes",
+              "applicability": "any material",
+              "function": "solves problems with mixed boundary conditions"
+            },
+            "relationships": [
+              {
+                "predicate": "maintains_advantages_of",
+                "target": "FFT methods for homogenization",
+                "attributes": {},
+                "target_id": "fft_methods_for_homogenization"
+              },
+              {
+                "predicate": "demonstrated_with",
+                "target": "two types of constitutive models",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "FFT methods for homogenization",
+            "entity_id": "fft_methods_for_homogenization",
+            "entity_type": "method",
+            "aliases": [
+              "FFT methods for homogenization"
+            ],
+            "attributes": {
+              "characteristic": "well known advantages"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 9,
+          "start_word": 4302,
+          "end_word": 4375,
+          "word_count": 73,
+          "sha256": "fdca5b127252c252fe7b757cb5f6d261ad021e812a1576b40eeb77157cf88282",
+          "sentence_minhash": [
+            371401328801777202,
+            252963467709525922,
+            611347955889946192,
+            529083120374985170,
+            121992409937547250,
+            576769905203256596,
+            38486707612222400,
+            698082855585850333,
+            266927695903760850,
+            597072458515379000,
+            216478690898440704,
+            165121444977496021,
+            105194873806966780,
+            256811852691509790,
+            369640054397817822,
+            285198123101877729
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "first_piola_kirchhoff_stress",
+        "canonical_name": "First Piola-Kirchhoff stress",
+        "aliases": [
+          "First Piola-Kirchhoff stress",
+          "first Piola Kirchhoff stress"
+        ]
+      },
+      {
+        "canonical_id": "galerkin_based_fft_approach",
+        "canonical_name": "Galerkin based FFT approach",
+        "aliases": [
+          "Galerkin based FFT approach",
+          "Galerkin based FFT method"
+        ]
+      },
+      {
+        "canonical_id": "deformation_gradient_correction",
+        "canonical_name": "deformation gradient correction",
+        "aliases": [
+          "deformation gradient correction",
+          "deformation gradient correction (δF)"
+        ]
+      },
+      {
+        "canonical_id": "linear_momentum_balance",
+        "canonical_name": "linear momentum balance",
+        "aliases": [
+          "discrete linear momentum balance",
+          "linear momentum balance"
+        ]
+      },
+      {
+        "canonical_id": "proposed_algorithm",
+        "canonical_name": "proposed algorithm",
+        "aliases": [
+          "proposed algorithm",
+          "proposed FFT homogenization algorithm",
+          "new algorithm for FFT homogenization"
+        ]
+      },
+      {
+        "canonical_id": "s_lucarini",
+        "canonical_name": "S. Lucarini",
+        "aliases": [
+          "S. Lucarini"
+        ]
+      },
+      {
+        "canonical_id": "j_segurado",
+        "canonical_name": "J. Segurado",
+        "aliases": [
+          "J. Segurado"
+        ]
+      },
+      {
+        "canonical_id": "algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization",
+        "canonical_name": "Algorithm for stress and mixed control in Galerkin based FFT homogenization",
+        "aliases": [
+          "Algorithm for stress and mixed control in Galerkin based FFT homogenization"
+        ]
+      },
+      {
+        "canonical_id": "modified_projection_operator",
+        "canonical_name": "modified projection operator",
+        "aliases": [
+          "modified projection operator"
+        ]
+      },
+      {
+        "canonical_id": "computational_homogenization",
+        "canonical_name": "Computational homogenization",
+        "aliases": [
+          "Computational homogenization"
+        ]
+      },
+      {
+        "canonical_id": "periodic_representative_volume_element_rve",
+        "canonical_name": "periodic representative volume element (RVE)",
+        "aliases": [
+          "periodic representative volume element (RVE)"
+        ]
+      },
+      {
+        "canonical_id": "finite_element_method_fe",
+        "canonical_name": "Finite element method (FE)",
+        "aliases": [
+          "Finite element method (FE)"
+        ]
+      },
+      {
+        "canonical_id": "fast_fourier_transform_fft_based_homogenization",
+        "canonical_name": "Fast Fourier transform (FFT) based homogenization",
+        "aliases": [
+          "Fast Fourier transform (FFT) based homogenization"
+        ]
+      },
+      {
+        "canonical_id": "h_moulinec",
+        "canonical_name": "H. Moulinec",
+        "aliases": [
+          "H. Moulinec"
+        ]
+      },
+      {
+        "canonical_id": "p_suquet",
+        "canonical_name": "P. Suquet",
+        "aliases": [
+          "P. Suquet"
+        ]
+      },
+      {
+        "canonical_id": "lippmann_schwinger_equation",
+        "canonical_name": "Lippmann-Schwinger equation",
+        "aliases": [
+          "Lippmann-Schwinger equation"
+        ]
+      },
+      {
+        "canonical_id": "classical_fft_homogenization_schemes",
+        "canonical_name": "classical FFT homogenization schemes",
+        "aliases": [
+          "classical FFT homogenization schemes"
+        ]
+      },
+      {
+        "canonical_id": "kabel_et_al_2016_method",
+        "canonical_name": "Kabel et al. (2016) method",
+        "aliases": [
+          "Kabel et al. (2016) method"
+        ]
+      },
+      {
+        "canonical_id": "test_functions",
+        "canonical_name": "test functions",
+        "aliases": [
+          "test functions"
+        ]
+      },
+      {
+        "canonical_id": "deformation_gradient_field",
+        "canonical_name": "deformation gradient field",
+        "aliases": [
+          "deformation gradient field"
+        ]
+      },
+      {
+        "canonical_id": "internal_variables",
+        "canonical_name": "internal variables",
+        "aliases": [
+          "internal variables"
+        ]
+      },
+      {
+        "canonical_id": "linear_map_g",
+        "canonical_name": "linear map G",
+        "aliases": [
+          "linear map G"
+        ]
+      },
+      {
+        "canonical_id": "projection_operator_in_fourier_space",
+        "canonical_name": "projection operator in Fourier space",
+        "aliases": [
+          "projection operator in Fourier space"
+        ]
+      },
+      {
+        "canonical_id": "strain_control_boundary_condition",
+        "canonical_name": "strain control boundary condition",
+        "aliases": [
+          "strain control boundary condition"
+        ]
+      },
+      {
+        "canonical_id": "non_linear_algebraic_equation",
+        "canonical_name": "non-linear algebraic equation",
+        "aliases": [
+          "non-linear algebraic equation"
+        ]
+      },
+      {
+        "canonical_id": "tangent_stiffness_tensor",
+        "canonical_name": "tangent stiffness tensor",
+        "aliases": [
+          "tangent stiffness tensor"
+        ]
+      },
+      {
+        "canonical_id": "linear_system_for_deformation_gradient_correction",
+        "canonical_name": "linear system for deformation gradient correction",
+        "aliases": [
+          "linear system for deformation gradient correction"
+        ]
+      },
+      {
+        "canonical_id": "projection_operator_bg",
+        "canonical_name": "projection operator bG",
+        "aliases": [
+          "projection operator bG"
+        ]
+      },
+      {
+        "canonical_id": "helmholtz_decomposition",
+        "canonical_name": "Helmholtz decomposition",
+        "aliases": [
+          "Helmholtz decomposition"
+        ]
+      },
+      {
+        "canonical_id": "velocity_gradient_lk",
+        "canonical_name": "velocity gradient Lk",
+        "aliases": [
+          "velocity gradient Lk"
+        ]
+      },
+      {
+        "canonical_id": "standard_projection_operator",
+        "canonical_name": "standard projection operator",
+        "aliases": [
+          "standard projection operator"
+        ]
+      },
+      {
+        "canonical_id": "alternative_projection_operator_g",
+        "canonical_name": "alternative projection operator G*",
+        "aliases": [
+          "alternative projection operator G*"
+        ]
+      },
+      {
+        "canonical_id": "macroscopic_stress_control_equilibrium_equation",
+        "canonical_name": "macroscopic stress control equilibrium equation",
+        "aliases": [
+          "macroscopic stress control equilibrium equation"
+        ]
+      },
+      {
+        "canonical_id": "average_stress",
+        "canonical_name": "average stress",
+        "aliases": [
+          "average stress"
+        ]
+      },
+      {
+        "canonical_id": "algorithm_summarized_in_equation_20",
+        "canonical_name": "algorithm summarized in equation (20)",
+        "aliases": [
+          "algorithm summarized in equation (20)"
+        ]
+      },
+      {
+        "canonical_id": "mixed_control_of_macroscopic_stress_and_strain",
+        "canonical_name": "mixed control of macroscopic stress and strain",
+        "aliases": [
+          "mixed control of macroscopic stress and strain"
+        ]
+      },
+      {
+        "canonical_id": "modified_projection_operator_for_mixed_control_g",
+        "canonical_name": "modified projection operator for mixed control (G*)",
+        "aliases": [
+          "modified projection operator for mixed control (G*)"
+        ]
+      },
+      {
+        "canonical_id": "solution_field_f",
+        "canonical_name": "solution field F'",
+        "aliases": [
+          "solution field F'"
+        ]
+      },
+      {
+        "canonical_id": "particle_reinforced_hyperelastic_matrix_benchmark",
+        "canonical_name": "particle reinforced hyperelastic matrix benchmark",
+        "aliases": [
+          "particle reinforced hyperelastic matrix benchmark"
+        ]
+      },
+      {
+        "canonical_id": "periodic_cubic_rve_for_particle_composite",
+        "canonical_name": "periodic cubic RVE for particle composite",
+        "aliases": [
+          "periodic cubic RVE for particle composite"
+        ]
+      },
+      {
+        "canonical_id": "matrix_material_properties",
+        "canonical_name": "matrix material properties",
+        "aliases": [
+          "matrix material properties"
+        ]
+      },
+      {
+        "canonical_id": "particle_material_properties",
+        "canonical_name": "particle material properties",
+        "aliases": [
+          "particle material properties"
+        ]
+      },
+      {
+        "canonical_id": "uniaxial_tensile_test",
+        "canonical_name": "uniaxial tensile test",
+        "aliases": [
+          "uniaxial tensile test"
+        ]
+      },
+      {
+        "canonical_id": "mixed_control_case_1",
+        "canonical_name": "mixed control (Case 1)",
+        "aliases": [
+          "mixed control (Case 1)"
+        ]
+      },
+      {
+        "canonical_id": "full_stress_control_case_2",
+        "canonical_name": "full stress control (Case 2)",
+        "aliases": [
+          "full stress control (Case 2)"
+        ]
+      },
+      {
+        "canonical_id": "full_strain_control_case_3",
+        "canonical_name": "full strain control (Case 3)",
+        "aliases": [
+          "full strain control (Case 3)"
+        ]
+      },
+      {
+        "canonical_id": "hyperelastic_material",
+        "canonical_name": "hyperelastic material",
+        "aliases": [
+          "hyperelastic material"
+        ]
+      },
+      {
+        "canonical_id": "particle_reinforced_hyperelastic_rve",
+        "canonical_name": "Particle reinforced hyperelastic RVE",
+        "aliases": [
+          "Particle reinforced hyperelastic RVE"
+        ]
+      },
+      {
+        "canonical_id": "polycrystalline_rve",
+        "canonical_name": "Polycrystalline RVE",
+        "aliases": [
+          "Polycrystalline RVE"
+        ]
+      },
+      {
+        "canonical_id": "pseudo_uniaxial_tensile_test_case_4",
+        "canonical_name": "Pseudo-uniaxial tensile test (Case 4)",
+        "aliases": [
+          "Pseudo-uniaxial tensile test (Case 4)"
+        ]
+      },
+      {
+        "canonical_id": "transverse_stress_response_comparison",
+        "canonical_name": "Transverse stress response comparison",
+        "aliases": [
+          "Transverse stress response comparison"
+        ]
+      },
+      {
+        "canonical_id": "iterative_linear_solver_convergence_criterion",
+        "canonical_name": "iterative linear solver convergence criterion",
+        "aliases": [
+          "iterative linear solver convergence criterion"
+        ]
+      },
+      {
+        "canonical_id": "newton_solver_convergence_criterion",
+        "canonical_name": "Newton solver convergence criterion",
+        "aliases": [
+          "Newton solver convergence criterion"
+        ]
+      },
+      {
+        "canonical_id": "solver_tolerances",
+        "canonical_name": "solver tolerances",
+        "aliases": [
+          "solver tolerances"
+        ]
+      },
+      {
+        "canonical_id": "hyperelastic_model_performance",
+        "canonical_name": "hyperelastic model performance",
+        "aliases": [
+          "hyperelastic model performance"
+        ]
+      },
+      {
+        "canonical_id": "polycrystal_performance",
+        "canonical_name": "polycrystal performance",
+        "aliases": [
+          "polycrystal performance"
+        ]
+      },
+      {
+        "canonical_id": "fft_methods_for_homogenization",
+        "canonical_name": "FFT methods for homogenization",
+        "aliases": [
+          "FFT methods for homogenization"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The paper presents a new algorithm for imposing macroscopic stress or mixed stress/deformation control in non-linear Galerkin-based FFT homogenization. The method utilizes a modified projection operator to enforce control types without requiring additional iterations compared to strain control. Computational homogenization is described as a technique to simulate material response in a periodic representative volume element (RVE).\",\"entities\":[{\"name\":\"S. Lucarini\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"IMDEA Materials Institute; Technical University of Madrid\"},\"relationships\":[{\"predicate\":\"co_author_of\",\"target\":\"Algorithm for stress and mixed control in Galerkin based FFT homogenization\",\"attributes\":{},\"target_id\":\"algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization\"}]},{\"name\":\"J. Segurado\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"IMDEA Materials Institute; Technical University of Madrid\",\"role\":\"Corresponding author\",\"email\":\"javier.segurado@imdea.org\"},\"relationships\":[{\"predicate\":\"co_author_of\",\"target\":\"Algorithm for stress and mixed control in Galerkin based FFT homogenization\",\"attributes\":{},\"target_id\":\"algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization\"}]},{\"name\":\"Algorithm for stress and mixed control in Galerkin based FFT homogenization\",\"type\":\"method\",\"attributes\":{\"publication_date\":\"January 23, 2019\",\"purpose\":\"Impose macroscopic stress or mixed stress/deformation gradient history in non-linear Galerkin based FFT homogenization\"},\"relationships\":[{\"predicate\":\"based_on\",\"target\":\"modified projection operator\",\"attributes\":{},\"target_id\":\"modified_projection_operator\"},{\"predicate\":\"demonstrated_with\",\"target\":\"polycrystal\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"demonstrated_with\",\"target\":\"particle reinforced hyperelastic material\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"modified projection operator\",\"type\":\"concept\",\"attributes\":{\"function\":\"Enforces type of control (stress or strain) for each component of macroscopic first Piola stress or deformation gradient via null frequencies\"},\"relationships\":[{\"predicate\":\"component_of\",\"target\":\"Algorithm for stress and mixed control in Galerkin based FFT homogenization\",\"attributes\":{},\"target_id\":\"algorithm_for_stress_and_mixed_control_in_galerkin_based_fft_homogenization\"}]},{\"name\":\"Computational homogenization\",\"type\":\"method\",\"attributes\":{\"aim\":\"Simulate mechanical response of a material under macroscopic stress, strain, or mixed loading path\"},\"relationships\":[{\"predicate\":\"solves_boundary_problem_in\",\"target\":\"periodic representative volume element (RVE)\",\"attributes\":{},\"target_id\":\"periodic_representative_volume_element_rve\"}]},{\"name\":\"periodic representative volume element (RVE)\",\"type\":\"concept\",\"attributes\":{\"description\":\"Microstructure domain used to solve boundary problems in computational homogenization\"},\"relationships\":[]},{\"name\":\"Finite element method (FE)\",\"type\":\"method\",\"attributes\":{\"usage\":\"Traditionally used to solve boundary value problems in homogenization\"},\"relationships\":[{\"predicate\":\"allows_imposition_of\",\"target\":\"any macroscopic load history combining control of strain and stress average fields\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Fast Fourier transform (FFT) based homogenization\",\"type\":\"method\",\"attributes\":{\"status\":\"Popular alternative to FE\",\"mechanism\":\"Replaces differential operators in governing PDEs with Fourier space counterparts\",\"advantage\":\"High computational performance for complex geometries with millions of degrees of freedom\"},\"relationships\":[{\"predicate\":\"limitation\",\"target\":\"Imposing macroscopic stress or mixed loading path is not a direct task\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"H. Moulinec\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"proposed_original_fft_homogenization_with\",\"target\":\"P. Suquet\",\"attributes\":{},\"target_id\":\"p_suquet\"}]},{\"name\":\"P. Suquet\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"proposed_original_fft_homogenization_with\",\"target\":\"H. Moulinec\",\"attributes\":{},\"target_id\":\"h_moulinec\"}]},{\"name\":\"Lippmann-Schwinger equation\",\"type\":\"concept\",\"attributes\":{\"role\":\"Basis for original FFT homogenization proposal by Moulinec and Suquet (1994, 1998)\"},\"relationships\":[{\"predicate\":\"solved_using\",\"target\":\"fixed-point algorithm\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Classical FFT homogenization schemes typically impose full macroscopic strain tensors, requiring iterative corrections for stress or mixed control which increases computational cost. An alternative method by Kabel et al. uses projection tensors and Krylov solvers but still relies on a reference medium. The Galerkin-based FFT approach uses weak formulations and projection operators to ensure strain compatibility without a reference medium, utilizing material tangents for convergence.\",\"entities\":[{\"name\":\"classical FFT homogenization schemes\",\"type\":\"method\",\"attributes\":{\"load_introduction\":\"imposes full macroscopic strain tensor\",\"stress_mixed_control_strategy\":\"iterative correction of strain to match imposed stress\"},\"relationships\":[{\"predicate\":\"requires\",\"target\":\"iterative approaches for stress or mixed control\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"result_in\",\"target\":\"increased number of iterations per step compared to strain control\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Kabel et al. (2016) method\",\"type\":\"method\",\"attributes\":{\"basis\":\"modification of Moulinec and Suquet (1994) scheme\",\"mechanism\":\"introduction of projection tensors for load control\",\"solver\":\"iterative Krylov solver\"},\"relationships\":[{\"predicate\":\"is_more_efficient_than\",\"target\":\"iterative approaches\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"requires\",\"target\":\"reference medium\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"convergence_influenced_by\",\"target\":\"properties of reference medium\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Galerkin based FFT approach\",\"type\":\"method\",\"attributes\":{\"derivation\":\"weak formulation similar to finite elements\",\"compatibility_enforcement\":\"projection operators\",\"reference_medium_requirement\":\"none\",\"convergence_improvement\":\"direct use of material behavior tangents\"},\"relationships\":[{\"predicate\":\"adaptable_to\",\"target\":\"complex non-linear constitutive equations\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"adaptable_to\",\"target\":\"crystal plasticity model\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"original_formulation_imposes\",\"target\":\"history of macroscopic deformation gradient\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"proposed algorithm\",\"type\":\"method\",\"attributes\":{\"extension_of\":\"variational algorithm for finite strains (de Geus et al., 2017)\",\"control_types\":\"stress and mixed control\",\"mechanism\":\"direct method based on modified projection operator\",\"performance\":\"preserves computational performance of original method\"},\"relationships\":[{\"predicate\":\"extends\",\"target\":\"Galerkin based FFT approach\",\"attributes\":{},\"target_id\":\"galerkin_based_fft_approach\"}]},{\"name\":\"periodic representative volume element (RVE)\",\"type\":\"concept\",\"attributes\":{\"composition\":\"heterogeneous material with spatial arrangement of two or more phases\",\"discretization\":\"nx ny nz voxels\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"finding deformation gradient and stress values\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"linear momentum balance\",\"type\":\"other\",\"attributes\":{\"form\":\"weak form in reference configuration\",\"model_entity_type\":\"physical_law\"},\"relationships\":[{\"predicate\":\"imposed_via\",\"target\":\"test functions\",\"attributes\":{},\"target_id\":\"test_functions\"}]},{\"name\":\"test functions\",\"type\":\"other\",\"attributes\":{\"definition\":\"virtual deformation gradients premultiplied by a projector operator\",\"model_entity_type\":\"mathematical_object\"},\"relationships\":[{\"predicate\":\"enforce\",\"target\":\"compatibility of strain fields\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The discrete linear momentum balance in Galerkin-based FFT homogenization is formulated as a convolution in Fourier space using a projection operator. Under strain control, the macroscopic deformation gradient is fixed, and the system solves for the fluctuation of the deformation gradient. For non-linear materials, the problem is solved iteratively by linearizing the stress around the previous deformation gradient state using the tangent stiffness tensor.\",\"entities\":[{\"name\":\"linear momentum balance\",\"type\":\"other\",\"attributes\":{\"form\":\"G(P(F, alpha)) = 0\",\"description\":\"Discrete form of linear momentum balance in Galerkin based FFT homogenization\",\"model_entity_type\":\"equation\"},\"relationships\":[{\"predicate\":\"involves\",\"target\":\"First Piola-Kirchhoff stress\",\"attributes\":{},\"target_id\":\"first_piola_kirchhoff_stress\"},{\"predicate\":\"involves\",\"target\":\"deformation gradient field\",\"attributes\":{},\"target_id\":\"deformation_gradient_field\"},{\"predicate\":\"involves\",\"target\":\"internal variables\",\"attributes\":{},\"target_id\":\"internal_variables\"},{\"predicate\":\"involves\",\"target\":\"linear map G\",\"attributes\":{},\"target_id\":\"linear_map_g\"}]},{\"name\":\"First Piola-Kirchhoff stress\",\"type\":\"other\",\"attributes\":{\"symbol\":\"P\",\"definition\":\"Stress tensor dependent on deformation gradient and internal variables\",\"model_entity_type\":\"physical_quantity\"},\"relationships\":[]},{\"name\":\"deformation gradient field\",\"type\":\"other\",\"attributes\":{\"symbol\":\"F\",\"decomposition\":\"Sum of average value <F>_Omega and fluctuation eF\",\"model_entity_type\":\"physical_quantity\"},\"relationships\":[{\"predicate\":\"is_unknown_in\",\"target\":\"algebraic system of 9 nx ny nz equations\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"internal variables\",\"type\":\"other\",\"attributes\":{\"symbol\":\"alpha\",\"function\":\"Define the history of the material\",\"model_entity_type\":\"physical_quantity\"},\"relationships\":[]},{\"name\":\"linear map G\",\"type\":\"other\",\"attributes\":{\"domain\":\"Voxel tensor field P defined in R9 nx ny nz\",\"codomain\":\"New voxel tensor field in the same space\",\"fourier_space_form\":\"Convolution computed as F^-1 bG : F {P(F, alpha)}\",\"model_entity_type\":\"operator\"},\"relationships\":[{\"predicate\":\"corresponds_to\",\"target\":\"convolution in real space\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"projection operator in Fourier space\",\"type\":\"other\",\"attributes\":{\"symbol\":\"bG\",\"type\":\"Fourth order tensor field\",\"model_entity_type\":\"operator\"},\"relationships\":[]},{\"name\":\"strain control boundary condition\",\"type\":\"other\",\"attributes\":{\"constraint\":\"Value of F = <F>_Omega is given\",\"model_entity_type\":\"condition\"},\"relationships\":[{\"predicate\":\"results_in_problem\",\"target\":\"Finding value of fluctuations of deformation gradient eF\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"non-linear algebraic equation\",\"type\":\"other\",\"attributes\":{\"source\":\"Discrete expression of weak form of equilibrium (Equation 2)\",\"condition\":\"Non-linear material behavior\",\"model_entity_type\":\"equation\"},\"relationships\":[{\"predicate\":\"solved_by\",\"target\":\"Iterative linearization\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"tangent stiffness tensor\",\"type\":\"other\",\"attributes\":{\"symbol\":\"Ki\",\"definition\":\"Partial derivative of P with respect to Fi\",\"model_entity_type\":\"physical_quantity\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Linearization of stress\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"linear system for deformation gradient correction\",\"type\":\"other\",\"attributes\":{\"form\":\"G(Ki : deltaF) = -G(P(Fi))\",\"unknown\":\"Correction at iteration i of deformation gradient deltaF\",\"model_entity_type\":\"equation\"},\"relationships\":[{\"predicate\":\"solved_using\",\"target\":\"Conjugate gradient method\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"deformation gradient correction\",\"type\":\"other\",\"attributes\":{\"symbol\":\"deltaF\",\"property\":\"Fluctuation term (average free)\",\"model_entity_type\":\"physical_quantity\"},\"relationships\":[]}]},{\"context_summary\":\"The text defines the projection operator used in Galerkin-based FFT homogenization, which enforces field compatibility via Helmholtz decomposition in Fourier space. It specifies that the operator is zero at null and Nyquist frequencies to ensure zero mean and symmetry, corresponding to a Green function for an isotropic reference medium with specific Lamé constants. The section introduces a modification to this operator to enable macroscopic stress control, distinguishing it from the original strain control formulation.\",\"entities\":[{\"name\":\"projection operator bG\",\"type\":\"method\",\"attributes\":{\"mathematical_form\":\"Fourth order tensor\",\"function\":\"Enforces compatibility of tensor fields via convolution in real space\",\"fourier_space_definition\":\"bG_ijkl = (delta_ik * xi_j * xi_l) / (xi dot xi) for non-null/non-Nyquist frequencies\",\"null_frequency_value\":\"Zero fourth order tensor\",\"nyquist_frequency_value\":\"Approximated to zero fourth order tensor\",\"symmetry_property\":\"Major symmetry (bG_ijkl = bG_klij)\",\"equivalent_green_function\":\"Isotropic reference medium with Lamé constants lambda=0, mu=0.5\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"Helmholtz decomposition\",\"attributes\":{},\"target_id\":\"helmholtz_decomposition\"},{\"predicate\":\"projects_to\",\"target\":\"curl-free component A_parallel\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Helmholtz decomposition\",\"type\":\"concept\",\"attributes\":{\"definition\":\"Expresses an arbitrary tensor field A(x) as the sum of a curl-free component A_parallel(x), a divergence-free component A_perp(x), and the average A\",\"fourier_space_form\":\"bA(xi) = cA_parallel(xi) + dA_perp(xi) + bA\"},\"relationships\":[{\"predicate\":\"defines_component\",\"target\":\"curl-free component A_parallel\",\"attributes\":{\"property\":\"compatible\",\"formula\":\"(bA(xi) dot xi / |xi|) tensor (xi / |xi|)\"},\"target_id\":null},{\"predicate\":\"defines_component\",\"target\":\"divergence-free component A_perp\",\"attributes\":{\"property\":\"incompatible\"},\"target_id\":null}]},{\"name\":\"velocity gradient Lk\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"Lk = (1 / (tk - tk-1)) * [Fk - Fk-1] dot Fk^-1\",\"context\":\"Defined for rate-dependent constitutive equations where stress depends on deformation gradient F and velocity gradient L\"},\"relationships\":[{\"predicate\":\"depends_on\",\"target\":\"deformation gradient Fk\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"depends_on\",\"target\":\"time increment tk\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Galerkin based FFT approach\",\"type\":\"method\",\"attributes\":{\"original_purpose\":\"Provide solution under given macroscopic deformation gradient (strain control)\",\"proposed_modification\":\"Modification of projection operator to simulate behavior under macroscopic stress history\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"projection operator bG\",\"attributes\":{},\"target_id\":\"projection_operator_bg\"},{\"predicate\":\"applies_to\",\"target\":\"creep test or uniaxial test under stress control\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text derives a modified projection operator for FFT homogenization to enforce macroscopic stress control. It demonstrates that the standard operator eliminates the mean stress, while the new operator preserves it to match a target stress. The final operator definition sets the null frequency to the identity tensor and the Nyquist frequency to zero.\",\"entities\":[{\"name\":\"First Piola-Kirchhoff stress\",\"type\":\"other\",\"attributes\":{\"decomposition\":\"average part plus fluctuating part\"},\"relationships\":[{\"predicate\":\"decomposed_into\",\"target\":\"average stress and fluctuating stress\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"standard projection operator\",\"type\":\"method\",\"attributes\":{\"behavior_on_mean\":\"eliminates the mean part of the field\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"equilibrium equation for strain control\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"alternative projection operator G*\",\"type\":\"method\",\"attributes\":{\"definition\":\"projects tensor field into sum of compatible and mean parts\",\"null_frequency_value\":\"fourth order identity tensor\",\"nyquist_frequency_value\":\"zero fourth order tensor\",\"non_null_non_nyquist_value\":\"delta_ik * xi_j * xi_l / (xi dot xi)\"},\"relationships\":[{\"predicate\":\"enforces\",\"target\":\"macroscopic stress control\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"identical_to_standard_operator_for\",\"target\":\"zero average tensor fields\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"macroscopic stress control equilibrium equation\",\"type\":\"method\",\"attributes\":{\"form\":\"G*(P(F, alpha)) = G*(P)\"},\"relationships\":[{\"predicate\":\"solves_for\",\"target\":\"full deformation gradient F\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"input_data\",\"target\":\"target macroscopic stress P\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text describes an iterative algorithm for solving equilibrium under macroscopic stress and mixed control in FFT homogenization. It defines a modified projection operator that enforces specific boundary conditions at null frequencies. A benchmark simulation of a particle-reinforced hyperelastic composite is presented to validate the method.\",\"entities\":[{\"name\":\"deformation gradient correction\",\"type\":\"other\",\"attributes\":{\"mean_value\":\"included\",\"solution_method\":\"solved via linear system G*(K : δF) = -G*(P(Fi) - P)\"},\"relationships\":[{\"predicate\":\"converges_to\",\"target\":\"0\",\"attributes\":{\"condition\":\"equilibrium reached\"},\"target_id\":null}]},{\"name\":\"average stress\",\"type\":\"measurement\",\"attributes\":{},\"relationships\":[{\"predicate\":\"reaches\",\"target\":\"objective macroscopic stress\",\"attributes\":{\"condition\":\"when δF approaches 0\"},\"target_id\":null}]},{\"name\":\"algorithm summarized in equation (20)\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"has_convergence_rate_equal_to\",\"target\":\"original scheme\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"mixed control of macroscopic stress and strain\",\"type\":\"concept\",\"attributes\":{\"application\":\"uniaxial or biaxial tests where strain is imposed in some directions and others are free\"},\"relationships\":[{\"predicate\":\"input_data_stress\",\"target\":\"P_IJ = <P>_IJ for stress-imposed components IJ\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"input_data_strain\",\"target\":\"F_ij = <F>_ij for strain-controlled components ij\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"modified projection operator for mixed control (G*)\",\"type\":\"method\",\"attributes\":{\"null_frequency_stress_terms\":\"identity tensor (δikδjl)\",\"null_frequency_strain_terms\":\"zero tensor (0ijkl)\",\"nyquist_frequency\":\"zero tensor (0ijkl)\",\"non_null_frequency\":\"δik ξjξl / (ξ·ξ)\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"equilibrium equation (21)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"solution field F'\",\"type\":\"measurement\",\"attributes\":{\"ij_components\":\"fluctuation term (F'_ij = eFij)\",\"IJ_components\":\"full deformation gradient term (F'_IJ = FIJ)\"},\"relationships\":[{\"predicate\":\"solved_by\",\"target\":\"Newton method\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"particle reinforced hyperelastic matrix benchmark\",\"type\":\"event\",\"attributes\":{\"material_type\":\"non-linear elastic composite\",\"test_type\":\"uniaxial monotonic test\",\"control_schemes\":\"5 macroscopic strain, stress, and mixed control schemes\"},\"relationships\":[{\"predicate\":\"uses_rve\",\"target\":\"periodic cubic RVE\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"periodic cubic RVE for particle composite\",\"type\":\"place\",\"attributes\":{\"particle_count\":4,\"particle_volume_fraction\":0.2,\"discretization\":\"64^3 voxels\"},\"relationships\":[{\"predicate\":\"matrix_model\",\"target\":\"Saint Venant-Kirchhoff hyperelastic model\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"particle_model\",\"target\":\"Saint Venant-Kirchhoff hyperelastic model\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"matrix material properties\",\"type\":\"measurement\",\"attributes\":{\"shear_modulus_mu\":\"28 Pa\",\"bulk_modulus_k\":\"46.67 Pa\"},\"relationships\":[]},{\"name\":\"particle material properties\",\"type\":\"measurement\",\"attributes\":{\"stiffness_relative_to_matrix\":\"10 times larger moduli\"},\"relationships\":[]}]},{\"context_summary\":\"The uniaxial tensile test on a particle-reinforced hyperelastic RVE is simulated using three distinct control schemes: mixed, full stress, and full strain. All cases reach the same final elongation but follow different loading paths, with stress and mixed controls producing superposed macroscopic stress responses due to the material's path-independent behavior.\",\"entities\":[{\"name\":\"uniaxial tensile test\",\"type\":\"event\",\"attributes\":{\"final_elongation\":\"0.2\",\"loading_direction\":\"x\",\"transverse_directions\":\"unconstrained\",\"load_increments\":\"100\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"mixed control (Case 1)\",\"attributes\":{},\"target_id\":\"mixed_control_case_1\"},{\"predicate\":\"uses\",\"target\":\"full stress control (Case 2)\",\"attributes\":{},\"target_id\":\"full_stress_control_case_2\"},{\"predicate\":\"uses\",\"target\":\"full strain control (Case 3)\",\"attributes\":{},\"target_id\":\"full_strain_control_case_3\"}]},{\"name\":\"mixed control (Case 1)\",\"type\":\"method\",\"attributes\":{\"description\":\"Macroscopic deformation gradient imposed in x-direction as a ramp; other terms stress-free\"},\"relationships\":[{\"predicate\":\"shares_path_with\",\"target\":\"full stress control (Case 2)\",\"attributes\":{},\"target_id\":\"full_stress_control_case_2\"},{\"predicate\":\"produces_superposed_macroscopic_stress_with\",\"target\":\"full stress control (Case 2)\",\"attributes\":{},\"target_id\":\"full_stress_control_case_2\"}]},{\"name\":\"full stress control (Case 2)\",\"type\":\"method\",\"attributes\":{\"description\":\"Stress applied as a linear ramp from 0 to the final stress obtained from Case 1\"},\"relationships\":[{\"predicate\":\"shares_path_with\",\"target\":\"mixed control (Case 1)\",\"attributes\":{},\"target_id\":\"mixed_control_case_1\"},{\"predicate\":\"produces_superposed_macroscopic_stress_with\",\"target\":\"mixed control (Case 1)\",\"attributes\":{},\"target_id\":\"mixed_control_case_1\"}]},{\"name\":\"full strain control (Case 3)\",\"type\":\"method\",\"attributes\":{\"description\":\"Standard FFT boundary conditions; full deformation gradient imposed using a linear ramp to the final solution of Case 1\"},\"relationships\":[{\"predicate\":\"follows_different_path_than\",\"target\":\"mixed control (Case 1)\",\"attributes\":{},\"target_id\":\"mixed_control_case_1\"},{\"predicate\":\"follows_different_path_than\",\"target\":\"full stress control (Case 2)\",\"attributes\":{},\"target_id\":\"full_stress_control_case_2\"}]},{\"name\":\"hyperelastic material\",\"type\":\"concept\",\"attributes\":{\"behavior\":\"path independent\",\"non_linearity\":\"depends on deformation gradient value\"},\"relationships\":[{\"predicate\":\"causes_superposition_of_stress_in\",\"target\":\"mixed control (Case 1) and full stress control (Case 2)\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text presents numerical benchmarks for a stress and mixed control algorithm in FFT homogenization, comparing hyperelastic and polycrystalline materials. It demonstrates that while endpoint results are consistent across control types, the loading path significantly affects intermediate responses, particularly in polycrystals where pseudo-uniaxial strain control yields inaccurate transverse stresses compared to true uniaxial tension.\",\"entities\":[{\"name\":\"Particle reinforced hyperelastic RVE\",\"type\":\"other\",\"attributes\":{\"composition\":\"Hyperelastic matrix reinforced by stiff spherical particles\",\"particle_count\":4,\"particle_volume_fraction\":0.2,\"discretization\":\"64^3 voxels\",\"constitutive_model\":\"Saint Venant-Kirchhoff hyperelastic model\",\"matrix_shear_modulus\":\"28 Pa\",\"matrix_bulk_modulus\":\"46.67 Pa\",\"particle_stiffness_ratio\":\"10 times stiffer than matrix\"},\"relationships\":[{\"predicate\":\"tested_with\",\"target\":\"Uniaxial monotonic test\",\"attributes\":{\"final_elongation\":\"0.2\",\"load_increments\":100},\"target_id\":null},{\"predicate\":\"exhibits_behavior\",\"target\":\"Path-independent hyperelastic response\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Polycrystalline RVE\",\"type\":\"other\",\"attributes\":{\"composition\":\"Polycrystal with randomly oriented grains\",\"grain_count\":\"around 200\",\"discretization\":\"64^3 voxels\",\"constitutive_model\":\"Crystal plasticity elasto-visco-plastic behavior\",\"model_reference\":\"Lucarini and Segurado, 2018\"},\"relationships\":[{\"predicate\":\"tested_with\",\"target\":\"uniaxial tensile test\",\"attributes\":{\"final_elongation\":\"0.02\",\"duration\":\"200 s\",\"strain_rate\":\"5e-5\",\"time_increments\":20},\"target_id\":\"uniaxial_tensile_test\"},{\"predicate\":\"exhibits_behavior\",\"target\":\"Loading path and strain rate dependencies\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Pseudo-uniaxial tensile test (Case 4)\",\"type\":\"method\",\"attributes\":{\"control_type\":\"Full strain control\",\"deformation_type\":\"Isochoric deformation at final stage\",\"purpose\":\"Emulate uniaxial stress in nearly incompressible materials\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"Polycrystalline RVE\",\"attributes\":{},\"target_id\":\"polycrystalline_rve\"},{\"predicate\":\"produces_result\",\"target\":\"Non-zero compressive transverse stresses that grow with strain\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"indicated_as\",\"target\":\"Potentially inaccurate for emulating uniaxial tension\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Transverse stress response comparison\",\"type\":\"measurement\",\"attributes\":{\"hyperelastic_stress_mixed_control\":\"Zero transverse stresses\",\"hyperelastic_strain_control\":\"Small compressive stresses developed\",\"polycrystal_strain_control\":\"Compressive transverse stresses developed\",\"polycrystal_pseudo_uniaxial\":\"Compressive transverse stresses not zero and grow with applied strain\"},\"relationships\":[{\"predicate\":\"demonstrates\",\"target\":\"Difference in loading paths affects intermediate transverse response\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study compares the computational performance of stress, mixed, and strain control methods in FFT homogenization. Convergence criteria and tolerances are defined for linear and Newton solvers. Results show that stress and mixed controls achieve similar iteration counts and simulation times to strain control, with specific advantages in elastic regimes for polycrystals.\",\"entities\":[{\"name\":\"iterative linear solver convergence criterion\",\"type\":\"method\",\"attributes\":{\"definition\":\"voxel averaged value of the L2 norm of the residual\"},\"relationships\":[]},{\"name\":\"Newton solver convergence criterion\",\"type\":\"method\",\"attributes\":{\"definition\":\"maximum deformation gradient correction relative to the averaged deformation gradient\"},\"relationships\":[]},{\"name\":\"solver tolerances\",\"type\":\"measurement\",\"attributes\":{\"linear_solver_tolerance\":\"10^-8\",\"newton_solver_tolerance\":\"10^-6\"},\"relationships\":[]},{\"name\":\"hyperelastic model performance\",\"type\":\"other\",\"attributes\":{\"iteration_count_comparison\":\"stress and mixed controlled simulations took approximately the same number of iterations as full strain control\",\"simulation_time_comparison\":\"almost identical times for every boundary condition\",\"model_entity_type\":\"finding\"},\"relationships\":[{\"predicate\":\"demonstrates\",\"target\":\"very good performance of the proposed approach\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"polycrystal performance\",\"type\":\"other\",\"attributes\":{\"case_2_behavior\":\"most load increments are elastic and solved in one Newton iteration\",\"plastic_regime_behavior\":\"few steps require much higher number of iterations\",\"simulation_time_comparison\":\"case (2) is clearly faster than others due to fast elastic steps compensating for slower plastic steps\",\"model_entity_type\":\"finding\"},\"relationships\":[{\"predicate\":\"depends_on\",\"target\":\"fixed time step\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"would_require_similar_times_if\",\"target\":\"adaptive time stepping\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"proposed algorithm\",\"type\":\"method\",\"attributes\":{\"purpose\":\"impose macroscopic stress or mixed stress/deformation gradient history\",\"context\":\"non-linear Galerkin based FFT homogenization\"},\"relationships\":[]}]},{\"context_summary\":\"The proposed algorithm for FFT-based homogenization imposes macroscopic stress or mixed loading histories without requiring additional iterations compared to traditional schemes. It is applicable to various constitutive models, including those demonstrated in the examples, and maintains the computational efficiency advantages of FFT methods.\",\"entities\":[{\"name\":\"proposed algorithm\",\"type\":\"method\",\"attributes\":{\"computational_cost\":\"no extra iterations compared to traditional schemes\",\"applicability\":\"any material\",\"function\":\"solves problems with mixed boundary conditions\"},\"relationships\":[{\"predicate\":\"maintains_advantages_of\",\"target\":\"FFT methods for homogenization\",\"attributes\":{},\"target_id\":\"fft_methods_for_homogenization\"},{\"predicate\":\"demonstrated_with\",\"target\":\"two types of constitutive models\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"FFT methods for homogenization\",\"type\":\"method\",\"attributes\":{\"characteristic\":\"well known advantages\"},\"relationships\":[]}]}]"
+}

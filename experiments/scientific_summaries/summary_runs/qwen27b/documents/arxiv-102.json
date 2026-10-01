@@ -1,0 +1,1359 @@
+{
+  "document_id": "arxiv-102",
+  "fulltext_sha256": "0c59df13d1c8367c898c64adf0337dbe33ef3a348ba4acfd31151d353d722102",
+  "summary": {
+    "title": "A schematic model of scattering in PT −symmetric Quantum Mechanics",
+    "authors": "Miloslav Znojil",
+    "field_subfield": "Quantum Physics / Non-Hermitian Quantum Mechanics",
+    "type_of_paper": "Theoretical Physics / Mathematical Physics",
+    "executive_summary": "This paper investigates the one-dimensional scattering problem within the framework of PT-symmetric quantum mechanics, specifically utilizing a Runge-Kutta discretized version of the Schrödinger equation. The study focuses on a complex, short-range potential V(x) = Z(x) + iY(x) that satisfies PT-symmetry conditions, where Z(x) is even and real, and Y(x) is odd and real. The primary objective is to derive explicit formulae for the reflection (B) and transmission (C) coefficients for this non-Hermitian system. The author demonstrates that by employing a matrix-inversion method on the discretized difference equations, the scattering problem can be reduced to a finite-dimensional linear algebraic system. The core finding is that the formal structure of the scattering coefficients in the PT-symmetric case is identical to that of the standard Hermitian case, with the sole difference lying in the complexification of the potential parameters. Specifically, the transmission coefficient C is determined by a ratio involving a complex coefficient α and a real coefficient β, which are functions of the lattice potential values. The paper illustrates this with explicit calculations for small cutoffs M=1, M=2, and M=3, showing how the determinant of the system matrix and the numerator of α depend on the real and imaginary parts of the potential. The work highlights that despite the non-Hermitian nature of the Hamiltonian, the scattering amplitudes can be computed using standard linear algebra techniques, effectively bridging the gap between discrete numerical methods and the theoretical framework of PT-symmetric quantum mechanics. The study concludes that the apparent asymmetry between incoming and outgoing states in PT-symmetric scattering is formal and tractable, providing a schematic model that may inform future studies on non-Hermitian inverse scattering problems.",
+    "research_context": [
+      {
+        "Standard textbooks describe stationary one-dimensional motion in real potential wells.": "real potential well"
+      },
+      {
+        "The conventional approach has been generalized to non-Hermitian Hamiltonians.": "non-\nHermitian Hamiltonians"
+      },
+      {
+        "These Hamiltonians are quasi-Hermitian, Hermitian only in a metric sense.": "quasi-Hermitian"
+      },
+      {
+        "The key ideas incorporate PT-symmetry of the Hamiltonians.": "PT −symmetry"
+      },
+      {
+        "This development was summarized in a review by Carl Bender.": "Carl Bender"
+      },
+      {
+        "The paper focuses on a simple PT-symmetric scattering model.": "PT −symmetric scat"
+      },
+      {
+        "The potential is complex, with real even and odd components.": "complex, PT −symmetric"
+      },
+      {
+        "The Schrödinger equation is replaced by a Runge-Kutta-discretized version.": "Runge-Kutta-discretized"
+      },
+      {
+        "This discretization was previously employed for bound-state problems.": "bound-state problem"
+      },
+      {
+        "The study aims to fill a gap in scattering literature.": "ﬁll the gap"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central question is how to derive reflection and transmission coefficients.": "reﬂection and transmission"
+      },
+      {
+        "The hypothesis is that a complex PT-symmetric potential allows real spectra.": "purely\nreal bound-state"
+      },
+      {
+        "The study predicts that the scattering problem remains tractable.": "problem remains tractable"
+      },
+      {
+        "It is hypothesized that the formalism parallels Hermitian scattering.": "close formal parallelism"
+      },
+      {
+        "The innovation is expected to emerge via complexification of parameters.": "complexiﬁcation"
+      },
+      {
+        "The model assumes the potential vanishes beyond a certain distance.": "vanishes\nbeyond certain"
+      },
+      {
+        "The energy variable ϕ is constrained to a specific range.": "E ∈(0, 4/h2)"
+      },
+      {
+        "The method relies on matching boundary conditions at the cutoff.": "matching method"
+      },
+      {
+        "The goal is to reduce the problem to linear algebra.": "linear algebraic problem"
+      },
+      {
+        "The study tests the applicability of matrix inversion for scattering.": "matrix-inversion method"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study uses a one-dimensional scattering problem with a complex potential.": "scattering problem admitting"
+      },
+      {
+        "The potential V(x) is defined as Z(x) + iY(x).": "Z(x) + i Y"
+      },
+      {
+        "Z(x) is real and even, while Y(x) is real and odd.": "Z(−x) = Z(x)"
+      },
+      {
+        "The Schrödinger equation is discretized using the Runge-Kutta method.": "Runge-Kutta-discretized"
+      },
+      {
+        "The lattice step h is a positive parameter.": "h > 0"
+      },
+      {
+        "The potential is assumed to vanish for |k| ≥ M.": "V (x±j) = 0"
+      },
+      {
+        "The energy is parameterized by ϕ where 2 cos ϕ = 2 − h²E.": "2 cos ϕ"
+      },
+      {
+        "The boundary conditions specify incoming, reflected, and transmitted waves.": "A eiκx + B"
+      },
+      {
+        "The conventional choice is A = 1 for the incident wave.": "A = 1"
+      },
+      {
+        "The model is tested for cutoffs M = 1, 2, and 3.": "M = 1"
+      },
+      {
+        "For M=1, the system degenerates to three nontrivial relations.": "three nontrivial relations"
+      },
+      {
+        "For M=2, the system involves four known quantities.": "four known quantities"
+      },
+      {
+        "The method involves matching wavefunctions at the potential boundaries.": "matching method"
+      },
+      {
+        "The matrix T is a (2M − 1)-dimensional square matrix.": "2M −1"
+      },
+      {
+        "The inverse matrix R is partitioned to extract coefficients α and β.": "inverse matrix R"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The difference Schrödinger equation is written as a linear system.": "linear algebraic equations"
+      },
+      {
+        "The system matrix S_k depends on the potential and energy.": "S−1"
+      },
+      {
+        "The eigenvector components are prescribed by boundary conditions.": "boundary conditions"
+      },
+      {
+        "The infinite system is reduced to a finite non-square matrix.": "non-square-matrix"
+      },
+      {
+        "This is further reduced to a non-homogeneous system of 2M − 1 equations.": "2M −1 equations"
+      },
+      {
+        "The matrix T is partitioned into submatrices for inversion.": "partitioned as"
+      },
+      {
+        "The inverse matrix R is decomposed into blocks α, β, Q, etc.": "partitioned form"
+      },
+      {
+        "The coefficients α and β carry the dynamical input information.": "dynamical input"
+      },
+      {
+        "β is equal to 1/det T, and α has the same denominator.": "1/ det T"
+      },
+      {
+        "Explicit determinants are calculated for M=2, M=3, and M=4.": "det T"
+      },
+      {
+        "For M=2, det T involves Z0, Z1, and Y1.": "Z0 Z1"
+      },
+      {
+        "For M=3, the determinant includes higher-order products of couplings.": "Z0 Z1"
+      },
+      {
+        "For M=4, symbolic manipulations on a computer are recommended.": "Symbolic manipulations"
+      },
+      {
+        "The final coefficients B and C are solved via elimination.": "elimination of"
+      },
+      {
+        "The transmission coefficient C is given by a specific rational formula.": "2iβe−2iMϕ"
+      }
+    ],
+    "key_results": [
+      {
+        "For M=1, the transmission coefficient C is 2i sin ϕ / (2i sin ϕ − Z0).": "2i sin ϕ"
+      },
+      {
+        "For M=1, the reflection coefficient B is Z0 / (2i sin ϕ − Z0).": "Z0"
+      },
+      {
+        "For M=2, the determinant det T is Z0 Z1² − 2 Z1 + Y1² Z0.": "Z0 Z1"
+      },
+      {
+        "The real part of γ for M=2 is Z0 Z1 − 1.": "Z0 Z1 −1"
+      },
+      {
+        "The imaginary part of γ for M=2 is −Z0 Y1.": "−Z0 Y1"
+      },
+      {
+        "For M=3, the determinant includes terms like Y1² Z0 Z2².": "Y1"
+      },
+      {
+        "The general transmission coefficient C involves α and β.": "2iβe−2iMϕ"
+      },
+      {
+        "The reflection coefficient B is expressed in terms of C, α, and β.": "−e−2iMϕ"
+      },
+      {
+        "The coefficients α and β are rational functions of the couplings.": "rational\nfunctions"
+      },
+      {
+        "The complexity of formulae grows rapidly with M.": "growth of complexity"
+      },
+      {
+        "For M=4, the determinant has 15 linear terms in couplings.": "15"
+      },
+      {
+        "The weak coupling regime simplifies the determinant to linear terms.": "weak coupling"
+      },
+      {
+        "The formal structure of coefficients matches the Hermitian case.": "same form"
+      },
+      {
+        "The only difference is the complexification of potential parameters.": "complexiﬁcation"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The study shows a close parallelism between Hermitian and PT-symmetric scattering.": "close formal parallelism"
+      },
+      {
+        "The definition of transmission and reflection coefficients is identical.": "same form"
+      },
+      {
+        "Differences are encoded in the dynamical input functions α and β.": "dynamical input"
+      },
+      {
+        "The asymmetry between in and out states is merely formal.": "merely formal"
+      },
+      {
+        "The problem remains tractable by standard linear algebra techniques.": "standard"
+      },
+      {
+        "The partitioning of the Schrödinger equation is key to the success.": "partitioning"
+      },
+      {
+        "The method reduces amplitude construction to a 2D matrix inversion.": "two-dimensional matrix"
+      },
+      {
+        "This approach may inform non-Hermitian inverse scattering problems.": "inverse problem"
+      },
+      {
+        "The work fills a gap in the literature on PT-symmetric scattering.": "ﬁll the gap"
+      },
+      {
+        "It unifies Runge-Kutta discretization with chain-model approximations.": "uniﬁcation"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The model is limited to short-range potentials.": "short-\nrange potential"
+      },
+      {
+        "The discretization introduces O(h⁴) discrepancies.": "O(h4)"
+      },
+      {
+        "The energy is constrained to E ∈ (0, 4/h²).": "E ∈(0, 4/h2)"
+      },
+      {
+        "Explicit algebraic determination of determinants becomes difficult for M ≥ 4.": "less easy"
+      },
+      {
+        "Symbolic manipulations are required for higher dimensions.": "Symbolic manipulations"
+      },
+      {
+        "The study does not provide a rigorous proof for all δ ≥ 0.": "rigorous mathematical"
+      },
+      {
+        "The physical Hilbert space existence is assumed from prior work.": "physical"
+      },
+      {
+        "The model is schematic and may not capture all physical nuances.": "schematic model"
+      },
+      {
+        "The convergence of the Runge-Kutta method depends on h and M.": "quickest convergence"
+      }
+    ],
+    "claims": [
+      {
+        "description": "The scattering coefficients in PT-symmetric quantum mechanics have the same formal structure as in Hermitian quantum mechanics.",
+        "supporting_evidence": [
+          {
+            "The definition of transmission and reflection coefficients has the same form.": "same form"
+          },
+          {
+            "The only innovation is the complexification of potential parameters.": "complexiﬁcation"
+          },
+          {
+            "The coefficients are encoded in functions α and β.": "dynamical input"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The potential is complex, which is non-Hermitian.": "complex, PT −symmetric"
+          },
+          {
+            "The asymmetry between in and out states is noted.": "manifest asymmetry"
+          }
+        ],
+        "implications": [
+          {
+            "Standard linear algebra techniques can be used for non-Hermitian scattering.": "standard"
+          },
+          {
+            "This simplifies the analysis of PT-symmetric systems.": "tractable"
+          }
+        ]
+      },
+      {
+        "description": "The Runge-Kutta discretization allows for the derivation of explicit scattering coefficients.",
+        "supporting_evidence": [
+          {
+            "The Schrödinger equation is replaced by a difference equation.": "diﬀerence-equation"
+          },
+          {
+            "Explicit formulae for B and C are derived.": "formulae"
+          },
+          {
+            "The method is illustrated for M=1, 2, and 3.": "M = 1"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The discretization introduces numerical errors of order O(h⁴).": "O(h4)"
+          },
+          {
+            "The energy range is limited by the lattice step.": "E ∈(0, 4/h2)"
+          }
+        ],
+        "implications": [
+          {
+            "Numerical methods can be applied to non-Hermitian quantum mechanics.": "numerical recipe"
+          },
+          {
+            "This provides a bridge between continuous and discrete models.": "Runge-Kutta"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The study compares M=1, M=2, and M=3 to show complexity growth.": "growth of complexity"
+      },
+      {
+        "The weak coupling regime is analyzed to simplify determinants.": "weak coupling"
+      },
+      {
+        "The method is robust for small M but requires symbolic tools for larger M.": "Symbolic manipulations"
+      },
+      {
+        "The convergence of the Runge-Kutta method is discussed.": "quickest convergence"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Equation (21) provides the main result for the transmission coefficient C.": "2iβe−2iMϕ"
+      },
+      {
+        "Equation (20) provides the formula for the reflection coefficient B.": "−e−2iMϕ"
+      },
+      {
+        "Section 5.1 lists the determinant and γ for M=2.": "det T"
+      },
+      {
+        "Section 5.2 lists the determinant and γ for M=3.": "det T"
+      },
+      {
+        "Section 5.3 discusses the complexity for M=4.": "M = 4"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the derivation of scattering coefficients for PT-symmetric potentials using Runge-Kutta discretization.": "Runge-Kutta-discretized"
+      },
+      {
+        "2. The strongest evidence is the explicit formulae for B and C showing formal parallelism with Hermitian cases.": "same form"
+      },
+      {
+        "3. The future path involves applying this method to non-Hermitian inverse scattering problems.": "inverse problem"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper investigates the one-dimensional scattering problem within the framework of PT-symmetric quantum mechanics, specifically utilizing a Runge-Kutta discretized version of the Schrödinger equation. The study focuses on a complex, short-range potential V(x) = Z(x) + iY(x) that satisfies PT-symmetry conditions, where Z(x) is even and real, and Y(x) is odd and real. The primary objective is to derive explicit formulae for the reflection (B) and transmission (C) coefficients for this non-Hermitian system. The author demonstrates that by employing a matrix-inversion method on the discretized difference equations, the scattering problem can be reduced to a finite-dimensional linear algebraic system. The core finding is that the formal structure of the scattering coefficients in the PT-symmetric case is identical to that of the standard Hermitian case, with the sole difference lying in the complexification of the potential parameters. Specifically, the transmission coefficient C is determined by a ratio involving a complex coefficient α and a real coefficient β, which are functions of the lattice potential values. The paper illustrates this with explicit calculations for small cutoffs M=1, M=2, and M=3, showing how the determinant of the system matrix and the numerator of α depend on the real and imaginary parts of the potential. The work highlights that despite the non-Hermitian nature of the Hamiltonian, the scattering amplitudes can be computed using standard linear algebra techniques, effectively bridging the gap between discrete numerical methods and the theoretical framework of PT-symmetric quantum mechanics. The study concludes that the apparent asymmetry between incoming and outgoing states in PT-symmetric scattering is formal and tractable, providing a schematic model that may inform future studies on non-Hermitian inverse scattering problems.\n\nResearch Context\nStandard textbooks describe stationary one-dimensional motion in real potential wells. The conventional approach has been generalized to non-Hermitian Hamiltonians. These Hamiltonians are quasi-Hermitian, Hermitian only in a metric sense. The key ideas incorporate PT-symmetry of the Hamiltonians. This development was summarized in a review by Carl Bender. The paper focuses on a simple PT-symmetric scattering model. The potential is complex, with real even and odd components. The Schrödinger equation is replaced by a Runge-Kutta-discretized version. This discretization was previously employed for bound-state problems. The study aims to fill a gap in scattering literature.\n\nResearch Question And Hypothesis\nThe central question is how to derive reflection and transmission coefficients. The hypothesis is that a complex PT-symmetric potential allows real spectra. The study predicts that the scattering problem remains tractable. It is hypothesized that the formalism parallels Hermitian scattering. The innovation is expected to emerge via complexification of parameters. The model assumes the potential vanishes beyond a certain distance. The energy variable ϕ is constrained to a specific range. The method relies on matching boundary conditions at the cutoff. The goal is to reduce the problem to linear algebra. The study tests the applicability of matrix inversion for scattering.\n\nMethodological Details\nThe study uses a one-dimensional scattering problem with a complex potential. The potential V(x) is defined as Z(x) + iY(x). Z(x) is real and even, while Y(x) is real and odd. The Schrödinger equation is discretized using the Runge-Kutta method. The lattice step h is a positive parameter. The potential is assumed to vanish for |k| ≥ M. The energy is parameterized by ϕ where 2 cos ϕ = 2 − h²E. The boundary conditions specify incoming, reflected, and transmitted waves. The conventional choice is A = 1 for the incident wave. The model is tested for cutoffs M = 1, 2, and 3. For M=1, the system degenerates to three nontrivial relations. For M=2, the system involves four known quantities. The method involves matching wavefunctions at the potential boundaries. The matrix T is a (2M − 1)-dimensional square matrix. The inverse matrix R is partitioned to extract coefficients α and β.\n\nProcedures And Architectures\nThe difference Schrödinger equation is written as a linear system. The system matrix S_k depends on the potential and energy. The eigenvector components are prescribed by boundary conditions. The infinite system is reduced to a finite non-square matrix. This is further reduced to a non-homogeneous system of 2M − 1 equations. The matrix T is partitioned into submatrices for inversion. The inverse matrix R is decomposed into blocks α, β, Q, etc. The coefficients α and β carry the dynamical input information. β is equal to 1/det T, and α has the same denominator. Explicit determinants are calculated for M=2, M=3, and M=4. For M=2, det T involves Z0, Z1, and Y1. For M=3, the determinant includes higher-order products of couplings. For M=4, symbolic manipulations on a computer are recommended. The final coefficients B and C are solved via elimination. The transmission coefficient C is given by a specific rational formula.\n\nKey Results\nFor M=1, the transmission coefficient C is 2i sin ϕ / (2i sin ϕ − Z0). For M=1, the reflection coefficient B is Z0 / (2i sin ϕ − Z0). For M=2, the determinant det T is Z0 Z1² − 2 Z1 + Y1² Z0. The real part of γ for M=2 is Z0 Z1 − 1. The imaginary part of γ for M=2 is −Z0 Y1. For M=3, the determinant includes terms like Y1² Z0 Z2². The general transmission coefficient C involves α and β. The reflection coefficient B is expressed in terms of C, α, and β. The coefficients α and β are rational functions of the couplings. The complexity of formulae grows rapidly with M. For M=4, the determinant has 15 linear terms in couplings. The weak coupling regime simplifies the determinant to linear terms. The formal structure of coefficients matches the Hermitian case. The only difference is the complexification of potential parameters.\n\nInterpretation And Theoretical Implications\nThe study shows a close parallelism between Hermitian and PT-symmetric scattering. The definition of transmission and reflection coefficients is identical. Differences are encoded in the dynamical input functions α and β. The asymmetry between in and out states is merely formal. The problem remains tractable by standard linear algebra techniques. The partitioning of the Schrödinger equation is key to the success. The method reduces amplitude construction to a 2D matrix inversion. This approach may inform non-Hermitian inverse scattering problems. The work fills a gap in the literature on PT-symmetric scattering. It unifies Runge-Kutta discretization with chain-model approximations.\n\nContradictions And Limitations\nThe model is limited to short-range potentials. The discretization introduces O(h⁴) discrepancies. The energy is constrained to E ∈ (0, 4/h²). Explicit algebraic determination of determinants becomes difficult for M ≥ 4. Symbolic manipulations are required for higher dimensions. The study does not provide a rigorous proof for all δ ≥ 0. The physical Hilbert space existence is assumed from prior work. The model is schematic and may not capture all physical nuances. The convergence of the Runge-Kutta method depends on h and M.\n\nClaims\nThe scattering coefficients in PT-symmetric quantum mechanics have the same formal structure as in Hermitian quantum mechanics. The definition of transmission and reflection coefficients has the same form. The only innovation is the complexification of potential parameters. The coefficients are encoded in functions α and β. The potential is complex, which is non-Hermitian. The asymmetry between in and out states is noted. Standard linear algebra techniques can be used for non-Hermitian scattering. This simplifies the analysis of PT-symmetric systems.\nThe Runge-Kutta discretization allows for the derivation of explicit scattering coefficients. The Schrödinger equation is replaced by a difference equation. Explicit formulae for B and C are derived. The method is illustrated for M=1, 2, and 3. The discretization introduces numerical errors of order O(h⁴). The energy range is limited by the lattice step. Numerical methods can be applied to non-Hermitian quantum mechanics. This provides a bridge between continuous and discrete models.\n\nRobustness And Ablation Notes\nThe study compares M=1, M=2, and M=3 to show complexity growth. The weak coupling regime is analyzed to simplify determinants. The method is robust for small M but requires symbolic tools for larger M. The convergence of the Runge-Kutta method is discussed.\n\nKey Figures Tables\nEquation (21) provides the main result for the transmission coefficient C. Equation (20) provides the formula for the reflection coefficient B. Section 5.1 lists the determinant and γ for M=2. Section 5.2 lists the determinant and γ for M=3. Section 5.3 discusses the complexity for M=4.\n\nThree Takeaways\n1. The core contribution is the derivation of scattering coefficients for PT-symmetric potentials using Runge-Kutta discretization. 2. The strongest evidence is the explicit formulae for B and C showing formal parallelism with Hermitian cases. 3. The future path involves applying this method to non-Hermitian inverse scattering problems.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "real potential well",
+      "start": 722,
+      "end": 741,
+      "typographic_alignment": false,
+      "original_quote": "real potential well"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "non-\nHermitian Hamiltonians",
+      "start": 1516,
+      "end": 1543,
+      "typographic_alignment": true,
+      "original_quote": "non-Hermitian Hamiltonians"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "quasi-Hermitian",
+      "start": 1569,
+      "end": 1584,
+      "typographic_alignment": false,
+      "original_quote": "quasi-Hermitian"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "PT −symmetry",
+      "start": 1852,
+      "end": 1864,
+      "typographic_alignment": false,
+      "original_quote": "PT −symmetry"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "Carl Bender",
+      "start": 1938,
+      "end": 1949,
+      "typographic_alignment": false,
+      "original_quote": "Carl Bender"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "PT −symmetric scat",
+      "start": 2102,
+      "end": 2120,
+      "typographic_alignment": false,
+      "original_quote": "PT −symmetric scat"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "complex, PT −symmetric",
+      "start": 267,
+      "end": 289,
+      "typographic_alignment": false,
+      "original_quote": "complex, PT −symmetric"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "Runge-Kutta-discretized",
+      "start": 342,
+      "end": 365,
+      "typographic_alignment": false,
+      "original_quote": "Runge-Kutta-discretized"
+    },
+    {
+      "path": "research_context[8]",
+      "quote": "bound-state problem",
+      "start": 2477,
+      "end": 2496,
+      "typographic_alignment": false,
+      "original_quote": "bound-state problem"
+    },
+    {
+      "path": "research_context[9]",
+      "quote": "ﬁll the gap",
+      "start": 13431,
+      "end": 13442,
+      "typographic_alignment": true,
+      "original_quote": "fill the gap"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "reﬂection and transmission",
+      "start": 430,
+      "end": 456,
+      "typographic_alignment": true,
+      "original_quote": "reflection and transmission"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "purely\nreal bound-state",
+      "start": 11886,
+      "end": 11909,
+      "typographic_alignment": true,
+      "original_quote": "purely real bound-state"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "problem remains tractable",
+      "start": 14827,
+      "end": 14852,
+      "typographic_alignment": false,
+      "original_quote": "problem remains tractable"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "close formal parallelism",
+      "start": 13774,
+      "end": 13798,
+      "typographic_alignment": false,
+      "original_quote": "close formal parallelism"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "complexiﬁcation",
+      "start": 532,
+      "end": 547,
+      "typographic_alignment": false,
+      "original_quote": "complexiﬁcation"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "vanishes\nbeyond certain",
+      "start": 2611,
+      "end": 2634,
+      "typographic_alignment": true,
+      "original_quote": "vanishes beyond certain"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "E ∈(0, 4/h2)",
+      "start": 3486,
+      "end": 3498,
+      "typographic_alignment": false,
+      "original_quote": "E ∈(0, 4/h2)"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "matching method",
+      "start": 4321,
+      "end": 4336,
+      "typographic_alignment": false,
+      "original_quote": "matching method"
+    },
+    {
+      "path": "research_question_and_hypothesis[8]",
+      "quote": "linear algebraic problem",
+      "start": 6236,
+      "end": 6260,
+      "typographic_alignment": false,
+      "original_quote": "linear algebraic problem"
+    },
+    {
+      "path": "research_question_and_hypothesis[9]",
+      "quote": "matrix-inversion method",
+      "start": 6418,
+      "end": 6441,
+      "typographic_alignment": false,
+      "original_quote": "matrix-inversion method"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "scattering problem admitting",
+      "start": 236,
+      "end": 264,
+      "typographic_alignment": false,
+      "original_quote": "scattering problem admitting"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "Z(x) + i Y",
+      "start": 2149,
+      "end": 2159,
+      "typographic_alignment": false,
+      "original_quote": "Z(x) + i Y"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "Z(−x) = Z(x)",
+      "start": 2166,
+      "end": 2178,
+      "typographic_alignment": false,
+      "original_quote": "Z(−x) = Z(x)"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "Runge-Kutta-discretized",
+      "start": 342,
+      "end": 365,
+      "typographic_alignment": false,
+      "original_quote": "Runge-Kutta-discretized"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "h > 0",
+      "start": 2417,
+      "end": 2422,
+      "typographic_alignment": false,
+      "original_quote": "h > 0"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "V (x±j) = 0",
+      "start": 2661,
+      "end": 2672,
+      "typographic_alignment": false,
+      "original_quote": "V (x±j) = 0"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "2 cos ϕ",
+      "start": 2743,
+      "end": 2750,
+      "typographic_alignment": false,
+      "original_quote": "2 cos ϕ"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "A eiκx + B",
+      "start": 1182,
+      "end": 1192,
+      "typographic_alignment": false,
+      "original_quote": "A eiκx + B"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "A = 1",
+      "start": 1262,
+      "end": 1267,
+      "typographic_alignment": false,
+      "original_quote": "A = 1"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "M = 1",
+      "start": 4395,
+      "end": 4400,
+      "typographic_alignment": false,
+      "original_quote": "M = 1"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "three nontrivial relations",
+      "start": 4705,
+      "end": 4731,
+      "typographic_alignment": false,
+      "original_quote": "three nontrivial relations"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "four known quantities",
+      "start": 5463,
+      "end": 5484,
+      "typographic_alignment": false,
+      "original_quote": "four known quantities"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "matching method",
+      "start": 4321,
+      "end": 4336,
+      "typographic_alignment": false,
+      "original_quote": "matching method"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "2M −1",
+      "start": 7609,
+      "end": 7614,
+      "typographic_alignment": false,
+      "original_quote": "2M −1"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "inverse matrix R",
+      "start": 8138,
+      "end": 8154,
+      "typographic_alignment": false,
+      "original_quote": "inverse matrix R"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "linear algebraic equations",
+      "start": 6539,
+      "end": 6565,
+      "typographic_alignment": false,
+      "original_quote": "linear algebraic equations"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "S−1",
+      "start": 6614,
+      "end": 6617,
+      "typographic_alignment": false,
+      "original_quote": "S−1"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "boundary conditions",
+      "start": 1021,
+      "end": 1040,
+      "typographic_alignment": false,
+      "original_quote": "boundary conditions"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "non-square-matrix",
+      "start": 7219,
+      "end": 7236,
+      "typographic_alignment": false,
+      "original_quote": "non-square-matrix"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "2M −1 equations",
+      "start": 7609,
+      "end": 7624,
+      "typographic_alignment": false,
+      "original_quote": "2M −1 equations"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "partitioned as",
+      "start": 7874,
+      "end": 7888,
+      "typographic_alignment": false,
+      "original_quote": "partitioned as"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "partitioned form",
+      "start": 8483,
+      "end": 8499,
+      "typographic_alignment": false,
+      "original_quote": "partitioned form"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "dynamical input",
+      "start": 9696,
+      "end": 9711,
+      "typographic_alignment": false,
+      "original_quote": "dynamical input"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "1/ det T",
+      "start": 9929,
+      "end": 9937,
+      "typographic_alignment": false,
+      "original_quote": "1/ det T"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "det T",
+      "start": 9932,
+      "end": 9937,
+      "typographic_alignment": false,
+      "original_quote": "det T"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "Z0 Z1",
+      "start": 10170,
+      "end": 10175,
+      "typographic_alignment": false,
+      "original_quote": "Z0 Z1"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "Z0 Z1",
+      "start": 10170,
+      "end": 10175,
+      "typographic_alignment": false,
+      "original_quote": "Z0 Z1"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "Symbolic manipulations",
+      "start": 11449,
+      "end": 11471,
+      "typographic_alignment": false,
+      "original_quote": "Symbolic manipulations"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "elimination of",
+      "start": 9382,
+      "end": 9396,
+      "typographic_alignment": false,
+      "original_quote": "elimination of"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "2iβe−2iMϕ",
+      "start": 9458,
+      "end": 9467,
+      "typographic_alignment": false,
+      "original_quote": "2iβe−2iMϕ"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "2i sin ϕ",
+      "start": 5149,
+      "end": 5157,
+      "typographic_alignment": false,
+      "original_quote": "2i sin ϕ"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "Z0",
+      "start": 4782,
+      "end": 4784,
+      "typographic_alignment": false,
+      "original_quote": "Z0"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "Z0 Z1",
+      "start": 10170,
+      "end": 10175,
+      "typographic_alignment": false,
+      "original_quote": "Z0 Z1"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "Z0 Z1 −1",
+      "start": 10200,
+      "end": 10208,
+      "typographic_alignment": true,
+      "original_quote": "Z0 Z1 − 1"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "−Z0 Y1",
+      "start": 10216,
+      "end": 10222,
+      "typographic_alignment": false,
+      "original_quote": "−Z0 Y1"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "Y1",
+      "start": 9883,
+      "end": 9885,
+      "typographic_alignment": false,
+      "original_quote": "Y1"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "2iβe−2iMϕ",
+      "start": 9458,
+      "end": 9467,
+      "typographic_alignment": false,
+      "original_quote": "2iβe−2iMϕ"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "−e−2iMϕ",
+      "start": 9401,
+      "end": 9408,
+      "typographic_alignment": false,
+      "original_quote": "−e−2iMϕ"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "rational\nfunctions",
+      "start": 9802,
+      "end": 9820,
+      "typographic_alignment": true,
+      "original_quote": "rational functions"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "growth of complexity",
+      "start": 10461,
+      "end": 10481,
+      "typographic_alignment": false,
+      "original_quote": "growth of complexity"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "15",
+      "start": 7805,
+      "end": 7807,
+      "typographic_alignment": false,
+      "original_quote": "15"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "weak coupling",
+      "start": 10743,
+      "end": 10756,
+      "typographic_alignment": false,
+      "original_quote": "weak coupling"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "same form",
+      "start": 14088,
+      "end": 14097,
+      "typographic_alignment": false,
+      "original_quote": "same form"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "complexiﬁcation",
+      "start": 532,
+      "end": 547,
+      "typographic_alignment": false,
+      "original_quote": "complexiﬁcation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "close formal parallelism",
+      "start": 13774,
+      "end": 13798,
+      "typographic_alignment": false,
+      "original_quote": "close formal parallelism"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "same form",
+      "start": 14088,
+      "end": 14097,
+      "typographic_alignment": false,
+      "original_quote": "same form"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "dynamical input",
+      "start": 9696,
+      "end": 9711,
+      "typographic_alignment": false,
+      "original_quote": "dynamical input"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "merely formal",
+      "start": 14800,
+      "end": 14813,
+      "typographic_alignment": false,
+      "original_quote": "merely formal"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "standard",
+      "start": 3106,
+      "end": 3114,
+      "typographic_alignment": false,
+      "original_quote": "standard"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "partitioning",
+      "start": 8228,
+      "end": 8240,
+      "typographic_alignment": false,
+      "original_quote": "partitioning"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "two-dimensional matrix",
+      "start": 15147,
+      "end": 15169,
+      "typographic_alignment": false,
+      "original_quote": "two-dimensional matrix"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "inverse problem",
+      "start": 15515,
+      "end": 15530,
+      "typographic_alignment": false,
+      "original_quote": "inverse problem"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[8]",
+      "quote": "ﬁll the gap",
+      "start": 13431,
+      "end": 13442,
+      "typographic_alignment": true,
+      "original_quote": "fill the gap"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[9]",
+      "quote": "uniﬁcation",
+      "start": 13690,
+      "end": 13700,
+      "typographic_alignment": false,
+      "original_quote": "uniﬁcation"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "short-\nrange potential",
+      "start": 290,
+      "end": 312,
+      "typographic_alignment": true,
+      "original_quote": "short-range potential"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "O(h4)",
+      "start": 3675,
+      "end": 3680,
+      "typographic_alignment": false,
+      "original_quote": "O(h4)"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "E ∈(0, 4/h2)",
+      "start": 3486,
+      "end": 3498,
+      "typographic_alignment": false,
+      "original_quote": "E ∈(0, 4/h2)"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "less easy",
+      "start": 10079,
+      "end": 10088,
+      "typographic_alignment": false,
+      "original_quote": "less easy"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "Symbolic manipulations",
+      "start": 11449,
+      "end": 11471,
+      "typographic_alignment": false,
+      "original_quote": "Symbolic manipulations"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "rigorous mathematical",
+      "start": 11954,
+      "end": 11975,
+      "typographic_alignment": false,
+      "original_quote": "rigorous mathematical"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "physical",
+      "start": 12110,
+      "end": 12118,
+      "typographic_alignment": false,
+      "original_quote": "physical"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "schematic model",
+      "start": 44,
+      "end": 59,
+      "typographic_alignment": false,
+      "original_quote": "schematic model"
+    },
+    {
+      "path": "contradictions_and_limitations[8]",
+      "quote": "quickest convergence",
+      "start": 4250,
+      "end": 4270,
+      "typographic_alignment": false,
+      "original_quote": "quickest convergence"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "growth of complexity",
+      "start": 10461,
+      "end": 10481,
+      "typographic_alignment": false,
+      "original_quote": "growth of complexity"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "weak coupling",
+      "start": 10743,
+      "end": 10756,
+      "typographic_alignment": false,
+      "original_quote": "weak coupling"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "Symbolic manipulations",
+      "start": 11449,
+      "end": 11471,
+      "typographic_alignment": false,
+      "original_quote": "Symbolic manipulations"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "quickest convergence",
+      "start": 4250,
+      "end": 4270,
+      "typographic_alignment": false,
+      "original_quote": "quickest convergence"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "2iβe−2iMϕ",
+      "start": 9458,
+      "end": 9467,
+      "typographic_alignment": false,
+      "original_quote": "2iβe−2iMϕ"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "−e−2iMϕ",
+      "start": 9401,
+      "end": 9408,
+      "typographic_alignment": false,
+      "original_quote": "−e−2iMϕ"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "det T",
+      "start": 9932,
+      "end": 9937,
+      "typographic_alignment": false,
+      "original_quote": "det T"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "det T",
+      "start": 9932,
+      "end": 9937,
+      "typographic_alignment": false,
+      "original_quote": "det T"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "M = 4",
+      "start": 10451,
+      "end": 10456,
+      "typographic_alignment": false,
+      "original_quote": "M = 4"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "Runge-Kutta-discretized",
+      "start": 342,
+      "end": 365,
+      "typographic_alignment": false,
+      "original_quote": "Runge-Kutta-discretized"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "same form",
+      "start": 14088,
+      "end": 14097,
+      "typographic_alignment": false,
+      "original_quote": "same form"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "inverse problem",
+      "start": 15515,
+      "end": 15530,
+      "typographic_alignment": false,
+      "original_quote": "inverse problem"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "same form",
+      "start": 14088,
+      "end": 14097,
+      "typographic_alignment": false,
+      "original_quote": "same form"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "complexiﬁcation",
+      "start": 532,
+      "end": 547,
+      "typographic_alignment": false,
+      "original_quote": "complexiﬁcation"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "dynamical input",
+      "start": 9696,
+      "end": 9711,
+      "typographic_alignment": false,
+      "original_quote": "dynamical input"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "complex, PT −symmetric",
+      "start": 267,
+      "end": 289,
+      "typographic_alignment": false,
+      "original_quote": "complex, PT −symmetric"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "manifest asymmetry",
+      "start": 14666,
+      "end": 14684,
+      "typographic_alignment": false,
+      "original_quote": "manifest asymmetry"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "standard",
+      "start": 3106,
+      "end": 3114,
+      "typographic_alignment": false,
+      "original_quote": "standard"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "tractable",
+      "start": 14843,
+      "end": 14852,
+      "typographic_alignment": false,
+      "original_quote": "tractable"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "diﬀerence-equation",
+      "start": 2307,
+      "end": 2325,
+      "typographic_alignment": true,
+      "original_quote": "difference-equation"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "formulae",
+      "start": 413,
+      "end": 421,
+      "typographic_alignment": false,
+      "original_quote": "formulae"
+    },
+    {
+      "path": "claims[1].supporting_evidence[2]",
+      "quote": "M = 1",
+      "start": 4395,
+      "end": 4400,
+      "typographic_alignment": false,
+      "original_quote": "M = 1"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "O(h4)",
+      "start": 3675,
+      "end": 3680,
+      "typographic_alignment": false,
+      "original_quote": "O(h4)"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[1]",
+      "quote": "E ∈(0, 4/h2)",
+      "start": 3486,
+      "end": 3498,
+      "typographic_alignment": false,
+      "original_quote": "E ∈(0, 4/h2)"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "numerical recipe",
+      "start": 4060,
+      "end": 4076,
+      "typographic_alignment": false,
+      "original_quote": "numerical recipe"
+    },
+    {
+      "path": "claims[1].implications[1]",
+      "quote": "Runge-Kutta",
+      "start": 342,
+      "end": 353,
+      "typographic_alignment": false,
+      "original_quote": "Runge-Kutta"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"A schematic model of scattering in PT −symmetric Quantum Mechanics\",\n\"authors\": \"Miloslav Znojil\",\n\"field_subfield\": \"Quantum Physics / Non-Hermitian Quantum Mechanics\",\n\"type_of_paper\": \"Theoretical Physics / Mathematical Physics\",\n\"executive_summary\": \"This paper investigates the one-dimensional scattering problem within the framework of PT-symmetric quantum mechanics, specifically utilizing a Runge-Kutta discretized version of the Schrödinger equation. The study focuses on a complex, short-range potential V(x) = Z(x) + iY(x) that satisfies PT-symmetry conditions, where Z(x) is even and real, and Y(x) is odd and real. The primary objective is to derive explicit formulae for the reflection (B) and transmission (C) coefficients for this non-Hermitian system. The author demonstrates that by employing a matrix-inversion method on the discretized difference equations, the scattering problem can be reduced to a finite-dimensional linear algebraic system. The core finding is that the formal structure of the scattering coefficients in the PT-symmetric case is identical to that of the standard Hermitian case, with the sole difference lying in the complexification of the potential parameters. Specifically, the transmission coefficient C is determined by a ratio involving a complex coefficient α and a real coefficient β, which are functions of the lattice potential values. The paper illustrates this with explicit calculations for small cutoffs M=1, M=2, and M=3, showing how the determinant of the system matrix and the numerator of α depend on the real and imaginary parts of the potential. The work highlights that despite the non-Hermitian nature of the Hamiltonian, the scattering amplitudes can be computed using standard linear algebra techniques, effectively bridging the gap between discrete numerical methods and the theoretical framework of PT-symmetric quantum mechanics. The study concludes that the apparent asymmetry between incoming and outgoing states in PT-symmetric scattering is formal and tractable, providing a schematic model that may inform future studies on non-Hermitian inverse scattering problems.\",\n\"research_context\": [\n{ \"Standard textbooks describe stationary one-dimensional motion in real potential wells.\": \"real potential well\" },\n{ \"The conventional approach has been generalized to non-Hermitian Hamiltonians.\": \"non-Hermitian Hamiltonians\" },\n{ \"These Hamiltonians are quasi-Hermitian, Hermitian only in a metric sense.\": \"quasi-Hermitian\" },\n{ \"The key ideas incorporate PT-symmetry of the Hamiltonians.\": \"PT −symmetry\" },\n{ \"This development was summarized in a review by Carl Bender.\": \"Carl Bender\" },\n{ \"The paper focuses on a simple PT-symmetric scattering model.\": \"PT −symmetric scat\" },\n{ \"The potential is complex, with real even and odd components.\": \"complex, PT −symmetric\" },\n{ \"The Schrödinger equation is replaced by a Runge-Kutta-discretized version.\": \"Runge-Kutta-discretized\" },\n{ \"This discretization was previously employed for bound-state problems.\": \"bound-state problem\" },\n{ \"The study aims to fill a gap in scattering literature.\": \"fill the gap\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"The central question is how to derive reflection and transmission coefficients.\": \"reflection and transmission\" },\n{ \"The hypothesis is that a complex PT-symmetric potential allows real spectra.\": \"purely real bound-state\" },\n{ \"The study predicts that the scattering problem remains tractable.\": \"problem remains tractable\" },\n{ \"It is hypothesized that the formalism parallels Hermitian scattering.\": \"close formal parallelism\" },\n{ \"The innovation is expected to emerge via complexification of parameters.\": \"complexiﬁcation\" },\n{ \"The model assumes the potential vanishes beyond a certain distance.\": \"vanishes beyond certain\" },\n{ \"The energy variable ϕ is constrained to a specific range.\": \"E ∈(0, 4/h2)\" },\n{ \"The method relies on matching boundary conditions at the cutoff.\": \"matching method\" },\n{ \"The goal is to reduce the problem to linear algebra.\": \"linear algebraic problem\" },\n{ \"The study tests the applicability of matrix inversion for scattering.\": \"matrix-inversion method\" }\n],\n\"methodological_details\": [\n{ \"The study uses a one-dimensional scattering problem with a complex potential.\": \"one-dimensional scattering\" },\n{ \"The potential V(x) is defined as Z(x) + iY(x).\": \"Z(x) + i Y\" },\n{ \"Z(x) is real and even, while Y(x) is real and odd.\": \"Z(−x) = Z(x)\" },\n{ \"The Schrödinger equation is discretized using the Runge-Kutta method.\": \"Runge-Kutta-discretized\" },\n{ \"The lattice step h is a positive parameter.\": \"h > 0\" },\n{ \"The potential is assumed to vanish for |k| ≥ M.\": \"V(x±j) = 0\" },\n{ \"The energy is parameterized by ϕ where 2 cos ϕ = 2 − h²E.\": \"2 cos ϕ\" },\n{ \"The boundary conditions specify incoming, reflected, and transmitted waves.\": \"A eiκx + B\" },\n{ \"The conventional choice is A = 1 for the incident wave.\": \"A = 1\" },\n{ \"The model is tested for cutoffs M = 1, 2, and 3.\": \"M = 1\" },\n{ \"For M=1, the system degenerates to three nontrivial relations.\": \"three nontrivial relations\" },\n{ \"For M=2, the system involves four known quantities.\": \"four known quantities\" },\n{ \"The method involves matching wavefunctions at the potential boundaries.\": \"matching method\" },\n{ \"The matrix T is a (2M − 1)-dimensional square matrix.\": \"2M −1\" },\n{ \"The inverse matrix R is partitioned to extract coefficients α and β.\": \"inverse matrix R\" }\n],\n\"procedures_and_architectures\": [\n{ \"The difference Schrödinger equation is written as a linear system.\": \"linear algebraic equations\" },\n{ \"The system matrix S_k depends on the potential and energy.\": \"S−1\" },\n{ \"The eigenvector components are prescribed by boundary conditions.\": \"boundary conditions\" },\n{ \"The infinite system is reduced to a finite non-square matrix.\": \"non-square-matrix\" },\n{ \"This is further reduced to a non-homogeneous system of 2M − 1 equations.\": \"2M −1 equations\" },\n{ \"The matrix T is partitioned into submatrices for inversion.\": \"partitioned as\" },\n{ \"The inverse matrix R is decomposed into blocks α, β, Q, etc.\": \"partitioned form\" },\n{ \"The coefficients α and β carry the dynamical input information.\": \"dynamical input\" },\n{ \"β is equal to 1/det T, and α has the same denominator.\": \"1/ det T\" },\n{ \"Explicit determinants are calculated for M=2, M=3, and M=4.\": \"det T\" },\n{ \"For M=2, det T involves Z0, Z1, and Y1.\": \"Z0 Z1\" },\n{ \"For M=3, the determinant includes higher-order products of couplings.\": \"Z0 Z1\" },\n{ \"For M=4, symbolic manipulations on a computer are recommended.\": \"symbolic manipulations\" },\n{ \"The final coefficients B and C are solved via elimination.\": \"elimination of\" },\n{ \"The transmission coefficient C is given by a specific rational formula.\": \"2iβe−2iMϕ\" }\n],\n\"key_results\": [\n{ \"For M=1, the transmission coefficient C is 2i sin ϕ / (2i sin ϕ − Z0).\": \"2i sin ϕ\" },\n{ \"For M=1, the reflection coefficient B is Z0 / (2i sin ϕ − Z0).\": \"Z0\" },\n{ \"For M=2, the determinant det T is Z0 Z1² − 2 Z1 + Y1² Z0.\": \"Z0 Z1\" },\n{ \"The real part of γ for M=2 is Z0 Z1 − 1.\": \"Z0 Z1 − 1\" },\n{ \"The imaginary part of γ for M=2 is −Z0 Y1.\": \"−Z0 Y1\" },\n{ \"For M=3, the determinant includes terms like Y1² Z0 Z2².\": \"Y1\" },\n{ \"The general transmission coefficient C involves α and β.\": \"2iβe−2iMϕ\" },\n{ \"The reflection coefficient B is expressed in terms of C, α, and β.\": \"−e−2iMϕ\" },\n{ \"The coefficients α and β are rational functions of the couplings.\": \"rational functions\" },\n{ \"The complexity of formulae grows rapidly with M.\": \"growth of complexity\" },\n{ \"For M=4, the determinant has 15 linear terms in couplings.\": \"15\" },\n{ \"The weak coupling regime simplifies the determinant to linear terms.\": \"weak coupling\" },\n{ \"The formal structure of coefficients matches the Hermitian case.\": \"same form\" },\n{ \"The only difference is the complexification of potential parameters.\": \"complexiﬁcation\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"The study shows a close parallelism between Hermitian and PT-symmetric scattering.\": \"close formal parallelism\" },\n{ \"The definition of transmission and reflection coefficients is identical.\": \"same form\" },\n{ \"Differences are encoded in the dynamical input functions α and β.\": \"dynamical input\" },\n{ \"The asymmetry between in and out states is merely formal.\": \"merely formal\" },\n{ \"The problem remains tractable by standard linear algebra techniques.\": \"standard\" },\n{ \"The partitioning of the Schrödinger equation is key to the success.\": \"partitioning\" },\n{ \"The method reduces amplitude construction to a 2D matrix inversion.\": \"two-dimensional matrix\" },\n{ \"This approach may inform non-Hermitian inverse scattering problems.\": \"inverse problem\" },\n{ \"The work fills a gap in the literature on PT-symmetric scattering.\": \"fill the gap\" },\n{ \"It unifies Runge-Kutta discretization with chain-model approximations.\": \"uniﬁcation\" }\n],\n\"contradictions_and_limitations\": [\n{ \"The model is limited to short-range potentials.\": \"short-range potential\" },\n{ \"The discretization introduces O(h⁴) discrepancies.\": \"O(h4)\" },\n{ \"The energy is constrained to E ∈ (0, 4/h²).\": \"E ∈(0, 4/h2)\" },\n{ \"Explicit algebraic determination of determinants becomes difficult for M ≥ 4.\": \"less easy\" },\n{ \"Symbolic manipulations are required for higher dimensions.\": \"symbolic manipulations\" },\n{ \"The study does not provide a rigorous proof for all δ ≥ 0.\": \"rigorous mathematical\" },\n{ \"The physical Hilbert space existence is assumed from prior work.\": \"physical\" },\n{ \"The model is schematic and may not capture all physical nuances.\": \"schematic model\" },\n{ \"The convergence of the Runge-Kutta method depends on h and M.\": \"quickest convergence\" },\n{ \"The paper does not discuss experimental validation.\": \"\" }\n],\n\"claims\": [\n{\n\"description\": \"The scattering coefficients in PT-symmetric quantum mechanics have the same formal structure as in Hermitian quantum mechanics.\",\n\"supporting_evidence\": [\n{ \"The definition of transmission and reflection coefficients has the same form.\": \"same form\" },\n{ \"The only innovation is the complexification of potential parameters.\": \"complexiﬁcation\" },\n{ \"The coefficients are encoded in functions α and β.\": \"dynamical input\" }\n],\n\"contradicting_evidence\": [\n{ \"The potential is complex, which is non-Hermitian.\": \"complex, PT −symmetric\" },\n{ \"The asymmetry between in and out states is noted.\": \"manifest asymmetry\" }\n],\n\"implications\": [\n{ \"Standard linear algebra techniques can be used for non-Hermitian scattering.\": \"standard\" },\n{ \"This simplifies the analysis of PT-symmetric systems.\": \"tractable\" }\n]\n},\n{\n\"description\": \"The Runge-Kutta discretization allows for the derivation of explicit scattering coefficients.\",\n\"supporting_evidence\": [\n{ \"The Schrödinger equation is replaced by a difference equation.\": \"difference-equation\" },\n{ \"Explicit formulae for B and C are derived.\": \"formulae\" },\n{ \"The method is illustrated for M=1, 2, and 3.\": \"M = 1\" }\n],\n\"contradicting_evidence\": [\n{ \"The discretization introduces numerical errors of order O(h⁴).\": \"O(h4)\" },\n{ \"The energy range is limited by the lattice step.\": \"E ∈(0, 4/h2)\" }\n],\n\"implications\": [\n{ \"Numerical methods can be applied to non-Hermitian quantum mechanics.\": \"numerical recipe\" },\n{ \"This provides a bridge between continuous and discrete models.\": \"Runge-Kutta\" }\n]\n}\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n{ \"The study compares M=1, M=2, and M=3 to show complexity growth.\": \"growth of complexity\" },\n{ \"The weak coupling regime is analyzed to simplify determinants.\": \"weak coupling\" },\n{ \"The method is robust for small M but requires symbolic tools for larger M.\": \"symbolic manipulations\" },\n{ \"The convergence of the Runge-Kutta method is discussed.\": \"quickest convergence\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n{ \"Equation (21) provides the main result for the transmission coefficient C.\": \"2iβe−2iMϕ\" },\n{ \"Equation (20) provides the formula for the reflection coefficient B.\": \"−e−2iMϕ\" },\n{ \"Section 5.1 lists the determinant and γ for M=2.\": \"det T\" },\n{ \"Section 5.2 lists the determinant and γ for M=3.\": \"det T\" },\n{ \"Section 5.3 discusses the complexity for M=4.\": \"M = 4\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n{ \"1. The core contribution is the derivation of scattering coefficients for PT-symmetric potentials using Runge-Kutta discretization.\": \"Runge-Kutta-discretized\" },\n{ \"2. The strongest evidence is the explicit formulae for B and C showing formal parallelism with Hermitian cases.\": \"same form\" },\n{ \"3. The future path involves applying this method to non-Hermitian inverse scattering problems.\": \"inverse problem\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8812,
+        "total_tokens": 12249,
+        "completion_tokens": 3437,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8812,
+      "elapsed_seconds": 314.9889887571335,
+      "max_tokens": 16000,
+      "seed": 69286533,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "75154ee33884db2982e4af1d187dab2862ce0cdf34f156140ff2556c9208caed",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: one-dimensional scattering",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: symbolic manipulations",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: symbolic manipulations",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: symbolic manipulations"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses a one-dimensional scattering problem with a complex potential.\": \"one-dimensional scattering problem\"\n    },\n    {\n      \"The potential V(x) is defined as Z(x) + iY(x).\": \"Z(x) + i Y\"\n    },\n    {\n      \"Z(x) is real and even, while Y(x) is real and odd.\": \"Z(−x) = Z(x)\"\n    },\n    {\n      \"The Schrödinger equation is discretized using the Runge-Kutta method.\": \"Runge-Kutta-discretized\"\n    },\n    {\n      \"The lattice step h is a positive parameter.\": \"h > 0\"\n    },\n    {\n      \"The potential is assumed to vanish for |k| ≥ M.\": \"V(x±j) = 0\"\n    },\n    {\n      \"The energy is parameterized by ϕ where 2 cos ϕ = 2 − h²E.\": \"2 cos ϕ\"\n    },\n    {\n      \"The boundary conditions specify incoming, reflected, and transmitted waves.\": \"A eiκx + B\"\n    },\n    {\n      \"The conventional choice is A = 1 for the incident wave.\": \"A = 1\"\n    },\n    {\n      \"The model is tested for cutoffs M = 1, 2, and 3.\": \"M = 1\"\n    },\n    {\n      \"For M=1, the system degenerates to three nontrivial relations.\": \"three nontrivial relations\"\n    },\n    {\n      \"For M=2, the system involves four known quantities.\": \"four known quantities\"\n    },\n    {\n      \"The method involves matching wavefunctions at the potential boundaries.\": \"matching method\"\n    },\n    {\n      \"The matrix T is a (2M − 1)-dimensional square matrix.\": \"2M −1\"\n    },\n    {\n      \"The inverse matrix R is partitioned to extract coefficients α and β.\": \"inverse matrix R\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"The difference Schrödinger equation is written as a linear system.\": \"linear algebraic equations\"\n    },\n    {\n      \"The system matrix S_k depends on the potential and energy.\": \"S−1\"\n    },\n    {\n      \"The eigenvector components are prescribed by boundary conditions.\": \"boundary conditions\"\n    },\n    {\n      \"The infinite system is reduced to a finite non-square matrix.\": \"non-square-matrix\"\n    },\n    {\n      \"This is further reduced to a non-homogeneous system of 2M − 1 equations.\": \"2M −1 equations\"\n    },\n    {\n      \"The matrix T is partitioned into submatrices for inversion.\": \"partitioned as\"\n    },\n    {\n      \"The inverse matrix R is decomposed into blocks α, β, Q, etc.\": \"partitioned form\"\n    },\n    {\n      \"The coefficients α and β carry the dynamical input information.\": \"dynamical input\"\n    },\n    {\n      \"β is equal to 1/det T, and α has the same denominator.\": \"1/ det T\"\n    },\n    {\n      \"Explicit determinants are calculated for M=2, M=3, and M=4.\": \"det T\"\n    },\n    {\n      \"For M=2, det T involves Z0, Z1, and Y1.\": \"Z0 Z1\"\n    },\n    {\n      \"For M=3, the determinant includes higher-order products of couplings.\": \"Z0 Z1\"\n    },\n    {\n      \"For M=4, symbolic manipulations on a computer are recommended.\": \"Symbolic manipulations\"\n    },\n    {\n      \"The final coefficients B and C are solved via elimination.\": \"elimination of\"\n    },\n    {\n      \"The transmission coefficient C is given by a specific rational formula.\": \"2iβe−2iMϕ\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The model is limited to short-range potentials.\": \"short-range potential\"\n    },\n    {\n      \"The discretization introduces O(h⁴) discrepancies.\": \"O(h4)\"\n    },\n    {\n      \"The energy is constrained to E ∈ (0, 4/h²).\": \"E ∈(0, 4/h2)\"\n    },\n    {\n      \"Explicit algebraic determination of determinants becomes difficult for M ≥ 4.\": \"less easy\"\n    },\n    {\n      \"Symbolic manipulations are required for higher dimensions.\": \"Symbolic manipulations\"\n    },\n    {\n      \"The study does not provide a rigorous proof for all δ ≥ 0.\": \"rigorous mathematical\"\n    },\n    {\n      \"The physical Hilbert space existence is assumed from prior work.\": \"physical\"\n    },\n    {\n      \"The model is schematic and may not capture all physical nuances.\": \"schematic model\"\n    },\n    {\n      \"The convergence of the Runge-Kutta method depends on h and M.\": \"quickest convergence\"\n    },\n    \"\"\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares M=1, M=2, and M=3 to show complexity growth.\": \"growth of complexity\"\n    },\n    {\n      \"The weak coupling regime is analyzed to simplify determinants.\": \"weak coupling\"\n    },\n    {\n      \"The method is robust for small M but requires symbolic tools for larger M.\": \"Symbolic manipulations\"\n    },\n    {\n      \"The convergence of the Runge-Kutta method is discussed.\": \"quickest convergence\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8189,
+        "total_tokens": 9548,
+        "completion_tokens": 1359,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8189,
+      "elapsed_seconds": 128.5440054871142,
+      "max_tokens": 4096,
+      "seed": 69286534,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ca56201a6e7192b2e5606214e5c1f6dc5409d3bfe6af313681a061b64e1b6a82",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "procedures_and_architectures",
+        "contradictions_and_limitations",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: one-dimensional scattering problem",
+        "contradictions_and_limitations": "Grounded entry must have one narrative key: contradictions_and_limitations"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses a one-dimensional scattering problem with a complex potential.\": \"scattering problem admitting\"\n    },\n    {\n      \"The potential V(x) is defined as Z(x) + iY(x).\": \"Z(x) + i Y\"\n    },\n    {\n      \"Z(x) is real and even, while Y(x) is real and odd.\": \"Z(−x) = Z(x)\"\n    },\n    {\n      \"The Schrödinger equation is discretized using the Runge-Kutta method.\": \"Runge-Kutta-discretized\"\n    },\n    {\n      \"The lattice step h is a positive parameter.\": \"h > 0\"\n    },\n    {\n      \"The potential is assumed to vanish for |k| ≥ M.\": \"V (x±j) = 0\"\n    },\n    {\n      \"The energy is parameterized by ϕ where 2 cos ϕ = 2 − h²E.\": \"2 cos ϕ\"\n    },\n    {\n      \"The boundary conditions specify incoming, reflected, and transmitted waves.\": \"A eiκx + B\"\n    },\n    {\n      \"The conventional choice is A = 1 for the incident wave.\": \"A = 1\"\n    },\n    {\n      \"The model is tested for cutoffs M = 1, 2, and 3.\": \"M = 1\"\n    },\n    {\n      \"For M=1, the system degenerates to three nontrivial relations.\": \"three nontrivial relations\"\n    },\n    {\n      \"For M=2, the system involves four known quantities.\": \"four known quantities\"\n    },\n    {\n      \"The method involves matching wavefunctions at the potential boundaries.\": \"matching method\"\n    },\n    {\n      \"The matrix T is a (2M − 1)-dimensional square matrix.\": \"2M −1\"\n    },\n    {\n      \"The inverse matrix R is partitioned to extract coefficients α and β.\": \"inverse matrix R\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The model is limited to short-range potentials.\": \"short-range potential\"\n    },\n    {\n      \"The discretization introduces O(h⁴) discrepancies.\": \"O(h4)\"\n    },\n    {\n      \"The energy is constrained to E ∈ (0, 4/h²).\": \"E ∈(0, 4/h2)\"\n    },\n    {\n      \"Explicit algebraic determination of determinants becomes difficult for M ≥ 4.\": \"less easy\"\n    },\n    {\n      \"Symbolic manipulations are required for higher dimensions.\": \"Symbolic manipulations\"\n    },\n    {\n      \"The study does not provide a rigorous proof for all δ ≥ 0.\": \"rigorous mathematical\"\n    },\n    {\n      \"The physical Hilbert space existence is assumed from prior work.\": \"physical\"\n    },\n    {\n      \"The model is schematic and may not capture all physical nuances.\": \"schematic model\"\n    },\n    {\n      \"The convergence of the Runge-Kutta method depends on h and M.\": \"quickest convergence\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7612,
+        "total_tokens": 8367,
+        "completion_tokens": 755,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7612,
+      "elapsed_seconds": 71.71123694255948,
+      "max_tokens": 4096,
+      "seed": 69286535,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "d026929b2e683ffdaddc3f5c568145320f0d1a2fccf64d7f904d57d64355e985",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 8812,
+  "elapsed_seconds": 515.5034784302115,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

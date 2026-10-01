@@ -1,0 +1,716 @@
+arXiv:1009.1266v1  [math.AP]  7 Sep 2010
+The Cauchy problem for a class of two-dimensional
+nonlocal nonlinear wave equations governing
+anti-plane shear motions in elastic materials
+H A Erbay1, S Erbay1 and A Erkip2
+1 Department of Mathematics, Isik University, Sile 34980, Istanbul, Turkey
+E-mail: erbay@isikun.edu.tr
+2 Faculty of Engineering and Natural Sciences, Sabanci University, Tuzla 34956,
+Istanbul, Turkey
+Abstract.
+This paper is concerned with the analysis of the Cauchy problem of a
+general class of two-dimensional nonlinear nonlocal wave equations governing anti-
+plane shear motions in nonlocal elasticity.
+The nonlocal nature of the problem is
+reﬂected by a convolution integral in the space variables. The Fourier transform of the
+convolution kernel is nonnegative and satisﬁes a certain growth condition at inﬁnity.
+For initial data in L2 Sobolev spaces, conditions for global existence or ﬁnite time
+blow-up of the solutions of the Cauchy problem are established.
+AMS classiﬁcation scheme numbers: 74H20, 74J30, 74B20
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+2
+1. Introduction
+In the present paper we consider the initial value problem
+wtt =
+
+β ∗∂F
+∂wx
+
+x
++
+
+β ∗∂F
+∂wy
+
+y
+,
+(x, y) ∈R2,
+t > 0,
+(1.1)
+w(x, y, 0) = ϕ(x, y),
+wt(x, y, 0) = ψ(x, y),
+(1.2)
+where (1.1) models anti-plane shear motions in nonlinear nonlocal elasticity. In (1.1)-
+(1.2), w = w(x, y, t), F is a nonlinear function of |∇w|2 ≡(w2
+x + w2
+y) with F(0) = 0, the
+subscripts denote partial derivatives and
+(β ∗u)(x, y) =
+Z
+R2 β(x −x′, y −y′)u(x′, y′)dx′dy′
+denotes convolution of β and u.
+The kernel β(x, y) is assumed to be an integrable
+function whose Fourier transform, bβ(ξ1, ξ2), satisﬁes
+0 ≤bβ(ξ) ≤C(1 + |ξ|2)−r/2,
+for all ξ = (ξ1, ξ2),
+(1.3)
+where C is a positive constant and r ≥2. The aim of this paper is to establish the
+well-posedness of the initial value problem (1.1)-(1.2), as well as the global existence
+and blow-up of solutions for a wide class of the kernel functions β(x, y). The number r
+in (1.3) is closely related to the smoothness of β and, consequently, as r gets larger the
+regularizing eﬀect of the nonlocal behavior increases. This situation is clearly observed
+through a comparison of Theorem 3.7 and Theorem 3.8.
+Although the model requires the nonlinearity to be of the form F(w2
+x + w2
+y), it is
+possible to extend our results to F(wx, wy)-type nonlinearities. Similarly, in the model
+the kernel β is a function of the modulus |(x, y)|, but we do not require this restriction
+on β in our work. Basically, the approach presented here extends the techniques used for
+the one-dimensional nonlinear nonlocal Boussinesq-type wave equations in the previous
+studies [1, 2, 3] to the two-dimensional wave equation given by (1.1). It is worthwhile
+observing that when β is taken as the Dirac measure in (1.1), one recovers the quasilinear
+wave equation for anti-plane shear motions of the conventional theory of elasticity.
+The plan of the paper is as follows: In Section 2 we give a brief formulation of
+the anti-plane shearing problem of nonlocal elasticity. In Section 3 we present a local
+existence theory for solutions of the Cauchy problem (1.1)-(1.2) for given initial data in
+suitable Sobolev spaces. In Section 4 we prove global existence of solutions of (1.1)-(1.2)
+assuming some positivity condition on the nonlinear function F together with enough
+smoothness on the initial data. Finally, in Section 5 we discuss ﬁnite time blow-up of
+solutions.
+Throughout the paper, bu(ξ) = F(u)(ξ) =
+R
+R2 e−iz·ξu(z)dz and F −1(bu)(z) =
+1
+(2π)2
+R
+R2 eiz·ξbu(ξ)dξ denote the Fourier transform and inverse Fourier transform,
+respectively, where z = (x, y), ξ = (ξ1, ξ2), dz = dxdy, and dξ = dξ1dξ2. Furthermore,
+Hs(R2) denotes the L2 Sobolev space on R2.
+For the Hs norm we use the Fourier
+transform representation
+∥u∥2
+s =
+R
+R2(1 + |ξ|2)s|bu(ξ)|2dξ . Also,
+∥u∥∞
+and
+∥u∥
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+3
+indicate the L∞and L2 norms, respectively, and ⟨u, v⟩refers to the inner product of u
+and v in L2(R2).
+2. The Model
+In this section we discuss how equation (1.1) can be derived to describe the propagation
+of a ﬁnite amplitude transverse wave in a nonlocally elastic medium. Before stating
+our derivation, we need to introduce the concept of nonlocal elasticity.
+One of the
+major drawbacks in the conventional theory of elasticity is that it does not include any
+intrinsic length scale and consequently does not take into account the long range forces
+that become increasingly important at small scales. As a result, the conventional theory
+of elasticity is incapable of predicting, for instance, (i) the dispersive nature of harmonic
+waves in crystal lattices and (ii) the boundedness of the stress ﬁeld near the tip of a
+crack. In order to overcome such deﬁciencies various generalizations of the conventional
+theory of elasticity have been proposed. One such generalization is the theory of nonlocal
+elasticity which has been developed by Kr¨oner [4], Eringen and Edelen [5], Kunin [6],
+Rogula [7], Eringen [8, 9] over the last several decades (For more recent studies on the
+subject of generalized theories of elasticity, see, for instance, [10, 11, 12, 13, 14, 15]
+and references therein). What distinguishes the theory of nonlocal elasticity from the
+conventional theory of elasticity is that the stress at a point depends on the strain ﬁeld
+at every point in the body. Although there has been a considerable amount of research
+done on small scale eﬀects within the context of the theory of nonlocal elasticity, they
+are mostly restricted to linear models. Recently, in [1, 2, 3] various Cauchy problems
+based on a one-dimensional nonlinear model of nonlocal elasticity have been studied.
+Here, we show how the approach in those studies is extended to the dynamic anti-plane
+shearing problem of nonlinear nonlocal elasticity.
+Consider a homogeneous nonlocally elastic medium. Identify a material point X
+of the medium by its rectangular Cartesian coordinates in a reference conﬁguration:
+X = (X1, X2, X3).
+We assume that the reference conﬁguration is unstressed.
+Let
+x(X, t) = (x1(X, t), x2(X, t), x3(X, t)) denote the position of the same point at time t.
+Then the displacement and the deformation gradient are given by u(X, t) = x(X, t)−X
+and A(X, t) = Grad x(X, t), respectively.
+We suppose that a (local) strain energy
+density function F(A) per unit volume of the undeformed reference conﬁguration exists,
+i.e., the material is (locally) hyperelastic and that it sustains a nontrivial anti-plane shear
+motion. In the conventional theory of elasticity, a constitutive equation of the form
+σ = σ(A) ≡∂F(A)/∂A holds for a hyperelastic material (see equation (4.3.7) of [16]),
+where σ is the nominal stress tensor (note that some authors use its transpose referred
+to as the ﬁrst Piola-Kirchhoﬀstress tensor). In the theory of nonlocal elasticity the
+(nonlocal) stress tensor S is related to the (local) stress tensor σ through the constitutive
+relation S = S(X, t) ≡
+R
+β(|X−Y|)σ(A(Y, t))dY where β(|X−Y|) is a kernel function
+that weights the contribution of the local stresses to the nonlocal stresses. In the absence
+of body forces, the (Lagrangean) equation of motion (see equation (3.4.4) of [16]) is
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+4
+given by ρ0¨x = Div S where ρ0 is the mass density of the medium and a superposed dot
+indicates the material time derivative. The only diﬀerence between the equations of the
+conventional theory of elasticity and those of the nonlocal model presented here is due
+to the constitutive equations.
+Now we consider an anti-plane shear motion of the form
+x1 = X1,
+x2 = X2,
+x3 = X3 + w(X1, X2, t)
+(2.1)
+for a nonlocally elastic material, where the out-of-plane displacement w is the only non-
+zero component of displacement, i.e. u1 = u2 ≡0 and u3 ≡w(X1, X2, t). We henceforth
+replace the arguments X1 and X2 of the displacement w with x and y, respectively, and
+denote partial diﬀerentiations with subscript letters. A lengthy computation shows that
+for isotropic materials the strain energy density function F is a function of w2
+x + w2
+y
+alone: F = F(w2
+x + w2
+y). Furthermore, the equation of motion reduces to the scalar
+partial diﬀerential equation ρ0wtt = (β ∗σ13)x + (β ∗σ23)y where σ13 and σ23 are the
+(local) shear stresses arising due to the anti-plane shear motion and they are given
+by σ13 = ∂F/∂wx and σ23 = ∂F/∂wy.
+The computations are identical to those in
+the conventional formulation of nonlinear elasticity, provided we replace the nonlocal
+stress tensor with the local stress of conventional theory of elasticity [17]. The nonlocal
+behavior is represented by the convolution integral. Thus, without loss of generality,
+if we make a suitable non-dimensionalization of the equation of motion (see [2] for the
+non-dimensionalization in one-dimensional case) and use the same symbols to avoid a
+proliferation of notation, or simply take the mass density to be 1, we get (1.1). Equation
+(1.1) is consistent with that of the conventional formulation of nonlinear elasticity. In
+other words, when β is taken as the Dirac measure to eliminate the nonlocal eﬀect,
+(1.1) reduces to the quasilinear wave equation governing anti-plane shear motions in
+the conventional theory of nonlinear elasticity (see for instance equation (7.10) of [17]
+or equation (2.2) of [18]). A list of the most commonly used one-dimensional kernel
+functions that satisfy the one-dimensional version of the condition given in (1.3) is
+presented in [2]. We now present three examples of two-dimensional kernel functions
+used in the literature.
+(i) The Gaussian kernel [19]:
+β(x, y) = (2π)−1e−(x2+y2)/2.
+We have bβ(ξ1, ξ2) =
+e−(ξ2
+1+ξ2
+2)/2.
+This is a highly regularizing kernel as can be observed by the fact
+that we can take any r in (1.3).
+(ii) The modiﬁed Bessel function kernel [19]: β(x, y) = (2π)−1K0(
+p
+x2 + y2) where
+K0 is the modiﬁed Bessel function of the second kind of order zero.
+Since
+bβ(ξ1, ξ2) = (1 + ξ2
+1 + ξ2
+2)−1, for this special case we have r = 2 in (1.3). Note that β
+is Green’s function for the operator (1 −∆) where ∆denotes the two-dimensional
+Laplacian. In this case (1.1) becomes
+wtt −∆wtt =
+ ∂F
+∂wx
+
+x
++
+ ∂F
+∂wy
+
+y
+.
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+5
+Letting F(s) = 1
+2s + G(s) we obtain the more familiar form
+wtt −∆w −∆wtt =
+ ∂G
+∂wx
+
+x
++
+ ∂G
+∂wy
+
+y
+.
+(iii) The bi-Helmholtz type kernel [20]:
+β(x, y) =
+1
+2π(c2
+1 −c2
+2)[K0(
+p
+x2 + y2/c1) −K0(
+p
+x2 + y2/c2)]
+where c1 and c2 are real and positive constants. Since bβ(ξ1, ξ2) = [1 + γ1(ξ2
+1 + ξ2
+2) +
+γ2(ξ2
+1 + ξ2
+2)2]−1 where γ1 = c2
+1 + c2
+2 and γ2 = c2
+1c2
+2 we have r = 4. As above, β is
+Green’s function for the operator (1 −γ1∆+ γ2∆2). Then (1.1) becomes
+wtt −∆w −γ1∆wtt + γ2∆2wtt =
+ ∂G
+∂wx
+
+x
++
+ ∂G
+∂wy
+
+y
+.
+In the remainder of this paper we discuss the question of well-posedness of the Cauchy
+problem (1.1)-(1.2).
+3. Local Existence and Uniqueness of Solutions
+In the present section, we prove existence and uniqueness of solutions over a small time
+interval.
+Local well-posedness is established by converting the initial value problem
+(1.1)-(1.2) into a system of Banach space-valued ordinary diﬀerential equations. Thus
+(1.1)-(1.2) is equivalent to the system
+wt = v,
+w(0) = ϕ,
+(3.1)
+vt = Kw,
+v(0) = ψ
+(3.2)
+where the operator K is deﬁned as
+Kw =
+
+β ∗∂F
+∂wx
+
+x
++
+
+β ∗∂F
+∂wy
+
+y
+.
+(3.3)
+The Banach space Xs will be deﬁned as
+Xs = {w ∈Hs(R2); wx, wy ∈L∞(R2)},
+endowed with the norm
+∥w∥s,∞= ∥w∥s + ∥wx∥∞+ ∥wy∥∞.
+(3.4)
+The following two lemmas [21] are useful in the proof.
+Lemma 3.1 (Sobolev Embedding Theorem) If s > n
+2 + k , then Hs(Rn) ⊂Ck(Rn) ∩
+L∞(Rn). In particular when n = 2, ∥|∇u| ∥∞≤C∥u∥s for s > 2.
+Lemma 3.2 Let s ≥0 and let u1, u2 ∈Hs ∩L∞. Then u1u2 ∈Hs and
+∥u1u2∥s ≤C(∥u1∥s∥u2∥∞+ ∥u1∥∞∥u2∥s).
+The two lemmas below [22, 23] will be used to control the nonlinear terms.
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+6
+Lemma 3.3 Let s ≥0, f ∈C[s]+1(R) with f(0) = 0. Then for any u ∈Hs ∩L∞, we
+have f(u) ∈Hs ∩L∞. Moreover there is some constant A(M) depending on M such
+that for all u ∈Hs ∩L∞with ∥u∥∞≤M
+∥f(u)∥s ≤A(M)∥u∥s .
+Lemma 3.4 Let s ≥0, f ∈C[s]+1(R). Then for any M > 0 there is some constant
+B(M) such that for all
+u1, u2 ∈Hs ∩L∞with
+∥u1∥∞≤M,
+∥u2∥∞≤M
+and
+∥u1∥s ≤M, ∥u2∥s ≤M we have
+∥f(u1) −f(u2)∥s ≤B(M)∥u1 −u2∥s .
+In our case the nonlinearities are of the form
+∂F
+∂wx
+(|∇w|2) = 2wxF ′(|∇w|2),
+∂F
+∂wy
+(|∇w|2) = 2wyF ′(|∇w|2)
+where F ′ denotes the derivative of F. It follows from repeated applications of Lemma
+3.2 that for the above terms Lemmas 3.3 and 3.4 take the following forms:
+Lemma 3.5 Let s ≥1, F ∈C[s]+1(R). Then for any w ∈Xs, we have
+∂F
+∂wx
+(|∇w|2) ∈Hs−1,
+∂F
+∂wy
+(|∇w|2) ∈Hs−1.
+Moreover there is some constant A(M) depending on M such that for all w ∈Xs with
+∥|∇w| ∥∞≤M
+∥∂F
+∂wx
+(|∇w|2)∥s−1 ≤A(M)∥w∥s,
+∥∂F
+∂wy
+(|∇w|2)∥s−1 ≤A(M)∥w∥s .
+Lemma 3.6 Let s ≥1, F ∈C[s]+1(R). Then for any M > 0 there is some constant
+B(M) such that for all w1, w2 ∈Xs with ∥w1∥s,∞≤M, ∥w2∥s,∞≤M
+we have
+∥∂F
+∂wx
+(|∇w1|2) −∂F
+∂wx
+(|∇w2|2)∥s−1 ≤B(M)∥w1 −w2∥s,
+∥∂F
+∂wy
+(|∇w1|2) −∂F
+∂wy
+(|∇w2|2)∥s−1 ≤B(M)∥w1 −w2∥s .
+When s > 2 we have the following local well posedness result.
+Theorem 3.7 Suppose
+s > 2,
+r ≥2 and
+ϕ, ψ ∈Hs(R2).
+Then there is some
+T > 0 such that the Cauchy problem (1.1)-(1.2) is well posed with solution w(x, y, t)
+in C2([0, T], Hs(R2)) .
+Proof. Let w ∈Hs(R2). For
+s > 2, by the Sobolev Embedding Theorem we have
+|∇w| ∈L∞(R2). Thus Xs = Hs(R2) and the norm
+∥w∥s,∞can be replaced by the
+equivalent Hs norm
+∥w∥s. Since (1.1)-(1.2) is equivalent to (3.1)-(3.2), we will use
+the standard well posedness result for systems of ordinary diﬀerential equations [24].
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+7
+Obviously, all we need is to show that the operator K of (3.3) is locally Lipschitz on
+Xs. We ﬁrst show that K maps Xs into Xs. We estimate the convolution as
+∥β ∗u∥s = ∥(1 + ξ2)s/2bβ(ξ)bu(ξ)∥≤C∥(1 + ξ2)(s−r)/2bu(ξ)∥= C∥u∥s−r,
+where we have used inequality (1.3). By Lemma 3.5 for ∥|∇w| ∥∞≤M
+∥
+
+β ∗∂F
+∂wx
+
+x
+∥s ≤∥β ∗∂F
+∂wx
+∥s+1 ≤C∥∂F
+∂wx
+∥s+1−r
+≤CA(M)∥w∥s+2−r ≤CA(M)∥w∥s
+where we have used r ≥2. The same holds for the term
+
+β ∗∂F
+∂wy
+
+y and
+∥Kw∥s ≤CA(M)∥w∥s+2−r ≤CA(M)∥w∥s.
+(3.5)
+Similarly, for w1, w2 ∈Xs with ∥w1∥s ≤M and ∥w2∥s ≤M, by Lemma 3.6
+∥
+
+β ∗∂F
+∂wx
+(|∇w1|2)
+
+x
+−
+
+β ∗∂F
+∂wx
+(|∇w2|2)
+
+x
+∥s ≤CB(M)∥w1 −w2∥s+2−r
+≤CB(M)∥w1 −w2∥s.
+As above, the same holds for the term
+
+β ∗∂F
+∂wy
+
+y. So, K is locally Lipschitz on Xs and
+thus the local well posedness of the Cauchy problem is established.
+When r > 3 in (1.3), the extra regularizing eﬀect of β allows us to improve the
+result in Theorem 3.7 to the case of s ≥1.
+Theorem 3.8 Suppose
+s ≥1 ,
+r > 3, and
+ϕ, ψ ∈Xs.
+Then there is some
+T > 0 such that the Cauchy problem (1.1)-(1.2) is well posed with solution w(x, y, t) in
+C2([0, T], Xs) .
+Proof. Similar to the proof of Theorem 3.7 it suﬃces to show that the map K given
+in (3.3) is locally Lipschitz on Xs.
+Recall that ∥Kw∥s,∞= ∥Kw∥s + ∥(Kw)x∥∞+
+∥(Kw)y∥∞. The term ∥Kw∥s can be estimated by ∥w∥s as above. For ǫ = r −3 > 0 we
+have
+∥(Kw)x∥∞≤C∥(Kw)x∥1+ǫ ≤C∥Kw∥2+ǫ ≤C∥Kw∥s+1+ǫ
+≤CA(M)∥w∥s+3+ǫ−r = CA(M)∥w∥s.
+(3.6)
+where we have used (3.5) and the Sobolev Embedding Theorem. The same holds for
+(Kw)y and a similar estimate as in the proof of Theorem 3.7 shows that K is locally
+Lipschitz on Xs.
+The solution of (1.1)-(1.2) can be extended to a maximal interval [0, Tmax) where
+ﬁnite Tmax is characterized by the blow up condition
+lim sup
+t→T −
+max
+(∥w(t)∥s,∞+ ∥wt(t)∥s,∞) = ∞.
+Obviously Tmax = ∞, i.e. there is a global solution if and only if for any T < ∞
+lim sup
+t→T −(∥w(t)∥s,∞+ ∥wt(t)∥s,∞) < ∞.
+The lemma below characterizes the type of blow-up; namely blow-up occurs in the
+L∞-norm of |∇w|.
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+8
+Lemma 3.9 Suppose that the conditions of Theorem 3.7 or Theorem 3.8 hold. Then
+there is a global solution of the Cauchy problem (1.1)-(1.2) if and only if for any T > 0
+lim sup
+t→T −(∥wx(t)∥∞+ ∥wy(t)∥∞) < ∞.
+Proof. Since
+∥wx(t)∥∞+ ∥wy(t)∥∞≤∥w(t)∥s,∞,
+it suﬃces to prove that if the solution exists for t ∈[0, T) and ∥wx(t)∥∞+∥wy(t)∥∞≤M
+for all 0 ≤t < T then both ∥w(t)∥s,∞and ∥wt(t)∥s,∞stay bounded. Integrating equation
+(1.1) twice and calculating the resulting double integral as an iterated integral, we obtain
+w(t) = ϕ + tψ +
+Z t
+0
+(t −τ)(Kw)(τ)dτ,
+(3.7)
+wt(t) = ψ +
+Z t
+0
+(Kw)(τ)dτ.
+(3.8)
+But, by (3.5), ∥(Kw)(τ)∥s ≤CA(M)∥w(τ)∥s+2−r ≤CA(M)∥w(τ)∥s where the constant
+A(M) depends only on M. Hence
+∥w(t)∥s + ∥wt(t)∥s ≤∥ϕ∥s + (1 + T)∥ψ∥s + (1 + T)CA(M)
+Z t
+0
+∥w(τ)∥sdτ,
+and Gronwall’s Lemma gives
+∥w(t)∥s + ∥wt(t)∥s ≤(∥ϕ∥s + (1 + T)∥ψ∥s)e(1+T)CA(M)T
+(3.9)
+for all t ∈[0, T).
+We now estimate ∥wtx(t)∥∞.
+The estimate for ∥wty(t)∥∞follows
+similarly.
+In the case of Theorem 3.7 (where s > 2), by the Sobolev Embedding
+Theorem,
+∥wtx(t)∥∞≤C∥wt(t)∥s
+so that (3.9) applies. In the case of Theorem 3.8 (where r > 3), from (3.8) and (3.6)
+∥wtx(t)∥∞≤∥ψx∥∞+ T∥(Kw)x(t)∥∞≤∥ψx∥∞+ CA(M)T∥w(t)∥s
+and again (3.9) applies.
+4. Conservation of Energy and Global Existence
+In the present section we will prove that locally well deﬁned solutions can be extended
+to the entire time.
+In the study of global existence of solutions the conservation of energy plays a key
+role. First, time invariance of the energy functional will be shown. To this end, we
+deﬁne the linear operator R as
+Rpu = F −1 
+(bβ(ξ))−p
+2 bu(ξ)
+
+where F −1 denotes the
+inverse Fourier transform and bβ(ξ) is deﬁned in (1.3). Then R−2u = β ∗u. Multiplying
+by R2, (1.1) can be rewritten as
+R2wtt =
+ ∂F
+∂wx
+
+x
++
+ ∂F
+∂wy
+
+y
+.
+(4.1)
+Here we have used the fact that convolution commutes with derivatives in the
+distribution sense, i.e. (β ∗u)x = β ∗ux.
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+9
+Lemma 4.1 Suppose that the conditions of Theorem 3.7 or Theorem 3.8 hold and the
+solution of the Cauchy problem (1.1)-(1.2) exists in C2([0, T) , Xs). If Rψ ∈L2(R2),
+then Rwt(t) ∈L2(R2) for all t ∈[0, T). Moreover, if Rϕ ∈L2(R2), then Rw(t) ∈L2(R2)
+for all t ∈[0, T).
+Proof. Formally, from (3.8) we have
+Rwt(t) = Rψ +
+Z t
+0
+(RKw)(τ)dτ .
+(4.2)
+Note that
+RKw =
+
+α ∗∂F
+∂wx
+
+x
++
+
+α ∗∂F
+∂wy
+
+y
+,
+where bα(ξ) = (bβ(ξ))1/2. Then similar to the derivation of (3.5) (replacing β by α and
+hence r by r/2) we get
+∥(RKw)(τ)∥s+ r
+2−2 ≤C∥w(τ)∥s.
+Since either (s > 2 and r ≥2) or (s ≥1 and r > 3), in both cases we have s+ r
+2 −2 > 0.
+Thus the right-hand side of (4.2) belongs to L2(R2) and the conclusion follows. The
+second statement follows similarly from (3.7).
+Lemma 4.2 Suppose that the solution of the Cauchy problem (1.1)-(1.2) exists on some
+interval [0, T). If Rψ ∈L2(R2) and the function F(|∇ϕ|2) belongs to L1(R2), then for
+any t ∈[0, T) the energy
+E(t) = 1
+2∥Rwt(t)∥2 +
+Z
+R2 F(|∇w(t)|2)dxdy
+(4.3)
+is constant in [0, T).
+Proof. By Lemma 4.1, Rwt(t) ∈L2(R2). Multiplying (4.1) by wt, integrating in x and
+y, and using Parseval’s identity we get
+0 = d
+dt
+Z
+R2
+1
+2(bβ(ξ))−1| bwt(ξ, t)|2dξ +
+Z
+R2 F ′(|∇w(t)|2) ∂
+∂t(|∇w(t)|2)dxdy
+= d
+dt
+Z
+R2
+1
+2(Rwt(t))2 + F(|∇w(t)|2)
+
+dxdy
+which implies the conservation of energy.
+The main result of this section is the following theorem.
+Theorem 4.3 Let s ≥1 and r > 4. Let ϕ, ψ ∈Xs, Rψ ∈L2(R2) and
+F(|∇ϕ|2) ∈
+L1(R2). If there is some k > 0 so that F(u) ≥−ku for all u ≥0, then the Cauchy
+problem (1.1)-(1.2) has a global solution in C2([0, ∞), Xs).
+Proof.
+By Theorem 3.8 the Cauchy problem is locally well-posed.
+Assume w ∈
+C2([0, T), Xs) for some T > 0. Since F(u) ≥−ku, for all t ∈[0, T) we have
+∥Rwt(t)∥2 = 2E(0) −2
+Z
+R2 F(|∇w(t)|2)dxdy,
+≤2E(0) + 2k
+Z
+R2 |∇w(t)|2dxdy,
+(4.4)
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+10
+where E(0) is the initial energy. On the other hand we have
+∥Rwt(t)∥2 =
+Z
+R2(bβ(ξ))−1| bwt(ξ, t)|2dξ,
+≥C−1
+Z
+R2(1 + |ξ|2)
+r
+2| bwt(ξ, t)|2dξ,
+= C−1∥wt(t)∥2r
+2,
+(4.5)
+where (1.3) is used. Combining (4.4) and (4.5)
+d
+dt∥w(t)∥2r
+2 ≤2∥w(t)∥r
+2∥wt(t)∥r
+2
+≤∥w(t)∥2r
+2 + ∥wt(t)∥2r
+2
+≤∥w(t)∥2r
+2 + C∥Rwt(t)∥2
+≤∥w(t)∥2r
+2 + 2C(E(0) + k∥wx(t)∥2 + k∥wy(t)∥2)
+≤2CE(0) + (1 + 4Ck)∥w(t)∥2r
+2,
+where ∥wx(t)∥≤∥w(t)∥1 ≤∥w(t)∥r
+2 and ∥wy(t)∥≤∥w(t)∥1 ≤∥w(t)∥r
+2 are used.
+Gronwall’s lemma implies that ∥w (t)∥r
+2 stays bounded in [0, T). As r > 4 we have
+r
+2 −1 > 1 and the Sobolev Embedding Theorem implies
+∥wx(t)∥∞≤∥wx(t)∥r
+2−1 ≤∥w(t)∥r
+2.
+We conclude that ∥wx(t)∥∞and similarly ∥wy(t)∥∞also stay bounded in [0, T). By
+Lemma 3.9, this implies a global solution.
+5. Blow up
+In this section a blow result for (1.1)- (1.2) will be presented. The following lemma [25]
+will be used to prove blow up of solutions in ﬁnite time.
+Lemma 5.1 Suppose that
+H(t), t ≥0, is a positive, twice diﬀerentiable function
+satisfying H′′H −(1 + ν)(H′)2 ≥0 where ν > 0. If H(0) > 0 and H′(0) > 0, then
+H(t) →∞as t →t1 for some t1 ≤H(0)/νH′(0).
+Theorem 5.2 Suppose that the solution, w, of the Cauchy problem (1.1)-(1.2) exists,
+Rϕ, Rψ ∈L2(R2) and
+F(|∇ϕ|2) ∈L1(R2). If there exists a positive number ν such
+that
+uF ′(u) ≤(1 + 2ν)F(u)
+for all u ≥0,
+and
+E(0) = 1
+2∥Rψ∥2 +
+Z
+R2 F(|∇ϕ|2)dxdy < 0,
+then the solution, w, of the Cauchy problem (1.1)-(1.2) blows up in ﬁnite time.
+
+Global existence and blow-up for a two-dimensional nonlocal equation
+11
+Proof. We assume that the global solution to (1.1)-(1.2) exists. Then, by Lemma 4.1,
+Rw(t), Rwt(t) ∈L2(R2) for all t > 0. Let H(t) = ∥Rw(t)∥2 + b(t + t0)2 where b and t0
+are positive constants to be determined later. Then we have
+H′ = 2⟨Rwt, Rw⟩+ 2b(t + t0)
+H′′ = 2∥Rwt∥2 + 2⟨Rwtt, Rw⟩+ 2b.
+Note that H′(0) = 2⟨Rϕ, Rψ⟩+ 2bt0 > 0 for suﬃciently large t0. Using the inequality
+uF ′(u) ≤(1 + 2ν)F(u) together with (4.4) and (4.5) we have
+⟨Rwtt, Rw⟩= ⟨R2wtt, w⟩
+= −2
+Z
+R2 |∇w|2F ′(|∇w|2)dxdy
+≥−2(1 + 2ν)
+Z
+R2 F(|∇w|2)dxdy
+= (1 + 2ν)
+ ∥Rwt∥2 −2E(0)
+
+,
+so that
+H′′ ≥4(1 + ν)∥Rwt∥2 −4(1 + 2ν)E(0) + 2b.
+On the other hand, using 2ab ≤a2 + b2 and Cauchy-Schwarz inequalities we have
+(H′)2 = 4 [⟨Rw, Rwt⟩+ b(t + t0)]2
+≤4
+ ∥Rw∥2 ∥Rwt∥2 + 2b(t + t0)∥Rw∥∥Rwt∥+ b2(t + t0)2
+≤4
+ ∥Rw∥2 ∥Rwt∥2 + b∥Rw∥2 + b∥Rwt∥2(t + t0)2 + b2(t + t0)2
+.
+Thus
+H′′H −(1 + ν)(H′)2
+≥
+ 4(1 + ν)∥Rwt∥2 −4(1 + 2ν)E(0) + 2b
+  ∥Rw∥2 + b(t + t0)2
+−4(1 + ν)
+ ∥Rw∥2 ∥Rwt∥2 + b∥Rw∥2 + b∥Rwt∥2(t + t0)2 + b2(t + t0)2
+= −2(1 + 2ν)(b + 2E(0))H.
+Now if we choose b ≤−2E(0), this gives
+H′′(t)H(t) −(1 + ν) (H′(t))2 ≥0.
+According to the Blow-up Lemma 5.1, this implies that H(t), and thus ∥Rw(t)∥2 blows
+up in ﬁnite time.
+Finally, we conclude with a short discussion on the condition E(0) < 0. If F(u) ≥0
+for all u ≥0, then by Theorem 4.3, there is a global solution. If F(u) is negative on some
+interval I, we can choose ϕ with support in I so that
+R
+R2 F(|∇ϕ|2)dxdy < 0. Hence,
+when ψ = 0 or Rψ is suﬃciently small we get E(0) < 0. This also shows that blow up
+may occur even for small initial data.
+Acknowledgement: This work has been supported by the Scientiﬁc and Technological
+Research Council of Turkey (TUBITAK) under the project TBAG-110R002.
+
+Global existence and blow-up for a two-dimensional nonlocal equation

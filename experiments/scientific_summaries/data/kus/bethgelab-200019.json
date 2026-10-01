@@ -1,0 +1,2036 @@
+{
+  "document_id": "bethgelab-200019",
+  "fulltext_sha256": "e049827f21769b52fbc4a147774761c10e8dbacc20474376debb2a0a64b649d5",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "451d5fb626cf18112bf5245bd8e12b87681f2e0dcb1c1dafb74236e40f227572",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study evaluates the acute toxicity of six engineered nanoparticles and three soluble salts on Artemia sp. hatching and nauplii viability. The estimated order of toxicity for the nanoparticles is Ag > CuO > ZnO > Au > TiO2 > SiO2. The research highlights the need for specific hazard identification methodologies for nanomaterials due to their unique physicochemical properties and environmental risks.",
+        "entities": [
+          {
+            "name": "Artemia sp.",
+            "entity_id": "artemia_sp",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia",
+              "Artemia sp."
+            ],
+            "attributes": {
+              "role": "test organism for acute toxicity",
+              "life_stages_tested": "hatching cysts and early nauplii",
+              "model_entity_type": "organism"
+            },
+            "relationships": [
+              {
+                "predicate": "exposed_to",
+                "target": "six engineered nanoparticles",
+                "attributes": {},
+                "target_id": "six_engineered_nanoparticles"
+              },
+              {
+                "predicate": "exposed_to",
+                "target": "three soluble salts",
+                "attributes": {},
+                "target_id": "three_soluble_salts"
+              }
+            ]
+          },
+          {
+            "name": "six engineered nanoparticles",
+            "entity_id": "six_engineered_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "six engineered nanoparticles"
+            ],
+            "attributes": {
+              "components": "silver, gold, copper oxide, zinc oxide, titanium dioxide, silicon",
+              "model_entity_type": "material_group"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_on",
+                "target": "Artemia sp.",
+                "attributes": {},
+                "target_id": "artemia_sp"
+              },
+              {
+                "predicate": "toxicity_order",
+                "target": "Ag > CuO > ZnO > Au > TiO2 > SiO2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "three soluble salts",
+            "entity_id": "three_soluble_salts",
+            "entity_type": "other",
+            "aliases": [
+              "three soluble salts"
+            ],
+            "attributes": {
+              "components": "CuSO4, ZnSO4, AgNO3",
+              "model_entity_type": "material_group"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_on",
+                "target": "Artemia sp.",
+                "attributes": {},
+                "target_id": "artemia_sp"
+              }
+            ]
+          },
+          {
+            "name": "Standard Artemia toxicity test",
+            "entity_id": "standard_artemia_toxicity_test",
+            "entity_type": "method",
+            "aliases": [
+              "Standard Artemia toxicity Test",
+              "Standard Artemia toxicity test",
+              "standard Artemia micro-well test"
+            ],
+            "attributes": {
+              "target_stage": "nauplii",
+              "endpoint": "viability/mortality"
+            },
+            "relationships": [
+              {
+                "predicate": "conducted_in_parallel_with",
+                "target": "Artemia hatching test",
+                "attributes": {},
+                "target_id": "artemia_hatching_test"
+              }
+            ]
+          },
+          {
+            "name": "Artemia hatching test",
+            "entity_id": "artemia_hatching_test",
+            "entity_type": "method",
+            "aliases": [
+              "Artemia hatchability test",
+              "Artemia hatching test",
+              "Artemia hatching toxicity assay",
+              "Toxicity on hatching rate assay",
+              "hatching rate test"
+            ],
+            "attributes": {
+              "target_stage": "hydrated and bleached Artemia cysts",
+              "conditions": "continuously aerated, filtered sterile salt water",
+              "endpoint": "hatching of viable nauplii vs total hatchlings"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "Standard Artemia toxicity test",
+                "attributes": {},
+                "target_id": "standard_artemia_toxicity_test"
+              }
+            ]
+          },
+          {
+            "name": "nanomaterials",
+            "entity_id": "nanomaterials",
+            "entity_type": "concept",
+            "aliases": [
+              "nanomaterials"
+            ],
+            "attributes": {
+              "definition": "materials adhering to nanometer size range in at least one dimension",
+              "risk_factor": "pose risk to environment and human health",
+              "behavior": "differ from bulk due to unique physicochemical properties"
+            },
+            "relationships": [
+              {
+                "predicate": "release_sources",
+                "target": "production, applications, weathering, wastes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "limited_knowledge_on",
+                "target": "bioavailability, biopersistence, behavior under varying pH and salinity",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 496,
+          "word_count": 496,
+          "sha256": "62a3179d61d89833bf9af19b840e6bde1dc77f32a96d6aa1d545abfd873c84cd",
+          "sentence_minhash": [
+            82755901695001421,
+            28851769959714761,
+            36072805651584851,
+            11426270078940556,
+            43714454960919411,
+            224573928210932895,
+            16716000900325394,
+            41603480463740449,
+            48263609243514619,
+            9462436175016187,
+            78280491562202942,
+            8566262517653704,
+            91759520063933247,
+            256811852691509790,
+            161357415568664162,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'organism' for 'Artemia sp.'",
+          "normalized unsupported entity type 'material_group' for 'six engineered nanoparticles'",
+          "normalized unsupported entity type 'material_group' for 'three soluble salts'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study utilizes Artemia sp. as a model organism to assess the acute toxicity of six engineered nanoparticles on hatching rates and nauplii viability. Nanoparticles were sourced from the NANOVALID consortium or synthesized in-house and characterized using TEM and DLS. The research demonstrates a good inverse correlation between mortality in nauplii tests and hatching rates, suggesting the development of a new bioassay for nanoparticle hazard assessment.",
+        "entities": [
+          {
+            "name": "Artemia sp.",
+            "entity_id": "artemia_sp",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia",
+              "Artemia sp."
+            ],
+            "attributes": {
+              "feeding_type": "non-selective filter feeder",
+              "habitat": "highly saline waters worldwide",
+              "characteristics": "ubiquitous distribution, robust nature, cost-effective culture",
+              "toxicological_status": "considered insensitive to many chemicals, but early developmental stages are highly vulnerable",
+              "model_entity_type": "organism"
+            },
+            "relationships": [
+              {
+                "predicate": "used_as_model_organism_for",
+                "target": "toxicological assays",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "subject_of_study",
+                "target": "nanomaterial toxicity",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "NANOVALID project",
+            "entity_id": "nanovalid_project",
+            "entity_type": "organization",
+            "aliases": [
+              "NANOVALID project"
+            ],
+            "attributes": {
+              "role": "consortium supplying nanoparticles"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of",
+                "target": "nanoparticles used in study",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silicon nanoparticles",
+            "entity_id": "silicon_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silicon nanoparticles",
+              "silicon dioxide nanoparticles",
+              "silicon nanoparticles"
+            ],
+            "attributes": {
+              "supplier": "Nanologica AB",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "sourced_from",
+                "target": "Nanologica AB",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silver nanoparticles",
+            "entity_id": "silver_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silver nanoparticles",
+              "silver nanoparticles"
+            ],
+            "attributes": {
+              "supplier": "Colorobbia",
+              "initial_concentration": "4% suspension",
+              "stabilizing_agent": "PVP",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "sourced_from",
+                "target": "Colorobbia",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Gold nanoparticles",
+            "entity_id": "gold_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Gold nanoparticles",
+              "gold nanoparticles"
+            ],
+            "attributes": {
+              "supplier": "INMETRO",
+              "initial_concentration": "0.006% in water",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "sourced_from",
+                "target": "INMETRO",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Copper oxide nanoparticles",
+            "entity_id": "copper_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Copper oxide nanoparticles",
+              "copper oxide nanoparticles"
+            ],
+            "attributes": {
+              "supplier": "Intrinsiq Materials (UK)",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "sourced_from",
+                "target": "Intrinsiq Materials (UK)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Zinc oxide nanoparticles",
+            "entity_id": "zinc_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Zinc oxide nanoparticles",
+              "zinc oxide nanoparticles"
+            ],
+            "attributes": {
+              "supplier": "Nanogate (Germany)",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "sourced_from",
+                "target": "Nanogate (Germany)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Titanium dioxide nanoparticles",
+            "entity_id": "titanium_dioxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Titanium dioxide nanoparticles",
+              "Titanium dioxide particles"
+            ],
+            "attributes": {
+              "synthesis_method": "synthesized in house using existing protocol",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "synthesized_in",
+                "target": "study laboratory",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Nanoparticle suspension preparation",
+            "entity_id": "nanoparticle_suspension_preparation",
+            "entity_type": "method",
+            "aliases": [
+              "Nanoparticle suspension preparation"
+            ],
+            "attributes": {
+              "concentration": "2 mg/ml for SiO2, TiO2, CuO, ZnO",
+              "sonication_parameters": "~30W, 50% pulse, 10 minutes"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "SiO2, TiO2, CuO, ZnO nanoparticles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "TEM characterization",
+            "entity_id": "tem_characterization",
+            "entity_type": "method",
+            "aliases": [
+              "TEM characterization"
+            ],
+            "attributes": {
+              "instrument": "JEOL 2010 TEM",
+              "voltage": "100KV",
+              "aperture": "20µ",
+              "sample_concentration": "50µg/ml",
+              "grid_type": "formvar coated copper grids",
+              "camera": "GATAN",
+              "software": "GATAN software"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "basic characterization of nanoparticles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DLS characterization",
+            "entity_id": "dls_characterization",
+            "entity_type": "method",
+            "aliases": [
+              "DLS characterization"
+            ],
+            "attributes": {
+              "technique": "dynamic light scattering"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "basic characterization of nanoparticles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Acute toxicity study design",
+            "entity_id": "acute_toxicity_study_design",
+            "entity_type": "method",
+            "aliases": [
+              "Acute toxicity study design"
+            ],
+            "attributes": {
+              "endpoints": "Mortality for nauplii test, Hatching rates for cyst test",
+              "correlation": "Good inverse correlation in sensitivity between the two tests"
+            },
+            "relationships": [
+              {
+                "predicate": "implies",
+                "target": "development of another bioassay for hazard assessment",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 496,
+          "end_word": 985,
+          "word_count": 489,
+          "sha256": "ea79baa0c19f16e12182625b9b36e8d18e4a84e2e5b540e07a12b07a37ad3265",
+          "sentence_minhash": [
+            14279474218976588,
+            18551641988871988,
+            36072805651584851,
+            11426270078940556,
+            24924367672348918,
+            173578910533955149,
+            16716000900325394,
+            85873296397927752,
+            48263609243514619,
+            9462436175016187,
+            78280491562202942,
+            23120143286055676,
+            8649321992247620,
+            229931427951503152,
+            209721952216305145,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'organism' for 'Artemia sp.'",
+          "normalized unsupported entity type 'material' for 'Silicon nanoparticles'",
+          "normalized unsupported entity type 'material' for 'Silver nanoparticles'",
+          "normalized unsupported entity type 'material' for 'Gold nanoparticles'",
+          "normalized unsupported entity type 'material' for 'Copper oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'Zinc oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'Titanium dioxide particles'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study details the characterization of nanoparticle suspensions and the specific protocols for Artemia culture, hatching toxicity, larval toxicity, and oxidative stress assays. It specifies the use of a Horiba Nanopartica SZ100 for DLS measurements and defines the hatching and mortality endpoints for the bioassays.",
+        "entities": [
+          {
+            "name": "nanoparticle suspensions",
+            "entity_id": "nanoparticle_suspensions",
+            "entity_type": "other",
+            "aliases": [
+              "nanoparticle suspensions"
+            ],
+            "attributes": {
+              "concentration_for_dls": "25µg/ml",
+              "solvents": "milliQ water and salt water",
+              "analysis_frequency": "thrice for three days",
+              "data_representation": "mean + SEM",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "measured_in",
+                "target": "Dynamic light scattering system (Horiba Nanopartica SZ100)",
+                "attributes": {},
+                "target_id": "dynamic_light_scattering_system_horiba_nanopartica_sz100"
+              }
+            ]
+          },
+          {
+            "name": "Dynamic light scattering system (Horiba Nanopartica SZ100)",
+            "entity_id": "dynamic_light_scattering_system_horiba_nanopartica_sz100",
+            "entity_type": "other",
+            "aliases": [
+              "Dynamic light scattering system (Horiba Nanopartica SZ100)"
+            ],
+            "attributes": {
+              "model_entity_type": "instrument"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "nanoparticle suspensions",
+                "attributes": {},
+                "target_id": "nanoparticle_suspensions"
+              }
+            ]
+          },
+          {
+            "name": "Artemia cysts",
+            "entity_id": "artemia_cysts",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia cysts",
+              "Artemia cysts (San Francisco Bay strain)"
+            ],
+            "attributes": {
+              "usage_per_litre_culture": "1.0 gram",
+              "hydration_medium": "distilled water",
+              "hydration_duration": "45 minutes",
+              "bleaching_agent": "20% sodium hypochlorite solution",
+              "bleaching_duration": "15 minutes",
+              "washing_steps": "6 times with distilled water",
+              "hatching_medium": "25% salt water (pH 8.0)",
+              "hatching_conditions": "continuous light and aeration for 24 hours",
+              "hatching_temperature": "28°C",
+              "model_entity_type": "biological_sample"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "Artemia cultures",
+                "attributes": {},
+                "target_id": "artemia_cultures"
+              }
+            ]
+          },
+          {
+            "name": "Artemia cultures",
+            "entity_id": "artemia_cultures",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia cultures"
+            ],
+            "attributes": {
+              "nanoparticle_concentrations": "100mg/l and 10mg/l",
+              "model_entity_type": "experimental_setup"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "Artemia cysts",
+                "attributes": {},
+                "target_id": "artemia_cysts"
+              }
+            ]
+          },
+          {
+            "name": "Artemia hatching test",
+            "entity_id": "artemia_hatching_test",
+            "entity_type": "method",
+            "aliases": [
+              "Artemia hatchability test",
+              "Artemia hatching test",
+              "Artemia hatching toxicity assay",
+              "Toxicity on hatching rate assay",
+              "hatching rate test"
+            ],
+            "attributes": {
+              "nanoparticles_tested": "Ag, Au, SiO2, TiO2, CuO, ZnO",
+              "exposure_concentrations": "100mg/L and 10mg/L",
+              "observation_time": "24 hours",
+              "metrics": "hatching rate, mortality, viability",
+              "sampling_volume": "100µl aliquots",
+              "counting_method": "stereo-microscope",
+              "categories_counted": "hatched (immotile vs. motile), umbrella stage, unhatched cyst",
+              "hatching_rate_definition": "percent of total number of fully hatched Artemia in comparison to total Artemia in the aliquot",
+              "replicates": "six times"
+            },
+            "relationships": [
+              {
+                "predicate": "performed_on",
+                "target": "Artemia cultures",
+                "attributes": {},
+                "target_id": "artemia_cultures"
+              }
+            ]
+          },
+          {
+            "name": "Standard Artemia toxicity test",
+            "entity_id": "standard_artemia_toxicity_test",
+            "entity_type": "method",
+            "aliases": [
+              "Standard Artemia toxicity Test",
+              "Standard Artemia toxicity test",
+              "standard Artemia micro-well test"
+            ],
+            "attributes": {
+              "protocol_reference": "Artemia hatched under normal conditions in salt water [20]",
+              "larvae_per_well": "10 nauplii",
+              "plate_type": "six well plates",
+              "nanoparticle_concentrations": "100mg/l, 10mg/l, 1mg/l, 0.1mg/l, 0.01mg/l",
+              "viability_check_intervals": "6, 12, 18, 24, 30, and 48 hours",
+              "endpoint": "Mortality",
+              "mortality_definition": "cessation of swimming or any movement by nauplii",
+              "ld50_calculation_tool": "Graphpad software"
+            },
+            "relationships": [
+              {
+                "predicate": "exposes",
+                "target": "nauplii",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Oxidative stress test",
+            "entity_id": "oxidative_stress_test",
+            "entity_type": "method",
+            "aliases": [
+              "Oxidative stress test"
+            ],
+            "attributes": {
+              "probe": "10µM DCFDA (dichloroflouresciendiacetate)",
+              "probe_type": "chemiluminiscent probe",
+              "mechanism": "reacts with ROS generated due to oxidative stress",
+              "detection_method": "fluorescence imaged using microscope"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "nauplii exposed to different concentrations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 985,
+          "end_word": 1458,
+          "word_count": 473,
+          "sha256": "88e4e43b60538ddd51dbaee87e83307bcc1b89568b65ec66d013a8f21cf16e0e",
+          "sentence_minhash": [
+            14279474218976588,
+            229455488227866486,
+            36072805651584851,
+            5050748634255938,
+            43714454960919411,
+            62667647458868521,
+            16716000900325394,
+            85873296397927752,
+            48263609243514619,
+            9462436175016187,
+            78280491562202942,
+            49775578613387123,
+            91759520063933247,
+            906306679132868,
+            209721952216305145,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'nanoparticle suspensions'",
+          "normalized unsupported entity type 'instrument' for 'Dynamic light scattering system (Horiba Nanopartica SZ100)'",
+          "normalized unsupported entity type 'biological_sample' for 'Artemia cysts (San Francisco Bay strain)'",
+          "normalized unsupported entity type 'experimental_setup' for 'Artemia cultures'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study validates nanoparticle toxicity assays using Artemia hatching and larval mortality, noting that silver and copper oxide nanoparticles significantly reduce hatching rates. Nanoparticle dispersion and size were analyzed in distilled and salt water, revealing flocculation in copper and zinc oxide samples. Statistical analysis confirmed a correlation between hatching inhibition and larval toxicity.",
+        "entities": [
+          {
+            "name": "Artemia hatching test",
+            "entity_id": "artemia_hatching_test",
+            "entity_type": "method",
+            "aliases": [
+              "Artemia hatchability test",
+              "Artemia hatching test",
+              "Artemia hatching toxicity assay",
+              "Toxicity on hatching rate assay",
+              "hatching rate test"
+            ],
+            "attributes": {
+              "validity_criterion": "low mortality in control",
+              "repetitions": 6,
+              "analysis_tool": "Graphpad software"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "hatching rate",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Standard Artemia toxicity test",
+            "entity_id": "standard_artemia_toxicity_test",
+            "entity_type": "method",
+            "aliases": [
+              "Standard Artemia toxicity Test",
+              "Standard Artemia toxicity test",
+              "standard Artemia micro-well test"
+            ],
+            "attributes": {
+              "validity_criterion": "mortality below 10% in 24 hr period"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "larval mortality",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Zeiss Axiovert imager",
+            "entity_id": "zeiss_axiovert_imager",
+            "entity_type": "other",
+            "aliases": [
+              "Zeiss Axiovert imager"
+            ],
+            "attributes": {
+              "model_entity_type": "equipment"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_imaging",
+                "target": "nanoparticle treated nauplii exposed to DCFDA",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "nanoparticle dispersion analysis",
+            "entity_id": "nanoparticle_dispersion_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "nanoparticle dispersion analysis"
+            ],
+            "attributes": {
+              "media_tested": [
+                "distilled water",
+                "salt water",
+                "Milli Q water",
+                "25% NaCl solution"
+              ],
+              "duration": "up to 48 hours"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_reduced_size_in",
+                "target": "high salt concentration",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_no_apparent_change_in",
+                "target": "aggregation or dispersion of particles (TEM)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_higher_DLS_values_in_water_for",
+                "target": "all nanoparticles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_higher_DLS_values_in_salt_water_for",
+                "target": "Silver, TiO2, CuO, ZnO nanoparticles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_lower_DLS_values_in_salt_water_for",
+                "target": "Gold and silicon dioxide nanoparticles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_visible_flocculation_in",
+                "target": "Copper and Zinc oxide nanoparticles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_no_significant_dispersion_change_in_milli_q_for",
+                "target": "Silver NP, Titania, silica",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_higher_aggregate_sizes_in_salt_water_on_day_3_for",
+                "target": "Silver NP, Titania, silica",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "observed_flocculation_and_sedimentation_by_day_3_in_both_media_for",
+                "target": "CuO and ZnO NPs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Brine shrimp hatching control",
+            "entity_id": "brine_shrimp_hatching_control",
+            "entity_type": "measurement",
+            "aliases": [
+              "Brine shrimp hatching control"
+            ],
+            "attributes": {
+              "hatching_rate": "74% + 5.5",
+              "viability": "about 97%"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Silver nanoparticles",
+            "entity_id": "silver_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silver nanoparticles",
+              "silver nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_effect": "highest effect on hatching rate",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_hatching_rate_to",
+                "target": "about 29% at 100mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resulted_in_motile_viability_of",
+                "target": "50% at 100mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "maintained_lower_hatching_rate_at",
+                "target": "10 mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resulted_in_viability_of",
+                "target": "85% at 10 mg/L",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Copper oxide nanoparticles",
+            "entity_id": "copper_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Copper oxide nanoparticles",
+              "copper oxide nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_effect": "highest effect on hatching rate",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_hatching_rate_to",
+                "target": "about 29% at 100mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resulted_in_motile_viability_of",
+                "target": "50% at 100mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resulted_in_low_hatching_rate_with_viability_of",
+                "target": "around 64% at 10 mg/L",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1458,
+          "end_word": 1937,
+          "word_count": 479,
+          "sha256": "677f0382c4039fd464843762218ec428f7c1908bb4e6195b6a4c6ce1e14f7ff6",
+          "sentence_minhash": [
+            84989070151237717,
+            18551641988871988,
+            4077881388430694,
+            61919449716151556,
+            43714454960919411,
+            30500191475291153,
+            23718652799488495,
+            85873296397927752,
+            48263609243514619,
+            9462436175016187,
+            78280491562202942,
+            8566262517653704,
+            12488864069851856,
+            93755265945908651,
+            29116561381011342,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'equipment' for 'Zeiss Axiovert imager'",
+          "normalized unsupported entity type 'material' for 'Silver nanoparticles'",
+          "normalized unsupported entity type 'material' for 'Copper oxide nanoparticles'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study reports that silver and copper oxide nanoparticles significantly reduce Artemia hatching rates, while other nanoparticles like gold and silicon dioxide show lower toxicity. Silver nitrate and ionic silver form are highly toxic to nauplii, with silver nanoparticles exhibiting an LC50 of approximately 10.12 mg/L. No gross morphological abnormalities were observed in hatched nauplii, although reactive oxygen species were detected in dead or trapped individuals.",
+        "entities": [
+          {
+            "name": "Silver nanoparticles",
+            "entity_id": "silver_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silver nanoparticles",
+              "silver nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_ranking": "highest among tested nanoparticles",
+              "LC50_at_24h": "10.12 mg/L",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "reduces_hatching_rate_to",
+                "target": "29% at 100 mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "causes_mortality_in",
+                "target": "80% of nauplii in 24 hours (ionic form)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_no_gross_morphological_abnormalities_in",
+                "target": "hatched nauplii",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accumulates_in_gut_of",
+                "target": "nauplii (except dead ones within 24h)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "silver nitrate",
+            "entity_id": "silver_nitrate",
+            "entity_type": "other",
+            "aliases": [
+              "silver nitrate"
+            ],
+            "attributes": {
+              "form": "ionic silver",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "improves_hatching_rate_to",
+                "target": "33%",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "causes_mortality_in",
+                "target": "80% of nauplii in 24 hours",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Copper oxide nanoparticles",
+            "entity_id": "copper_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Copper oxide nanoparticles",
+              "copper oxide nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_ranking": "second highest among tested nanoparticles",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "reduces_hatching_rate_to",
+                "target": "29% at 100 mg/L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_no_gross_morphological_abnormalities_in",
+                "target": "hatched nauplii",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Zinc oxide nanoparticles",
+            "entity_id": "zinc_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Zinc oxide nanoparticles",
+              "zinc oxide nanoparticles"
+            ],
+            "attributes": {
+              "hatching_rate": "60%",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "causes_clumping_of",
+                "target": "Artemia cysts",
+                "attributes": {},
+                "target_id": "artemia_cysts"
+              }
+            ]
+          },
+          {
+            "name": "Titanium dioxide nanoparticles",
+            "entity_id": "titanium_dioxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Titanium dioxide nanoparticles",
+              "Titanium dioxide particles",
+              "titanium dioxide nanoparticles"
+            ],
+            "attributes": {
+              "hatching_rate_at_100mg_L": "41.50%",
+              "viability_at_100mg_L": "67.8%",
+              "hatching_rate_at_10mg_L": "54%",
+              "viability_at_10mg_L": "~90%",
+              "model_entity_type": "material"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Gold nanoparticles",
+            "entity_id": "gold_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Gold nanoparticles",
+              "gold nanoparticles"
+            ],
+            "attributes": {
+              "hatching_rate_range": "50-60%",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "displays_good_viability_in",
+                "target": "hatched nauplii",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silicon nanoparticles",
+            "entity_id": "silicon_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silicon nanoparticles",
+              "silicon dioxide nanoparticles",
+              "silicon nanoparticles"
+            ],
+            "attributes": {
+              "hatching_rate_range": "50-60%",
+              "hatching_rate_at_10mg_L": "equivalent to controls",
+              "viability_at_10mg_L": "equivalent to controls",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "displays_good_viability_in",
+                "target": "hatched nauplii",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Artemia nauplii",
+            "entity_id": "artemia_nauplii",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia nauplii"
+            ],
+            "attributes": {
+              "morphology": "normal, no changes observed",
+              "behavior": "swimming vigorously (viable), immotile/dead (toxic exposure)",
+              "model_entity_type": "organism_stage"
+            },
+            "relationships": [
+              {
+                "predicate": "exposed_to",
+                "target": "nanoparticles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_ROS_staining_in",
+                "target": "gut of dead nauplii and few trapped nauplii",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "salt water pH",
+            "entity_id": "salt_water_ph",
+            "entity_type": "measurement",
+            "aliases": [
+              "salt water pH"
+            ],
+            "attributes": {
+              "value_range": "6.3-6.5",
+              "duration": "up to 48 hours"
+            },
+            "relationships": [
+              {
+                "predicate": "remained_unchanged_upon_addition_of",
+                "target": "nanoparticles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1937,
+          "end_word": 2436,
+          "word_count": 499,
+          "sha256": "f8f8ad7a6b9c7f46385b77d626cf043f37d7d2f3635a9df347141cfee2d98e91",
+          "sentence_minhash": [
+            74280331811192554,
+            18551641988871988,
+            36072805651584851,
+            5050748634255938,
+            43714454960919411,
+            30500191475291153,
+            50447301471162957,
+            85873296397927752,
+            34383880606747972,
+            9462436175016187,
+            78280491562202942,
+            172074800892221930,
+            91759520063933247,
+            906306679132868,
+            169401128176801393,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'silver nanoparticles'",
+          "normalized unsupported entity type 'chemical' for 'silver nitrate'",
+          "normalized unsupported entity type 'material' for 'copper oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'zinc oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'titanium dioxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'gold nanoparticles'",
+          "normalized unsupported entity type 'material' for 'silicon dioxide nanoparticles'",
+          "normalized unsupported entity type 'organism_stage' for 'Artemia nauplii'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study compares the toxicity of various engineered nanoparticles on Artemia hatching rates and larval viability, finding a strong inverse correlation between the two metrics. Silver and copper oxide nanoparticles exhibited the highest toxicity, while silicon nanoparticles at low concentrations showed enhanced hatching compared to controls. The research utilized DCFDA and DHE staining to detect reactive oxygen species and superoxide in exposed nauplii.",
+        "entities": [
+          {
+            "name": "Artemia nauplii",
+            "entity_id": "artemia_nauplii",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia nauplii"
+            ],
+            "attributes": {
+              "exposure_agent": "engineered nanoparticles",
+              "staining_agents": [
+                "DCFDA",
+                "DHE"
+              ],
+              "model_entity_type": "organism"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_highest_staining_for",
+                "target": "Silver nanoparticles",
+                "attributes": {},
+                "target_id": "silver_nanoparticles"
+              },
+              {
+                "predicate": "shows_staining_for",
+                "target": "titania nanoparticles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_staining_for",
+                "target": "Silicon nanoparticles",
+                "attributes": {},
+                "target_id": "silicon_nanoparticles"
+              },
+              {
+                "predicate": "accumulates_in_gut",
+                "target": "nanoparticles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silver nanoparticles",
+            "entity_id": "silver_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silver nanoparticles",
+              "silver nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_level": "high",
+              "effect_on_hatching": "reduced rate",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "causes_highest_staining_in",
+                "target": "Artemia nauplii",
+                "attributes": {},
+                "target_id": "artemia_nauplii"
+              },
+              {
+                "predicate": "toxicity_mechanism",
+                "target": "ionic forms",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Copper oxide nanoparticles",
+            "entity_id": "copper_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Copper oxide nanoparticles",
+              "copper oxide nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_level": "high",
+              "effect_on_hatching": "reduced rate",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "toxicity_mechanism",
+                "target": "ionic forms",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silicon nanoparticles",
+            "entity_id": "silicon_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silicon nanoparticles",
+              "silicon dioxide nanoparticles",
+              "silicon nanoparticles"
+            ],
+            "attributes": {
+              "effect_at_low_concentration": "better hatching than control",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_staining_in",
+                "target": "Artemia nauplii",
+                "attributes": {},
+                "target_id": "artemia_nauplii"
+              }
+            ]
+          },
+          {
+            "name": "Artemia cysts",
+            "entity_id": "artemia_cysts",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia cysts",
+              "Artemia cysts (San Francisco Bay strain)"
+            ],
+            "attributes": {
+              "state": "dormant gastrula",
+              "structure": "encased in hard outer shell",
+              "formation_condition": "unfavourable conditions",
+              "model_entity_type": "organism_stage"
+            },
+            "relationships": [
+              {
+                "predicate": "hatches_into",
+                "target": "free swimming Nauplii",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "hatching_timeframe",
+                "target": "about 20 hours",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Artemia hatching test",
+            "entity_id": "artemia_hatching_test",
+            "entity_type": "method",
+            "aliases": [
+              "Artemia hatchability test",
+              "Artemia hatching test",
+              "Artemia hatching toxicity assay",
+              "Toxicity on hatching rate assay",
+              "hatching rate test"
+            ],
+            "attributes": {
+              "purpose": "sensitive bioassay for molecular and physiological effects of metals",
+              "metric": "hatching rate"
+            },
+            "relationships": [
+              {
+                "predicate": "correlates_with",
+                "target": "larval mortality",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "Artemia cysts",
+                "attributes": {},
+                "target_id": "artemia_cysts"
+              }
+            ]
+          },
+          {
+            "name": "Standard Artemia toxicity test",
+            "entity_id": "standard_artemia_toxicity_test",
+            "entity_type": "method",
+            "aliases": [
+              "Standard Artemia toxicity Test",
+              "Standard Artemia toxicity test",
+              "standard Artemia micro-well test"
+            ],
+            "attributes": {
+              "purpose": "toxicity of nauplii",
+              "exposure_duration": "up to 48 hours"
+            },
+            "relationships": [
+              {
+                "predicate": "exposes",
+                "target": "nauplii hatched in salt water",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2436,
+          "end_word": 2925,
+          "word_count": 489,
+          "sha256": "30f87d7f69b73b4de26a5d92fdbe42e0957a403dbb98813b26773e13dac86cc0",
+          "sentence_minhash": [
+            84989070151237717,
+            18551641988871988,
+            36072805651584851,
+            61919449716151556,
+            43714454960919411,
+            30500191475291153,
+            32849703842496801,
+            85873296397927752,
+            33265638897362781,
+            9462436175016187,
+            63671808205502417,
+            102496752257176130,
+            91759520063933247,
+            906306679132868,
+            9853511816784328,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'organism' for 'Artemia nauplii'",
+          "normalized unsupported entity type 'material' for 'silver nanoparticles'",
+          "normalized unsupported entity type 'material' for 'copper oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'silicon nanoparticles'",
+          "normalized unsupported entity type 'organism_stage' for 'Artemia cysts'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The study establishes a strong inverse correlation between nanoparticle-induced hatching inhibition and larval mortality in Artemia. Silver nanoparticles exhibited the highest toxicity, while silicon nanoparticles showed the lowest impact on survival. The authors propose the Artemia hatchability test as a viable pre-screening tool for nanoparticle ecotoxicity.",
+        "entities": [
+          {
+            "name": "LC50",
+            "entity_id": "lc50",
+            "entity_type": "measurement",
+            "aliases": [
+              "LC50"
+            ],
+            "attributes": {
+              "definition": "concentration of an agent at which 50 per cent of the tested animals are dead after 24 hours"
+            },
+            "relationships": [
+              {
+                "predicate": "used_as",
+                "target": "criterion for toxicity assessment",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silver nanoparticles",
+            "entity_id": "silver_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silver nanoparticles",
+              "silver nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_rank": "highest among tested nanoparticles",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "causes",
+                "target": "accumulation of ROS and superoxide in nauplii",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "high mortality in standard Artemia toxicity test",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Copper oxide nanoparticles",
+            "entity_id": "copper_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Copper oxide nanoparticles",
+              "copper oxide nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_rank": "second highest after silver",
+              "model_entity_type": "material"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Zinc oxide nanoparticles",
+            "entity_id": "zinc_oxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Zinc oxide nanoparticles",
+              "zinc oxide nanoparticles"
+            ],
+            "attributes": {
+              "toxicity_rank": "third highest after silver and copper oxide",
+              "model_entity_type": "material"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Titanium dioxide nanoparticles",
+            "entity_id": "titanium_dioxide_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Titanium dioxide nanoparticles",
+              "Titanium dioxide particles",
+              "titanium dioxide nanoparticles"
+            ],
+            "attributes": {
+              "survival_impact": "better survival of nauplii up to 48 hours compared to silver, copper, and zinc",
+              "model_entity_type": "material"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Gold nanoparticles",
+            "entity_id": "gold_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Gold nanoparticles",
+              "gold nanoparticles"
+            ],
+            "attributes": {
+              "survival_impact": "better survival of nauplii up to 48 hours compared to silver, copper, and zinc",
+              "model_entity_type": "material"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Silicon nanoparticles",
+            "entity_id": "silicon_nanoparticles",
+            "entity_type": "other",
+            "aliases": [
+              "Silicon nanoparticles",
+              "silicon dioxide nanoparticles",
+              "silicon nanoparticles"
+            ],
+            "attributes": {
+              "survival_impact": "best survival of nauplii up to 48 hours among tested particles",
+              "model_entity_type": "material"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Artemia hatching test",
+            "entity_id": "artemia_hatching_test",
+            "entity_type": "method",
+            "aliases": [
+              "Artemia hatchability test",
+              "Artemia hatching test",
+              "Artemia hatching toxicity assay",
+              "Toxicity on hatching rate assay",
+              "hatching rate test"
+            ],
+            "attributes": {
+              "advantages": "easy to perform, short term, uses mortality as endpoint",
+              "stability_observation": "nanoparticles remain stable in seawater up to one week"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_inverse_correlation_with",
+                "target": "mortality test on hatched larvae",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "correlation_coefficient",
+                "target": "-0.7853",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "statistical_significance_vs_larval_viability",
+                "target": "no statistically significant difference (P=0.683)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "proposed_use",
+                "target": "pre-screening test for nanoparticle toxicity",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Artemia sp.",
+            "entity_id": "artemia_sp",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia",
+              "Artemia sp."
+            ],
+            "attributes": {
+              "feeding_type": "filter feeder",
+              "physiological_capability": "homeostasis in variable external salt concentrations",
+              "role": "model organism for nanoparticle behaviour and ecotoxicity",
+              "model_entity_type": "organism"
+            },
+            "relationships": [
+              {
+                "predicate": "incorporates",
+                "target": "engineered nanoparticles via gut",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_in",
+                "target": "pharmaceutical industry and metal/radiation toxicity tests",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DCFDA staining",
+            "entity_id": "dcfda_staining",
+            "entity_type": "method",
+            "aliases": [
+              "DCFDA staining"
+            ],
+            "attributes": {
+              "purpose": "indication of stress and ROS accumulation"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "dead Artemia and partially hatched cysts",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2925,
+          "end_word": 3423,
+          "word_count": 498,
+          "sha256": "d86a6c2cace76b178e416d2e5d8556524f6fe375bedfc7a202b272a4723f9788",
+          "sentence_minhash": [
+            89440306506630412,
+            1306423125707224,
+            4077881388430694,
+            61919449716151556,
+            202131088475134628,
+            30500191475291153,
+            23718652799488495,
+            22384502142726101,
+            266927695903760850,
+            13107393012536781,
+            78280491562202942,
+            102496752257176130,
+            91759520063933247,
+            906306679132868,
+            29116561381011342,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'silver nanoparticles'",
+          "normalized unsupported entity type 'material' for 'copper oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'zinc oxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'titanium dioxide nanoparticles'",
+          "normalized unsupported entity type 'material' for 'gold nanoparticles'",
+          "normalized unsupported entity type 'material' for 'silicon nanoparticles'",
+          "normalized unsupported entity type 'organism' for 'Artemia'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The use of Artemia cysts in large batches reduces experimental variability. A standardized protocol allows this assay to serve as a high-throughput method for identifying nanomaterial hazards.",
+        "entities": [
+          {
+            "name": "Artemia cysts",
+            "entity_id": "artemia_cysts",
+            "entity_type": "other",
+            "aliases": [
+              "Artemia cysts",
+              "Artemia cysts (San Francisco Bay strain)"
+            ],
+            "attributes": {
+              "availability": "enormous quantities",
+              "effect_on_assay": "reduces variability",
+              "model_entity_type": "biological_material"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "nanomaterial hazard identification assay",
+                "attributes": {},
+                "target_id": "nanomaterial_hazard_identification_assay"
+              }
+            ]
+          },
+          {
+            "name": "nanomaterial hazard identification assay",
+            "entity_id": "nanomaterial_hazard_identification_assay",
+            "entity_type": "method",
+            "aliases": [
+              "nanomaterial hazard identification assay"
+            ],
+            "attributes": {
+              "protocol": "strictly laid out",
+              "throughput": "high",
+              "purpose": "hazard identification of nanomaterials"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "Artemia cysts",
+                "attributes": {},
+                "target_id": "artemia_cysts"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3423,
+          "end_word": 3464,
+          "word_count": 41,
+          "sha256": "ce71b2f621d31fd624b61cff4a5eaa5643b439462aa8ef59f96877af8387e5e6",
+          "sentence_minhash": [
+            143470254565919416,
+            18551641988871988,
+            611347955889946192,
+            11426270078940556,
+            490265237640456668,
+            173578910533955149,
+            175774020269814206,
+            900815047283508824,
+            69954760574897592,
+            587071391820032700,
+            78280491562202942,
+            165121444977496021,
+            411541782325092242,
+            229931427951503152,
+            169401128176801393,
+            1759381128081143292
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'biological_material' for 'Artemia cysts'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "artemia_sp",
+        "canonical_name": "Artemia sp.",
+        "aliases": [
+          "Artemia sp.",
+          "Artemia"
+        ]
+      },
+      {
+        "canonical_id": "silver_nanoparticles",
+        "canonical_name": "Silver nanoparticles",
+        "aliases": [
+          "Silver nanoparticles",
+          "silver nanoparticles"
+        ]
+      },
+      {
+        "canonical_id": "copper_oxide_nanoparticles",
+        "canonical_name": "Copper oxide nanoparticles",
+        "aliases": [
+          "Copper oxide nanoparticles",
+          "copper oxide nanoparticles"
+        ]
+      },
+      {
+        "canonical_id": "zinc_oxide_nanoparticles",
+        "canonical_name": "Zinc oxide nanoparticles",
+        "aliases": [
+          "Zinc oxide nanoparticles",
+          "zinc oxide nanoparticles"
+        ]
+      },
+      {
+        "canonical_id": "gold_nanoparticles",
+        "canonical_name": "Gold nanoparticles",
+        "aliases": [
+          "Gold nanoparticles",
+          "gold nanoparticles"
+        ]
+      },
+      {
+        "canonical_id": "silicon_nanoparticles",
+        "canonical_name": "Silicon nanoparticles",
+        "aliases": [
+          "Silicon nanoparticles",
+          "silicon nanoparticles",
+          "silicon dioxide nanoparticles"
+        ]
+      },
+      {
+        "canonical_id": "titanium_dioxide_nanoparticles",
+        "canonical_name": "Titanium dioxide nanoparticles",
+        "aliases": [
+          "Titanium dioxide nanoparticles",
+          "Titanium dioxide particles"
+        ]
+      },
+      {
+        "canonical_id": "standard_artemia_toxicity_test",
+        "canonical_name": "Standard Artemia toxicity test",
+        "aliases": [
+          "Standard Artemia toxicity test",
+          "Standard Artemia toxicity Test",
+          "standard Artemia micro-well test"
+        ]
+      },
+      {
+        "canonical_id": "artemia_hatching_test",
+        "canonical_name": "Artemia hatching test",
+        "aliases": [
+          "Artemia hatching test",
+          "Artemia hatchability test",
+          "Artemia hatching toxicity assay",
+          "Toxicity on hatching rate assay",
+          "hatching rate test"
+        ]
+      },
+      {
+        "canonical_id": "artemia_cysts",
+        "canonical_name": "Artemia cysts",
+        "aliases": [
+          "Artemia cysts",
+          "Artemia cysts (San Francisco Bay strain)"
+        ]
+      },
+      {
+        "canonical_id": "six_engineered_nanoparticles",
+        "canonical_name": "six engineered nanoparticles",
+        "aliases": [
+          "six engineered nanoparticles"
+        ]
+      },
+      {
+        "canonical_id": "three_soluble_salts",
+        "canonical_name": "three soluble salts",
+        "aliases": [
+          "three soluble salts"
+        ]
+      },
+      {
+        "canonical_id": "nanomaterials",
+        "canonical_name": "nanomaterials",
+        "aliases": [
+          "nanomaterials"
+        ]
+      },
+      {
+        "canonical_id": "nanovalid_project",
+        "canonical_name": "NANOVALID project",
+        "aliases": [
+          "NANOVALID project"
+        ]
+      },
+      {
+        "canonical_id": "nanoparticle_suspension_preparation",
+        "canonical_name": "Nanoparticle suspension preparation",
+        "aliases": [
+          "Nanoparticle suspension preparation"
+        ]
+      },
+      {
+        "canonical_id": "tem_characterization",
+        "canonical_name": "TEM characterization",
+        "aliases": [
+          "TEM characterization"
+        ]
+      },
+      {
+        "canonical_id": "dls_characterization",
+        "canonical_name": "DLS characterization",
+        "aliases": [
+          "DLS characterization"
+        ]
+      },
+      {
+        "canonical_id": "acute_toxicity_study_design",
+        "canonical_name": "Acute toxicity study design",
+        "aliases": [
+          "Acute toxicity study design"
+        ]
+      },
+      {
+        "canonical_id": "nanoparticle_suspensions",
+        "canonical_name": "nanoparticle suspensions",
+        "aliases": [
+          "nanoparticle suspensions"
+        ]
+      },
+      {
+        "canonical_id": "dynamic_light_scattering_system_horiba_nanopartica_sz100",
+        "canonical_name": "Dynamic light scattering system (Horiba Nanopartica SZ100)",
+        "aliases": [
+          "Dynamic light scattering system (Horiba Nanopartica SZ100)"
+        ]
+      },
+      {
+        "canonical_id": "artemia_cultures",
+        "canonical_name": "Artemia cultures",
+        "aliases": [
+          "Artemia cultures"
+        ]
+      },
+      {
+        "canonical_id": "oxidative_stress_test",
+        "canonical_name": "Oxidative stress test",
+        "aliases": [
+          "Oxidative stress test"
+        ]
+      },
+      {
+        "canonical_id": "zeiss_axiovert_imager",
+        "canonical_name": "Zeiss Axiovert imager",
+        "aliases": [
+          "Zeiss Axiovert imager"
+        ]
+      },
+      {
+        "canonical_id": "nanoparticle_dispersion_analysis",
+        "canonical_name": "nanoparticle dispersion analysis",
+        "aliases": [
+          "nanoparticle dispersion analysis"
+        ]
+      },
+      {
+        "canonical_id": "brine_shrimp_hatching_control",
+        "canonical_name": "Brine shrimp hatching control",
+        "aliases": [
+          "Brine shrimp hatching control"
+        ]
+      },
+      {
+        "canonical_id": "silver_nitrate",
+        "canonical_name": "silver nitrate",
+        "aliases": [
+          "silver nitrate"
+        ]
+      },
+      {
+        "canonical_id": "artemia_nauplii",
+        "canonical_name": "Artemia nauplii",
+        "aliases": [
+          "Artemia nauplii"
+        ]
+      },
+      {
+        "canonical_id": "salt_water_ph",
+        "canonical_name": "salt water pH",
+        "aliases": [
+          "salt water pH"
+        ]
+      },
+      {
+        "canonical_id": "lc50",
+        "canonical_name": "LC50",
+        "aliases": [
+          "LC50"
+        ]
+      },
+      {
+        "canonical_id": "dcfda_staining",
+        "canonical_name": "DCFDA staining",
+        "aliases": [
+          "DCFDA staining"
+        ]
+      },
+      {
+        "canonical_id": "nanomaterial_hazard_identification_assay",
+        "canonical_name": "nanomaterial hazard identification assay",
+        "aliases": [
+          "nanomaterial hazard identification assay"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study evaluates the acute toxicity of six engineered nanoparticles and three soluble salts on Artemia sp. hatching and nauplii viability. The estimated order of toxicity for the nanoparticles is Ag > CuO > ZnO > Au > TiO2 > SiO2. The research highlights the need for specific hazard identification methodologies for nanomaterials due to their unique physicochemical properties and environmental risks.\",\"entities\":[{\"name\":\"Artemia sp.\",\"type\":\"other\",\"attributes\":{\"role\":\"test organism for acute toxicity\",\"life_stages_tested\":\"hatching cysts and early nauplii\",\"model_entity_type\":\"organism\"},\"relationships\":[{\"predicate\":\"exposed_to\",\"target\":\"six engineered nanoparticles\",\"attributes\":{},\"target_id\":\"six_engineered_nanoparticles\"},{\"predicate\":\"exposed_to\",\"target\":\"three soluble salts\",\"attributes\":{},\"target_id\":\"three_soluble_salts\"}]},{\"name\":\"six engineered nanoparticles\",\"type\":\"other\",\"attributes\":{\"components\":\"silver, gold, copper oxide, zinc oxide, titanium dioxide, silicon\",\"model_entity_type\":\"material_group\"},\"relationships\":[{\"predicate\":\"tested_on\",\"target\":\"Artemia sp.\",\"attributes\":{},\"target_id\":\"artemia_sp\"},{\"predicate\":\"toxicity_order\",\"target\":\"Ag > CuO > ZnO > Au > TiO2 > SiO2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"three soluble salts\",\"type\":\"other\",\"attributes\":{\"components\":\"CuSO4, ZnSO4, AgNO3\",\"model_entity_type\":\"material_group\"},\"relationships\":[{\"predicate\":\"tested_on\",\"target\":\"Artemia sp.\",\"attributes\":{},\"target_id\":\"artemia_sp\"}]},{\"name\":\"Standard Artemia toxicity test\",\"type\":\"method\",\"attributes\":{\"target_stage\":\"nauplii\",\"endpoint\":\"viability/mortality\"},\"relationships\":[{\"predicate\":\"conducted_in_parallel_with\",\"target\":\"Artemia hatching test\",\"attributes\":{},\"target_id\":\"artemia_hatching_test\"}]},{\"name\":\"Artemia hatching test\",\"type\":\"method\",\"attributes\":{\"target_stage\":\"hydrated and bleached Artemia cysts\",\"conditions\":\"continuously aerated, filtered sterile salt water\",\"endpoint\":\"hatching of viable nauplii vs total hatchlings\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"Standard Artemia toxicity test\",\"attributes\":{},\"target_id\":\"standard_artemia_toxicity_test\"}]},{\"name\":\"nanomaterials\",\"type\":\"concept\",\"attributes\":{\"definition\":\"materials adhering to nanometer size range in at least one dimension\",\"risk_factor\":\"pose risk to environment and human health\",\"behavior\":\"differ from bulk due to unique physicochemical properties\"},\"relationships\":[{\"predicate\":\"release_sources\",\"target\":\"production, applications, weathering, wastes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"limited_knowledge_on\",\"target\":\"bioavailability, biopersistence, behavior under varying pH and salinity\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study utilizes Artemia sp. as a model organism to assess the acute toxicity of six engineered nanoparticles on hatching rates and nauplii viability. Nanoparticles were sourced from the NANOVALID consortium or synthesized in-house and characterized using TEM and DLS. The research demonstrates a good inverse correlation between mortality in nauplii tests and hatching rates, suggesting the development of a new bioassay for nanoparticle hazard assessment.\",\"entities\":[{\"name\":\"Artemia sp.\",\"type\":\"other\",\"attributes\":{\"feeding_type\":\"non-selective filter feeder\",\"habitat\":\"highly saline waters worldwide\",\"characteristics\":\"ubiquitous distribution, robust nature, cost-effective culture\",\"toxicological_status\":\"considered insensitive to many chemicals, but early developmental stages are highly vulnerable\",\"model_entity_type\":\"organism\"},\"relationships\":[{\"predicate\":\"used_as_model_organism_for\",\"target\":\"toxicological assays\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"subject_of_study\",\"target\":\"nanomaterial toxicity\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"NANOVALID project\",\"type\":\"organization\",\"attributes\":{\"role\":\"consortium supplying nanoparticles\"},\"relationships\":[{\"predicate\":\"source_of\",\"target\":\"nanoparticles used in study\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silicon nanoparticles\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Nanologica AB\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"sourced_from\",\"target\":\"Nanologica AB\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silver nanoparticles\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Colorobbia\",\"initial_concentration\":\"4% suspension\",\"stabilizing_agent\":\"PVP\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"sourced_from\",\"target\":\"Colorobbia\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Gold nanoparticles\",\"type\":\"other\",\"attributes\":{\"supplier\":\"INMETRO\",\"initial_concentration\":\"0.006% in water\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"sourced_from\",\"target\":\"INMETRO\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Copper oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Intrinsiq Materials (UK)\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"sourced_from\",\"target\":\"Intrinsiq Materials (UK)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Zinc oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Nanogate (Germany)\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"sourced_from\",\"target\":\"Nanogate (Germany)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Titanium dioxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"synthesis_method\":\"synthesized in house using existing protocol\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"synthesized_in\",\"target\":\"study laboratory\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Nanoparticle suspension preparation\",\"type\":\"method\",\"attributes\":{\"concentration\":\"2 mg/ml for SiO2, TiO2, CuO, ZnO\",\"sonication_parameters\":\"~30W, 50% pulse, 10 minutes\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"SiO2, TiO2, CuO, ZnO nanoparticles\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"TEM characterization\",\"type\":\"method\",\"attributes\":{\"instrument\":\"JEOL 2010 TEM\",\"voltage\":\"100KV\",\"aperture\":\"20µ\",\"sample_concentration\":\"50µg/ml\",\"grid_type\":\"formvar coated copper grids\",\"camera\":\"GATAN\",\"software\":\"GATAN software\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"basic characterization of nanoparticles\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DLS characterization\",\"type\":\"method\",\"attributes\":{\"technique\":\"dynamic light scattering\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"basic characterization of nanoparticles\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Acute toxicity study design\",\"type\":\"method\",\"attributes\":{\"endpoints\":\"Mortality for nauplii test, Hatching rates for cyst test\",\"correlation\":\"Good inverse correlation in sensitivity between the two tests\"},\"relationships\":[{\"predicate\":\"implies\",\"target\":\"development of another bioassay for hazard assessment\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study details the characterization of nanoparticle suspensions and the specific protocols for Artemia culture, hatching toxicity, larval toxicity, and oxidative stress assays. It specifies the use of a Horiba Nanopartica SZ100 for DLS measurements and defines the hatching and mortality endpoints for the bioassays.\",\"entities\":[{\"name\":\"nanoparticle suspensions\",\"type\":\"other\",\"attributes\":{\"concentration_for_dls\":\"25µg/ml\",\"solvents\":\"milliQ water and salt water\",\"analysis_frequency\":\"thrice for three days\",\"data_representation\":\"mean + SEM\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"measured_in\",\"target\":\"Dynamic light scattering system (Horiba Nanopartica SZ100)\",\"attributes\":{},\"target_id\":\"dynamic_light_scattering_system_horiba_nanopartica_sz100\"}]},{\"name\":\"Dynamic light scattering system (Horiba Nanopartica SZ100)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"instrument\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"nanoparticle suspensions\",\"attributes\":{},\"target_id\":\"nanoparticle_suspensions\"}]},{\"name\":\"Artemia cysts\",\"type\":\"other\",\"attributes\":{\"usage_per_litre_culture\":\"1.0 gram\",\"hydration_medium\":\"distilled water\",\"hydration_duration\":\"45 minutes\",\"bleaching_agent\":\"20% sodium hypochlorite solution\",\"bleaching_duration\":\"15 minutes\",\"washing_steps\":\"6 times with distilled water\",\"hatching_medium\":\"25% salt water (pH 8.0)\",\"hatching_conditions\":\"continuous light and aeration for 24 hours\",\"hatching_temperature\":\"28°C\",\"model_entity_type\":\"biological_sample\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"Artemia cultures\",\"attributes\":{},\"target_id\":\"artemia_cultures\"}]},{\"name\":\"Artemia cultures\",\"type\":\"other\",\"attributes\":{\"nanoparticle_concentrations\":\"100mg/l and 10mg/l\",\"model_entity_type\":\"experimental_setup\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"Artemia cysts\",\"attributes\":{},\"target_id\":\"artemia_cysts\"}]},{\"name\":\"Artemia hatching test\",\"type\":\"method\",\"attributes\":{\"nanoparticles_tested\":\"Ag, Au, SiO2, TiO2, CuO, ZnO\",\"exposure_concentrations\":\"100mg/L and 10mg/L\",\"observation_time\":\"24 hours\",\"metrics\":\"hatching rate, mortality, viability\",\"sampling_volume\":\"100µl aliquots\",\"counting_method\":\"stereo-microscope\",\"categories_counted\":\"hatched (immotile vs. motile), umbrella stage, unhatched cyst\",\"hatching_rate_definition\":\"percent of total number of fully hatched Artemia in comparison to total Artemia in the aliquot\",\"replicates\":\"six times\"},\"relationships\":[{\"predicate\":\"performed_on\",\"target\":\"Artemia cultures\",\"attributes\":{},\"target_id\":\"artemia_cultures\"}]},{\"name\":\"Standard Artemia toxicity test\",\"type\":\"method\",\"attributes\":{\"protocol_reference\":\"Artemia hatched under normal conditions in salt water [20]\",\"larvae_per_well\":\"10 nauplii\",\"plate_type\":\"six well plates\",\"nanoparticle_concentrations\":\"100mg/l, 10mg/l, 1mg/l, 0.1mg/l, 0.01mg/l\",\"viability_check_intervals\":\"6, 12, 18, 24, 30, and 48 hours\",\"endpoint\":\"Mortality\",\"mortality_definition\":\"cessation of swimming or any movement by nauplii\",\"ld50_calculation_tool\":\"Graphpad software\"},\"relationships\":[{\"predicate\":\"exposes\",\"target\":\"nauplii\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Oxidative stress test\",\"type\":\"method\",\"attributes\":{\"probe\":\"10µM DCFDA (dichloroflouresciendiacetate)\",\"probe_type\":\"chemiluminiscent probe\",\"mechanism\":\"reacts with ROS generated due to oxidative stress\",\"detection_method\":\"fluorescence imaged using microscope\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"nauplii exposed to different concentrations\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study validates nanoparticle toxicity assays using Artemia hatching and larval mortality, noting that silver and copper oxide nanoparticles significantly reduce hatching rates. Nanoparticle dispersion and size were analyzed in distilled and salt water, revealing flocculation in copper and zinc oxide samples. Statistical analysis confirmed a correlation between hatching inhibition and larval toxicity.\",\"entities\":[{\"name\":\"Artemia hatching test\",\"type\":\"method\",\"attributes\":{\"validity_criterion\":\"low mortality in control\",\"repetitions\":6,\"analysis_tool\":\"Graphpad software\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"hatching rate\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Standard Artemia toxicity test\",\"type\":\"method\",\"attributes\":{\"validity_criterion\":\"mortality below 10% in 24 hr period\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"larval mortality\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Zeiss Axiovert imager\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"equipment\"},\"relationships\":[{\"predicate\":\"used_for_imaging\",\"target\":\"nanoparticle treated nauplii exposed to DCFDA\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"nanoparticle dispersion analysis\",\"type\":\"method\",\"attributes\":{\"media_tested\":[\"distilled water\",\"salt water\",\"Milli Q water\",\"25% NaCl solution\"],\"duration\":\"up to 48 hours\"},\"relationships\":[{\"predicate\":\"observed_reduced_size_in\",\"target\":\"high salt concentration\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_no_apparent_change_in\",\"target\":\"aggregation or dispersion of particles (TEM)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_higher_DLS_values_in_water_for\",\"target\":\"all nanoparticles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_higher_DLS_values_in_salt_water_for\",\"target\":\"Silver, TiO2, CuO, ZnO nanoparticles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_lower_DLS_values_in_salt_water_for\",\"target\":\"Gold and silicon dioxide nanoparticles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_visible_flocculation_in\",\"target\":\"Copper and Zinc oxide nanoparticles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_no_significant_dispersion_change_in_milli_q_for\",\"target\":\"Silver NP, Titania, silica\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_higher_aggregate_sizes_in_salt_water_on_day_3_for\",\"target\":\"Silver NP, Titania, silica\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"observed_flocculation_and_sedimentation_by_day_3_in_both_media_for\",\"target\":\"CuO and ZnO NPs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Brine shrimp hatching control\",\"type\":\"measurement\",\"attributes\":{\"hatching_rate\":\"74% + 5.5\",\"viability\":\"about 97%\"},\"relationships\":[]},{\"name\":\"Silver nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_effect\":\"highest effect on hatching rate\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"reduced_hatching_rate_to\",\"target\":\"about 29% at 100mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resulted_in_motile_viability_of\",\"target\":\"50% at 100mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"maintained_lower_hatching_rate_at\",\"target\":\"10 mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resulted_in_viability_of\",\"target\":\"85% at 10 mg/L\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Copper oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_effect\":\"highest effect on hatching rate\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"reduced_hatching_rate_to\",\"target\":\"about 29% at 100mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resulted_in_motile_viability_of\",\"target\":\"50% at 100mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resulted_in_low_hatching_rate_with_viability_of\",\"target\":\"around 64% at 10 mg/L\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study reports that silver and copper oxide nanoparticles significantly reduce Artemia hatching rates, while other nanoparticles like gold and silicon dioxide show lower toxicity. Silver nitrate and ionic silver form are highly toxic to nauplii, with silver nanoparticles exhibiting an LC50 of approximately 10.12 mg/L. No gross morphological abnormalities were observed in hatched nauplii, although reactive oxygen species were detected in dead or trapped individuals.\",\"entities\":[{\"name\":\"Silver nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_ranking\":\"highest among tested nanoparticles\",\"LC50_at_24h\":\"10.12 mg/L\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"reduces_hatching_rate_to\",\"target\":\"29% at 100 mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"causes_mortality_in\",\"target\":\"80% of nauplii in 24 hours (ionic form)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_no_gross_morphological_abnormalities_in\",\"target\":\"hatched nauplii\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accumulates_in_gut_of\",\"target\":\"nauplii (except dead ones within 24h)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"silver nitrate\",\"type\":\"other\",\"attributes\":{\"form\":\"ionic silver\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"improves_hatching_rate_to\",\"target\":\"33%\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"causes_mortality_in\",\"target\":\"80% of nauplii in 24 hours\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Copper oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_ranking\":\"second highest among tested nanoparticles\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"reduces_hatching_rate_to\",\"target\":\"29% at 100 mg/L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_no_gross_morphological_abnormalities_in\",\"target\":\"hatched nauplii\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Zinc oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"hatching_rate\":\"60%\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"causes_clumping_of\",\"target\":\"Artemia cysts\",\"attributes\":{},\"target_id\":\"artemia_cysts\"}]},{\"name\":\"Titanium dioxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"hatching_rate_at_100mg_L\":\"41.50%\",\"viability_at_100mg_L\":\"67.8%\",\"hatching_rate_at_10mg_L\":\"54%\",\"viability_at_10mg_L\":\"~90%\",\"model_entity_type\":\"material\"},\"relationships\":[]},{\"name\":\"Gold nanoparticles\",\"type\":\"other\",\"attributes\":{\"hatching_rate_range\":\"50-60%\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"displays_good_viability_in\",\"target\":\"hatched nauplii\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silicon nanoparticles\",\"type\":\"other\",\"attributes\":{\"hatching_rate_range\":\"50-60%\",\"hatching_rate_at_10mg_L\":\"equivalent to controls\",\"viability_at_10mg_L\":\"equivalent to controls\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"displays_good_viability_in\",\"target\":\"hatched nauplii\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Artemia nauplii\",\"type\":\"other\",\"attributes\":{\"morphology\":\"normal, no changes observed\",\"behavior\":\"swimming vigorously (viable), immotile/dead (toxic exposure)\",\"model_entity_type\":\"organism_stage\"},\"relationships\":[{\"predicate\":\"exposed_to\",\"target\":\"nanoparticles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_ROS_staining_in\",\"target\":\"gut of dead nauplii and few trapped nauplii\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"salt water pH\",\"type\":\"measurement\",\"attributes\":{\"value_range\":\"6.3-6.5\",\"duration\":\"up to 48 hours\"},\"relationships\":[{\"predicate\":\"remained_unchanged_upon_addition_of\",\"target\":\"nanoparticles\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study compares the toxicity of various engineered nanoparticles on Artemia hatching rates and larval viability, finding a strong inverse correlation between the two metrics. Silver and copper oxide nanoparticles exhibited the highest toxicity, while silicon nanoparticles at low concentrations showed enhanced hatching compared to controls. The research utilized DCFDA and DHE staining to detect reactive oxygen species and superoxide in exposed nauplii.\",\"entities\":[{\"name\":\"Artemia nauplii\",\"type\":\"other\",\"attributes\":{\"exposure_agent\":\"engineered nanoparticles\",\"staining_agents\":[\"DCFDA\",\"DHE\"],\"model_entity_type\":\"organism\"},\"relationships\":[{\"predicate\":\"shows_highest_staining_for\",\"target\":\"Silver nanoparticles\",\"attributes\":{},\"target_id\":\"silver_nanoparticles\"},{\"predicate\":\"shows_staining_for\",\"target\":\"titania nanoparticles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_staining_for\",\"target\":\"Silicon nanoparticles\",\"attributes\":{},\"target_id\":\"silicon_nanoparticles\"},{\"predicate\":\"accumulates_in_gut\",\"target\":\"nanoparticles\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silver nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_level\":\"high\",\"effect_on_hatching\":\"reduced rate\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"causes_highest_staining_in\",\"target\":\"Artemia nauplii\",\"attributes\":{},\"target_id\":\"artemia_nauplii\"},{\"predicate\":\"toxicity_mechanism\",\"target\":\"ionic forms\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Copper oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_level\":\"high\",\"effect_on_hatching\":\"reduced rate\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"toxicity_mechanism\",\"target\":\"ionic forms\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silicon nanoparticles\",\"type\":\"other\",\"attributes\":{\"effect_at_low_concentration\":\"better hatching than control\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"shows_staining_in\",\"target\":\"Artemia nauplii\",\"attributes\":{},\"target_id\":\"artemia_nauplii\"}]},{\"name\":\"Artemia cysts\",\"type\":\"other\",\"attributes\":{\"state\":\"dormant gastrula\",\"structure\":\"encased in hard outer shell\",\"formation_condition\":\"unfavourable conditions\",\"model_entity_type\":\"organism_stage\"},\"relationships\":[{\"predicate\":\"hatches_into\",\"target\":\"free swimming Nauplii\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"hatching_timeframe\",\"target\":\"about 20 hours\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Artemia hatching test\",\"type\":\"method\",\"attributes\":{\"purpose\":\"sensitive bioassay for molecular and physiological effects of metals\",\"metric\":\"hatching rate\"},\"relationships\":[{\"predicate\":\"correlates_with\",\"target\":\"larval mortality\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"Artemia cysts\",\"attributes\":{},\"target_id\":\"artemia_cysts\"}]},{\"name\":\"Standard Artemia toxicity test\",\"type\":\"method\",\"attributes\":{\"purpose\":\"toxicity of nauplii\",\"exposure_duration\":\"up to 48 hours\"},\"relationships\":[{\"predicate\":\"exposes\",\"target\":\"nauplii hatched in salt water\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study establishes a strong inverse correlation between nanoparticle-induced hatching inhibition and larval mortality in Artemia. Silver nanoparticles exhibited the highest toxicity, while silicon nanoparticles showed the lowest impact on survival. The authors propose the Artemia hatchability test as a viable pre-screening tool for nanoparticle ecotoxicity.\",\"entities\":[{\"name\":\"LC50\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"concentration of an agent at which 50 per cent of the tested animals are dead after 24 hours\"},\"relationships\":[{\"predicate\":\"used_as\",\"target\":\"criterion for toxicity assessment\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silver nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_rank\":\"highest among tested nanoparticles\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"causes\",\"target\":\"accumulation of ROS and superoxide in nauplii\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"high mortality in standard Artemia toxicity test\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Copper oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_rank\":\"second highest after silver\",\"model_entity_type\":\"material\"},\"relationships\":[]},{\"name\":\"Zinc oxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"toxicity_rank\":\"third highest after silver and copper oxide\",\"model_entity_type\":\"material\"},\"relationships\":[]},{\"name\":\"Titanium dioxide nanoparticles\",\"type\":\"other\",\"attributes\":{\"survival_impact\":\"better survival of nauplii up to 48 hours compared to silver, copper, and zinc\",\"model_entity_type\":\"material\"},\"relationships\":[]},{\"name\":\"Gold nanoparticles\",\"type\":\"other\",\"attributes\":{\"survival_impact\":\"better survival of nauplii up to 48 hours compared to silver, copper, and zinc\",\"model_entity_type\":\"material\"},\"relationships\":[]},{\"name\":\"Silicon nanoparticles\",\"type\":\"other\",\"attributes\":{\"survival_impact\":\"best survival of nauplii up to 48 hours among tested particles\",\"model_entity_type\":\"material\"},\"relationships\":[]},{\"name\":\"Artemia hatching test\",\"type\":\"method\",\"attributes\":{\"advantages\":\"easy to perform, short term, uses mortality as endpoint\",\"stability_observation\":\"nanoparticles remain stable in seawater up to one week\"},\"relationships\":[{\"predicate\":\"shows_inverse_correlation_with\",\"target\":\"mortality test on hatched larvae\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"correlation_coefficient\",\"target\":\"-0.7853\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"statistical_significance_vs_larval_viability\",\"target\":\"no statistically significant difference (P=0.683)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"proposed_use\",\"target\":\"pre-screening test for nanoparticle toxicity\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Artemia sp.\",\"type\":\"other\",\"attributes\":{\"feeding_type\":\"filter feeder\",\"physiological_capability\":\"homeostasis in variable external salt concentrations\",\"role\":\"model organism for nanoparticle behaviour and ecotoxicity\",\"model_entity_type\":\"organism\"},\"relationships\":[{\"predicate\":\"incorporates\",\"target\":\"engineered nanoparticles via gut\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_in\",\"target\":\"pharmaceutical industry and metal/radiation toxicity tests\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DCFDA staining\",\"type\":\"method\",\"attributes\":{\"purpose\":\"indication of stress and ROS accumulation\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"dead Artemia and partially hatched cysts\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The use of Artemia cysts in large batches reduces experimental variability. A standardized protocol allows this assay to serve as a high-throughput method for identifying nanomaterial hazards.\",\"entities\":[{\"name\":\"Artemia cysts\",\"type\":\"other\",\"attributes\":{\"availability\":\"enormous quantities\",\"effect_on_assay\":\"reduces variability\",\"model_entity_type\":\"biological_material\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"nanomaterial hazard identification assay\",\"attributes\":{},\"target_id\":\"nanomaterial_hazard_identification_assay\"}]},{\"name\":\"nanomaterial hazard identification assay\",\"type\":\"method\",\"attributes\":{\"protocol\":\"strictly laid out\",\"throughput\":\"high\",\"purpose\":\"hazard identification of nanomaterials\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"Artemia cysts\",\"attributes\":{},\"target_id\":\"artemia_cysts\"}]}]}]"
+}

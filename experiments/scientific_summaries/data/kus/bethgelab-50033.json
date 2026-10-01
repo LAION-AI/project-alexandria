@@ -1,0 +1,1602 @@
+{
+  "document_id": "bethgelab-50033",
+  "fulltext_sha256": "bf799d730709e4d61998cf1d6c35cf9885ada8045ad414d9e196fb4bf044922a",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "a180797d8f5fb56d343994ebaf458d3434fc08077101fd9a443dcaac3a20038f",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study introduces a multiplex-PCR method with 343 primer pairs to improve SARS-CoV-2 detection sensitivity beyond standard RT-PCR. It demonstrates the ability to amplify the full viral genome from low copy numbers and detect mutations via next-generation sequencing.",
+        "entities": [
+          {
+            "name": "multiplex-PCR-based method",
+            "entity_id": "multiplex_pcr_based_method",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex PCR method",
+              "multiplex-PCR-based method"
+            ],
+            "attributes": {
+              "primer_count": "343 pairs",
+              "target": "SARS-CoV-2",
+              "capability": "detects low copy numbers",
+              "output": "clean characteristic target peaks of defined sizes"
+            },
+            "relationships": [
+              {
+                "predicate": "allows_identification_by",
+                "target": "electrophoresis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "amplified_genome_from",
+                "target": "8 to half a million viral copies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "source_specimens",
+                "target": "13 COVID-19 positive specimens",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RT-PCR",
+            "entity_id": "rt_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "RT-PCR"
+            ],
+            "attributes": {
+              "status": "most commonly used for COVID-19 diagnosis",
+              "claimed_sensitivity": "about 5 copies of viruses",
+              "reported_detection_rate": "47-59% of positive cases"
+            },
+            "relationships": [
+              {
+                "predicate": "limited_by",
+                "target": "low viral load, timing of sampling, degradation of virus RNA, mutations spanning primer binding sites",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiplex-PCR-based metagenomic method",
+            "entity_id": "multiplex_pcr_based_metagenomic_method",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex-PCR-based metagenomic method"
+            ],
+            "attributes": {
+              "sequencing_depth_requirement": "modest",
+              "purpose": "uncovering SARS-CoV-2 mutational diversity and potentially novel or emerging isolates"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SARS-CoV-2",
+            "entity_id": "sars_cov_2",
+            "entity_type": "concept",
+            "aliases": [
+              "SARS-CoV-2"
+            ],
+            "attributes": {
+              "genome_status": "amplified from 8 to half a million copies"
+            },
+            "relationships": [
+              {
+                "predicate": "mutations_detected_by",
+                "target": "next generation sequencing",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 466,
+          "word_count": 466,
+          "sha256": "284df9f0fdd1725c389ec37d78cd798993ee08f314f7031345fa34e40e28f680",
+          "sentence_minhash": [
+            69300849615276113,
+            53832793564625407,
+            1293646407744688,
+            10117942451265912,
+            35439913202882735,
+            157705191128604466,
+            32191050761192144,
+            96292850158067112,
+            246632621214917415,
+            7649729463600173,
+            78280491562202942,
+            108137441759599869,
+            107484293404640093,
+            272671702087015607,
+            278614866765861159,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The text highlights the limitations of RT-PCR in detecting SARS-CoV-2, noting that it misses a significant portion of true positives and is hindered by sample heat inactivation. To address this, the authors propose a multiplex PCR-based method that offers higher sensitivity and specificity, capable of distinguishing SARS-CoV-2 from other respiratory pathogens and enabling full-genome sequencing for surveillance.",
+        "entities": [
+          {
+            "name": "RT-PCR",
+            "entity_id": "rt_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "RT-PCR"
+            ],
+            "attributes": {
+              "detection_rate": "47-59% of true positive cases",
+              "false_negative_rate": "75% of negative results later found positive",
+              "limitation": "Hindered by heat inactivation of clinical samples causing loss of viral particles"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "repeated testing",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2",
+            "entity_id": "sars_cov_2",
+            "entity_type": "concept",
+            "aliases": [
+              "SARS-CoV-2"
+            ],
+            "attributes": {
+              "genome_size": "29,903bp",
+              "reference_sequence": "NC_045512.2"
+            },
+            "relationships": [
+              {
+                "predicate": "distinguished_from",
+                "target": "influenza virus, parainfluenza virus, adenovirus, respiratory syncytial virus, rhinovirus, human metapneumovirus, SARS-CoV, Mycoplasma pneumoniae, Chlamydia pneumoniae",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "monitored_by",
+                "target": "next generation sequencing (NGS)",
+                "attributes": {},
+                "target_id": "next_generation_sequencing_ngs"
+              }
+            ]
+          },
+          {
+            "name": "multiplex PCR",
+            "entity_id": "multiplex_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex PCR"
+            ],
+            "attributes": {
+              "sensitivity": "Significantly higher than RT-PCR",
+              "capability": "Detects nucleotide fragments from degraded viral genomes",
+              "cost": "Low-cost",
+              "efficiency": "High coverage (median 99%), specificity (99.8%)",
+              "application": "Detection of Hantaan orthohantavirus and Plasmodium falciparum"
+            },
+            "relationships": [
+              {
+                "predicate": "targets",
+                "target": "hundreds of targets simultaneously",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enables",
+                "target": "identification of novel pathogens",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "next generation sequencing (NGS)",
+            "entity_id": "next_generation_sequencing_ngs",
+            "entity_type": "method",
+            "aliases": [
+              "next generation sequencing (NGS)"
+            ],
+            "attributes": {
+              "purpose": "Surveillance of SARS-CoV-2 evolution and containment of community spread",
+              "sequencing_depth": "Approximately 1 million reads for metagenomic method"
+            },
+            "relationships": [
+              {
+                "predicate": "provides",
+                "target": "full-length viral genome sequence",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "guides",
+                "target": "policy-making and management procedures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "heat inactivation",
+            "entity_id": "heat_inactivation",
+            "entity_type": "other",
+            "aliases": [
+              "heat inactivation"
+            ],
+            "attributes": {
+              "effect": "Causes loss of viral particles",
+              "model_entity_type": "process"
+            },
+            "relationships": [
+              {
+                "predicate": "hinders",
+                "target": "efficiency of downstream diagnosis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 466,
+          "end_word": 962,
+          "word_count": 496,
+          "sha256": "db295a024cc427ae56ac6cf4f66124eca3026440df24e9291ebcb0e3f09825f9",
+          "sentence_minhash": [
+            87896383080834215,
+            18551641988871988,
+            1293646407744688,
+            37498130448765965,
+            28867824967236101,
+            10852481231346428,
+            149017575652778032,
+            67257714571907172,
+            125991694189146616,
+            107048872566759164,
+            51734546973512868,
+            177343633896795225,
+            11610845633202285,
+            294728606279234879,
+            37122965930226008,
+            140669165635672733
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'process' for 'heat inactivation'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "A mathematical model estimates that standard RT-PCR detects only 4.8 copies of SARS-CoV-2 at 95% probability, while a multiplex PCR panel of 172 primers improves this limit to 1.15 copies. The study assumes a 6% amplification efficiency for single-strand cDNA and notes that the detection limit is independent of viral genome size.",
+        "entities": [
+          {
+            "name": "RT-PCR",
+            "entity_id": "rt_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "RT-PCR"
+            ],
+            "attributes": {
+              "predicted_detection_probability_for_one_copy": "26%",
+              "limit_of_detection_at_95_percent_probability": "4.8 copies",
+              "reported_detection_rate_range": "47-56%"
+            },
+            "relationships": [
+              {
+                "predicate": "detects",
+                "target": "SARS-CoV-2",
+                "attributes": {},
+                "target_id": "sars_cov_2"
+              },
+              {
+                "predicate": "limit_of_detection_independent_of",
+                "target": "viral genome size",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiplex PCR",
+            "entity_id": "multiplex_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex PCR"
+            ],
+            "attributes": {
+              "estimated_efficiency_with_umi_labeled_primers": "26%",
+              "assumed_efficiency_for_single_strand_cdna": "6%",
+              "advantage": "detects fragments of degraded viral nucleotide fragments and tolerates genomic variations"
+            },
+            "relationships": [
+              {
+                "predicate": "targets",
+                "target": "multiple regions of the viral genome",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increases",
+                "target": "frequency of occurrence in mathematical model",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2 detection panel (172 primer pairs)",
+            "entity_id": "sars_cov_2_detection_panel_172_primer_pairs",
+            "entity_type": "method",
+            "aliases": [
+              "SARS-CoV-2 detection panel (172 primer pairs)"
+            ],
+            "attributes": {
+              "primer_pair_count": 172,
+              "average_amplicon_length": "99bp",
+              "average_gap_between_adjacent_amplicons": "76bp",
+              "gap_standard_deviation": "10bp",
+              "estimated_detection_limit_at_95_percent_probability": "1.15 copies"
+            },
+            "relationships": [
+              {
+                "predicate": "spans",
+                "target": "entire SARS-CoV-2 genome",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "limit_of_detection_independent_of",
+                "target": "virus genome size",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2 detection panel (171 primer pairs)",
+            "entity_id": "sars_cov_2_detection_panel_171_primer_pairs",
+            "entity_type": "method",
+            "aliases": [
+              "SARS-CoV-2 detection panel (171 primer pairs)"
+            ],
+            "attributes": {
+              "primer_pair_count": 171
+            },
+            "relationships": [
+              {
+                "predicate": "targets",
+                "target": "gaps between target regions of the 172-primer pair pool",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "provides_full_coverage_with",
+                "target": "SARS-CoV-2 detection panel (172 primer pairs)",
+                "attributes": {},
+                "target_id": "sars_cov_2_detection_panel_172_primer_pairs"
+              }
+            ]
+          },
+          {
+            "name": "mathematical model for RT-PCR",
+            "entity_id": "mathematical_model_for_rt_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "mathematical model for RT-PCR"
+            ],
+            "attributes": {
+              "assumed_rt_pcr_efficiency": "99%",
+              "assumed_amplicon_length": "100bp",
+              "assumed_genome_size": "30kb"
+            },
+            "relationships": [
+              {
+                "predicate": "estimates",
+                "target": "limit of detection for SARS-CoV-2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 962,
+          "end_word": 1415,
+          "word_count": 453,
+          "sha256": "b91a5a7243a1489dc61a0585d845357440a20aae44b0104f309948a2a7763327",
+          "sentence_minhash": [
+            87896383080834215,
+            1306423125707224,
+            61896554882702054,
+            37498130448765965,
+            335208187202550412,
+            99436724310786061,
+            23718652799488495,
+            349295086268755419,
+            110457184008548161,
+            53310063724274912,
+            78280491562202942,
+            127332288920535677,
+            16666991694368182,
+            906306679132868,
+            37122965930226008,
+            341119551458628131
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study demonstrates that using two overlapping pools of multiplex PCR primers achieves a calculated detection limit of 0.29 copies of SARS-CoV-2 at 95% probability. Validation using plasmids spiked into human cDNA showed that the method can detect viral copies down to 2.8, with a dynamic range up to approximately 1,000 copies. Experimental results indicated a 56% detection probability for 1.1 copies, suggesting the actual amplification efficiency is higher than the 6% estimated in the mathematical model.",
+        "entities": [
+          {
+            "name": "dual-pool multiplex PCR detection method",
+            "entity_id": "dual_pool_multiplex_pcr_detection_method",
+            "entity_type": "method",
+            "aliases": [
+              "dual-pool multiplex PCR detection method"
+            ],
+            "attributes": {
+              "calculated_detection_limit": "0.29 copies at 95% probability",
+              "workflow": "multiplex PCR followed by secondary PCR for adding indexes and NGS primers"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "two pools of primers",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "validates",
+                "target": "SARS-CoV-2 detection",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2",
+            "entity_id": "sars_cov_2",
+            "entity_type": "concept",
+            "aliases": [
+              "SARS-CoV-2"
+            ],
+            "attributes": {
+              "target_pathogen": "true"
+            },
+            "relationships": [
+              {
+                "predicate": "detected_by",
+                "target": "dual-pool multiplex PCR detection method",
+                "attributes": {},
+                "target_id": "dual_pool_multiplex_pcr_detection_method"
+              },
+              {
+                "predicate": "may_cause_cross_amplification_with",
+                "target": "other coronaviruses",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "electrophoresis analysis",
+            "entity_id": "electrophoresis_analysis",
+            "entity_type": "measurement",
+            "aliases": [
+              "electrophoresis analysis"
+            ],
+            "attributes": {
+              "purpose": "visualize potential positives and provide fast indication of infection",
+              "expected_pattern": "defined distribution of peak sizes"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "multiplex PCR products",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "S and N gene plasmids",
+            "entity_id": "s_and_n_gene_plasmids",
+            "entity_type": "other",
+            "aliases": [
+              "S and N gene plasmids"
+            ],
+            "attributes": {
+              "content": "full sequence of S and N genes of SARS-CoV-2",
+              "expected_targets_in_172_amplicon_panel": 28
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_validate",
+                "target": "multiplex-PCR-based method",
+                "attributes": {},
+                "target_id": "multiplex_pcr_based_method"
+              },
+              {
+                "predicate": "spiked_into",
+                "target": "cDNA generated from human total RNA",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "droplet-based digital PCR (ddPCR)",
+            "entity_id": "droplet_based_digital_pcr_ddpcr",
+            "entity_type": "method",
+            "aliases": [
+              "droplet-based digital PCR (ddPCR)"
+            ],
+            "attributes": {
+              "system": "QX200 from Bio-Rad",
+              "purpose": "precisely determine plasmid copy number"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "quantification of S and N gene plasmids",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiplex PCR amplification efficiency",
+            "entity_id": "multiplex_pcr_amplification_efficiency",
+            "entity_type": "measurement",
+            "aliases": [
+              "multiplex PCR amplification efficiency"
+            ],
+            "attributes": {
+              "theoretical_estimate_for_single_strand_cDNA": "6%",
+              "experimental_observation_for_1.1_copies": "56% probability to detect"
+            },
+            "relationships": [
+              {
+                "predicate": "suggests_actual_efficiency_is_higher_than",
+                "target": "6%",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RT-PCR",
+            "entity_id": "rt_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "RT-PCR"
+            ],
+            "attributes": {
+              "performance_at_2.85_copies": "detected quantities rapidly dropped"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "multiplex PCR",
+                "attributes": {},
+                "target_id": "multiplex_pcr"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1415,
+          "end_word": 1894,
+          "word_count": 479,
+          "sha256": "50362e63306da03596228fa96d5ce284d5c617e07e4c96290cc82a2175da36bb",
+          "sentence_minhash": [
+            14279474218976588,
+            1306423125707224,
+            69729176314767099,
+            64513941377847126,
+            144346492384066648,
+            99436724310786061,
+            69216838232268862,
+            81285259065511028,
+            143616283985015953,
+            7649729463600173,
+            78280491562202942,
+            49775578613387123,
+            51125582506972287,
+            1548947419508331,
+            37122965930226008,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study validated the uniformity and recovery rates of multiplex PCR amplicons using plasmid standards and applied the method to 13 SARS-CoV-2 positive specimens. Sequencing depth analysis showed that high genome coverage is achievable even at low viral copy numbers, with specific thresholds for mutation detection based on allele frequency.",
+        "entities": [
+          {
+            "name": "multiplex PCR amplicon recovery",
+            "entity_id": "multiplex_pcr_amplicon_recovery",
+            "entity_type": "measurement",
+            "aliases": [
+              "multiplex PCR amplicon recovery"
+            ],
+            "attributes": {
+              "relative_depth_range": "about 20-fold",
+              "plasmid_copy_range": "1.4 to 2.8",
+              "distribution": "uniformly distributed across GC range"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_in",
+                "target": "sequenced amplified products",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "amplicon recovery rate",
+            "entity_id": "amplicon_recovery_rate",
+            "entity_type": "measurement",
+            "aliases": [
+              "amplicon recovery rate"
+            ],
+            "attributes": {
+              "recovery_at_14_copies": "96%",
+              "recovery_at_2.8_copies": "77%",
+              "recovery_at_0.6_copies": "37%"
+            },
+            "relationships": [
+              {
+                "predicate": "measured_with",
+                "target": "plasmids",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "13 nasopharyngeal swab specimens",
+            "entity_id": "13_nasopharyngeal_swab_specimens",
+            "entity_type": "other",
+            "aliases": [
+              "13 nasopharyngeal swab specimens"
+            ],
+            "attributes": {
+              "diagnosis": "SARS-CoV-2 positive by RT-PCR",
+              "viral_load_range": "8 to 675,885 RNA copies/uL",
+              "model_entity_type": "sample_set"
+            },
+            "relationships": [
+              {
+                "predicate": "amplified_with",
+                "target": "two pools of primers",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "sequenced_on",
+                "target": "Illumina MiSeq",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2 genome coverage",
+            "entity_id": "sars_cov_2_genome_coverage",
+            "entity_type": "measurement",
+            "aliases": [
+              "SARS-CoV-2 genome coverage"
+            ],
+            "attributes": {
+              "coverage_at_8_copies": "95% at 100X",
+              "coverage_at_22_to_675885_copies": "98-99% at 100X",
+              "average_sequencing_depth": "5,000 reads per amplicon"
+            },
+            "relationships": [
+              {
+                "predicate": "correlated_with",
+                "target": "viral copy number",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "sub-sampled sequencing depth",
+            "entity_id": "sub_sampled_sequencing_depth",
+            "entity_type": "measurement",
+            "aliases": [
+              "sub-sampled sequencing depth"
+            ],
+            "attributes": {
+              "150k_reads_coverage": "at least 93% at 100X",
+              "100k_reads_coverage": "86% at 100X",
+              "50k_reads_coverage": "at least 58% at 100X",
+              "150k_reads_per_amplicon": "437",
+              "100k_reads_per_amplicon": "291"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "5 genomes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2 mutation detection",
+            "entity_id": "sars_cov_2_mutation_detection",
+            "entity_type": "method",
+            "aliases": [
+              "SARS-CoV-2 mutation detection"
+            ],
+            "attributes": {
+              "algorithm_requirement": "detected by two independently developed algorithms",
+              "true_mutation_threshold": "allele frequency > 60%"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "13 SARS-CoV-2 genomes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "identified_cluster",
+                "target": "7 loci",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1894,
+          "end_word": 2389,
+          "word_count": 495,
+          "sha256": "1e8a2fe794a3020da1314a1615c082d3c6ea626f1c6ebd930003dc7bc0cdb2c2",
+          "sentence_minhash": [
+            255519002166310768,
+            18551641988871988,
+            25004049920514580,
+            78327297244480524,
+            148925132169520149,
+            57869492297846635,
+            175774020269814206,
+            295906451915772505,
+            64917655521521569,
+            41183111660975745,
+            78280491562202942,
+            199161640674279394,
+            49673477193682617,
+            31329711815050419,
+            303264414993015767,
+            171448683786950174
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'sample_set' for '13 nasopharyngeal swab specimens'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study categorized 13 SARS-CoV-2 specimens into three groups based on mutation similarity, identifying the D614G mutation in 11 samples. Researchers applied a 20% allele frequency cutoff to distinguish true intra-host mutations from PCR and sequencing noise, noting that low viral copy numbers and read depth can introduce false positives. A multiplex-PCR-based metagenomic method using random hexamer adapters was developed to detect novel pathogens and highly mutated viruses.",
+        "entities": [
+          {
+            "name": "SARS-CoV-2 specimen groups",
+            "entity_id": "sars_cov_2_specimen_groups",
+            "entity_type": "concept",
+            "aliases": [
+              "SARS-CoV-2 specimen groups"
+            ],
+            "attributes": {
+              "categorization_basis": "mutation similarity",
+              "group_count": 3
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "Group 1",
+                "attributes": {},
+                "target_id": "group_1"
+              },
+              {
+                "predicate": "includes",
+                "target": "Group 2",
+                "attributes": {},
+                "target_id": "group_2"
+              },
+              {
+                "predicate": "includes",
+                "target": "Group 3",
+                "attributes": {},
+                "target_id": "group_3"
+              }
+            ]
+          },
+          {
+            "name": "Group 1",
+            "entity_id": "group_1",
+            "entity_type": "concept",
+            "aliases": [
+              "Group 1"
+            ],
+            "attributes": {
+              "mutation_frequency": ">98%"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_identical_mutations_with",
+                "target": "Group 2",
+                "attributes": {},
+                "target_id": "group_2"
+              }
+            ]
+          },
+          {
+            "name": "Group 2",
+            "entity_id": "group_2",
+            "entity_type": "concept",
+            "aliases": [
+              "Group 2"
+            ],
+            "attributes": {
+              "viral_copy_number": "low",
+              "read_depth_per_amplicon": "low",
+              "apparent_intra_host_mutations": "considerably higher"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_identical_mutations_with",
+                "target": "Group 1",
+                "attributes": {},
+                "target_id": "group_1"
+              }
+            ]
+          },
+          {
+            "name": "Group 3",
+            "entity_id": "group_3",
+            "entity_type": "concept",
+            "aliases": [
+              "Group 3"
+            ],
+            "attributes": {
+              "viral_copy_number": "high",
+              "read_depth_per_amplicon": "high",
+              "intra_host_mutations_per_genome": "one in some specimens",
+              "lineage_origin": "distinct"
+            },
+            "relationships": [
+              {
+                "predicate": "significantly_different_from",
+                "target": "Group 1 and Group 2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "D614G mutation",
+            "entity_id": "d614g_mutation",
+            "entity_type": "concept",
+            "aliases": [
+              "D614G mutation"
+            ],
+            "attributes": {
+              "genetic_change": "G-to-A base change at position 23,403",
+              "reference_strain": "NC_045512.2",
+              "prevalence_in_study": "11 of 13 specimens",
+              "historical_spread": "began in Europe in early February, became dominant"
+            },
+            "relationships": [
+              {
+                "predicate": "found_in",
+                "target": "13 SARS-CoV-2 specimens",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "intra-host mutation analysis criteria",
+            "entity_id": "intra_host_mutation_analysis_criteria",
+            "entity_type": "method",
+            "aliases": [
+              "intra-host mutation analysis criteria"
+            ],
+            "attributes": {
+              "noise_elimination_cutoff": "%AF >= 20%",
+              "heterogeneity_threshold": "%AF <= 60%",
+              "cutoff_basis": "mutation profile from synthetic SARS-CoV-2 RNA controls from Twist Bioscience",
+              "limitation": "no UMI used, potential PCR noise contamination"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "SARS-CoV-2 specimens",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiplex-PCR-based metagenomic method",
+            "entity_id": "multiplex_pcr_based_metagenomic_method",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex-PCR-based metagenomic method"
+            ],
+            "attributes": {
+              "purpose": "characterize highly mutated viruses and discover unknown pathogens",
+              "amplification_strategy": "random hexamer-adapters",
+              "purification_step": "Paragon Genomics' background removal reagent"
+            },
+            "relationships": [
+              {
+                "predicate": "developed_by",
+                "target": "Paragon Genomics Inc",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2389,
+          "end_word": 2867,
+          "word_count": 478,
+          "sha256": "7e57d9b7a512c1e977873b851b38931aef45ac981fbc83a5286e4bdc4ed971d0",
+          "sentence_minhash": [
+            478156107253951310,
+            1306423125707224,
+            159734705172240461,
+            64513941377847126,
+            17364062514135603,
+            62667647458868521,
+            113107102554160807,
+            63183425104977485,
+            186829673564352647,
+            41183111660975745,
+            104756635517093838,
+            208238773495251627,
+            90665109298264684,
+            132529644835130180,
+            194885768149381016,
+            32286065768349770
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "A multiplex-PCR-based metagenomic method using random hexamers enriches viral targets from human genomic background, achieving high coverage of SARS-CoV-2 and mitochondrial regions while depleting human ribosomal RNA. The method recovers 96% of the SARS-CoV-2 genome with uniform depth, distinguishing it from standard RT-PCR by its tolerance to mutations and ability to interrogate the full genome.",
+        "entities": [
+          {
+            "name": "Paragon Genomics reverse transcription reagents",
+            "entity_id": "paragon_genomics_reverse_transcription_reagents",
+            "entity_type": "method",
+            "aliases": [
+              "Paragon Genomics reverse transcription reagents"
+            ],
+            "attributes": {
+              "function": "converts RNA into cDNA",
+              "effect": "significantly reduces human ribosomal RNA species"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "RNA samples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiplex-PCR-based metagenomic method",
+            "entity_id": "multiplex_pcr_based_metagenomic_method",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex-PCR-based metagenomic method"
+            ],
+            "attributes": {
+              "mechanism": "uses random hexamer-adapters to amplify DNA or cDNA targets",
+              "optimization_result": "96% of SARS-CoV-2 genome recovered",
+              "coverage_uniformity": "depth of recovered bases within a 10-fold range on average"
+            },
+            "relationships": [
+              {
+                "predicate": "enriches",
+                "target": "SARS-CoV-2 and mitochondrial targets",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "depletes",
+                "target": "human chromosomal regions",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "preferentially_amplifies",
+                "target": "human exonic regions",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "deselects",
+                "target": "large repetitive regions in human chromosomes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2 N and S genes",
+            "entity_id": "sars_cov_2_n_and_s_genes",
+            "entity_type": "other",
+            "aliases": [
+              "SARS-CoV-2 N and S genes"
+            ],
+            "attributes": {
+              "size": "about 4kb",
+              "recovery_rate_in_test": "16% of recovered bases or 13% of recovered reads",
+              "coverage": "80% covered",
+              "model_entity_type": "biological_sequence"
+            },
+            "relationships": [
+              {
+                "predicate": "spiked_into",
+                "target": "10 ng of human gDNA",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compared_to",
+                "target": "3 billion base pairs of human genome",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "human gDNA",
+            "entity_id": "human_gdna",
+            "entity_type": "other",
+            "aliases": [
+              "human gDNA"
+            ],
+            "attributes": {
+              "size": "3 billion base pairs",
+              "amplification_rate": "0.08% of chromosomal regions amplified",
+              "mitochondrial_coverage": "78% covered",
+              "model_entity_type": "biological_material"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "human ribosomal RNA species",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains",
+                "target": "human exonic regions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RT-PCR",
+            "entity_id": "rt_pcr",
+            "entity_type": "method",
+            "aliases": [
+              "RT-PCR"
+            ],
+            "attributes": {
+              "sensitivity_comparison": "less sensitive than the multiplex PCR method"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "multiplex-PCR-based method",
+                "attributes": {},
+                "target_id": "multiplex_pcr_based_method"
+              }
+            ]
+          },
+          {
+            "name": "multiplex-PCR-based method",
+            "entity_id": "multiplex_pcr_based_method",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex PCR method",
+              "multiplex-PCR-based method"
+            ],
+            "attributes": {
+              "sensitivity": "more sensitive than RT-PCR",
+              "mutation_tolerance": "tolerates the presence of mutations in SARS-CoV-2",
+              "diagnostic_requirement": "requires high-resolution electrophoresis or low-depth sequencing (50K reads) to differentiate target amplicons from primer-dimers"
+            },
+            "relationships": [
+              {
+                "predicate": "amplifies",
+                "target": "hundreds of targets simultaneously",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enriches",
+                "target": "entire genome of SARS-CoV-2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2867,
+          "end_word": 3362,
+          "word_count": 495,
+          "sha256": "52f39e2e91e42b2f2e42f59599e065de4ed4fd357dad12fef8607577fa7dbd9c",
+          "sentence_minhash": [
+            138742571471211904,
+            1306423125707224,
+            40863640610520970,
+            21087580253598261,
+            253816232510194858,
+            30500191475291153,
+            211498658265142109,
+            81285259065511028,
+            46821991742497638,
+            41183111660975745,
+            78280491562202942,
+            34538575912147783,
+            49673477193682617,
+            132529644835130180,
+            278614866765861159,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'biological_sequence' for 'SARS-CoV-2 N and S genes'",
+          "normalized unsupported entity type 'biological_material' for 'human gDNA'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study demonstrates that a multiplex-PCR panel can detect SARS-CoV-2 mutations across a wide viral load range and distinguishes it from other human coronaviruses with high specificity. A developed metagenomic method achieves high coverage of SARS-CoV-2 genes with moderate sequencing depth without host depletion.",
+        "entities": [
+          {
+            "name": "SARS-CoV-2 mutation detection range",
+            "entity_id": "sars_cov_2_mutation_detection_range",
+            "entity_type": "measurement",
+            "aliases": [
+              "SARS-CoV-2 mutation detection range"
+            ],
+            "attributes": {
+              "viral_load_range": "8 to 500,000 copies"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrated_in",
+                "target": "multiplex-PCR-based method",
+                "attributes": {},
+                "target_id": "multiplex_pcr_based_method"
+              }
+            ]
+          },
+          {
+            "name": "high-depth sequencing requirement",
+            "entity_id": "high_depth_sequencing_requirement",
+            "entity_type": "method",
+            "aliases": [
+              "high-depth sequencing requirement"
+            ],
+            "attributes": {
+              "sequencing_depth": "300,000 reads per sample",
+              "viral_load_input": ">100 copies"
+            },
+            "relationships": [
+              {
+                "predicate": "necessary_for",
+                "target": "accurate sequencing and phylogenetic studies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SARS-CoV-2 multiplex-PCR panel",
+            "entity_id": "sars_cov_2_multiplex_pcr_panel",
+            "entity_type": "method",
+            "aliases": [
+              "SARS-CoV-2 multiplex-PCR panel"
+            ],
+            "attributes": {
+              "specificity": "specifically amplifies entire SARS-CoV-2 genome",
+              "cross_reactivity": "0% alignment to MERS-CoV, CoV 229E, CoV OC43, CoV NL63, CoV HKU1"
+            },
+            "relationships": [
+              {
+                "predicate": "differentiates_from",
+                "target": "other human coronaviruses",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "tested_on",
+                "target": "13 COVID-19 RT-PCR positive samples",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "potential_expansion_to",
+                "target": "simultaneous detection of other respiratory viruses including influenza virus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiplex-PCR-based metagenomic method",
+            "entity_id": "multiplex_pcr_based_metagenomic_method",
+            "entity_type": "method",
+            "aliases": [
+              "multiplex-PCR-based metagenomic method"
+            ],
+            "attributes": {
+              "coverage": ">96% of S and N genes of SARS-CoV-2",
+              "sequencing_depth": "~0.6M total reads per library",
+              "host_depletion": "no additional means used to remove human gDNA and rRNA",
+              "viral_base_proportion": "16% of total recovered bases"
+            },
+            "relationships": [
+              {
+                "predicate": "developed_to_overcome",
+                "target": "economic prohibitive nature of standard metagenomic methods",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "exceeds_threshold_for",
+                "target": "50% coverage threshold for drafting a genome",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_validation_for",
+                "target": "detection of SARS-CoV-2, other coronaviruses, and respiratory viruses",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "standard metagenomic methods",
+            "entity_id": "standard_metagenomic_methods",
+            "entity_type": "method",
+            "aliases": [
+              "standard metagenomic methods"
+            ],
+            "attributes": {
+              "capability": "theoretically detect any sequences in specimens",
+              "limitation": "require very high sequencing depth",
+              "economic_status": "prohibitive as a diagnostic assay"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3362,
+          "end_word": 3685,
+          "word_count": 323,
+          "sha256": "9d9d9937170115a57fd1abeb71f076d9ddfced133e95683a72b60791697f4f6f",
+          "sentence_minhash": [
+            143470254565919416,
+            193129446030185045,
+            111900301993215417,
+            64513941377847126,
+            133839408494452977,
+            321703702465278269,
+            76197433036625096,
+            197304120369246065,
+            266927695903760850,
+            41183111660975745,
+            78280491562202942,
+            77272953743708039,
+            11610845633202285,
+            132529644835130180,
+            150328031197942809,
+            341119551458628131
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "multiplex_pcr_based_method",
+        "canonical_name": "multiplex-PCR-based method",
+        "aliases": [
+          "multiplex-PCR-based method",
+          "multiplex PCR method"
+        ]
+      },
+      {
+        "canonical_id": "rt_pcr",
+        "canonical_name": "RT-PCR",
+        "aliases": [
+          "RT-PCR"
+        ]
+      },
+      {
+        "canonical_id": "multiplex_pcr_based_metagenomic_method",
+        "canonical_name": "multiplex-PCR-based metagenomic method",
+        "aliases": [
+          "multiplex-PCR-based metagenomic method"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2",
+        "canonical_name": "SARS-CoV-2",
+        "aliases": [
+          "SARS-CoV-2"
+        ]
+      },
+      {
+        "canonical_id": "multiplex_pcr",
+        "canonical_name": "multiplex PCR",
+        "aliases": [
+          "multiplex PCR"
+        ]
+      },
+      {
+        "canonical_id": "next_generation_sequencing_ngs",
+        "canonical_name": "next generation sequencing (NGS)",
+        "aliases": [
+          "next generation sequencing (NGS)"
+        ]
+      },
+      {
+        "canonical_id": "heat_inactivation",
+        "canonical_name": "heat inactivation",
+        "aliases": [
+          "heat inactivation"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_detection_panel_172_primer_pairs",
+        "canonical_name": "SARS-CoV-2 detection panel (172 primer pairs)",
+        "aliases": [
+          "SARS-CoV-2 detection panel (172 primer pairs)"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_detection_panel_171_primer_pairs",
+        "canonical_name": "SARS-CoV-2 detection panel (171 primer pairs)",
+        "aliases": [
+          "SARS-CoV-2 detection panel (171 primer pairs)"
+        ]
+      },
+      {
+        "canonical_id": "mathematical_model_for_rt_pcr",
+        "canonical_name": "mathematical model for RT-PCR",
+        "aliases": [
+          "mathematical model for RT-PCR"
+        ]
+      },
+      {
+        "canonical_id": "dual_pool_multiplex_pcr_detection_method",
+        "canonical_name": "dual-pool multiplex PCR detection method",
+        "aliases": [
+          "dual-pool multiplex PCR detection method"
+        ]
+      },
+      {
+        "canonical_id": "electrophoresis_analysis",
+        "canonical_name": "electrophoresis analysis",
+        "aliases": [
+          "electrophoresis analysis"
+        ]
+      },
+      {
+        "canonical_id": "s_and_n_gene_plasmids",
+        "canonical_name": "S and N gene plasmids",
+        "aliases": [
+          "S and N gene plasmids"
+        ]
+      },
+      {
+        "canonical_id": "droplet_based_digital_pcr_ddpcr",
+        "canonical_name": "droplet-based digital PCR (ddPCR)",
+        "aliases": [
+          "droplet-based digital PCR (ddPCR)"
+        ]
+      },
+      {
+        "canonical_id": "multiplex_pcr_amplification_efficiency",
+        "canonical_name": "multiplex PCR amplification efficiency",
+        "aliases": [
+          "multiplex PCR amplification efficiency"
+        ]
+      },
+      {
+        "canonical_id": "multiplex_pcr_amplicon_recovery",
+        "canonical_name": "multiplex PCR amplicon recovery",
+        "aliases": [
+          "multiplex PCR amplicon recovery"
+        ]
+      },
+      {
+        "canonical_id": "amplicon_recovery_rate",
+        "canonical_name": "amplicon recovery rate",
+        "aliases": [
+          "amplicon recovery rate"
+        ]
+      },
+      {
+        "canonical_id": "13_nasopharyngeal_swab_specimens",
+        "canonical_name": "13 nasopharyngeal swab specimens",
+        "aliases": [
+          "13 nasopharyngeal swab specimens"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_genome_coverage",
+        "canonical_name": "SARS-CoV-2 genome coverage",
+        "aliases": [
+          "SARS-CoV-2 genome coverage"
+        ]
+      },
+      {
+        "canonical_id": "sub_sampled_sequencing_depth",
+        "canonical_name": "sub-sampled sequencing depth",
+        "aliases": [
+          "sub-sampled sequencing depth"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_mutation_detection",
+        "canonical_name": "SARS-CoV-2 mutation detection",
+        "aliases": [
+          "SARS-CoV-2 mutation detection"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_specimen_groups",
+        "canonical_name": "SARS-CoV-2 specimen groups",
+        "aliases": [
+          "SARS-CoV-2 specimen groups"
+        ]
+      },
+      {
+        "canonical_id": "group_1",
+        "canonical_name": "Group 1",
+        "aliases": [
+          "Group 1"
+        ]
+      },
+      {
+        "canonical_id": "group_2",
+        "canonical_name": "Group 2",
+        "aliases": [
+          "Group 2"
+        ]
+      },
+      {
+        "canonical_id": "group_3",
+        "canonical_name": "Group 3",
+        "aliases": [
+          "Group 3"
+        ]
+      },
+      {
+        "canonical_id": "d614g_mutation",
+        "canonical_name": "D614G mutation",
+        "aliases": [
+          "D614G mutation"
+        ]
+      },
+      {
+        "canonical_id": "intra_host_mutation_analysis_criteria",
+        "canonical_name": "intra-host mutation analysis criteria",
+        "aliases": [
+          "intra-host mutation analysis criteria"
+        ]
+      },
+      {
+        "canonical_id": "paragon_genomics_reverse_transcription_reagents",
+        "canonical_name": "Paragon Genomics reverse transcription reagents",
+        "aliases": [
+          "Paragon Genomics reverse transcription reagents"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_n_and_s_genes",
+        "canonical_name": "SARS-CoV-2 N and S genes",
+        "aliases": [
+          "SARS-CoV-2 N and S genes"
+        ]
+      },
+      {
+        "canonical_id": "human_gdna",
+        "canonical_name": "human gDNA",
+        "aliases": [
+          "human gDNA"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_mutation_detection_range",
+        "canonical_name": "SARS-CoV-2 mutation detection range",
+        "aliases": [
+          "SARS-CoV-2 mutation detection range"
+        ]
+      },
+      {
+        "canonical_id": "high_depth_sequencing_requirement",
+        "canonical_name": "high-depth sequencing requirement",
+        "aliases": [
+          "high-depth sequencing requirement"
+        ]
+      },
+      {
+        "canonical_id": "sars_cov_2_multiplex_pcr_panel",
+        "canonical_name": "SARS-CoV-2 multiplex-PCR panel",
+        "aliases": [
+          "SARS-CoV-2 multiplex-PCR panel"
+        ]
+      },
+      {
+        "canonical_id": "standard_metagenomic_methods",
+        "canonical_name": "standard metagenomic methods",
+        "aliases": [
+          "standard metagenomic methods"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study introduces a multiplex-PCR method with 343 primer pairs to improve SARS-CoV-2 detection sensitivity beyond standard RT-PCR. It demonstrates the ability to amplify the full viral genome from low copy numbers and detect mutations via next-generation sequencing.\",\"entities\":[{\"name\":\"multiplex-PCR-based method\",\"type\":\"method\",\"attributes\":{\"primer_count\":\"343 pairs\",\"target\":\"SARS-CoV-2\",\"capability\":\"detects low copy numbers\",\"output\":\"clean characteristic target peaks of defined sizes\"},\"relationships\":[{\"predicate\":\"allows_identification_by\",\"target\":\"electrophoresis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"amplified_genome_from\",\"target\":\"8 to half a million viral copies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"source_specimens\",\"target\":\"13 COVID-19 positive specimens\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RT-PCR\",\"type\":\"method\",\"attributes\":{\"status\":\"most commonly used for COVID-19 diagnosis\",\"claimed_sensitivity\":\"about 5 copies of viruses\",\"reported_detection_rate\":\"47-59% of positive cases\"},\"relationships\":[{\"predicate\":\"limited_by\",\"target\":\"low viral load, timing of sampling, degradation of virus RNA, mutations spanning primer binding sites\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiplex-PCR-based metagenomic method\",\"type\":\"method\",\"attributes\":{\"sequencing_depth_requirement\":\"modest\",\"purpose\":\"uncovering SARS-CoV-2 mutational diversity and potentially novel or emerging isolates\"},\"relationships\":[]},{\"name\":\"SARS-CoV-2\",\"type\":\"concept\",\"attributes\":{\"genome_status\":\"amplified from 8 to half a million copies\"},\"relationships\":[{\"predicate\":\"mutations_detected_by\",\"target\":\"next generation sequencing\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text highlights the limitations of RT-PCR in detecting SARS-CoV-2, noting that it misses a significant portion of true positives and is hindered by sample heat inactivation. To address this, the authors propose a multiplex PCR-based method that offers higher sensitivity and specificity, capable of distinguishing SARS-CoV-2 from other respiratory pathogens and enabling full-genome sequencing for surveillance.\",\"entities\":[{\"name\":\"RT-PCR\",\"type\":\"method\",\"attributes\":{\"detection_rate\":\"47-59% of true positive cases\",\"false_negative_rate\":\"75% of negative results later found positive\",\"limitation\":\"Hindered by heat inactivation of clinical samples causing loss of viral particles\"},\"relationships\":[{\"predicate\":\"requires\",\"target\":\"repeated testing\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2\",\"type\":\"concept\",\"attributes\":{\"genome_size\":\"29,903bp\",\"reference_sequence\":\"NC_045512.2\"},\"relationships\":[{\"predicate\":\"distinguished_from\",\"target\":\"influenza virus, parainfluenza virus, adenovirus, respiratory syncytial virus, rhinovirus, human metapneumovirus, SARS-CoV, Mycoplasma pneumoniae, Chlamydia pneumoniae\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"monitored_by\",\"target\":\"next generation sequencing (NGS)\",\"attributes\":{},\"target_id\":\"next_generation_sequencing_ngs\"}]},{\"name\":\"multiplex PCR\",\"type\":\"method\",\"attributes\":{\"sensitivity\":\"Significantly higher than RT-PCR\",\"capability\":\"Detects nucleotide fragments from degraded viral genomes\",\"cost\":\"Low-cost\",\"efficiency\":\"High coverage (median 99%), specificity (99.8%)\",\"application\":\"Detection of Hantaan orthohantavirus and Plasmodium falciparum\"},\"relationships\":[{\"predicate\":\"targets\",\"target\":\"hundreds of targets simultaneously\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enables\",\"target\":\"identification of novel pathogens\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"next generation sequencing (NGS)\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Surveillance of SARS-CoV-2 evolution and containment of community spread\",\"sequencing_depth\":\"Approximately 1 million reads for metagenomic method\"},\"relationships\":[{\"predicate\":\"provides\",\"target\":\"full-length viral genome sequence\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"guides\",\"target\":\"policy-making and management procedures\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"heat inactivation\",\"type\":\"other\",\"attributes\":{\"effect\":\"Causes loss of viral particles\",\"model_entity_type\":\"process\"},\"relationships\":[{\"predicate\":\"hinders\",\"target\":\"efficiency of downstream diagnosis\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"A mathematical model estimates that standard RT-PCR detects only 4.8 copies of SARS-CoV-2 at 95% probability, while a multiplex PCR panel of 172 primers improves this limit to 1.15 copies. The study assumes a 6% amplification efficiency for single-strand cDNA and notes that the detection limit is independent of viral genome size.\",\"entities\":[{\"name\":\"RT-PCR\",\"type\":\"method\",\"attributes\":{\"predicted_detection_probability_for_one_copy\":\"26%\",\"limit_of_detection_at_95_percent_probability\":\"4.8 copies\",\"reported_detection_rate_range\":\"47-56%\"},\"relationships\":[{\"predicate\":\"detects\",\"target\":\"SARS-CoV-2\",\"attributes\":{},\"target_id\":\"sars_cov_2\"},{\"predicate\":\"limit_of_detection_independent_of\",\"target\":\"viral genome size\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiplex PCR\",\"type\":\"method\",\"attributes\":{\"estimated_efficiency_with_umi_labeled_primers\":\"26%\",\"assumed_efficiency_for_single_strand_cdna\":\"6%\",\"advantage\":\"detects fragments of degraded viral nucleotide fragments and tolerates genomic variations\"},\"relationships\":[{\"predicate\":\"targets\",\"target\":\"multiple regions of the viral genome\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"increases\",\"target\":\"frequency of occurrence in mathematical model\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2 detection panel (172 primer pairs)\",\"type\":\"method\",\"attributes\":{\"primer_pair_count\":172,\"average_amplicon_length\":\"99bp\",\"average_gap_between_adjacent_amplicons\":\"76bp\",\"gap_standard_deviation\":\"10bp\",\"estimated_detection_limit_at_95_percent_probability\":\"1.15 copies\"},\"relationships\":[{\"predicate\":\"spans\",\"target\":\"entire SARS-CoV-2 genome\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"limit_of_detection_independent_of\",\"target\":\"virus genome size\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2 detection panel (171 primer pairs)\",\"type\":\"method\",\"attributes\":{\"primer_pair_count\":171},\"relationships\":[{\"predicate\":\"targets\",\"target\":\"gaps between target regions of the 172-primer pair pool\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"provides_full_coverage_with\",\"target\":\"SARS-CoV-2 detection panel (172 primer pairs)\",\"attributes\":{},\"target_id\":\"sars_cov_2_detection_panel_172_primer_pairs\"}]},{\"name\":\"mathematical model for RT-PCR\",\"type\":\"method\",\"attributes\":{\"assumed_rt_pcr_efficiency\":\"99%\",\"assumed_amplicon_length\":\"100bp\",\"assumed_genome_size\":\"30kb\"},\"relationships\":[{\"predicate\":\"estimates\",\"target\":\"limit of detection for SARS-CoV-2\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study demonstrates that using two overlapping pools of multiplex PCR primers achieves a calculated detection limit of 0.29 copies of SARS-CoV-2 at 95% probability. Validation using plasmids spiked into human cDNA showed that the method can detect viral copies down to 2.8, with a dynamic range up to approximately 1,000 copies. Experimental results indicated a 56% detection probability for 1.1 copies, suggesting the actual amplification efficiency is higher than the 6% estimated in the mathematical model.\",\"entities\":[{\"name\":\"dual-pool multiplex PCR detection method\",\"type\":\"method\",\"attributes\":{\"calculated_detection_limit\":\"0.29 copies at 95% probability\",\"workflow\":\"multiplex PCR followed by secondary PCR for adding indexes and NGS primers\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"two pools of primers\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"validates\",\"target\":\"SARS-CoV-2 detection\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2\",\"type\":\"concept\",\"attributes\":{\"target_pathogen\":\"true\"},\"relationships\":[{\"predicate\":\"detected_by\",\"target\":\"dual-pool multiplex PCR detection method\",\"attributes\":{},\"target_id\":\"dual_pool_multiplex_pcr_detection_method\"},{\"predicate\":\"may_cause_cross_amplification_with\",\"target\":\"other coronaviruses\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"electrophoresis analysis\",\"type\":\"measurement\",\"attributes\":{\"purpose\":\"visualize potential positives and provide fast indication of infection\",\"expected_pattern\":\"defined distribution of peak sizes\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"multiplex PCR products\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"S and N gene plasmids\",\"type\":\"other\",\"attributes\":{\"content\":\"full sequence of S and N genes of SARS-CoV-2\",\"expected_targets_in_172_amplicon_panel\":28},\"relationships\":[{\"predicate\":\"used_to_validate\",\"target\":\"multiplex-PCR-based method\",\"attributes\":{},\"target_id\":\"multiplex_pcr_based_method\"},{\"predicate\":\"spiked_into\",\"target\":\"cDNA generated from human total RNA\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"droplet-based digital PCR (ddPCR)\",\"type\":\"method\",\"attributes\":{\"system\":\"QX200 from Bio-Rad\",\"purpose\":\"precisely determine plasmid copy number\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"quantification of S and N gene plasmids\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiplex PCR amplification efficiency\",\"type\":\"measurement\",\"attributes\":{\"theoretical_estimate_for_single_strand_cDNA\":\"6%\",\"experimental_observation_for_1.1_copies\":\"56% probability to detect\"},\"relationships\":[{\"predicate\":\"suggests_actual_efficiency_is_higher_than\",\"target\":\"6%\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RT-PCR\",\"type\":\"method\",\"attributes\":{\"performance_at_2.85_copies\":\"detected quantities rapidly dropped\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"multiplex PCR\",\"attributes\":{},\"target_id\":\"multiplex_pcr\"}]}]},{\"context_summary\":\"The study validated the uniformity and recovery rates of multiplex PCR amplicons using plasmid standards and applied the method to 13 SARS-CoV-2 positive specimens. Sequencing depth analysis showed that high genome coverage is achievable even at low viral copy numbers, with specific thresholds for mutation detection based on allele frequency.\",\"entities\":[{\"name\":\"multiplex PCR amplicon recovery\",\"type\":\"measurement\",\"attributes\":{\"relative_depth_range\":\"about 20-fold\",\"plasmid_copy_range\":\"1.4 to 2.8\",\"distribution\":\"uniformly distributed across GC range\"},\"relationships\":[{\"predicate\":\"observed_in\",\"target\":\"sequenced amplified products\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"amplicon recovery rate\",\"type\":\"measurement\",\"attributes\":{\"recovery_at_14_copies\":\"96%\",\"recovery_at_2.8_copies\":\"77%\",\"recovery_at_0.6_copies\":\"37%\"},\"relationships\":[{\"predicate\":\"measured_with\",\"target\":\"plasmids\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"13 nasopharyngeal swab specimens\",\"type\":\"other\",\"attributes\":{\"diagnosis\":\"SARS-CoV-2 positive by RT-PCR\",\"viral_load_range\":\"8 to 675,885 RNA copies/uL\",\"model_entity_type\":\"sample_set\"},\"relationships\":[{\"predicate\":\"amplified_with\",\"target\":\"two pools of primers\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"sequenced_on\",\"target\":\"Illumina MiSeq\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2 genome coverage\",\"type\":\"measurement\",\"attributes\":{\"coverage_at_8_copies\":\"95% at 100X\",\"coverage_at_22_to_675885_copies\":\"98-99% at 100X\",\"average_sequencing_depth\":\"5,000 reads per amplicon\"},\"relationships\":[{\"predicate\":\"correlated_with\",\"target\":\"viral copy number\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"sub-sampled sequencing depth\",\"type\":\"measurement\",\"attributes\":{\"150k_reads_coverage\":\"at least 93% at 100X\",\"100k_reads_coverage\":\"86% at 100X\",\"50k_reads_coverage\":\"at least 58% at 100X\",\"150k_reads_per_amplicon\":\"437\",\"100k_reads_per_amplicon\":\"291\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"5 genomes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2 mutation detection\",\"type\":\"method\",\"attributes\":{\"algorithm_requirement\":\"detected by two independently developed algorithms\",\"true_mutation_threshold\":\"allele frequency > 60%\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"13 SARS-CoV-2 genomes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"identified_cluster\",\"target\":\"7 loci\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study categorized 13 SARS-CoV-2 specimens into three groups based on mutation similarity, identifying the D614G mutation in 11 samples. Researchers applied a 20% allele frequency cutoff to distinguish true intra-host mutations from PCR and sequencing noise, noting that low viral copy numbers and read depth can introduce false positives. A multiplex-PCR-based metagenomic method using random hexamer adapters was developed to detect novel pathogens and highly mutated viruses.\",\"entities\":[{\"name\":\"SARS-CoV-2 specimen groups\",\"type\":\"concept\",\"attributes\":{\"categorization_basis\":\"mutation similarity\",\"group_count\":3},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"Group 1\",\"attributes\":{},\"target_id\":\"group_1\"},{\"predicate\":\"includes\",\"target\":\"Group 2\",\"attributes\":{},\"target_id\":\"group_2\"},{\"predicate\":\"includes\",\"target\":\"Group 3\",\"attributes\":{},\"target_id\":\"group_3\"}]},{\"name\":\"Group 1\",\"type\":\"concept\",\"attributes\":{\"mutation_frequency\":\">98%\"},\"relationships\":[{\"predicate\":\"shares_identical_mutations_with\",\"target\":\"Group 2\",\"attributes\":{},\"target_id\":\"group_2\"}]},{\"name\":\"Group 2\",\"type\":\"concept\",\"attributes\":{\"viral_copy_number\":\"low\",\"read_depth_per_amplicon\":\"low\",\"apparent_intra_host_mutations\":\"considerably higher\"},\"relationships\":[{\"predicate\":\"shares_identical_mutations_with\",\"target\":\"Group 1\",\"attributes\":{},\"target_id\":\"group_1\"}]},{\"name\":\"Group 3\",\"type\":\"concept\",\"attributes\":{\"viral_copy_number\":\"high\",\"read_depth_per_amplicon\":\"high\",\"intra_host_mutations_per_genome\":\"one in some specimens\",\"lineage_origin\":\"distinct\"},\"relationships\":[{\"predicate\":\"significantly_different_from\",\"target\":\"Group 1 and Group 2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"D614G mutation\",\"type\":\"concept\",\"attributes\":{\"genetic_change\":\"G-to-A base change at position 23,403\",\"reference_strain\":\"NC_045512.2\",\"prevalence_in_study\":\"11 of 13 specimens\",\"historical_spread\":\"began in Europe in early February, became dominant\"},\"relationships\":[{\"predicate\":\"found_in\",\"target\":\"13 SARS-CoV-2 specimens\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"intra-host mutation analysis criteria\",\"type\":\"method\",\"attributes\":{\"noise_elimination_cutoff\":\"%AF >= 20%\",\"heterogeneity_threshold\":\"%AF <= 60%\",\"cutoff_basis\":\"mutation profile from synthetic SARS-CoV-2 RNA controls from Twist Bioscience\",\"limitation\":\"no UMI used, potential PCR noise contamination\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"SARS-CoV-2 specimens\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiplex-PCR-based metagenomic method\",\"type\":\"method\",\"attributes\":{\"purpose\":\"characterize highly mutated viruses and discover unknown pathogens\",\"amplification_strategy\":\"random hexamer-adapters\",\"purification_step\":\"Paragon Genomics' background removal reagent\"},\"relationships\":[{\"predicate\":\"developed_by\",\"target\":\"Paragon Genomics Inc\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"A multiplex-PCR-based metagenomic method using random hexamers enriches viral targets from human genomic background, achieving high coverage of SARS-CoV-2 and mitochondrial regions while depleting human ribosomal RNA. The method recovers 96% of the SARS-CoV-2 genome with uniform depth, distinguishing it from standard RT-PCR by its tolerance to mutations and ability to interrogate the full genome.\",\"entities\":[{\"name\":\"Paragon Genomics reverse transcription reagents\",\"type\":\"method\",\"attributes\":{\"function\":\"converts RNA into cDNA\",\"effect\":\"significantly reduces human ribosomal RNA species\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"RNA samples\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiplex-PCR-based metagenomic method\",\"type\":\"method\",\"attributes\":{\"mechanism\":\"uses random hexamer-adapters to amplify DNA or cDNA targets\",\"optimization_result\":\"96% of SARS-CoV-2 genome recovered\",\"coverage_uniformity\":\"depth of recovered bases within a 10-fold range on average\"},\"relationships\":[{\"predicate\":\"enriches\",\"target\":\"SARS-CoV-2 and mitochondrial targets\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"depletes\",\"target\":\"human chromosomal regions\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"preferentially_amplifies\",\"target\":\"human exonic regions\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"deselects\",\"target\":\"large repetitive regions in human chromosomes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2 N and S genes\",\"type\":\"other\",\"attributes\":{\"size\":\"about 4kb\",\"recovery_rate_in_test\":\"16% of recovered bases or 13% of recovered reads\",\"coverage\":\"80% covered\",\"model_entity_type\":\"biological_sequence\"},\"relationships\":[{\"predicate\":\"spiked_into\",\"target\":\"10 ng of human gDNA\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compared_to\",\"target\":\"3 billion base pairs of human genome\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"human gDNA\",\"type\":\"other\",\"attributes\":{\"size\":\"3 billion base pairs\",\"amplification_rate\":\"0.08% of chromosomal regions amplified\",\"mitochondrial_coverage\":\"78% covered\",\"model_entity_type\":\"biological_material\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"human ribosomal RNA species\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains\",\"target\":\"human exonic regions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RT-PCR\",\"type\":\"method\",\"attributes\":{\"sensitivity_comparison\":\"less sensitive than the multiplex PCR method\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"multiplex-PCR-based method\",\"attributes\":{},\"target_id\":\"multiplex_pcr_based_method\"}]},{\"name\":\"multiplex-PCR-based method\",\"type\":\"method\",\"attributes\":{\"sensitivity\":\"more sensitive than RT-PCR\",\"mutation_tolerance\":\"tolerates the presence of mutations in SARS-CoV-2\",\"diagnostic_requirement\":\"requires high-resolution electrophoresis or low-depth sequencing (50K reads) to differentiate target amplicons from primer-dimers\"},\"relationships\":[{\"predicate\":\"amplifies\",\"target\":\"hundreds of targets simultaneously\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enriches\",\"target\":\"entire genome of SARS-CoV-2\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study demonstrates that a multiplex-PCR panel can detect SARS-CoV-2 mutations across a wide viral load range and distinguishes it from other human coronaviruses with high specificity. A developed metagenomic method achieves high coverage of SARS-CoV-2 genes with moderate sequencing depth without host depletion.\",\"entities\":[{\"name\":\"SARS-CoV-2 mutation detection range\",\"type\":\"measurement\",\"attributes\":{\"viral_load_range\":\"8 to 500,000 copies\"},\"relationships\":[{\"predicate\":\"demonstrated_in\",\"target\":\"multiplex-PCR-based method\",\"attributes\":{},\"target_id\":\"multiplex_pcr_based_method\"}]},{\"name\":\"high-depth sequencing requirement\",\"type\":\"method\",\"attributes\":{\"sequencing_depth\":\"300,000 reads per sample\",\"viral_load_input\":\">100 copies\"},\"relationships\":[{\"predicate\":\"necessary_for\",\"target\":\"accurate sequencing and phylogenetic studies\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SARS-CoV-2 multiplex-PCR panel\",\"type\":\"method\",\"attributes\":{\"specificity\":\"specifically amplifies entire SARS-CoV-2 genome\",\"cross_reactivity\":\"0% alignment to MERS-CoV, CoV 229E, CoV OC43, CoV NL63, CoV HKU1\"},\"relationships\":[{\"predicate\":\"differentiates_from\",\"target\":\"other human coronaviruses\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"tested_on\",\"target\":\"13 COVID-19 RT-PCR positive samples\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"potential_expansion_to\",\"target\":\"simultaneous detection of other respiratory viruses including influenza virus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiplex-PCR-based metagenomic method\",\"type\":\"method\",\"attributes\":{\"coverage\":\">96% of S and N genes of SARS-CoV-2\",\"sequencing_depth\":\"~0.6M total reads per library\",\"host_depletion\":\"no additional means used to remove human gDNA and rRNA\",\"viral_base_proportion\":\"16% of total recovered bases\"},\"relationships\":[{\"predicate\":\"developed_to_overcome\",\"target\":\"economic prohibitive nature of standard metagenomic methods\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"exceeds_threshold_for\",\"target\":\"50% coverage threshold for drafting a genome\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"requires_validation_for\",\"target\":\"detection of SARS-CoV-2, other coronaviruses, and respiratory viruses\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"standard metagenomic methods\",\"type\":\"method\",\"attributes\":{\"capability\":\"theoretically detect any sequences in specimens\",\"limitation\":\"require very high sequencing depth\",\"economic_status\":\"prohibitive as a diagnostic assay\"},\"relationships\":[]}]}]"
+}

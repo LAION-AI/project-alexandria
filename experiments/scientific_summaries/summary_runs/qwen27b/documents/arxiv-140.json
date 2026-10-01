@@ -1,0 +1,1210 @@
+{
+  "document_id": "arxiv-140",
+  "fulltext_sha256": "60d9760b31c6d22c99e9bd030affca4a6c991004c5b68c4be05b0afcb39308d4",
+  "summary": {
+    "title": "Differential recursion and differentially algebraic functions",
+    "authors": "Akitoshi Kawamura",
+    "field_subfield": "Computer Science / Computability Theory",
+    "type_of_paper": "Theoretical Computer Science",
+    "executive_summary": "This paper addresses technical inaccuracies and ambiguities in Moore's definition of real-valued recursive functions, specifically focusing on the differential recursion operator. Moore originally proposed that his class of real primitive recursive functions corresponds to differentially algebraic functions, which are the functions generable by Shannon's General Purpose Analog Computer (GPAC). The author argues that Moore's original definitions lack formality regarding partial functions, leading to inconsistent claims. The paper first establishes a rigorous characterization of differentially algebraic functions, proving the equivalence of several local and global definitions involving polynomial differential equations. It then reformulates Moore's real primitive recursive functions using a mathematically sound definition of the differential recursion operator that preserves analyticity. A key contribution is the demonstration that even under this restrictive, analyticity-preserving definition, Moore's Claim 1—that real primitive recursive functions are differentially algebraic—fails. The author constructs a counterexample using a variant of Euler's gamma function, showing it is real primitive recursive but not differentially algebraic. Furthermore, the paper discusses the implications for Moore's Claim 2 regarding the relationship to standard digital recursion, noting that the inclusion of minimization operators leads to non-smooth functions, thereby breaking the connection to analog computation models. The study concludes that the purported relation between Moore's classes and analog computation fails, posing an open problem to find a subclass that maintains this relationship.",
+    "research_context": [
+      {
+        "Several theoretical models exist for the computability of real functions.": "models that talk about"
+      },
+      {
+        "Computable Analysis uses approximation to handle real numbers.": "use approximation in one"
+      },
+      {
+        "The Blum–Shub–Smale model treats continuous quantities as entities.": "Blum–Shub–Smale model"
+      },
+      {
+        "Analog computation models data and transitions in continuous time.": "transition takes place in"
+      },
+      {
+        "Shannon's General Purpose Analog Computer is a well-studied analog model.": "General Purpose Analog Computer"
+      },
+      {
+        "GPAC was shown to generate differentially algebraic functions.": "generating (in a sense)"
+      },
+      {
+        "Moore addressed the relation between analog and digital computation.": "addressed this question for"
+      },
+      {
+        "Moore defined classes as closures under real-number operators.": "closures under certain operators"
+      },
+      {
+        "Moore's work inspired research but lacked formality.": "lacked formality in some"
+      },
+      {
+        "The definition of Moore's classes suffers from ambiguity.": "suﬀers from ambiguity"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The paper aims to pin down what is problematic in Moore's definition.": "pin\ndown what is"
+      },
+      {
+        "It discusses attempts to remove ambiguity in the differential recursion operator.": "remove the ambiguity"
+      },
+      {
+        "The central question is whether real primitive recursive functions are differentially algebraic.": "Real primitive recursive functions"
+      },
+      {
+        "Moore claimed that real primitive recursive functions are differentially algebraic.": "are diﬀerentially algebraic"
+      },
+      {
+        "Moore also claimed that standard recursive functions are restrictions of real recursive functions.": "restriction of some real"
+      },
+      {
+        "The author hypothesizes that these claims fail due to technical inaccuracies.": "technical inaccuracies"
+      },
+      {
+        "The study seeks to reformulate the theory in a mathematically sound way.": "mathematically sound way"
+      },
+      {
+        "It investigates the behavior of the operator on partial functions.": "behavior of the di"
+      },
+      {
+        "The goal is to determine if the relation to analog computation holds.": "relation to di"
+      },
+      {
+        "The paper predicts that the purported relation to differentially algebraic functions fails.": "relation to di"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study focuses on real-valued functions with potentially partial domains.": "function f :⊆Rm →Rn"
+      },
+      {
+        "A function is analytic if it has a convergent power series expansion.": "converges to f x"
+      },
+      {
+        "Differentially algebraic functions are defined by satisfying polynomial differential equations.": "nonzero polynomial P"
+      },
+      {
+        "Theorem 3 establishes the equivalence of local and global definitions.": "statements:\n(i) for any"
+      },
+      {
+        "The definition of real primitive recursive functions uses three operators.": "juxtaposition,\ncomposition and di"
+      },
+      {
+        "Juxtaposition and composition are defined to preserve analyticity.": "preserve analyticity"
+      },
+      {
+        "The differential recursion operator is defined via integral equations.": "integral equation\nof the"
+      },
+      {
+        "A unique solution is defined as the function with the largest domain.": "unique in H if"
+      },
+      {
+        "The class is the smallest set containing constants and closed under operators.": "smallest class containing"
+      },
+      {
+        "Basic functions like sin, cos, exp, and log are shown to be real primitive recursive.": "functions sin,\ncos and"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The differential recursion operator dr is defined using an integral equation.": "ht = f v +"
+      },
+      {
+        "The domain of the solution is restricted to intervals containing 0.": "interval containing 0"
+      },
+      {
+        "The unique solution hv is selected from the set of all solutions Hv.": "unique in Hv"
+      },
+      {
+        "Theorem 12 states that dr preserves analyticity if g is analytic.": "so is dr (f, g)"
+      },
+      {
+        "Campagnolo's variant drC allows for countable sets of singularities.": "countable set of isolated"
+      },
+      {
+        "drC can produce non-differentiable functions, breaking analyticity.": "not di"
+      },
+      {
+        "The counterexample uses a function related to Euler's gamma function.": "gamma function Γ"
+      },
+      {
+        "The function ˇΓ is defined as an integral over a finite range.": "exp"
+      },
+      {
+        "It is shown that ˇΓ is real primitive recursive.": "ˇΓ is easily shown"
+      },
+      {
+        "The proof assumes ˇΓ is differentially algebraic to derive a contradiction.": "assume that it were"
+      }
+    ],
+    "key_results": [
+      {
+        "Theorem 3 proves that seven definitions of differentially algebraic functions are equivalent.": "are equivalent"
+      },
+      {
+        "Lemma 5 characterizes differentially algebraic functions via field extensions.": "D f ⊆R(B)"
+      },
+      {
+        "Theorem 8 shows that juxtaposition and composition preserve differentially algebraic properties.": "preserved by jx and"
+      },
+      {
+        "Theorem 12 confirms that the differential recursion operator preserves analyticity.": "so is dr (f, g)"
+      },
+      {
+        "The function k produced by drC is not differentiable at 1.": "not di"
+      },
+      {
+        "The function ˇΓ is real primitive recursive but not differentially algebraic.": "not di"
+      },
+      {
+        "The proof relies on Hölder's result that the gamma function is not differentially algebraic.": "Γ is not di"
+      },
+      {
+        "Taking the limit of the polynomial equation leads to a contradiction.": "contradicting H"
+      },
+      {
+        "Moore's Claim 1 that real primitive recursive functions are differentially algebraic fails.": "Claim 1 fails"
+      },
+      {
+        "The class of real recursive functions is not well-behaved due to minimization.": "probably not well-\nbehaved"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The failure of Claim 1 breaks the link to analog computation.": "relation to di"
+      },
+      {
+        "Differentially algebraic functions are central to the GPAC model.": "relation to the General"
+      },
+      {
+        "The ambiguity in Moore's work stems from ignoring partial functions.": "failure to\ndeal with"
+      },
+      {
+        "Proper handling of partial functions is crucial for formal correctness.": "partial functions must be"
+      },
+      {
+        "The distinction between dr and drC highlights the importance of analyticity.": "choice between (c)\nand"
+      },
+      {
+        "The results suggest that Moore's classes do not model analog computation.": "model of analog computation"
+      },
+      {
+        "The open problem is to find a subclass with a close relationship to DA functions.": "close relationship to the"
+      },
+      {
+        "The work emphasizes the need for rigorous definitions in computability theory.": "mathematically sound way"
+      },
+      {
+        "The findings impact the understanding of the boundary between digital and analog computation.": "analog and digital computation"
+      },
+      {
+        "Future work should reformulate other ambiguous classes in the literature.": "reformulate further the rest"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "Moore's original definition of the minimization operator is ambiguous.": "leaves ambiguous whether"
+      },
+      {
+        "The class of real recursive functions may include discontinuous functions.": "can even be discontinuous"
+      },
+      {
+        "The significance of Claim 2 is doubted due to lack of smoothness.": "doubt the signi"
+      },
+      {
+        "The paper does not determine if the gamma function itself is real primitive recursive.": "We do not know if"
+      },
+      {
+        "The counterexample uses a variant of the gamma function, not the standard one.": "ˇΓ is easily shown"
+      },
+      {
+        "The definition of drC allows for singularities that break analyticity.": "breaks the assumption of"
+      },
+      {
+        "The paper focuses on primitive recursive functions, leaving other classes open.": "Other classes and related"
+      },
+      {
+        "The relationship between Moore's classes and digital computation remains unclear.": "doubt the signi"
+      },
+      {
+        "The lack of a simple subclass with DA properties is a limitation.": "preferably with an\nequally"
+      },
+      {
+        "The paper does not provide a complete model of analog computation.": "model of analog computation"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Moore's Claim 1 that real primitive recursive functions are differentially algebraic is false.",
+        "supporting_evidence": [
+          {
+            "The function ˇΓ is real primitive recursive.": "ˇΓ is easily shown"
+          },
+          {
+            "The function ˇΓ is not differentially algebraic.": "not di"
+          },
+          {
+            "This contradicts the assumption that all such functions are DA.": "contradicting H"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Moore originally claimed this relationship holds.": "Real primitive recursive functions"
+          },
+          {
+            "Some authors have built theories on this assumption.": "impact on the subsequent"
+          }
+        ],
+        "implications": [
+          {
+            "The link between Moore's classes and GPAC is broken.": "relation to di"
+          },
+          {
+            "New subclasses must be defined to model analog computation.": "Find a subclass of"
+          }
+        ]
+      },
+      {
+        "description": "Moore's Claim 2 regarding the restriction of standard recursive functions is of doubtful significance.",
+        "supporting_evidence": [
+          {
+            "The minimization operator produces non-smooth functions.": "producing non-smooth functions"
+          },
+          {
+            "The class no longer enjoys the properties of Theorem 12.": "no longer enjoys Theo"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Moore claimed this relationship holds.": "Each (partial) recursive function"
+          },
+          {
+            "It could be justified by simulating Turing machines.": "simulate Turing machines"
+          }
+        ],
+        "implications": [
+          {
+            "The class of real recursive functions is not well-behaved.": "probably not well-\nbehaved"
+          },
+          {
+            "Further reformulation of Moore's work is needed.": "reformulate further the rest"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The paper compares the standard dr operator with Campagnolo's drC.": "choice between (c)\nand"
+      },
+      {
+        "drC allows for countable singularities, leading to non-analytic functions.": "countable set of isolated"
+      },
+      {
+        "The example with function g shows drC can produce non-differentiable results.": "not di"
+      },
+      {
+        "The standard dr operator preserves analyticity, ensuring well-defined solutions.": "so is dr (f, g)"
+      },
+      {
+        "The counterexample relies on the analyticity-preserving nature of dr.": "restrictive deﬁnition with"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 illustrates the ambiguity in defining a unique solution.": "unique solution"
+      },
+      {
+        "Figure 2 shows an integrand with a singularity.": "Integrand with a singularity"
+      },
+      {
+        "Theorem 3 lists equivalent definitions of differentially algebraic functions.": "statements:\n(i) for any"
+      },
+      {
+        "Lemma 5 provides a field-theoretic characterization of DA functions.": "D f ⊆R(B)"
+      },
+      {
+        "Definition 9 formally defines the differential recursion operator.": "set of all functions"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the rigorous reformulation of Moore's differential recursion operator.": "reformulating the theory"
+      },
+      {
+        "2. The strongest evidence is the counterexample showing a real primitive recursive function is not differentially algebraic.": "not di"
+      },
+      {
+        "3. The future path is to find a subclass of real primitive recursive functions that relates to analog computation.": "Find a subclass of"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper addresses technical inaccuracies and ambiguities in Moore's definition of real-valued recursive functions, specifically focusing on the differential recursion operator. Moore originally proposed that his class of real primitive recursive functions corresponds to differentially algebraic functions, which are the functions generable by Shannon's General Purpose Analog Computer (GPAC). The author argues that Moore's original definitions lack formality regarding partial functions, leading to inconsistent claims. The paper first establishes a rigorous characterization of differentially algebraic functions, proving the equivalence of several local and global definitions involving polynomial differential equations. It then reformulates Moore's real primitive recursive functions using a mathematically sound definition of the differential recursion operator that preserves analyticity. A key contribution is the demonstration that even under this restrictive, analyticity-preserving definition, Moore's Claim 1—that real primitive recursive functions are differentially algebraic—fails. The author constructs a counterexample using a variant of Euler's gamma function, showing it is real primitive recursive but not differentially algebraic. Furthermore, the paper discusses the implications for Moore's Claim 2 regarding the relationship to standard digital recursion, noting that the inclusion of minimization operators leads to non-smooth functions, thereby breaking the connection to analog computation models. The study concludes that the purported relation between Moore's classes and analog computation fails, posing an open problem to find a subclass that maintains this relationship.\n\nResearch Context\nSeveral theoretical models exist for the computability of real functions. Computable Analysis uses approximation to handle real numbers. The Blum–Shub–Smale model treats continuous quantities as entities. Analog computation models data and transitions in continuous time. Shannon's General Purpose Analog Computer is a well-studied analog model. GPAC was shown to generate differentially algebraic functions. Moore addressed the relation between analog and digital computation. Moore defined classes as closures under real-number operators. Moore's work inspired research but lacked formality. The definition of Moore's classes suffers from ambiguity.\n\nResearch Question And Hypothesis\nThe paper aims to pin down what is problematic in Moore's definition. It discusses attempts to remove ambiguity in the differential recursion operator. The central question is whether real primitive recursive functions are differentially algebraic. Moore claimed that real primitive recursive functions are differentially algebraic. Moore also claimed that standard recursive functions are restrictions of real recursive functions. The author hypothesizes that these claims fail due to technical inaccuracies. The study seeks to reformulate the theory in a mathematically sound way. It investigates the behavior of the operator on partial functions. The goal is to determine if the relation to analog computation holds. The paper predicts that the purported relation to differentially algebraic functions fails.\n\nMethodological Details\nThe study focuses on real-valued functions with potentially partial domains. A function is analytic if it has a convergent power series expansion. Differentially algebraic functions are defined by satisfying polynomial differential equations. Theorem 3 establishes the equivalence of local and global definitions. The definition of real primitive recursive functions uses three operators. Juxtaposition and composition are defined to preserve analyticity. The differential recursion operator is defined via integral equations. A unique solution is defined as the function with the largest domain. The class is the smallest set containing constants and closed under operators. Basic functions like sin, cos, exp, and log are shown to be real primitive recursive.\n\nProcedures And Architectures\nThe differential recursion operator dr is defined using an integral equation. The domain of the solution is restricted to intervals containing 0. The unique solution hv is selected from the set of all solutions Hv. Theorem 12 states that dr preserves analyticity if g is analytic. Campagnolo's variant drC allows for countable sets of singularities. drC can produce non-differentiable functions, breaking analyticity. The counterexample uses a function related to Euler's gamma function. The function ˇΓ is defined as an integral over a finite range. It is shown that ˇΓ is real primitive recursive. The proof assumes ˇΓ is differentially algebraic to derive a contradiction.\n\nKey Results\nTheorem 3 proves that seven definitions of differentially algebraic functions are equivalent. Lemma 5 characterizes differentially algebraic functions via field extensions. Theorem 8 shows that juxtaposition and composition preserve differentially algebraic properties. Theorem 12 confirms that the differential recursion operator preserves analyticity. The function k produced by drC is not differentiable at 1. The function ˇΓ is real primitive recursive but not differentially algebraic. The proof relies on Hölder's result that the gamma function is not differentially algebraic. Taking the limit of the polynomial equation leads to a contradiction. Moore's Claim 1 that real primitive recursive functions are differentially algebraic fails. The class of real recursive functions is not well-behaved due to minimization.\n\nInterpretation And Theoretical Implications\nThe failure of Claim 1 breaks the link to analog computation. Differentially algebraic functions are central to the GPAC model. The ambiguity in Moore's work stems from ignoring partial functions. Proper handling of partial functions is crucial for formal correctness. The distinction between dr and drC highlights the importance of analyticity. The results suggest that Moore's classes do not model analog computation. The open problem is to find a subclass with a close relationship to DA functions. The work emphasizes the need for rigorous definitions in computability theory. The findings impact the understanding of the boundary between digital and analog computation. Future work should reformulate other ambiguous classes in the literature.\n\nContradictions And Limitations\nMoore's original definition of the minimization operator is ambiguous. The class of real recursive functions may include discontinuous functions. The significance of Claim 2 is doubted due to lack of smoothness. The paper does not determine if the gamma function itself is real primitive recursive. The counterexample uses a variant of the gamma function, not the standard one. The definition of drC allows for singularities that break analyticity. The paper focuses on primitive recursive functions, leaving other classes open. The relationship between Moore's classes and digital computation remains unclear. The lack of a simple subclass with DA properties is a limitation. The paper does not provide a complete model of analog computation.\n\nClaims\nMoore's Claim 1 that real primitive recursive functions are differentially algebraic is false. The function ˇΓ is real primitive recursive. The function ˇΓ is not differentially algebraic. This contradicts the assumption that all such functions are DA. Moore originally claimed this relationship holds. Some authors have built theories on this assumption. The link between Moore's classes and GPAC is broken. New subclasses must be defined to model analog computation.\nMoore's Claim 2 regarding the restriction of standard recursive functions is of doubtful significance. The minimization operator produces non-smooth functions. The class no longer enjoys the properties of Theorem 12. Moore claimed this relationship holds. It could be justified by simulating Turing machines. The class of real recursive functions is not well-behaved. Further reformulation of Moore's work is needed.\n\nRobustness And Ablation Notes\nThe paper compares the standard dr operator with Campagnolo's drC. drC allows for countable singularities, leading to non-analytic functions. The example with function g shows drC can produce non-differentiable results. The standard dr operator preserves analyticity, ensuring well-defined solutions. The counterexample relies on the analyticity-preserving nature of dr.\n\nKey Figures Tables\nFigure 1 illustrates the ambiguity in defining a unique solution. Figure 2 shows an integrand with a singularity. Theorem 3 lists equivalent definitions of differentially algebraic functions. Lemma 5 provides a field-theoretic characterization of DA functions. Definition 9 formally defines the differential recursion operator.\n\nThree Takeaways\n1. The core contribution is the rigorous reformulation of Moore's differential recursion operator. 2. The strongest evidence is the counterexample showing a real primitive recursive function is not differentially algebraic. 3. The future path is to find a subclass of real primitive recursive functions that relates to analog computation.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "models that talk about",
+      "start": 868,
+      "end": 890,
+      "typographic_alignment": false,
+      "original_quote": "models that talk about"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "use approximation in one",
+      "start": 1001,
+      "end": 1025,
+      "typographic_alignment": false,
+      "original_quote": "use approximation in one"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "Blum–Shub–Smale model",
+      "start": 1200,
+      "end": 1221,
+      "typographic_alignment": false,
+      "original_quote": "Blum–Shub–Smale model"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "transition takes place in",
+      "start": 1447,
+      "end": 1472,
+      "typographic_alignment": false,
+      "original_quote": "transition takes place in"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "General Purpose Analog Computer",
+      "start": 1575,
+      "end": 1606,
+      "typographic_alignment": false,
+      "original_quote": "General Purpose Analog Computer"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "generating (in a sense)",
+      "start": 1800,
+      "end": 1823,
+      "typographic_alignment": false,
+      "original_quote": "generating (in a sense)"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "addressed this question for",
+      "start": 2083,
+      "end": 2110,
+      "typographic_alignment": false,
+      "original_quote": "addressed this question for"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "closures under certain operators",
+      "start": 2572,
+      "end": 2604,
+      "typographic_alignment": false,
+      "original_quote": "closures under certain operators"
+    },
+    {
+      "path": "research_context[8]",
+      "quote": "lacked formality in some",
+      "start": 3215,
+      "end": 3239,
+      "typographic_alignment": false,
+      "original_quote": "lacked formality in some"
+    },
+    {
+      "path": "research_context[9]",
+      "quote": "suﬀers from ambiguity",
+      "start": 3315,
+      "end": 3336,
+      "typographic_alignment": true,
+      "original_quote": "suffers from ambiguity"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "pin\ndown what is",
+      "start": 488,
+      "end": 504,
+      "typographic_alignment": true,
+      "original_quote": "pin down what is"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "remove the ambiguity",
+      "start": 550,
+      "end": 570,
+      "typographic_alignment": false,
+      "original_quote": "remove the ambiguity"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "Real primitive recursive functions",
+      "start": 2901,
+      "end": 2935,
+      "typographic_alignment": false,
+      "original_quote": "Real primitive recursive functions"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "are diﬀerentially algebraic",
+      "start": 2936,
+      "end": 2963,
+      "typographic_alignment": true,
+      "original_quote": "are differentially algebraic"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "restriction of some real",
+      "start": 3066,
+      "end": 3090,
+      "typographic_alignment": false,
+      "original_quote": "restriction of some real"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "technical inaccuracies",
+      "start": 412,
+      "end": 434,
+      "typographic_alignment": false,
+      "original_quote": "technical inaccuracies"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "mathematically sound way",
+      "start": 3446,
+      "end": 3470,
+      "typographic_alignment": false,
+      "original_quote": "mathematically sound way"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "behavior of the di",
+      "start": 585,
+      "end": 603,
+      "typographic_alignment": false,
+      "original_quote": "behavior of the di"
+    },
+    {
+      "path": "research_question_and_hypothesis[8]",
+      "quote": "relation to di",
+      "start": 698,
+      "end": 712,
+      "typographic_alignment": false,
+      "original_quote": "relation to di"
+    },
+    {
+      "path": "research_question_and_hypothesis[9]",
+      "quote": "relation to di",
+      "start": 698,
+      "end": 712,
+      "typographic_alignment": false,
+      "original_quote": "relation to di"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "function f :⊆Rm →Rn",
+      "start": 3913,
+      "end": 3932,
+      "typographic_alignment": false,
+      "original_quote": "function f :⊆Rm →Rn"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "converges to f x",
+      "start": 4474,
+      "end": 4490,
+      "typographic_alignment": false,
+      "original_quote": "converges to f x"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "nonzero polynomial P",
+      "start": 6353,
+      "end": 6373,
+      "typographic_alignment": false,
+      "original_quote": "nonzero polynomial P"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "statements:\n(i) for any",
+      "start": 6276,
+      "end": 6299,
+      "typographic_alignment": true,
+      "original_quote": "statements: (i) for any"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "juxtaposition,\ncomposition and di",
+      "start": 12386,
+      "end": 12419,
+      "typographic_alignment": true,
+      "original_quote": "juxtaposition, composition and di"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "preserve analyticity",
+      "start": 13946,
+      "end": 13966,
+      "typographic_alignment": false,
+      "original_quote": "preserve analyticity"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "integral equation\nof the",
+      "start": 15100,
+      "end": 15124,
+      "typographic_alignment": true,
+      "original_quote": "integral equation of the"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "unique in H if",
+      "start": 15806,
+      "end": 15820,
+      "typographic_alignment": false,
+      "original_quote": "unique in H if"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "smallest class containing",
+      "start": 11904,
+      "end": 11929,
+      "typographic_alignment": false,
+      "original_quote": "smallest class containing"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "functions sin,\ncos and",
+      "start": 17001,
+      "end": 17023,
+      "typographic_alignment": true,
+      "original_quote": "functions sin, cos and"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "ht = f v +",
+      "start": 16198,
+      "end": 16208,
+      "typographic_alignment": false,
+      "original_quote": "ht = f v +"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "interval containing 0",
+      "start": 16067,
+      "end": 16088,
+      "typographic_alignment": false,
+      "original_quote": "interval containing 0"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "unique in Hv",
+      "start": 16266,
+      "end": 16278,
+      "typographic_alignment": false,
+      "original_quote": "unique in Hv"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "so is dr (f, g)",
+      "start": 18778,
+      "end": 18793,
+      "typographic_alignment": false,
+      "original_quote": "so is dr (f, g)"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "countable set of isolated",
+      "start": 19666,
+      "end": 19691,
+      "typographic_alignment": false,
+      "original_quote": "countable set of isolated"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "not di",
+      "start": 15677,
+      "end": 15683,
+      "typographic_alignment": false,
+      "original_quote": "not di"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "gamma function Γ",
+      "start": 21798,
+      "end": 21814,
+      "typographic_alignment": false,
+      "original_quote": "gamma function Γ"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "exp",
+      "start": 1884,
+      "end": 1887,
+      "typographic_alignment": false,
+      "original_quote": "exp"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "ˇΓ is easily shown",
+      "start": 22108,
+      "end": 22126,
+      "typographic_alignment": false,
+      "original_quote": "ˇΓ is easily shown"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "assume that it were",
+      "start": 22238,
+      "end": 22257,
+      "typographic_alignment": false,
+      "original_quote": "assume that it were"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "are equivalent",
+      "start": 7156,
+      "end": 7170,
+      "typographic_alignment": false,
+      "original_quote": "are equivalent"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "D f ⊆R(B)",
+      "start": 10082,
+      "end": 10091,
+      "typographic_alignment": false,
+      "original_quote": "D f ⊆R(B)"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "preserved by jx and",
+      "start": 14052,
+      "end": 14071,
+      "typographic_alignment": false,
+      "original_quote": "preserved by jx and"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "so is dr (f, g)",
+      "start": 18778,
+      "end": 18793,
+      "typographic_alignment": false,
+      "original_quote": "so is dr (f, g)"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "not di",
+      "start": 15677,
+      "end": 15683,
+      "typographic_alignment": false,
+      "original_quote": "not di"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "not di",
+      "start": 15677,
+      "end": 15683,
+      "typographic_alignment": false,
+      "original_quote": "not di"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "Γ is not di",
+      "start": 22017,
+      "end": 22028,
+      "typographic_alignment": false,
+      "original_quote": "Γ is not di"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "contradicting H",
+      "start": 22613,
+      "end": 22628,
+      "typographic_alignment": false,
+      "original_quote": "contradicting H"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "Claim 1 fails",
+      "start": 3610,
+      "end": 3623,
+      "typographic_alignment": false,
+      "original_quote": "Claim 1 fails"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "probably not well-\nbehaved",
+      "start": 24157,
+      "end": 24183,
+      "typographic_alignment": true,
+      "original_quote": "probably not well-behaved"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "relation to di",
+      "start": 698,
+      "end": 712,
+      "typographic_alignment": false,
+      "original_quote": "relation to di"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "relation to the General",
+      "start": 11180,
+      "end": 11203,
+      "typographic_alignment": false,
+      "original_quote": "relation to the General"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "failure to\ndeal with",
+      "start": 24524,
+      "end": 24544,
+      "typographic_alignment": true,
+      "original_quote": "failure to deal with"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "partial functions must be",
+      "start": 5652,
+      "end": 5677,
+      "typographic_alignment": false,
+      "original_quote": "partial functions must be"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "choice between (c)\nand",
+      "start": 19861,
+      "end": 19883,
+      "typographic_alignment": true,
+      "original_quote": "choice between (c) and"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "model of analog computation",
+      "start": 768,
+      "end": 795,
+      "typographic_alignment": false,
+      "original_quote": "model of analog computation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "close relationship to the",
+      "start": 25230,
+      "end": 25255,
+      "typographic_alignment": false,
+      "original_quote": "close relationship to the"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "mathematically sound way",
+      "start": 3446,
+      "end": 3470,
+      "typographic_alignment": false,
+      "original_quote": "mathematically sound way"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[8]",
+      "quote": "analog and digital computation",
+      "start": 2818,
+      "end": 2848,
+      "typographic_alignment": false,
+      "original_quote": "analog and digital computation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[9]",
+      "quote": "reformulate further the rest",
+      "start": 25321,
+      "end": 25349,
+      "typographic_alignment": false,
+      "original_quote": "reformulate further the rest"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "leaves ambiguous whether",
+      "start": 23377,
+      "end": 23401,
+      "typographic_alignment": false,
+      "original_quote": "leaves ambiguous whether"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "can even be discontinuous",
+      "start": 23300,
+      "end": 23325,
+      "typographic_alignment": false,
+      "original_quote": "can even be discontinuous"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "doubt the signi",
+      "start": 24286,
+      "end": 24301,
+      "typographic_alignment": false,
+      "original_quote": "doubt the signi"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "We do not know if",
+      "start": 22055,
+      "end": 22072,
+      "typographic_alignment": false,
+      "original_quote": "We do not know if"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "ˇΓ is easily shown",
+      "start": 22108,
+      "end": 22126,
+      "typographic_alignment": false,
+      "original_quote": "ˇΓ is easily shown"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "breaks the assumption of",
+      "start": 20879,
+      "end": 20903,
+      "typographic_alignment": false,
+      "original_quote": "breaks the assumption of"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "Other classes and related",
+      "start": 22639,
+      "end": 22664,
+      "typographic_alignment": false,
+      "original_quote": "Other classes and related"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "doubt the signi",
+      "start": 24286,
+      "end": 24301,
+      "typographic_alignment": false,
+      "original_quote": "doubt the signi"
+    },
+    {
+      "path": "contradictions_and_limitations[8]",
+      "quote": "preferably with an\nequally",
+      "start": 25174,
+      "end": 25200,
+      "typographic_alignment": true,
+      "original_quote": "preferably with an equally"
+    },
+    {
+      "path": "contradictions_and_limitations[9]",
+      "quote": "model of analog computation",
+      "start": 768,
+      "end": 795,
+      "typographic_alignment": false,
+      "original_quote": "model of analog computation"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "choice between (c)\nand",
+      "start": 19861,
+      "end": 19883,
+      "typographic_alignment": true,
+      "original_quote": "choice between (c) and"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "countable set of isolated",
+      "start": 19666,
+      "end": 19691,
+      "typographic_alignment": false,
+      "original_quote": "countable set of isolated"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "not di",
+      "start": 15677,
+      "end": 15683,
+      "typographic_alignment": false,
+      "original_quote": "not di"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "so is dr (f, g)",
+      "start": 18778,
+      "end": 18793,
+      "typographic_alignment": false,
+      "original_quote": "so is dr (f, g)"
+    },
+    {
+      "path": "robustness_and_ablation_notes[4]",
+      "quote": "restrictive deﬁnition with",
+      "start": 21616,
+      "end": 21642,
+      "typographic_alignment": true,
+      "original_quote": "restrictive definition with"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "unique solution",
+      "start": 7825,
+      "end": 7840,
+      "typographic_alignment": false,
+      "original_quote": "unique solution"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Integrand with a singularity",
+      "start": 19263,
+      "end": 19291,
+      "typographic_alignment": false,
+      "original_quote": "Integrand with a singularity"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "statements:\n(i) for any",
+      "start": 6276,
+      "end": 6299,
+      "typographic_alignment": true,
+      "original_quote": "statements: (i) for any"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "D f ⊆R(B)",
+      "start": 10082,
+      "end": 10091,
+      "typographic_alignment": false,
+      "original_quote": "D f ⊆R(B)"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "set of all functions",
+      "start": 15968,
+      "end": 15988,
+      "typographic_alignment": false,
+      "original_quote": "set of all functions"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "reformulating the theory",
+      "start": 5737,
+      "end": 5761,
+      "typographic_alignment": false,
+      "original_quote": "reformulating the theory"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "not di",
+      "start": 15677,
+      "end": 15683,
+      "typographic_alignment": false,
+      "original_quote": "not di"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "Find a subclass of",
+      "start": 25115,
+      "end": 25133,
+      "typographic_alignment": false,
+      "original_quote": "Find a subclass of"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "ˇΓ is easily shown",
+      "start": 22108,
+      "end": 22126,
+      "typographic_alignment": false,
+      "original_quote": "ˇΓ is easily shown"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "not di",
+      "start": 15677,
+      "end": 15683,
+      "typographic_alignment": false,
+      "original_quote": "not di"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "contradicting H",
+      "start": 22613,
+      "end": 22628,
+      "typographic_alignment": false,
+      "original_quote": "contradicting H"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "Real primitive recursive functions",
+      "start": 2901,
+      "end": 2935,
+      "typographic_alignment": false,
+      "original_quote": "Real primitive recursive functions"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "impact on the subsequent",
+      "start": 3123,
+      "end": 3147,
+      "typographic_alignment": false,
+      "original_quote": "impact on the subsequent"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "relation to di",
+      "start": 698,
+      "end": 712,
+      "typographic_alignment": false,
+      "original_quote": "relation to di"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "Find a subclass of",
+      "start": 25115,
+      "end": 25133,
+      "typographic_alignment": false,
+      "original_quote": "Find a subclass of"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "producing non-smooth functions",
+      "start": 24200,
+      "end": 24230,
+      "typographic_alignment": false,
+      "original_quote": "producing non-smooth functions"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "no longer enjoys Theo",
+      "start": 24242,
+      "end": 24263,
+      "typographic_alignment": false,
+      "original_quote": "no longer enjoys Theo"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "Each (partial) recursive function",
+      "start": 2975,
+      "end": 3008,
+      "typographic_alignment": false,
+      "original_quote": "Each (partial) recursive function"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[1]",
+      "quote": "simulate Turing machines",
+      "start": 24371,
+      "end": 24395,
+      "typographic_alignment": false,
+      "original_quote": "simulate Turing machines"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "probably not well-\nbehaved",
+      "start": 24157,
+      "end": 24183,
+      "typographic_alignment": true,
+      "original_quote": "probably not well-behaved"
+    },
+    {
+      "path": "claims[1].implications[1]",
+      "quote": "reformulate further the rest",
+      "start": 25321,
+      "end": 25349,
+      "typographic_alignment": false,
+      "original_quote": "reformulate further the rest"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"Differential recursion and differentially algebraic functions\",\n  \"authors\": \"Akitoshi Kawamura\",\n  \"field_subfield\": \"Computer Science / Computability Theory\",\n  \"type_of_paper\": \"Theoretical Computer Science\",\n  \"executive_summary\": \"This paper addresses technical inaccuracies and ambiguities in Moore's definition of real-valued recursive functions, specifically focusing on the differential recursion operator. Moore originally proposed that his class of real primitive recursive functions corresponds to differentially algebraic functions, which are the functions generable by Shannon's General Purpose Analog Computer (GPAC). The author argues that Moore's original definitions lack formality regarding partial functions, leading to inconsistent claims. The paper first establishes a rigorous characterization of differentially algebraic functions, proving the equivalence of several local and global definitions involving polynomial differential equations. It then reformulates Moore's real primitive recursive functions using a mathematically sound definition of the differential recursion operator that preserves analyticity. A key contribution is the demonstration that even under this restrictive, analyticity-preserving definition, Moore's Claim 1—that real primitive recursive functions are differentially algebraic—fails. The author constructs a counterexample using a variant of Euler's gamma function, showing it is real primitive recursive but not differentially algebraic. Furthermore, the paper discusses the implications for Moore's Claim 2 regarding the relationship to standard digital recursion, noting that the inclusion of minimization operators leads to non-smooth functions, thereby breaking the connection to analog computation models. The study concludes that the purported relation between Moore's classes and analog computation fails, posing an open problem to find a subclass that maintains this relationship.\",\n  \"research_context\": [\n    { \"Several theoretical models exist for the computability of real functions.\": \"models that talk about\" },\n    { \"Computable Analysis uses approximation to handle real numbers.\": \"use approximation in one\" },\n    { \"The Blum–Shub–Smale model treats continuous quantities as entities.\": \"Blum–Shub–Smale model\" },\n    { \"Analog computation models data and transitions in continuous time.\": \"transition takes place in\" },\n    { \"Shannon's General Purpose Analog Computer is a well-studied analog model.\": \"General Purpose Analog Computer\" },\n    { \"GPAC was shown to generate differentially algebraic functions.\": \"generating (in a sense)\" },\n    { \"Moore addressed the relation between analog and digital computation.\": \"addressed this question for\" },\n    { \"Moore defined classes as closures under real-number operators.\": \"closures under certain operators\" },\n    { \"Moore's work inspired research but lacked formality.\": \"lacked formality in some\" },\n    { \"The definition of Moore's classes suffers from ambiguity.\": \"suffers from ambiguity\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The paper aims to pin down what is problematic in Moore's definition.\": \"pin down what is\" },\n    { \"It discusses attempts to remove ambiguity in the differential recursion operator.\": \"remove the ambiguity\" },\n    { \"The central question is whether real primitive recursive functions are differentially algebraic.\": \"Real primitive recursive functions\" },\n    { \"Moore claimed that real primitive recursive functions are differentially algebraic.\": \"are differentially algebraic\" },\n    { \"Moore also claimed that standard recursive functions are restrictions of real recursive functions.\": \"restriction of some real\" },\n    { \"The author hypothesizes that these claims fail due to technical inaccuracies.\": \"technical inaccuracies\" },\n    { \"The study seeks to reformulate the theory in a mathematically sound way.\": \"mathematically sound way\" },\n    { \"It investigates the behavior of the operator on partial functions.\": \"behavior of the di\" },\n    { \"The goal is to determine if the relation to analog computation holds.\": \"relation to di\" },\n    { \"The paper predicts that the purported relation to differentially algebraic functions fails.\": \"relation to di\" }\n  ],\n  \"methodological_details\": [\n    { \"The study focuses on real-valued functions with potentially partial domains.\": \"function f :⊆Rm →Rn\" },\n    { \"A function is analytic if it has a convergent power series expansion.\": \"converges to f x\" },\n    { \"Differentially algebraic functions are defined by satisfying polynomial differential equations.\": \"nonzero polynomial P\" },\n    { \"Theorem 3 establishes the equivalence of local and global definitions.\": \"statements: (i) for any\" },\n    { \"The definition of real primitive recursive functions uses three operators.\": \"juxtaposition, composition and di\" },\n    { \"Juxtaposition and composition are defined to preserve analyticity.\": \"preserve analyticity\" },\n    { \"The differential recursion operator is defined via integral equations.\": \"integral equation of the\" },\n    { \"A unique solution is defined as the function with the largest domain.\": \"unique in H if\" },\n    { \"The class is the smallest set containing constants and closed under operators.\": \"smallest class containing\" },\n    { \"Basic functions like sin, cos, exp, and log are shown to be real primitive recursive.\": \"functions sin, cos and\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The differential recursion operator dr is defined using an integral equation.\": \"ht = f v +\" },\n    { \"The domain of the solution is restricted to intervals containing 0.\": \"interval containing 0\" },\n    { \"The unique solution hv is selected from the set of all solutions Hv.\": \"unique in Hv\" },\n    { \"Theorem 12 states that dr preserves analyticity if g is analytic.\": \"so is dr (f, g)\" },\n    { \"Campagnolo's variant drC allows for countable sets of singularities.\": \"countable set of isolated\" },\n    { \"drC can produce non-differentiable functions, breaking analyticity.\": \"not di\" },\n    { \"The counterexample uses a function related to Euler's gamma function.\": \"Euler's gamma function\" },\n    { \"The function ˇΓ is defined as an integral over a finite range.\": \"exp ((x −1) ·\" },\n    { \"It is shown that ˇΓ is real primitive recursive.\": \"ˇΓ is easily shown\" },\n    { \"The proof assumes ˇΓ is differentially algebraic to derive a contradiction.\": \"assume that it were\" }\n  ],\n  \"key_results\": [\n    { \"Theorem 3 proves that seven definitions of differentially algebraic functions are equivalent.\": \"are equivalent\" },\n    { \"Lemma 5 characterizes differentially algebraic functions via field extensions.\": \"D f ⊆R(B)\" },\n    { \"Theorem 8 shows that juxtaposition and composition preserve differentially algebraic properties.\": \"preserved by jx and\" },\n    { \"Theorem 12 confirms that the differential recursion operator preserves analyticity.\": \"so is dr (f, g)\" },\n    { \"The function k produced by drC is not differentiable at 1.\": \"not di\" },\n    { \"The function ˇΓ is real primitive recursive but not differentially algebraic.\": \"not di\" },\n    { \"The proof relies on Hölder's result that the gamma function is not differentially algebraic.\": \"Γ is not di\" },\n    { \"Taking the limit of the polynomial equation leads to a contradiction.\": \"contradicting H\" },\n    { \"Moore's Claim 1 that real primitive recursive functions are differentially algebraic fails.\": \"Claim 1 fails\" },\n    { \"The class of real recursive functions is not well-behaved due to minimization.\": \"probably not well-behaved\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The failure of Claim 1 breaks the link to analog computation.\": \"relation to di\" },\n    { \"Differentially algebraic functions are central to the GPAC model.\": \"relation to the General\" },\n    { \"The ambiguity in Moore's work stems from ignoring partial functions.\": \"failure to deal with\" },\n    { \"Proper handling of partial functions is crucial for formal correctness.\": \"partial functions must be\" },\n    { \"The distinction between dr and drC highlights the importance of analyticity.\": \"choice between (c) and\" },\n    { \"The results suggest that Moore's classes do not model analog computation.\": \"model of analog computation\" },\n    { \"The open problem is to find a subclass with a close relationship to DA functions.\": \"close relationship to the\" },\n    { \"The work emphasizes the need for rigorous definitions in computability theory.\": \"mathematically sound way\" },\n    { \"The findings impact the understanding of the boundary between digital and analog computation.\": \"analog and digital computation\" },\n    { \"Future work should reformulate other ambiguous classes in the literature.\": \"reformulate further the rest\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"Moore's original definition of the minimization operator is ambiguous.\": \"leaves ambiguous whether\" },\n    { \"The class of real recursive functions may include discontinuous functions.\": \"can even be discontinuous\" },\n    { \"The significance of Claim 2 is doubted due to lack of smoothness.\": \"doubt the signi\" },\n    { \"The paper does not determine if the gamma function itself is real primitive recursive.\": \"We do not know if\" },\n    { \"The counterexample uses a variant of the gamma function, not the standard one.\": \"ˇΓ is easily shown\" },\n    { \"The definition of drC allows for singularities that break analyticity.\": \"breaks the assumption of\" },\n    { \"The paper focuses on primitive recursive functions, leaving other classes open.\": \"Other classes and related\" },\n    { \"The relationship between Moore's classes and digital computation remains unclear.\": \"doubt the signi\" },\n    { \"The lack of a simple subclass with DA properties is a limitation.\": \"preferably with an equally\" },\n    { \"The paper does not provide a complete model of analog computation.\": \"model of analog computation\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Moore's Claim 1 that real primitive recursive functions are differentially algebraic is false.\",\n      \"supporting_evidence\": [\n        { \"The function ˇΓ is real primitive recursive.\": \"ˇΓ is easily shown\" },\n        { \"The function ˇΓ is not differentially algebraic.\": \"not di\" },\n        { \"This contradicts the assumption that all such functions are DA.\": \"contradicting H\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Moore originally claimed this relationship holds.\": \"Real primitive recursive functions\" },\n        { \"Some authors have built theories on this assumption.\": \"impact on the subsequent\" }\n      ],\n      \"implications\": [\n        { \"The link between Moore's classes and GPAC is broken.\": \"relation to di\" },\n        { \"New subclasses must be defined to model analog computation.\": \"Find a subclass of\" }\n      ]\n    },\n    {\n      \"description\": \"Moore's Claim 2 regarding the restriction of standard recursive functions is of doubtful significance.\",\n      \"supporting_evidence\": [\n        { \"The minimization operator produces non-smooth functions.\": \"producing non-smooth functions\" },\n        { \"The class no longer enjoys the properties of Theorem 12.\": \"no longer enjoys Theo\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Moore claimed this relationship holds.\": \"Each (partial) recursive function\" },\n        { \"It could be justified by simulating Turing machines.\": \"simulate Turing machines\" }\n      ],\n      \"implications\": [\n        { \"The class of real recursive functions is not well-behaved.\": \"probably not well-behaved\" },\n        { \"Further reformulation of Moore's work is needed.\": \"reformulate further the rest\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": \"\",\n  \"robustness_and_ablation_notes\": [\n    { \"The paper compares the standard dr operator with Campagnolo's drC.\": \"choice between (c) and\" },\n    { \"drC allows for countable singularities, leading to non-analytic functions.\": \"countable set of isolated\" },\n    { \"The example with function g shows drC can produce non-differentiable results.\": \"not di\" },\n    { \"The standard dr operator preserves analyticity, ensuring well-defined solutions.\": \"so is dr (f, g)\" },\n    { \"The counterexample relies on the analyticity-preserving nature of dr.\": \"restrictive definition with\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 illustrates the ambiguity in defining a unique solution.\": \"unique solution\" },\n    { \"Figure 2 shows an integrand with a singularity.\": \"Integrand with a singularity\" },\n    { \"Theorem 3 lists equivalent definitions of differentially algebraic functions.\": \"statements: (i) for any\" },\n    { \"Lemma 5 provides a field-theoretic characterization of DA functions.\": \"D f ⊆R(B)\" },\n    { \"Definition 9 formally defines the differential recursion operator.\": \"set of all functions\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the rigorous reformulation of Moore's differential recursion operator.\": \"reformulate Moore's theory\" },\n    { \"2. The strongest evidence is the counterexample showing a real primitive recursive function is not differentially algebraic.\": \"not di\" },\n    { \"3. The future path is to find a subclass of real primitive recursive functions that relates to analog computation.\": \"Find a subclass of\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 10289,
+        "total_tokens": 13434,
+        "completion_tokens": 3145,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 10289,
+      "elapsed_seconds": 288.6645607277751,
+      "max_tokens": 16000,
+      "seed": 1525650348,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "6d89d3f6ce7b3ac7f61b8a21211e335deb28ff53c14bb83f089976dadb654229",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: Euler's gamma function",
+        "three_takeaways": "evidence quote is not present in fulltext: reformulate Moore's theory"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The differential recursion operator dr is defined using an integral equation.\": \"ht = f v +\"\n    },\n    {\n      \"The domain of the solution is restricted to intervals containing 0.\": \"interval containing 0\"\n    },\n    {\n      \"The unique solution hv is selected from the set of all solutions Hv.\": \"unique in Hv\"\n    },\n    {\n      \"Theorem 12 states that dr preserves analyticity if g is analytic.\": \"so is dr (f, g)\"\n    },\n    {\n      \"Campagnolo's variant drC allows for countable sets of singularities.\": \"countable set of isolated\"\n    },\n    {\n      \"drC can produce non-differentiable functions, breaking analyticity.\": \"not di\"\n    },\n    {\n      \"The counterexample uses a function related to Euler's gamma function.\": \"gamma function Γ\"\n    },\n    {\n      \"The function ˇΓ is defined as an integral over a finite range.\": \"exp ((x −1)\"\n    },\n    {\n      \"It is shown that ˇΓ is real primitive recursive.\": \"ˇΓ is easily shown\"\n    },\n    {\n      \"The proof assumes ˇΓ is differentially algebraic to derive a contradiction.\": \"assume that it were\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is the rigorous reformulation of Moore's differential recursion operator.\": \"reformulating the theory\"\n    },\n    {\n      \"2. The strongest evidence is the counterexample showing a real primitive recursive function is not differentially algebraic.\": \"not di\"\n    },\n    {\n      \"3. The future path is to find a subclass of real primitive recursive functions that relates to analog computation.\": \"Find a subclass of\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8913,
+        "total_tokens": 9348,
+        "completion_tokens": 435,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8913,
+      "elapsed_seconds": 42.455788876861334,
+      "max_tokens": 4096,
+      "seed": 1525650349,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "c97c75238c8fafea79759cad4e624e226dfba8142627e8d8dabf9a820ff0b982",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: exp ((x −1)"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The differential recursion operator dr is defined using an integral equation.\": \"ht = f v +\"\n    },\n    {\n      \"The domain of the solution is restricted to intervals containing 0.\": \"interval containing 0\"\n    },\n    {\n      \"The unique solution hv is selected from the set of all solutions Hv.\": \"unique in Hv\"\n    },\n    {\n      \"Theorem 12 states that dr preserves analyticity if g is analytic.\": \"so is dr (f, g)\"\n    },\n    {\n      \"Campagnolo's variant drC allows for countable sets of singularities.\": \"countable set of isolated\"\n    },\n    {\n      \"drC can produce non-differentiable functions, breaking analyticity.\": \"not di\"\n    },\n    {\n      \"The counterexample uses a function related to Euler's gamma function.\": \"gamma function Γ\"\n    },\n    {\n      \"The function ˇΓ is defined as an integral over a finite range.\": \"exp\"\n    },\n    {\n      \"It is shown that ˇΓ is real primitive recursive.\": \"ˇΓ is easily shown\"\n    },\n    {\n      \"The proof assumes ˇΓ is differentially algebraic to derive a contradiction.\": \"assume that it were\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8756,
+        "total_tokens": 9070,
+        "completion_tokens": 314,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8756,
+      "elapsed_seconds": 31.92785717919469,
+      "max_tokens": 4096,
+      "seed": 1525650350,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "2ab48c110baaf048fb46015b979caccb0ae73bbb83f09159d33124e19212251e",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 10289,
+  "elapsed_seconds": 363.38850152492523,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

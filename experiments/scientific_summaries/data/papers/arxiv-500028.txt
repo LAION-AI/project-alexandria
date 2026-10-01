@@ -1,0 +1,646 @@
+An algorithm for stress and mixed control in Galerkin based FFT
+homogenization
+S. Lucarini1,2 and J. Segurado1,2,*
+1IMDEA Materials Institute ,C/ Eric Kandel 2, 28906, Getafe, Madrid, Spain.
+2Technical University of Madrid/Universidad Polit´ecnica de Madrid, Department of
+Materials Science, E. T. S. de Ingenieros de Caminos , C/ Profesor Aranguren s/n 28040 -
+Madrid, Spain.
+*Corresponding author at: IMDEA Materials Institute, Spain. javier.segurado@imdea.org
+(J. Segurado)
+January 23, 2019
+Abstract
+A new algorithm is proposed to impose a macroscopic stress or mixed stress/deformation gradient
+history in the context of non-linear Galerkin based FFT homogenization. The method proposed is based
+in the deﬁnition of a modiﬁed projection operator in which the null frequencies enforce the type of
+control (stress or strain) for each component of either the macroscopic ﬁrst Piola stress or the deformation
+gradient. The resulting problem is solved exactly as the original variational method and it does not require
+additional iterations compared to the strain control version, neither in the linear iterative solver, nor in
+the Newton scheme. The eﬃciency of the method proposed is demonstrated with a series of numerical
+examples, including a polycrystal and a particle reinforced hyperelastic material.
+1
+1
+Introduction
+Computational homogenization aims to simulate the mechanical response of a material under a given macro-
+scopic stress, strain or mixed loading path by solving a boundary problem in a periodic representative volume
+element (RVE) of its microstructure. The ﬁnite element method (FE) has been traditionally used to solve the
+boundary value problem allowing to impose any macroscopic load history combining the control of diﬀerent
+components of the strain and stress average ﬁelds. Fast Fourier transform (FFT) based homogenization has
+become a very popular alternative to FE. FFT methods solve the boundary problem replacing the diﬀerential
+operators in the governing partial diﬀerential equation by their equivalent counterparts in the Fourier space.
+The computational performance of this method compared to FE makes it ideal to simulate complex geome-
+tries comprising millions of degrees of freedom. However, imposing a macroscopic stress or mixed loading
+path is not a direct task in FFT. Nevertheless, obtaining the material response in an eﬃcient manner for any
+generic loading path is fundamental to solve cases of interest such as uniaxial loading, controlled triaxility or
+cyclic stress control tests.
+FFT homogenization was ﬁrst proposed by H. Moulinec and P. Suquet (Moulinec and Suquet, 1994, 1998)
+based on solving the Lippmann-Schwinger equation with a reference material using a ﬁxed-point algorithm.
+Since then, several approaches based on similar principles have been proposed (Eyre and Milton, 1999; Michel
+1Submitted to International Journal of Numerical Methods is Engineering
+1
+arXiv:1901.06531v1  [cond-mat.mtrl-sci]  19 Jan 2019
+
+et al., 2001; Monchiet and Bonnet, 2012; Kabel et al., 2014) . These approaches require the use of a reference
+medium, which properties in some cases may strongly determine the convergence rate. In these classical
+schemes, load is introduced imposing the full macroscopic strain tensor and when stress or mixed control is
+required (i.e. to impose uniaxial tension) iterative approaches are the usual solution Michel et al. (1999);
+Eisenlohr et al. (2013) . Under this procedure the algorithm still imposes the full macroscopic strain tensor
+and corrects it in an iterative manner in order to obtain at the end of the iteration process the macroscopic
+stress tensor components imposed as input.
+As a result of the corrections to the applied strain during
+iterations, the number of iterations per step signiﬁcantly increases respect the strain control. An alternative
+approach for classic schemes under mixed control was recently proposed by Kabel et al.
+(Kabel et al.,
+2016). The method consists in modifying the original basic scheme (Moulinec and Suquet, 1994) through the
+introduction of projection tensors to account for the load control and solving the problem using an iterative
+Krylov solver. This method for stress control is more eﬃcient than the iterative approaches although still
+requires the deﬁnition of a reference medium which properties might inﬂuence the convergence rate.
+A diﬀerent approach for FFT homogenization is the Galerkin based approach in which the problem is
+derived using a weak formulation, very similar to ﬁnite elements, and projection operators that ensure the
+compatibility of the strain ﬁelds. The resulting method (Vondˇrejc et al., 2014; Zeman et al., 2017; de Geus
+et al., 2017) does not require a reference medium and make direct use of the corresponding tangents of
+the material behavior to improve the convergence. Moreover, this framework can be easily adapted to use
+any complex non-linear constitutive equation as the crystal plasticity model (Lucarini and Segurado, 2018).
+However, the variational approach was still formulated imposing the history of the macroscopic deformation
+gradient.
+In this work, we extend the variational algorithm for ﬁnite strains(de Geus et al., 2017) to use stress and
+mixed control of the macroscopic load history using a direct method based on a modiﬁed project operator
+and preserving the computational performance of the original method. This paper summarizes in Section
+2 the original FFT-based variational approach and then presents the modiﬁed projection operator and the
+resulting algorithm for mixed control. In Section 3 examples using diﬀerent material models and loading
+paths will be run and, ﬁnally, the performance of the method is analyzed.
+2
+Algorithm for stress and mixed control in Galerkin based FFT
+2.1
+Galerkin based FFT for strain control
+The aim of the homogenization method is to ﬁnd, for a given macroscopic load history, the value of the
+deformation gradient and stress on a periodic RVE that can for example consist of a heterogeneous material
+composed by the spatial arrangement of two or more phases with diﬀerent properties or constitutive laws.
+The RVE is discretized in nx ny nz voxels. The linear momentum balance is imposed in its weak form in the
+reference conﬁguration. The test functions are virtual deformation gradients premultiplied by a projector
+operator to enforce their compatibility. After some algebraic work (de Geus et al., 2017), the discrete form
+of the linear momentum balance can be written as
+G (P (F, α)) = 0
+(1)
+where P is the ﬁrst Piola Kirchhoﬀstress, F is the deformation gradient ﬁeld, α are a set of internal variables
+deﬁning the history and G is a linear map that acts on a voxel tensor ﬁeld P deﬁned in R9 nx ny nz to create
+a new voxel tensor ﬁeld deﬁned in the same space. The linear map corresponds to a convolution in the real
+space that is computed as
+F−1 n
+bG : F {P (F, α)}
+o
+= 0
+(2)
+where F and F−1 are the discrete Fourier transform and its inverse and ˆG is the projection operator in the
+Fourier space (fourth order tensor ﬁeld). Equation (2) is an algebraic system of 9 nx ny nz equations in
+which the unknown is the value of the deformation gradient at each voxel F which can be decomposed into
+the sum of its average value ⟨F⟩Ωand the ﬂuctuation, eF = F −⟨F⟩Ω. In the case of strain control, the value
+2
+
+of F = ⟨F⟩Ωis given. This boundary condition enters explicitly in the system and the resulting problem
+consists in ﬁnding the value of the ﬂuctuations of the deformation gradient that fulﬁlls
+Find eF | G
+
+P
+
+F + eF, α
+
+= 0 for a given F
+(3)
+In the case of non-linear material behavior the discrete expression of the weak form of equilibrium given by
+equation (2) deﬁnes a non-linear algebraic equation. In order to solve the non-linear problem, the macroscopic
+deformation gradient is usually split in n increments and a non-linear equation is solved for every time
+increment k ∈[1, n]. Following this approach, the non-linear system of equations deﬁned by equation (2)
+is solved iteratively linearizing in each increment the stress around the last iteration of the deformation
+gradient, Fi,
+Fi+1 = Fi + δF and P(Fi + δF) ≈P(Fi) + Ki : δF, with Ki = ∂P
+∂Fi
+(4)
+Combining the equilibrium equation (2) with the linearization of the stress, the next equation is derived
+G
+ Ki : δF
+
+= −G
+ P
+ Fi
+(5)
+The expression in equation (5) is a linear system of equations in which the unknown is the correction at the
+iteration i of the deformation gradient δF obtained in a previous iteration, Fi = Fk+1+δF1+δF2 · · ·+δFi−1.
+All the corrections δF are ﬂuctuation terms (average free) and the applied deformation gradient enters through
+Fk+1. The linear equations are solved using the conjugate gradient method. If the constitutive equations are
+rate-dependent, the stress depends on both the deformation gradient, F, and the velocity gradient, L. In this
+case the macroscopic strain history is divided in n time increments, corresponding the end of the increment
+k to a time tk. In each point Fk = F(t = tk) and the velocity gradient Lk is given by
+Lk =
+1
+tk −tk−1
+[Fk −Fk−1] · F−1
+k
+Projection operator
+The projection operator bG (x) is a fourth order tensor (with a closed form expression in the Fourier space)
+that enforces the compatibility of any tensor ﬁeld via convolution in the real space. In this framework, the
+projection operator is used to force the compatibility of the deformation gradient tensor ﬁeld.
+The Helmholtz decomposition of an arbitrary tensor ﬁeld A (x) allows to express the ﬁeld as the sum of
+three contributions
+A (x) = A∥(x) + A⊥(x) + A
+(6)
+where A∥(x) is a curl-free component (compatible), A⊥(x) a divergence-free component (incompatible) and
+A is the average. The Helmholtz decomposition in the Fourier space (Stewart, 2012) is written as
+bA (ξ) = c
+A∥(ξ) + d
+A⊥(ξ) + bA,
+(7)
+being the curl-free component
+c
+A∥(ξ) =
+
+bA (ξ) · ξ
+|ξ|
+
+⊗ξ
+|ξ|
+(8)
+where ξ represents the (spatial) frequency vector, with dimension of inverse of length Lucarini and Segurado
+(2018). A fourth order tensor, the projection operator bG, can be deﬁned from equation (8) which, when
+contracted with bA, returns its compatible part
+bG : bA = bGijkl bAkl = bA∥ij = δik
+ξjξl
+ξ · ξ
+bAkl = ξjξl
+ξ · ξ
+bAil
+(9)
+In this expression it can be observed that the projection operator in the Fourier space accomplish major
+symmetry bGijkl = bGklij.
+3
+
+In order to return a zero mean ﬁeld value, the projection should be a zero fourth order tensor in the null
+frequency ξ = (0, 0, 0). Additionally, when discretized in an even number of frequencies, the value of the
+operator at the highest frequency (Nyquist frequency) is usually approximated to a null fourth order tensor
+to recover the frequency symmetry. Considering this, the ﬁnal expression for the projector operator is
+bG (ξ) = bGijkl =
+(
+0ijkl
+for null and Nyquist frequencies
+δik
+ξjξl
+ξ·ξ
+for the rest of frequencies
+(10)
+which corresponds to the Green Function of the basic scheeme Moulinec and Suquet (1994) for an isotropic
+reference medium with Lam´e constants λ = 0, µ = 0.5.
+2.2
+Macroscopic stress control
+The Galerkin based FFT method (Vondˇrejc et al., 2014; Zeman et al., 2017; de Geus et al., 2017) was
+originally developed to provide a solution under a given macroscopic deformation gradient. In this section, a
+modiﬁcation of the projection operator is proposed in order to simulate the behavior for a macroscopic stress
+history. This case would correspond to a creep test or a unixial test under stress control.
+The ﬁrst Piola-Kirchhoﬀstress can be split into its average and ﬂuctuating parts
+P (F, α) = ⟨P(x, α)⟩Ω+ eP(F, α)
+(11)
+and introducing this decomposition into equilibrium equation (1), it is obtained
+G
+
+⟨P⟩Ω+ eP (F, α)
+
+= 0
+(12)
+The average term of P vanishes because the projection operator ˆG eliminates the mean part of the ﬁeld to
+which is applied and the actual equilibrium equation that is solved corresponds to
+G
+
+eP (F, α)
+
+= 0 for ⟨F⟩Ω= F
+(13)
+where the input data is the averaged value of the deformation gradient and the average stress is unknown
+and obtained as a result of the simulation.
+Let’s consider and alternative projection operator G∗in which the condition of zero mean projection is
+eliminated. If this operator is applied to the ﬂuctuation of the stress (zero mean value), the redeﬁnition of
+the operator does not aﬀect the result and the equilibrium equation is identical to the one expressed using
+the standard operator (eq. 13) coincides
+G∗
+eP (F, α)
+
+= G
+
+eP (F, α)
+
+= 0.
+(14)
+Under stress control the input data is the target macroscopic stress, P, and therefore it should be equaled
+to the average stress ⟨P⟩Ω.
+Combining the stress decomposition (equation 11) with equation (14), the
+equilibrium can be expressed as
+G∗(P (F, α) −⟨P⟩Ω) = G∗ P (F, α) −P
+
+= 0
+(15)
+The resulting equilibrium equation consists in ﬁnding the value of the full deformation gradient, F, including
+both ﬂuctuations and the ﬁeld mean value and corresponds to
+Find F | G∗(P (F, α)) = G∗(P) for a given P
+(16)
+To determine the value of G∗that preserves equilibrium enforcing that ⟨P⟩Ω= P, equation (16) is expressed
+as a convolution in the Fourier space
+F−1 
+c
+G∗(ξ) : bP(ξ)
+
+= F−1 
+c
+G∗(ξ) : bP
+
+.
+(17)
+4
+
+Equation (14) implies that both operators should act identically on zero average tensor so c
+G∗(ξ) = bG(ξ) ∀ξ ̸=
+0, reducing eq. (17) to
+c
+G∗(ξ = 0) : bP(ξ = 0) = c
+G∗(ξ = 0) : P
+(18)
+Finally, the G∗operator projects an arbitrary tensor ﬁeld into the sum of its compatible and mean parts.
+Therefore, the null frequency should project the average part of a ﬁeld into itself, and this is achieved by
+deﬁning its value as the fourth order identity tensor. Using the property of the Fourier transform bP(ξ = 0) =
+⟨P⟩Ωin equation (18) , it is enforced ⟨P⟩Ωto be the target macroscopic stress. The new operator is deﬁned
+as
+bG∗
+ijkl =
+
+
+
+δikδjl
+for null frequency
+0ijkl
+for Nyquist frequencies
+δik
+ξjξl
+ξ·ξ
+for the rest of frequencies
+(19)
+In the case of non-linear behavior, the system is also solved iteratively. Each iteration for the correction
+of the deformation gradient δF is obtained here solving this linear system
+G∗(K : δF) = −G∗ P
+ Fi
+−P
+
+(20)
+where, contrary to the strain control approach, the correction for the deformation gradient ﬁeld δF includes
+a mean value. It can also be observed that when equilibrium is reached (δF →0) the average stress reaches
+the objective. It will be shown in the numerical examples that the algorithm summarized in equation (20)
+has the same convergence rate than the original scheme.
+2.3
+Mixed control of macrosopic stress and strain
+Load histories combining values of both macroscopic stress and deformation gradient are very common. Such
+conditions can be found for example in uniaxial or biaxial tests under strain where strain is imposed in some
+directions, but leaving the others free to deform. The input data now is P IJ = ⟨P⟩IJ for components IJ
+in which stress is imposed and F ij = ⟨F⟩ij for the rest of components. The equilibrium equation can be
+expressed as
+Find F′ |
+(
+G∗ P
+ Fij + F′, α
+
+ij = 0ij for a given F ij in directions ij
+G∗ P
+ Fij + F′, α
+
+IJ = G∗(P)IJ for a given P IJ in directions IJ
+(21)
+where F′ is the solution of the equilibrium equation under mixed control (eq.
+21) and corresponds to
+a ﬂuctuation term for the ij components (F ′
+ij = eFij) and the full deformation gradient term for the IJ
+components (F ′
+IJ = FIJ). These conditions are imposed again by modifying the value of the projection
+operator for the null frequency. The modiﬁed projection operator is obtained following the same reasoning
+as for stress control and corresponds to
+bG∗
+ijkl =
+
+
+
+
+
+
+
+δikδjl
+if ξ = 0 for stress controled IJ terms
+0ijkl
+if ξ = 0 for strain controlled ij terms
+0ijkl
+for Nyquist frequencies
+δik
+ξjξl
+ξ·ξ
+for ξ ̸= 0
+(22)
+This operator should be used as the operator G∗in equation (21).
+The resulting non linear system for
+obtaining the equilibrium is solved by Newton as in the previous cases, and the result is the ﬁeld F′
+3
+Results
+3.1
+Particle reinforced hyperelastic matrix
+The ﬁrst benchmark consists in a non-linear elastic composite.
+A uniaxial monotonic test of a periodic
+cubic RVE composed by a hyperelastic matrix reinforced by stiﬀspherical particles will be simulated under
+5
+
+macroscopic strain, stress and mixed control schemes. The RVE contains 4 particles occupying a volume
+fraction of 0.2 and the domain is discretized using 643 voxels (Fig. 1(a)). The matrix and particle mechanical
+behavior follows a Saint Venant-Kirchhoﬀhyperelastic model used in (Kabel et al., 2014; de Geus et al., 2017).
+The matrix properties are µ = 28Pa and k = 46.67Pa (shear and bulk modulus) and the particles are one
+order of magnitude stiﬀer (both moduli are 10 times larger than the matrix ones). The uniaxial tensile test
+reaches an elongation of λend =
+L
+L0 = 0.2, being L and L0 the target and initial cell length in the loading
+direction, and being the other two directions unconstrained. This test is done using three diﬀerent types
+of control that imply diﬀerent loading paths.
+In all the cases the load is homogeneously divided in 100
+load increments and equilibrium is solved in each of them. The load increments are deﬁned introducing a
+pseudo-time t being the ﬁnal stage reached at t = tend.
+Case (1) corresponds to the actual type of control in a uniaxial stress test, a mixed control in which a
+macroscopic deformation gradient is imposed in x direction as a ramp and the rest of terms are stress free.
+F
+(1) (t) =
+
+
+1 + λend
+t
+tend
+0
+0
+∗
+∗
+0
+∗
+∗
+∗
+
+
+and
+P
+(1) (t) =
+
+
+∗
+∗
+∗
+0
+0
+∗
+0
+0
+0
+
+
+(23)
+Case (2) is a full stress control, being the stress applied a linear ramp from 0 to the stress P(1)
+end obtained as
+the solution in the ﬁrst case and here introduced as input.
+P
+(2) (t) = P(1)
+end
+t
+tend
+(24)
+Finally, case (3) is a full strain control test (the standard boundary conditions in FFT) where all the
+deformation gradient is imposed using a linear ramp to reach the deformation gradient of previous simulation
+ﬁnal solution F
+(1)
+end.
+F
+(3) (t) = F
+(1)
+end
+t
+tend
+(25)
+The longitudinal response of the three test are represented in Fig. 1(b) while the transverse response is
+represented in Fig. 1(c).
+1.0
+1.1
+1.2
+1.3
+1.4
+1.5
+Fxx[ −]
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Pxx[Pa]
+1e5
+Case (1)
+Case (2)
+Case (3)
+1.0
+1.1
+1.2
+1.3
+1.4
+1.5
+Fxx[ −]
+2.0
+1.5
+1.0
+0.5
+0.0
+Pyy[Pa] / Pzz[Pa] (dotted)
+1e3
+Case (1)
+Case (2)
+Case (3)
+Figure 1: Particle reinforced RVE (a), ﬁrst Piola-Kirchhoﬀstresses for three load cases in hyperelastic model
+in load direction (b) and transverse directions (c).
+All simulations have the same endpoint, but follow diﬀerent paths. Cases (1) and (2) share the path,
+but diﬀer in the size of the strain increments due to the non-linear behavior. Being the behavior of the
+hyperelastic material path independent, the macroscopic stress of cases (1) and (2) are superposed, as it can
+be observed in Fig. 1(b). Case (3) follows a slightly diﬀerent path because a ramp is applied controlling the
+full deformation gradient. In this material, the behavior depends non-linearly on the deformation gradient
+value, implying that the transverse elongation result of a transverse stress free condition depends on the
+6
+
+deformation level. The eﬀect of the diﬀerent loading paths can be observed in the response in both directions
+being specially clear in the transverse direction (Fig. 1 (b)) where under a stress and mixed control transverse
+stresses are zero while, when using strain control, small compressive stresses are developed. Macroscopic and
+microscopic results at the endpoint for all the cases are the same within the numerical accuracy.
+3.2
+Polycrystal
+The second benchmark is a polycrystal, an example with loading path and strain rate dependencies . The
+RVE is cube discretized in 643 voxels and the model contains around 200 randomly oriented grains (Fig.
+2(a)). Each grain follows a crystal plasticity elasto-visco-plastic behavior dependent on the orientation and
+on its internal variables. The details of the crystal plasticity model can be found in (Lucarini and Segurado,
+2018). A ﬁnal elongation of λend = 0.02 is imposed in 200s, what corresponds in the case of strain control to
+a uniaxial tensile test with strain rate 5 10−5 and time is discretized in 20 regular increments. Four loading
+conditions will be studied being the ﬁrst three cases identical to the previous section. The fourth case consists
+in a pseudo-uniaxial tensile test in which the uniaxial tension condition is approached using full strain control
+resulting in a isochoric deformation at the ﬁnal stage. In the absence of an eﬃcient stress-control technique
+this approach has been usually applied for homogenizing the response of nearly incompressible materials.
+The resulting deformation gradient follows
+F
+(4) (t) =
+t
+tfinal
+
+
+
+
+λend
+0
+0
+0
+q
+1
+1+λend −1
+
+0
+0
+0
+q
+1
+1+λend −1
+
+
+
+
++ I
+(26)
+1.000
+1.005
+1.010
+1.015
+1.020
+Fxx[ −]
+0.0
+0.5
+1.0
+1.5
+Pxx[Pa]
+1e9
+Case (1)
+Case (2)
+Case (3)
+Case (4)
+1.000
+1.005
+1.010
+1.015
+1.020
+Fxx[ −]
+6
+5
+4
+3
+2
+1
+0
+Pyy[Pa] / Pzz[Pa] (dotted)
+1e8
+Case (1)
+Case (2)
+Case (3)
+Case (4)
+Figure 2: Polycrystalline RVE (a), ﬁrst Piola-Kirchhoﬀstresses for three load cases in crystal plasticity model
+in load direction (b) and (c) transverse directions.
+The results of the simulations are represented in Fig. 2. Now cases (1) and (2), although very similar, are
+not exactly superposed do to the eﬀect of the diﬀerences in the strain rate. Case (3) reaches the same point
+as previous two cases but, as it happened for the composite, the path is totally diﬀerent and compressive
+transverse stresses are developed during the test. The case (4) is a typical approximation made in plastic
+materials to perform tests emulating uniaxial stress, but controlling the full deformation gradient instead.
+However, it can be observed that for the properties here selected, the polycrystalline response (Fig. 2) is
+very diﬀerent from a real uniaxial tensile test. This diﬀerence is specially noticeable when comparing the
+transverse response: in the pseudo-uniaxial stress test, the compressive transverse stresses are not zero and
+grow with the applied strain. This last result indicates that the use of this type of strain control conditions
+to emulate uniaxial tension can lead to inaccurate results.
+7
+
+4
+Performance comparison
+The performance of each type of test is analyzed here. The convergence criteria for the iterative linear solver
+(eq. 5) is the voxel averaged value of the L2 norm of the residual and for the Newton solver is the maximum
+deformation gradient correction relative to the averaged deformation gradient. The tolerances used are 10−8
+and 10−6 for linear and Newton solvers respectively. First, the total number of conjugate-gradient iterations
+per load increment is represented as function of the step (Fig. 3). This number includes the sum of all the
+linear iterations performed for each Newton iteration in an increment. In the case of the hyperelastic model
+(Fig. 3(a)) the stress and mixed controlled simulations (cases 1 and 2) took approximately the same number
+of iterations than using full strain control, illustrating the very good performance of the approach proposed
+here. The jumps observed in the ﬁgure are due to the increase or decrease of one Newton iteration after a given
+time increment, because each Newton iteration implies several iterations for solving the linear system. In the
+case of the polycrystal (Fig. 3(b)) a similar tendency is achieved. The main diﬀerence between the diﬀerent
+cases is that, when load control is applied using a ramp (case (2)), most of the load increments are elastic
+and solved in one Newton iteration corresponding the plastic regime only a few steps which require much
+higher number of iterations. The comparative in simulation times for all the cases considered is represented
+0
+20
+40
+60
+80
+100
+Time increment
+0
+50
+100
+150
+200
+Iterations
+Case (1)
+Case (2)
+Case (3)
+0
+5
+10
+15
+20
+Time increment
+0
+10
+20
+30
+40
+50
+60
+70
+Iterations
+Case (1)
+Case (2)
+Case (3)
+Case (4)
+Case (1)
+Case (2)
+Case (3)
+Hyperelastic
+0.7
+0.8
+0.9
+1.0
+1.1
+Normalized time
+Case (1)
+Case (2)
+Case (3)
+Case (4)
+Polycrystal
+Figure 3: Comparative of convergence for each time increment for (a) particle reinforced hyperelastic and
+(b) polycrystal. (c) Simulation time comparative for all examples normalized with respect to case (3) time.
+in Fig. (3 (c)). The hyperelastic simulations needed almost identical times for every boundary condition. On
+the contrary, in the polycrystal, diﬀerences are found for case (2). As explained before, in this case most of
+the increments are purely elastic requiring very small simulation time. The plastic regime is then conﬁned
+only in a few steps and, although each plastic step takes more time than in the other cases, the fast elastic
+steps compensate the global time and this load case is clearly faster than the others. It must be noted that
+this is a consequence of using a ﬁxed time step and, for adaptive time stepping, all the cases will require very
+similar simulation times.
+5
+Conclusions
+A new algorithm is proposed to impose a macroscopic stress or mixed stress/deformation gradient history
+in the context of non-linear Galerkin based FFT homogenization.
+This algorithm does not imply extra
+iterations compared to traditional schemes. The examples show the potential of the approach for two types
+of constitutive models, but can be used for any material.
+In summary, these algorithms represent a very useful tool for FFT based computational homogenization
+because it will allow to solve problems with mixed boundary conditions without extra computational eﬀort
+and sustaining the well known advantages of the FFT methods for homogenization.

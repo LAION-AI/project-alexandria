@@ -1,0 +1,872 @@
+arXiv:0704.0214v1  [quant-ph]  2 Apr 2007
+A schematic model of scattering
+in PT −symmetric Quantum Mechanics
+Miloslav Znojil
+´Ustav jadern´e fyziky AV ˇCR, 250 68 ˇReˇz, Czech Republic
+e-mail: znojil@ujf.cas.cz
+Abstract
+One-dimensional scattering problem admitting a complex, PT −symmetric short-
+range potential V (x) is considered.
+Using a Runge-Kutta-discretized version of
+Schr¨odinger equation we derive the formulae for the reﬂection and transmission coef-
+ﬁcients and emphasize that the only innovation emerges in fact via a complexiﬁcation
+of one of the potential-characterizing parameters.
+PACS 03.65.Ge
+
+1
+Introduction
+Standard textbooks describe the stationary one-dimensional motion of a quantum
+particle in a real potential well V (x) by the ordinary diﬀerential Schr¨odinger equation
+"
+−d2
+dx2 + V (x)
+#
+ψ(x) = E ψ(x) ,
+x ∈(−∞, ∞)
+(1)
+which may be considered and solved in the bound-state regime at E < V (∞) ≤+∞
+or in the scattering regime with, say, E = κ2 > V (∞) = 0. In this way one either
+employs the boundary conditions ψ(±∞) = 0 and determines the spectrum of bound
+states or, alternatively, switches to the diﬀerent boundary conditions, say,
+ψ(x) =
+
+
+
+
+
+A eiκx + B e−iκx ,
+x ≪−1 ,
+C eiκx ,
+x ≫1 .
+(2)
+Under the conventional choice of A = 1 the latter problem speciﬁes the reﬂection
+and transmission coeﬃcients B and C, respectively [1].
+The conventional approach to the quantum bound state problem has recently
+been, fairly unexpectedly, generalized to many unconventional and manifestly non-
+Hermitian Hamiltonians H ̸= H† which are merely quasi-Hermitian, i.e., which are
+Hermitian only in the sense of an identity H† = Θ H Θ−1 which contains a nontrivial
+“metric” operator Θ = Θ† > 0 as introduced, e.g., in ref. [2]. The key ideas and
+sources of the latter new development in Quantum Mechanics incorporate the so
+called PT −symmetry of the Hamiltonians and have been summarized in the very
+fresh review by Carl Bender [3]. This text may be complemented by a sample [4] of
+the dedicated conference proceedings.
+In this context we intend to pay attention to a very simple PT −symmetric scat-
+tering model where
+V (x) = Z(x) + i Y (x) ,
+Z(−x) = Z(x) = real ,
+Y (−x) = −Y (x) = real
+1
+
+and where the ordinary diﬀerential equation (1) is replaced by its Runge-Kutta-
+discretized, diﬀerence-equation representation
+−ψ(xk−1) −2 ψ(xk) + ψ(xk+1)
+h2
++ V (xk) ψ(xk) = E ψ(xk)
+(3)
+with
+xk = k h ,
+h > 0 ,
+k = 0, ±1, . . .
+as employed, in the context of the bound-state problem, in refs. [5].
+2
+Runge-Kutta scattering
+Once we assume, for the sake of simplicity, that the potential in eq. (3) vanishes
+beyond certain distance from the origin,
+V (x±j) = 0
+j = M, M + 1, . . . ,
+we may abbreviate ψk = ψ(xk), Vk = h2V (xk) and 2 cos ϕ = 2 −h2E in eq. (3),
+−ψk−1 + (2 cos ϕ + Vk) ψk −ψk+1 = 0 .
+(4)
+In the region of |k| ≥M with vanishing potential Vk = 0 the two independent
+solutions of our diﬀerence Schr¨odinger eq. (4) are easily found, via a suitable ansatz,
+as elementary functions of the new “energy” variable ϕ,
+ψk = const · ̺k
+=⇒
+̺ = ̺± = exp(±i ϕ) .
+This enables us to replace the standard boundary conditions (2) by their discrete
+scattering version
+ψ(xm) =
+
+
+
+
+
+A ei m ϕ + B e−i m ϕ ,
+m ≤−(M −1) ,
+C ei m ϕ ,
+m ≥M −1
+(5)
+with a conventional choice of A = 1.
+2
+
+Two comments may be added here. Firstly, one notices that the condition of the
+reality of the new energy variable ϕ imposes the constraint upon the original energy
+itself, −2 ≤2 −h2E ≤2, i.e., E ∈(0, 4/h2). At any ﬁnite choice of the lattice
+step h > 0 this inequality is intuitively reminiscent of the spectra in relativistic
+quantum systems. Via an explicit display of the higher O(h4) corrections in eq. (3),
+this connection has been given a more quantitative interpretation in ref. [6].
+The second eligible way of dealing with the uncertainty represented by the O(h4)
+discrepancy between the diﬀerence- and diﬀerential-operator representation of the
+Schr¨odinger’s kinetic energy is more standard and lies in its disappearance in the
+limit h →0. This is a purely numerical recipe known as the Runge-Kutta method
+[7]. In the present context of scattering one has to keep in mind that the two “small”
+parameters h and 1/M may and, in order to achieve the quickest convergence, should
+be chosen and varied independently.
+3
+The matching method of solution
+3.1
+The simplest model of the scattering with M = 1
+Once we are given the boundary conditions (5) the process of the construction of
+the solutions is straightforward. Let us ﬁrst illustrate its key technical ingredients
+on the model with the ﬁrst nontrivial choice of the cutoﬀM = 1. In this case our
+diﬀerence Schr¨odinger eq. (4) degenerates to the mere three nontrivial relations,
+−ψ−2 + 2 cos ϕ ψ−1 −ψ(−)
+0
+= 0
+−ψ−1 + (2 cos ϕ + Z0) ψ0 −ψ1 = 0
+−ψ(+)
+0
++ 2 cos ϕ ψ1 −ψ2 = 0
+(6)
+where we may insert, from eq. (5),
+ψ−1 = e−i ϕ + B ei ϕ ,
+ψ(−)
+0
+= 1 + B ,
+ψ(+)
+0
+= C ,
+ψ1 = C ei ϕ
+(7)
+3
+
+and where we have to demand, subsequently,
+ψ(−)
+0
+= 1 + B = ψ(+)
+0
+= C = ψ0 ,
+−e−i ϕ −B ei ϕ + (2 cos ϕ + Z0) C −C ei ϕ = 0 .
+(8)
+Thus, at an arbitrary “energy” ϕ one identiﬁes B = C −1 and gets the solution
+C =
+2i sin ϕ
+2i sin ϕ −Z0
+,
+B =
+Z0
+2i sin ϕ −Z0
+.
+Of course, as long as we deal just with the real “interaction term” Z0, our M = 1
+toy problem remains Hermitian since no PT −symmetry has entered the scene yet.
+3.2
+PT −symmetry and the scattering at M = 2
+In the next, M = 2 version of our model we have to insert the four known quantities
+ψ−2 = e−2 i ϕ + B e2 i ϕ ,
+ψ−1 = e−i ϕ + B ei ϕ ,
+ψ1 = C ei ϕ ,
+ψ2 = C e2 i ϕ
+in the triplet of relations
+−ψ−2 + (2 cos ϕ + Z−1 −i Y−1) ψ−1 −ψ(−)
+0
+= 0
+−ψ−1 + (2 cos ϕ + Z0) ψ0 −ψ1 = 0
+−ψ(+)
+0
++ (2 cos ϕ + Z−1 + i Y−1) ψ1 −ψ2 = 0
+(9)
+where the three symbols ψ0, ψ(−)
+0
+and ψ(+)
+0
+deﬁned by these respective equations
+should represent the same quantity and must be equal to each other, therefore.
+Having this in mind we introduce ξ(−)
+0
+= 1 + B and ξ(+)
+0
+= C and decompose
+ψ(−)
+0
+= ξ(−)
+0
++ χ(−)
+0
+,
+ψ(+)
+0
+= ξ(+)
+0
++ χ(+)
+0
+.
+This enables us eliminate
+χ(−)
+0
+= V−1 ψ−1 ,
+χ(+)
+0
+= V1 ψ1
+4
+
+and eq. (9) becomes reduced to the pair of conditions,
+1 + B + V−1 ψ−1 = C + V1 ψ1 = ψ0 ,
+−ψ−1 + (2 cos ϕ + Z0) ψ0 −ψ1 = 0
+(10)
+They lead to the two-dimensional linear algebraic problem which deﬁnes the reﬂection
+and transmission coeﬃcients B and C at any input energy ϕ. The same conclusion
+applies to all the models with the larger M.
+4
+The matrix-inversion method of solution
+Let us now re-write our diﬀerence Schr¨odinger eq. (4) as a doubly inﬁnite system of
+linear algebraic equations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...
+...
+...
+...
+...
+S−1
+−1
+0
+. . .
+...
+−1
+S0
+−1
+...
+. . .
+0
+−1
+S1
+...
+...
+...
+...
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...
+ψ−1
+ψ0
+ψ1
+...
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= 0 ,
+(11)
+where
+Sk ( ≡S∗
+−k) =
+
+
+
+
+
+2 cos ϕ + Zk + i Yk sign k ,
+|k| < M ,
+2 cos ϕ ,
+|k| ≥M
+(12)
+and where the majority of the elements of the “eigenvector” are prescribed, in ad-
+vance, by the boundary conditions (5). Once we denote all of them by a diﬀerent
+symbol,
+ψ(xm) =
+
+
+
+
+
+A ei m ϕ + B e−i m ϕ ≡ξ(−)
+m ,
+m ≤−(M −1) ,
+C ei m ϕ ≡ξ(+)
+m ,
+m ≥M −1 ,
+(13)
+5
+
+we may reduce eq. (11) to a ﬁnite-dimensional and tridiagonal non-square-matrix
+problem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+−1
+S∗
+(M−1)
+−1
+...
+...
+...
+−1
+S∗
+1
+−1
+−1
+S0
+−1
+−1
+S1
+−1
+...
+...
+...
+...
+...
+−1
+S(M−1)
+−1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ξ(−)
+−M
+ξ(−)
+−(M−1)
+ψ−(M−2)
+...
+ψM−2
+ξ(+)
+M−1
+ξ(+)
+M
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+= 0
+(14)
+or, better, to a non-homogeneous system of 2M −1 equations
+T ·
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ξ(−)
+−(M−1)
+ψ−(M−2)
+...
+ψM−2
+ξ(+)
+M−1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ξ(−)
+−M
+0
+...
+0
+ξ(+)
+M
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(15)
+where the (2M −1)−dimensional square-matrix of the system can be partitioned as
+follows,
+T
+=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+S∗
+(M−1)
+−1
+−1
+S∗
+(M−2)
+−1
+−1
+...
+...
+...
+S0
+...
+...
+...
+−1
+−1
+S(M−2)
+−1
+−1
+S(M−1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+(16)
+Whenever this matrix proves non-singular, it may assigned the inverse matrix R=T−1,
+the knowledge of which enables us to re-write eq. (15), in the same partitioning, as
+6
+
+follows,
+
+
+
+
+
+
+
+ξ(−)
+−(M−1)
+⃗Ψ
+ξ(+)
+M−1
+
+
+
+
+
+
+
+= R ·
+
+
+
+
+
+
+
+ξ(−)
+−M
+⃗0
+ξ(+)
+M
+
+
+
+
+
+
+
+,
+⃗Ψ =
+
+
+
+
+
+
+
+ψ−(M−2)
+...
+ψM−2
+
+
+
+
+
+
+
+.
+(17)
+In the next step we deduce that the matrix R has the following partitioned form
+R
+=
+
+
+
+
+
+
+
+α∗
+⃗tT
+β
+⃗u
+Q
+⃗v
+β
+⃗wT
+α
+
+
+
+
+
+
+
+.
+We may summarize that in the light of the overall partitioned structure of eq. (17),
+the knowledge of the (2M −3)−dimensional submatrix Q as well as of the two
+(2M −3)−dimensional row vectors ⃗tT and ⃗wT (where T denotes transposition) is
+entirely redundant. Moreover, the knowledge of the other two column vectors ⃗u and
+⃗v only helps us to eliminate the “wavefunction” components ψ−(M−2), ψ−(M−3), . . . ,
+ψM−3, ψM−2. In this sense, equation (15) degenerates to the mere two scalar relations
+ξ(−)
+−(M−1) −α∗ξ(−)
+−(M) −β ξ(+)
+M = 0 ,
+ξ(+)
+M−1 −β ξ(−)
+−M −α ξ(+)
+M = 0 .
+(18)
+Once we insert the explicit deﬁnitions from eq. (13) we get the ﬁnal pair of linear
+equations
+e−i (M−1) ϕ + B ei (M−1) ϕ −α∗
+e−i M ϕ + B ei M ϕ
+−C β ei M ϕ = 0 ,
+C ei (M−1) ϕ −β
+
+e−i M ϕ + B ei M ϕ
+−C α ei M ϕ = 0
+(19)
+which are solved by the elimination of
+B = −e−2iMϕ + C
+β
+
+e−iϕ −α
+
+(20)
+and, subsequently, of
+C =
+2iβe−2iMϕ sin ϕ
+β2 −(e−iϕ −α∗) (e−iϕ −α) .
+(21)
+This is our present main result.
+7
+
+5
+Coeﬃcients α and β
+Our ﬁnal scattering-determining formulae (20) and (21) indicate that the complex
+coeﬃcient α and the real coeﬃcient β carry all the “dynamical input” information.
+At any given energy parameter ϕ these matrix elements are, by construction, rational
+functions of our 2M −1 real coupling constants Z0, Z1, . . . , ZM−1 and Y1, . . ., YM−1.
+In particular, β is equal to 1/ det T and α has the same denominator of course. An
+explicit algebraic determination of the determinant det T and of the numerator (say,
+γ) of α is less easy. Let us illustrate this assertion on a few examples.
+5.1
+M = 2 once more
+det T = Z0 Z1
+2 −2 Z1 + Y1
+2Z0
+Re γ = Z0 Z1 −1
+Im γ = −Z0 Y1
+5.2
+M = 3
+det T = Z0 Z1
+2Z2
+2 −2 Z0 Z1 Z2 −2 Z1 Z2
+2+
++Y1
+2Z0 Z2
+2 + 2 Z2 + Y2
+2Z0 Z1
+2 −2 Y2
+2Z1 + Y2
+2Y1
+2Z0 + 2 Z0 Y1 Y2 + Z0
+Re γ = Z0 Z1
+2Z2 −2 Z1 Z2 + Y1
+2Z0 Z2 −Z1 Z0 + 1
+Im γ = −Z0 Z1
+2Y2 + 2 Z1 Y2 −Y1
+2Z0 Y2 −Y1 Z0
+5.3
+M = 4
+The growth of complexity of the formulae occurs already at the dimension as low
+as M = 4. The determinant det T and the real and imaginary parts of γ are them
+represented by the sums of 15 and 14 and 32 products of couplings, respectively.
+8
+
+A simpliﬁcation is only encountered in the weak coupling regime where one ﬁnds
+just two terms in the determinant which are linear in the couplings,
+det T = −2 Z3 −2 Z1 + . . .
+being followed by the 10 triple-product terms,
+. . . + Y1
+2Z0 + 4 Z1 Z2 Z3 −4 Z1 Y2 Y3 + Z1
+2Z0 + 2 Y3
+2Z2 + 2 Y1 Z0 Y3+
++2 Z1 Z0 Z3 + Z3
+2Z0 + Y3
+2Z0 + 2 Z3
+2Z2 + . . .
+etc. Similarly, we may decompose, in the even-number products,
+Re γ = −1 + 2 Z2 Z3 + Z0 Z1 + Z0 Z3 + 2 Z2 Z1 + . . .
+and continue
+. . . + −2 Z0 Z1 Z2 Z3 + 2 Z0 Y1 Y2 Z3−
+−Z2 Y1
+2Z0 −2 Z2
+2Z1 Z3 −Z2 Z1
+2Z0 −2 Y2
+2Z1 Z3 + . . .
+etc, plus
+Im γ = −2 Z2 Y3 + 2 Y2 Z1 −Z0 Y1 −Z0 Y3 −. . .
+with a continuation
+. . . −Y2 Y1
+2Z0 −Y2 Z1
+2Z0+
++2 Y2
+2Z1 Y3 + 2 Z0 Z1 Z2 Y3 + 2 Z2
+2Z1 Y3 −2 Z0 Y1 Y2 Y3 + . . .
+etc. Symbolic manipulations on a computer should be employed at all the higher
+dimensions M ≥4 in general.
+6
+Discussion
+The main inspiration of the activities and attention paid to the PT −symmetry
+originates from the pioneering 1998 letter by Bender and Boettcher [8] where the
+9
+
+operator P meant parity and where the (antilinear) T represented time reversal. Its
+authors argued that the complex model V (x) = x2 (ix)δ seems to possess the purely
+real bound-state spectrum at all the exponents δ ≥0. After a rigorous mathematical
+proof of this conjecture by Dorey, Duncan, Tateo and Shin [9] and after the (crucial)
+clariﬁcation of the existence of a nontrivial, “physical” Hilbert space H where the
+Hamiltonian remains self-adjoint [2, 10, 11, 12], the bound-state version of eq. (1)
+may be considered more or less well understood, especially after it has been clariﬁed
+that the physics-inspired concept of PT −symmetry of a Hamiltonian H should in
+fact be understood, in the language of mathematics, as a P−pseudo-Hermiticity of
+H speciﬁed by the property H† = P H P−1 [10, 11, 13].
+In the spirit of the latter generalization, current literature abounds in the studies
+of the potentials which are analytically continued [14], singular and multisheeted
+[15], multidimensional [16], manybody [17], relativistic [18], supersymmetric [19] and
+channel-coupling [20]. Among all these developments, a comparatively small number
+of papers has been devoted to the problem of the scattering. For a sample one might
+recollect the key reviews [21] and various Kleefeld’s conceptual conjectures [22] as well
+as a very explicit study of the scattering by the separable PT −symmetric potentials
+of rank one [23] or by the rectangular or reﬂectionless barriers [24], or the motion
+considered along the so called tobogganic (i.e., complex and topologically nontrivial)
+integration contours [25]. In this context our present diﬀerence-equation-based study
+may be understood just as another attempt to ﬁll the gap.
+Technically we felt inspired by our old Runge-Kutta-type discretization of the
+PT −symmetric Schr¨odinger equations [5] as well as by our recent chain-model ap-
+proximations of bound states in a ﬁnite-dimensional Hilbert space [26]. In a certain
+uniﬁcation of these two approaches we succeeded here in showing that there exists
+a close formal parallelism between the description of the (one-dimensional, Runge-
+Kutta-approximated) scattering by a real (i.e., Hermitian) potentials and by their
+complex, PT −symmetric generalizations. We showed that in both these contexts,
+10
+
+the deﬁnition of the transmission and reﬂection coeﬃcients has the same form [cf.,
+e.g., eq. (21)], with all the diﬀerences represented by the diﬀerences in the form of
+the “dynamical input” information. It has been shown to be encoded, in both the
+Hermitian and non-Hermitian cases, in the two functions α and β of the lattice po-
+tentials, with the vanishing or non-vanishing coeﬃcients Yk, respectively (cf. a few
+samples of the concrete form of α and β in section 5).
+On the level of physics we would like to emphasize that one of the main dis-
+tinguishing features of the scattering problem in PT −symmetric quantum mechan-
+ics lies in the manifest asymmetry between the “in” and “out” states [22]. In its
+present solvable exempliﬁcation we showed that such an asymmetry is merely formal
+and that the problem remains tractable by the standard, non-matching and non-
+recurrent techniques of linear algebra.
+A key to the success proved to lie in the
+partitioning of the Schr¨odinger equation which enabled us to separate its essential
+and inessential components and to reduce the construction of the amplitudes to the
+mere two-dimensional matrix inversion [cf. eq. (18)] where all the dynamical input
+is represented by the four corners of the inverse matrix R = T−1 [cf. the deﬁnition
+(16)].
+We believe that the merits of the present discrete model were not exhausted by
+its present short analysis and that its further study might throw new light, e.g., on
+the non-Hermitian versions of the inverse problem of scattering.

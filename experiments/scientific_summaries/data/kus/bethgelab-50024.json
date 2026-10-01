@@ -1,0 +1,2281 @@
+{
+  "document_id": "bethgelab-50024",
+  "fulltext_sha256": "74ce4c9a8bb66ed76aa0bcf2719b37c2f45118dfc537ed9a1a7429457fac9b78",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "e8640378f3fc748af38a810047bfb37b9946548079d172f814de058bacae13fb",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study presents a model demonstrating that primary tumor excision causes the regression of small micro-metastases but not larger ones in MDA-MB-231 HM xenografts. The authors identify that primary tumor secreted factors, specifically IL-8, PDGFaa, Serpin E1 (PAI-1), and MIF, promote early metastatic growth and correlate with poor survival in lung adenocarcinoma patients.",
+        "entities": [
+          {
+            "name": "MDA-MB-231 HM human breast cancer cells",
+            "entity_id": "mda_mb_231_hm_human_breast_cancer_cells",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM",
+              "MDA-MB-231 HM cells",
+              "MDA-MB-231 HM human breast cancer cells"
+            ],
+            "attributes": {
+              "origin": "human breast cancer",
+              "modification": "express highly sensitive luciferase",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in_model",
+                "target": "BALB/c nu/nu mice",
+                "attributes": {},
+                "target_id": "balb_c_nu_nu_mice"
+              },
+              {
+                "predicate": "adhesion_enhanced_by",
+                "target": "Tumor cell-conditioned medium (CM)",
+                "attributes": {},
+                "target_id": "tumor_cell_conditioned_medium_cm"
+              }
+            ]
+          },
+          {
+            "name": "BALB/c nu/nu mice",
+            "entity_id": "balb_c_nu_nu_mice",
+            "entity_type": "other",
+            "aliases": [
+              "BALB/c nu/nu mice"
+            ],
+            "attributes": {
+              "model_entity_type": "animal_model"
+            },
+            "relationships": [
+              {
+                "predicate": "hosts",
+                "target": "MDA-MB-231 HM human breast cancer cells",
+                "attributes": {},
+                "target_id": "mda_mb_231_hm_human_breast_cancer_cells"
+              }
+            ]
+          },
+          {
+            "name": "primary tumor excision",
+            "entity_id": "primary_tumor_excision",
+            "entity_type": "other",
+            "aliases": [
+              "primary tumor excision"
+            ],
+            "attributes": {
+              "model_entity_type": "procedure"
+            },
+            "relationships": [
+              {
+                "predicate": "causes_regression_of",
+                "target": "smallest micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_cause_regression_of",
+                "target": "larger metastases",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "primary tumor secretome",
+            "entity_id": "primary_tumor_secretome",
+            "entity_type": "other",
+            "aliases": [
+              "primary tumor secretome"
+            ],
+            "attributes": {
+              "model_entity_type": "biological_substance"
+            },
+            "relationships": [
+              {
+                "predicate": "promotes",
+                "target": "early metastatic growth",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "diminishes_regression_when_supplemented",
+                "target": "micro-metastases",
+                "attributes": {},
+                "target_id": "micro_metastases"
+              }
+            ]
+          },
+          {
+            "name": "Tumor cell-conditioned medium (CM)",
+            "entity_id": "tumor_cell_conditioned_medium_cm",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM conditioned medium",
+              "MDA-MB-231 HM tumor cell conditioned medium",
+              "Tumor cell-conditioned medium (CM)",
+              "cancer cell conditioned medium"
+            ],
+            "attributes": {
+              "model_entity_type": "biological_substance"
+            },
+            "relationships": [
+              {
+                "predicate": "reduces",
+                "target": "apoptosis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enhances",
+                "target": "MDA-MB-231 HM adhesion",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "interleukin-8 (IL-8)",
+            "entity_id": "interleukin_8_il_8",
+            "entity_type": "other",
+            "aliases": [
+              "IL-8",
+              "interleukin-8 (IL-8)"
+            ],
+            "attributes": {
+              "role": "secreted mediator",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blockade_arrests",
+                "target": "development of micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "high_levels_correlated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "platelet-derived-growth-factor-aa (PDGFaa)",
+            "entity_id": "platelet_derived_growth_factor_aa_pdgfaa",
+            "entity_type": "other",
+            "aliases": [
+              "PDGFaa",
+              "platelet-derived-growth-factor-aa (PDGFaa)"
+            ],
+            "attributes": {
+              "role": "secreted mediator",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blockade_arrests",
+                "target": "development of micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "high_levels_correlated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "serpin E1 (PAI-1)",
+            "entity_id": "serpin_e1_pai_1",
+            "entity_type": "other",
+            "aliases": [
+              "Serpin E1 (PAI-1)",
+              "SerpinE1 (PAI-1)",
+              "serpin E1 (PAI-1)"
+            ],
+            "attributes": {
+              "role": "secreted mediator",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blockade_arrests",
+                "target": "development of micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "high_levels_correlated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "macrophage-migration-inhibitory-factor (MIF)",
+            "entity_id": "macrophage_migration_inhibitory_factor_mif",
+            "entity_type": "other",
+            "aliases": [
+              "MIF",
+              "macrophage-migration-inhibitory-factor (MIF)"
+            ],
+            "attributes": {
+              "role": "secreted mediator",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blockade_arrests",
+                "target": "development of micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "high_levels_correlated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "TCGA provisional dataset",
+            "entity_id": "tcga_provisional_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "TCGA provisional dataset"
+            ],
+            "attributes": {
+              "access": "public",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_analyze",
+                "target": "correlation between protein levels and survival in lung adenocarcinoma patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 494,
+          "word_count": 494,
+          "sha256": "d63da30046a4d01a22e6690c328d5f658ccbc634d96cd2f90c6990ca6df4757b",
+          "sentence_minhash": [
+            122987161195056328,
+            758916580739430,
+            372855696009131455,
+            10695001004158102,
+            63676869447723660,
+            30500191475291153,
+            29570335760415612,
+            9867126688866054,
+            6960493840637489,
+            92715222163426349,
+            78280491562202942,
+            101222576202047690,
+            76846877101590823,
+            156334388133831069,
+            70646878887049163,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'cell_line' for 'MDA-MB-231 HM human breast cancer cells'",
+          "normalized unsupported entity type 'animal_model' for 'BALB/c nu/nu mice'",
+          "normalized unsupported entity type 'procedure' for 'primary tumor excision'",
+          "normalized unsupported entity type 'biological_substance' for 'primary tumor secretome'",
+          "normalized unsupported entity type 'biological_substance' for 'cancer cell conditioned medium'",
+          "normalized unsupported entity type 'protein' for 'IL-8'",
+          "normalized unsupported entity type 'protein' for 'PDGFaa'",
+          "normalized unsupported entity type 'protein' for 'Serpin E1 (PAI-1)'",
+          "normalized unsupported entity type 'protein' for 'MIF'",
+          "normalized unsupported entity type 'dataset' for 'TCGA provisional dataset'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study presents a novel animal model demonstrating that primary tumor excision causes spontaneous regression of early-stage micro-metastases in triple-negative breast cancer. This regression is attributed to the removal of secreted factors from the primary tumor that support metastatic development. The research identifies specific secreted mediators whose neutralization halts metastasis progression.",
+        "entities": [
+          {
+            "name": "primary tumor (PT)",
+            "entity_id": "primary_tumor_pt",
+            "entity_type": "other",
+            "aliases": [
+              "primary tumor (PT)"
+            ],
+            "attributes": {
+              "role": "source of secreted factors supporting metastasis",
+              "systemic_impact": "presence indicates systemic disease with crosstalk to distant organs",
+              "model_entity_type": "biological_structure"
+            },
+            "relationships": [
+              {
+                "predicate": "secretes",
+                "target": "factors supporting micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "removal_induces",
+                "target": "regression of early-stage metastases",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MDA-MB-231 HM human breast cancer cells",
+            "entity_id": "mda_mb_231_hm_human_breast_cancer_cells",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM",
+              "MDA-MB-231 HM cells",
+              "MDA-MB-231 HM human breast cancer cells"
+            ],
+            "attributes": {
+              "origin": "triple-negative breast adenocarcinoma",
+              "variant": "highly metastatic",
+              "source": "gift from Dr. Zhou Ou, Fudan University, Shanghai Cancer Center, China",
+              "modification": "transduced with codon-optimized firefly luciferase-mCherry vector",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "animal model of spontaneous regression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "animal model of spontaneous regression of metastases",
+            "entity_id": "animal_model_of_spontaneous_regression_of_metastases",
+            "entity_type": "method",
+            "aliases": [
+              "animal model of spontaneous regression of metastases"
+            ],
+            "attributes": {
+              "novelty": "first presentation of such a model",
+              "mechanism": "utilizes highly sensitive luciferase reporter to study early-stage micro-metastases"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrates",
+                "target": "regression of micro-metastases following PT removal",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BALB/c nu/nu mice",
+            "entity_id": "balb_c_nu_nu_mice",
+            "entity_type": "other",
+            "aliases": [
+              "BALB/c nu/nu mice"
+            ],
+            "attributes": {
+              "sex": "female",
+              "age_at_start": "8 weeks old",
+              "source": "University of Adelaide, Australia or Envigo, Israel",
+              "housing": "SPF conditions, 12 h dark/light cycle",
+              "model_entity_type": "organism"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of",
+                "target": "in vivo model of spontaneous metastasis",
+                "attributes": {},
+                "target_id": "in_vivo_model_of_spontaneous_metastasis"
+              }
+            ]
+          },
+          {
+            "name": "in vivo model of spontaneous metastasis",
+            "entity_id": "in_vivo_model_of_spontaneous_metastasis",
+            "entity_type": "method",
+            "aliases": [
+              "in vivo model of spontaneous metastasis"
+            ],
+            "attributes": {
+              "injection_site": "fourth mammary fat pad",
+              "cell_count": "2×10^5 cells in 20 μl PBS",
+              "anesthesia": "2% isoflurane",
+              "excision_trigger": "metastatic foci reach 10^6 photons/s (~3-4 weeks post injection)",
+              "average_pt_size_at_excision": "80 mm^3"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "MDA-MB-231 HM human breast cancer cells",
+                "attributes": {},
+                "target_id": "mda_mb_231_hm_human_breast_cancer_cells"
+              },
+              {
+                "predicate": "uses",
+                "target": "BALB/c nu/nu mice",
+                "attributes": {},
+                "target_id": "balb_c_nu_nu_mice"
+              }
+            ]
+          },
+          {
+            "name": "bioluminescence imaging",
+            "entity_id": "bioluminescence_imaging",
+            "entity_type": "measurement",
+            "aliases": [
+              "bioluminescence imaging"
+            ],
+            "attributes": {
+              "apparatus": "IVIS spectrum (Perkin Elmer)",
+              "reagent": "150 mg/kg D-luciferin sodium salt (Regis Technologies)",
+              "route": "i.p. injection"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "assessment of metastases and verification of PT removal",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "surgical procedures for PT resection",
+            "entity_id": "surgical_procedures_for_pt_resection",
+            "entity_type": "method",
+            "aliases": [
+              "surgical procedures for PT resection"
+            ],
+            "attributes": {
+              "anesthesia": "2% isoflurane",
+              "technique": "small skin incision without injuring peritoneal cavity",
+              "verification": "complete removal verified by bioluminescence imaging",
+              "sham_control": "identical incision made, PT untouched, immediately sutured"
+            },
+            "relationships": [
+              {
+                "predicate": "performed_on",
+                "target": "BALB/c nu/nu mice",
+                "attributes": {},
+                "target_id": "balb_c_nu_nu_mice"
+              }
+            ]
+          },
+          {
+            "name": "four secreted key potential mediators",
+            "entity_id": "four_secreted_key_potential_mediators",
+            "entity_type": "other",
+            "aliases": [
+              "four secreted key potential mediators"
+            ],
+            "attributes": {
+              "components": "IL-8, PDGFaa, Serpin E1 (PAI-1), and MIF",
+              "effect_of_neutralization": "halted progression of metastases in presence of PT",
+              "model_entity_type": "biological_factors"
+            },
+            "relationships": [
+              {
+                "predicate": "identified_from",
+                "target": "MDA-MB-231 HM secretome",
+                "attributes": {},
+                "target_id": "mda_mb_231_hm_secretome"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 494,
+          "end_word": 968,
+          "word_count": 474,
+          "sha256": "916b195ff5dc47a7fac1583b8cb26839aa95664c0335bf6f7085338eb95f9479",
+          "sentence_minhash": [
+            103524869278618013,
+            33624668365929834,
+            69729176314767099,
+            5050748634255938,
+            434961753729143,
+            30500191475291153,
+            50447301471162957,
+            96292850158067112,
+            266927695903760850,
+            76931577636070685,
+            104756635517093838,
+            35500811496204416,
+            67670066861971234,
+            50699036094556784,
+            73860429008392155,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'biological_structure' for 'primary tumor (PT)'",
+          "normalized unsupported entity type 'cell_line' for 'MDA-MB-231 HM'",
+          "normalized unsupported entity type 'organism' for 'BALB/c nu/nu mice'",
+          "normalized unsupported entity type 'biological_factors' for 'four secreted key potential mediators'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text details the experimental protocols for preparing tumor cell-conditioned medium and performing in vivo supplementation via osmotic minipumps. It describes methods for assessing apoptosis, adhesion, and tube formation, as well as the procedures for cytokine array and mass spectrometry-based secretome analysis.",
+        "entities": [
+          {
+            "name": "Tumor cell-conditioned medium (CM)",
+            "entity_id": "tumor_cell_conditioned_medium_cm",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM conditioned medium",
+              "MDA-MB-231 HM tumor cell conditioned medium",
+              "Tumor cell-conditioned medium (CM)",
+              "cancer cell conditioned medium"
+            ],
+            "attributes": {
+              "source_cells": "MDA-MB-231 HM",
+              "incubation_conditions": "24 h at 37°C, 5% CO2 in serum-free medium",
+              "concentration_method": "3 kDa Amicon filters",
+              "final_volume": "100 μl/mouse",
+              "storage_temperature": "-20°C"
+            },
+            "relationships": [
+              {
+                "predicate": "produced_from",
+                "target": "MDA-MB-231 HM human breast cancer cells",
+                "attributes": {},
+                "target_id": "mda_mb_231_hm_human_breast_cancer_cells"
+              },
+              {
+                "predicate": "used_for",
+                "target": "in vivo supplementation of tumor secretome",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "apoptosis and adhesion studies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "Tube formation assay",
+                "attributes": {},
+                "target_id": "tube_formation_assay"
+              },
+              {
+                "predicate": "analyzed_by",
+                "target": "human cytokine array",
+                "attributes": {},
+                "target_id": "human_cytokine_array"
+              },
+              {
+                "predicate": "analyzed_by",
+                "target": "Mass spectrometry-based secretome analysis",
+                "attributes": {},
+                "target_id": "mass_spectrometry_based_secretome_analysis"
+              }
+            ]
+          },
+          {
+            "name": "MDA-MB-231 HM human breast cancer cells",
+            "entity_id": "mda_mb_231_hm_human_breast_cancer_cells",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM",
+              "MDA-MB-231 HM cells",
+              "MDA-MB-231 HM human breast cancer cells"
+            ],
+            "attributes": {
+              "confluency_for_CM_production": "~80%",
+              "estimated_secretome_producing_cells_in_PT": "~50x10^6",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of",
+                "target": "Tumor cell-conditioned medium (CM)",
+                "attributes": {},
+                "target_id": "tumor_cell_conditioned_medium_cm"
+              }
+            ]
+          },
+          {
+            "name": "Alzet osmotic minipumps (model 1003D)",
+            "entity_id": "alzet_osmotic_minipumps_model_1003d",
+            "entity_type": "other",
+            "aliases": [
+              "Alzet osmotic minipumps (model 1003D)"
+            ],
+            "attributes": {
+              "implantation_site": "i.p.",
+              "implantation_timing": "immediately following tumor excision",
+              "estimated_daily_secretome_release_ratio": "~1/8 of primary tumor production",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "loaded_with",
+                "target": "Tumor cell-conditioned medium (CM)",
+                "attributes": {},
+                "target_id": "tumor_cell_conditioned_medium_cm"
+              },
+              {
+                "predicate": "loaded_with",
+                "target": "Serum-free medium (SM)",
+                "attributes": {},
+                "target_id": "serum_free_medium_sm"
+              }
+            ]
+          },
+          {
+            "name": "Serum-free medium (SM)",
+            "entity_id": "serum_free_medium_sm",
+            "entity_type": "measurement",
+            "aliases": [
+              "Serum-free medium (SM)"
+            ],
+            "attributes": {
+              "role": "control"
+            },
+            "relationships": [
+              {
+                "predicate": "used_as_control_for",
+                "target": "Tumor cell-conditioned medium (CM)",
+                "attributes": {},
+                "target_id": "tumor_cell_conditioned_medium_cm"
+              }
+            ]
+          },
+          {
+            "name": "IncuCyte system (Essen Bioscience)",
+            "entity_id": "incucyte_system_essen_bioscience",
+            "entity_type": "method",
+            "aliases": [
+              "IncuCyte system (Essen Bioscience)"
+            ],
+            "attributes": {
+              "imaging_intervals_adhesion": "20 min intervals for 8 hours",
+              "imaging_intervals_tube_formation": "20 min intervals for 24 h"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "adhesion studies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "Tube formation assay",
+                "attributes": {},
+                "target_id": "tube_formation_assay"
+              }
+            ]
+          },
+          {
+            "name": "AnnexinV-FITC and 7AAD staining",
+            "entity_id": "annexinv_fitc_and_7aad_staining",
+            "entity_type": "method",
+            "aliases": [
+              "AnnexinV-FITC and 7AAD staining"
+            ],
+            "attributes": {
+              "supplier": "R&D systems",
+              "incubation_time": "24 hrs in CM or SM prior to staining"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "apoptosis studies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "measured_by",
+                "target": "flow cytometry",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Tube formation assay",
+            "entity_id": "tube_formation_assay",
+            "entity_type": "method",
+            "aliases": [
+              "Tube formation assay"
+            ],
+            "attributes": {
+              "matrix": "50μl basement membrane extracellular matrix (Cultrex BME; Trevigen)",
+              "incubation_matrix": "30 min at 37°C, 5% CO2",
+              "cell_type": "human umbilical vein endothelial cells (HUVEC)"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "IncuCyte system (Essen Bioscience)",
+                "attributes": {},
+                "target_id": "incucyte_system_essen_bioscience"
+              },
+              {
+                "predicate": "measures",
+                "target": "average cells area and number of tubes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Human Cytokine Array (R&D systems, Proteome Profiler TM Array, ARY022)",
+            "entity_id": "human_cytokine_array_r_d_systems_proteome_profiler_tm_array_ary022",
+            "entity_type": "method",
+            "aliases": [
+              "Human Cytokine Array (R&D systems, Proteome Profiler TM Array, ARY022)"
+            ],
+            "attributes": {
+              "target_proteins": "102 soluble human proteins"
+            },
+            "relationships": [
+              {
+                "predicate": "compares",
+                "target": "CM samples",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compares",
+                "target": "plasma samples from mice bearing primary tumor",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compares",
+                "target": "plasma samples from mice one day following primary tumor excision",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compares",
+                "target": "plasma samples from control mice",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "analyzed_by",
+                "target": "Protein Array Analyzer in Image J software",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mass spectrometry-based secretome analysis",
+            "entity_id": "mass_spectrometry_based_secretome_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Mass spectrometry-based secretome analysis"
+            ],
+            "attributes": {
+              "sample_preparation": "centrifuged, filtered, concentrated with 3 kDa Amicon filters",
+              "urea_concentration": "8M",
+              "reduction_agent": "1mM dithiothreitol",
+              "alkylation_agent": "5mM iodoacetamide",
+              "digestion_enzymes": "LysC/Trypsin mix and sequencing-grade modified Trypsin (Promega)",
+              "digestion_conditions": "overnight at room temperature",
+              "desalting_method": "C18 StageTips",
+              "elution_solvent": "80% acetonitrile",
+              "loading_buffer": "2% acetonitrile, 0.1% formic acid"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzes",
+                "target": "CM samples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 968,
+          "end_word": 1467,
+          "word_count": 499,
+          "sha256": "70e7a3fb20611f9967b42cf8afd6b8e400e8503b60db7434839b58e8e5b56ce8",
+          "sentence_minhash": [
+            39493402934841386,
+            76492366708779561,
+            110182565901905120,
+            201948566748835051,
+            148925132169520149,
+            62667647458868521,
+            25457193651177022,
+            113115219220953363,
+            20159717626991047,
+            107048872566759164,
+            63671808205502417,
+            165121444977496021,
+            164575269931903557,
+            138856834773140810,
+            67879614378039846,
+            219225429602099504
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'cell_line' for 'MDA-MB-231 HM cells'",
+          "normalized unsupported entity type 'device' for 'Alzet osmotic minipumps (model 1003D)'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study utilized LC-MS and MaxQuant to analyze the MDA-MB-231 HM secretome, identifying 2,600 proteins with 359 annotated as extracellular. Neutralizing antibodies against IL-8, PDGF-AA, Serpin E1, and MIF were administered to mice to test their role in metastasis. Patient outcomes from the TCGA lung adenocarcinoma cohort were analyzed using Kaplan Meier analysis to correlate protein levels with survival.",
+        "entities": [
+          {
+            "name": "LC-MS analysis",
+            "entity_id": "lc_ms_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "LC-MS analysis"
+            ],
+            "attributes": {
+              "instrumentation": "Easy-nLC1000 UHPLC and Q-Exactive Plus mass spectrometer",
+              "chromatography": "Reverse-phase using 50 cm EASY-Spray PepMap columns",
+              "gradient": "140 min linear gradient of water/acetonitrile",
+              "ms_method": "Top10 method with higher-energy collisional dissociation (HCD)"
+            },
+            "relationships": [
+              {
+                "predicate": "performed_on",
+                "target": "peptides",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Proteomics data analysis",
+            "entity_id": "proteomics_data_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Proteomics data analysis"
+            ],
+            "attributes": {
+              "software": "MaxQuant, Perseus, String database, Cytoscape",
+              "quantification": "Label-free quantification algorithm",
+              "database": "Uniprot human proteome via Andromeda search engine",
+              "fdr_threshold": "0.01 for peptide and protein levels"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzes",
+                "target": "MS raw files",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Enrichment analysis",
+            "entity_id": "enrichment_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Enrichment analysis"
+            ],
+            "attributes": {
+              "reference": "Identified secretome",
+              "annotations": "Gene Ontology from UniProt",
+              "statistical_test": "Fisher exact test",
+              "fdr_threshold": "0.02"
+            },
+            "relationships": [
+              {
+                "predicate": "performed_relative_to",
+                "target": "identified secretome",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Neutralizing antibodies",
+            "entity_id": "neutralizing_antibodies",
+            "entity_type": "other",
+            "aliases": [
+              "Neutralizing antibodies"
+            ],
+            "attributes": {
+              "type": "Mouse anti-human monoclonal antibodies",
+              "targets": [
+                "CXCL8/IL-8 (IgG1 Clone # 6217)",
+                "Serpin E1/PAI-1 (IgG1 Clone # 242816)",
+                "PDGF-AA (IgG1 Clone # 114506)",
+                "MIF (IgG1 Clone # 12302)"
+              ],
+              "control": "Monoclonal mouse IgG1 (IgG1 Clone # 11711)",
+              "dosage": "1 μg each/mouse",
+              "frequency": "Once a day for two days",
+              "model_entity_type": "reagent"
+            },
+            "relationships": [
+              {
+                "predicate": "neutralizes",
+                "target": "CXCL8/IL-8",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "neutralizes",
+                "target": "Serpin E1/PAI-1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "neutralizes",
+                "target": "PDGF-AA",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "neutralizes",
+                "target": "macrophage-migration-inhibitory-factor (MIF)",
+                "attributes": {},
+                "target_id": "macrophage_migration_inhibitory_factor_mif"
+              }
+            ]
+          },
+          {
+            "name": "Histology protocol",
+            "entity_id": "histology_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "Histology protocol"
+            ],
+            "attributes": {
+              "tissue": "Lungs",
+              "fixation": "4% paraformaldehyde",
+              "embedding": "Paraffin",
+              "section_thickness": "6 μm",
+              "staining": "Hematoxylin and Eosin (H&E)"
+            },
+            "relationships": [
+              {
+                "predicate": "identifies",
+                "target": "lung micro-metastases",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Patient outcome analysis",
+            "entity_id": "patient_outcome_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Patient outcome analysis"
+            ],
+            "attributes": {
+              "dataset": "TCGA provisional dataset (cBioPortal)",
+              "cohort": "Lung adenocarcinoma",
+              "stratification_factors": [
+                "IL-8",
+                "PDGFaa",
+                "Serpin E1",
+                "MIF"
+              ],
+              "assay": "RPPA assay",
+              "statistical_method": "Kaplan Meier Analysis",
+              "software": "R software"
+            },
+            "relationships": [
+              {
+                "predicate": "calculates",
+                "target": "hazard ratio",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Statistical analysis",
+            "entity_id": "statistical_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Statistical analysis"
+            ],
+            "attributes": {
+              "tests": [
+                "Repeated-measures or factorial ANOVA",
+                "Fisher's protected least significant differences (PLSD)",
+                "Paired or unpaired student's t-test"
+              ],
+              "significance_level": "0.05",
+              "direction": "Two sided",
+              "variance_check": "F-test of equality of variance"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "Fisher's PLSD for post hoc comparisons",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1467,
+          "end_word": 1965,
+          "word_count": 498,
+          "sha256": "ea82e776a8232e57f75524e79420673692e2debbba007409e577fede0a92466d",
+          "sentence_minhash": [
+            143470254565919416,
+            76492366708779561,
+            110182565901905120,
+            11426270078940556,
+            231218751328300337,
+            39127440086368283,
+            50447301471162957,
+            7868162990003521,
+            48263609243514619,
+            7649729463600173,
+            67831053780325945,
+            49775578613387123,
+            12488864069851856,
+            30793195004153691,
+            131622074040114678,
+            10102301350853915
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'reagent' for 'Neutralizing antibodies'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "Primary tumor excision causes a dramatic regression of small metastases into latent foci, an effect not observed in larger metastases or after sham surgery. Tumor-conditioned medium enhances cancer cell viability, adhesion, and endothelial tube formation, and its in vivo supplementation reduces metastatic regression. A human cytokine array analysis identified 28 highly expressed cytokines in the tumor secretome.",
+        "entities": [
+          {
+            "name": "primary tumor excision",
+            "entity_id": "primary_tumor_excision",
+            "entity_type": "other",
+            "aliases": [
+              "primary tumor excision"
+            ],
+            "attributes": {
+              "effect": "causes marked regression of smallest micro-metastases",
+              "model_entity_type": "procedure"
+            },
+            "relationships": [
+              {
+                "predicate": "results_in",
+                "target": "regression of micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "distinguished_from",
+                "target": "sham surgery",
+                "attributes": {},
+                "target_id": "sham_surgery"
+              }
+            ]
+          },
+          {
+            "name": "micro-metastases",
+            "entity_id": "micro_metastases",
+            "entity_type": "other",
+            "aliases": [
+              "micro-metastases"
+            ],
+            "attributes": {
+              "size_category": "small (10^6 photons/sec) or large (10^7 photons/sec)",
+              "post_excision_state": "regressed into latent foci",
+              "model_entity_type": "biological_structure"
+            },
+            "relationships": [
+              {
+                "predicate": "regresses_after",
+                "target": "primary tumor excision",
+                "attributes": {
+                  "magnitude": "up to 100-fold decrease in signal",
+                  "timeframe": "24 h following excision",
+                  "p_value": "<0.0001"
+                },
+                "target_id": "primary_tumor_excision"
+              },
+              {
+                "predicate": "remains_latent_for",
+                "target": "50 days post-excision",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_less_regression_if",
+                "target": "large metastases",
+                "attributes": {
+                  "p_value": "<0.000"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "sham surgery",
+            "entity_id": "sham_surgery",
+            "entity_type": "other",
+            "aliases": [
+              "sham surgery"
+            ],
+            "attributes": {
+              "description": "surgical procedure sparing the primary tumor",
+              "model_entity_type": "procedure"
+            },
+            "relationships": [
+              {
+                "predicate": "results_in",
+                "target": "continued increase of metastases",
+                "attributes": {
+                  "p_value": "<0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Tumor cell-conditioned medium (CM)",
+            "entity_id": "tumor_cell_conditioned_medium_cm",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM conditioned medium",
+              "MDA-MB-231 HM tumor cell conditioned medium",
+              "Tumor cell-conditioned medium (CM)",
+              "cancer cell conditioned medium"
+            ],
+            "attributes": {
+              "contents": "tumor-derived secreted factors",
+              "model_entity_type": "biological_sample"
+            },
+            "relationships": [
+              {
+                "predicate": "enhances",
+                "target": "cancer cell viability",
+                "attributes": {
+                  "p_value": "<0.001"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "enhances",
+                "target": "cancer cell adhesion",
+                "attributes": {
+                  "p_value": "<0.01"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "induces",
+                "target": "tube formation of human endothelial cells",
+                "attributes": {
+                  "p_value": "<0.0001"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduces_regression_when_supplemented_in_vivo",
+                "target": "metastatic regression",
+                "attributes": {
+                  "magnitude": "10-fold less regression compared to serum-free medium",
+                  "p_value": "<0.005"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "osmotic mini-pumps",
+            "entity_id": "osmotic_mini_pumps",
+            "entity_type": "other",
+            "aliases": [
+              "osmotic mini-pumps"
+            ],
+            "attributes": {
+              "usage": "implanted at time of tumor excision to replenish primary tumor secretome",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "release_rate_estimate",
+                "target": "~1/8 of daily in vivo primary tumor production",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "human cytokine array",
+            "entity_id": "human_cytokine_array",
+            "entity_type": "method",
+            "aliases": [
+              "human cytokine array"
+            ],
+            "attributes": {
+              "purpose": "analyze tumor secretome"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_conditions",
+                "target": "tumor cell-conditioned medium, plasma from non-tumor bearing mice, plasma from primary tumor-bearing mice, plasma from mice one day following tumor excision",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "identified",
+                "target": "28 cytokines highly expressed in cancer cell CM",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1965,
+          "end_word": 2459,
+          "word_count": 494,
+          "sha256": "784ccb6086f3af8c60a62d538500b67a347e926184bc3fadb1b3890c400917ab",
+          "sentence_minhash": [
+            228487063155910791,
+            195891812068562125,
+            230441141608004626,
+            139222975235943620,
+            313633606131560608,
+            39127440086368283,
+            23718652799488495,
+            96292850158067112,
+            96635883400075078,
+            76931577636070685,
+            19416574622547768,
+            76032714388086399,
+            49568730582519212,
+            906306679132868,
+            131622074040114678,
+            383013638033865754
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'procedure' for 'primary tumor excision'",
+          "normalized unsupported entity type 'biological_structure' for 'micro-metastases'",
+          "normalized unsupported entity type 'procedure' for 'sham surgery'",
+          "normalized unsupported entity type 'biological_sample' for 'MDA-MB-231 HM tumor cell conditioned medium'",
+          "normalized unsupported entity type 'device' for 'osmotic mini-pumps'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study identified four specific tumor-secreted factors (IL-8, PDGFaa, Serpin E1, and MIF) that promote early metastatic growth. In vivo blockade of these factors arrested metastatic progression, and high levels of these proteins were associated with poor survival in lung adenocarcinoma patients.",
+        "entities": [
+          {
+            "name": "interleukin-8 (IL-8)",
+            "entity_id": "interleukin_8_il_8",
+            "entity_type": "other",
+            "aliases": [
+              "IL-8",
+              "interleukin-8 (IL-8)"
+            ],
+            "attributes": {
+              "function": "pro-metastatic or pro-survival activity",
+              "identification_method": "cytokine array and mass spectrometry proteomic analysis",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blocked_by",
+                "target": "mouse anti-human antibodies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {
+                  "hazard_ratio": 2.05,
+                  "p_value": "<0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "platelet-derived-growth-factor-aa (PDGFaa)",
+            "entity_id": "platelet_derived_growth_factor_aa_pdgfaa",
+            "entity_type": "other",
+            "aliases": [
+              "PDGFaa",
+              "platelet-derived-growth-factor-aa (PDGFaa)"
+            ],
+            "attributes": {
+              "function": "pro-metastatic or pro-survival activity",
+              "identification_method": "cytokine array and mass spectrometry proteomic analysis",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blocked_by",
+                "target": "mouse anti-human antibodies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {
+                  "hazard_ratio": 2.05,
+                  "p_value": "<0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "serpin E1 (PAI-1)",
+            "entity_id": "serpin_e1_pai_1",
+            "entity_type": "other",
+            "aliases": [
+              "Serpin E1 (PAI-1)",
+              "SerpinE1 (PAI-1)",
+              "serpin E1 (PAI-1)"
+            ],
+            "attributes": {
+              "alias": "plasminogen-activator-inhibitor-1",
+              "function": "pro-metastatic or pro-survival activity",
+              "identification_method": "cytokine array and mass spectrometry proteomic analysis",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blocked_by",
+                "target": "mouse anti-human antibodies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {
+                  "hazard_ratio": 2.05,
+                  "p_value": "<0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "macrophage-migration-inhibitory-factor (MIF)",
+            "entity_id": "macrophage_migration_inhibitory_factor_mif",
+            "entity_type": "other",
+            "aliases": [
+              "MIF",
+              "macrophage-migration-inhibitory-factor (MIF)"
+            ],
+            "attributes": {
+              "function": "pro-metastatic or pro-survival activity",
+              "identification_method": "cytokine array and mass spectrometry proteomic analysis",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "blocked_by",
+                "target": "mouse anti-human antibodies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor survival in lung adenocarcinoma patients",
+                "attributes": {
+                  "hazard_ratio": 2.05,
+                  "p_value": "<0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Tumor cell-conditioned medium (CM)",
+            "entity_id": "tumor_cell_conditioned_medium_cm",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM conditioned medium",
+              "MDA-MB-231 HM tumor cell conditioned medium",
+              "Tumor cell-conditioned medium (CM)",
+              "cancer cell conditioned medium"
+            ],
+            "attributes": {
+              "protein_count_identified": 2600,
+              "extracellular_protein_count": 359,
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "interleukin-8 (IL-8)",
+                "attributes": {},
+                "target_id": "interleukin_8_il_8"
+              },
+              {
+                "predicate": "contains",
+                "target": "platelet-derived-growth-factor-aa (PDGFaa)",
+                "attributes": {},
+                "target_id": "platelet_derived_growth_factor_aa_pdgfaa"
+              },
+              {
+                "predicate": "contains",
+                "target": "serpin E1 (PAI-1)",
+                "attributes": {},
+                "target_id": "serpin_e1_pai_1"
+              },
+              {
+                "predicate": "contains",
+                "target": "macrophage-migration-inhibitory-factor (MIF)",
+                "attributes": {},
+                "target_id": "macrophage_migration_inhibitory_factor_mif"
+              },
+              {
+                "predicate": "analyzed_by",
+                "target": "unbiased mass spectrometry proteomic analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "TCGA provisional dataset",
+            "entity_id": "tcga_provisional_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "TCGA provisional dataset"
+            ],
+            "attributes": {
+              "cancer_type": "lung adenocarcinoma",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of",
+                "target": "Patient outcome analysis",
+                "attributes": {},
+                "target_id": "patient_outcome_analysis"
+              }
+            ]
+          },
+          {
+            "name": "in vivo antibody blockade experiment",
+            "entity_id": "in_vivo_antibody_blockade_experiment",
+            "entity_type": "other",
+            "aliases": [
+              "in vivo antibody blockade experiment"
+            ],
+            "attributes": {
+              "timing": "24 h prior to tumor excision",
+              "metastatic_stage": "early (chest bioluminescence < 10^6 p/s)",
+              "model_entity_type": "experiment"
+            },
+            "relationships": [
+              {
+                "predicate": "result",
+                "target": "complete block of metastatic progression",
+                "attributes": {
+                  "p_value": "<0.0001"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "cocktail of mouse anti-human antibodies for IL-8, PDGFaa, serpin E1 and MIF",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2459,
+          "end_word": 2948,
+          "word_count": 489,
+          "sha256": "6e043fa5f65e3cde0457342d6ccfb6ed04c875d12a3f7f3b51aaa1861d751a47",
+          "sentence_minhash": [
+            167397756092202227,
+            1306423125707224,
+            115461717461310760,
+            11426270078940556,
+            5043051019624353,
+            30500191475291153,
+            50447301471162957,
+            41678443202000680,
+            21048361337280478,
+            35062189116939919,
+            78280491562202942,
+            101222576202047690,
+            91759520063933247,
+            50699036094556784,
+            131622074040114678,
+            10102301350853915
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'interleukin-8 (IL-8)'",
+          "normalized unsupported entity type 'protein' for 'platelet-derived-growth-factor-aa (PDGFaa)'",
+          "normalized unsupported entity type 'protein' for 'serpin E1 (PAI-1)'",
+          "normalized unsupported entity type 'protein' for 'macrophage-migration-inhibitory-factor (MIF)'",
+          "normalized unsupported entity type 'sample' for 'MDA-MB-231 HM conditioned medium'",
+          "normalized unsupported entity type 'dataset' for 'TCGA provisional dataset'",
+          "normalized unsupported entity type 'experiment' for 'in vivo antibody blockade experiment'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The study identifies primary tumor secreted factors, specifically IL-8, MIF, SerpinE1, and PDGFaa, as key drivers of early metastatic survival and progression. These factors promote angiogenesis, suppress apoptosis, and facilitate invasion through distinct and shared mechanisms. The findings suggest that blocking these factors can arrest micrometastasis development, offering a potential therapeutic strategy.",
+        "entities": [
+          {
+            "name": "primary tumor secretome",
+            "entity_id": "primary_tumor_secretome",
+            "entity_type": "other",
+            "aliases": [
+              "primary tumor secretome"
+            ],
+            "attributes": {
+              "role": "promotes metastasis during early stages",
+              "components": "growth factors, angiogenic factors, cytokines, exosomes, hormones"
+            },
+            "relationships": [
+              {
+                "predicate": "promotes",
+                "target": "pre-metastatic niche",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "supports",
+                "target": "survival of distant micro-metastases",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "interleukin-8 (IL-8)",
+            "entity_id": "interleukin_8_il_8",
+            "entity_type": "other",
+            "aliases": [
+              "IL-8",
+              "interleukin-8 (IL-8)"
+            ],
+            "attributes": {
+              "function": "pro-angiogenic and pro-inflammatory chemokine",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "promotes",
+                "target": "epithelial to mesenchymal transition (EMT)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "promotes",
+                "target": "invasion of tumor cells",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enhances",
+                "target": "malignant survival",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "serpin E1 (PAI-1)",
+            "entity_id": "serpin_e1_pai_1",
+            "entity_type": "other",
+            "aliases": [
+              "Serpin E1 (PAI-1)",
+              "SerpinE1 (PAI-1)",
+              "serpin E1 (PAI-1)"
+            ],
+            "attributes": {
+              "function": "promotes metastases",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "increases",
+                "target": "thrombosis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "induces",
+                "target": "pro-survival and anti-apoptotic activities",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enhances",
+                "target": "tumor invasion",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "platelet-derived-growth-factor-aa (PDGFaa)",
+            "entity_id": "platelet_derived_growth_factor_aa_pdgfaa",
+            "entity_type": "other",
+            "aliases": [
+              "PDGFaa",
+              "platelet-derived-growth-factor-aa (PDGFaa)"
+            ],
+            "attributes": {
+              "function": "pro-angiogenic factor",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "acts_as",
+                "target": "survival factor",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inhibits",
+                "target": "apoptosis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increases",
+                "target": "vessel density",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "stimulates",
+                "target": "reorganization of actin",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "macrophage-migration-inhibitory-factor (MIF)",
+            "entity_id": "macrophage_migration_inhibitory_factor_mif",
+            "entity_type": "other",
+            "aliases": [
+              "MIF",
+              "macrophage-migration-inhibitory-factor (MIF)"
+            ],
+            "attributes": {
+              "function": "pro-inflammatory factor",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "initiates",
+                "target": "NF-κB signaling cascade",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "promotes",
+                "target": "MMPs activity",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increases",
+                "target": "tumor-infiltration of myeloid-derived suppressor cells",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "promotes",
+                "target": "EMT",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "exerts",
+                "target": "pro-survival and anti-apoptotic activities",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "luciferase-2 (luc-2)",
+            "entity_id": "luciferase_2_luc_2",
+            "entity_type": "other",
+            "aliases": [
+              "luciferase-2 (luc-2)"
+            ],
+            "attributes": {
+              "characteristic": "high-sensitive codon-optimized",
+              "model_entity_type": "measurement_tool"
+            },
+            "relationships": [
+              {
+                "predicate": "enabled_detection_of",
+                "target": "early metastases and regression into latent foci",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2948,
+          "end_word": 3440,
+          "word_count": 492,
+          "sha256": "ed66757eb9157659f3ef236475ddf64119f02feca513dffe26a3b158526fca81",
+          "sentence_minhash": [
+            138742571471211904,
+            1306423125707224,
+            40863640610520970,
+            37498130448765965,
+            5043051019624353,
+            30500191475291153,
+            23718652799488495,
+            41678443202000680,
+            266927695903760850,
+            3380668174306445,
+            78280491562202942,
+            101222576202047690,
+            4696837222835553,
+            208073455092581338,
+            131622074040114678,
+            141927124911103023
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'IL-8'",
+          "normalized unsupported entity type 'protein' for 'SerpinE1 (PAI-1)'",
+          "normalized unsupported entity type 'protein' for 'PDGFaa'",
+          "normalized unsupported entity type 'protein' for 'MIF'",
+          "normalized unsupported entity type 'measurement_tool' for 'luciferase-2 (luc-2)'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study suggests that primary tumor secreted factors support micrometastases, particularly when autocrine signaling is insufficient. The authors propose using the perioperative period to block these factors with tailored neutralizing antibodies to control minimal residual disease. The prevalence of post-operative micro-metastasis regression in patients remains unknown due to technical limitations.",
+        "entities": [
+          {
+            "name": "primary tumor secreted factors",
+            "entity_id": "primary_tumor_secreted_factors",
+            "entity_type": "concept",
+            "aliases": [
+              "primary tumor secreted factors"
+            ],
+            "attributes": {
+              "role": "promote metastatic progression in micrometastatic niches",
+              "condition": "especially when autocrine release of growth supporting factors is insufficient"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_via",
+                "target": "combined effect of blocking four key secreted factors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MDA-MB-231 HM secretome",
+            "entity_id": "mda_mb_231_hm_secretome",
+            "entity_type": "other",
+            "aliases": [
+              "MDA-MB-231 HM secretome"
+            ],
+            "attributes": {
+              "effect": "pro-metastatic",
+              "model_entity_type": "biological_sample"
+            },
+            "relationships": [
+              {
+                "predicate": "mediated_by",
+                "target": "multiple factors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "perioperative period",
+            "entity_id": "perioperative_period",
+            "entity_type": "other",
+            "aliases": [
+              "perioperative period"
+            ],
+            "attributes": {
+              "characteristic": "harbors numerous risk factors for metastatic progression",
+              "potential": "window of opportunity to exert high impact on long-term cancer outcomes",
+              "model_entity_type": "time_period"
+            },
+            "relationships": [
+              {
+                "predicate": "suggested_for",
+                "target": "control of minimal residual disease",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "involves",
+                "target": "blocking primary tumor support for micro-metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "involves",
+                "target": "targeting prometastatic factors released by minimal residual disease",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "individually tailored combination of specific neutralizing antibodies",
+            "entity_id": "individually_tailored_combination_of_specific_neutralizing_antibodies",
+            "entity_type": "method",
+            "aliases": [
+              "individually tailored combination of specific neutralizing antibodies"
+            ],
+            "attributes": {
+              "basis": "identifying critical pro-metastatic factors secreted by the primary tumor in each patient",
+              "data_source": "malignant tissue biopsy before surgery"
+            },
+            "relationships": [
+              {
+                "predicate": "can_counteract",
+                "target": "metastasis-promoting effects of surgery",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "aims_to",
+                "target": "eradication of metastases or arrest of their growth",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "post-operative regression of micro-metastases",
+            "entity_id": "post_operative_regression_of_micro_metastases",
+            "entity_type": "other",
+            "aliases": [
+              "post-operative regression of micro-metastases"
+            ],
+            "attributes": {
+              "prevalence": "currently unknown due to technical limitations",
+              "potential_occurrence": "may occur in a substantial portion of patients",
+              "model_entity_type": "phenomenon"
+            },
+            "relationships": [
+              {
+                "predicate": "explained_by",
+                "target": "findings of the study",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "serum samples before and after PT resection",
+            "entity_id": "serum_samples_before_and_after_pt_resection",
+            "entity_type": "measurement",
+            "aliases": [
+              "serum samples before and after PT resection"
+            ],
+            "attributes": {
+              "availability": "if available"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_suggest",
+                "target": "specific mediating factors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3440,
+          "end_word": 3746,
+          "word_count": 306,
+          "sha256": "fc3ba67a30a7d149f62e1ad5f7c2f54f11eac8a27aafba0ae2bda4534729f579",
+          "sentence_minhash": [
+            181534865310160414,
+            18551641988871988,
+            309715791336220408,
+            83295156583613502,
+            26384097017582652,
+            99436724310786061,
+            50447301471162957,
+            273504803824844808,
+            166844233492045914,
+            243945572124720763,
+            78280491562202942,
+            101222576202047690,
+            119908479574430132,
+            906306679132868,
+            73686024738686731,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'biological_sample' for 'MDA-MB-231 HM secretome'",
+          "normalized unsupported entity type 'time_period' for 'perioperative period'",
+          "normalized unsupported entity type 'phenomenon' for 'post-operative regression of micro-metastases'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "mda_mb_231_hm_human_breast_cancer_cells",
+        "canonical_name": "MDA-MB-231 HM human breast cancer cells",
+        "aliases": [
+          "MDA-MB-231 HM human breast cancer cells",
+          "MDA-MB-231 HM",
+          "MDA-MB-231 HM cells"
+        ]
+      },
+      {
+        "canonical_id": "tumor_cell_conditioned_medium_cm",
+        "canonical_name": "Tumor cell-conditioned medium (CM)",
+        "aliases": [
+          "Tumor cell-conditioned medium (CM)",
+          "cancer cell conditioned medium",
+          "MDA-MB-231 HM tumor cell conditioned medium",
+          "MDA-MB-231 HM conditioned medium"
+        ]
+      },
+      {
+        "canonical_id": "interleukin_8_il_8",
+        "canonical_name": "interleukin-8 (IL-8)",
+        "aliases": [
+          "IL-8",
+          "interleukin-8 (IL-8)"
+        ]
+      },
+      {
+        "canonical_id": "platelet_derived_growth_factor_aa_pdgfaa",
+        "canonical_name": "platelet-derived-growth-factor-aa (PDGFaa)",
+        "aliases": [
+          "PDGFaa",
+          "platelet-derived-growth-factor-aa (PDGFaa)"
+        ]
+      },
+      {
+        "canonical_id": "serpin_e1_pai_1",
+        "canonical_name": "serpin E1 (PAI-1)",
+        "aliases": [
+          "Serpin E1 (PAI-1)",
+          "serpin E1 (PAI-1)",
+          "SerpinE1 (PAI-1)"
+        ]
+      },
+      {
+        "canonical_id": "macrophage_migration_inhibitory_factor_mif",
+        "canonical_name": "macrophage-migration-inhibitory-factor (MIF)",
+        "aliases": [
+          "MIF",
+          "macrophage-migration-inhibitory-factor (MIF)"
+        ]
+      },
+      {
+        "canonical_id": "balb_c_nu_nu_mice",
+        "canonical_name": "BALB/c nu/nu mice",
+        "aliases": [
+          "BALB/c nu/nu mice"
+        ]
+      },
+      {
+        "canonical_id": "primary_tumor_excision",
+        "canonical_name": "primary tumor excision",
+        "aliases": [
+          "primary tumor excision"
+        ]
+      },
+      {
+        "canonical_id": "primary_tumor_secretome",
+        "canonical_name": "primary tumor secretome",
+        "aliases": [
+          "primary tumor secretome"
+        ]
+      },
+      {
+        "canonical_id": "tcga_provisional_dataset",
+        "canonical_name": "TCGA provisional dataset",
+        "aliases": [
+          "TCGA provisional dataset"
+        ]
+      },
+      {
+        "canonical_id": "primary_tumor_pt",
+        "canonical_name": "primary tumor (PT)",
+        "aliases": [
+          "primary tumor (PT)"
+        ]
+      },
+      {
+        "canonical_id": "animal_model_of_spontaneous_regression_of_metastases",
+        "canonical_name": "animal model of spontaneous regression of metastases",
+        "aliases": [
+          "animal model of spontaneous regression of metastases"
+        ]
+      },
+      {
+        "canonical_id": "in_vivo_model_of_spontaneous_metastasis",
+        "canonical_name": "in vivo model of spontaneous metastasis",
+        "aliases": [
+          "in vivo model of spontaneous metastasis"
+        ]
+      },
+      {
+        "canonical_id": "bioluminescence_imaging",
+        "canonical_name": "bioluminescence imaging",
+        "aliases": [
+          "bioluminescence imaging"
+        ]
+      },
+      {
+        "canonical_id": "surgical_procedures_for_pt_resection",
+        "canonical_name": "surgical procedures for PT resection",
+        "aliases": [
+          "surgical procedures for PT resection"
+        ]
+      },
+      {
+        "canonical_id": "four_secreted_key_potential_mediators",
+        "canonical_name": "four secreted key potential mediators",
+        "aliases": [
+          "four secreted key potential mediators"
+        ]
+      },
+      {
+        "canonical_id": "alzet_osmotic_minipumps_model_1003d",
+        "canonical_name": "Alzet osmotic minipumps (model 1003D)",
+        "aliases": [
+          "Alzet osmotic minipumps (model 1003D)"
+        ]
+      },
+      {
+        "canonical_id": "serum_free_medium_sm",
+        "canonical_name": "Serum-free medium (SM)",
+        "aliases": [
+          "Serum-free medium (SM)"
+        ]
+      },
+      {
+        "canonical_id": "incucyte_system_essen_bioscience",
+        "canonical_name": "IncuCyte system (Essen Bioscience)",
+        "aliases": [
+          "IncuCyte system (Essen Bioscience)"
+        ]
+      },
+      {
+        "canonical_id": "annexinv_fitc_and_7aad_staining",
+        "canonical_name": "AnnexinV-FITC and 7AAD staining",
+        "aliases": [
+          "AnnexinV-FITC and 7AAD staining"
+        ]
+      },
+      {
+        "canonical_id": "tube_formation_assay",
+        "canonical_name": "Tube formation assay",
+        "aliases": [
+          "Tube formation assay"
+        ]
+      },
+      {
+        "canonical_id": "human_cytokine_array_r_d_systems_proteome_profiler_tm_array_ary022",
+        "canonical_name": "Human Cytokine Array (R&D systems, Proteome Profiler TM Array, ARY022)",
+        "aliases": [
+          "Human Cytokine Array (R&D systems, Proteome Profiler TM Array, ARY022)"
+        ]
+      },
+      {
+        "canonical_id": "mass_spectrometry_based_secretome_analysis",
+        "canonical_name": "Mass spectrometry-based secretome analysis",
+        "aliases": [
+          "Mass spectrometry-based secretome analysis"
+        ]
+      },
+      {
+        "canonical_id": "lc_ms_analysis",
+        "canonical_name": "LC-MS analysis",
+        "aliases": [
+          "LC-MS analysis"
+        ]
+      },
+      {
+        "canonical_id": "proteomics_data_analysis",
+        "canonical_name": "Proteomics data analysis",
+        "aliases": [
+          "Proteomics data analysis"
+        ]
+      },
+      {
+        "canonical_id": "enrichment_analysis",
+        "canonical_name": "Enrichment analysis",
+        "aliases": [
+          "Enrichment analysis"
+        ]
+      },
+      {
+        "canonical_id": "neutralizing_antibodies",
+        "canonical_name": "Neutralizing antibodies",
+        "aliases": [
+          "Neutralizing antibodies"
+        ]
+      },
+      {
+        "canonical_id": "histology_protocol",
+        "canonical_name": "Histology protocol",
+        "aliases": [
+          "Histology protocol"
+        ]
+      },
+      {
+        "canonical_id": "patient_outcome_analysis",
+        "canonical_name": "Patient outcome analysis",
+        "aliases": [
+          "Patient outcome analysis"
+        ]
+      },
+      {
+        "canonical_id": "statistical_analysis",
+        "canonical_name": "Statistical analysis",
+        "aliases": [
+          "Statistical analysis"
+        ]
+      },
+      {
+        "canonical_id": "micro_metastases",
+        "canonical_name": "micro-metastases",
+        "aliases": [
+          "micro-metastases"
+        ]
+      },
+      {
+        "canonical_id": "sham_surgery",
+        "canonical_name": "sham surgery",
+        "aliases": [
+          "sham surgery"
+        ]
+      },
+      {
+        "canonical_id": "osmotic_mini_pumps",
+        "canonical_name": "osmotic mini-pumps",
+        "aliases": [
+          "osmotic mini-pumps"
+        ]
+      },
+      {
+        "canonical_id": "human_cytokine_array",
+        "canonical_name": "human cytokine array",
+        "aliases": [
+          "human cytokine array"
+        ]
+      },
+      {
+        "canonical_id": "in_vivo_antibody_blockade_experiment",
+        "canonical_name": "in vivo antibody blockade experiment",
+        "aliases": [
+          "in vivo antibody blockade experiment"
+        ]
+      },
+      {
+        "canonical_id": "luciferase_2_luc_2",
+        "canonical_name": "luciferase-2 (luc-2)",
+        "aliases": [
+          "luciferase-2 (luc-2)"
+        ]
+      },
+      {
+        "canonical_id": "primary_tumor_secreted_factors",
+        "canonical_name": "primary tumor secreted factors",
+        "aliases": [
+          "primary tumor secreted factors"
+        ]
+      },
+      {
+        "canonical_id": "mda_mb_231_hm_secretome",
+        "canonical_name": "MDA-MB-231 HM secretome",
+        "aliases": [
+          "MDA-MB-231 HM secretome"
+        ]
+      },
+      {
+        "canonical_id": "perioperative_period",
+        "canonical_name": "perioperative period",
+        "aliases": [
+          "perioperative period"
+        ]
+      },
+      {
+        "canonical_id": "individually_tailored_combination_of_specific_neutralizing_antibodies",
+        "canonical_name": "individually tailored combination of specific neutralizing antibodies",
+        "aliases": [
+          "individually tailored combination of specific neutralizing antibodies"
+        ]
+      },
+      {
+        "canonical_id": "post_operative_regression_of_micro_metastases",
+        "canonical_name": "post-operative regression of micro-metastases",
+        "aliases": [
+          "post-operative regression of micro-metastases"
+        ]
+      },
+      {
+        "canonical_id": "serum_samples_before_and_after_pt_resection",
+        "canonical_name": "serum samples before and after PT resection",
+        "aliases": [
+          "serum samples before and after PT resection"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study presents a model demonstrating that primary tumor excision causes the regression of small micro-metastases but not larger ones in MDA-MB-231 HM xenografts. The authors identify that primary tumor secreted factors, specifically IL-8, PDGFaa, Serpin E1 (PAI-1), and MIF, promote early metastatic growth and correlate with poor survival in lung adenocarcinoma patients.\",\"entities\":[{\"name\":\"MDA-MB-231 HM human breast cancer cells\",\"type\":\"other\",\"attributes\":{\"origin\":\"human breast cancer\",\"modification\":\"express highly sensitive luciferase\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_in_model\",\"target\":\"BALB/c nu/nu mice\",\"attributes\":{},\"target_id\":\"balb_c_nu_nu_mice\"},{\"predicate\":\"adhesion_enhanced_by\",\"target\":\"Tumor cell-conditioned medium (CM)\",\"attributes\":{},\"target_id\":\"tumor_cell_conditioned_medium_cm\"}]},{\"name\":\"BALB/c nu/nu mice\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"animal_model\"},\"relationships\":[{\"predicate\":\"hosts\",\"target\":\"MDA-MB-231 HM human breast cancer cells\",\"attributes\":{},\"target_id\":\"mda_mb_231_hm_human_breast_cancer_cells\"}]},{\"name\":\"primary tumor excision\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"procedure\"},\"relationships\":[{\"predicate\":\"causes_regression_of\",\"target\":\"smallest micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_cause_regression_of\",\"target\":\"larger metastases\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"primary tumor secretome\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"biological_substance\"},\"relationships\":[{\"predicate\":\"promotes\",\"target\":\"early metastatic growth\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"diminishes_regression_when_supplemented\",\"target\":\"micro-metastases\",\"attributes\":{},\"target_id\":\"micro_metastases\"}]},{\"name\":\"Tumor cell-conditioned medium (CM)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"biological_substance\"},\"relationships\":[{\"predicate\":\"reduces\",\"target\":\"apoptosis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enhances\",\"target\":\"MDA-MB-231 HM adhesion\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"interleukin-8 (IL-8)\",\"type\":\"other\",\"attributes\":{\"role\":\"secreted mediator\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blockade_arrests\",\"target\":\"development of micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"high_levels_correlated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"platelet-derived-growth-factor-aa (PDGFaa)\",\"type\":\"other\",\"attributes\":{\"role\":\"secreted mediator\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blockade_arrests\",\"target\":\"development of micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"high_levels_correlated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"serpin E1 (PAI-1)\",\"type\":\"other\",\"attributes\":{\"role\":\"secreted mediator\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blockade_arrests\",\"target\":\"development of micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"high_levels_correlated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"macrophage-migration-inhibitory-factor (MIF)\",\"type\":\"other\",\"attributes\":{\"role\":\"secreted mediator\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blockade_arrests\",\"target\":\"development of micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"high_levels_correlated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"TCGA provisional dataset\",\"type\":\"other\",\"attributes\":{\"access\":\"public\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_to_analyze\",\"target\":\"correlation between protein levels and survival in lung adenocarcinoma patients\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study presents a novel animal model demonstrating that primary tumor excision causes spontaneous regression of early-stage micro-metastases in triple-negative breast cancer. This regression is attributed to the removal of secreted factors from the primary tumor that support metastatic development. The research identifies specific secreted mediators whose neutralization halts metastasis progression.\",\"entities\":[{\"name\":\"primary tumor (PT)\",\"type\":\"other\",\"attributes\":{\"role\":\"source of secreted factors supporting metastasis\",\"systemic_impact\":\"presence indicates systemic disease with crosstalk to distant organs\",\"model_entity_type\":\"biological_structure\"},\"relationships\":[{\"predicate\":\"secretes\",\"target\":\"factors supporting micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"removal_induces\",\"target\":\"regression of early-stage metastases\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MDA-MB-231 HM human breast cancer cells\",\"type\":\"other\",\"attributes\":{\"origin\":\"triple-negative breast adenocarcinoma\",\"variant\":\"highly metastatic\",\"source\":\"gift from Dr. Zhou Ou, Fudan University, Shanghai Cancer Center, China\",\"modification\":\"transduced with codon-optimized firefly luciferase-mCherry vector\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"animal model of spontaneous regression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"animal model of spontaneous regression of metastases\",\"type\":\"method\",\"attributes\":{\"novelty\":\"first presentation of such a model\",\"mechanism\":\"utilizes highly sensitive luciferase reporter to study early-stage micro-metastases\"},\"relationships\":[{\"predicate\":\"demonstrates\",\"target\":\"regression of micro-metastases following PT removal\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BALB/c nu/nu mice\",\"type\":\"other\",\"attributes\":{\"sex\":\"female\",\"age_at_start\":\"8 weeks old\",\"source\":\"University of Adelaide, Australia or Envigo, Israel\",\"housing\":\"SPF conditions, 12 h dark/light cycle\",\"model_entity_type\":\"organism\"},\"relationships\":[{\"predicate\":\"subject_of\",\"target\":\"in vivo model of spontaneous metastasis\",\"attributes\":{},\"target_id\":\"in_vivo_model_of_spontaneous_metastasis\"}]},{\"name\":\"in vivo model of spontaneous metastasis\",\"type\":\"method\",\"attributes\":{\"injection_site\":\"fourth mammary fat pad\",\"cell_count\":\"2×10^5 cells in 20 μl PBS\",\"anesthesia\":\"2% isoflurane\",\"excision_trigger\":\"metastatic foci reach 10^6 photons/s (~3-4 weeks post injection)\",\"average_pt_size_at_excision\":\"80 mm^3\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"MDA-MB-231 HM human breast cancer cells\",\"attributes\":{},\"target_id\":\"mda_mb_231_hm_human_breast_cancer_cells\"},{\"predicate\":\"uses\",\"target\":\"BALB/c nu/nu mice\",\"attributes\":{},\"target_id\":\"balb_c_nu_nu_mice\"}]},{\"name\":\"bioluminescence imaging\",\"type\":\"measurement\",\"attributes\":{\"apparatus\":\"IVIS spectrum (Perkin Elmer)\",\"reagent\":\"150 mg/kg D-luciferin sodium salt (Regis Technologies)\",\"route\":\"i.p. injection\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"assessment of metastases and verification of PT removal\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"surgical procedures for PT resection\",\"type\":\"method\",\"attributes\":{\"anesthesia\":\"2% isoflurane\",\"technique\":\"small skin incision without injuring peritoneal cavity\",\"verification\":\"complete removal verified by bioluminescence imaging\",\"sham_control\":\"identical incision made, PT untouched, immediately sutured\"},\"relationships\":[{\"predicate\":\"performed_on\",\"target\":\"BALB/c nu/nu mice\",\"attributes\":{},\"target_id\":\"balb_c_nu_nu_mice\"}]},{\"name\":\"four secreted key potential mediators\",\"type\":\"other\",\"attributes\":{\"components\":\"IL-8, PDGFaa, Serpin E1 (PAI-1), and MIF\",\"effect_of_neutralization\":\"halted progression of metastases in presence of PT\",\"model_entity_type\":\"biological_factors\"},\"relationships\":[{\"predicate\":\"identified_from\",\"target\":\"MDA-MB-231 HM secretome\",\"attributes\":{},\"target_id\":\"mda_mb_231_hm_secretome\"}]}]},{\"context_summary\":\"The text details the experimental protocols for preparing tumor cell-conditioned medium and performing in vivo supplementation via osmotic minipumps. It describes methods for assessing apoptosis, adhesion, and tube formation, as well as the procedures for cytokine array and mass spectrometry-based secretome analysis.\",\"entities\":[{\"name\":\"Tumor cell-conditioned medium (CM)\",\"type\":\"other\",\"attributes\":{\"source_cells\":\"MDA-MB-231 HM\",\"incubation_conditions\":\"24 h at 37°C, 5% CO2 in serum-free medium\",\"concentration_method\":\"3 kDa Amicon filters\",\"final_volume\":\"100 μl/mouse\",\"storage_temperature\":\"-20°C\"},\"relationships\":[{\"predicate\":\"produced_from\",\"target\":\"MDA-MB-231 HM human breast cancer cells\",\"attributes\":{},\"target_id\":\"mda_mb_231_hm_human_breast_cancer_cells\"},{\"predicate\":\"used_for\",\"target\":\"in vivo supplementation of tumor secretome\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"apoptosis and adhesion studies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"Tube formation assay\",\"attributes\":{},\"target_id\":\"tube_formation_assay\"},{\"predicate\":\"analyzed_by\",\"target\":\"human cytokine array\",\"attributes\":{},\"target_id\":\"human_cytokine_array\"},{\"predicate\":\"analyzed_by\",\"target\":\"Mass spectrometry-based secretome analysis\",\"attributes\":{},\"target_id\":\"mass_spectrometry_based_secretome_analysis\"}]},{\"name\":\"MDA-MB-231 HM human breast cancer cells\",\"type\":\"other\",\"attributes\":{\"confluency_for_CM_production\":\"~80%\",\"estimated_secretome_producing_cells_in_PT\":\"~50x10^6\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"source_of\",\"target\":\"Tumor cell-conditioned medium (CM)\",\"attributes\":{},\"target_id\":\"tumor_cell_conditioned_medium_cm\"}]},{\"name\":\"Alzet osmotic minipumps (model 1003D)\",\"type\":\"other\",\"attributes\":{\"implantation_site\":\"i.p.\",\"implantation_timing\":\"immediately following tumor excision\",\"estimated_daily_secretome_release_ratio\":\"~1/8 of primary tumor production\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"loaded_with\",\"target\":\"Tumor cell-conditioned medium (CM)\",\"attributes\":{},\"target_id\":\"tumor_cell_conditioned_medium_cm\"},{\"predicate\":\"loaded_with\",\"target\":\"Serum-free medium (SM)\",\"attributes\":{},\"target_id\":\"serum_free_medium_sm\"}]},{\"name\":\"Serum-free medium (SM)\",\"type\":\"measurement\",\"attributes\":{\"role\":\"control\"},\"relationships\":[{\"predicate\":\"used_as_control_for\",\"target\":\"Tumor cell-conditioned medium (CM)\",\"attributes\":{},\"target_id\":\"tumor_cell_conditioned_medium_cm\"}]},{\"name\":\"IncuCyte system (Essen Bioscience)\",\"type\":\"method\",\"attributes\":{\"imaging_intervals_adhesion\":\"20 min intervals for 8 hours\",\"imaging_intervals_tube_formation\":\"20 min intervals for 24 h\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"adhesion studies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"Tube formation assay\",\"attributes\":{},\"target_id\":\"tube_formation_assay\"}]},{\"name\":\"AnnexinV-FITC and 7AAD staining\",\"type\":\"method\",\"attributes\":{\"supplier\":\"R&D systems\",\"incubation_time\":\"24 hrs in CM or SM prior to staining\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"apoptosis studies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"measured_by\",\"target\":\"flow cytometry\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Tube formation assay\",\"type\":\"method\",\"attributes\":{\"matrix\":\"50μl basement membrane extracellular matrix (Cultrex BME; Trevigen)\",\"incubation_matrix\":\"30 min at 37°C, 5% CO2\",\"cell_type\":\"human umbilical vein endothelial cells (HUVEC)\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"IncuCyte system (Essen Bioscience)\",\"attributes\":{},\"target_id\":\"incucyte_system_essen_bioscience\"},{\"predicate\":\"measures\",\"target\":\"average cells area and number of tubes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Human Cytokine Array (R&D systems, Proteome Profiler TM Array, ARY022)\",\"type\":\"method\",\"attributes\":{\"target_proteins\":\"102 soluble human proteins\"},\"relationships\":[{\"predicate\":\"compares\",\"target\":\"CM samples\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compares\",\"target\":\"plasma samples from mice bearing primary tumor\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compares\",\"target\":\"plasma samples from mice one day following primary tumor excision\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compares\",\"target\":\"plasma samples from control mice\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"analyzed_by\",\"target\":\"Protein Array Analyzer in Image J software\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Mass spectrometry-based secretome analysis\",\"type\":\"method\",\"attributes\":{\"sample_preparation\":\"centrifuged, filtered, concentrated with 3 kDa Amicon filters\",\"urea_concentration\":\"8M\",\"reduction_agent\":\"1mM dithiothreitol\",\"alkylation_agent\":\"5mM iodoacetamide\",\"digestion_enzymes\":\"LysC/Trypsin mix and sequencing-grade modified Trypsin (Promega)\",\"digestion_conditions\":\"overnight at room temperature\",\"desalting_method\":\"C18 StageTips\",\"elution_solvent\":\"80% acetonitrile\",\"loading_buffer\":\"2% acetonitrile, 0.1% formic acid\"},\"relationships\":[{\"predicate\":\"analyzes\",\"target\":\"CM samples\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study utilized LC-MS and MaxQuant to analyze the MDA-MB-231 HM secretome, identifying 2,600 proteins with 359 annotated as extracellular. Neutralizing antibodies against IL-8, PDGF-AA, Serpin E1, and MIF were administered to mice to test their role in metastasis. Patient outcomes from the TCGA lung adenocarcinoma cohort were analyzed using Kaplan Meier analysis to correlate protein levels with survival.\",\"entities\":[{\"name\":\"LC-MS analysis\",\"type\":\"method\",\"attributes\":{\"instrumentation\":\"Easy-nLC1000 UHPLC and Q-Exactive Plus mass spectrometer\",\"chromatography\":\"Reverse-phase using 50 cm EASY-Spray PepMap columns\",\"gradient\":\"140 min linear gradient of water/acetonitrile\",\"ms_method\":\"Top10 method with higher-energy collisional dissociation (HCD)\"},\"relationships\":[{\"predicate\":\"performed_on\",\"target\":\"peptides\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Proteomics data analysis\",\"type\":\"method\",\"attributes\":{\"software\":\"MaxQuant, Perseus, String database, Cytoscape\",\"quantification\":\"Label-free quantification algorithm\",\"database\":\"Uniprot human proteome via Andromeda search engine\",\"fdr_threshold\":\"0.01 for peptide and protein levels\"},\"relationships\":[{\"predicate\":\"analyzes\",\"target\":\"MS raw files\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Enrichment analysis\",\"type\":\"method\",\"attributes\":{\"reference\":\"Identified secretome\",\"annotations\":\"Gene Ontology from UniProt\",\"statistical_test\":\"Fisher exact test\",\"fdr_threshold\":\"0.02\"},\"relationships\":[{\"predicate\":\"performed_relative_to\",\"target\":\"identified secretome\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Neutralizing antibodies\",\"type\":\"other\",\"attributes\":{\"type\":\"Mouse anti-human monoclonal antibodies\",\"targets\":[\"CXCL8/IL-8 (IgG1 Clone # 6217)\",\"Serpin E1/PAI-1 (IgG1 Clone # 242816)\",\"PDGF-AA (IgG1 Clone # 114506)\",\"MIF (IgG1 Clone # 12302)\"],\"control\":\"Monoclonal mouse IgG1 (IgG1 Clone # 11711)\",\"dosage\":\"1 μg each/mouse\",\"frequency\":\"Once a day for two days\",\"model_entity_type\":\"reagent\"},\"relationships\":[{\"predicate\":\"neutralizes\",\"target\":\"CXCL8/IL-8\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"neutralizes\",\"target\":\"Serpin E1/PAI-1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"neutralizes\",\"target\":\"PDGF-AA\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"neutralizes\",\"target\":\"macrophage-migration-inhibitory-factor (MIF)\",\"attributes\":{},\"target_id\":\"macrophage_migration_inhibitory_factor_mif\"}]},{\"name\":\"Histology protocol\",\"type\":\"method\",\"attributes\":{\"tissue\":\"Lungs\",\"fixation\":\"4% paraformaldehyde\",\"embedding\":\"Paraffin\",\"section_thickness\":\"6 μm\",\"staining\":\"Hematoxylin and Eosin (H&E)\"},\"relationships\":[{\"predicate\":\"identifies\",\"target\":\"lung micro-metastases\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Patient outcome analysis\",\"type\":\"method\",\"attributes\":{\"dataset\":\"TCGA provisional dataset (cBioPortal)\",\"cohort\":\"Lung adenocarcinoma\",\"stratification_factors\":[\"IL-8\",\"PDGFaa\",\"Serpin E1\",\"MIF\"],\"assay\":\"RPPA assay\",\"statistical_method\":\"Kaplan Meier Analysis\",\"software\":\"R software\"},\"relationships\":[{\"predicate\":\"calculates\",\"target\":\"hazard ratio\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Statistical analysis\",\"type\":\"method\",\"attributes\":{\"tests\":[\"Repeated-measures or factorial ANOVA\",\"Fisher's protected least significant differences (PLSD)\",\"Paired or unpaired student's t-test\"],\"significance_level\":\"0.05\",\"direction\":\"Two sided\",\"variance_check\":\"F-test of equality of variance\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"Fisher's PLSD for post hoc comparisons\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Primary tumor excision causes a dramatic regression of small metastases into latent foci, an effect not observed in larger metastases or after sham surgery. Tumor-conditioned medium enhances cancer cell viability, adhesion, and endothelial tube formation, and its in vivo supplementation reduces metastatic regression. A human cytokine array analysis identified 28 highly expressed cytokines in the tumor secretome.\",\"entities\":[{\"name\":\"primary tumor excision\",\"type\":\"other\",\"attributes\":{\"effect\":\"causes marked regression of smallest micro-metastases\",\"model_entity_type\":\"procedure\"},\"relationships\":[{\"predicate\":\"results_in\",\"target\":\"regression of micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"distinguished_from\",\"target\":\"sham surgery\",\"attributes\":{},\"target_id\":\"sham_surgery\"}]},{\"name\":\"micro-metastases\",\"type\":\"other\",\"attributes\":{\"size_category\":\"small (10^6 photons/sec) or large (10^7 photons/sec)\",\"post_excision_state\":\"regressed into latent foci\",\"model_entity_type\":\"biological_structure\"},\"relationships\":[{\"predicate\":\"regresses_after\",\"target\":\"primary tumor excision\",\"attributes\":{\"magnitude\":\"up to 100-fold decrease in signal\",\"timeframe\":\"24 h following excision\",\"p_value\":\"<0.0001\"},\"target_id\":\"primary_tumor_excision\"},{\"predicate\":\"remains_latent_for\",\"target\":\"50 days post-excision\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_less_regression_if\",\"target\":\"large metastases\",\"attributes\":{\"p_value\":\"<0.000\"},\"target_id\":null}]},{\"name\":\"sham surgery\",\"type\":\"other\",\"attributes\":{\"description\":\"surgical procedure sparing the primary tumor\",\"model_entity_type\":\"procedure\"},\"relationships\":[{\"predicate\":\"results_in\",\"target\":\"continued increase of metastases\",\"attributes\":{\"p_value\":\"<0.05\"},\"target_id\":null}]},{\"name\":\"Tumor cell-conditioned medium (CM)\",\"type\":\"other\",\"attributes\":{\"contents\":\"tumor-derived secreted factors\",\"model_entity_type\":\"biological_sample\"},\"relationships\":[{\"predicate\":\"enhances\",\"target\":\"cancer cell viability\",\"attributes\":{\"p_value\":\"<0.001\"},\"target_id\":null},{\"predicate\":\"enhances\",\"target\":\"cancer cell adhesion\",\"attributes\":{\"p_value\":\"<0.01\"},\"target_id\":null},{\"predicate\":\"induces\",\"target\":\"tube formation of human endothelial cells\",\"attributes\":{\"p_value\":\"<0.0001\"},\"target_id\":null},{\"predicate\":\"reduces_regression_when_supplemented_in_vivo\",\"target\":\"metastatic regression\",\"attributes\":{\"magnitude\":\"10-fold less regression compared to serum-free medium\",\"p_value\":\"<0.005\"},\"target_id\":null}]},{\"name\":\"osmotic mini-pumps\",\"type\":\"other\",\"attributes\":{\"usage\":\"implanted at time of tumor excision to replenish primary tumor secretome\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"release_rate_estimate\",\"target\":\"~1/8 of daily in vivo primary tumor production\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"human cytokine array\",\"type\":\"method\",\"attributes\":{\"purpose\":\"analyze tumor secretome\"},\"relationships\":[{\"predicate\":\"analyzed_conditions\",\"target\":\"tumor cell-conditioned medium, plasma from non-tumor bearing mice, plasma from primary tumor-bearing mice, plasma from mice one day following tumor excision\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"identified\",\"target\":\"28 cytokines highly expressed in cancer cell CM\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study identified four specific tumor-secreted factors (IL-8, PDGFaa, Serpin E1, and MIF) that promote early metastatic growth. In vivo blockade of these factors arrested metastatic progression, and high levels of these proteins were associated with poor survival in lung adenocarcinoma patients.\",\"entities\":[{\"name\":\"interleukin-8 (IL-8)\",\"type\":\"other\",\"attributes\":{\"function\":\"pro-metastatic or pro-survival activity\",\"identification_method\":\"cytokine array and mass spectrometry proteomic analysis\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blocked_by\",\"target\":\"mouse anti-human antibodies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{\"hazard_ratio\":2.05,\"p_value\":\"<0.05\"},\"target_id\":null}]},{\"name\":\"platelet-derived-growth-factor-aa (PDGFaa)\",\"type\":\"other\",\"attributes\":{\"function\":\"pro-metastatic or pro-survival activity\",\"identification_method\":\"cytokine array and mass spectrometry proteomic analysis\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blocked_by\",\"target\":\"mouse anti-human antibodies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{\"hazard_ratio\":2.05,\"p_value\":\"<0.05\"},\"target_id\":null}]},{\"name\":\"serpin E1 (PAI-1)\",\"type\":\"other\",\"attributes\":{\"alias\":\"plasminogen-activator-inhibitor-1\",\"function\":\"pro-metastatic or pro-survival activity\",\"identification_method\":\"cytokine array and mass spectrometry proteomic analysis\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blocked_by\",\"target\":\"mouse anti-human antibodies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{\"hazard_ratio\":2.05,\"p_value\":\"<0.05\"},\"target_id\":null}]},{\"name\":\"macrophage-migration-inhibitory-factor (MIF)\",\"type\":\"other\",\"attributes\":{\"function\":\"pro-metastatic or pro-survival activity\",\"identification_method\":\"cytokine array and mass spectrometry proteomic analysis\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"blocked_by\",\"target\":\"mouse anti-human antibodies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor survival in lung adenocarcinoma patients\",\"attributes\":{\"hazard_ratio\":2.05,\"p_value\":\"<0.05\"},\"target_id\":null}]},{\"name\":\"Tumor cell-conditioned medium (CM)\",\"type\":\"other\",\"attributes\":{\"protein_count_identified\":2600,\"extracellular_protein_count\":359,\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"interleukin-8 (IL-8)\",\"attributes\":{},\"target_id\":\"interleukin_8_il_8\"},{\"predicate\":\"contains\",\"target\":\"platelet-derived-growth-factor-aa (PDGFaa)\",\"attributes\":{},\"target_id\":\"platelet_derived_growth_factor_aa_pdgfaa\"},{\"predicate\":\"contains\",\"target\":\"serpin E1 (PAI-1)\",\"attributes\":{},\"target_id\":\"serpin_e1_pai_1\"},{\"predicate\":\"contains\",\"target\":\"macrophage-migration-inhibitory-factor (MIF)\",\"attributes\":{},\"target_id\":\"macrophage_migration_inhibitory_factor_mif\"},{\"predicate\":\"analyzed_by\",\"target\":\"unbiased mass spectrometry proteomic analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"TCGA provisional dataset\",\"type\":\"other\",\"attributes\":{\"cancer_type\":\"lung adenocarcinoma\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"source_of\",\"target\":\"Patient outcome analysis\",\"attributes\":{},\"target_id\":\"patient_outcome_analysis\"}]},{\"name\":\"in vivo antibody blockade experiment\",\"type\":\"other\",\"attributes\":{\"timing\":\"24 h prior to tumor excision\",\"metastatic_stage\":\"early (chest bioluminescence < 10^6 p/s)\",\"model_entity_type\":\"experiment\"},\"relationships\":[{\"predicate\":\"result\",\"target\":\"complete block of metastatic progression\",\"attributes\":{\"p_value\":\"<0.0001\"},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"cocktail of mouse anti-human antibodies for IL-8, PDGFaa, serpin E1 and MIF\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study identifies primary tumor secreted factors, specifically IL-8, MIF, SerpinE1, and PDGFaa, as key drivers of early metastatic survival and progression. These factors promote angiogenesis, suppress apoptosis, and facilitate invasion through distinct and shared mechanisms. The findings suggest that blocking these factors can arrest micrometastasis development, offering a potential therapeutic strategy.\",\"entities\":[{\"name\":\"primary tumor secretome\",\"type\":\"other\",\"attributes\":{\"role\":\"promotes metastasis during early stages\",\"components\":\"growth factors, angiogenic factors, cytokines, exosomes, hormones\"},\"relationships\":[{\"predicate\":\"promotes\",\"target\":\"pre-metastatic niche\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"supports\",\"target\":\"survival of distant micro-metastases\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"interleukin-8 (IL-8)\",\"type\":\"other\",\"attributes\":{\"function\":\"pro-angiogenic and pro-inflammatory chemokine\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"promotes\",\"target\":\"epithelial to mesenchymal transition (EMT)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"promotes\",\"target\":\"invasion of tumor cells\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enhances\",\"target\":\"malignant survival\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"serpin E1 (PAI-1)\",\"type\":\"other\",\"attributes\":{\"function\":\"promotes metastases\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"increases\",\"target\":\"thrombosis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"induces\",\"target\":\"pro-survival and anti-apoptotic activities\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enhances\",\"target\":\"tumor invasion\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"platelet-derived-growth-factor-aa (PDGFaa)\",\"type\":\"other\",\"attributes\":{\"function\":\"pro-angiogenic factor\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"acts_as\",\"target\":\"survival factor\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inhibits\",\"target\":\"apoptosis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"increases\",\"target\":\"vessel density\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"stimulates\",\"target\":\"reorganization of actin\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"macrophage-migration-inhibitory-factor (MIF)\",\"type\":\"other\",\"attributes\":{\"function\":\"pro-inflammatory factor\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"initiates\",\"target\":\"NF-κB signaling cascade\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"promotes\",\"target\":\"MMPs activity\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"increases\",\"target\":\"tumor-infiltration of myeloid-derived suppressor cells\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"promotes\",\"target\":\"EMT\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"exerts\",\"target\":\"pro-survival and anti-apoptotic activities\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"luciferase-2 (luc-2)\",\"type\":\"other\",\"attributes\":{\"characteristic\":\"high-sensitive codon-optimized\",\"model_entity_type\":\"measurement_tool\"},\"relationships\":[{\"predicate\":\"enabled_detection_of\",\"target\":\"early metastases and regression into latent foci\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study suggests that primary tumor secreted factors support micrometastases, particularly when autocrine signaling is insufficient. The authors propose using the perioperative period to block these factors with tailored neutralizing antibodies to control minimal residual disease. The prevalence of post-operative micro-metastasis regression in patients remains unknown due to technical limitations.\",\"entities\":[{\"name\":\"primary tumor secreted factors\",\"type\":\"concept\",\"attributes\":{\"role\":\"promote metastatic progression in micrometastatic niches\",\"condition\":\"especially when autocrine release of growth supporting factors is insufficient\"},\"relationships\":[{\"predicate\":\"tested_via\",\"target\":\"combined effect of blocking four key secreted factors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MDA-MB-231 HM secretome\",\"type\":\"other\",\"attributes\":{\"effect\":\"pro-metastatic\",\"model_entity_type\":\"biological_sample\"},\"relationships\":[{\"predicate\":\"mediated_by\",\"target\":\"multiple factors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"perioperative period\",\"type\":\"other\",\"attributes\":{\"characteristic\":\"harbors numerous risk factors for metastatic progression\",\"potential\":\"window of opportunity to exert high impact on long-term cancer outcomes\",\"model_entity_type\":\"time_period\"},\"relationships\":[{\"predicate\":\"suggested_for\",\"target\":\"control of minimal residual disease\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"involves\",\"target\":\"blocking primary tumor support for micro-metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"involves\",\"target\":\"targeting prometastatic factors released by minimal residual disease\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"individually tailored combination of specific neutralizing antibodies\",\"type\":\"method\",\"attributes\":{\"basis\":\"identifying critical pro-metastatic factors secreted by the primary tumor in each patient\",\"data_source\":\"malignant tissue biopsy before surgery\"},\"relationships\":[{\"predicate\":\"can_counteract\",\"target\":\"metastasis-promoting effects of surgery\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"aims_to\",\"target\":\"eradication of metastases or arrest of their growth\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"post-operative regression of micro-metastases\",\"type\":\"other\",\"attributes\":{\"prevalence\":\"currently unknown due to technical limitations\",\"potential_occurrence\":\"may occur in a substantial portion of patients\",\"model_entity_type\":\"phenomenon\"},\"relationships\":[{\"predicate\":\"explained_by\",\"target\":\"findings of the study\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"serum samples before and after PT resection\",\"type\":\"measurement\",\"attributes\":{\"availability\":\"if available\"},\"relationships\":[{\"predicate\":\"used_to_suggest\",\"target\":\"specific mediating factors\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

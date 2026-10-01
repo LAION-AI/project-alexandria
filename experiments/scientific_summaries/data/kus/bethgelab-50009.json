@@ -1,0 +1,3747 @@
+{
+  "document_id": "bethgelab-50009",
+  "fulltext_sha256": "fdf2c95a141e744682aad8f94ea8783a5514e7033960d29fa2961bf8be3a3068",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "a8f680bb6c169f1480d274e148cf7d30dad32449c11a1b1fd8fecb40bc35416c",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study analyzes 3D genome alterations and gene expression in 18 T-ALL patients and 4 controls, finding that structural changes correlate with gene regulation and subtype classification. Approximately 29% of differentially expressed genes are linked to 3D genome changes, with specific compartment switches and loop alterations driving upregulation or downregulation in distinct pathways. The CDK6 locus shows strong intra-TAD interactions and consistent upregulation across all T-ALL samples.",
+        "entities": [
+          {
+            "name": "T-lineage acute lymphoblastic leukemia (T-ALL)",
+            "entity_id": "t_lineage_acute_lymphoblastic_leukemia_t_all",
+            "entity_type": "other",
+            "aliases": [
+              "T-ALL",
+              "T-lineage acute lymphoblastic leukemia (T-ALL)"
+            ],
+            "attributes": {
+              "study_cohort": "18 newly diagnosed patients",
+              "control_cohort": "4 healthy T cell controls",
+              "model_entity_type": "disease"
+            },
+            "relationships": [
+              {
+                "predicate": "classified_by",
+                "target": "3D genome organization and gene expression profiles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "3D genome alterations",
+                "attributes": {},
+                "target_id": "3d_genome_alterations"
+              }
+            ]
+          },
+          {
+            "name": "3D genome alterations",
+            "entity_id": "3d_genome_alterations",
+            "entity_type": "other",
+            "aliases": [
+              "3D genome alterations"
+            ],
+            "attributes": {
+              "levels_analyzed": "compartment, topologically associated domains (TAD), and loop levels",
+              "model_entity_type": "biological_phenomenon"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "nearly 45% of upregulated genes in T-ALL",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "29% (996/3392) of differentially expressed genes (DEGs)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "linked_to",
+                "target": "etiology and prognosis of T-ALL",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "differentially expressed genes (DEGs)",
+            "entity_id": "differentially_expressed_genes_degs",
+            "entity_type": "measurement",
+            "aliases": [
+              "differentially expressed genes (DEGs)"
+            ],
+            "attributes": {
+              "total_count_analyzed": "3392",
+              "count_associated_with_3d_genome": "996"
+            },
+            "relationships": [
+              {
+                "predicate": "upregulated_in",
+                "target": "B-to-A compartment switches, increased domain scores (D-score), and enhanced loops",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "downregulated_in",
+                "target": "A-to-B compartment switches, decreased D-scores, and reduced loops",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "upregulated DEGs",
+            "entity_id": "upregulated_degs",
+            "entity_type": "other",
+            "aliases": [
+              "upregulated DEGs"
+            ],
+            "attributes": {
+              "functional_enrichment": "hematopoietic cell lineage, transcriptional misregulation in cancer, and cell cycle",
+              "model_entity_type": "gene_group"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "B-to-A compartment switches",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "increased domain scores (D-score)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "enhanced loops",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "downregulated DEGs",
+            "entity_id": "downregulated_degs",
+            "entity_type": "other",
+            "aliases": [
+              "downregulated DEGs"
+            ],
+            "attributes": {
+              "functional_enrichment": "cytokine-cytokine receptor interaction and T cell receptor signaling",
+              "model_entity_type": "gene_group"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "A-to-B compartment switches",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "decreased D-scores",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "reduced loops",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CDK6",
+            "entity_id": "cdk6",
+            "entity_type": "other",
+            "aliases": [
+              "CDK6"
+            ],
+            "attributes": {
+              "clinical_relevance": "potential target for T-ALL treatment",
+              "expression_status": "upregulated in all T-ALL samples",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibits",
+                "target": "strong intra-TAD interaction",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RNA-seq analysis",
+            "entity_id": "rna_seq_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "RNA-seq analysis"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "used_to_investigate",
+                "target": "impact of 3D genome alterations on gene expression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PCA and hierarchical clustering",
+            "entity_id": "pca_and_hierarchical_clustering",
+            "entity_type": "method",
+            "aliases": [
+              "PCA and hierarchical clustering"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "demonstrated",
+                "target": "high consistency between transcriptome changes and 3D genome structural changes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 486,
+          "word_count": 486,
+          "sha256": "326fda6f3c16ddab2e7f62d0b140ad3eaeebc8c071a4d9006aa2868164f34a9c",
+          "sentence_minhash": [
+            138742571471211904,
+            1306423125707224,
+            49420926592012815,
+            67549790073656581,
+            28706538147403678,
+            43416815952622393,
+            32191050761192144,
+            81285259065511028,
+            147249605775419937,
+            76931577636070685,
+            120833680685463289,
+            7971078333856139,
+            11610845633202285,
+            6668399353053118,
+            98254322503569589,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'disease' for 'T-lineage acute lymphoblastic leukemia (T-ALL)'",
+          "normalized unsupported entity type 'biological_phenomenon' for '3D genome alterations'",
+          "normalized unsupported entity type 'gene_group' for 'upregulated DEGs'",
+          "normalized unsupported entity type 'gene_group' for 'downregulated DEGs'",
+          "normalized unsupported entity type 'gene' for 'CDK6'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study identifies specific transcription factors and oncogenes whose expression correlates with multi-level 3D genome structural alterations in T-ALL. It distinguishes ETP and non-ETP T-ALL subtypes based on their position in the T-cell differentiation trajectory and associated chromatin loop changes. The analysis links specific chromatin structure changes to the upregulation of key genes in both ETP and non-ETP subtypes.",
+        "entities": [
+          {
+            "name": "MYB, MYCN, BCL11A, SOX4, WT1",
+            "entity_id": "myb_mycn_bcl11a_sox4_wt1",
+            "entity_type": "other",
+            "aliases": [
+              "MYB, MYCN, BCL11A, SOX4, WT1"
+            ],
+            "attributes": {
+              "role": "upregulated oncogenic driver genes and T-ALL-associated transcription factors",
+              "structural_feature": "increased D-scores",
+              "model_entity_type": "gene_group"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SOX4, WT1, TFDP2",
+            "entity_id": "sox4_wt1_tfdp2",
+            "entity_type": "other",
+            "aliases": [
+              "SOX4, WT1, TFDP2"
+            ],
+            "attributes": {
+              "structural_feature": "structural alterations at all 3 levels (compartment, TAD, loop)",
+              "model_entity_type": "gene_group"
+            },
+            "relationships": [
+              {
+                "predicate": "predicted_to_regulate",
+                "target": "approximately 28% of upregulated genes in T-ALL",
+                "attributes": {
+                  "method": "RcisTarget"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "3D genome alterations",
+            "entity_id": "3d_genome_alterations",
+            "entity_type": "other",
+            "aliases": [
+              "3D genome alterations"
+            ],
+            "attributes": {
+              "association_with_upregulated_genes": "approximately 45% of upregulated genes in T-ALL",
+              "model_entity_type": "biological_phenomenon"
+            },
+            "relationships": [
+              {
+                "predicate": "directly_related_to",
+                "target": "56% of the associated upregulated genes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "indirectly_related_to_via",
+                "target": "structure alteration-mediated dysregulated transcription factors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ETP ALL",
+            "entity_id": "etp_all",
+            "entity_type": "other",
+            "aliases": [
+              "ETP ALL",
+              "ETP ALL samples"
+            ],
+            "attributes": {
+              "definition": "subclass of T-ALL stalled at the early T progenitor stage",
+              "developmental_stage": "arrested at immature stage (LMPP to Thy1)",
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "separated_from",
+                "target": "non-ETP ALL samples",
+                "attributes": {
+                  "method": "3D genome landscape analyses"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "characterized_by",
+                "target": "1820 enhanced and 831 reduced loops",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "upregulated_genes_with_chromatin_changes",
+                "target": "approximately 20%",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_key_genes",
+                "target": "CEBPA, MYCN, LYL1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enriched_in_pathways",
+                "target": "immune response-activating signal transduction, myeloid cell differentiation, regulation of B cell activation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "non-ETP ALL",
+            "entity_id": "non_etp_all",
+            "entity_type": "other",
+            "aliases": [
+              "non-ETP ALL"
+            ],
+            "attributes": {
+              "definition": "T-ALL blocked at later T cell differentiation stages",
+              "developmental_stage": "arrested at Thy2 to Thy4 stages",
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "upregulated_genes_with_chromatin_changes",
+                "target": "approximately 16%",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_key_genes",
+                "target": "LEF1, TCF12, PAX9",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enriched_in_pathways",
+                "target": "positive regulation of RNA metabolism, transcription, TCR V(D)J recombination",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "T-ALL samples",
+            "entity_id": "t_all_samples",
+            "entity_type": "other",
+            "aliases": [
+              "T-ALL samples"
+            ],
+            "attributes": {
+              "analysis_method": "projected onto T cell developmental trajectory defined by RNA-seq",
+              "model_entity_type": "sample_group"
+            },
+            "relationships": [
+              {
+                "predicate": "correlation_between_expression_and_structure",
+                "target": "Pearson's correlation coefficient 0.685",
+                "attributes": {
+                  "variables": "gene expression changes vs combined p-value of loop strength and D-score changes"
+                },
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 486,
+          "end_word": 980,
+          "word_count": 494,
+          "sha256": "58416c951f1f9448ee723c2a5d4043c0f0aff17779bc767df95ef30f81664853",
+          "sentence_minhash": [
+            2569438931676636,
+            1306423125707224,
+            116681582146512018,
+            183193489511888197,
+            5648917133444430,
+            62667647458868521,
+            32191050761192144,
+            41678443202000680,
+            21048361337280478,
+            125405038396827081,
+            78280491562202942,
+            102193620383965101,
+            51125582506972287,
+            906306679132868,
+            98254322503569589,
+            115136668860880424
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene_group' for 'MYB, MYCN, BCL11A, SOX4, WT1'",
+          "normalized unsupported entity type 'gene_group' for 'SOX4, WT1, TFDP2'",
+          "normalized unsupported entity type 'biological_phenomenon' for '3D genome alterations'",
+          "normalized unsupported entity type 'disease_subtype' for 'ETP ALL'",
+          "normalized unsupported entity type 'disease_subtype' for 'non-ETP ALL'",
+          "normalized unsupported entity type 'sample_group' for 'T-ALL samples'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study identifies 46 chromosomal translocations in T-ALL samples, 34 of which are novel, leading to the formation of 44 new translocation-mediated loops. These loops often anchor at pre-existing loop anchors and CTCF binding sites, with 78% linked to convergently oriented CTCF motifs, suggesting a loop extrusion mechanism. Translocations activate T-ALL-associated transcription factors via cis-acting enhancer hijacking or trans-acting gene fusions.",
+        "entities": [
+          {
+            "name": "T-ALL samples",
+            "entity_id": "t_all_samples",
+            "entity_type": "other",
+            "aliases": [
+              "T-ALL samples"
+            ],
+            "attributes": {
+              "count": "18",
+              "subset_with_translocations": "14",
+              "model_entity_type": "sample_group"
+            },
+            "relationships": [
+              {
+                "predicate": "contained",
+                "target": "46 translocations",
+                "attributes": {},
+                "target_id": "46_translocations"
+              }
+            ]
+          },
+          {
+            "name": "46 translocations",
+            "entity_id": "46_translocations",
+            "entity_type": "other",
+            "aliases": [
+              "46 translocations"
+            ],
+            "attributes": {
+              "novel_events": "34",
+              "interchromosomal_events": "26",
+              "model_entity_type": "genomic_event"
+            },
+            "relationships": [
+              {
+                "predicate": "identified_in",
+                "target": "14/18 T-ALL samples",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "influenced_expression_of",
+                "target": "nearest genes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resulted_in",
+                "target": "44 new loops",
+                "attributes": {},
+                "target_id": "44_new_loops"
+              }
+            ]
+          },
+          {
+            "name": "78 unique breakpoints",
+            "entity_id": "78_unique_breakpoints",
+            "entity_type": "other",
+            "aliases": [
+              "78 unique breakpoints"
+            ],
+            "attributes": {
+              "noncoding_region_percentage": "47%",
+              "stable_A_compartment_percentage": "66%",
+              "model_entity_type": "genomic_feature"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "46 translocations",
+                "attributes": {},
+                "target_id": "46_translocations"
+              }
+            ]
+          },
+          {
+            "name": "44 new loops",
+            "entity_id": "44_new_loops",
+            "entity_type": "other",
+            "aliases": [
+              "44 new loops"
+            ],
+            "attributes": {
+              "name": "translocation-mediated loops",
+              "model_entity_type": "genomic_structure"
+            },
+            "relationships": [
+              {
+                "predicate": "formed_between",
+                "target": "translocated chromosomes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "anchored_at",
+                "target": "pre-existing loop anchors",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "anchored_at",
+                "target": "CTCF binding sites",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "translocation-mediated loops with CTCF motifs",
+            "entity_id": "translocation_mediated_loops_with_ctcf_motifs",
+            "entity_type": "other",
+            "aliases": [
+              "translocation-mediated loops with CTCF motifs"
+            ],
+            "attributes": {
+              "percentage_linked_to_convergent_motifs": "78%",
+              "model_entity_type": "genomic_structure"
+            },
+            "relationships": [
+              {
+                "predicate": "linked_to",
+                "target": "pairs of convergently orientated CTCF motifs",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "mediated_by",
+                "target": "loop extrusion mechanism",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MEF2C locus",
+            "entity_id": "mef2c_locus",
+            "entity_type": "other",
+            "aliases": [
+              "MEF2C locus"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_region"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibited_subtype_specific_loops_in",
+                "target": "ETP ALL",
+                "attributes": {},
+                "target_id": "etp_all"
+              },
+              {
+                "predicate": "associated_with_marks_in",
+                "target": "H3K27ac and CTCF in KE37 cell line",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PAX9 locus",
+            "entity_id": "pax9_locus",
+            "entity_type": "other",
+            "aliases": [
+              "PAX9 locus"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_region"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibited_subtype_specific_loops_in",
+                "target": "non-ETP ALL",
+                "attributes": {},
+                "target_id": "non_etp_all"
+              },
+              {
+                "predicate": "associated_with_marks_in",
+                "target": "H3K27ac and CTCF in Jurkat cell line",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "KE37 cell line",
+            "entity_id": "ke37_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "KE37 cell line"
+            ],
+            "attributes": {
+              "subtype_association": "ETP",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_analysis_of",
+                "target": "MEF2C locus",
+                "attributes": {},
+                "target_id": "mef2c_locus"
+              }
+            ]
+          },
+          {
+            "name": "Jurkat cell line",
+            "entity_id": "jurkat_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "Jurkat cell line"
+            ],
+            "attributes": {
+              "subtype_association": "non-ETP",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_analysis_of",
+                "target": "PAX9 locus",
+                "attributes": {},
+                "target_id": "pax9_locus"
+              }
+            ]
+          },
+          {
+            "name": "Sample 093",
+            "entity_id": "sample_093",
+            "entity_type": "other",
+            "aliases": [
+              "Sample 093"
+            ],
+            "attributes": {
+              "classification": "between ETP and non-ETP ALL",
+              "feature": "significant TCR rearrangement",
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "fell_between",
+                "target": "ETP and non-ETP ALL",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ETP ALL",
+            "entity_id": "etp_all",
+            "entity_type": "other",
+            "aliases": [
+              "ETP ALL",
+              "ETP ALL samples"
+            ],
+            "attributes": {
+              "expression_deficit": "lack of RAG1 and PTCRA expression",
+              "model_entity_type": "sample_group"
+            },
+            "relationships": [
+              {
+                "predicate": "deficient_in",
+                "target": "TCR V(D)J rearrangements",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "cis mechanism",
+            "entity_id": "cis_mechanism",
+            "entity_type": "other",
+            "aliases": [
+              "cis mechanism"
+            ],
+            "attributes": {
+              "description": "translocation-mediated enhancer hijacking",
+              "model_entity_type": "mechanism"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_in_subtypes",
+                "target": "ETP, TLX, and TAL subtypes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_events",
+                "target": "BCL11B-TLX3, TRB-TAL2, and 3 novel HOXA translocations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "TLX3",
+            "entity_id": "tlx3",
+            "entity_type": "other",
+            "aliases": [
+              "TLX3"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "hijacked_enhancers_from",
+                "target": "BCL11B gene",
+                "attributes": {},
+                "target_id": "bcl11b_gene"
+              },
+              {
+                "predicate": "mediated_by",
+                "target": "translocation-mediated loops",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BCL11B gene",
+            "entity_id": "bcl11b_gene",
+            "entity_type": "other",
+            "aliases": [
+              "BCL11B gene"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of_hijacked_enhancers_for",
+                "target": "TLX3",
+                "attributes": {},
+                "target_id": "tlx3"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 980,
+          "end_word": 1445,
+          "word_count": 465,
+          "sha256": "d48d65d9d91684aafaf04910578cba53ca4f7ebcc82d7c01aae10d910a14bcff",
+          "sentence_minhash": [
+            104797431147398203,
+            18551641988871988,
+            159734705172240461,
+            77264434391689208,
+            5648917133444430,
+            22549691319542739,
+            32191050761192144,
+            41678443202000680,
+            73319139196083834,
+            76931577636070685,
+            62068282750971770,
+            102193620383965101,
+            51125582506972287,
+            208073455092581338,
+            147203975922553418,
+            383013638033865754
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'sample_group' for 'T-ALL samples'",
+          "normalized unsupported entity type 'genomic_event' for '46 translocations'",
+          "normalized unsupported entity type 'genomic_feature' for '78 unique breakpoints'",
+          "normalized unsupported entity type 'genomic_structure' for '44 new loops'",
+          "normalized unsupported entity type 'genomic_structure' for 'translocation-mediated loops with CTCF motifs'",
+          "normalized unsupported entity type 'genomic_region' for 'MEF2C locus'",
+          "normalized unsupported entity type 'genomic_region' for 'PAX9 locus'",
+          "normalized unsupported entity type 'cell_line' for 'KE37 cell line'",
+          "normalized unsupported entity type 'cell_line' for 'Jurkat cell line'",
+          "normalized unsupported entity type 'sample' for 'Sample 093'",
+          "normalized unsupported entity type 'sample_group' for 'ETP ALL samples'",
+          "normalized unsupported entity type 'mechanism' for 'cis mechanism'",
+          "normalized unsupported entity type 'gene' for 'TLX3'",
+          "normalized unsupported entity type 'gene' for 'BCL11B gene'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "Translocation-mediated mechanisms, including enhancer hijacking and gene fusions, drive ectopic expression of T-ALL-associated transcription factors and block normal T cell differentiation. The HOXA cluster, comprising 11 genes, is partitioned into two topologically associated domains (TADs) with variable boundaries that correlate with distinct expression subgroups. Ectopic expression of specific HOXA genes (HOXA11-A13) is associated with immature phenotypes and poor clinical outcomes.",
+        "entities": [
+          {
+            "name": "BCL11B",
+            "entity_id": "bcl11b",
+            "entity_type": "other",
+            "aliases": [
+              "BCL11B"
+            ],
+            "attributes": {
+              "normal_expression_context": "T cell development",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of_hijacked_enhancers",
+                "target": "T-ALL-associated transcription factors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "TRB",
+            "entity_id": "trb",
+            "entity_type": "other",
+            "aliases": [
+              "TRB"
+            ],
+            "attributes": {
+              "normal_expression_context": "T cell development",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "source_of_hijacked_enhancers",
+                "target": "T-ALL-associated transcription factors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PSIP1-NUP98",
+            "entity_id": "psip1_nup98",
+            "entity_type": "other",
+            "aliases": [
+              "PSIP1-NUP98"
+            ],
+            "attributes": {
+              "model_entity_type": "gene_fusion"
+            },
+            "relationships": [
+              {
+                "predicate": "mechanism_type",
+                "target": "trans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "activates",
+                "target": "HOXA cluster gene expressions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SET-NUP214",
+            "entity_id": "set_nup214",
+            "entity_type": "other",
+            "aliases": [
+              "SET-NUP214"
+            ],
+            "attributes": {
+              "model_entity_type": "gene_fusion"
+            },
+            "relationships": [
+              {
+                "predicate": "mechanism_type",
+                "target": "trans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "activates",
+                "target": "HOXA cluster gene expressions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MLL (KMT2A-MLLT1, PICALM-MLLT10, and DDX3X-MLLT10)",
+            "entity_id": "mll_kmt2a_mllt1_picalm_mllt10_and_ddx3x_mllt10",
+            "entity_type": "other",
+            "aliases": [
+              "MLL (KMT2A-MLLT1, PICALM-MLLT10, and DDX3X-MLLT10)"
+            ],
+            "attributes": {
+              "model_entity_type": "gene_fusion"
+            },
+            "relationships": [
+              {
+                "predicate": "mechanism_type",
+                "target": "trans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "activates",
+                "target": "HOXA cluster gene expressions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA cluster",
+            "entity_id": "hoxa_cluster",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA cluster"
+            ],
+            "attributes": {
+              "gene_count": 11,
+              "status_in_T-ALL": "common feature",
+              "normal_T_cell_status": "transcriptionally repressed",
+              "model_entity_type": "gene_cluster"
+            },
+            "relationships": [
+              {
+                "predicate": "activated_by",
+                "target": "fusion proteins",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "recruits",
+                "target": "histone methyltransferase DOT1L",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "partitioned_into",
+                "target": "2 TADs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA-positive T-ALLs",
+            "entity_id": "hoxa_positive_t_alls",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA-positive T-ALLs",
+              "HOXA11-A13 positive T-ALL cases"
+            ],
+            "attributes": {
+              "clinical_heterogeneity": "heterogeneous entities",
+              "model_entity_type": "disease_subgroup"
+            },
+            "relationships": [
+              {
+                "predicate": "separated_into",
+                "target": "3'HOXA+ and 5'HOXA+ subgroups",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "double negative (DN) and ETP phenotypes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "5'HOXA subgroup",
+            "entity_id": "5_hoxa_subgroup",
+            "entity_type": "other",
+            "aliases": [
+              "5'HOXA subgroup",
+              "5'HOXA+ subgroup"
+            ],
+            "attributes": {
+              "characteristic_expression": "ectopic HOXA11-A13 expressions",
+              "model_entity_type": "disease_subgroup"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "double negative (DN) and ETP phenotypes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CTCF binding site C11/13",
+            "entity_id": "ctcf_binding_site_c11_13",
+            "entity_type": "other",
+            "aliases": [
+              "CTCF binding site C11/13"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "defines_boundary_of",
+                "target": "5' TAD",
+                "attributes": {
+                  "position": "3' boundary"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CTCF binding site C7/9",
+            "entity_id": "ctcf_binding_site_c7_9",
+            "entity_type": "other",
+            "aliases": [
+              "CTCF binding site C7/9"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "defines_boundary_of",
+                "target": "3' TAD",
+                "attributes": {
+                  "position": "5' boundary"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "used_by",
+                "target": "most HOXA- (6/8) and all 5'HOXA+ (2/2) samples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CTCF binding site C10/11",
+            "entity_id": "ctcf_binding_site_c10_11",
+            "entity_type": "other",
+            "aliases": [
+              "CTCF binding site C10/11"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "defines_boundary_of",
+                "target": "3' TAD",
+                "attributes": {
+                  "position": "5' boundary"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "used_by",
+                "target": "most 3'HOXA+ samples (4/5)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Enhancer regions E1 to E12",
+            "entity_id": "enhancer_regions_e1_to_e12",
+            "entity_type": "other",
+            "aliases": [
+              "Enhancer regions E1 to E12"
+            ],
+            "attributes": {
+              "count_per_TAD": 6,
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "interacts_with",
+                "target": "HOXA cluster",
+                "attributes": {},
+                "target_id": "hoxa_cluster"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1445,
+          "end_word": 1938,
+          "word_count": 493,
+          "sha256": "aa89220bf298d427737c344a9e71ba8c7aaa17bc03cd22d2ef57713c39030aca",
+          "sentence_minhash": [
+            181534865310160414,
+            1306423125707224,
+            140583634530242717,
+            61919449716151556,
+            88029278269144780,
+            11771300462798300,
+            32191050761192144,
+            41678443202000680,
+            44267818943274101,
+            67286569826781287,
+            19416574622547768,
+            49775578613387123,
+            51125582506972287,
+            76124688776994974,
+            29116561381011342,
+            108765626618942942
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'BCL11B'",
+          "normalized unsupported entity type 'gene' for 'TRB'",
+          "normalized unsupported entity type 'gene_fusion' for 'PSIP1-NUP98'",
+          "normalized unsupported entity type 'gene_fusion' for 'SET-NUP214'",
+          "normalized unsupported entity type 'gene_fusion' for 'MLL (KMT2A-MLLT1, PICALM-MLLT10, and DDX3X-MLLT10)'",
+          "normalized unsupported entity type 'gene_cluster' for 'HOXA cluster'",
+          "normalized unsupported entity type 'disease_subgroup' for 'HOXA-positive T-ALLs'",
+          "normalized unsupported entity type 'disease_subgroup' for \"5'HOXA+ subgroup\"",
+          "normalized unsupported entity type 'genomic_element' for 'CTCF binding site C11/13'",
+          "normalized unsupported entity type 'genomic_element' for 'CTCF binding site C7/9'",
+          "normalized unsupported entity type 'genomic_element' for 'CTCF binding site C10/11'",
+          "normalized unsupported entity type 'genomic_element' for 'Enhancer regions E1 to E12'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study identifies specific 3D genome interaction changes and translocation-mediated enhancer hijacking mechanisms that drive ectopic HOXA gene expression in T-ALL subtypes. These structural alterations correlate with specific histone marks and fusion events, leading to distinct expression patterns for the 5' and 3' HOXA subgroups. Ectopic expression of HOXA11 or HOXA13 is associated with poor clinical outcomes in pediatric and young adult T-ALL patients.",
+        "entities": [
+          {
+            "name": "3'HOXA subgroup",
+            "entity_id": "3_hoxa_subgroup",
+            "entity_type": "concept",
+            "aliases": [
+              "3'HOXA subgroup"
+            ],
+            "attributes": {
+              "interaction_profile": "Significantly enhanced interactions between enhancers E2-E6 and HOXA genes"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with_fusions",
+                "target": "KMT2A-MLLT1, PICALM-MLLT10, DDX3X-MLLT10, SET-NUP214",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "controls_expression_of",
+                "target": "HOXA1-A10",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "5'HOXA subgroup",
+            "entity_id": "5_hoxa_subgroup",
+            "entity_type": "other",
+            "aliases": [
+              "5'HOXA subgroup",
+              "5'HOXA+ subgroup"
+            ],
+            "attributes": {
+              "interaction_profile": "Significantly enhanced interactions between enhancers E8, E9, E11, E12 and HOXA genes"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with_fusion",
+                "target": "PSIP1-NUP98",
+                "attributes": {},
+                "target_id": "psip1_nup98"
+              },
+              {
+                "predicate": "characterized_by_phenotypes",
+                "target": "Double negative (DN) and ETP phenotypes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA cluster",
+            "entity_id": "hoxa_cluster",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA cluster"
+            ],
+            "attributes": {
+              "structure": "Partitioned into 5' and 3' TADs by CTCF binding site C11/13",
+              "model_entity_type": "gene_cluster"
+            },
+            "relationships": [
+              {
+                "predicate": "regulated_by",
+                "target": "3D genome alterations",
+                "attributes": {},
+                "target_id": "3d_genome_alterations"
+              },
+              {
+                "predicate": "contains_genes",
+                "target": "HOXA1-A13",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA11",
+            "entity_id": "hoxa11",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA11"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "positivity_associated_with",
+                "target": "Poor overall and event-free survival",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA13",
+            "entity_id": "hoxa13",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA13"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "positivity_associated_with",
+                "target": "Poor overall and event-free survival",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "ectopically_expressed_in",
+                "target": "Case 076",
+                "attributes": {},
+                "target_id": "case_076"
+              }
+            ]
+          },
+          {
+            "name": "HOXA9",
+            "entity_id": "hoxa9",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA9"
+            ],
+            "attributes": {
+              "clinical_status": "Previously used biomarker",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "positivity_not_associated_with",
+                "target": "Poor overall and event-free survival",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Case 076",
+            "entity_id": "case_076",
+            "entity_type": "other",
+            "aliases": [
+              "Case 076"
+            ],
+            "attributes": {
+              "translocation_partner": "BCL11B gene on chromosome 14",
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibits_ectopic_expression_of",
+                "target": "HOXA13",
+                "attributes": {},
+                "target_id": "hoxa13"
+              },
+              {
+                "predicate": "mediated_by",
+                "target": "New loop formation between 5' HOXA cluster and BCL11B enhancers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Case 077",
+            "entity_id": "case_077",
+            "entity_type": "other",
+            "aliases": [
+              "Case 077"
+            ],
+            "attributes": {
+              "translocation_partner": "ERG gene on chromosome 21",
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibits_ectopic_expression_of",
+                "target": "HOXA9-A13",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "mediated_by",
+                "target": "New loop formation between 5' HOXA cluster and ERG enhancers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Case 108",
+            "entity_id": "case_108",
+            "entity_type": "other",
+            "aliases": [
+              "Case 108"
+            ],
+            "attributes": {
+              "genomic_event": "Inter-TAD inversion",
+              "translocation_partner": "CDK6 gene on chromosome 7",
+              "model_entity_type": "sample"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibits_ectopic_expression_of",
+                "target": "HOXA11-A13",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "mediated_by",
+                "target": "Adoption of active CDK6 enhancers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "H3K27ac",
+            "entity_id": "h3k27ac",
+            "entity_type": "other",
+            "aliases": [
+              "H3K27ac"
+            ],
+            "attributes": {
+              "model_entity_type": "histone_mark"
+            },
+            "relationships": [
+              {
+                "predicate": "correlated_with",
+                "target": "Increased interactions in HOXA+ Loucy cell line",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CTCF binding site C11/13",
+            "entity_id": "ctcf_binding_site_c11_13",
+            "entity_type": "other",
+            "aliases": [
+              "CTCF binding site C11/13"
+            ],
+            "attributes": {
+              "location": "3' boundary of 5' TAD",
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "insulates",
+                "target": "3' TAD genes from hijacked enhancers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1938,
+          "end_word": 2421,
+          "word_count": 483,
+          "sha256": "81ff99daca63c54181eb19ff5e88db7b6202b10507953d2a014a9003c896c54f",
+          "sentence_minhash": [
+            238135178774097567,
+            1306423125707224,
+            140583634530242717,
+            67549790073656581,
+            88029278269144780,
+            153053084761151407,
+            32191050761192144,
+            81285259065511028,
+            44267818943274101,
+            92715222163426349,
+            19416574622547768,
+            102193620383965101,
+            35608547618306158,
+            71556809160361494,
+            74367681820830270,
+            108765626618942942
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene_cluster' for 'HOXA cluster'",
+          "normalized unsupported entity type 'gene' for 'HOXA11'",
+          "normalized unsupported entity type 'gene' for 'HOXA13'",
+          "normalized unsupported entity type 'gene' for 'HOXA9'",
+          "normalized unsupported entity type 'sample' for 'Case 076'",
+          "normalized unsupported entity type 'sample' for 'Case 077'",
+          "normalized unsupported entity type 'sample' for 'Case 108'",
+          "normalized unsupported entity type 'histone_mark' for 'H3K27ac'",
+          "normalized unsupported entity type 'genomic_element' for 'CTCF binding site C11/13'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "T-ALL subtypes defined by TAL1/2, TLX, and HOXA11-A13 expression show distinct survival outcomes and phenotypic characteristics. HOXA13 positivity serves as an independent predictor for poor overall survival in pediatric and young adult patients. The study suggests that 3D genome alterations and enhancer hijacking drive ectopic transcription factor activation, potentially making anti-JAK-STAT inhibitors beneficial for HOXA11-A13 positive cases.",
+        "entities": [
+          {
+            "name": "T-ALLs with TAL1/2 positivity",
+            "entity_id": "t_alls_with_tal1_2_positivity",
+            "entity_type": "other",
+            "aliases": [
+              "T-ALLs with TAL1/2 positivity"
+            ],
+            "attributes": {
+              "mutual_exclusivity": "mutually exclusive from HOXA positivity",
+              "survival_outcome": "associated with better overall survival",
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "better overall survival",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "T-ALLs with TLX positivity",
+            "entity_id": "t_alls_with_tlx_positivity",
+            "entity_type": "other",
+            "aliases": [
+              "T-ALLs with TLX positivity"
+            ],
+            "attributes": {
+              "survival_outcome": "no association with outcome",
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "no outcome association",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA-positive T-ALLs",
+            "entity_id": "hoxa_positive_t_alls",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA-positive T-ALLs",
+              "HOXA11-A13 positive T-ALL cases"
+            ],
+            "attributes": {
+              "phenotypes": "DN and ETP phenotypes",
+              "mutation_rate": "higher rate of JAK-STAT pathway gene mutations",
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "characterized_by",
+                "target": "DN and ETP phenotypes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "characterized_by",
+                "target": "higher rate of JAK-STAT pathway gene mutations",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor survival",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA13 positive status",
+            "entity_id": "hoxa13_positive_status",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA13 positive status"
+            ],
+            "attributes": {
+              "predictive_value": "independent predictor for overall survival",
+              "model_entity_type": "biomarker"
+            },
+            "relationships": [
+              {
+                "predicate": "predicts",
+                "target": "overall survival of pediatric and young adult T-ALLs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "3D genome alterations",
+            "entity_id": "3d_genome_alterations",
+            "entity_type": "other",
+            "aliases": [
+              "3D genome alterations"
+            ],
+            "attributes": {
+              "role": "critical roles in rewiring T-ALL transcriptome and regulating T-ALL development",
+              "model_entity_type": "biological_mechanism"
+            },
+            "relationships": [
+              {
+                "predicate": "contributes_to",
+                "target": "ectopic activation of T-ALL-associated transcription factors",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contributes_to",
+                "target": "blocking differentiation at certain T cell developmental stages",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "anti-JAK-STAT inhibitors",
+            "entity_id": "anti_jak_stat_inhibitors",
+            "entity_type": "other",
+            "aliases": [
+              "anti-JAK-STAT inhibitors"
+            ],
+            "attributes": {
+              "proposed_benefit": "may benefit patients with ectopic HOXA11-A13 expression",
+              "model_entity_type": "therapeutic_agent"
+            },
+            "relationships": [
+              {
+                "predicate": "proposed_for",
+                "target": "T-ALL patients with ectopic HOXA11-A13 expression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Peking University Institute of Hematology",
+            "entity_id": "peking_university_institute_of_hematology",
+            "entity_type": "organization",
+            "aliases": [
+              "Peking University Institute of Hematology"
+            ],
+            "attributes": {
+              "role": "ethics committee approval source for patient samples"
+            },
+            "relationships": [
+              {
+                "predicate": "approved_protocol_for",
+                "target": "collection of 18 T-ALL patient samples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RNA-seq library preparation protocol",
+            "entity_id": "rna_seq_library_preparation_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "RNA-seq library preparation protocol"
+            ],
+            "attributes": {
+              "kit": "TruSeq RNA Library Prep Kit v2 (Illumina)",
+              "sequencing_depth": "average 15 million read pairs",
+              "alignment_tool": "TopHat (v2.1.0)",
+              "alignment_reference": "hg19 genome",
+              "quantification_tool": "HTSeq",
+              "normalization": "FPKM",
+              "differential_expression_tool": "DESeq2",
+              "differential_expression_criteria": "FDR <0.01 and fold change >2",
+              "exclusion_criteria": "fewer than 5 reads in 20% of samples or mean reads fewer than 2"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "18 T-ALL patients and 4 healthy controls",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2421,
+          "end_word": 2908,
+          "word_count": 487,
+          "sha256": "1148f1cfaa8a170522d7f95cce873186582bc0f4dcade9c3f3bb778d0ab53526",
+          "sentence_minhash": [
+            61090552778035507,
+            1306423125707224,
+            110182565901905120,
+            6030917650204451,
+            43671268334127607,
+            39127440086368283,
+            164480005983286773,
+            40361113771795953,
+            4085150034314218,
+            41183111660975745,
+            78280491562202942,
+            36846817210282085,
+            49673477193682617,
+            29468904533832949,
+            73860429008392155,
+            39494469675869371
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'disease_subtype' for 'T-ALLs with TAL1/2 positivity'",
+          "normalized unsupported entity type 'disease_subtype' for 'T-ALLs with TLX positivity'",
+          "normalized unsupported entity type 'disease_subtype' for 'HOXA11-A13 positive T-ALL cases'",
+          "normalized unsupported entity type 'biomarker' for 'HOXA13 positive status'",
+          "normalized unsupported entity type 'biological_mechanism' for '3D genome alterations'",
+          "normalized unsupported entity type 'therapeutic_agent' for 'anti-JAK-STAT inhibitors'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text details the bioinformatics pipelines for processing ChIP-seq, ATAC-seq, and Hi-C data, including specific software tools and parameters used for mapping, peak calling, and structural analysis. It defines the criteria for identifying differential TADs, domain scores, and loops, as well as the method for detecting translocations and translocation-mediated loops in T-ALL samples.",
+        "entities": [
+          {
+            "name": "bedGraphToBigWig",
+            "entity_id": "bedgraphtobigwig",
+            "entity_type": "method",
+            "aliases": [
+              "bedGraphToBigWig"
+            ],
+            "attributes": {
+              "source": "UCSC Genome Browser utility",
+              "parameters": "default"
+            },
+            "relationships": [
+              {
+                "predicate": "generates",
+                "target": "bigwig files",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Bowtie2",
+            "entity_id": "bowtie2",
+            "entity_type": "method",
+            "aliases": [
+              "Bowtie2"
+            ],
+            "attributes": {
+              "version": "v2.3.5"
+            },
+            "relationships": [
+              {
+                "predicate": "maps",
+                "target": "ChIP-seq reads to hg19 genome",
+                "attributes": {
+                  "parameters": "default"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "maps",
+                "target": "ATAC-seq reads",
+                "attributes": {
+                  "parameters": "-X 2000 --no-mixed --no-discordant --no-unal"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SAMtools",
+            "entity_id": "samtools",
+            "entity_type": "method",
+            "aliases": [
+              "SAMtools"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "removes",
+                "target": "duplicates",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MACS2",
+            "entity_id": "macs2",
+            "entity_type": "method",
+            "aliases": [
+              "MACS2"
+            ],
+            "attributes": {
+              "option": "-SPMR"
+            },
+            "relationships": [
+              {
+                "predicate": "generates",
+                "target": "signal tracks and peaks",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "FIMO",
+            "entity_id": "fimo",
+            "entity_type": "method",
+            "aliases": [
+              "FIMO"
+            ],
+            "attributes": {
+              "parameters": "default"
+            },
+            "relationships": [
+              {
+                "predicate": "detects",
+                "target": "20 bp CTCF motif",
+                "attributes": {
+                  "source_database": "Homer motif database",
+                  "target_samples": "Loucy and Jurkat CTCF peaks"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BL-Hi-C protocol",
+            "entity_id": "bl_hi_c_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "BL-Hi-C protocol"
+            ],
+            "attributes": {
+              "cell_count": "one million cells/sample"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "Hi-C performance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HiCpipe",
+            "entity_id": "hicpipe",
+            "entity_type": "method",
+            "aliases": [
+              "HiCpipe"
+            ],
+            "attributes": {
+              "type": "in-house framework"
+            },
+            "relationships": [
+              {
+                "predicate": "processes",
+                "target": "Raw BL-Hi-C reads",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ChIA-PET2",
+            "entity_id": "chia_pet2",
+            "entity_type": "method",
+            "aliases": [
+              "ChIA-PET2"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "trims",
+                "target": "bridge linkers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HiC-Pro",
+            "entity_id": "hic_pro",
+            "entity_type": "method",
+            "aliases": [
+              "HiC-Pro"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "aligns",
+                "target": "reads",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "filters",
+                "target": "artifact fragments",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "removes",
+                "target": "duplicates",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Juicer",
+            "entity_id": "juicer",
+            "entity_type": "method",
+            "aliases": [
+              "Juicer"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "generates",
+                "target": "Hi-C files",
+                "attributes": {
+                  "format": "contact matrices with multiple resolutions"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "calculates",
+                "target": "compartment",
+                "attributes": {
+                  "command": "eigenvector",
+                  "resolution": "100 kb",
+                  "normalization": "KR normalized"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "calls",
+                "target": "loops",
+                "attributes": {
+                  "tool": "HiCCUPS"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Knight-Ruiz normalization",
+            "entity_id": "knight_ruiz_normalization",
+            "entity_type": "method",
+            "aliases": [
+              "Knight-Ruiz normalization"
+            ],
+            "attributes": {
+              "abbreviation": "KR"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "compartment and TAD analyses",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Insulation score method",
+            "entity_id": "insulation_score_method",
+            "entity_type": "method",
+            "aliases": [
+              "Insulation score method"
+            ],
+            "attributes": {
+              "parameters": "-is 1000000 -ids 200000 -im mean -nt 0.1"
+            },
+            "relationships": [
+              {
+                "predicate": "calculates",
+                "target": "TAD boundaries",
+                "attributes": {
+                  "input": "pooled 40 kb Hi-C matrices of healthy T cell controls, ETP and non-ETP samples"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HiCDB",
+            "entity_id": "hicdb",
+            "entity_type": "method",
+            "aliases": [
+              "HiCDB"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "calculates",
+                "target": "relative insulation scores",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Differential TAD boundaries",
+            "entity_id": "differential_tad_boundaries",
+            "entity_type": "concept",
+            "aliases": [
+              "Differential TAD boundaries"
+            ],
+            "attributes": {
+              "statistical_criteria": "t-test FDR<0.01",
+              "magnitude_criteria": "difference between cases and controls higher than 50% quantile of the overall difference"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TAD definition criterion",
+            "entity_id": "tad_definition_criterion",
+            "entity_type": "concept",
+            "aliases": [
+              "TAD definition criterion"
+            ],
+            "attributes": {
+              "requirement": "boundaries detected in at least two conditions among normal T cells, ETPs and non-ETPs"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Domain score",
+            "entity_id": "domain_score",
+            "entity_type": "measurement",
+            "aliases": [
+              "Domain score"
+            ],
+            "attributes": {
+              "calculation": "intra-TAD interactions divided by all interactions connected to the corresponding TAD"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Differential domain scores",
+            "entity_id": "differential_domain_scores",
+            "entity_type": "concept",
+            "aliases": [
+              "Differential domain scores"
+            ],
+            "attributes": {
+              "statistical_criteria": "t-test FDR<0.01",
+              "magnitude_criteria": "fold change higher than 70% quantile of the overall fold change"
+            },
+            "relationships": []
+          },
+          {
+            "name": "HiCCUPS",
+            "entity_id": "hiccups",
+            "entity_type": "method",
+            "aliases": [
+              "HiCCUPS"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "calls",
+                "target": "loops",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Differential loop detection method",
+            "entity_id": "differential_loop_detection_method",
+            "entity_type": "method",
+            "aliases": [
+              "Differential loop detection method"
+            ],
+            "attributes": {
+              "source": "adapted from Douglas et al"
+            },
+            "relationships": [
+              {
+                "predicate": "splits_loops_into",
+                "target": "two distance ranges (> or < 150 kb)",
+                "attributes": {
+                  "purpose": "minimize potential bias"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "calls_differential_loops_with",
+                "target": "FDR < 0.1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2908,
+          "end_word": 3393,
+          "word_count": 485,
+          "sha256": "fd746eba5248ef8f24d132a51dce1d70c197628cae657ca69e37b993e5ad5d62",
+          "sentence_minhash": [
+            23542537797554860,
+            24905490170095690,
+            40863640610520970,
+            22634048409077814,
+            150293844444551874,
+            39127440086368283,
+            175774020269814206,
+            96292850158067112,
+            41398414370036992,
+            7649729463600173,
+            78930557331356281,
+            49775578613387123,
+            35608547618306158,
+            29468904533832949,
+            98254322503569589,
+            39494469675869371
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study employed specific bioinformatics tools and criteria to detect and annotate translocations and translocation-mediated loops in T-ALL samples. Quality assessment of loop detection was performed using Aggregate Peak Analysis (APA) plots at 5 kb resolution. Translocations were identified using hic_breakfinder, with breakpoints refined to single base-pair resolution using chimeric reads from BL-Hi-C data.",
+        "entities": [
+          {
+            "name": "Aggregate Peak Analysis (APA) plots",
+            "entity_id": "aggregate_peak_analysis_apa_plots",
+            "entity_type": "method",
+            "aliases": [
+              "Aggregate Peak Analysis (APA) plots"
+            ],
+            "attributes": {
+              "resolution": "5 kb",
+              "purpose": "assess loop detection quality and explore loop class characteristics",
+              "tool": "Juicer APA command"
+            },
+            "relationships": [
+              {
+                "predicate": "normalized_by",
+                "target": "loop number contributing to matrix generation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "GREAT",
+            "entity_id": "great",
+            "entity_type": "method",
+            "aliases": [
+              "GREAT"
+            ],
+            "attributes": {
+              "version": "v3.0.0",
+              "input": "loop anchors",
+              "gene_selection_criteria": "nearest gene within 100 kb",
+              "output": "enriched biological process"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "analysis of function of dynamic loops between non-ETP and ETP",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DAVID",
+            "entity_id": "david",
+            "entity_type": "method",
+            "aliases": [
+              "DAVID"
+            ],
+            "attributes": {
+              "version": "6.8",
+              "analysis_type": "KEGG pathway enrichment analysis"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "genes related to loops",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "hic_breakfinder",
+            "entity_id": "hic_breakfinder",
+            "entity_type": "method",
+            "aliases": [
+              "hic_breakfinder"
+            ],
+            "attributes": {
+              "purpose": "detect translocations"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "18 T-ALL patient samples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BL-Hi-C data",
+            "entity_id": "bl_hi_c_data",
+            "entity_type": "measurement",
+            "aliases": [
+              "BL-Hi-C data"
+            ],
+            "attributes": {
+              "average_depth": "486 million read pairs",
+              "read_length": "150 bp",
+              "processing_method": "treated as single ends to refine breakpoint locations"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "refining breakpoint locations to single base-pair resolution",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "chimeric reads",
+            "entity_id": "chimeric_reads",
+            "entity_type": "concept",
+            "aliases": [
+              "chimeric reads"
+            ],
+            "attributes": {
+              "definition": "single ends mapped to two different chromatins without BL-Hi-C bridge linker in between",
+              "resolution_overlap": "5~20 kb"
+            },
+            "relationships": [
+              {
+                "predicate": "support_breakpoint_identification",
+                "target": "more than 3 chimeric reads",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Juicebox",
+            "entity_id": "juicebox",
+            "entity_type": "method",
+            "aliases": [
+              "Juicebox"
+            ],
+            "attributes": {
+              "type": "interactive visualization software"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "manual recording of translocation-mediated loop locations on interchromosome Hi-C maps",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "novel translocation",
+            "entity_id": "novel_translocation",
+            "entity_type": "concept",
+            "aliases": [
+              "novel translocation"
+            ],
+            "attributes": {
+              "definition": "translocation where any breakpoint is not near any known breakpoint within a 100 kb distance"
+            },
+            "relationships": []
+          },
+          {
+            "name": "upregulated gene near breakpoint",
+            "entity_id": "upregulated_gene_near_breakpoint",
+            "entity_type": "concept",
+            "aliases": [
+              "upregulated gene near breakpoint"
+            ],
+            "attributes": {
+              "criteria": "FPKM >1 and 2-fold higher than control samples without nearby breakpoints"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3393,
+          "end_word": 3841,
+          "word_count": 448,
+          "sha256": "7e3390f1596ce25dda143fc221804388ab53cc1cf0c6f8229110b4dd10c9d0be",
+          "sentence_minhash": [
+            14279474218976588,
+            18551641988871988,
+            140583634530242717,
+            120245470768263603,
+            11075151625382191,
+            57869492297846635,
+            32191050761192144,
+            81285259065511028,
+            266927695903760850,
+            21383545105860156,
+            65459178845159307,
+            80191195132229757,
+            35608547618306158,
+            906306679132868,
+            98254322503569589,
+            39494469675869371
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 8,
+        "context_summary": "The text describes the generation of Hi-C heatmaps and Visual 4C plots using MATLAB code. It lists a series of gene names and symbols, some marked with asterisks, likely representing specific genetic features or translocations analyzed in the study.",
+        "entities": [
+          {
+            "name": "Hi-C heatmaps and Visual 4C plots",
+            "entity_id": "hi_c_heatmaps_and_visual_4c_plots",
+            "entity_type": "method",
+            "aliases": [
+              "Hi-C heatmaps and Visual 4C plots"
+            ],
+            "attributes": {
+              "generation_tool": "MATLAB code",
+              "data_source": "reassembled chromatin"
+            },
+            "relationships": []
+          },
+          {
+            "name": "MATLAB",
+            "entity_id": "matlab",
+            "entity_type": "other",
+            "aliases": [
+              "MATLAB"
+            ],
+            "attributes": {
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_generate",
+                "target": "Hi-C heatmaps and Visual 4C plots",
+                "attributes": {},
+                "target_id": "hi_c_heatmaps_and_visual_4c_plots"
+              }
+            ]
+          },
+          {
+            "name": "CEBPA",
+            "entity_id": "cebpa",
+            "entity_type": "other",
+            "aliases": [
+              "CEBPA"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "OPRM1",
+            "entity_id": "oprm1",
+            "entity_type": "other",
+            "aliases": [
+              "OPRM1"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ARID1B",
+            "entity_id": "arid1b",
+            "entity_type": "other",
+            "aliases": [
+              "ARID1B"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "WBS",
+            "entity_id": "wbs",
+            "entity_type": "other",
+            "aliases": [
+              "WBS"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "CR17",
+            "entity_id": "cr17",
+            "entity_type": "other",
+            "aliases": [
+              "CR17"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "CDK6",
+            "entity_id": "cdk6",
+            "entity_type": "other",
+            "aliases": [
+              "CDK6"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "RNF216",
+            "entity_id": "rnf216",
+            "entity_type": "other",
+            "aliases": [
+              "RNF216"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TRBNAPEPLD",
+            "entity_id": "trbnapepld",
+            "entity_type": "other",
+            "aliases": [
+              "TRBNAPEPLD"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "MYC",
+            "entity_id": "myc",
+            "entity_type": "other",
+            "aliases": [
+              "MYC"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "CSD3",
+            "entity_id": "csd3",
+            "entity_type": "other",
+            "aliases": [
+              "CSD3"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TAL2",
+            "entity_id": "tal2",
+            "entity_type": "other",
+            "aliases": [
+              "TAL2"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TME",
+            "entity_id": "tme",
+            "entity_type": "other",
+            "aliases": [
+              "TME"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "M38B",
+            "entity_id": "m38b",
+            "entity_type": "other",
+            "aliases": [
+              "M38B"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "NUP214",
+            "entity_id": "nup214",
+            "entity_type": "other",
+            "aliases": [
+              "NUP214"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SET",
+            "entity_id": "set",
+            "entity_type": "other",
+            "aliases": [
+              "SET"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "PSIP1",
+            "entity_id": "psip1",
+            "entity_type": "other",
+            "aliases": [
+              "PSIP1"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "MLLT10",
+            "entity_id": "mllt10",
+            "entity_type": "other",
+            "aliases": [
+              "MLLT10"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "KMT2A",
+            "entity_id": "kmt2a",
+            "entity_type": "other",
+            "aliases": [
+              "KMT2A"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "LMO2",
+            "entity_id": "lmo2",
+            "entity_type": "other",
+            "aliases": [
+              "LMO2"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "NUP98",
+            "entity_id": "nup98",
+            "entity_type": "other",
+            "aliases": [
+              "NUP98"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "PICALM",
+            "entity_id": "picalm",
+            "entity_type": "other",
+            "aliases": [
+              "PICALM"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SOX5",
+            "entity_id": "sox5",
+            "entity_type": "other",
+            "aliases": [
+              "SOX5"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "RERG",
+            "entity_id": "rerg",
+            "entity_type": "other",
+            "aliases": [
+              "RERG"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "L",
+            "entity_id": "l",
+            "entity_type": "other",
+            "aliases": [
+              "L"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "RBP5",
+            "entity_id": "rbp5",
+            "entity_type": "other",
+            "aliases": [
+              "RBP5"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "DNAJC15",
+            "entity_id": "dnajc15",
+            "entity_type": "other",
+            "aliases": [
+              "DNAJC15"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "FOXO1",
+            "entity_id": "foxo1",
+            "entity_type": "other",
+            "aliases": [
+              "FOXO1"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "PCDH9",
+            "entity_id": "pcdh9",
+            "entity_type": "other",
+            "aliases": [
+              "PCDH9"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TDRD3",
+            "entity_id": "tdrd3",
+            "entity_type": "other",
+            "aliases": [
+              "TDRD3"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TRABC L11",
+            "entity_id": "trabc_l11",
+            "entity_type": "other",
+            "aliases": [
+              "TRABC L11"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "B",
+            "entity_id": "b",
+            "entity_type": "other",
+            "aliases": [
+              "B"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "MLLT1",
+            "entity_id": "mllt1",
+            "entity_type": "other",
+            "aliases": [
+              "MLLT1"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TASP1",
+            "entity_id": "tasp1",
+            "entity_type": "other",
+            "aliases": [
+              "TASP1"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ZNF512",
+            "entity_id": "znf512",
+            "entity_type": "other",
+            "aliases": [
+              "ZNF512"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "BSCAF4",
+            "entity_id": "bscaf4",
+            "entity_type": "other",
+            "aliases": [
+              "BSCAF4"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ETS2",
+            "entity_id": "ets2",
+            "entity_type": "other",
+            "aliases": [
+              "ETS2"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TM",
+            "entity_id": "tm",
+            "entity_type": "other",
+            "aliases": [
+              "TM"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "PRSS15",
+            "entity_id": "prss15",
+            "entity_type": "other",
+            "aliases": [
+              "PRSS15"
+            ],
+            "attributes": {
+              "marker": "*",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "DDX3X",
+            "entity_id": "ddx3x",
+            "entity_type": "other",
+            "aliases": [
+              "DDX3X"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 8,
+          "start_word": 3841,
+          "end_word": 4270,
+          "word_count": 429,
+          "sha256": "a2e10f5dbc64789588de9c2096ba239a8fab7ad1d9c4fa080c6a0f05994b1e90",
+          "sentence_minhash": [
+            1186993754061830951,
+            232593725413697090,
+            569919683371513849,
+            438859505919439043,
+            631017190583079335,
+            112932377017044255,
+            110826424738066394,
+            157028257188204955,
+            163007827675967377,
+            25730676754066093,
+            87462937225006527,
+            171596837418463449,
+            664028302003966064,
+            127574737757746521,
+            303264414993015767,
+            120897973372319927
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'software' for 'MATLAB'",
+          "normalized unsupported entity type 'gene' for 'CEBPA'",
+          "normalized unsupported entity type 'gene' for 'OPRM1'",
+          "normalized unsupported entity type 'gene' for 'ARID1B'",
+          "normalized unsupported entity type 'gene' for 'WBS'",
+          "normalized unsupported entity type 'gene' for 'CR17'",
+          "normalized unsupported entity type 'gene' for 'CDK6'",
+          "normalized unsupported entity type 'gene' for 'RNF216'",
+          "normalized unsupported entity type 'gene' for 'TRBNAPEPLD'",
+          "normalized unsupported entity type 'gene' for 'MYC'",
+          "normalized unsupported entity type 'gene' for 'CSD3'",
+          "normalized unsupported entity type 'gene' for 'TAL2'",
+          "normalized unsupported entity type 'gene' for 'TME'",
+          "normalized unsupported entity type 'gene' for 'M38B'",
+          "normalized unsupported entity type 'gene' for 'NUP214'",
+          "normalized unsupported entity type 'gene' for 'SET'",
+          "normalized unsupported entity type 'gene' for 'PSIP1'",
+          "normalized unsupported entity type 'gene' for 'MLLT10'",
+          "normalized unsupported entity type 'gene' for 'KMT2A'",
+          "normalized unsupported entity type 'gene' for 'LMO2'",
+          "normalized unsupported entity type 'gene' for 'NUP98'",
+          "normalized unsupported entity type 'gene' for 'PICALM'",
+          "normalized unsupported entity type 'gene' for 'SOX5'",
+          "normalized unsupported entity type 'gene' for 'RERG'",
+          "normalized unsupported entity type 'gene' for 'L'",
+          "normalized unsupported entity type 'gene' for 'RBP5'",
+          "normalized unsupported entity type 'gene' for 'DNAJC15'",
+          "normalized unsupported entity type 'gene' for 'FOXO1'",
+          "normalized unsupported entity type 'gene' for 'PCDH9'",
+          "normalized unsupported entity type 'gene' for 'TDRD3'",
+          "normalized unsupported entity type 'gene' for 'TRABC L11'",
+          "normalized unsupported entity type 'gene' for 'B'",
+          "normalized unsupported entity type 'gene' for 'MLLT1'",
+          "normalized unsupported entity type 'gene' for 'TASP1'",
+          "normalized unsupported entity type 'gene' for 'ZNF512'",
+          "normalized unsupported entity type 'gene' for 'BSCAF4'",
+          "normalized unsupported entity type 'gene' for 'ETS2'",
+          "normalized unsupported entity type 'gene' for 'TM'",
+          "normalized unsupported entity type 'gene' for 'PRSS15'",
+          "normalized unsupported entity type 'gene' for 'DDX3X'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "t_lineage_acute_lymphoblastic_leukemia_t_all",
+        "canonical_name": "T-lineage acute lymphoblastic leukemia (T-ALL)",
+        "aliases": [
+          "T-lineage acute lymphoblastic leukemia (T-ALL)",
+          "T-ALL"
+        ]
+      },
+      {
+        "canonical_id": "etp_all",
+        "canonical_name": "ETP ALL",
+        "aliases": [
+          "ETP ALL",
+          "ETP ALL samples"
+        ]
+      },
+      {
+        "canonical_id": "5_hoxa_subgroup",
+        "canonical_name": "5'HOXA subgroup",
+        "aliases": [
+          "5'HOXA subgroup",
+          "5'HOXA+ subgroup"
+        ]
+      },
+      {
+        "canonical_id": "hoxa_positive_t_alls",
+        "canonical_name": "HOXA-positive T-ALLs",
+        "aliases": [
+          "HOXA-positive T-ALLs",
+          "HOXA11-A13 positive T-ALL cases"
+        ]
+      },
+      {
+        "canonical_id": "3d_genome_alterations",
+        "canonical_name": "3D genome alterations",
+        "aliases": [
+          "3D genome alterations"
+        ]
+      },
+      {
+        "canonical_id": "differentially_expressed_genes_degs",
+        "canonical_name": "differentially expressed genes (DEGs)",
+        "aliases": [
+          "differentially expressed genes (DEGs)"
+        ]
+      },
+      {
+        "canonical_id": "upregulated_degs",
+        "canonical_name": "upregulated DEGs",
+        "aliases": [
+          "upregulated DEGs"
+        ]
+      },
+      {
+        "canonical_id": "downregulated_degs",
+        "canonical_name": "downregulated DEGs",
+        "aliases": [
+          "downregulated DEGs"
+        ]
+      },
+      {
+        "canonical_id": "cdk6",
+        "canonical_name": "CDK6",
+        "aliases": [
+          "CDK6"
+        ]
+      },
+      {
+        "canonical_id": "rna_seq_analysis",
+        "canonical_name": "RNA-seq analysis",
+        "aliases": [
+          "RNA-seq analysis"
+        ]
+      },
+      {
+        "canonical_id": "pca_and_hierarchical_clustering",
+        "canonical_name": "PCA and hierarchical clustering",
+        "aliases": [
+          "PCA and hierarchical clustering"
+        ]
+      },
+      {
+        "canonical_id": "myb_mycn_bcl11a_sox4_wt1",
+        "canonical_name": "MYB, MYCN, BCL11A, SOX4, WT1",
+        "aliases": [
+          "MYB, MYCN, BCL11A, SOX4, WT1"
+        ]
+      },
+      {
+        "canonical_id": "sox4_wt1_tfdp2",
+        "canonical_name": "SOX4, WT1, TFDP2",
+        "aliases": [
+          "SOX4, WT1, TFDP2"
+        ]
+      },
+      {
+        "canonical_id": "non_etp_all",
+        "canonical_name": "non-ETP ALL",
+        "aliases": [
+          "non-ETP ALL"
+        ]
+      },
+      {
+        "canonical_id": "t_all_samples",
+        "canonical_name": "T-ALL samples",
+        "aliases": [
+          "T-ALL samples"
+        ]
+      },
+      {
+        "canonical_id": "46_translocations",
+        "canonical_name": "46 translocations",
+        "aliases": [
+          "46 translocations"
+        ]
+      },
+      {
+        "canonical_id": "78_unique_breakpoints",
+        "canonical_name": "78 unique breakpoints",
+        "aliases": [
+          "78 unique breakpoints"
+        ]
+      },
+      {
+        "canonical_id": "44_new_loops",
+        "canonical_name": "44 new loops",
+        "aliases": [
+          "44 new loops"
+        ]
+      },
+      {
+        "canonical_id": "translocation_mediated_loops_with_ctcf_motifs",
+        "canonical_name": "translocation-mediated loops with CTCF motifs",
+        "aliases": [
+          "translocation-mediated loops with CTCF motifs"
+        ]
+      },
+      {
+        "canonical_id": "mef2c_locus",
+        "canonical_name": "MEF2C locus",
+        "aliases": [
+          "MEF2C locus"
+        ]
+      },
+      {
+        "canonical_id": "pax9_locus",
+        "canonical_name": "PAX9 locus",
+        "aliases": [
+          "PAX9 locus"
+        ]
+      },
+      {
+        "canonical_id": "ke37_cell_line",
+        "canonical_name": "KE37 cell line",
+        "aliases": [
+          "KE37 cell line"
+        ]
+      },
+      {
+        "canonical_id": "jurkat_cell_line",
+        "canonical_name": "Jurkat cell line",
+        "aliases": [
+          "Jurkat cell line"
+        ]
+      },
+      {
+        "canonical_id": "sample_093",
+        "canonical_name": "Sample 093",
+        "aliases": [
+          "Sample 093"
+        ]
+      },
+      {
+        "canonical_id": "cis_mechanism",
+        "canonical_name": "cis mechanism",
+        "aliases": [
+          "cis mechanism"
+        ]
+      },
+      {
+        "canonical_id": "tlx3",
+        "canonical_name": "TLX3",
+        "aliases": [
+          "TLX3"
+        ]
+      },
+      {
+        "canonical_id": "bcl11b_gene",
+        "canonical_name": "BCL11B gene",
+        "aliases": [
+          "BCL11B gene"
+        ]
+      },
+      {
+        "canonical_id": "bcl11b",
+        "canonical_name": "BCL11B",
+        "aliases": [
+          "BCL11B"
+        ]
+      },
+      {
+        "canonical_id": "trb",
+        "canonical_name": "TRB",
+        "aliases": [
+          "TRB"
+        ]
+      },
+      {
+        "canonical_id": "psip1_nup98",
+        "canonical_name": "PSIP1-NUP98",
+        "aliases": [
+          "PSIP1-NUP98"
+        ]
+      },
+      {
+        "canonical_id": "set_nup214",
+        "canonical_name": "SET-NUP214",
+        "aliases": [
+          "SET-NUP214"
+        ]
+      },
+      {
+        "canonical_id": "mll_kmt2a_mllt1_picalm_mllt10_and_ddx3x_mllt10",
+        "canonical_name": "MLL (KMT2A-MLLT1, PICALM-MLLT10, and DDX3X-MLLT10)",
+        "aliases": [
+          "MLL (KMT2A-MLLT1, PICALM-MLLT10, and DDX3X-MLLT10)"
+        ]
+      },
+      {
+        "canonical_id": "hoxa_cluster",
+        "canonical_name": "HOXA cluster",
+        "aliases": [
+          "HOXA cluster"
+        ]
+      },
+      {
+        "canonical_id": "ctcf_binding_site_c11_13",
+        "canonical_name": "CTCF binding site C11/13",
+        "aliases": [
+          "CTCF binding site C11/13"
+        ]
+      },
+      {
+        "canonical_id": "ctcf_binding_site_c7_9",
+        "canonical_name": "CTCF binding site C7/9",
+        "aliases": [
+          "CTCF binding site C7/9"
+        ]
+      },
+      {
+        "canonical_id": "ctcf_binding_site_c10_11",
+        "canonical_name": "CTCF binding site C10/11",
+        "aliases": [
+          "CTCF binding site C10/11"
+        ]
+      },
+      {
+        "canonical_id": "enhancer_regions_e1_to_e12",
+        "canonical_name": "Enhancer regions E1 to E12",
+        "aliases": [
+          "Enhancer regions E1 to E12"
+        ]
+      },
+      {
+        "canonical_id": "3_hoxa_subgroup",
+        "canonical_name": "3'HOXA subgroup",
+        "aliases": [
+          "3'HOXA subgroup"
+        ]
+      },
+      {
+        "canonical_id": "hoxa11",
+        "canonical_name": "HOXA11",
+        "aliases": [
+          "HOXA11"
+        ]
+      },
+      {
+        "canonical_id": "hoxa13",
+        "canonical_name": "HOXA13",
+        "aliases": [
+          "HOXA13"
+        ]
+      },
+      {
+        "canonical_id": "hoxa9",
+        "canonical_name": "HOXA9",
+        "aliases": [
+          "HOXA9"
+        ]
+      },
+      {
+        "canonical_id": "case_076",
+        "canonical_name": "Case 076",
+        "aliases": [
+          "Case 076"
+        ]
+      },
+      {
+        "canonical_id": "case_077",
+        "canonical_name": "Case 077",
+        "aliases": [
+          "Case 077"
+        ]
+      },
+      {
+        "canonical_id": "case_108",
+        "canonical_name": "Case 108",
+        "aliases": [
+          "Case 108"
+        ]
+      },
+      {
+        "canonical_id": "h3k27ac",
+        "canonical_name": "H3K27ac",
+        "aliases": [
+          "H3K27ac"
+        ]
+      },
+      {
+        "canonical_id": "t_alls_with_tal1_2_positivity",
+        "canonical_name": "T-ALLs with TAL1/2 positivity",
+        "aliases": [
+          "T-ALLs with TAL1/2 positivity"
+        ]
+      },
+      {
+        "canonical_id": "t_alls_with_tlx_positivity",
+        "canonical_name": "T-ALLs with TLX positivity",
+        "aliases": [
+          "T-ALLs with TLX positivity"
+        ]
+      },
+      {
+        "canonical_id": "hoxa13_positive_status",
+        "canonical_name": "HOXA13 positive status",
+        "aliases": [
+          "HOXA13 positive status"
+        ]
+      },
+      {
+        "canonical_id": "anti_jak_stat_inhibitors",
+        "canonical_name": "anti-JAK-STAT inhibitors",
+        "aliases": [
+          "anti-JAK-STAT inhibitors"
+        ]
+      },
+      {
+        "canonical_id": "peking_university_institute_of_hematology",
+        "canonical_name": "Peking University Institute of Hematology",
+        "aliases": [
+          "Peking University Institute of Hematology"
+        ]
+      },
+      {
+        "canonical_id": "rna_seq_library_preparation_protocol",
+        "canonical_name": "RNA-seq library preparation protocol",
+        "aliases": [
+          "RNA-seq library preparation protocol"
+        ]
+      },
+      {
+        "canonical_id": "bedgraphtobigwig",
+        "canonical_name": "bedGraphToBigWig",
+        "aliases": [
+          "bedGraphToBigWig"
+        ]
+      },
+      {
+        "canonical_id": "bowtie2",
+        "canonical_name": "Bowtie2",
+        "aliases": [
+          "Bowtie2"
+        ]
+      },
+      {
+        "canonical_id": "samtools",
+        "canonical_name": "SAMtools",
+        "aliases": [
+          "SAMtools"
+        ]
+      },
+      {
+        "canonical_id": "macs2",
+        "canonical_name": "MACS2",
+        "aliases": [
+          "MACS2"
+        ]
+      },
+      {
+        "canonical_id": "fimo",
+        "canonical_name": "FIMO",
+        "aliases": [
+          "FIMO"
+        ]
+      },
+      {
+        "canonical_id": "bl_hi_c_protocol",
+        "canonical_name": "BL-Hi-C protocol",
+        "aliases": [
+          "BL-Hi-C protocol"
+        ]
+      },
+      {
+        "canonical_id": "hicpipe",
+        "canonical_name": "HiCpipe",
+        "aliases": [
+          "HiCpipe"
+        ]
+      },
+      {
+        "canonical_id": "chia_pet2",
+        "canonical_name": "ChIA-PET2",
+        "aliases": [
+          "ChIA-PET2"
+        ]
+      },
+      {
+        "canonical_id": "hic_pro",
+        "canonical_name": "HiC-Pro",
+        "aliases": [
+          "HiC-Pro"
+        ]
+      },
+      {
+        "canonical_id": "juicer",
+        "canonical_name": "Juicer",
+        "aliases": [
+          "Juicer"
+        ]
+      },
+      {
+        "canonical_id": "knight_ruiz_normalization",
+        "canonical_name": "Knight-Ruiz normalization",
+        "aliases": [
+          "Knight-Ruiz normalization"
+        ]
+      },
+      {
+        "canonical_id": "insulation_score_method",
+        "canonical_name": "Insulation score method",
+        "aliases": [
+          "Insulation score method"
+        ]
+      },
+      {
+        "canonical_id": "hicdb",
+        "canonical_name": "HiCDB",
+        "aliases": [
+          "HiCDB"
+        ]
+      },
+      {
+        "canonical_id": "differential_tad_boundaries",
+        "canonical_name": "Differential TAD boundaries",
+        "aliases": [
+          "Differential TAD boundaries"
+        ]
+      },
+      {
+        "canonical_id": "tad_definition_criterion",
+        "canonical_name": "TAD definition criterion",
+        "aliases": [
+          "TAD definition criterion"
+        ]
+      },
+      {
+        "canonical_id": "domain_score",
+        "canonical_name": "Domain score",
+        "aliases": [
+          "Domain score"
+        ]
+      },
+      {
+        "canonical_id": "differential_domain_scores",
+        "canonical_name": "Differential domain scores",
+        "aliases": [
+          "Differential domain scores"
+        ]
+      },
+      {
+        "canonical_id": "hiccups",
+        "canonical_name": "HiCCUPS",
+        "aliases": [
+          "HiCCUPS"
+        ]
+      },
+      {
+        "canonical_id": "differential_loop_detection_method",
+        "canonical_name": "Differential loop detection method",
+        "aliases": [
+          "Differential loop detection method"
+        ]
+      },
+      {
+        "canonical_id": "aggregate_peak_analysis_apa_plots",
+        "canonical_name": "Aggregate Peak Analysis (APA) plots",
+        "aliases": [
+          "Aggregate Peak Analysis (APA) plots"
+        ]
+      },
+      {
+        "canonical_id": "great",
+        "canonical_name": "GREAT",
+        "aliases": [
+          "GREAT"
+        ]
+      },
+      {
+        "canonical_id": "david",
+        "canonical_name": "DAVID",
+        "aliases": [
+          "DAVID"
+        ]
+      },
+      {
+        "canonical_id": "hic_breakfinder",
+        "canonical_name": "hic_breakfinder",
+        "aliases": [
+          "hic_breakfinder"
+        ]
+      },
+      {
+        "canonical_id": "bl_hi_c_data",
+        "canonical_name": "BL-Hi-C data",
+        "aliases": [
+          "BL-Hi-C data"
+        ]
+      },
+      {
+        "canonical_id": "chimeric_reads",
+        "canonical_name": "chimeric reads",
+        "aliases": [
+          "chimeric reads"
+        ]
+      },
+      {
+        "canonical_id": "juicebox",
+        "canonical_name": "Juicebox",
+        "aliases": [
+          "Juicebox"
+        ]
+      },
+      {
+        "canonical_id": "novel_translocation",
+        "canonical_name": "novel translocation",
+        "aliases": [
+          "novel translocation"
+        ]
+      },
+      {
+        "canonical_id": "upregulated_gene_near_breakpoint",
+        "canonical_name": "upregulated gene near breakpoint",
+        "aliases": [
+          "upregulated gene near breakpoint"
+        ]
+      },
+      {
+        "canonical_id": "hi_c_heatmaps_and_visual_4c_plots",
+        "canonical_name": "Hi-C heatmaps and Visual 4C plots",
+        "aliases": [
+          "Hi-C heatmaps and Visual 4C plots"
+        ]
+      },
+      {
+        "canonical_id": "matlab",
+        "canonical_name": "MATLAB",
+        "aliases": [
+          "MATLAB"
+        ]
+      },
+      {
+        "canonical_id": "cebpa",
+        "canonical_name": "CEBPA",
+        "aliases": [
+          "CEBPA"
+        ]
+      },
+      {
+        "canonical_id": "oprm1",
+        "canonical_name": "OPRM1",
+        "aliases": [
+          "OPRM1"
+        ]
+      },
+      {
+        "canonical_id": "arid1b",
+        "canonical_name": "ARID1B",
+        "aliases": [
+          "ARID1B"
+        ]
+      },
+      {
+        "canonical_id": "wbs",
+        "canonical_name": "WBS",
+        "aliases": [
+          "WBS"
+        ]
+      },
+      {
+        "canonical_id": "cr17",
+        "canonical_name": "CR17",
+        "aliases": [
+          "CR17"
+        ]
+      },
+      {
+        "canonical_id": "rnf216",
+        "canonical_name": "RNF216",
+        "aliases": [
+          "RNF216"
+        ]
+      },
+      {
+        "canonical_id": "trbnapepld",
+        "canonical_name": "TRBNAPEPLD",
+        "aliases": [
+          "TRBNAPEPLD"
+        ]
+      },
+      {
+        "canonical_id": "myc",
+        "canonical_name": "MYC",
+        "aliases": [
+          "MYC"
+        ]
+      },
+      {
+        "canonical_id": "csd3",
+        "canonical_name": "CSD3",
+        "aliases": [
+          "CSD3"
+        ]
+      },
+      {
+        "canonical_id": "tal2",
+        "canonical_name": "TAL2",
+        "aliases": [
+          "TAL2"
+        ]
+      },
+      {
+        "canonical_id": "tme",
+        "canonical_name": "TME",
+        "aliases": [
+          "TME"
+        ]
+      },
+      {
+        "canonical_id": "m38b",
+        "canonical_name": "M38B",
+        "aliases": [
+          "M38B"
+        ]
+      },
+      {
+        "canonical_id": "nup214",
+        "canonical_name": "NUP214",
+        "aliases": [
+          "NUP214"
+        ]
+      },
+      {
+        "canonical_id": "set",
+        "canonical_name": "SET",
+        "aliases": [
+          "SET"
+        ]
+      },
+      {
+        "canonical_id": "psip1",
+        "canonical_name": "PSIP1",
+        "aliases": [
+          "PSIP1"
+        ]
+      },
+      {
+        "canonical_id": "mllt10",
+        "canonical_name": "MLLT10",
+        "aliases": [
+          "MLLT10"
+        ]
+      },
+      {
+        "canonical_id": "kmt2a",
+        "canonical_name": "KMT2A",
+        "aliases": [
+          "KMT2A"
+        ]
+      },
+      {
+        "canonical_id": "lmo2",
+        "canonical_name": "LMO2",
+        "aliases": [
+          "LMO2"
+        ]
+      },
+      {
+        "canonical_id": "nup98",
+        "canonical_name": "NUP98",
+        "aliases": [
+          "NUP98"
+        ]
+      },
+      {
+        "canonical_id": "picalm",
+        "canonical_name": "PICALM",
+        "aliases": [
+          "PICALM"
+        ]
+      },
+      {
+        "canonical_id": "sox5",
+        "canonical_name": "SOX5",
+        "aliases": [
+          "SOX5"
+        ]
+      },
+      {
+        "canonical_id": "rerg",
+        "canonical_name": "RERG",
+        "aliases": [
+          "RERG"
+        ]
+      },
+      {
+        "canonical_id": "l",
+        "canonical_name": "L",
+        "aliases": [
+          "L"
+        ]
+      },
+      {
+        "canonical_id": "rbp5",
+        "canonical_name": "RBP5",
+        "aliases": [
+          "RBP5"
+        ]
+      },
+      {
+        "canonical_id": "dnajc15",
+        "canonical_name": "DNAJC15",
+        "aliases": [
+          "DNAJC15"
+        ]
+      },
+      {
+        "canonical_id": "foxo1",
+        "canonical_name": "FOXO1",
+        "aliases": [
+          "FOXO1"
+        ]
+      },
+      {
+        "canonical_id": "pcdh9",
+        "canonical_name": "PCDH9",
+        "aliases": [
+          "PCDH9"
+        ]
+      },
+      {
+        "canonical_id": "tdrd3",
+        "canonical_name": "TDRD3",
+        "aliases": [
+          "TDRD3"
+        ]
+      },
+      {
+        "canonical_id": "trabc_l11",
+        "canonical_name": "TRABC L11",
+        "aliases": [
+          "TRABC L11"
+        ]
+      },
+      {
+        "canonical_id": "b",
+        "canonical_name": "B",
+        "aliases": [
+          "B"
+        ]
+      },
+      {
+        "canonical_id": "mllt1",
+        "canonical_name": "MLLT1",
+        "aliases": [
+          "MLLT1"
+        ]
+      },
+      {
+        "canonical_id": "tasp1",
+        "canonical_name": "TASP1",
+        "aliases": [
+          "TASP1"
+        ]
+      },
+      {
+        "canonical_id": "znf512",
+        "canonical_name": "ZNF512",
+        "aliases": [
+          "ZNF512"
+        ]
+      },
+      {
+        "canonical_id": "bscaf4",
+        "canonical_name": "BSCAF4",
+        "aliases": [
+          "BSCAF4"
+        ]
+      },
+      {
+        "canonical_id": "ets2",
+        "canonical_name": "ETS2",
+        "aliases": [
+          "ETS2"
+        ]
+      },
+      {
+        "canonical_id": "tm",
+        "canonical_name": "TM",
+        "aliases": [
+          "TM"
+        ]
+      },
+      {
+        "canonical_id": "prss15",
+        "canonical_name": "PRSS15",
+        "aliases": [
+          "PRSS15"
+        ]
+      },
+      {
+        "canonical_id": "ddx3x",
+        "canonical_name": "DDX3X",
+        "aliases": [
+          "DDX3X"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study analyzes 3D genome alterations and gene expression in 18 T-ALL patients and 4 controls, finding that structural changes correlate with gene regulation and subtype classification. Approximately 29% of differentially expressed genes are linked to 3D genome changes, with specific compartment switches and loop alterations driving upregulation or downregulation in distinct pathways. The CDK6 locus shows strong intra-TAD interactions and consistent upregulation across all T-ALL samples.\",\"entities\":[{\"name\":\"T-lineage acute lymphoblastic leukemia (T-ALL)\",\"type\":\"other\",\"attributes\":{\"study_cohort\":\"18 newly diagnosed patients\",\"control_cohort\":\"4 healthy T cell controls\",\"model_entity_type\":\"disease\"},\"relationships\":[{\"predicate\":\"classified_by\",\"target\":\"3D genome organization and gene expression profiles\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"3D genome alterations\",\"attributes\":{},\"target_id\":\"3d_genome_alterations\"}]},{\"name\":\"3D genome alterations\",\"type\":\"other\",\"attributes\":{\"levels_analyzed\":\"compartment, topologically associated domains (TAD), and loop levels\",\"model_entity_type\":\"biological_phenomenon\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"nearly 45% of upregulated genes in T-ALL\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"29% (996/3392) of differentially expressed genes (DEGs)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"linked_to\",\"target\":\"etiology and prognosis of T-ALL\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"differentially expressed genes (DEGs)\",\"type\":\"measurement\",\"attributes\":{\"total_count_analyzed\":\"3392\",\"count_associated_with_3d_genome\":\"996\"},\"relationships\":[{\"predicate\":\"upregulated_in\",\"target\":\"B-to-A compartment switches, increased domain scores (D-score), and enhanced loops\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"downregulated_in\",\"target\":\"A-to-B compartment switches, decreased D-scores, and reduced loops\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"upregulated DEGs\",\"type\":\"other\",\"attributes\":{\"functional_enrichment\":\"hematopoietic cell lineage, transcriptional misregulation in cancer, and cell cycle\",\"model_entity_type\":\"gene_group\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"B-to-A compartment switches\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"increased domain scores (D-score)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"enhanced loops\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"downregulated DEGs\",\"type\":\"other\",\"attributes\":{\"functional_enrichment\":\"cytokine-cytokine receptor interaction and T cell receptor signaling\",\"model_entity_type\":\"gene_group\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"A-to-B compartment switches\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"decreased D-scores\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"reduced loops\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CDK6\",\"type\":\"other\",\"attributes\":{\"clinical_relevance\":\"potential target for T-ALL treatment\",\"expression_status\":\"upregulated in all T-ALL samples\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"exhibits\",\"target\":\"strong intra-TAD interaction\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RNA-seq analysis\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"used_to_investigate\",\"target\":\"impact of 3D genome alterations on gene expression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PCA and hierarchical clustering\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"demonstrated\",\"target\":\"high consistency between transcriptome changes and 3D genome structural changes\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study identifies specific transcription factors and oncogenes whose expression correlates with multi-level 3D genome structural alterations in T-ALL. It distinguishes ETP and non-ETP T-ALL subtypes based on their position in the T-cell differentiation trajectory and associated chromatin loop changes. The analysis links specific chromatin structure changes to the upregulation of key genes in both ETP and non-ETP subtypes.\",\"entities\":[{\"name\":\"MYB, MYCN, BCL11A, SOX4, WT1\",\"type\":\"other\",\"attributes\":{\"role\":\"upregulated oncogenic driver genes and T-ALL-associated transcription factors\",\"structural_feature\":\"increased D-scores\",\"model_entity_type\":\"gene_group\"},\"relationships\":[]},{\"name\":\"SOX4, WT1, TFDP2\",\"type\":\"other\",\"attributes\":{\"structural_feature\":\"structural alterations at all 3 levels (compartment, TAD, loop)\",\"model_entity_type\":\"gene_group\"},\"relationships\":[{\"predicate\":\"predicted_to_regulate\",\"target\":\"approximately 28% of upregulated genes in T-ALL\",\"attributes\":{\"method\":\"RcisTarget\"},\"target_id\":null}]},{\"name\":\"3D genome alterations\",\"type\":\"other\",\"attributes\":{\"association_with_upregulated_genes\":\"approximately 45% of upregulated genes in T-ALL\",\"model_entity_type\":\"biological_phenomenon\"},\"relationships\":[{\"predicate\":\"directly_related_to\",\"target\":\"56% of the associated upregulated genes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"indirectly_related_to_via\",\"target\":\"structure alteration-mediated dysregulated transcription factors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ETP ALL\",\"type\":\"other\",\"attributes\":{\"definition\":\"subclass of T-ALL stalled at the early T progenitor stage\",\"developmental_stage\":\"arrested at immature stage (LMPP to Thy1)\",\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"separated_from\",\"target\":\"non-ETP ALL samples\",\"attributes\":{\"method\":\"3D genome landscape analyses\"},\"target_id\":null},{\"predicate\":\"characterized_by\",\"target\":\"1820 enhanced and 831 reduced loops\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"upregulated_genes_with_chromatin_changes\",\"target\":\"approximately 20%\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_key_genes\",\"target\":\"CEBPA, MYCN, LYL1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enriched_in_pathways\",\"target\":\"immune response-activating signal transduction, myeloid cell differentiation, regulation of B cell activation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"non-ETP ALL\",\"type\":\"other\",\"attributes\":{\"definition\":\"T-ALL blocked at later T cell differentiation stages\",\"developmental_stage\":\"arrested at Thy2 to Thy4 stages\",\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"upregulated_genes_with_chromatin_changes\",\"target\":\"approximately 16%\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_key_genes\",\"target\":\"LEF1, TCF12, PAX9\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enriched_in_pathways\",\"target\":\"positive regulation of RNA metabolism, transcription, TCR V(D)J recombination\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"T-ALL samples\",\"type\":\"other\",\"attributes\":{\"analysis_method\":\"projected onto T cell developmental trajectory defined by RNA-seq\",\"model_entity_type\":\"sample_group\"},\"relationships\":[{\"predicate\":\"correlation_between_expression_and_structure\",\"target\":\"Pearson's correlation coefficient 0.685\",\"attributes\":{\"variables\":\"gene expression changes vs combined p-value of loop strength and D-score changes\"},\"target_id\":null}]}]},{\"context_summary\":\"The study identifies 46 chromosomal translocations in T-ALL samples, 34 of which are novel, leading to the formation of 44 new translocation-mediated loops. These loops often anchor at pre-existing loop anchors and CTCF binding sites, with 78% linked to convergently oriented CTCF motifs, suggesting a loop extrusion mechanism. Translocations activate T-ALL-associated transcription factors via cis-acting enhancer hijacking or trans-acting gene fusions.\",\"entities\":[{\"name\":\"T-ALL samples\",\"type\":\"other\",\"attributes\":{\"count\":\"18\",\"subset_with_translocations\":\"14\",\"model_entity_type\":\"sample_group\"},\"relationships\":[{\"predicate\":\"contained\",\"target\":\"46 translocations\",\"attributes\":{},\"target_id\":\"46_translocations\"}]},{\"name\":\"46 translocations\",\"type\":\"other\",\"attributes\":{\"novel_events\":\"34\",\"interchromosomal_events\":\"26\",\"model_entity_type\":\"genomic_event\"},\"relationships\":[{\"predicate\":\"identified_in\",\"target\":\"14/18 T-ALL samples\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"influenced_expression_of\",\"target\":\"nearest genes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resulted_in\",\"target\":\"44 new loops\",\"attributes\":{},\"target_id\":\"44_new_loops\"}]},{\"name\":\"78 unique breakpoints\",\"type\":\"other\",\"attributes\":{\"noncoding_region_percentage\":\"47%\",\"stable_A_compartment_percentage\":\"66%\",\"model_entity_type\":\"genomic_feature\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"46 translocations\",\"attributes\":{},\"target_id\":\"46_translocations\"}]},{\"name\":\"44 new loops\",\"type\":\"other\",\"attributes\":{\"name\":\"translocation-mediated loops\",\"model_entity_type\":\"genomic_structure\"},\"relationships\":[{\"predicate\":\"formed_between\",\"target\":\"translocated chromosomes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"anchored_at\",\"target\":\"pre-existing loop anchors\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"anchored_at\",\"target\":\"CTCF binding sites\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"translocation-mediated loops with CTCF motifs\",\"type\":\"other\",\"attributes\":{\"percentage_linked_to_convergent_motifs\":\"78%\",\"model_entity_type\":\"genomic_structure\"},\"relationships\":[{\"predicate\":\"linked_to\",\"target\":\"pairs of convergently orientated CTCF motifs\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"mediated_by\",\"target\":\"loop extrusion mechanism\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MEF2C locus\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_region\"},\"relationships\":[{\"predicate\":\"exhibited_subtype_specific_loops_in\",\"target\":\"ETP ALL\",\"attributes\":{},\"target_id\":\"etp_all\"},{\"predicate\":\"associated_with_marks_in\",\"target\":\"H3K27ac and CTCF in KE37 cell line\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PAX9 locus\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_region\"},\"relationships\":[{\"predicate\":\"exhibited_subtype_specific_loops_in\",\"target\":\"non-ETP ALL\",\"attributes\":{},\"target_id\":\"non_etp_all\"},{\"predicate\":\"associated_with_marks_in\",\"target\":\"H3K27ac and CTCF in Jurkat cell line\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"KE37 cell line\",\"type\":\"other\",\"attributes\":{\"subtype_association\":\"ETP\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_for_analysis_of\",\"target\":\"MEF2C locus\",\"attributes\":{},\"target_id\":\"mef2c_locus\"}]},{\"name\":\"Jurkat cell line\",\"type\":\"other\",\"attributes\":{\"subtype_association\":\"non-ETP\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_for_analysis_of\",\"target\":\"PAX9 locus\",\"attributes\":{},\"target_id\":\"pax9_locus\"}]},{\"name\":\"Sample 093\",\"type\":\"other\",\"attributes\":{\"classification\":\"between ETP and non-ETP ALL\",\"feature\":\"significant TCR rearrangement\",\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"fell_between\",\"target\":\"ETP and non-ETP ALL\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ETP ALL\",\"type\":\"other\",\"attributes\":{\"expression_deficit\":\"lack of RAG1 and PTCRA expression\",\"model_entity_type\":\"sample_group\"},\"relationships\":[{\"predicate\":\"deficient_in\",\"target\":\"TCR V(D)J rearrangements\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"cis mechanism\",\"type\":\"other\",\"attributes\":{\"description\":\"translocation-mediated enhancer hijacking\",\"model_entity_type\":\"mechanism\"},\"relationships\":[{\"predicate\":\"observed_in_subtypes\",\"target\":\"ETP, TLX, and TAL subtypes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_events\",\"target\":\"BCL11B-TLX3, TRB-TAL2, and 3 novel HOXA translocations\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"TLX3\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"hijacked_enhancers_from\",\"target\":\"BCL11B gene\",\"attributes\":{},\"target_id\":\"bcl11b_gene\"},{\"predicate\":\"mediated_by\",\"target\":\"translocation-mediated loops\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BCL11B gene\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"source_of_hijacked_enhancers_for\",\"target\":\"TLX3\",\"attributes\":{},\"target_id\":\"tlx3\"}]}]},{\"context_summary\":\"Translocation-mediated mechanisms, including enhancer hijacking and gene fusions, drive ectopic expression of T-ALL-associated transcription factors and block normal T cell differentiation. The HOXA cluster, comprising 11 genes, is partitioned into two topologically associated domains (TADs) with variable boundaries that correlate with distinct expression subgroups. Ectopic expression of specific HOXA genes (HOXA11-A13) is associated with immature phenotypes and poor clinical outcomes.\",\"entities\":[{\"name\":\"BCL11B\",\"type\":\"other\",\"attributes\":{\"normal_expression_context\":\"T cell development\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"source_of_hijacked_enhancers\",\"target\":\"T-ALL-associated transcription factors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"TRB\",\"type\":\"other\",\"attributes\":{\"normal_expression_context\":\"T cell development\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"source_of_hijacked_enhancers\",\"target\":\"T-ALL-associated transcription factors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PSIP1-NUP98\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene_fusion\"},\"relationships\":[{\"predicate\":\"mechanism_type\",\"target\":\"trans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"activates\",\"target\":\"HOXA cluster gene expressions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SET-NUP214\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene_fusion\"},\"relationships\":[{\"predicate\":\"mechanism_type\",\"target\":\"trans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"activates\",\"target\":\"HOXA cluster gene expressions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MLL (KMT2A-MLLT1, PICALM-MLLT10, and DDX3X-MLLT10)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene_fusion\"},\"relationships\":[{\"predicate\":\"mechanism_type\",\"target\":\"trans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"activates\",\"target\":\"HOXA cluster gene expressions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA cluster\",\"type\":\"other\",\"attributes\":{\"gene_count\":11,\"status_in_T-ALL\":\"common feature\",\"normal_T_cell_status\":\"transcriptionally repressed\",\"model_entity_type\":\"gene_cluster\"},\"relationships\":[{\"predicate\":\"activated_by\",\"target\":\"fusion proteins\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"recruits\",\"target\":\"histone methyltransferase DOT1L\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"partitioned_into\",\"target\":\"2 TADs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA-positive T-ALLs\",\"type\":\"other\",\"attributes\":{\"clinical_heterogeneity\":\"heterogeneous entities\",\"model_entity_type\":\"disease_subgroup\"},\"relationships\":[{\"predicate\":\"separated_into\",\"target\":\"3'HOXA+ and 5'HOXA+ subgroups\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"double negative (DN) and ETP phenotypes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"5'HOXA subgroup\",\"type\":\"other\",\"attributes\":{\"characteristic_expression\":\"ectopic HOXA11-A13 expressions\",\"model_entity_type\":\"disease_subgroup\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"double negative (DN) and ETP phenotypes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CTCF binding site C11/13\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"defines_boundary_of\",\"target\":\"5' TAD\",\"attributes\":{\"position\":\"3' boundary\"},\"target_id\":null}]},{\"name\":\"CTCF binding site C7/9\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"defines_boundary_of\",\"target\":\"3' TAD\",\"attributes\":{\"position\":\"5' boundary\"},\"target_id\":null},{\"predicate\":\"used_by\",\"target\":\"most HOXA- (6/8) and all 5'HOXA+ (2/2) samples\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CTCF binding site C10/11\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"defines_boundary_of\",\"target\":\"3' TAD\",\"attributes\":{\"position\":\"5' boundary\"},\"target_id\":null},{\"predicate\":\"used_by\",\"target\":\"most 3'HOXA+ samples (4/5)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Enhancer regions E1 to E12\",\"type\":\"other\",\"attributes\":{\"count_per_TAD\":6,\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"interacts_with\",\"target\":\"HOXA cluster\",\"attributes\":{},\"target_id\":\"hoxa_cluster\"}]}]},{\"context_summary\":\"The study identifies specific 3D genome interaction changes and translocation-mediated enhancer hijacking mechanisms that drive ectopic HOXA gene expression in T-ALL subtypes. These structural alterations correlate with specific histone marks and fusion events, leading to distinct expression patterns for the 5' and 3' HOXA subgroups. Ectopic expression of HOXA11 or HOXA13 is associated with poor clinical outcomes in pediatric and young adult T-ALL patients.\",\"entities\":[{\"name\":\"3'HOXA subgroup\",\"type\":\"concept\",\"attributes\":{\"interaction_profile\":\"Significantly enhanced interactions between enhancers E2-E6 and HOXA genes\"},\"relationships\":[{\"predicate\":\"associated_with_fusions\",\"target\":\"KMT2A-MLLT1, PICALM-MLLT10, DDX3X-MLLT10, SET-NUP214\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"controls_expression_of\",\"target\":\"HOXA1-A10\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"5'HOXA subgroup\",\"type\":\"other\",\"attributes\":{\"interaction_profile\":\"Significantly enhanced interactions between enhancers E8, E9, E11, E12 and HOXA genes\"},\"relationships\":[{\"predicate\":\"associated_with_fusion\",\"target\":\"PSIP1-NUP98\",\"attributes\":{},\"target_id\":\"psip1_nup98\"},{\"predicate\":\"characterized_by_phenotypes\",\"target\":\"Double negative (DN) and ETP phenotypes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA cluster\",\"type\":\"other\",\"attributes\":{\"structure\":\"Partitioned into 5' and 3' TADs by CTCF binding site C11/13\",\"model_entity_type\":\"gene_cluster\"},\"relationships\":[{\"predicate\":\"regulated_by\",\"target\":\"3D genome alterations\",\"attributes\":{},\"target_id\":\"3d_genome_alterations\"},{\"predicate\":\"contains_genes\",\"target\":\"HOXA1-A13\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA11\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"positivity_associated_with\",\"target\":\"Poor overall and event-free survival\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA13\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"positivity_associated_with\",\"target\":\"Poor overall and event-free survival\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"ectopically_expressed_in\",\"target\":\"Case 076\",\"attributes\":{},\"target_id\":\"case_076\"}]},{\"name\":\"HOXA9\",\"type\":\"other\",\"attributes\":{\"clinical_status\":\"Previously used biomarker\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"positivity_not_associated_with\",\"target\":\"Poor overall and event-free survival\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Case 076\",\"type\":\"other\",\"attributes\":{\"translocation_partner\":\"BCL11B gene on chromosome 14\",\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"exhibits_ectopic_expression_of\",\"target\":\"HOXA13\",\"attributes\":{},\"target_id\":\"hoxa13\"},{\"predicate\":\"mediated_by\",\"target\":\"New loop formation between 5' HOXA cluster and BCL11B enhancers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Case 077\",\"type\":\"other\",\"attributes\":{\"translocation_partner\":\"ERG gene on chromosome 21\",\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"exhibits_ectopic_expression_of\",\"target\":\"HOXA9-A13\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"mediated_by\",\"target\":\"New loop formation between 5' HOXA cluster and ERG enhancers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Case 108\",\"type\":\"other\",\"attributes\":{\"genomic_event\":\"Inter-TAD inversion\",\"translocation_partner\":\"CDK6 gene on chromosome 7\",\"model_entity_type\":\"sample\"},\"relationships\":[{\"predicate\":\"exhibits_ectopic_expression_of\",\"target\":\"HOXA11-A13\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"mediated_by\",\"target\":\"Adoption of active CDK6 enhancers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"H3K27ac\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"histone_mark\"},\"relationships\":[{\"predicate\":\"correlated_with\",\"target\":\"Increased interactions in HOXA+ Loucy cell line\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CTCF binding site C11/13\",\"type\":\"other\",\"attributes\":{\"location\":\"3' boundary of 5' TAD\",\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"insulates\",\"target\":\"3' TAD genes from hijacked enhancers\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"T-ALL subtypes defined by TAL1/2, TLX, and HOXA11-A13 expression show distinct survival outcomes and phenotypic characteristics. HOXA13 positivity serves as an independent predictor for poor overall survival in pediatric and young adult patients. The study suggests that 3D genome alterations and enhancer hijacking drive ectopic transcription factor activation, potentially making anti-JAK-STAT inhibitors beneficial for HOXA11-A13 positive cases.\",\"entities\":[{\"name\":\"T-ALLs with TAL1/2 positivity\",\"type\":\"other\",\"attributes\":{\"mutual_exclusivity\":\"mutually exclusive from HOXA positivity\",\"survival_outcome\":\"associated with better overall survival\",\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"better overall survival\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"T-ALLs with TLX positivity\",\"type\":\"other\",\"attributes\":{\"survival_outcome\":\"no association with outcome\",\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"no outcome association\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA-positive T-ALLs\",\"type\":\"other\",\"attributes\":{\"phenotypes\":\"DN and ETP phenotypes\",\"mutation_rate\":\"higher rate of JAK-STAT pathway gene mutations\",\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"characterized_by\",\"target\":\"DN and ETP phenotypes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"characterized_by\",\"target\":\"higher rate of JAK-STAT pathway gene mutations\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor survival\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA13 positive status\",\"type\":\"other\",\"attributes\":{\"predictive_value\":\"independent predictor for overall survival\",\"model_entity_type\":\"biomarker\"},\"relationships\":[{\"predicate\":\"predicts\",\"target\":\"overall survival of pediatric and young adult T-ALLs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"3D genome alterations\",\"type\":\"other\",\"attributes\":{\"role\":\"critical roles in rewiring T-ALL transcriptome and regulating T-ALL development\",\"model_entity_type\":\"biological_mechanism\"},\"relationships\":[{\"predicate\":\"contributes_to\",\"target\":\"ectopic activation of T-ALL-associated transcription factors\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contributes_to\",\"target\":\"blocking differentiation at certain T cell developmental stages\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"anti-JAK-STAT inhibitors\",\"type\":\"other\",\"attributes\":{\"proposed_benefit\":\"may benefit patients with ectopic HOXA11-A13 expression\",\"model_entity_type\":\"therapeutic_agent\"},\"relationships\":[{\"predicate\":\"proposed_for\",\"target\":\"T-ALL patients with ectopic HOXA11-A13 expression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Peking University Institute of Hematology\",\"type\":\"organization\",\"attributes\":{\"role\":\"ethics committee approval source for patient samples\"},\"relationships\":[{\"predicate\":\"approved_protocol_for\",\"target\":\"collection of 18 T-ALL patient samples\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RNA-seq library preparation protocol\",\"type\":\"method\",\"attributes\":{\"kit\":\"TruSeq RNA Library Prep Kit v2 (Illumina)\",\"sequencing_depth\":\"average 15 million read pairs\",\"alignment_tool\":\"TopHat (v2.1.0)\",\"alignment_reference\":\"hg19 genome\",\"quantification_tool\":\"HTSeq\",\"normalization\":\"FPKM\",\"differential_expression_tool\":\"DESeq2\",\"differential_expression_criteria\":\"FDR <0.01 and fold change >2\",\"exclusion_criteria\":\"fewer than 5 reads in 20% of samples or mean reads fewer than 2\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"18 T-ALL patients and 4 healthy controls\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text details the bioinformatics pipelines for processing ChIP-seq, ATAC-seq, and Hi-C data, including specific software tools and parameters used for mapping, peak calling, and structural analysis. It defines the criteria for identifying differential TADs, domain scores, and loops, as well as the method for detecting translocations and translocation-mediated loops in T-ALL samples.\",\"entities\":[{\"name\":\"bedGraphToBigWig\",\"type\":\"method\",\"attributes\":{\"source\":\"UCSC Genome Browser utility\",\"parameters\":\"default\"},\"relationships\":[{\"predicate\":\"generates\",\"target\":\"bigwig files\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Bowtie2\",\"type\":\"method\",\"attributes\":{\"version\":\"v2.3.5\"},\"relationships\":[{\"predicate\":\"maps\",\"target\":\"ChIP-seq reads to hg19 genome\",\"attributes\":{\"parameters\":\"default\"},\"target_id\":null},{\"predicate\":\"maps\",\"target\":\"ATAC-seq reads\",\"attributes\":{\"parameters\":\"-X 2000 --no-mixed --no-discordant --no-unal\"},\"target_id\":null}]},{\"name\":\"SAMtools\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"removes\",\"target\":\"duplicates\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MACS2\",\"type\":\"method\",\"attributes\":{\"option\":\"-SPMR\"},\"relationships\":[{\"predicate\":\"generates\",\"target\":\"signal tracks and peaks\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"FIMO\",\"type\":\"method\",\"attributes\":{\"parameters\":\"default\"},\"relationships\":[{\"predicate\":\"detects\",\"target\":\"20 bp CTCF motif\",\"attributes\":{\"source_database\":\"Homer motif database\",\"target_samples\":\"Loucy and Jurkat CTCF peaks\"},\"target_id\":null}]},{\"name\":\"BL-Hi-C protocol\",\"type\":\"method\",\"attributes\":{\"cell_count\":\"one million cells/sample\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"Hi-C performance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HiCpipe\",\"type\":\"method\",\"attributes\":{\"type\":\"in-house framework\"},\"relationships\":[{\"predicate\":\"processes\",\"target\":\"Raw BL-Hi-C reads\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ChIA-PET2\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"trims\",\"target\":\"bridge linkers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HiC-Pro\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"aligns\",\"target\":\"reads\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"filters\",\"target\":\"artifact fragments\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"removes\",\"target\":\"duplicates\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Juicer\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"generates\",\"target\":\"Hi-C files\",\"attributes\":{\"format\":\"contact matrices with multiple resolutions\"},\"target_id\":null},{\"predicate\":\"calculates\",\"target\":\"compartment\",\"attributes\":{\"command\":\"eigenvector\",\"resolution\":\"100 kb\",\"normalization\":\"KR normalized\"},\"target_id\":null},{\"predicate\":\"calls\",\"target\":\"loops\",\"attributes\":{\"tool\":\"HiCCUPS\"},\"target_id\":null}]},{\"name\":\"Knight-Ruiz normalization\",\"type\":\"method\",\"attributes\":{\"abbreviation\":\"KR\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"compartment and TAD analyses\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Insulation score method\",\"type\":\"method\",\"attributes\":{\"parameters\":\"-is 1000000 -ids 200000 -im mean -nt 0.1\"},\"relationships\":[{\"predicate\":\"calculates\",\"target\":\"TAD boundaries\",\"attributes\":{\"input\":\"pooled 40 kb Hi-C matrices of healthy T cell controls, ETP and non-ETP samples\"},\"target_id\":null}]},{\"name\":\"HiCDB\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"calculates\",\"target\":\"relative insulation scores\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Differential TAD boundaries\",\"type\":\"concept\",\"attributes\":{\"statistical_criteria\":\"t-test FDR<0.01\",\"magnitude_criteria\":\"difference between cases and controls higher than 50% quantile of the overall difference\"},\"relationships\":[]},{\"name\":\"TAD definition criterion\",\"type\":\"concept\",\"attributes\":{\"requirement\":\"boundaries detected in at least two conditions among normal T cells, ETPs and non-ETPs\"},\"relationships\":[]},{\"name\":\"Domain score\",\"type\":\"measurement\",\"attributes\":{\"calculation\":\"intra-TAD interactions divided by all interactions connected to the corresponding TAD\"},\"relationships\":[]},{\"name\":\"Differential domain scores\",\"type\":\"concept\",\"attributes\":{\"statistical_criteria\":\"t-test FDR<0.01\",\"magnitude_criteria\":\"fold change higher than 70% quantile of the overall fold change\"},\"relationships\":[]},{\"name\":\"HiCCUPS\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"calls\",\"target\":\"loops\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Differential loop detection method\",\"type\":\"method\",\"attributes\":{\"source\":\"adapted from Douglas et al\"},\"relationships\":[{\"predicate\":\"splits_loops_into\",\"target\":\"two distance ranges (> or < 150 kb)\",\"attributes\":{\"purpose\":\"minimize potential bias\"},\"target_id\":null},{\"predicate\":\"calls_differential_loops_with\",\"target\":\"FDR < 0.1\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study employed specific bioinformatics tools and criteria to detect and annotate translocations and translocation-mediated loops in T-ALL samples. Quality assessment of loop detection was performed using Aggregate Peak Analysis (APA) plots at 5 kb resolution. Translocations were identified using hic_breakfinder, with breakpoints refined to single base-pair resolution using chimeric reads from BL-Hi-C data.\",\"entities\":[{\"name\":\"Aggregate Peak Analysis (APA) plots\",\"type\":\"method\",\"attributes\":{\"resolution\":\"5 kb\",\"purpose\":\"assess loop detection quality and explore loop class characteristics\",\"tool\":\"Juicer APA command\"},\"relationships\":[{\"predicate\":\"normalized_by\",\"target\":\"loop number contributing to matrix generation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"GREAT\",\"type\":\"method\",\"attributes\":{\"version\":\"v3.0.0\",\"input\":\"loop anchors\",\"gene_selection_criteria\":\"nearest gene within 100 kb\",\"output\":\"enriched biological process\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"analysis of function of dynamic loops between non-ETP and ETP\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DAVID\",\"type\":\"method\",\"attributes\":{\"version\":\"6.8\",\"analysis_type\":\"KEGG pathway enrichment analysis\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"genes related to loops\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"hic_breakfinder\",\"type\":\"method\",\"attributes\":{\"purpose\":\"detect translocations\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"18 T-ALL patient samples\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BL-Hi-C data\",\"type\":\"measurement\",\"attributes\":{\"average_depth\":\"486 million read pairs\",\"read_length\":\"150 bp\",\"processing_method\":\"treated as single ends to refine breakpoint locations\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"refining breakpoint locations to single base-pair resolution\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"chimeric reads\",\"type\":\"concept\",\"attributes\":{\"definition\":\"single ends mapped to two different chromatins without BL-Hi-C bridge linker in between\",\"resolution_overlap\":\"5~20 kb\"},\"relationships\":[{\"predicate\":\"support_breakpoint_identification\",\"target\":\"more than 3 chimeric reads\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Juicebox\",\"type\":\"method\",\"attributes\":{\"type\":\"interactive visualization software\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"manual recording of translocation-mediated loop locations on interchromosome Hi-C maps\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"novel translocation\",\"type\":\"concept\",\"attributes\":{\"definition\":\"translocation where any breakpoint is not near any known breakpoint within a 100 kb distance\"},\"relationships\":[]},{\"name\":\"upregulated gene near breakpoint\",\"type\":\"concept\",\"attributes\":{\"criteria\":\"FPKM >1 and 2-fold higher than control samples without nearby breakpoints\"},\"relationships\":[]}]},{\"context_summary\":\"The text describes the generation of Hi-C heatmaps and Visual 4C plots using MATLAB code. It lists a series of gene names and symbols, some marked with asterisks, likely representing specific genetic features or translocations analyzed in the study.\",\"entities\":[{\"name\":\"Hi-C heatmaps and Visual 4C plots\",\"type\":\"method\",\"attributes\":{\"generation_tool\":\"MATLAB code\",\"data_source\":\"reassembled chromatin\"},\"relationships\":[]},{\"name\":\"MATLAB\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"used_to_generate\",\"target\":\"Hi-C heatmaps and Visual 4C plots\",\"attributes\":{},\"target_id\":\"hi_c_heatmaps_and_visual_4c_plots\"}]},{\"name\":\"CEBPA\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"OPRM1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"ARID1B\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"WBS\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"CR17\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"CDK6\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"RNF216\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TRBNAPEPLD\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"MYC\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"CSD3\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TAL2\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TME\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"M38B\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"NUP214\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"SET\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"PSIP1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"MLLT10\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"KMT2A\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"LMO2\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"NUP98\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"PICALM\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"SOX5\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"RERG\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"L\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"RBP5\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"DNAJC15\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"FOXO1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"PCDH9\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TDRD3\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TRABC L11\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"B\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"MLLT1\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TASP1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"ZNF512\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"BSCAF4\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"ETS2\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"TM\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"PRSS15\",\"type\":\"other\",\"attributes\":{\"marker\":\"*\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"DDX3X\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[]}]}]"
+}

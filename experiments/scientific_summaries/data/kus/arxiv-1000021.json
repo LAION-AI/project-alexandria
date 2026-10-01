@@ -1,0 +1,2451 @@
+{
+  "document_id": "arxiv-1000021",
+  "fulltext_sha256": "bbd7b9c7bf14b8204fd51f7d0ec0ffb2c6fd246c6f7e3fb9721251f0aec47019",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "d0de1d5ad943a3980ab4129a141ccd3da915e520948822f68556a6f6230054e7",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper proposes a method combining recurrent neural networks with diffusion models for probabilistic time series forecasting. It addresses scalability issues in generative models by extending stochastic interpolants to a conditional generation framework. The approach aims to capture complex high-dimensional distributions and cross-feature dependencies more efficiently than standard autoregressive or pure generative models.",
+        "entities": [
+          {
+            "name": "Recurrent Interpolants for Probabilistic Time Series Prediction",
+            "entity_id": "recurrent_interpolants_for_probabilistic_time_series_prediction",
+            "entity_type": "method",
+            "aliases": [
+              "Recurrent Interpolants for Probabilistic Time Series Prediction"
+            ],
+            "attributes": {
+              "authors": "Yu Chen, Marin Biloš, Sarthak Mittal, Wei Deng, Kashif Rasul, Anderson Schneider",
+              "affiliations": "Morgan Stanley, Mila, Université de Montréal",
+              "core_mechanism": "Blends computational efficiency of recurrent neural networks with high-quality probabilistic modeling of diffusion models",
+              "foundation": "Stochastic interpolants extended to a broader conditional generation framework with additional control features"
+            },
+            "relationships": [
+              {
+                "predicate": "addresses",
+                "target": "scalability issues in large-scale generative model-based predictions",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "targets",
+                "target": "probabilistic time series forecasting",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Sequential models",
+            "entity_id": "sequential_models",
+            "entity_type": "method",
+            "aliases": [
+              "Sequential models"
+            ],
+            "attributes": {
+              "examples": "Recurrent neural networks, transformer-based models",
+              "status": "De facto tools for multivariate time series forecasting",
+              "strengths": "Capturing dependencies, assessing prediction uncertainty, training efficiency",
+              "limitations": "Challenges in modeling high-dimensional complex distributions and cross-feature dependencies"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_in",
+                "target": "finance, biology, medicine",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "probabilistic time series forecasting",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Generative models",
+            "entity_id": "generative_models",
+            "entity_type": "method",
+            "aliases": [
+              "Generative models"
+            ],
+            "attributes": {
+              "types": "Diffusion models, flow-based models",
+              "mechanism": "Integration of stochastic differential equations or probability flow",
+              "application": "Probabilistic time series imputation and forecasting",
+              "challenge": "Scalability issues necessitate computational-friendly frameworks"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_tackle",
+                "target": "modeling high-dimensional complex distributions and cross-feature dependencies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Autoregression models",
+            "entity_id": "autoregression_models",
+            "entity_type": "method",
+            "aliases": [
+              "Autoregression models"
+            ],
+            "attributes": {
+              "examples": "Recurrent neural networks, transformer models",
+              "capability": "Capture short-term and long-term sequential dependencies",
+              "uncertainty_assessment": "Incorporates parametric probabilistic models (e.g., Gaussian distribution) into output layer"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_in",
+                "target": "finance, biological statistics, medicine, geophysical applications",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Probabilistic output layer",
+            "entity_id": "probabilistic_output_layer",
+            "entity_type": "other",
+            "aliases": [
+              "Probabilistic output layer"
+            ],
+            "attributes": {
+              "constraint": "Confined within a simple probability family",
+              "reason": "Density must be parameterized by neural networks and loss must be differentiable with respect to parameters",
+              "model_entity_type": "component"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "Autoregression models",
+                "attributes": {},
+                "target_id": "autoregression_models"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 491,
+          "word_count": 491,
+          "sha256": "16e9820237416eafb07bc84619a4e7f43bd777523bb406a23b2ddeefc23be955",
+          "sentence_minhash": [
+            14279474218976588,
+            1306423125707224,
+            23103724853578534,
+            19278339258879306,
+            60043449279178472,
+            167599068439525091,
+            85248405507491069,
+            85939067702942344,
+            19874090017850400,
+            35062189116939919,
+            78280491562202942,
+            76722032415124302,
+            66824309535235066,
+            132529644835130180,
+            37122965930226008,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'component' for 'Probabilistic output layer'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The proposed generative model learns the joint density of a time series window comprising context and prediction segments, addressing scalability issues inherent in models where size depends on window length. By leveraging the strong correlation between neighboring time points, the method initiates prediction from the current time point to improve sample quality and reduce inference complexity. The framework combines the computational efficiency of recurrent neural networks for encoding temporal history with the high-quality probabilistic modeling of diffusion models.",
+        "entities": [
+          {
+            "name": "generative model",
+            "entity_id": "generative_model",
+            "entity_type": "method",
+            "aliases": [
+              "generative model"
+            ],
+            "attributes": {
+              "training_objective": "learn the joint density of the whole time series window",
+              "input_dimension": "K features",
+              "window_structure": "context window (Tcontext) and prediction window (Tprediction)",
+              "inference_mode": "conditional generation given context",
+              "scalability_issue": "model size related to both feature dimension and window size"
+            },
+            "relationships": [
+              {
+                "predicate": "performs",
+                "target": "conditional generation",
+                "attributes": {
+                  "analogy": "inpainting task in computer vision"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "suffers_from",
+                "target": "scalability issues",
+                "attributes": {
+                  "reason": "model size proportional to feature dimension and window size"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "recurrent model",
+            "entity_id": "recurrent_model",
+            "entity_type": "method",
+            "aliases": [
+              "recurrent model"
+            ],
+            "attributes": {
+              "model_size_dependency": "proportional to number of features, not time window length"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "generative model",
+                "attributes": {},
+                "target_id": "generative_model"
+              }
+            ]
+          },
+          {
+            "name": "time series data",
+            "entity_id": "time_series_data",
+            "entity_type": "concept",
+            "aliases": [
+              "time series data"
+            ],
+            "attributes": {
+              "nature": "continuous",
+              "correlation_property": "neighboring time points exhibit strong correlations"
+            },
+            "relationships": [
+              {
+                "predicate": "implies",
+                "target": "distribution of future time points is close to current time point",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "proposed time series prediction model",
+            "entity_id": "proposed_time_series_prediction_model",
+            "entity_type": "method",
+            "aliases": [
+              "proposed time series prediction model"
+            ],
+            "attributes": {
+              "framework": "generative framework mapping between dependent data points",
+              "initialization_strategy": "initiates prediction of future time point's distribution with current time point",
+              "benefits": "straightforward initiation, better quality, reduced inference complexity",
+              "temporal_encoding": "longer temporal dependency encoded by recurrent neural network",
+              "guidance_mechanism": "embedded history passed to generative model as guidance"
+            },
+            "relationships": [
+              {
+                "predicate": "combines",
+                "target": "efficient training and computation of recurrent neural network",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "combines",
+                "target": "high quality probabilistic modeling of diffusion model",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "extension": "extended to more general conditional generation framework with extra control features"
+            },
+            "relationships": [
+              {
+                "predicate": "basis_for",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {},
+                "target_id": "stochastic_interpolants_si"
+              }
+            ]
+          },
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "application": "sequential modeling and time series prediction",
+              "characteristics": "computational-friendly, high quality modeling of future time point's distribution"
+            },
+            "relationships": [
+              {
+                "predicate": "adopted_in",
+                "target": "proposed time series prediction model",
+                "attributes": {},
+                "target_id": "proposed_time_series_prediction_model"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 491,
+          "end_word": 956,
+          "word_count": 465,
+          "sha256": "3f794a5be6b4679929ebbfbf73a2da3a10442f80c0facb8ef39add39a6c58a1e",
+          "sentence_minhash": [
+            82755901695001421,
+            1306423125707224,
+            140583634530242717,
+            114504758630565773,
+            60043449279178472,
+            135739690058107425,
+            46992937528651961,
+            65918950900603172,
+            266927695903760850,
+            107048872566759164,
+            216478690898440704,
+            129163176769025194,
+            865864998653831,
+            118151843130073762,
+            187268419402658350,
+            415029508221655548
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text outlines the mathematical formulations for Denoising Diffusion Probabilistic Models (DDPM), Score-Based Generative Models (SGM), and Flow Matching (FM). It describes how these methods define forward and backward processes, define loss functions for training neural networks to predict noise, scores, or vector fields, and enable sampling from data distributions.",
+        "entities": [
+          {
+            "name": "Denoising Diffusion Probabilistic Model (DDPM)",
+            "entity_id": "denoising_diffusion_probabilistic_model_ddpm",
+            "entity_type": "method",
+            "aliases": [
+              "Denoising Diffusion Probabilistic Model (DDPM)"
+            ],
+            "attributes": {
+              "process": "Adds Gaussian noise to data at different scales",
+              "noise_schedule": "0 < β1 < β2 < ... < βN",
+              "transition_kernel": "Gaussian, computable directly from x0",
+              "posterior_distribution": "Available in closed form",
+              "loss_function": "Mean squared error between predicted noise and actual noise"
+            },
+            "relationships": [
+              {
+                "predicate": "learns_to_revert",
+                "target": "noise addition process",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "samples_from",
+                "target": "pure noise xN ~ N(0, I)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "generates",
+                "target": "samples from data distribution",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Score-Based Generative Model (SGM)",
+            "entity_id": "score_based_generative_model_sgm",
+            "entity_type": "method",
+            "aliases": [
+              "Score-Based Generative Model (SGM)"
+            ],
+            "attributes": {
+              "dynamics": "Forward and backward SDEs between s in [0, 1]",
+              "score_function": "Gradient of log probability density",
+              "forward_process_examples": [
+                "Brownian motion",
+                "Ornstein-Uhlenbeck process"
+              ],
+              "loss_function": "Mean squared error between predicted score and true score"
+            },
+            "relationships": [
+              {
+                "predicate": "approximates_score_with",
+                "target": "neural network",
+                "attributes": {},
+                "target_id": "neural_network"
+              },
+              {
+                "predicate": "generates_by_solving",
+                "target": "backward SDE",
+                "attributes": {},
+                "target_id": "backward_sde"
+              },
+              {
+                "predicate": "starts_from",
+                "target": "Gaussian prior distribution",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Flow Matching (FM)",
+            "entity_id": "flow_matching_fm",
+            "entity_type": "method",
+            "aliases": [
+              "Flow Matching (FM)",
+              "Flow Matching (FM) model",
+              "flow matching"
+            ],
+            "attributes": {
+              "mechanism": "Learns vector field generating probability path",
+              "conditional_path_constraints": "p0(x|x1) = N(0, I) and p1(x|x1) = N(x1, σ^2 I)",
+              "learning_target": "Vector field u_s(x|x1)"
+            },
+            "relationships": [
+              {
+                "predicate": "constructs",
+                "target": "probability path",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "learns",
+                "target": "vector field directly",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Gaussian noise",
+            "entity_id": "gaussian_noise",
+            "entity_type": "concept",
+            "aliases": [
+              "Gaussian noise"
+            ],
+            "attributes": {
+              "distribution": "N(0, I)"
+            },
+            "relationships": [
+              {
+                "predicate": "added_to",
+                "target": "observed data point x0",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "neural network",
+            "entity_id": "neural_network",
+            "entity_type": "method",
+            "aliases": [
+              "neural network"
+            ],
+            "attributes": {
+              "role": "Approximates score, noise, or vector field"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "SGM",
+                "attributes": {},
+                "target_id": "sgm"
+              },
+              {
+                "predicate": "used_in",
+                "target": "DDPM",
+                "attributes": {},
+                "target_id": "ddpm"
+              },
+              {
+                "predicate": "used_in",
+                "target": "Flow Matching (FM)",
+                "attributes": {},
+                "target_id": "flow_matching_fm"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 956,
+          "end_word": 1448,
+          "word_count": 492,
+          "sha256": "59a1c1c00ba693db8d5b5c43aa3c40e01c2182d3cb9e046eaf175cd17bd316e9",
+          "sentence_minhash": [
+            167200217492106239,
+            99036124469374589,
+            142504170772246792,
+            141557533923110381,
+            180569405161037659,
+            184552164476163057,
+            115595497046394339,
+            69465261641615305,
+            166844233492045914,
+            3380668174306445,
+            216478690898440704,
+            72293938161090477,
+            12488864069851856,
+            43963983812302322,
+            37122965930226008,
+            69242845566341429
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text defines the flow matching objective and its linear noising function, contrasting it with score-based models. It introduces stochastic interpolants as a method to model dependent couplings between two data distributions using a stochastic mapping. The section concludes by defining the specific schedules for the interpolant's deterministic and stochastic components.",
+        "entities": [
+          {
+            "name": "Flow Matching (FM)",
+            "entity_id": "flow_matching_fm",
+            "entity_type": "method",
+            "aliases": [
+              "Flow Matching (FM)",
+              "Flow Matching (FM) model",
+              "flow matching"
+            ],
+            "attributes": {
+              "goal": "learn the vector field with a neural network",
+              "advantage": "potentially more stable alternative to learning the score"
+            },
+            "relationships": [
+              {
+                "predicate": "minimizes",
+                "target": "flow matching objective",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "differs_from",
+                "target": "score-based generative model",
+                "attributes": {
+                  "difference": "path construction and direct vector field learning"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "linear noising function",
+            "entity_id": "linear_noising_function",
+            "entity_type": "method",
+            "aliases": [
+              "linear noising function"
+            ],
+            "attributes": {
+              "formula": "xs = sx1 + (1 - (1 - σ)s)ϵ",
+              "noise_distribution": "ϵ ~ N(0, I)"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Flow Matching (FM)",
+                "attributes": {},
+                "target_id": "flow_matching_fm"
+              }
+            ]
+          },
+          {
+            "name": "conditional vector field us(x|x1)",
+            "entity_id": "conditional_vector_field_us_x_x1",
+            "entity_type": "concept",
+            "aliases": [
+              "conditional vector field us(x|x1)"
+            ],
+            "attributes": {
+              "closed_form": "us(x|x1) = x1 - (1 - σ)x / (1 - (1 - σ)s)"
+            },
+            "relationships": [
+              {
+                "predicate": "generates",
+                "target": "probability path ps(x|x1)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "purpose": "model dependent couplings between (x0, x1) and establish two-way generative SDEs",
+              "mapping": "from x0 ~ ρ0 to x1 ~ ρ1"
+            },
+            "relationships": [
+              {
+                "predicate": "constructs",
+                "target": "stochastic mapping xs",
+                "attributes": {},
+                "target_id": "stochastic_mapping_xs"
+              },
+              {
+                "predicate": "characterized_by",
+                "target": "velocity function b(s, x)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "characterized_by",
+                "target": "score function s(s, x)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "stochastic mapping xs",
+            "entity_id": "stochastic_mapping_xs",
+            "entity_type": "concept",
+            "aliases": [
+              "stochastic mapping xs"
+            ],
+            "attributes": {
+              "formula": "xs = α(s)x0 + β(s)x1 + γ(s)z",
+              "noise_distribution": "z ~ N(0, I)",
+              "time_domain": "s ∈ [0, 1]"
+            },
+            "relationships": [
+              {
+                "predicate": "maintains_dependency_between",
+                "target": "x0 and x1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "interpolant schedules",
+            "entity_id": "interpolant_schedules",
+            "entity_type": "measurement",
+            "aliases": [
+              "interpolant schedules"
+            ],
+            "attributes": {
+              "alpha_boundary_conditions": "α(0) = 1, α(1) = 0",
+              "beta_boundary_conditions": "β(0) = 0, β(1) = 1",
+              "gamma_boundary_conditions": "γ(0) = 0, γ(1) = 0",
+              "example_alpha": "sqrt(1 - γ^2(s)) cos(1/2 πs)",
+              "example_beta": "sqrt(1 - γ^2(s)) sin(1/2 πs)",
+              "example_gamma": "sqrt(2s(1 - s))"
+            },
+            "relationships": [
+              {
+                "predicate": "schedules",
+                "target": "deterministic interpolant and stochastic component variance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1448,
+          "end_word": 1940,
+          "word_count": 492,
+          "sha256": "5a9f2fe04c7bbf7ee996830448275bdea4da403681531f87988bd977f4c47aca",
+          "sentence_minhash": [
+            437139705243465412,
+            1306423125707224,
+            231110926427626308,
+            22046764856228449,
+            195644934071721602,
+            68817929790886500,
+            115595497046394339,
+            1125529973969978,
+            166844233492045914,
+            17444917348060025,
+            72067118342250724,
+            129163176769025194,
+            164575269931903557,
+            58558631451210278,
+            37122965930226008,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The stochastic interpolant framework models velocity and score functions using deep neural networks trained via mean squared error loss. Inference utilizes forward and backward stochastic differential equations (SDEs) to generate samples from conditional or joint densities. The method supports conditional generation by incorporating additional features into the velocity and score functions.",
+        "entities": [
+          {
+            "name": "stochastic interpolant velocity function",
+            "entity_id": "stochastic_interpolant_velocity_function",
+            "entity_type": "concept",
+            "aliases": [
+              "stochastic interpolant velocity function"
+            ],
+            "attributes": {
+              "symbol": "b(s, x)",
+              "modeling_method": "deep neural networks"
+            },
+            "relationships": [
+              {
+                "predicate": "trained_by",
+                "target": "mean squared error loss function Lb",
+                "attributes": {},
+                "target_id": "mean_squared_error_loss_function_lb"
+              },
+              {
+                "predicate": "component_of",
+                "target": "forward SDE",
+                "attributes": {},
+                "target_id": "forward_sde"
+              },
+              {
+                "predicate": "component_of",
+                "target": "backward SDE",
+                "attributes": {},
+                "target_id": "backward_sde"
+              }
+            ]
+          },
+          {
+            "name": "stochastic interpolant score function",
+            "entity_id": "stochastic_interpolant_score_function",
+            "entity_type": "concept",
+            "aliases": [
+              "stochastic interpolant score function"
+            ],
+            "attributes": {
+              "symbol": "s(s, x)",
+              "modeling_method": "deep neural networks"
+            },
+            "relationships": [
+              {
+                "predicate": "trained_by",
+                "target": "mean squared error loss function Ls",
+                "attributes": {},
+                "target_id": "mean_squared_error_loss_function_ls"
+              },
+              {
+                "predicate": "component_of",
+                "target": "forward SDE",
+                "attributes": {},
+                "target_id": "forward_sde"
+              },
+              {
+                "predicate": "component_of",
+                "target": "backward SDE",
+                "attributes": {},
+                "target_id": "backward_sde"
+              }
+            ]
+          },
+          {
+            "name": "mean squared error loss function Lb",
+            "entity_id": "mean_squared_error_loss_function_lb",
+            "entity_type": "measurement",
+            "aliases": [
+              "mean squared error loss function Lb"
+            ],
+            "attributes": {
+              "formula": "Integral from 0 to 1 of E[1/2||b_hat(s, xs)||^2 - (alpha_dot(s)x0 + beta_dot(s)x1 + gamma_dot(s)z)^T b_hat(s, xs)] ds"
+            },
+            "relationships": [
+              {
+                "predicate": "minimized_to_train",
+                "target": "stochastic interpolant velocity function",
+                "attributes": {},
+                "target_id": "stochastic_interpolant_velocity_function"
+              }
+            ]
+          },
+          {
+            "name": "mean squared error loss function Ls",
+            "entity_id": "mean_squared_error_loss_function_ls",
+            "entity_type": "measurement",
+            "aliases": [
+              "mean squared error loss function Ls"
+            ],
+            "attributes": {
+              "formula": "Integral from 0 to 1 of E[1/2||s_hat(s, xs)||^2 + gamma^-1 z^T s_hat(s, xs)] ds"
+            },
+            "relationships": [
+              {
+                "predicate": "minimized_to_train",
+                "target": "stochastic interpolant score function",
+                "attributes": {},
+                "target_id": "stochastic_interpolant_score_function"
+              }
+            ]
+          },
+          {
+            "name": "forward SDE",
+            "entity_id": "forward_sde",
+            "entity_type": "method",
+            "aliases": [
+              "forward SDE"
+            ],
+            "attributes": {
+              "equation": "dxs = [b(s, x) + epsilon(s)s(s, x)]ds + sqrt(2epsilon(s))dws"
+            },
+            "relationships": [
+              {
+                "predicate": "satisfies",
+                "target": "forward Fokker-Planck equation",
+                "attributes": {},
+                "target_id": "forward_fokker_planck_equation"
+              },
+              {
+                "predicate": "used_for_sampling",
+                "target": "conditional density rho(x1|x0)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for_sampling",
+                "target": "joint density rho(x0, x1)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "backward SDE",
+            "entity_id": "backward_sde",
+            "entity_type": "method",
+            "aliases": [
+              "backward SDE"
+            ],
+            "attributes": {
+              "equation": "dxs = [b(s, x) - epsilon(s)s(s, x)]ds + sqrt(2epsilon(s))dwB_s"
+            },
+            "relationships": [
+              {
+                "predicate": "satisfies",
+                "target": "backward Fokker-Planck equation",
+                "attributes": {},
+                "target_id": "backward_fokker_planck_equation"
+              },
+              {
+                "predicate": "used_for_sampling",
+                "target": "conditional density rho(x0|x1)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for_sampling",
+                "target": "joint density rho(x0, x1)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "forward Fokker-Planck equation",
+            "entity_id": "forward_fokker_planck_equation",
+            "entity_type": "concept",
+            "aliases": [
+              "forward Fokker-Planck equation"
+            ],
+            "attributes": {
+              "equation": "partial_s rho + div(bF rho) = epsilon(s) laplacian rho, with rho(0) = rho0"
+            },
+            "relationships": []
+          },
+          {
+            "name": "backward Fokker-Planck equation",
+            "entity_id": "backward_fokker_planck_equation",
+            "entity_type": "concept",
+            "aliases": [
+              "backward Fokker-Planck equation"
+            ],
+            "attributes": {
+              "equation": "partial_s rho + div(bB rho) = -epsilon(s) laplacian rho, with rho(1) = rho1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "conditional generation with extra features",
+            "entity_id": "conditional_generation_with_extra_features",
+            "entity_type": "method",
+            "aliases": [
+              "conditional generation with extra features"
+            ],
+            "attributes": {
+              "description": "Adapts generative methods for conditions ranging from categorical values to complex prompts like partial observations, images, or text"
+            },
+            "relationships": [
+              {
+                "predicate": "applies_to",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {},
+                "target_id": "stochastic_interpolants_si"
+              },
+              {
+                "predicate": "applies_to",
+                "target": "DDPM",
+                "attributes": {},
+                "target_id": "ddpm"
+              },
+              {
+                "predicate": "applies_to",
+                "target": "SGM",
+                "attributes": {},
+                "target_id": "sgm"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1940,
+          "end_word": 2429,
+          "word_count": 489,
+          "sha256": "bb3006d664b306a384daeefee9db886460d1e897ff5a3a5a236503e0838387b5",
+          "sentence_minhash": [
+            254387564480566355,
+            18551641988871988,
+            111029777188705964,
+            64513941377847126,
+            119517543168682377,
+            16092282322637363,
+            103790956251638376,
+            112251467330100539,
+            19874090017850400,
+            107048872566759164,
+            78280491562202942,
+            107897599453353161,
+            35548462779890557,
+            43963983812302322,
+            204848948559354782,
+            51870259734948973
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The text describes a method for conditional generation using stochastic interpolants (SI) and score-based generative models (SGM) by injecting condition features into neural network layers. It presents the mathematical formulation for conditional SDEs and loss functions, as well as a training algorithm that uses a recurrent neural network to encode context for time series prediction.",
+        "entities": [
+          {
+            "name": "feature embedding",
+            "entity_id": "feature_embedding",
+            "entity_type": "method",
+            "aliases": [
+              "feature embedding"
+            ],
+            "attributes": {
+              "purpose": "handle diverse conditions",
+              "mechanism": "injected into various layers of neural networks"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "conditional SGM",
+                "attributes": {},
+                "target_id": "conditional_sgm"
+              },
+              {
+                "predicate": "used_in",
+                "target": "conditional SI",
+                "attributes": {},
+                "target_id": "conditional_si"
+              }
+            ]
+          },
+          {
+            "name": "conditional SGM",
+            "entity_id": "conditional_sgm",
+            "entity_type": "method",
+            "aliases": [
+              "conditional SGM"
+            ],
+            "attributes": {
+              "training_data": "pairs of a sample x0 and condition ξ",
+              "loss_function": "Lcond = E[||ϵθ(s, xs, ξ) − ∇xs log p(xs|x0)||^2]"
+            },
+            "relationships": [
+              {
+                "predicate": "achieves",
+                "target": "state-of-the-art performance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "conditional SI",
+            "entity_id": "conditional_si",
+            "entity_type": "method",
+            "aliases": [
+              "conditional SI"
+            ],
+            "attributes": {
+              "training_data": "tuples (x0, x1, ξ)",
+              "velocity_function": "b(xs, s, ξ)",
+              "score_function": "s(xs, s, ξ)"
+            },
+            "relationships": [
+              {
+                "predicate": "inference_sde_forward",
+                "target": "dxs = [b(s, xs, ξ) + ϵ(s)s(s, xs, ξ)]ds + √(2ϵ(s))dws",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inference_sde_backward",
+                "target": "dxs = [b(s, xs, ξ) − ϵ(s)s(s, xs, ξ)]ds + √(2ϵ(s))dwB_s",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Algorithm 1",
+            "entity_id": "algorithm_1",
+            "entity_type": "method",
+            "aliases": [
+              "Algorithm 1"
+            ],
+            "attributes": {
+              "name": "Training algorithm",
+              "input": "Sample 3-tuples (xti+1, xti, xti−P :ti−1), interpolant schedules, models (velocity, score, RNN)",
+              "sampling_distribution": "si ∼ Beta(0.1, 0.1)",
+              "interpolant_formula": "xs,i = α(si)xti + β(si)xti+1 + γ(si)zi",
+              "context_encoding": "hi = RNN(xti−P :ti−1)",
+              "loss_velocity": "Lb = Σ (1/pBeta(si)) [0.5||b̂(si, xs,i, hi)||^2 − (α̇(si)xti + β̇(si)xti+1 + γ̇(si)zi)^T b̂(si, xs,i, hi)]",
+              "loss_score": "Ls = Σ (1/pBeta(si)) [0.5||ŝi(si, xs,i)||^2 + γ^−1 zi^T ŝi(si, xs,i)]"
+            },
+            "relationships": [
+              {
+                "predicate": "minimizes",
+                "target": "Lb and Ls",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Theorem 1",
+            "entity_id": "theorem_1",
+            "entity_type": "concept",
+            "aliases": [
+              "Theorem 1"
+            ],
+            "attributes": {
+              "title": "Extension of Stochastic Interpolants to Arbitrary Joint Distributions",
+              "joint_distribution": "ρ01 for (x0, x1)",
+              "interpolant_formula": "xt = αt x0 + βt x1 + γt z",
+              "boundary_conditions": "α0 = β1 = 1, α1 = β0 = γ0 = γ1 = 0",
+              "constraint": "α^2_t + β^2_t + γ^2_t > 0 for all t ∈ [0, 1]"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2429,
+          "end_word": 2863,
+          "word_count": 434,
+          "sha256": "3638135e617df7b0cab8c01f8f0d6c317165d19675dd2f7a80afdfd4120486c1",
+          "sentence_minhash": [
+            14279474218976588,
+            66309161684300545,
+            69799490763000021,
+            61919449716151556,
+            60043449279178472,
+            88851179226313289,
+            115595497046394339,
+            96292850158067112,
+            69954760574897592,
+            27639346383492660,
+            78280491562202942,
+            171596837418463449,
+            91759520063933247,
+            43963983812302322,
+            37122965930226008,
+            243433577156533938
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text defines the time-dependent density and transport equation for stochastic interpolants, including the velocity and score function relations. It outlines an inference algorithm that uses a recurrent neural network to encode context for conditional generation. The section formulates time series prediction as a conditional probability task where the model learns the joint distribution of current and future states given past observations.",
+        "entities": [
+          {
+            "name": "time-dependent density ρt",
+            "entity_id": "time_dependent_density_t",
+            "entity_type": "concept",
+            "aliases": [
+              "time-dependent density ρt"
+            ],
+            "attributes": {
+              "definition": "density of xt",
+              "boundary_conditions": "satisfied at t = 0 and t = 1"
+            },
+            "relationships": [
+              {
+                "predicate": "satisfies",
+                "target": "transport equation",
+                "attributes": {},
+                "target_id": "transport_equation"
+              }
+            ]
+          },
+          {
+            "name": "transport equation",
+            "entity_id": "transport_equation",
+            "entity_type": "other",
+            "aliases": [
+              "transport equation"
+            ],
+            "attributes": {
+              "form": "˙ρt + ∇· (btρt) = 0",
+              "validity_range": "t ∈ [0, 1]",
+              "model_entity_type": "mathematical_relation"
+            },
+            "relationships": [
+              {
+                "predicate": "involves",
+                "target": "velocity bt(x|ξ)",
+                "attributes": {},
+                "target_id": "velocity_bt_x"
+              }
+            ]
+          },
+          {
+            "name": "velocity bt(x|ξ)",
+            "entity_id": "velocity_bt_x",
+            "entity_type": "other",
+            "aliases": [
+              "velocity bt(x|ξ)"
+            ],
+            "attributes": {
+              "definition": "E[˙αtx0 + ˙βtx1 + ˙γt z | xt = x, ξ]",
+              "expectation_basis": "density ρ01 given xs = x and extra information ξ",
+              "model_entity_type": "function"
+            },
+            "relationships": []
+          },
+          {
+            "name": "score function relation",
+            "entity_id": "score_function_relation",
+            "entity_type": "other",
+            "aliases": [
+              "score function relation"
+            ],
+            "attributes": {
+              "form": "∇log ρt(x) = −γ−1 t E [z|xt = x, ξ]",
+              "model_entity_type": "mathematical_relation"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Inference Algorithm 2",
+            "entity_id": "inference_algorithm_2",
+            "entity_type": "method",
+            "aliases": [
+              "Inference Algorithm 2"
+            ],
+            "attributes": {
+              "input": "Sample 2-tuples (xt, xt−P :t−1)",
+              "trained_models": "Velocity ˆb, score ˆs, RNN",
+              "parameter": "Diffusion variance ϵ"
+            },
+            "relationships": [
+              {
+                "predicate": "sets_initial_state",
+                "target": "˜x0 = xt",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "encodes_context",
+                "target": "RNN(xt−P :t−1)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "executes",
+                "target": "SDE integral for s ∈ [0, 1]",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "outputs",
+                "target": "˜x1 as prediction of xt+1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "time series prediction task",
+            "entity_id": "time_series_prediction_task",
+            "entity_type": "other",
+            "aliases": [
+              "time series prediction task"
+            ],
+            "attributes": {
+              "formulation": "conditional probability p(xt+1|xt−P :t)",
+              "xt_definition": "multivariate time series at time t with D dimensions",
+              "xt_plus_1_definition": "prediction target",
+              "context_window_definition": "xt−P :t where P is the length of the context window",
+              "model_entity_type": "task"
+            },
+            "relationships": [
+              {
+                "predicate": "employs",
+                "target": "conditional Stochastic Interpolants (SI) method",
+                "attributes": {},
+                "target_id": "conditional_stochastic_interpolants_si_method"
+              }
+            ]
+          },
+          {
+            "name": "conditional Stochastic Interpolants (SI) method",
+            "entity_id": "conditional_stochastic_interpolants_si_method",
+            "entity_type": "method",
+            "aliases": [
+              "conditional Stochastic Interpolants (SI) method"
+            ],
+            "attributes": {
+              "training_objective": "learn joint distribution p(xt+1, xt|xt−P :t−1)",
+              "marginal_distributions": "ρ0 = ρ1",
+              "goal": "learn coupling relation between xt+1 and xt conditioning on context xt−P :t−1"
+            },
+            "relationships": [
+              {
+                "predicate": "trains",
+                "target": "conditional velocity and score functions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2863,
+          "end_word": 3307,
+          "word_count": 444,
+          "sha256": "7732f21619e4b03d4871a93bb5e418142030aca74865119614d142e55548a92d",
+          "sentence_minhash": [
+            400955583959429622,
+            232593725413697090,
+            23103724853578534,
+            61919449716151556,
+            121992409937547250,
+            16092282322637363,
+            115595497046394339,
+            85939067702942344,
+            266927695903760850,
+            107048872566759164,
+            78280491562202942,
+            129163176769025194,
+            91759520063933247,
+            58558631451210278,
+            37122965930226008,
+            69242845566341429
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'mathematical_relation' for 'transport equation'",
+          "normalized unsupported entity type 'function' for 'velocity bt(x|ξ)'",
+          "normalized unsupported entity type 'mathematical_relation' for 'score function relation'",
+          "normalized unsupported entity type 'task' for 'time series prediction task'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The proposed method uses a recurrent neural network to encode context into a history prompt, enabling stochastic interpolants to perform conditional generation for time series prediction. Importance sampling with a Beta distribution is employed to stabilize training by addressing high loss values near the boundaries of the diffusion time. The approach supports recursive multi-step prediction and is evaluated on synthetic and real-world datasets.",
+        "entities": [
+          {
+            "name": "Recurrent Neural Network (RNN)",
+            "entity_id": "recurrent_neural_network_rnn",
+            "entity_type": "method",
+            "aliases": [
+              "Recurrent Neural Network (RNN)"
+            ],
+            "attributes": {
+              "role": "Encoder for context window"
+            },
+            "relationships": [
+              {
+                "predicate": "encodes",
+                "target": "context window xt−P :t−1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "produces",
+                "target": "history prompt ht",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "function": "Conditional generation via diffusion"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_condition",
+                "target": "history prompt ht",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "diffuses_from",
+                "target": "context vector xt",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "follows",
+                "target": "forward SDE",
+                "attributes": {},
+                "target_id": "forward_sde"
+              }
+            ]
+          },
+          {
+            "name": "Importance Sampling",
+            "entity_id": "importance_sampling",
+            "entity_type": "method",
+            "aliases": [
+              "Importance Sampling"
+            ],
+            "attributes": {
+              "purpose": "Stabilize training by handling integral over diffusion time",
+              "proposal_distribution": "Beta distribution"
+            },
+            "relationships": [
+              {
+                "predicate": "addresses_issue",
+                "target": "larger loss values when s is close to two ends",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Training Dataset",
+            "entity_id": "training_dataset",
+            "entity_type": "measurement",
+            "aliases": [
+              "Training Dataset"
+            ],
+            "attributes": {
+              "structure": "tuple (xt+1, xt, xt−P :t−1)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Multi-step Prediction",
+            "entity_id": "multi_step_prediction",
+            "entity_type": "method",
+            "aliases": [
+              "Multi-step Prediction"
+            ],
+            "attributes": {
+              "strategy": "Recursive step-by-step prediction"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Solar Dataset",
+            "entity_id": "solar_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "Solar Dataset",
+              "Solar dataset"
+            ],
+            "attributes": {
+              "type": "Real-world time series data"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "Forecast path demonstration",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3307,
+          "end_word": 3804,
+          "word_count": 497,
+          "sha256": "44098e70f5f28794ebe1cbd27df2b043d457c183185d2031f14d330135fa244e",
+          "sentence_minhash": [
+            82755901695001421,
+            1306423125707224,
+            365220491043541866,
+            61919449716151556,
+            376153277419722277,
+            19169466869430263,
+            46992937528651961,
+            152326886699586849,
+            192077181721617703,
+            17444917348060025,
+            78280491562202942,
+            171596837418463449,
+            91759520063933247,
+            34798253381170564,
+            77455367540820264,
+            382712784620362330
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 8,
+        "context_summary": "The study compares stochastic interpolants (SI) with diffusion and flow-based models on synthetic and real-world time series datasets. SI demonstrates competitive performance in multivariate probabilistic forecasting, outperforming or matching baselines on most datasets. The method utilizes a recurrent neural network to encode context for conditional generation.",
+        "entities": [
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "role": "generative module for prediction",
+              "performance": "outperforms or matches other models on three out of four real-world datasets",
+              "gamma_functions_tested": [
+                "sqrt: gamma(s) = sqrt(2s(1-s))",
+                "quad: gamma(s) = s(1-s)",
+                "trig: gamma(s) = sin(pi*s)^2"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "compared_against",
+                "target": "DDPM",
+                "attributes": {},
+                "target_id": "ddpm"
+              },
+              {
+                "predicate": "compared_against",
+                "target": "SGM",
+                "attributes": {},
+                "target_id": "sgm"
+              },
+              {
+                "predicate": "compared_against",
+                "target": "FM",
+                "attributes": {},
+                "target_id": "fm"
+              },
+              {
+                "predicate": "compared_against",
+                "target": "Vec-LSTM",
+                "attributes": {},
+                "target_id": "vec_lstm"
+              },
+              {
+                "predicate": "evaluated_on",
+                "target": "Synthetic datasets",
+                "attributes": {},
+                "target_id": "synthetic_datasets"
+              },
+              {
+                "predicate": "evaluated_on",
+                "target": "Multivariate probabilistic forecasting tasks",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DDPM",
+            "entity_id": "ddpm",
+            "entity_type": "method",
+            "aliases": [
+              "DDPM"
+            ],
+            "attributes": {
+              "variants": [
+                "linear noise scheduler",
+                "cosine noise scheduler"
+              ],
+              "modification": "context time point replaced with Gaussian noise for step-by-step prediction"
+            },
+            "relationships": [
+              {
+                "predicate": "baseline_for",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {},
+                "target_id": "stochastic_interpolants_si"
+              }
+            ]
+          },
+          {
+            "name": "SGM",
+            "entity_id": "sgm",
+            "entity_type": "method",
+            "aliases": [
+              "SGM"
+            ],
+            "attributes": {
+              "modification": "context time point replaced with Gaussian noise for step-by-step prediction"
+            },
+            "relationships": [
+              {
+                "predicate": "baseline_for",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {},
+                "target_id": "stochastic_interpolants_si"
+              }
+            ]
+          },
+          {
+            "name": "FM",
+            "entity_id": "fm",
+            "entity_type": "method",
+            "aliases": [
+              "FM"
+            ],
+            "attributes": {
+              "full_name": "Flow Matching",
+              "modification": "denoising objective replaced with flow matching objective"
+            },
+            "relationships": [
+              {
+                "predicate": "baseline_for",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {},
+                "target_id": "stochastic_interpolants_si"
+              },
+              {
+                "predicate": "outperformed_by",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {
+                  "dataset": "Traffic"
+                },
+                "target_id": "stochastic_interpolants_si"
+              }
+            ]
+          },
+          {
+            "name": "Vec-LSTM",
+            "entity_id": "vec_lstm",
+            "entity_type": "method",
+            "aliases": [
+              "Vec-LSTM"
+            ],
+            "attributes": {
+              "type": "pure recurrent neural network",
+              "probabilistic_layer": "multivariate Gaussian"
+            },
+            "relationships": [
+              {
+                "predicate": "baseline_for",
+                "target": "Stochastic Interpolants (SI)",
+                "attributes": {},
+                "target_id": "stochastic_interpolants_si"
+              }
+            ]
+          },
+          {
+            "name": "Wasserstein distance",
+            "entity_id": "wasserstein_distance",
+            "entity_type": "measurement",
+            "aliases": [
+              "Wasserstein distance"
+            ],
+            "attributes": {
+              "purpose": "measures sample quality in synthetic datasets"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_evaluate",
+                "target": "Synthetic datasets",
+                "attributes": {},
+                "target_id": "synthetic_datasets"
+              }
+            ]
+          },
+          {
+            "name": "CRPS-sum",
+            "entity_id": "crps_sum",
+            "entity_type": "measurement",
+            "aliases": [
+              "CRPS-sum"
+            ],
+            "attributes": {
+              "purpose": "metric for multivariate probabilistic forecasting",
+              "interpretation": "smaller number indicates better performance"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_evaluate",
+                "target": "Multivariate probabilistic forecasting tasks",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Synthetic datasets",
+            "entity_id": "synthetic_datasets",
+            "entity_type": "other",
+            "aliases": [
+              "Synthetic datasets"
+            ],
+            "attributes": {
+              "examples": [
+                "Circles",
+                "Moons",
+                "Rings",
+                "Swissroll"
+              ],
+              "purpose": "determine hyperparameters and investigate properties regarding data sizes, model sizes, and training lengths",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "Hyperparameter exploration",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Multivariate probabilistic forecasting",
+            "entity_id": "multivariate_probabilistic_forecasting",
+            "entity_type": "other",
+            "aliases": [
+              "Multivariate probabilistic forecasting"
+            ],
+            "attributes": {
+              "framework": "step-by-step (autoregressive) prediction",
+              "model_entity_type": "task"
+            },
+            "relationships": [
+              {
+                "predicate": "evaluated_by",
+                "target": "CRPS-sum",
+                "attributes": {},
+                "target_id": "crps_sum"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 8,
+          "start_word": 3804,
+          "end_word": 4280,
+          "word_count": 476,
+          "sha256": "1e965c8e6aab1c02c288c5484df639abb00dfecce2de2fc3b69fa5d8d32b5046",
+          "sentence_minhash": [
+            329452638566001480,
+            18551641988871988,
+            229329608839330056,
+            323872437934681662,
+            28125404283180441,
+            10852481231346428,
+            16716000900325394,
+            63183425104977485,
+            69954760574897592,
+            9462436175016187,
+            42395792100147859,
+            7735249562228291,
+            21933493368060407,
+            58558631451210278,
+            109764749964239165,
+            76365460048009838
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'Synthetic datasets'",
+          "normalized unsupported entity type 'task' for 'Multivariate probabilistic forecasting'"
+        ]
+      },
+      {
+        "chunk_index": 9,
+        "context_summary": "The study evaluates a stochastic interpolant-based model on four real-world time series datasets using CRPS-sum, NRMSE, and ND metrics. The proposed method outperforms or matches baselines on three datasets, with Flow Matching performing better only on the Traffic dataset. The authors conclude that stochastic interpolants are a strong candidate for conditional generation in multivariate probabilistic forecasting.",
+        "entities": [
+          {
+            "name": "Solar Dataset",
+            "entity_id": "solar_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "Solar Dataset",
+              "Solar dataset"
+            ],
+            "attributes": {
+              "source": "Lai et al., 2018",
+              "usage": "probabilistic forecasting",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "evaluated_with",
+                "target": "CRPS-sum, NRMSE, ND",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Exchange dataset",
+            "entity_id": "exchange_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "Exchange dataset"
+            ],
+            "attributes": {
+              "source": "Lai et al., 2018",
+              "usage": "probabilistic forecasting",
+              "model_entity_type": "dataset"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Traffic dataset",
+            "entity_id": "traffic_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "Traffic dataset"
+            ],
+            "attributes": {
+              "source": "PEMS-SF (UCI Machine Learning Repository)",
+              "usage": "probabilistic forecasting",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "best_performing_model",
+                "target": "FM model",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Wiki dataset",
+            "entity_id": "wiki_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "Wiki dataset"
+            ],
+            "attributes": {
+              "source": "gluon-ts repository",
+              "usage": "probabilistic forecasting",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "distribution_capture_failure",
+                "target": "FM model",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Continuous Ranked Probability Score (CRPS-sum)",
+            "entity_id": "continuous_ranked_probability_score_crps_sum",
+            "entity_type": "measurement",
+            "aliases": [
+              "Continuous Ranked Probability Score (CRPS-sum)"
+            ],
+            "attributes": {
+              "source": "Koochali et al., 2022",
+              "interpretation": "smaller values indicate better performance"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_by",
+                "target": "gluonts package",
+                "attributes": {},
+                "target_id": "gluonts_package"
+              }
+            ]
+          },
+          {
+            "name": "Normalized Root Mean Square Error (NRMSE)",
+            "entity_id": "normalized_root_mean_square_error_nrmse",
+            "entity_type": "measurement",
+            "aliases": [
+              "Normalized Root Mean Square Error (NRMSE)"
+            ],
+            "attributes": {
+              "definition": "normalized root mean square error via the median of the samples",
+              "interpretation": "smaller values indicate better performance"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_by",
+                "target": "gluonts package",
+                "attributes": {},
+                "target_id": "gluonts_package"
+              }
+            ]
+          },
+          {
+            "name": "Normalized Deviance (ND)",
+            "entity_id": "normalized_deviance_nd",
+            "entity_type": "measurement",
+            "aliases": [
+              "Normalized Deviance (ND)"
+            ],
+            "attributes": {
+              "type": "point-metric",
+              "interpretation": "smaller values indicate better performance"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_by",
+                "target": "gluonts package",
+                "attributes": {},
+                "target_id": "gluonts_package"
+              }
+            ]
+          },
+          {
+            "name": "gluonts package",
+            "entity_id": "gluonts_package",
+            "entity_type": "other",
+            "aliases": [
+              "gluonts package"
+            ],
+            "attributes": {
+              "source": "Alexandrov et al., 2019",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "provides_metrics_for",
+                "target": "CRPS-sum, NRMSE, ND",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "description": "Merges computational efficiency of RNNs with high-quality probabilistic modeling of diffusion models",
+              "basis": "stochastic interpolants and expanded conditional generation framework"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms_or_matches",
+                "target": "other models on Solar, Exchange, Wiki datasets",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "outperforms",
+                "target": "Vec-LSTM",
+                "attributes": {},
+                "target_id": "vec_lstm"
+              },
+              {
+                "predicate": "demonstrates",
+                "target": "precise prediction and uncertainty capture on Solar dataset",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Flow Matching (FM)",
+            "entity_id": "flow_matching_fm",
+            "entity_type": "method",
+            "aliases": [
+              "Flow Matching (FM)",
+              "Flow Matching (FM) model",
+              "flow matching"
+            ],
+            "attributes": {
+              "performance_note": "Achieves better performance than proposed model on Traffic dataset; fails to capture distribution on Wiki dataset"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Vec-LSTM",
+            "entity_id": "vec_lstm",
+            "entity_type": "method",
+            "aliases": [
+              "Vec-LSTM"
+            ],
+            "attributes": {
+              "type": "RNN-based model",
+              "probabilistic_layer": "multivariate Gaussian"
+            },
+            "relationships": [
+              {
+                "predicate": "outperformed_by",
+                "target": "Proposed Stochastic Interpolant Model, SGM, DDPM",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stochastic Interpolants (SI)",
+            "entity_id": "stochastic_interpolants_si",
+            "entity_type": "method",
+            "aliases": [
+              "Proposed Stochastic Interpolant Model",
+              "Stochastic Interpolants",
+              "Stochastic Interpolants (SI)",
+              "conditional stochastic interpolants module",
+              "stochastic interpolants"
+            ],
+            "attributes": {
+              "role": "Strong candidate for conditional generation"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "Multivariate probabilistic forecasting",
+                "attributes": {},
+                "target_id": "multivariate_probabilistic_forecasting"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 9,
+          "start_word": 4280,
+          "end_word": 4618,
+          "word_count": 338,
+          "sha256": "72b5b484b755f10c598ac92c2e62abd0cacf2ebb9c7dd4624b3458bbfaadb616",
+          "sentence_minhash": [
+            82755901695001421,
+            1306423125707224,
+            229329608839330056,
+            57644303908473749,
+            180569405161037659,
+            99436724310786061,
+            175774020269814206,
+            96292850158067112,
+            96635883400075078,
+            263121049403086,
+            78280491562202942,
+            350941360585413511,
+            865864998653831,
+            588210065179942392,
+            37122965930226008,
+            57520578408408581
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'Solar dataset'",
+          "normalized unsupported entity type 'dataset' for 'Exchange dataset'",
+          "normalized unsupported entity type 'dataset' for 'Traffic dataset'",
+          "normalized unsupported entity type 'dataset' for 'Wiki dataset'",
+          "normalized unsupported entity type 'software' for 'gluonts package'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "stochastic_interpolants_si",
+        "canonical_name": "Stochastic Interpolants (SI)",
+        "aliases": [
+          "Stochastic Interpolants (SI)",
+          "Stochastic Interpolants",
+          "stochastic interpolants",
+          "conditional stochastic interpolants module",
+          "Proposed Stochastic Interpolant Model"
+        ]
+      },
+      {
+        "canonical_id": "flow_matching_fm",
+        "canonical_name": "Flow Matching (FM)",
+        "aliases": [
+          "Flow Matching (FM)",
+          "Flow Matching (FM) model",
+          "flow matching"
+        ]
+      },
+      {
+        "canonical_id": "solar_dataset",
+        "canonical_name": "Solar Dataset",
+        "aliases": [
+          "Solar Dataset",
+          "Solar dataset"
+        ]
+      },
+      {
+        "canonical_id": "recurrent_interpolants_for_probabilistic_time_series_prediction",
+        "canonical_name": "Recurrent Interpolants for Probabilistic Time Series Prediction",
+        "aliases": [
+          "Recurrent Interpolants for Probabilistic Time Series Prediction"
+        ]
+      },
+      {
+        "canonical_id": "sequential_models",
+        "canonical_name": "Sequential models",
+        "aliases": [
+          "Sequential models"
+        ]
+      },
+      {
+        "canonical_id": "generative_models",
+        "canonical_name": "Generative models",
+        "aliases": [
+          "Generative models"
+        ]
+      },
+      {
+        "canonical_id": "autoregression_models",
+        "canonical_name": "Autoregression models",
+        "aliases": [
+          "Autoregression models"
+        ]
+      },
+      {
+        "canonical_id": "probabilistic_output_layer",
+        "canonical_name": "Probabilistic output layer",
+        "aliases": [
+          "Probabilistic output layer"
+        ]
+      },
+      {
+        "canonical_id": "generative_model",
+        "canonical_name": "generative model",
+        "aliases": [
+          "generative model"
+        ]
+      },
+      {
+        "canonical_id": "recurrent_model",
+        "canonical_name": "recurrent model",
+        "aliases": [
+          "recurrent model"
+        ]
+      },
+      {
+        "canonical_id": "time_series_data",
+        "canonical_name": "time series data",
+        "aliases": [
+          "time series data"
+        ]
+      },
+      {
+        "canonical_id": "proposed_time_series_prediction_model",
+        "canonical_name": "proposed time series prediction model",
+        "aliases": [
+          "proposed time series prediction model"
+        ]
+      },
+      {
+        "canonical_id": "denoising_diffusion_probabilistic_model_ddpm",
+        "canonical_name": "Denoising Diffusion Probabilistic Model (DDPM)",
+        "aliases": [
+          "Denoising Diffusion Probabilistic Model (DDPM)"
+        ]
+      },
+      {
+        "canonical_id": "score_based_generative_model_sgm",
+        "canonical_name": "Score-Based Generative Model (SGM)",
+        "aliases": [
+          "Score-Based Generative Model (SGM)"
+        ]
+      },
+      {
+        "canonical_id": "gaussian_noise",
+        "canonical_name": "Gaussian noise",
+        "aliases": [
+          "Gaussian noise"
+        ]
+      },
+      {
+        "canonical_id": "neural_network",
+        "canonical_name": "neural network",
+        "aliases": [
+          "neural network"
+        ]
+      },
+      {
+        "canonical_id": "linear_noising_function",
+        "canonical_name": "linear noising function",
+        "aliases": [
+          "linear noising function"
+        ]
+      },
+      {
+        "canonical_id": "conditional_vector_field_us_x_x1",
+        "canonical_name": "conditional vector field us(x|x1)",
+        "aliases": [
+          "conditional vector field us(x|x1)"
+        ]
+      },
+      {
+        "canonical_id": "stochastic_mapping_xs",
+        "canonical_name": "stochastic mapping xs",
+        "aliases": [
+          "stochastic mapping xs"
+        ]
+      },
+      {
+        "canonical_id": "interpolant_schedules",
+        "canonical_name": "interpolant schedules",
+        "aliases": [
+          "interpolant schedules"
+        ]
+      },
+      {
+        "canonical_id": "stochastic_interpolant_velocity_function",
+        "canonical_name": "stochastic interpolant velocity function",
+        "aliases": [
+          "stochastic interpolant velocity function"
+        ]
+      },
+      {
+        "canonical_id": "stochastic_interpolant_score_function",
+        "canonical_name": "stochastic interpolant score function",
+        "aliases": [
+          "stochastic interpolant score function"
+        ]
+      },
+      {
+        "canonical_id": "mean_squared_error_loss_function_lb",
+        "canonical_name": "mean squared error loss function Lb",
+        "aliases": [
+          "mean squared error loss function Lb"
+        ]
+      },
+      {
+        "canonical_id": "mean_squared_error_loss_function_ls",
+        "canonical_name": "mean squared error loss function Ls",
+        "aliases": [
+          "mean squared error loss function Ls"
+        ]
+      },
+      {
+        "canonical_id": "forward_sde",
+        "canonical_name": "forward SDE",
+        "aliases": [
+          "forward SDE"
+        ]
+      },
+      {
+        "canonical_id": "backward_sde",
+        "canonical_name": "backward SDE",
+        "aliases": [
+          "backward SDE"
+        ]
+      },
+      {
+        "canonical_id": "forward_fokker_planck_equation",
+        "canonical_name": "forward Fokker-Planck equation",
+        "aliases": [
+          "forward Fokker-Planck equation"
+        ]
+      },
+      {
+        "canonical_id": "backward_fokker_planck_equation",
+        "canonical_name": "backward Fokker-Planck equation",
+        "aliases": [
+          "backward Fokker-Planck equation"
+        ]
+      },
+      {
+        "canonical_id": "conditional_generation_with_extra_features",
+        "canonical_name": "conditional generation with extra features",
+        "aliases": [
+          "conditional generation with extra features"
+        ]
+      },
+      {
+        "canonical_id": "feature_embedding",
+        "canonical_name": "feature embedding",
+        "aliases": [
+          "feature embedding"
+        ]
+      },
+      {
+        "canonical_id": "conditional_sgm",
+        "canonical_name": "conditional SGM",
+        "aliases": [
+          "conditional SGM"
+        ]
+      },
+      {
+        "canonical_id": "conditional_si",
+        "canonical_name": "conditional SI",
+        "aliases": [
+          "conditional SI"
+        ]
+      },
+      {
+        "canonical_id": "algorithm_1",
+        "canonical_name": "Algorithm 1",
+        "aliases": [
+          "Algorithm 1"
+        ]
+      },
+      {
+        "canonical_id": "theorem_1",
+        "canonical_name": "Theorem 1",
+        "aliases": [
+          "Theorem 1"
+        ]
+      },
+      {
+        "canonical_id": "time_dependent_density_t",
+        "canonical_name": "time-dependent density ρt",
+        "aliases": [
+          "time-dependent density ρt"
+        ]
+      },
+      {
+        "canonical_id": "transport_equation",
+        "canonical_name": "transport equation",
+        "aliases": [
+          "transport equation"
+        ]
+      },
+      {
+        "canonical_id": "velocity_bt_x",
+        "canonical_name": "velocity bt(x|ξ)",
+        "aliases": [
+          "velocity bt(x|ξ)"
+        ]
+      },
+      {
+        "canonical_id": "score_function_relation",
+        "canonical_name": "score function relation",
+        "aliases": [
+          "score function relation"
+        ]
+      },
+      {
+        "canonical_id": "inference_algorithm_2",
+        "canonical_name": "Inference Algorithm 2",
+        "aliases": [
+          "Inference Algorithm 2"
+        ]
+      },
+      {
+        "canonical_id": "time_series_prediction_task",
+        "canonical_name": "time series prediction task",
+        "aliases": [
+          "time series prediction task"
+        ]
+      },
+      {
+        "canonical_id": "conditional_stochastic_interpolants_si_method",
+        "canonical_name": "conditional Stochastic Interpolants (SI) method",
+        "aliases": [
+          "conditional Stochastic Interpolants (SI) method"
+        ]
+      },
+      {
+        "canonical_id": "recurrent_neural_network_rnn",
+        "canonical_name": "Recurrent Neural Network (RNN)",
+        "aliases": [
+          "Recurrent Neural Network (RNN)"
+        ]
+      },
+      {
+        "canonical_id": "importance_sampling",
+        "canonical_name": "Importance Sampling",
+        "aliases": [
+          "Importance Sampling"
+        ]
+      },
+      {
+        "canonical_id": "training_dataset",
+        "canonical_name": "Training Dataset",
+        "aliases": [
+          "Training Dataset"
+        ]
+      },
+      {
+        "canonical_id": "multi_step_prediction",
+        "canonical_name": "Multi-step Prediction",
+        "aliases": [
+          "Multi-step Prediction"
+        ]
+      },
+      {
+        "canonical_id": "ddpm",
+        "canonical_name": "DDPM",
+        "aliases": [
+          "DDPM"
+        ]
+      },
+      {
+        "canonical_id": "sgm",
+        "canonical_name": "SGM",
+        "aliases": [
+          "SGM"
+        ]
+      },
+      {
+        "canonical_id": "fm",
+        "canonical_name": "FM",
+        "aliases": [
+          "FM"
+        ]
+      },
+      {
+        "canonical_id": "vec_lstm",
+        "canonical_name": "Vec-LSTM",
+        "aliases": [
+          "Vec-LSTM"
+        ]
+      },
+      {
+        "canonical_id": "wasserstein_distance",
+        "canonical_name": "Wasserstein distance",
+        "aliases": [
+          "Wasserstein distance"
+        ]
+      },
+      {
+        "canonical_id": "crps_sum",
+        "canonical_name": "CRPS-sum",
+        "aliases": [
+          "CRPS-sum"
+        ]
+      },
+      {
+        "canonical_id": "synthetic_datasets",
+        "canonical_name": "Synthetic datasets",
+        "aliases": [
+          "Synthetic datasets"
+        ]
+      },
+      {
+        "canonical_id": "multivariate_probabilistic_forecasting",
+        "canonical_name": "Multivariate probabilistic forecasting",
+        "aliases": [
+          "Multivariate probabilistic forecasting"
+        ]
+      },
+      {
+        "canonical_id": "exchange_dataset",
+        "canonical_name": "Exchange dataset",
+        "aliases": [
+          "Exchange dataset"
+        ]
+      },
+      {
+        "canonical_id": "traffic_dataset",
+        "canonical_name": "Traffic dataset",
+        "aliases": [
+          "Traffic dataset"
+        ]
+      },
+      {
+        "canonical_id": "wiki_dataset",
+        "canonical_name": "Wiki dataset",
+        "aliases": [
+          "Wiki dataset"
+        ]
+      },
+      {
+        "canonical_id": "continuous_ranked_probability_score_crps_sum",
+        "canonical_name": "Continuous Ranked Probability Score (CRPS-sum)",
+        "aliases": [
+          "Continuous Ranked Probability Score (CRPS-sum)"
+        ]
+      },
+      {
+        "canonical_id": "normalized_root_mean_square_error_nrmse",
+        "canonical_name": "Normalized Root Mean Square Error (NRMSE)",
+        "aliases": [
+          "Normalized Root Mean Square Error (NRMSE)"
+        ]
+      },
+      {
+        "canonical_id": "normalized_deviance_nd",
+        "canonical_name": "Normalized Deviance (ND)",
+        "aliases": [
+          "Normalized Deviance (ND)"
+        ]
+      },
+      {
+        "canonical_id": "gluonts_package",
+        "canonical_name": "gluonts package",
+        "aliases": [
+          "gluonts package"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The paper proposes a method combining recurrent neural networks with diffusion models for probabilistic time series forecasting. It addresses scalability issues in generative models by extending stochastic interpolants to a conditional generation framework. The approach aims to capture complex high-dimensional distributions and cross-feature dependencies more efficiently than standard autoregressive or pure generative models.\",\"entities\":[{\"name\":\"Recurrent Interpolants for Probabilistic Time Series Prediction\",\"type\":\"method\",\"attributes\":{\"authors\":\"Yu Chen, Marin Biloš, Sarthak Mittal, Wei Deng, Kashif Rasul, Anderson Schneider\",\"affiliations\":\"Morgan Stanley, Mila, Université de Montréal\",\"core_mechanism\":\"Blends computational efficiency of recurrent neural networks with high-quality probabilistic modeling of diffusion models\",\"foundation\":\"Stochastic interpolants extended to a broader conditional generation framework with additional control features\"},\"relationships\":[{\"predicate\":\"addresses\",\"target\":\"scalability issues in large-scale generative model-based predictions\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"targets\",\"target\":\"probabilistic time series forecasting\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Sequential models\",\"type\":\"method\",\"attributes\":{\"examples\":\"Recurrent neural networks, transformer-based models\",\"status\":\"De facto tools for multivariate time series forecasting\",\"strengths\":\"Capturing dependencies, assessing prediction uncertainty, training efficiency\",\"limitations\":\"Challenges in modeling high-dimensional complex distributions and cross-feature dependencies\"},\"relationships\":[{\"predicate\":\"applied_in\",\"target\":\"finance, biology, medicine\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"probabilistic time series forecasting\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Generative models\",\"type\":\"method\",\"attributes\":{\"types\":\"Diffusion models, flow-based models\",\"mechanism\":\"Integration of stochastic differential equations or probability flow\",\"application\":\"Probabilistic time series imputation and forecasting\",\"challenge\":\"Scalability issues necessitate computational-friendly frameworks\"},\"relationships\":[{\"predicate\":\"used_to_tackle\",\"target\":\"modeling high-dimensional complex distributions and cross-feature dependencies\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Autoregression models\",\"type\":\"method\",\"attributes\":{\"examples\":\"Recurrent neural networks, transformer models\",\"capability\":\"Capture short-term and long-term sequential dependencies\",\"uncertainty_assessment\":\"Incorporates parametric probabilistic models (e.g., Gaussian distribution) into output layer\"},\"relationships\":[{\"predicate\":\"applied_in\",\"target\":\"finance, biological statistics, medicine, geophysical applications\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Probabilistic output layer\",\"type\":\"other\",\"attributes\":{\"constraint\":\"Confined within a simple probability family\",\"reason\":\"Density must be parameterized by neural networks and loss must be differentiable with respect to parameters\",\"model_entity_type\":\"component\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"Autoregression models\",\"attributes\":{},\"target_id\":\"autoregression_models\"}]}]},{\"context_summary\":\"The proposed generative model learns the joint density of a time series window comprising context and prediction segments, addressing scalability issues inherent in models where size depends on window length. By leveraging the strong correlation between neighboring time points, the method initiates prediction from the current time point to improve sample quality and reduce inference complexity. The framework combines the computational efficiency of recurrent neural networks for encoding temporal history with the high-quality probabilistic modeling of diffusion models.\",\"entities\":[{\"name\":\"generative model\",\"type\":\"method\",\"attributes\":{\"training_objective\":\"learn the joint density of the whole time series window\",\"input_dimension\":\"K features\",\"window_structure\":\"context window (Tcontext) and prediction window (Tprediction)\",\"inference_mode\":\"conditional generation given context\",\"scalability_issue\":\"model size related to both feature dimension and window size\"},\"relationships\":[{\"predicate\":\"performs\",\"target\":\"conditional generation\",\"attributes\":{\"analogy\":\"inpainting task in computer vision\"},\"target_id\":null},{\"predicate\":\"suffers_from\",\"target\":\"scalability issues\",\"attributes\":{\"reason\":\"model size proportional to feature dimension and window size\"},\"target_id\":null}]},{\"name\":\"recurrent model\",\"type\":\"method\",\"attributes\":{\"model_size_dependency\":\"proportional to number of features, not time window length\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"generative model\",\"attributes\":{},\"target_id\":\"generative_model\"}]},{\"name\":\"time series data\",\"type\":\"concept\",\"attributes\":{\"nature\":\"continuous\",\"correlation_property\":\"neighboring time points exhibit strong correlations\"},\"relationships\":[{\"predicate\":\"implies\",\"target\":\"distribution of future time points is close to current time point\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"proposed time series prediction model\",\"type\":\"method\",\"attributes\":{\"framework\":\"generative framework mapping between dependent data points\",\"initialization_strategy\":\"initiates prediction of future time point's distribution with current time point\",\"benefits\":\"straightforward initiation, better quality, reduced inference complexity\",\"temporal_encoding\":\"longer temporal dependency encoded by recurrent neural network\",\"guidance_mechanism\":\"embedded history passed to generative model as guidance\"},\"relationships\":[{\"predicate\":\"combines\",\"target\":\"efficient training and computation of recurrent neural network\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"combines\",\"target\":\"high quality probabilistic modeling of diffusion model\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"extension\":\"extended to more general conditional generation framework with extra control features\"},\"relationships\":[{\"predicate\":\"basis_for\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{},\"target_id\":\"stochastic_interpolants_si\"}]},{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"application\":\"sequential modeling and time series prediction\",\"characteristics\":\"computational-friendly, high quality modeling of future time point's distribution\"},\"relationships\":[{\"predicate\":\"adopted_in\",\"target\":\"proposed time series prediction model\",\"attributes\":{},\"target_id\":\"proposed_time_series_prediction_model\"}]}]},{\"context_summary\":\"The text outlines the mathematical formulations for Denoising Diffusion Probabilistic Models (DDPM), Score-Based Generative Models (SGM), and Flow Matching (FM). It describes how these methods define forward and backward processes, define loss functions for training neural networks to predict noise, scores, or vector fields, and enable sampling from data distributions.\",\"entities\":[{\"name\":\"Denoising Diffusion Probabilistic Model (DDPM)\",\"type\":\"method\",\"attributes\":{\"process\":\"Adds Gaussian noise to data at different scales\",\"noise_schedule\":\"0 < β1 < β2 < ... < βN\",\"transition_kernel\":\"Gaussian, computable directly from x0\",\"posterior_distribution\":\"Available in closed form\",\"loss_function\":\"Mean squared error between predicted noise and actual noise\"},\"relationships\":[{\"predicate\":\"learns_to_revert\",\"target\":\"noise addition process\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"samples_from\",\"target\":\"pure noise xN ~ N(0, I)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"generates\",\"target\":\"samples from data distribution\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Score-Based Generative Model (SGM)\",\"type\":\"method\",\"attributes\":{\"dynamics\":\"Forward and backward SDEs between s in [0, 1]\",\"score_function\":\"Gradient of log probability density\",\"forward_process_examples\":[\"Brownian motion\",\"Ornstein-Uhlenbeck process\"],\"loss_function\":\"Mean squared error between predicted score and true score\"},\"relationships\":[{\"predicate\":\"approximates_score_with\",\"target\":\"neural network\",\"attributes\":{},\"target_id\":\"neural_network\"},{\"predicate\":\"generates_by_solving\",\"target\":\"backward SDE\",\"attributes\":{},\"target_id\":\"backward_sde\"},{\"predicate\":\"starts_from\",\"target\":\"Gaussian prior distribution\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Flow Matching (FM)\",\"type\":\"method\",\"attributes\":{\"mechanism\":\"Learns vector field generating probability path\",\"conditional_path_constraints\":\"p0(x|x1) = N(0, I) and p1(x|x1) = N(x1, σ^2 I)\",\"learning_target\":\"Vector field u_s(x|x1)\"},\"relationships\":[{\"predicate\":\"constructs\",\"target\":\"probability path\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"learns\",\"target\":\"vector field directly\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Gaussian noise\",\"type\":\"concept\",\"attributes\":{\"distribution\":\"N(0, I)\"},\"relationships\":[{\"predicate\":\"added_to\",\"target\":\"observed data point x0\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"neural network\",\"type\":\"method\",\"attributes\":{\"role\":\"Approximates score, noise, or vector field\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"SGM\",\"attributes\":{},\"target_id\":\"sgm\"},{\"predicate\":\"used_in\",\"target\":\"DDPM\",\"attributes\":{},\"target_id\":\"ddpm\"},{\"predicate\":\"used_in\",\"target\":\"Flow Matching (FM)\",\"attributes\":{},\"target_id\":\"flow_matching_fm\"}]}]},{\"context_summary\":\"The text defines the flow matching objective and its linear noising function, contrasting it with score-based models. It introduces stochastic interpolants as a method to model dependent couplings between two data distributions using a stochastic mapping. The section concludes by defining the specific schedules for the interpolant's deterministic and stochastic components.\",\"entities\":[{\"name\":\"Flow Matching (FM)\",\"type\":\"method\",\"attributes\":{\"goal\":\"learn the vector field with a neural network\",\"advantage\":\"potentially more stable alternative to learning the score\"},\"relationships\":[{\"predicate\":\"minimizes\",\"target\":\"flow matching objective\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"differs_from\",\"target\":\"score-based generative model\",\"attributes\":{\"difference\":\"path construction and direct vector field learning\"},\"target_id\":null}]},{\"name\":\"linear noising function\",\"type\":\"method\",\"attributes\":{\"formula\":\"xs = sx1 + (1 - (1 - σ)s)ϵ\",\"noise_distribution\":\"ϵ ~ N(0, I)\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Flow Matching (FM)\",\"attributes\":{},\"target_id\":\"flow_matching_fm\"}]},{\"name\":\"conditional vector field us(x|x1)\",\"type\":\"concept\",\"attributes\":{\"closed_form\":\"us(x|x1) = x1 - (1 - σ)x / (1 - (1 - σ)s)\"},\"relationships\":[{\"predicate\":\"generates\",\"target\":\"probability path ps(x|x1)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"purpose\":\"model dependent couplings between (x0, x1) and establish two-way generative SDEs\",\"mapping\":\"from x0 ~ ρ0 to x1 ~ ρ1\"},\"relationships\":[{\"predicate\":\"constructs\",\"target\":\"stochastic mapping xs\",\"attributes\":{},\"target_id\":\"stochastic_mapping_xs\"},{\"predicate\":\"characterized_by\",\"target\":\"velocity function b(s, x)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"characterized_by\",\"target\":\"score function s(s, x)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"stochastic mapping xs\",\"type\":\"concept\",\"attributes\":{\"formula\":\"xs = α(s)x0 + β(s)x1 + γ(s)z\",\"noise_distribution\":\"z ~ N(0, I)\",\"time_domain\":\"s ∈ [0, 1]\"},\"relationships\":[{\"predicate\":\"maintains_dependency_between\",\"target\":\"x0 and x1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"interpolant schedules\",\"type\":\"measurement\",\"attributes\":{\"alpha_boundary_conditions\":\"α(0) = 1, α(1) = 0\",\"beta_boundary_conditions\":\"β(0) = 0, β(1) = 1\",\"gamma_boundary_conditions\":\"γ(0) = 0, γ(1) = 0\",\"example_alpha\":\"sqrt(1 - γ^2(s)) cos(1/2 πs)\",\"example_beta\":\"sqrt(1 - γ^2(s)) sin(1/2 πs)\",\"example_gamma\":\"sqrt(2s(1 - s))\"},\"relationships\":[{\"predicate\":\"schedules\",\"target\":\"deterministic interpolant and stochastic component variance\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The stochastic interpolant framework models velocity and score functions using deep neural networks trained via mean squared error loss. Inference utilizes forward and backward stochastic differential equations (SDEs) to generate samples from conditional or joint densities. The method supports conditional generation by incorporating additional features into the velocity and score functions.\",\"entities\":[{\"name\":\"stochastic interpolant velocity function\",\"type\":\"concept\",\"attributes\":{\"symbol\":\"b(s, x)\",\"modeling_method\":\"deep neural networks\"},\"relationships\":[{\"predicate\":\"trained_by\",\"target\":\"mean squared error loss function Lb\",\"attributes\":{},\"target_id\":\"mean_squared_error_loss_function_lb\"},{\"predicate\":\"component_of\",\"target\":\"forward SDE\",\"attributes\":{},\"target_id\":\"forward_sde\"},{\"predicate\":\"component_of\",\"target\":\"backward SDE\",\"attributes\":{},\"target_id\":\"backward_sde\"}]},{\"name\":\"stochastic interpolant score function\",\"type\":\"concept\",\"attributes\":{\"symbol\":\"s(s, x)\",\"modeling_method\":\"deep neural networks\"},\"relationships\":[{\"predicate\":\"trained_by\",\"target\":\"mean squared error loss function Ls\",\"attributes\":{},\"target_id\":\"mean_squared_error_loss_function_ls\"},{\"predicate\":\"component_of\",\"target\":\"forward SDE\",\"attributes\":{},\"target_id\":\"forward_sde\"},{\"predicate\":\"component_of\",\"target\":\"backward SDE\",\"attributes\":{},\"target_id\":\"backward_sde\"}]},{\"name\":\"mean squared error loss function Lb\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"Integral from 0 to 1 of E[1/2||b_hat(s, xs)||^2 - (alpha_dot(s)x0 + beta_dot(s)x1 + gamma_dot(s)z)^T b_hat(s, xs)] ds\"},\"relationships\":[{\"predicate\":\"minimized_to_train\",\"target\":\"stochastic interpolant velocity function\",\"attributes\":{},\"target_id\":\"stochastic_interpolant_velocity_function\"}]},{\"name\":\"mean squared error loss function Ls\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"Integral from 0 to 1 of E[1/2||s_hat(s, xs)||^2 + gamma^-1 z^T s_hat(s, xs)] ds\"},\"relationships\":[{\"predicate\":\"minimized_to_train\",\"target\":\"stochastic interpolant score function\",\"attributes\":{},\"target_id\":\"stochastic_interpolant_score_function\"}]},{\"name\":\"forward SDE\",\"type\":\"method\",\"attributes\":{\"equation\":\"dxs = [b(s, x) + epsilon(s)s(s, x)]ds + sqrt(2epsilon(s))dws\"},\"relationships\":[{\"predicate\":\"satisfies\",\"target\":\"forward Fokker-Planck equation\",\"attributes\":{},\"target_id\":\"forward_fokker_planck_equation\"},{\"predicate\":\"used_for_sampling\",\"target\":\"conditional density rho(x1|x0)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for_sampling\",\"target\":\"joint density rho(x0, x1)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"backward SDE\",\"type\":\"method\",\"attributes\":{\"equation\":\"dxs = [b(s, x) - epsilon(s)s(s, x)]ds + sqrt(2epsilon(s))dwB_s\"},\"relationships\":[{\"predicate\":\"satisfies\",\"target\":\"backward Fokker-Planck equation\",\"attributes\":{},\"target_id\":\"backward_fokker_planck_equation\"},{\"predicate\":\"used_for_sampling\",\"target\":\"conditional density rho(x0|x1)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for_sampling\",\"target\":\"joint density rho(x0, x1)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"forward Fokker-Planck equation\",\"type\":\"concept\",\"attributes\":{\"equation\":\"partial_s rho + div(bF rho) = epsilon(s) laplacian rho, with rho(0) = rho0\"},\"relationships\":[]},{\"name\":\"backward Fokker-Planck equation\",\"type\":\"concept\",\"attributes\":{\"equation\":\"partial_s rho + div(bB rho) = -epsilon(s) laplacian rho, with rho(1) = rho1\"},\"relationships\":[]},{\"name\":\"conditional generation with extra features\",\"type\":\"method\",\"attributes\":{\"description\":\"Adapts generative methods for conditions ranging from categorical values to complex prompts like partial observations, images, or text\"},\"relationships\":[{\"predicate\":\"applies_to\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{},\"target_id\":\"stochastic_interpolants_si\"},{\"predicate\":\"applies_to\",\"target\":\"DDPM\",\"attributes\":{},\"target_id\":\"ddpm\"},{\"predicate\":\"applies_to\",\"target\":\"SGM\",\"attributes\":{},\"target_id\":\"sgm\"}]}]},{\"context_summary\":\"The text describes a method for conditional generation using stochastic interpolants (SI) and score-based generative models (SGM) by injecting condition features into neural network layers. It presents the mathematical formulation for conditional SDEs and loss functions, as well as a training algorithm that uses a recurrent neural network to encode context for time series prediction.\",\"entities\":[{\"name\":\"feature embedding\",\"type\":\"method\",\"attributes\":{\"purpose\":\"handle diverse conditions\",\"mechanism\":\"injected into various layers of neural networks\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"conditional SGM\",\"attributes\":{},\"target_id\":\"conditional_sgm\"},{\"predicate\":\"used_in\",\"target\":\"conditional SI\",\"attributes\":{},\"target_id\":\"conditional_si\"}]},{\"name\":\"conditional SGM\",\"type\":\"method\",\"attributes\":{\"training_data\":\"pairs of a sample x0 and condition ξ\",\"loss_function\":\"Lcond = E[||ϵθ(s, xs, ξ) − ∇xs log p(xs|x0)||^2]\"},\"relationships\":[{\"predicate\":\"achieves\",\"target\":\"state-of-the-art performance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"conditional SI\",\"type\":\"method\",\"attributes\":{\"training_data\":\"tuples (x0, x1, ξ)\",\"velocity_function\":\"b(xs, s, ξ)\",\"score_function\":\"s(xs, s, ξ)\"},\"relationships\":[{\"predicate\":\"inference_sde_forward\",\"target\":\"dxs = [b(s, xs, ξ) + ϵ(s)s(s, xs, ξ)]ds + √(2ϵ(s))dws\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inference_sde_backward\",\"target\":\"dxs = [b(s, xs, ξ) − ϵ(s)s(s, xs, ξ)]ds + √(2ϵ(s))dwB_s\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Algorithm 1\",\"type\":\"method\",\"attributes\":{\"name\":\"Training algorithm\",\"input\":\"Sample 3-tuples (xti+1, xti, xti−P :ti−1), interpolant schedules, models (velocity, score, RNN)\",\"sampling_distribution\":\"si ∼ Beta(0.1, 0.1)\",\"interpolant_formula\":\"xs,i = α(si)xti + β(si)xti+1 + γ(si)zi\",\"context_encoding\":\"hi = RNN(xti−P :ti−1)\",\"loss_velocity\":\"Lb = Σ (1/pBeta(si)) [0.5||b̂(si, xs,i, hi)||^2 − (α̇(si)xti + β̇(si)xti+1 + γ̇(si)zi)^T b̂(si, xs,i, hi)]\",\"loss_score\":\"Ls = Σ (1/pBeta(si)) [0.5||ŝi(si, xs,i)||^2 + γ^−1 zi^T ŝi(si, xs,i)]\"},\"relationships\":[{\"predicate\":\"minimizes\",\"target\":\"Lb and Ls\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Theorem 1\",\"type\":\"concept\",\"attributes\":{\"title\":\"Extension of Stochastic Interpolants to Arbitrary Joint Distributions\",\"joint_distribution\":\"ρ01 for (x0, x1)\",\"interpolant_formula\":\"xt = αt x0 + βt x1 + γt z\",\"boundary_conditions\":\"α0 = β1 = 1, α1 = β0 = γ0 = γ1 = 0\",\"constraint\":\"α^2_t + β^2_t + γ^2_t > 0 for all t ∈ [0, 1]\"},\"relationships\":[]}]},{\"context_summary\":\"The text defines the time-dependent density and transport equation for stochastic interpolants, including the velocity and score function relations. It outlines an inference algorithm that uses a recurrent neural network to encode context for conditional generation. The section formulates time series prediction as a conditional probability task where the model learns the joint distribution of current and future states given past observations.\",\"entities\":[{\"name\":\"time-dependent density ρt\",\"type\":\"concept\",\"attributes\":{\"definition\":\"density of xt\",\"boundary_conditions\":\"satisfied at t = 0 and t = 1\"},\"relationships\":[{\"predicate\":\"satisfies\",\"target\":\"transport equation\",\"attributes\":{},\"target_id\":\"transport_equation\"}]},{\"name\":\"transport equation\",\"type\":\"other\",\"attributes\":{\"form\":\"˙ρt + ∇· (btρt) = 0\",\"validity_range\":\"t ∈ [0, 1]\",\"model_entity_type\":\"mathematical_relation\"},\"relationships\":[{\"predicate\":\"involves\",\"target\":\"velocity bt(x|ξ)\",\"attributes\":{},\"target_id\":\"velocity_bt_x\"}]},{\"name\":\"velocity bt(x|ξ)\",\"type\":\"other\",\"attributes\":{\"definition\":\"E[˙αtx0 + ˙βtx1 + ˙γt z | xt = x, ξ]\",\"expectation_basis\":\"density ρ01 given xs = x and extra information ξ\",\"model_entity_type\":\"function\"},\"relationships\":[]},{\"name\":\"score function relation\",\"type\":\"other\",\"attributes\":{\"form\":\"∇log ρt(x) = −γ−1 t E [z|xt = x, ξ]\",\"model_entity_type\":\"mathematical_relation\"},\"relationships\":[]},{\"name\":\"Inference Algorithm 2\",\"type\":\"method\",\"attributes\":{\"input\":\"Sample 2-tuples (xt, xt−P :t−1)\",\"trained_models\":\"Velocity ˆb, score ˆs, RNN\",\"parameter\":\"Diffusion variance ϵ\"},\"relationships\":[{\"predicate\":\"sets_initial_state\",\"target\":\"˜x0 = xt\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"encodes_context\",\"target\":\"RNN(xt−P :t−1)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"executes\",\"target\":\"SDE integral for s ∈ [0, 1]\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"outputs\",\"target\":\"˜x1 as prediction of xt+1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"time series prediction task\",\"type\":\"other\",\"attributes\":{\"formulation\":\"conditional probability p(xt+1|xt−P :t)\",\"xt_definition\":\"multivariate time series at time t with D dimensions\",\"xt_plus_1_definition\":\"prediction target\",\"context_window_definition\":\"xt−P :t where P is the length of the context window\",\"model_entity_type\":\"task\"},\"relationships\":[{\"predicate\":\"employs\",\"target\":\"conditional Stochastic Interpolants (SI) method\",\"attributes\":{},\"target_id\":\"conditional_stochastic_interpolants_si_method\"}]},{\"name\":\"conditional Stochastic Interpolants (SI) method\",\"type\":\"method\",\"attributes\":{\"training_objective\":\"learn joint distribution p(xt+1, xt|xt−P :t−1)\",\"marginal_distributions\":\"ρ0 = ρ1\",\"goal\":\"learn coupling relation between xt+1 and xt conditioning on context xt−P :t−1\"},\"relationships\":[{\"predicate\":\"trains\",\"target\":\"conditional velocity and score functions\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The proposed method uses a recurrent neural network to encode context into a history prompt, enabling stochastic interpolants to perform conditional generation for time series prediction. Importance sampling with a Beta distribution is employed to stabilize training by addressing high loss values near the boundaries of the diffusion time. The approach supports recursive multi-step prediction and is evaluated on synthetic and real-world datasets.\",\"entities\":[{\"name\":\"Recurrent Neural Network (RNN)\",\"type\":\"method\",\"attributes\":{\"role\":\"Encoder for context window\"},\"relationships\":[{\"predicate\":\"encodes\",\"target\":\"context window xt−P :t−1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"produces\",\"target\":\"history prompt ht\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"function\":\"Conditional generation via diffusion\"},\"relationships\":[{\"predicate\":\"uses_condition\",\"target\":\"history prompt ht\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"diffuses_from\",\"target\":\"context vector xt\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"follows\",\"target\":\"forward SDE\",\"attributes\":{},\"target_id\":\"forward_sde\"}]},{\"name\":\"Importance Sampling\",\"type\":\"method\",\"attributes\":{\"purpose\":\"Stabilize training by handling integral over diffusion time\",\"proposal_distribution\":\"Beta distribution\"},\"relationships\":[{\"predicate\":\"addresses_issue\",\"target\":\"larger loss values when s is close to two ends\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Training Dataset\",\"type\":\"measurement\",\"attributes\":{\"structure\":\"tuple (xt+1, xt, xt−P :t−1)\"},\"relationships\":[]},{\"name\":\"Multi-step Prediction\",\"type\":\"method\",\"attributes\":{\"strategy\":\"Recursive step-by-step prediction\"},\"relationships\":[]},{\"name\":\"Solar Dataset\",\"type\":\"other\",\"attributes\":{\"type\":\"Real-world time series data\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"Forecast path demonstration\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study compares stochastic interpolants (SI) with diffusion and flow-based models on synthetic and real-world time series datasets. SI demonstrates competitive performance in multivariate probabilistic forecasting, outperforming or matching baselines on most datasets. The method utilizes a recurrent neural network to encode context for conditional generation.\",\"entities\":[{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"role\":\"generative module for prediction\",\"performance\":\"outperforms or matches other models on three out of four real-world datasets\",\"gamma_functions_tested\":[\"sqrt: gamma(s) = sqrt(2s(1-s))\",\"quad: gamma(s) = s(1-s)\",\"trig: gamma(s) = sin(pi*s)^2\"]},\"relationships\":[{\"predicate\":\"compared_against\",\"target\":\"DDPM\",\"attributes\":{},\"target_id\":\"ddpm\"},{\"predicate\":\"compared_against\",\"target\":\"SGM\",\"attributes\":{},\"target_id\":\"sgm\"},{\"predicate\":\"compared_against\",\"target\":\"FM\",\"attributes\":{},\"target_id\":\"fm\"},{\"predicate\":\"compared_against\",\"target\":\"Vec-LSTM\",\"attributes\":{},\"target_id\":\"vec_lstm\"},{\"predicate\":\"evaluated_on\",\"target\":\"Synthetic datasets\",\"attributes\":{},\"target_id\":\"synthetic_datasets\"},{\"predicate\":\"evaluated_on\",\"target\":\"Multivariate probabilistic forecasting tasks\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DDPM\",\"type\":\"method\",\"attributes\":{\"variants\":[\"linear noise scheduler\",\"cosine noise scheduler\"],\"modification\":\"context time point replaced with Gaussian noise for step-by-step prediction\"},\"relationships\":[{\"predicate\":\"baseline_for\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{},\"target_id\":\"stochastic_interpolants_si\"}]},{\"name\":\"SGM\",\"type\":\"method\",\"attributes\":{\"modification\":\"context time point replaced with Gaussian noise for step-by-step prediction\"},\"relationships\":[{\"predicate\":\"baseline_for\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{},\"target_id\":\"stochastic_interpolants_si\"}]},{\"name\":\"FM\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Flow Matching\",\"modification\":\"denoising objective replaced with flow matching objective\"},\"relationships\":[{\"predicate\":\"baseline_for\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{},\"target_id\":\"stochastic_interpolants_si\"},{\"predicate\":\"outperformed_by\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{\"dataset\":\"Traffic\"},\"target_id\":\"stochastic_interpolants_si\"}]},{\"name\":\"Vec-LSTM\",\"type\":\"method\",\"attributes\":{\"type\":\"pure recurrent neural network\",\"probabilistic_layer\":\"multivariate Gaussian\"},\"relationships\":[{\"predicate\":\"baseline_for\",\"target\":\"Stochastic Interpolants (SI)\",\"attributes\":{},\"target_id\":\"stochastic_interpolants_si\"}]},{\"name\":\"Wasserstein distance\",\"type\":\"measurement\",\"attributes\":{\"purpose\":\"measures sample quality in synthetic datasets\"},\"relationships\":[{\"predicate\":\"used_to_evaluate\",\"target\":\"Synthetic datasets\",\"attributes\":{},\"target_id\":\"synthetic_datasets\"}]},{\"name\":\"CRPS-sum\",\"type\":\"measurement\",\"attributes\":{\"purpose\":\"metric for multivariate probabilistic forecasting\",\"interpretation\":\"smaller number indicates better performance\"},\"relationships\":[{\"predicate\":\"used_to_evaluate\",\"target\":\"Multivariate probabilistic forecasting tasks\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Synthetic datasets\",\"type\":\"other\",\"attributes\":{\"examples\":[\"Circles\",\"Moons\",\"Rings\",\"Swissroll\"],\"purpose\":\"determine hyperparameters and investigate properties regarding data sizes, model sizes, and training lengths\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"Hyperparameter exploration\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Multivariate probabilistic forecasting\",\"type\":\"other\",\"attributes\":{\"framework\":\"step-by-step (autoregressive) prediction\",\"model_entity_type\":\"task\"},\"relationships\":[{\"predicate\":\"evaluated_by\",\"target\":\"CRPS-sum\",\"attributes\":{},\"target_id\":\"crps_sum\"}]}]},{\"context_summary\":\"The study evaluates a stochastic interpolant-based model on four real-world time series datasets using CRPS-sum, NRMSE, and ND metrics. The proposed method outperforms or matches baselines on three datasets, with Flow Matching performing better only on the Traffic dataset. The authors conclude that stochastic interpolants are a strong candidate for conditional generation in multivariate probabilistic forecasting.\",\"entities\":[{\"name\":\"Solar Dataset\",\"type\":\"other\",\"attributes\":{\"source\":\"Lai et al., 2018\",\"usage\":\"probabilistic forecasting\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"evaluated_with\",\"target\":\"CRPS-sum, NRMSE, ND\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Exchange dataset\",\"type\":\"other\",\"attributes\":{\"source\":\"Lai et al., 2018\",\"usage\":\"probabilistic forecasting\",\"model_entity_type\":\"dataset\"},\"relationships\":[]},{\"name\":\"Traffic dataset\",\"type\":\"other\",\"attributes\":{\"source\":\"PEMS-SF (UCI Machine Learning Repository)\",\"usage\":\"probabilistic forecasting\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"best_performing_model\",\"target\":\"FM model\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Wiki dataset\",\"type\":\"other\",\"attributes\":{\"source\":\"gluon-ts repository\",\"usage\":\"probabilistic forecasting\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"distribution_capture_failure\",\"target\":\"FM model\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Continuous Ranked Probability Score (CRPS-sum)\",\"type\":\"measurement\",\"attributes\":{\"source\":\"Koochali et al., 2022\",\"interpretation\":\"smaller values indicate better performance\"},\"relationships\":[{\"predicate\":\"provided_by\",\"target\":\"gluonts package\",\"attributes\":{},\"target_id\":\"gluonts_package\"}]},{\"name\":\"Normalized Root Mean Square Error (NRMSE)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"normalized root mean square error via the median of the samples\",\"interpretation\":\"smaller values indicate better performance\"},\"relationships\":[{\"predicate\":\"provided_by\",\"target\":\"gluonts package\",\"attributes\":{},\"target_id\":\"gluonts_package\"}]},{\"name\":\"Normalized Deviance (ND)\",\"type\":\"measurement\",\"attributes\":{\"type\":\"point-metric\",\"interpretation\":\"smaller values indicate better performance\"},\"relationships\":[{\"predicate\":\"provided_by\",\"target\":\"gluonts package\",\"attributes\":{},\"target_id\":\"gluonts_package\"}]},{\"name\":\"gluonts package\",\"type\":\"other\",\"attributes\":{\"source\":\"Alexandrov et al., 2019\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"provides_metrics_for\",\"target\":\"CRPS-sum, NRMSE, ND\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"description\":\"Merges computational efficiency of RNNs with high-quality probabilistic modeling of diffusion models\",\"basis\":\"stochastic interpolants and expanded conditional generation framework\"},\"relationships\":[{\"predicate\":\"outperforms_or_matches\",\"target\":\"other models on Solar, Exchange, Wiki datasets\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"outperforms\",\"target\":\"Vec-LSTM\",\"attributes\":{},\"target_id\":\"vec_lstm\"},{\"predicate\":\"demonstrates\",\"target\":\"precise prediction and uncertainty capture on Solar dataset\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Flow Matching (FM)\",\"type\":\"method\",\"attributes\":{\"performance_note\":\"Achieves better performance than proposed model on Traffic dataset; fails to capture distribution on Wiki dataset\"},\"relationships\":[]},{\"name\":\"Vec-LSTM\",\"type\":\"method\",\"attributes\":{\"type\":\"RNN-based model\",\"probabilistic_layer\":\"multivariate Gaussian\"},\"relationships\":[{\"predicate\":\"outperformed_by\",\"target\":\"Proposed Stochastic Interpolant Model, SGM, DDPM\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Stochastic Interpolants (SI)\",\"type\":\"method\",\"attributes\":{\"role\":\"Strong candidate for conditional generation\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"Multivariate probabilistic forecasting\",\"attributes\":{},\"target_id\":\"multivariate_probabilistic_forecasting\"}]}]}]"
+}

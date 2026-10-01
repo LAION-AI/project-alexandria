@@ -22,6 +22,9 @@ entity resolution.
   no hard-coded credentials.
 - Reusable MCQ, n-gram overlap, embedding-control, quality-audit, and self-correction components.
 - Published and unreleased result tables with explicit provenance.
+- A [scientific-summary benchmark](experiments/scientific_summaries/README.md) with
+  a frozen 97-paper QA cohort, existing summaries and KUs, and resumable 27B / Ornith-9B /
+  Qwen3.5-9B summary comparisons using the same fixed Qwen2.5-7B student.
 
 ## Key finding
 

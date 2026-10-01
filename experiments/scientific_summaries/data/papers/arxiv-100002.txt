@@ -1,0 +1,663 @@
+arXiv:1009.1263v1  [math.AP]  7 Sep 2010
+Blow-up and global existence for a general class of nonlocal
+nonlinear coupled wave equations
+N. Duruk1, H. A. Erbay2∗, A. Erkip1
+1 Faculty of Engineering and Natural Sciences, Sabanci University, Tuzla 34956, Istanbul, Turkey
+2 Department of Mathematics, Isik University, Sile 34980, Istanbul, Turkey
+Abstract
+We study the initial-value problem for a general class of nonlinear nonlocal coupled
+wave equations. The problem involves convolution operators with kernel functions whose
+Fourier transforms are nonnegative. Some well-known examples of nonlinear wave equa-
+tions, such as coupled Boussinesq-type equations arising in elasticity and in quasi-continuum
+approximation of dense lattices, follow from the present model for suitable choices of the
+kernel functions. We establish local existence and suﬃcient conditions for ﬁnite time
+blow-up and as well as global existence of solutions of the problem.
+Keywords:
+Nonlocal Cauchy problem, Boussinesq equation, Global existence, Blow-up,
+Nonlocal elasticity.
+2000 MSC: 74H20, 74J30, 74B20
+1. Introduction
+In this article we focus on blow-up and global existence of solutions to the nonlocal
+nonlinear Cauchy problem
+u1tt = (β1 ∗(u1 + g1(u1, u2)))xx,
+x ∈R,
+t > 0
+(1.1)
+u2tt = (β2 ∗(u2 + g2(u1, u2)))xx,
+x ∈R,
+t > 0
+(1.2)
+u1(x, 0) = ϕ1(x),
+u1t(x, 0) = ψ1(x)
+(1.3)
+u2(x, 0) = ϕ2(x),
+u2t(x, 0) = ψ2(x).
+(1.4)
+Here ui = ui(x, t) (i = 1, 2), the subscripts x, t denote partial derivatives, the symbol ∗
+denotes convolution in the spatial domain
+β ∗v =
+Z
+R
+β(x −y)v(y)dy.
+∗Corresponding author. Tel: +90 216 528 7115 Fax: +90 216 712 1474
+Email addresses: nilayduruk@su.sabanciuniv.edu (N. Duruk1), erbay@isikun.edu.tr (H. A.
+Erbay2), albert@sabanciuniv.edu (A. Erkip1)
+Preprint submitted to Journal of Diﬀerential Equations
+July 22, 2013
+
+We assume that the nonlinear functions gi(u1, u2) (i = 1, 2) satisfy the exactness condi-
+tion
+∂g1
+∂u2
+= ∂g2
+∂u1
+(1.5)
+or equivalently there exists a function G(u1, u2) satisfying
+gi = ∂G
+∂ui
+(i = 1, 2).
+(1.6)
+We assume that the kernel functions βi(x) are integrable and their Fourier transforms
+bβi(ξ) satisfy
+0 ≤bβi(ξ) ≤Ci(1 + ξ2)−ri/2 for all ξ
+(i = 1, 2)
+(1.7)
+for some constants Ci > 0. Here the exponents r1, r2 are not necessarily integers.
+Equations (1.1)-(1.2) may be viewed as a natural generalization of the single equation
+arising in one-dimensional nonlocal elasticity [1] to a coupled system of two nonlocal
+nonlinear equations. As a special case, consider gi(u1, u2) = uiW ′(u2
+1 + u2
+2)
+(i = 1, 2)
+where W is a function of u2
+1 + u2
+2 alone and the symbol
+′ denotes the derivative. Then,
+(1.1)-(1.2) may be thought of the system governing the one-dimensional propagation
+of two ”pure” transverse nonlinear waves in a nonlocal elastic isotropic homogeneous
+medium [2]. Note that this choice of g1 and g2 will satisfy the exactness condition (1.5)
+with G(u1, u2) = 1
+2W(u2
+1+u2
+2). From the modelling point of view we want to remark that,
+in general, the system will also contain a third equation characterizing the propagation
+of a longitudinal wave. Nevertheless, with some further restrictions imposed on the form
+of W, one may get transverse waves without a coupled longitudinal wave [3]. We also
+want to note that, in the general case, the exactness condition (1.5) is necessary in order
+to obtain the conservation law of Lemma 3.2.
+For suitable choices of the kernel functions, the system (1.1)-(1.2) reduces to some
+well-known coupled systems of nonlinear wave equations. To illustrate this we consider
+the exponential kernel β1(x) = β2(x) =
+1
+2e−|x| which is the Green’s function for the
+operator 1 −D2
+x where Dx stands for the partial derivative with respect to x. Then,
+applying the operator 1 −D2
+x to both sides of equations (1.1)-(1.2) yields the coupled
+improved Boussinesq equations
+u1tt −u1xx −u1xxtt = (g1(u1, u2))xx
+(1.8)
+u2tt −u2xx −u2xxtt = (g2(u1, u2))xx.
+(1.9)
+Similarly, if the kernels β1(x) and β2(x) are chosen as the Green’s function for the fourth-
+order operator 1 −aD2
+x + bD4
+x with positive constants a, b, then (1.1)-(1.2) reduces to
+the coupled higher-order Boussinesq system
+u1tt −u1xx −au1xxtt + bu1xxxxtt = (g1(u1, u2))xx
+(1.10)
+u2tt −u2xx −au2xxtt + bu2xxxxtt = (g2(u1, u2))xx.
+(1.11)
+These examples make it obvious that choosing the kernels βi(x) in (1.1)-(1.2) as the
+Green’s functions of constant coeﬃcient linear diﬀerential operators in x will yield similar
+coupled systems describing the bi-directional propagation of nonlinear waves in dispersive
+media. Diﬀerent examples of the kernel functions used in the literature can be found in [1]
+2
+
+where such kernels will give not only diﬀerential equations but also integro-diﬀerential
+equations or diﬀerence-diﬀerential equations. For a survey of Korteweg-de Vries type
+nonlinear nonlocal equations of hydrodynamic relevance we refer to [4].
+The coupled improved Boussinesq system (1.8)-(1.9) has been derived to describe
+bi-directional wave propagation in various contexts, for instance, in a Toda lattice model
+with a transversal degree of freedom [5], in a two-layered lattice model [6] and in a
+diatomic lattice [7]. For a discussion of the classical Boussinesq system we refer to [8, 9].
+The Cauchy problem for (1.8)-(1.9) has been studied in [10] and recently in [11] where
+both assume the exactness condition (1.5).
+They have established the conditions for
+the global existence and ﬁnite-time blow-up of solutions in Sobolev spaces Hs × Hs for
+s > 1/2.
+The single component form of equations (1.10)-(1.11) arises as a model for a dense
+chain of particles with elastic couplings [12], for water waves with surface tension [13]
+and for longitudinal waves in a nonlocal nonlinear elastic medium [2]. We have proved
+in [2] that the Cauchy problem for the single component form of (1.10)-(1.11) is globally
+well-posed in Sobolev spaces Hs for s > 1/2 under certain conditions on nonlinear term
+and initial data. To the best of our knowledge, the questions of global well-posedness and
+ﬁnite-time blow-up of solutions for the coupled higher-order Boussinesq system (1.10)-
+(1.11) are open problems. In this article we shall resolve these problems by considering
+a closely related, but somewhat more general, problem deﬁned by (1.1)-(1.4)
+In Section 2 we present a local existence theory of the Cauchy problem (1.1)-(1.4) for
+the case of general kernels with r1, r2 ≥2 and initial data in suitable Sobolev spaces. In
+Section 3 we prove the energy identity and in Section 4 we discuss ﬁnite time blow-up of
+solutions of the initial-value problem. Finally, in Section 5 we prove two separate results
+on global existence of solutions of (1.1)-(1.4) for two diﬀerent classes of kernel functions.
+In what follows Hs = Hs(R) will denote the L2 Sobolev space on R. For the Hs
+norm we use the Fourier transform representation ∥u∥2
+s =
+R
+R(1 + ξ2)s|ˆu(ξ)|2dξ . We use
+∥u∥∞,
+∥u∥
+and
+⟨u, v⟩
+to denote the L∞and L2 norms and the inner product in
+L2, respectively.
+2. Local Well Posedness
+To shorten the notation we write fi(u1, u2) = ui + gi(u1, u2) (i = 1, 2). Note that
+fi = ∂F
+∂ui
+(i = 1, 2)
+(2.1)
+where F(u1, u2) = 1
+2(u2
+1 + u2
+2) + G(u1, u2).
+For a vector function U = (u1, u2) we deﬁne the norms
+∥U∥s = ∥u1∥s + ∥u2∥s
+and
+∥U∥∞= ∥u1∥∞+∥u2∥∞. We ﬁrst need vector-valued versions of Lemma 3.1 and Lemma
+3.2 in [1] (see also [11, 14, 15]), which concern the behavior of the nonlinear terms:
+Lemma 2.1. Let s ≥0, h ∈C[s]+1(R2) with h(0) = 0. Then for any U = (u1, u2) ∈
+(Hs∩L∞)2, we have h(U) ∈Hs∩L∞. Moreover there is some constant A(M) depending
+on M such that for all U ∈(Hs ∩L∞)2 with ∥U∥∞≤M
+∥h(U)∥s ≤A(M)∥U∥s .
+3
+
+Lemma 2.2. Let s ≥0, h ∈C[s]+1(R2). Then for any M > 0 there is some constant
+B(M) such that for all
+U, V ∈(Hs ∩L∞)2 with
+∥U∥∞≤M,
+∥V ∥∞≤M
+and
+∥U∥s ≤M,
+∥V ∥s ≤M
+we have
+∥h(U) −h(V )∥s ≤B(M)∥U −V ∥s
+and
+∥h(U) −h(V )∥∞≤B(M)∥U −V ∥∞.
+The Sobolev embedding theorem implies that Hs ⊂L∞for s > 1
+2. Then the bounds
+on L∞norms in Lemma 2.2 appear unnecessary and we get:
+Corollary 2.3. Let s > 1
+2, h ∈C[s]+1(R2). Then for any M > 0 there is some constant
+B(M) such that for all U, V ∈(Hs)2 with
+∥U∥s ≤M,
+∥V ∥s ≤M we have
+∥h(U) −h(V )∥s ≤B(M)∥U −V ∥s .
+Throughout this paper we assume that f1, f2 ∈C∞(R2) with f1(0) = f2(0) = 0 . In
+the case of f1, f2 ∈Ck+1(R2), Lemma 2.1 and Lemma 2.2 will hold only for s ≤k. Thus
+all the results below will hold for s ≤k. Note that the functions g1 and g2 appearing in
+(1.1) and (1.2) will also satisfy the same assumptions as f1 and f2.
+Theorem 2.4. Let s > 1/2 and r1, r2 ≥2. Then there is some T > 0 such that the
+Cauchy problem (1.1)-(1.4) is well posed with solution u1 and u2 in C2([0, T ] , Hs) for
+initial data ϕi, ψi ∈Hs
+(i = 1, 2).
+Proof. We convert the problem into an Hs valued system of ordinary diﬀerential equa-
+tions
+u1t = v1,
+u1(0) = ϕ1,
+u2t = v2,
+u2(0) = ϕ2,
+v1t = β1 ∗(f1(u1, u2))xx,
+v1(0) = ψ1,
+v2t = β2 ∗(f2(u1, u2))xx,
+v2(0) = ψ2.
+In order to use the standard well-posedness result [16] for ordinary diﬀerential equations,
+it suﬃces to show that the right hand side is Lipschitz on Hs. Since ri ≥2 for i = 1, 2,
+we have
+−ξ2 bβi(ξ)
+ ≤Ciξ2(1 + ξ2)−ri/2 ≤Ci.
+Then we get
+∥βi ∗wxx∥s
+=
+(1 + ξ2)s/2ξ2 bβi(ξ) bw(ξ)
+
+≤
+Ci
+(1 + ξ2)s/2 bw(ξ)
+ = Ci ∥w∥s .
+(2.2)
+This implies that
+βi ∗(.)xx
+is a bounded linear map on
+Hs. Then it follows from
+Corollary 2.3 that βi ∗(fi(u1, u2))xx is locally Lipschitz on Hs for s > 1
+2.
+Remark 2.5. In Theorem 2.4 we have not used neither the assumption
+bβ(ξ) ≥0 nor
+the exactness condition (1.5); so in fact the local existence result holds for more general
+forms of kernel functions and nonlinear terms. Moreover, as in [1], for certain classes of
+kernel functions Theorem 2.4 can be extended to the case of Hs ∩L∞for 0 ≤s ≤1/2.
+4
+
+The solution in Theorem 2.4 can be extended to a maximal time interval of existence
+[0, Tmax) where ﬁnite Tmax is characterized by the blow up condition
+lim sup
+t→T −
+max
+(∥U(t)∥s + ∥Ut(t)∥s) = ∞,
+where Ut = (u1t, u2t). Then the solution is global, i.e. Tmax = ∞iﬀ
+for any T < ∞, we have lim sup
+t→T −(∥U(t)∥s + ∥Ut(t)∥s) < ∞.
+(2.3)
+Lemma 2.6. Let s > 1/2 , r1, r2 ≥2 and let U be the solution of the Cauchy problem
+(1.1)-(1.4). Then there is a global solution if and only if
+for any T < ∞, we have lim sup
+t→T −∥U(t)∥∞< ∞.
+(2.4)
+Proof. We will show that the two conditions (2.3) and (2.4) are equivalent. First assume
+that (2.3) holds. By the Sobolev imbedding theorem, ∥U(t)∥∞≤C ∥U(t)∥s for s > 1/2
+so (2.4) holds. Conversely, assume that the solution exists for t ∈[0, T ). Then M =
+lim supt→T −∥U(t)∥∞
+is ﬁnite and ∥U(t)∥∞≤M for all 0 ≤t ≤T . If we integrate
+(1.1)-(1.2) twice and compute the resulting double integral as an iterated integral, we
+get, for i = 1, 2,
+ui(x, t)
+=
+ϕi(x) + tψi(x) +
+Z t
+0
+(t −τ)(βi ∗fi(u1, u2))xx(x, τ)dτ
+(2.5)
+uit(x, t)
+=
+ψi(x) +
+Z t
+0
+(βi ∗fi(u1, u2))xx(x, τ)dτ .
+(2.6)
+So, for all t ∈[0, T ) and i = 1, 2
+∥ui(t)∥s
+≤
+∥ϕi∥s + T ∥ψi∥s + T
+Z t
+0
+∥(βi ∗fi(u1, u2))xx(τ)∥s dτ,
+∥uit(t)∥s
+≤
+∥ψi∥s +
+Z t
+0
+∥(βi ∗fi(u1, u2))xx(τ)∥s dτ .
+Note that ∥(βi ∗fi(u1, u2))xx(τ)∥s ≤Ci∥fi(u1, u2)(τ)∥s ≤CiAi(M)∥ui(τ)∥s where the
+ﬁrst inequality follows from (2.2) and the second from Lemma 2.1.
+Adding the four
+inequalities we get
+∥U(t)∥s + ∥Ut(t)∥s
+≤
+∥ϕ1∥s + ∥ϕ2∥s + (T + 1)(∥ψ1∥s + ∥ψ2∥s)
++
+(T + 1)CA(M)
+Z t
+0
+∥U(τ)∥s dτ,
+where C = max(C1, C2) and A(M) = max(A1(M), A2(M)). Gronwall’s Lemma implies
+∥U(t)∥s + ∥Ut(t)∥s ≤[∥ϕ1∥s + ∥ϕ2∥s + (T + 1)(∥ψ1∥s + ∥ψ2∥s)]e(T +1)CA(M)T
+for all t ∈[0, T ) and consequently
+lim sup
+t→T −
+(∥U(t)∥s + ∥Ut(t)∥s) < ∞.
+5
+
+3. Conservation of Energy
+In the rest of the study we will assume that bβi(ξ) has only isolated zeros for i = 1, 2.
+Let Pi be operator deﬁned by Piw = F−1(|ξ|−1 (bβi(ξ))−1/2 bw(ξ)) with the inverse Fourier
+transform F−1. Note that although Pi may fail to be a bounded operator, its inverse
+P −1
+i
+: Hs+ ri
+2 →Hs is bounded and one-to-one for s ≥0. Then Pi is well deﬁned with
+domain(Pi) = range(P −1
+i
+). Clearly, P −2
+i
+w = −(βi ∗w)xx = −βi ∗wxx.
+Lemma 3.1. Let
+s > 1/2
+and
+r1, r2 ≥2.
+Suppose the solution of the Cauchy
+problem (1.1)-(1.4) exists with u1 and u2 in C2([0, T ) , Hs ∩L∞)
+for some s > 1/2. If
+P1ψ1, P2ψ2 ∈L2, then P1u1t, P2u2t ∈C1([0, T ) , L2). If moreover P1ϕ1, P2ϕ2 ∈L2, then
+P1u1, P2u2 ∈C2([0, T ) , L2).
+Proof. It follows from (2.6) that for i = 1, 2
+Piuit(x, t) = Piψi(x) −
+Z t
+0
+(P −1
+i
+fi(u1, u2))(x, τ)dτ .
+It is clear from Lemma 2.1 that fi(u1, u2) ∈Hs. Also, P −1
+i
+w = F−1(|ξ| (bβi(ξ))1/2 bw(ξ))
+thus P −1
+i
+(fi(u1, u2)) ∈Hs+ ri
+2 −1 ⊂L2 and hence Piuit ∈L2. The continuity and dif-
+ferentiability of Piui in t follows from the integral representation above. With a similar
+approach (2.5) gives the second statement.
+Lemma 3.2. Let
+s > 1/2 and
+r1, r2 ≥2. Suppose that (u1, u2) satisﬁes (1.1)-(1.4)
+on some interval [0, T ). If P1ψ1, P2ψ2 ∈L2 and the function G(ϕ1, ϕ2) deﬁned by (1.6)
+belongs to L1, then for any t ∈[0, T ) the energy
+E(t)
+=
+∥P1u1t(t)∥2 + ∥P2u2t(t)∥2 + ∥u1(t)∥2 + ∥u2(t)∥2 + 2
+Z
+R
+G(u1, u2)dx
+=
+∥P1u1t(t)∥2 + ∥P2u2t(t)∥2 + 2
+Z
+R
+F(u1, u2)dx
+is constant in [0, T ).
+Proof. Lemma 3.1 says that Piuit(t) ∈L2 for
+i = 1, 2. Equations (1.1)-(1.2) become
+P 2
+i uitt + ui + gi(u1, u2) = 0 (i = 1, 2). Multiplying by 2uit, integrating in x, adding the
+two equalities and using Parseval’s identity we obtain dE
+dt = 0.
+4. Blow Up in Finite Time
+The following lemma will be used in the sequel to prove blow up in ﬁnite time.
+Lemma 4.1. [17, 18] Suppose Φ(t), t ≥0 is a positive, twice diﬀerentiable function
+satisfying Φ′′Φ −(1 + ν)(Φ′)2 ≥0 where ν > 0.
+If Φ(0) > 0 and Φ′(0) > 0, then
+Φ(t) →∞as t →t1 for some t1 ≤Φ(0)/νΦ′(0).
+Theorem 4.2. Let s > 1/2 and r1, r2 ≥2. Suppose that P1ϕ1, P2ϕ2, P1ψ1, P2ψ2 ∈L2
+and
+G(ϕ1, ϕ2) ∈L1. If there is some ν > 0 such that
+u1f1(u1, u2) + u2f2(u1, u2) ≤2(1 + 2ν)F(u1, u2),
+6
+
+and
+E(0) = ∥P1ψ1∥2 + ∥P2ψ2∥2 + 2
+Z
+R
+F(ϕ1, ϕ2)dx < 0,
+then the solution (u1, u2) of the Cauchy problem (1.1)-(1.4) blows up in ﬁnite time.
+Proof. Let
+Φ(t) = ∥P1u1(t)∥2 + ∥P2u2(t)∥2 + b(t + t0)2
+for some positive b and t0 that will be speciﬁed later.
+Assume that the maximal
+time of existence of the solution of the Cauchy problem (1.1)-(1.4) is inﬁnite.
+Then
+P1u1(t), P1u1t(t), P2u2(t), P2u2t(t) ∈L2 for all t > 0; thus Φ(t) must be ﬁnite for all t.
+However, we will show below that Φ(t) blows up in ﬁnite time.
+We have
+Φ′(t) = 2 ⟨P1u1, P1u1t⟩+ 2 ⟨P2u2, P2u2t⟩+ 2b(t + t0),
+Φ′′(t) = 2 ∥P1u1t∥2 + 2 ∥P2u2t∥2 + 2 ⟨P1u1, P1u1tt⟩+ 2 ⟨P2u2, P2u2tt⟩+ 2b .
+Since
+⟨Piui, Piuitt⟩=
+
+ui, P 2
+i uitt
+
+= −⟨ui, fi(u1, u2)⟩,
+i = 1, 2,
+and
+−
+Z
+[u1f1(u1, u2) + u2f2(u1, u2)]dx
+≥
+−2(1 + 2ν)
+Z
+F(u1, u2)dx
+=
+(1 + 2ν)(∥P1u1t(t)∥2 + ∥P2u2t(t)∥2 −E(0)),
+we get
+Φ′′(t)
+≥
+2 ∥P1u1t∥2 + 2 ∥P2u2t∥2 + 2b −2(1 + 2ν)(E(0) −∥P1u1t∥2 −∥P2u2t∥2)
+=
+−2(1 + 2ν)E(0) + 2b + 4(1 + ν)(∥P1u1t∥2 + ∥P2u2t∥2).
+By the Cauchy-Schwarz inequality we have
+(Φ′(t))2
+=
+4[⟨P1u1, P1u1t⟩+ ⟨P2u2, P2u2t⟩+ b(t + t0)]2
+≤
+4[∥P1u1∥∥P1u1t∥+ ∥P2u2∥∥P2u2t∥+ b(t + t0)]2 .
+For the mixed terms we use the inequalities
+2 ∥P1u1∥∥P1u1t∥∥P2u2∥∥P2u2t∥≤∥P1u1∥2 ∥P2u2t∥2 + ∥P2u2∥2 ∥P1u1t∥2
+and
+2 ∥Piui∥∥Piuit∥(t + t0) ≤∥Piui∥2 + ∥Piuit∥2 (t + t0)2,
+i = 1, 2,
+to obtain
+(Φ′(t))2 ≤4Φ(t)(∥P1u1t∥2 + ∥P2u2t∥2 + b) .
+Therefore,
+Φ(t)Φ′′(t) −(1 + ν)(Φ′(t))2
+≥Φ(t)[−2(1 + 2ν)E(0) + 2b + 4(1 + ν)(∥P1u1t∥2 + ∥P2u2t∥2)]
+−4(1 + ν)Φ(t)(∥P1u1t∥2 + ∥P2u2t∥2 + b)
+= −2(1 + 2ν)(E(0) + b)Φ(t) .
+7
+
+If we choose b ≤−E(0), then Φ(t)Φ′′(t) −(1 + ν)(Φ′(t))2 ≥0. Moreover
+Φ′(0) = 2 ⟨P1ϕ1, P1ψ1⟩+ 2 ⟨P2ϕ2, P2ψ2⟩+ 2bt0 ≥0
+for suﬃciently large t0. According to Lemma 4.1, we observe that Φ(t) blows up in ﬁnite
+time. This contradicts with the assumption of the existence of a global solution.
+Remark 4.3. The proof above implies that we may have blow-up even if E(0) > 0. In
+this case, all we need is to be able to choose b and t0 so that Φ (0) > 0 and Φ′ (0) > 0.
+To shorten the notation put
+A = ⟨P1ϕ1, P1ψ1⟩+ ⟨P2ϕ2, P2ψ2⟩,
+B = ∥P1ϕ1∥2 + ∥P2ϕ2∥2 .
+When E(0) > 0, by choosing b = −E (0) we still get blow up if there is some t0 so that
+initial data satisﬁes
+A −E(0)t0 > 0,
+B −E(0)t2
+0 > 0.
+When A > 0, taking t0 = 0 works. When A ≤0, then t0 must be chosen negative. The
+two inequalities can be rewritten as
+E(0)−2A2 < t2
+0,
+t2
+0 < E(0)−1B.
+Such a t0 exists if and only if A2 < E(0)B. Hence there is blow-up if the initial data
+satisﬁes
+(⟨P1ϕ1, P1ψ1⟩+ ⟨P2ϕ2, P2ψ2⟩)2 < E (0)
+
+∥P1ϕ1∥2 + ∥P2ϕ2∥2
+.
+5. Global Existence
+Below we prove global existence of solutions of (1.1)-(1.4) for two diﬀerent classes of kernel
+functions. We note that the kernel functions corresponding to these two particular cases
+belong to the classes of kernel functions mentioned in Remark 2.5. Thus, in the cases
+below, the local existence result of Theorem 2.4, and hence Theorems 5.1 and 5.2 can be
+extended to s ≥0 for initial data in Hs ∩L∞.
+5.1. Suﬃciently Smooth Kernels: r1, r2 > 3
+We will now consider kernels βi (i = 1, 2) that satisfy the estimate 0 ≤bβi(ξ) ≤Ci(1 +
+ξ2)−ri/2 with ri > 3. Typically if βi belongs to the Sobolev space W 3,1(R) (i.e. βi and
+its derivatives up to third-order are in L1); then we would get the estimate with ri = 3;
+hence we consider kernels that are slightly smoother than those in W 3,1(R).
+Theorem 5.1. Let
+s > 1/2 ,
+r1, r2 > 3. Let ϕi, ψi ∈Hs, Piψi ∈L2 (i = 1, 2) and
+G(ϕ1, ϕ2) ∈L1. If there is some k > 0 so that G(a, b) ≥−k(a2+b2) for all a, b ∈R, then
+the Cauchy problem (1.1)-(1.4) has a global solution with u1 and u2 in C2([0, ∞) , Hs).
+Proof. Since r1, r2 > 3, by Theorem 2.4 we have local existence. The hypothesis implies
+that E(0) < ∞. Assume that u1, u2 exist on [0, T ) for some T > 0. Since G(u1, u2) ≥
+−k(u2
+1 + u2
+2), we get for all t ∈[0, T )
+∥P1u1t(t)∥2 + ∥P2u2t(t)∥2 ≤E(0) + (2k −1)(∥u1(t)∥2 + ∥u2(t)∥2).
+(5.1)
+8
+
+Noting that
+bβi(ξ) ≤Ci(1 + ξ2)−ri/2 for i = 1, 2; we have
+∥P1u1t(t)∥2 =
+d
+P1u1t(t)
+
+2
+=
+Z
+ξ−2(bβ1(ξ))−1(bu1t(ξ, t))2dξ
+≥
+C−1
+1
+Z
+ξ−2(1 + ξ2)r1/2(bu1t(ξ, t))2dξ
+≥
+C−1
+1
+Z
+(1 + ξ2)(r1−2)/2(bu1t(ξ, t))2dξ
+=
+C−1
+1
+∥u1t(t)∥2
+ρ1 ,
+(5.2)
+and similarly,
+∥P2u2t(t)∥2 ≥C−1
+2
+∥u2t(t)∥2
+ρ2
+(5.3)
+where ρi = ri
+2 −1,
+i = 1, 2. By the triangle inequality, for any Banach space valued
+diﬀerentiable function w we have
+d
+dt ∥w(t)∥≤
+
+d
+dtw(t)
+ .
+Combining (5.1), (5.2) and (5.3),
+d
+dt(∥u1(t)∥2
+ρ1
++
+∥u2(t)∥2
+ρ2)
+=
+2(∥u1(t)∥ρ1
+d
+dt ∥u1(t)∥ρ1 + ∥u2(t)∥ρ2
+d
+dt ∥u2(t)∥ρ2)
+≤
+2(∥u1t(t)∥ρ1 ∥u1(t)∥ρ1 + ∥u2t(t)∥ρ2 ∥u2(t)∥ρ2)
+≤
+∥u1t(t)∥2
+ρ1 + ∥u1(t)∥2
+ρ1 + ∥u2t(t)∥2
+ρ2 + ∥u2(t)∥2
+ρ2
+≤
+C(∥P1u1t(t)∥2 + ∥P2u2t(t)∥2) + ∥u1(t)∥2
+ρ1 + ∥u2(t)∥2
+ρ2
+≤
+C[E(0) + (2k −1)(∥u1(t)∥2 + ∥u2(t)∥2)] + ∥u1(t)∥2
+ρ1 + ∥u2(t)∥2
+ρ2
+≤
+CE(0) + (C(2k −1) + 1)(∥u1(t)∥2
+ρ1 + ∥u2(t)∥2
+ρ2)
+where C = max(C1, C2).
+Gronwall’s lemma implies that ∥u1(t)∥ρ1 + ∥u2(t)∥ρ2 stays
+bounded in [0, T ). Since ρi = ri
+2 −1 > 1
+2, ∥u1(t)∥∞+ ∥u2(t)∥∞also stays bounded in
+[0, T ). By Lemma 2.6, a global solution exists.
+5.2. Kernels with Singularity
+In the next theorem we will consider kernels of the form β1(x) = β2(x) = γ(|x|) where
+γ ∈C2([0, ∞)), γ(0) > 0, γ′(0) < 0 and γ′′ ∈L1 ∩L∞. Then the βi will have a jump in
+the ﬁrst derivative. The typical example we have in mind is the Green’s function 1
+2e−|x|.
+For such kernels we have
+bβi (ξ) ≤Ci
+ 1 + ξ2−1
+so r1 = r2 = 2. Due to the jump in β′
+i at x = 0, the distributional derivative will satisfy
+β′′
+i = γ′′ + 2γ′(0)δ,
+i = 1, 2
+9
+
+where δ is the Dirac measure and we use the notation γ′′(x) = γ′′(|x|). Then we have
+(βi ∗w)xx = γ′′ ∗w −λw,
+i = 1, 2
+where λ = −2γ′(0) > 0. We will call these type of kernels mildly singular. For such
+kernels we extend the global existence result in [14] to the coupled system.
+Theorem 5.2. Let s > 1/2 and let the kernels β1 = β2 be mildly singular as deﬁned
+above. Suppose that ϕ1, ϕ2, ψ1, ψ2 ∈Hs, P1ψ1, P2ψ2 ∈L2 and G(ϕ1, ϕ2) ∈L1. If there
+is some C > 0, k ≥0 and qi > 1 so that
+|gi(a, b)|qi ≤C[G(a, b) + k(a2 + b2)]
+for all a, b ∈R and i = 1, 2; then the Cauchy problem (1.1)-(1.4) has a global solution
+with u1 and u2 in C2([0, ∞) , Hs).
+Proof. By Theorem 2.4 we have a local solution. Suppose the solution (u1, u2) exists for
+t ∈[0, T ). For ﬁxed x ∈R we deﬁne
+e(t) = 1
+2[(u1t(x, t))2 + (u2t(x, t))2] + λ
+2 [(u1(x, t))2 + (u2(x, t))2 + 2G(u1(x, t), u2(x, t))].
+Then
+e′(t)
+=
+[u1tt + λ(u1 + g1(u1, u2))]u1t + [u2tt + λ(u2 + g2(u1, u2))]u2t
+=
+[(β1 ∗(u1 + g1(u1, u2)))xx + λ(u1 + g1(u1, u2))]u1t
++ [(β2 ∗(u2 + g2(u1, u2)))xx + λ(u2 + g2(u1, u2))]u2t
+=
+(γ′′ ∗u1)u1t + (γ′′ ∗g1(u1, u2))u1t + (γ′′ ∗u2)u2t + (γ′′ ∗g2(u1, u2))u2t
+≤
+(u1t)2 + (u2t)2 + 1
+2(∥γ′′ ∗u1∥2
+∞+ ∥γ′′ ∗u2∥2
+∞)
++ 1
+2(∥γ′′ ∗g1(u1, u2)∥2
+∞+ ∥γ′′ ∗g2(u1, u2)∥2
+∞).
+Since γ′′ ∈L1 ∩L∞we have γ′′ ∈Lp for all p ≥1. By Young’s inequality
+e′(t)
+≤
+(u1t)2 + (u2t)2 + 1
+2 ∥γ′′∥
+2 (∥u1∥2 + ∥u2∥2)
++ 1
+2 ∥γ′′∥2
+Lp1 ∥g1(u1, u2)∥2
+Lq1 + 1
+2 ∥γ′′∥2
+Lp2 ∥g2(u1, u2)∥2
+Lq2 ,
+where 1/pi + 1/qi = 1 (i = 1, 2). Now the terms may be estimated as
+∥u1∥2 + ∥u2∥2 ≤E(0)
+and for i = 1, 2
+∥gi(u1, u2)∥2
+Lqi
+=
+Z
+|gi(u1, u2)|qi dx
+2/qi
+≤
+
+C
+Z
+[G(u1, u2) + k(a2 + b2)]dx
+2/qi
+≤[C(1 + k)E(0)]2/qi
+10
+
+so that
+e′(t) ≤D + 2e(t)
+for some constant D depending on ∥γ′′∥Lpi, ∥γ′′∥and E(0) (i = 1, 2). This inequality
+holds for all x ∈R, t ∈[0, T ). Gronwall’s lemma then implies that e(t) and thus u1(x, t)
+and u2(x, t) stay bounded. Thus by Lemma 2.6 we have global solution.
+Acknowledgement: This work has been supported by the Scientiﬁc and Technological
+Research Council of Turkey (TUBITAK) under the project TBAG-110R002.

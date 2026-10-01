@@ -1,0 +1,1564 @@
+{
+  "document_id": "arxiv-102",
+  "fulltext_sha256": "0c59df13d1c8367c898c64adf0337dbe33ef3a348ba4acfd31151d353d722102",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "eb14e09ac7983682f344277461bb83a48124bef2b2004d38573d07e12d3c0cee",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper presents a schematic model for one-dimensional scattering in PT-symmetric quantum mechanics using a complex short-range potential. The authors derive reflection and transmission coefficients by applying a Runge-Kutta discretization to the Schrödinger equation, noting that the primary innovation is the complexification of potential parameters.",
+        "entities": [
+          {
+            "name": "Miloslav Znojil",
+            "entity_id": "miloslav_znojil",
+            "entity_type": "person",
+            "aliases": [
+              "Miloslav Znojil"
+            ],
+            "attributes": {
+              "affiliation": "Institute of Nuclear Physics of the Czech Academy of Sciences",
+              "location": "Rež, Czech Republic",
+              "email": "znojil@ujf.cas.cz"
+            },
+            "relationships": [
+              {
+                "predicate": "authored",
+                "target": "A schematic model of scattering in PT-symmetric Quantum Mechanics",
+                "attributes": {},
+                "target_id": "a_schematic_model_of_scattering_in_pt_symmetric_quantum_mechanics"
+              }
+            ]
+          },
+          {
+            "name": "A schematic model of scattering in PT-symmetric Quantum Mechanics",
+            "entity_id": "a_schematic_model_of_scattering_in_pt_symmetric_quantum_mechanics",
+            "entity_type": "other",
+            "aliases": [
+              "A schematic model of scattering in PT-symmetric Quantum Mechanics"
+            ],
+            "attributes": {
+              "arxiv_id": "0704.0214v1",
+              "date": "2 Apr 2007",
+              "subject": "quant-ph",
+              "pacs_code": "03.65.Ge"
+            },
+            "relationships": [
+              {
+                "predicate": "considers",
+                "target": "one-dimensional scattering problem",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "Runge-Kutta-discretized version of Schrödinger equation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "derives",
+                "target": "formulae for reflection and transmission coefficients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PT-symmetric short-range potential",
+            "entity_id": "pt_symmetric_short_range_potential",
+            "entity_type": "concept",
+            "aliases": [
+              "PT-symmetric short-range potential"
+            ],
+            "attributes": {
+              "complexity": "complex",
+              "symmetry": "PT-symmetric",
+              "range": "short-range",
+              "form": "V(x) = Z(x) + iY(x)"
+            },
+            "relationships": [
+              {
+                "predicate": "has_real_part",
+                "target": "Z(x)",
+                "attributes": {},
+                "target_id": "z_x"
+              },
+              {
+                "predicate": "has_imaginary_part",
+                "target": "Y(x)",
+                "attributes": {},
+                "target_id": "y_x"
+              }
+            ]
+          },
+          {
+            "name": "Z(x)",
+            "entity_id": "z_x",
+            "entity_type": "concept",
+            "aliases": [
+              "Z(x)"
+            ],
+            "attributes": {
+              "parity": "even",
+              "value_type": "real"
+            },
+            "relationships": [
+              {
+                "predicate": "satisfies",
+                "target": "Z(-x) = Z(x)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Y(x)",
+            "entity_id": "y_x",
+            "entity_type": "concept",
+            "aliases": [
+              "Y(x)"
+            ],
+            "attributes": {
+              "parity": "odd",
+              "value_type": "real"
+            },
+            "relationships": [
+              {
+                "predicate": "satisfies",
+                "target": "Y(-x) = -Y(x)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Runge-Kutta-discretized Schrödinger equation",
+            "entity_id": "runge_kutta_discretized_schrodinger_equation",
+            "entity_type": "method",
+            "aliases": [
+              "Runge-Kutta-discretized Schrödinger equation"
+            ],
+            "attributes": {
+              "representation": "difference equation",
+              "lattice_step": "h > 0",
+              "grid_points": "x_k = k h"
+            },
+            "relationships": [
+              {
+                "predicate": "replaces",
+                "target": "ordinary differential Schrödinger equation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "deriving reflection and transmission coefficients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "quasi-Hermitian Hamiltonians",
+            "entity_id": "quasi_hermitian_hamiltonians",
+            "entity_type": "concept",
+            "aliases": [
+              "quasi-Hermitian Hamiltonians"
+            ],
+            "attributes": {
+              "hermiticity": "non-Hermitian (H != H†)",
+              "condition": "H† = Θ H Θ⁻¹"
+            },
+            "relationships": [
+              {
+                "predicate": "requires_metric_operator",
+                "target": "Θ",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "generalizes",
+                "target": "conventional quantum bound state problem",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "metric operator Θ",
+            "entity_id": "metric_operator",
+            "entity_type": "concept",
+            "aliases": [
+              "metric operator Θ"
+            ],
+            "attributes": {
+              "properties": "nontrivial, Hermitian (Θ = Θ†), positive definite (Θ > 0)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Carl Bender",
+            "entity_id": "carl_bender",
+            "entity_type": "person",
+            "aliases": [
+              "Carl Bender"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "authored_review_on",
+                "target": "PT-symmetry of Hamiltonians",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 497,
+          "word_count": 497,
+          "sha256": "ff922019f24e1c7ebb393c4dd7b3bcdb62e6f32887b0fc0d334218e0b02d6cd3",
+          "sentence_minhash": [
+            418801142262699408,
+            57152229130338686,
+            89450601222235340,
+            197037259997032794,
+            18310561581137892,
+            49597227551987522,
+            87290524172450923,
+            1125529973969978,
+            228439795799410229,
+            9462436175016187,
+            64324616208207599,
+            10400985151661577,
+            51125582506972287,
+            414477720889409241,
+            139254418913316130,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The text derives discrete scattering solutions for a Runge-Kutta discretized Schrödinger equation, establishing that the reality of the energy variable imposes a finite energy range reminiscent of relativistic spectra. It demonstrates the matching method for a simple M=1 model, yielding explicit formulas for reflection and transmission coefficients in terms of the potential parameter and energy variable.",
+        "entities": [
+          {
+            "name": "discrete Schrödinger equation",
+            "entity_id": "discrete_schrodinger_equation",
+            "entity_type": "method",
+            "aliases": [
+              "discrete Schrödinger equation"
+            ],
+            "attributes": {
+              "form": "-ψk−1 + (2 cos ϕ + Vk) ψk −ψk+1 = 0",
+              "context": "Runge-Kutta discretized version"
+            },
+            "relationships": [
+              {
+                "predicate": "has_independent_solutions_in_vacuum",
+                "target": "exp(±i ϕ)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "energy variable ϕ",
+            "entity_id": "energy_variable",
+            "entity_type": "measurement",
+            "aliases": [
+              "energy variable ϕ"
+            ],
+            "attributes": {
+              "definition": "2 cos ϕ = 2 − h²E",
+              "reality_constraint": "−2 ≤ 2 − h²E ≤ 2"
+            },
+            "relationships": [
+              {
+                "predicate": "constrains_original_energy",
+                "target": "E ∈ (0, 4/h²)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "resembles",
+                "target": "spectra in relativistic quantum systems",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Runge-Kutta method",
+            "entity_id": "runge_kutta_method",
+            "entity_type": "method",
+            "aliases": [
+              "Runge-Kutta method"
+            ],
+            "attributes": {
+              "purpose": "numerical recipe for handling O(h⁴) discrepancy",
+              "limit_behavior": "discrepancy disappears as h → 0"
+            },
+            "relationships": []
+          },
+          {
+            "name": "M=1 scattering model",
+            "entity_id": "m_1_scattering_model",
+            "entity_type": "concept",
+            "aliases": [
+              "M=1 scattering model"
+            ],
+            "attributes": {
+              "cutoff": "M=1",
+              "equations": "three nontrivial relations"
+            },
+            "relationships": [
+              {
+                "predicate": "yields_reflection_coefficient",
+                "target": "B = Z0 / (2i sin ϕ − Z0)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "yields_transmission_coefficient",
+                "target": "C = 2i sin ϕ / (2i sin ϕ − Z0)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "lattice step h",
+            "entity_id": "lattice_step_h",
+            "entity_type": "measurement",
+            "aliases": [
+              "lattice step h"
+            ],
+            "attributes": {
+              "constraint": "h > 0"
+            },
+            "relationships": [
+              {
+                "predicate": "should_be_varied_independently_of",
+                "target": "1/M",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 497,
+          "end_word": 997,
+          "word_count": 500,
+          "sha256": "8473470492e12fc75920ee7d7ac9571eec2bbb55bbce8edbb4ce3331b5387afb",
+          "sentence_minhash": [
+            129898988393926184,
+            1306423125707224,
+            132898077708225042,
+            64513941377847126,
+            560099890076231597,
+            120624748091028973,
+            49554226475881912,
+            1125529973969978,
+            82645293828081167,
+            9462436175016187,
+            67831053780325945,
+            139309872259060027,
+            164575269931903557,
+            129391215096939535,
+            142644237113067819,
+            842086644690196056
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The M=1 scattering model remains Hermitian because it involves only real interaction terms without PT-symmetry. For the M=2 model, the difference Schrödinger equation is reduced to a two-dimensional linear algebraic system that determines reflection and transmission coefficients. The general difference Schrödinger equation is reformulated as a doubly infinite system of linear algebraic equations with specific tridiagonal matrix elements.",
+        "entities": [
+          {
+            "name": "M=1 toy problem",
+            "entity_id": "m_1_toy_problem",
+            "entity_type": "other",
+            "aliases": [
+              "M=1 toy problem"
+            ],
+            "attributes": {
+              "hermiticity": "Hermitian",
+              "reason": "involves only real interaction term Z0 and no PT-symmetry",
+              "model_entity_type": "model"
+            },
+            "relationships": []
+          },
+          {
+            "name": "M=2 scattering model",
+            "entity_id": "m_2_scattering_model",
+            "entity_type": "other",
+            "aliases": [
+              "M=2 model",
+              "M=2 scattering model"
+            ],
+            "attributes": {
+              "equation_form": "triplet of relations involving complex potential terms",
+              "solution_method": "reduced to a two-dimensional linear algebraic problem",
+              "model_entity_type": "model"
+            },
+            "relationships": [
+              {
+                "predicate": "determines",
+                "target": "reflection and transmission coefficients B and C",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "boundary conditions for psi_-2, psi_-1, psi_1, psi_2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "difference Schrödinger equation",
+            "entity_id": "difference_schrodinger_equation",
+            "entity_type": "other",
+            "aliases": [
+              "difference Schrödinger equation"
+            ],
+            "attributes": {
+              "representation": "doubly infinite system of linear algebraic equations",
+              "model_entity_type": "equation"
+            },
+            "relationships": [
+              {
+                "predicate": "defined_by",
+                "target": "tridiagonal matrix with elements S_k",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "matrix element S_k",
+            "entity_id": "matrix_element_s_k",
+            "entity_type": "other",
+            "aliases": [
+              "matrix element S_k"
+            ],
+            "attributes": {
+              "definition_for_|k|<M": "2 cos phi + Z_k + i Y_k sign(k)",
+              "definition_for_|k|>=M": "2 cos phi",
+              "symmetry_property": "S_k = S^*_-k",
+              "model_entity_type": "mathematical_object"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 997,
+          "end_word": 1456,
+          "word_count": 459,
+          "sha256": "b2f92a8996384edf07f616901e52258dfe179d841f12bcae7db5214dbc771efa",
+          "sentence_minhash": [
+            282485741492650032,
+            1306423125707224,
+            23103724853578534,
+            53442166147602330,
+            202131088475134628,
+            176834397779012490,
+            149017575652778032,
+            1125529973969978,
+            19874090017850400,
+            9462436175016187,
+            67831053780325945,
+            165121444977496021,
+            164575269931903557,
+            118151843130073762,
+            141264222062913608,
+            382712784620362330
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'model' for 'M=1 toy problem'",
+          "normalized unsupported entity type 'model' for 'M=2 scattering model'",
+          "normalized unsupported entity type 'equation' for 'difference Schrödinger equation'",
+          "normalized unsupported entity type 'mathematical_object' for 'matrix element S_k'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text describes a method to reduce a doubly infinite difference Schrödinger equation to a finite-dimensional non-homogeneous linear system. By partitioning the coefficient matrix and its inverse, the system is simplified to determine scattering coefficients.",
+        "entities": [
+          {
+            "name": "finite-dimensional tridiagonal non-square-matrix problem",
+            "entity_id": "finite_dimensional_tridiagonal_non_square_matrix_problem",
+            "entity_type": "other",
+            "aliases": [
+              "finite-dimensional tridiagonal non-square-matrix problem"
+            ],
+            "attributes": {
+              "dimension": "finite",
+              "structure": "tridiagonal",
+              "shape": "non-square",
+              "model_entity_type": "mathematical_structure"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "doubly infinite system of linear algebraic equations (eq. 11)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_to",
+                "target": "non-homogeneous system of 2M - 1 equations",
+                "attributes": {},
+                "target_id": "non_homogeneous_system_of_2m_1_equations"
+              }
+            ]
+          },
+          {
+            "name": "non-homogeneous system of 2M - 1 equations",
+            "entity_id": "non_homogeneous_system_of_2m_1_equations",
+            "entity_type": "other",
+            "aliases": [
+              "non-homogeneous system of 2M - 1 equations"
+            ],
+            "attributes": {
+              "equation_count": "2M - 1",
+              "form": "T * vector = vector",
+              "model_entity_type": "mathematical_system"
+            },
+            "relationships": [
+              {
+                "predicate": "defined_by_matrix",
+                "target": "matrix T",
+                "attributes": {},
+                "target_id": "matrix_t"
+              },
+              {
+                "predicate": "solution_method",
+                "target": "matrix inversion R = T^-1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "matrix T",
+            "entity_id": "matrix_t",
+            "entity_type": "other",
+            "aliases": [
+              "matrix T"
+            ],
+            "attributes": {
+              "dimension": "2M - 1",
+              "shape": "square",
+              "model_entity_type": "mathematical_object"
+            },
+            "relationships": [
+              {
+                "predicate": "partitioned_into",
+                "target": "submatrices and vectors including S*(M-1), S0, S(M-1)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "inverted_to_form",
+                "target": "matrix R",
+                "attributes": {},
+                "target_id": "matrix_r"
+              }
+            ]
+          },
+          {
+            "name": "matrix R",
+            "entity_id": "matrix_r",
+            "entity_type": "other",
+            "aliases": [
+              "matrix R"
+            ],
+            "attributes": {
+              "definition": "inverse of matrix T (T^-1)",
+              "condition": "exists when T is non-singular",
+              "model_entity_type": "mathematical_object"
+            },
+            "relationships": [
+              {
+                "predicate": "partitioned_form",
+                "target": "block matrix with elements alpha*, beta, Q, u, v, w, t",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_to_solve",
+                "target": "non-homogeneous system of 2M - 1 equations",
+                "attributes": {},
+                "target_id": "non_homogeneous_system_of_2m_1_equations"
+              }
+            ]
+          },
+          {
+            "name": "scattering coefficients B and C",
+            "entity_id": "scattering_coefficients_b_and_c",
+            "entity_type": "measurement",
+            "aliases": [
+              "scattering coefficients B and C"
+            ],
+            "attributes": {
+              "role": "reflection and transmission coefficients"
+            },
+            "relationships": [
+              {
+                "predicate": "determined_by",
+                "target": "partitioned structure of matrix R",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1456,
+          "end_word": 1949,
+          "word_count": 493,
+          "sha256": "dd8e9426799fc93b164b218b4adead8ba7e9a9dabe1f43a9eb17feb1e385b285",
+          "sentence_minhash": [
+            396481072523652590,
+            57152229130338686,
+            69729176314767099,
+            379708430506273760,
+            246060303428482761,
+            195356835449882174,
+            175774020269814206,
+            548580071937203944,
+            19874090017850400,
+            53218444842501593,
+            819351989671102658,
+            182360699126446636,
+            12488864069851856,
+            118151843130073762,
+            362786584055470127,
+            298856460925427088
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'mathematical_structure' for 'finite-dimensional tridiagonal non-square-matrix problem'",
+          "normalized unsupported entity type 'mathematical_system' for 'non-homogeneous system of 2M - 1 equations'",
+          "normalized unsupported entity type 'mathematical_object' for 'matrix T'",
+          "normalized unsupported entity type 'mathematical_object' for 'matrix R'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The text derives final linear equations for reflection and transmission coefficients in a PT-symmetric scattering model. It identifies complex coefficient alpha and real coefficient beta as the carriers of dynamical input information. Examples of determinant and numerator calculations are provided for model dimensions M=2, M=3, and M=4.",
+        "entities": [
+          {
+            "name": "reflection coefficient B",
+            "entity_id": "reflection_coefficient_b",
+            "entity_type": "measurement",
+            "aliases": [
+              "reflection coefficient B"
+            ],
+            "attributes": {
+              "formula": "B = (-e^(-2iMϕ) + Cβ) / (e^(-iϕ) - α)"
+            },
+            "relationships": [
+              {
+                "predicate": "determined_by",
+                "target": "complex coefficient alpha",
+                "attributes": {},
+                "target_id": "complex_coefficient_alpha"
+              },
+              {
+                "predicate": "determined_by",
+                "target": "real coefficient beta",
+                "attributes": {},
+                "target_id": "real_coefficient_beta"
+              },
+              {
+                "predicate": "determined_by",
+                "target": "transmission coefficient C",
+                "attributes": {},
+                "target_id": "transmission_coefficient_c"
+              }
+            ]
+          },
+          {
+            "name": "transmission coefficient C",
+            "entity_id": "transmission_coefficient_c",
+            "entity_type": "measurement",
+            "aliases": [
+              "transmission coefficient C"
+            ],
+            "attributes": {
+              "formula": "C = (2iβe^(-2iMϕ)sinϕ) / (β^2 - (e^(-iϕ) - α*) (e^(-iϕ) - α))"
+            },
+            "relationships": [
+              {
+                "predicate": "determined_by",
+                "target": "complex coefficient alpha",
+                "attributes": {},
+                "target_id": "complex_coefficient_alpha"
+              },
+              {
+                "predicate": "determined_by",
+                "target": "real coefficient beta",
+                "attributes": {},
+                "target_id": "real_coefficient_beta"
+              }
+            ]
+          },
+          {
+            "name": "complex coefficient alpha",
+            "entity_id": "complex_coefficient_alpha",
+            "entity_type": "concept",
+            "aliases": [
+              "complex coefficient alpha"
+            ],
+            "attributes": {
+              "nature": "complex",
+              "role": "carries dynamical input information",
+              "denominator": "det T"
+            },
+            "relationships": [
+              {
+                "predicate": "is_rational_function_of",
+                "target": "real coupling constants Z0 to ZM-1 and Y1 to YM-1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "real coefficient beta",
+            "entity_id": "real_coefficient_beta",
+            "entity_type": "concept",
+            "aliases": [
+              "real coefficient beta"
+            ],
+            "attributes": {
+              "nature": "real",
+              "role": "carries dynamical input information",
+              "value": "1/det T"
+            },
+            "relationships": [
+              {
+                "predicate": "is_rational_function_of",
+                "target": "real coupling constants Z0 to ZM-1 and Y1 to YM-1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "M=2 scattering model",
+            "entity_id": "m_2_scattering_model",
+            "entity_type": "other",
+            "aliases": [
+              "M=2 model",
+              "M=2 scattering model"
+            ],
+            "attributes": {
+              "dimension": 2
+            },
+            "relationships": [
+              {
+                "predicate": "det_T_value",
+                "target": "Z0Z1^2 - 2Z1 + Y1^2Z0",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "Re_gamma_value",
+                "target": "Z0Z1 - 1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "Im_gamma_value",
+                "target": "-Z0Y1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "M=3 model",
+            "entity_id": "m_3_model",
+            "entity_type": "method",
+            "aliases": [
+              "M=3 model"
+            ],
+            "attributes": {
+              "dimension": 3
+            },
+            "relationships": [
+              {
+                "predicate": "det_T_value",
+                "target": "Z0Z1^2Z2^2 - 2Z0Z1Z2 - 2Z1Z2^2 + Y1^2Z0Z2^2 + 2Z2 + Y2^2Z0Z1^2 - 2Y2^2Z1 + Y2^2Y1^2Z0 + 2Z0Y1Y2 + Z0",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "Re_gamma_value",
+                "target": "Z0Z1^2Z2 - 2Z1Z2 + Y1^2Z0Z2 - Z1Z0 + 1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "Im_gamma_value",
+                "target": "-Z0Z1^2Y2 + 2Z1Y2 - Y1^2Z0Y2 - Y1Z0",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "M=4 model",
+            "entity_id": "m_4_model",
+            "entity_type": "method",
+            "aliases": [
+              "M=4 model"
+            ],
+            "attributes": {
+              "dimension": 4
+            },
+            "relationships": [
+              {
+                "predicate": "det_T_complexity",
+                "target": "sum of 15 products of couplings",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "Re_gamma_complexity",
+                "target": "sum of 14 products of couplings",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "Im_gamma_complexity",
+                "target": "sum of 32 products of couplings",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1949,
+          "end_word": 2408,
+          "word_count": 459,
+          "sha256": "b1e0b2967bac4d5c916b638d76ad6af6042d26b19fc26cdcf0a71200299c16e6",
+          "sentence_minhash": [
+            77163094744281234,
+            1306423125707224,
+            23103724853578534,
+            53442166147602330,
+            124128223152102806,
+            62667647458868521,
+            159887572503773835,
+            209270157331458134,
+            19874090017850400,
+            30171838383368346,
+            67831053780325945,
+            132384069623148551,
+            12488864069851856,
+            46043365959155230,
+            303264414993015767,
+            382712784620362330
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The text details the algebraic complexity of determinant and coefficient calculations for PT-symmetric scattering models at higher dimensions. It traces the historical origin of PT-symmetry to a 1998 paper by Bender and Boettcher and notes the subsequent mathematical clarification of the physical Hilbert space. The discussion highlights that while bound-state problems are well-understood, scattering problems in this context remain a comparatively small area of research.",
+        "entities": [
+          {
+            "name": "weak coupling regime",
+            "entity_id": "weak_coupling_regime",
+            "entity_type": "concept",
+            "aliases": [
+              "weak coupling regime"
+            ],
+            "attributes": {
+              "algebraic_simplification": "determinant contains only two linear terms in couplings"
+            },
+            "relationships": [
+              {
+                "predicate": "simplifies",
+                "target": "determinant det T",
+                "attributes": {},
+                "target_id": "determinant_det_t"
+              }
+            ]
+          },
+          {
+            "name": "determinant det T",
+            "entity_id": "determinant_det_t",
+            "entity_type": "measurement",
+            "aliases": [
+              "determinant det T"
+            ],
+            "attributes": {
+              "weak_coupling_form": "-2 Z3 - 2 Z1 + ...",
+              "higher_order_terms": "includes 10 triple-product terms"
+            },
+            "relationships": [
+              {
+                "predicate": "simplified_in",
+                "target": "weak coupling regime",
+                "attributes": {},
+                "target_id": "weak_coupling_regime"
+              }
+            ]
+          },
+          {
+            "name": "symbolic manipulations on a computer",
+            "entity_id": "symbolic_manipulations_on_a_computer",
+            "entity_type": "method",
+            "aliases": [
+              "symbolic manipulations on a computer"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "required_for",
+                "target": "dimensions M >= 4",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "1998 letter by Bender and Boettcher",
+            "entity_id": "1998_letter_by_bender_and_boettcher",
+            "entity_type": "event",
+            "aliases": [
+              "1998 letter by Bender and Boettcher"
+            ],
+            "attributes": {
+              "year": 1998,
+              "significance": "main inspiration for PT-symmetry research"
+            },
+            "relationships": [
+              {
+                "predicate": "introduced",
+                "target": "PT-symmetry concept",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "proposed_model",
+                "target": "V(x) = x^2 (ix)^delta",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PT-symmetry",
+            "entity_id": "pt_symmetry",
+            "entity_type": "concept",
+            "aliases": [
+              "PT-symmetry"
+            ],
+            "attributes": {
+              "definition": "P means parity, T represents time reversal (antilinear)",
+              "mathematical_equivalent": "P-pseudo-Hermiticity specified by H† = P H P⁻¹"
+            },
+            "relationships": [
+              {
+                "predicate": "originated_from",
+                "target": "1998 letter by Bender and Boettcher",
+                "attributes": {},
+                "target_id": "1998_letter_by_bender_and_boettcher"
+              },
+              {
+                "predicate": "clarified_by",
+                "target": "Dorey, Duncan, Tateo and Shin",
+                "attributes": {},
+                "target_id": "dorey_duncan_tateo_and_shin"
+              }
+            ]
+          },
+          {
+            "name": "Dorey, Duncan, Tateo and Shin",
+            "entity_id": "dorey_duncan_tateo_and_shin",
+            "entity_type": "person",
+            "aliases": [
+              "Dorey, Duncan, Tateo and Shin"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "proved_conjecture_of",
+                "target": "purely real bound-state spectrum for V(x) = x^2 (ix)^delta",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "physical Hilbert space H",
+            "entity_id": "physical_hilbert_space_h",
+            "entity_type": "concept",
+            "aliases": [
+              "physical Hilbert space H"
+            ],
+            "attributes": {
+              "property": "nontrivial",
+              "role": "ensures Hamiltonian remains self-adjoint"
+            },
+            "relationships": [
+              {
+                "predicate": "clarified_existence_of",
+                "target": "PT-symmetric Hamiltonians",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "scattering problem in PT-symmetric quantum mechanics",
+            "entity_id": "scattering_problem_in_pt_symmetric_quantum_mechanics",
+            "entity_type": "concept",
+            "aliases": [
+              "scattering problem in PT-symmetric quantum mechanics"
+            ],
+            "attributes": {
+              "research_status": "comparatively small number of papers devoted to it"
+            },
+            "relationships": [
+              {
+                "predicate": "contrasted_with",
+                "target": "bound-state version",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2408,
+          "end_word": 2855,
+          "word_count": 447,
+          "sha256": "d18eb6b68e692ece25e5e3a6f1ee484986264ac6d8815c2b480cf67492a7cb9f",
+          "sentence_minhash": [
+            385942288480001439,
+            232593725413697090,
+            67700393696490351,
+            201948566748835051,
+            5043051019624353,
+            62667647458868521,
+            22385711961799448,
+            25706940257955106,
+            228439795799410229,
+            9462436175016187,
+            50075603504766645,
+            132384069623148551,
+            116477797196485182,
+            906306679132868,
+            84258266176112060,
+            29303900541918447
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The study demonstrates a formal parallelism between scattering by real Hermitian potentials and complex PT-symmetric potentials using a Runge-Kutta discretization. It shows that transmission and reflection coefficients are determined by two functions, alpha and beta, which encode the dynamical input of the lattice potentials. The method reduces the scattering problem to a two-dimensional matrix inversion by partitioning the Schrödinger equation.",
+        "entities": [
+          {
+            "name": "PT-symmetric quantum mechanics scattering model",
+            "entity_id": "pt_symmetric_quantum_mechanics_scattering_model",
+            "entity_type": "method",
+            "aliases": [
+              "PT-symmetric quantum mechanics scattering model"
+            ],
+            "attributes": {
+              "basis": "difference-equation-based",
+              "inspiration": "Runge-Kutta-type discretization and chain-model approximations",
+              "finding": "close formal parallelism between real (Hermitian) and complex (PT-symmetric) potential scattering"
+            },
+            "relationships": [
+              {
+                "predicate": "reduces_to",
+                "target": "two-dimensional matrix inversion",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "addresses",
+                "target": "gap in scattering studies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "transmission and reflection coefficients",
+            "entity_id": "transmission_and_reflection_coefficients",
+            "entity_type": "measurement",
+            "aliases": [
+              "transmission and reflection coefficients"
+            ],
+            "attributes": {
+              "form": "identical in Hermitian and non-Hermitian contexts",
+              "determination": "encoded in functions alpha and beta"
+            },
+            "relationships": [
+              {
+                "predicate": "depends_on",
+                "target": "dynamical input information",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "alpha and beta functions",
+            "entity_id": "alpha_and_beta_functions",
+            "entity_type": "concept",
+            "aliases": [
+              "alpha and beta functions"
+            ],
+            "attributes": {
+              "role": "encode dynamical input information",
+              "dependence": "lattice potentials",
+              "variation": "vanishing or non-vanishing coefficients Yk distinguish Hermitian and non-Hermitian cases"
+            },
+            "relationships": [
+              {
+                "predicate": "determine",
+                "target": "transmission and reflection coefficients",
+                "attributes": {},
+                "target_id": "transmission_and_reflection_coefficients"
+              }
+            ]
+          },
+          {
+            "name": "asymmetry between in and out states",
+            "entity_id": "asymmetry_between_in_and_out_states",
+            "entity_type": "concept",
+            "aliases": [
+              "asymmetry between in and out states"
+            ],
+            "attributes": {
+              "characteristic": "manifest in PT-symmetric scattering",
+              "nature": "merely formal in the solvable exemplification"
+            },
+            "relationships": [
+              {
+                "predicate": "resolved_by",
+                "target": "standard non-matching and non-recurrent linear algebra techniques",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "partitioning of the Schrödinger equation",
+            "entity_id": "partitioning_of_the_schrodinger_equation",
+            "entity_type": "method",
+            "aliases": [
+              "partitioning of the Schrödinger equation"
+            ],
+            "attributes": {
+              "function": "separates essential and inessential components"
+            },
+            "relationships": [
+              {
+                "predicate": "enables",
+                "target": "reduction to two-dimensional matrix inversion",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "involves",
+                "target": "inverse matrix R = T^-1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "inverse problem of scattering",
+            "entity_id": "inverse_problem_of_scattering",
+            "entity_type": "concept",
+            "aliases": [
+              "inverse problem of scattering"
+            ],
+            "attributes": {
+              "variant": "non-Hermitian versions"
+            },
+            "relationships": [
+              {
+                "predicate": "potential_future_insight_from",
+                "target": "further study of the discrete model",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2855,
+          "end_word": 3272,
+          "word_count": 417,
+          "sha256": "a23d99398c75fe8c03cd9f3da2fb5590dfad475bdb78a7a13b1bf06d97af27b5",
+          "sentence_minhash": [
+            357503878952995394,
+            1306423125707224,
+            89450601222235340,
+            34208260918438639,
+            246060303428482761,
+            195356835449882174,
+            27336945931145765,
+            96292850158067112,
+            19874090017850400,
+            10658208383715615,
+            203150326493073191,
+            142723333974471510,
+            51125582506972287,
+            83535461897877455,
+            369640054397817822,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "m_2_scattering_model",
+        "canonical_name": "M=2 scattering model",
+        "aliases": [
+          "M=2 scattering model",
+          "M=2 model"
+        ]
+      },
+      {
+        "canonical_id": "miloslav_znojil",
+        "canonical_name": "Miloslav Znojil",
+        "aliases": [
+          "Miloslav Znojil"
+        ]
+      },
+      {
+        "canonical_id": "a_schematic_model_of_scattering_in_pt_symmetric_quantum_mechanics",
+        "canonical_name": "A schematic model of scattering in PT-symmetric Quantum Mechanics",
+        "aliases": [
+          "A schematic model of scattering in PT-symmetric Quantum Mechanics"
+        ]
+      },
+      {
+        "canonical_id": "pt_symmetric_short_range_potential",
+        "canonical_name": "PT-symmetric short-range potential",
+        "aliases": [
+          "PT-symmetric short-range potential"
+        ]
+      },
+      {
+        "canonical_id": "z_x",
+        "canonical_name": "Z(x)",
+        "aliases": [
+          "Z(x)"
+        ]
+      },
+      {
+        "canonical_id": "y_x",
+        "canonical_name": "Y(x)",
+        "aliases": [
+          "Y(x)"
+        ]
+      },
+      {
+        "canonical_id": "runge_kutta_discretized_schrodinger_equation",
+        "canonical_name": "Runge-Kutta-discretized Schrödinger equation",
+        "aliases": [
+          "Runge-Kutta-discretized Schrödinger equation"
+        ]
+      },
+      {
+        "canonical_id": "quasi_hermitian_hamiltonians",
+        "canonical_name": "quasi-Hermitian Hamiltonians",
+        "aliases": [
+          "quasi-Hermitian Hamiltonians"
+        ]
+      },
+      {
+        "canonical_id": "metric_operator",
+        "canonical_name": "metric operator Θ",
+        "aliases": [
+          "metric operator Θ"
+        ]
+      },
+      {
+        "canonical_id": "carl_bender",
+        "canonical_name": "Carl Bender",
+        "aliases": [
+          "Carl Bender"
+        ]
+      },
+      {
+        "canonical_id": "discrete_schrodinger_equation",
+        "canonical_name": "discrete Schrödinger equation",
+        "aliases": [
+          "discrete Schrödinger equation"
+        ]
+      },
+      {
+        "canonical_id": "energy_variable",
+        "canonical_name": "energy variable ϕ",
+        "aliases": [
+          "energy variable ϕ"
+        ]
+      },
+      {
+        "canonical_id": "runge_kutta_method",
+        "canonical_name": "Runge-Kutta method",
+        "aliases": [
+          "Runge-Kutta method"
+        ]
+      },
+      {
+        "canonical_id": "m_1_scattering_model",
+        "canonical_name": "M=1 scattering model",
+        "aliases": [
+          "M=1 scattering model"
+        ]
+      },
+      {
+        "canonical_id": "lattice_step_h",
+        "canonical_name": "lattice step h",
+        "aliases": [
+          "lattice step h"
+        ]
+      },
+      {
+        "canonical_id": "m_1_toy_problem",
+        "canonical_name": "M=1 toy problem",
+        "aliases": [
+          "M=1 toy problem"
+        ]
+      },
+      {
+        "canonical_id": "difference_schrodinger_equation",
+        "canonical_name": "difference Schrödinger equation",
+        "aliases": [
+          "difference Schrödinger equation"
+        ]
+      },
+      {
+        "canonical_id": "matrix_element_s_k",
+        "canonical_name": "matrix element S_k",
+        "aliases": [
+          "matrix element S_k"
+        ]
+      },
+      {
+        "canonical_id": "finite_dimensional_tridiagonal_non_square_matrix_problem",
+        "canonical_name": "finite-dimensional tridiagonal non-square-matrix problem",
+        "aliases": [
+          "finite-dimensional tridiagonal non-square-matrix problem"
+        ]
+      },
+      {
+        "canonical_id": "non_homogeneous_system_of_2m_1_equations",
+        "canonical_name": "non-homogeneous system of 2M - 1 equations",
+        "aliases": [
+          "non-homogeneous system of 2M - 1 equations"
+        ]
+      },
+      {
+        "canonical_id": "matrix_t",
+        "canonical_name": "matrix T",
+        "aliases": [
+          "matrix T"
+        ]
+      },
+      {
+        "canonical_id": "matrix_r",
+        "canonical_name": "matrix R",
+        "aliases": [
+          "matrix R"
+        ]
+      },
+      {
+        "canonical_id": "scattering_coefficients_b_and_c",
+        "canonical_name": "scattering coefficients B and C",
+        "aliases": [
+          "scattering coefficients B and C"
+        ]
+      },
+      {
+        "canonical_id": "reflection_coefficient_b",
+        "canonical_name": "reflection coefficient B",
+        "aliases": [
+          "reflection coefficient B"
+        ]
+      },
+      {
+        "canonical_id": "transmission_coefficient_c",
+        "canonical_name": "transmission coefficient C",
+        "aliases": [
+          "transmission coefficient C"
+        ]
+      },
+      {
+        "canonical_id": "complex_coefficient_alpha",
+        "canonical_name": "complex coefficient alpha",
+        "aliases": [
+          "complex coefficient alpha"
+        ]
+      },
+      {
+        "canonical_id": "real_coefficient_beta",
+        "canonical_name": "real coefficient beta",
+        "aliases": [
+          "real coefficient beta"
+        ]
+      },
+      {
+        "canonical_id": "m_3_model",
+        "canonical_name": "M=3 model",
+        "aliases": [
+          "M=3 model"
+        ]
+      },
+      {
+        "canonical_id": "m_4_model",
+        "canonical_name": "M=4 model",
+        "aliases": [
+          "M=4 model"
+        ]
+      },
+      {
+        "canonical_id": "weak_coupling_regime",
+        "canonical_name": "weak coupling regime",
+        "aliases": [
+          "weak coupling regime"
+        ]
+      },
+      {
+        "canonical_id": "determinant_det_t",
+        "canonical_name": "determinant det T",
+        "aliases": [
+          "determinant det T"
+        ]
+      },
+      {
+        "canonical_id": "symbolic_manipulations_on_a_computer",
+        "canonical_name": "symbolic manipulations on a computer",
+        "aliases": [
+          "symbolic manipulations on a computer"
+        ]
+      },
+      {
+        "canonical_id": "1998_letter_by_bender_and_boettcher",
+        "canonical_name": "1998 letter by Bender and Boettcher",
+        "aliases": [
+          "1998 letter by Bender and Boettcher"
+        ]
+      },
+      {
+        "canonical_id": "pt_symmetry",
+        "canonical_name": "PT-symmetry",
+        "aliases": [
+          "PT-symmetry"
+        ]
+      },
+      {
+        "canonical_id": "dorey_duncan_tateo_and_shin",
+        "canonical_name": "Dorey, Duncan, Tateo and Shin",
+        "aliases": [
+          "Dorey, Duncan, Tateo and Shin"
+        ]
+      },
+      {
+        "canonical_id": "physical_hilbert_space_h",
+        "canonical_name": "physical Hilbert space H",
+        "aliases": [
+          "physical Hilbert space H"
+        ]
+      },
+      {
+        "canonical_id": "scattering_problem_in_pt_symmetric_quantum_mechanics",
+        "canonical_name": "scattering problem in PT-symmetric quantum mechanics",
+        "aliases": [
+          "scattering problem in PT-symmetric quantum mechanics"
+        ]
+      },
+      {
+        "canonical_id": "pt_symmetric_quantum_mechanics_scattering_model",
+        "canonical_name": "PT-symmetric quantum mechanics scattering model",
+        "aliases": [
+          "PT-symmetric quantum mechanics scattering model"
+        ]
+      },
+      {
+        "canonical_id": "transmission_and_reflection_coefficients",
+        "canonical_name": "transmission and reflection coefficients",
+        "aliases": [
+          "transmission and reflection coefficients"
+        ]
+      },
+      {
+        "canonical_id": "alpha_and_beta_functions",
+        "canonical_name": "alpha and beta functions",
+        "aliases": [
+          "alpha and beta functions"
+        ]
+      },
+      {
+        "canonical_id": "asymmetry_between_in_and_out_states",
+        "canonical_name": "asymmetry between in and out states",
+        "aliases": [
+          "asymmetry between in and out states"
+        ]
+      },
+      {
+        "canonical_id": "partitioning_of_the_schrodinger_equation",
+        "canonical_name": "partitioning of the Schrödinger equation",
+        "aliases": [
+          "partitioning of the Schrödinger equation"
+        ]
+      },
+      {
+        "canonical_id": "inverse_problem_of_scattering",
+        "canonical_name": "inverse problem of scattering",
+        "aliases": [
+          "inverse problem of scattering"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The paper presents a schematic model for one-dimensional scattering in PT-symmetric quantum mechanics using a complex short-range potential. The authors derive reflection and transmission coefficients by applying a Runge-Kutta discretization to the Schrödinger equation, noting that the primary innovation is the complexification of potential parameters.\",\"entities\":[{\"name\":\"Miloslav Znojil\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Institute of Nuclear Physics of the Czech Academy of Sciences\",\"location\":\"Rež, Czech Republic\",\"email\":\"znojil@ujf.cas.cz\"},\"relationships\":[{\"predicate\":\"authored\",\"target\":\"A schematic model of scattering in PT-symmetric Quantum Mechanics\",\"attributes\":{},\"target_id\":\"a_schematic_model_of_scattering_in_pt_symmetric_quantum_mechanics\"}]},{\"name\":\"A schematic model of scattering in PT-symmetric Quantum Mechanics\",\"type\":\"other\",\"attributes\":{\"arxiv_id\":\"0704.0214v1\",\"date\":\"2 Apr 2007\",\"subject\":\"quant-ph\",\"pacs_code\":\"03.65.Ge\"},\"relationships\":[{\"predicate\":\"considers\",\"target\":\"one-dimensional scattering problem\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"Runge-Kutta-discretized version of Schrödinger equation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"derives\",\"target\":\"formulae for reflection and transmission coefficients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PT-symmetric short-range potential\",\"type\":\"concept\",\"attributes\":{\"complexity\":\"complex\",\"symmetry\":\"PT-symmetric\",\"range\":\"short-range\",\"form\":\"V(x) = Z(x) + iY(x)\"},\"relationships\":[{\"predicate\":\"has_real_part\",\"target\":\"Z(x)\",\"attributes\":{},\"target_id\":\"z_x\"},{\"predicate\":\"has_imaginary_part\",\"target\":\"Y(x)\",\"attributes\":{},\"target_id\":\"y_x\"}]},{\"name\":\"Z(x)\",\"type\":\"concept\",\"attributes\":{\"parity\":\"even\",\"value_type\":\"real\"},\"relationships\":[{\"predicate\":\"satisfies\",\"target\":\"Z(-x) = Z(x)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Y(x)\",\"type\":\"concept\",\"attributes\":{\"parity\":\"odd\",\"value_type\":\"real\"},\"relationships\":[{\"predicate\":\"satisfies\",\"target\":\"Y(-x) = -Y(x)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Runge-Kutta-discretized Schrödinger equation\",\"type\":\"method\",\"attributes\":{\"representation\":\"difference equation\",\"lattice_step\":\"h > 0\",\"grid_points\":\"x_k = k h\"},\"relationships\":[{\"predicate\":\"replaces\",\"target\":\"ordinary differential Schrödinger equation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"deriving reflection and transmission coefficients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"quasi-Hermitian Hamiltonians\",\"type\":\"concept\",\"attributes\":{\"hermiticity\":\"non-Hermitian (H != H†)\",\"condition\":\"H† = Θ H Θ⁻¹\"},\"relationships\":[{\"predicate\":\"requires_metric_operator\",\"target\":\"Θ\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"generalizes\",\"target\":\"conventional quantum bound state problem\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"metric operator Θ\",\"type\":\"concept\",\"attributes\":{\"properties\":\"nontrivial, Hermitian (Θ = Θ†), positive definite (Θ > 0)\"},\"relationships\":[]},{\"name\":\"Carl Bender\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"authored_review_on\",\"target\":\"PT-symmetry of Hamiltonians\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text derives discrete scattering solutions for a Runge-Kutta discretized Schrödinger equation, establishing that the reality of the energy variable imposes a finite energy range reminiscent of relativistic spectra. It demonstrates the matching method for a simple M=1 model, yielding explicit formulas for reflection and transmission coefficients in terms of the potential parameter and energy variable.\",\"entities\":[{\"name\":\"discrete Schrödinger equation\",\"type\":\"method\",\"attributes\":{\"form\":\"-ψk−1 + (2 cos ϕ + Vk) ψk −ψk+1 = 0\",\"context\":\"Runge-Kutta discretized version\"},\"relationships\":[{\"predicate\":\"has_independent_solutions_in_vacuum\",\"target\":\"exp(±i ϕ)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"energy variable ϕ\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"2 cos ϕ = 2 − h²E\",\"reality_constraint\":\"−2 ≤ 2 − h²E ≤ 2\"},\"relationships\":[{\"predicate\":\"constrains_original_energy\",\"target\":\"E ∈ (0, 4/h²)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"resembles\",\"target\":\"spectra in relativistic quantum systems\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Runge-Kutta method\",\"type\":\"method\",\"attributes\":{\"purpose\":\"numerical recipe for handling O(h⁴) discrepancy\",\"limit_behavior\":\"discrepancy disappears as h → 0\"},\"relationships\":[]},{\"name\":\"M=1 scattering model\",\"type\":\"concept\",\"attributes\":{\"cutoff\":\"M=1\",\"equations\":\"three nontrivial relations\"},\"relationships\":[{\"predicate\":\"yields_reflection_coefficient\",\"target\":\"B = Z0 / (2i sin ϕ − Z0)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"yields_transmission_coefficient\",\"target\":\"C = 2i sin ϕ / (2i sin ϕ − Z0)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"lattice step h\",\"type\":\"measurement\",\"attributes\":{\"constraint\":\"h > 0\"},\"relationships\":[{\"predicate\":\"should_be_varied_independently_of\",\"target\":\"1/M\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The M=1 scattering model remains Hermitian because it involves only real interaction terms without PT-symmetry. For the M=2 model, the difference Schrödinger equation is reduced to a two-dimensional linear algebraic system that determines reflection and transmission coefficients. The general difference Schrödinger equation is reformulated as a doubly infinite system of linear algebraic equations with specific tridiagonal matrix elements.\",\"entities\":[{\"name\":\"M=1 toy problem\",\"type\":\"other\",\"attributes\":{\"hermiticity\":\"Hermitian\",\"reason\":\"involves only real interaction term Z0 and no PT-symmetry\",\"model_entity_type\":\"model\"},\"relationships\":[]},{\"name\":\"M=2 scattering model\",\"type\":\"other\",\"attributes\":{\"equation_form\":\"triplet of relations involving complex potential terms\",\"solution_method\":\"reduced to a two-dimensional linear algebraic problem\",\"model_entity_type\":\"model\"},\"relationships\":[{\"predicate\":\"determines\",\"target\":\"reflection and transmission coefficients B and C\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"boundary conditions for psi_-2, psi_-1, psi_1, psi_2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"difference Schrödinger equation\",\"type\":\"other\",\"attributes\":{\"representation\":\"doubly infinite system of linear algebraic equations\",\"model_entity_type\":\"equation\"},\"relationships\":[{\"predicate\":\"defined_by\",\"target\":\"tridiagonal matrix with elements S_k\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"matrix element S_k\",\"type\":\"other\",\"attributes\":{\"definition_for_|k|<M\":\"2 cos phi + Z_k + i Y_k sign(k)\",\"definition_for_|k|>=M\":\"2 cos phi\",\"symmetry_property\":\"S_k = S^*_-k\",\"model_entity_type\":\"mathematical_object\"},\"relationships\":[]}]},{\"context_summary\":\"The text describes a method to reduce a doubly infinite difference Schrödinger equation to a finite-dimensional non-homogeneous linear system. By partitioning the coefficient matrix and its inverse, the system is simplified to determine scattering coefficients.\",\"entities\":[{\"name\":\"finite-dimensional tridiagonal non-square-matrix problem\",\"type\":\"other\",\"attributes\":{\"dimension\":\"finite\",\"structure\":\"tridiagonal\",\"shape\":\"non-square\",\"model_entity_type\":\"mathematical_structure\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"doubly infinite system of linear algebraic equations (eq. 11)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"reduced_to\",\"target\":\"non-homogeneous system of 2M - 1 equations\",\"attributes\":{},\"target_id\":\"non_homogeneous_system_of_2m_1_equations\"}]},{\"name\":\"non-homogeneous system of 2M - 1 equations\",\"type\":\"other\",\"attributes\":{\"equation_count\":\"2M - 1\",\"form\":\"T * vector = vector\",\"model_entity_type\":\"mathematical_system\"},\"relationships\":[{\"predicate\":\"defined_by_matrix\",\"target\":\"matrix T\",\"attributes\":{},\"target_id\":\"matrix_t\"},{\"predicate\":\"solution_method\",\"target\":\"matrix inversion R = T^-1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"matrix T\",\"type\":\"other\",\"attributes\":{\"dimension\":\"2M - 1\",\"shape\":\"square\",\"model_entity_type\":\"mathematical_object\"},\"relationships\":[{\"predicate\":\"partitioned_into\",\"target\":\"submatrices and vectors including S*(M-1), S0, S(M-1)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"inverted_to_form\",\"target\":\"matrix R\",\"attributes\":{},\"target_id\":\"matrix_r\"}]},{\"name\":\"matrix R\",\"type\":\"other\",\"attributes\":{\"definition\":\"inverse of matrix T (T^-1)\",\"condition\":\"exists when T is non-singular\",\"model_entity_type\":\"mathematical_object\"},\"relationships\":[{\"predicate\":\"partitioned_form\",\"target\":\"block matrix with elements alpha*, beta, Q, u, v, w, t\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_to_solve\",\"target\":\"non-homogeneous system of 2M - 1 equations\",\"attributes\":{},\"target_id\":\"non_homogeneous_system_of_2m_1_equations\"}]},{\"name\":\"scattering coefficients B and C\",\"type\":\"measurement\",\"attributes\":{\"role\":\"reflection and transmission coefficients\"},\"relationships\":[{\"predicate\":\"determined_by\",\"target\":\"partitioned structure of matrix R\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text derives final linear equations for reflection and transmission coefficients in a PT-symmetric scattering model. It identifies complex coefficient alpha and real coefficient beta as the carriers of dynamical input information. Examples of determinant and numerator calculations are provided for model dimensions M=2, M=3, and M=4.\",\"entities\":[{\"name\":\"reflection coefficient B\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"B = (-e^(-2iMϕ) + Cβ) / (e^(-iϕ) - α)\"},\"relationships\":[{\"predicate\":\"determined_by\",\"target\":\"complex coefficient alpha\",\"attributes\":{},\"target_id\":\"complex_coefficient_alpha\"},{\"predicate\":\"determined_by\",\"target\":\"real coefficient beta\",\"attributes\":{},\"target_id\":\"real_coefficient_beta\"},{\"predicate\":\"determined_by\",\"target\":\"transmission coefficient C\",\"attributes\":{},\"target_id\":\"transmission_coefficient_c\"}]},{\"name\":\"transmission coefficient C\",\"type\":\"measurement\",\"attributes\":{\"formula\":\"C = (2iβe^(-2iMϕ)sinϕ) / (β^2 - (e^(-iϕ) - α*) (e^(-iϕ) - α))\"},\"relationships\":[{\"predicate\":\"determined_by\",\"target\":\"complex coefficient alpha\",\"attributes\":{},\"target_id\":\"complex_coefficient_alpha\"},{\"predicate\":\"determined_by\",\"target\":\"real coefficient beta\",\"attributes\":{},\"target_id\":\"real_coefficient_beta\"}]},{\"name\":\"complex coefficient alpha\",\"type\":\"concept\",\"attributes\":{\"nature\":\"complex\",\"role\":\"carries dynamical input information\",\"denominator\":\"det T\"},\"relationships\":[{\"predicate\":\"is_rational_function_of\",\"target\":\"real coupling constants Z0 to ZM-1 and Y1 to YM-1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"real coefficient beta\",\"type\":\"concept\",\"attributes\":{\"nature\":\"real\",\"role\":\"carries dynamical input information\",\"value\":\"1/det T\"},\"relationships\":[{\"predicate\":\"is_rational_function_of\",\"target\":\"real coupling constants Z0 to ZM-1 and Y1 to YM-1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"M=2 scattering model\",\"type\":\"other\",\"attributes\":{\"dimension\":2},\"relationships\":[{\"predicate\":\"det_T_value\",\"target\":\"Z0Z1^2 - 2Z1 + Y1^2Z0\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"Re_gamma_value\",\"target\":\"Z0Z1 - 1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"Im_gamma_value\",\"target\":\"-Z0Y1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"M=3 model\",\"type\":\"method\",\"attributes\":{\"dimension\":3},\"relationships\":[{\"predicate\":\"det_T_value\",\"target\":\"Z0Z1^2Z2^2 - 2Z0Z1Z2 - 2Z1Z2^2 + Y1^2Z0Z2^2 + 2Z2 + Y2^2Z0Z1^2 - 2Y2^2Z1 + Y2^2Y1^2Z0 + 2Z0Y1Y2 + Z0\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"Re_gamma_value\",\"target\":\"Z0Z1^2Z2 - 2Z1Z2 + Y1^2Z0Z2 - Z1Z0 + 1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"Im_gamma_value\",\"target\":\"-Z0Z1^2Y2 + 2Z1Y2 - Y1^2Z0Y2 - Y1Z0\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"M=4 model\",\"type\":\"method\",\"attributes\":{\"dimension\":4},\"relationships\":[{\"predicate\":\"det_T_complexity\",\"target\":\"sum of 15 products of couplings\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"Re_gamma_complexity\",\"target\":\"sum of 14 products of couplings\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"Im_gamma_complexity\",\"target\":\"sum of 32 products of couplings\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text details the algebraic complexity of determinant and coefficient calculations for PT-symmetric scattering models at higher dimensions. It traces the historical origin of PT-symmetry to a 1998 paper by Bender and Boettcher and notes the subsequent mathematical clarification of the physical Hilbert space. The discussion highlights that while bound-state problems are well-understood, scattering problems in this context remain a comparatively small area of research.\",\"entities\":[{\"name\":\"weak coupling regime\",\"type\":\"concept\",\"attributes\":{\"algebraic_simplification\":\"determinant contains only two linear terms in couplings\"},\"relationships\":[{\"predicate\":\"simplifies\",\"target\":\"determinant det T\",\"attributes\":{},\"target_id\":\"determinant_det_t\"}]},{\"name\":\"determinant det T\",\"type\":\"measurement\",\"attributes\":{\"weak_coupling_form\":\"-2 Z3 - 2 Z1 + ...\",\"higher_order_terms\":\"includes 10 triple-product terms\"},\"relationships\":[{\"predicate\":\"simplified_in\",\"target\":\"weak coupling regime\",\"attributes\":{},\"target_id\":\"weak_coupling_regime\"}]},{\"name\":\"symbolic manipulations on a computer\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"required_for\",\"target\":\"dimensions M >= 4\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"1998 letter by Bender and Boettcher\",\"type\":\"event\",\"attributes\":{\"year\":1998,\"significance\":\"main inspiration for PT-symmetry research\"},\"relationships\":[{\"predicate\":\"introduced\",\"target\":\"PT-symmetry concept\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"proposed_model\",\"target\":\"V(x) = x^2 (ix)^delta\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PT-symmetry\",\"type\":\"concept\",\"attributes\":{\"definition\":\"P means parity, T represents time reversal (antilinear)\",\"mathematical_equivalent\":\"P-pseudo-Hermiticity specified by H† = P H P⁻¹\"},\"relationships\":[{\"predicate\":\"originated_from\",\"target\":\"1998 letter by Bender and Boettcher\",\"attributes\":{},\"target_id\":\"1998_letter_by_bender_and_boettcher\"},{\"predicate\":\"clarified_by\",\"target\":\"Dorey, Duncan, Tateo and Shin\",\"attributes\":{},\"target_id\":\"dorey_duncan_tateo_and_shin\"}]},{\"name\":\"Dorey, Duncan, Tateo and Shin\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"proved_conjecture_of\",\"target\":\"purely real bound-state spectrum for V(x) = x^2 (ix)^delta\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"physical Hilbert space H\",\"type\":\"concept\",\"attributes\":{\"property\":\"nontrivial\",\"role\":\"ensures Hamiltonian remains self-adjoint\"},\"relationships\":[{\"predicate\":\"clarified_existence_of\",\"target\":\"PT-symmetric Hamiltonians\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"scattering problem in PT-symmetric quantum mechanics\",\"type\":\"concept\",\"attributes\":{\"research_status\":\"comparatively small number of papers devoted to it\"},\"relationships\":[{\"predicate\":\"contrasted_with\",\"target\":\"bound-state version\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study demonstrates a formal parallelism between scattering by real Hermitian potentials and complex PT-symmetric potentials using a Runge-Kutta discretization. It shows that transmission and reflection coefficients are determined by two functions, alpha and beta, which encode the dynamical input of the lattice potentials. The method reduces the scattering problem to a two-dimensional matrix inversion by partitioning the Schrödinger equation.\",\"entities\":[{\"name\":\"PT-symmetric quantum mechanics scattering model\",\"type\":\"method\",\"attributes\":{\"basis\":\"difference-equation-based\",\"inspiration\":\"Runge-Kutta-type discretization and chain-model approximations\",\"finding\":\"close formal parallelism between real (Hermitian) and complex (PT-symmetric) potential scattering\"},\"relationships\":[{\"predicate\":\"reduces_to\",\"target\":\"two-dimensional matrix inversion\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"addresses\",\"target\":\"gap in scattering studies\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"transmission and reflection coefficients\",\"type\":\"measurement\",\"attributes\":{\"form\":\"identical in Hermitian and non-Hermitian contexts\",\"determination\":\"encoded in functions alpha and beta\"},\"relationships\":[{\"predicate\":\"depends_on\",\"target\":\"dynamical input information\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"alpha and beta functions\",\"type\":\"concept\",\"attributes\":{\"role\":\"encode dynamical input information\",\"dependence\":\"lattice potentials\",\"variation\":\"vanishing or non-vanishing coefficients Yk distinguish Hermitian and non-Hermitian cases\"},\"relationships\":[{\"predicate\":\"determine\",\"target\":\"transmission and reflection coefficients\",\"attributes\":{},\"target_id\":\"transmission_and_reflection_coefficients\"}]},{\"name\":\"asymmetry between in and out states\",\"type\":\"concept\",\"attributes\":{\"characteristic\":\"manifest in PT-symmetric scattering\",\"nature\":\"merely formal in the solvable exemplification\"},\"relationships\":[{\"predicate\":\"resolved_by\",\"target\":\"standard non-matching and non-recurrent linear algebra techniques\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"partitioning of the Schrödinger equation\",\"type\":\"method\",\"attributes\":{\"function\":\"separates essential and inessential components\"},\"relationships\":[{\"predicate\":\"enables\",\"target\":\"reduction to two-dimensional matrix inversion\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"involves\",\"target\":\"inverse matrix R = T^-1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"inverse problem of scattering\",\"type\":\"concept\",\"attributes\":{\"variant\":\"non-Hermitian versions\"},\"relationships\":[{\"predicate\":\"potential_future_insight_from\",\"target\":\"further study of the discrete model\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

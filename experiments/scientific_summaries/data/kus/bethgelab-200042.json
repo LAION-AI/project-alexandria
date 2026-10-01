@@ -1,0 +1,1223 @@
+{
+  "document_id": "bethgelab-200042",
+  "fulltext_sha256": "a995598c9dc8909ce7b487753c1ee613113c93393e7f9297e629c21751490704",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "0c317d78c2e0bf54d364126080afaf039f2ed70293b5e6933909c2e47fc33f2e",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The authors dispute the integrity of yeast mitochondrial ADP/ATP carrier AAC3 refolded in dodecyl-phosphocholine (DPC), arguing that DPC causes immediate loss of tertiary structure and inactivation. They report that native AAC3 exhibits low nanomolar affinity for the inhibitor carboxyatractyloside (CATR), contrasting sharply with the micromolar affinities reported for DPC-refolded protein.",
+        "entities": [
+          {
+            "name": "AAC3",
+            "entity_id": "aac3",
+            "entity_type": "other",
+            "aliases": [
+              "AAC3",
+              "AAC3 protein"
+            ],
+            "attributes": {
+              "source": "yeast mitochondria",
+              "function": "ADP/ATP carrier",
+              "state_in_DPC": "immediate loss of tertiary structure and inactivation",
+              "state_in_membrane": "folded and active",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "inhibited_by",
+                "target": "carboxyatractyloside (CATR)",
+                "attributes": {
+                  "IC50": "1.2 nM"
+                },
+                "target_id": "carboxyatractyloside_catr"
+              },
+              {
+                "predicate": "inhibited_by",
+                "target": "atractyloside (ATR)",
+                "attributes": {},
+                "target_id": "atractyloside_atr"
+              },
+              {
+                "predicate": "structure_solved_by",
+                "target": "electron microscopy and x-ray crystallography",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "interactions_studied_by",
+                "target": "single-molecule force spectroscopy",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "dodecyl-phosphocholine (DPC)",
+            "entity_id": "dodecyl_phosphocholine_dpc",
+            "entity_type": "other",
+            "aliases": [
+              "DPC",
+              "dodecyl-phosphocholine (DPC)"
+            ],
+            "attributes": {
+              "alias": "Foscholine-12",
+              "manufacturer": "Anatrace",
+              "effect_on_AAC3": "leads to immediate loss of tertiary structure and inactivation",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_refolding",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "carboxyatractyloside (CATR)",
+            "entity_id": "carboxyatractyloside_catr",
+            "entity_type": "other",
+            "aliases": [
+              "CATR",
+              "carboxyatractyloside (CATR)"
+            ],
+            "attributes": {
+              "structural_difference_from_ATR": "one carboxylate group",
+              "affinity_range_membrane": "low nanomolar",
+              "affinity_range_DPC_refolded": "~15 µM (ITC) and ~150 µM (NMR)",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "AAC3",
+                "attributes": {
+                  "Kd_native_ITC": "72 nM",
+                  "Kd_DPC_refolded_ITC": "~15 µM",
+                  "Kd_DPC_refolded_NMR": "~150 µM"
+                },
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "atractyloside (ATR)",
+            "entity_id": "atractyloside_atr",
+            "entity_type": "other",
+            "aliases": [
+              "ATR",
+              "atractyloside (ATR)"
+            ],
+            "attributes": {
+              "structural_difference_from_CATR": "one carboxylate group",
+              "reported_Kd_Babot_2012": "192 µM (typographical error)",
+              "corrected_Kd": "192 nM",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "Babot et al., 2012",
+            "entity_id": "babot_et_al_2012",
+            "entity_type": "other",
+            "aliases": [
+              "Babot et al., 2012"
+            ],
+            "attributes": {
+              "reported_Kd_for_ATR": "192 µM",
+              "error_type": "typographical error in unit",
+              "model_entity_type": "publication"
+            },
+            "relationships": [
+              {
+                "predicate": "corrected_by",
+                "target": "erratum",
+                "attributes": {
+                  "corrected_value": "192 nM"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Martin S King",
+            "entity_id": "martin_s_king",
+            "entity_type": "person",
+            "aliases": [
+              "Martin S King"
+            ],
+            "attributes": {
+              "affiliation": "University of Cambridge"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Paul G Crichton",
+            "entity_id": "paul_g_crichton",
+            "entity_type": "person",
+            "aliases": [
+              "Paul G Crichton"
+            ],
+            "attributes": {
+              "affiliation": "University of Cambridge"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Jonathan J Ruprecht",
+            "entity_id": "jonathan_j_ruprecht",
+            "entity_type": "person",
+            "aliases": [
+              "Jonathan J Ruprecht"
+            ],
+            "attributes": {
+              "affiliation": "University of Cambridge"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Edmund R S Kunji",
+            "entity_id": "edmund_r_s_kunji",
+            "entity_type": "person",
+            "aliases": [
+              "Edmund R S Kunji"
+            ],
+            "attributes": {
+              "affiliation": "University of Cambridge"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 470,
+          "word_count": 470,
+          "sha256": "55a5375aa52bf6897a8c027028b7010326b54bc249ce1a2275088a84d3c9e8b6",
+          "sentence_minhash": [
+            116586087054725922,
+            1306423125707224,
+            146342803887412124,
+            5050748634255938,
+            62573636132791670,
+            30500191475291153,
+            99359698575653691,
+            4794006452684686,
+            73319139196083834,
+            340113061338910250,
+            78280491562202942,
+            11317338413054220,
+            63656278488967776,
+            77299741254660326,
+            11060755345530943,
+            137839664269114004
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'AAC3'",
+          "normalized unsupported entity type 'chemical' for 'dodecyl-phosphocholine (DPC)'",
+          "normalized unsupported entity type 'chemical' for 'carboxyatractyloside (CATR)'",
+          "normalized unsupported entity type 'chemical' for 'atractyloside (ATR)'",
+          "normalized unsupported entity type 'publication' for 'Babot et al., 2012'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "AAC3's structural stability relies on membrane pressure and ligand binding, as it has few polar side-chain interactions. CATR binding stabilizes the protein by cross-linking transmembrane helices, explaining its high affinity and low dissociation rate. The authors argue that NMR data for refolded AAC3 in DPC likely reflects non-specific interactions due to the protein's high positive charge and the absence of specific binding site perturbations.",
+        "entities": [
+          {
+            "name": "AAC3",
+            "entity_id": "aac3",
+            "entity_type": "other",
+            "aliases": [
+              "AAC3",
+              "AAC3 protein"
+            ],
+            "attributes": {
+              "isoelectric_point": "9.82",
+              "charge_at_neutral_pH": "highly positively charged",
+              "structural_stability_factor": "lateral pressure of membrane and counter pressure from water-filled cavity",
+              "polar_interactions": "few, mainly on matrix side, intra-domain",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "prone_to_unfolding_in",
+                "target": "detergent micelles (unliganded)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "stabilized_by",
+                "target": "CATR binding",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "binds",
+                "target": "carboxyatractyloside (CATR)",
+                "attributes": {},
+                "target_id": "carboxyatractyloside_catr"
+              },
+              {
+                "predicate": "binds",
+                "target": "ADP",
+                "attributes": {},
+                "target_id": "adp"
+              },
+              {
+                "predicate": "binds",
+                "target": "ATP",
+                "attributes": {},
+                "target_id": "atp"
+              }
+            ]
+          },
+          {
+            "name": "carboxyatractyloside (CATR)",
+            "entity_id": "carboxyatractyloside_catr",
+            "entity_type": "other",
+            "aliases": [
+              "CATR",
+              "carboxyatractyloside (CATR)"
+            ],
+            "attributes": {
+              "charge_at_neutral_pH": "negatively charged",
+              "binding_affinity_range": "low nanomolar",
+              "binding_mechanism": "introduces polar and van der Waals interactions cross-linking transmembrane helices",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              },
+              {
+                "predicate": "stabilizes",
+                "target": "AAC3 in detergents",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "locks_protein_in",
+                "target": "non-dynamic aborted state",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ADP",
+            "entity_id": "adp",
+            "entity_type": "other",
+            "aliases": [
+              "ADP"
+            ],
+            "attributes": {
+              "charge_at_neutral_pH": "negatively charged",
+              "NMR_Kd_in_refolded_AAC3": "500 μM",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "ATP",
+            "entity_id": "atp",
+            "entity_type": "other",
+            "aliases": [
+              "ATP"
+            ],
+            "attributes": {
+              "charge_at_neutral_pH": "negatively charged",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "DPC-refolded AAC3",
+            "entity_id": "dpc_refolded_aac3",
+            "entity_type": "other",
+            "aliases": [
+              "DPC-refolded AAC3"
+            ],
+            "attributes": {
+              "CATR_Kd": "extremely low affinity",
+              "NMR_observations": "limited dynamic chemical shift perturbations, not near known binding site",
+              "model_entity_type": "protein_state"
+            },
+            "relationships": [
+              {
+                "predicate": "may_exhibit",
+                "target": "non-specific interactions with CATR or ADP",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 470,
+          "end_word": 956,
+          "word_count": 486,
+          "sha256": "634d829deb62f03a7ced4861f254e78379c5ae7e692f3ff83f4c10564e82edf1",
+          "sentence_minhash": [
+            14279474218976588,
+            18551641988871988,
+            69729176314767099,
+            53442166147602330,
+            28706538147403678,
+            30500191475291153,
+            638546993173700,
+            4794006452684686,
+            48263609243514619,
+            176941814970661148,
+            15368406570570478,
+            31817544762151716,
+            91759520063933247,
+            111848578036109727,
+            173025559754932595,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'AAC3'",
+          "normalized unsupported entity type 'molecule' for 'CATR'",
+          "normalized unsupported entity type 'molecule' for 'ADP'",
+          "normalized unsupported entity type 'molecule' for 'ATP'",
+          "normalized unsupported entity type 'protein_state' for 'DPC-refolded AAC3'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The authors demonstrate that dodecyl-phosphocholine (DPC) denatures the yeast mitochondrial ADP/ATP carrier AAC3, rendering it non-native and inactive. Thermostability assays using the fluorophore CPM show that while AAC3 in mild detergent exhibits typical thermal denaturation stabilized by the inhibitor CATR, AAC3 in DPC shows no transition and lacks a functional binding site. Consequently, AAC3 diluted into DPC prior to reconstitution fails to support CATR-sensitive ADP uptake.",
+        "entities": [
+          {
+            "name": "AAC3",
+            "entity_id": "aac3",
+            "entity_type": "other",
+            "aliases": [
+              "AAC3",
+              "AAC3 protein"
+            ],
+            "attributes": {
+              "source": "yeast mitochondrial membranes",
+              "state_in_DPC": "non-native, soluble, inactive",
+              "state_in_dodecyl_maltoside": "folded, functional",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "denatured_by",
+                "target": "dodecyl-phosphocholine (DPC)",
+                "attributes": {},
+                "target_id": "dodecyl_phosphocholine_dpc"
+              },
+              {
+                "predicate": "stabilized_by",
+                "target": "carboxyatractyloside (CATR)",
+                "attributes": {},
+                "target_id": "carboxyatractyloside_catr"
+              },
+              {
+                "predicate": "monitored_by",
+                "target": "thermostability assays",
+                "attributes": {},
+                "target_id": "thermostability_assays"
+              }
+            ]
+          },
+          {
+            "name": "dodecyl-phosphocholine (DPC)",
+            "entity_id": "dodecyl_phosphocholine_dpc",
+            "entity_type": "other",
+            "aliases": [
+              "DPC",
+              "dodecyl-phosphocholine (DPC)"
+            ],
+            "attributes": {
+              "function": "solubilizes unfolded protein, denatures functional folded protein",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "causes_non_native_state_in",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "carboxyatractyloside (CATR)",
+            "entity_id": "carboxyatractyloside_catr",
+            "entity_type": "other",
+            "aliases": [
+              "CATR",
+              "carboxyatractyloside (CATR)"
+            ],
+            "attributes": {
+              "role": "inhibitor",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "shifts_stability_of",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              },
+              {
+                "predicate": "has_no_effect_on",
+                "target": "AAC3 in DPC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "thermostability assays",
+            "entity_id": "thermostability_assays",
+            "entity_type": "method",
+            "aliases": [
+              "Thermostability analysis protocol",
+              "thermostability assays"
+            ],
+            "attributes": {
+              "fluorophore": "N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)",
+              "temperature_range": "25 to 90 °C",
+              "mechanism": "CPM reacts with solvent-exposed thiols upon denaturation to form fluorescent adduct"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "thermal denaturation of AAC3",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)",
+            "entity_id": "n_4_7_diethylamino_4_methyl_3_coumarinyl_phenyl_maleimide_cpm",
+            "entity_type": "other",
+            "aliases": [
+              "N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)"
+            ],
+            "attributes": {
+              "type": "thiol-reactive fluorophore",
+              "reaction": "reacts with protein thiols as they become solvent-exposed due to denaturation",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "thermostability assays",
+                "attributes": {},
+                "target_id": "thermostability_assays"
+              }
+            ]
+          },
+          {
+            "name": "ADP uptake assay",
+            "entity_id": "adp_uptake_assay",
+            "entity_type": "method",
+            "aliases": [
+              "ADP uptake assay"
+            ],
+            "attributes": {
+              "system": "liposomes"
+            },
+            "relationships": [
+              {
+                "predicate": "result_in_DPC",
+                "target": "complete loss of CATR-sensitive ADP uptake",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "result_in_dodecyl_maltoside",
+                "target": "functional CATR-sensitive ADP uptake",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 956,
+          "end_word": 1447,
+          "word_count": 491,
+          "sha256": "e32e03914158b4c13174d117c6939cd456a917203d474f91ad8a069a2a145b7c",
+          "sentence_minhash": [
+            49283029187047540,
+            60625189416255572,
+            120313860322967980,
+            61919449716151556,
+            145755254115431189,
+            39127440086368283,
+            638546993173700,
+            41678443202000680,
+            157732898805548124,
+            3380668174306445,
+            124483738931831264,
+            33945884122923178,
+            86263080825677507,
+            115383309534930195,
+            209827927258141311,
+            236463672407311284
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'AAC3'",
+          "normalized unsupported entity type 'chemical' for 'dodecyl-phosphocholine (DPC)'",
+          "normalized unsupported entity type 'chemical' for 'carboxyatractyloside (CATR)'",
+          "normalized unsupported entity type 'chemical' for 'N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text details the experimental protocols for thermostability analysis using CPM fluorescence, isothermal titration calorimetry (ITC) for binding enthalpy, and lipid reconstitution. Specific buffer compositions, concentrations, and instrument settings are provided for these assays.",
+        "entities": [
+          {
+            "name": "thermostability assays",
+            "entity_id": "thermostability_assays",
+            "entity_type": "method",
+            "aliases": [
+              "Thermostability analysis protocol",
+              "thermostability assays"
+            ],
+            "attributes": {
+              "instrument": "Qiagen Rotorgene Q",
+              "detection_channel": "HRM channel",
+              "excitation_wavelength": "440-480 nm",
+              "emission_wavelength": "505-515 nm",
+              "temperature_range": "25-90 °C",
+              "temperature_interval": "1 °C",
+              "wait_time": "4 s",
+              "ramp_rate": "5.6 °C/min",
+              "pre_incubation_time": "90 seconds",
+              "protein_amount": "1.5 μg",
+              "final_volume": "45 μL",
+              "cpm_stock_concentration": "5 mg/mL in DMSO",
+              "cpm_dilution_factor": "50-fold",
+              "cpm_working_volume": "5 μL",
+              "equilibration_time": "10 min",
+              "equilibration_condition": "dark, room temperature"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_dye",
+                "target": "CPM (N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "measures",
+                "target": "melting temperatures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Dodecyl-maltoside assay buffer",
+            "entity_id": "dodecyl_maltoside_assay_buffer",
+            "entity_type": "measurement",
+            "aliases": [
+              "Dodecyl-maltoside assay buffer"
+            ],
+            "attributes": {
+              "composition": "20 mM PIPES pH 7.0, 100 mM NaCl, 0.1% dodecyl-maltoside, 0.1 mg/mL tetraoleoyl cardiolipin"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "thermostability assays",
+                "attributes": {},
+                "target_id": "thermostability_assays"
+              }
+            ]
+          },
+          {
+            "name": "Dodecyl-phosphocholine assay buffer",
+            "entity_id": "dodecyl_phosphocholine_assay_buffer",
+            "entity_type": "measurement",
+            "aliases": [
+              "Dodecyl-phosphocholine assay buffer"
+            ],
+            "attributes": {
+              "composition": "20 mM PIPES pH 7.0, 100 mM NaCl, 3 mM dodecyl-phosphocholine"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "thermostability assays",
+                "attributes": {},
+                "target_id": "thermostability_assays"
+              }
+            ]
+          },
+          {
+            "name": "Isothermal titration calorimetry (ITC) protocol",
+            "entity_id": "isothermal_titration_calorimetry_itc_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "Isothermal titration calorimetry (ITC) protocol"
+            ],
+            "attributes": {
+              "instrument": "NanoITC-LV (TA Instruments)",
+              "temperature": "10 °C",
+              "degassing_time": "at least 20 min",
+              "titrant_concentration": "500 μM",
+              "protein_concentration": "25 μM (0.83 mg/mL)",
+              "injection_volume": "2 μL",
+              "initial_volume": "170 μL",
+              "injection_interval": "3 min",
+              "stirrer_speed": "350 rpm",
+              "analysis_software": "NanoAnalyze",
+              "fitting_model": "one-site binding",
+              "fitting_parameters": "ΔH, Kd, stoichiometry"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "enthalpy changes associated with carboxyatractyloside binding to purified AAC3",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_titrant",
+                "target": "Carboxyatractyloside",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_protein",
+                "target": "Purified AAC3",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ITC buffer composition",
+            "entity_id": "itc_buffer_composition",
+            "entity_type": "measurement",
+            "aliases": [
+              "ITC buffer composition"
+            ],
+            "attributes": {
+              "composition": "20 mM PIPES pH 7.0, 100 mM NaCl, 0.1% dodecyl-maltoside, 0.1 mg/mL tetraoleoyl cardiolipin"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "Carboxyatractyloside titrant and protein samples",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Lipid reconstitution preparation",
+            "entity_id": "lipid_reconstitution_preparation",
+            "entity_type": "method",
+            "aliases": [
+              "Lipid reconstitution preparation"
+            ],
+            "attributes": {
+              "lipid_ratio": "L-α-phosphatidylcholine to tetraoleoyl cardiolipin 20:1 (w/w)",
+              "total_lipid_mass": "10 mg",
+              "solvent": "chloroform",
+              "drying_method": "nitrogen stream",
+              "resuspension_solvent": "methanol",
+              "final_form": "smear in 1.5-mL tube"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_lipid",
+                "target": "L-α-phosphatidylcholine",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_lipid",
+                "target": "Tetraoleoyl cardiolipin",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1447,
+          "end_word": 1915,
+          "word_count": 468,
+          "sha256": "634e1d90e12493fe3158f432dfc2778f1f952b308a4a8bff78ff522673ac836a",
+          "sentence_minhash": [
+            21343157284432945,
+            204669499695337938,
+            36072805651584851,
+            24481877420215022,
+            43714454960919411,
+            30500191475291153,
+            32849703842496801,
+            113115219220953363,
+            95401708680733692,
+            9462436175016187,
+            109663494900214489,
+            112188137942862134,
+            12488864069851856,
+            118151843130073762,
+            51481571093603818,
+            452401593140879372
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The text describes a protocol for reconstituting purified AAC3 protein into proteoliposomes using specific detergents and buffers. It details the removal of detergent via Bio-Beads and the subsequent preparation for ADP uptake assays using radiolabeled ADP and a Hamilton MicroLab Star robot.",
+        "entities": [
+          {
+            "name": "AAC3",
+            "entity_id": "aac3",
+            "entity_type": "other",
+            "aliases": [
+              "AAC3",
+              "AAC3 protein"
+            ],
+            "attributes": {
+              "amount_added": "30 μg",
+              "dilution_options": "directly added, or 20-fold diluted into 0.1% dodecyl-maltoside or 0.1% dodecyl-phosphocholine",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "incubated_in",
+                "target": "0.1% dodecyl-maltoside or 0.1% dodecyl-phosphocholine",
+                "attributes": {
+                  "duration": "30 mins",
+                  "temperature": "on ice"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reconstituted_into",
+                "target": "proteoliposomes",
+                "attributes": {},
+                "target_id": "proteoliposomes"
+              }
+            ]
+          },
+          {
+            "name": "internal buffer",
+            "entity_id": "internal_buffer",
+            "entity_type": "other",
+            "aliases": [
+              "internal buffer"
+            ],
+            "attributes": {
+              "composition": "20 mM tris-HCl pH 7.4, 50 mM NaCl, 5 mM ADP",
+              "volume_equivalent": "0.6 mL in the absence of detergent",
+              "model_entity_type": "chemical_mixture"
+            },
+            "relationships": []
+          },
+          {
+            "name": "external buffer",
+            "entity_id": "external_buffer",
+            "entity_type": "other",
+            "aliases": [
+              "external buffer"
+            ],
+            "attributes": {
+              "composition": "20 mM tris-HCl pH 7.4, 50 mM NaCl, without ADP",
+              "model_entity_type": "chemical_mixture"
+            },
+            "relationships": []
+          },
+          {
+            "name": "pentaethylene glycol monodecyl detergent",
+            "entity_id": "pentaethylene_glycol_monodecyl_detergent",
+            "entity_type": "other",
+            "aliases": [
+              "pentaethylene glycol monodecyl detergent"
+            ],
+            "attributes": {
+              "concentration": "25% (v/v)",
+              "volume_used": "55 μL",
+              "supplier": "Sigma",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_solubilize",
+                "target": "lipid",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Bio-Beads SM-2",
+            "entity_id": "bio_beads_sm_2",
+            "entity_type": "other",
+            "aliases": [
+              "Bio-Beads SM-2"
+            ],
+            "attributes": {
+              "addition_protocol": "4 × 30 mg and 4 × 60 mg in 20-min intervals",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_remove",
+                "target": "detergent",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "proteoliposomes",
+            "entity_id": "proteoliposomes",
+            "entity_type": "other",
+            "aliases": [
+              "proteoliposomes"
+            ],
+            "attributes": {
+              "formation_method": "detergent removal from reconstitution mix",
+              "post_processing": "separated from biobeads using empty spin column, exchanged into external buffer using PD10 desalting column, eluted in 1.5 mL, diluted 9-fold in external buffer",
+              "model_entity_type": "structure"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "AAC3",
+                "attributes": {},
+                "target_id": "aac3"
+              }
+            ]
+          },
+          {
+            "name": "ADP uptake assay",
+            "entity_id": "adp_uptake_assay",
+            "entity_type": "method",
+            "aliases": [
+              "ADP uptake assay"
+            ],
+            "attributes": {
+              "instrument": "Hamilton MicroLab Star robot",
+              "plate_type": "MultiScreenHTS-HA 96-well filter plate",
+              "pore_size": "0.45 µm",
+              "plate_supplier": "Millipore",
+              "volume_per_well": "100 µL proteoliposome suspension"
+            },
+            "relationships": [
+              {
+                "predicate": "initiated_by",
+                "target": "addition of 100 μL external buffer containing [14C]-ADP",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "measures",
+                "target": "uptake of radiolabeled ADP",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "[14C]-ADP",
+            "entity_id": "14c_adp",
+            "entity_type": "other",
+            "aliases": [
+              "[14C]-ADP"
+            ],
+            "attributes": {
+              "specific_activity": "2.2 GBq mmol-1",
+              "final_working_concentration": "1.5 µM",
+              "model_entity_type": "chemical"
+            },
+            "relationships": [
+              {
+                "predicate": "added_to",
+                "target": "external buffer",
+                "attributes": {},
+                "target_id": "external_buffer"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1915,
+          "end_word": 2234,
+          "word_count": 319,
+          "sha256": "a7968df47258e7167219ff330e21304e96b40459ef35ca80d861b97484fac461",
+          "sentence_minhash": [
+            116586087054725922,
+            167022223623054958,
+            40863640610520970,
+            26870411060095649,
+            227826221921856722,
+            62667647458868521,
+            287602483180236482,
+            22384502142726101,
+            125991694189146616,
+            42586453371797899,
+            72519692483709902,
+            784288559920140357,
+            91759520063933247,
+            181004609502989316,
+            137798680373924202,
+            236463672407311284
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'AAC3 protein'",
+          "normalized unsupported entity type 'chemical_mixture' for 'internal buffer'",
+          "normalized unsupported entity type 'chemical_mixture' for 'external buffer'",
+          "normalized unsupported entity type 'chemical' for 'pentaethylene glycol monodecyl detergent'",
+          "normalized unsupported entity type 'material' for 'Bio-Beads SM-2'",
+          "normalized unsupported entity type 'structure' for 'proteoliposomes'",
+          "normalized unsupported entity type 'chemical' for '[14C]-ADP'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "dodecyl_phosphocholine_dpc",
+        "canonical_name": "dodecyl-phosphocholine (DPC)",
+        "aliases": [
+          "dodecyl-phosphocholine (DPC)",
+          "DPC"
+        ]
+      },
+      {
+        "canonical_id": "carboxyatractyloside_catr",
+        "canonical_name": "carboxyatractyloside (CATR)",
+        "aliases": [
+          "carboxyatractyloside (CATR)",
+          "CATR"
+        ]
+      },
+      {
+        "canonical_id": "atractyloside_atr",
+        "canonical_name": "atractyloside (ATR)",
+        "aliases": [
+          "atractyloside (ATR)",
+          "ATR"
+        ]
+      },
+      {
+        "canonical_id": "aac3",
+        "canonical_name": "AAC3",
+        "aliases": [
+          "AAC3",
+          "AAC3 protein"
+        ]
+      },
+      {
+        "canonical_id": "thermostability_assays",
+        "canonical_name": "thermostability assays",
+        "aliases": [
+          "thermostability assays",
+          "Thermostability analysis protocol"
+        ]
+      },
+      {
+        "canonical_id": "babot_et_al_2012",
+        "canonical_name": "Babot et al., 2012",
+        "aliases": [
+          "Babot et al., 2012"
+        ]
+      },
+      {
+        "canonical_id": "martin_s_king",
+        "canonical_name": "Martin S King",
+        "aliases": [
+          "Martin S King"
+        ]
+      },
+      {
+        "canonical_id": "paul_g_crichton",
+        "canonical_name": "Paul G Crichton",
+        "aliases": [
+          "Paul G Crichton"
+        ]
+      },
+      {
+        "canonical_id": "jonathan_j_ruprecht",
+        "canonical_name": "Jonathan J Ruprecht",
+        "aliases": [
+          "Jonathan J Ruprecht"
+        ]
+      },
+      {
+        "canonical_id": "edmund_r_s_kunji",
+        "canonical_name": "Edmund R S Kunji",
+        "aliases": [
+          "Edmund R S Kunji"
+        ]
+      },
+      {
+        "canonical_id": "adp",
+        "canonical_name": "ADP",
+        "aliases": [
+          "ADP"
+        ]
+      },
+      {
+        "canonical_id": "atp",
+        "canonical_name": "ATP",
+        "aliases": [
+          "ATP"
+        ]
+      },
+      {
+        "canonical_id": "dpc_refolded_aac3",
+        "canonical_name": "DPC-refolded AAC3",
+        "aliases": [
+          "DPC-refolded AAC3"
+        ]
+      },
+      {
+        "canonical_id": "n_4_7_diethylamino_4_methyl_3_coumarinyl_phenyl_maleimide_cpm",
+        "canonical_name": "N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)",
+        "aliases": [
+          "N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)"
+        ]
+      },
+      {
+        "canonical_id": "adp_uptake_assay",
+        "canonical_name": "ADP uptake assay",
+        "aliases": [
+          "ADP uptake assay"
+        ]
+      },
+      {
+        "canonical_id": "dodecyl_maltoside_assay_buffer",
+        "canonical_name": "Dodecyl-maltoside assay buffer",
+        "aliases": [
+          "Dodecyl-maltoside assay buffer"
+        ]
+      },
+      {
+        "canonical_id": "dodecyl_phosphocholine_assay_buffer",
+        "canonical_name": "Dodecyl-phosphocholine assay buffer",
+        "aliases": [
+          "Dodecyl-phosphocholine assay buffer"
+        ]
+      },
+      {
+        "canonical_id": "isothermal_titration_calorimetry_itc_protocol",
+        "canonical_name": "Isothermal titration calorimetry (ITC) protocol",
+        "aliases": [
+          "Isothermal titration calorimetry (ITC) protocol"
+        ]
+      },
+      {
+        "canonical_id": "itc_buffer_composition",
+        "canonical_name": "ITC buffer composition",
+        "aliases": [
+          "ITC buffer composition"
+        ]
+      },
+      {
+        "canonical_id": "lipid_reconstitution_preparation",
+        "canonical_name": "Lipid reconstitution preparation",
+        "aliases": [
+          "Lipid reconstitution preparation"
+        ]
+      },
+      {
+        "canonical_id": "internal_buffer",
+        "canonical_name": "internal buffer",
+        "aliases": [
+          "internal buffer"
+        ]
+      },
+      {
+        "canonical_id": "external_buffer",
+        "canonical_name": "external buffer",
+        "aliases": [
+          "external buffer"
+        ]
+      },
+      {
+        "canonical_id": "pentaethylene_glycol_monodecyl_detergent",
+        "canonical_name": "pentaethylene glycol monodecyl detergent",
+        "aliases": [
+          "pentaethylene glycol monodecyl detergent"
+        ]
+      },
+      {
+        "canonical_id": "bio_beads_sm_2",
+        "canonical_name": "Bio-Beads SM-2",
+        "aliases": [
+          "Bio-Beads SM-2"
+        ]
+      },
+      {
+        "canonical_id": "proteoliposomes",
+        "canonical_name": "proteoliposomes",
+        "aliases": [
+          "proteoliposomes"
+        ]
+      },
+      {
+        "canonical_id": "14c_adp",
+        "canonical_name": "[14C]-ADP",
+        "aliases": [
+          "[14C]-ADP"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The authors dispute the integrity of yeast mitochondrial ADP/ATP carrier AAC3 refolded in dodecyl-phosphocholine (DPC), arguing that DPC causes immediate loss of tertiary structure and inactivation. They report that native AAC3 exhibits low nanomolar affinity for the inhibitor carboxyatractyloside (CATR), contrasting sharply with the micromolar affinities reported for DPC-refolded protein.\",\"entities\":[{\"name\":\"AAC3\",\"type\":\"other\",\"attributes\":{\"source\":\"yeast mitochondria\",\"function\":\"ADP/ATP carrier\",\"state_in_DPC\":\"immediate loss of tertiary structure and inactivation\",\"state_in_membrane\":\"folded and active\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"inhibited_by\",\"target\":\"carboxyatractyloside (CATR)\",\"attributes\":{\"IC50\":\"1.2 nM\"},\"target_id\":\"carboxyatractyloside_catr\"},{\"predicate\":\"inhibited_by\",\"target\":\"atractyloside (ATR)\",\"attributes\":{},\"target_id\":\"atractyloside_atr\"},{\"predicate\":\"structure_solved_by\",\"target\":\"electron microscopy and x-ray crystallography\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"interactions_studied_by\",\"target\":\"single-molecule force spectroscopy\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"dodecyl-phosphocholine (DPC)\",\"type\":\"other\",\"attributes\":{\"alias\":\"Foscholine-12\",\"manufacturer\":\"Anatrace\",\"effect_on_AAC3\":\"leads to immediate loss of tertiary structure and inactivation\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"used_for_refolding\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"}]},{\"name\":\"carboxyatractyloside (CATR)\",\"type\":\"other\",\"attributes\":{\"structural_difference_from_ATR\":\"one carboxylate group\",\"affinity_range_membrane\":\"low nanomolar\",\"affinity_range_DPC_refolded\":\"~15 µM (ITC) and ~150 µM (NMR)\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"AAC3\",\"attributes\":{\"Kd_native_ITC\":\"72 nM\",\"Kd_DPC_refolded_ITC\":\"~15 µM\",\"Kd_DPC_refolded_NMR\":\"~150 µM\"},\"target_id\":\"aac3\"}]},{\"name\":\"atractyloside (ATR)\",\"type\":\"other\",\"attributes\":{\"structural_difference_from_CATR\":\"one carboxylate group\",\"reported_Kd_Babot_2012\":\"192 µM (typographical error)\",\"corrected_Kd\":\"192 nM\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"}]},{\"name\":\"Babot et al., 2012\",\"type\":\"other\",\"attributes\":{\"reported_Kd_for_ATR\":\"192 µM\",\"error_type\":\"typographical error in unit\",\"model_entity_type\":\"publication\"},\"relationships\":[{\"predicate\":\"corrected_by\",\"target\":\"erratum\",\"attributes\":{\"corrected_value\":\"192 nM\"},\"target_id\":null}]},{\"name\":\"Martin S King\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"University of Cambridge\"},\"relationships\":[]},{\"name\":\"Paul G Crichton\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"University of Cambridge\"},\"relationships\":[]},{\"name\":\"Jonathan J Ruprecht\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"University of Cambridge\"},\"relationships\":[]},{\"name\":\"Edmund R S Kunji\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"University of Cambridge\"},\"relationships\":[]}]},{\"context_summary\":\"AAC3's structural stability relies on membrane pressure and ligand binding, as it has few polar side-chain interactions. CATR binding stabilizes the protein by cross-linking transmembrane helices, explaining its high affinity and low dissociation rate. The authors argue that NMR data for refolded AAC3 in DPC likely reflects non-specific interactions due to the protein's high positive charge and the absence of specific binding site perturbations.\",\"entities\":[{\"name\":\"AAC3\",\"type\":\"other\",\"attributes\":{\"isoelectric_point\":\"9.82\",\"charge_at_neutral_pH\":\"highly positively charged\",\"structural_stability_factor\":\"lateral pressure of membrane and counter pressure from water-filled cavity\",\"polar_interactions\":\"few, mainly on matrix side, intra-domain\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"prone_to_unfolding_in\",\"target\":\"detergent micelles (unliganded)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"stabilized_by\",\"target\":\"CATR binding\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"binds\",\"target\":\"carboxyatractyloside (CATR)\",\"attributes\":{},\"target_id\":\"carboxyatractyloside_catr\"},{\"predicate\":\"binds\",\"target\":\"ADP\",\"attributes\":{},\"target_id\":\"adp\"},{\"predicate\":\"binds\",\"target\":\"ATP\",\"attributes\":{},\"target_id\":\"atp\"}]},{\"name\":\"carboxyatractyloside (CATR)\",\"type\":\"other\",\"attributes\":{\"charge_at_neutral_pH\":\"negatively charged\",\"binding_affinity_range\":\"low nanomolar\",\"binding_mechanism\":\"introduces polar and van der Waals interactions cross-linking transmembrane helices\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"},{\"predicate\":\"stabilizes\",\"target\":\"AAC3 in detergents\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"locks_protein_in\",\"target\":\"non-dynamic aborted state\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ADP\",\"type\":\"other\",\"attributes\":{\"charge_at_neutral_pH\":\"negatively charged\",\"NMR_Kd_in_refolded_AAC3\":\"500 μM\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"}]},{\"name\":\"ATP\",\"type\":\"other\",\"attributes\":{\"charge_at_neutral_pH\":\"negatively charged\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"}]},{\"name\":\"DPC-refolded AAC3\",\"type\":\"other\",\"attributes\":{\"CATR_Kd\":\"extremely low affinity\",\"NMR_observations\":\"limited dynamic chemical shift perturbations, not near known binding site\",\"model_entity_type\":\"protein_state\"},\"relationships\":[{\"predicate\":\"may_exhibit\",\"target\":\"non-specific interactions with CATR or ADP\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The authors demonstrate that dodecyl-phosphocholine (DPC) denatures the yeast mitochondrial ADP/ATP carrier AAC3, rendering it non-native and inactive. Thermostability assays using the fluorophore CPM show that while AAC3 in mild detergent exhibits typical thermal denaturation stabilized by the inhibitor CATR, AAC3 in DPC shows no transition and lacks a functional binding site. Consequently, AAC3 diluted into DPC prior to reconstitution fails to support CATR-sensitive ADP uptake.\",\"entities\":[{\"name\":\"AAC3\",\"type\":\"other\",\"attributes\":{\"source\":\"yeast mitochondrial membranes\",\"state_in_DPC\":\"non-native, soluble, inactive\",\"state_in_dodecyl_maltoside\":\"folded, functional\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"denatured_by\",\"target\":\"dodecyl-phosphocholine (DPC)\",\"attributes\":{},\"target_id\":\"dodecyl_phosphocholine_dpc\"},{\"predicate\":\"stabilized_by\",\"target\":\"carboxyatractyloside (CATR)\",\"attributes\":{},\"target_id\":\"carboxyatractyloside_catr\"},{\"predicate\":\"monitored_by\",\"target\":\"thermostability assays\",\"attributes\":{},\"target_id\":\"thermostability_assays\"}]},{\"name\":\"dodecyl-phosphocholine (DPC)\",\"type\":\"other\",\"attributes\":{\"function\":\"solubilizes unfolded protein, denatures functional folded protein\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"causes_non_native_state_in\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"}]},{\"name\":\"carboxyatractyloside (CATR)\",\"type\":\"other\",\"attributes\":{\"role\":\"inhibitor\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"shifts_stability_of\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"},{\"predicate\":\"has_no_effect_on\",\"target\":\"AAC3 in DPC\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"thermostability assays\",\"type\":\"method\",\"attributes\":{\"fluorophore\":\"N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)\",\"temperature_range\":\"25 to 90 °C\",\"mechanism\":\"CPM reacts with solvent-exposed thiols upon denaturation to form fluorescent adduct\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"thermal denaturation of AAC3\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide (CPM)\",\"type\":\"other\",\"attributes\":{\"type\":\"thiol-reactive fluorophore\",\"reaction\":\"reacts with protein thiols as they become solvent-exposed due to denaturation\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"thermostability assays\",\"attributes\":{},\"target_id\":\"thermostability_assays\"}]},{\"name\":\"ADP uptake assay\",\"type\":\"method\",\"attributes\":{\"system\":\"liposomes\"},\"relationships\":[{\"predicate\":\"result_in_DPC\",\"target\":\"complete loss of CATR-sensitive ADP uptake\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"result_in_dodecyl_maltoside\",\"target\":\"functional CATR-sensitive ADP uptake\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text details the experimental protocols for thermostability analysis using CPM fluorescence, isothermal titration calorimetry (ITC) for binding enthalpy, and lipid reconstitution. Specific buffer compositions, concentrations, and instrument settings are provided for these assays.\",\"entities\":[{\"name\":\"thermostability assays\",\"type\":\"method\",\"attributes\":{\"instrument\":\"Qiagen Rotorgene Q\",\"detection_channel\":\"HRM channel\",\"excitation_wavelength\":\"440-480 nm\",\"emission_wavelength\":\"505-515 nm\",\"temperature_range\":\"25-90 °C\",\"temperature_interval\":\"1 °C\",\"wait_time\":\"4 s\",\"ramp_rate\":\"5.6 °C/min\",\"pre_incubation_time\":\"90 seconds\",\"protein_amount\":\"1.5 μg\",\"final_volume\":\"45 μL\",\"cpm_stock_concentration\":\"5 mg/mL in DMSO\",\"cpm_dilution_factor\":\"50-fold\",\"cpm_working_volume\":\"5 μL\",\"equilibration_time\":\"10 min\",\"equilibration_condition\":\"dark, room temperature\"},\"relationships\":[{\"predicate\":\"uses_dye\",\"target\":\"CPM (N-[4-(7-diethylamino-4-methyl-3-coumarinyl)phenyl] maleimide)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"measures\",\"target\":\"melting temperatures\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Dodecyl-maltoside assay buffer\",\"type\":\"measurement\",\"attributes\":{\"composition\":\"20 mM PIPES pH 7.0, 100 mM NaCl, 0.1% dodecyl-maltoside, 0.1 mg/mL tetraoleoyl cardiolipin\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"thermostability assays\",\"attributes\":{},\"target_id\":\"thermostability_assays\"}]},{\"name\":\"Dodecyl-phosphocholine assay buffer\",\"type\":\"measurement\",\"attributes\":{\"composition\":\"20 mM PIPES pH 7.0, 100 mM NaCl, 3 mM dodecyl-phosphocholine\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"thermostability assays\",\"attributes\":{},\"target_id\":\"thermostability_assays\"}]},{\"name\":\"Isothermal titration calorimetry (ITC) protocol\",\"type\":\"method\",\"attributes\":{\"instrument\":\"NanoITC-LV (TA Instruments)\",\"temperature\":\"10 °C\",\"degassing_time\":\"at least 20 min\",\"titrant_concentration\":\"500 μM\",\"protein_concentration\":\"25 μM (0.83 mg/mL)\",\"injection_volume\":\"2 μL\",\"initial_volume\":\"170 μL\",\"injection_interval\":\"3 min\",\"stirrer_speed\":\"350 rpm\",\"analysis_software\":\"NanoAnalyze\",\"fitting_model\":\"one-site binding\",\"fitting_parameters\":\"ΔH, Kd, stoichiometry\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"enthalpy changes associated with carboxyatractyloside binding to purified AAC3\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_titrant\",\"target\":\"Carboxyatractyloside\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_protein\",\"target\":\"Purified AAC3\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ITC buffer composition\",\"type\":\"measurement\",\"attributes\":{\"composition\":\"20 mM PIPES pH 7.0, 100 mM NaCl, 0.1% dodecyl-maltoside, 0.1 mg/mL tetraoleoyl cardiolipin\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"Carboxyatractyloside titrant and protein samples\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Lipid reconstitution preparation\",\"type\":\"method\",\"attributes\":{\"lipid_ratio\":\"L-α-phosphatidylcholine to tetraoleoyl cardiolipin 20:1 (w/w)\",\"total_lipid_mass\":\"10 mg\",\"solvent\":\"chloroform\",\"drying_method\":\"nitrogen stream\",\"resuspension_solvent\":\"methanol\",\"final_form\":\"smear in 1.5-mL tube\"},\"relationships\":[{\"predicate\":\"uses_lipid\",\"target\":\"L-α-phosphatidylcholine\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_lipid\",\"target\":\"Tetraoleoyl cardiolipin\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text describes a protocol for reconstituting purified AAC3 protein into proteoliposomes using specific detergents and buffers. It details the removal of detergent via Bio-Beads and the subsequent preparation for ADP uptake assays using radiolabeled ADP and a Hamilton MicroLab Star robot.\",\"entities\":[{\"name\":\"AAC3\",\"type\":\"other\",\"attributes\":{\"amount_added\":\"30 μg\",\"dilution_options\":\"directly added, or 20-fold diluted into 0.1% dodecyl-maltoside or 0.1% dodecyl-phosphocholine\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"incubated_in\",\"target\":\"0.1% dodecyl-maltoside or 0.1% dodecyl-phosphocholine\",\"attributes\":{\"duration\":\"30 mins\",\"temperature\":\"on ice\"},\"target_id\":null},{\"predicate\":\"reconstituted_into\",\"target\":\"proteoliposomes\",\"attributes\":{},\"target_id\":\"proteoliposomes\"}]},{\"name\":\"internal buffer\",\"type\":\"other\",\"attributes\":{\"composition\":\"20 mM tris-HCl pH 7.4, 50 mM NaCl, 5 mM ADP\",\"volume_equivalent\":\"0.6 mL in the absence of detergent\",\"model_entity_type\":\"chemical_mixture\"},\"relationships\":[]},{\"name\":\"external buffer\",\"type\":\"other\",\"attributes\":{\"composition\":\"20 mM tris-HCl pH 7.4, 50 mM NaCl, without ADP\",\"model_entity_type\":\"chemical_mixture\"},\"relationships\":[]},{\"name\":\"pentaethylene glycol monodecyl detergent\",\"type\":\"other\",\"attributes\":{\"concentration\":\"25% (v/v)\",\"volume_used\":\"55 μL\",\"supplier\":\"Sigma\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"used_to_solubilize\",\"target\":\"lipid\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Bio-Beads SM-2\",\"type\":\"other\",\"attributes\":{\"addition_protocol\":\"4 × 30 mg and 4 × 60 mg in 20-min intervals\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"used_to_remove\",\"target\":\"detergent\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"proteoliposomes\",\"type\":\"other\",\"attributes\":{\"formation_method\":\"detergent removal from reconstitution mix\",\"post_processing\":\"separated from biobeads using empty spin column, exchanged into external buffer using PD10 desalting column, eluted in 1.5 mL, diluted 9-fold in external buffer\",\"model_entity_type\":\"structure\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"AAC3\",\"attributes\":{},\"target_id\":\"aac3\"}]},{\"name\":\"ADP uptake assay\",\"type\":\"method\",\"attributes\":{\"instrument\":\"Hamilton MicroLab Star robot\",\"plate_type\":\"MultiScreenHTS-HA 96-well filter plate\",\"pore_size\":\"0.45 µm\",\"plate_supplier\":\"Millipore\",\"volume_per_well\":\"100 µL proteoliposome suspension\"},\"relationships\":[{\"predicate\":\"initiated_by\",\"target\":\"addition of 100 μL external buffer containing [14C]-ADP\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"measures\",\"target\":\"uptake of radiolabeled ADP\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"[14C]-ADP\",\"type\":\"other\",\"attributes\":{\"specific_activity\":\"2.2 GBq mmol-1\",\"final_working_concentration\":\"1.5 µM\",\"model_entity_type\":\"chemical\"},\"relationships\":[{\"predicate\":\"added_to\",\"target\":\"external buffer\",\"attributes\":{},\"target_id\":\"external_buffer\"}]}]}]"
+}

@@ -1,0 +1,2388 @@
+{
+  "document_id": "bethgelab-100003",
+  "fulltext_sha256": "191f8cffbe90985061b6946db049ff8f556f014bb0268187a365732f60fc01eb",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "285cf0e85ea009db33f4c6312dd42de5f8ca01d7c1c8b76f97d2ae90f76d32b5",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "Tumor PD-L1 promotes lung metastasis by engaging myeloid PD-1 to suppress type I interferon signaling, rather than directly inhibiting CTLs. This mechanism represses Cxcl9 and Cxcl10 expression, impairing CTL recruitment to metastatic sites. The study identifies a specific signaling axis linking tumor PD-L1 to metastatic progression via myeloid cell modulation.",
+        "entities": [
+          {
+            "name": "tumor PD-L1 (tPD-L1)",
+            "entity_id": "tumor_pd_l1_tpd_l1",
+            "entity_type": "other",
+            "aliases": [
+              "tumor PD-L1 (tPD-L1)",
+              "tumor-expressed PD-L1 (tPD-L1)"
+            ],
+            "attributes": {
+              "source": "tumor cells",
+              "function": "promotes lung metastasis",
+              "direct_effect_on_CTLs": "no suppression of activation or lytic function in isolation",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "engages",
+                "target": "myeloid PD-1 (mPD-1)",
+                "attributes": {},
+                "target_id": "myeloid_pd_1_mpd_1"
+              },
+              {
+                "predicate": "antagonizes",
+                "target": "type I interferon (IFN-I) signaling",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "represses",
+                "target": "Cxcl9 and Cxcl10 expression",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "impairs",
+                "target": "CTL recruitment to lung metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "has_no_effect_on",
+                "target": "primary tumor growth",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "significantly_decreases",
+                "target": "lung metastasis upon knockout",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "myeloid PD-1 (mPD-1)",
+            "entity_id": "myeloid_pd_1_mpd_1",
+            "entity_type": "other",
+            "aliases": [
+              "myeloid PD-1 (mPD-1)",
+              "myeloid cell-expressed PD-1 (mPD-1)"
+            ],
+            "attributes": {
+              "location": "myeloid cells",
+              "model_entity_type": "receptor"
+            },
+            "relationships": [
+              {
+                "predicate": "engaged_by",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              },
+              {
+                "predicate": "part_of_axis",
+                "target": "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis",
+                "attributes": {},
+                "target_id": "tpd_l1_mpd_1_ifn_i_stat1_cxcl9_10_axis"
+              }
+            ]
+          },
+          {
+            "name": "type I interferon (IFN-I)",
+            "entity_id": "type_i_interferon_ifn_i",
+            "entity_type": "other",
+            "aliases": [
+              "type I interferon (IFN-I)"
+            ],
+            "attributes": {
+              "status_in_myeloid_cells": "antagonized by tPD-L1/mPD-1 interaction",
+              "model_entity_type": "signaling_pathway"
+            },
+            "relationships": [
+              {
+                "predicate": "involves",
+                "target": "STAT1 signaling",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "correlates_with",
+                "target": "human patient response to PD-1 blockade immunotherapy",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "STAT1",
+            "entity_id": "stat1",
+            "entity_type": "other",
+            "aliases": [
+              "STAT1"
+            ],
+            "attributes": {
+              "model_entity_type": "signaling_protein"
+            },
+            "relationships": [
+              {
+                "predicate": "signaling_antagonized_by",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              }
+            ]
+          },
+          {
+            "name": "Cxcl9 and Cxcl10",
+            "entity_id": "cxcl9_and_cxcl10",
+            "entity_type": "other",
+            "aliases": [
+              "Cxcl9 and Cxcl10"
+            ],
+            "attributes": {
+              "expression_status": "repressed in myeloid cells by tPD-L1",
+              "model_entity_type": "chemokines"
+            },
+            "relationships": [
+              {
+                "predicate": "impair_recruitment_of",
+                "target": "cytotoxic T lymphocytes (CTLs)",
+                "attributes": {},
+                "target_id": "cytotoxic_t_lymphocytes_ctls"
+              }
+            ]
+          },
+          {
+            "name": "cytotoxic T lymphocytes (CTLs)",
+            "entity_id": "cytotoxic_t_lymphocytes_ctls",
+            "entity_type": "other",
+            "aliases": [
+              "cytotoxic T lymphocytes (CTLs)"
+            ],
+            "attributes": {
+              "recruitment_status": "impaired in lung metastases by tPD-L1",
+              "model_entity_type": "cell_type"
+            },
+            "relationships": [
+              {
+                "predicate": "recruitment_dependent_on",
+                "target": "Cxcl9 and Cxcl10",
+                "attributes": {},
+                "target_id": "cxcl9_and_cxcl10"
+              },
+              {
+                "predicate": "required_for",
+                "target": "decrease in lung metastasis upon PD-L1 knockout",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis",
+            "entity_id": "tpd_l1_mpd_1_ifn_i_stat1_cxcl9_10_axis",
+            "entity_type": "other",
+            "aliases": [
+              "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis"
+            ],
+            "attributes": {
+              "model_entity_type": "signaling_axis"
+            },
+            "relationships": [
+              {
+                "predicate": "controls",
+                "target": "CTL tumor infiltration in lung metastasis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PD-1 immune checkpoint blockade (ICB) immunotherapy",
+            "entity_id": "pd_1_immune_checkpoint_blockade_icb_immunotherapy",
+            "entity_type": "other",
+            "aliases": [
+              "PD-1 immune checkpoint blockade (ICB) immunotherapy"
+            ],
+            "attributes": {
+              "mechanism": "blocks PD-L1 engagement with PD-1 on CTLs",
+              "model_entity_type": "treatment"
+            },
+            "relationships": [
+              {
+                "predicate": "response_correlates_with",
+                "target": "IFN-I response in myeloid cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 491,
+          "word_count": 491,
+          "sha256": "0d5731161477c92d946f55e36b1dc2d2590727eb94988379a73aab1234ee18ea",
+          "sentence_minhash": [
+            109126569525969600,
+            1306423125707224,
+            67700393696490351,
+            19069898184369083,
+            63676869447723660,
+            47734289968366355,
+            32191050761192144,
+            25759268523513784,
+            55929488124321347,
+            319853911338448910,
+            78280491562202942,
+            87861342590202815,
+            51125582506972287,
+            58558631451210278,
+            113220725529654461,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'tumor PD-L1 (tPD-L1)'",
+          "normalized unsupported entity type 'receptor' for 'myeloid PD-1 (mPD-1)'",
+          "normalized unsupported entity type 'signaling_pathway' for 'type I interferon (IFN-I)'",
+          "normalized unsupported entity type 'signaling_protein' for 'STAT1'",
+          "normalized unsupported entity type 'chemokines' for 'Cxcl9 and Cxcl10'",
+          "normalized unsupported entity type 'cell_type' for 'cytotoxic T lymphocytes (CTLs)'",
+          "normalized unsupported entity type 'signaling_axis' for 'tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis'",
+          "normalized unsupported entity type 'treatment' for 'PD-1 immune checkpoint blockade (ICB) immunotherapy'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "Tumor-expressed PD-L1 promotes lung metastasis without affecting primary tumor growth or directly inhibiting CTL cytotoxicity. This effect is mediated by engaging myeloid cell PD-1 to suppress type I interferon signaling and chemokine expression, thereby impairing CTL recruitment to the metastatic site.",
+        "entities": [
+          {
+            "name": "tumor PD-L1 (tPD-L1)",
+            "entity_id": "tumor_pd_l1_tpd_l1",
+            "entity_type": "other",
+            "aliases": [
+              "tumor PD-L1 (tPD-L1)",
+              "tumor-expressed PD-L1 (tPD-L1)"
+            ],
+            "attributes": {
+              "expression_pattern": "enhanced at metastatic tumor sites compared to primary tumor sites",
+              "primary_function": "promotes micro- and macro-metastatic tumor growth",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "has_no_direct_effect_on",
+                "target": "CTL activity in absence of other microenvironmental factors",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "targets",
+                "target": "myeloid PD-1 (mPD-1)",
+                "attributes": {},
+                "target_id": "myeloid_pd_1_mpd_1"
+              },
+              {
+                "predicate": "suppresses",
+                "target": "type I IFN expression and function",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "represses",
+                "target": "Cxcl9 and Cxcl10 expression in myeloid cells",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "impairs",
+                "target": "CTL recruitment to lung niche",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enhances",
+                "target": "established lung metastasis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "is_independent_of",
+                "target": "promoting primary tumor growth",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "myeloid PD-1 (mPD-1)",
+            "entity_id": "myeloid_pd_1_mpd_1",
+            "entity_type": "other",
+            "aliases": [
+              "myeloid PD-1 (mPD-1)",
+              "myeloid cell-expressed PD-1 (mPD-1)"
+            ],
+            "attributes": {
+              "role": "bridges tPD-L1 to CTL recruitment in tumor metastasis",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "engaged_by",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              }
+            ]
+          },
+          {
+            "name": "4T1 cell line",
+            "entity_id": "4t1_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "4T1 cell line",
+              "4T1 cells"
+            ],
+            "attributes": {
+              "origin": "murine triple negative breast cancer (TNBC)",
+              "genetic_modification": "Cd274 (PD-L1) deleted",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "in vitro CTL-tumor interaction system",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expresses",
+                "target": "gp70 protein",
+                "attributes": {},
+                "target_id": "gp70_protein"
+              }
+            ]
+          },
+          {
+            "name": "CT26 cell line",
+            "entity_id": "ct26_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "CT26 cell line",
+              "CT26 cells"
+            ],
+            "attributes": {
+              "origin": "murine mismatch repair proficient (MMRp) colorectal cancer (CRC)",
+              "genetic_modification": "Cd274 (PD-L1) deleted",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "in vitro CTL-tumor interaction system",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expresses",
+                "target": "gp70 protein",
+                "attributes": {},
+                "target_id": "gp70_protein"
+              }
+            ]
+          },
+          {
+            "name": "2/20 CTL line",
+            "entity_id": "2_20_ctl_line",
+            "entity_type": "other",
+            "aliases": [
+              "2/20 CTL line"
+            ],
+            "attributes": {
+              "specificity": "tumor-specific, sensitive to PD-1 mediated inhibition",
+              "antigen_recognition": "H2-Ld-restricted AH1 epitope (residues 6-14) of gp70",
+              "functional_state": "effector CTL, exerts antigen-specific cytotoxicity within minutes without differentiation from naïve state",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "recognizes",
+                "target": "gp70 protein endogenously expressed by 4T1 and CT26 cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "gp70 protein",
+            "entity_id": "gp70_protein",
+            "entity_type": "other",
+            "aliases": [
+              "gp70 protein"
+            ],
+            "attributes": {
+              "expression": "endogenous in 4T1 and CT26 cells",
+              "epitope": "AH1 (residues 6-14)",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "recognized_by",
+                "target": "2/20 CTL line",
+                "attributes": {},
+                "target_id": "2_20_ctl_line"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 491,
+          "end_word": 983,
+          "word_count": 492,
+          "sha256": "05bda43517f0af434ebffb410aa64e6f36c8f1d1576a27bb3dce0f4bf2c13be1",
+          "sentence_minhash": [
+            218397405387934156,
+            1306423125707224,
+            116314400368988978,
+            139222975235943620,
+            101436785732904442,
+            19169466869430263,
+            32191050761192144,
+            140501068562272660,
+            228439795799410229,
+            17444917348060025,
+            19416574622547768,
+            162539799216063808,
+            21933493368060407,
+            58558631451210278,
+            33944539345369897,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'tumor-expressed PD-L1 (tPD-L1)'",
+          "normalized unsupported entity type 'protein' for 'myeloid cell-expressed PD-1 (mPD-1)'",
+          "normalized unsupported entity type 'cell_line' for '4T1 cell line'",
+          "normalized unsupported entity type 'cell_line' for 'CT26 cell line'",
+          "normalized unsupported entity type 'cell_line' for '2/20 CTL line'",
+          "normalized unsupported entity type 'protein' for 'gp70 protein'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "Tumor PD-L1 does not affect primary tumor growth or initial lung colonization efficiency but promotes lung metastasis by suppressing CTL-mediated clearance. This effect requires a functioning adaptive immune system and is mediated by a third factor present in the lung metastatic niche. Single-cell RNA sequencing of lung leukocytes revealed that PD-L1 loss drives transcriptional changes specifically in myeloid cells, including enhanced antigen presentation machinery in macrophages.",
+        "entities": [
+          {
+            "name": "tumor PD-L1 (tPD-L1)",
+            "entity_id": "tumor_pd_l1_tpd_l1",
+            "entity_type": "other",
+            "aliases": [
+              "tumor PD-L1 (tPD-L1)",
+              "tumor-expressed PD-L1 (tPD-L1)"
+            ],
+            "attributes": {
+              "source": "tumor cells",
+              "effect_on_primary_tumor": "no difference in growth compared to PD-L1 KO",
+              "effect_on_lung_metastasis": "promotes metastasis by suppressing CTL killing",
+              "requirement": "requires functioning adaptive immune system",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "does_not_affect",
+                "target": "primary tumor growth",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_enhance",
+                "target": "disseminated tumor cell (DTC) colonization efficiency",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "suppresses",
+                "target": "CTL-mediated clearance of lung metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires",
+                "target": "adaptive immune system",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "blocked_by",
+                "target": "MHC class I ablation or CD8+ T cell depletion",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "4T1 cell line",
+            "entity_id": "4t1_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "4T1 cell line",
+              "4T1 cells"
+            ],
+            "attributes": {
+              "cancer_type": "murine triple negative breast cancer (TNBC)",
+              "variants_tested": "PD-L1 WT and PD-L1 KO",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "orthotopic injection and tail vein injection experiments",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "metastasizes_equally_in",
+                "target": "RAGII-KO mice",
+                "attributes": {},
+                "target_id": "ragii_ko_mice"
+              }
+            ]
+          },
+          {
+            "name": "CT26 cell line",
+            "entity_id": "ct26_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "CT26 cell line",
+              "CT26 cells"
+            ],
+            "attributes": {
+              "cancer_type": "murine mismatch repair proficient (MMRp) colorectal cancer (CRC)",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_no_difference_in",
+                "target": "primary tumor growth between WT and PD-L1 KO",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "lung metastasis",
+            "entity_id": "lung_metastasis",
+            "entity_type": "other",
+            "aliases": [
+              "lung metastases",
+              "lung metastasis"
+            ],
+            "attributes": {
+              "mechanism_of_tPD-L1_action": "evades CTL-mediated clearance rather than driving extravasation or seeding",
+              "model_entity_type": "pathological_process"
+            },
+            "relationships": [
+              {
+                "predicate": "promoted_by",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              },
+              {
+                "predicate": "requires",
+                "target": "adaptive immune system",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "disseminated tumor cells (DTCs)",
+            "entity_id": "disseminated_tumor_cells_dtcs",
+            "entity_type": "other",
+            "aliases": [
+              "disseminated tumor cells (DTCs)"
+            ],
+            "attributes": {
+              "colonization_efficiency": "not enhanced by PD-L1",
+              "model_entity_type": "cell_population"
+            },
+            "relationships": [
+              {
+                "predicate": "utilize",
+                "target": "tumor PD-L1 (tPD-L1) to evade CTL-mediated clearance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RAGII-KO mice",
+            "entity_id": "ragii_ko_mice",
+            "entity_type": "other",
+            "aliases": [
+              "RAGII-KO mice"
+            ],
+            "attributes": {
+              "immune_status": "adaptive-immune deficient",
+              "model_entity_type": "animal_model"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrates_that",
+                "target": "tPD-L1 requires functioning adaptive immune system to promote lung metastasis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "myeloid cells",
+            "entity_id": "myeloid_cells",
+            "entity_type": "other",
+            "aliases": [
+              "myeloid cells"
+            ],
+            "attributes": {
+              "transcriptional_response_to_PD-L1_loss": "drives transcriptional changes",
+              "macrophage_phenotype": "enhanced antigen presentation machinery",
+              "model_entity_type": "cell_population"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_by",
+                "target": "Single-Cell RNA Sequencing",
+                "attributes": {},
+                "target_id": "single_cell_rna_sequencing"
+              },
+              {
+                "predicate": "validated_by",
+                "target": "flow cytometric analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "single-cell RNA sequencing of CD45+ leukocytes",
+            "entity_id": "single_cell_rna_sequencing_of_cd45_leukocytes",
+            "entity_type": "method",
+            "aliases": [
+              "single-cell RNA sequencing of CD45+ leukocytes"
+            ],
+            "attributes": {
+              "sample_source": "4T1 WT and PD-L1-KO colonized lungs",
+              "cell_count": "~7500 cells",
+              "clustering_method": "shared nearest neighbor clustering and UMAP"
+            },
+            "relationships": [
+              {
+                "predicate": "identified",
+                "target": "differentially expressed genes in myeloid cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 983,
+          "end_word": 1479,
+          "word_count": 496,
+          "sha256": "37aa3b8fd62bbd8da1ce7472127592e146597f9c854db3b2d594aa63a6ce5d5c",
+          "sentence_minhash": [
+            104797431147398203,
+            1306423125707224,
+            372855696009131455,
+            139222975235943620,
+            335208187202550412,
+            163820254482147967,
+            32191050761192144,
+            41678443202000680,
+            166844233492045914,
+            113631508521831818,
+            128047967744972732,
+            301282056167410941,
+            164575269931903557,
+            906306679132868,
+            33944539345369897,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'tumor PD-L1 (tPD-L1)'",
+          "normalized unsupported entity type 'cell_line' for '4T1 cells'",
+          "normalized unsupported entity type 'cell_line' for 'CT26 cells'",
+          "normalized unsupported entity type 'pathological_process' for 'lung metastasis'",
+          "normalized unsupported entity type 'cell_population' for 'disseminated tumor cells (DTCs)'",
+          "normalized unsupported entity type 'animal_model' for 'RAGII-KO mice'",
+          "normalized unsupported entity type 'cell_population' for 'myeloid cells'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "Tumor PD-L1 (tPD-L1) suppresses type I interferon signaling in myeloid cells via PD-1 engagement, rather than directly inhibiting CTLs. This suppression reduces MHC class II expression and IFN-beta production, creating an immunosuppressive niche that impairs CTL recruitment to lung metastases. Depletion of myeloid cells abolishes the pro-metastatic effect of tPD-L1.",
+        "entities": [
+          {
+            "name": "tumor PD-L1 (tPD-L1)",
+            "entity_id": "tumor_pd_l1_tpd_l1",
+            "entity_type": "other",
+            "aliases": [
+              "tumor PD-L1 (tPD-L1)",
+              "tumor-expressed PD-L1 (tPD-L1)"
+            ],
+            "attributes": {
+              "source": "tumor cells",
+              "function": "suppresses type I interferon production and signaling in myeloid cells",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "engages",
+                "target": "myeloid PD-1 (mPD-1)",
+                "attributes": {},
+                "target_id": "myeloid_pd_1_mpd_1"
+              },
+              {
+                "predicate": "does_not_directly_suppress",
+                "target": "cytotoxic T lymphocyte (CTL) activation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "promotes",
+                "target": "lung metastasis",
+                "attributes": {},
+                "target_id": "lung_metastasis"
+              }
+            ]
+          },
+          {
+            "name": "myeloid PD-1 (mPD-1)",
+            "entity_id": "myeloid_pd_1_mpd_1",
+            "entity_type": "other",
+            "aliases": [
+              "myeloid PD-1 (mPD-1)",
+              "myeloid cell-expressed PD-1 (mPD-1)"
+            ],
+            "attributes": {
+              "location": "myeloid cell surface",
+              "expression_change": "enhanced following tPD-L1 loss",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "engaged_by",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              },
+              {
+                "predicate": "mediates",
+                "target": "attenuation of type I interferon signaling",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "connects",
+                "target": "tumor PD-L1 (tPD-L1) to CTL suppression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "type I interferon (IFN-I)",
+            "entity_id": "type_i_interferon_ifn_i",
+            "entity_type": "other",
+            "aliases": [
+              "type I interferon (IFN-I)"
+            ],
+            "attributes": {
+              "signaling_mode": "autocrine or distance-dependent paracrine",
+              "model_entity_type": "signaling_pathway"
+            },
+            "relationships": [
+              {
+                "predicate": "suppressed_by",
+                "target": "tumor PD-L1 (tPD-L1) via myeloid PD-1 (mPD-1)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "induces",
+                "target": "PD-L2 expression",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "drives",
+                "target": "CTL recruitment in metastatic tumor",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PD-L2",
+            "entity_id": "pd_l2",
+            "entity_type": "other",
+            "aliases": [
+              "PD-L2"
+            ],
+            "attributes": {
+              "gene": "Pdcd1lg2",
+              "role": "marker for type I interferon-stimulated myeloid cells",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "differentially_expressed_in",
+                "target": "4T1-colonized lungs",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expression_increased_after",
+                "target": "tPD-L1 loss",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RAW264.7 macrophages",
+            "entity_id": "raw264_7_macrophages",
+            "entity_type": "other",
+            "aliases": [
+              "RAW264.7 macrophages"
+            ],
+            "attributes": {
+              "type": "macrophage",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "co_cultured_with",
+                "target": "4T1 cell line",
+                "attributes": {},
+                "target_id": "4t1_cell_line"
+              },
+              {
+                "predicate": "shows_upregulated_PD-1_expression_after",
+                "target": "co-culture with 4T1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_decreased_pSTAT1_levels_after",
+                "target": "engagement with 4T1 tPD-L1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shows_diminished_MHC_class_II_expression_after",
+                "target": "engagement with 4T1 tPD-L1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "4T1 cell line",
+            "entity_id": "4t1_cell_line",
+            "entity_type": "other",
+            "aliases": [
+              "4T1 cell line",
+              "4T1 cells"
+            ],
+            "attributes": {
+              "type": "murine triple negative breast cancer",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "co_cultured_with",
+                "target": "RAW264.7 macrophages",
+                "attributes": {},
+                "target_id": "raw264_7_macrophages"
+              },
+              {
+                "predicate": "expresses",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              }
+            ]
+          },
+          {
+            "name": "SHP-2",
+            "entity_id": "shp_2",
+            "entity_type": "other",
+            "aliases": [
+              "SHP-2"
+            ],
+            "attributes": {
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "activation_enhanced_by",
+                "target": "tPD-L1 engagement with mPD-1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "pSTAT1",
+            "entity_id": "pstat1",
+            "entity_type": "other",
+            "aliases": [
+              "pSTAT1"
+            ],
+            "attributes": {
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "levels_decreased_by",
+                "target": "tPD-L1 engagement with mPD-1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MHC class II",
+            "entity_id": "mhc_class_ii",
+            "entity_type": "other",
+            "aliases": [
+              "MHC class II"
+            ],
+            "attributes": {
+              "model_entity_type": "protein_complex"
+            },
+            "relationships": [
+              {
+                "predicate": "expression_diminished_by",
+                "target": "tPD-L1 engagement with mPD-1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expression_elevated_on_stromal_and_tumor_cells_after",
+                "target": "loss of tPD-L1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "IFN-beta",
+            "entity_id": "ifn_beta",
+            "entity_type": "other",
+            "aliases": [
+              "IFN-beta"
+            ],
+            "attributes": {
+              "role": "potent PD-L1/L2 inducer",
+              "model_entity_type": "cytokine"
+            },
+            "relationships": [
+              {
+                "predicate": "production_enhanced_by",
+                "target": "disruption of RAW PD-1 or 4T1 PD-L1 expression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "clodronate liposomes",
+            "entity_id": "clodronate_liposomes",
+            "entity_type": "method",
+            "aliases": [
+              "clodronate liposomes"
+            ],
+            "attributes": {
+              "purpose": "depletion of myeloid cells"
+            },
+            "relationships": [
+              {
+                "predicate": "diminishes",
+                "target": "tPD-L1 function in promoting lung tumor growth",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1479,
+          "end_word": 1973,
+          "word_count": 494,
+          "sha256": "2d7d050d9b3232ba812ee11acfbcb2093c41c964db7f4b5482430d74ffa97e49",
+          "sentence_minhash": [
+            122987161195056328,
+            1306423125707224,
+            230441141608004626,
+            6030917650204451,
+            15377319775961264,
+            19169466869430263,
+            20509416072558978,
+            96292850158067112,
+            251239566780328153,
+            107048872566759164,
+            104756635517093838,
+            189648748752914260,
+            24198192365297883,
+            906306679132868,
+            113220725529654461,
+            39494469675869371
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'protein' for 'tumor PD-L1 (tPD-L1)'",
+          "normalized unsupported entity type 'protein' for 'myeloid PD-1 (mPD-1)'",
+          "normalized unsupported entity type 'signaling_pathway' for 'type I interferon (IFN-I)'",
+          "normalized unsupported entity type 'protein' for 'PD-L2'",
+          "normalized unsupported entity type 'cell_line' for 'RAW264.7 macrophages'",
+          "normalized unsupported entity type 'cell_line' for '4T1 cells'",
+          "normalized unsupported entity type 'protein' for 'SHP-2'",
+          "normalized unsupported entity type 'protein' for 'pSTAT1'",
+          "normalized unsupported entity type 'protein_complex' for 'MHC class II'",
+          "normalized unsupported entity type 'cytokine' for 'IFN-beta'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study extends findings to human patients with metastatic basal cell carcinoma, showing that PD-1 blockade releases myeloid differentiation restriction and enhances interferon signaling. The discussion highlights that tumor PD-L1 (tPD-L1) does not directly suppress CTL activation but instead binds to myeloid PD-1 (mPD-1) to create an immunologically cold metastatic niche. This mechanism distinguishes tPD-L1's role in metastasis from its potential sufficiency but not necessity in primary tumor response to PD-1 blockade.",
+        "entities": [
+          {
+            "name": "metastatic basal cell carcinoma patients",
+            "entity_id": "metastatic_basal_cell_carcinoma_patients",
+            "entity_type": "other",
+            "aliases": [
+              "metastatic basal cell carcinoma patients"
+            ],
+            "attributes": {
+              "condition": "metastatic basal cell carcinoma",
+              "procedure": "single cell sequencing performed before and after PD-1 blockade",
+              "model_entity_type": "population"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of_study",
+                "target": "human relevance of tPD-L1/mPD-1 findings",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PD-1 blockade",
+            "entity_id": "pd_1_blockade",
+            "entity_type": "other",
+            "aliases": [
+              "PD-1 blockade"
+            ],
+            "attributes": {
+              "effect_on_myeloid_cells": "releases differentiation restriction",
+              "downstream_effects": [
+                "enhanced interferon signaling",
+                "enhanced antigen presentation",
+                "enhanced CTL-recruiting chemokine expression"
+              ],
+              "model_entity_type": "treatment"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "metastatic basal cell carcinoma patients",
+                "attributes": {},
+                "target_id": "metastatic_basal_cell_carcinoma_patients"
+              }
+            ]
+          },
+          {
+            "name": "tumor PD-L1 (tPD-L1)",
+            "entity_id": "tumor_pd_l1_tpd_l1",
+            "entity_type": "other",
+            "aliases": [
+              "tumor PD-L1 (tPD-L1)",
+              "tumor-expressed PD-L1 (tPD-L1)"
+            ],
+            "attributes": {
+              "direct_effect_on_CTLs": "no direct role in suppression of CTL activation and cytotoxicity when only tumor cells and CTLs are present",
+              "role_in_metastasis": "prevents immune clearance of metastases",
+              "binding_partner": "myeloid PD-1 (mPD-1)",
+              "functional_outcome": "enforces an immunologically cold microenvironment",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "myeloid PD-1 (mPD-1)",
+                "attributes": {},
+                "target_id": "myeloid_pd_1_mpd_1"
+              },
+              {
+                "predicate": "controls",
+                "target": "CTL recruitment",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "myeloid PD-1 (mPD-1)",
+            "entity_id": "myeloid_pd_1_mpd_1",
+            "entity_type": "other",
+            "aliases": [
+              "myeloid PD-1 (mPD-1)",
+              "myeloid cell-expressed PD-1 (mPD-1)"
+            ],
+            "attributes": {
+              "location": "myeloid cells",
+              "interaction": "engaged by tPD-L1",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "bound_by",
+                "target": "tumor PD-L1 (tPD-L1)",
+                "attributes": {},
+                "target_id": "tumor_pd_l1_tpd_l1"
+              }
+            ]
+          },
+          {
+            "name": "myeloid cells",
+            "entity_id": "myeloid_cells",
+            "entity_type": "other",
+            "aliases": [
+              "myeloid cells"
+            ],
+            "attributes": {
+              "historical_role": "contribute to formation of immunosuppressive metastatic niche",
+              "phenotypic_switch": "mechanisms controlling switch between suppressive and inflammatory populations were previously unclear",
+              "model_entity_type": "cell_type"
+            },
+            "relationships": [
+              {
+                "predicate": "express",
+                "target": "myeloid PD-1 (mPD-1)",
+                "attributes": {},
+                "target_id": "myeloid_pd_1_mpd_1"
+              }
+            ]
+          },
+          {
+            "name": "cytotoxic T lymphocytes (CTLs)",
+            "entity_id": "cytotoxic_t_lymphocytes_ctls",
+            "entity_type": "other",
+            "aliases": [
+              "cytotoxic T lymphocytes (CTLs)"
+            ],
+            "attributes": {
+              "recruitment_control": "controlled by tPD-L1/mPD-1 axis rather than direct functionality suppression",
+              "model_entity_type": "cell_type"
+            },
+            "relationships": [
+              {
+                "predicate": "recruited_by",
+                "target": "interferon signaling and chemokines",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "interferon alpha (IFNα)",
+            "entity_id": "interferon_alpha_ifn",
+            "entity_type": "other",
+            "aliases": [
+              "interferon alpha (IFNα)"
+            ],
+            "attributes": {
+              "regulatory_status": "first FDA-approved cancer immunotherapy",
+              "indications": [
+                "adjuvant treatment in melanoma",
+                "adjuvant treatment in renal cell carcinoma"
+              ],
+              "efficacy": "minimal response rate but induced long-term, metastasis-free remission in significant fraction of late-stage patients",
+              "model_entity_type": "therapeutic_agent"
+            },
+            "relationships": [
+              {
+                "predicate": "induces",
+                "target": "PD-L1 and PD-1 in myeloid cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "type I interferon signaling",
+            "entity_id": "type_i_interferon_signaling",
+            "entity_type": "other",
+            "aliases": [
+              "type I interferon signaling"
+            ],
+            "attributes": {
+              "regulation": "induces PD-L1 and PD-1 in myeloid cells, with PD-L1 upregulated more rapidly",
+              "model_entity_type": "biological_pathway"
+            },
+            "relationships": [
+              {
+                "predicate": "regulated_by",
+                "target": "PD-1/L1 axis",
+                "attributes": {},
+                "target_id": "pd_1_l1_axis"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1973,
+          "end_word": 2449,
+          "word_count": 476,
+          "sha256": "722a76e6f26b4858452194af76f529f1157dd7f774051ef072b20ccaa75d0657",
+          "sentence_minhash": [
+            175406989424540837,
+            1306423125707224,
+            16092769311024896,
+            61919449716151556,
+            63676869447723660,
+            99436724310786061,
+            115886697646301851,
+            96292850158067112,
+            66530823458117479,
+            17444917348060025,
+            78280491562202942,
+            34538575912147783,
+            21933493368060407,
+            906306679132868,
+            33944539345369897,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'population' for 'metastatic basal cell carcinoma patients'",
+          "normalized unsupported entity type 'treatment' for 'PD-1 blockade'",
+          "normalized unsupported entity type 'molecule' for 'tumor PD-L1 (tPD-L1)'",
+          "normalized unsupported entity type 'molecule' for 'myeloid PD-1 (mPD-1)'",
+          "normalized unsupported entity type 'cell_type' for 'myeloid cells'",
+          "normalized unsupported entity type 'cell_type' for 'cytotoxic T lymphocytes (CTLs)'",
+          "normalized unsupported entity type 'therapeutic_agent' for 'interferon alpha (IFNα)'",
+          "normalized unsupported entity type 'biological_pathway' for 'type I interferon signaling'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The PD-1/L1 axis functions as a negative feedback circuit for type I interferon signaling, potentially explaining low response rates in interferon alpha therapies. Mutations in interferon pathways are linked to adaptive resistance to immunotherapy, while the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis controls CTL infiltration in lung metastasis.",
+        "entities": [
+          {
+            "name": "PD-1/L1 axis",
+            "entity_id": "pd_1_l1_axis",
+            "entity_type": "concept",
+            "aliases": [
+              "PD-1/L1 axis"
+            ],
+            "attributes": {
+              "function": "negative feedback circuit for type I interferon signaling"
+            },
+            "relationships": [
+              {
+                "predicate": "may_cause",
+                "target": "low response rates in interferon alpha therapies",
+                "attributes": {
+                  "mechanism": "compensatory PD-1/L1 upregulation"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "interferon alpha therapies",
+            "entity_id": "interferon_alpha_therapies",
+            "entity_type": "method",
+            "aliases": [
+              "interferon alpha therapies"
+            ],
+            "attributes": {
+              "response_rate": "low"
+            },
+            "relationships": []
+          },
+          {
+            "name": "phase I/II clinical trials",
+            "entity_id": "phase_i_ii_clinical_trials",
+            "entity_type": "event",
+            "aliases": [
+              "phase I/II clinical trials"
+            ],
+            "attributes": {
+              "outcome": "early success"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_combination_of",
+                "target": "direct administration of interferon or indirect upregulation through TLR and STING agonists with anti-PD-1/L1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Irf7",
+            "entity_id": "irf7",
+            "entity_type": "other",
+            "aliases": [
+              "Irf7"
+            ],
+            "attributes": {
+              "function": "mediates the second wave of interferon production in response to type I interferon exposure",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "forced_overexpression_abrogated",
+                "target": "triple negative breast cancer bone metastasis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "silenced_at",
+                "target": "spontaneously occurring metastasis including lung",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "prostate cancer metastases",
+            "entity_id": "prostate_cancer_metastases",
+            "entity_type": "other",
+            "aliases": [
+              "prostate cancer metastases"
+            ],
+            "attributes": {
+              "model_entity_type": "disease_state"
+            },
+            "relationships": [
+              {
+                "predicate": "display_silencing_of",
+                "target": "type I interferon production",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "mutations in type I and II interferon pathway",
+            "entity_id": "mutations_in_type_i_and_ii_interferon_pathway",
+            "entity_type": "other",
+            "aliases": [
+              "mutations in type I and II interferon pathway"
+            ],
+            "attributes": {
+              "examples": "JAK1/JAK2",
+              "model_entity_type": "genetic_variation"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "adaptive resistance to immunotherapy",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "suppression of interferon signaling",
+            "entity_id": "suppression_of_interferon_signaling",
+            "entity_type": "other",
+            "aliases": [
+              "suppression of interferon signaling"
+            ],
+            "attributes": {
+              "model_entity_type": "biological_process"
+            },
+            "relationships": [
+              {
+                "predicate": "is_primary_mechanism_for",
+                "target": "tumors achieving successful immune evasion and adaptive resistance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "type I interferon signaling pathway",
+            "entity_id": "type_i_interferon_signaling_pathway",
+            "entity_type": "other",
+            "aliases": [
+              "type I interferon signaling pathway"
+            ],
+            "attributes": {
+              "role": "essential for myeloid cell function in CTL recruitment to the lung metastasis niche",
+              "model_entity_type": "biological_process"
+            },
+            "relationships": []
+          },
+          {
+            "name": "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis",
+            "entity_id": "tpd_l1_mpd_1_ifn_i_stat1_cxcl9_10_axis",
+            "entity_type": "other",
+            "aliases": [
+              "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis"
+            ],
+            "attributes": {
+              "model_entity_type": "signaling_pathway"
+            },
+            "relationships": [
+              {
+                "predicate": "controls",
+                "target": "CTL tumor infiltration in lung metastasis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "promotes",
+                "target": "lung metastasis",
+                "attributes": {},
+                "target_id": "lung_metastasis"
+              },
+              {
+                "predicate": "underlies_efficacy_of",
+                "target": "ICB immunotherapy in the neoadjuvant and the adjuvant setting",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "lung metastasis",
+            "entity_id": "lung_metastasis",
+            "entity_type": "other",
+            "aliases": [
+              "lung metastases",
+              "lung metastasis"
+            ],
+            "attributes": {
+              "location": "barrier tissue",
+              "microenvironment": "may have a uniquely inflamed microenvironment",
+              "model_entity_type": "disease_state"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2449,
+          "end_word": 2947,
+          "word_count": 498,
+          "sha256": "3afd74cfa9a9695aeb04ee19d41d0981b2bac9911ec1d77f37585f75ade55c7f",
+          "sentence_minhash": [
+            82316180561614159,
+            28851769959714761,
+            273167577168843491,
+            5050748634255938,
+            168534210583917770,
+            62667647458868521,
+            38001302095432714,
+            81285259065511028,
+            113198931733945138,
+            76931577636070685,
+            78280491562202942,
+            8566262517653704,
+            21933493368060407,
+            46558491021216097,
+            78051714689848052,
+            124943914096872385
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'Irf7'",
+          "normalized unsupported entity type 'disease_state' for 'prostate cancer metastases'",
+          "normalized unsupported entity type 'genetic_variation' for 'mutations in type I and II interferon pathway'",
+          "normalized unsupported entity type 'biological_process' for 'suppression of interferon signaling'",
+          "normalized unsupported entity type 'biological_process' for 'type I interferon signaling pathway'",
+          "normalized unsupported entity type 'signaling_pathway' for 'tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis'",
+          "normalized unsupported entity type 'disease_state' for 'lung metastases'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text details the experimental protocols for flow cytometry, bulk and single-cell RNA sequencing, and statistical analysis used in the study. Specific reagents, sequencing platforms, and bioinformatics pipelines are identified for processing mouse lung tissue data.",
+        "entities": [
+          {
+            "name": "co-culture cytotoxicity experiments",
+            "entity_id": "co_culture_cytotoxicity_experiments",
+            "entity_type": "method",
+            "aliases": [
+              "co-culture cytotoxicity experiments"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "uses_staining",
+                "target": "APC-AnnexinV and propidium iodide (PI)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "intracellular staining protocol",
+            "entity_id": "intracellular_staining_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "intracellular staining protocol"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "uses_fixation_permeabilization",
+                "target": "Cytofix/Cytoperm Plus kit",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "manufacturer",
+                "target": "BD Biosciences",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "flow cytometry acquisition",
+            "entity_id": "flow_cytometry_acquisition",
+            "entity_type": "method",
+            "aliases": [
+              "flow cytometry acquisition"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "uses_instrument",
+                "target": "FACSCalibur",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_instrument",
+                "target": "LSRFortessa",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_software",
+                "target": "CellQuestPro",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_software",
+                "target": "BD Diva 8.01",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "flow cytometry data analysis",
+            "entity_id": "flow_cytometry_data_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "flow cytometry data analysis"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "uses_software",
+                "target": "FlowJo v10.6.0",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "manufacturer",
+                "target": "BD Biosciences",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "statistical analysis",
+            "entity_id": "statistical_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "statistical analysis"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "uses_software",
+                "target": "Prism8",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_test",
+                "target": "two-tailed Student's t-test",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_test",
+                "target": "two-sided log-rank test",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_package",
+                "target": "Survival package, R",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Bulk RNA Sequencing",
+            "entity_id": "bulk_rna_sequencing",
+            "entity_type": "method",
+            "aliases": [
+              "Bulk RNA Sequencing"
+            ],
+            "attributes": {
+              "model": "4T1.WT or 4T1.PDL1-KO cells",
+              "timepoint": "seven days post-injection"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_extraction_kit",
+                "target": "Direct-zol RNA microprep kit",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "sequenced_by",
+                "target": "Novogene",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_reference_genome",
+                "target": "mm10",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_alignment_tool",
+                "target": "STARv2.5",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_quantification_tool",
+                "target": "HTSeqv0.6.1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_normalization",
+                "target": "DESeq2 rank-log transformed normalized counts",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_analysis_tool",
+                "target": "GSEA4.0",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_analysis_tool",
+                "target": "clusterprofiler",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Single-Cell RNA Sequencing",
+            "entity_id": "single_cell_rna_sequencing",
+            "entity_type": "method",
+            "aliases": [
+              "Single-Cell RNA Sequencing"
+            ],
+            "attributes": {
+              "model": "Balb/c mice with 4T1.WT or 4T1.PDL1-KO cells",
+              "timepoint": "fourteen days post-injection",
+              "viability_threshold": "≥ 80% viable cells",
+              "target_cells": "2-3 x 10^3 targeted cells"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_selection_method",
+                "target": "CD45 magnetic nanobeads",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_chip",
+                "target": "Chromium Chip B",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_kit",
+                "target": "Chromium Single Cell 3' Reagent Kit v3",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "manufacturer",
+                "target": "10x Genomics",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "sequenced_on",
+                "target": "Illumina NextSeq 500",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_pipeline",
+                "target": "Cell Ranger 3.1.0",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_alignment_tool",
+                "target": "STAR aligner",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_analysis_software",
+                "target": "Seurat",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_doublet_removal",
+                "target": "DoubletFinder",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2947,
+          "end_word": 3431,
+          "word_count": 484,
+          "sha256": "12b1e288cb7871c597f0c3bbe47c3cf33304efcf851f62c738da9482c799d0b8",
+          "sentence_minhash": [
+            10893342914538609,
+            76492366708779561,
+            277203405734403692,
+            59527879293337615,
+            93323638547305541,
+            39127440086368283,
+            22269288630548743,
+            81285259065511028,
+            250103587932991025,
+            35062189116939919,
+            128047967744972732,
+            39808539161266192,
+            35608547618306158,
+            906306679132868,
+            33944539345369897,
+            39494469675869371
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The text details the bioinformatics and experimental protocols used to analyze single-cell RNA sequencing data, generate gene signatures, and perform patient dataset analyses. It describes methods for clustering cells, scoring signatures using VISION, and validating findings through colonization assays, Western blotting, and immunohistochemistry.",
+        "entities": [
+          {
+            "name": "Single-cell RNA sequencing analysis",
+            "entity_id": "single_cell_rna_sequencing_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Single-cell RNA sequencing analysis"
+            ],
+            "attributes": {
+              "clustering_method": "first fifty principal components",
+              "annotation_tool": "SingleR",
+              "subset_reclustering": "top twenty principal components for Myeloid and T cells"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "MSigDB and study-generated signature sets",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "VISION for single-cell scoring",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "tPD-L1 loss gene signature",
+            "entity_id": "tpd_l1_loss_gene_signature",
+            "entity_type": "measurement",
+            "aliases": [
+              "tPD-L1 loss gene signature"
+            ],
+            "attributes": {
+              "creation_method": "isolating genes with expression increase of at least two-fold and padj < 0.05",
+              "source_data": "bulk RNA-sequencing dataset following tPD-L1 loss",
+              "analysis_tool": "DESeq2"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SHP-2 activation signature",
+            "entity_id": "shp_2_activation_signature",
+            "entity_type": "measurement",
+            "aliases": [
+              "SHP-2 activation signature"
+            ],
+            "attributes": {
+              "creation_method": "isolating genes with two-fold expression increase (padj < 0.05) in myeloid cells after SHP099 treatment",
+              "post_processing": "score inverted"
+            },
+            "relationships": []
+          },
+          {
+            "name": "MA, MB, and MC gene signatures",
+            "entity_id": "ma_mb_and_mc_gene_signatures",
+            "entity_type": "measurement",
+            "aliases": [
+              "MA, MB, and MC gene signatures"
+            ],
+            "attributes": {
+              "creation_method": "using Seurat TransferData function to transfer labels from macrophage PHATE clusters to human lung tumor-resident macrophage dataset"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Cluster-identifying signatures",
+            "entity_id": "cluster_identifying_signatures",
+            "entity_type": "measurement",
+            "aliases": [
+              "Cluster-identifying signatures"
+            ],
+            "attributes": {
+              "creation_method": "calculated by Seurat FindAllMarkers function"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Patient Dataset Analysis",
+            "entity_id": "patient_dataset_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Patient Dataset Analysis"
+            ],
+            "attributes": {
+              "data_sources": "TCGA database, BMS038, PRJEB23709",
+              "survival_analysis_tools": "R survival and survminer packages",
+              "alignment_tool": "kallisto for PRJEB23709",
+              "batch_correction_tool": "Harmony for melanoma cohort"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzes",
+                "target": "tumor-infiltrating macrophages in melanoma cohort",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "assesses",
+                "target": "intrasample variation via mean displacement",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Colonization Assay",
+            "entity_id": "colonization_assay",
+            "entity_type": "method",
+            "aliases": [
+              "Colonization Assay"
+            ],
+            "attributes": {
+              "model": "Balb/c mice injected i.v. with 4T1.WT or 4T1.PDL1-KO cells",
+              "timepoint": "24 hours post-injection",
+              "processing": "lungs perfused with PBS, minced, homogenized in Trizol",
+              "analysis": "RNA isolated for PCR"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Western Blotting",
+            "entity_id": "western_blotting",
+            "entity_type": "method",
+            "aliases": [
+              "Western Blotting"
+            ],
+            "attributes": {
+              "sample_processing": "lungs collected and homogenized using electric homogenizer"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Immunohistochemistry",
+            "entity_id": "immunohistochemistry",
+            "entity_type": "method",
+            "aliases": [
+              "Immunohistochemistry"
+            ],
+            "attributes": {
+              "fixation": "10% formalin",
+              "imaging_software": "LAS4.1 (Leica)",
+              "quantification_tool": "quPATH for CD3+ cells"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3431,
+          "end_word": 3877,
+          "word_count": 446,
+          "sha256": "7875b268dd836e330f106a512f58e0dc6adc9760fcb9d2495d0ccf1f08d31d08",
+          "sentence_minhash": [
+            10893342914538609,
+            1306423125707224,
+            192573059367916559,
+            201948566748835051,
+            50154285776315358,
+            120355157403712038,
+            22269288630548743,
+            21273540111215871,
+            34383880606747972,
+            76931577636070685,
+            78280491562202942,
+            49775578613387123,
+            51125582506972287,
+            906306679132868,
+            162504846606578453,
+            124943914096872385
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "tumor_pd_l1_tpd_l1",
+        "canonical_name": "tumor PD-L1 (tPD-L1)",
+        "aliases": [
+          "tumor PD-L1 (tPD-L1)",
+          "tumor-expressed PD-L1 (tPD-L1)"
+        ]
+      },
+      {
+        "canonical_id": "myeloid_pd_1_mpd_1",
+        "canonical_name": "myeloid PD-1 (mPD-1)",
+        "aliases": [
+          "myeloid PD-1 (mPD-1)",
+          "myeloid cell-expressed PD-1 (mPD-1)"
+        ]
+      },
+      {
+        "canonical_id": "4t1_cell_line",
+        "canonical_name": "4T1 cell line",
+        "aliases": [
+          "4T1 cell line",
+          "4T1 cells"
+        ]
+      },
+      {
+        "canonical_id": "ct26_cell_line",
+        "canonical_name": "CT26 cell line",
+        "aliases": [
+          "CT26 cell line",
+          "CT26 cells"
+        ]
+      },
+      {
+        "canonical_id": "lung_metastasis",
+        "canonical_name": "lung metastasis",
+        "aliases": [
+          "lung metastasis",
+          "lung metastases"
+        ]
+      },
+      {
+        "canonical_id": "type_i_interferon_ifn_i",
+        "canonical_name": "type I interferon (IFN-I)",
+        "aliases": [
+          "type I interferon (IFN-I)"
+        ]
+      },
+      {
+        "canonical_id": "stat1",
+        "canonical_name": "STAT1",
+        "aliases": [
+          "STAT1"
+        ]
+      },
+      {
+        "canonical_id": "cxcl9_and_cxcl10",
+        "canonical_name": "Cxcl9 and Cxcl10",
+        "aliases": [
+          "Cxcl9 and Cxcl10"
+        ]
+      },
+      {
+        "canonical_id": "cytotoxic_t_lymphocytes_ctls",
+        "canonical_name": "cytotoxic T lymphocytes (CTLs)",
+        "aliases": [
+          "cytotoxic T lymphocytes (CTLs)"
+        ]
+      },
+      {
+        "canonical_id": "tpd_l1_mpd_1_ifn_i_stat1_cxcl9_10_axis",
+        "canonical_name": "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis",
+        "aliases": [
+          "tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis"
+        ]
+      },
+      {
+        "canonical_id": "pd_1_immune_checkpoint_blockade_icb_immunotherapy",
+        "canonical_name": "PD-1 immune checkpoint blockade (ICB) immunotherapy",
+        "aliases": [
+          "PD-1 immune checkpoint blockade (ICB) immunotherapy"
+        ]
+      },
+      {
+        "canonical_id": "2_20_ctl_line",
+        "canonical_name": "2/20 CTL line",
+        "aliases": [
+          "2/20 CTL line"
+        ]
+      },
+      {
+        "canonical_id": "gp70_protein",
+        "canonical_name": "gp70 protein",
+        "aliases": [
+          "gp70 protein"
+        ]
+      },
+      {
+        "canonical_id": "disseminated_tumor_cells_dtcs",
+        "canonical_name": "disseminated tumor cells (DTCs)",
+        "aliases": [
+          "disseminated tumor cells (DTCs)"
+        ]
+      },
+      {
+        "canonical_id": "ragii_ko_mice",
+        "canonical_name": "RAGII-KO mice",
+        "aliases": [
+          "RAGII-KO mice"
+        ]
+      },
+      {
+        "canonical_id": "myeloid_cells",
+        "canonical_name": "myeloid cells",
+        "aliases": [
+          "myeloid cells"
+        ]
+      },
+      {
+        "canonical_id": "single_cell_rna_sequencing_of_cd45_leukocytes",
+        "canonical_name": "single-cell RNA sequencing of CD45+ leukocytes",
+        "aliases": [
+          "single-cell RNA sequencing of CD45+ leukocytes"
+        ]
+      },
+      {
+        "canonical_id": "pd_l2",
+        "canonical_name": "PD-L2",
+        "aliases": [
+          "PD-L2"
+        ]
+      },
+      {
+        "canonical_id": "raw264_7_macrophages",
+        "canonical_name": "RAW264.7 macrophages",
+        "aliases": [
+          "RAW264.7 macrophages"
+        ]
+      },
+      {
+        "canonical_id": "shp_2",
+        "canonical_name": "SHP-2",
+        "aliases": [
+          "SHP-2"
+        ]
+      },
+      {
+        "canonical_id": "pstat1",
+        "canonical_name": "pSTAT1",
+        "aliases": [
+          "pSTAT1"
+        ]
+      },
+      {
+        "canonical_id": "mhc_class_ii",
+        "canonical_name": "MHC class II",
+        "aliases": [
+          "MHC class II"
+        ]
+      },
+      {
+        "canonical_id": "ifn_beta",
+        "canonical_name": "IFN-beta",
+        "aliases": [
+          "IFN-beta"
+        ]
+      },
+      {
+        "canonical_id": "clodronate_liposomes",
+        "canonical_name": "clodronate liposomes",
+        "aliases": [
+          "clodronate liposomes"
+        ]
+      },
+      {
+        "canonical_id": "metastatic_basal_cell_carcinoma_patients",
+        "canonical_name": "metastatic basal cell carcinoma patients",
+        "aliases": [
+          "metastatic basal cell carcinoma patients"
+        ]
+      },
+      {
+        "canonical_id": "pd_1_blockade",
+        "canonical_name": "PD-1 blockade",
+        "aliases": [
+          "PD-1 blockade"
+        ]
+      },
+      {
+        "canonical_id": "interferon_alpha_ifn",
+        "canonical_name": "interferon alpha (IFNα)",
+        "aliases": [
+          "interferon alpha (IFNα)"
+        ]
+      },
+      {
+        "canonical_id": "type_i_interferon_signaling",
+        "canonical_name": "type I interferon signaling",
+        "aliases": [
+          "type I interferon signaling"
+        ]
+      },
+      {
+        "canonical_id": "pd_1_l1_axis",
+        "canonical_name": "PD-1/L1 axis",
+        "aliases": [
+          "PD-1/L1 axis"
+        ]
+      },
+      {
+        "canonical_id": "interferon_alpha_therapies",
+        "canonical_name": "interferon alpha therapies",
+        "aliases": [
+          "interferon alpha therapies"
+        ]
+      },
+      {
+        "canonical_id": "phase_i_ii_clinical_trials",
+        "canonical_name": "phase I/II clinical trials",
+        "aliases": [
+          "phase I/II clinical trials"
+        ]
+      },
+      {
+        "canonical_id": "irf7",
+        "canonical_name": "Irf7",
+        "aliases": [
+          "Irf7"
+        ]
+      },
+      {
+        "canonical_id": "prostate_cancer_metastases",
+        "canonical_name": "prostate cancer metastases",
+        "aliases": [
+          "prostate cancer metastases"
+        ]
+      },
+      {
+        "canonical_id": "mutations_in_type_i_and_ii_interferon_pathway",
+        "canonical_name": "mutations in type I and II interferon pathway",
+        "aliases": [
+          "mutations in type I and II interferon pathway"
+        ]
+      },
+      {
+        "canonical_id": "suppression_of_interferon_signaling",
+        "canonical_name": "suppression of interferon signaling",
+        "aliases": [
+          "suppression of interferon signaling"
+        ]
+      },
+      {
+        "canonical_id": "type_i_interferon_signaling_pathway",
+        "canonical_name": "type I interferon signaling pathway",
+        "aliases": [
+          "type I interferon signaling pathway"
+        ]
+      },
+      {
+        "canonical_id": "co_culture_cytotoxicity_experiments",
+        "canonical_name": "co-culture cytotoxicity experiments",
+        "aliases": [
+          "co-culture cytotoxicity experiments"
+        ]
+      },
+      {
+        "canonical_id": "intracellular_staining_protocol",
+        "canonical_name": "intracellular staining protocol",
+        "aliases": [
+          "intracellular staining protocol"
+        ]
+      },
+      {
+        "canonical_id": "flow_cytometry_acquisition",
+        "canonical_name": "flow cytometry acquisition",
+        "aliases": [
+          "flow cytometry acquisition"
+        ]
+      },
+      {
+        "canonical_id": "flow_cytometry_data_analysis",
+        "canonical_name": "flow cytometry data analysis",
+        "aliases": [
+          "flow cytometry data analysis"
+        ]
+      },
+      {
+        "canonical_id": "statistical_analysis",
+        "canonical_name": "statistical analysis",
+        "aliases": [
+          "statistical analysis"
+        ]
+      },
+      {
+        "canonical_id": "bulk_rna_sequencing",
+        "canonical_name": "Bulk RNA Sequencing",
+        "aliases": [
+          "Bulk RNA Sequencing"
+        ]
+      },
+      {
+        "canonical_id": "single_cell_rna_sequencing",
+        "canonical_name": "Single-Cell RNA Sequencing",
+        "aliases": [
+          "Single-Cell RNA Sequencing"
+        ]
+      },
+      {
+        "canonical_id": "single_cell_rna_sequencing_analysis",
+        "canonical_name": "Single-cell RNA sequencing analysis",
+        "aliases": [
+          "Single-cell RNA sequencing analysis"
+        ]
+      },
+      {
+        "canonical_id": "tpd_l1_loss_gene_signature",
+        "canonical_name": "tPD-L1 loss gene signature",
+        "aliases": [
+          "tPD-L1 loss gene signature"
+        ]
+      },
+      {
+        "canonical_id": "shp_2_activation_signature",
+        "canonical_name": "SHP-2 activation signature",
+        "aliases": [
+          "SHP-2 activation signature"
+        ]
+      },
+      {
+        "canonical_id": "ma_mb_and_mc_gene_signatures",
+        "canonical_name": "MA, MB, and MC gene signatures",
+        "aliases": [
+          "MA, MB, and MC gene signatures"
+        ]
+      },
+      {
+        "canonical_id": "cluster_identifying_signatures",
+        "canonical_name": "Cluster-identifying signatures",
+        "aliases": [
+          "Cluster-identifying signatures"
+        ]
+      },
+      {
+        "canonical_id": "patient_dataset_analysis",
+        "canonical_name": "Patient Dataset Analysis",
+        "aliases": [
+          "Patient Dataset Analysis"
+        ]
+      },
+      {
+        "canonical_id": "colonization_assay",
+        "canonical_name": "Colonization Assay",
+        "aliases": [
+          "Colonization Assay"
+        ]
+      },
+      {
+        "canonical_id": "western_blotting",
+        "canonical_name": "Western Blotting",
+        "aliases": [
+          "Western Blotting"
+        ]
+      },
+      {
+        "canonical_id": "immunohistochemistry",
+        "canonical_name": "Immunohistochemistry",
+        "aliases": [
+          "Immunohistochemistry"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"Tumor PD-L1 promotes lung metastasis by engaging myeloid PD-1 to suppress type I interferon signaling, rather than directly inhibiting CTLs. This mechanism represses Cxcl9 and Cxcl10 expression, impairing CTL recruitment to metastatic sites. The study identifies a specific signaling axis linking tumor PD-L1 to metastatic progression via myeloid cell modulation.\",\"entities\":[{\"name\":\"tumor PD-L1 (tPD-L1)\",\"type\":\"other\",\"attributes\":{\"source\":\"tumor cells\",\"function\":\"promotes lung metastasis\",\"direct_effect_on_CTLs\":\"no suppression of activation or lytic function in isolation\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"engages\",\"target\":\"myeloid PD-1 (mPD-1)\",\"attributes\":{},\"target_id\":\"myeloid_pd_1_mpd_1\"},{\"predicate\":\"antagonizes\",\"target\":\"type I interferon (IFN-I) signaling\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"represses\",\"target\":\"Cxcl9 and Cxcl10 expression\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"impairs\",\"target\":\"CTL recruitment to lung metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"has_no_effect_on\",\"target\":\"primary tumor growth\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"significantly_decreases\",\"target\":\"lung metastasis upon knockout\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"myeloid PD-1 (mPD-1)\",\"type\":\"other\",\"attributes\":{\"location\":\"myeloid cells\",\"model_entity_type\":\"receptor\"},\"relationships\":[{\"predicate\":\"engaged_by\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"},{\"predicate\":\"part_of_axis\",\"target\":\"tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis\",\"attributes\":{},\"target_id\":\"tpd_l1_mpd_1_ifn_i_stat1_cxcl9_10_axis\"}]},{\"name\":\"type I interferon (IFN-I)\",\"type\":\"other\",\"attributes\":{\"status_in_myeloid_cells\":\"antagonized by tPD-L1/mPD-1 interaction\",\"model_entity_type\":\"signaling_pathway\"},\"relationships\":[{\"predicate\":\"involves\",\"target\":\"STAT1 signaling\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"correlates_with\",\"target\":\"human patient response to PD-1 blockade immunotherapy\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"STAT1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"signaling_protein\"},\"relationships\":[{\"predicate\":\"signaling_antagonized_by\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"}]},{\"name\":\"Cxcl9 and Cxcl10\",\"type\":\"other\",\"attributes\":{\"expression_status\":\"repressed in myeloid cells by tPD-L1\",\"model_entity_type\":\"chemokines\"},\"relationships\":[{\"predicate\":\"impair_recruitment_of\",\"target\":\"cytotoxic T lymphocytes (CTLs)\",\"attributes\":{},\"target_id\":\"cytotoxic_t_lymphocytes_ctls\"}]},{\"name\":\"cytotoxic T lymphocytes (CTLs)\",\"type\":\"other\",\"attributes\":{\"recruitment_status\":\"impaired in lung metastases by tPD-L1\",\"model_entity_type\":\"cell_type\"},\"relationships\":[{\"predicate\":\"recruitment_dependent_on\",\"target\":\"Cxcl9 and Cxcl10\",\"attributes\":{},\"target_id\":\"cxcl9_and_cxcl10\"},{\"predicate\":\"required_for\",\"target\":\"decrease in lung metastasis upon PD-L1 knockout\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"signaling_axis\"},\"relationships\":[{\"predicate\":\"controls\",\"target\":\"CTL tumor infiltration in lung metastasis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PD-1 immune checkpoint blockade (ICB) immunotherapy\",\"type\":\"other\",\"attributes\":{\"mechanism\":\"blocks PD-L1 engagement with PD-1 on CTLs\",\"model_entity_type\":\"treatment\"},\"relationships\":[{\"predicate\":\"response_correlates_with\",\"target\":\"IFN-I response in myeloid cells\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Tumor-expressed PD-L1 promotes lung metastasis without affecting primary tumor growth or directly inhibiting CTL cytotoxicity. This effect is mediated by engaging myeloid cell PD-1 to suppress type I interferon signaling and chemokine expression, thereby impairing CTL recruitment to the metastatic site.\",\"entities\":[{\"name\":\"tumor PD-L1 (tPD-L1)\",\"type\":\"other\",\"attributes\":{\"expression_pattern\":\"enhanced at metastatic tumor sites compared to primary tumor sites\",\"primary_function\":\"promotes micro- and macro-metastatic tumor growth\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"has_no_direct_effect_on\",\"target\":\"CTL activity in absence of other microenvironmental factors\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"targets\",\"target\":\"myeloid PD-1 (mPD-1)\",\"attributes\":{},\"target_id\":\"myeloid_pd_1_mpd_1\"},{\"predicate\":\"suppresses\",\"target\":\"type I IFN expression and function\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"represses\",\"target\":\"Cxcl9 and Cxcl10 expression in myeloid cells\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"impairs\",\"target\":\"CTL recruitment to lung niche\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enhances\",\"target\":\"established lung metastasis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"is_independent_of\",\"target\":\"promoting primary tumor growth\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"myeloid PD-1 (mPD-1)\",\"type\":\"other\",\"attributes\":{\"role\":\"bridges tPD-L1 to CTL recruitment in tumor metastasis\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"engaged_by\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"}]},{\"name\":\"4T1 cell line\",\"type\":\"other\",\"attributes\":{\"origin\":\"murine triple negative breast cancer (TNBC)\",\"genetic_modification\":\"Cd274 (PD-L1) deleted\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"in vitro CTL-tumor interaction system\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expresses\",\"target\":\"gp70 protein\",\"attributes\":{},\"target_id\":\"gp70_protein\"}]},{\"name\":\"CT26 cell line\",\"type\":\"other\",\"attributes\":{\"origin\":\"murine mismatch repair proficient (MMRp) colorectal cancer (CRC)\",\"genetic_modification\":\"Cd274 (PD-L1) deleted\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"in vitro CTL-tumor interaction system\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expresses\",\"target\":\"gp70 protein\",\"attributes\":{},\"target_id\":\"gp70_protein\"}]},{\"name\":\"2/20 CTL line\",\"type\":\"other\",\"attributes\":{\"specificity\":\"tumor-specific, sensitive to PD-1 mediated inhibition\",\"antigen_recognition\":\"H2-Ld-restricted AH1 epitope (residues 6-14) of gp70\",\"functional_state\":\"effector CTL, exerts antigen-specific cytotoxicity within minutes without differentiation from naïve state\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"recognizes\",\"target\":\"gp70 protein endogenously expressed by 4T1 and CT26 cells\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"gp70 protein\",\"type\":\"other\",\"attributes\":{\"expression\":\"endogenous in 4T1 and CT26 cells\",\"epitope\":\"AH1 (residues 6-14)\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"recognized_by\",\"target\":\"2/20 CTL line\",\"attributes\":{},\"target_id\":\"2_20_ctl_line\"}]}]},{\"context_summary\":\"Tumor PD-L1 does not affect primary tumor growth or initial lung colonization efficiency but promotes lung metastasis by suppressing CTL-mediated clearance. This effect requires a functioning adaptive immune system and is mediated by a third factor present in the lung metastatic niche. Single-cell RNA sequencing of lung leukocytes revealed that PD-L1 loss drives transcriptional changes specifically in myeloid cells, including enhanced antigen presentation machinery in macrophages.\",\"entities\":[{\"name\":\"tumor PD-L1 (tPD-L1)\",\"type\":\"other\",\"attributes\":{\"source\":\"tumor cells\",\"effect_on_primary_tumor\":\"no difference in growth compared to PD-L1 KO\",\"effect_on_lung_metastasis\":\"promotes metastasis by suppressing CTL killing\",\"requirement\":\"requires functioning adaptive immune system\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"does_not_affect\",\"target\":\"primary tumor growth\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_enhance\",\"target\":\"disseminated tumor cell (DTC) colonization efficiency\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"suppresses\",\"target\":\"CTL-mediated clearance of lung metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"requires\",\"target\":\"adaptive immune system\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"blocked_by\",\"target\":\"MHC class I ablation or CD8+ T cell depletion\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"4T1 cell line\",\"type\":\"other\",\"attributes\":{\"cancer_type\":\"murine triple negative breast cancer (TNBC)\",\"variants_tested\":\"PD-L1 WT and PD-L1 KO\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"orthotopic injection and tail vein injection experiments\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"metastasizes_equally_in\",\"target\":\"RAGII-KO mice\",\"attributes\":{},\"target_id\":\"ragii_ko_mice\"}]},{\"name\":\"CT26 cell line\",\"type\":\"other\",\"attributes\":{\"cancer_type\":\"murine mismatch repair proficient (MMRp) colorectal cancer (CRC)\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"shows_no_difference_in\",\"target\":\"primary tumor growth between WT and PD-L1 KO\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"lung metastasis\",\"type\":\"other\",\"attributes\":{\"mechanism_of_tPD-L1_action\":\"evades CTL-mediated clearance rather than driving extravasation or seeding\",\"model_entity_type\":\"pathological_process\"},\"relationships\":[{\"predicate\":\"promoted_by\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"},{\"predicate\":\"requires\",\"target\":\"adaptive immune system\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"disseminated tumor cells (DTCs)\",\"type\":\"other\",\"attributes\":{\"colonization_efficiency\":\"not enhanced by PD-L1\",\"model_entity_type\":\"cell_population\"},\"relationships\":[{\"predicate\":\"utilize\",\"target\":\"tumor PD-L1 (tPD-L1) to evade CTL-mediated clearance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RAGII-KO mice\",\"type\":\"other\",\"attributes\":{\"immune_status\":\"adaptive-immune deficient\",\"model_entity_type\":\"animal_model\"},\"relationships\":[{\"predicate\":\"demonstrates_that\",\"target\":\"tPD-L1 requires functioning adaptive immune system to promote lung metastasis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"myeloid cells\",\"type\":\"other\",\"attributes\":{\"transcriptional_response_to_PD-L1_loss\":\"drives transcriptional changes\",\"macrophage_phenotype\":\"enhanced antigen presentation machinery\",\"model_entity_type\":\"cell_population\"},\"relationships\":[{\"predicate\":\"analyzed_by\",\"target\":\"Single-Cell RNA Sequencing\",\"attributes\":{},\"target_id\":\"single_cell_rna_sequencing\"},{\"predicate\":\"validated_by\",\"target\":\"flow cytometric analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"single-cell RNA sequencing of CD45+ leukocytes\",\"type\":\"method\",\"attributes\":{\"sample_source\":\"4T1 WT and PD-L1-KO colonized lungs\",\"cell_count\":\"~7500 cells\",\"clustering_method\":\"shared nearest neighbor clustering and UMAP\"},\"relationships\":[{\"predicate\":\"identified\",\"target\":\"differentially expressed genes in myeloid cells\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Tumor PD-L1 (tPD-L1) suppresses type I interferon signaling in myeloid cells via PD-1 engagement, rather than directly inhibiting CTLs. This suppression reduces MHC class II expression and IFN-beta production, creating an immunosuppressive niche that impairs CTL recruitment to lung metastases. Depletion of myeloid cells abolishes the pro-metastatic effect of tPD-L1.\",\"entities\":[{\"name\":\"tumor PD-L1 (tPD-L1)\",\"type\":\"other\",\"attributes\":{\"source\":\"tumor cells\",\"function\":\"suppresses type I interferon production and signaling in myeloid cells\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"engages\",\"target\":\"myeloid PD-1 (mPD-1)\",\"attributes\":{},\"target_id\":\"myeloid_pd_1_mpd_1\"},{\"predicate\":\"does_not_directly_suppress\",\"target\":\"cytotoxic T lymphocyte (CTL) activation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"promotes\",\"target\":\"lung metastasis\",\"attributes\":{},\"target_id\":\"lung_metastasis\"}]},{\"name\":\"myeloid PD-1 (mPD-1)\",\"type\":\"other\",\"attributes\":{\"location\":\"myeloid cell surface\",\"expression_change\":\"enhanced following tPD-L1 loss\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"engaged_by\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"},{\"predicate\":\"mediates\",\"target\":\"attenuation of type I interferon signaling\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"connects\",\"target\":\"tumor PD-L1 (tPD-L1) to CTL suppression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"type I interferon (IFN-I)\",\"type\":\"other\",\"attributes\":{\"signaling_mode\":\"autocrine or distance-dependent paracrine\",\"model_entity_type\":\"signaling_pathway\"},\"relationships\":[{\"predicate\":\"suppressed_by\",\"target\":\"tumor PD-L1 (tPD-L1) via myeloid PD-1 (mPD-1)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"induces\",\"target\":\"PD-L2 expression\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"drives\",\"target\":\"CTL recruitment in metastatic tumor\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PD-L2\",\"type\":\"other\",\"attributes\":{\"gene\":\"Pdcd1lg2\",\"role\":\"marker for type I interferon-stimulated myeloid cells\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"differentially_expressed_in\",\"target\":\"4T1-colonized lungs\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expression_increased_after\",\"target\":\"tPD-L1 loss\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RAW264.7 macrophages\",\"type\":\"other\",\"attributes\":{\"type\":\"macrophage\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"co_cultured_with\",\"target\":\"4T1 cell line\",\"attributes\":{},\"target_id\":\"4t1_cell_line\"},{\"predicate\":\"shows_upregulated_PD-1_expression_after\",\"target\":\"co-culture with 4T1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_decreased_pSTAT1_levels_after\",\"target\":\"engagement with 4T1 tPD-L1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"shows_diminished_MHC_class_II_expression_after\",\"target\":\"engagement with 4T1 tPD-L1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"4T1 cell line\",\"type\":\"other\",\"attributes\":{\"type\":\"murine triple negative breast cancer\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"co_cultured_with\",\"target\":\"RAW264.7 macrophages\",\"attributes\":{},\"target_id\":\"raw264_7_macrophages\"},{\"predicate\":\"expresses\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"}]},{\"name\":\"SHP-2\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"activation_enhanced_by\",\"target\":\"tPD-L1 engagement with mPD-1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"pSTAT1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"levels_decreased_by\",\"target\":\"tPD-L1 engagement with mPD-1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MHC class II\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"protein_complex\"},\"relationships\":[{\"predicate\":\"expression_diminished_by\",\"target\":\"tPD-L1 engagement with mPD-1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expression_elevated_on_stromal_and_tumor_cells_after\",\"target\":\"loss of tPD-L1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"IFN-beta\",\"type\":\"other\",\"attributes\":{\"role\":\"potent PD-L1/L2 inducer\",\"model_entity_type\":\"cytokine\"},\"relationships\":[{\"predicate\":\"production_enhanced_by\",\"target\":\"disruption of RAW PD-1 or 4T1 PD-L1 expression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"clodronate liposomes\",\"type\":\"method\",\"attributes\":{\"purpose\":\"depletion of myeloid cells\"},\"relationships\":[{\"predicate\":\"diminishes\",\"target\":\"tPD-L1 function in promoting lung tumor growth\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study extends findings to human patients with metastatic basal cell carcinoma, showing that PD-1 blockade releases myeloid differentiation restriction and enhances interferon signaling. The discussion highlights that tumor PD-L1 (tPD-L1) does not directly suppress CTL activation but instead binds to myeloid PD-1 (mPD-1) to create an immunologically cold metastatic niche. This mechanism distinguishes tPD-L1's role in metastasis from its potential sufficiency but not necessity in primary tumor response to PD-1 blockade.\",\"entities\":[{\"name\":\"metastatic basal cell carcinoma patients\",\"type\":\"other\",\"attributes\":{\"condition\":\"metastatic basal cell carcinoma\",\"procedure\":\"single cell sequencing performed before and after PD-1 blockade\",\"model_entity_type\":\"population\"},\"relationships\":[{\"predicate\":\"subject_of_study\",\"target\":\"human relevance of tPD-L1/mPD-1 findings\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PD-1 blockade\",\"type\":\"other\",\"attributes\":{\"effect_on_myeloid_cells\":\"releases differentiation restriction\",\"downstream_effects\":[\"enhanced interferon signaling\",\"enhanced antigen presentation\",\"enhanced CTL-recruiting chemokine expression\"],\"model_entity_type\":\"treatment\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"metastatic basal cell carcinoma patients\",\"attributes\":{},\"target_id\":\"metastatic_basal_cell_carcinoma_patients\"}]},{\"name\":\"tumor PD-L1 (tPD-L1)\",\"type\":\"other\",\"attributes\":{\"direct_effect_on_CTLs\":\"no direct role in suppression of CTL activation and cytotoxicity when only tumor cells and CTLs are present\",\"role_in_metastasis\":\"prevents immune clearance of metastases\",\"binding_partner\":\"myeloid PD-1 (mPD-1)\",\"functional_outcome\":\"enforces an immunologically cold microenvironment\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"myeloid PD-1 (mPD-1)\",\"attributes\":{},\"target_id\":\"myeloid_pd_1_mpd_1\"},{\"predicate\":\"controls\",\"target\":\"CTL recruitment\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"myeloid PD-1 (mPD-1)\",\"type\":\"other\",\"attributes\":{\"location\":\"myeloid cells\",\"interaction\":\"engaged by tPD-L1\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"bound_by\",\"target\":\"tumor PD-L1 (tPD-L1)\",\"attributes\":{},\"target_id\":\"tumor_pd_l1_tpd_l1\"}]},{\"name\":\"myeloid cells\",\"type\":\"other\",\"attributes\":{\"historical_role\":\"contribute to formation of immunosuppressive metastatic niche\",\"phenotypic_switch\":\"mechanisms controlling switch between suppressive and inflammatory populations were previously unclear\",\"model_entity_type\":\"cell_type\"},\"relationships\":[{\"predicate\":\"express\",\"target\":\"myeloid PD-1 (mPD-1)\",\"attributes\":{},\"target_id\":\"myeloid_pd_1_mpd_1\"}]},{\"name\":\"cytotoxic T lymphocytes (CTLs)\",\"type\":\"other\",\"attributes\":{\"recruitment_control\":\"controlled by tPD-L1/mPD-1 axis rather than direct functionality suppression\",\"model_entity_type\":\"cell_type\"},\"relationships\":[{\"predicate\":\"recruited_by\",\"target\":\"interferon signaling and chemokines\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"interferon alpha (IFNα)\",\"type\":\"other\",\"attributes\":{\"regulatory_status\":\"first FDA-approved cancer immunotherapy\",\"indications\":[\"adjuvant treatment in melanoma\",\"adjuvant treatment in renal cell carcinoma\"],\"efficacy\":\"minimal response rate but induced long-term, metastasis-free remission in significant fraction of late-stage patients\",\"model_entity_type\":\"therapeutic_agent\"},\"relationships\":[{\"predicate\":\"induces\",\"target\":\"PD-L1 and PD-1 in myeloid cells\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"type I interferon signaling\",\"type\":\"other\",\"attributes\":{\"regulation\":\"induces PD-L1 and PD-1 in myeloid cells, with PD-L1 upregulated more rapidly\",\"model_entity_type\":\"biological_pathway\"},\"relationships\":[{\"predicate\":\"regulated_by\",\"target\":\"PD-1/L1 axis\",\"attributes\":{},\"target_id\":\"pd_1_l1_axis\"}]}]},{\"context_summary\":\"The PD-1/L1 axis functions as a negative feedback circuit for type I interferon signaling, potentially explaining low response rates in interferon alpha therapies. Mutations in interferon pathways are linked to adaptive resistance to immunotherapy, while the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis controls CTL infiltration in lung metastasis.\",\"entities\":[{\"name\":\"PD-1/L1 axis\",\"type\":\"concept\",\"attributes\":{\"function\":\"negative feedback circuit for type I interferon signaling\"},\"relationships\":[{\"predicate\":\"may_cause\",\"target\":\"low response rates in interferon alpha therapies\",\"attributes\":{\"mechanism\":\"compensatory PD-1/L1 upregulation\"},\"target_id\":null}]},{\"name\":\"interferon alpha therapies\",\"type\":\"method\",\"attributes\":{\"response_rate\":\"low\"},\"relationships\":[]},{\"name\":\"phase I/II clinical trials\",\"type\":\"event\",\"attributes\":{\"outcome\":\"early success\"},\"relationships\":[{\"predicate\":\"tested_combination_of\",\"target\":\"direct administration of interferon or indirect upregulation through TLR and STING agonists with anti-PD-1/L1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Irf7\",\"type\":\"other\",\"attributes\":{\"function\":\"mediates the second wave of interferon production in response to type I interferon exposure\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"forced_overexpression_abrogated\",\"target\":\"triple negative breast cancer bone metastasis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"silenced_at\",\"target\":\"spontaneously occurring metastasis including lung\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"prostate cancer metastases\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"disease_state\"},\"relationships\":[{\"predicate\":\"display_silencing_of\",\"target\":\"type I interferon production\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"mutations in type I and II interferon pathway\",\"type\":\"other\",\"attributes\":{\"examples\":\"JAK1/JAK2\",\"model_entity_type\":\"genetic_variation\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"adaptive resistance to immunotherapy\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"suppression of interferon signaling\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"biological_process\"},\"relationships\":[{\"predicate\":\"is_primary_mechanism_for\",\"target\":\"tumors achieving successful immune evasion and adaptive resistance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"type I interferon signaling pathway\",\"type\":\"other\",\"attributes\":{\"role\":\"essential for myeloid cell function in CTL recruitment to the lung metastasis niche\",\"model_entity_type\":\"biological_process\"},\"relationships\":[]},{\"name\":\"tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"signaling_pathway\"},\"relationships\":[{\"predicate\":\"controls\",\"target\":\"CTL tumor infiltration in lung metastasis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"promotes\",\"target\":\"lung metastasis\",\"attributes\":{},\"target_id\":\"lung_metastasis\"},{\"predicate\":\"underlies_efficacy_of\",\"target\":\"ICB immunotherapy in the neoadjuvant and the adjuvant setting\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"lung metastasis\",\"type\":\"other\",\"attributes\":{\"location\":\"barrier tissue\",\"microenvironment\":\"may have a uniquely inflamed microenvironment\",\"model_entity_type\":\"disease_state\"},\"relationships\":[]}]},{\"context_summary\":\"The text details the experimental protocols for flow cytometry, bulk and single-cell RNA sequencing, and statistical analysis used in the study. Specific reagents, sequencing platforms, and bioinformatics pipelines are identified for processing mouse lung tissue data.\",\"entities\":[{\"name\":\"co-culture cytotoxicity experiments\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"uses_staining\",\"target\":\"APC-AnnexinV and propidium iodide (PI)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"intracellular staining protocol\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"uses_fixation_permeabilization\",\"target\":\"Cytofix/Cytoperm Plus kit\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"manufacturer\",\"target\":\"BD Biosciences\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"flow cytometry acquisition\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"uses_instrument\",\"target\":\"FACSCalibur\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_instrument\",\"target\":\"LSRFortessa\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_software\",\"target\":\"CellQuestPro\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_software\",\"target\":\"BD Diva 8.01\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"flow cytometry data analysis\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"uses_software\",\"target\":\"FlowJo v10.6.0\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"manufacturer\",\"target\":\"BD Biosciences\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"statistical analysis\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"uses_software\",\"target\":\"Prism8\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_test\",\"target\":\"two-tailed Student's t-test\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_test\",\"target\":\"two-sided log-rank test\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_package\",\"target\":\"Survival package, R\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Bulk RNA Sequencing\",\"type\":\"method\",\"attributes\":{\"model\":\"4T1.WT or 4T1.PDL1-KO cells\",\"timepoint\":\"seven days post-injection\"},\"relationships\":[{\"predicate\":\"uses_extraction_kit\",\"target\":\"Direct-zol RNA microprep kit\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"sequenced_by\",\"target\":\"Novogene\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_reference_genome\",\"target\":\"mm10\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_alignment_tool\",\"target\":\"STARv2.5\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_quantification_tool\",\"target\":\"HTSeqv0.6.1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_normalization\",\"target\":\"DESeq2 rank-log transformed normalized counts\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_analysis_tool\",\"target\":\"GSEA4.0\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_analysis_tool\",\"target\":\"clusterprofiler\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Single-Cell RNA Sequencing\",\"type\":\"method\",\"attributes\":{\"model\":\"Balb/c mice with 4T1.WT or 4T1.PDL1-KO cells\",\"timepoint\":\"fourteen days post-injection\",\"viability_threshold\":\"≥ 80% viable cells\",\"target_cells\":\"2-3 x 10^3 targeted cells\"},\"relationships\":[{\"predicate\":\"uses_selection_method\",\"target\":\"CD45 magnetic nanobeads\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_chip\",\"target\":\"Chromium Chip B\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_kit\",\"target\":\"Chromium Single Cell 3' Reagent Kit v3\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"manufacturer\",\"target\":\"10x Genomics\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"sequenced_on\",\"target\":\"Illumina NextSeq 500\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_pipeline\",\"target\":\"Cell Ranger 3.1.0\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_alignment_tool\",\"target\":\"STAR aligner\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_analysis_software\",\"target\":\"Seurat\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_doublet_removal\",\"target\":\"DoubletFinder\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text details the bioinformatics and experimental protocols used to analyze single-cell RNA sequencing data, generate gene signatures, and perform patient dataset analyses. It describes methods for clustering cells, scoring signatures using VISION, and validating findings through colonization assays, Western blotting, and immunohistochemistry.\",\"entities\":[{\"name\":\"Single-cell RNA sequencing analysis\",\"type\":\"method\",\"attributes\":{\"clustering_method\":\"first fifty principal components\",\"annotation_tool\":\"SingleR\",\"subset_reclustering\":\"top twenty principal components for Myeloid and T cells\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"MSigDB and study-generated signature sets\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"VISION for single-cell scoring\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"tPD-L1 loss gene signature\",\"type\":\"measurement\",\"attributes\":{\"creation_method\":\"isolating genes with expression increase of at least two-fold and padj < 0.05\",\"source_data\":\"bulk RNA-sequencing dataset following tPD-L1 loss\",\"analysis_tool\":\"DESeq2\"},\"relationships\":[]},{\"name\":\"SHP-2 activation signature\",\"type\":\"measurement\",\"attributes\":{\"creation_method\":\"isolating genes with two-fold expression increase (padj < 0.05) in myeloid cells after SHP099 treatment\",\"post_processing\":\"score inverted\"},\"relationships\":[]},{\"name\":\"MA, MB, and MC gene signatures\",\"type\":\"measurement\",\"attributes\":{\"creation_method\":\"using Seurat TransferData function to transfer labels from macrophage PHATE clusters to human lung tumor-resident macrophage dataset\"},\"relationships\":[]},{\"name\":\"Cluster-identifying signatures\",\"type\":\"measurement\",\"attributes\":{\"creation_method\":\"calculated by Seurat FindAllMarkers function\"},\"relationships\":[]},{\"name\":\"Patient Dataset Analysis\",\"type\":\"method\",\"attributes\":{\"data_sources\":\"TCGA database, BMS038, PRJEB23709\",\"survival_analysis_tools\":\"R survival and survminer packages\",\"alignment_tool\":\"kallisto for PRJEB23709\",\"batch_correction_tool\":\"Harmony for melanoma cohort\"},\"relationships\":[{\"predicate\":\"analyzes\",\"target\":\"tumor-infiltrating macrophages in melanoma cohort\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"assesses\",\"target\":\"intrasample variation via mean displacement\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Colonization Assay\",\"type\":\"method\",\"attributes\":{\"model\":\"Balb/c mice injected i.v. with 4T1.WT or 4T1.PDL1-KO cells\",\"timepoint\":\"24 hours post-injection\",\"processing\":\"lungs perfused with PBS, minced, homogenized in Trizol\",\"analysis\":\"RNA isolated for PCR\"},\"relationships\":[]},{\"name\":\"Western Blotting\",\"type\":\"method\",\"attributes\":{\"sample_processing\":\"lungs collected and homogenized using electric homogenizer\"},\"relationships\":[]},{\"name\":\"Immunohistochemistry\",\"type\":\"method\",\"attributes\":{\"fixation\":\"10% formalin\",\"imaging_software\":\"LAS4.1 (Leica)\",\"quantification_tool\":\"quPATH for CD3+ cells\"},\"relationships\":[]}]}]"
+}

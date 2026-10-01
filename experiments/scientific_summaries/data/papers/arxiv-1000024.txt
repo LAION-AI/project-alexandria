@@ -1,0 +1,674 @@
+From Words to Wheels: Automated Style-Customized Policy Generation
+for Autonomous Driving
+Xu Han1, Xianda Chen2, Zhenghan Cai3, Pinlong Cai4, Meixin Zhu2, Xiaowen Chu1∗
+Abstract— Autonomous driving technology has witnessed
+rapid advancements, with foundation models improving inter-
+activity and user experiences. However, current autonomous ve-
+hicles (AVs) face significant limitations in delivering command-
+based driving styles. Most existing methods either rely on
+predefined driving styles that require expert input or use
+data-driven techniques like Inverse Reinforcement Learning to
+extract styles from driving data. These approaches, though
+effective in some cases, face challenges: difficulty obtaining
+specific driving data for style matching (e.g., in Robotaxis),
+inability to align driving style metrics with user preferences,
+and limitations to pre-existing styles, restricting customization
+and generalization to new commands. This paper introduces
+Words2Wheels, a framework that automatically generates cus-
+tomized driving policies based on natural language user com-
+mands. Words2Wheels employs a Style-Customized Reward
+Function to generate a Style-Customized Driving Policy without
+relying on prior driving data. By leveraging large language
+models and a Driving Style Database, the framework efficiently
+retrieves, adapts, and generalizes driving styles. A Statistical
+Evaluation module ensures alignment with user preferences.
+Experimental results demonstrate that Words2Wheels out-
+performs existing methods in accuracy, generalization, and
+adaptability, offering a novel solution for customized AV driving
+behavior. Code and demo available at https://yokhon.
+github.io/Words2Wheels/.
+I. INTRODUCTION
+Autonomous driving technology has advanced rapidly,
+especially with the rise of foundation models that improve
+interactivity and user experience [1]–[4]. Despite these ad-
+vancements, significant room for improvement remains, par-
+ticularly regarding user experience. One key criticism is the
+uniform driving style of current autonomous vehicles (AVs)
+[5]–[7]. For example, 52.46% of AVs involved in crashes
+were rear-ended, 1.6 times the rate of conventional vehicles,
+highlighting the need for gentler braking styles [8].
+Driving style, or the characteristic way a vehicle operates,
+is crucial for autonomous driving [9]. While many studies
+have explored driving styles, early approaches relied heavily
+on classification or calibration of predefined styles or driving
+patterns [10]–[16]. For instance, Wang et al. used a hidden
+semi-Markov model to extract driving patterns [17], and
+Deng et al. applied a hidden Markov model to braking anal-
+ysis [18]. However, these manually designed styles depend
+*Corresponding author: Xiaowen Chu, xwchu@ust.hk
+1Data Science and Analytics Thrust, Information Hub, The Hong Kong
+University of Science and Technology (Guangzhou), Guangzhou, China
+2Intelligent Transportation Thrust, Systems Hub, The Hong Kong Uni-
+versity of Science and Technology (Guangzhou), Guangzhou, China
+3Department of Automation, School of Electrical Automation and Infor-
+mation Engineering,Tianjin University, Tianjin, China
+4Shanghai Artificial Intelligence Laboratory, Shanghai, China
+This is a preprint version.
+User Command
+Please brake more gently!
+Style Reward
+Finding the best suited function.
+Style Policy
+Satisfying the user command.
+Fig. 1.
+Words2Wheels automatically generates customized driving policies
+in alignment with user commands by LLM-powered reward design.
+heavily on expert input, making the process cumbersome and
+subjective, requiring frequent adjustments [19].
+In recent years, data-driven approaches have gained trac-
+tion, using methods such as clustering and Inverse Reinforce-
+ment Learning (IRL) to derive driving policies with varying
+styles from natural driving behavior data [20]–[25]. Zhao et
+al. uses model-based IRL to learn and adapt to individual
+driver preferences from historical data [26]. Rosbach et al.
+applied maximum entropy IRL to automatically tune re-
+ward functions based on human driving demonstrations [27].
+Nevertheless, these approaches face several challenges when
+applied to autonomous driving. Firstly, they require a small
+amount of driving behavior data to match with a specific
+driving style, but obtaining such data is particularly difficult
+in Robotaxi scenarios, leading to issues with style matching
+[26]. Secondly, the metrics used to quantify driving styles are
+diverse, and the inability to prioritize these metrics according
+to user preferences can severely restrict the effectiveness of
+style matching. Lastly, these methods are limited to selecting
+from existing styles and cannot customize a style based
+on user needs, potentially leading to situations where no
+existing style aligns with the user command, known as the
+generalization problem [28], [29]. These challenges limit the
+applicability of these methods in autonomous driving.
+More recently, foundation models have been explored to
+process user instructions [30]–[34]. Cui et al. integrated large
+language models (LLMs) to personalize driving experiences
+through dynamic interaction [35], while Yang et al. aligned
+LLM-powered agents with human driving styles from inter-
+views [36]. While these methods can adjust specific behav-
+iors like speed and lane changes based on natural language
+input, they fall short in adjusting the overall driving policy
+at the style level [30], [35]. Additionally, these approaches
+often involve the foundation model in most decision loops,
+raising concerns about reliability and efficiency [37], [38].
+To address these challenges, we propose Words2Wheels,
+a framework for automatically customizing driving policies
+based on user commands. The core innovation is the use
+arXiv:2409.11694v1  [cs.RO]  18 Sep 2024
+
+A. Automated Policy Customization
+B. Driving Style Database
+C. Statistical Evaluation
+Reserved
+test set
+Key metrics
+identification
+Comparison with
+natural Stats
+Driving Style 1 (Data-Driven)
+Driving Style 2 (Data-Driven)
+Driving Style 3 (Manual Design)
+… …
+Style Matching
+Command Cognition
+Online Policy Update
+Style-Customized Reward
+Function (Style Reward)
+Statistics on Test set
+(Stats)
+Style-Customized Driving
+Policy (Style Policy)
+Style Policy Assessment
+LLM involved
+RL involved
+Backend processing
+Style Reward Generation
+Fig. 2.
+(A) Workflow of Words2Wheels: When a natural language command is received, the system matches it with a style from the database. Style
+Reward generation and policy training run simultaneously in the backend, resulting in a new Style Policy that may outperform the existing one and replace
+it. (B) Driving Style Database: This repository stores Style Rewards (initially from both data-driven and human-designed methods), Style Policies, and
+their statistics. It manages the increasing variety of driving styles and supports the automated policy customization. (C) Statistical Evaluation Module:
+This module ensures that the generated driving styles closely align with user commands by evaluating them against natural driving behaviors.
+of a Style-Customized Reward Function (Style Reward) to
+bridge user input and a Style-Customized Driving Policy
+(Style Policy), as shown in Fig. 1. In Reinforcement Learn-
+ing (RL), the reward function guides the driving policy to
+optimize long-term rewards and serves as a policy index
+[39]. These Style Rewards are less complex than user com-
+mands or traffic scenarios, enabling efficient retrieval of Style
+Policy [40]. By leveraging LLMs and Retrieval-Augmented
+Generation (RAG) technology [41], Words2Wheels precisely
+matches driving styles using quantitative metrics. With
+LLMs’ “zero-shot” generation capabilities1, Words2Wheels
+can generalize to new commands and styles without user
+behavior data. The framework is also extensible, allowing
+for features like fuzzy memory via LLMs.
+To ensure the Style Policy matches user commands, we de-
+veloped two key modules. First, the Driving Style Database,
+a repository containing Style Rewards, Style Policies, and
+statistical features such as jerk during braking, as shown in
+Fig. 2. These features guide the LLM’s analysis, enabling fast
+selection of appropriate Style Policies and generation of new
+Style Rewards when needed. New Style Policies that outper-
+form existing ones can replace them, with all updates added
+to the database, continuously expanding the style range.
+Second, the Statistical Evaluation module measures how
+well the Style Policy aligns with the user command. Using
+a reserved test dataset, this module prevents overfitting and
+provides benchmarks for evaluating policies. It automatically
+1Zero-shot refers to no need for user driving data here. It’s few-shot in
+generating reward functions based on existing Style Rewards.
+selects relevant metrics, compares the policies with natural
+data, and offers a reliable evaluation of driving style.
+To the best of our knowledge, Words2Wheels is the first
+framework that automatically customizes style-aware driving
+policies to align with natural language user commands. The
+primary contributions of this paper include:
+• Developing the Words2Wheels framework, which auto-
+matically customizes driving policies to bridge the gap
+between user preferences and driving behavior.
+• Introducing a conceptual Driving Style Database that
+enables efficient retrieval and continuous enrichment of
+driving styles based on user commands.
+• Designing a Statistical Evaluation module to automat-
+ically and accurately measure the alignment between
+driving policies and user commands.
+• Conducting comprehensive experiments to validate the
+effectiveness of Words2Wheels, demonstrating its capa-
+bilities in accuracy, generalization, and reliability.
+II. PROBLEM FORMULATION
+A. Markov Decision Process
+In autonomous driving, decision-making is often mod-
+eled as a Markov Decision Process (MDP) [42], [43]. An
+MDP consists of states S representing possible environment
+configurations, actions A available to the vehicle, transition
+probabilities P(s′|s, a) for moving between states, a reward
+function R(s, a) that provides feedback for actions, and a
+discount factor γ that balances future rewards. The goal is
+to find a policy π that maximizes the expected cumulative
+reward, E [P∞
+t=0 γtR(st, at)].
+
+Reinforcement Learning (RL) is employed to identify the
+optimal policy π∗, which maximizes this reward. The agent
+learns by interacting with the environment—observing states,
+taking actions, and receiving rewards. The optimal value
+function V ∗(s), representing the expected cumulative reward
+from state s, satisfies the Bellman equation [39]:
+V ∗(s) = max
+a∈A
+"
+R(s, a) + γ
+X
+s′∈S
+P(s′|s, a)V ∗(s′)
+#
+IRL focuses on recovering the reward function R(s, a)
+from expert demonstrations [44], inferring the reward that
+makes the observed policy optimal. This enables the vehicle
+to replicate human-like decision-making.
+Both RL and IRL are essential for developing autonomous
+systems, enabling them to learn from simulations and real-
+world data [45], [46].
+B. Driving Style Alignment
+In autonomous driving, users often express their prefer-
+ences for driving styles in natural language. The task is
+to generate a driving policy πstyle that aligns with a user-
+specified driving style, expressed as a command C.
+The Driving Style Alignment problem is formulated as:
+1) User Command Interpretation: Given a natural lan-
+guage command C that describes the desired driving
+style, the system must interpret the command and map
+it to a driving style representation θstyle ∈Θ. This
+mapping is expressed as:
+F : C →Θ
+where C ∈C is the user command, and F(C) =
+θstyle is the inferred driving style representation, which
+indicates the reward function R(s, a) in this work.
+2) Driving Policy Generation and Optimization: Based
+on the interpreted driving style θstyle, the system
+generates a driving policy πstyle that minimizes the
+deviation from the user’s expected behavior, described
+by C. This step can be expressed as:
+π∗
+style = G(θstyle) = arg min
+π∈Π d(π, C)
+where G : Θ →Π maps the driving style θstyle to the
+optimal policy π∗
+style ∈Π, minimizing the deviation
+d(π, C) from the expected behavior. This mapping G
+is conducted by RL in the Words2Wheels framework.
+III. METHODOLOGY
+A. Automated Generation
+Upon receiving a user command like “I’m late. Hurry up!”,
+the Words2Wheels system automatically generates a driving
+policy aligned with the directive. As shown in Fig. 3, the
+process starts by applying RAG principles, where the LLM
+selects the top k relevant style rewards from the Driving
+Style Database, improving focus and task performance. This
+step can be parallelized for efficiency.
+Found similar command: No.
+Selected function: 1.
+New function code 1: def _get_reward(self): …
+New function code 2: def _get_reward(self): …
+…
+LLM
+Your task is to design appropriate reward functions based on user 
+commands. Please follow the steps in <Statistical Evaluation> 
+and select k most relevant reward functions.
+User content: I’m late. Hurry up!
+Reward functions: [{“id”: 1, “stats”: {“Speed”: {“mean”: 21.2, 
+“sd”: 5.0, “max”: 25.8, …}, “Time Headway”: {…}, …}, “code”: “def 
+_get_reward(self): …”}, {“id”: 2, …}, …].
+User
+Analysis: The user command suggests a driving style that 
+prioritizes speed and quick maneuvers, possibly at the expense of 
+comfort and safety. This implies a focus on high acceleration rates, 
+as well as potentially higher speeds, …
+Selected functions: 1, 5, 7.
+LLM
+Any selected function has similar matched command? If not, 
+please choose the best suited one according to the user
+command, and generate m new functions base on it.
+User
+Analysis: The user command suggests a driving style that …
+Selected function: 9.
+LLM
+We have trained and tested the reward function candidates. 
+Please follow the steps in <Statistical Evaluation> and select the 
+best suited one from them.
+Reward functions: [{“id”: 1, …}, {“id”: 9, …}, …].
+User
+RAG-based
+Command
+Cognition
+Style
+Matching
+&
+Style
+Reward
+Generation
+Style
+Policy
+Assessment
+Fig. 3.
+Example of automated Style Policy generation.
+To ensure reliable selection, the LLM consults the Sta-
+tistical Evaluation module. If a selected Style Reward has
+matched a semantically similar command, Words2Wheels
+directly uses its Style Policy (the fuzzy memory function),
+enhancing efficiency. If no match is found, the LLM gen-
+erates m new reward functions based on the most relevant
+Style Reward. The LLM’s generation goes beyond simple pa-
+rameter adjustments and may involve logic modifications or
+restructuring to handle generalization challenges effectively.
+The initially selected Style Reward provides a temporary
+solution since its policy is already trained. Meanwhile, the
+newly generated reward functions produce new Style Policies
+via RL, where the trainings can be parallelized. Finally, using
+the Statistical Evaluation module, Words2Wheels determines
+if the new policies outperform the temporary one, delivering
+the best match to the user command. This process is fully
+automated, reducing biases from subjective judgments.
+B. Driving Style Database
+The Driving Style Database is a key component of
+Words2Wheels. As shown in Fig. 2, each record includes
+a Style Reward, a Style Policy, and analytical data. Style
+Rewards are programming codes, while Style Policies are
+stored as pre-trained neural networks. Analytical data, gen-
+erated by the Statistical Evaluation module, can be saved
+
+in JSON format. These elements can be embedded as high-
+dimensional vectors to improve LLM’s retrieval efficiency.
+The database allows the LLM to select existing styles or
+use reward functions as templates to generate new ones. It is
+beneficial to populate the database with pre-existing reward
+functions at the start, which can enhance the quality of
+the LLM’s generations. Existing research on driving reward
+design provides valuable references, ranging from human-
+designed rewards [47], [48] to data-driven rewards derived
+from real-world data using clustering and IRL [26], [49].
+The greater the variety of reward functions, the more
+examples the LLM can reference. As Words2Wheels op-
+erates, new driving styles generated by the system expand
+the database, creating a broader range of styles and reducing
+reliance on RL, improving overall efficiency. User commands
+are also stored, enabling the fuzzy memory function.
+C. Statistical Evaluation
+You need to infer the driving style from the user command. You 
+can refer to pre-trained reward functions with key statistical 
+metrics reflecting driving styles on a test set. Statistics of natural 
+driving behavior on the test set are provided for your comparison.
+Statistical metrics: “Speed”: The speed of ego vehicle; “Time 
+Headway”: The time gap between the ego vehicle and the 
+leading vehicle; “Relative Speed”: The difference in speed ...
+Statistics of natural data: {“Speed”: {“mean”: 20.6, “sd”: 5.3, 
+“max”: 33.2, …}, “Time Headway”: {…}, “Relative Speed”: {…}, …}
+Please follow the instructions step by step:
+(1) Select the top n statistical metrics that are most relevant to 
+the user command.
+(2) Select a pre-trained reward function that aligns with the user 
+command most. You should rely on the comparison with the
+natural data on the selected metrics.
+(3) Answer in JSON format as follows: {"analysis": "Your step by 
+step analysis", "selected_function_id": "id"}
+User
+Fig. 4.
+Simplified example of Statistical Evaluation module.
+The Statistical Evaluation module is essential for gener-
+ating statistical data on driving behavior and helping the
+LLM accurately assess how well a Style Policy aligns with
+a user command. To ensure reliability, we reserve a test
+dataset to simulate driving behavior and collect relevant data.
+From this, various metrics are calculated, such as speed,
+acceleration, jerk, spacing, and time headway, as informed
+by prior research on driving styles [10], [50], [51].
+These metrics help the LLM evaluate Style Policies by
+comparing the statistics to the user command, as shown
+in Fig. 4. The prompt includes a brief introduction to
+the metrics and natural driving behavior statistics from the
+test set to provide a baseline. Using a Chain-of-Thought
+approach [52], the LLM selects the n most relevant metrics
+TABLE I
+LEVELS OF USER COMMAND
+Level
+Linguistic Category
+Example Commands
+Level I
+Direct
+Drive aggressively.
+Level II
+Indirect with strong hints
+You are braking too harsh.
+Level III
+Indirect with mild hints
+I am going to be late.
+and compares the policies to natural driving data, enabling
+objective style evaluation.
+Customizing the test set allows for expanded functionality.
+For instance, setting the test set to a specific Style Policy’s
+driving data enables fine-tuning based on that policy. Addi-
+tionally, spatio-temporal filtering of test set data can achieve
+more precise quantitative analyses.
+IV. EXPERIMENTS AND RESULTS
+A. Experimental Setup
+In this study, we selected the car-following scenario as
+the experimental focus, as it constitutes a significant portion
+of driving behavior and effectively reflects diverse driving
+styles, making it well-suited for validating our method’s ef-
+fectiveness. The experiment utilized the HighD dataset [53],
+which was collected by a 4K resolution camera mounted
+on a drone flying over a roadway. The data extraction and
+kinematic model for the car-following behavior were based
+on FollowNet [46]. To ensure the objectivity of the Statistical
+Evaluation module, 15% data was reserved as a test set.
+Additionally, to comprehensively assess the impact of
+various user commands, we followed the approach outlined
+in [54] and categorized user commands into three levels
+based on their directness, as detailed in TABLE I. This
+classification enables a more precise analysis of how different
+user commands influence the customization of driving styles.
+We adopted GPT-4o-2024-08-062 as the base model and
+the temperature was set to 0.3 for more deterministic text
+generation. We set k = 3 in selecting relevant styles and
+n = 2 in Statistical Evaluation.
+B. Customizing Driving Style
+First, we evaluated whether the driving styles generated
+by Words2Wheels align with the specified user commands.
+Prior to testing, we populated the Driving Style Database
+with 8 initial styles. Some of these were data-driven reward
+functions, derived using the clustering plus IRL approach
+outlined in [26], while others were human-designed reward
+functions based on the methodologies from [42], [47], [48].
+For generating Style Policy from Style Reward, we employed
+Proximal Policy Optimization [55], a commonly used RL
+algorithm, for training. Since RL training can be unstable
+at times, we ran the training 5 times using different seeds,
+selecting the Style Policy with the highest reward.
+We began by testing three specific user commands: “Drive
+aggressively / normally / conservatively.” To ensure the
+2https://platform.openai.com/docs/models
+
+Fig. 5.
+Comparison of customized policies over style-aware metrics.
+robustness of the results, we ran each command 5 times
+and averaged the outcomes, as shown in Fig. 5. In the
+repeated experiments, sometimes the newly generated style is
+selected as the best suited, and sometimes the existing style
+is. To make the data easier to compare, we normalized it
+using the 10th and 90th percentiles of the natural driving
+behavior from the test set. The aggressive style showed
+higher speeds and greater acceleration, while the conservative
+style maintained a larger gap and relative speed (leading
+vehicle minus following vehicle), which aligned well with
+expectations. However, the aggressive style had a larger time
+headway, and the normal style showed higher jerk, possibly
+because the LLM did not prioritize these metrics. Overall,
+Words2Wheels demonstrated a strong ability to adapt to
+different driving styles based on user commands.
+C. Generation Capability
+In this experiment, we tested Words2Wheels’ ability to
+generate driving styles by only providing styles that did
+not match the user commands. For example, when the user
+command indicated an aggressive driving style, we only
+provided conservative and normal styles, and vice versa. We
+limited the initial styles to 4 for better demonstration.
+Results from 5 repeated runs were averaged and are shown
+in Fig. 6. When the input was “I’m going to be late for
+the train,” the generated style exhibited higher speed, accel-
+eration, and jerk. In contrast, when the input was “Safety
+first. I have plenty of time,” the generated style showed
+greater spacing, time headway, and relative speed. These
+results demonstrate that Words2Wheels can generate driving
+styles that align with user commands rather than simply
+selecting from existing styles. This capability is crucial for
+generalizing to new user commands and driving scenarios.
+D. Human-in-the-Loop Comparisons
+According to research on Reinforcement Learning with
+Human Feedback [56], human preferences tend to be more
+consistent and reliable than direct quantification, particularly
+in scientific experiments. To leverage this, we developed a
+visualization tool to compare human judgments on driving
+Fig. 6.
+Evaluation of generated policies when no aligned styles provided.
+style consistency, as illustrated in Fig. 7. This tool displays
+clips of car-following behavior from two different models in
+the same real-world scenario, allowing users to intuitively
+select which clip better aligns with the user command or
+if both seem similar. To eliminate bias, the models are
+anonymized as A and B.
+Fig. 7.
+User Interface of the tool for comparing driving style alignment.
+Referring to prior research [22], [26], we benchmarked
+Words2Wheels against Intelligent Driver Model (IDM) [57],
+a widely recognized car-following model. A detailed intro-
+duction to IDM and its calibration can be found in [43].
+We recruited 10 volunteers with valid driving license,
+presenting each with 5 user commands and testing 20 events
+per command, resulting in a total of 1,000 tested events.
+The results, summarized in TABLE II, show that in 72%
+events, participants judged the driving style generated by
+Words2Wheels to be a better match to the user command
+than IDM. In 18.8% events, both models were considered
+equally effective, while IDM was preferred in only 9.2%
+
+TABLE II
+HUMAN PREFERENCES ON DRIVING STYLE ALIGNMENT
+Command
+Prefer
+Ours
+Prefer
+IDM
+Even
+Tested
+events
+I’m going to be late for the date.
+72%
+12.5%
+15.5%
+200
+I am getting car sick and
+prefer a smooth ride.
+64%
+10.5%
+25.5%
+200
+Drive as fast as you can.
+72.5%
+8.5%
+19%
+200
+Safety first. I have plenty of time.
+79.5%
+3.5%
+17%
+200
+The cars behind us are honking,
+might be urging us.
+72%
+11%
+17%
+200
+Total
+72%
+9.2%
+18.8%
+1000
+TABLE III
+CASE STUDIES ACROSS ALL COMMAND LEVELS
+Command
+Level
+Rational
+Priorities
+Rational
+Metrics
+Rational
+Retrieval
+Rational
+Generation
+Case
+Count
+Level I
+100%
+100%
+100%
+90%
+10
+Level II
+90%
+90%
+90%
+80%
+10
+Level III
+100%
+95%
+90%
+85%
+20
+Total
+97.5%
+95%
+92.5%
+85%
+40
+cases. These findings highlight the capability and effective-
+ness of Words2Wheels in adapting to user commands.
+E. Generalization Capability
+To assess whether Words2Wheels can handle various user
+commands, we designed and tested 40 commands3, each
+reflecting a specific driving style, and closely evaluated the
+LLM’s responses for each one. These commands span across
+three levels of directness. First, we examined whether the
+LLM correctly interpreted the key factors prioritized by
+the user, such as efficiency or safety. Then, we verified
+whether the key metrics selected by the LLM through the
+Statistical Evaluation module were logically sound. Next, we
+evaluated the objectivity of the k Style Rewards retrieved
+from the Driving Style Database. Finally, we reviewed the
+reasonableness of the generated reward functions.
+The statistical results of these case studies are presented
+in TABLE III. Overall, Words2Wheels performed well in
+terms of analysis, decision-making, and generation for the
+vast majority of cases. The system’s handling of Level I
+commands was slightly more accurate than for Level II and
+III commands, closely aligning with human expectations. In
+a few isolated cases, the LLM’s interpretation and processing
+were off, such as in Case 19, where the LLM misinterpreted
+the user command “You are allowing a large gap with
+the vehicle in front,” and in Case 26, where the LLM
+intentionally selected the Style Reward with the highest jerk
+value as a counterexample. Another recurring issue was that
+when acceleration and jerk values were negative, the LLM’s
+understanding conflicted with human intuition. Despite these
+3Experimental records available at https://bit.ly/4giYhB7
+TABLE IV
+TESTING FUZZY MEMORY FUNCTION WITH SIMILAR COMMANDS
+Memory
+Similar Command (if successfully recall)
+I’m going to be
+late for {the train}.
+the plane (yes), the party (yes),
+the game (yes), work (yes),
+picking up my son from school (yes)
+{It’s getting dark} and
+visibility has decreased.
+It’s raining (yes), It’s a hazy day (yes),
+It’s foggy outside (yes), It’s snowing (no),
+The street lights are broken (yes)
+I am {dizzy} and
+prefer a smooth ride.
+getting car sick (yes), watching movie (yes),
+having breakfast (yes), not in a hurry (yes),
+having some food (yes)
+occasional misinterpretations, the case studies still demon-
+strated the strong overall capabilities of Words2Wheels.
+F. Fuzzy Memory
+To
+assess
+the
+fuzzy
+memory
+functionality
+of
+Words2Wheels, we conducted 3 experimental sets. In
+each set, we input a predefined memory into the Driving
+Style Database and then tested the system with 5 similar
+inputs to see if it could recall the corresponding memory.
+For instance, we entered the phrase “I’m going to be late
+for the train” as a historical command linked to a specific
+driving style in the database. We then tested whether the
+system could directly match this style when given similar
+inputs, such as “I’m going to be late for the plane.”
+The results, shown in TABLE IV, summarize the system’s
+ability to recall associated driving styles. With the exception
+of one case involving “It’s snowing and visibility has de-
+creased”, all other test cases were successfully recalled. The
+system demonstrated a strong ability to recognize and match
+fuzzy inputs to existing memories. This capability enhances
+the adaptability of the driving models, enabling the system
+to respond effectively to a broader range of natural language
+instructions by recalling similar previous commands.
+V. CONCLUSION AND DISCUSSION
+This paper presents Words2Wheels, a framework that cus-
+tomizes driving policies based on natural language user com-
+mands. By utilizing a Style-Customized Reward Function
+and a Driving Style Database, the system effectively aligns
+user preferences with driving behavior. Experiments showed
+Words2Wheels’ ability to generate and adapt driving styles,
+highlighting its potential for improving user experience in
+autonomous vehicles through style customization.
+Future work will focus on expanding the framework
+to more complex driving scenarios beyond car-following,
+refining the Statistical Evaluation module for finer tuning,
+and incorporating a Feedback and Reflection module [40]
+to improve reward functions and enhance system reliability.
+These developments aim to further enhance Words2Wheels’
+adaptability and precision in style-aware driving.

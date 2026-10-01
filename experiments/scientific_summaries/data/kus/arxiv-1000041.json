@@ -1,0 +1,1296 @@
+{
+  "document_id": "arxiv-1000041",
+  "fulltext_sha256": "83257df2ae2813b5e8b11ee8aafef662ef858be938ea333bae7f7e44fcd56b78",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "141d3a4abdc4769d93bce2a637dd12b075718f7c78251dc9060a995ac3ff168d",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper introduces DUO, a duplex decoding approach that enables real-time interaction in LLMs with minimal training costs. It employs a channel-division-multiplexing strategy to process queries and responses in parallel, contrasting with time-division-multiplexing methods like MiniCPM-Duplex. The method uses state tokens to determine whether to address or ignore new user inputs.",
+        "entities": [
+          {
+            "name": "DUO",
+            "entity_id": "duo",
+            "entity_type": "method",
+            "aliases": [
+              "DUO",
+              "DUO (DUplex decOding)"
+            ],
+            "attributes": {
+              "description": "A novel channel-based parallel decoding mechanism that equips LLMs with duplex capabilities",
+              "training_cost": "minimal additional training",
+              "strategy": "channel-division-multiplexing decoding strategy"
+            },
+            "relationships": [
+              {
+                "predicate": "enables",
+                "target": "simultaneous autoregressive output generation and input preprocessing",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "two state tokens",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "differs_from",
+                "target": "MiniCPM-Duplex",
+                "attributes": {},
+                "target_id": "minicpm_duplex"
+              },
+              {
+                "predicate": "implemented_using",
+                "target": "Flex-Attention",
+                "attributes": {},
+                "target_id": "flex_attention"
+              },
+              {
+                "predicate": "tested_on",
+                "target": "MiniCPM-2.4B",
+                "attributes": {},
+                "target_id": "minicpm_2_4b"
+              }
+            ]
+          },
+          {
+            "name": "MiniCPM-Duplex",
+            "entity_id": "minicpm_duplex",
+            "entity_type": "method",
+            "aliases": [
+              "MiniCPM-Duplex"
+            ],
+            "attributes": {
+              "introduced_by": "Zhang et al. (2024)",
+              "strategy": "time-division-multiplexing strategy for encoding and decoding",
+              "data_format": "input and output split and mixed in a time slice format"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "substantial computational resources for model retraining",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_address",
+                "target": "non-awakening interactions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "LSLM",
+            "entity_id": "lslm",
+            "entity_type": "method",
+            "aliases": [
+              "LSLM"
+            ],
+            "attributes": {
+              "introduced_by": "Ma et al. (2024)",
+              "function": "combines channels for autoregressive generation and real-time turn-taking detection"
+            },
+            "relationships": [
+              {
+                "predicate": "explores",
+                "target": "three strategies to fuse listening and speaking channels",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "state tokens",
+            "entity_id": "state_tokens",
+            "entity_type": "concept",
+            "aliases": [
+              "state tokens"
+            ],
+            "attributes": {
+              "count": "two",
+              "purpose": "signal whether a query should be addressed or ignored"
+            },
+            "relationships": [
+              {
+                "predicate": "used_by",
+                "target": "DUO",
+                "attributes": {},
+                "target_id": "duo"
+              }
+            ]
+          },
+          {
+            "name": "Wang Xu",
+            "entity_id": "wang_xu",
+            "entity_type": "person",
+            "aliases": [
+              "Wang Xu"
+            ],
+            "attributes": {
+              "affiliation": "Department of Computer Science & Technology, Tsinghua University"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Enabling Real-Time Conversations with Minimal Training Costs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Wanxiang Che",
+            "entity_id": "wanxiang_che",
+            "entity_type": "person",
+            "aliases": [
+              "Wanxiang Che"
+            ],
+            "attributes": {
+              "affiliation": "Harbin Institute of Technology",
+              "role": "Corresponding author"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Enabling Real-Time Conversations with Minimal Training Costs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Tsinghua University",
+            "entity_id": "tsinghua_university",
+            "entity_type": "organization",
+            "aliases": [
+              "Tsinghua University"
+            ],
+            "attributes": {
+              "location": "Beijing, China",
+              "department": "Department of Computer Science & Technology"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Harbin Institute of Technology",
+            "entity_id": "harbin_institute_of_technology",
+            "entity_type": "organization",
+            "aliases": [
+              "Harbin Institute of Technology"
+            ],
+            "attributes": {
+              "location": "Harbin, China"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 500,
+          "word_count": 500,
+          "sha256": "ffbcc906046d89d68e48b9dc622326521c6d9fcb6034f8b3e4a36f1c2113d43d",
+          "sentence_minhash": [
+            126886477909240359,
+            1306423125707224,
+            40863640610520970,
+            25188414276899338,
+            133839408494452977,
+            241644623203663657,
+            24705362828007687,
+            16139261779277193,
+            24341091411489785,
+            21383545105860156,
+            19416574622547768,
+            52645032876404687,
+            90665109298264684,
+            58558631451210278,
+            84258266176112060,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The DUO method enhances the naturalness and human-likeness of user-AI interactions with minimal training costs. It operates in two scenarios: non-awakening interaction, where background input is filtered, and interruption interaction, where the model pauses to address new queries. The system uses parallel decoding where input and output channels process tokens simultaneously without attending to each other after a specific time step.",
+        "entities": [
+          {
+            "name": "DUO method",
+            "entity_id": "duo_method",
+            "entity_type": "method",
+            "aliases": [
+              "DUO method"
+            ],
+            "attributes": {
+              "full_name": "DUplex decOding",
+              "training_cost": "minimal",
+              "effect": "significantly enhances naturalness and human-likeness of user-AI interactions"
+            },
+            "relationships": [
+              {
+                "predicate": "processes",
+                "target": "inputs and outputs cyclically",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "state tokens",
+                "attributes": {},
+                "target_id": "state_tokens"
+              }
+            ]
+          },
+          {
+            "name": "non-awakening interaction",
+            "entity_id": "non_awakening_interaction",
+            "entity_type": "concept",
+            "aliases": [
+              "non-awakening interaction"
+            ],
+            "attributes": {
+              "description": "Scenario where the model filters out background dialogues or non-query input"
+            },
+            "relationships": []
+          },
+          {
+            "name": "interruption interaction",
+            "entity_id": "interruption_interaction",
+            "entity_type": "concept",
+            "aliases": [
+              "interruption interaction"
+            ],
+            "attributes": {
+              "description": "Scenario where the user interrupts with a new question during ongoing generation"
+            },
+            "relationships": [
+              {
+                "predicate": "requires_model_to",
+                "target": "pause current output to address latest query",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "parallel decoding",
+            "entity_id": "parallel_decoding",
+            "entity_type": "method",
+            "aliases": [
+              "parallel decoding"
+            ],
+            "attributes": {
+              "mechanism": "Output channel generates tokens autoregressively while input channel pre-fills key-value cache and predicts next tokens"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "DUO method",
+                "attributes": {},
+                "target_id": "duo_method"
+              }
+            ]
+          },
+          {
+            "name": "input channel",
+            "entity_id": "input_channel",
+            "entity_type": "other",
+            "aliases": [
+              "input channel"
+            ],
+            "attributes": {
+              "function": "Pre-fills key-value cache and predicts next tokens",
+              "model_entity_type": "component"
+            },
+            "relationships": [
+              {
+                "predicate": "established_when",
+                "target": "new input token received at time step t1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "output channel",
+            "entity_id": "output_channel",
+            "entity_type": "other",
+            "aliases": [
+              "output channel"
+            ],
+            "attributes": {
+              "function": "Generates new tokens autoregressively",
+              "model_entity_type": "component"
+            },
+            "relationships": [
+              {
+                "predicate": "persists_until",
+                "target": "model responds to new query or output sequence is completed",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "channel-aware causal mask",
+            "entity_id": "channel_aware_causal_mask",
+            "entity_type": "other",
+            "aliases": [
+              "channel-aware causal mask"
+            ],
+            "attributes": {
+              "purpose": "Prevents tokens generated by input and output channels after time step t1 from attending to each other",
+              "model_entity_type": "mechanism"
+            },
+            "relationships": [
+              {
+                "predicate": "preserves",
+                "target": "language modeling in each channel",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "state token <1>",
+            "entity_id": "state_token_1",
+            "entity_type": "other",
+            "aliases": [
+              "state token <1>"
+            ],
+            "attributes": {
+              "meaning": "Input is a user query",
+              "model_entity_type": "symbol"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 500,
+          "end_word": 991,
+          "word_count": 491,
+          "sha256": "541899417f6abcd29398954fc8e569296aee1a89b4038e5d0af14f8292751818",
+          "sentence_minhash": [
+            357503878952995394,
+            1306423125707224,
+            268846801921818772,
+            5050748634255938,
+            124128223152102806,
+            99436724310786061,
+            23718652799488495,
+            96292850158067112,
+            113198931733945138,
+            3380668174306445,
+            19416574622547768,
+            157769491989022017,
+            21933493368060407,
+            906306679132868,
+            84258266176112060,
+            279213372638000155
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'component' for 'input channel'",
+          "normalized unsupported entity type 'component' for 'output channel'",
+          "normalized unsupported entity type 'mechanism' for 'channel-aware causal mask'",
+          "normalized unsupported entity type 'symbol' for 'state token <1>'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The DUO method implements channel-division multiplexing to process input and output simultaneously, contrasting with MiniCPM-Duplex's sequential time-division approach. DUO uses state tokens to determine whether to respond to user queries or ignore non-query text, requiring minimal training compared to the substantial retraining needed for MiniCPM-Duplex. The method is implemented using Flex-Attention and does not increase the number of forward passes relative to standard decoding.",
+        "entities": [
+          {
+            "name": "DUO",
+            "entity_id": "duo",
+            "entity_type": "method",
+            "aliases": [
+              "DUO",
+              "DUO (DUplex decOding)"
+            ],
+            "attributes": {
+              "full_name": "DUplex decOding",
+              "strategy": "channel-division multiplexing",
+              "processing_mode": "simultaneous input and output",
+              "training_cost": "minimal additional training",
+              "implementation_tool": "Flex-Attention",
+              "forward_pass_count": "does not increase compared to standard decoding"
+            },
+            "relationships": [
+              {
+                "predicate": "differs_from",
+                "target": "MiniCPM-Duplex",
+                "attributes": {
+                  "reason": "DUO processes simultaneously vs MiniCPM-Duplex sequentially"
+                },
+                "target_id": "minicpm_duplex"
+              },
+              {
+                "predicate": "handles",
+                "target": "non-awakening interactions",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "state tokens",
+                "attributes": {},
+                "target_id": "state_tokens"
+              }
+            ]
+          },
+          {
+            "name": "MiniCPM-Duplex",
+            "entity_id": "minicpm_duplex",
+            "entity_type": "method",
+            "aliases": [
+              "MiniCPM-Duplex"
+            ],
+            "attributes": {
+              "strategy": "time-division multiplexing",
+              "processing_mode": "sequential input and output",
+              "data_format": "time slice format",
+              "training_cost": "substantial computational resources for retraining",
+              "limitation": "does not address non-awakening interactions"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "DUO",
+                "attributes": {},
+                "target_id": "duo"
+              }
+            ]
+          },
+          {
+            "name": "state token <1>",
+            "entity_id": "state_token_1",
+            "entity_type": "other",
+            "aliases": [
+              "state token <1>"
+            ],
+            "attributes": {
+              "meaning": "input is a user query"
+            },
+            "relationships": [
+              {
+                "predicate": "triggers_action",
+                "target": "suspension of original output channel and transition of input channel to new output channel",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "state token <2>",
+            "entity_id": "state_token_2",
+            "entity_type": "concept",
+            "aliases": [
+              "state token <2>"
+            ],
+            "attributes": {
+              "meaning": "new input is no-query text"
+            },
+            "relationships": [
+              {
+                "predicate": "triggers_action",
+                "target": "continuation of response to original query and disregard of input channel",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Flex-Attention",
+            "entity_id": "flex_attention",
+            "entity_type": "method",
+            "aliases": [
+              "Flex-Attention"
+            ],
+            "attributes": {
+              "function": "facilitates non-standard attention mechanisms"
+            },
+            "relationships": [
+              {
+                "predicate": "used_by",
+                "target": "DUO",
+                "attributes": {},
+                "target_id": "duo"
+              }
+            ]
+          },
+          {
+            "name": "Duplex-UltraChat",
+            "entity_id": "duplex_ultrachat",
+            "entity_type": "other",
+            "aliases": [
+              "Duplex-UltraChat"
+            ],
+            "attributes": {
+              "structure": "time-division format",
+              "feature": "includes interruptions and transition sentences",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "adapted_into",
+                "target": "standard turn-based format",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MiniCPM-2.4B",
+            "entity_id": "minicpm_2_4b",
+            "entity_type": "other",
+            "aliases": [
+              "MiniCPM-2.4B"
+            ],
+            "attributes": {
+              "role": "foundation model for DUO experiments",
+              "model_entity_type": "model"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "DUO experiments",
+                "attributes": {},
+                "target_id": "duo_experiments"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 991,
+          "end_word": 1480,
+          "word_count": 489,
+          "sha256": "7af5b7db1eb94ad6b6a96f667ecac5d93a9e3e0b1bbc1812673bd43624e997b0",
+          "sentence_minhash": [
+            58924706922883169,
+            1306423125707224,
+            216332561185035192,
+            64513941377847126,
+            28706538147403678,
+            268895678865875844,
+            12025634198112669,
+            1308434488493409,
+            33265638897362781,
+            3380668174306445,
+            19416574622547768,
+            107897599453353161,
+            21933493368060407,
+            88794129556738252,
+            84258266176112060,
+            251498163250050664
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'Duplex-UltraChat'",
+          "normalized unsupported entity type 'model' for 'MiniCPM-2.4B'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study compares the training efficiency and performance of MiniCPM-Duo against the MiniCPM-Duplex baseline. MiniCPM-Duo requires significantly fewer training steps and GPU resources than MiniCPM-Duplex. Human evaluation indicates MiniCPM-Duo offers superior responsiveness and human-likeness while maintaining comparable factuality and faithfulness.",
+        "entities": [
+          {
+            "name": "MiniCPM-Duo",
+            "entity_id": "minicpm_duo",
+            "entity_type": "method",
+            "aliases": [
+              "MiniCPM-Duo"
+            ],
+            "attributes": {
+              "training_steps": "400",
+              "training_duration": "about 25 minutes",
+              "hardware": "8 NVIDIA A100 GPUs",
+              "learning_rate": "1e-5",
+              "learning_rate_scheduler": "constant",
+              "batch_size": "112",
+              "maximum_length": "4,096",
+              "loss_calculation_scope": "state tokens and output",
+              "input_channel_predicted_tokens_alpha": "4"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_against",
+                "target": "MiniCPM-Duplex",
+                "attributes": {},
+                "target_id": "minicpm_duplex"
+              },
+              {
+                "predicate": "derived_from",
+                "target": "MiniCPM-2.4B",
+                "attributes": {},
+                "target_id": "minicpm_2_4b"
+              },
+              {
+                "predicate": "outperforms_in",
+                "target": "responsiveness and human-likeness",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "maintains_comparable",
+                "target": "factuality and faithfulness",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MiniCPM-Duplex",
+            "entity_id": "minicpm_duplex",
+            "entity_type": "method",
+            "aliases": [
+              "MiniCPM-Duplex"
+            ],
+            "attributes": {
+              "training_steps": "10,000",
+              "training_duration": "36 hours",
+              "hardware": "40 NVIDIA A100 GPUs"
+            },
+            "relationships": [
+              {
+                "predicate": "serves_as_baseline_for",
+                "target": "MiniCPM-Duo",
+                "attributes": {},
+                "target_id": "minicpm_duo"
+              },
+              {
+                "predicate": "derived_from",
+                "target": "MiniCPM-2.4B",
+                "attributes": {},
+                "target_id": "minicpm_2_4b"
+              }
+            ]
+          },
+          {
+            "name": "Human Evaluation Protocol",
+            "entity_id": "human_evaluation_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "Human Evaluation Protocol"
+            ],
+            "attributes": {
+              "session_count": "40 multi-turn dialogue sessions per model",
+              "evaluator_count": "3",
+              "evaluator_qualification": "Bachelor's degree",
+              "evaluation_criteria": [
+                "responsiveness",
+                "human-likeness",
+                "faithfulness",
+                "factuality",
+                "overall experience"
+              ],
+              "task": "rank dialogues generated by MiniCPM-Duo and MiniCPM-Duplex"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_demo_based_on",
+                "target": "MiniCPM-Duplex interactive demo",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_speech_to_text",
+                "target": "Google cloud ASR API",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_text_to_speech",
+                "target": "Google cloud TTS API",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Responsiveness",
+            "entity_id": "responsiveness",
+            "entity_type": "concept",
+            "aliases": [
+              "Responsiveness"
+            ],
+            "attributes": {
+              "definition": "evaluates whether the model responds to user queries"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Human-likeness",
+            "entity_id": "human_likeness",
+            "entity_type": "concept",
+            "aliases": [
+              "Human-likeness"
+            ],
+            "attributes": {
+              "definition": "assesses how closely the model's responses resemble those of a human"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Faithfulness",
+            "entity_id": "faithfulness",
+            "entity_type": "concept",
+            "aliases": [
+              "Faithfulness"
+            ],
+            "attributes": {
+              "definition": "measures the extent to which the model adheres to user instructions"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Factuality",
+            "entity_id": "factuality",
+            "entity_type": "concept",
+            "aliases": [
+              "Factuality"
+            ],
+            "attributes": {
+              "definition": "evaluates the level of content that is not grounded in factual information"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1480,
+          "end_word": 1916,
+          "word_count": 436,
+          "sha256": "7000e73dd6e89a36ec3455bc6890c29afebda66e1a97e0a7d23c895b8a1655a7",
+          "sentence_minhash": [
+            167397756092202227,
+            1306423125707224,
+            49420926592012815,
+            61919449716151556,
+            124128223152102806,
+            227578099685450791,
+            108181934044425938,
+            119106505045694326,
+            5117195984500713,
+            21383545105860156,
+            19416574622547768,
+            7735249562228291,
+            51125582506972287,
+            75720807653329119,
+            84258266176112060,
+            33658032634750891
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The paper introduces DUO, a duplex decoding method that uses channel-division multiplexing to enable real-time interaction with minimal training. Experimental results show DUO maintains standard benchmark performance comparable to the base model while outperforming MiniCPM-Duplex in responsiveness and human-likeness.",
+        "entities": [
+          {
+            "name": "DUO",
+            "entity_id": "duo",
+            "entity_type": "method",
+            "aliases": [
+              "DUO",
+              "DUO (DUplex decOding)"
+            ],
+            "attributes": {
+              "strategy": "channel-division multiplexing",
+              "training_cost": "minimal",
+              "capability": "real-time interactive feedback including non-awakening and interrupt interactions"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms_in_responsiveness_and_human_likeness",
+                "target": "MiniCPM-Duplex",
+                "attributes": {},
+                "target_id": "minicpm_duplex"
+              },
+              {
+                "predicate": "maintains_comparable_factuality_and_faithfulness_to",
+                "target": "MiniCPM-Duplex",
+                "attributes": {},
+                "target_id": "minicpm_duplex"
+              },
+              {
+                "predicate": "achieves_superior_overall_performance_than",
+                "target": "MiniCPM-Duplex",
+                "attributes": {},
+                "target_id": "minicpm_duplex"
+              },
+              {
+                "predicate": "preserves_original_capabilities_of",
+                "target": "MiniCPM",
+                "attributes": {},
+                "target_id": "minicpm"
+              }
+            ]
+          },
+          {
+            "name": "MiniCPM-Duplex",
+            "entity_id": "minicpm_duplex",
+            "entity_type": "method",
+            "aliases": [
+              "MiniCPM-Duplex"
+            ],
+            "attributes": {
+              "strategy": "time-division multiplexing",
+              "training_data_size": "5,000K samples",
+              "computational_requirement": "substantial"
+            },
+            "relationships": [
+              {
+                "predicate": "underperforms_in_responsiveness_and_human_likeness_vs",
+                "target": "DUO",
+                "attributes": {},
+                "target_id": "duo"
+              },
+              {
+                "predicate": "shows_poorer_performance_when_trained_on_10K_samples",
+                "target": "MiniCPM-Duplex (10K variant)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MiniCPM",
+            "entity_id": "minicpm",
+            "entity_type": "other",
+            "aliases": [
+              "MiniCPM"
+            ],
+            "attributes": {
+              "role": "foundation model",
+              "model_entity_type": "model"
+            },
+            "relationships": [
+              {
+                "predicate": "serves_as_baseline_for",
+                "target": "DUO",
+                "attributes": {},
+                "target_id": "duo"
+              }
+            ]
+          },
+          {
+            "name": "Standard Benchmark Evaluation",
+            "entity_id": "standard_benchmark_evaluation",
+            "entity_type": "measurement",
+            "aliases": [
+              "Standard Benchmark Evaluation"
+            ],
+            "attributes": {
+              "platform": "UltraEval",
+              "benchmarks": [
+                "CMMLU",
+                "MMLU",
+                "BBH",
+                "HumanEval",
+                "MBPP",
+                "GSM8K",
+                "ARC-e",
+                "ARC-c",
+                "HellaSwag"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "shows_DUO_comparable_to",
+                "target": "MiniCPM and MiniCPM-Duplex",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Case Study Interaction",
+            "entity_id": "case_study_interaction",
+            "entity_type": "event",
+            "aliases": [
+              "Case Study Interaction"
+            ],
+            "attributes": {
+              "description": "Demonstrates adaptive behavior where the model predicts state tokens <1> and <2> to manage input/output channels during user interruption and silence."
+            },
+            "relationships": [
+              {
+                "predicate": "illustrates",
+                "target": "DUO adaptive behavior",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1916,
+          "end_word": 2407,
+          "word_count": 491,
+          "sha256": "b90b435b4c0fd8858fcb35d4f478ad526e148854a935099a14eba5de744f2656",
+          "sentence_minhash": [
+            58924706922883169,
+            1306423125707224,
+            40863640610520970,
+            61919449716151556,
+            124128223152102806,
+            4375322221902241,
+            12025634198112669,
+            30048762086078845,
+            113198931733945138,
+            21383545105860156,
+            78280491562202942,
+            107897599453353161,
+            53043358533347479,
+            118151843130073762,
+            84258266176112060,
+            41659475361281372
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'model' for 'MiniCPM'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study acknowledges that its experiments were limited to language models, which may restrict the generalizability of the findings. The authors state that the DUO approach is designed for versatility and can be adapted to multimodal settings. Future research aims to extend DUO to multimodal large models by using encoder-extracted features as input tokens.",
+        "entities": [
+          {
+            "name": "DUO",
+            "entity_id": "duo",
+            "entity_type": "method",
+            "aliases": [
+              "DUO",
+              "DUO (DUplex decOding)"
+            ],
+            "attributes": {
+              "capability": "equips large language models with duplex capabilities",
+              "design_characteristic": "inherently designed for versatility",
+              "adaptability": "can be readily adapted to multimodal large models"
+            },
+            "relationships": [
+              {
+                "predicate": "limited_by",
+                "target": "scope of multimodal testing",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "planned_extension_to",
+                "target": "multimodal settings",
+                "attributes": {},
+                "target_id": "multimodal_settings"
+              }
+            ]
+          },
+          {
+            "name": "multimodal settings",
+            "entity_id": "multimodal_settings",
+            "entity_type": "concept",
+            "aliases": [
+              "multimodal settings"
+            ],
+            "attributes": {
+              "input_token_source": "features extracted by encoders from various modalities"
+            },
+            "relationships": [
+              {
+                "predicate": "broadens_applications_of",
+                "target": "DUO technology",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DUO experiments",
+            "entity_id": "duo_experiments",
+            "entity_type": "event",
+            "aliases": [
+              "DUO experiments"
+            ],
+            "attributes": {
+              "primary_focus": "language models"
+            },
+            "relationships": [
+              {
+                "predicate": "limits_generalizability_of",
+                "target": "findings to other domains",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2407,
+          "end_word": 2506,
+          "word_count": 99,
+          "sha256": "a5c228d7ae2391a8b4e8407cecbe2909f8b4a77daebebadd5c953e38e144ca18",
+          "sentence_minhash": [
+            492783981104762407,
+            407283556352027901,
+            192573059367916559,
+            1323569060261000688,
+            26384097017582652,
+            428209587723997907,
+            332637140443066694,
+            395567202310375330,
+            80930235405919187,
+            434616209872951570,
+            819351989671102658,
+            242442872322440140,
+            66684846811619517,
+            6668399353053118,
+            33150086980488338,
+            645091687445747011
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "duo",
+        "canonical_name": "DUO",
+        "aliases": [
+          "DUO (DUplex decOding)",
+          "DUO"
+        ]
+      },
+      {
+        "canonical_id": "minicpm_duplex",
+        "canonical_name": "MiniCPM-Duplex",
+        "aliases": [
+          "MiniCPM-Duplex"
+        ]
+      },
+      {
+        "canonical_id": "lslm",
+        "canonical_name": "LSLM",
+        "aliases": [
+          "LSLM"
+        ]
+      },
+      {
+        "canonical_id": "state_tokens",
+        "canonical_name": "state tokens",
+        "aliases": [
+          "state tokens"
+        ]
+      },
+      {
+        "canonical_id": "wang_xu",
+        "canonical_name": "Wang Xu",
+        "aliases": [
+          "Wang Xu"
+        ]
+      },
+      {
+        "canonical_id": "wanxiang_che",
+        "canonical_name": "Wanxiang Che",
+        "aliases": [
+          "Wanxiang Che"
+        ]
+      },
+      {
+        "canonical_id": "tsinghua_university",
+        "canonical_name": "Tsinghua University",
+        "aliases": [
+          "Tsinghua University"
+        ]
+      },
+      {
+        "canonical_id": "harbin_institute_of_technology",
+        "canonical_name": "Harbin Institute of Technology",
+        "aliases": [
+          "Harbin Institute of Technology"
+        ]
+      },
+      {
+        "canonical_id": "duo_method",
+        "canonical_name": "DUO method",
+        "aliases": [
+          "DUO method"
+        ]
+      },
+      {
+        "canonical_id": "non_awakening_interaction",
+        "canonical_name": "non-awakening interaction",
+        "aliases": [
+          "non-awakening interaction"
+        ]
+      },
+      {
+        "canonical_id": "interruption_interaction",
+        "canonical_name": "interruption interaction",
+        "aliases": [
+          "interruption interaction"
+        ]
+      },
+      {
+        "canonical_id": "parallel_decoding",
+        "canonical_name": "parallel decoding",
+        "aliases": [
+          "parallel decoding"
+        ]
+      },
+      {
+        "canonical_id": "input_channel",
+        "canonical_name": "input channel",
+        "aliases": [
+          "input channel"
+        ]
+      },
+      {
+        "canonical_id": "output_channel",
+        "canonical_name": "output channel",
+        "aliases": [
+          "output channel"
+        ]
+      },
+      {
+        "canonical_id": "channel_aware_causal_mask",
+        "canonical_name": "channel-aware causal mask",
+        "aliases": [
+          "channel-aware causal mask"
+        ]
+      },
+      {
+        "canonical_id": "state_token_1",
+        "canonical_name": "state token <1>",
+        "aliases": [
+          "state token <1>"
+        ]
+      },
+      {
+        "canonical_id": "state_token_2",
+        "canonical_name": "state token <2>",
+        "aliases": [
+          "state token <2>"
+        ]
+      },
+      {
+        "canonical_id": "flex_attention",
+        "canonical_name": "Flex-Attention",
+        "aliases": [
+          "Flex-Attention"
+        ]
+      },
+      {
+        "canonical_id": "duplex_ultrachat",
+        "canonical_name": "Duplex-UltraChat",
+        "aliases": [
+          "Duplex-UltraChat"
+        ]
+      },
+      {
+        "canonical_id": "minicpm_2_4b",
+        "canonical_name": "MiniCPM-2.4B",
+        "aliases": [
+          "MiniCPM-2.4B"
+        ]
+      },
+      {
+        "canonical_id": "minicpm_duo",
+        "canonical_name": "MiniCPM-Duo",
+        "aliases": [
+          "MiniCPM-Duo"
+        ]
+      },
+      {
+        "canonical_id": "human_evaluation_protocol",
+        "canonical_name": "Human Evaluation Protocol",
+        "aliases": [
+          "Human Evaluation Protocol"
+        ]
+      },
+      {
+        "canonical_id": "responsiveness",
+        "canonical_name": "Responsiveness",
+        "aliases": [
+          "Responsiveness"
+        ]
+      },
+      {
+        "canonical_id": "human_likeness",
+        "canonical_name": "Human-likeness",
+        "aliases": [
+          "Human-likeness"
+        ]
+      },
+      {
+        "canonical_id": "faithfulness",
+        "canonical_name": "Faithfulness",
+        "aliases": [
+          "Faithfulness"
+        ]
+      },
+      {
+        "canonical_id": "factuality",
+        "canonical_name": "Factuality",
+        "aliases": [
+          "Factuality"
+        ]
+      },
+      {
+        "canonical_id": "minicpm",
+        "canonical_name": "MiniCPM",
+        "aliases": [
+          "MiniCPM"
+        ]
+      },
+      {
+        "canonical_id": "standard_benchmark_evaluation",
+        "canonical_name": "Standard Benchmark Evaluation",
+        "aliases": [
+          "Standard Benchmark Evaluation"
+        ]
+      },
+      {
+        "canonical_id": "case_study_interaction",
+        "canonical_name": "Case Study Interaction",
+        "aliases": [
+          "Case Study Interaction"
+        ]
+      },
+      {
+        "canonical_id": "multimodal_settings",
+        "canonical_name": "multimodal settings",
+        "aliases": [
+          "multimodal settings"
+        ]
+      },
+      {
+        "canonical_id": "duo_experiments",
+        "canonical_name": "DUO experiments",
+        "aliases": [
+          "DUO experiments"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The paper introduces DUO, a duplex decoding approach that enables real-time interaction in LLMs with minimal training costs. It employs a channel-division-multiplexing strategy to process queries and responses in parallel, contrasting with time-division-multiplexing methods like MiniCPM-Duplex. The method uses state tokens to determine whether to address or ignore new user inputs.\",\"entities\":[{\"name\":\"DUO\",\"type\":\"method\",\"attributes\":{\"description\":\"A novel channel-based parallel decoding mechanism that equips LLMs with duplex capabilities\",\"training_cost\":\"minimal additional training\",\"strategy\":\"channel-division-multiplexing decoding strategy\"},\"relationships\":[{\"predicate\":\"enables\",\"target\":\"simultaneous autoregressive output generation and input preprocessing\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"two state tokens\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"differs_from\",\"target\":\"MiniCPM-Duplex\",\"attributes\":{},\"target_id\":\"minicpm_duplex\"},{\"predicate\":\"implemented_using\",\"target\":\"Flex-Attention\",\"attributes\":{},\"target_id\":\"flex_attention\"},{\"predicate\":\"tested_on\",\"target\":\"MiniCPM-2.4B\",\"attributes\":{},\"target_id\":\"minicpm_2_4b\"}]},{\"name\":\"MiniCPM-Duplex\",\"type\":\"method\",\"attributes\":{\"introduced_by\":\"Zhang et al. (2024)\",\"strategy\":\"time-division-multiplexing strategy for encoding and decoding\",\"data_format\":\"input and output split and mixed in a time slice format\"},\"relationships\":[{\"predicate\":\"requires\",\"target\":\"substantial computational resources for model retraining\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_address\",\"target\":\"non-awakening interactions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"LSLM\",\"type\":\"method\",\"attributes\":{\"introduced_by\":\"Ma et al. (2024)\",\"function\":\"combines channels for autoregressive generation and real-time turn-taking detection\"},\"relationships\":[{\"predicate\":\"explores\",\"target\":\"three strategies to fuse listening and speaking channels\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"state tokens\",\"type\":\"concept\",\"attributes\":{\"count\":\"two\",\"purpose\":\"signal whether a query should be addressed or ignored\"},\"relationships\":[{\"predicate\":\"used_by\",\"target\":\"DUO\",\"attributes\":{},\"target_id\":\"duo\"}]},{\"name\":\"Wang Xu\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Department of Computer Science & Technology, Tsinghua University\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Enabling Real-Time Conversations with Minimal Training Costs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Wanxiang Che\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Harbin Institute of Technology\",\"role\":\"Corresponding author\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Enabling Real-Time Conversations with Minimal Training Costs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Tsinghua University\",\"type\":\"organization\",\"attributes\":{\"location\":\"Beijing, China\",\"department\":\"Department of Computer Science & Technology\"},\"relationships\":[]},{\"name\":\"Harbin Institute of Technology\",\"type\":\"organization\",\"attributes\":{\"location\":\"Harbin, China\"},\"relationships\":[]}]},{\"context_summary\":\"The DUO method enhances the naturalness and human-likeness of user-AI interactions with minimal training costs. It operates in two scenarios: non-awakening interaction, where background input is filtered, and interruption interaction, where the model pauses to address new queries. The system uses parallel decoding where input and output channels process tokens simultaneously without attending to each other after a specific time step.\",\"entities\":[{\"name\":\"DUO method\",\"type\":\"method\",\"attributes\":{\"full_name\":\"DUplex decOding\",\"training_cost\":\"minimal\",\"effect\":\"significantly enhances naturalness and human-likeness of user-AI interactions\"},\"relationships\":[{\"predicate\":\"processes\",\"target\":\"inputs and outputs cyclically\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"state tokens\",\"attributes\":{},\"target_id\":\"state_tokens\"}]},{\"name\":\"non-awakening interaction\",\"type\":\"concept\",\"attributes\":{\"description\":\"Scenario where the model filters out background dialogues or non-query input\"},\"relationships\":[]},{\"name\":\"interruption interaction\",\"type\":\"concept\",\"attributes\":{\"description\":\"Scenario where the user interrupts with a new question during ongoing generation\"},\"relationships\":[{\"predicate\":\"requires_model_to\",\"target\":\"pause current output to address latest query\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"parallel decoding\",\"type\":\"method\",\"attributes\":{\"mechanism\":\"Output channel generates tokens autoregressively while input channel pre-fills key-value cache and predicts next tokens\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"DUO method\",\"attributes\":{},\"target_id\":\"duo_method\"}]},{\"name\":\"input channel\",\"type\":\"other\",\"attributes\":{\"function\":\"Pre-fills key-value cache and predicts next tokens\",\"model_entity_type\":\"component\"},\"relationships\":[{\"predicate\":\"established_when\",\"target\":\"new input token received at time step t1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"output channel\",\"type\":\"other\",\"attributes\":{\"function\":\"Generates new tokens autoregressively\",\"model_entity_type\":\"component\"},\"relationships\":[{\"predicate\":\"persists_until\",\"target\":\"model responds to new query or output sequence is completed\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"channel-aware causal mask\",\"type\":\"other\",\"attributes\":{\"purpose\":\"Prevents tokens generated by input and output channels after time step t1 from attending to each other\",\"model_entity_type\":\"mechanism\"},\"relationships\":[{\"predicate\":\"preserves\",\"target\":\"language modeling in each channel\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"state token <1>\",\"type\":\"other\",\"attributes\":{\"meaning\":\"Input is a user query\",\"model_entity_type\":\"symbol\"},\"relationships\":[]}]},{\"context_summary\":\"The DUO method implements channel-division multiplexing to process input and output simultaneously, contrasting with MiniCPM-Duplex's sequential time-division approach. DUO uses state tokens to determine whether to respond to user queries or ignore non-query text, requiring minimal training compared to the substantial retraining needed for MiniCPM-Duplex. The method is implemented using Flex-Attention and does not increase the number of forward passes relative to standard decoding.\",\"entities\":[{\"name\":\"DUO\",\"type\":\"method\",\"attributes\":{\"full_name\":\"DUplex decOding\",\"strategy\":\"channel-division multiplexing\",\"processing_mode\":\"simultaneous input and output\",\"training_cost\":\"minimal additional training\",\"implementation_tool\":\"Flex-Attention\",\"forward_pass_count\":\"does not increase compared to standard decoding\"},\"relationships\":[{\"predicate\":\"differs_from\",\"target\":\"MiniCPM-Duplex\",\"attributes\":{\"reason\":\"DUO processes simultaneously vs MiniCPM-Duplex sequentially\"},\"target_id\":\"minicpm_duplex\"},{\"predicate\":\"handles\",\"target\":\"non-awakening interactions\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"state tokens\",\"attributes\":{},\"target_id\":\"state_tokens\"}]},{\"name\":\"MiniCPM-Duplex\",\"type\":\"method\",\"attributes\":{\"strategy\":\"time-division multiplexing\",\"processing_mode\":\"sequential input and output\",\"data_format\":\"time slice format\",\"training_cost\":\"substantial computational resources for retraining\",\"limitation\":\"does not address non-awakening interactions\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"DUO\",\"attributes\":{},\"target_id\":\"duo\"}]},{\"name\":\"state token <1>\",\"type\":\"other\",\"attributes\":{\"meaning\":\"input is a user query\"},\"relationships\":[{\"predicate\":\"triggers_action\",\"target\":\"suspension of original output channel and transition of input channel to new output channel\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"state token <2>\",\"type\":\"concept\",\"attributes\":{\"meaning\":\"new input is no-query text\"},\"relationships\":[{\"predicate\":\"triggers_action\",\"target\":\"continuation of response to original query and disregard of input channel\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Flex-Attention\",\"type\":\"method\",\"attributes\":{\"function\":\"facilitates non-standard attention mechanisms\"},\"relationships\":[{\"predicate\":\"used_by\",\"target\":\"DUO\",\"attributes\":{},\"target_id\":\"duo\"}]},{\"name\":\"Duplex-UltraChat\",\"type\":\"other\",\"attributes\":{\"structure\":\"time-division format\",\"feature\":\"includes interruptions and transition sentences\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"adapted_into\",\"target\":\"standard turn-based format\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MiniCPM-2.4B\",\"type\":\"other\",\"attributes\":{\"role\":\"foundation model for DUO experiments\",\"model_entity_type\":\"model\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"DUO experiments\",\"attributes\":{},\"target_id\":\"duo_experiments\"}]}]},{\"context_summary\":\"The study compares the training efficiency and performance of MiniCPM-Duo against the MiniCPM-Duplex baseline. MiniCPM-Duo requires significantly fewer training steps and GPU resources than MiniCPM-Duplex. Human evaluation indicates MiniCPM-Duo offers superior responsiveness and human-likeness while maintaining comparable factuality and faithfulness.\",\"entities\":[{\"name\":\"MiniCPM-Duo\",\"type\":\"method\",\"attributes\":{\"training_steps\":\"400\",\"training_duration\":\"about 25 minutes\",\"hardware\":\"8 NVIDIA A100 GPUs\",\"learning_rate\":\"1e-5\",\"learning_rate_scheduler\":\"constant\",\"batch_size\":\"112\",\"maximum_length\":\"4,096\",\"loss_calculation_scope\":\"state tokens and output\",\"input_channel_predicted_tokens_alpha\":\"4\"},\"relationships\":[{\"predicate\":\"compared_against\",\"target\":\"MiniCPM-Duplex\",\"attributes\":{},\"target_id\":\"minicpm_duplex\"},{\"predicate\":\"derived_from\",\"target\":\"MiniCPM-2.4B\",\"attributes\":{},\"target_id\":\"minicpm_2_4b\"},{\"predicate\":\"outperforms_in\",\"target\":\"responsiveness and human-likeness\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"maintains_comparable\",\"target\":\"factuality and faithfulness\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MiniCPM-Duplex\",\"type\":\"method\",\"attributes\":{\"training_steps\":\"10,000\",\"training_duration\":\"36 hours\",\"hardware\":\"40 NVIDIA A100 GPUs\"},\"relationships\":[{\"predicate\":\"serves_as_baseline_for\",\"target\":\"MiniCPM-Duo\",\"attributes\":{},\"target_id\":\"minicpm_duo\"},{\"predicate\":\"derived_from\",\"target\":\"MiniCPM-2.4B\",\"attributes\":{},\"target_id\":\"minicpm_2_4b\"}]},{\"name\":\"Human Evaluation Protocol\",\"type\":\"method\",\"attributes\":{\"session_count\":\"40 multi-turn dialogue sessions per model\",\"evaluator_count\":\"3\",\"evaluator_qualification\":\"Bachelor's degree\",\"evaluation_criteria\":[\"responsiveness\",\"human-likeness\",\"faithfulness\",\"factuality\",\"overall experience\"],\"task\":\"rank dialogues generated by MiniCPM-Duo and MiniCPM-Duplex\"},\"relationships\":[{\"predicate\":\"uses_demo_based_on\",\"target\":\"MiniCPM-Duplex interactive demo\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_speech_to_text\",\"target\":\"Google cloud ASR API\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_text_to_speech\",\"target\":\"Google cloud TTS API\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Responsiveness\",\"type\":\"concept\",\"attributes\":{\"definition\":\"evaluates whether the model responds to user queries\"},\"relationships\":[]},{\"name\":\"Human-likeness\",\"type\":\"concept\",\"attributes\":{\"definition\":\"assesses how closely the model's responses resemble those of a human\"},\"relationships\":[]},{\"name\":\"Faithfulness\",\"type\":\"concept\",\"attributes\":{\"definition\":\"measures the extent to which the model adheres to user instructions\"},\"relationships\":[]},{\"name\":\"Factuality\",\"type\":\"concept\",\"attributes\":{\"definition\":\"evaluates the level of content that is not grounded in factual information\"},\"relationships\":[]}]},{\"context_summary\":\"The paper introduces DUO, a duplex decoding method that uses channel-division multiplexing to enable real-time interaction with minimal training. Experimental results show DUO maintains standard benchmark performance comparable to the base model while outperforming MiniCPM-Duplex in responsiveness and human-likeness.\",\"entities\":[{\"name\":\"DUO\",\"type\":\"method\",\"attributes\":{\"strategy\":\"channel-division multiplexing\",\"training_cost\":\"minimal\",\"capability\":\"real-time interactive feedback including non-awakening and interrupt interactions\"},\"relationships\":[{\"predicate\":\"outperforms_in_responsiveness_and_human_likeness\",\"target\":\"MiniCPM-Duplex\",\"attributes\":{},\"target_id\":\"minicpm_duplex\"},{\"predicate\":\"maintains_comparable_factuality_and_faithfulness_to\",\"target\":\"MiniCPM-Duplex\",\"attributes\":{},\"target_id\":\"minicpm_duplex\"},{\"predicate\":\"achieves_superior_overall_performance_than\",\"target\":\"MiniCPM-Duplex\",\"attributes\":{},\"target_id\":\"minicpm_duplex\"},{\"predicate\":\"preserves_original_capabilities_of\",\"target\":\"MiniCPM\",\"attributes\":{},\"target_id\":\"minicpm\"}]},{\"name\":\"MiniCPM-Duplex\",\"type\":\"method\",\"attributes\":{\"strategy\":\"time-division multiplexing\",\"training_data_size\":\"5,000K samples\",\"computational_requirement\":\"substantial\"},\"relationships\":[{\"predicate\":\"underperforms_in_responsiveness_and_human_likeness_vs\",\"target\":\"DUO\",\"attributes\":{},\"target_id\":\"duo\"},{\"predicate\":\"shows_poorer_performance_when_trained_on_10K_samples\",\"target\":\"MiniCPM-Duplex (10K variant)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MiniCPM\",\"type\":\"other\",\"attributes\":{\"role\":\"foundation model\",\"model_entity_type\":\"model\"},\"relationships\":[{\"predicate\":\"serves_as_baseline_for\",\"target\":\"DUO\",\"attributes\":{},\"target_id\":\"duo\"}]},{\"name\":\"Standard Benchmark Evaluation\",\"type\":\"measurement\",\"attributes\":{\"platform\":\"UltraEval\",\"benchmarks\":[\"CMMLU\",\"MMLU\",\"BBH\",\"HumanEval\",\"MBPP\",\"GSM8K\",\"ARC-e\",\"ARC-c\",\"HellaSwag\"]},\"relationships\":[{\"predicate\":\"shows_DUO_comparable_to\",\"target\":\"MiniCPM and MiniCPM-Duplex\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Case Study Interaction\",\"type\":\"event\",\"attributes\":{\"description\":\"Demonstrates adaptive behavior where the model predicts state tokens <1> and <2> to manage input/output channels during user interruption and silence.\"},\"relationships\":[{\"predicate\":\"illustrates\",\"target\":\"DUO adaptive behavior\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study acknowledges that its experiments were limited to language models, which may restrict the generalizability of the findings. The authors state that the DUO approach is designed for versatility and can be adapted to multimodal settings. Future research aims to extend DUO to multimodal large models by using encoder-extracted features as input tokens.\",\"entities\":[{\"name\":\"DUO\",\"type\":\"method\",\"attributes\":{\"capability\":\"equips large language models with duplex capabilities\",\"design_characteristic\":\"inherently designed for versatility\",\"adaptability\":\"can be readily adapted to multimodal large models\"},\"relationships\":[{\"predicate\":\"limited_by\",\"target\":\"scope of multimodal testing\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"planned_extension_to\",\"target\":\"multimodal settings\",\"attributes\":{},\"target_id\":\"multimodal_settings\"}]},{\"name\":\"multimodal settings\",\"type\":\"concept\",\"attributes\":{\"input_token_source\":\"features extracted by encoders from various modalities\"},\"relationships\":[{\"predicate\":\"broadens_applications_of\",\"target\":\"DUO technology\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DUO experiments\",\"type\":\"event\",\"attributes\":{\"primary_focus\":\"language models\"},\"relationships\":[{\"predicate\":\"limits_generalizability_of\",\"target\":\"findings to other domains\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

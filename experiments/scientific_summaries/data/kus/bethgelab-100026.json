@@ -1,0 +1,2719 @@
+{
+  "document_id": "bethgelab-100026",
+  "fulltext_sha256": "76809edc3a81a1b01bf93be36eb56d891fdab656023bbf75ddf1a39e60d592f2",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "7c7cc0b9a23280e63bf4611291153630c1d46c7993e4ab79168426fc8b335c8b",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "A phylogenomic study of 113 genomes from the thermophilic genera Anoxybacillus, Geobacillus, and Parageobacillus identified two main clades and proposed a new genus, Quasigeobacillus. The analysis utilized Average Nucleotide Identity (ANI), Average Amino Acid Identity (AAI), and a maximum likelihood tree of 662 orthologous core genes to resolve taxonomic relationships. The study highlights the limitations of 16S rRNA sequencing and the necessity of combining genomic metrics for accurate bacterial classification.",
+        "entities": [
+          {
+            "name": "Phylogenetic study of thermophilic genera",
+            "entity_id": "phylogenetic_study_of_thermophilic_genera",
+            "entity_type": "event",
+            "aliases": [
+              "Phylogenetic study of thermophilic genera"
+            ],
+            "attributes": {
+              "subject": "Anoxybacillus, Geobacillus, Parageobacillus",
+              "genome_count": 113,
+              "data_source": "publicly available whole genome sequences"
+            },
+            "relationships": [
+              {
+                "predicate": "proposes_new_genus",
+                "target": "Quasigeobacillus",
+                "attributes": {},
+                "target_id": "quasigeobacillus"
+              },
+              {
+                "predicate": "uses_method",
+                "target": "Average Nucleotide Identity (ANI)",
+                "attributes": {},
+                "target_id": "average_nucleotide_identity_ani"
+              },
+              {
+                "predicate": "uses_method",
+                "target": "Average Amino Acid Identity (AAI)",
+                "attributes": {},
+                "target_id": "average_amino_acid_identity_aai"
+              },
+              {
+                "predicate": "uses_method",
+                "target": "maximum likelihood tree",
+                "attributes": {},
+                "target_id": "maximum_likelihood_tree"
+              }
+            ]
+          },
+          {
+            "name": "Quasigeobacillus",
+            "entity_id": "quasigeobacillus",
+            "entity_type": "concept",
+            "aliases": [
+              "Quasigeobacillus"
+            ],
+            "attributes": {
+              "status": "proposed new genus (gen. nov.)",
+              "origin": "elevated from a third clade within Clade I"
+            },
+            "relationships": [
+              {
+                "predicate": "suggested_by",
+                "target": "Phylogenetic study of thermophilic genera",
+                "attributes": {},
+                "target_id": "phylogenetic_study_of_thermophilic_genera"
+              }
+            ]
+          },
+          {
+            "name": "Clade I",
+            "entity_id": "clade_i",
+            "entity_type": "concept",
+            "aliases": [
+              "Clade I",
+              "clade I"
+            ],
+            "attributes": {
+              "composition": "all Geobacillus, all Parageobacillus, some Anoxybacillus"
+            },
+            "relationships": [
+              {
+                "predicate": "partitioned_into",
+                "target": "Geobacillus clade",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "partitioned_into",
+                "target": "Parageobacillus clade",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "partitioned_into",
+                "target": "Quasigeobacillus clade",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Clade II",
+            "entity_id": "clade_ii",
+            "entity_type": "concept",
+            "aliases": [
+              "Clade II",
+              "clade II"
+            ],
+            "attributes": {
+              "composition": "majority of Anoxybacillus species"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Average Nucleotide Identity (ANI)",
+            "entity_id": "average_nucleotide_identity_ani",
+            "entity_type": "method",
+            "aliases": [
+              "Average Nucleotide Identity (ANI)"
+            ],
+            "attributes": {
+              "calculation": "percentage identity of aligned nucleotides using BLAST",
+              "purpose": "detect relatedness among bacterial genomes with higher resolution than 16S rRNA"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Phylogenetic study of thermophilic genera",
+                "attributes": {},
+                "target_id": "phylogenetic_study_of_thermophilic_genera"
+              }
+            ]
+          },
+          {
+            "name": "Average Amino Acid Identity (AAI)",
+            "entity_id": "average_amino_acid_identity_aai",
+            "entity_type": "method",
+            "aliases": [
+              "Average Amino Acid Identity (AAI)"
+            ],
+            "attributes": {
+              "purpose": "assess relatedness between distant genomes",
+              "rationale": "amino acid similarity is better conserved in homologous protein sequences than DNA sequence similarity"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Phylogenetic study of thermophilic genera",
+                "attributes": {},
+                "target_id": "phylogenetic_study_of_thermophilic_genera"
+              }
+            ]
+          },
+          {
+            "name": "maximum likelihood tree",
+            "entity_id": "maximum_likelihood_tree",
+            "entity_type": "method",
+            "aliases": [
+              "maximum likelihood phylogenetic tree",
+              "maximum likelihood tree"
+            ],
+            "attributes": {
+              "input_data": "alignment of 662 orthologous core genes"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Phylogenetic study of thermophilic genera",
+                "attributes": {},
+                "target_id": "phylogenetic_study_of_thermophilic_genera"
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus",
+            "entity_id": "anoxybacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Anoxybacillus"
+            ],
+            "attributes": {
+              "family": "Bacillaceae",
+              "metabolic_trait": "moderate thermophile",
+              "survival_mechanism": "spore formation allowing dormant state for years"
+            },
+            "relationships": [
+              {
+                "predicate": "member_of",
+                "target": "family Bacillaceae",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus",
+            "entity_id": "geobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Geobacillus"
+            ],
+            "attributes": {
+              "family": "Bacillaceae",
+              "metabolic_trait": "moderate thermophile",
+              "survival_mechanism": "spore formation allowing dormant state for years"
+            },
+            "relationships": [
+              {
+                "predicate": "member_of",
+                "target": "family Bacillaceae",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Parageobacillus",
+            "entity_id": "parageobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Parageobacillus"
+            ],
+            "attributes": {
+              "family": "Bacillaceae",
+              "metabolic_trait": "moderate thermophile",
+              "survival_mechanism": "spore formation allowing dormant state for years"
+            },
+            "relationships": [
+              {
+                "predicate": "member_of",
+                "target": "family Bacillaceae",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "16S rRNA gene sequencing",
+            "entity_id": "16s_rrna_gene_sequencing",
+            "entity_type": "method",
+            "aliases": [
+              "16S rRNA gene sequencing"
+            ],
+            "attributes": {
+              "limitation": "low resolution resulting in high sequence similarities amongst bacterial genera and species"
+            },
+            "relationships": []
+          },
+          {
+            "name": "DNA-DNA hybridization",
+            "entity_id": "dna_dna_hybridization",
+            "entity_type": "method",
+            "aliases": [
+              "DNA-DNA hybridization"
+            ],
+            "attributes": {
+              "historical_status": "considered the 'gold standard' for bacterial taxonomy in recent decades"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 480,
+          "word_count": 480,
+          "sha256": "228176f8dffffc73aab3846feb0054dd5a873d7a03af5762b1f5b47074e073d0",
+          "sentence_minhash": [
+            87896383080834215,
+            232593725413697090,
+            69729176314767099,
+            109404277334592843,
+            15377319775961264,
+            99436724310786061,
+            76197433036625096,
+            59872971864169752,
+            14843078887968375,
+            76931577636070685,
+            33732523426331811,
+            36846817210282085,
+            104919116590741391,
+            79383475117272352,
+            19964274336456804,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The text details the isolation sources, physiological characteristics, and taxonomic history of the thermophilic genera Anoxybacillus, Geobacillus, and Parageobacillus. It lists the validly described species within Anoxybacillus and distinguishes those with available genome assemblies from those without. The passage also describes the original classification of Geobacillus within the genus Bacillus.",
+        "entities": [
+          {
+            "name": "Anoxybacillus",
+            "entity_id": "anoxybacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Anoxybacillus"
+            ],
+            "attributes": {
+              "gram_stain": "Gram-positive",
+              "morphology": "spore-forming rods",
+              "dominant_membrane_fatty_acid": "iso-C15:0",
+              "genomic_gc_content_range": "42-57 mol%",
+              "family": "Bacillaceae",
+              "proposal_year": 2000,
+              "valid_species_count": 24
+            },
+            "relationships": [
+              {
+                "predicate": "isolated_from",
+                "target": "geothermal sources",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "found_in",
+                "target": "food contaminant",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "found_in",
+                "target": "compost",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "named_after",
+                "target": "anaerobic growth characteristics of Anoxybacillus pushchinensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_species",
+                "target": "Anoxybacillus pushchinensis",
+                "attributes": {},
+                "target_id": "anoxybacillus_pushchinensis"
+              },
+              {
+                "predicate": "includes_species",
+                "target": "Anoxybacillus flavithermus",
+                "attributes": {},
+                "target_id": "anoxybacillus_flavithermus"
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus pushchinensis",
+            "entity_id": "anoxybacillus_pushchinensis",
+            "entity_type": "concept",
+            "aliases": [
+              "Anoxybacillus pushchinensis"
+            ],
+            "attributes": {
+              "source": "animal manure",
+              "growth_characteristics": "anaerobic"
+            },
+            "relationships": [
+              {
+                "predicate": "clustered_with",
+                "target": "Bacillus flavothermus",
+                "attributes": {},
+                "target_id": "bacillus_flavothermus"
+              }
+            ]
+          },
+          {
+            "name": "Bacillus flavothermus",
+            "entity_id": "bacillus_flavothermus",
+            "entity_type": "concept",
+            "aliases": [
+              "Bacillus flavothermus"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reclassified_as",
+                "target": "Anoxybacillus flavithermus",
+                "attributes": {},
+                "target_id": "anoxybacillus_flavithermus"
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus flavithermus",
+            "entity_id": "anoxybacillus_flavithermus",
+            "entity_type": "concept",
+            "aliases": [
+              "Anoxybacillus flavithermus"
+            ],
+            "attributes": {
+              "genome_assembly_available": true
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus",
+            "entity_id": "geobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Geobacillus"
+            ],
+            "attributes": {
+              "gram_stain": "Gram-positive",
+              "morphology": "spore-forming thermophile",
+              "dominant_membrane_fatty_acids": "iso-C15:0, iso-C16:0, iso-C17:0",
+              "genomic_gc_content_range": "48.2-58 mol%"
+            },
+            "relationships": [
+              {
+                "predicate": "isolated_from",
+                "target": "hot springs",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "oilfields",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "spoiled canned food",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "desert sand",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "composts",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "water",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "ocean sediments",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "sugar beet juice",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "mud",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "originally_classified_in",
+                "target": "genus Bacillus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Parageobacillus",
+            "entity_id": "parageobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Parageobacillus"
+            ],
+            "attributes": {
+              "metabolic_type": "thermophilic facultative anaerobe"
+            },
+            "relationships": [
+              {
+                "predicate": "isolated_from",
+                "target": "geothermal springs environments",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "isolated_from",
+                "target": "compost",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus species with genome assemblies",
+            "entity_id": "anoxybacillus_species_with_genome_assemblies",
+            "entity_type": "concept",
+            "aliases": [
+              "Anoxybacillus species with genome assemblies"
+            ],
+            "attributes": {
+              "count": 13
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "A. amylolyticus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. ayderensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. flavithermus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. flavithermus subsp. Yunnanensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. geothermalis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. gonensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. kamchatkensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. mongoliensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. pushchinoensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. suryakundensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. tepidamans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. thermarum",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. vitaminiphilus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus species without genome assemblies",
+            "entity_id": "anoxybacillus_species_without_genome_assemblies",
+            "entity_type": "concept",
+            "aliases": [
+              "Anoxybacillus species without genome assemblies"
+            ],
+            "attributes": {
+              "count": 11
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "A. bogrovensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. caldiproteolyticus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. contaminans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. eryuanensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. kamchatkensis subsp. Asaccharedens",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. kaynarcensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. kestanbolensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. rupiensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. salavatliensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. tengchongensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "A. voinovskiensis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 480,
+          "end_word": 919,
+          "word_count": 439,
+          "sha256": "6b23ea95070cb50ba0d924cd197a3a532b830b99a1fcb1072c8142a1a393589a",
+          "sentence_minhash": [
+            125901545337719231,
+            18551641988871988,
+            9069114027749572,
+            43055834690660608,
+            37147490841489014,
+            62667647458868521,
+            96663635736049262,
+            152326886699586849,
+            28235027165828705,
+            9462436175016187,
+            38417592176977991,
+            288704373000473016,
+            91759520063933247,
+            272671702087015607,
+            211775101660082559,
+            23207690879465591
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text details the taxonomic history of the genus Geobacillus, including its creation in 2001 and subsequent species reassignments to Parageobacillus. It describes the methodology used in the study, which involves core gene phylogenetics, ANI, and AAI calculations on 113 genomes. The authors report the preliminary placement of seven newly isolated strains and agree with the reclassification of specific Geobacillus species to Parageobacillus.",
+        "entities": [
+          {
+            "name": "Geobacillus",
+            "entity_id": "geobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Geobacillus"
+            ],
+            "attributes": {
+              "type": "bacterial_genus",
+              "origin_year": 2001,
+              "initial_species_count": 8,
+              "current_valid_species_count": 16,
+              "genome_availability": "all validly described species have genome assemblies"
+            },
+            "relationships": [
+              {
+                "predicate": "split_from",
+                "target": "Bacillus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus subterraneus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus uzenensis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus stearothermophilus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus thermoleovorans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus thermocatenulatus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus kaustophilus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus thermodenitrificans",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus icigianus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus jurassicus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus lituanicus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus thermantarcticus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus vulcani",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus genomospecies 3",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Geobacillus proteiniphilus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "removed_species",
+                "target": "Geobacillus thermoglucosidasius",
+                "attributes": {},
+                "target_id": "geobacillus_thermoglucosidasius"
+              }
+            ]
+          },
+          {
+            "name": "Parageobacillus",
+            "entity_id": "parageobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Parageobacillus"
+            ],
+            "attributes": {
+              "type": "bacterial_genus",
+              "definition_year": 2016,
+              "initial_species_count": 5
+            },
+            "relationships": [
+              {
+                "predicate": "defined_by_reassigning_from",
+                "target": "Geobacillus",
+                "attributes": {},
+                "target_id": "geobacillus"
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus caldoxylosilyticus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus thermoglucosidasius",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus thermantarcticus",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus toebii",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus genomospecies 1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus galactosidasius",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_species",
+                "target": "Parageobacillus yumthangensis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus thermoglucosidasius",
+            "entity_id": "geobacillus_thermoglucosidasius",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermoglucosidasius"
+            ],
+            "attributes": {
+              "status": "removed from Geobacillus"
+            },
+            "relationships": [
+              {
+                "predicate": "reclassified_to",
+                "target": "Parageobacillus thermoglucosidasius",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus galactosidasius",
+            "entity_id": "geobacillus_galactosidasius",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus galactosidasius"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reclassified_to",
+                "target": "Parageobacillus galactosidasius",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus yumthangensis",
+            "entity_id": "geobacillus_yumthangensis",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus yumthangensis"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reclassified_to",
+                "target": "Parageobacillus yumthangensis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus zalihae",
+            "entity_id": "geobacillus_zalihae",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus zalihae"
+            ],
+            "attributes": {
+              "genome_status": "available in Genbank",
+              "naming_status": "not validly published"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Phylogenetic study of thermophilic bacilli (2001)",
+            "entity_id": "phylogenetic_study_of_thermophilic_bacilli_2001",
+            "entity_type": "event",
+            "aliases": [
+              "Phylogenetic study of thermophilic bacilli (2001)"
+            ],
+            "attributes": {
+              "year": 2001
+            },
+            "relationships": [
+              {
+                "predicate": "resulted_in_creation_of",
+                "target": "Geobacillus",
+                "attributes": {},
+                "target_id": "geobacillus"
+              }
+            ]
+          },
+          {
+            "name": "Taxonomic revision of Parageobacillus (2016)",
+            "entity_id": "taxonomic_revision_of_parageobacillus_2016",
+            "entity_type": "event",
+            "aliases": [
+              "Taxonomic revision of Parageobacillus (2016)"
+            ],
+            "attributes": {
+              "year": 2016,
+              "basis": "core gene phylogenetic tree, GC content differences, ANI"
+            },
+            "relationships": [
+              {
+                "predicate": "defined",
+                "target": "Parageobacillus",
+                "attributes": {},
+                "target_id": "parageobacillus"
+              }
+            ]
+          },
+          {
+            "name": "Najar and Thakur",
+            "entity_id": "najar_and_thakur",
+            "entity_type": "person",
+            "aliases": [
+              "Najar and Thakur"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "proposed_reclassification_of",
+                "target": "Geobacillus galactosidasius to Parageobacillus galactosidasius",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "proposed_reclassification_of",
+                "target": "Geobacillus yumthangensis to Parageobacillus yumthangensis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Ramaloko et al.",
+            "entity_id": "ramaloko_et_al",
+            "entity_type": "person",
+            "aliases": [
+              "Ramaloko et al."
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "concluded",
+                "target": "Geobacillus galactosidasius should belong to Parageobacillus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Aliyu et al.",
+            "entity_id": "aliyu_et_al",
+            "entity_type": "person",
+            "aliases": [
+              "Aliyu et al."
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "methodology_source_for",
+                "target": "reassessment of the genus Geobacillus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Study methodology",
+            "entity_id": "study_methodology",
+            "entity_type": "method",
+            "aliases": [
+              "Study methodology"
+            ],
+            "attributes": {
+              "genome_count": 113,
+              "database": "RefSeq",
+              "metrics": [
+                "ANI",
+                "AAI",
+                "GC content",
+                "genome size"
+              ],
+              "tree_type": "maximum likelihood",
+              "dendrogram_method": "UPGMA"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on",
+                "target": "Aliyu et al. methods",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "analyzes",
+                "target": "Anoxybacillus",
+                "attributes": {},
+                "target_id": "anoxybacillus"
+              },
+              {
+                "predicate": "analyzes",
+                "target": "Geobacillus",
+                "attributes": {},
+                "target_id": "geobacillus"
+              },
+              {
+                "predicate": "analyzes",
+                "target": "Parageobacillus",
+                "attributes": {},
+                "target_id": "parageobacillus"
+              },
+              {
+                "predicate": "includes_new_strains",
+                "target": "7 newly isolated strains",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus",
+            "entity_id": "anoxybacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Anoxybacillus"
+            ],
+            "attributes": {
+              "type": "bacterial_genus"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_in",
+                "target": "Study methodology",
+                "attributes": {},
+                "target_id": "study_methodology"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 919,
+          "end_word": 1412,
+          "word_count": 493,
+          "sha256": "6347b1a5047d7c976bd8282d12e88ae95ff40b564c910b317aae6c5a2195579c",
+          "sentence_minhash": [
+            161937286799131951,
+            24905490170095690,
+            110182565901905120,
+            146245465858133533,
+            43714454960919411,
+            145797463044369280,
+            108181934044425938,
+            59872971864169752,
+            166844233492045914,
+            42586453371797899,
+            78280491562202942,
+            49775578613387123,
+            104919116590741391,
+            79383475117272352,
+            228232422328342118,
+            298638963025554748
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study utilized 113 genome assemblies from Anoxybacillus, Geobacillus, and Parageobacillus, including specific Australian isolates, to perform phylogenetic and phylogenomic analyses. Core genes were identified using EDGAR 2.0 with Geobacillus thermodenitrificans NG80-2 as a reference, and phylogenetic trees were constructed using FastTree. ANI and AAI similarity matrices were generated using enveomics scripts and visualized via UPGMA dendrograms.",
+        "entities": [
+          {
+            "name": "Parageobacillus",
+            "entity_id": "parageobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Parageobacillus"
+            ],
+            "attributes": {
+              "representation_in_analysis": "seven validly described species",
+              "assembly_count": "one representative assembly per species"
+            },
+            "relationships": [
+              {
+                "predicate": "included_additional_strains_from",
+                "target": "study of thermophiles in Australia",
+                "attributes": {},
+                "target_id": "study_of_thermophiles_in_australia"
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus",
+            "entity_id": "anoxybacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Anoxybacillus"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "included_additional_strains_from",
+                "target": "study of thermophiles in Australia",
+                "attributes": {},
+                "target_id": "study_of_thermophiles_in_australia"
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus",
+            "entity_id": "geobacillus",
+            "entity_type": "organization",
+            "aliases": [
+              "Geobacillus"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "included_additional_strains_from",
+                "target": "study of thermophiles in Australia",
+                "attributes": {},
+                "target_id": "study_of_thermophiles_in_australia"
+              }
+            ]
+          },
+          {
+            "name": "study of thermophiles in Australia",
+            "entity_id": "study_of_thermophiles_in_australia",
+            "entity_type": "event",
+            "aliases": [
+              "study of thermophiles in Australia"
+            ],
+            "attributes": {
+              "source_reference": "[50]"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_strains_of",
+                "target": "two Anoxybacillus, four Geobacillus and one Parageobacillus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "genome assemblies in study",
+            "entity_id": "genome_assemblies_in_study",
+            "entity_type": "measurement",
+            "aliases": [
+              "genome assemblies in study"
+            ],
+            "attributes": {
+              "chromosome_level_count": 31,
+              "scaffold_level_count": 33,
+              "contig_level_count": 49
+            },
+            "relationships": [
+              {
+                "predicate": "excluded_anomalous_assemblies",
+                "target": "chimeric, contaminated, or frameshifted assemblies with suppressed RefSeq status",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "EDGAR 2.0",
+            "entity_id": "edgar_2_0",
+            "entity_type": "method",
+            "aliases": [
+              "EDGAR 2.0"
+            ],
+            "attributes": {
+              "source_reference": "[52]"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "identification of core genome",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Geobacillus thermodenitrificans NG80-2",
+            "entity_id": "geobacillus_thermodenitrificans_ng80_2",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermodenitrificans NG80-2"
+            ],
+            "attributes": {
+              "role": "starting reference for core genome identification"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_identify",
+                "target": "orthologous genes via BLAST",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Bacillus subtilis spizizenii TU-B-10T",
+            "entity_id": "bacillus_subtilis_spizizenii_tu_b_10t",
+            "entity_type": "other",
+            "aliases": [
+              "Bacillus subtilis spizizenii TU-B-10T"
+            ],
+            "attributes": {
+              "source_reference": "[54]",
+              "role": "outgroup"
+            },
+            "relationships": [
+              {
+                "predicate": "included_in",
+                "target": "core gene analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MUSCLE",
+            "entity_id": "muscle",
+            "entity_type": "method",
+            "aliases": [
+              "MUSCLE"
+            ],
+            "attributes": {
+              "source_reference": "[55]"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "concatenation and alignment of CDS",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "FastTree",
+            "entity_id": "fasttree",
+            "entity_type": "method",
+            "aliases": [
+              "FastTree"
+            ],
+            "attributes": {
+              "source_reference": "[56, 57]"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "building maximum-likelihood tree",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ani.rb script",
+            "entity_id": "ani_rb_script",
+            "entity_type": "method",
+            "aliases": [
+              "ani.rb script"
+            ],
+            "attributes": {
+              "package": "enveomics",
+              "parameters": "default"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "calculating two-way ANI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "aai.rb script",
+            "entity_id": "aai_rb_script",
+            "entity_type": "method",
+            "aliases": [
+              "aai.rb script"
+            ],
+            "attributes": {
+              "package": "enveomics"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "calculating two-way AAI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DendroUPGMA",
+            "entity_id": "dendroupgma",
+            "entity_type": "method",
+            "aliases": [
+              "DendroUPGMA"
+            ],
+            "attributes": {
+              "source_reference": "[58]",
+              "clustering_method": "unweighted pair group with arithmetic mean (UPGMA)"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "obtaining dendrograms from similarity matrices",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Interactive Tree Of Life",
+            "entity_id": "interactive_tree_of_life",
+            "entity_type": "method",
+            "aliases": [
+              "Interactive Tree Of Life"
+            ],
+            "attributes": {
+              "source_reference": "[59]",
+              "type": "web-based tool"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "plotting trees",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BLASTn",
+            "entity_id": "blastn",
+            "entity_type": "method",
+            "aliases": [
+              "BLASTn"
+            ],
+            "attributes": {
+              "source_reference": "[60]"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "identifying genes unique to clade I-c",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus tepidamans PS2",
+            "entity_id": "anoxybacillus_tepidamans_ps2",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus tepidamans PS2"
+            ],
+            "attributes": {
+              "clade_membership": "clade I-c"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_CDS_for",
+                "target": "BLASTn alignment against NCBI RefSeq and nt databases",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "relaxed BLASTn filtering criteria",
+            "entity_id": "relaxed_blastn_filtering_criteria",
+            "entity_type": "measurement",
+            "aliases": [
+              "relaxed BLASTn filtering criteria"
+            ],
+            "attributes": {
+              "percentage_identity": "30%",
+              "bitscore": 10,
+              "percentage_overlap": "1%"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "BLASTn alignment",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1412,
+          "end_word": 1910,
+          "word_count": 498,
+          "sha256": "286886113c089e7aa4d6f2be879978ce8d7b9ae3053c9cfd869b3b72d70c97cc",
+          "sentence_minhash": [
+            161937286799131951,
+            197474277537133707,
+            111900301993215417,
+            64513941377847126,
+            43714454960919411,
+            21628958662628612,
+            76197433036625096,
+            63183425104977485,
+            104699707398803250,
+            21383545105860156,
+            78280491562202942,
+            36846817210282085,
+            24998895482691181,
+            906306679132868,
+            16059493717072994,
+            118358818825360504
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "A phylogenomic analysis of 114 genomes from thermophilic genera identified a distinct clade (I-c) containing Anoxybacillus tepidamans and one genomospecies. The study proposes elevating this clade to a new genus, Quasigeobacillus, based on core gene trees and similarity metrics.",
+        "entities": [
+          {
+            "name": "core gene set",
+            "entity_id": "core_gene_set",
+            "entity_type": "measurement",
+            "aliases": [
+              "core gene set"
+            ],
+            "attributes": {
+              "size": "662 orthologous genes per genome",
+              "source_genomes": "32 Anoxybacillus, 73 Geobacillus, 8 Parageobacillus, 1 Bacillus"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_build",
+                "target": "maximum likelihood tree",
+                "attributes": {},
+                "target_id": "maximum_likelihood_tree"
+              }
+            ]
+          },
+          {
+            "name": "maximum likelihood tree",
+            "entity_id": "maximum_likelihood_tree",
+            "entity_type": "method",
+            "aliases": [
+              "maximum likelihood phylogenetic tree",
+              "maximum likelihood tree"
+            ],
+            "attributes": {
+              "genome_count": 114
+            },
+            "relationships": [
+              {
+                "predicate": "splits_into",
+                "target": "outgroup, clade I, clade II",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Clade I",
+            "entity_id": "clade_i",
+            "entity_type": "concept",
+            "aliases": [
+              "Clade I",
+              "clade I"
+            ],
+            "attributes": {
+              "genome_count": 87
+            },
+            "relationships": []
+          },
+          {
+            "name": "Clade II",
+            "entity_id": "clade_ii",
+            "entity_type": "concept",
+            "aliases": [
+              "Clade II",
+              "clade II"
+            ],
+            "attributes": {
+              "genome_count": 24,
+              "composition": "Anoxybacillus genomes"
+            },
+            "relationships": [
+              {
+                "predicate": "includes_species",
+                "target": "A. flavithermus, A. pushchinoensis, A. gonensis, A. kamchatkensis, A. thermarum, A. ayderensis, A. mongoliensis, A. suryakundensis, and three unnamed Anoxybacillus species",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "clade I-c",
+            "entity_id": "clade_i_c",
+            "entity_type": "concept",
+            "aliases": [
+              "clade I-c"
+            ],
+            "attributes": {
+              "unique_cds_count": 6
+            },
+            "relationships": [
+              {
+                "predicate": "contains_species",
+                "target": "Anoxybacillus tepidamans and one genomospecies",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "proposed_for_new_genus",
+                "target": "Quasigeobacillus",
+                "attributes": {},
+                "target_id": "quasigeobacillus"
+              }
+            ]
+          },
+          {
+            "name": "Quasigeobacillus",
+            "entity_id": "quasigeobacillus",
+            "entity_type": "concept",
+            "aliases": [
+              "Quasigeobacillus"
+            ],
+            "attributes": {
+              "status": "proposed new genus (gen. nov.)"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "clade I-c",
+                "attributes": {},
+                "target_id": "clade_i_c"
+              },
+              {
+                "predicate": "closer_affinity_to",
+                "target": "Parageobacillus",
+                "attributes": {},
+                "target_id": "parageobacillus"
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus sp. CHMUD",
+            "entity_id": "anoxybacillus_sp_chmud",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus sp. CHMUD"
+            ],
+            "attributes": {
+              "ani_value": 95.03,
+              "aai_value": 95.81
+            },
+            "relationships": [
+              {
+                "predicate": "has_most_distant_ani",
+                "target": "95.03",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus sp. EFIL",
+            "entity_id": "anoxybacillus_sp_efil",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus sp. EFIL"
+            ],
+            "attributes": {
+              "ani_value": 97.99
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus sp. MMMUD3",
+            "entity_id": "geobacillus_sp_mmmud3",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus sp. MMMUD3"
+            ],
+            "attributes": {
+              "ani_value": 97.14
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus sp. DSP4a",
+            "entity_id": "geobacillus_sp_dsp4a",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus sp. DSP4a"
+            ],
+            "attributes": {
+              "ani_value": 97.64
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1910,
+          "end_word": 2394,
+          "word_count": 484,
+          "sha256": "2fd0f5d00368d35fc34b052dd53f5996eb77720c871e481da65969a90d078925",
+          "sentence_minhash": [
+            372299260625802888,
+            18551641988871988,
+            110182565901905120,
+            25338866477492668,
+            360537719082858261,
+            153053084761151407,
+            76197433036625096,
+            81285259065511028,
+            34383880606747972,
+            76931577636070685,
+            78280491562202942,
+            49775578613387123,
+            51125582506972287,
+            79383475117272352,
+            19964274336456804,
+            171448683786950174
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The phylogenetic affinities of Anoxybacillus vitaminiphilus and Anoxybacillus amylolyticus remain unresolved due to inconsistent positioning in core gene trees and similarity matrices. The study concludes that delimiting genera like Geobacillus, Parageobacillus, and Anoxybacillus requires combined phylogenomic analysis to avoid incongruent genus designations for new strains.",
+        "entities": [
+          {
+            "name": "Anoxybacillus vitaminiphilus",
+            "entity_id": "anoxybacillus_vitaminiphilus",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus vitaminiphilus"
+            ],
+            "attributes": {
+              "phylogenetic_status": "unresolved affinities",
+              "model_entity_type": "species"
+            },
+            "relationships": [
+              {
+                "predicate": "has_incongruous_positioning_in",
+                "target": "core gene maximum likelihood tree, ANI and AAI similarity matrices",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Anoxybacillus amylolyticus",
+            "entity_id": "anoxybacillus_amylolyticus",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus amylolyticus"
+            ],
+            "attributes": {
+              "phylogenetic_status": "unresolved affinities",
+              "model_entity_type": "species"
+            },
+            "relationships": [
+              {
+                "predicate": "has_incongruous_positioning_in",
+                "target": "core gene maximum likelihood tree, ANI and AAI similarity matrices",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Quasigeobacillus",
+            "entity_id": "quasigeobacillus",
+            "entity_type": "concept",
+            "aliases": [
+              "Quasigeobacillus"
+            ],
+            "attributes": {
+              "status": "proposed new genus (gen. nov.)",
+              "previous_assignment": "previously assigned to Anoxybacillus or Geobacillus",
+              "model_entity_type": "genus"
+            },
+            "relationships": [
+              {
+                "predicate": "corresponds_to",
+                "target": "clade I-c",
+                "attributes": {},
+                "target_id": "clade_i_c"
+              }
+            ]
+          },
+          {
+            "name": "clade I-c",
+            "entity_id": "clade_i_c",
+            "entity_type": "concept",
+            "aliases": [
+              "clade I-c"
+            ],
+            "attributes": {
+              "phylogenetic_position": "outside of Anoxybacillus and Geobacillus when considered together",
+              "model_entity_type": "phylogenetic_clade"
+            },
+            "relationships": [
+              {
+                "predicate": "suggested_for_new_genus",
+                "target": "Quasigeobacillus",
+                "attributes": {},
+                "target_id": "quasigeobacillus"
+              }
+            ]
+          },
+          {
+            "name": "combined phylogenomic analysis",
+            "entity_id": "combined_phylogenomic_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "combined phylogenomic analysis"
+            ],
+            "attributes": {
+              "scope": "Geobacillus, Parageobacillus, and Anoxybacillus"
+            },
+            "relationships": [
+              {
+                "predicate": "reveals",
+                "target": "problems in the delimitation of these genera",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "is_essential_for",
+                "target": "determining affinities of a new genome",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2394,
+          "end_word": 2869,
+          "word_count": 475,
+          "sha256": "cc1eb25c2aa78e4898ddfcbd0b086f61895154c9e4c3fde969058ac508771386",
+          "sentence_minhash": [
+            87896383080834215,
+            178810017583769242,
+            111900301993215417,
+            54743123760424958,
+            43671268334127607,
+            39127440086368283,
+            59334219593769119,
+            81285259065511028,
+            3608473643311934,
+            86799715193420107,
+            19416574622547768,
+            39258949071154186,
+            164575269931903557,
+            906306679132868,
+            303264414993015767,
+            91498461405850096
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'species' for 'Anoxybacillus vitaminiphilus'",
+          "normalized unsupported entity type 'species' for 'Anoxybacillus amylolyticus'",
+          "normalized unsupported entity type 'genus' for 'Quasigeobacillus'",
+          "normalized unsupported entity type 'phylogenetic_clade' for 'clade I-c'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text lists specific bacterial strain names associated with the genera Anoxybacillus and Geobacillus. It includes various strain identifiers such as AF16, Et7, and PSS2. The list appears to be a continuation of a dataset or figure legend from a phylogenetic study.",
+        "entities": [
+          {
+            "name": "Anoxybacillus flavithermus strain AF16",
+            "entity_id": "anoxybacillus_flavithermus_strain_af16",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus flavithermus strain AF16"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "flavithermus",
+              "strain": "AF16"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus kaustophilus strain Et7 4",
+            "entity_id": "geobacillus_kaustophilus_strain_et7_4",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus kaustophilus strain Et7 4"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "kaustophilus",
+              "strain": "Et7 4"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus subterraneus PSS2",
+            "entity_id": "geobacillus_subterraneus_pss2",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus subterraneus PSS2"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "subterraneus",
+              "strain": "PSS2"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus stearothermophilus strain B4109",
+            "entity_id": "geobacillus_stearothermophilus_strain_b4109",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus stearothermophilus strain B4109"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "stearothermophilus",
+              "strain": "B4109"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus lituanicus strain N 3",
+            "entity_id": "geobacillus_lituanicus_strain_n_3",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus lituanicus strain N 3"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "lituanicus",
+              "strain": "N 3"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Anoxybacillus mongoliensis strain MB4",
+            "entity_id": "anoxybacillus_mongoliensis_strain_mb4",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus mongoliensis strain MB4"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "mongoliensis",
+              "strain": "MB4"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus thermodenitrificans strain KCTC3902",
+            "entity_id": "geobacillus_thermodenitrificans_strain_kctc3902",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermodenitrificans strain KCTC3902"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "thermodenitrificans",
+              "strain": "KCTC3902"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus genomosp 3 strain JF8",
+            "entity_id": "geobacillus_genomosp_3_strain_jf8",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus genomosp 3 strain JF8"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "genomosp 3",
+              "strain": "JF8"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Anoxybacillus sp. UARK 01",
+            "entity_id": "anoxybacillus_sp_uark_01",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus sp. UARK 01"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "sp.",
+              "strain": "UARK 01"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus stearothermophilus strain GS27",
+            "entity_id": "geobacillus_stearothermophilus_strain_gs27",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus stearothermophilus strain GS27"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "stearothermophilus",
+              "strain": "GS27"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus stearothermophilus strain A1",
+            "entity_id": "geobacillus_stearothermophilus_strain_a1",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus stearothermophilus strain A1"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "stearothermophilus",
+              "strain": "A1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus thermoleovorans B23",
+            "entity_id": "geobacillus_thermoleovorans_b23",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermoleovorans B23"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "thermoleovorans",
+              "strain": "B23"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Anoxybacillus pushchinoensis strain K1",
+            "entity_id": "anoxybacillus_pushchinoensis_strain_k1",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus pushchinoensis strain K1"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "pushchinoensis",
+              "strain": "K1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Anoxybacillus flavithermus WK1",
+            "entity_id": "anoxybacillus_flavithermus_wk1",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus flavithermus WK1"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "flavithermus",
+              "strain": "WK1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Anoxybacillus flavithermus strain 52 1A",
+            "entity_id": "anoxybacillus_flavithermus_strain_52_1a",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus flavithermus strain 52 1A"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "flavithermus",
+              "strain": "52 1A"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus sp. T6",
+            "entity_id": "geobacillus_sp_t6",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus sp. T6"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "sp.",
+              "strain": "T6"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus sp. MAS1",
+            "entity_id": "geobacillus_sp_mas1",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus sp. MAS1"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "sp.",
+              "strain": "MAS1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus thermodenitrificans strain G11MC16",
+            "entity_id": "geobacillus_thermodenitrificans_strain_g11mc16",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermodenitrificans strain G11MC16"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "thermodenitrificans",
+              "strain": "G11MC16"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus sp. 44B",
+            "entity_id": "geobacillus_sp_44b",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus sp. 44B"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "sp.",
+              "strain": "44B"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Anoxybacillus sp. B7M1 strain b7m1",
+            "entity_id": "anoxybacillus_sp_b7m1_strain_b7m1",
+            "entity_type": "other",
+            "aliases": [
+              "Anoxybacillus sp. B7M1 strain b7m1"
+            ],
+            "attributes": {
+              "genus": "Anoxybacillus",
+              "species": "sp.",
+              "strain": "B7M1 strain b7m1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus thermodenitrificans strain T12",
+            "entity_id": "geobacillus_thermodenitrificans_strain_t12",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermodenitrificans strain T12"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "thermodenitrificans",
+              "strain": "T12"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Geobacillus thermoleovoransCCB US3 UF5",
+            "entity_id": "geobacillus_thermoleovoransccb_us3_uf5",
+            "entity_type": "other",
+            "aliases": [
+              "Geobacillus thermoleovoransCCB US3 UF5"
+            ],
+            "attributes": {
+              "genus": "Geobacillus",
+              "species": "thermoleovorans",
+              "strain": "CCB US3 UF5"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2869,
+          "end_word": 2965,
+          "word_count": 96,
+          "sha256": "401706efad5b55886c8ec72212a84d14c1e60abafd00317387d7768b9a27edd7",
+          "sentence_minhash": [
+            633972297430997647,
+            1341952345276512185,
+            1959219493929722979,
+            691956867192476270,
+            129188118149492617,
+            39127440086368283,
+            381544178653337049,
+            244340241771007567,
+            44364342452757313,
+            547992734633765873,
+            214746115594930281,
+            123544584008010006,
+            129627053733209111,
+            399988646321388578,
+            303264414993015767,
+            10140342952790513
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "clade_i",
+        "canonical_name": "Clade I",
+        "aliases": [
+          "Clade I",
+          "clade I"
+        ]
+      },
+      {
+        "canonical_id": "clade_ii",
+        "canonical_name": "Clade II",
+        "aliases": [
+          "Clade II",
+          "clade II"
+        ]
+      },
+      {
+        "canonical_id": "maximum_likelihood_tree",
+        "canonical_name": "maximum likelihood tree",
+        "aliases": [
+          "maximum likelihood tree",
+          "maximum likelihood phylogenetic tree"
+        ]
+      },
+      {
+        "canonical_id": "phylogenetic_study_of_thermophilic_genera",
+        "canonical_name": "Phylogenetic study of thermophilic genera",
+        "aliases": [
+          "Phylogenetic study of thermophilic genera"
+        ]
+      },
+      {
+        "canonical_id": "quasigeobacillus",
+        "canonical_name": "Quasigeobacillus",
+        "aliases": [
+          "Quasigeobacillus"
+        ]
+      },
+      {
+        "canonical_id": "average_nucleotide_identity_ani",
+        "canonical_name": "Average Nucleotide Identity (ANI)",
+        "aliases": [
+          "Average Nucleotide Identity (ANI)"
+        ]
+      },
+      {
+        "canonical_id": "average_amino_acid_identity_aai",
+        "canonical_name": "Average Amino Acid Identity (AAI)",
+        "aliases": [
+          "Average Amino Acid Identity (AAI)"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus",
+        "canonical_name": "Anoxybacillus",
+        "aliases": [
+          "Anoxybacillus"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus",
+        "canonical_name": "Geobacillus",
+        "aliases": [
+          "Geobacillus"
+        ]
+      },
+      {
+        "canonical_id": "parageobacillus",
+        "canonical_name": "Parageobacillus",
+        "aliases": [
+          "Parageobacillus"
+        ]
+      },
+      {
+        "canonical_id": "16s_rrna_gene_sequencing",
+        "canonical_name": "16S rRNA gene sequencing",
+        "aliases": [
+          "16S rRNA gene sequencing"
+        ]
+      },
+      {
+        "canonical_id": "dna_dna_hybridization",
+        "canonical_name": "DNA-DNA hybridization",
+        "aliases": [
+          "DNA-DNA hybridization"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_pushchinensis",
+        "canonical_name": "Anoxybacillus pushchinensis",
+        "aliases": [
+          "Anoxybacillus pushchinensis"
+        ]
+      },
+      {
+        "canonical_id": "bacillus_flavothermus",
+        "canonical_name": "Bacillus flavothermus",
+        "aliases": [
+          "Bacillus flavothermus"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_flavithermus",
+        "canonical_name": "Anoxybacillus flavithermus",
+        "aliases": [
+          "Anoxybacillus flavithermus"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_species_with_genome_assemblies",
+        "canonical_name": "Anoxybacillus species with genome assemblies",
+        "aliases": [
+          "Anoxybacillus species with genome assemblies"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_species_without_genome_assemblies",
+        "canonical_name": "Anoxybacillus species without genome assemblies",
+        "aliases": [
+          "Anoxybacillus species without genome assemblies"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermoglucosidasius",
+        "canonical_name": "Geobacillus thermoglucosidasius",
+        "aliases": [
+          "Geobacillus thermoglucosidasius"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_galactosidasius",
+        "canonical_name": "Geobacillus galactosidasius",
+        "aliases": [
+          "Geobacillus galactosidasius"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_yumthangensis",
+        "canonical_name": "Geobacillus yumthangensis",
+        "aliases": [
+          "Geobacillus yumthangensis"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_zalihae",
+        "canonical_name": "Geobacillus zalihae",
+        "aliases": [
+          "Geobacillus zalihae"
+        ]
+      },
+      {
+        "canonical_id": "phylogenetic_study_of_thermophilic_bacilli_2001",
+        "canonical_name": "Phylogenetic study of thermophilic bacilli (2001)",
+        "aliases": [
+          "Phylogenetic study of thermophilic bacilli (2001)"
+        ]
+      },
+      {
+        "canonical_id": "taxonomic_revision_of_parageobacillus_2016",
+        "canonical_name": "Taxonomic revision of Parageobacillus (2016)",
+        "aliases": [
+          "Taxonomic revision of Parageobacillus (2016)"
+        ]
+      },
+      {
+        "canonical_id": "najar_and_thakur",
+        "canonical_name": "Najar and Thakur",
+        "aliases": [
+          "Najar and Thakur"
+        ]
+      },
+      {
+        "canonical_id": "ramaloko_et_al",
+        "canonical_name": "Ramaloko et al.",
+        "aliases": [
+          "Ramaloko et al."
+        ]
+      },
+      {
+        "canonical_id": "aliyu_et_al",
+        "canonical_name": "Aliyu et al.",
+        "aliases": [
+          "Aliyu et al."
+        ]
+      },
+      {
+        "canonical_id": "study_methodology",
+        "canonical_name": "Study methodology",
+        "aliases": [
+          "Study methodology"
+        ]
+      },
+      {
+        "canonical_id": "study_of_thermophiles_in_australia",
+        "canonical_name": "study of thermophiles in Australia",
+        "aliases": [
+          "study of thermophiles in Australia"
+        ]
+      },
+      {
+        "canonical_id": "genome_assemblies_in_study",
+        "canonical_name": "genome assemblies in study",
+        "aliases": [
+          "genome assemblies in study"
+        ]
+      },
+      {
+        "canonical_id": "edgar_2_0",
+        "canonical_name": "EDGAR 2.0",
+        "aliases": [
+          "EDGAR 2.0"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermodenitrificans_ng80_2",
+        "canonical_name": "Geobacillus thermodenitrificans NG80-2",
+        "aliases": [
+          "Geobacillus thermodenitrificans NG80-2"
+        ]
+      },
+      {
+        "canonical_id": "bacillus_subtilis_spizizenii_tu_b_10t",
+        "canonical_name": "Bacillus subtilis spizizenii TU-B-10T",
+        "aliases": [
+          "Bacillus subtilis spizizenii TU-B-10T"
+        ]
+      },
+      {
+        "canonical_id": "muscle",
+        "canonical_name": "MUSCLE",
+        "aliases": [
+          "MUSCLE"
+        ]
+      },
+      {
+        "canonical_id": "fasttree",
+        "canonical_name": "FastTree",
+        "aliases": [
+          "FastTree"
+        ]
+      },
+      {
+        "canonical_id": "ani_rb_script",
+        "canonical_name": "ani.rb script",
+        "aliases": [
+          "ani.rb script"
+        ]
+      },
+      {
+        "canonical_id": "aai_rb_script",
+        "canonical_name": "aai.rb script",
+        "aliases": [
+          "aai.rb script"
+        ]
+      },
+      {
+        "canonical_id": "dendroupgma",
+        "canonical_name": "DendroUPGMA",
+        "aliases": [
+          "DendroUPGMA"
+        ]
+      },
+      {
+        "canonical_id": "interactive_tree_of_life",
+        "canonical_name": "Interactive Tree Of Life",
+        "aliases": [
+          "Interactive Tree Of Life"
+        ]
+      },
+      {
+        "canonical_id": "blastn",
+        "canonical_name": "BLASTn",
+        "aliases": [
+          "BLASTn"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_tepidamans_ps2",
+        "canonical_name": "Anoxybacillus tepidamans PS2",
+        "aliases": [
+          "Anoxybacillus tepidamans PS2"
+        ]
+      },
+      {
+        "canonical_id": "relaxed_blastn_filtering_criteria",
+        "canonical_name": "relaxed BLASTn filtering criteria",
+        "aliases": [
+          "relaxed BLASTn filtering criteria"
+        ]
+      },
+      {
+        "canonical_id": "core_gene_set",
+        "canonical_name": "core gene set",
+        "aliases": [
+          "core gene set"
+        ]
+      },
+      {
+        "canonical_id": "clade_i_c",
+        "canonical_name": "clade I-c",
+        "aliases": [
+          "clade I-c"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_sp_chmud",
+        "canonical_name": "Anoxybacillus sp. CHMUD",
+        "aliases": [
+          "Anoxybacillus sp. CHMUD"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_sp_efil",
+        "canonical_name": "Anoxybacillus sp. EFIL",
+        "aliases": [
+          "Anoxybacillus sp. EFIL"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_sp_mmmud3",
+        "canonical_name": "Geobacillus sp. MMMUD3",
+        "aliases": [
+          "Geobacillus sp. MMMUD3"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_sp_dsp4a",
+        "canonical_name": "Geobacillus sp. DSP4a",
+        "aliases": [
+          "Geobacillus sp. DSP4a"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_vitaminiphilus",
+        "canonical_name": "Anoxybacillus vitaminiphilus",
+        "aliases": [
+          "Anoxybacillus vitaminiphilus"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_amylolyticus",
+        "canonical_name": "Anoxybacillus amylolyticus",
+        "aliases": [
+          "Anoxybacillus amylolyticus"
+        ]
+      },
+      {
+        "canonical_id": "combined_phylogenomic_analysis",
+        "canonical_name": "combined phylogenomic analysis",
+        "aliases": [
+          "combined phylogenomic analysis"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_flavithermus_strain_af16",
+        "canonical_name": "Anoxybacillus flavithermus strain AF16",
+        "aliases": [
+          "Anoxybacillus flavithermus strain AF16"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_kaustophilus_strain_et7_4",
+        "canonical_name": "Geobacillus kaustophilus strain Et7 4",
+        "aliases": [
+          "Geobacillus kaustophilus strain Et7 4"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_subterraneus_pss2",
+        "canonical_name": "Geobacillus subterraneus PSS2",
+        "aliases": [
+          "Geobacillus subterraneus PSS2"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_stearothermophilus_strain_b4109",
+        "canonical_name": "Geobacillus stearothermophilus strain B4109",
+        "aliases": [
+          "Geobacillus stearothermophilus strain B4109"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_lituanicus_strain_n_3",
+        "canonical_name": "Geobacillus lituanicus strain N 3",
+        "aliases": [
+          "Geobacillus lituanicus strain N 3"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_mongoliensis_strain_mb4",
+        "canonical_name": "Anoxybacillus mongoliensis strain MB4",
+        "aliases": [
+          "Anoxybacillus mongoliensis strain MB4"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermodenitrificans_strain_kctc3902",
+        "canonical_name": "Geobacillus thermodenitrificans strain KCTC3902",
+        "aliases": [
+          "Geobacillus thermodenitrificans strain KCTC3902"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_genomosp_3_strain_jf8",
+        "canonical_name": "Geobacillus genomosp 3 strain JF8",
+        "aliases": [
+          "Geobacillus genomosp 3 strain JF8"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_sp_uark_01",
+        "canonical_name": "Anoxybacillus sp. UARK 01",
+        "aliases": [
+          "Anoxybacillus sp. UARK 01"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_stearothermophilus_strain_gs27",
+        "canonical_name": "Geobacillus stearothermophilus strain GS27",
+        "aliases": [
+          "Geobacillus stearothermophilus strain GS27"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_stearothermophilus_strain_a1",
+        "canonical_name": "Geobacillus stearothermophilus strain A1",
+        "aliases": [
+          "Geobacillus stearothermophilus strain A1"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermoleovorans_b23",
+        "canonical_name": "Geobacillus thermoleovorans B23",
+        "aliases": [
+          "Geobacillus thermoleovorans B23"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_pushchinoensis_strain_k1",
+        "canonical_name": "Anoxybacillus pushchinoensis strain K1",
+        "aliases": [
+          "Anoxybacillus pushchinoensis strain K1"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_flavithermus_wk1",
+        "canonical_name": "Anoxybacillus flavithermus WK1",
+        "aliases": [
+          "Anoxybacillus flavithermus WK1"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_flavithermus_strain_52_1a",
+        "canonical_name": "Anoxybacillus flavithermus strain 52 1A",
+        "aliases": [
+          "Anoxybacillus flavithermus strain 52 1A"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_sp_t6",
+        "canonical_name": "Geobacillus sp. T6",
+        "aliases": [
+          "Geobacillus sp. T6"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_sp_mas1",
+        "canonical_name": "Geobacillus sp. MAS1",
+        "aliases": [
+          "Geobacillus sp. MAS1"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermodenitrificans_strain_g11mc16",
+        "canonical_name": "Geobacillus thermodenitrificans strain G11MC16",
+        "aliases": [
+          "Geobacillus thermodenitrificans strain G11MC16"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_sp_44b",
+        "canonical_name": "Geobacillus sp. 44B",
+        "aliases": [
+          "Geobacillus sp. 44B"
+        ]
+      },
+      {
+        "canonical_id": "anoxybacillus_sp_b7m1_strain_b7m1",
+        "canonical_name": "Anoxybacillus sp. B7M1 strain b7m1",
+        "aliases": [
+          "Anoxybacillus sp. B7M1 strain b7m1"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermodenitrificans_strain_t12",
+        "canonical_name": "Geobacillus thermodenitrificans strain T12",
+        "aliases": [
+          "Geobacillus thermodenitrificans strain T12"
+        ]
+      },
+      {
+        "canonical_id": "geobacillus_thermoleovoransccb_us3_uf5",
+        "canonical_name": "Geobacillus thermoleovoransCCB US3 UF5",
+        "aliases": [
+          "Geobacillus thermoleovoransCCB US3 UF5"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"A phylogenomic study of 113 genomes from the thermophilic genera Anoxybacillus, Geobacillus, and Parageobacillus identified two main clades and proposed a new genus, Quasigeobacillus. The analysis utilized Average Nucleotide Identity (ANI), Average Amino Acid Identity (AAI), and a maximum likelihood tree of 662 orthologous core genes to resolve taxonomic relationships. The study highlights the limitations of 16S rRNA sequencing and the necessity of combining genomic metrics for accurate bacterial classification.\",\"entities\":[{\"name\":\"Phylogenetic study of thermophilic genera\",\"type\":\"event\",\"attributes\":{\"subject\":\"Anoxybacillus, Geobacillus, Parageobacillus\",\"genome_count\":113,\"data_source\":\"publicly available whole genome sequences\"},\"relationships\":[{\"predicate\":\"proposes_new_genus\",\"target\":\"Quasigeobacillus\",\"attributes\":{},\"target_id\":\"quasigeobacillus\"},{\"predicate\":\"uses_method\",\"target\":\"Average Nucleotide Identity (ANI)\",\"attributes\":{},\"target_id\":\"average_nucleotide_identity_ani\"},{\"predicate\":\"uses_method\",\"target\":\"Average Amino Acid Identity (AAI)\",\"attributes\":{},\"target_id\":\"average_amino_acid_identity_aai\"},{\"predicate\":\"uses_method\",\"target\":\"maximum likelihood tree\",\"attributes\":{},\"target_id\":\"maximum_likelihood_tree\"}]},{\"name\":\"Quasigeobacillus\",\"type\":\"concept\",\"attributes\":{\"status\":\"proposed new genus (gen. nov.)\",\"origin\":\"elevated from a third clade within Clade I\"},\"relationships\":[{\"predicate\":\"suggested_by\",\"target\":\"Phylogenetic study of thermophilic genera\",\"attributes\":{},\"target_id\":\"phylogenetic_study_of_thermophilic_genera\"}]},{\"name\":\"Clade I\",\"type\":\"concept\",\"attributes\":{\"composition\":\"all Geobacillus, all Parageobacillus, some Anoxybacillus\"},\"relationships\":[{\"predicate\":\"partitioned_into\",\"target\":\"Geobacillus clade\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"partitioned_into\",\"target\":\"Parageobacillus clade\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"partitioned_into\",\"target\":\"Quasigeobacillus clade\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Clade II\",\"type\":\"concept\",\"attributes\":{\"composition\":\"majority of Anoxybacillus species\"},\"relationships\":[]},{\"name\":\"Average Nucleotide Identity (ANI)\",\"type\":\"method\",\"attributes\":{\"calculation\":\"percentage identity of aligned nucleotides using BLAST\",\"purpose\":\"detect relatedness among bacterial genomes with higher resolution than 16S rRNA\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Phylogenetic study of thermophilic genera\",\"attributes\":{},\"target_id\":\"phylogenetic_study_of_thermophilic_genera\"}]},{\"name\":\"Average Amino Acid Identity (AAI)\",\"type\":\"method\",\"attributes\":{\"purpose\":\"assess relatedness between distant genomes\",\"rationale\":\"amino acid similarity is better conserved in homologous protein sequences than DNA sequence similarity\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Phylogenetic study of thermophilic genera\",\"attributes\":{},\"target_id\":\"phylogenetic_study_of_thermophilic_genera\"}]},{\"name\":\"maximum likelihood tree\",\"type\":\"method\",\"attributes\":{\"input_data\":\"alignment of 662 orthologous core genes\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Phylogenetic study of thermophilic genera\",\"attributes\":{},\"target_id\":\"phylogenetic_study_of_thermophilic_genera\"}]},{\"name\":\"Anoxybacillus\",\"type\":\"organization\",\"attributes\":{\"family\":\"Bacillaceae\",\"metabolic_trait\":\"moderate thermophile\",\"survival_mechanism\":\"spore formation allowing dormant state for years\"},\"relationships\":[{\"predicate\":\"member_of\",\"target\":\"family Bacillaceae\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Geobacillus\",\"type\":\"organization\",\"attributes\":{\"family\":\"Bacillaceae\",\"metabolic_trait\":\"moderate thermophile\",\"survival_mechanism\":\"spore formation allowing dormant state for years\"},\"relationships\":[{\"predicate\":\"member_of\",\"target\":\"family Bacillaceae\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Parageobacillus\",\"type\":\"organization\",\"attributes\":{\"family\":\"Bacillaceae\",\"metabolic_trait\":\"moderate thermophile\",\"survival_mechanism\":\"spore formation allowing dormant state for years\"},\"relationships\":[{\"predicate\":\"member_of\",\"target\":\"family Bacillaceae\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"16S rRNA gene sequencing\",\"type\":\"method\",\"attributes\":{\"limitation\":\"low resolution resulting in high sequence similarities amongst bacterial genera and species\"},\"relationships\":[]},{\"name\":\"DNA-DNA hybridization\",\"type\":\"method\",\"attributes\":{\"historical_status\":\"considered the 'gold standard' for bacterial taxonomy in recent decades\"},\"relationships\":[]}]},{\"context_summary\":\"The text details the isolation sources, physiological characteristics, and taxonomic history of the thermophilic genera Anoxybacillus, Geobacillus, and Parageobacillus. It lists the validly described species within Anoxybacillus and distinguishes those with available genome assemblies from those without. The passage also describes the original classification of Geobacillus within the genus Bacillus.\",\"entities\":[{\"name\":\"Anoxybacillus\",\"type\":\"organization\",\"attributes\":{\"gram_stain\":\"Gram-positive\",\"morphology\":\"spore-forming rods\",\"dominant_membrane_fatty_acid\":\"iso-C15:0\",\"genomic_gc_content_range\":\"42-57 mol%\",\"family\":\"Bacillaceae\",\"proposal_year\":2000,\"valid_species_count\":24},\"relationships\":[{\"predicate\":\"isolated_from\",\"target\":\"geothermal sources\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"found_in\",\"target\":\"food contaminant\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"found_in\",\"target\":\"compost\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"named_after\",\"target\":\"anaerobic growth characteristics of Anoxybacillus pushchinensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_species\",\"target\":\"Anoxybacillus pushchinensis\",\"attributes\":{},\"target_id\":\"anoxybacillus_pushchinensis\"},{\"predicate\":\"includes_species\",\"target\":\"Anoxybacillus flavithermus\",\"attributes\":{},\"target_id\":\"anoxybacillus_flavithermus\"}]},{\"name\":\"Anoxybacillus pushchinensis\",\"type\":\"concept\",\"attributes\":{\"source\":\"animal manure\",\"growth_characteristics\":\"anaerobic\"},\"relationships\":[{\"predicate\":\"clustered_with\",\"target\":\"Bacillus flavothermus\",\"attributes\":{},\"target_id\":\"bacillus_flavothermus\"}]},{\"name\":\"Bacillus flavothermus\",\"type\":\"concept\",\"attributes\":{},\"relationships\":[{\"predicate\":\"reclassified_as\",\"target\":\"Anoxybacillus flavithermus\",\"attributes\":{},\"target_id\":\"anoxybacillus_flavithermus\"}]},{\"name\":\"Anoxybacillus flavithermus\",\"type\":\"concept\",\"attributes\":{\"genome_assembly_available\":true},\"relationships\":[]},{\"name\":\"Geobacillus\",\"type\":\"organization\",\"attributes\":{\"gram_stain\":\"Gram-positive\",\"morphology\":\"spore-forming thermophile\",\"dominant_membrane_fatty_acids\":\"iso-C15:0, iso-C16:0, iso-C17:0\",\"genomic_gc_content_range\":\"48.2-58 mol%\"},\"relationships\":[{\"predicate\":\"isolated_from\",\"target\":\"hot springs\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"oilfields\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"spoiled canned food\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"desert sand\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"composts\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"water\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"ocean sediments\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"sugar beet juice\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"mud\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"originally_classified_in\",\"target\":\"genus Bacillus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Parageobacillus\",\"type\":\"organization\",\"attributes\":{\"metabolic_type\":\"thermophilic facultative anaerobe\"},\"relationships\":[{\"predicate\":\"isolated_from\",\"target\":\"geothermal springs environments\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"isolated_from\",\"target\":\"compost\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Anoxybacillus species with genome assemblies\",\"type\":\"concept\",\"attributes\":{\"count\":13},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"A. amylolyticus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. ayderensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. flavithermus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. flavithermus subsp. Yunnanensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. geothermalis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. gonensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. kamchatkensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. mongoliensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. pushchinoensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. suryakundensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. tepidamans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. thermarum\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. vitaminiphilus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Anoxybacillus species without genome assemblies\",\"type\":\"concept\",\"attributes\":{\"count\":11},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"A. bogrovensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. caldiproteolyticus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. contaminans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. eryuanensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. kamchatkensis subsp. Asaccharedens\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. kaynarcensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. kestanbolensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. rupiensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. salavatliensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. tengchongensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"A. voinovskiensis\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text details the taxonomic history of the genus Geobacillus, including its creation in 2001 and subsequent species reassignments to Parageobacillus. It describes the methodology used in the study, which involves core gene phylogenetics, ANI, and AAI calculations on 113 genomes. The authors report the preliminary placement of seven newly isolated strains and agree with the reclassification of specific Geobacillus species to Parageobacillus.\",\"entities\":[{\"name\":\"Geobacillus\",\"type\":\"organization\",\"attributes\":{\"type\":\"bacterial_genus\",\"origin_year\":2001,\"initial_species_count\":8,\"current_valid_species_count\":16,\"genome_availability\":\"all validly described species have genome assemblies\"},\"relationships\":[{\"predicate\":\"split_from\",\"target\":\"Bacillus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus subterraneus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus uzenensis\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus stearothermophilus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus thermoleovorans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus thermocatenulatus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus kaustophilus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus thermodenitrificans\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus icigianus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus jurassicus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus lituanicus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus thermantarcticus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus vulcani\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus genomospecies 3\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Geobacillus proteiniphilus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"removed_species\",\"target\":\"Geobacillus thermoglucosidasius\",\"attributes\":{},\"target_id\":\"geobacillus_thermoglucosidasius\"}]},{\"name\":\"Parageobacillus\",\"type\":\"organization\",\"attributes\":{\"type\":\"bacterial_genus\",\"definition_year\":2016,\"initial_species_count\":5},\"relationships\":[{\"predicate\":\"defined_by_reassigning_from\",\"target\":\"Geobacillus\",\"attributes\":{},\"target_id\":\"geobacillus\"},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus caldoxylosilyticus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus thermoglucosidasius\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus thermantarcticus\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus toebii\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus genomospecies 1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus galactosidasius\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_species\",\"target\":\"Parageobacillus yumthangensis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Geobacillus thermoglucosidasius\",\"type\":\"other\",\"attributes\":{\"status\":\"removed from Geobacillus\"},\"relationships\":[{\"predicate\":\"reclassified_to\",\"target\":\"Parageobacillus thermoglucosidasius\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Geobacillus galactosidasius\",\"type\":\"other\",\"attributes\":{},\"relationships\":[{\"predicate\":\"reclassified_to\",\"target\":\"Parageobacillus galactosidasius\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Geobacillus yumthangensis\",\"type\":\"other\",\"attributes\":{},\"relationships\":[{\"predicate\":\"reclassified_to\",\"target\":\"Parageobacillus yumthangensis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Geobacillus zalihae\",\"type\":\"other\",\"attributes\":{\"genome_status\":\"available in Genbank\",\"naming_status\":\"not validly published\"},\"relationships\":[]},{\"name\":\"Phylogenetic study of thermophilic bacilli (2001)\",\"type\":\"event\",\"attributes\":{\"year\":2001},\"relationships\":[{\"predicate\":\"resulted_in_creation_of\",\"target\":\"Geobacillus\",\"attributes\":{},\"target_id\":\"geobacillus\"}]},{\"name\":\"Taxonomic revision of Parageobacillus (2016)\",\"type\":\"event\",\"attributes\":{\"year\":2016,\"basis\":\"core gene phylogenetic tree, GC content differences, ANI\"},\"relationships\":[{\"predicate\":\"defined\",\"target\":\"Parageobacillus\",\"attributes\":{},\"target_id\":\"parageobacillus\"}]},{\"name\":\"Najar and Thakur\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"proposed_reclassification_of\",\"target\":\"Geobacillus galactosidasius to Parageobacillus galactosidasius\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"proposed_reclassification_of\",\"target\":\"Geobacillus yumthangensis to Parageobacillus yumthangensis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Ramaloko et al.\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"concluded\",\"target\":\"Geobacillus galactosidasius should belong to Parageobacillus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Aliyu et al.\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"methodology_source_for\",\"target\":\"reassessment of the genus Geobacillus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Study methodology\",\"type\":\"method\",\"attributes\":{\"genome_count\":113,\"database\":\"RefSeq\",\"metrics\":[\"ANI\",\"AAI\",\"GC content\",\"genome size\"],\"tree_type\":\"maximum likelihood\",\"dendrogram_method\":\"UPGMA\"},\"relationships\":[{\"predicate\":\"based_on\",\"target\":\"Aliyu et al. methods\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"analyzes\",\"target\":\"Anoxybacillus\",\"attributes\":{},\"target_id\":\"anoxybacillus\"},{\"predicate\":\"analyzes\",\"target\":\"Geobacillus\",\"attributes\":{},\"target_id\":\"geobacillus\"},{\"predicate\":\"analyzes\",\"target\":\"Parageobacillus\",\"attributes\":{},\"target_id\":\"parageobacillus\"},{\"predicate\":\"includes_new_strains\",\"target\":\"7 newly isolated strains\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Anoxybacillus\",\"type\":\"organization\",\"attributes\":{\"type\":\"bacterial_genus\"},\"relationships\":[{\"predicate\":\"analyzed_in\",\"target\":\"Study methodology\",\"attributes\":{},\"target_id\":\"study_methodology\"}]}]},{\"context_summary\":\"The study utilized 113 genome assemblies from Anoxybacillus, Geobacillus, and Parageobacillus, including specific Australian isolates, to perform phylogenetic and phylogenomic analyses. Core genes were identified using EDGAR 2.0 with Geobacillus thermodenitrificans NG80-2 as a reference, and phylogenetic trees were constructed using FastTree. ANI and AAI similarity matrices were generated using enveomics scripts and visualized via UPGMA dendrograms.\",\"entities\":[{\"name\":\"Parageobacillus\",\"type\":\"organization\",\"attributes\":{\"representation_in_analysis\":\"seven validly described species\",\"assembly_count\":\"one representative assembly per species\"},\"relationships\":[{\"predicate\":\"included_additional_strains_from\",\"target\":\"study of thermophiles in Australia\",\"attributes\":{},\"target_id\":\"study_of_thermophiles_in_australia\"}]},{\"name\":\"Anoxybacillus\",\"type\":\"organization\",\"attributes\":{},\"relationships\":[{\"predicate\":\"included_additional_strains_from\",\"target\":\"study of thermophiles in Australia\",\"attributes\":{},\"target_id\":\"study_of_thermophiles_in_australia\"}]},{\"name\":\"Geobacillus\",\"type\":\"organization\",\"attributes\":{},\"relationships\":[{\"predicate\":\"included_additional_strains_from\",\"target\":\"study of thermophiles in Australia\",\"attributes\":{},\"target_id\":\"study_of_thermophiles_in_australia\"}]},{\"name\":\"study of thermophiles in Australia\",\"type\":\"event\",\"attributes\":{\"source_reference\":\"[50]\"},\"relationships\":[{\"predicate\":\"provided_strains_of\",\"target\":\"two Anoxybacillus, four Geobacillus and one Parageobacillus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"genome assemblies in study\",\"type\":\"measurement\",\"attributes\":{\"chromosome_level_count\":31,\"scaffold_level_count\":33,\"contig_level_count\":49},\"relationships\":[{\"predicate\":\"excluded_anomalous_assemblies\",\"target\":\"chimeric, contaminated, or frameshifted assemblies with suppressed RefSeq status\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"EDGAR 2.0\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[52]\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"identification of core genome\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Geobacillus thermodenitrificans NG80-2\",\"type\":\"other\",\"attributes\":{\"role\":\"starting reference for core genome identification\"},\"relationships\":[{\"predicate\":\"used_to_identify\",\"target\":\"orthologous genes via BLAST\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Bacillus subtilis spizizenii TU-B-10T\",\"type\":\"other\",\"attributes\":{\"source_reference\":\"[54]\",\"role\":\"outgroup\"},\"relationships\":[{\"predicate\":\"included_in\",\"target\":\"core gene analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MUSCLE\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[55]\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"concatenation and alignment of CDS\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"FastTree\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[56, 57]\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"building maximum-likelihood tree\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ani.rb script\",\"type\":\"method\",\"attributes\":{\"package\":\"enveomics\",\"parameters\":\"default\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"calculating two-way ANI\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"aai.rb script\",\"type\":\"method\",\"attributes\":{\"package\":\"enveomics\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"calculating two-way AAI\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DendroUPGMA\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[58]\",\"clustering_method\":\"unweighted pair group with arithmetic mean (UPGMA)\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"obtaining dendrograms from similarity matrices\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Interactive Tree Of Life\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[59]\",\"type\":\"web-based tool\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"plotting trees\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BLASTn\",\"type\":\"method\",\"attributes\":{\"source_reference\":\"[60]\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"identifying genes unique to clade I-c\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Anoxybacillus tepidamans PS2\",\"type\":\"other\",\"attributes\":{\"clade_membership\":\"clade I-c\"},\"relationships\":[{\"predicate\":\"provided_CDS_for\",\"target\":\"BLASTn alignment against NCBI RefSeq and nt databases\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"relaxed BLASTn filtering criteria\",\"type\":\"measurement\",\"attributes\":{\"percentage_identity\":\"30%\",\"bitscore\":10,\"percentage_overlap\":\"1%\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"BLASTn alignment\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"A phylogenomic analysis of 114 genomes from thermophilic genera identified a distinct clade (I-c) containing Anoxybacillus tepidamans and one genomospecies. The study proposes elevating this clade to a new genus, Quasigeobacillus, based on core gene trees and similarity metrics.\",\"entities\":[{\"name\":\"core gene set\",\"type\":\"measurement\",\"attributes\":{\"size\":\"662 orthologous genes per genome\",\"source_genomes\":\"32 Anoxybacillus, 73 Geobacillus, 8 Parageobacillus, 1 Bacillus\"},\"relationships\":[{\"predicate\":\"used_to_build\",\"target\":\"maximum likelihood tree\",\"attributes\":{},\"target_id\":\"maximum_likelihood_tree\"}]},{\"name\":\"maximum likelihood tree\",\"type\":\"method\",\"attributes\":{\"genome_count\":114},\"relationships\":[{\"predicate\":\"splits_into\",\"target\":\"outgroup, clade I, clade II\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Clade I\",\"type\":\"concept\",\"attributes\":{\"genome_count\":87},\"relationships\":[]},{\"name\":\"Clade II\",\"type\":\"concept\",\"attributes\":{\"genome_count\":24,\"composition\":\"Anoxybacillus genomes\"},\"relationships\":[{\"predicate\":\"includes_species\",\"target\":\"A. flavithermus, A. pushchinoensis, A. gonensis, A. kamchatkensis, A. thermarum, A. ayderensis, A. mongoliensis, A. suryakundensis, and three unnamed Anoxybacillus species\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"clade I-c\",\"type\":\"concept\",\"attributes\":{\"unique_cds_count\":6},\"relationships\":[{\"predicate\":\"contains_species\",\"target\":\"Anoxybacillus tepidamans and one genomospecies\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"proposed_for_new_genus\",\"target\":\"Quasigeobacillus\",\"attributes\":{},\"target_id\":\"quasigeobacillus\"}]},{\"name\":\"Quasigeobacillus\",\"type\":\"concept\",\"attributes\":{\"status\":\"proposed new genus (gen. nov.)\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"clade I-c\",\"attributes\":{},\"target_id\":\"clade_i_c\"},{\"predicate\":\"closer_affinity_to\",\"target\":\"Parageobacillus\",\"attributes\":{},\"target_id\":\"parageobacillus\"}]},{\"name\":\"Anoxybacillus sp. CHMUD\",\"type\":\"other\",\"attributes\":{\"ani_value\":95.03,\"aai_value\":95.81},\"relationships\":[{\"predicate\":\"has_most_distant_ani\",\"target\":\"95.03\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Anoxybacillus sp. EFIL\",\"type\":\"other\",\"attributes\":{\"ani_value\":97.99},\"relationships\":[]},{\"name\":\"Geobacillus sp. MMMUD3\",\"type\":\"other\",\"attributes\":{\"ani_value\":97.14},\"relationships\":[]},{\"name\":\"Geobacillus sp. DSP4a\",\"type\":\"other\",\"attributes\":{\"ani_value\":97.64},\"relationships\":[]}]},{\"context_summary\":\"The phylogenetic affinities of Anoxybacillus vitaminiphilus and Anoxybacillus amylolyticus remain unresolved due to inconsistent positioning in core gene trees and similarity matrices. The study concludes that delimiting genera like Geobacillus, Parageobacillus, and Anoxybacillus requires combined phylogenomic analysis to avoid incongruent genus designations for new strains.\",\"entities\":[{\"name\":\"Anoxybacillus vitaminiphilus\",\"type\":\"other\",\"attributes\":{\"phylogenetic_status\":\"unresolved affinities\",\"model_entity_type\":\"species\"},\"relationships\":[{\"predicate\":\"has_incongruous_positioning_in\",\"target\":\"core gene maximum likelihood tree, ANI and AAI similarity matrices\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Anoxybacillus amylolyticus\",\"type\":\"other\",\"attributes\":{\"phylogenetic_status\":\"unresolved affinities\",\"model_entity_type\":\"species\"},\"relationships\":[{\"predicate\":\"has_incongruous_positioning_in\",\"target\":\"core gene maximum likelihood tree, ANI and AAI similarity matrices\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Quasigeobacillus\",\"type\":\"concept\",\"attributes\":{\"status\":\"proposed new genus (gen. nov.)\",\"previous_assignment\":\"previously assigned to Anoxybacillus or Geobacillus\",\"model_entity_type\":\"genus\"},\"relationships\":[{\"predicate\":\"corresponds_to\",\"target\":\"clade I-c\",\"attributes\":{},\"target_id\":\"clade_i_c\"}]},{\"name\":\"clade I-c\",\"type\":\"concept\",\"attributes\":{\"phylogenetic_position\":\"outside of Anoxybacillus and Geobacillus when considered together\",\"model_entity_type\":\"phylogenetic_clade\"},\"relationships\":[{\"predicate\":\"suggested_for_new_genus\",\"target\":\"Quasigeobacillus\",\"attributes\":{},\"target_id\":\"quasigeobacillus\"}]},{\"name\":\"combined phylogenomic analysis\",\"type\":\"method\",\"attributes\":{\"scope\":\"Geobacillus, Parageobacillus, and Anoxybacillus\"},\"relationships\":[{\"predicate\":\"reveals\",\"target\":\"problems in the delimitation of these genera\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"is_essential_for\",\"target\":\"determining affinities of a new genome\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text lists specific bacterial strain names associated with the genera Anoxybacillus and Geobacillus. It includes various strain identifiers such as AF16, Et7, and PSS2. The list appears to be a continuation of a dataset or figure legend from a phylogenetic study.\",\"entities\":[{\"name\":\"Anoxybacillus flavithermus strain AF16\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"flavithermus\",\"strain\":\"AF16\"},\"relationships\":[]},{\"name\":\"Geobacillus kaustophilus strain Et7 4\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"kaustophilus\",\"strain\":\"Et7 4\"},\"relationships\":[]},{\"name\":\"Geobacillus subterraneus PSS2\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"subterraneus\",\"strain\":\"PSS2\"},\"relationships\":[]},{\"name\":\"Geobacillus stearothermophilus strain B4109\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"stearothermophilus\",\"strain\":\"B4109\"},\"relationships\":[]},{\"name\":\"Geobacillus lituanicus strain N 3\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"lituanicus\",\"strain\":\"N 3\"},\"relationships\":[]},{\"name\":\"Anoxybacillus mongoliensis strain MB4\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"mongoliensis\",\"strain\":\"MB4\"},\"relationships\":[]},{\"name\":\"Geobacillus thermodenitrificans strain KCTC3902\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"thermodenitrificans\",\"strain\":\"KCTC3902\"},\"relationships\":[]},{\"name\":\"Geobacillus genomosp 3 strain JF8\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"genomosp 3\",\"strain\":\"JF8\"},\"relationships\":[]},{\"name\":\"Anoxybacillus sp. UARK 01\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"sp.\",\"strain\":\"UARK 01\"},\"relationships\":[]},{\"name\":\"Geobacillus stearothermophilus strain GS27\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"stearothermophilus\",\"strain\":\"GS27\"},\"relationships\":[]},{\"name\":\"Geobacillus stearothermophilus strain A1\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"stearothermophilus\",\"strain\":\"A1\"},\"relationships\":[]},{\"name\":\"Geobacillus thermoleovorans B23\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"thermoleovorans\",\"strain\":\"B23\"},\"relationships\":[]},{\"name\":\"Anoxybacillus pushchinoensis strain K1\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"pushchinoensis\",\"strain\":\"K1\"},\"relationships\":[]},{\"name\":\"Anoxybacillus flavithermus WK1\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"flavithermus\",\"strain\":\"WK1\"},\"relationships\":[]},{\"name\":\"Anoxybacillus flavithermus strain 52 1A\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"flavithermus\",\"strain\":\"52 1A\"},\"relationships\":[]},{\"name\":\"Geobacillus sp. T6\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"sp.\",\"strain\":\"T6\"},\"relationships\":[]},{\"name\":\"Geobacillus sp. MAS1\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"sp.\",\"strain\":\"MAS1\"},\"relationships\":[]},{\"name\":\"Geobacillus thermodenitrificans strain G11MC16\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"thermodenitrificans\",\"strain\":\"G11MC16\"},\"relationships\":[]},{\"name\":\"Geobacillus sp. 44B\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"sp.\",\"strain\":\"44B\"},\"relationships\":[]},{\"name\":\"Anoxybacillus sp. B7M1 strain b7m1\",\"type\":\"other\",\"attributes\":{\"genus\":\"Anoxybacillus\",\"species\":\"sp.\",\"strain\":\"B7M1 strain b7m1\"},\"relationships\":[]},{\"name\":\"Geobacillus thermodenitrificans strain T12\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"thermodenitrificans\",\"strain\":\"T12\"},\"relationships\":[]},{\"name\":\"Geobacillus thermoleovoransCCB US3 UF5\",\"type\":\"other\",\"attributes\":{\"genus\":\"Geobacillus\",\"species\":\"thermoleovorans\",\"strain\":\"CCB US3 UF5\"},\"relationships\":[]}]}]"
+}

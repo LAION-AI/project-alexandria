@@ -1,0 +1,1565 @@
+{
+  "document_id": "bethgelab-200024",
+  "fulltext_sha256": "88a116c99d1eea1a867a05ba40ecabf52cfe821203f2034181a21d74d59d63c8",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "8f1547c78b1767fc5f36c8901e0d9b4995b982836c2b2705210cdcb31925161b",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "A study of 235 patients at Korea University Guro Hospital compared outcomes of long versus short chronic total occlusion (CTO) lesions treated with drug-eluting stents. While most clinical and angiographic outcomes were similar, the long CTO group had a significantly higher incidence of repeat PCI and target vessel revascularization.",
+        "entities": [
+          {
+            "name": "Study on CTO Lesion Length Outcomes",
+            "entity_id": "study_on_cto_lesion_length_outcomes",
+            "entity_type": "event",
+            "aliases": [
+              "Study on CTO Lesion Length Outcomes"
+            ],
+            "attributes": {
+              "sample_size": "235 consecutive patients",
+              "location": "Cardiovascular Center of Korea University Guro Hospital, Seoul, South Korea",
+              "timeframe": "November 2004 to October 2010",
+              "intervention": "Successful PCI with DES"
+            },
+            "relationships": [
+              {
+                "predicate": "compares",
+                "target": "long CTO group vs short CTO group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Long CTO Group",
+            "entity_id": "long_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Long CTO Group",
+              "long CTO group"
+            ],
+            "attributes": {
+              "definition": "CTO lesion length (specific threshold defined in full study context, here referred to as long)",
+              "baseline_characteristic": "More frequent prior PCI",
+              "complication": "More frequent intimal dissection"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_incidence_of",
+                "target": "repeat PCI",
+                "attributes": {},
+                "target_id": "repeat_pci"
+              },
+              {
+                "predicate": "higher_incidence_of",
+                "target": "target vessel revascularization (TVR)",
+                "attributes": {},
+                "target_id": "target_vessel_revascularization_tvr"
+              }
+            ]
+          },
+          {
+            "name": "Short CTO Group",
+            "entity_id": "short_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Short CTO Group",
+              "short CTO group"
+            ],
+            "attributes": {
+              "definition": "CTO lesion length (specific threshold defined in full study context, here referred to as short)",
+              "baseline_characteristic": "More frequent bifurcation lesion"
+            },
+            "relationships": []
+          },
+          {
+            "name": "repeat PCI",
+            "entity_id": "repeat_pci",
+            "entity_type": "other",
+            "aliases": [
+              "Repeat PCI",
+              "repeat PCI"
+            ],
+            "attributes": {
+              "statistical_significance": "p < 0.05",
+              "multivariate_analysis": "OR 4.26, CI 1.53-11.9, p=0.006"
+            },
+            "relationships": [
+              {
+                "predicate": "predicted_by",
+                "target": "Long CTO",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "target vessel revascularization (TVR)",
+            "entity_id": "target_vessel_revascularization_tvr",
+            "entity_type": "other",
+            "aliases": [
+              "Target Vessel Revascularization (TVR)",
+              "target vessel revascularization",
+              "target vessel revascularization (TVR)"
+            ],
+            "attributes": {
+              "statistical_significance": "p < 0.05"
+            },
+            "relationships": [
+              {
+                "predicate": "predominant_component_of",
+                "target": "repeat PCI",
+                "attributes": {},
+                "target_id": "repeat_pci"
+              }
+            ]
+          },
+          {
+            "name": "Drug-Eluting Stents (DES)",
+            "entity_id": "drug_eluting_stents_des",
+            "entity_type": "method",
+            "aliases": [
+              "Drug-Eluting Stents (DES)"
+            ],
+            "attributes": {
+              "effect": "Reduction of restenosis and adverse events"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Study on CTO Lesion Length Outcomes",
+                "attributes": {},
+                "target_id": "study_on_cto_lesion_length_outcomes"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 472,
+          "word_count": 472,
+          "sha256": "4cab864a1f4cd62ea137948db6f631dd70fb7d409f32499b81577a07a06ec0f0",
+          "sentence_minhash": [
+            64406582095982443,
+            5835482791479636,
+            142504170772246792,
+            120833882566575324,
+            43671268334127607,
+            59668074647345182,
+            89506787867394637,
+            41678443202000680,
+            85556276212079497,
+            76931577636070685,
+            10770288728711951,
+            45758140400666343,
+            154708990195788138,
+            906306679132868,
+            194885768149381016,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study defines CTO based on TIMI flow grade 0 and duration, dividing patients into long (≥30mm) and short (<30mm) lesion groups. It details the antiplatelet regimen, PCI procedural standards, and the specific angiographic and clinical endpoints used for analysis.",
+        "entities": [
+          {
+            "name": "Long CTO Group",
+            "entity_id": "long_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Long CTO Group",
+              "long CTO group"
+            ],
+            "attributes": {
+              "definition": "angiographic lesion length ≥30mm",
+              "model_entity_type": "patient_group"
+            },
+            "relationships": [
+              {
+                "predicate": "divided_from",
+                "target": "patients based on target vessel lesion length",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Short CTO Group",
+            "entity_id": "short_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Short CTO Group",
+              "short CTO group"
+            ],
+            "attributes": {
+              "definition": "angiographic lesion length <30mm",
+              "model_entity_type": "patient_group"
+            },
+            "relationships": [
+              {
+                "predicate": "divided_from",
+                "target": "patients based on target vessel lesion length",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Korea University Guro Hospital",
+            "entity_id": "korea_university_guro_hospital",
+            "entity_type": "organization",
+            "aliases": [
+              "Korea University Guro Hospital"
+            ],
+            "attributes": {
+              "location": "Seoul, South Korea"
+            },
+            "relationships": [
+              {
+                "predicate": "approved_protocol_by",
+                "target": "institutional review board",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "performed_QCA_analysis_at",
+                "target": "Cardiovascular Center",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "chronic total occlusion (CTO)",
+            "entity_id": "chronic_total_occlusion_cto",
+            "entity_type": "other",
+            "aliases": [
+              "chronic total occlusion (CTO)"
+            ],
+            "attributes": {
+              "definition": "complete coronary obstruction with Thrombolysis In Myocardial Infarction (TIMI) flow grade 0",
+              "duration_requirement": "estimated duration ≥3 months",
+              "collateral_flow": "with or without visible collateral flow",
+              "duration_determination": "interval from last episode of angina symptoms consistent with occlusion location",
+              "model_entity_type": "medical_condition"
+            },
+            "relationships": [
+              {
+                "predicate": "excludes",
+                "target": "CTO due to in-stent restenosis (ISR)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes_only",
+                "target": "de novo lesions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "antiplatelet regimen",
+            "entity_id": "antiplatelet_regimen",
+            "entity_type": "other",
+            "aliases": [
+              "antiplatelet regimen"
+            ],
+            "attributes": {
+              "loading_doses": "clopidogrel (300-600mg) and aspirin (200-300mg) before index procedure",
+              "maintenance_doses": "aspirin (100mg) and clopidogrel (75mg) after PCI",
+              "clopidogrel_duration": "at least 1 year",
+              "adjunctive_cilostazol": "200mg post-loading then 100mg twice a day for at least one month (physician discretion)",
+              "model_entity_type": "medical_protocol"
+            },
+            "relationships": [
+              {
+                "predicate": "administered_to",
+                "target": "patients undergoing PCI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PCI procedures",
+            "entity_id": "pci_procedures",
+            "entity_type": "other",
+            "aliases": [
+              "PCI procedures"
+            ],
+            "attributes": {
+              "technique": "standard techniques using current guidelines",
+              "guidewire_usage": "various available guidewires to cross CTO lesion",
+              "atheroablative_devices": "not utilized",
+              "pre_dilation": "mostly simple balloon pre-dilation to accommodate unexpanded stent",
+              "stent_type": "drug-eluting stents (DES) decided by operator",
+              "model_entity_type": "medical_procedure"
+            },
+            "relationships": [
+              {
+                "predicate": "success_definition",
+                "target": "reduction in final angiographic diameter stenosis to less than 30% and TIMI grade ≥2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "angiographic outcomes",
+            "entity_id": "angiographic_outcomes",
+            "entity_type": "other",
+            "aliases": [
+              "angiographic outcomes"
+            ],
+            "attributes": {
+              "measurement_timing": "before PCI, immediately after PCI, and 6-months after index procedure",
+              "primary_endpoint": "incidence of binary restenosis at 6-12 months",
+              "secondary_endpoints": "in-stent restenosis (ISR), mean diameter stenosis (DS), minimal luminal diameter (MLD), and late loss (LL) at 6 months",
+              "model_entity_type": "measurement_category"
+            },
+            "relationships": [
+              {
+                "predicate": "measured_by",
+                "target": "Quantitative coronary angiographic (QCA) parameters",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "clinical outcomes",
+            "entity_id": "clinical_outcomes",
+            "entity_type": "other",
+            "aliases": [
+              "clinical outcomes"
+            ],
+            "attributes": {
+              "follow_up_duration": "2 years after index PCI",
+              "data_collection_method": "face to face interview, review of medical record, and/or telephone contact",
+              "primary_endpoint": "major adverse cardiovascular events (MACE)",
+              "mace_definition": "composite of total death, recurrent myocardial infarction (MI), and revascularization (PCI and CABG)",
+              "secondary_endpoints": "death, MI, repeat PCI, target lesion revascularization (TLR), target vessel revascularization (TVR), and non-TVR",
+              "death_classification": "cardiac unless non-cardiac death confirmed",
+              "mace_subtypes": "TLR-MACE and TVR-MACE",
+              "model_entity_type": "measurement_category"
+            },
+            "relationships": [
+              {
+                "predicate": "collected_from",
+                "target": "patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 472,
+          "end_word": 970,
+          "word_count": 498,
+          "sha256": "9fe059ecc54c2d194215d703bc5e9947d00389ada13161dc9c7a3f300d5a8481",
+          "sentence_minhash": [
+            39493402934841386,
+            99036124469374589,
+            42994392124662034,
+            201948566748835051,
+            43714454960919411,
+            173578910533955149,
+            46992937528651961,
+            152326886699586849,
+            73319139196083834,
+            25730676754066093,
+            7133893780234440,
+            173183913504899203,
+            49568730582519212,
+            906306679132868,
+            194885768149381016,
+            47670408420859286
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'patient_group' for 'long CTO group'",
+          "normalized unsupported entity type 'patient_group' for 'short CTO group'",
+          "normalized unsupported entity type 'medical_condition' for 'chronic total occlusion (CTO)'",
+          "normalized unsupported entity type 'medical_protocol' for 'antiplatelet regimen'",
+          "normalized unsupported entity type 'medical_procedure' for 'PCI procedures'",
+          "normalized unsupported entity type 'measurement_category' for 'angiographic outcomes'",
+          "normalized unsupported entity type 'measurement_category' for 'clinical outcomes'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study defines specific composite endpoints for major adverse cardiovascular events and myocardial infarction criteria. Statistical methods included t-tests, chi-square tests, and logistic regression adjusted for multiple risk factors. Baseline data showed 235 patients divided into long (n=159) and short (n=76) CTO groups, with similar in-hospital complications except for intimal dissection.",
+        "entities": [
+          {
+            "name": "TLR-MACE",
+            "entity_id": "tlr_mace",
+            "entity_type": "concept",
+            "aliases": [
+              "TLR-MACE"
+            ],
+            "attributes": {
+              "definition": "Composite of cardiac death, MI, and TLR"
+            },
+            "relationships": []
+          },
+          {
+            "name": "TVR-MACE",
+            "entity_id": "tvr_mace",
+            "entity_type": "concept",
+            "aliases": [
+              "TVR-MACE"
+            ],
+            "attributes": {
+              "definition": "Composite of cardiac death, MI, and TVR"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Q-wave MI",
+            "entity_id": "q_wave_mi",
+            "entity_type": "concept",
+            "aliases": [
+              "Q-wave MI"
+            ],
+            "attributes": {
+              "definition": "Development of new pathological Q-waves in at least two contiguous leads due to MI, with or without elevated creatinine kinase-MB fraction level"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Statistical analysis methods",
+            "entity_id": "statistical_analysis_methods",
+            "entity_type": "method",
+            "aliases": [
+              "Statistical analysis methods"
+            ],
+            "attributes": {
+              "continuous_variables_test": "Student's t-test",
+              "categorical_variables_test": "Chi-square or Fisher's exact test",
+              "regression_model": "Logistic regression",
+              "significance_threshold": "p < 0.05 (2-sided)",
+              "software": "SPSS 20 (IBM SPSS., Chicago, IL, USA)"
+            },
+            "relationships": [
+              {
+                "predicate": "adjusts_for",
+                "target": "sex, age, hypertension, diabetes mellitus, chronic kidney disease, prior PCI, bifurcation lesion",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Study cohort",
+            "entity_id": "study_cohort",
+            "entity_type": "other",
+            "aliases": [
+              "Study cohort"
+            ],
+            "attributes": {
+              "total_patients": 235,
+              "enrollment_period": "November 2004 to October 2010",
+              "procedure": "PCI using DES"
+            },
+            "relationships": [
+              {
+                "predicate": "divided_into",
+                "target": "Long CTO group (n=159, lesion length >= 30mm)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "divided_into",
+                "target": "Short CTO group (n=76, lesion length < 30mm)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Long CTO Group",
+            "entity_id": "long_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Long CTO Group",
+              "Long CTO group",
+              "long CTO group"
+            ],
+            "attributes": {
+              "sample_size": 159,
+              "lesion_length": ">= 30mm"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_incidence_of",
+                "target": "Significant intimal dissection",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "higher_incidence_of",
+                "target": "Repeat PCI (18.8%)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "higher_incidence_of",
+                "target": "TVR (16.3%)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Short CTO Group",
+            "entity_id": "short_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Short CTO Group",
+              "Short CTO group",
+              "short CTO group"
+            ],
+            "attributes": {
+              "sample_size": 76,
+              "lesion_length": "< 30mm"
+            },
+            "relationships": [
+              {
+                "predicate": "lower_incidence_of",
+                "target": "Repeat PCI (7.8%)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "lower_incidence_of",
+                "target": "TVR (6.5%)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Two-year clinical outcomes",
+            "entity_id": "two_year_clinical_outcomes",
+            "entity_type": "measurement",
+            "aliases": [
+              "Two-year clinical outcomes"
+            ],
+            "attributes": {
+              "total_death_long": "3.1%",
+              "total_death_short": "5.2%",
+              "cardiac_death_long": "1.2%",
+              "cardiac_death_short": "2.6%",
+              "mi_long": "1.8%",
+              "mi_short": "2.6%",
+              "mace_long": "21.3%",
+              "mace_short": "13.1%"
+            },
+            "relationships": [
+              {
+                "predicate": "no_significant_difference_in",
+                "target": "Total death, cardiac death, MI, MACE",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "significant_difference_in",
+                "target": "Repeat PCI and TVR",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Six-month angiographic follow-up",
+            "entity_id": "six_month_angiographic_follow_up",
+            "entity_type": "measurement",
+            "aliases": [
+              "Six-month angiographic follow-up"
+            ],
+            "attributes": {
+              "long_cto_participation": "99 of 159 patients (62%)",
+              "short_cto_participation": "45 of 76 patients (59%)"
+            },
+            "relationships": [
+              {
+                "predicate": "no_significant_difference_in",
+                "target": "ISR (33.3% vs 26.6%), binary restenosis (19.1% vs 8.8%), late loss",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 970,
+          "end_word": 1451,
+          "word_count": 481,
+          "sha256": "61ed07278d575bb60e710152b853e1b09014d4a8bb6685419c457cf69e0b34c3",
+          "sentence_minhash": [
+            64406582095982443,
+            134048153931688812,
+            142504170772246792,
+            139222975235943620,
+            15377319775961264,
+            59668074647345182,
+            76197433036625096,
+            41678443202000680,
+            249356920820546271,
+            25730676754066093,
+            10770288728711951,
+            171596837418463449,
+            4458646152820280,
+            381194872882256938,
+            194885768149381016,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study found that long CTO lesions were associated with higher rates of prior PCI and MI, as well as more frequent in-hospital intimal dissection. Despite these differences, both long and short CTO groups showed similar major clinical outcomes and 6-month angiographic results, with the exception of a higher incidence of repeat PCI and target vessel revascularization in the long CTO group.",
+        "entities": [
+          {
+            "name": "Long CTO Group",
+            "entity_id": "long_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Long CTO Group",
+              "long CTO group"
+            ],
+            "attributes": {
+              "lesion_length_definition": "angiographic lesion length ≥30mm",
+              "prior_pci_frequency": "higher than short CTO group",
+              "history_of_mi_frequency": "higher than short CTO group",
+              "intimal_dissection_frequency": "higher than short CTO group",
+              "repeat_pci_incidence": "higher than short CTO group",
+              "tvr_incidence": "higher than short CTO group",
+              "stent_type_preference": "paclitaxel-eluting stent frequently used",
+              "model_entity_type": "patient_cohort"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "Short CTO Group",
+                "attributes": {},
+                "target_id": "short_cto_group"
+              },
+              {
+                "predicate": "experienced_higher_incidence_of",
+                "target": "repeat PCI",
+                "attributes": {},
+                "target_id": "repeat_pci"
+              },
+              {
+                "predicate": "experienced_higher_incidence_of",
+                "target": "target vessel revascularization (TVR)",
+                "attributes": {},
+                "target_id": "target_vessel_revascularization_tvr"
+              },
+              {
+                "predicate": "showed_similar_outcomes_to",
+                "target": "Short CTO Group",
+                "attributes": {},
+                "target_id": "short_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "Short CTO Group",
+            "entity_id": "short_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Short CTO Group",
+              "short CTO group"
+            ],
+            "attributes": {
+              "lesion_length_definition": "angiographic lesion length <30mm",
+              "stent_type_preference": "newer generation DES dominant",
+              "model_entity_type": "patient_cohort"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              },
+              {
+                "predicate": "showed_similar_outcomes_to",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "repeat PCI",
+            "entity_id": "repeat_pci",
+            "entity_type": "other",
+            "aliases": [
+              "Repeat PCI",
+              "repeat PCI"
+            ],
+            "attributes": {
+              "model_entity_type": "clinical_outcome"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_in",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              },
+              {
+                "predicate": "predominantly_composed_of",
+                "target": "target vessel revascularization (TVR)",
+                "attributes": {},
+                "target_id": "target_vessel_revascularization_tvr"
+              }
+            ]
+          },
+          {
+            "name": "target vessel revascularization (TVR)",
+            "entity_id": "target_vessel_revascularization_tvr",
+            "entity_type": "other",
+            "aliases": [
+              "Target Vessel Revascularization (TVR)",
+              "target vessel revascularization",
+              "target vessel revascularization (TVR)"
+            ],
+            "attributes": {
+              "model_entity_type": "clinical_outcome"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_in",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "intimal dissection",
+            "entity_id": "intimal_dissection",
+            "entity_type": "other",
+            "aliases": [
+              "intimal dissection"
+            ],
+            "attributes": {
+              "model_entity_type": "procedural_complication"
+            },
+            "relationships": [
+              {
+                "predicate": "more_frequent_in",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "successful CTO PCI",
+            "entity_id": "successful_cto_pci",
+            "entity_type": "other",
+            "aliases": [
+              "successful CTO PCI"
+            ],
+            "attributes": {
+              "reported_success_rate": "up to 90%",
+              "model_entity_type": "medical_procedure"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "improved clinical outcomes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "predicts_reduced_rate_of",
+                "target": "coronary artery bypass grafting (CABG)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compared_with",
+                "target": "failed CTO PCI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CTO disease",
+            "entity_id": "cto_disease",
+            "entity_type": "other",
+            "aliases": [
+              "CTO disease"
+            ],
+            "attributes": {
+              "model_entity_type": "medical_condition"
+            },
+            "relationships": [
+              {
+                "predicate": "has_worse_outcomes_than",
+                "target": "non-CTO disease",
+                "attributes": {},
+                "target_id": "non_cto_disease"
+              }
+            ]
+          },
+          {
+            "name": "non-CTO disease",
+            "entity_id": "non_cto_disease",
+            "entity_type": "other",
+            "aliases": [
+              "non-CTO disease"
+            ],
+            "attributes": {
+              "model_entity_type": "medical_condition"
+            },
+            "relationships": [
+              {
+                "predicate": "lesion_length_is_predictor_of",
+                "target": "MACE and restenosis after stent implantation with DES",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "newer generation DES",
+            "entity_id": "newer_generation_des",
+            "entity_type": "other",
+            "aliases": [
+              "newer generation DES"
+            ],
+            "attributes": {
+              "model_entity_type": "medical_device"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "superior cardiovascular outcomes following PCI",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "dominant_in",
+                "target": "Short CTO Group",
+                "attributes": {},
+                "target_id": "short_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "paclitaxel-eluting stent",
+            "entity_id": "paclitaxel_eluting_stent",
+            "entity_type": "other",
+            "aliases": [
+              "paclitaxel-eluting stent"
+            ],
+            "attributes": {
+              "model_entity_type": "medical_device"
+            },
+            "relationships": [
+              {
+                "predicate": "frequently_used_in",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1451,
+          "end_word": 1938,
+          "word_count": 487,
+          "sha256": "7ccc7fefcbd46edba185935ad1839baf073da71c3aad7a1676801f972e154292",
+          "sentence_minhash": [
+            125901545337719231,
+            18551641988871988,
+            36072805651584851,
+            103230854518152932,
+            43714454960919411,
+            62667647458868521,
+            76197433036625096,
+            320798113494050081,
+            73319139196083834,
+            9462436175016187,
+            120833680685463289,
+            171596837418463449,
+            164575269931903557,
+            906306679132868,
+            84258266176112060,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'patient_cohort' for 'long CTO group'",
+          "normalized unsupported entity type 'patient_cohort' for 'short CTO group'",
+          "normalized unsupported entity type 'clinical_outcome' for 'repeat PCI'",
+          "normalized unsupported entity type 'clinical_outcome' for 'target vessel revascularization (TVR)'",
+          "normalized unsupported entity type 'procedural_complication' for 'intimal dissection'",
+          "normalized unsupported entity type 'medical_procedure' for 'successful CTO PCI'",
+          "normalized unsupported entity type 'medical_condition' for 'CTO disease'",
+          "normalized unsupported entity type 'medical_condition' for 'non-CTO disease'",
+          "normalized unsupported entity type 'medical_device' for 'newer generation DES'",
+          "normalized unsupported entity type 'medical_device' for 'paclitaxel-eluting stent'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study found that while long CTO lesions were associated with higher rates of repeat PCI and target vessel revascularization, overall mortality and major adverse cardiac events were similar to short CTO lesions. The authors suggest that collateral channels and myocardial viability may mitigate the impact of restenosis in long lesions. Study limitations include its non-randomized, single-center design and potential confounding by stent generation and follow-up angiography practices.",
+        "entities": [
+          {
+            "name": "Long CTO Group",
+            "entity_id": "long_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Long CTO Group",
+              "long CTO group"
+            ],
+            "attributes": {
+              "lesion_length": ">= 30mm",
+              "repeat_pci_incidence": "18.8%",
+              "tvr_incidence": "16.3%",
+              "binary_restenosis_incidence": "19.1%",
+              "vessel_diameter": "2.92 ± 0.42 mm",
+              "stent_type": "frequently first generation",
+              "model_entity_type": "patient_cohort"
+            },
+            "relationships": [
+              {
+                "predicate": "had_higher_incidence_of",
+                "target": "repeat PCI",
+                "attributes": {},
+                "target_id": "repeat_pci"
+              },
+              {
+                "predicate": "had_higher_incidence_of",
+                "target": "target vessel revascularization (TVR)",
+                "attributes": {},
+                "target_id": "target_vessel_revascularization_tvr"
+              },
+              {
+                "predicate": "had_similar_mortality_to",
+                "target": "Short CTO Group",
+                "attributes": {},
+                "target_id": "short_cto_group"
+              },
+              {
+                "predicate": "had_similar_mace_to",
+                "target": "Short CTO Group",
+                "attributes": {},
+                "target_id": "short_cto_group"
+              },
+              {
+                "predicate": "had_similar_six_month_angiographic_outcomes_to",
+                "target": "Short CTO Group",
+                "attributes": {},
+                "target_id": "short_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "Short CTO Group",
+            "entity_id": "short_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Short CTO Group",
+              "short CTO group"
+            ],
+            "attributes": {
+              "lesion_length": "< 30mm",
+              "repeat_pci_incidence": "7.8%",
+              "tvr_incidence": "6.5%",
+              "binary_restenosis_incidence": "8.8%",
+              "vessel_diameter": "3.11 ± 0.43 mm",
+              "stent_type": "frequently newer generation",
+              "model_entity_type": "patient_cohort"
+            },
+            "relationships": [
+              {
+                "predicate": "had_lower_incidence_of",
+                "target": "repeat PCI",
+                "attributes": {},
+                "target_id": "repeat_pci"
+              },
+              {
+                "predicate": "had_lower_incidence_of",
+                "target": "target vessel revascularization (TVR)",
+                "attributes": {},
+                "target_id": "target_vessel_revascularization_tvr"
+              },
+              {
+                "predicate": "had_similar_mortality_to",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              }
+            ]
+          },
+          {
+            "name": "repeat PCI",
+            "entity_id": "repeat_pci",
+            "entity_type": "other",
+            "aliases": [
+              "Repeat PCI",
+              "repeat PCI"
+            ],
+            "attributes": {
+              "long_cto_rate": "18.8%",
+              "short_cto_rate": "7.8%",
+              "p_value": "< 0.05",
+              "model_entity_type": "clinical_outcome"
+            },
+            "relationships": [
+              {
+                "predicate": "predicted_by",
+                "target": "long CTO lesion length",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "target vessel revascularization (TVR)",
+            "entity_id": "target_vessel_revascularization_tvr",
+            "entity_type": "other",
+            "aliases": [
+              "Target Vessel Revascularization (TVR)",
+              "target vessel revascularization",
+              "target vessel revascularization (TVR)"
+            ],
+            "attributes": {
+              "long_cto_rate": "16.3%",
+              "short_cto_rate": "6.5%",
+              "p_value": "< 0.05",
+              "odds_ratio": "4.23",
+              "confidence_interval": "1.52 - 11.8",
+              "model_entity_type": "clinical_outcome"
+            },
+            "relationships": [
+              {
+                "predicate": "predicted_by",
+                "target": "long CTO lesion length",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "did_not_translate_to",
+                "target": "mortality or cardiac death",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "binary restenosis",
+            "entity_id": "binary_restenosis",
+            "entity_type": "other",
+            "aliases": [
+              "binary restenosis"
+            ],
+            "attributes": {
+              "long_cto_rate": "19.1%",
+              "short_cto_rate": "8.8%",
+              "p_value": "0.118",
+              "model_entity_type": "angiographic_outcome"
+            },
+            "relationships": [
+              {
+                "predicate": "showed_numerically_higher_trend_in",
+                "target": "Long CTO Group",
+                "attributes": {},
+                "target_id": "long_cto_group"
+              },
+              {
+                "predicate": "compared_with_study_by",
+                "target": "Hoye A et al",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "j-Cypher Registry",
+            "entity_id": "j_cypher_registry",
+            "entity_type": "other",
+            "aliases": [
+              "j-Cypher Registry"
+            ],
+            "attributes": {
+              "model_entity_type": "study"
+            },
+            "relationships": [
+              {
+                "predicate": "previously_reported",
+                "target": "discrepancy between hard endpoints and revascularization incidence in CTO treatment",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Hoye A et al study",
+            "entity_id": "hoye_a_et_al_study",
+            "entity_type": "other",
+            "aliases": [
+              "Hoye A et al study"
+            ],
+            "attributes": {
+              "short_cto_binary_restenosis_rate": "9.1%",
+              "model_entity_type": "study"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "present study short CTO group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "present study",
+            "entity_id": "present_study",
+            "entity_type": "other",
+            "aliases": [
+              "present study"
+            ],
+            "attributes": {
+              "design": "single center registry, prospective, non-randomized",
+              "limitations": "unmeasured confounders, non-routine follow-up angiography, small sample size, short follow-up period",
+              "model_entity_type": "study"
+            },
+            "relationships": [
+              {
+                "predicate": "found_similar_outcomes_between",
+                "target": "long CTO group and short CTO group",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "identified_higher_risk_in",
+                "target": "long CTO group for repeat PCI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1938,
+          "end_word": 2429,
+          "word_count": 491,
+          "sha256": "756a84dc08be65464d6f791f1584cf21faa1a8bd73feab40d075c0e5c83c8f98",
+          "sentence_minhash": [
+            92926677968393280,
+            1306423125707224,
+            231110926427626308,
+            61919449716151556,
+            17364062514135603,
+            30500191475291153,
+            76197433036625096,
+            407897710591731687,
+            41398414370036992,
+            76931577636070685,
+            10770288728711951,
+            11317338413054220,
+            91759520063933247,
+            160251697193659384,
+            278614866765861159,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'patient_cohort' for 'long CTO group'",
+          "normalized unsupported entity type 'patient_cohort' for 'short CTO group'",
+          "normalized unsupported entity type 'clinical_outcome' for 'repeat PCI'",
+          "normalized unsupported entity type 'clinical_outcome' for 'target vessel revascularization'",
+          "normalized unsupported entity type 'angiographic_outcome' for 'binary restenosis'",
+          "normalized unsupported entity type 'study' for 'j-Cypher Registry'",
+          "normalized unsupported entity type 'study' for 'Hoye A et al study'",
+          "normalized unsupported entity type 'study' for 'present study'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study acknowledges limitations including a small sample size, insufficient statistical power to detect angiographic differences, and a two-year follow-up period that is too short for long-term safety assessment. Despite these constraints, the prospective real-world cohort found similar safety and clinical outcomes between long and short CTO groups, with the exception of higher repeat PCI rates in the long CTO group. The authors conclude that larger, long-term studies are needed to establish definitive conclusions.",
+        "entities": [
+          {
+            "name": "CTO study limitations",
+            "entity_id": "cto_study_limitations",
+            "entity_type": "concept",
+            "aliases": [
+              "CTO study limitations"
+            ],
+            "attributes": {
+              "sample_size": "relatively small",
+              "statistical_power": "insufficient to prove difference in angiographic events",
+              "follow_up_duration": "two years",
+              "follow_up_limitation": "not long enough to evaluate long-term safety and efficacy"
+            },
+            "relationships": [
+              {
+                "predicate": "acknowledged_in",
+                "target": "CTO lesion length outcome study",
+                "attributes": {},
+                "target_id": "cto_lesion_length_outcome_study"
+              }
+            ]
+          },
+          {
+            "name": "CTO lesion length outcome study",
+            "entity_id": "cto_lesion_length_outcome_study",
+            "entity_type": "event",
+            "aliases": [
+              "CTO lesion length outcome study"
+            ],
+            "attributes": {
+              "cohort_type": "real world CTO cohort",
+              "data_collection_method": "prospective"
+            },
+            "relationships": [
+              {
+                "predicate": "found_similar_outcomes_between",
+                "target": "long CTO group and short CTO group",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "found_higher_incidence_of",
+                "target": "repeat PCI in long CTO group",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires",
+                "target": "long-term study with larger numbers of patients",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Long CTO Group",
+            "entity_id": "long_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Long CTO Group",
+              "long CTO group"
+            ],
+            "attributes": {
+              "intervention": "DES implantation",
+              "model_entity_type": "group"
+            },
+            "relationships": [
+              {
+                "predicate": "had_higher_incidence_of",
+                "target": "repeat PCI",
+                "attributes": {},
+                "target_id": "repeat_pci"
+              }
+            ]
+          },
+          {
+            "name": "Short CTO Group",
+            "entity_id": "short_cto_group",
+            "entity_type": "other",
+            "aliases": [
+              "Short CTO Group",
+              "short CTO group"
+            ],
+            "attributes": {
+              "model_entity_type": "group"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2429,
+          "end_word": 2564,
+          "word_count": 135,
+          "sha256": "73baea7754ec563cf347b4b61ba2a85fc7f69a318b0cebfb344d2d7871f7846a",
+          "sentence_minhash": [
+            181534865310160414,
+            1306423125707224,
+            450614761841400792,
+            497244195471522334,
+            26384097017582652,
+            428209587723997907,
+            619615460087535873,
+            305858046600825672,
+            66530823458117479,
+            344638769249142008,
+            128047967744972732,
+            406237732837188576,
+            164575269931903557,
+            230446152249264501,
+            288209856713747047,
+            296703126451676242
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'group' for 'long CTO group'",
+          "normalized unsupported entity type 'group' for 'short CTO group'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "long_cto_group",
+        "canonical_name": "Long CTO Group",
+        "aliases": [
+          "Long CTO Group",
+          "long CTO group"
+        ]
+      },
+      {
+        "canonical_id": "short_cto_group",
+        "canonical_name": "Short CTO Group",
+        "aliases": [
+          "Short CTO Group",
+          "short CTO group"
+        ]
+      },
+      {
+        "canonical_id": "repeat_pci",
+        "canonical_name": "repeat PCI",
+        "aliases": [
+          "Repeat PCI",
+          "repeat PCI"
+        ]
+      },
+      {
+        "canonical_id": "target_vessel_revascularization_tvr",
+        "canonical_name": "target vessel revascularization (TVR)",
+        "aliases": [
+          "Target Vessel Revascularization (TVR)",
+          "target vessel revascularization (TVR)",
+          "target vessel revascularization"
+        ]
+      },
+      {
+        "canonical_id": "study_on_cto_lesion_length_outcomes",
+        "canonical_name": "Study on CTO Lesion Length Outcomes",
+        "aliases": [
+          "Study on CTO Lesion Length Outcomes"
+        ]
+      },
+      {
+        "canonical_id": "drug_eluting_stents_des",
+        "canonical_name": "Drug-Eluting Stents (DES)",
+        "aliases": [
+          "Drug-Eluting Stents (DES)"
+        ]
+      },
+      {
+        "canonical_id": "korea_university_guro_hospital",
+        "canonical_name": "Korea University Guro Hospital",
+        "aliases": [
+          "Korea University Guro Hospital"
+        ]
+      },
+      {
+        "canonical_id": "chronic_total_occlusion_cto",
+        "canonical_name": "chronic total occlusion (CTO)",
+        "aliases": [
+          "chronic total occlusion (CTO)"
+        ]
+      },
+      {
+        "canonical_id": "antiplatelet_regimen",
+        "canonical_name": "antiplatelet regimen",
+        "aliases": [
+          "antiplatelet regimen"
+        ]
+      },
+      {
+        "canonical_id": "pci_procedures",
+        "canonical_name": "PCI procedures",
+        "aliases": [
+          "PCI procedures"
+        ]
+      },
+      {
+        "canonical_id": "angiographic_outcomes",
+        "canonical_name": "angiographic outcomes",
+        "aliases": [
+          "angiographic outcomes"
+        ]
+      },
+      {
+        "canonical_id": "clinical_outcomes",
+        "canonical_name": "clinical outcomes",
+        "aliases": [
+          "clinical outcomes"
+        ]
+      },
+      {
+        "canonical_id": "tlr_mace",
+        "canonical_name": "TLR-MACE",
+        "aliases": [
+          "TLR-MACE"
+        ]
+      },
+      {
+        "canonical_id": "tvr_mace",
+        "canonical_name": "TVR-MACE",
+        "aliases": [
+          "TVR-MACE"
+        ]
+      },
+      {
+        "canonical_id": "q_wave_mi",
+        "canonical_name": "Q-wave MI",
+        "aliases": [
+          "Q-wave MI"
+        ]
+      },
+      {
+        "canonical_id": "statistical_analysis_methods",
+        "canonical_name": "Statistical analysis methods",
+        "aliases": [
+          "Statistical analysis methods"
+        ]
+      },
+      {
+        "canonical_id": "study_cohort",
+        "canonical_name": "Study cohort",
+        "aliases": [
+          "Study cohort"
+        ]
+      },
+      {
+        "canonical_id": "two_year_clinical_outcomes",
+        "canonical_name": "Two-year clinical outcomes",
+        "aliases": [
+          "Two-year clinical outcomes"
+        ]
+      },
+      {
+        "canonical_id": "six_month_angiographic_follow_up",
+        "canonical_name": "Six-month angiographic follow-up",
+        "aliases": [
+          "Six-month angiographic follow-up"
+        ]
+      },
+      {
+        "canonical_id": "intimal_dissection",
+        "canonical_name": "intimal dissection",
+        "aliases": [
+          "intimal dissection"
+        ]
+      },
+      {
+        "canonical_id": "successful_cto_pci",
+        "canonical_name": "successful CTO PCI",
+        "aliases": [
+          "successful CTO PCI"
+        ]
+      },
+      {
+        "canonical_id": "cto_disease",
+        "canonical_name": "CTO disease",
+        "aliases": [
+          "CTO disease"
+        ]
+      },
+      {
+        "canonical_id": "non_cto_disease",
+        "canonical_name": "non-CTO disease",
+        "aliases": [
+          "non-CTO disease"
+        ]
+      },
+      {
+        "canonical_id": "newer_generation_des",
+        "canonical_name": "newer generation DES",
+        "aliases": [
+          "newer generation DES"
+        ]
+      },
+      {
+        "canonical_id": "paclitaxel_eluting_stent",
+        "canonical_name": "paclitaxel-eluting stent",
+        "aliases": [
+          "paclitaxel-eluting stent"
+        ]
+      },
+      {
+        "canonical_id": "binary_restenosis",
+        "canonical_name": "binary restenosis",
+        "aliases": [
+          "binary restenosis"
+        ]
+      },
+      {
+        "canonical_id": "j_cypher_registry",
+        "canonical_name": "j-Cypher Registry",
+        "aliases": [
+          "j-Cypher Registry"
+        ]
+      },
+      {
+        "canonical_id": "hoye_a_et_al_study",
+        "canonical_name": "Hoye A et al study",
+        "aliases": [
+          "Hoye A et al study"
+        ]
+      },
+      {
+        "canonical_id": "present_study",
+        "canonical_name": "present study",
+        "aliases": [
+          "present study"
+        ]
+      },
+      {
+        "canonical_id": "cto_study_limitations",
+        "canonical_name": "CTO study limitations",
+        "aliases": [
+          "CTO study limitations"
+        ]
+      },
+      {
+        "canonical_id": "cto_lesion_length_outcome_study",
+        "canonical_name": "CTO lesion length outcome study",
+        "aliases": [
+          "CTO lesion length outcome study"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"A study of 235 patients at Korea University Guro Hospital compared outcomes of long versus short chronic total occlusion (CTO) lesions treated with drug-eluting stents. While most clinical and angiographic outcomes were similar, the long CTO group had a significantly higher incidence of repeat PCI and target vessel revascularization.\",\"entities\":[{\"name\":\"Study on CTO Lesion Length Outcomes\",\"type\":\"event\",\"attributes\":{\"sample_size\":\"235 consecutive patients\",\"location\":\"Cardiovascular Center of Korea University Guro Hospital, Seoul, South Korea\",\"timeframe\":\"November 2004 to October 2010\",\"intervention\":\"Successful PCI with DES\"},\"relationships\":[{\"predicate\":\"compares\",\"target\":\"long CTO group vs short CTO group\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Long CTO Group\",\"type\":\"other\",\"attributes\":{\"definition\":\"CTO lesion length (specific threshold defined in full study context, here referred to as long)\",\"baseline_characteristic\":\"More frequent prior PCI\",\"complication\":\"More frequent intimal dissection\"},\"relationships\":[{\"predicate\":\"higher_incidence_of\",\"target\":\"repeat PCI\",\"attributes\":{},\"target_id\":\"repeat_pci\"},{\"predicate\":\"higher_incidence_of\",\"target\":\"target vessel revascularization (TVR)\",\"attributes\":{},\"target_id\":\"target_vessel_revascularization_tvr\"}]},{\"name\":\"Short CTO Group\",\"type\":\"other\",\"attributes\":{\"definition\":\"CTO lesion length (specific threshold defined in full study context, here referred to as short)\",\"baseline_characteristic\":\"More frequent bifurcation lesion\"},\"relationships\":[]},{\"name\":\"repeat PCI\",\"type\":\"other\",\"attributes\":{\"statistical_significance\":\"p < 0.05\",\"multivariate_analysis\":\"OR 4.26, CI 1.53-11.9, p=0.006\"},\"relationships\":[{\"predicate\":\"predicted_by\",\"target\":\"Long CTO\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"target vessel revascularization (TVR)\",\"type\":\"other\",\"attributes\":{\"statistical_significance\":\"p < 0.05\"},\"relationships\":[{\"predicate\":\"predominant_component_of\",\"target\":\"repeat PCI\",\"attributes\":{},\"target_id\":\"repeat_pci\"}]},{\"name\":\"Drug-Eluting Stents (DES)\",\"type\":\"method\",\"attributes\":{\"effect\":\"Reduction of restenosis and adverse events\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"Study on CTO Lesion Length Outcomes\",\"attributes\":{},\"target_id\":\"study_on_cto_lesion_length_outcomes\"}]}]},{\"context_summary\":\"The study defines CTO based on TIMI flow grade 0 and duration, dividing patients into long (≥30mm) and short (<30mm) lesion groups. It details the antiplatelet regimen, PCI procedural standards, and the specific angiographic and clinical endpoints used for analysis.\",\"entities\":[{\"name\":\"Long CTO Group\",\"type\":\"other\",\"attributes\":{\"definition\":\"angiographic lesion length ≥30mm\",\"model_entity_type\":\"patient_group\"},\"relationships\":[{\"predicate\":\"divided_from\",\"target\":\"patients based on target vessel lesion length\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Short CTO Group\",\"type\":\"other\",\"attributes\":{\"definition\":\"angiographic lesion length <30mm\",\"model_entity_type\":\"patient_group\"},\"relationships\":[{\"predicate\":\"divided_from\",\"target\":\"patients based on target vessel lesion length\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Korea University Guro Hospital\",\"type\":\"organization\",\"attributes\":{\"location\":\"Seoul, South Korea\"},\"relationships\":[{\"predicate\":\"approved_protocol_by\",\"target\":\"institutional review board\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"performed_QCA_analysis_at\",\"target\":\"Cardiovascular Center\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"chronic total occlusion (CTO)\",\"type\":\"other\",\"attributes\":{\"definition\":\"complete coronary obstruction with Thrombolysis In Myocardial Infarction (TIMI) flow grade 0\",\"duration_requirement\":\"estimated duration ≥3 months\",\"collateral_flow\":\"with or without visible collateral flow\",\"duration_determination\":\"interval from last episode of angina symptoms consistent with occlusion location\",\"model_entity_type\":\"medical_condition\"},\"relationships\":[{\"predicate\":\"excludes\",\"target\":\"CTO due to in-stent restenosis (ISR)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes_only\",\"target\":\"de novo lesions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"antiplatelet regimen\",\"type\":\"other\",\"attributes\":{\"loading_doses\":\"clopidogrel (300-600mg) and aspirin (200-300mg) before index procedure\",\"maintenance_doses\":\"aspirin (100mg) and clopidogrel (75mg) after PCI\",\"clopidogrel_duration\":\"at least 1 year\",\"adjunctive_cilostazol\":\"200mg post-loading then 100mg twice a day for at least one month (physician discretion)\",\"model_entity_type\":\"medical_protocol\"},\"relationships\":[{\"predicate\":\"administered_to\",\"target\":\"patients undergoing PCI\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PCI procedures\",\"type\":\"other\",\"attributes\":{\"technique\":\"standard techniques using current guidelines\",\"guidewire_usage\":\"various available guidewires to cross CTO lesion\",\"atheroablative_devices\":\"not utilized\",\"pre_dilation\":\"mostly simple balloon pre-dilation to accommodate unexpanded stent\",\"stent_type\":\"drug-eluting stents (DES) decided by operator\",\"model_entity_type\":\"medical_procedure\"},\"relationships\":[{\"predicate\":\"success_definition\",\"target\":\"reduction in final angiographic diameter stenosis to less than 30% and TIMI grade ≥2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"angiographic outcomes\",\"type\":\"other\",\"attributes\":{\"measurement_timing\":\"before PCI, immediately after PCI, and 6-months after index procedure\",\"primary_endpoint\":\"incidence of binary restenosis at 6-12 months\",\"secondary_endpoints\":\"in-stent restenosis (ISR), mean diameter stenosis (DS), minimal luminal diameter (MLD), and late loss (LL) at 6 months\",\"model_entity_type\":\"measurement_category\"},\"relationships\":[{\"predicate\":\"measured_by\",\"target\":\"Quantitative coronary angiographic (QCA) parameters\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"clinical outcomes\",\"type\":\"other\",\"attributes\":{\"follow_up_duration\":\"2 years after index PCI\",\"data_collection_method\":\"face to face interview, review of medical record, and/or telephone contact\",\"primary_endpoint\":\"major adverse cardiovascular events (MACE)\",\"mace_definition\":\"composite of total death, recurrent myocardial infarction (MI), and revascularization (PCI and CABG)\",\"secondary_endpoints\":\"death, MI, repeat PCI, target lesion revascularization (TLR), target vessel revascularization (TVR), and non-TVR\",\"death_classification\":\"cardiac unless non-cardiac death confirmed\",\"mace_subtypes\":\"TLR-MACE and TVR-MACE\",\"model_entity_type\":\"measurement_category\"},\"relationships\":[{\"predicate\":\"collected_from\",\"target\":\"patients\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study defines specific composite endpoints for major adverse cardiovascular events and myocardial infarction criteria. Statistical methods included t-tests, chi-square tests, and logistic regression adjusted for multiple risk factors. Baseline data showed 235 patients divided into long (n=159) and short (n=76) CTO groups, with similar in-hospital complications except for intimal dissection.\",\"entities\":[{\"name\":\"TLR-MACE\",\"type\":\"concept\",\"attributes\":{\"definition\":\"Composite of cardiac death, MI, and TLR\"},\"relationships\":[]},{\"name\":\"TVR-MACE\",\"type\":\"concept\",\"attributes\":{\"definition\":\"Composite of cardiac death, MI, and TVR\"},\"relationships\":[]},{\"name\":\"Q-wave MI\",\"type\":\"concept\",\"attributes\":{\"definition\":\"Development of new pathological Q-waves in at least two contiguous leads due to MI, with or without elevated creatinine kinase-MB fraction level\"},\"relationships\":[]},{\"name\":\"Statistical analysis methods\",\"type\":\"method\",\"attributes\":{\"continuous_variables_test\":\"Student's t-test\",\"categorical_variables_test\":\"Chi-square or Fisher's exact test\",\"regression_model\":\"Logistic regression\",\"significance_threshold\":\"p < 0.05 (2-sided)\",\"software\":\"SPSS 20 (IBM SPSS., Chicago, IL, USA)\"},\"relationships\":[{\"predicate\":\"adjusts_for\",\"target\":\"sex, age, hypertension, diabetes mellitus, chronic kidney disease, prior PCI, bifurcation lesion\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Study cohort\",\"type\":\"other\",\"attributes\":{\"total_patients\":235,\"enrollment_period\":\"November 2004 to October 2010\",\"procedure\":\"PCI using DES\"},\"relationships\":[{\"predicate\":\"divided_into\",\"target\":\"Long CTO group (n=159, lesion length >= 30mm)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"divided_into\",\"target\":\"Short CTO group (n=76, lesion length < 30mm)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Long CTO Group\",\"type\":\"other\",\"attributes\":{\"sample_size\":159,\"lesion_length\":\">= 30mm\"},\"relationships\":[{\"predicate\":\"higher_incidence_of\",\"target\":\"Significant intimal dissection\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"higher_incidence_of\",\"target\":\"Repeat PCI (18.8%)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"higher_incidence_of\",\"target\":\"TVR (16.3%)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Short CTO Group\",\"type\":\"other\",\"attributes\":{\"sample_size\":76,\"lesion_length\":\"< 30mm\"},\"relationships\":[{\"predicate\":\"lower_incidence_of\",\"target\":\"Repeat PCI (7.8%)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"lower_incidence_of\",\"target\":\"TVR (6.5%)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Two-year clinical outcomes\",\"type\":\"measurement\",\"attributes\":{\"total_death_long\":\"3.1%\",\"total_death_short\":\"5.2%\",\"cardiac_death_long\":\"1.2%\",\"cardiac_death_short\":\"2.6%\",\"mi_long\":\"1.8%\",\"mi_short\":\"2.6%\",\"mace_long\":\"21.3%\",\"mace_short\":\"13.1%\"},\"relationships\":[{\"predicate\":\"no_significant_difference_in\",\"target\":\"Total death, cardiac death, MI, MACE\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"significant_difference_in\",\"target\":\"Repeat PCI and TVR\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Six-month angiographic follow-up\",\"type\":\"measurement\",\"attributes\":{\"long_cto_participation\":\"99 of 159 patients (62%)\",\"short_cto_participation\":\"45 of 76 patients (59%)\"},\"relationships\":[{\"predicate\":\"no_significant_difference_in\",\"target\":\"ISR (33.3% vs 26.6%), binary restenosis (19.1% vs 8.8%), late loss\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study found that long CTO lesions were associated with higher rates of prior PCI and MI, as well as more frequent in-hospital intimal dissection. Despite these differences, both long and short CTO groups showed similar major clinical outcomes and 6-month angiographic results, with the exception of a higher incidence of repeat PCI and target vessel revascularization in the long CTO group.\",\"entities\":[{\"name\":\"Long CTO Group\",\"type\":\"other\",\"attributes\":{\"lesion_length_definition\":\"angiographic lesion length ≥30mm\",\"prior_pci_frequency\":\"higher than short CTO group\",\"history_of_mi_frequency\":\"higher than short CTO group\",\"intimal_dissection_frequency\":\"higher than short CTO group\",\"repeat_pci_incidence\":\"higher than short CTO group\",\"tvr_incidence\":\"higher than short CTO group\",\"stent_type_preference\":\"paclitaxel-eluting stent frequently used\",\"model_entity_type\":\"patient_cohort\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"Short CTO Group\",\"attributes\":{},\"target_id\":\"short_cto_group\"},{\"predicate\":\"experienced_higher_incidence_of\",\"target\":\"repeat PCI\",\"attributes\":{},\"target_id\":\"repeat_pci\"},{\"predicate\":\"experienced_higher_incidence_of\",\"target\":\"target vessel revascularization (TVR)\",\"attributes\":{},\"target_id\":\"target_vessel_revascularization_tvr\"},{\"predicate\":\"showed_similar_outcomes_to\",\"target\":\"Short CTO Group\",\"attributes\":{},\"target_id\":\"short_cto_group\"}]},{\"name\":\"Short CTO Group\",\"type\":\"other\",\"attributes\":{\"lesion_length_definition\":\"angiographic lesion length <30mm\",\"stent_type_preference\":\"newer generation DES dominant\",\"model_entity_type\":\"patient_cohort\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"},{\"predicate\":\"showed_similar_outcomes_to\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"}]},{\"name\":\"repeat PCI\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"clinical_outcome\"},\"relationships\":[{\"predicate\":\"higher_in\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"},{\"predicate\":\"predominantly_composed_of\",\"target\":\"target vessel revascularization (TVR)\",\"attributes\":{},\"target_id\":\"target_vessel_revascularization_tvr\"}]},{\"name\":\"target vessel revascularization (TVR)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"clinical_outcome\"},\"relationships\":[{\"predicate\":\"higher_in\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"}]},{\"name\":\"intimal dissection\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"procedural_complication\"},\"relationships\":[{\"predicate\":\"more_frequent_in\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"}]},{\"name\":\"successful CTO PCI\",\"type\":\"other\",\"attributes\":{\"reported_success_rate\":\"up to 90%\",\"model_entity_type\":\"medical_procedure\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"improved clinical outcomes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"predicts_reduced_rate_of\",\"target\":\"coronary artery bypass grafting (CABG)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compared_with\",\"target\":\"failed CTO PCI\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CTO disease\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"medical_condition\"},\"relationships\":[{\"predicate\":\"has_worse_outcomes_than\",\"target\":\"non-CTO disease\",\"attributes\":{},\"target_id\":\"non_cto_disease\"}]},{\"name\":\"non-CTO disease\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"medical_condition\"},\"relationships\":[{\"predicate\":\"lesion_length_is_predictor_of\",\"target\":\"MACE and restenosis after stent implantation with DES\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"newer generation DES\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"medical_device\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"superior cardiovascular outcomes following PCI\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"dominant_in\",\"target\":\"Short CTO Group\",\"attributes\":{},\"target_id\":\"short_cto_group\"}]},{\"name\":\"paclitaxel-eluting stent\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"medical_device\"},\"relationships\":[{\"predicate\":\"frequently_used_in\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"}]}]},{\"context_summary\":\"The study found that while long CTO lesions were associated with higher rates of repeat PCI and target vessel revascularization, overall mortality and major adverse cardiac events were similar to short CTO lesions. The authors suggest that collateral channels and myocardial viability may mitigate the impact of restenosis in long lesions. Study limitations include its non-randomized, single-center design and potential confounding by stent generation and follow-up angiography practices.\",\"entities\":[{\"name\":\"Long CTO Group\",\"type\":\"other\",\"attributes\":{\"lesion_length\":\">= 30mm\",\"repeat_pci_incidence\":\"18.8%\",\"tvr_incidence\":\"16.3%\",\"binary_restenosis_incidence\":\"19.1%\",\"vessel_diameter\":\"2.92 ± 0.42 mm\",\"stent_type\":\"frequently first generation\",\"model_entity_type\":\"patient_cohort\"},\"relationships\":[{\"predicate\":\"had_higher_incidence_of\",\"target\":\"repeat PCI\",\"attributes\":{},\"target_id\":\"repeat_pci\"},{\"predicate\":\"had_higher_incidence_of\",\"target\":\"target vessel revascularization (TVR)\",\"attributes\":{},\"target_id\":\"target_vessel_revascularization_tvr\"},{\"predicate\":\"had_similar_mortality_to\",\"target\":\"Short CTO Group\",\"attributes\":{},\"target_id\":\"short_cto_group\"},{\"predicate\":\"had_similar_mace_to\",\"target\":\"Short CTO Group\",\"attributes\":{},\"target_id\":\"short_cto_group\"},{\"predicate\":\"had_similar_six_month_angiographic_outcomes_to\",\"target\":\"Short CTO Group\",\"attributes\":{},\"target_id\":\"short_cto_group\"}]},{\"name\":\"Short CTO Group\",\"type\":\"other\",\"attributes\":{\"lesion_length\":\"< 30mm\",\"repeat_pci_incidence\":\"7.8%\",\"tvr_incidence\":\"6.5%\",\"binary_restenosis_incidence\":\"8.8%\",\"vessel_diameter\":\"3.11 ± 0.43 mm\",\"stent_type\":\"frequently newer generation\",\"model_entity_type\":\"patient_cohort\"},\"relationships\":[{\"predicate\":\"had_lower_incidence_of\",\"target\":\"repeat PCI\",\"attributes\":{},\"target_id\":\"repeat_pci\"},{\"predicate\":\"had_lower_incidence_of\",\"target\":\"target vessel revascularization (TVR)\",\"attributes\":{},\"target_id\":\"target_vessel_revascularization_tvr\"},{\"predicate\":\"had_similar_mortality_to\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"}]},{\"name\":\"repeat PCI\",\"type\":\"other\",\"attributes\":{\"long_cto_rate\":\"18.8%\",\"short_cto_rate\":\"7.8%\",\"p_value\":\"< 0.05\",\"model_entity_type\":\"clinical_outcome\"},\"relationships\":[{\"predicate\":\"predicted_by\",\"target\":\"long CTO lesion length\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"target vessel revascularization (TVR)\",\"type\":\"other\",\"attributes\":{\"long_cto_rate\":\"16.3%\",\"short_cto_rate\":\"6.5%\",\"p_value\":\"< 0.05\",\"odds_ratio\":\"4.23\",\"confidence_interval\":\"1.52 - 11.8\",\"model_entity_type\":\"clinical_outcome\"},\"relationships\":[{\"predicate\":\"predicted_by\",\"target\":\"long CTO lesion length\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"did_not_translate_to\",\"target\":\"mortality or cardiac death\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"binary restenosis\",\"type\":\"other\",\"attributes\":{\"long_cto_rate\":\"19.1%\",\"short_cto_rate\":\"8.8%\",\"p_value\":\"0.118\",\"model_entity_type\":\"angiographic_outcome\"},\"relationships\":[{\"predicate\":\"showed_numerically_higher_trend_in\",\"target\":\"Long CTO Group\",\"attributes\":{},\"target_id\":\"long_cto_group\"},{\"predicate\":\"compared_with_study_by\",\"target\":\"Hoye A et al\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"j-Cypher Registry\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"study\"},\"relationships\":[{\"predicate\":\"previously_reported\",\"target\":\"discrepancy between hard endpoints and revascularization incidence in CTO treatment\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Hoye A et al study\",\"type\":\"other\",\"attributes\":{\"short_cto_binary_restenosis_rate\":\"9.1%\",\"model_entity_type\":\"study\"},\"relationships\":[{\"predicate\":\"compared_with\",\"target\":\"present study short CTO group\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"present study\",\"type\":\"other\",\"attributes\":{\"design\":\"single center registry, prospective, non-randomized\",\"limitations\":\"unmeasured confounders, non-routine follow-up angiography, small sample size, short follow-up period\",\"model_entity_type\":\"study\"},\"relationships\":[{\"predicate\":\"found_similar_outcomes_between\",\"target\":\"long CTO group and short CTO group\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"identified_higher_risk_in\",\"target\":\"long CTO group for repeat PCI\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study acknowledges limitations including a small sample size, insufficient statistical power to detect angiographic differences, and a two-year follow-up period that is too short for long-term safety assessment. Despite these constraints, the prospective real-world cohort found similar safety and clinical outcomes between long and short CTO groups, with the exception of higher repeat PCI rates in the long CTO group. The authors conclude that larger, long-term studies are needed to establish definitive conclusions.\",\"entities\":[{\"name\":\"CTO study limitations\",\"type\":\"concept\",\"attributes\":{\"sample_size\":\"relatively small\",\"statistical_power\":\"insufficient to prove difference in angiographic events\",\"follow_up_duration\":\"two years\",\"follow_up_limitation\":\"not long enough to evaluate long-term safety and efficacy\"},\"relationships\":[{\"predicate\":\"acknowledged_in\",\"target\":\"CTO lesion length outcome study\",\"attributes\":{},\"target_id\":\"cto_lesion_length_outcome_study\"}]},{\"name\":\"CTO lesion length outcome study\",\"type\":\"event\",\"attributes\":{\"cohort_type\":\"real world CTO cohort\",\"data_collection_method\":\"prospective\"},\"relationships\":[{\"predicate\":\"found_similar_outcomes_between\",\"target\":\"long CTO group and short CTO group\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"found_higher_incidence_of\",\"target\":\"repeat PCI in long CTO group\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"requires\",\"target\":\"long-term study with larger numbers of patients\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Long CTO Group\",\"type\":\"other\",\"attributes\":{\"intervention\":\"DES implantation\",\"model_entity_type\":\"group\"},\"relationships\":[{\"predicate\":\"had_higher_incidence_of\",\"target\":\"repeat PCI\",\"attributes\":{},\"target_id\":\"repeat_pci\"}]},{\"name\":\"Short CTO Group\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"group\"},\"relationships\":[]}]}]"
+}

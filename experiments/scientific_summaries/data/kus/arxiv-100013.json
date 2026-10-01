@@ -1,0 +1,1239 @@
+{
+  "document_id": "arxiv-100013",
+  "fulltext_sha256": "a09d3a64f663c1d4bba2d15747baec32ba117644925ac104850214037c68ac77",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "34d6ce402293c83d4cf29beb97a460085ee88f84cbf03c10d06fc24fd376a6d5",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study investigates high-energy gamma-ray emission from the Anomalous X-ray Pulsar 4U 0142+61 using Fermi/LAT data, finding no significant detection but deriving upper limits. The paper characterizes AXPs as young, isolated neutron stars with strong magnetic fields, noting that their rotational energy loss is insufficient to explain their X-ray luminosities. It reviews the discovery of hard X-ray components in several AXPs, which challenges existing physical models.",
+        "entities": [
+          {
+            "name": "4U 0142+61",
+            "entity_id": "4u_0142_61",
+            "entity_type": "other",
+            "aliases": [
+              "4U 0142+61"
+            ],
+            "attributes": {
+              "classification": "Anomalous X-ray Pulsar (AXP)",
+              "status": "brightest AXP",
+              "observation_result": "no significant high-energy gamma-ray detection"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_with",
+                "target": "Fermi Large Area Telescope (LAT)",
+                "attributes": {},
+                "target_id": "fermi_large_area_telescope_lat"
+              },
+              {
+                "predicate": "observed_with",
+                "target": "Rossi X-ray Timing Explorer (RXTE)",
+                "attributes": {},
+                "target_id": "rossi_x_ray_timing_explorer_rxte"
+              }
+            ]
+          },
+          {
+            "name": "Anomalous X-ray Pulsars (AXPs)",
+            "entity_id": "anomalous_x_ray_pulsars_axps",
+            "entity_type": "concept",
+            "aliases": [
+              "Anomalous X-ray Pulsars (AXPs)"
+            ],
+            "attributes": {
+              "discovery_period": "early 1980s",
+              "x_ray_luminosity_range": "10^33 to 10^36 erg s^-1 (below 10 keV)",
+              "spin_period_range": "2 to 12 s",
+              "spin_down_rate_range": "10^-10 to 10^-12 s s^-1",
+              "magnetic_field_strength": "B >= 10^14 G",
+              "nature": "young isolated neutron stars",
+              "binary_evidence": "none (no Doppler modulation)"
+            },
+            "relationships": [
+              {
+                "predicate": "powered_by",
+                "target": "extremely strong magnetic fields",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              },
+              {
+                "predicate": "includes",
+                "target": "1E 1841-045",
+                "attributes": {},
+                "target_id": "1e_1841_045"
+              },
+              {
+                "predicate": "includes",
+                "target": "1RXS J170849.0-400910",
+                "attributes": {},
+                "target_id": "1rxs_j170849_0_400910"
+              }
+            ]
+          },
+          {
+            "name": "Fermi Large Area Telescope (LAT)",
+            "entity_id": "fermi_large_area_telescope_lat",
+            "entity_type": "measurement",
+            "aliases": [
+              "Fermi Large Area Telescope (LAT)",
+              "Large Area Telescope (LAT)"
+            ],
+            "attributes": {
+              "host": "Fermi Gamma-ray Space Telescope",
+              "energy_band": "20 MeV to 300 GeV",
+              "type": "pair conversion telescope"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "search for persistent and pulsed high-energy gamma-ray emission from 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "1E 1841-045",
+            "entity_id": "1e_1841_045",
+            "entity_type": "other",
+            "aliases": [
+              "1E 1841-045"
+            ],
+            "attributes": {
+              "location": "center of SNR Kes 73",
+              "discovery": "first AXP with non-thermal pulsed hard X-ray/soft gamma-ray emission"
+            },
+            "relationships": [
+              {
+                "predicate": "discovered_by",
+                "target": "Kuiper et al. 2004",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "spectral_index",
+                "target": "1.39 +/- 0.05",
+                "attributes": {
+                  "band": "20-300 keV",
+                  "instrument": "INTEGRAL"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "1RXS J170849.0-400910",
+            "entity_id": "1rxs_j170849_0_400910",
+            "entity_type": "other",
+            "aliases": [
+              "1RXS J170849.0-400910"
+            ],
+            "attributes": {
+              "discovery": "hard X-ray emission discovered in Galactic Plane Survey"
+            },
+            "relationships": [
+              {
+                "predicate": "discovered_by",
+                "target": "Revnivtsev et al. 2004",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Rossi X-ray Timing Explorer (RXTE)",
+            "entity_id": "rossi_x_ray_timing_explorer_rxte",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rossi X-ray Timing Explorer (RXTE)"
+            ],
+            "attributes": {
+              "instruments": "PCA, HEXTE, ASM",
+              "usage": "obtaining spin ephemeris of 4U 0142+61"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "timing analysis of 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 500,
+          "word_count": 500,
+          "sha256": "e71a7b5681dd5a10268722d5fc603f8a6365a782b1259ab2740da2de4ce78d6b",
+          "sentence_minhash": [
+            115938774645118459,
+            1306423125707224,
+            152424071267228464,
+            25188414276899338,
+            202131088475134628,
+            62667647458868521,
+            12025634198112669,
+            66097912820354468,
+            73319139196083834,
+            122571320757325121,
+            33732523426331811,
+            31817544762151716,
+            157018458019500101,
+            6312329191860128,
+            39953411596503315,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The hard X-ray emission from AXP 4U 0142+61 was discovered via INTEGRAL observations, revealing a power-law spectrum peaking around 228 keV. Several theoretical models, including plasma corona, fast-mode breakdown, and upscattered thermal photons, have been proposed to explain this high-energy emission. The study aims to constrain these models by searching for persistent and pulsed high-energy gamma-ray emission using Fermi/LAT data.",
+        "entities": [
+          {
+            "name": "4U 0142+61",
+            "entity_id": "4u_0142_61",
+            "entity_type": "other",
+            "aliases": [
+              "4U 0142+61"
+            ],
+            "attributes": {
+              "classification": "Anomalous X-ray Pulsar (AXP)",
+              "hard_xray_discovery": "INTEGRAL observations of the Cassiopeia region",
+              "spectral_shape": "power law up to ~230 keV",
+              "spectral_index": "0.93 ± 0.06",
+              "peak_energy": "~228 keV",
+              "flux_20_150_keV": "(8.97 ± 0.86) x 10^-11 erg cm^-2 s^-1",
+              "energy_comparison": "Energy emitted above 15 keV is comparable or larger than soft X-ray band (< 10 keV)"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_by",
+                "target": "INTEGRAL",
+                "attributes": {
+                  "exposure_time": "2.37 Ms"
+                },
+                "target_id": "integral"
+              },
+              {
+                "predicate": "searched_for_gamma_emission_by",
+                "target": "Fermi Gamma-ray Space Telescope (Fermi)",
+                "attributes": {},
+                "target_id": "fermi_gamma_ray_space_telescope_fermi"
+              }
+            ]
+          },
+          {
+            "name": "INTEGRAL",
+            "entity_id": "integral",
+            "entity_type": "organization",
+            "aliases": [
+              "INTEGRAL"
+            ],
+            "attributes": {
+              "instrument_type": "X-ray/gamma-ray observatory"
+            },
+            "relationships": [
+              {
+                "predicate": "detected_hard_xray_from",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              }
+            ]
+          },
+          {
+            "name": "Beloborodov & Thompson (2007) model",
+            "entity_id": "beloborodov_thompson_2007_model",
+            "entity_type": "method",
+            "aliases": [
+              "Beloborodov & Thompson (2007) model",
+              "coronal emission model by Beloborodov & Thompson (2007)"
+            ],
+            "attributes": {
+              "proposed_mechanism": "Hard X-ray emission from plasma corona around magnetar",
+              "formation_process": "Starquakes shearing neutron star crust and external magnetic field"
+            },
+            "relationships": [
+              {
+                "predicate": "explains",
+                "target": "hard X-ray emission from AXPs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Heyl & Hernquist (2005a,b) model",
+            "entity_id": "heyl_hernquist_2005a_b_model",
+            "entity_type": "method",
+            "aliases": [
+              "Heyl & Hernquist (2005a,b) model",
+              "quantum electrodynamics model by Heyl & Hernquist (2005a,b)"
+            ],
+            "attributes": {
+              "proposed_mechanism": "Fast-mode break down model",
+              "source": "Optically thick fireball produced by magnetohydrodynamics waves near neutron star surface",
+              "alternative": "Non-thermal emission if fast modes are not strong enough for optically thick fireball"
+            },
+            "relationships": [
+              {
+                "predicate": "explains",
+                "target": "high-energy emission from SGRs and AXPs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Baring & Harding (2007) model",
+            "entity_id": "baring_harding_2007_model",
+            "entity_type": "method",
+            "aliases": [
+              "Baring & Harding (2007) model"
+            ],
+            "attributes": {
+              "proposed_mechanism": "Upscattered surface thermal X-ray photons"
+            },
+            "relationships": [
+              {
+                "predicate": "explains",
+                "target": "non-thermal hard X-ray emission from AXPs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Fermi Gamma-ray Space Telescope (Fermi)",
+            "entity_id": "fermi_gamma_ray_space_telescope_fermi",
+            "entity_type": "organization",
+            "aliases": [
+              "Fermi Gamma-ray Space Telescope (Fermi)"
+            ],
+            "attributes": {
+              "instrument": "Large Area Telescope (LAT)"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_search",
+                "target": "persistent and pulsed high-energy gamma-ray emission from 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Rossi X-ray Timing Explorer (RXTE)",
+            "entity_id": "rossi_x_ray_timing_explorer_rxte",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rossi X-ray Timing Explorer (RXTE)"
+            ],
+            "attributes": {
+              "usage": "Contemporaneous observations to obtain spin ephemeris"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_timing",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 500,
+          "end_word": 983,
+          "word_count": 483,
+          "sha256": "bef56cb9486265a446f08f32c9d69f00577c340ee08e55b44c31acb1f0338b7b",
+          "sentence_minhash": [
+            171176742994364815,
+            1306423125707224,
+            303626631072571286,
+            37189290192816055,
+            136726474964203687,
+            15734087332386293,
+            108181934044425938,
+            37604775624845198,
+            96635883400075078,
+            67109430057187585,
+            67831053780325945,
+            396952137694416942,
+            21933493368060407,
+            58558631451210278,
+            184249565155240656,
+            316299024297077898
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The Fermi Large Area Telescope (LAT) is a pair conversion telescope operating in the 20 MeV to 300 GeV energy range, covering the full sky every three hours since August 2008. The study utilized LAT data collected between August 2008 and April 2010, with a total exposure time of approximately 31.7 megaseconds, to analyze the source 4U 0142+61. Spectral and timing analyses were performed using specific software tools and background models to search for persistent and pulsed high-energy gamma-ray emission.",
+        "entities": [
+          {
+            "name": "Fermi Large Area Telescope (LAT)",
+            "entity_id": "fermi_large_area_telescope_lat",
+            "entity_type": "measurement",
+            "aliases": [
+              "Fermi Large Area Telescope (LAT)",
+              "Large Area Telescope (LAT)"
+            ],
+            "attributes": {
+              "energy_band": "20 MeV - 300 GeV",
+              "type": "pair conversion telescope",
+              "components": [
+                "high-resolution silicon tracker",
+                "calorimeter",
+                "anticoincidence detector",
+                "programmable trigger",
+                "data acquisition system"
+              ],
+              "operational_start": "2008 August 4",
+              "sky_coverage": "full sky approximately every 3 hours",
+              "model_entity_type": "instrument"
+            },
+            "relationships": [
+              {
+                "predicate": "is_on_board",
+                "target": "Fermi Gamma-ray Space Telescope",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "4U 0142+61",
+            "entity_id": "4u_0142_61",
+            "entity_type": "other",
+            "aliases": [
+              "4U 0142+61"
+            ],
+            "attributes": {
+              "type": "Anomalous X-ray Pulsar (AXP)",
+              "model_entity_type": "astronomical_source"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_with",
+                "target": "Fermi Large Area Telescope (LAT)",
+                "attributes": {},
+                "target_id": "fermi_large_area_telescope_lat"
+              },
+              {
+                "predicate": "analyzed_with",
+                "target": "Rossi X-ray Timing Explorer (RXTE)",
+                "attributes": {},
+                "target_id": "rossi_x_ray_timing_explorer_rxte"
+              }
+            ]
+          },
+          {
+            "name": "LAT Data Analysis for 4U 0142+61",
+            "entity_id": "lat_data_analysis_for_4u_0142_61",
+            "entity_type": "method",
+            "aliases": [
+              "LAT Data Analysis for 4U 0142+61"
+            ],
+            "attributes": {
+              "data_collection_period": "2008 August 4 to 2010 April 29",
+              "exposure_time": "~31.7 Ms",
+              "extraction_radius_for_data": "15 degrees",
+              "extraction_radius_for_spectral_analysis": "2 degrees",
+              "analysis_tool": "ScienceTools v9r15p2",
+              "instrumental_response": "P6 V3 DIFFUSE",
+              "zenith_angle_cut": "105 degrees",
+              "galactic_diffuse_model": "gll iem v02.fit",
+              "extragalactic_isotropic_model": "isotropic iem v02.txt",
+              "flux_calculation_tool": "pyLikelihood",
+              "timing_conversion_tool": "gtbary"
+            },
+            "relationships": [
+              {
+                "predicate": "targets",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              },
+              {
+                "predicate": "uses",
+                "target": "Fermi Large Area Telescope (LAT)",
+                "attributes": {},
+                "target_id": "fermi_large_area_telescope_lat"
+              }
+            ]
+          },
+          {
+            "name": "Rossi X-ray Timing Explorer (RXTE)",
+            "entity_id": "rossi_x_ray_timing_explorer_rxte",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rossi X-ray Timing Explorer (RXTE)"
+            ],
+            "attributes": {
+              "payloads": [
+                "Proportional Counter Array (PCA)",
+                "High Energy X-ray Timing Experiment (HEXTE)",
+                "All Sky Monitor (ASM)"
+              ],
+              "model_entity_type": "instrument"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "spin ephemeris determination",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Proportional Counter Array (PCA)",
+            "entity_id": "proportional_counter_array_pca",
+            "entity_type": "other",
+            "aliases": [
+              "Proportional Counter Array (PCA)"
+            ],
+            "attributes": {
+              "energy_sensitivity": "2 - 60 keV",
+              "model_entity_type": "instrument_component"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "Rossi X-ray Timing Explorer (RXTE)",
+                "attributes": {},
+                "target_id": "rossi_x_ray_timing_explorer_rxte"
+              },
+              {
+                "predicate": "used_for",
+                "target": "RXTE Observations of 4U 0142+61",
+                "attributes": {},
+                "target_id": "rxte_observations_of_4u_0142_61"
+              }
+            ]
+          },
+          {
+            "name": "RXTE Observations of 4U 0142+61",
+            "entity_id": "rxte_observations_of_4u_0142_61",
+            "entity_type": "method",
+            "aliases": [
+              "RXTE Observations of 4U 0142+61"
+            ],
+            "attributes": {
+              "monitoring_duration": "~8 years",
+              "selected_observations_count": 53,
+              "observation_period": "2008 August 4 to 2010 April 30",
+              "program_ids": [
+                "P93019",
+                "P94019",
+                "P05019"
+              ],
+              "individual_pointing_duration": "3 - 4 ks",
+              "total_exposure_time": "~196 ks",
+              "energy_range_for_extraction": "2 - 10 keV",
+              "time_conversion_tool": "faxbary (HEASoft 6.8)"
+            },
+            "relationships": [
+              {
+                "predicate": "targets",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              },
+              {
+                "predicate": "uses",
+                "target": "Proportional Counter Array (PCA)",
+                "attributes": {},
+                "target_id": "proportional_counter_array_pca"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 983,
+          "end_word": 1473,
+          "word_count": 490,
+          "sha256": "26a316a28936925b26211177f039ba65b253ed91a0b3d3f9cb25aa2c197dea4a",
+          "sentence_minhash": [
+            25752597226718444,
+            1306423125707224,
+            140583634530242717,
+            120245470768263603,
+            235778231703311047,
+            49597227551987522,
+            175774020269814206,
+            112251467330100539,
+            119256111650850893,
+            9462436175016187,
+            35053556602320472,
+            8566262517653704,
+            112330858503883253,
+            6312329191860128,
+            35320997745966666,
+            37319280976767778
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'instrument' for 'Fermi Large Area Telescope (LAT)'",
+          "normalized unsupported entity type 'astronomical_source' for '4U 0142+61'",
+          "normalized unsupported entity type 'instrument' for 'Rossi X-ray Timing Explorer (RXTE)'",
+          "normalized unsupported entity type 'instrument_component' for 'Proportional Counter Array (PCA)'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study reports no significant detection of persistent or pulsed high-energy gamma-ray emission from the anomalous X-ray pulsar 4U 0142+61 using Fermi-LAT data. Upper limits for the persistent flux were derived for energy bands of 0.2-1.0 GeV and 1.0-10.0 GeV. A Fourier-based epoch folding technique using RXTE/PCA data was employed to determine the source's spin ephemeris for the pulsed emission search.",
+        "entities": [
+          {
+            "name": "4U 0142+61",
+            "entity_id": "4u_0142_61",
+            "entity_type": "other",
+            "aliases": [
+              "4U 0142+61"
+            ],
+            "attributes": {
+              "classification": "Anomalous X-ray Pulsar (AXP)",
+              "detection_status": "Not detected in LAT energy passband"
+            },
+            "relationships": [
+              {
+                "predicate": "has_persistent_flux_upper_limit_0.2_1.0_GeV",
+                "target": "5.72 × 10−6 MeV cm−2 s−1",
+                "attributes": {
+                  "confidence_level": "3σ"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "has_persistent_flux_upper_limit_1.0_10.0_GeV",
+                "target": "1.29 × 10−6 MeV cm−2 s−1",
+                "attributes": {
+                  "confidence_level": "3σ"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "has_persistent_flux_upper_limit_0.2_1.0_GeV_15deg_region",
+                "target": "2.32 × 10−6 MeV cm−2 s−1",
+                "attributes": {
+                  "confidence_level": "3σ",
+                  "power_law_index": 2.5
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "has_persistent_flux_upper_limit_1.0_10.0_GeV_15deg_region",
+                "target": "1.28 × 10−6 MeV cm−2 s−1",
+                "attributes": {
+                  "confidence_level": "3σ",
+                  "power_law_index": 2.5
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Fermi Large Area Telescope (LAT)",
+            "entity_id": "fermi_large_area_telescope_lat",
+            "entity_type": "measurement",
+            "aliases": [
+              "Fermi Large Area Telescope (LAT)",
+              "Large Area Telescope (LAT)"
+            ],
+            "attributes": {
+              "energy_range": "20 MeV - 300 GeV",
+              "instrument_type": "pair conversion telescope"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_search",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              }
+            ]
+          },
+          {
+            "name": "Rossi X-ray Timing Explorer (RXTE) Proportional Counter Array (PCA)",
+            "entity_id": "rossi_x_ray_timing_explorer_rxte_proportional_counter_array_pca",
+            "entity_type": "measurement",
+            "aliases": [
+              "Rossi X-ray Timing Explorer (RXTE) Proportional Counter Array (PCA)"
+            ],
+            "attributes": {
+              "energy_range": "2-60 keV"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_spin_ephemeris",
+                "target": "4U 0142+61",
+                "attributes": {},
+                "target_id": "4u_0142_61"
+              }
+            ]
+          },
+          {
+            "name": "Fourier based epoch folding technique",
+            "entity_id": "fourier_based_epoch_folding_technique",
+            "entity_type": "method",
+            "aliases": [
+              "Fourier based epoch folding technique"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "used_to_obtain",
+                "target": "Spin ephemeris of 4U 0142+61",
+                "attributes": {},
+                "target_id": "spin_ephemeris_of_4u_0142_61"
+              },
+              {
+                "predicate": "uses_data_from",
+                "target": "RXTE/PCA observations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Spin ephemeris of 4U 0142+61",
+            "entity_id": "spin_ephemeris_of_4u_0142_61",
+            "entity_type": "measurement",
+            "aliases": [
+              "Spin ephemeris of 4U 0142+61"
+            ],
+            "attributes": {
+              "derivation_method": "polynomial fit to phase shifts",
+              "phase_shift_determination": "cross-correlation of pulse profiles with template"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "RXTE/PCA observations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1473,
+          "end_word": 1954,
+          "word_count": 481,
+          "sha256": "5119fe075b7103c41060d4364c212c9b1cd044fff496c16d2d0c007951e7b3e4",
+          "sentence_minhash": [
+            167200217492106239,
+            1306423125707224,
+            40863640610520970,
+            57644303908473749,
+            177359358208975170,
+            134119455038426215,
+            29465988611152001,
+            96292850158067112,
+            236022920155277610,
+            76931577636070685,
+            67831053780325945,
+            8566262517653704,
+            21933493368060407,
+            254880908393013371,
+            39953411596503315,
+            367058502176229160
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study determined the spin ephemeris of AXP 4U 0142+61 using RXTE data and searched for high-energy gamma-ray emission using Fermi LAT data. No significant persistent or pulsed emission was detected, resulting in 3σ upper limits for flux and pulsed fraction. The derived spectral break energy upper limit of approximately 1.1 MeV is consistent with previous X-ray measurements.",
+        "entities": [
+          {
+            "name": "4U 0142+61",
+            "entity_id": "4u_0142_61",
+            "entity_type": "other",
+            "aliases": [
+              "4U 0142+61"
+            ],
+            "attributes": {
+              "classification": "Anomalous X-ray Pulsar (AXP)",
+              "spin_frequency_Hz": "0.1150900026(9)",
+              "spin_frequency_derivative_1e-14_Hz_s-1": "-2.745(8)",
+              "spin_frequency_second_derivative_1e-23_Hz_s-2": "3.6(3)",
+              "ephemeris_epoch_MJD": "54713.5",
+              "ephemeris_range_MJD": "54682.6 - 55315.1"
+            },
+            "relationships": [
+              {
+                "predicate": "spin_ephemeris_fitted_with",
+                "target": "3rd order polynomial",
+                "attributes": {
+                  "chi_squared": "59.6",
+                  "degrees_of_freedom": "42"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "persistent_flux_upper_limit_0.2_1.0_GeV",
+                "target": "5.72 × 10−6 MeV cm−2 s−1",
+                "attributes": {
+                  "confidence_level": "3σ"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "persistent_flux_upper_limit_1.0_10.0_GeV",
+                "target": "1.29 × 10−6 MeV cm−2 s−1",
+                "attributes": {
+                  "confidence_level": "3σ"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "pulsed_fraction_upper_limit_0.2_1.0_GeV",
+                "target": "1.5%",
+                "attributes": {
+                  "confidence_level": "3σ",
+                  "metric": "RMS"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "pulsed_fraction_upper_limit_1.0_10.0_GeV",
+                "target": "2.3%",
+                "attributes": {
+                  "confidence_level": "3σ",
+                  "metric": "RMS"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "pulsed_fraction_upper_limit_30_200_MeV",
+                "target": "1.6%",
+                "attributes": {
+                  "confidence_level": "3σ",
+                  "metric": "RMS"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "spectral_break_energy_upper_limit",
+                "target": "1.1 MeV",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Fermi Large Area Telescope (LAT)",
+            "entity_id": "fermi_large_area_telescope_lat",
+            "entity_type": "measurement",
+            "aliases": [
+              "Fermi Large Area Telescope (LAT)",
+              "Large Area Telescope (LAT)"
+            ],
+            "attributes": {
+              "energy_range_analyzed": "0.2-10.0 GeV and 30-200 MeV"
+            },
+            "relationships": [
+              {
+                "predicate": "search_result",
+                "target": "no significant persistent or pulsed detection",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "INTEGRAL/ISGRI hard X-ray spectrum",
+            "entity_id": "integral_isgri_hard_x_ray_spectrum",
+            "entity_type": "measurement",
+            "aliases": [
+              "INTEGRAL/ISGRI hard X-ray spectrum"
+            ],
+            "attributes": {
+              "model": "simple power law",
+              "index": "0.93 ± 0.06",
+              "source_reference": "den Hartog et al. 2008"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_construct",
+                "target": "νFν spectrum (15 keV - 10 GeV)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "spectral break energy measurement by den Hartog et al. (2008)",
+            "entity_id": "spectral_break_energy_measurement_by_den_hartog_et_al_2008",
+            "entity_type": "measurement",
+            "aliases": [
+              "spectral break energy measurement by den Hartog et al. (2008)"
+            ],
+            "attributes": {
+              "value": "279+65 −41 keV",
+              "model": "logparabolic function",
+              "data_sources": "XMM-Newton, INTEGRAL/ISGRI, INTEGRAL/SPI, CGRO/COMPTEL"
+            },
+            "relationships": [
+              {
+                "predicate": "consistent_with",
+                "target": "1.1 MeV upper limit",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1954,
+          "end_word": 2449,
+          "word_count": 495,
+          "sha256": "35d6a3fafa33fd959261cd76132840ba80094b653aeb67a71c5722f293f2b32a",
+          "sentence_minhash": [
+            171176742994364815,
+            1306423125707224,
+            254850878413439315,
+            120245470768263603,
+            394646240981201881,
+            74188276601226999,
+            175774020269814206,
+            96292850158067112,
+            143616283985015953,
+            107048872566759164,
+            67831053780325945,
+            49775578613387123,
+            51125582506972287,
+            6312329191860128,
+            39953411596503315,
+            316299024297077898
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study's estimated upper limit for the spectral break energy of 4U 0142+61 aligns with predictions from coronal and quantum electrodynamics models. These models suggest that magnetic fields and quantum effects suppress gamma-ray emission above approximately 1 MeV. The presence of excess optical emission in the source introduces constraints on the quantum electrodynamics model depending on the emission's origin.",
+        "entities": [
+          {
+            "name": "4U 0142+61",
+            "entity_id": "4u_0142_61",
+            "entity_type": "other",
+            "aliases": [
+              "4U 0142+61"
+            ],
+            "attributes": {
+              "type": "Anomalous X-ray Pulsar (AXP)",
+              "spectral_break_energy_upper_limit": "~1.1 MeV",
+              "optical_emission": "significant excess"
+            },
+            "relationships": [
+              {
+                "predicate": "constrained_by",
+                "target": "Heyl & Hernquist (2005a,b) model",
+                "attributes": {},
+                "target_id": "heyl_hernquist_2005a_b_model"
+              },
+              {
+                "predicate": "emits_optical_radiation_from",
+                "target": "neutron star itself",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "emits_optical_radiation_from",
+                "target": "disk around 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Beloborodov & Thompson (2007) model",
+            "entity_id": "beloborodov_thompson_2007_model",
+            "entity_type": "method",
+            "aliases": [
+              "Beloborodov & Thompson (2007) model",
+              "coronal emission model by Beloborodov & Thompson (2007)"
+            ],
+            "attributes": {
+              "predicted_photon_behavior": "photons > 1 MeV trapped in ultrastrong magnetic fields (B >= 10^14 G)"
+            },
+            "relationships": [
+              {
+                "predicate": "predicts_suppression_of",
+                "target": "emission from inner corona above ~1 MeV",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "consistent_with",
+                "target": "estimated upper limit to spectral break energy of 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Heyl & Hernquist (2005a,b) model",
+            "entity_id": "heyl_hernquist_2005a_b_model",
+            "entity_type": "method",
+            "aliases": [
+              "Heyl & Hernquist (2005a,b) model",
+              "quantum electrodynamics model by Heyl & Hernquist (2005a,b)"
+            ],
+            "attributes": {
+              "predicted_break_energy_lower_limit": "~1 MeV"
+            },
+            "relationships": [
+              {
+                "predicate": "consistent_with",
+                "target": "estimated upper limit to spectral break energy of 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "predicts_nuFnu_behavior",
+                "target": "continuous increase in 10-200 MeV range if significant optical excess exists",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "constrained_by",
+                "target": "lack of increase in 10-200 MeV range in nuFnu spectrum of 4U 0142+61",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "optical emission of 4U 0142+61",
+            "entity_id": "optical_emission_of_4u_0142_61",
+            "entity_type": "measurement",
+            "aliases": [
+              "optical emission of 4U 0142+61"
+            ],
+            "attributes": {
+              "origin_uncertainty": "not clear",
+              "potential_sources": [
+                "neutron star itself",
+                "disk around 4U 0142+61"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "affects_feasibility_of",
+                "target": "Heyl & Hernquist (2005a,b) model",
+                "attributes": {},
+                "target_id": "heyl_hernquist_2005a_b_model"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2449,
+          "end_word": 2790,
+          "word_count": 341,
+          "sha256": "b8d269b1f75173980af362a2d5887377f21b7deaa085ab9767696b451cd0176a",
+          "sentence_minhash": [
+            115938774645118459,
+            1306423125707224,
+            49420926592012815,
+            27604728792422157,
+            49962339743497314,
+            74188276601226999,
+            23718652799488495,
+            37604775624845198,
+            249356920820546271,
+            76931577636070685,
+            67831053780325945,
+            9113920301456732,
+            150189081694465448,
+            62445563022006556,
+            92317792821805150,
+            298389152517862065
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "fermi_large_area_telescope_lat",
+        "canonical_name": "Fermi Large Area Telescope (LAT)",
+        "aliases": [
+          "Large Area Telescope (LAT)",
+          "Fermi Large Area Telescope (LAT)"
+        ]
+      },
+      {
+        "canonical_id": "beloborodov_thompson_2007_model",
+        "canonical_name": "Beloborodov & Thompson (2007) model",
+        "aliases": [
+          "Beloborodov & Thompson (2007) model",
+          "coronal emission model by Beloborodov & Thompson (2007)"
+        ]
+      },
+      {
+        "canonical_id": "heyl_hernquist_2005a_b_model",
+        "canonical_name": "Heyl & Hernquist (2005a,b) model",
+        "aliases": [
+          "Heyl & Hernquist (2005a,b) model",
+          "quantum electrodynamics model by Heyl & Hernquist (2005a,b)"
+        ]
+      },
+      {
+        "canonical_id": "4u_0142_61",
+        "canonical_name": "4U 0142+61",
+        "aliases": [
+          "4U 0142+61"
+        ]
+      },
+      {
+        "canonical_id": "anomalous_x_ray_pulsars_axps",
+        "canonical_name": "Anomalous X-ray Pulsars (AXPs)",
+        "aliases": [
+          "Anomalous X-ray Pulsars (AXPs)"
+        ]
+      },
+      {
+        "canonical_id": "1e_1841_045",
+        "canonical_name": "1E 1841-045",
+        "aliases": [
+          "1E 1841-045"
+        ]
+      },
+      {
+        "canonical_id": "1rxs_j170849_0_400910",
+        "canonical_name": "1RXS J170849.0-400910",
+        "aliases": [
+          "1RXS J170849.0-400910"
+        ]
+      },
+      {
+        "canonical_id": "rossi_x_ray_timing_explorer_rxte",
+        "canonical_name": "Rossi X-ray Timing Explorer (RXTE)",
+        "aliases": [
+          "Rossi X-ray Timing Explorer (RXTE)"
+        ]
+      },
+      {
+        "canonical_id": "integral",
+        "canonical_name": "INTEGRAL",
+        "aliases": [
+          "INTEGRAL"
+        ]
+      },
+      {
+        "canonical_id": "baring_harding_2007_model",
+        "canonical_name": "Baring & Harding (2007) model",
+        "aliases": [
+          "Baring & Harding (2007) model"
+        ]
+      },
+      {
+        "canonical_id": "fermi_gamma_ray_space_telescope_fermi",
+        "canonical_name": "Fermi Gamma-ray Space Telescope (Fermi)",
+        "aliases": [
+          "Fermi Gamma-ray Space Telescope (Fermi)"
+        ]
+      },
+      {
+        "canonical_id": "lat_data_analysis_for_4u_0142_61",
+        "canonical_name": "LAT Data Analysis for 4U 0142+61",
+        "aliases": [
+          "LAT Data Analysis for 4U 0142+61"
+        ]
+      },
+      {
+        "canonical_id": "proportional_counter_array_pca",
+        "canonical_name": "Proportional Counter Array (PCA)",
+        "aliases": [
+          "Proportional Counter Array (PCA)"
+        ]
+      },
+      {
+        "canonical_id": "rxte_observations_of_4u_0142_61",
+        "canonical_name": "RXTE Observations of 4U 0142+61",
+        "aliases": [
+          "RXTE Observations of 4U 0142+61"
+        ]
+      },
+      {
+        "canonical_id": "rossi_x_ray_timing_explorer_rxte_proportional_counter_array_pca",
+        "canonical_name": "Rossi X-ray Timing Explorer (RXTE) Proportional Counter Array (PCA)",
+        "aliases": [
+          "Rossi X-ray Timing Explorer (RXTE) Proportional Counter Array (PCA)"
+        ]
+      },
+      {
+        "canonical_id": "fourier_based_epoch_folding_technique",
+        "canonical_name": "Fourier based epoch folding technique",
+        "aliases": [
+          "Fourier based epoch folding technique"
+        ]
+      },
+      {
+        "canonical_id": "spin_ephemeris_of_4u_0142_61",
+        "canonical_name": "Spin ephemeris of 4U 0142+61",
+        "aliases": [
+          "Spin ephemeris of 4U 0142+61"
+        ]
+      },
+      {
+        "canonical_id": "integral_isgri_hard_x_ray_spectrum",
+        "canonical_name": "INTEGRAL/ISGRI hard X-ray spectrum",
+        "aliases": [
+          "INTEGRAL/ISGRI hard X-ray spectrum"
+        ]
+      },
+      {
+        "canonical_id": "spectral_break_energy_measurement_by_den_hartog_et_al_2008",
+        "canonical_name": "spectral break energy measurement by den Hartog et al. (2008)",
+        "aliases": [
+          "spectral break energy measurement by den Hartog et al. (2008)"
+        ]
+      },
+      {
+        "canonical_id": "optical_emission_of_4u_0142_61",
+        "canonical_name": "optical emission of 4U 0142+61",
+        "aliases": [
+          "optical emission of 4U 0142+61"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study investigates high-energy gamma-ray emission from the Anomalous X-ray Pulsar 4U 0142+61 using Fermi/LAT data, finding no significant detection but deriving upper limits. The paper characterizes AXPs as young, isolated neutron stars with strong magnetic fields, noting that their rotational energy loss is insufficient to explain their X-ray luminosities. It reviews the discovery of hard X-ray components in several AXPs, which challenges existing physical models.\",\"entities\":[{\"name\":\"4U 0142+61\",\"type\":\"other\",\"attributes\":{\"classification\":\"Anomalous X-ray Pulsar (AXP)\",\"status\":\"brightest AXP\",\"observation_result\":\"no significant high-energy gamma-ray detection\"},\"relationships\":[{\"predicate\":\"observed_with\",\"target\":\"Fermi Large Area Telescope (LAT)\",\"attributes\":{},\"target_id\":\"fermi_large_area_telescope_lat\"},{\"predicate\":\"observed_with\",\"target\":\"Rossi X-ray Timing Explorer (RXTE)\",\"attributes\":{},\"target_id\":\"rossi_x_ray_timing_explorer_rxte\"}]},{\"name\":\"Anomalous X-ray Pulsars (AXPs)\",\"type\":\"concept\",\"attributes\":{\"discovery_period\":\"early 1980s\",\"x_ray_luminosity_range\":\"10^33 to 10^36 erg s^-1 (below 10 keV)\",\"spin_period_range\":\"2 to 12 s\",\"spin_down_rate_range\":\"10^-10 to 10^-12 s s^-1\",\"magnetic_field_strength\":\"B >= 10^14 G\",\"nature\":\"young isolated neutron stars\",\"binary_evidence\":\"none (no Doppler modulation)\"},\"relationships\":[{\"predicate\":\"powered_by\",\"target\":\"extremely strong magnetic fields\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"includes\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"},{\"predicate\":\"includes\",\"target\":\"1E 1841-045\",\"attributes\":{},\"target_id\":\"1e_1841_045\"},{\"predicate\":\"includes\",\"target\":\"1RXS J170849.0-400910\",\"attributes\":{},\"target_id\":\"1rxs_j170849_0_400910\"}]},{\"name\":\"Fermi Large Area Telescope (LAT)\",\"type\":\"measurement\",\"attributes\":{\"host\":\"Fermi Gamma-ray Space Telescope\",\"energy_band\":\"20 MeV to 300 GeV\",\"type\":\"pair conversion telescope\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"search for persistent and pulsed high-energy gamma-ray emission from 4U 0142+61\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"1E 1841-045\",\"type\":\"other\",\"attributes\":{\"location\":\"center of SNR Kes 73\",\"discovery\":\"first AXP with non-thermal pulsed hard X-ray/soft gamma-ray emission\"},\"relationships\":[{\"predicate\":\"discovered_by\",\"target\":\"Kuiper et al. 2004\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"spectral_index\",\"target\":\"1.39 +/- 0.05\",\"attributes\":{\"band\":\"20-300 keV\",\"instrument\":\"INTEGRAL\"},\"target_id\":null}]},{\"name\":\"1RXS J170849.0-400910\",\"type\":\"other\",\"attributes\":{\"discovery\":\"hard X-ray emission discovered in Galactic Plane Survey\"},\"relationships\":[{\"predicate\":\"discovered_by\",\"target\":\"Revnivtsev et al. 2004\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Rossi X-ray Timing Explorer (RXTE)\",\"type\":\"measurement\",\"attributes\":{\"instruments\":\"PCA, HEXTE, ASM\",\"usage\":\"obtaining spin ephemeris of 4U 0142+61\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"timing analysis of 4U 0142+61\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The hard X-ray emission from AXP 4U 0142+61 was discovered via INTEGRAL observations, revealing a power-law spectrum peaking around 228 keV. Several theoretical models, including plasma corona, fast-mode breakdown, and upscattered thermal photons, have been proposed to explain this high-energy emission. The study aims to constrain these models by searching for persistent and pulsed high-energy gamma-ray emission using Fermi/LAT data.\",\"entities\":[{\"name\":\"4U 0142+61\",\"type\":\"other\",\"attributes\":{\"classification\":\"Anomalous X-ray Pulsar (AXP)\",\"hard_xray_discovery\":\"INTEGRAL observations of the Cassiopeia region\",\"spectral_shape\":\"power law up to ~230 keV\",\"spectral_index\":\"0.93 ± 0.06\",\"peak_energy\":\"~228 keV\",\"flux_20_150_keV\":\"(8.97 ± 0.86) x 10^-11 erg cm^-2 s^-1\",\"energy_comparison\":\"Energy emitted above 15 keV is comparable or larger than soft X-ray band (< 10 keV)\"},\"relationships\":[{\"predicate\":\"observed_by\",\"target\":\"INTEGRAL\",\"attributes\":{\"exposure_time\":\"2.37 Ms\"},\"target_id\":\"integral\"},{\"predicate\":\"searched_for_gamma_emission_by\",\"target\":\"Fermi Gamma-ray Space Telescope (Fermi)\",\"attributes\":{},\"target_id\":\"fermi_gamma_ray_space_telescope_fermi\"}]},{\"name\":\"INTEGRAL\",\"type\":\"organization\",\"attributes\":{\"instrument_type\":\"X-ray/gamma-ray observatory\"},\"relationships\":[{\"predicate\":\"detected_hard_xray_from\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"}]},{\"name\":\"Beloborodov & Thompson (2007) model\",\"type\":\"method\",\"attributes\":{\"proposed_mechanism\":\"Hard X-ray emission from plasma corona around magnetar\",\"formation_process\":\"Starquakes shearing neutron star crust and external magnetic field\"},\"relationships\":[{\"predicate\":\"explains\",\"target\":\"hard X-ray emission from AXPs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Heyl & Hernquist (2005a,b) model\",\"type\":\"method\",\"attributes\":{\"proposed_mechanism\":\"Fast-mode break down model\",\"source\":\"Optically thick fireball produced by magnetohydrodynamics waves near neutron star surface\",\"alternative\":\"Non-thermal emission if fast modes are not strong enough for optically thick fireball\"},\"relationships\":[{\"predicate\":\"explains\",\"target\":\"high-energy emission from SGRs and AXPs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Baring & Harding (2007) model\",\"type\":\"method\",\"attributes\":{\"proposed_mechanism\":\"Upscattered surface thermal X-ray photons\"},\"relationships\":[{\"predicate\":\"explains\",\"target\":\"non-thermal hard X-ray emission from AXPs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Fermi Gamma-ray Space Telescope (Fermi)\",\"type\":\"organization\",\"attributes\":{\"instrument\":\"Large Area Telescope (LAT)\"},\"relationships\":[{\"predicate\":\"used_for_search\",\"target\":\"persistent and pulsed high-energy gamma-ray emission from 4U 0142+61\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Rossi X-ray Timing Explorer (RXTE)\",\"type\":\"measurement\",\"attributes\":{\"usage\":\"Contemporaneous observations to obtain spin ephemeris\"},\"relationships\":[{\"predicate\":\"used_for_timing\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"}]}]},{\"context_summary\":\"The Fermi Large Area Telescope (LAT) is a pair conversion telescope operating in the 20 MeV to 300 GeV energy range, covering the full sky every three hours since August 2008. The study utilized LAT data collected between August 2008 and April 2010, with a total exposure time of approximately 31.7 megaseconds, to analyze the source 4U 0142+61. Spectral and timing analyses were performed using specific software tools and background models to search for persistent and pulsed high-energy gamma-ray emission.\",\"entities\":[{\"name\":\"Fermi Large Area Telescope (LAT)\",\"type\":\"measurement\",\"attributes\":{\"energy_band\":\"20 MeV - 300 GeV\",\"type\":\"pair conversion telescope\",\"components\":[\"high-resolution silicon tracker\",\"calorimeter\",\"anticoincidence detector\",\"programmable trigger\",\"data acquisition system\"],\"operational_start\":\"2008 August 4\",\"sky_coverage\":\"full sky approximately every 3 hours\",\"model_entity_type\":\"instrument\"},\"relationships\":[{\"predicate\":\"is_on_board\",\"target\":\"Fermi Gamma-ray Space Telescope\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"4U 0142+61\",\"type\":\"other\",\"attributes\":{\"type\":\"Anomalous X-ray Pulsar (AXP)\",\"model_entity_type\":\"astronomical_source\"},\"relationships\":[{\"predicate\":\"analyzed_with\",\"target\":\"Fermi Large Area Telescope (LAT)\",\"attributes\":{},\"target_id\":\"fermi_large_area_telescope_lat\"},{\"predicate\":\"analyzed_with\",\"target\":\"Rossi X-ray Timing Explorer (RXTE)\",\"attributes\":{},\"target_id\":\"rossi_x_ray_timing_explorer_rxte\"}]},{\"name\":\"LAT Data Analysis for 4U 0142+61\",\"type\":\"method\",\"attributes\":{\"data_collection_period\":\"2008 August 4 to 2010 April 29\",\"exposure_time\":\"~31.7 Ms\",\"extraction_radius_for_data\":\"15 degrees\",\"extraction_radius_for_spectral_analysis\":\"2 degrees\",\"analysis_tool\":\"ScienceTools v9r15p2\",\"instrumental_response\":\"P6 V3 DIFFUSE\",\"zenith_angle_cut\":\"105 degrees\",\"galactic_diffuse_model\":\"gll iem v02.fit\",\"extragalactic_isotropic_model\":\"isotropic iem v02.txt\",\"flux_calculation_tool\":\"pyLikelihood\",\"timing_conversion_tool\":\"gtbary\"},\"relationships\":[{\"predicate\":\"targets\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"},{\"predicate\":\"uses\",\"target\":\"Fermi Large Area Telescope (LAT)\",\"attributes\":{},\"target_id\":\"fermi_large_area_telescope_lat\"}]},{\"name\":\"Rossi X-ray Timing Explorer (RXTE)\",\"type\":\"measurement\",\"attributes\":{\"payloads\":[\"Proportional Counter Array (PCA)\",\"High Energy X-ray Timing Experiment (HEXTE)\",\"All Sky Monitor (ASM)\"],\"model_entity_type\":\"instrument\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"spin ephemeris determination\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Proportional Counter Array (PCA)\",\"type\":\"other\",\"attributes\":{\"energy_sensitivity\":\"2 - 60 keV\",\"model_entity_type\":\"instrument_component\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"Rossi X-ray Timing Explorer (RXTE)\",\"attributes\":{},\"target_id\":\"rossi_x_ray_timing_explorer_rxte\"},{\"predicate\":\"used_for\",\"target\":\"RXTE Observations of 4U 0142+61\",\"attributes\":{},\"target_id\":\"rxte_observations_of_4u_0142_61\"}]},{\"name\":\"RXTE Observations of 4U 0142+61\",\"type\":\"method\",\"attributes\":{\"monitoring_duration\":\"~8 years\",\"selected_observations_count\":53,\"observation_period\":\"2008 August 4 to 2010 April 30\",\"program_ids\":[\"P93019\",\"P94019\",\"P05019\"],\"individual_pointing_duration\":\"3 - 4 ks\",\"total_exposure_time\":\"~196 ks\",\"energy_range_for_extraction\":\"2 - 10 keV\",\"time_conversion_tool\":\"faxbary (HEASoft 6.8)\"},\"relationships\":[{\"predicate\":\"targets\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"},{\"predicate\":\"uses\",\"target\":\"Proportional Counter Array (PCA)\",\"attributes\":{},\"target_id\":\"proportional_counter_array_pca\"}]}]},{\"context_summary\":\"The study reports no significant detection of persistent or pulsed high-energy gamma-ray emission from the anomalous X-ray pulsar 4U 0142+61 using Fermi-LAT data. Upper limits for the persistent flux were derived for energy bands of 0.2-1.0 GeV and 1.0-10.0 GeV. A Fourier-based epoch folding technique using RXTE/PCA data was employed to determine the source's spin ephemeris for the pulsed emission search.\",\"entities\":[{\"name\":\"4U 0142+61\",\"type\":\"other\",\"attributes\":{\"classification\":\"Anomalous X-ray Pulsar (AXP)\",\"detection_status\":\"Not detected in LAT energy passband\"},\"relationships\":[{\"predicate\":\"has_persistent_flux_upper_limit_0.2_1.0_GeV\",\"target\":\"5.72 × 10−6 MeV cm−2 s−1\",\"attributes\":{\"confidence_level\":\"3σ\"},\"target_id\":null},{\"predicate\":\"has_persistent_flux_upper_limit_1.0_10.0_GeV\",\"target\":\"1.29 × 10−6 MeV cm−2 s−1\",\"attributes\":{\"confidence_level\":\"3σ\"},\"target_id\":null},{\"predicate\":\"has_persistent_flux_upper_limit_0.2_1.0_GeV_15deg_region\",\"target\":\"2.32 × 10−6 MeV cm−2 s−1\",\"attributes\":{\"confidence_level\":\"3σ\",\"power_law_index\":2.5},\"target_id\":null},{\"predicate\":\"has_persistent_flux_upper_limit_1.0_10.0_GeV_15deg_region\",\"target\":\"1.28 × 10−6 MeV cm−2 s−1\",\"attributes\":{\"confidence_level\":\"3σ\",\"power_law_index\":2.5},\"target_id\":null}]},{\"name\":\"Fermi Large Area Telescope (LAT)\",\"type\":\"measurement\",\"attributes\":{\"energy_range\":\"20 MeV - 300 GeV\",\"instrument_type\":\"pair conversion telescope\"},\"relationships\":[{\"predicate\":\"used_for_search\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"}]},{\"name\":\"Rossi X-ray Timing Explorer (RXTE) Proportional Counter Array (PCA)\",\"type\":\"measurement\",\"attributes\":{\"energy_range\":\"2-60 keV\"},\"relationships\":[{\"predicate\":\"used_for_spin_ephemeris\",\"target\":\"4U 0142+61\",\"attributes\":{},\"target_id\":\"4u_0142_61\"}]},{\"name\":\"Fourier based epoch folding technique\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"used_to_obtain\",\"target\":\"Spin ephemeris of 4U 0142+61\",\"attributes\":{},\"target_id\":\"spin_ephemeris_of_4u_0142_61\"},{\"predicate\":\"uses_data_from\",\"target\":\"RXTE/PCA observations\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Spin ephemeris of 4U 0142+61\",\"type\":\"measurement\",\"attributes\":{\"derivation_method\":\"polynomial fit to phase shifts\",\"phase_shift_determination\":\"cross-correlation of pulse profiles with template\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"RXTE/PCA observations\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study determined the spin ephemeris of AXP 4U 0142+61 using RXTE data and searched for high-energy gamma-ray emission using Fermi LAT data. No significant persistent or pulsed emission was detected, resulting in 3σ upper limits for flux and pulsed fraction. The derived spectral break energy upper limit of approximately 1.1 MeV is consistent with previous X-ray measurements.\",\"entities\":[{\"name\":\"4U 0142+61\",\"type\":\"other\",\"attributes\":{\"classification\":\"Anomalous X-ray Pulsar (AXP)\",\"spin_frequency_Hz\":\"0.1150900026(9)\",\"spin_frequency_derivative_1e-14_Hz_s-1\":\"-2.745(8)\",\"spin_frequency_second_derivative_1e-23_Hz_s-2\":\"3.6(3)\",\"ephemeris_epoch_MJD\":\"54713.5\",\"ephemeris_range_MJD\":\"54682.6 - 55315.1\"},\"relationships\":[{\"predicate\":\"spin_ephemeris_fitted_with\",\"target\":\"3rd order polynomial\",\"attributes\":{\"chi_squared\":\"59.6\",\"degrees_of_freedom\":\"42\"},\"target_id\":null},{\"predicate\":\"persistent_flux_upper_limit_0.2_1.0_GeV\",\"target\":\"5.72 × 10−6 MeV cm−2 s−1\",\"attributes\":{\"confidence_level\":\"3σ\"},\"target_id\":null},{\"predicate\":\"persistent_flux_upper_limit_1.0_10.0_GeV\",\"target\":\"1.29 × 10−6 MeV cm−2 s−1\",\"attributes\":{\"confidence_level\":\"3σ\"},\"target_id\":null},{\"predicate\":\"pulsed_fraction_upper_limit_0.2_1.0_GeV\",\"target\":\"1.5%\",\"attributes\":{\"confidence_level\":\"3σ\",\"metric\":\"RMS\"},\"target_id\":null},{\"predicate\":\"pulsed_fraction_upper_limit_1.0_10.0_GeV\",\"target\":\"2.3%\",\"attributes\":{\"confidence_level\":\"3σ\",\"metric\":\"RMS\"},\"target_id\":null},{\"predicate\":\"pulsed_fraction_upper_limit_30_200_MeV\",\"target\":\"1.6%\",\"attributes\":{\"confidence_level\":\"3σ\",\"metric\":\"RMS\"},\"target_id\":null},{\"predicate\":\"spectral_break_energy_upper_limit\",\"target\":\"1.1 MeV\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Fermi Large Area Telescope (LAT)\",\"type\":\"measurement\",\"attributes\":{\"energy_range_analyzed\":\"0.2-10.0 GeV and 30-200 MeV\"},\"relationships\":[{\"predicate\":\"search_result\",\"target\":\"no significant persistent or pulsed detection\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"INTEGRAL/ISGRI hard X-ray spectrum\",\"type\":\"measurement\",\"attributes\":{\"model\":\"simple power law\",\"index\":\"0.93 ± 0.06\",\"source_reference\":\"den Hartog et al. 2008\"},\"relationships\":[{\"predicate\":\"used_to_construct\",\"target\":\"νFν spectrum (15 keV - 10 GeV)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"spectral break energy measurement by den Hartog et al. (2008)\",\"type\":\"measurement\",\"attributes\":{\"value\":\"279+65 −41 keV\",\"model\":\"logparabolic function\",\"data_sources\":\"XMM-Newton, INTEGRAL/ISGRI, INTEGRAL/SPI, CGRO/COMPTEL\"},\"relationships\":[{\"predicate\":\"consistent_with\",\"target\":\"1.1 MeV upper limit\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study's estimated upper limit for the spectral break energy of 4U 0142+61 aligns with predictions from coronal and quantum electrodynamics models. These models suggest that magnetic fields and quantum effects suppress gamma-ray emission above approximately 1 MeV. The presence of excess optical emission in the source introduces constraints on the quantum electrodynamics model depending on the emission's origin.\",\"entities\":[{\"name\":\"4U 0142+61\",\"type\":\"other\",\"attributes\":{\"type\":\"Anomalous X-ray Pulsar (AXP)\",\"spectral_break_energy_upper_limit\":\"~1.1 MeV\",\"optical_emission\":\"significant excess\"},\"relationships\":[{\"predicate\":\"constrained_by\",\"target\":\"Heyl & Hernquist (2005a,b) model\",\"attributes\":{},\"target_id\":\"heyl_hernquist_2005a_b_model\"},{\"predicate\":\"emits_optical_radiation_from\",\"target\":\"neutron star itself\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"emits_optical_radiation_from\",\"target\":\"disk around 4U 0142+61\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Beloborodov & Thompson (2007) model\",\"type\":\"method\",\"attributes\":{\"predicted_photon_behavior\":\"photons > 1 MeV trapped in ultrastrong magnetic fields (B >= 10^14 G)\"},\"relationships\":[{\"predicate\":\"predicts_suppression_of\",\"target\":\"emission from inner corona above ~1 MeV\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"consistent_with\",\"target\":\"estimated upper limit to spectral break energy of 4U 0142+61\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Heyl & Hernquist (2005a,b) model\",\"type\":\"method\",\"attributes\":{\"predicted_break_energy_lower_limit\":\"~1 MeV\"},\"relationships\":[{\"predicate\":\"consistent_with\",\"target\":\"estimated upper limit to spectral break energy of 4U 0142+61\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"predicts_nuFnu_behavior\",\"target\":\"continuous increase in 10-200 MeV range if significant optical excess exists\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"constrained_by\",\"target\":\"lack of increase in 10-200 MeV range in nuFnu spectrum of 4U 0142+61\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"optical emission of 4U 0142+61\",\"type\":\"measurement\",\"attributes\":{\"origin_uncertainty\":\"not clear\",\"potential_sources\":[\"neutron star itself\",\"disk around 4U 0142+61\"]},\"relationships\":[{\"predicate\":\"affects_feasibility_of\",\"target\":\"Heyl & Hernquist (2005a,b) model\",\"attributes\":{},\"target_id\":\"heyl_hernquist_2005a_b_model\"}]}]}]"
+}

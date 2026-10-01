@@ -1,0 +1,862 @@
+Recurrent Interpolants for Probabilistic Time Series Prediction
+Yu Chen∗,1
+Marin Biloš∗,1
+Sarthak Mittal†,∗,2,3
+Wei Deng1
+Kashif Rasul1
+Anderson Schneider1
+1Morgan Stanley
+2Mila
+3Université de Montréal
+Abstract
+Sequential models such as recurrent neural net-
+works or transformer-based models became de
+facto tools for multivariate time series forecast-
+ing in a probabilistic fashion, with applications to
+a wide range of datasets, such as finance, biology,
+medicine, etc. Despite their adeptness in captur-
+ing dependencies, assessing prediction uncertainty,
+and efficiency in training, challenges emerge in
+modeling high-dimensional complex distributions
+and cross-feature dependencies. To tackle these
+issues, recent works delve into generative model-
+ing by employing diffusion or flow-based models.
+Notably, the integration of stochastic differential
+equations or probability flow successfully extends
+these methods to probabilistic time series imputa-
+tion and forecasting. However, scalability issues
+necessitate a computational-friendly framework
+for large-scale generative model-based predictions.
+This work proposes a novel approach by blend-
+ing the computational efficiency of recurrent neu-
+ral networks with the high-quality probabilistic
+modeling of the diffusion model, which addresses
+challenges and advances generative models’ ap-
+plication in time series forecasting. Our method
+relies on the foundation of stochastic interpolants
+and the extension to a broader conditional gener-
+ation framework with additional control features,
+offering insights for future developments in this
+dynamic field.
+1
+INTRODUCTION
+Autoregression models [Box et al., 2015], such as recur-
+rent neural networks [Graves, 2013, Sutskever et al., 2014,
+Preprint
+∗Equal Contribution
+† Work done as part of an internship at Morgan Stanley
+Hochreiter and Schmidhuber, 1997] or transformer models
+[Vaswani et al., 2017], have been the go-to methods for time
+series forecasting. They are widely applied in finance, bio-
+logical statistics, medicine, geophysical applications, etc.,
+effectively showcasing their ability to capture short-term
+and long-term sequential dependencies [Morrill et al., 2021].
+These methods can also provide an assessment of prediction
+uncertainty through probabilistic forecasting by incorporat-
+ing specific parametric probabilistic models into the output
+layer of the neural network. For instance, a predictor can
+model the Gaussian distribution by predicting both mean
+and covariance. However, the probabilistic output layer is
+confined within a simple probability family because the den-
+sity needs to be parameterized by neural networks, and the
+loss must be differentiable with respect to neural network
+parameters.
+To better capture sophisticated distributions in time series
+modeling and learn both the temporal and cross-feature
+dependencies, a common strategy involves exploring the
+generative modeling of time series using efficient distribu-
+tion transportation plans, especially via diffusion or flow
+based models. For example, recent works such as Li et al.
+[2020] propose using latent neural SDE as latent state for
+modeling time series in a stochastic manner, while Spantini
+et al. [2022] summarize non-linear extensions of state space
+models using both deterministic and stochastic transforma-
+tion plans. Tashiro et al. [2021], Biloš et al. [2023], Chen
+et al. [2023a], Miguel et al. [2022], Li et al. [2022] studied
+the application of diffusion models in probabilistic time
+series imputation and forecasting. The generative model
+is trained to learn the joint density of the whole time se-
+ries window x ∈RK×(Tcontext+Tprediction) with K features.
+Tcontext is the size of the context window, Tprediction is the
+size of the prediction window. During inference, the model
+performs conditional generation given the context, similar
+to the inpainting task in computer vision [Song et al., 2021].
+Compared to a recurrent model, where the model size is
+only proportional to the number of features, but not the
+length of the time window, such generative model predictors
+arXiv:2409.11684v1  [cs.LG]  18 Sep 2024
+
+may suffer from scalability issues because the model size is
+related to both feature dimension and the size of the window.
+A more computational friendly framework is needed for
+large scale generative model-based time series prediction
+problems.
+Generative modeling excels at modeling complicated high
+dimension distributions, but most models require learning a
+mapping from noise distribution to data distribution. If the
+generative procedure starts from an initial distribution prox-
+imate to the terminal data distribution, it can remarkably
+alleviate learning challenges, reduce inference complexity,
+and enhance the quality of generated samples, which is also
+supported by previous studies [Rubanova et al., 2019, Rasul
+et al., 2021a,b, Chen et al., 2023b, Deng et al., 2024a,b].
+Time series data is typically continuous and neighboring
+time points exhibit strong correlations, indicating that the
+distribution of future time points is close to that of the cur-
+rent time point.
+These observations inspire the creation of a time series pre-
+diction model under the generative framework that maps
+between dependent data points: Initiating the prediction of
+future time point’s distribution with the current time point is
+more straightforward and yields better quality; meanwhile,
+the longer temporal dependency is encoded by a recurrent
+neural network and the embedded history is passed to the
+generative model as the guidance of the prediction for the
+future time points. The new framework benefits from the
+efficient training and computation inherited from the re-
+current neural network, while enjoying the high quality of
+probabilistic modeling empowered by the diffusion model.
+Our contributions include:
+• We first extend the theory of stochastic interpolants to
+more general conditional generation framework with
+extra control features.
+• We adopt a conditional stochastic interpolants mod-
+ule for the sequential modeling and time series pre-
+diction, which is computational-friendly and achieves
+high quality modeling of the future time point’s distri-
+bution.
+2
+BACKGROUND
+As we formalize probabilistic time series forecasting within
+the generative framework in Section 4, this section is dedi-
+cated to reviewing commonly used generative methods and
+their extensions for conditional generation. These models
+will serve as baseline models in subsequent sections. For a
+broader overview of time series forecasting problems, refer
+to [Salinas et al., 2019, Alexandrov et al., 2019], and the
+references therein.
+2.1
+DENOISING DIFFUSION PROBABILISTIC
+MODEL (DDPM)
+DDPM [Sohl-Dickstein et al., 2015, Ho et al., 2020] adds
+Gaussian noise to the observed data point x0 ∈Rd at dif-
+ferent scales 0 < β1 < β2 < · · · < βN such that the first
+noisy value x1 is close to the clean data x0, and the final
+value xN is indistinguishable from noise. The generative
+model learns to revert this process allowing sampling new
+points from noise.
+Following previous convention, we define ¯αn = Qn
+k=1 αk,
+with αn = 1 −βn. Then the transition kernel is Gaussian
+and can be computed directly from x0:
+q(xn|x0) = N(√¯αnx0, (1 −¯αn)I).
+(1)
+The posterior distribution is available in closed form:
+q(xn−1|xn, x0) = N(˜µn, ˜βnI),
+(2)
+where ˜µn depends on x0, xn and a choice of β-scheduler.
+The generative model p(xn−1|xn) ≈q(xn−1|xn, x0) ap-
+proximates the reverse process. The actual model ϵθ(x0, n)
+is usually reparameterized to predict the noise added to a
+clean data point, from the noisy data point xn. The loss
+function can be simply written as:
+L = Eϵ∼N(0,I),n∼U({1,...,N})
+
+∥ϵθ(xn, n) −ϵ∥2
+2
+
+.
+(3)
+Sampling new data is performed by first sampling a point
+from the pure noise xN ∼N(0, I) and then gradually
+denoising it using the above model to get a sample from the
+data distribution [Ho et al., 2020].
+2.2
+SCORE-BASED GENERATIVE MODEL (SGM)
+SGM [Song et al., 2021], like DDPM, considers a pair of
+forward and backward dynamics between s ∈[0, 1]:
+dxs =f(xs, s)ds + g(s)dws
+(4)
+dxs =[f(xs, s) −g(s)2∇xs log p(xs)]ds + g(s)dws (5)
+where ∇xs log p(xs) is the so-called score function. The
+forward process usually is scheduled as simple processes,
+such as Brownian motion or Ornstein–Uhlenbeck process,
+which can transport data distribution to standard Gaussian
+distribution. The generative process is achieved by the back-
+ward process that walks from Gaussian prior distribution
+to the data distribution of interest. Now, Equation 5 gives a
+way to generate new points by starting at xs ∼N(0, I) and
+solving the SDE backward in time giving x0 as a sample
+from data distribution. In practice, the only missing piece is
+obtaining the score. A standard approach is to approximate
+the score with a neural network.
+Since during training, we have access to clean data, the score
+function is available in closed form. The model ϵθ(xs, s)
+2
+
+learns to approximate the score from noisy data only, result-
+ing in a loss function similar to Equation 3:
+L =Es∼U(0,1),x0∼Data,xs∼p(xs|x0)
+h
+∥ϵθ(xs, s) −∇xs log p(xs|x0)∥2
+2
+i
+.
+(6)
+2.3
+FLOW MATCHING (FM)
+Flow matching [Lipman et al., 2022] constructs a prob-
+ability path by learning the vector field that generates it.
+Given a data point x1, the conditional probability path
+is denoted with ps(x|x1) for s ∈[0, 1]. We put the con-
+straints on ps(x|x1) such that p0(x|x1) = N(0, I) and
+p1(x|x1) = N(x1, σ2I), with small σ > 0. That is, the
+distribution p0(x|x1) corresponds to the noise distribution
+and the distribution p1(x|x1) is centered around the data
+point with small variance.
+Then there exists a conditional vector field us(x|x1) which
+generates ps(x|x1). Our goal is to learn the vector field
+with a neural network ϵθ(x, s) which amounts to learning
+the generative process. This can be done by minimizing the
+flow matching objective:
+L =Es∼U(0,1),x1∼Data,x∼ps(x|x0)
+h
+∥ϵθ(x, s) −us(xs|x1)∥2
+2
+i
+.
+(7)
+Going back to Equation 6 we notice that the two approaches
+have similarities. Flow matching differs in the path construc-
+tions and it learns the vector field directly, instead of learning
+the score, potentially offering a more stable alternative.
+One choice for the noising function is transporting the values
+into noise as a linear function of transport time:
+xs = sx1 + (1 −(1 −σ)s)ϵ,
+ϵ ∼N(0, I).
+(8)
+The probability path is generated by the following condi-
+tional vector field which is available in closed-form:
+us(x|x1) = x1 −(1 −σ)x
+1 −(1 −σ)s .
+(9)
+By learning the field us(x|x1) with a neural network
+ϵθ(x, s) we can sample new points by sampling an initial
+value x0 from the noise distribution p0 and solve an ODE
+0 7→1 to obtain the new sample x1.
+2.4
+STOCHASTIC INTERPOLANTS (SI)
+Stochastic interpolants [Albergo et al., 2023b] aim to model
+the dependent couplings between (x0, x1) with their joint
+density ρ(x0, x1), and establish a two-way generative SDEs
+mapping from one data distribution to another. The method
+constructs a straightforward stochastic mapping from t = 0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+t
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Figure 1: α(s), β(s), γ(s), the schedules of stochastic inter-
+polants.
+to t = 1 given the values at two ends x0 ∼ρ0 to x1 ∼ρ1,
+which provides a transport between two densities ρ0 and ρ1,
+while maintaining the dependency between x0 and x1.
+xs = α(s)x0 + β(s)x1 + γ(s)z, s ∈[0, 1], z ∼N(0, I)
+(10)
+where ρ(s, x) is the marginal density of xs at diffusion
+time s. Such a stochastic mapping is characterized by a pair
+of functions: velocity function b(s, x) and score function
+s(s, x):
+s(s, x) := ∇log ρ(s, x),
+(11)
+b(s, x) := Ex0,x1,z[ ˙α(s)x0 + ˙β(s)x1 + ˙γ(s)z|xs = x].
+(12)
+b(s, x), ρ(s, x), and s(s, x) satisfy the equality below,
+∂tρ(s, x) + ∇· (b(s, x)ρ(s, x)) = 0
+(13)
+s(s, x) = −γ−1(s)Ez[z|xt = x],
+(14)
+where α(s) and β(s) schedule the deterministic interpolant.
+We set α(0) = 1, α(1) = 0, β(0) = 0, β(1) = 1. γ(s)
+schedules the variance of the stochastic component z. We
+set γ(0) = γ(1) = 0, so the two ends of the interpolant
+are fixed at x0 and x1. Figure 1 shows one example of the
+interpolant schedule, where α(s) =
+p
+1 −γ2(s) cos( 1
+2πs),
+β(s) =
+p
+1 −γ2(s) sin( 1
+2πs), γ(s) =
+p
+2s(1 −s).
+The velocity function b(s, x) and the score function s(s, x)
+can be modeled by a rich family of functions, such as deep
+neural networks. The model is trained to match the above
+equality by minimizing the mean squared error loss func-
+tions,
+Lb =
+Z 1
+0
+E
+h1
+2∥ˆb(s, xs)∥2
+−
+ ˙α(s)x0 + ˙β(s)x1 + ˙γ(s)z
+T ˆb(s, xs)
+i
+ds
+(15)
+Ls =
+Z 1
+0
+E
+h1
+2∥ˆs(s, xs)∥2 + γ−1zTˆs(s, xs)
+i
+ds.
+(16)
+More details of training will be shown in section 4.
+During inference, usually, one side of the diffusion trajec-
+tory at t = 0 or t = 1 is given, the goal is to infer the sample
+3
+
+RNN
+...
+RNN
+...
+Figure 2: Stochastic interpolants for time series prediction
+using forward SDE in equation 22. Yu: Change rrn input
+index.
+distribution on the other side. The interpolant in equation 10
+results in elegant forward and backward SDEs and corre-
+sponding Fokker-Planck equations, which offer convenient
+tools for inference. The SDEs are composed of b(s, xs) and
+s(s, xs), which are learned from the data. For any ϵ(s) ≥0,
+define the forward and backward SDEs
+dxs =[b(s, x) + ϵ(s)s(s, x)]ds +
+p
+2ϵ(s)dws
+(17)
+dxs =[b(s, x) −ϵ(s)s(s, x)]ds +
+p
+2ϵ(s)dwB
+s ,
+(18)
+where wB
+s is the backward Brownian motion. The SDEs
+satisfy the forward and backward Fokker-Plank equations,
+∂sρ + ∇· (bFρ) = ϵ(s)∆ρ, ρ(0) = ρ0
+(19)
+∂sρ + ∇· (bBρ) = −ϵ(s)∆ρ, ρ(1) = ρ1.
+(20)
+These properties imply that one can draw samples from the
+conditional density ρ(x1|x0) following the forward SDE in
+equation 17 starting from x0 at s = 0. It can also draw sam-
+ples from the joint density ρ(x0, x1) by initially drawing a
+sample x0 ∼ρ0 (if feasible, for example, pick one sample
+from the dataset), then using the forward SDE to generate
+a samples x1 at s = 1. The method guarantees that x1 fol-
+lows marginal distribution ρ1 and the sample pair (x0, x1)
+satisfies the joint density ρ(x0, x1). Drawing samples using
+the backward SDE is similar: one can draw samples from
+ρ(x0|x1) and the joint density ρ(x0, x1) as well. Details of
+inference will be shown in section 4.
+3
+CONDITIONAL GENERATION WITH
+EXTRA FEATURES
+All the aforementioned methods can be adapted for condi-
+tional generation with additional features. The conditions
+may range from simple categorical values [Song et al., 2021]
+to complex prompts involving multiple data types, includ-
+ing partial observations of a sample’s entries (e.g., image
+inpainting, time series imputation) [Tashiro et al., 2021,
+Song et al., 2021], images [Zheng et al., 2023, Rombach
+et al., 2022], text [Rombach et al., 2022, Zhang et al.], etc.
+DDPM (cosine)
+8gaussians
+Circles
+Moons
+Rings
+Swissroll
+DDPM (linear)
+FM
+SGM
+SI (quad, linear)
+SI (sqrt, linear)
+SI (sqrt, trig)
+SI (trig, linear)
+Figure 3: Examples of model generated samples for syn-
+thetic two-dimensional datasets.
+A commonly employed technique to handle diverse condi-
+tions is to integrate condition information through feature
+embedding, where the embedding is injected into various
+layers of neural networks [Song et al., 2021, Rombach et al.,
+2022]. For instance, conditional SGM can be trained with
+Lcond =Es∼U(0,1),(x0,ξ)∼Data,xs∼p(xs|x0)
+h
+∥ϵθ(s, xs, ξ) −∇xs log p(xs|x0)∥2
+2
+i
+.
+(21)
+where the data is given by pairs of a sample x0 and the
+corresponding condition ξ. This simple scheme approach
+showcases its effectiveness in various tasks, achieving state-
+of-the-art performance [Rombach et al., 2022, Zhang et al.].
+Likewise, SI can be expanded for conditional generation
+by substituting the velocity function and score function
+with b(xs, s, ξ) and s(xs, s, ξ) [Albergo et al., 2023b]. The
+model is trained using samples of tuples (x0, x1, ξ), where
+ξ is the extra condition feature. Consequently, the inference
+using forward or backward SDEs becomes
+dxs =[b(s, xs, ξ) + ϵ(s)s(s, xs, ξ)]ds +
+p
+2ϵ(s)dws
+(22)
+dxs =[b(s, xs, ξ) −ϵ(s)s(s, xs, ξ)]ds +
+p
+2ϵ(s)dwB
+s ,
+(23)
+where both velocity and score functions depend on the con-
+dition ξ. The loss functions are similar to equation 15 and
+equation 16.
+4
+
+Algorithm 1 Training algorithm. i is the sample index.
+Input: Sample 3-tuples (xti+1, xti, xti−P :ti−1). Inter-
+polant schedules: α(s), β(s), γ(s). Models: velocity ˆb,
+score ˆs, RNN.
+for iteration = 1 to total iterations do
+si ∼Beta(0.1, 0.1).
+xs,i = α(si)xti + β(si)xti+1 + γ(si)zi
+hi = RNN(xti−P :ti−1)
+Lb =
+batch size
+X
+i=1
+1
+pBeta(si)
+h1
+2∥ˆb(si, xs,i, hi)∥2
+−
+ ˙α(si)xti + ˙β(si)xti+1 + ˙γ(si)zi
+T ˆb(si, xs,i, hi)
+i
+Ls =
+batch size
+X
+i=1
+1
+pBeta(si)
+h1
+2∥ˆsi(si, xs,i)∥2
++ γ−1zi
+T ˆsi(si, xs,i)
+i
+Perform back-propagation by minimizing Lb and Ls.
+end for
+Regarding the time series prediction task, we will encode
+a large context window as the conditional information, and
+the prediction or generation of future time points will rely
+on such a conditional generation mechanism.
+Next, we demonstrate that the probability distribution of xt
+as simulated by equation 24, results in a dynamic density
+function. This density serves as a solution to a transport
+equation 25, which smoothly transitions between ρ0 and ρ1.
+Theorem 1. (Extension of Stochastic Interpolants to Arbi-
+trary Joint Distributions). Let ρ01 be the joint distribution
+(x0, x1) ∼ρ01 and let the stochastic interpolant be
+xt = αtx0 + βtx1 + γtz,
+(24)
+where α0 = β1 = 1, α1 = β0 = γ0 = γ1 = 0, and
+α2
+t + β2
+t + γ2
+t > 0 for all t ∈[0, 1]. We define ρt to be the
+time-dependent density of xt, which satisfies the boundary
+conditions at t = 0, 1 and the transport equation follows
+that
+˙ρt + ∇· (btρt) = 0
+(25)
+for all t ∈[0, 1] with the velocity defined as
+bt(x|ξ) = E
+h
+˙αtx0 + ˙βtx1 + ˙γt z|xt = x, ξ
+i
+,
+(26)
+where the expectation is based on the density ρ01 given
+xs = x and the extra information ξ.
+The score function follows the relation such that
+∇log ρt(x) = −γ−1
+t
+E [z|xt = x, ξ] .
+Algorithm 2 Inference algorithm
+Input: Sample 2-tuples (xt, xt−P :t−1). Trained models:
+Velocity ˆb, score ˆs, RNN. Diffusion variance ϵ.
+Set ˜x0 = xt. h = RNN(xt−P :t−1).
+Run SDE integral for s ∈[0, 1] following
+d˜xs = [b(s, ˜xs, h) + ϵs(s, ˜xs, h)]ds +
+√
+2ϵdws
+Output: ˜x1 as prediction of xt+1.
+8gaussians
+Circles
+Moons
+Rings
+Swissroll
+DDPM (cosine)
+2.58
+0.20
+0.20
+0.12
+0.24
+DDPM (linear)
+0.70
+0.18
+0.12
+0.11
+0.14
+SGM
+1.10
+0.30
+0.35
+0.32
+0.14
+FM
+0.58
+0.10
+0.11
+0.09
+0.15
+SI (quad, linear)
+0.52
+0.15
+0.32
+0.12
+0.16
+SI (sqrt, linear)
+0.59
+0.29
+0.51
+0.22
+0.37
+SI (sqrt, trig)
+0.75
+0.25
+0.50
+0.48
+0.36
+SI (trig, linear)
+0.52
+0.13
+0.29
+0.21
+0.16
+Table 1: Wasserstein distance between the generated sam-
+ples and true data.
+The proof is in a spirit similar to Theorem 2 in [Albergo
+et al., 2023b] and detailed in section B. The key difference
+is that we consider a continuous-time interpretation and
+avoid using characteristic functions, which makes the analy-
+sis more friendly to users. Additionally, the score function
+∇log ρt(x) is optimized in a simple quadratic objective
+function as indicated in Theorem 2 in the Appendix.
+4
+STOCHASTIC INTERPOLANTS FOR
+TIME SERIES PREDICTION
+We formulate time series prediction tasks through the con-
+ditional probability p(xt+1|xt−P :t). The model diagram is
+illustrated in Figure 2. Here, xt ∈RD represents the multi-
+variate time series at time t with D dimensions, xt+1 is the
+prediction target, and xt−P :t is the context window, where
+P denotes the length of the context window.
+For this problem, we employ the conditional Stochas-
+tic Interpolants (SI) method as follows. In the training
+phase, the generative model learns the joint distribution
+p(xt+1, xt|xt−P :t−1) of the pair (xt+1, xt) given the past
+observations xt−P :t−1. where xt ∼ρ0 and xt+1 ∼ρ1 for
+all t, so the marginal distributions are equal ρ0 = ρ1. The
+model aims to learn the coupling relation between xt+1 and
+xt conditioning on the context xt−P :t−1. This is achieved
+by training the conditional velocity and score functions in
+equation 22.
+As the sample spaces of ρ0 and ρ1 must be the same, the
+generative model can not directly map the whole context
+window xt−P :t to the target xt+1 due to different vector
+5
+
+00:00
+20-Oct
+2006
+00:00
+21-Oct
+0
+200
+400
+600
+800
+Dimension 0
+Observations
+Median prediction
+90.0% prediction interval
+50.0% prediction interval
+00:00
+20-Oct
+2006
+00:00
+21-Oct
+0
+100
+200
+300
+400
+500
+600
+700
+Dimension 5
+00:00
+20-Oct
+2006
+00:00
+21-Oct
+0
+20
+40
+60
+80
+100
+Dimension 10
+00:00
+20-Oct
+2006
+00:00
+21-Oct
+0
+25
+50
+75
+100
+125
+150
+Dimension 15
+00:00
+20-Oct
+2006
+00:00
+21-Oct
+0
+20
+40
+60
+80
+Dimension 25
+00:00
+20-Oct
+2006
+00:00
+21-Oct
+0
+25
+50
+75
+100
+125
+150
+175
+Dimension 30
+Figure 4: Forecast paths for SI on Solar dataset showing
+median prediction, 50th and 90th confidence intervals calcu-
+lated from model samples, on 6 / 137 variate dimensions.
+sizes. Instead, a recurrent neural network is used to encode
+the context xt−P :t−1 into a history prompt ht. Subsequently,
+the score function and velocity function perform conditional
+generation diffusing from xt with the condition input ht
+following equation 22.
+The training dataset consists of tuple (xt+1, xt, xt−P :t−1).
+It is worth noting that the loss values become larger when s
+is close to two ends. To address this, importance sampling is
+leveraged to better handle the integral over diffusion time in
+the loss functions equation 15 and equation 16 to stabilize
+the training, where we use Beta distribution for our pro-
+posal distribution. The algorithm is outlined in Algorithm 1.
+Additional details can be found in Appendix C.
+In the inference phase, the RNN first encodes the context
+xt−P :t−1 into the history prompt ht, then SI transports the
+context vector xt to the target distribution with the condition
+ht, following the forward SDE. Regarding the multiple steps
+prediction, we recursively run the step-by-step prediction.
+RNN
+...
+...
+noise
+RNN
+diffusion
+Figure 5: Time-Grad model for conditional time series pre-
+diction.
+5
+EXPERIMENTS
+We first verify the method on synthetic datasets, and then
+apply it to the time series forecasting tasks with real data.
+Baseline models such as DDPM, SGM, FM, and SI all in-
+volve modeling field functions, where the inputs are the state
+vector (in the same space of the data samples), diffusion
+time, and condition embedding, and the output is the gen-
+erated sample. The field functions correspond to the noise
+prediction function in DDPM; the score function in SGM;
+the vector field in FM; and the velocity and score functions
+in SI. To make a fair comparison between these models, we
+use the same neural networks for these models. Details of
+the models are discussed in Appendix C. Our code will be
+publicly available1.
+5.1
+SYNTHETIC DATASETS
+We synthesize several two-dimensional datasets with reg-
+ular patterns, such as Circles, Moons, etc. Details can be
+found in [Chen et al., 2021, Lipman et al., 2022] and their
+published code repositories. Model introduced in section
+2 are compared to the SI as baselines. For diffusion-like
+models, we implement DPPM with a linear or cosine noise
+scheduler. We explore on synthetic datasets to determine a
+good range of hyperparameters which will be used in later
+time series experiments. This experiment is used to inves-
+tigate the properties with respect to the varying data sizes,
+model sizes, and training lengths.
+To fairly compare the generation quality, all models are
+assigned to generate data in the same setting by mapping
+from standard Gaussian to the target distribution. The neural
+networks and hyperparameters are also set as the same, such
+as batch size, training epochs, etc. The generated samples
+from different methods are shown in Figure 3. Table 1 mea-
+sures the sample quality with Wasserstein distance [Ramdas
+et al., 2017]. It shows that all the models can capture the true
+distribution. The same holds when we use different metrics
+1github_place_holder We will publish the code for the
+camera-ready version.
+6
+
+Exchange rate
+Solar
+Traffic
+Wiki
+Vec-LSTM
+0.008±0.001
+0.391±0.017
+0.087±0.041
+0.133±0.002
+DDPM
+0.009±0.004
+0.359±0.061
+0.058±0.014
+0.084±0.023
+FM
+0.009±0.001
+0.419±0.027
+0.038±0.002
+64.256±62.596
+SGM
+0.008±0.002
+0.364±0.029
+0.071±0.05
+0.108±0.026
+SI
+0.007±0.001
+0.359±0.06
+0.083±0.005
+0.080±0.007
+Table 2: CRPS-sum metric on multivariate probabilistic forecasting. A smaller number indicates better performance.
+such as Sliced Wasserstein Distance (SWD) [Rabin et al.,
+2012] and Maximum Mean Discrepancy (MMD) [Gretton
+et al., 2012].
+We also test-out different schedulers for a stochastic inter-
+polant model. For example, “SI (sqrt, linear)” means we use
+square root gamma-function γ(s) =
+p
+2s(1 −s)) and a lin-
+ear interpolant. Other gamma-functions that we consider are
+quad: γ(s) = t(1 −s), and trig: γ(s) = sin(πt)2. We show
+that most of the gamma-interpolant function combinations
+achieve good results modeling the target distribution.
+5.2
+MULTIVARIATE PROBABILISTIC
+FORECASTING
+In this section, we will empirically verify that: 1) SI is
+a suitable generative module for the prediction compared
+with other baselines with different generative methods under
+the same framework; 2) the whole framework can achieve
+competitive performance in time series forecasting.
+Models.
+The baseline models include DDPM, SGM, and
+FM-based generative models adopted for step-by-step (au-
+toregressive) prediction. DDPM and SGM-based models
+can only generate samples by transporting Gaussian noise
+distribution to data distribution. So we modify the frame-
+work by replacing the context time point xt with Gaussian
+noise, as shown in Figure 5. Flow matching can easily fit
+into this framework by replacing the denoising objective
+with the flow matching objective. The modified framework
+is shown in Figure 2. We model the map from the previous
+time series observation to the next (forecasted) value. We
+argue this is a more natural choice than mapping from noise
+for each time series prediction step. Recent Vec-LSTM from
+[Salinas et al., 2019] is compared as a pure recurrent neural
+network model whose probabilistic layer is a multivariate
+Gaussian.
+Setup.
+The real-world time series datasets include Solar
+[Lai et al., 2018], Exchange [Lai et al., 2018], Traffic2, and
+Wiki3 which have been commonly used for the probabilistic
+2https://archive.ics.uci.edu/ml/datasets/
+PEMS-SF
+3https://github.com/mbohlkeschneider/
+gluon-ts/tree/mv_release/datasets
+forecasting tasks. We follow the preprocessing steps as in
+[Salinas et al., 2019]. The probabilistic forecasting is evalu-
+ated by Continuous Ranked Probability Score (CRPS-sum)
+[Koochali et al., 2022], normalized root mean square error
+via the median of the samples (NRMSE), and point-metrics
+normalized deviance (ND). The metrics calculation is pro-
+vided by gluonts package [Alexandrov et al., 2019]. In
+all of the cases smaller values indicate better performance.
+Results.
+The results for CRPS-sum are shown in Table 2.
+The results for other metrics are consistent with CRPS-sum
+and are shown in Tables 4 and 5, in Appendix C. We outper-
+form or match other models on three out of four datasets,
+only on Traffic FM model achieves better performance. Note
+that on Wiki data FM cannot capture the data distribution.
+We ran a search over flow matching hyperparameters with-
+out being able to get satisfying results. Therefore, we con-
+clude that stochastic interpolants are a strong candidate for
+conditional generation, in particular for multivariate proba-
+bilistic forecasting. By comparing to the RNN-based model
+Vec-LSTM, our model and other baselines such as SGM
+and DDPM get better performance, which implies that care-
+fully model the probability distribution is critical for large
+dimension time series prediction. Figure 4 demonstrates the
+quality of the forecast on Solar dataset. We can see that
+our model can make precise prediction and capture the un-
+certainty, even when the scale of the different dimensions
+varies a lot.
+6
+CONCLUSIONS
+This study presents an innovative method that effectively
+merges the computational efficiency of recurrent neural net-
+works with the high-quality probabilistic modeling of the
+diffusion model, specifically applied to probabilistic time se-
+ries forecasting. Grounded in stochastic interpolants and an
+expanded conditional generation framework featuring con-
+trol features, the method undergoes empirical evaluation on
+both synthetic and real datasets, showcasing its compelling
+performance.

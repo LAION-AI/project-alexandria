@@ -1,0 +1,1477 @@
+{
+  "document_id": "bethgelab-10003",
+  "fulltext_sha256": "e7cd528ba416b11b6aab2a6fd81b6328a5833daeb921827420f580cb236ca865",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "92132c4ef20135d98d9f368dba699cb19326904834bbda78eba4b6fb8e5c1a26",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study introduces a machine learning force field (MLFF) approach to rank candidate solid-electrolyte interphase (SEI) structures in lithium-ion batteries by predicted energy. It addresses the limitations of traditional density functional theory (DFT) methods, which are too slow for the large length and time scales of SEI formation, by leveraging the speed of classical force fields with DFT-level accuracy. The authors utilize a combination of classical sampling and a novel multitask MLFF model to generate and rank these structures for future comparison with experimental results.",
+        "entities": [
+          {
+            "name": "Solid-Electrolyte Interphase (SEI)",
+            "entity_id": "solid_electrolyte_interphase_sei",
+            "entity_type": "other",
+            "aliases": [
+              "Solid-Electrolyte Interphase (SEI)"
+            ],
+            "attributes": {
+              "composition": "organic and inorganic components",
+              "function": "protects electrode materials from unwanted side reactions",
+              "structure_type": "complex passivating layer",
+              "formation_scale": "large length and time scales",
+              "chemical_nature": "involves conductors, insulators, and redox reactions",
+              "status": "vital but poorly-understood",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "separates",
+                "target": "metallic lithium from organic electrolyte",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "forms_in",
+                "target": "lithium-ion batteries",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "unanswered_questions_include",
+                "target": "whether amorphous or crystalline; how Li+ moves through it",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Machine Learning Force Field (MLFF)",
+            "entity_id": "machine_learning_force_field_mlff",
+            "entity_type": "method",
+            "aliases": [
+              "Machine Learning Force Field (MLFF)"
+            ],
+            "attributes": {
+              "promise": "atomistic simulation with DFT accuracy and wide applicability, but with fast sampling of classical force fields",
+              "training_method": "multitask learning allows training to both pure and hybrid DFT labels simultaneously"
+            },
+            "relationships": [
+              {
+                "predicate": "includes_architectures",
+                "target": "Nequip, ChgNet, MACE, QRNN",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "can_predict_properties_of",
+                "target": "Li metal (density, lattice constant, surface energy, cohesive energy, bulk modulus, equation of state, phonon spectrum)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "can_predict_properties_of",
+                "target": "organic liquids",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Density Functional Theory (DFT)",
+            "entity_id": "density_functional_theory_dft",
+            "entity_type": "method",
+            "aliases": [
+              "Density Functional Theory (DFT)"
+            ],
+            "attributes": {
+              "limitation": "much too slow to study the time and length scales of the SEI"
+            },
+            "relationships": [
+              {
+                "predicate": "includes_pure_functionals",
+                "target": "Pure density functionals",
+                "attributes": {},
+                "target_id": "pure_density_functionals"
+              },
+              {
+                "predicate": "includes_hybrid_functionals",
+                "target": "wB97X",
+                "attributes": {},
+                "target_id": "wb97x"
+              }
+            ]
+          },
+          {
+            "name": "Pure density functionals",
+            "entity_id": "pure_density_functionals",
+            "entity_type": "method",
+            "aliases": [
+              "Pure density functionals"
+            ],
+            "attributes": {
+              "performance": "work well for metallic systems",
+              "limitation": "tend to badly underestimate reaction barriers"
+            },
+            "relationships": []
+          },
+          {
+            "name": "wB97X",
+            "entity_id": "wb97x",
+            "entity_type": "method",
+            "aliases": [
+              "wB97X"
+            ],
+            "attributes": {
+              "type": "hybrid functional",
+              "performance": "yields improved barrier heights",
+              "limitations": "struggles with metals; very poor computational scaling for periodic systems"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Traditional force fields",
+            "entity_id": "traditional_force_fields",
+            "entity_type": "method",
+            "aliases": [
+              "Traditional force fields"
+            ],
+            "attributes": {
+              "characteristic": "fixed functional form"
+            },
+            "relationships": [
+              {
+                "predicate": "difficult_to_fit_for",
+                "target": "complex systems like the SEI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Lithium-ion battery",
+            "entity_id": "lithium_ion_battery",
+            "entity_type": "other",
+            "aliases": [
+              "Lithium-ion battery"
+            ],
+            "attributes": {
+              "fundamental_nature": "during discharge, anode must be unstable with respect to cathode but stable with respect to electrolyte",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "Solid-Electrolyte Interphase (SEI)",
+                "attributes": {},
+                "target_id": "solid_electrolyte_interphase_sei"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 454,
+          "word_count": 454,
+          "sha256": "7285b0d82a16f825e6850c785511a8fb3747228d263b46504a29645a33d8c546",
+          "sentence_minhash": [
+            21343157284432945,
+            58405229751862881,
+            69729176314767099,
+            64513941377847126,
+            60043449279178472,
+            65216832542035736,
+            76197433036625096,
+            58132959327070159,
+            59608458706575330,
+            53310063724274912,
+            19416574622547768,
+            11317338413054220,
+            142624984422885738,
+            58558631451210278,
+            293347201726548661,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'Solid-Electrolyte Interphase (SEI)'",
+          "normalized unsupported entity type 'device' for 'Lithium-ion battery'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study defines reference levels of theory for non-periodic and periodic systems, selecting wB97X-D3BJ/def2-TZVPD and PBE-D3 respectively. It identifies GFN1-xTB as the optimal source for atomic partial charge labels due to its balance of accuracy and convergence. The authors employ active learning with enhanced reaction sampling and multitask training using a supplemental organic chemistry dataset to improve model capacity.",
+        "entities": [
+          {
+            "name": "wB97X-D3BJ/def2-TZVPD",
+            "entity_id": "wb97x_d3bj_def2_tzvpd",
+            "entity_type": "method",
+            "aliases": [
+              "wB97X-D3BJ/def2-TZVPD"
+            ],
+            "attributes": {
+              "role": "reference level of theory for non-periodic systems"
+            },
+            "relationships": [
+              {
+                "predicate": "selected_based_on_results_of",
+                "target": "Debnath, Dajnowicz, and Stevenson",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PBE-D3 in a plane wave basis",
+            "entity_id": "pbe_d3_in_a_plane_wave_basis",
+            "entity_type": "method",
+            "aliases": [
+              "PBE-D3 in a plane wave basis"
+            ],
+            "attributes": {
+              "role": "reference level of theory for periodic systems"
+            },
+            "relationships": []
+          },
+          {
+            "name": "GFN1-xTB",
+            "entity_id": "gfn1_xtb",
+            "entity_type": "method",
+            "aliases": [
+              "GFN1-xTB"
+            ],
+            "attributes": {
+              "role": "source for reference atomic partial charges",
+              "suitability": "best compromise between accuracy and convergence across isolated and periodic systems"
+            },
+            "relationships": [
+              {
+                "predicate": "preferred_over",
+                "target": "GFN2-xTB",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "preferred_over",
+                "target": "GFN0-xTB",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "QRNN model",
+            "entity_id": "qrnn_model",
+            "entity_type": "method",
+            "aliases": [
+              "QRNN model",
+              "reactive QRNN model"
+            ],
+            "attributes": {
+              "training_labels": "excluded GFN2-xTB atomic partial charge labels and DFT dipole labels",
+              "architecture_modification": "doubled width of hidden layers to increase capacity"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_multitask_abilities_to_add",
+                "target": "SPICE dataset",
+                "attributes": {},
+                "target_id": "spice_dataset"
+              },
+              {
+                "predicate": "uses_enhanced_reaction_sampling_via",
+                "target": "Artificial Force Induced Reactions (AFIR)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_enhanced_reaction_sampling_via",
+                "target": "Nudged Elastic Band (NEB)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SPICE dataset",
+            "entity_id": "spice_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "SPICE dataset"
+            ],
+            "attributes": {
+              "composition": "subset consisting of elements H, Li, C, O, F, and P",
+              "labels": "custom GFN1-xTB atomic partial charge labels",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "impact_on_pbe_head_rmse",
+                "target": "no increase",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "impact_on_hybrid_head_rmse",
+                "target": "8% increase",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "demonstrates",
+                "target": "unused capacity in latent space for broadening chemical applicability",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "active learning data generation",
+            "entity_id": "active_learning_data_generation",
+            "entity_type": "method",
+            "aliases": [
+              "active learning data generation"
+            ],
+            "attributes": {
+              "process": "multiple rounds using best available model to sample new geometries"
+            },
+            "relationships": []
+          },
+          {
+            "name": "priority dataset",
+            "entity_id": "priority_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "priority dataset"
+            ],
+            "attributes": {
+              "composition": "periodic and cluster surface reaction subset",
+              "sampling_strategy": "half of each batch sampled from this priority data, half from the rest",
+              "model_entity_type": "dataset"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 454,
+          "end_word": 944,
+          "word_count": 490,
+          "sha256": "8a25f32e96a3e5da451c40b45bd9e5434a76ba2afc9ae6078d65e2205648b6e5",
+          "sentence_minhash": [
+            347613027987148143,
+            1306423125707224,
+            26718547577354683,
+            53442166147602330,
+            60043449279178472,
+            62667647458868521,
+            23718652799488495,
+            295906451915772505,
+            64917655521521569,
+            17444917348060025,
+            20317379949702990,
+            166750964606107716,
+            63656278488967776,
+            171721449215419166,
+            99826330178773739,
+            283859246819824832
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'SPICE dataset'",
+          "normalized unsupported entity type 'dataset' for 'priority dataset'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study employed a reactive QRNN model with decoupled weight norms to generate and rank candidate Solid-Electrolyte Interphase (SEI) structures. Initial geometries were created using the Schrodinger SEI Simulator with OPLS4 molecular dynamics, followed by annealing and ranking based on potential energy. The model was validated against surface reaction energy barriers due to the lack of experimental data for SEI properties.",
+        "entities": [
+          {
+            "name": "QRNN model",
+            "entity_id": "qrnn_model",
+            "entity_type": "method",
+            "aliases": [
+              "QRNN model",
+              "reactive QRNN model"
+            ],
+            "attributes": {
+              "training_regularization": "decoupled weight norms not included in the optimizer",
+              "stability": "stable dynamics under extreme conditions (400 K, 1000 atm)"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_annealing",
+                "target": "initial SEI candidate structures",
+                "attributes": {},
+                "target_id": "initial_sei_candidate_structures"
+              },
+              {
+                "predicate": "used_for_ranking",
+                "target": "SEI candidate structures",
+                "attributes": {},
+                "target_id": "sei_candidate_structures"
+              },
+              {
+                "predicate": "validated_against",
+                "target": "surface reaction energy barriers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Schrodinger SEI Simulator",
+            "entity_id": "schrodinger_sei_simulator",
+            "entity_type": "method",
+            "aliases": [
+              "Schrodinger SEI Simulator"
+            ],
+            "attributes": {
+              "source": "Schrodinger suite",
+              "dynamics_method": "OPLS4 molecular dynamics",
+              "reaction_mechanism": "reaction templates applied at intervals"
+            },
+            "relationships": [
+              {
+                "predicate": "generated",
+                "target": "initial SEI candidate structures",
+                "attributes": {},
+                "target_id": "initial_sei_candidate_structures"
+              }
+            ]
+          },
+          {
+            "name": "initial SEI candidate structures",
+            "entity_id": "initial_sei_candidate_structures",
+            "entity_type": "other",
+            "aliases": [
+              "initial SEI candidate structures"
+            ],
+            "attributes": {
+              "composition": "700 molecules of EC, 52 Li+ ions, 52 PF6- ions",
+              "concentration": "1 M solution",
+              "total_atoms": 7416,
+              "randomization": "unique random seed for packing and MD",
+              "model_entity_type": "material_configuration"
+            },
+            "relationships": [
+              {
+                "predicate": "created_by",
+                "target": "Schrodinger SEI Simulator",
+                "attributes": {},
+                "target_id": "schrodinger_sei_simulator"
+              },
+              {
+                "predicate": "annealed_by",
+                "target": "QRNN model",
+                "attributes": {},
+                "target_id": "qrnn_model"
+              }
+            ]
+          },
+          {
+            "name": "SEI candidate sets",
+            "entity_id": "sei_candidate_sets",
+            "entity_type": "other",
+            "aliases": [
+              "SEI candidate sets"
+            ],
+            "attributes": {
+              "lithium_levels": "5, 12, 23, and 33 added Li+ ions per box",
+              "origin": "arose from SEI Simulator after 40 iterations of MD and reaction templates",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "ranked_by",
+                "target": "mean potential energy over 20 ps MD trajectory at 300 K and 1 atm",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "best SEI candidate",
+            "entity_id": "best_sei_candidate",
+            "entity_type": "other",
+            "aliases": [
+              "best SEI candidate"
+            ],
+            "attributes": {
+              "definition": "lowest-energy structure from the 33 added Li atoms subgroup",
+              "prediction_source": "wB97X-D3BJ output head",
+              "model_entity_type": "material_configuration"
+            },
+            "relationships": [
+              {
+                "predicate": "selected_from",
+                "target": "SEI candidate sets",
+                "attributes": {},
+                "target_id": "sei_candidate_sets"
+              }
+            ]
+          },
+          {
+            "name": "SEI experimental validation",
+            "entity_id": "sei_experimental_validation",
+            "entity_type": "concept",
+            "aliases": [
+              "SEI experimental validation"
+            ],
+            "attributes": {
+              "status": "obstacle due to lack of experimental values for density, diffusivity, viscosity, or elastic modulus"
+            },
+            "relationships": [
+              {
+                "predicate": "motivated_by",
+                "target": "difficulty of characterizing SEI system experimentally",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 944,
+          "end_word": 1434,
+          "word_count": 490,
+          "sha256": "f03e557912467b90a5b4c0ec3a7a18bb011908c48b845b7119e55bbd7d34d5fa",
+          "sentence_minhash": [
+            215218227821347834,
+            1306423125707224,
+            26718547577354683,
+            61919449716151556,
+            50865018443120402,
+            55295060778826426,
+            84576184460003765,
+            58132959327070159,
+            96635883400075078,
+            17444917348060025,
+            67831053780325945,
+            165121444977496021,
+            91759520063933247,
+            906306679132868,
+            451203083435616801,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material_configuration' for 'initial SEI candidate structures'",
+          "normalized unsupported entity type 'dataset' for 'SEI candidate sets'",
+          "normalized unsupported entity type 'material_configuration' for 'best SEI candidate'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "Statistical analysis of SEI candidate structures revealed that P-F and Li-O bonds correlate with higher stability, while C-O and Li-F bonds correlate with lower stability. The study demonstrates that multitask training with a QRNN model enables the simulation of complex redox reactions in SEIs, representing the most complex system simulated with comparable accuracy. Future work aims to compare multiple electrolyte formulations to optimize SEI chemistry and test alternative model architectures like Nequip and MACE.",
+        "entities": [
+          {
+            "name": "SEI candidate structures",
+            "entity_id": "sei_candidate_structures",
+            "entity_type": "other",
+            "aliases": [
+              "SEI candidate structures"
+            ],
+            "attributes": {
+              "analysis_method": "Lewis structure recalculation using Schrodinger Materials Science Suite",
+              "stability_correlates": "P-F and Li-O bonds",
+              "instability_correlates": "C-O and Li-F bonds",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_by",
+                "target": "statistical analysis of bonding",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "generated_from",
+                "target": "reactive MD",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "QRNN model",
+            "entity_id": "qrnn_model",
+            "entity_type": "method",
+            "aliases": [
+              "QRNN model",
+              "reactive QRNN model"
+            ],
+            "attributes": {
+              "training_strategy": "multitask training",
+              "capability": "models complex reactions characteristic of SEI"
+            },
+            "relationships": [
+              {
+                "predicate": "combined_with",
+                "target": "sampling of relevant chemical systems",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enables",
+                "target": "machine learning force field simulation of SEI",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "1M LiPF6 in EC",
+            "entity_id": "1m_lipf6_in_ec",
+            "entity_type": "other",
+            "aliases": [
+              "1M LiPF6 in EC"
+            ],
+            "attributes": {
+              "role": "electrolyte formulation used for SEI candidate construction",
+              "model_entity_type": "chemical_formulation"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_construct",
+                "target": "SEI candidates",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Nequip",
+            "entity_id": "nequip",
+            "entity_type": "method",
+            "aliases": [
+              "Nequip"
+            ],
+            "attributes": {
+              "category": "model architecture"
+            },
+            "relationships": [
+              {
+                "predicate": "recommended_for_future_work",
+                "target": "SEI simulation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MACE",
+            "entity_id": "mace",
+            "entity_type": "method",
+            "aliases": [
+              "MACE"
+            ],
+            "attributes": {
+              "category": "model architecture"
+            },
+            "relationships": [
+              {
+                "predicate": "recommended_for_future_work",
+                "target": "SEI simulation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CHGNet",
+            "entity_id": "chgnet",
+            "entity_type": "method",
+            "aliases": [
+              "CHGNet"
+            ],
+            "attributes": {
+              "feature": "allows use of atomic partial charges"
+            },
+            "relationships": [
+              {
+                "predicate": "recommended_for_future_work",
+                "target": "SEI simulation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1434,
+          "end_word": 1906,
+          "word_count": 472,
+          "sha256": "4974e3388a8a349c625298d62bf71c8cd8812fc216ed50a50959c2671dbda034",
+          "sentence_minhash": [
+            21343157284432945,
+            1306423125707224,
+            26718547577354683,
+            64513941377847126,
+            60043449279178472,
+            203320574337193653,
+            76197433036625096,
+            152326886699586849,
+            69954760574897592,
+            53310063724274912,
+            67831053780325945,
+            11317338413054220,
+            21933493368060407,
+            906306679132868,
+            37122965930226008,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'SEI candidate structures'",
+          "normalized unsupported entity type 'chemical_formulation' for '1M LiPF6 in EC'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study details the training configuration of a multitask machine learning force field, specifying four levels of theory and specific hyperparameters such as learning rate and weight decay. It describes the construction of training data using Disordered System Builder for liquid and interface systems, including the addition of lithium salts and non-equilibrium geometries. The authors note that high weight decay improved energy surface smoothness but reduced reaction barrier heights, leading to a final model using a more conventional weight decay and exponential moving average.",
+        "entities": [
+          {
+            "name": "multitask training model",
+            "entity_id": "multitask_training_model",
+            "entity_type": "method",
+            "aliases": [
+              "multitask training model"
+            ],
+            "attributes": {
+              "output_levels_of_theory": "GFN1-xTB, PBE-D3, wB97X-D3BJ/def2-TZVPD, wB97X-D3BJ/def2-TZVPPD (SPICE)",
+              "optimizer": "Adamax with decoupled weight decay",
+              "learning_rate": "2e-3",
+              "validation_set_size": "1% of data (selected uniformly at random)",
+              "hidden_layer_sizes": "256, 224, 192",
+              "batch_size": "64",
+              "final_weight_decay": "1e-3",
+              "final_model_type": "exponential moving average of training parameters",
+              "ema_averaging_interval": "every 10 batches",
+              "ema_alpha": "0.001"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_output_heads_for_latent_shaping_only",
+                "target": "GFN1-xTB and wB97X-D3BJ/def2-TZVPPD (SPICE)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "found_high_weight_decay_effect",
+                "target": "smoother energy surfaces and faster convergence for NEB, but reduced reaction barrier heights",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SPICE dataset",
+            "entity_id": "spice_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "SPICE dataset"
+            ],
+            "attributes": {
+              "level_of_theory": "wB97X-D3BJ/def2-TZVPPD",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "added_to_training",
+                "target": "multitask training model",
+                "attributes": {},
+                "target_id": "multitask_training_model"
+              }
+            ]
+          },
+          {
+            "name": "liquid EC system",
+            "entity_id": "liquid_ec_system",
+            "entity_type": "other",
+            "aliases": [
+              "liquid EC system"
+            ],
+            "attributes": {
+              "construction_method": "Disordered System Builder",
+              "equilibration_method": "NPT ensemble for 1 ns",
+              "model_entity_type": "material_system"
+            },
+            "relationships": []
+          },
+          {
+            "name": "solid-liquid interface geometry",
+            "entity_id": "solid_liquid_interface_geometry",
+            "entity_type": "other",
+            "aliases": [
+              "solid-liquid interface geometry"
+            ],
+            "attributes": {
+              "lattice_structure": "BCC lattice of lithium",
+              "lattice_constant_optimization": "using PBE-D3 or wB97X-D3BJ head",
+              "initial_spacing_to_liquid": "2 Å",
+              "constraints": "none applied to lithium slab",
+              "model_entity_type": "material_system"
+            },
+            "relationships": [
+              {
+                "predicate": "placed_next_to",
+                "target": "equilibrated liquid EC slab",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "lithium salts",
+            "entity_id": "lithium_salts",
+            "entity_type": "other",
+            "aliases": [
+              "lithium salts"
+            ],
+            "attributes": {
+              "types_included": "lithium oxide, lithium carbonate, lithium fluoride, lithium hydroxide",
+              "geometries": "periodic and cluster",
+              "model_entity_type": "chemical_substance"
+            },
+            "relationships": [
+              {
+                "predicate": "added_to_training_set",
+                "target": "multitask training model",
+                "attributes": {},
+                "target_id": "multitask_training_model"
+              }
+            ]
+          },
+          {
+            "name": "non-equilibrium geometries",
+            "entity_id": "non_equilibrium_geometries",
+            "entity_type": "other",
+            "aliases": [
+              "non-equilibrium geometries"
+            ],
+            "attributes": {
+              "generation_method": "adding Gaussian noise to Cartesian coordinates of original geometries",
+              "model_entity_type": "data_type"
+            },
+            "relationships": [
+              {
+                "predicate": "included_in_training_set",
+                "target": "multitask training model",
+                "attributes": {},
+                "target_id": "multitask_training_model"
+              }
+            ]
+          },
+          {
+            "name": "Schrodinger Disordered System Builder",
+            "entity_id": "schrodinger_disordered_system_builder",
+            "entity_type": "other",
+            "aliases": [
+              "Schrodinger Disordered System Builder"
+            ],
+            "attributes": {
+              "application": "SEI-like sampling for ethylene carbonate (EC) with lithium hexafluorophosphate (LiPF6)",
+              "van_der_waals_radius_factor": "0.5",
+              "model_entity_type": "software_tool"
+            },
+            "relationships": [
+              {
+                "predicate": "produces_steric_clashes",
+                "target": "chemical reactions overcoming reaction barriers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "candidate structures",
+            "entity_id": "candidate_structures",
+            "entity_type": "other",
+            "aliases": [
+              "candidate structures"
+            ],
+            "attributes": {
+              "relaxation_method": "annealing using QRNN MD",
+              "evaluation_method": "extracted finite-sized clusters for gas-phase DFT",
+              "model_entity_type": "material_system"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1906,
+          "end_word": 2394,
+          "word_count": 488,
+          "sha256": "87b44102c94783159bfd868392ceb8e30efa9cd39e8000ef1e91b453135f8eb2",
+          "sentence_minhash": [
+            10893342914538609,
+            1306423125707224,
+            2554838390934224,
+            53442166147602330,
+            72424486488803959,
+            192385055969904403,
+            38001302095432714,
+            41678443202000680,
+            64917655521521569,
+            53310063724274912,
+            20317379949702990,
+            11317338413054220,
+            164575269931903557,
+            62445563022006556,
+            117204370349430247,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'SPICE dataset'",
+          "normalized unsupported entity type 'material_system' for 'liquid EC system'",
+          "normalized unsupported entity type 'material_system' for 'solid-liquid interface geometry'",
+          "normalized unsupported entity type 'chemical_substance' for 'lithium salts'",
+          "normalized unsupported entity type 'data_type' for 'non-equilibrium geometries'",
+          "normalized unsupported entity type 'software_tool' for 'Schrodinger Disordered System Builder'",
+          "normalized unsupported entity type 'material_system' for 'candidate structures'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study excludes DFT-generated MD, AFIR, and NEB geometries from training to avoid test-set contamination, relying instead on single-point DFT calculations for non-DFT generated structures. Periodic DFT was performed using Quantum Espresso with PBE-D3 settings, while gas-phase calculations used Psi4 with wB97X-D3BJ. Cluster extraction for non-periodic systems involved uniform radius sampling and hydrogen capping to handle metalorganic solid boundaries.",
+        "entities": [
+          {
+            "name": "Training Data Exclusion Strategy",
+            "entity_id": "training_data_exclusion_strategy",
+            "entity_type": "method",
+            "aliases": [
+              "Training Data Exclusion Strategy"
+            ],
+            "attributes": {
+              "excluded_inputs": "DFT-generated MD, AFIR, or NEB geometries",
+              "reason": "Considered too close to training on the test set",
+              "included_inputs": "Single-point DFT calculations on input geometries generated by non-DFT means"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Periodic DFT Calculation",
+            "entity_id": "periodic_dft_calculation",
+            "entity_type": "method",
+            "aliases": [
+              "Periodic DFT Calculation"
+            ],
+            "attributes": {
+              "software": "Quantum Espresso as implemented in Schrodinger Materials Science Suite version 2022-3",
+              "exchange_correlation_functional": "Generalized Gradient Approximation (GGA) Perdew-Burke-Ernzerhof (PBE)",
+              "dispersion_correction": "D3",
+              "plane_wave_energy_cutoff": "40 Ry",
+              "k_point_mesh_bulk": "3x3x3",
+              "k_point_mesh_surface": "3x3x1",
+              "reference_settings": "Stevenson et al [13]"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Gas-Phase DFT Calculation",
+            "entity_id": "gas_phase_dft_calculation",
+            "entity_type": "method",
+            "aliases": [
+              "Gas-Phase DFT Calculation"
+            ],
+            "attributes": {
+              "software": "Psi4 v1.6",
+              "functional_basis": "wB97X-D3BJ/def2-TZVPD",
+              "scf_type": "MEM_DF",
+              "dft_basis_tolerance": "1e-10",
+              "ints_tolerance": "1e-10",
+              "maxiter": "200",
+              "dft_pruning_scheme": "robust",
+              "s_orthogonalization": "partialcholesky",
+              "s_cholesky_tolerance": "1e-6",
+              "reference_settings": "Stevenson et al [34, 13]"
+            },
+            "relationships": []
+          },
+          {
+            "name": "NEB Periodic System Configuration",
+            "entity_id": "neb_periodic_system_configuration",
+            "entity_type": "measurement",
+            "aliases": [
+              "NEB Periodic System Configuration"
+            ],
+            "attributes": {
+              "lithium_surface_atoms": "54",
+              "lithium_surface_layers": "6 layers of 9 atoms each",
+              "adsorbate": "Single EC molecule"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Reactive Chemical Space Focus",
+            "entity_id": "reactive_chemical_space_focus",
+            "entity_type": "concept",
+            "aliases": [
+              "Reactive Chemical Space Focus"
+            ],
+            "attributes": {
+              "focus": "Known decomposition reactions of EC",
+              "rationale": "Most important for early phases of SEI formation",
+              "excluded_surfaces": "Lithium oxide, lithium carbonate (due to expected higher barriers)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Cluster Extraction Method",
+            "entity_id": "cluster_extraction_method",
+            "entity_type": "method",
+            "aliases": [
+              "Cluster Extraction Method"
+            ],
+            "attributes": {
+              "system_type": "Non-periodic systems from reactive data",
+              "labeling_method": "wB97X-D3BJ",
+              "inclusion_criteria": "Atoms from reacting EC molecule and Li surface within 3-6 Angstroms",
+              "radius_distribution": "Uniform distribution from 3.0 to 5.2 Å",
+              "hydrogen_buffer": "1.2 Å",
+              "bond_capping": "Hydrogen atoms"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Future SEI Active Learning Avenue",
+            "entity_id": "future_sei_active_learning_avenue",
+            "entity_type": "concept",
+            "aliases": [
+              "Future SEI Active Learning Avenue"
+            ],
+            "attributes": {
+              "proposed_method": "Generate data via MD on amorphous metalorganic systems",
+              "system_size_limit": "Fewer than 200 atoms",
+              "labeling_method": "Directly labeled with DFT",
+              "potential_benefit": "Capture structural motifs not sampled by cluster-based methods; provide validation against DFT"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Final Model Validation Metrics",
+            "entity_id": "final_model_validation_metrics",
+            "entity_type": "measurement",
+            "aliases": [
+              "Final Model Validation Metrics"
+            ],
+            "attributes": {
+              "metrics": "Energy and gradient RMSEs",
+              "energy_units": "kcal/mol",
+              "gradient_units": "kcal/mol/Å",
+              "gfN1_xtb_head_scope": "Encompasses all data, periodic and non-periodic"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2394,
+          "end_word": 2886,
+          "word_count": 492,
+          "sha256": "3b9be3b79eacb80d07a251a5613c5c6e6f41387d1ca3bd7449bfcd1ca8560bf7",
+          "sentence_minhash": [
+            10893342914538609,
+            1306423125707224,
+            26718547577354683,
+            103230854518152932,
+            37147490841489014,
+            22549691319542739,
+            76197433036625096,
+            719339357437821,
+            64917655521521569,
+            9462436175016187,
+            20317379949702990,
+            166750964606107716,
+            21933493368060407,
+            132529644835130180,
+            213007863687822379,
+            111906055936712011
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 license. It is hosted on ChemRxiv with a specific DOI and is noted as not peer-reviewed.",
+        "entities": [
+          {
+            "name": "CC BY-NC-ND 4.0",
+            "entity_id": "cc_by_nc_nd_4_0",
+            "entity_type": "other",
+            "aliases": [
+              "CC BY-NC-ND 4.0"
+            ],
+            "attributes": {
+              "license_type": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0"
+            },
+            "relationships": [
+              {
+                "predicate": "applies_to",
+                "target": "document",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ChemRxiv",
+            "entity_id": "chemrxiv",
+            "entity_type": "organization",
+            "aliases": [
+              "ChemRxiv"
+            ],
+            "attributes": {
+              "review_status": "not peer-reviewed"
+            },
+            "relationships": [
+              {
+                "predicate": "hosts",
+                "target": "document",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2886,
+          "end_word": 2902,
+          "word_count": 16,
+          "sha256": "aa9d268597bba11402f13bcd3588d1819fe8971852be3fc0a639853282e1559d",
+          "sentence_minhash": [
+            1033441915987214000,
+            2472686211300038323,
+            2202064427924388231,
+            103230854518152932,
+            343444786382367451,
+            545174289907965532,
+            1965277815767321504,
+            2798078377087755801,
+            494306129096702142,
+            732996143948098760,
+            757253863765382116,
+            535808518788226615,
+            241046747314170367,
+            435970768105035265,
+            303264414993015767,
+            1509076747098139019
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "qrnn_model",
+        "canonical_name": "QRNN model",
+        "aliases": [
+          "QRNN model",
+          "reactive QRNN model"
+        ]
+      },
+      {
+        "canonical_id": "solid_electrolyte_interphase_sei",
+        "canonical_name": "Solid-Electrolyte Interphase (SEI)",
+        "aliases": [
+          "Solid-Electrolyte Interphase (SEI)"
+        ]
+      },
+      {
+        "canonical_id": "machine_learning_force_field_mlff",
+        "canonical_name": "Machine Learning Force Field (MLFF)",
+        "aliases": [
+          "Machine Learning Force Field (MLFF)"
+        ]
+      },
+      {
+        "canonical_id": "density_functional_theory_dft",
+        "canonical_name": "Density Functional Theory (DFT)",
+        "aliases": [
+          "Density Functional Theory (DFT)"
+        ]
+      },
+      {
+        "canonical_id": "pure_density_functionals",
+        "canonical_name": "Pure density functionals",
+        "aliases": [
+          "Pure density functionals"
+        ]
+      },
+      {
+        "canonical_id": "wb97x",
+        "canonical_name": "wB97X",
+        "aliases": [
+          "wB97X"
+        ]
+      },
+      {
+        "canonical_id": "traditional_force_fields",
+        "canonical_name": "Traditional force fields",
+        "aliases": [
+          "Traditional force fields"
+        ]
+      },
+      {
+        "canonical_id": "lithium_ion_battery",
+        "canonical_name": "Lithium-ion battery",
+        "aliases": [
+          "Lithium-ion battery"
+        ]
+      },
+      {
+        "canonical_id": "wb97x_d3bj_def2_tzvpd",
+        "canonical_name": "wB97X-D3BJ/def2-TZVPD",
+        "aliases": [
+          "wB97X-D3BJ/def2-TZVPD"
+        ]
+      },
+      {
+        "canonical_id": "pbe_d3_in_a_plane_wave_basis",
+        "canonical_name": "PBE-D3 in a plane wave basis",
+        "aliases": [
+          "PBE-D3 in a plane wave basis"
+        ]
+      },
+      {
+        "canonical_id": "gfn1_xtb",
+        "canonical_name": "GFN1-xTB",
+        "aliases": [
+          "GFN1-xTB"
+        ]
+      },
+      {
+        "canonical_id": "spice_dataset",
+        "canonical_name": "SPICE dataset",
+        "aliases": [
+          "SPICE dataset"
+        ]
+      },
+      {
+        "canonical_id": "active_learning_data_generation",
+        "canonical_name": "active learning data generation",
+        "aliases": [
+          "active learning data generation"
+        ]
+      },
+      {
+        "canonical_id": "priority_dataset",
+        "canonical_name": "priority dataset",
+        "aliases": [
+          "priority dataset"
+        ]
+      },
+      {
+        "canonical_id": "schrodinger_sei_simulator",
+        "canonical_name": "Schrodinger SEI Simulator",
+        "aliases": [
+          "Schrodinger SEI Simulator"
+        ]
+      },
+      {
+        "canonical_id": "initial_sei_candidate_structures",
+        "canonical_name": "initial SEI candidate structures",
+        "aliases": [
+          "initial SEI candidate structures"
+        ]
+      },
+      {
+        "canonical_id": "sei_candidate_sets",
+        "canonical_name": "SEI candidate sets",
+        "aliases": [
+          "SEI candidate sets"
+        ]
+      },
+      {
+        "canonical_id": "best_sei_candidate",
+        "canonical_name": "best SEI candidate",
+        "aliases": [
+          "best SEI candidate"
+        ]
+      },
+      {
+        "canonical_id": "sei_experimental_validation",
+        "canonical_name": "SEI experimental validation",
+        "aliases": [
+          "SEI experimental validation"
+        ]
+      },
+      {
+        "canonical_id": "sei_candidate_structures",
+        "canonical_name": "SEI candidate structures",
+        "aliases": [
+          "SEI candidate structures"
+        ]
+      },
+      {
+        "canonical_id": "1m_lipf6_in_ec",
+        "canonical_name": "1M LiPF6 in EC",
+        "aliases": [
+          "1M LiPF6 in EC"
+        ]
+      },
+      {
+        "canonical_id": "nequip",
+        "canonical_name": "Nequip",
+        "aliases": [
+          "Nequip"
+        ]
+      },
+      {
+        "canonical_id": "mace",
+        "canonical_name": "MACE",
+        "aliases": [
+          "MACE"
+        ]
+      },
+      {
+        "canonical_id": "chgnet",
+        "canonical_name": "CHGNet",
+        "aliases": [
+          "CHGNet"
+        ]
+      },
+      {
+        "canonical_id": "multitask_training_model",
+        "canonical_name": "multitask training model",
+        "aliases": [
+          "multitask training model"
+        ]
+      },
+      {
+        "canonical_id": "liquid_ec_system",
+        "canonical_name": "liquid EC system",
+        "aliases": [
+          "liquid EC system"
+        ]
+      },
+      {
+        "canonical_id": "solid_liquid_interface_geometry",
+        "canonical_name": "solid-liquid interface geometry",
+        "aliases": [
+          "solid-liquid interface geometry"
+        ]
+      },
+      {
+        "canonical_id": "lithium_salts",
+        "canonical_name": "lithium salts",
+        "aliases": [
+          "lithium salts"
+        ]
+      },
+      {
+        "canonical_id": "non_equilibrium_geometries",
+        "canonical_name": "non-equilibrium geometries",
+        "aliases": [
+          "non-equilibrium geometries"
+        ]
+      },
+      {
+        "canonical_id": "schrodinger_disordered_system_builder",
+        "canonical_name": "Schrodinger Disordered System Builder",
+        "aliases": [
+          "Schrodinger Disordered System Builder"
+        ]
+      },
+      {
+        "canonical_id": "candidate_structures",
+        "canonical_name": "candidate structures",
+        "aliases": [
+          "candidate structures"
+        ]
+      },
+      {
+        "canonical_id": "training_data_exclusion_strategy",
+        "canonical_name": "Training Data Exclusion Strategy",
+        "aliases": [
+          "Training Data Exclusion Strategy"
+        ]
+      },
+      {
+        "canonical_id": "periodic_dft_calculation",
+        "canonical_name": "Periodic DFT Calculation",
+        "aliases": [
+          "Periodic DFT Calculation"
+        ]
+      },
+      {
+        "canonical_id": "gas_phase_dft_calculation",
+        "canonical_name": "Gas-Phase DFT Calculation",
+        "aliases": [
+          "Gas-Phase DFT Calculation"
+        ]
+      },
+      {
+        "canonical_id": "neb_periodic_system_configuration",
+        "canonical_name": "NEB Periodic System Configuration",
+        "aliases": [
+          "NEB Periodic System Configuration"
+        ]
+      },
+      {
+        "canonical_id": "reactive_chemical_space_focus",
+        "canonical_name": "Reactive Chemical Space Focus",
+        "aliases": [
+          "Reactive Chemical Space Focus"
+        ]
+      },
+      {
+        "canonical_id": "cluster_extraction_method",
+        "canonical_name": "Cluster Extraction Method",
+        "aliases": [
+          "Cluster Extraction Method"
+        ]
+      },
+      {
+        "canonical_id": "future_sei_active_learning_avenue",
+        "canonical_name": "Future SEI Active Learning Avenue",
+        "aliases": [
+          "Future SEI Active Learning Avenue"
+        ]
+      },
+      {
+        "canonical_id": "final_model_validation_metrics",
+        "canonical_name": "Final Model Validation Metrics",
+        "aliases": [
+          "Final Model Validation Metrics"
+        ]
+      },
+      {
+        "canonical_id": "cc_by_nc_nd_4_0",
+        "canonical_name": "CC BY-NC-ND 4.0",
+        "aliases": [
+          "CC BY-NC-ND 4.0"
+        ]
+      },
+      {
+        "canonical_id": "chemrxiv",
+        "canonical_name": "ChemRxiv",
+        "aliases": [
+          "ChemRxiv"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study introduces a machine learning force field (MLFF) approach to rank candidate solid-electrolyte interphase (SEI) structures in lithium-ion batteries by predicted energy. It addresses the limitations of traditional density functional theory (DFT) methods, which are too slow for the large length and time scales of SEI formation, by leveraging the speed of classical force fields with DFT-level accuracy. The authors utilize a combination of classical sampling and a novel multitask MLFF model to generate and rank these structures for future comparison with experimental results.\",\"entities\":[{\"name\":\"Solid-Electrolyte Interphase (SEI)\",\"type\":\"other\",\"attributes\":{\"composition\":\"organic and inorganic components\",\"function\":\"protects electrode materials from unwanted side reactions\",\"structure_type\":\"complex passivating layer\",\"formation_scale\":\"large length and time scales\",\"chemical_nature\":\"involves conductors, insulators, and redox reactions\",\"status\":\"vital but poorly-understood\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"separates\",\"target\":\"metallic lithium from organic electrolyte\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"forms_in\",\"target\":\"lithium-ion batteries\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"unanswered_questions_include\",\"target\":\"whether amorphous or crystalline; how Li+ moves through it\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Machine Learning Force Field (MLFF)\",\"type\":\"method\",\"attributes\":{\"promise\":\"atomistic simulation with DFT accuracy and wide applicability, but with fast sampling of classical force fields\",\"training_method\":\"multitask learning allows training to both pure and hybrid DFT labels simultaneously\"},\"relationships\":[{\"predicate\":\"includes_architectures\",\"target\":\"Nequip, ChgNet, MACE, QRNN\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"can_predict_properties_of\",\"target\":\"Li metal (density, lattice constant, surface energy, cohesive energy, bulk modulus, equation of state, phonon spectrum)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"can_predict_properties_of\",\"target\":\"organic liquids\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Density Functional Theory (DFT)\",\"type\":\"method\",\"attributes\":{\"limitation\":\"much too slow to study the time and length scales of the SEI\"},\"relationships\":[{\"predicate\":\"includes_pure_functionals\",\"target\":\"Pure density functionals\",\"attributes\":{},\"target_id\":\"pure_density_functionals\"},{\"predicate\":\"includes_hybrid_functionals\",\"target\":\"wB97X\",\"attributes\":{},\"target_id\":\"wb97x\"}]},{\"name\":\"Pure density functionals\",\"type\":\"method\",\"attributes\":{\"performance\":\"work well for metallic systems\",\"limitation\":\"tend to badly underestimate reaction barriers\"},\"relationships\":[]},{\"name\":\"wB97X\",\"type\":\"method\",\"attributes\":{\"type\":\"hybrid functional\",\"performance\":\"yields improved barrier heights\",\"limitations\":\"struggles with metals; very poor computational scaling for periodic systems\"},\"relationships\":[]},{\"name\":\"Traditional force fields\",\"type\":\"method\",\"attributes\":{\"characteristic\":\"fixed functional form\"},\"relationships\":[{\"predicate\":\"difficult_to_fit_for\",\"target\":\"complex systems like the SEI\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Lithium-ion battery\",\"type\":\"other\",\"attributes\":{\"fundamental_nature\":\"during discharge, anode must be unstable with respect to cathode but stable with respect to electrolyte\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"Solid-Electrolyte Interphase (SEI)\",\"attributes\":{},\"target_id\":\"solid_electrolyte_interphase_sei\"}]}]},{\"context_summary\":\"The study defines reference levels of theory for non-periodic and periodic systems, selecting wB97X-D3BJ/def2-TZVPD and PBE-D3 respectively. It identifies GFN1-xTB as the optimal source for atomic partial charge labels due to its balance of accuracy and convergence. The authors employ active learning with enhanced reaction sampling and multitask training using a supplemental organic chemistry dataset to improve model capacity.\",\"entities\":[{\"name\":\"wB97X-D3BJ/def2-TZVPD\",\"type\":\"method\",\"attributes\":{\"role\":\"reference level of theory for non-periodic systems\"},\"relationships\":[{\"predicate\":\"selected_based_on_results_of\",\"target\":\"Debnath, Dajnowicz, and Stevenson\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PBE-D3 in a plane wave basis\",\"type\":\"method\",\"attributes\":{\"role\":\"reference level of theory for periodic systems\"},\"relationships\":[]},{\"name\":\"GFN1-xTB\",\"type\":\"method\",\"attributes\":{\"role\":\"source for reference atomic partial charges\",\"suitability\":\"best compromise between accuracy and convergence across isolated and periodic systems\"},\"relationships\":[{\"predicate\":\"preferred_over\",\"target\":\"GFN2-xTB\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"preferred_over\",\"target\":\"GFN0-xTB\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"QRNN model\",\"type\":\"method\",\"attributes\":{\"training_labels\":\"excluded GFN2-xTB atomic partial charge labels and DFT dipole labels\",\"architecture_modification\":\"doubled width of hidden layers to increase capacity\"},\"relationships\":[{\"predicate\":\"uses_multitask_abilities_to_add\",\"target\":\"SPICE dataset\",\"attributes\":{},\"target_id\":\"spice_dataset\"},{\"predicate\":\"uses_enhanced_reaction_sampling_via\",\"target\":\"Artificial Force Induced Reactions (AFIR)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_enhanced_reaction_sampling_via\",\"target\":\"Nudged Elastic Band (NEB)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SPICE dataset\",\"type\":\"other\",\"attributes\":{\"composition\":\"subset consisting of elements H, Li, C, O, F, and P\",\"labels\":\"custom GFN1-xTB atomic partial charge labels\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"impact_on_pbe_head_rmse\",\"target\":\"no increase\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"impact_on_hybrid_head_rmse\",\"target\":\"8% increase\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"demonstrates\",\"target\":\"unused capacity in latent space for broadening chemical applicability\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"active learning data generation\",\"type\":\"method\",\"attributes\":{\"process\":\"multiple rounds using best available model to sample new geometries\"},\"relationships\":[]},{\"name\":\"priority dataset\",\"type\":\"other\",\"attributes\":{\"composition\":\"periodic and cluster surface reaction subset\",\"sampling_strategy\":\"half of each batch sampled from this priority data, half from the rest\",\"model_entity_type\":\"dataset\"},\"relationships\":[]}]},{\"context_summary\":\"The study employed a reactive QRNN model with decoupled weight norms to generate and rank candidate Solid-Electrolyte Interphase (SEI) structures. Initial geometries were created using the Schrodinger SEI Simulator with OPLS4 molecular dynamics, followed by annealing and ranking based on potential energy. The model was validated against surface reaction energy barriers due to the lack of experimental data for SEI properties.\",\"entities\":[{\"name\":\"QRNN model\",\"type\":\"method\",\"attributes\":{\"training_regularization\":\"decoupled weight norms not included in the optimizer\",\"stability\":\"stable dynamics under extreme conditions (400 K, 1000 atm)\"},\"relationships\":[{\"predicate\":\"used_for_annealing\",\"target\":\"initial SEI candidate structures\",\"attributes\":{},\"target_id\":\"initial_sei_candidate_structures\"},{\"predicate\":\"used_for_ranking\",\"target\":\"SEI candidate structures\",\"attributes\":{},\"target_id\":\"sei_candidate_structures\"},{\"predicate\":\"validated_against\",\"target\":\"surface reaction energy barriers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Schrodinger SEI Simulator\",\"type\":\"method\",\"attributes\":{\"source\":\"Schrodinger suite\",\"dynamics_method\":\"OPLS4 molecular dynamics\",\"reaction_mechanism\":\"reaction templates applied at intervals\"},\"relationships\":[{\"predicate\":\"generated\",\"target\":\"initial SEI candidate structures\",\"attributes\":{},\"target_id\":\"initial_sei_candidate_structures\"}]},{\"name\":\"initial SEI candidate structures\",\"type\":\"other\",\"attributes\":{\"composition\":\"700 molecules of EC, 52 Li+ ions, 52 PF6- ions\",\"concentration\":\"1 M solution\",\"total_atoms\":7416,\"randomization\":\"unique random seed for packing and MD\",\"model_entity_type\":\"material_configuration\"},\"relationships\":[{\"predicate\":\"created_by\",\"target\":\"Schrodinger SEI Simulator\",\"attributes\":{},\"target_id\":\"schrodinger_sei_simulator\"},{\"predicate\":\"annealed_by\",\"target\":\"QRNN model\",\"attributes\":{},\"target_id\":\"qrnn_model\"}]},{\"name\":\"SEI candidate sets\",\"type\":\"other\",\"attributes\":{\"lithium_levels\":\"5, 12, 23, and 33 added Li+ ions per box\",\"origin\":\"arose from SEI Simulator after 40 iterations of MD and reaction templates\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"ranked_by\",\"target\":\"mean potential energy over 20 ps MD trajectory at 300 K and 1 atm\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"best SEI candidate\",\"type\":\"other\",\"attributes\":{\"definition\":\"lowest-energy structure from the 33 added Li atoms subgroup\",\"prediction_source\":\"wB97X-D3BJ output head\",\"model_entity_type\":\"material_configuration\"},\"relationships\":[{\"predicate\":\"selected_from\",\"target\":\"SEI candidate sets\",\"attributes\":{},\"target_id\":\"sei_candidate_sets\"}]},{\"name\":\"SEI experimental validation\",\"type\":\"concept\",\"attributes\":{\"status\":\"obstacle due to lack of experimental values for density, diffusivity, viscosity, or elastic modulus\"},\"relationships\":[{\"predicate\":\"motivated_by\",\"target\":\"difficulty of characterizing SEI system experimentally\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Statistical analysis of SEI candidate structures revealed that P-F and Li-O bonds correlate with higher stability, while C-O and Li-F bonds correlate with lower stability. The study demonstrates that multitask training with a QRNN model enables the simulation of complex redox reactions in SEIs, representing the most complex system simulated with comparable accuracy. Future work aims to compare multiple electrolyte formulations to optimize SEI chemistry and test alternative model architectures like Nequip and MACE.\",\"entities\":[{\"name\":\"SEI candidate structures\",\"type\":\"other\",\"attributes\":{\"analysis_method\":\"Lewis structure recalculation using Schrodinger Materials Science Suite\",\"stability_correlates\":\"P-F and Li-O bonds\",\"instability_correlates\":\"C-O and Li-F bonds\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"analyzed_by\",\"target\":\"statistical analysis of bonding\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"generated_from\",\"target\":\"reactive MD\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"QRNN model\",\"type\":\"method\",\"attributes\":{\"training_strategy\":\"multitask training\",\"capability\":\"models complex reactions characteristic of SEI\"},\"relationships\":[{\"predicate\":\"combined_with\",\"target\":\"sampling of relevant chemical systems\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enables\",\"target\":\"machine learning force field simulation of SEI\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"1M LiPF6 in EC\",\"type\":\"other\",\"attributes\":{\"role\":\"electrolyte formulation used for SEI candidate construction\",\"model_entity_type\":\"chemical_formulation\"},\"relationships\":[{\"predicate\":\"used_to_construct\",\"target\":\"SEI candidates\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Nequip\",\"type\":\"method\",\"attributes\":{\"category\":\"model architecture\"},\"relationships\":[{\"predicate\":\"recommended_for_future_work\",\"target\":\"SEI simulation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MACE\",\"type\":\"method\",\"attributes\":{\"category\":\"model architecture\"},\"relationships\":[{\"predicate\":\"recommended_for_future_work\",\"target\":\"SEI simulation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CHGNet\",\"type\":\"method\",\"attributes\":{\"feature\":\"allows use of atomic partial charges\"},\"relationships\":[{\"predicate\":\"recommended_for_future_work\",\"target\":\"SEI simulation\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study details the training configuration of a multitask machine learning force field, specifying four levels of theory and specific hyperparameters such as learning rate and weight decay. It describes the construction of training data using Disordered System Builder for liquid and interface systems, including the addition of lithium salts and non-equilibrium geometries. The authors note that high weight decay improved energy surface smoothness but reduced reaction barrier heights, leading to a final model using a more conventional weight decay and exponential moving average.\",\"entities\":[{\"name\":\"multitask training model\",\"type\":\"method\",\"attributes\":{\"output_levels_of_theory\":\"GFN1-xTB, PBE-D3, wB97X-D3BJ/def2-TZVPD, wB97X-D3BJ/def2-TZVPPD (SPICE)\",\"optimizer\":\"Adamax with decoupled weight decay\",\"learning_rate\":\"2e-3\",\"validation_set_size\":\"1% of data (selected uniformly at random)\",\"hidden_layer_sizes\":\"256, 224, 192\",\"batch_size\":\"64\",\"final_weight_decay\":\"1e-3\",\"final_model_type\":\"exponential moving average of training parameters\",\"ema_averaging_interval\":\"every 10 batches\",\"ema_alpha\":\"0.001\"},\"relationships\":[{\"predicate\":\"uses_output_heads_for_latent_shaping_only\",\"target\":\"GFN1-xTB and wB97X-D3BJ/def2-TZVPPD (SPICE)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"found_high_weight_decay_effect\",\"target\":\"smoother energy surfaces and faster convergence for NEB, but reduced reaction barrier heights\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SPICE dataset\",\"type\":\"other\",\"attributes\":{\"level_of_theory\":\"wB97X-D3BJ/def2-TZVPPD\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"added_to_training\",\"target\":\"multitask training model\",\"attributes\":{},\"target_id\":\"multitask_training_model\"}]},{\"name\":\"liquid EC system\",\"type\":\"other\",\"attributes\":{\"construction_method\":\"Disordered System Builder\",\"equilibration_method\":\"NPT ensemble for 1 ns\",\"model_entity_type\":\"material_system\"},\"relationships\":[]},{\"name\":\"solid-liquid interface geometry\",\"type\":\"other\",\"attributes\":{\"lattice_structure\":\"BCC lattice of lithium\",\"lattice_constant_optimization\":\"using PBE-D3 or wB97X-D3BJ head\",\"initial_spacing_to_liquid\":\"2 Å\",\"constraints\":\"none applied to lithium slab\",\"model_entity_type\":\"material_system\"},\"relationships\":[{\"predicate\":\"placed_next_to\",\"target\":\"equilibrated liquid EC slab\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"lithium salts\",\"type\":\"other\",\"attributes\":{\"types_included\":\"lithium oxide, lithium carbonate, lithium fluoride, lithium hydroxide\",\"geometries\":\"periodic and cluster\",\"model_entity_type\":\"chemical_substance\"},\"relationships\":[{\"predicate\":\"added_to_training_set\",\"target\":\"multitask training model\",\"attributes\":{},\"target_id\":\"multitask_training_model\"}]},{\"name\":\"non-equilibrium geometries\",\"type\":\"other\",\"attributes\":{\"generation_method\":\"adding Gaussian noise to Cartesian coordinates of original geometries\",\"model_entity_type\":\"data_type\"},\"relationships\":[{\"predicate\":\"included_in_training_set\",\"target\":\"multitask training model\",\"attributes\":{},\"target_id\":\"multitask_training_model\"}]},{\"name\":\"Schrodinger Disordered System Builder\",\"type\":\"other\",\"attributes\":{\"application\":\"SEI-like sampling for ethylene carbonate (EC) with lithium hexafluorophosphate (LiPF6)\",\"van_der_waals_radius_factor\":\"0.5\",\"model_entity_type\":\"software_tool\"},\"relationships\":[{\"predicate\":\"produces_steric_clashes\",\"target\":\"chemical reactions overcoming reaction barriers\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"candidate structures\",\"type\":\"other\",\"attributes\":{\"relaxation_method\":\"annealing using QRNN MD\",\"evaluation_method\":\"extracted finite-sized clusters for gas-phase DFT\",\"model_entity_type\":\"material_system\"},\"relationships\":[]}]},{\"context_summary\":\"The study excludes DFT-generated MD, AFIR, and NEB geometries from training to avoid test-set contamination, relying instead on single-point DFT calculations for non-DFT generated structures. Periodic DFT was performed using Quantum Espresso with PBE-D3 settings, while gas-phase calculations used Psi4 with wB97X-D3BJ. Cluster extraction for non-periodic systems involved uniform radius sampling and hydrogen capping to handle metalorganic solid boundaries.\",\"entities\":[{\"name\":\"Training Data Exclusion Strategy\",\"type\":\"method\",\"attributes\":{\"excluded_inputs\":\"DFT-generated MD, AFIR, or NEB geometries\",\"reason\":\"Considered too close to training on the test set\",\"included_inputs\":\"Single-point DFT calculations on input geometries generated by non-DFT means\"},\"relationships\":[]},{\"name\":\"Periodic DFT Calculation\",\"type\":\"method\",\"attributes\":{\"software\":\"Quantum Espresso as implemented in Schrodinger Materials Science Suite version 2022-3\",\"exchange_correlation_functional\":\"Generalized Gradient Approximation (GGA) Perdew-Burke-Ernzerhof (PBE)\",\"dispersion_correction\":\"D3\",\"plane_wave_energy_cutoff\":\"40 Ry\",\"k_point_mesh_bulk\":\"3x3x3\",\"k_point_mesh_surface\":\"3x3x1\",\"reference_settings\":\"Stevenson et al [13]\"},\"relationships\":[]},{\"name\":\"Gas-Phase DFT Calculation\",\"type\":\"method\",\"attributes\":{\"software\":\"Psi4 v1.6\",\"functional_basis\":\"wB97X-D3BJ/def2-TZVPD\",\"scf_type\":\"MEM_DF\",\"dft_basis_tolerance\":\"1e-10\",\"ints_tolerance\":\"1e-10\",\"maxiter\":\"200\",\"dft_pruning_scheme\":\"robust\",\"s_orthogonalization\":\"partialcholesky\",\"s_cholesky_tolerance\":\"1e-6\",\"reference_settings\":\"Stevenson et al [34, 13]\"},\"relationships\":[]},{\"name\":\"NEB Periodic System Configuration\",\"type\":\"measurement\",\"attributes\":{\"lithium_surface_atoms\":\"54\",\"lithium_surface_layers\":\"6 layers of 9 atoms each\",\"adsorbate\":\"Single EC molecule\"},\"relationships\":[]},{\"name\":\"Reactive Chemical Space Focus\",\"type\":\"concept\",\"attributes\":{\"focus\":\"Known decomposition reactions of EC\",\"rationale\":\"Most important for early phases of SEI formation\",\"excluded_surfaces\":\"Lithium oxide, lithium carbonate (due to expected higher barriers)\"},\"relationships\":[]},{\"name\":\"Cluster Extraction Method\",\"type\":\"method\",\"attributes\":{\"system_type\":\"Non-periodic systems from reactive data\",\"labeling_method\":\"wB97X-D3BJ\",\"inclusion_criteria\":\"Atoms from reacting EC molecule and Li surface within 3-6 Angstroms\",\"radius_distribution\":\"Uniform distribution from 3.0 to 5.2 Å\",\"hydrogen_buffer\":\"1.2 Å\",\"bond_capping\":\"Hydrogen atoms\"},\"relationships\":[]},{\"name\":\"Future SEI Active Learning Avenue\",\"type\":\"concept\",\"attributes\":{\"proposed_method\":\"Generate data via MD on amorphous metalorganic systems\",\"system_size_limit\":\"Fewer than 200 atoms\",\"labeling_method\":\"Directly labeled with DFT\",\"potential_benefit\":\"Capture structural motifs not sampled by cluster-based methods; provide validation against DFT\"},\"relationships\":[]},{\"name\":\"Final Model Validation Metrics\",\"type\":\"measurement\",\"attributes\":{\"metrics\":\"Energy and gradient RMSEs\",\"energy_units\":\"kcal/mol\",\"gradient_units\":\"kcal/mol/Å\",\"gfN1_xtb_head_scope\":\"Encompasses all data, periodic and non-periodic\"},\"relationships\":[]}]},{\"context_summary\":\"The document is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 license. It is hosted on ChemRxiv with a specific DOI and is noted as not peer-reviewed.\",\"entities\":[{\"name\":\"CC BY-NC-ND 4.0\",\"type\":\"other\",\"attributes\":{\"license_type\":\"Creative Commons Attribution-NonCommercial-NoDerivatives 4.0\"},\"relationships\":[{\"predicate\":\"applies_to\",\"target\":\"document\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ChemRxiv\",\"type\":\"organization\",\"attributes\":{\"review_status\":\"not peer-reviewed\"},\"relationships\":[{\"predicate\":\"hosts\",\"target\":\"document\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

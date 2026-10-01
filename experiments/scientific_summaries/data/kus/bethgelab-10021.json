@@ -1,0 +1,1473 @@
+{
+  "document_id": "bethgelab-10021",
+  "fulltext_sha256": "2446e0dd5be16da1204fedf141879b6bdebf78065b128fc9678b60c6503d9536",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "9045608c10d62a629c4d48b58417a7369f8b5d58cd76726d6ce5667a45449ede",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study presents a workflow to identify viable crystal structures for cubic Li7La3Zr2O12 (c-LLZO) by filtering overlapping lithium atoms and symmetry duplicates before applying machine learning for energetic ordering. The authors note that c-LLZO has the best interfacial stability against metallic lithium among popular solid electrolytes but is not stable at room temperature without dopants. The methodology aims to resolve disagreements in the literature regarding the ground state configuration and Li site occupancy of c-LLZO.",
+        "entities": [
+          {
+            "name": "cubic Li7La3Zr2O12 (c-LLZO)",
+            "entity_id": "cubic_li7la3zr2o12_c_llzo",
+            "entity_type": "other",
+            "aliases": [
+              "c-LLZO",
+              "cubic Li7La3Zr2O12 (c-LLZO)"
+            ],
+            "attributes": {
+              "space_group": "Ia 3d",
+              "stability": "not stable at room temperature without substitutional dopants",
+              "interfacial_stability": "best among popular fast ion conducting solid electrolytes against metallic Li",
+              "polymorph_type": "disordered cubic",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "has_partial_occupancy_sites",
+                "target": "24d and 96h sites",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "has_higher_Li_diffusivity_than",
+                "target": "ordered tetragonal LLZO (t-LLZO)",
+                "attributes": {},
+                "target_id": "ordered_tetragonal_llzo_t_llzo"
+              }
+            ]
+          },
+          {
+            "name": "ordered tetragonal LLZO (t-LLZO)",
+            "entity_id": "ordered_tetragonal_llzo_t_llzo",
+            "entity_type": "other",
+            "aliases": [
+              "ordered tetragonal LLZO (t-LLZO)"
+            ],
+            "attributes": {
+              "polymorph_type": "ordered tetragonal",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "has_Li_diffusivity_smaller_than_cubic_phase_by",
+                "target": "over two orders of magnitude",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "24d site",
+            "entity_id": "24d_site",
+            "entity_type": "other",
+            "aliases": [
+              "24d site"
+            ],
+            "attributes": {
+              "geometry": "tetrahedral",
+              "model_entity_type": "crystallographic_site"
+            },
+            "relationships": [
+              {
+                "predicate": "partially_occupied_by",
+                "target": "Li atoms in c-LLZO",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "stabilized_by",
+                "target": "substitutional dopants",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "96h site",
+            "entity_id": "96h_site",
+            "entity_type": "other",
+            "aliases": [
+              "96h site",
+              "96h sites"
+            ],
+            "attributes": {
+              "geometry": "tetrahedral/octahedral interface",
+              "model_entity_type": "crystallographic_site"
+            },
+            "relationships": [
+              {
+                "predicate": "partially_occupied_by",
+                "target": "Li atoms in c-LLZO",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Workflow for Identifying Viable Crystal Structures",
+            "entity_id": "workflow_for_identifying_viable_crystal_structures",
+            "entity_type": "method",
+            "aliases": [
+              "Workflow for Identifying Viable Crystal Structures"
+            ],
+            "attributes": {
+              "purpose": "identify energetically favourable configurations of c-LLZO"
+            },
+            "relationships": [
+              {
+                "predicate": "step_1",
+                "target": "eliminating structures with overlapping Li atoms based on nearest neighbour counts",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "step_2",
+                "target": "eliminating symmetry images from remaining structures",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "step_3",
+                "target": "machine learning-based energetic ordering of remaining structures",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "finding",
+                "target": "large portion of previously reported structures may not be feasible or stable",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "extensible_to",
+                "target": "other ion conductors and partially occupied crystals",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Freely accessible database",
+            "entity_id": "freely_accessible_database",
+            "entity_type": "other",
+            "aliases": [
+              "Freely accessible database"
+            ],
+            "attributes": {
+              "content": "all structures generated in the study",
+              "model_entity_type": "resource"
+            },
+            "relationships": [
+              {
+                "predicate": "aim",
+                "target": "improve accuracy and reproducibility in future c-LLZO research",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Solid electrolytes for Li-ion batteries",
+            "entity_id": "solid_electrolytes_for_li_ion_batteries",
+            "entity_type": "other",
+            "aliases": [
+              "Solid electrolytes for Li-ion batteries"
+            ],
+            "attributes": {
+              "advantages": "higher energy density, improved safety, longer lifetimes, reduced production costs compared to liquid electrolyte commercial cells",
+              "model_entity_type": "technology"
+            },
+            "relationships": [
+              {
+                "predicate": "issue",
+                "target": "electrochemical and chemomechanical stability",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "risk",
+                "target": "dendrite formation causing short-circuit",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 488,
+          "word_count": 488,
+          "sha256": "2ebad0e53ad50bd5231ef17b946db18dd497d435fb40663c1a6a00665cba3ec5",
+          "sentence_minhash": [
+            21343157284432945,
+            49057088880437681,
+            110182565901905120,
+            61919449716151556,
+            60043449279178472,
+            62667647458868521,
+            55113620823372339,
+            40361113771795953,
+            96854883637132689,
+            126059805114570292,
+            28551544372393112,
+            171596837418463449,
+            12488864069851856,
+            47412694742625906,
+            202314690151145042,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'cubic Li7La3Zr2O12 (c-LLZO)'",
+          "normalized unsupported entity type 'material' for 'ordered tetragonal LLZO (t-LLZO)'",
+          "normalized unsupported entity type 'crystallographic_site' for '24d site'",
+          "normalized unsupported entity type 'crystallographic_site' for '96h site'",
+          "normalized unsupported entity type 'resource' for 'Freely accessible database'",
+          "normalized unsupported entity type 'technology' for 'Solid electrolytes for Li-ion batteries'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study addresses the lack of consensus on the lithium occupancy in cubic Li7La3Zr2O12 (c-LLZO) by generating and ranking all possible site occupancies. A brute-force approach is deemed unviable due to the vast number of combinations, so a geometric constraint of a minimum Li-Li distance of 1.7 Å is applied to eliminate overlapping atoms. This constraint limits the feasible 24d:96h site ratios, specifically restricting the 96h sites to a maximum occupancy of 48 due to their paired geometry.",
+        "entities": [
+          {
+            "name": "cubic Li7La3Zr2O12 (c-LLZO)",
+            "entity_id": "cubic_li7la3zr2o12_c_llzo",
+            "entity_type": "other",
+            "aliases": [
+              "c-LLZO",
+              "cubic Li7La3Zr2O12 (c-LLZO)"
+            ],
+            "attributes": {
+              "status": "technologically relevant solid electrolyte",
+              "issue": "no consensus on Li occupancy",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of_study",
+                "target": "combinatorial study of Li site occupancies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Li site occupancy combinatorial study",
+            "entity_id": "li_site_occupancy_combinatorial_study",
+            "entity_type": "method",
+            "aliases": [
+              "Li site occupancy combinatorial study"
+            ],
+            "attributes": {
+              "goal": "find and rank all possible Li site occupancies",
+              "challenge": "brute-force method unviable due to 120 choose 56 combinations (~7.4 x 10^34)"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_constraint",
+                "target": "minimum Li-Li distance of 1.7 Å",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "excludes_site",
+                "target": "48g site",
+                "attributes": {},
+                "target_id": "48g_site"
+              }
+            ]
+          },
+          {
+            "name": "minimum Li-Li distance constraint",
+            "entity_id": "minimum_li_li_distance_constraint",
+            "entity_type": "other",
+            "aliases": [
+              "minimum Li-Li distance constraint"
+            ],
+            "attributes": {
+              "value": "1.7 Å",
+              "comparison_1": "less than 2 times the ionic radius of a Li atom",
+              "comparison_2": "smaller than minimum distance in t-LLZO (2.56 Å)",
+              "comparison_3": "significantly less than Li-Li distances in metallic Li",
+              "suitable_range": "1.67 Å to 2.3 Å",
+              "model_entity_type": "parameter"
+            },
+            "relationships": [
+              {
+                "predicate": "eliminates",
+                "target": "overlapping Li atoms",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "limits",
+                "target": "physically possible 24d:96h ratios",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "96h site",
+            "entity_id": "96h_site",
+            "entity_type": "other",
+            "aliases": [
+              "96h site",
+              "96h sites"
+            ],
+            "attributes": {
+              "geometry": "exists as pairs within 0.68 Å of each other",
+              "max_occupancy": "48 out of 96 sites",
+              "model_entity_type": "crystallographic_site"
+            },
+            "relationships": [
+              {
+                "predicate": "constraint_rule",
+                "target": "at most one site in a pair can contain a Li atom",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "48g site",
+            "entity_id": "48g_site",
+            "entity_type": "other",
+            "aliases": [
+              "48g site"
+            ],
+            "attributes": {
+              "location": "between 96h sites",
+              "model_entity_type": "crystallographic_site"
+            },
+            "relationships": [
+              {
+                "predicate": "excluded_from_study",
+                "target": "Li site occupancy combinatorial study",
+                "attributes": {},
+                "target_id": "li_site_occupancy_combinatorial_study"
+              },
+              {
+                "predicate": "reason_for_exclusion",
+                "target": "not reported in most refinements",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 488,
+          "end_word": 973,
+          "word_count": 485,
+          "sha256": "165c48c2f6f730601fc0a380ef5d14c9e60a37e36a2b2ebf107e1b9ac47e243c",
+          "sentence_minhash": [
+            138742571471211904,
+            1306423125707224,
+            69729176314767099,
+            64513941377847126,
+            2812407903185919,
+            30500191475291153,
+            175774020269814206,
+            213980327795093606,
+            73319139196083834,
+            121650285748898636,
+            19416574622547768,
+            49775578613387123,
+            119908479574430132,
+            47412694742625906,
+            39953411596503315,
+            369307760844286752
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'cubic Li7La3Zr2O12 (c-LLZO)'",
+          "normalized unsupported entity type 'parameter' for 'minimum Li-Li distance constraint'",
+          "normalized unsupported entity type 'crystallographic_site' for '96h sites'",
+          "normalized unsupported entity type 'crystallographic_site' for '48g site'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study describes a workflow to generate and filter crystal structures for cubic Li7La3Zr2O12 by enforcing minimum Li-Li distances and removing symmetry duplicates. Local sensitive hashing is used to efficiently identify unique structures, reducing the dataset to approximately 2 million unique conformations. DFT calculations on subsets of these structures are used to train a multiple linear regression model for energetic ordering.",
+        "entities": [
+          {
+            "name": "cubic Li7La3Zr2O12 (c-LLZO)",
+            "entity_id": "cubic_li7la3zr2o12_c_llzo",
+            "entity_type": "other",
+            "aliases": [
+              "c-LLZO",
+              "cubic Li7La3Zr2O12 (c-LLZO)"
+            ],
+            "attributes": {
+              "structure_type": "partially occupied sites",
+              "sites_involved": "24d and 96h",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "has_site_constraint",
+                "target": "24d occupation eliminates 4 out of 96h sites within 1.67 Å",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "total_structures_generated",
+                "target": "approximately 2.3 × 10^8",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "unique_structures_after_symmetry_reduction",
+                "target": "approximately 2 × 10^6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "24d site",
+            "entity_id": "24d_site",
+            "entity_type": "other",
+            "aliases": [
+              "24d site"
+            ],
+            "attributes": {
+              "geometry": "tetrahedral",
+              "model_entity_type": "crystallographic_site"
+            },
+            "relationships": [
+              {
+                "predicate": "excludes_neighboring_sites",
+                "target": "4 out of 96h sites within 1.67 Å",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "96h site",
+            "entity_id": "96h_site",
+            "entity_type": "other",
+            "aliases": [
+              "96h site",
+              "96h sites"
+            ],
+            "attributes": {
+              "geometry": "tetrahedral/octahedral interface",
+              "model_entity_type": "crystallographic_site"
+            },
+            "relationships": [
+              {
+                "predicate": "occupancy_constraint",
+                "target": "no two nearest neighbours occupied simultaneously",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "local sensitive hashing (LSH)",
+            "entity_id": "local_sensitive_hashing_lsh",
+            "entity_type": "method",
+            "aliases": [
+              "local sensitive hashing (LSH)"
+            ],
+            "attributes": {
+              "purpose": "fast approximate similarity searches for symmetry reduction",
+              "computational_complexity": "O(N) for pairwise comparison",
+              "limitation": "limited to monoatomic sub-lattices with predefined positions"
+            },
+            "relationships": [
+              {
+                "predicate": "reduces_symmetry_duplicates",
+                "target": "approximately 1% of structures are symmetrically unique",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "validated_for_ratios",
+                "target": "13:43 and 12:44",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "connectivity matrix",
+            "entity_id": "connectivity_matrix",
+            "entity_type": "other",
+            "aliases": [
+              "connectivity matrix"
+            ],
+            "attributes": {
+              "definition": "distances between each Li atom to every other Li atom",
+              "preprocessing": "flattened and sorted for uniformity",
+              "model_entity_type": "data_structure"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "symmetry reduction and memory optimization",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiple linear regression (MLR) model",
+            "entity_id": "multiple_linear_regression_mlr_model",
+            "entity_type": "method",
+            "aliases": [
+              "multiple linear regression (MLR) model",
+              "multiple linear regression model (MLR)"
+            ],
+            "attributes": {
+              "purpose": "energetic ordering of structures",
+              "training_data": "DFT calculations on small subsets"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "approximately 2 × 10^6 unique structures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Buschmann et al.",
+            "entity_id": "buschmann_et_al",
+            "entity_type": "other",
+            "aliases": [
+              "Buschmann et al."
+            ],
+            "attributes": {
+              "model_entity_type": "reference"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_crystal_structure_framework",
+                "target": "c-LLZO structure generation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 973,
+          "end_word": 1460,
+          "word_count": 487,
+          "sha256": "5887d248bab4558f9e35953e9762cd38b61923f946032f043f55aedd38623f34",
+          "sentence_minhash": [
+            38879885978083571,
+            1306423125707224,
+            118589615801464731,
+            64513941377847126,
+            50154285776315358,
+            104819084622046100,
+            76197433036625096,
+            41678443202000680,
+            64333332902950267,
+            107048872566759164,
+            78280491562202942,
+            2392059438477735,
+            164575269931903557,
+            161945415629665627,
+            202314690151145042,
+            50577103973234844
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'cubic Li7La3Zr2O12 (c-LLZO)'",
+          "normalized unsupported entity type 'crystallographic_site' for '24d site'",
+          "normalized unsupported entity type 'crystallographic_site' for '96h site'",
+          "normalized unsupported entity type 'data_structure' for 'connectivity matrix'",
+          "normalized unsupported entity type 'reference' for 'Buschmann et al.'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study performed 1235 single-point DFT calculations using the ONETEP code to train a multiple linear regression model for predicting c-LLZO energies. The model achieved a correlation of 0.9996 on the test set, identifying four low-energy structures with an 8:48 24d:96h ratio within 0.026 eV of the ground state.",
+        "entities": [
+          {
+            "name": "ONETEP code",
+            "entity_id": "onetep_code",
+            "entity_type": "method",
+            "aliases": [
+              "ONETEP code"
+            ],
+            "attributes": {
+              "computational_scaling": "linear with number of atoms",
+              "functional": "PBE GGA",
+              "kinetic_energy_cutoff": "830 eV"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "1235 single point DFT calculations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiple linear regression (MLR) model",
+            "entity_id": "multiple_linear_regression_mlr_model",
+            "entity_type": "method",
+            "aliases": [
+              "multiple linear regression (MLR) model",
+              "multiple linear regression model (MLR)"
+            ],
+            "attributes": {
+              "test_set_correlation": "0.9996",
+              "data_split_ratio": "1:3 (test:training)"
+            },
+            "relationships": [
+              {
+                "predicate": "trained_on",
+                "target": "DFT energies paired with Li-Li interaction frequency lists",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "predicts",
+                "target": "energies of c-LLZO structures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "c-LLZO structures",
+            "entity_id": "c_llzo_structures",
+            "entity_type": "concept",
+            "aliases": [
+              "c-LLZO structures"
+            ],
+            "attributes": {
+              "energy_range": "within 5.8 eV of lowest energy structure",
+              "average_energy_offset": "1.47 eV higher than ground state"
+            },
+            "relationships": [
+              {
+                "predicate": "energetic_preference",
+                "target": "avoid 24d occupation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "four lowest energy structures",
+            "entity_id": "four_lowest_energy_structures",
+            "entity_type": "other",
+            "aliases": [
+              "four lowest energy structures"
+            ],
+            "attributes": {
+              "ratio": "8:48",
+              "energy_gap_from_lowest": "0.026 eV",
+              "thermal_equivalent": "1 kT at 298 K",
+              "structural_similarity": "same 24d configuration, slight 96h variations"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of",
+                "target": "geometry optimisation calculations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "COMPASSIII forcefield",
+            "entity_id": "compassiii_forcefield",
+            "entity_type": "method",
+            "aliases": [
+              "COMPASSIII forcefield"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "used_to_select",
+                "target": "200 energetically lowest structures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1460,
+          "end_word": 1944,
+          "word_count": 484,
+          "sha256": "4bafddf743567ade447dacac497fdbf99ed1cd03a592c1ad608da32a0f239cd8",
+          "sentence_minhash": [
+            38879885978083571,
+            1306423125707224,
+            69729176314767099,
+            77271604055623615,
+            148925132169520149,
+            62667647458868521,
+            76197433036625096,
+            42456643539774273,
+            96919201420187385,
+            76931577636070685,
+            20317379949702990,
+            42100796899731639,
+            164575269931903557,
+            115535890228947173,
+            99826330178773739,
+            131008612088106609
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The authors developed a fast evaluation procedure to generate and energetically order crystallographically predicted structures for crystals with partially occupied sites. They used this method to demonstrate that many existing experimental and theoretical structures for cubic Li7La3Zr2O12 (c-LLZO) are physically infeasible due to atomic overlap. The study aims to improve accuracy and reproducibility in future computational research on this solid electrolyte.",
+        "entities": [
+          {
+            "name": "fast evaluation procedure",
+            "entity_id": "fast_evaluation_procedure",
+            "entity_type": "method",
+            "aliases": [
+              "fast evaluation procedure"
+            ],
+            "attributes": {
+              "purpose": "generate and energetically order all crystallographically predicted structures",
+              "applicable_systems": "crystals with partially occupied sites",
+              "key_constraint": "disallows structures with atoms too close to each other"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "cubic Li7La3Zr2O12 (c-LLZO)",
+                "attributes": {},
+                "target_id": "cubic_li7la3zr2o12_c_llzo"
+              },
+              {
+                "predicate": "identifies_infeasible_structures_in",
+                "target": "experimental and theoretical literature",
+                "attributes": {},
+                "target_id": "experimental_and_theoretical_literature"
+              }
+            ]
+          },
+          {
+            "name": "cubic Li7La3Zr2O12 (c-LLZO)",
+            "entity_id": "cubic_li7la3zr2o12_c_llzo",
+            "entity_type": "other",
+            "aliases": [
+              "c-LLZO",
+              "cubic Li7La3Zr2O12 (c-LLZO)"
+            ],
+            "attributes": {
+              "classification": "solid electrolyte",
+              "structural_feature": "partially occupied sites",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of_study",
+                "target": "fast evaluation procedure",
+                "attributes": {},
+                "target_id": "fast_evaluation_procedure"
+              }
+            ]
+          },
+          {
+            "name": "experimental and theoretical literature",
+            "entity_id": "experimental_and_theoretical_literature",
+            "entity_type": "other",
+            "aliases": [
+              "experimental and theoretical literature"
+            ],
+            "attributes": {
+              "finding": "predicts or works with structures not reflective of a real system",
+              "model_entity_type": "collection"
+            },
+            "relationships": [
+              {
+                "predicate": "contains_infeasible_structures",
+                "target": "cubic Li7La3Zr2O12 (c-LLZO)",
+                "attributes": {},
+                "target_id": "cubic_li7la3zr2o12_c_llzo"
+              }
+            ]
+          },
+          {
+            "name": "Table S1",
+            "entity_id": "table_s1",
+            "entity_type": "other",
+            "aliases": [
+              "Table S1"
+            ],
+            "attributes": {
+              "content": "Experimental papers reporting site occupancies of 24d and 96h sites",
+              "columns": "paper, reported stoichiometry, method (X-ray/Neutron), proportion of sites occupied, atom count for full cubic structure",
+              "model_entity_type": "data_table"
+            },
+            "relationships": [
+              {
+                "predicate": "documents",
+                "target": "experimental literature",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Table S2",
+            "entity_id": "table_s2",
+            "entity_type": "other",
+            "aliases": [
+              "Table S2"
+            ],
+            "attributes": {
+              "content": "Theoretical studies reporting 24d:96h ratio and structure generation summary",
+              "note": "Dopants included in total ratio; final ratio after relaxation rarely reported",
+              "model_entity_type": "data_table"
+            },
+            "relationships": [
+              {
+                "predicate": "documents",
+                "target": "theoretical literature",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1944,
+          "end_word": 2347,
+          "word_count": 403,
+          "sha256": "f91b511371e68595eff861e1cc53bd0bc002affa2aaf15a9c6c5a2b4b1d4cb7c",
+          "sentence_minhash": [
+            328183595925431076,
+            1306423125707224,
+            23012953286959578,
+            5050748634255938,
+            60043449279178472,
+            30500191475291153,
+            175774020269814206,
+            300350091375620443,
+            6749857979359619,
+            76931577636070685,
+            67831053780325945,
+            89335289200151147,
+            116477797196485182,
+            906306679132868,
+            99826330178773739,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'cubic Li7La3Zr2O12 (c-LLZO)'",
+          "normalized unsupported entity type 'collection' for 'experimental and theoretical literature'",
+          "normalized unsupported entity type 'data_table' for 'Table S1'",
+          "normalized unsupported entity type 'data_table' for 'Table S2'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study evaluates the COMPASSIII forcefield for ordering c-LLZO structures, finding it insufficient for the full configuration space due to energy separation issues. ONETEP DFT calculations were performed using PBE functional and 830 eV cutoff to validate the method. A Li-dimer analysis identified an optimal inter-atomic distance of approximately 2.7 Å.",
+        "entities": [
+          {
+            "name": "COMPASSIII forcefield",
+            "entity_id": "compassiii_forcefield",
+            "entity_type": "method",
+            "aliases": [
+              "COMPASSIII forcefield"
+            ],
+            "attributes": {
+              "application_scope": "Li-sublattice only",
+              "reason_for_exclusion": "Limited availability of La and Zr parameters"
+            },
+            "relationships": [
+              {
+                "predicate": "achieved_correlation_for",
+                "target": "13:43 ratio",
+                "attributes": {
+                  "correlation_coefficient": 0.991
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "failed_to_order",
+                "target": "wider range of structures",
+                "attributes": {
+                  "reason": "More pronounced separation of energies by 24d:96h ratio than ONETEP"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ONETEP",
+            "entity_id": "onetep",
+            "entity_type": "method",
+            "aliases": [
+              "ONETEP"
+            ],
+            "attributes": {
+              "functional": "PBE",
+              "kinetic_energy_cutoff": "830 eV",
+              "pseudopotentials": "CASTEP on-the-fly generated"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "DFT calculations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Li-dimer",
+            "entity_id": "li_dimer",
+            "entity_type": "concept",
+            "aliases": [
+              "Li-dimer"
+            ],
+            "attributes": {
+              "optimal_inter_atomic_distance": "approximately 2.7 Å",
+              "energy_penalty_distance": "1.7 Å"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_via",
+                "target": "30 single-point calculations in a large unit cell",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ASE python package",
+            "entity_id": "ase_python_package",
+            "entity_type": "method",
+            "aliases": [
+              "ASE python package"
+            ],
+            "attributes": {
+              "function": "symmetry equivalence check"
+            },
+            "relationships": [
+              {
+                "predicate": "validated_against",
+                "target": "symmetry checking methodology",
+                "attributes": {
+                  "tested_ratios": [
+                    "12:44",
+                    "13:43"
+                  ],
+                  "result": "Same number of structures produced"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "cubic Li7La3Zr2O12 (c-LLZO)",
+            "entity_id": "cubic_li7la3zr2o12_c_llzo",
+            "entity_type": "other",
+            "aliases": [
+              "c-LLZO",
+              "cubic Li7La3Zr2O12 (c-LLZO)"
+            ],
+            "attributes": {
+              "space_group": "Ia3d",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "has_reduced_symmetry",
+                "target": "generated structures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2347,
+          "end_word": 2837,
+          "word_count": 490,
+          "sha256": "384120b059a39d24ce2a2abd22c0942d6584334e64fa0fa43731997ceb0ebe3d",
+          "sentence_minhash": [
+            69754331646120359,
+            1306423125707224,
+            118589615801464731,
+            53442166147602330,
+            50154285776315358,
+            99436724310786061,
+            59078647185371683,
+            42456643539774273,
+            34383880606747972,
+            9462436175016187,
+            20317379949702990,
+            34538575912147783,
+            58737249661522376,
+            83535461897877455,
+            202314690151145042,
+            75406061484379541
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'c-LLZO'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The study analyzed 2 million symmetry-unique c-LLZO structures, finding a slight correlation between higher symmetry and lower energy, though symmetry was excluded from the final MLR model due to negligible impact. Geometry optimization of 20 structures revealed that Li atoms moving from their original sites correlates with lower energy, while site transitions (e.g., 96h to 24d) were rare and did not significantly correlate with energy.",
+        "entities": [
+          {
+            "name": "symmetry-unique c-LLZO structures",
+            "entity_id": "symmetry_unique_c_llzo_structures",
+            "entity_type": "other",
+            "aliases": [
+              "symmetry-unique c-LLZO structures"
+            ],
+            "attributes": {
+              "count": "2 × 10^6",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "assigned_space_groups_to",
+                "target": "all structures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "multiple linear regression (MLR) model",
+            "entity_id": "multiple_linear_regression_mlr_model",
+            "entity_type": "method",
+            "aliases": [
+              "multiple linear regression (MLR) model",
+              "multiple linear regression model (MLR)"
+            ],
+            "attributes": {
+              "input_features": "predicted energy, symmetry order"
+            },
+            "relationships": [
+              {
+                "predicate": "tested_inclusion_of",
+                "target": "structure symmetry",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "found_effect_of_symmetry_to_be",
+                "target": "negligible",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "24d:96h ratio 8:48",
+            "entity_id": "24d_96h_ratio_8_48",
+            "entity_type": "other",
+            "aliases": [
+              "24d:96h ratio 8:48"
+            ],
+            "attributes": {
+              "symmetry_rank": "most symmetric",
+              "model_entity_type": "configuration"
+            },
+            "relationships": []
+          },
+          {
+            "name": "24d:96h ratio 12:44",
+            "entity_id": "24d_96h_ratio_12_44",
+            "entity_type": "other",
+            "aliases": [
+              "24d:96h ratio 12:44"
+            ],
+            "attributes": {
+              "symmetry_rank": "second most symmetric",
+              "model_entity_type": "configuration"
+            },
+            "relationships": []
+          },
+          {
+            "name": "24d:96h ratio 10:46",
+            "entity_id": "24d_96h_ratio_10_46",
+            "entity_type": "other",
+            "aliases": [
+              "24d:96h ratio 10:46"
+            ],
+            "attributes": {
+              "symmetry_rank": "third most symmetric",
+              "model_entity_type": "configuration"
+            },
+            "relationships": []
+          },
+          {
+            "name": "geometry optimization calculations",
+            "entity_id": "geometry_optimization_calculations",
+            "entity_type": "method",
+            "aliases": [
+              "geometry optimization calculations"
+            ],
+            "attributes": {
+              "count": 20,
+              "optimizer": "Broyder-Fletcher-Goldfarb-Shanno (BFGS)"
+            },
+            "relationships": [
+              {
+                "predicate": "assessed_effect_on",
+                "target": "overall ordering",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compared_low_energy_structures_to",
+                "target": "random selection",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "structure label 1095859",
+            "entity_id": "structure_label_1095859",
+            "entity_type": "other",
+            "aliases": [
+              "structure label 1095859"
+            ],
+            "attributes": {
+              "energy_difference": "0.58 eV lower than geometry optimized lowest energy single point structure",
+              "transition_type": "96h to 24d",
+              "ratio_change": "9:47 to 10:46",
+              "model_entity_type": "structure"
+            },
+            "relationships": [
+              {
+                "predicate": "is",
+                "target": "lowest overall energy structure",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Li atom movement correlation",
+            "entity_id": "li_atom_movement_correlation",
+            "entity_type": "other",
+            "aliases": [
+              "Li atom movement correlation"
+            ],
+            "attributes": {
+              "correlation_type": "negative",
+              "variables": "mean distance moved of all Li atoms vs. final optimized energy",
+              "model_entity_type": "finding"
+            },
+            "relationships": [
+              {
+                "predicate": "indicates",
+                "target": "more movement from original site leads to lower energy",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2837,
+          "end_word": 3236,
+          "word_count": 399,
+          "sha256": "3c1d43d767e680a0933c507db25149f272e9fcc44724cc4938c159e2a7883d60",
+          "sentence_minhash": [
+            38879885978083571,
+            1306423125707224,
+            110182565901905120,
+            103230854518152932,
+            66126288328331465,
+            62667647458868521,
+            76197433036625096,
+            213980327795093606,
+            96919201420187385,
+            3380668174306445,
+            67831053780325945,
+            400097262091843744,
+            164575269931903557,
+            256811852691509790,
+            106459975274634437,
+            135622029271383963
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for 'symmetry-unique c-LLZO structures'",
+          "normalized unsupported entity type 'configuration' for '24d:96h ratio 8:48'",
+          "normalized unsupported entity type 'configuration' for '24d:96h ratio 12:44'",
+          "normalized unsupported entity type 'configuration' for '24d:96h ratio 10:46'",
+          "normalized unsupported entity type 'structure' for 'structure label 1095859'",
+          "normalized unsupported entity type 'finding' for 'Li atom movement correlation'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "cubic_li7la3zr2o12_c_llzo",
+        "canonical_name": "cubic Li7La3Zr2O12 (c-LLZO)",
+        "aliases": [
+          "cubic Li7La3Zr2O12 (c-LLZO)",
+          "c-LLZO"
+        ]
+      },
+      {
+        "canonical_id": "multiple_linear_regression_mlr_model",
+        "canonical_name": "multiple linear regression (MLR) model",
+        "aliases": [
+          "multiple linear regression (MLR) model",
+          "multiple linear regression model (MLR)"
+        ]
+      },
+      {
+        "canonical_id": "96h_site",
+        "canonical_name": "96h site",
+        "aliases": [
+          "96h site",
+          "96h sites"
+        ]
+      },
+      {
+        "canonical_id": "ordered_tetragonal_llzo_t_llzo",
+        "canonical_name": "ordered tetragonal LLZO (t-LLZO)",
+        "aliases": [
+          "ordered tetragonal LLZO (t-LLZO)"
+        ]
+      },
+      {
+        "canonical_id": "24d_site",
+        "canonical_name": "24d site",
+        "aliases": [
+          "24d site"
+        ]
+      },
+      {
+        "canonical_id": "workflow_for_identifying_viable_crystal_structures",
+        "canonical_name": "Workflow for Identifying Viable Crystal Structures",
+        "aliases": [
+          "Workflow for Identifying Viable Crystal Structures"
+        ]
+      },
+      {
+        "canonical_id": "freely_accessible_database",
+        "canonical_name": "Freely accessible database",
+        "aliases": [
+          "Freely accessible database"
+        ]
+      },
+      {
+        "canonical_id": "solid_electrolytes_for_li_ion_batteries",
+        "canonical_name": "Solid electrolytes for Li-ion batteries",
+        "aliases": [
+          "Solid electrolytes for Li-ion batteries"
+        ]
+      },
+      {
+        "canonical_id": "li_site_occupancy_combinatorial_study",
+        "canonical_name": "Li site occupancy combinatorial study",
+        "aliases": [
+          "Li site occupancy combinatorial study"
+        ]
+      },
+      {
+        "canonical_id": "minimum_li_li_distance_constraint",
+        "canonical_name": "minimum Li-Li distance constraint",
+        "aliases": [
+          "minimum Li-Li distance constraint"
+        ]
+      },
+      {
+        "canonical_id": "48g_site",
+        "canonical_name": "48g site",
+        "aliases": [
+          "48g site"
+        ]
+      },
+      {
+        "canonical_id": "local_sensitive_hashing_lsh",
+        "canonical_name": "local sensitive hashing (LSH)",
+        "aliases": [
+          "local sensitive hashing (LSH)"
+        ]
+      },
+      {
+        "canonical_id": "connectivity_matrix",
+        "canonical_name": "connectivity matrix",
+        "aliases": [
+          "connectivity matrix"
+        ]
+      },
+      {
+        "canonical_id": "buschmann_et_al",
+        "canonical_name": "Buschmann et al.",
+        "aliases": [
+          "Buschmann et al."
+        ]
+      },
+      {
+        "canonical_id": "onetep_code",
+        "canonical_name": "ONETEP code",
+        "aliases": [
+          "ONETEP code"
+        ]
+      },
+      {
+        "canonical_id": "c_llzo_structures",
+        "canonical_name": "c-LLZO structures",
+        "aliases": [
+          "c-LLZO structures"
+        ]
+      },
+      {
+        "canonical_id": "four_lowest_energy_structures",
+        "canonical_name": "four lowest energy structures",
+        "aliases": [
+          "four lowest energy structures"
+        ]
+      },
+      {
+        "canonical_id": "compassiii_forcefield",
+        "canonical_name": "COMPASSIII forcefield",
+        "aliases": [
+          "COMPASSIII forcefield"
+        ]
+      },
+      {
+        "canonical_id": "fast_evaluation_procedure",
+        "canonical_name": "fast evaluation procedure",
+        "aliases": [
+          "fast evaluation procedure"
+        ]
+      },
+      {
+        "canonical_id": "experimental_and_theoretical_literature",
+        "canonical_name": "experimental and theoretical literature",
+        "aliases": [
+          "experimental and theoretical literature"
+        ]
+      },
+      {
+        "canonical_id": "table_s1",
+        "canonical_name": "Table S1",
+        "aliases": [
+          "Table S1"
+        ]
+      },
+      {
+        "canonical_id": "table_s2",
+        "canonical_name": "Table S2",
+        "aliases": [
+          "Table S2"
+        ]
+      },
+      {
+        "canonical_id": "onetep",
+        "canonical_name": "ONETEP",
+        "aliases": [
+          "ONETEP"
+        ]
+      },
+      {
+        "canonical_id": "li_dimer",
+        "canonical_name": "Li-dimer",
+        "aliases": [
+          "Li-dimer"
+        ]
+      },
+      {
+        "canonical_id": "ase_python_package",
+        "canonical_name": "ASE python package",
+        "aliases": [
+          "ASE python package"
+        ]
+      },
+      {
+        "canonical_id": "symmetry_unique_c_llzo_structures",
+        "canonical_name": "symmetry-unique c-LLZO structures",
+        "aliases": [
+          "symmetry-unique c-LLZO structures"
+        ]
+      },
+      {
+        "canonical_id": "24d_96h_ratio_8_48",
+        "canonical_name": "24d:96h ratio 8:48",
+        "aliases": [
+          "24d:96h ratio 8:48"
+        ]
+      },
+      {
+        "canonical_id": "24d_96h_ratio_12_44",
+        "canonical_name": "24d:96h ratio 12:44",
+        "aliases": [
+          "24d:96h ratio 12:44"
+        ]
+      },
+      {
+        "canonical_id": "24d_96h_ratio_10_46",
+        "canonical_name": "24d:96h ratio 10:46",
+        "aliases": [
+          "24d:96h ratio 10:46"
+        ]
+      },
+      {
+        "canonical_id": "geometry_optimization_calculations",
+        "canonical_name": "geometry optimization calculations",
+        "aliases": [
+          "geometry optimization calculations"
+        ]
+      },
+      {
+        "canonical_id": "structure_label_1095859",
+        "canonical_name": "structure label 1095859",
+        "aliases": [
+          "structure label 1095859"
+        ]
+      },
+      {
+        "canonical_id": "li_atom_movement_correlation",
+        "canonical_name": "Li atom movement correlation",
+        "aliases": [
+          "Li atom movement correlation"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study presents a workflow to identify viable crystal structures for cubic Li7La3Zr2O12 (c-LLZO) by filtering overlapping lithium atoms and symmetry duplicates before applying machine learning for energetic ordering. The authors note that c-LLZO has the best interfacial stability against metallic lithium among popular solid electrolytes but is not stable at room temperature without dopants. The methodology aims to resolve disagreements in the literature regarding the ground state configuration and Li site occupancy of c-LLZO.\",\"entities\":[{\"name\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"type\":\"other\",\"attributes\":{\"space_group\":\"Ia 3d\",\"stability\":\"not stable at room temperature without substitutional dopants\",\"interfacial_stability\":\"best among popular fast ion conducting solid electrolytes against metallic Li\",\"polymorph_type\":\"disordered cubic\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"has_partial_occupancy_sites\",\"target\":\"24d and 96h sites\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"has_higher_Li_diffusivity_than\",\"target\":\"ordered tetragonal LLZO (t-LLZO)\",\"attributes\":{},\"target_id\":\"ordered_tetragonal_llzo_t_llzo\"}]},{\"name\":\"ordered tetragonal LLZO (t-LLZO)\",\"type\":\"other\",\"attributes\":{\"polymorph_type\":\"ordered tetragonal\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"has_Li_diffusivity_smaller_than_cubic_phase_by\",\"target\":\"over two orders of magnitude\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"24d site\",\"type\":\"other\",\"attributes\":{\"geometry\":\"tetrahedral\",\"model_entity_type\":\"crystallographic_site\"},\"relationships\":[{\"predicate\":\"partially_occupied_by\",\"target\":\"Li atoms in c-LLZO\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"stabilized_by\",\"target\":\"substitutional dopants\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"96h site\",\"type\":\"other\",\"attributes\":{\"geometry\":\"tetrahedral/octahedral interface\",\"model_entity_type\":\"crystallographic_site\"},\"relationships\":[{\"predicate\":\"partially_occupied_by\",\"target\":\"Li atoms in c-LLZO\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Workflow for Identifying Viable Crystal Structures\",\"type\":\"method\",\"attributes\":{\"purpose\":\"identify energetically favourable configurations of c-LLZO\"},\"relationships\":[{\"predicate\":\"step_1\",\"target\":\"eliminating structures with overlapping Li atoms based on nearest neighbour counts\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"step_2\",\"target\":\"eliminating symmetry images from remaining structures\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"step_3\",\"target\":\"machine learning-based energetic ordering of remaining structures\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"finding\",\"target\":\"large portion of previously reported structures may not be feasible or stable\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"extensible_to\",\"target\":\"other ion conductors and partially occupied crystals\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Freely accessible database\",\"type\":\"other\",\"attributes\":{\"content\":\"all structures generated in the study\",\"model_entity_type\":\"resource\"},\"relationships\":[{\"predicate\":\"aim\",\"target\":\"improve accuracy and reproducibility in future c-LLZO research\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Solid electrolytes for Li-ion batteries\",\"type\":\"other\",\"attributes\":{\"advantages\":\"higher energy density, improved safety, longer lifetimes, reduced production costs compared to liquid electrolyte commercial cells\",\"model_entity_type\":\"technology\"},\"relationships\":[{\"predicate\":\"issue\",\"target\":\"electrochemical and chemomechanical stability\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"risk\",\"target\":\"dendrite formation causing short-circuit\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study addresses the lack of consensus on the lithium occupancy in cubic Li7La3Zr2O12 (c-LLZO) by generating and ranking all possible site occupancies. A brute-force approach is deemed unviable due to the vast number of combinations, so a geometric constraint of a minimum Li-Li distance of 1.7 Å is applied to eliminate overlapping atoms. This constraint limits the feasible 24d:96h site ratios, specifically restricting the 96h sites to a maximum occupancy of 48 due to their paired geometry.\",\"entities\":[{\"name\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"type\":\"other\",\"attributes\":{\"status\":\"technologically relevant solid electrolyte\",\"issue\":\"no consensus on Li occupancy\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"subject_of_study\",\"target\":\"combinatorial study of Li site occupancies\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Li site occupancy combinatorial study\",\"type\":\"method\",\"attributes\":{\"goal\":\"find and rank all possible Li site occupancies\",\"challenge\":\"brute-force method unviable due to 120 choose 56 combinations (~7.4 x 10^34)\"},\"relationships\":[{\"predicate\":\"uses_constraint\",\"target\":\"minimum Li-Li distance of 1.7 Å\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"excludes_site\",\"target\":\"48g site\",\"attributes\":{},\"target_id\":\"48g_site\"}]},{\"name\":\"minimum Li-Li distance constraint\",\"type\":\"other\",\"attributes\":{\"value\":\"1.7 Å\",\"comparison_1\":\"less than 2 times the ionic radius of a Li atom\",\"comparison_2\":\"smaller than minimum distance in t-LLZO (2.56 Å)\",\"comparison_3\":\"significantly less than Li-Li distances in metallic Li\",\"suitable_range\":\"1.67 Å to 2.3 Å\",\"model_entity_type\":\"parameter\"},\"relationships\":[{\"predicate\":\"eliminates\",\"target\":\"overlapping Li atoms\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"limits\",\"target\":\"physically possible 24d:96h ratios\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"96h site\",\"type\":\"other\",\"attributes\":{\"geometry\":\"exists as pairs within 0.68 Å of each other\",\"max_occupancy\":\"48 out of 96 sites\",\"model_entity_type\":\"crystallographic_site\"},\"relationships\":[{\"predicate\":\"constraint_rule\",\"target\":\"at most one site in a pair can contain a Li atom\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"48g site\",\"type\":\"other\",\"attributes\":{\"location\":\"between 96h sites\",\"model_entity_type\":\"crystallographic_site\"},\"relationships\":[{\"predicate\":\"excluded_from_study\",\"target\":\"Li site occupancy combinatorial study\",\"attributes\":{},\"target_id\":\"li_site_occupancy_combinatorial_study\"},{\"predicate\":\"reason_for_exclusion\",\"target\":\"not reported in most refinements\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study describes a workflow to generate and filter crystal structures for cubic Li7La3Zr2O12 by enforcing minimum Li-Li distances and removing symmetry duplicates. Local sensitive hashing is used to efficiently identify unique structures, reducing the dataset to approximately 2 million unique conformations. DFT calculations on subsets of these structures are used to train a multiple linear regression model for energetic ordering.\",\"entities\":[{\"name\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"type\":\"other\",\"attributes\":{\"structure_type\":\"partially occupied sites\",\"sites_involved\":\"24d and 96h\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"has_site_constraint\",\"target\":\"24d occupation eliminates 4 out of 96h sites within 1.67 Å\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"total_structures_generated\",\"target\":\"approximately 2.3 × 10^8\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"unique_structures_after_symmetry_reduction\",\"target\":\"approximately 2 × 10^6\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"24d site\",\"type\":\"other\",\"attributes\":{\"geometry\":\"tetrahedral\",\"model_entity_type\":\"crystallographic_site\"},\"relationships\":[{\"predicate\":\"excludes_neighboring_sites\",\"target\":\"4 out of 96h sites within 1.67 Å\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"96h site\",\"type\":\"other\",\"attributes\":{\"geometry\":\"tetrahedral/octahedral interface\",\"model_entity_type\":\"crystallographic_site\"},\"relationships\":[{\"predicate\":\"occupancy_constraint\",\"target\":\"no two nearest neighbours occupied simultaneously\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"local sensitive hashing (LSH)\",\"type\":\"method\",\"attributes\":{\"purpose\":\"fast approximate similarity searches for symmetry reduction\",\"computational_complexity\":\"O(N) for pairwise comparison\",\"limitation\":\"limited to monoatomic sub-lattices with predefined positions\"},\"relationships\":[{\"predicate\":\"reduces_symmetry_duplicates\",\"target\":\"approximately 1% of structures are symmetrically unique\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"validated_for_ratios\",\"target\":\"13:43 and 12:44\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"connectivity matrix\",\"type\":\"other\",\"attributes\":{\"definition\":\"distances between each Li atom to every other Li atom\",\"preprocessing\":\"flattened and sorted for uniformity\",\"model_entity_type\":\"data_structure\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"symmetry reduction and memory optimization\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiple linear regression (MLR) model\",\"type\":\"method\",\"attributes\":{\"purpose\":\"energetic ordering of structures\",\"training_data\":\"DFT calculations on small subsets\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"approximately 2 × 10^6 unique structures\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Buschmann et al.\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"reference\"},\"relationships\":[{\"predicate\":\"provided_crystal_structure_framework\",\"target\":\"c-LLZO structure generation\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study performed 1235 single-point DFT calculations using the ONETEP code to train a multiple linear regression model for predicting c-LLZO energies. The model achieved a correlation of 0.9996 on the test set, identifying four low-energy structures with an 8:48 24d:96h ratio within 0.026 eV of the ground state.\",\"entities\":[{\"name\":\"ONETEP code\",\"type\":\"method\",\"attributes\":{\"computational_scaling\":\"linear with number of atoms\",\"functional\":\"PBE GGA\",\"kinetic_energy_cutoff\":\"830 eV\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"1235 single point DFT calculations\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiple linear regression (MLR) model\",\"type\":\"method\",\"attributes\":{\"test_set_correlation\":\"0.9996\",\"data_split_ratio\":\"1:3 (test:training)\"},\"relationships\":[{\"predicate\":\"trained_on\",\"target\":\"DFT energies paired with Li-Li interaction frequency lists\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"predicts\",\"target\":\"energies of c-LLZO structures\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"c-LLZO structures\",\"type\":\"concept\",\"attributes\":{\"energy_range\":\"within 5.8 eV of lowest energy structure\",\"average_energy_offset\":\"1.47 eV higher than ground state\"},\"relationships\":[{\"predicate\":\"energetic_preference\",\"target\":\"avoid 24d occupation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"four lowest energy structures\",\"type\":\"other\",\"attributes\":{\"ratio\":\"8:48\",\"energy_gap_from_lowest\":\"0.026 eV\",\"thermal_equivalent\":\"1 kT at 298 K\",\"structural_similarity\":\"same 24d configuration, slight 96h variations\"},\"relationships\":[{\"predicate\":\"subject_of\",\"target\":\"geometry optimisation calculations\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"COMPASSIII forcefield\",\"type\":\"method\",\"attributes\":{},\"relationships\":[{\"predicate\":\"used_to_select\",\"target\":\"200 energetically lowest structures\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The authors developed a fast evaluation procedure to generate and energetically order crystallographically predicted structures for crystals with partially occupied sites. They used this method to demonstrate that many existing experimental and theoretical structures for cubic Li7La3Zr2O12 (c-LLZO) are physically infeasible due to atomic overlap. The study aims to improve accuracy and reproducibility in future computational research on this solid electrolyte.\",\"entities\":[{\"name\":\"fast evaluation procedure\",\"type\":\"method\",\"attributes\":{\"purpose\":\"generate and energetically order all crystallographically predicted structures\",\"applicable_systems\":\"crystals with partially occupied sites\",\"key_constraint\":\"disallows structures with atoms too close to each other\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"attributes\":{},\"target_id\":\"cubic_li7la3zr2o12_c_llzo\"},{\"predicate\":\"identifies_infeasible_structures_in\",\"target\":\"experimental and theoretical literature\",\"attributes\":{},\"target_id\":\"experimental_and_theoretical_literature\"}]},{\"name\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"type\":\"other\",\"attributes\":{\"classification\":\"solid electrolyte\",\"structural_feature\":\"partially occupied sites\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"subject_of_study\",\"target\":\"fast evaluation procedure\",\"attributes\":{},\"target_id\":\"fast_evaluation_procedure\"}]},{\"name\":\"experimental and theoretical literature\",\"type\":\"other\",\"attributes\":{\"finding\":\"predicts or works with structures not reflective of a real system\",\"model_entity_type\":\"collection\"},\"relationships\":[{\"predicate\":\"contains_infeasible_structures\",\"target\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"attributes\":{},\"target_id\":\"cubic_li7la3zr2o12_c_llzo\"}]},{\"name\":\"Table S1\",\"type\":\"other\",\"attributes\":{\"content\":\"Experimental papers reporting site occupancies of 24d and 96h sites\",\"columns\":\"paper, reported stoichiometry, method (X-ray/Neutron), proportion of sites occupied, atom count for full cubic structure\",\"model_entity_type\":\"data_table\"},\"relationships\":[{\"predicate\":\"documents\",\"target\":\"experimental literature\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Table S2\",\"type\":\"other\",\"attributes\":{\"content\":\"Theoretical studies reporting 24d:96h ratio and structure generation summary\",\"note\":\"Dopants included in total ratio; final ratio after relaxation rarely reported\",\"model_entity_type\":\"data_table\"},\"relationships\":[{\"predicate\":\"documents\",\"target\":\"theoretical literature\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study evaluates the COMPASSIII forcefield for ordering c-LLZO structures, finding it insufficient for the full configuration space due to energy separation issues. ONETEP DFT calculations were performed using PBE functional and 830 eV cutoff to validate the method. A Li-dimer analysis identified an optimal inter-atomic distance of approximately 2.7 Å.\",\"entities\":[{\"name\":\"COMPASSIII forcefield\",\"type\":\"method\",\"attributes\":{\"application_scope\":\"Li-sublattice only\",\"reason_for_exclusion\":\"Limited availability of La and Zr parameters\"},\"relationships\":[{\"predicate\":\"achieved_correlation_for\",\"target\":\"13:43 ratio\",\"attributes\":{\"correlation_coefficient\":0.991},\"target_id\":null},{\"predicate\":\"failed_to_order\",\"target\":\"wider range of structures\",\"attributes\":{\"reason\":\"More pronounced separation of energies by 24d:96h ratio than ONETEP\"},\"target_id\":null}]},{\"name\":\"ONETEP\",\"type\":\"method\",\"attributes\":{\"functional\":\"PBE\",\"kinetic_energy_cutoff\":\"830 eV\",\"pseudopotentials\":\"CASTEP on-the-fly generated\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"DFT calculations\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Li-dimer\",\"type\":\"concept\",\"attributes\":{\"optimal_inter_atomic_distance\":\"approximately 2.7 Å\",\"energy_penalty_distance\":\"1.7 Å\"},\"relationships\":[{\"predicate\":\"analyzed_via\",\"target\":\"30 single-point calculations in a large unit cell\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ASE python package\",\"type\":\"method\",\"attributes\":{\"function\":\"symmetry equivalence check\"},\"relationships\":[{\"predicate\":\"validated_against\",\"target\":\"symmetry checking methodology\",\"attributes\":{\"tested_ratios\":[\"12:44\",\"13:43\"],\"result\":\"Same number of structures produced\"},\"target_id\":null}]},{\"name\":\"cubic Li7La3Zr2O12 (c-LLZO)\",\"type\":\"other\",\"attributes\":{\"space_group\":\"Ia3d\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"has_reduced_symmetry\",\"target\":\"generated structures\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study analyzed 2 million symmetry-unique c-LLZO structures, finding a slight correlation between higher symmetry and lower energy, though symmetry was excluded from the final MLR model due to negligible impact. Geometry optimization of 20 structures revealed that Li atoms moving from their original sites correlates with lower energy, while site transitions (e.g., 96h to 24d) were rare and did not significantly correlate with energy.\",\"entities\":[{\"name\":\"symmetry-unique c-LLZO structures\",\"type\":\"other\",\"attributes\":{\"count\":\"2 × 10^6\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"assigned_space_groups_to\",\"target\":\"all structures\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"multiple linear regression (MLR) model\",\"type\":\"method\",\"attributes\":{\"input_features\":\"predicted energy, symmetry order\"},\"relationships\":[{\"predicate\":\"tested_inclusion_of\",\"target\":\"structure symmetry\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"found_effect_of_symmetry_to_be\",\"target\":\"negligible\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"24d:96h ratio 8:48\",\"type\":\"other\",\"attributes\":{\"symmetry_rank\":\"most symmetric\",\"model_entity_type\":\"configuration\"},\"relationships\":[]},{\"name\":\"24d:96h ratio 12:44\",\"type\":\"other\",\"attributes\":{\"symmetry_rank\":\"second most symmetric\",\"model_entity_type\":\"configuration\"},\"relationships\":[]},{\"name\":\"24d:96h ratio 10:46\",\"type\":\"other\",\"attributes\":{\"symmetry_rank\":\"third most symmetric\",\"model_entity_type\":\"configuration\"},\"relationships\":[]},{\"name\":\"geometry optimization calculations\",\"type\":\"method\",\"attributes\":{\"count\":20,\"optimizer\":\"Broyder-Fletcher-Goldfarb-Shanno (BFGS)\"},\"relationships\":[{\"predicate\":\"assessed_effect_on\",\"target\":\"overall ordering\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"compared_low_energy_structures_to\",\"target\":\"random selection\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"structure label 1095859\",\"type\":\"other\",\"attributes\":{\"energy_difference\":\"0.58 eV lower than geometry optimized lowest energy single point structure\",\"transition_type\":\"96h to 24d\",\"ratio_change\":\"9:47 to 10:46\",\"model_entity_type\":\"structure\"},\"relationships\":[{\"predicate\":\"is\",\"target\":\"lowest overall energy structure\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Li atom movement correlation\",\"type\":\"other\",\"attributes\":{\"correlation_type\":\"negative\",\"variables\":\"mean distance moved of all Li atoms vs. final optimized energy\",\"model_entity_type\":\"finding\"},\"relationships\":[{\"predicate\":\"indicates\",\"target\":\"more movement from original site leads to lower energy\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

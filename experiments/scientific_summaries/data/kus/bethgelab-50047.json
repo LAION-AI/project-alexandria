@@ -1,0 +1,1882 @@
+{
+  "document_id": "bethgelab-50047",
+  "fulltext_sha256": "9d6e795b20211d71799050c9282d0c0b9c3838aa8232d78b803accb410b2d33d",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "acf847903d049b214beea737f849b2d7b6ca1a6b5bcb800b776bd0990cfdae7f",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study introduces BATI, a Bayesian method using Integrated Nested Laplace Approximation to improve rare variant association studies. It demonstrates that BATI outperforms existing methods, particularly when integrating functional annotations, and identifies candidate genes in Chronic Lymphocytic Leukemia.",
+        "entities": [
+          {
+            "name": "BATI",
+            "entity_id": "bati",
+            "entity_type": "method",
+            "aliases": [
+              "BATI"
+            ],
+            "attributes": {
+              "full_name": "Bayesian rare variant Association Test using Integrated Nested Laplace Approximation",
+              "approach": "Bayesian",
+              "inference_method": "Integrated Nested Laplace Approximation (INLA)",
+              "capability": "Integrates individual or variant-specific features as covariates",
+              "performance": "Outperforms established RVAS methods on semi-synthetic whole-exome sequencing cohorts",
+              "power_threshold": "Achieves power above 75% when risk variants explain less than 0.5% of phenotypic variance"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "rvGWAS framework",
+                "attributes": {},
+                "target_id": "rvgwas_framework"
+              },
+              {
+                "predicate": "uses",
+                "target": "Integrated Nested Laplace Approximation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "rvGWAS framework",
+            "entity_id": "rvgwas_framework",
+            "entity_type": "method",
+            "aliases": [
+              "rvGWAS framework"
+            ],
+            "attributes": {
+              "full_name": "Rare Variant Genome Wide Association Study",
+              "supported_data_types": [
+                "whole-exome sequencing",
+                "whole genome sequencing"
+              ],
+              "supported_units": [
+                "genes",
+                "promoters",
+                "other biological units"
+              ],
+              "functionalities": [
+                "quality control",
+                "filtering"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              },
+              {
+                "predicate": "includes",
+                "target": "five existing RVAS tests",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "applied_to",
+                "target": "Chronic Lymphocytic Leukemia study",
+                "attributes": {},
+                "target_id": "chronic_lymphocytic_leukemia_study"
+              }
+            ]
+          },
+          {
+            "name": "Chronic Lymphocytic Leukemia study",
+            "entity_id": "chronic_lymphocytic_leukemia_study",
+            "entity_type": "event",
+            "aliases": [
+              "Chronic Lymphocytic Leukemia study"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "identified",
+                "target": "eight candidate predisposition genes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "EHMT2",
+            "entity_id": "ehmt2",
+            "entity_type": "other",
+            "aliases": [
+              "EHMT2"
+            ],
+            "attributes": {
+              "role": "candidate predisposition gene",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "identified_in",
+                "target": "Chronic Lymphocytic Leukemia study",
+                "attributes": {},
+                "target_id": "chronic_lymphocytic_leukemia_study"
+              }
+            ]
+          },
+          {
+            "name": "COPS7A",
+            "entity_id": "cops7a",
+            "entity_type": "other",
+            "aliases": [
+              "COPS7A"
+            ],
+            "attributes": {
+              "role": "candidate predisposition gene",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "identified_in",
+                "target": "Chronic Lymphocytic Leukemia study",
+                "attributes": {},
+                "target_id": "chronic_lymphocytic_leukemia_study"
+              }
+            ]
+          },
+          {
+            "name": "rare variant association studies (RVAS)",
+            "entity_id": "rare_variant_association_studies_rvas",
+            "entity_type": "concept",
+            "aliases": [
+              "rare variant association studies (RVAS)"
+            ],
+            "attributes": {
+              "limitation": "Lack power in small to medium-sized cohorts or when genetic variation explains a small fraction of phenotypic variance"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Integrated Nested Laplace Approximation (INLA)",
+            "entity_id": "integrated_nested_laplace_approximation_inla",
+            "entity_type": "method",
+            "aliases": [
+              "INLA",
+              "Integrated Nested Laplace Approximation (INLA)"
+            ],
+            "attributes": {
+              "type": "numerical approximation procedure",
+              "target_models": "hierarchical latent Gaussian Markov random field models",
+              "advantage": "Substantially faster and more accurate than MCMC for the same computational resources"
+            },
+            "relationships": [
+              {
+                "predicate": "used_by",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              }
+            ]
+          },
+          {
+            "name": "Hana Susak",
+            "entity_id": "hana_susak",
+            "entity_type": "person",
+            "aliases": [
+              "Hana Susak"
+            ],
+            "attributes": {
+              "affiliation": "The Barcelona Institute of Science and Technology"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Efficient and Flexible Integration of Variant Characteristics in Rare Variant Association Studies Using Integrated Nested Laplace Approximation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Xavier Estivill",
+            "entity_id": "xavier_estivill",
+            "entity_type": "person",
+            "aliases": [
+              "Xavier Estivill"
+            ],
+            "attributes": {
+              "affiliation": "Women's Health Dexeus"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Efficient and Flexible Integration of Variant Characteristics in Rare Variant Association Studies Using Integrated Nested Laplace Approximation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 474,
+          "word_count": 474,
+          "sha256": "a9cd5b388df87883ec38fd3557203212d47e3109c1e006358600dad2303ffb51",
+          "sentence_minhash": [
+            101551982991421820,
+            205383503858970171,
+            23317328576461654,
+            69550339003988348,
+            43671268334127607,
+            99436724310786061,
+            38283167839609407,
+            50532829321298773,
+            143616283985015953,
+            107048872566759164,
+            78280491562202942,
+            474683157171919833,
+            16666991694368182,
+            58558631451210278,
+            91453279102886814,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'EHMT2'",
+          "normalized unsupported entity type 'gene' for 'COPS7A'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "Statistical methods for rare variant association studies (RVAS) aggregate variants within biological units to overcome the low power of single-variant analyses. Existing approaches include burden tests, variance component tests like SKAT, and hybrid methods like SKAT-O. Bayesian models such as HBMR and MiST incorporate variant characteristics and detection errors to improve power.",
+        "entities": [
+          {
+            "name": "rare variant association studies (RVAS)",
+            "entity_id": "rare_variant_association_studies_rvas",
+            "entity_type": "concept",
+            "aliases": [
+              "rare variant association studies (RVAS)"
+            ],
+            "attributes": {
+              "purpose": "identification of novel disease loci based on burden of rare and damaging variants",
+              "effect_size": "low to medium"
+            },
+            "relationships": [
+              {
+                "predicate": "addresses_lack_of_power_in",
+                "target": "traditional statistical methods like GWAS",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "aggregates",
+                "target": "multiple variable positions within functional biological units",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "genome-wide association studies (GWAS)",
+            "entity_id": "genome_wide_association_studies_gwas",
+            "entity_type": "method",
+            "aliases": [
+              "genome-wide association studies (GWAS)"
+            ],
+            "attributes": {
+              "limitation": "lack of power for rare variants due to few carriers requiring extremely large sample sizes"
+            },
+            "relationships": []
+          },
+          {
+            "name": "burden tests",
+            "entity_id": "burden_tests",
+            "entity_type": "method",
+            "aliases": [
+              "burden tests"
+            ],
+            "attributes": {
+              "mechanism": "pool minor alleles per unit into a measure of burden",
+              "condition_for_power": "high proportion of RVs affect function and effects are one-sided (protective or deleterious)"
+            },
+            "relationships": [
+              {
+                "predicate": "less_powerful_than",
+                "target": "variance component tests when unidirectional effects do not hold",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "variance component tests",
+            "entity_id": "variance_component_tests",
+            "entity_type": "method",
+            "aliases": [
+              "variance component tests"
+            ],
+            "attributes": {
+              "examples": "SKAT, C-alpha",
+              "purpose": "consider heterogeneous effects among RVs"
+            },
+            "relationships": [
+              {
+                "predicate": "more_powerful_than",
+                "target": "burden tests when hypothesis of unidirectional effects does not hold",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SKAT-O",
+            "entity_id": "skat_o",
+            "entity_type": "method",
+            "aliases": [
+              "SKAT-O"
+            ],
+            "attributes": {
+              "structure": "linear combination between burden and variance-component tests",
+              "assumption": "both types of genetic architectures may coexist"
+            },
+            "relationships": []
+          },
+          {
+            "name": "hierarchical Bayesian multiple regression model (HBMR)",
+            "entity_id": "hierarchical_bayesian_multiple_regression_model_hbmr",
+            "entity_type": "method",
+            "aliases": [
+              "hierarchical Bayesian multiple regression model (HBMR)"
+            ],
+            "attributes": {
+              "developer": "He et al.",
+              "feature": "accounts for variant detection errors by incorporating genotype misclassification probabilities"
+            },
+            "relationships": []
+          },
+          {
+            "name": "mixed effects test (MiST)",
+            "entity_id": "mixed_effects_test_mist",
+            "entity_type": "method",
+            "aliases": [
+              "mixed effects test (MiST)"
+            ],
+            "attributes": {
+              "developer": "Sun et al.",
+              "framework": "hierarchical model",
+              "assumption": "individual variants are independently distributed",
+              "mean_model": "function of variant characteristics",
+              "variance_model": "accounts for heterogeneous variant effects",
+              "model_type": "generalized linear mixed effects model (GLMM)"
+            },
+            "relationships": [
+              {
+                "predicate": "treats_as_random",
+                "target": "variant-specific effects",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "treats_as_fixed",
+                "target": "patient and variant characteristics",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increases_power_using",
+                "target": "prior information on common characteristics such as similar impact on protein function",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 474,
+          "end_word": 968,
+          "word_count": 494,
+          "sha256": "5e1ca4fa32e68b55a2a51310d4ab089bcb6fcfde4efa67c89cd2f8bc6bbfe71a",
+          "sentence_minhash": [
+            167200217492106239,
+            24905490170095690,
+            40863640610520970,
+            53442166147602330,
+            43671268334127607,
+            99436724310786061,
+            12025634198112669,
+            63183425104977485,
+            73319139196083834,
+            54311698401709539,
+            78280491562202942,
+            30828592349773787,
+            11610845633202285,
+            58558631451210278,
+            144093824899672028,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text introduces BATI, a Bayesian rare variant association test using Integrated Nested Laplace Approximation (INLA) to overcome the computational limitations of MCMC in genome-wide scans. BATI is integrated into the rvGWAS framework, which combines quality control, filtering, and multiple association tests including Burden, SKAT-O, KBAC, MiST, and HBMR. The method demonstrates superior performance over existing tests when using prior information on protein function and handles complex population structures.",
+        "entities": [
+          {
+            "name": "BATI",
+            "entity_id": "bati",
+            "entity_type": "method",
+            "aliases": [
+              "BATI"
+            ],
+            "attributes": {
+              "full_name": "Bayesian rare variant Association Test using Integrated Nested Laplace Approximation",
+              "basis": "Bayesian alternative to GLMM",
+              "estimation_tool": "INLA",
+              "performance": "Substantially outperforms existing methods when using prior information on variant effect on protein function",
+              "robustness": "Copes with complex population structure and confounders"
+            },
+            "relationships": [
+              {
+                "predicate": "implemented_in",
+                "target": "rvGWAS framework",
+                "attributes": {},
+                "target_id": "rvgwas_framework"
+              },
+              {
+                "predicate": "uses",
+                "target": "Integrated Nested Laplace Approximation (INLA)",
+                "attributes": {},
+                "target_id": "integrated_nested_laplace_approximation_inla"
+              },
+              {
+                "predicate": "proposes_model_selection_criterion",
+                "target": "difference in Deviance Information Criteria (ΔDIC)",
+                "attributes": {},
+                "target_id": "difference_in_deviance_information_criteria_dic"
+              }
+            ]
+          },
+          {
+            "name": "Integrated Nested Laplace Approximation (INLA)",
+            "entity_id": "integrated_nested_laplace_approximation_inla",
+            "entity_type": "method",
+            "aliases": [
+              "INLA",
+              "Integrated Nested Laplace Approximation (INLA)"
+            ],
+            "attributes": {
+              "type": "Non-sampling based numerical approximation procedure",
+              "target_models": "Hierarchical latent Gaussian Markov random field models",
+              "speed": "Substantially faster than MCMC",
+              "accuracy": "More accurate than MCMC given same computational resources",
+              "implementation": "R-INLA project (R package INLA version 17.06.20)"
+            },
+            "relationships": [
+              {
+                "predicate": "developed_by",
+                "target": "Rue and Martino",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_by",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              }
+            ]
+          },
+          {
+            "name": "Markov Chain Monte Carlo (MCMC)",
+            "entity_id": "markov_chain_monte_carlo_mcmc",
+            "entity_type": "method",
+            "aliases": [
+              "Markov Chain Monte Carlo (MCMC)"
+            ],
+            "attributes": {
+              "type": "Heuristic simulation method",
+              "flexibility": "Highly flexible for any Bayesian model",
+              "limitations": "Convergence evaluation is not straightforward; extensive computation time for large-scale analyses"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "Integrated Nested Laplace Approximation (INLA)",
+                "attributes": {},
+                "target_id": "integrated_nested_laplace_approximation_inla"
+              }
+            ]
+          },
+          {
+            "name": "rvGWAS framework",
+            "entity_id": "rvgwas_framework",
+            "entity_type": "method",
+            "aliases": [
+              "rvGWAS framework"
+            ],
+            "attributes": {
+              "full_name": "Rare Variant Genome Wide Association Study",
+              "components": [
+                "Quality control (QC)",
+                "Interactive filtering",
+                "Detection of data stratification",
+                "Integration of functional variant annotations",
+                "Burden test",
+                "SKAT-O test",
+                "KBAC test",
+                "MiST test",
+                "HBMR test",
+                "BATI test"
+              ],
+              "model_entity_type": "software_framework"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              },
+              {
+                "predicate": "includes",
+                "target": "HBMR",
+                "attributes": {},
+                "target_id": "hbmr"
+              }
+            ]
+          },
+          {
+            "name": "MiST",
+            "entity_id": "mist",
+            "entity_type": "method",
+            "aliases": [
+              "MiST"
+            ],
+            "attributes": {
+              "full_name": "Mixed effects test",
+              "framework": "Hierarchical model",
+              "model_type": "Generalized linear mixed effects model (GLMM)",
+              "limitation": "Requires multiple integration for full model inference, making it computationally intensive for genome-wide scans; uses score test under null hypothesis instead"
+            },
+            "relationships": [
+              {
+                "predicate": "conceptual_basis_for",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              }
+            ]
+          },
+          {
+            "name": "HBMR",
+            "entity_id": "hbmr",
+            "entity_type": "method",
+            "aliases": [
+              "HBMR"
+            ],
+            "attributes": {
+              "full_name": "Hierarchical Bayesian multiple regression model",
+              "feature": "Accounts for variant detection errors via genotype misclassification probabilities"
+            },
+            "relationships": [
+              {
+                "predicate": "included_in",
+                "target": "rvGWAS framework",
+                "attributes": {},
+                "target_id": "rvgwas_framework"
+              }
+            ]
+          },
+          {
+            "name": "difference in Deviance Information Criteria (ΔDIC)",
+            "entity_id": "difference_in_deviance_information_criteria_dic",
+            "entity_type": "other",
+            "aliases": [
+              "difference in Deviance Information Criteria (ΔDIC)",
+              "difference in deviance information criterion (ΔDIC)"
+            ],
+            "attributes": {
+              "purpose": "Model selection between null and alternative hypotheses",
+              "definition": "Difference between DIC of H0 and H1 models",
+              "model_entity_type": "statistical_metric"
+            },
+            "relationships": [
+              {
+                "predicate": "proposed_for",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              }
+            ]
+          },
+          {
+            "name": "latent Gaussian models",
+            "entity_id": "latent_gaussian_models",
+            "entity_type": "other",
+            "aliases": [
+              "latent Gaussian models"
+            ],
+            "attributes": {
+              "characteristics": "Versatile and flexible",
+              "examples": [
+                "Generalized linear mixed models (GLMMs)",
+                "Spatial models",
+                "Spatio-temporal models"
+              ],
+              "model_entity_type": "statistical_model_class"
+            },
+            "relationships": [
+              {
+                "predicate": "estimated_by",
+                "target": "Integrated Nested Laplace Approximation (INLA)",
+                "attributes": {},
+                "target_id": "integrated_nested_laplace_approximation_inla"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 968,
+          "end_word": 1430,
+          "word_count": 462,
+          "sha256": "a3c3b3c2a4c63b68fa555eac662470f4a0c8b2a2548cdde396f863dd2e8cd8b3",
+          "sentence_minhash": [
+            119304519982374138,
+            18551641988871988,
+            140583634530242717,
+            64513941377847126,
+            34249088398280546,
+            8376711022241025,
+            108181934044425938,
+            63591608499849083,
+            90084769585610607,
+            9462436175016187,
+            78280491562202942,
+            7735249562228291,
+            16666991694368182,
+            58558631451210278,
+            47189708136034628,
+            41659475361281372
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'software_framework' for 'rvGWAS framework'",
+          "normalized unsupported entity type 'statistical_metric' for 'difference in deviance information criterion (ΔDIC)'",
+          "normalized unsupported entity type 'statistical_model_class' for 'latent Gaussian models'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The BATI method uses Integrated Nested Laplace Approximation to efficiently estimate full Bayesian models with complex random effects, allowing the integration of variant characteristics as covariates. Model selection is performed using the difference in Deviance Information Criteria (ΔDIC), with thresholds determined via simulation to control type I error. A semi-synthetic benchmarking approach was developed by combining real whole-exome sequencing data with known risk variants from ClinVar to create realistic disease cohorts.",
+        "entities": [
+          {
+            "name": "BATI",
+            "entity_id": "bati",
+            "entity_type": "method",
+            "aliases": [
+              "BATI"
+            ],
+            "attributes": {
+              "full_name": "Bayesian rare variant Association Test using Integrated Nested Laplace Approximation",
+              "capability": "efficiently and flexibly integrates categorical and numeric variant characteristics as covariates",
+              "estimation_method": "full model estimation via INLA"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "Integrated Nested Laplace Approximation (INLA)",
+                "attributes": {},
+                "target_id": "integrated_nested_laplace_approximation_inla"
+              },
+              {
+                "predicate": "performs_model_selection_using",
+                "target": "difference in Deviance Information Criteria (ΔDIC)",
+                "attributes": {},
+                "target_id": "difference_in_deviance_information_criteria_dic"
+              }
+            ]
+          },
+          {
+            "name": "Integrated Nested Laplace Approximation (INLA)",
+            "entity_id": "integrated_nested_laplace_approximation_inla",
+            "entity_type": "method",
+            "aliases": [
+              "INLA",
+              "Integrated Nested Laplace Approximation (INLA)"
+            ],
+            "attributes": {
+              "function": "facilitates estimation of the full model for complex structures of random effects",
+              "basis": "Laplace approximation"
+            },
+            "relationships": [
+              {
+                "predicate": "produces",
+                "target": "numerical approximation to the posteriors of interest",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "difference in Deviance Information Criteria (ΔDIC)",
+            "entity_id": "difference_in_deviance_information_criteria_dic",
+            "entity_type": "other",
+            "aliases": [
+              "difference in Deviance Information Criteria (ΔDIC)",
+              "difference in deviance information criterion (ΔDIC)"
+            ],
+            "attributes": {
+              "definition": "difference between DIC of the null hypothesis (H0) and alternative hypothesis (H1) models",
+              "usage": "model selection criteria",
+              "recommended_threshold": "ΔDIC > 10 to reject the null-hypothesis"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "Deviance Information Criteria (DIC)",
+                "attributes": {},
+                "target_id": "deviance_information_criteria_dic"
+              },
+              {
+                "predicate": "threshold_determined_by",
+                "target": "simulation of randomized case-control assignments",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Deviance Information Criteria (DIC)",
+            "entity_id": "deviance_information_criteria_dic",
+            "entity_type": "measurement",
+            "aliases": [
+              "Deviance Information Criteria (DIC)"
+            ],
+            "attributes": {
+              "definition": "expectation of the deviance over the posterior distribution plus the effective number of parameters",
+              "role": "classical Bayesian criterion for model goodness of fit"
+            },
+            "relationships": []
+          },
+          {
+            "name": "semi-synthetic whole-exome sequencing cohort simulator",
+            "entity_id": "semi_synthetic_whole_exome_sequencing_cohort_simulator",
+            "entity_type": "method",
+            "aliases": [
+              "semi-synthetic whole-exome sequencing cohort simulator"
+            ],
+            "attributes": {
+              "purpose": "benchmarking using highly realistic disease cohorts",
+              "composition": "combines thousands of real WES datasets with known risk variants",
+              "process": "randomly assigns WES samples to case/control groups and introduces predisposition variants from ClinVar into case VCF files"
+            },
+            "relationships": [
+              {
+                "predicate": "uses_data_from",
+                "target": "ClinVar",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses_data_from",
+                "target": "real WES datasets",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1430,
+          "end_word": 1929,
+          "word_count": 499,
+          "sha256": "11c32e90842c9d29f0040815ecab30abeb50cb060050a5881f2641c66345ca1d",
+          "sentence_minhash": [
+            167200217492106239,
+            1306423125707224,
+            115461717461310760,
+            61919449716151556,
+            43671268334127607,
+            99436724310786061,
+            108181934044425938,
+            81285259065511028,
+            66530823458117479,
+            76931577636070685,
+            78280491562202942,
+            49775578613387123,
+            16666991694368182,
+            161945415629665627,
+            37122965930226008,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study describes the construction of semi-synthetic breast cancer cohorts by combining real sequencing data with ClinVar risk variants. It details the calibration of significance thresholds for various rare variant association tests using randomized splits to control type I error rates. The text reports that the BATI method maintains high power even in smaller cohorts and low variance explained scenarios where other methods fail.",
+        "entities": [
+          {
+            "name": "1000GP cohort",
+            "entity_id": "1000gp_cohort",
+            "entity_type": "other",
+            "aliases": [
+              "1000GP cohort"
+            ],
+            "attributes": {
+              "case_control_split": "50% cases, 50% controls",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "semi-synthetic breast cancer predisposition cohort simulation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Iberian cohort",
+            "entity_id": "iberian_cohort",
+            "entity_type": "other",
+            "aliases": [
+              "Iberian cohort"
+            ],
+            "attributes": {
+              "case_control_split": "33% cases, 67% controls",
+              "total_individuals": 1167,
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "semi-synthetic breast cancer predisposition cohort simulation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ClinVar database",
+            "entity_id": "clinvar_database",
+            "entity_type": "other",
+            "aliases": [
+              "ClinVar database"
+            ],
+            "attributes": {
+              "model_entity_type": "database"
+            },
+            "relationships": [
+              {
+                "predicate": "queried_for",
+                "target": "breast cancer risk variants annotated as exonic or splicing",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "breast cancer risk variants",
+            "entity_id": "breast_cancer_risk_variants",
+            "entity_type": "other",
+            "aliases": [
+              "breast cancer risk variants"
+            ],
+            "attributes": {
+              "annotation": "exonic or splicing",
+              "filtering_criterion": "MAF <= 0.01 in EVS, 1000GP, or ExAC",
+              "model_entity_type": "genetic_variant"
+            },
+            "relationships": [
+              {
+                "predicate": "introduced_into",
+                "target": "semi-synthetic breast cancer predisposition cohort",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "EVS, 1000GP, ExAC",
+            "entity_id": "evs_1000gp_exac",
+            "entity_type": "other",
+            "aliases": [
+              "EVS, 1000GP, ExAC"
+            ],
+            "attributes": {
+              "role": "exome databases for MAF filtering",
+              "model_entity_type": "database"
+            },
+            "relationships": []
+          },
+          {
+            "name": "RVAS tests",
+            "entity_id": "rvas_tests",
+            "entity_type": "method",
+            "aliases": [
+              "RVAS tests"
+            ],
+            "attributes": {
+              "included_methods": "Burden, KBAC, SKAT-O, MiST, HBMR, BATI"
+            },
+            "relationships": [
+              {
+                "predicate": "calibrated_on",
+                "target": "randomly split cohorts without introduced ClinVar risk variants",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "significance thresholds",
+            "entity_id": "significance_thresholds",
+            "entity_type": "measurement",
+            "aliases": [
+              "significance thresholds"
+            ],
+            "attributes": {
+              "type_i_error_rates": "5%, 0.1%, 0.01%",
+              "source": "median from 10 random splits"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "randomly split cohorts without introduced ClinVar risk variants",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BATI",
+            "entity_id": "bati",
+            "entity_type": "method",
+            "aliases": [
+              "BATI"
+            ],
+            "attributes": {
+              "performance_characteristic": "stable despite smaller cohort size",
+              "power_at_low_ve": "close to 100% for three risk genes at 0.5% VE and 0.01% TIER",
+              "median_power": 55
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms",
+                "target": "Burden, KBAC, SKAT-O, MiST, HBMR",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Iberian cohort benchmark",
+            "entity_id": "iberian_cohort_benchmark",
+            "entity_type": "event",
+            "aliases": [
+              "Iberian cohort benchmark"
+            ],
+            "attributes": {
+              "cohort_size": 1167,
+              "comparison_size": 1810
+            },
+            "relationships": [
+              {
+                "predicate": "shows_worse_performance_for",
+                "target": "most tests due to smaller size",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "gene-wise power analysis",
+            "entity_id": "gene_wise_power_analysis",
+            "entity_type": "other",
+            "aliases": [
+              "gene-wise power analysis"
+            ],
+            "attributes": {
+              "simulations_per_gene": 100,
+              "tier_thresholds": "5% (red), 0.1% (green), 0.01% (blue)",
+              "model_entity_type": "analysis"
+            },
+            "relationships": [
+              {
+                "predicate": "benchmarks",
+                "target": "all RVAS tests",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MiST",
+            "entity_id": "mist",
+            "entity_type": "method",
+            "aliases": [
+              "MiST"
+            ],
+            "attributes": {
+              "exception": "does not identify all risk genes at 0.01% TIER in 2% VE setting"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1929,
+          "end_word": 2417,
+          "word_count": 488,
+          "sha256": "b6d459b1699d109f2c6b74b7f46f82898f28f0f1b73242158a6a293f03a3f403",
+          "sentence_minhash": [
+            352350732738395064,
+            95050443437218188,
+            40863640610520970,
+            114504758630565773,
+            160419392404287115,
+            16667959202585173,
+            164480005983286773,
+            41678443202000680,
+            14843078887968375,
+            42586453371797899,
+            78280491562202942,
+            49775578613387123,
+            11610845633202285,
+            132529644835130180,
+            91453279102886814,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for '1000GP cohort'",
+          "normalized unsupported entity type 'dataset' for 'Iberian cohort'",
+          "normalized unsupported entity type 'database' for 'ClinVar database'",
+          "normalized unsupported entity type 'genetic_variant' for 'breast cancer risk variants'",
+          "normalized unsupported entity type 'database' for 'EVS, 1000GP, ExAC'",
+          "normalized unsupported entity type 'analysis' for 'gene-wise power analysis'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "BATI demonstrates superior power compared to Burden, KBAC, SKAT-O, and HBMR in detecting rare variant associations, particularly for genes with low variance explained. The study introduces the rvGWAS framework, which integrates real WES data with real disease variants to create semi-synthetic benchmark cohorts that better reflect clinical noise than pure simulations.",
+        "entities": [
+          {
+            "name": "BATI",
+            "entity_id": "bati",
+            "entity_type": "method",
+            "aliases": [
+              "BATI"
+            ],
+            "attributes": {
+              "full_name": "Bayesian rare variant Association Test using Integrated Nested Laplace Approximation",
+              "performance_at_low_VE": "Calls most genes at TIER 0.01% even at VE of 0.5%",
+              "performance_at_medium_VE": "Calls all genes at TIER 0.1% with >80% power",
+              "advantage": "Leverages categorical and numerical variant characteristics as covariates"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms",
+                "target": "Burden, KBAC, SKAT-O, HBMR",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "integrated_in",
+                "target": "rvGWAS",
+                "attributes": {},
+                "target_id": "rvgwas"
+              }
+            ]
+          },
+          {
+            "name": "rvGWAS",
+            "entity_id": "rvgwas",
+            "entity_type": "other",
+            "aliases": [
+              "rvGWAS"
+            ],
+            "attributes": {
+              "full_name": "Rare Variant Genome Wide Association Study",
+              "function": "Facilitates user-friendly analysis of RVAS in case-control studies",
+              "data_types": "Whole genome or custom-captured next generation sequencing data",
+              "components": "Data quality control, filtering, existing RVAS tests, BATI",
+              "model_entity_type": "framework"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "BATI",
+                "attributes": {},
+                "target_id": "bati"
+              },
+              {
+                "predicate": "includes",
+                "target": "existing rare variant association tests",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Burden",
+            "entity_id": "burden",
+            "entity_type": "method",
+            "aliases": [
+              "Burden"
+            ],
+            "attributes": {
+              "failure_mode": "Recurrently fails to call BRCA2 (missense and LoF versions)",
+              "performance_variability": "Varies considerably between genes"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_strengths_and_weaknesses_with",
+                "target": "KBAC, SKAT-O",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "KBAC",
+            "entity_id": "kbac",
+            "entity_type": "method",
+            "aliases": [
+              "KBAC"
+            ],
+            "attributes": {
+              "failure_mode": "Recurrently fails to call BRCA2 (missense and LoF versions)",
+              "performance_variability": "Varies considerably between genes"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_strengths_and_weaknesses_with",
+                "target": "Burden, SKAT-O",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SKAT-O",
+            "entity_id": "skat_o",
+            "entity_type": "method",
+            "aliases": [
+              "SKAT-O"
+            ],
+            "attributes": {
+              "failure_mode": "Recurrently fails to call BRCA2 (missense and LoF versions)",
+              "performance_variability": "Varies considerably between genes"
+            },
+            "relationships": [
+              {
+                "predicate": "shares_strengths_and_weaknesses_with",
+                "target": "Burden, KBAC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HBMR",
+            "entity_id": "hbmr",
+            "entity_type": "method",
+            "aliases": [
+              "HBMR"
+            ],
+            "attributes": {
+              "failure_mode": "Fails to call BARD1, CHEK2, and PALB2 at TIER 0.1%",
+              "performance_variability": "Shows relatively small differences between genes"
+            },
+            "relationships": []
+          },
+          {
+            "name": "MiST",
+            "entity_id": "mist",
+            "entity_type": "method",
+            "aliases": [
+              "MiST"
+            ],
+            "attributes": {
+              "performance_variability": "Shows relatively small differences between genes",
+              "issue_in_realistic_data": "Performed poorly on realistic WES cohorts due to zero-inflated p-values from inappropriate handling of low variant counts"
+            },
+            "relationships": []
+          },
+          {
+            "name": "BRCA2",
+            "entity_id": "brca2",
+            "entity_type": "other",
+            "aliases": [
+              "BRCA2"
+            ],
+            "attributes": {
+              "variant_types_tested": "Missense and LoF",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "failed_to_call_by",
+                "target": "Burden, KBAC, SKAT-O",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BARD1",
+            "entity_id": "bard1",
+            "entity_type": "other",
+            "aliases": [
+              "BARD1"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "failed_to_call_by",
+                "target": "HBMR",
+                "attributes": {},
+                "target_id": "hbmr"
+              }
+            ]
+          },
+          {
+            "name": "CHEK2",
+            "entity_id": "chek2",
+            "entity_type": "other",
+            "aliases": [
+              "CHEK2"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "failed_to_call_by",
+                "target": "HBMR",
+                "attributes": {},
+                "target_id": "hbmr"
+              }
+            ]
+          },
+          {
+            "name": "PALB2",
+            "entity_id": "palb2",
+            "entity_type": "other",
+            "aliases": [
+              "PALB2"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "failed_to_call_by",
+                "target": "HBMR",
+                "attributes": {},
+                "target_id": "hbmr"
+              }
+            ]
+          },
+          {
+            "name": "semi-synthetic benchmark cohorts",
+            "entity_id": "semi_synthetic_benchmark_cohorts",
+            "entity_type": "other",
+            "aliases": [
+              "semi-synthetic benchmark cohorts"
+            ],
+            "attributes": {
+              "composition": "Real WES cohorts combined with real disease variants",
+              "purpose": "Represent realistic background noise and functional impact profiles",
+              "advantage_over_pure_simulation": "Avoids overly optimistic benchmark performances and unrealistic expectations",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_benchmarking",
+                "target": "RVAS methods",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2417,
+          "end_word": 2916,
+          "word_count": 499,
+          "sha256": "23c811f829d91c123cc054f873e00ee60d17c8b4b8c1c95e2a111a1b05003d04",
+          "sentence_minhash": [
+            181534865310160414,
+            1306423125707224,
+            40863640610520970,
+            64513941377847126,
+            43671268334127607,
+            39127440086368283,
+            76197433036625096,
+            63183425104977485,
+            66530823458117479,
+            92715222163426349,
+            78280491562202942,
+            77272953743708039,
+            11381971713110011,
+            83535461897877455,
+            39604032099602259,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'framework' for 'rvGWAS'",
+          "normalized unsupported entity type 'gene' for 'BRCA2'",
+          "normalized unsupported entity type 'gene' for 'BARD1'",
+          "normalized unsupported entity type 'gene' for 'CHEK2'",
+          "normalized unsupported entity type 'gene' for 'PALB2'",
+          "normalized unsupported entity type 'dataset' for 'semi-synthetic benchmark cohorts'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text compares the performance of rare variant association tests (MiST, Burden, KBAC, SKAT-O, HBMR, BATI) on semi-synthetic breast cancer cohorts. It notes that Burden, KBAT, and SKAT-O share similar failure patterns for specific genes with high benign background variants, whereas BATI outperforms existing methods by leveraging variant characteristics and INLA estimation.",
+        "entities": [
+          {
+            "name": "MiST",
+            "entity_id": "mist",
+            "entity_type": "method",
+            "aliases": [
+              "MiST"
+            ],
+            "attributes": {
+              "performance_at_low_ve": "failed to identify any risk gene",
+              "performance_at_low_tier": "failed to identify any risk gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Burden",
+            "entity_id": "burden",
+            "entity_type": "method",
+            "aliases": [
+              "Burden"
+            ],
+            "attributes": {
+              "performance_pattern": "highly similar to KBAT and SKAT-O across 8 risk gene architectures"
+            },
+            "relationships": [
+              {
+                "predicate": "fails_to_predict",
+                "target": "BRCA2",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "brca2"
+              },
+              {
+                "predicate": "fails_to_predict",
+                "target": "BARD1",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "bard1"
+              },
+              {
+                "predicate": "fails_to_predict",
+                "target": "CHEK2",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "chek2"
+              }
+            ]
+          },
+          {
+            "name": "KBAT",
+            "entity_id": "kbat",
+            "entity_type": "method",
+            "aliases": [
+              "KBAT"
+            ],
+            "attributes": {
+              "performance_pattern": "highly similar to Burden and SKAT-O across 8 risk gene architectures"
+            },
+            "relationships": [
+              {
+                "predicate": "fails_to_predict",
+                "target": "BRCA2",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "brca2"
+              },
+              {
+                "predicate": "fails_to_predict",
+                "target": "BARD1",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "bard1"
+              },
+              {
+                "predicate": "fails_to_predict",
+                "target": "CHEK2",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "chek2"
+              }
+            ]
+          },
+          {
+            "name": "SKAT-O",
+            "entity_id": "skat_o",
+            "entity_type": "method",
+            "aliases": [
+              "SKAT-O"
+            ],
+            "attributes": {
+              "performance_pattern": "highly similar to Burden and KBAT across 8 risk gene architectures"
+            },
+            "relationships": [
+              {
+                "predicate": "fails_to_predict",
+                "target": "BRCA2",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "brca2"
+              },
+              {
+                "predicate": "fails_to_predict",
+                "target": "BARD1",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "bard1"
+              },
+              {
+                "predicate": "fails_to_predict",
+                "target": "CHEK2",
+                "attributes": {
+                  "ve": "0.5%"
+                },
+                "target_id": "chek2"
+              }
+            ]
+          },
+          {
+            "name": "BRCA2",
+            "entity_id": "brca2",
+            "entity_type": "other",
+            "aliases": [
+              "BRCA2"
+            ],
+            "attributes": {
+              "characteristic": "high numbers of benign background variants",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "BARD1",
+            "entity_id": "bard1",
+            "entity_type": "other",
+            "aliases": [
+              "BARD1"
+            ],
+            "attributes": {
+              "characteristic": "high numbers of benign background variants",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "CHEK2",
+            "entity_id": "chek2",
+            "entity_type": "other",
+            "aliases": [
+              "CHEK2"
+            ],
+            "attributes": {
+              "characteristic": "high numbers of benign background variants",
+              "model_entity_type": "gene"
+            },
+            "relationships": []
+          },
+          {
+            "name": "BATI",
+            "entity_id": "bati",
+            "entity_type": "method",
+            "aliases": [
+              "BATI"
+            ],
+            "attributes": {
+              "estimation_method": "INLA model estimation",
+              "flexibility": "facilitates integration of large numbers of covariates",
+              "performance": "outperforms existing RVAS test methods on realistic WES cohorts"
+            },
+            "relationships": [
+              {
+                "predicate": "leverages",
+                "target": "variant characteristics",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "tested_on",
+                "target": "8 breast cancer risk genes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Integrated Nested Laplace Approximation (INLA)",
+            "entity_id": "integrated_nested_laplace_approximation_inla",
+            "entity_type": "method",
+            "aliases": [
+              "INLA",
+              "Integrated Nested Laplace Approximation (INLA)"
+            ],
+            "attributes": {
+              "description": "Integrated Nested Laplace Approximation",
+              "characteristic": "fast and accurate model estimation"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2916,
+          "end_word": 3071,
+          "word_count": 155,
+          "sha256": "a3d751c74f93b657eac6014df39645ed3d489a8e8aae179aba4347bb75b6e2f5",
+          "sentence_minhash": [
+            352056753443258523,
+            98558294268950137,
+            17545158402493677,
+            201948566748835051,
+            43671268334127607,
+            99436724310786061,
+            443251519128925403,
+            81285259065511028,
+            90084769585610607,
+            107048872566759164,
+            78280491562202942,
+            102193620383965101,
+            16666991694368182,
+            256811852691509790,
+            144093824899672028,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'BRCA2'",
+          "normalized unsupported entity type 'gene' for 'BARD1'",
+          "normalized unsupported entity type 'gene' for 'CHEK2'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "integrated_nested_laplace_approximation_inla",
+        "canonical_name": "Integrated Nested Laplace Approximation (INLA)",
+        "aliases": [
+          "Integrated Nested Laplace Approximation (INLA)",
+          "INLA"
+        ]
+      },
+      {
+        "canonical_id": "difference_in_deviance_information_criteria_dic",
+        "canonical_name": "difference in Deviance Information Criteria (ΔDIC)",
+        "aliases": [
+          "difference in Deviance Information Criteria (ΔDIC)",
+          "difference in deviance information criterion (ΔDIC)"
+        ]
+      },
+      {
+        "canonical_id": "bati",
+        "canonical_name": "BATI",
+        "aliases": [
+          "BATI"
+        ]
+      },
+      {
+        "canonical_id": "rvgwas_framework",
+        "canonical_name": "rvGWAS framework",
+        "aliases": [
+          "rvGWAS framework"
+        ]
+      },
+      {
+        "canonical_id": "chronic_lymphocytic_leukemia_study",
+        "canonical_name": "Chronic Lymphocytic Leukemia study",
+        "aliases": [
+          "Chronic Lymphocytic Leukemia study"
+        ]
+      },
+      {
+        "canonical_id": "ehmt2",
+        "canonical_name": "EHMT2",
+        "aliases": [
+          "EHMT2"
+        ]
+      },
+      {
+        "canonical_id": "cops7a",
+        "canonical_name": "COPS7A",
+        "aliases": [
+          "COPS7A"
+        ]
+      },
+      {
+        "canonical_id": "rare_variant_association_studies_rvas",
+        "canonical_name": "rare variant association studies (RVAS)",
+        "aliases": [
+          "rare variant association studies (RVAS)"
+        ]
+      },
+      {
+        "canonical_id": "hana_susak",
+        "canonical_name": "Hana Susak",
+        "aliases": [
+          "Hana Susak"
+        ]
+      },
+      {
+        "canonical_id": "xavier_estivill",
+        "canonical_name": "Xavier Estivill",
+        "aliases": [
+          "Xavier Estivill"
+        ]
+      },
+      {
+        "canonical_id": "genome_wide_association_studies_gwas",
+        "canonical_name": "genome-wide association studies (GWAS)",
+        "aliases": [
+          "genome-wide association studies (GWAS)"
+        ]
+      },
+      {
+        "canonical_id": "burden_tests",
+        "canonical_name": "burden tests",
+        "aliases": [
+          "burden tests"
+        ]
+      },
+      {
+        "canonical_id": "variance_component_tests",
+        "canonical_name": "variance component tests",
+        "aliases": [
+          "variance component tests"
+        ]
+      },
+      {
+        "canonical_id": "skat_o",
+        "canonical_name": "SKAT-O",
+        "aliases": [
+          "SKAT-O"
+        ]
+      },
+      {
+        "canonical_id": "hierarchical_bayesian_multiple_regression_model_hbmr",
+        "canonical_name": "hierarchical Bayesian multiple regression model (HBMR)",
+        "aliases": [
+          "hierarchical Bayesian multiple regression model (HBMR)"
+        ]
+      },
+      {
+        "canonical_id": "mixed_effects_test_mist",
+        "canonical_name": "mixed effects test (MiST)",
+        "aliases": [
+          "mixed effects test (MiST)"
+        ]
+      },
+      {
+        "canonical_id": "markov_chain_monte_carlo_mcmc",
+        "canonical_name": "Markov Chain Monte Carlo (MCMC)",
+        "aliases": [
+          "Markov Chain Monte Carlo (MCMC)"
+        ]
+      },
+      {
+        "canonical_id": "mist",
+        "canonical_name": "MiST",
+        "aliases": [
+          "MiST"
+        ]
+      },
+      {
+        "canonical_id": "hbmr",
+        "canonical_name": "HBMR",
+        "aliases": [
+          "HBMR"
+        ]
+      },
+      {
+        "canonical_id": "latent_gaussian_models",
+        "canonical_name": "latent Gaussian models",
+        "aliases": [
+          "latent Gaussian models"
+        ]
+      },
+      {
+        "canonical_id": "deviance_information_criteria_dic",
+        "canonical_name": "Deviance Information Criteria (DIC)",
+        "aliases": [
+          "Deviance Information Criteria (DIC)"
+        ]
+      },
+      {
+        "canonical_id": "semi_synthetic_whole_exome_sequencing_cohort_simulator",
+        "canonical_name": "semi-synthetic whole-exome sequencing cohort simulator",
+        "aliases": [
+          "semi-synthetic whole-exome sequencing cohort simulator"
+        ]
+      },
+      {
+        "canonical_id": "1000gp_cohort",
+        "canonical_name": "1000GP cohort",
+        "aliases": [
+          "1000GP cohort"
+        ]
+      },
+      {
+        "canonical_id": "iberian_cohort",
+        "canonical_name": "Iberian cohort",
+        "aliases": [
+          "Iberian cohort"
+        ]
+      },
+      {
+        "canonical_id": "clinvar_database",
+        "canonical_name": "ClinVar database",
+        "aliases": [
+          "ClinVar database"
+        ]
+      },
+      {
+        "canonical_id": "breast_cancer_risk_variants",
+        "canonical_name": "breast cancer risk variants",
+        "aliases": [
+          "breast cancer risk variants"
+        ]
+      },
+      {
+        "canonical_id": "evs_1000gp_exac",
+        "canonical_name": "EVS, 1000GP, ExAC",
+        "aliases": [
+          "EVS, 1000GP, ExAC"
+        ]
+      },
+      {
+        "canonical_id": "rvas_tests",
+        "canonical_name": "RVAS tests",
+        "aliases": [
+          "RVAS tests"
+        ]
+      },
+      {
+        "canonical_id": "significance_thresholds",
+        "canonical_name": "significance thresholds",
+        "aliases": [
+          "significance thresholds"
+        ]
+      },
+      {
+        "canonical_id": "iberian_cohort_benchmark",
+        "canonical_name": "Iberian cohort benchmark",
+        "aliases": [
+          "Iberian cohort benchmark"
+        ]
+      },
+      {
+        "canonical_id": "gene_wise_power_analysis",
+        "canonical_name": "gene-wise power analysis",
+        "aliases": [
+          "gene-wise power analysis"
+        ]
+      },
+      {
+        "canonical_id": "rvgwas",
+        "canonical_name": "rvGWAS",
+        "aliases": [
+          "rvGWAS"
+        ]
+      },
+      {
+        "canonical_id": "burden",
+        "canonical_name": "Burden",
+        "aliases": [
+          "Burden"
+        ]
+      },
+      {
+        "canonical_id": "kbac",
+        "canonical_name": "KBAC",
+        "aliases": [
+          "KBAC"
+        ]
+      },
+      {
+        "canonical_id": "brca2",
+        "canonical_name": "BRCA2",
+        "aliases": [
+          "BRCA2"
+        ]
+      },
+      {
+        "canonical_id": "bard1",
+        "canonical_name": "BARD1",
+        "aliases": [
+          "BARD1"
+        ]
+      },
+      {
+        "canonical_id": "chek2",
+        "canonical_name": "CHEK2",
+        "aliases": [
+          "CHEK2"
+        ]
+      },
+      {
+        "canonical_id": "palb2",
+        "canonical_name": "PALB2",
+        "aliases": [
+          "PALB2"
+        ]
+      },
+      {
+        "canonical_id": "semi_synthetic_benchmark_cohorts",
+        "canonical_name": "semi-synthetic benchmark cohorts",
+        "aliases": [
+          "semi-synthetic benchmark cohorts"
+        ]
+      },
+      {
+        "canonical_id": "kbat",
+        "canonical_name": "KBAT",
+        "aliases": [
+          "KBAT"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study introduces BATI, a Bayesian method using Integrated Nested Laplace Approximation to improve rare variant association studies. It demonstrates that BATI outperforms existing methods, particularly when integrating functional annotations, and identifies candidate genes in Chronic Lymphocytic Leukemia.\",\"entities\":[{\"name\":\"BATI\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Bayesian rare variant Association Test using Integrated Nested Laplace Approximation\",\"approach\":\"Bayesian\",\"inference_method\":\"Integrated Nested Laplace Approximation (INLA)\",\"capability\":\"Integrates individual or variant-specific features as covariates\",\"performance\":\"Outperforms established RVAS methods on semi-synthetic whole-exome sequencing cohorts\",\"power_threshold\":\"Achieves power above 75% when risk variants explain less than 0.5% of phenotypic variance\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"rvGWAS framework\",\"attributes\":{},\"target_id\":\"rvgwas_framework\"},{\"predicate\":\"uses\",\"target\":\"Integrated Nested Laplace Approximation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"rvGWAS framework\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Rare Variant Genome Wide Association Study\",\"supported_data_types\":[\"whole-exome sequencing\",\"whole genome sequencing\"],\"supported_units\":[\"genes\",\"promoters\",\"other biological units\"],\"functionalities\":[\"quality control\",\"filtering\"]},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"},{\"predicate\":\"includes\",\"target\":\"five existing RVAS tests\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"applied_to\",\"target\":\"Chronic Lymphocytic Leukemia study\",\"attributes\":{},\"target_id\":\"chronic_lymphocytic_leukemia_study\"}]},{\"name\":\"Chronic Lymphocytic Leukemia study\",\"type\":\"event\",\"attributes\":{},\"relationships\":[{\"predicate\":\"identified\",\"target\":\"eight candidate predisposition genes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"EHMT2\",\"type\":\"other\",\"attributes\":{\"role\":\"candidate predisposition gene\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"identified_in\",\"target\":\"Chronic Lymphocytic Leukemia study\",\"attributes\":{},\"target_id\":\"chronic_lymphocytic_leukemia_study\"}]},{\"name\":\"COPS7A\",\"type\":\"other\",\"attributes\":{\"role\":\"candidate predisposition gene\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"identified_in\",\"target\":\"Chronic Lymphocytic Leukemia study\",\"attributes\":{},\"target_id\":\"chronic_lymphocytic_leukemia_study\"}]},{\"name\":\"rare variant association studies (RVAS)\",\"type\":\"concept\",\"attributes\":{\"limitation\":\"Lack power in small to medium-sized cohorts or when genetic variation explains a small fraction of phenotypic variance\"},\"relationships\":[]},{\"name\":\"Integrated Nested Laplace Approximation (INLA)\",\"type\":\"method\",\"attributes\":{\"type\":\"numerical approximation procedure\",\"target_models\":\"hierarchical latent Gaussian Markov random field models\",\"advantage\":\"Substantially faster and more accurate than MCMC for the same computational resources\"},\"relationships\":[{\"predicate\":\"used_by\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"}]},{\"name\":\"Hana Susak\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"The Barcelona Institute of Science and Technology\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Efficient and Flexible Integration of Variant Characteristics in Rare Variant Association Studies Using Integrated Nested Laplace Approximation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Xavier Estivill\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Women's Health Dexeus\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Efficient and Flexible Integration of Variant Characteristics in Rare Variant Association Studies Using Integrated Nested Laplace Approximation\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"Statistical methods for rare variant association studies (RVAS) aggregate variants within biological units to overcome the low power of single-variant analyses. Existing approaches include burden tests, variance component tests like SKAT, and hybrid methods like SKAT-O. Bayesian models such as HBMR and MiST incorporate variant characteristics and detection errors to improve power.\",\"entities\":[{\"name\":\"rare variant association studies (RVAS)\",\"type\":\"concept\",\"attributes\":{\"purpose\":\"identification of novel disease loci based on burden of rare and damaging variants\",\"effect_size\":\"low to medium\"},\"relationships\":[{\"predicate\":\"addresses_lack_of_power_in\",\"target\":\"traditional statistical methods like GWAS\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"aggregates\",\"target\":\"multiple variable positions within functional biological units\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"genome-wide association studies (GWAS)\",\"type\":\"method\",\"attributes\":{\"limitation\":\"lack of power for rare variants due to few carriers requiring extremely large sample sizes\"},\"relationships\":[]},{\"name\":\"burden tests\",\"type\":\"method\",\"attributes\":{\"mechanism\":\"pool minor alleles per unit into a measure of burden\",\"condition_for_power\":\"high proportion of RVs affect function and effects are one-sided (protective or deleterious)\"},\"relationships\":[{\"predicate\":\"less_powerful_than\",\"target\":\"variance component tests when unidirectional effects do not hold\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"variance component tests\",\"type\":\"method\",\"attributes\":{\"examples\":\"SKAT, C-alpha\",\"purpose\":\"consider heterogeneous effects among RVs\"},\"relationships\":[{\"predicate\":\"more_powerful_than\",\"target\":\"burden tests when hypothesis of unidirectional effects does not hold\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SKAT-O\",\"type\":\"method\",\"attributes\":{\"structure\":\"linear combination between burden and variance-component tests\",\"assumption\":\"both types of genetic architectures may coexist\"},\"relationships\":[]},{\"name\":\"hierarchical Bayesian multiple regression model (HBMR)\",\"type\":\"method\",\"attributes\":{\"developer\":\"He et al.\",\"feature\":\"accounts for variant detection errors by incorporating genotype misclassification probabilities\"},\"relationships\":[]},{\"name\":\"mixed effects test (MiST)\",\"type\":\"method\",\"attributes\":{\"developer\":\"Sun et al.\",\"framework\":\"hierarchical model\",\"assumption\":\"individual variants are independently distributed\",\"mean_model\":\"function of variant characteristics\",\"variance_model\":\"accounts for heterogeneous variant effects\",\"model_type\":\"generalized linear mixed effects model (GLMM)\"},\"relationships\":[{\"predicate\":\"treats_as_random\",\"target\":\"variant-specific effects\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"treats_as_fixed\",\"target\":\"patient and variant characteristics\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"increases_power_using\",\"target\":\"prior information on common characteristics such as similar impact on protein function\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text introduces BATI, a Bayesian rare variant association test using Integrated Nested Laplace Approximation (INLA) to overcome the computational limitations of MCMC in genome-wide scans. BATI is integrated into the rvGWAS framework, which combines quality control, filtering, and multiple association tests including Burden, SKAT-O, KBAC, MiST, and HBMR. The method demonstrates superior performance over existing tests when using prior information on protein function and handles complex population structures.\",\"entities\":[{\"name\":\"BATI\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Bayesian rare variant Association Test using Integrated Nested Laplace Approximation\",\"basis\":\"Bayesian alternative to GLMM\",\"estimation_tool\":\"INLA\",\"performance\":\"Substantially outperforms existing methods when using prior information on variant effect on protein function\",\"robustness\":\"Copes with complex population structure and confounders\"},\"relationships\":[{\"predicate\":\"implemented_in\",\"target\":\"rvGWAS framework\",\"attributes\":{},\"target_id\":\"rvgwas_framework\"},{\"predicate\":\"uses\",\"target\":\"Integrated Nested Laplace Approximation (INLA)\",\"attributes\":{},\"target_id\":\"integrated_nested_laplace_approximation_inla\"},{\"predicate\":\"proposes_model_selection_criterion\",\"target\":\"difference in Deviance Information Criteria (ΔDIC)\",\"attributes\":{},\"target_id\":\"difference_in_deviance_information_criteria_dic\"}]},{\"name\":\"Integrated Nested Laplace Approximation (INLA)\",\"type\":\"method\",\"attributes\":{\"type\":\"Non-sampling based numerical approximation procedure\",\"target_models\":\"Hierarchical latent Gaussian Markov random field models\",\"speed\":\"Substantially faster than MCMC\",\"accuracy\":\"More accurate than MCMC given same computational resources\",\"implementation\":\"R-INLA project (R package INLA version 17.06.20)\"},\"relationships\":[{\"predicate\":\"developed_by\",\"target\":\"Rue and Martino\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_by\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"}]},{\"name\":\"Markov Chain Monte Carlo (MCMC)\",\"type\":\"method\",\"attributes\":{\"type\":\"Heuristic simulation method\",\"flexibility\":\"Highly flexible for any Bayesian model\",\"limitations\":\"Convergence evaluation is not straightforward; extensive computation time for large-scale analyses\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"Integrated Nested Laplace Approximation (INLA)\",\"attributes\":{},\"target_id\":\"integrated_nested_laplace_approximation_inla\"}]},{\"name\":\"rvGWAS framework\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Rare Variant Genome Wide Association Study\",\"components\":[\"Quality control (QC)\",\"Interactive filtering\",\"Detection of data stratification\",\"Integration of functional variant annotations\",\"Burden test\",\"SKAT-O test\",\"KBAC test\",\"MiST test\",\"HBMR test\",\"BATI test\"],\"model_entity_type\":\"software_framework\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"},{\"predicate\":\"includes\",\"target\":\"HBMR\",\"attributes\":{},\"target_id\":\"hbmr\"}]},{\"name\":\"MiST\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Mixed effects test\",\"framework\":\"Hierarchical model\",\"model_type\":\"Generalized linear mixed effects model (GLMM)\",\"limitation\":\"Requires multiple integration for full model inference, making it computationally intensive for genome-wide scans; uses score test under null hypothesis instead\"},\"relationships\":[{\"predicate\":\"conceptual_basis_for\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"}]},{\"name\":\"HBMR\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Hierarchical Bayesian multiple regression model\",\"feature\":\"Accounts for variant detection errors via genotype misclassification probabilities\"},\"relationships\":[{\"predicate\":\"included_in\",\"target\":\"rvGWAS framework\",\"attributes\":{},\"target_id\":\"rvgwas_framework\"}]},{\"name\":\"difference in Deviance Information Criteria (ΔDIC)\",\"type\":\"other\",\"attributes\":{\"purpose\":\"Model selection between null and alternative hypotheses\",\"definition\":\"Difference between DIC of H0 and H1 models\",\"model_entity_type\":\"statistical_metric\"},\"relationships\":[{\"predicate\":\"proposed_for\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"}]},{\"name\":\"latent Gaussian models\",\"type\":\"other\",\"attributes\":{\"characteristics\":\"Versatile and flexible\",\"examples\":[\"Generalized linear mixed models (GLMMs)\",\"Spatial models\",\"Spatio-temporal models\"],\"model_entity_type\":\"statistical_model_class\"},\"relationships\":[{\"predicate\":\"estimated_by\",\"target\":\"Integrated Nested Laplace Approximation (INLA)\",\"attributes\":{},\"target_id\":\"integrated_nested_laplace_approximation_inla\"}]}]},{\"context_summary\":\"The BATI method uses Integrated Nested Laplace Approximation to efficiently estimate full Bayesian models with complex random effects, allowing the integration of variant characteristics as covariates. Model selection is performed using the difference in Deviance Information Criteria (ΔDIC), with thresholds determined via simulation to control type I error. A semi-synthetic benchmarking approach was developed by combining real whole-exome sequencing data with known risk variants from ClinVar to create realistic disease cohorts.\",\"entities\":[{\"name\":\"BATI\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Bayesian rare variant Association Test using Integrated Nested Laplace Approximation\",\"capability\":\"efficiently and flexibly integrates categorical and numeric variant characteristics as covariates\",\"estimation_method\":\"full model estimation via INLA\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"Integrated Nested Laplace Approximation (INLA)\",\"attributes\":{},\"target_id\":\"integrated_nested_laplace_approximation_inla\"},{\"predicate\":\"performs_model_selection_using\",\"target\":\"difference in Deviance Information Criteria (ΔDIC)\",\"attributes\":{},\"target_id\":\"difference_in_deviance_information_criteria_dic\"}]},{\"name\":\"Integrated Nested Laplace Approximation (INLA)\",\"type\":\"method\",\"attributes\":{\"function\":\"facilitates estimation of the full model for complex structures of random effects\",\"basis\":\"Laplace approximation\"},\"relationships\":[{\"predicate\":\"produces\",\"target\":\"numerical approximation to the posteriors of interest\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"difference in Deviance Information Criteria (ΔDIC)\",\"type\":\"other\",\"attributes\":{\"definition\":\"difference between DIC of the null hypothesis (H0) and alternative hypothesis (H1) models\",\"usage\":\"model selection criteria\",\"recommended_threshold\":\"ΔDIC > 10 to reject the null-hypothesis\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"Deviance Information Criteria (DIC)\",\"attributes\":{},\"target_id\":\"deviance_information_criteria_dic\"},{\"predicate\":\"threshold_determined_by\",\"target\":\"simulation of randomized case-control assignments\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Deviance Information Criteria (DIC)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"expectation of the deviance over the posterior distribution plus the effective number of parameters\",\"role\":\"classical Bayesian criterion for model goodness of fit\"},\"relationships\":[]},{\"name\":\"semi-synthetic whole-exome sequencing cohort simulator\",\"type\":\"method\",\"attributes\":{\"purpose\":\"benchmarking using highly realistic disease cohorts\",\"composition\":\"combines thousands of real WES datasets with known risk variants\",\"process\":\"randomly assigns WES samples to case/control groups and introduces predisposition variants from ClinVar into case VCF files\"},\"relationships\":[{\"predicate\":\"uses_data_from\",\"target\":\"ClinVar\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses_data_from\",\"target\":\"real WES datasets\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study describes the construction of semi-synthetic breast cancer cohorts by combining real sequencing data with ClinVar risk variants. It details the calibration of significance thresholds for various rare variant association tests using randomized splits to control type I error rates. The text reports that the BATI method maintains high power even in smaller cohorts and low variance explained scenarios where other methods fail.\",\"entities\":[{\"name\":\"1000GP cohort\",\"type\":\"other\",\"attributes\":{\"case_control_split\":\"50% cases, 50% controls\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"semi-synthetic breast cancer predisposition cohort simulation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Iberian cohort\",\"type\":\"other\",\"attributes\":{\"case_control_split\":\"33% cases, 67% controls\",\"total_individuals\":1167,\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"semi-synthetic breast cancer predisposition cohort simulation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ClinVar database\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"database\"},\"relationships\":[{\"predicate\":\"queried_for\",\"target\":\"breast cancer risk variants annotated as exonic or splicing\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"breast cancer risk variants\",\"type\":\"other\",\"attributes\":{\"annotation\":\"exonic or splicing\",\"filtering_criterion\":\"MAF <= 0.01 in EVS, 1000GP, or ExAC\",\"model_entity_type\":\"genetic_variant\"},\"relationships\":[{\"predicate\":\"introduced_into\",\"target\":\"semi-synthetic breast cancer predisposition cohort\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"EVS, 1000GP, ExAC\",\"type\":\"other\",\"attributes\":{\"role\":\"exome databases for MAF filtering\",\"model_entity_type\":\"database\"},\"relationships\":[]},{\"name\":\"RVAS tests\",\"type\":\"method\",\"attributes\":{\"included_methods\":\"Burden, KBAC, SKAT-O, MiST, HBMR, BATI\"},\"relationships\":[{\"predicate\":\"calibrated_on\",\"target\":\"randomly split cohorts without introduced ClinVar risk variants\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"significance thresholds\",\"type\":\"measurement\",\"attributes\":{\"type_i_error_rates\":\"5%, 0.1%, 0.01%\",\"source\":\"median from 10 random splits\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"randomly split cohorts without introduced ClinVar risk variants\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BATI\",\"type\":\"method\",\"attributes\":{\"performance_characteristic\":\"stable despite smaller cohort size\",\"power_at_low_ve\":\"close to 100% for three risk genes at 0.5% VE and 0.01% TIER\",\"median_power\":55},\"relationships\":[{\"predicate\":\"outperforms\",\"target\":\"Burden, KBAC, SKAT-O, MiST, HBMR\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Iberian cohort benchmark\",\"type\":\"event\",\"attributes\":{\"cohort_size\":1167,\"comparison_size\":1810},\"relationships\":[{\"predicate\":\"shows_worse_performance_for\",\"target\":\"most tests due to smaller size\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"gene-wise power analysis\",\"type\":\"other\",\"attributes\":{\"simulations_per_gene\":100,\"tier_thresholds\":\"5% (red), 0.1% (green), 0.01% (blue)\",\"model_entity_type\":\"analysis\"},\"relationships\":[{\"predicate\":\"benchmarks\",\"target\":\"all RVAS tests\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MiST\",\"type\":\"method\",\"attributes\":{\"exception\":\"does not identify all risk genes at 0.01% TIER in 2% VE setting\"},\"relationships\":[]}]},{\"context_summary\":\"BATI demonstrates superior power compared to Burden, KBAC, SKAT-O, and HBMR in detecting rare variant associations, particularly for genes with low variance explained. The study introduces the rvGWAS framework, which integrates real WES data with real disease variants to create semi-synthetic benchmark cohorts that better reflect clinical noise than pure simulations.\",\"entities\":[{\"name\":\"BATI\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Bayesian rare variant Association Test using Integrated Nested Laplace Approximation\",\"performance_at_low_VE\":\"Calls most genes at TIER 0.01% even at VE of 0.5%\",\"performance_at_medium_VE\":\"Calls all genes at TIER 0.1% with >80% power\",\"advantage\":\"Leverages categorical and numerical variant characteristics as covariates\"},\"relationships\":[{\"predicate\":\"outperforms\",\"target\":\"Burden, KBAC, SKAT-O, HBMR\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"integrated_in\",\"target\":\"rvGWAS\",\"attributes\":{},\"target_id\":\"rvgwas\"}]},{\"name\":\"rvGWAS\",\"type\":\"other\",\"attributes\":{\"full_name\":\"Rare Variant Genome Wide Association Study\",\"function\":\"Facilitates user-friendly analysis of RVAS in case-control studies\",\"data_types\":\"Whole genome or custom-captured next generation sequencing data\",\"components\":\"Data quality control, filtering, existing RVAS tests, BATI\",\"model_entity_type\":\"framework\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"BATI\",\"attributes\":{},\"target_id\":\"bati\"},{\"predicate\":\"includes\",\"target\":\"existing rare variant association tests\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Burden\",\"type\":\"method\",\"attributes\":{\"failure_mode\":\"Recurrently fails to call BRCA2 (missense and LoF versions)\",\"performance_variability\":\"Varies considerably between genes\"},\"relationships\":[{\"predicate\":\"shares_strengths_and_weaknesses_with\",\"target\":\"KBAC, SKAT-O\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"KBAC\",\"type\":\"method\",\"attributes\":{\"failure_mode\":\"Recurrently fails to call BRCA2 (missense and LoF versions)\",\"performance_variability\":\"Varies considerably between genes\"},\"relationships\":[{\"predicate\":\"shares_strengths_and_weaknesses_with\",\"target\":\"Burden, SKAT-O\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"SKAT-O\",\"type\":\"method\",\"attributes\":{\"failure_mode\":\"Recurrently fails to call BRCA2 (missense and LoF versions)\",\"performance_variability\":\"Varies considerably between genes\"},\"relationships\":[{\"predicate\":\"shares_strengths_and_weaknesses_with\",\"target\":\"Burden, KBAC\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HBMR\",\"type\":\"method\",\"attributes\":{\"failure_mode\":\"Fails to call BARD1, CHEK2, and PALB2 at TIER 0.1%\",\"performance_variability\":\"Shows relatively small differences between genes\"},\"relationships\":[]},{\"name\":\"MiST\",\"type\":\"method\",\"attributes\":{\"performance_variability\":\"Shows relatively small differences between genes\",\"issue_in_realistic_data\":\"Performed poorly on realistic WES cohorts due to zero-inflated p-values from inappropriate handling of low variant counts\"},\"relationships\":[]},{\"name\":\"BRCA2\",\"type\":\"other\",\"attributes\":{\"variant_types_tested\":\"Missense and LoF\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"failed_to_call_by\",\"target\":\"Burden, KBAC, SKAT-O\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BARD1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"failed_to_call_by\",\"target\":\"HBMR\",\"attributes\":{},\"target_id\":\"hbmr\"}]},{\"name\":\"CHEK2\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"failed_to_call_by\",\"target\":\"HBMR\",\"attributes\":{},\"target_id\":\"hbmr\"}]},{\"name\":\"PALB2\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"failed_to_call_by\",\"target\":\"HBMR\",\"attributes\":{},\"target_id\":\"hbmr\"}]},{\"name\":\"semi-synthetic benchmark cohorts\",\"type\":\"other\",\"attributes\":{\"composition\":\"Real WES cohorts combined with real disease variants\",\"purpose\":\"Represent realistic background noise and functional impact profiles\",\"advantage_over_pure_simulation\":\"Avoids overly optimistic benchmark performances and unrealistic expectations\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for_benchmarking\",\"target\":\"RVAS methods\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text compares the performance of rare variant association tests (MiST, Burden, KBAC, SKAT-O, HBMR, BATI) on semi-synthetic breast cancer cohorts. It notes that Burden, KBAT, and SKAT-O share similar failure patterns for specific genes with high benign background variants, whereas BATI outperforms existing methods by leveraging variant characteristics and INLA estimation.\",\"entities\":[{\"name\":\"MiST\",\"type\":\"method\",\"attributes\":{\"performance_at_low_ve\":\"failed to identify any risk gene\",\"performance_at_low_tier\":\"failed to identify any risk gene\"},\"relationships\":[]},{\"name\":\"Burden\",\"type\":\"method\",\"attributes\":{\"performance_pattern\":\"highly similar to KBAT and SKAT-O across 8 risk gene architectures\"},\"relationships\":[{\"predicate\":\"fails_to_predict\",\"target\":\"BRCA2\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"brca2\"},{\"predicate\":\"fails_to_predict\",\"target\":\"BARD1\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"bard1\"},{\"predicate\":\"fails_to_predict\",\"target\":\"CHEK2\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"chek2\"}]},{\"name\":\"KBAT\",\"type\":\"method\",\"attributes\":{\"performance_pattern\":\"highly similar to Burden and SKAT-O across 8 risk gene architectures\"},\"relationships\":[{\"predicate\":\"fails_to_predict\",\"target\":\"BRCA2\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"brca2\"},{\"predicate\":\"fails_to_predict\",\"target\":\"BARD1\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"bard1\"},{\"predicate\":\"fails_to_predict\",\"target\":\"CHEK2\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"chek2\"}]},{\"name\":\"SKAT-O\",\"type\":\"method\",\"attributes\":{\"performance_pattern\":\"highly similar to Burden and KBAT across 8 risk gene architectures\"},\"relationships\":[{\"predicate\":\"fails_to_predict\",\"target\":\"BRCA2\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"brca2\"},{\"predicate\":\"fails_to_predict\",\"target\":\"BARD1\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"bard1\"},{\"predicate\":\"fails_to_predict\",\"target\":\"CHEK2\",\"attributes\":{\"ve\":\"0.5%\"},\"target_id\":\"chek2\"}]},{\"name\":\"BRCA2\",\"type\":\"other\",\"attributes\":{\"characteristic\":\"high numbers of benign background variants\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"BARD1\",\"type\":\"other\",\"attributes\":{\"characteristic\":\"high numbers of benign background variants\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"CHEK2\",\"type\":\"other\",\"attributes\":{\"characteristic\":\"high numbers of benign background variants\",\"model_entity_type\":\"gene\"},\"relationships\":[]},{\"name\":\"BATI\",\"type\":\"method\",\"attributes\":{\"estimation_method\":\"INLA model estimation\",\"flexibility\":\"facilitates integration of large numbers of covariates\",\"performance\":\"outperforms existing RVAS test methods on realistic WES cohorts\"},\"relationships\":[{\"predicate\":\"leverages\",\"target\":\"variant characteristics\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"tested_on\",\"target\":\"8 breast cancer risk genes\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Integrated Nested Laplace Approximation (INLA)\",\"type\":\"method\",\"attributes\":{\"description\":\"Integrated Nested Laplace Approximation\",\"characteristic\":\"fast and accurate model estimation\"},\"relationships\":[]}]}]"
+}

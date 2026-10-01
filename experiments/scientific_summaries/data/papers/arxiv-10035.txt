@@ -1,0 +1,499 @@
+arXiv:0709.0966v1  [astro-ph]  6 Sep 2007
+Astronomy & Astrophysics manuscript no. gplanets
+c⃝ESO 2014
+February 8, 2014
+Can giant planets form by gravitational fragmentation of discs?
+Radiative hydrodynamic simulations of the inner disc region
+D. Stamatellos & A. P. Whitworth
+School of Physics and Astronomy, CardiﬀUniversity, 5 The Parade, CardiﬀCF24 3AA, Wales, UK
+e-mail: D.Stamatellos@astro.cf.ac.uk
+e-mail: A.Whitworth@astro.cf.ac.uk
+Received September, 2007; accepted
+ABSTRACT
+Context. Disc fragmentation has been proposed as a possible mechanism for the formation of giant planets at close distances to solar-type stars.
+However, it is debatable whether this mechanism can function in the inner region of real discs.
+Aims. To investigate the thermodynamics of discs and the probability of fragmentation.
+Methods. We use a newly developed method to treat the energy equation and equation of state, which accounts for radiative transfer eﬀects in
+SPH simulations of protostellar discs. The diﬀerent chemical and internal states of hydrogen and the properties of dust at diﬀerent densities and
+temperatures (ice coated dust grains at low temperatures, ice melting, dust sublimation) are all taken into account by the new method.
+Results. We present radiative hydrodynamic simulations of discs where the eﬀects of the equation of state and energy equation are taken into
+account. We focus on the inner parts of discs, R < 40 AU and examine 2 cases (i) a disc heated by an ambient radiation ﬁeld of 10 K, and
+(ii) a disc with additional heating from the central star. In both cases the disc does not fragment; in the former case because it cannot cool fast
+enough, and in the latter case because it is not gravitationally unstable. Our results corroborate the results of Boley et al. (2006) and Cai e al.
+(2007), who use a diﬀerent treatment for the radiative transfer.
+Conclusions. Disc fragmentation is unlikely to be able to produce giant planets around solar-type stars at radii <∼50 AU.
+Key words. Accretion, accretion discs – Hydrodynamics – Instabilities – Radiative Transfer – Planetary systems: formation – Planetary
+systems: protoplanetary discs
+1. Introduction
+A large number of exoplanets (∼250) has been discovered
+around nearby stars in the last 12 years, mainly with the ra-
+dial velocity method. Most of these exoplanets have properties
+that are diﬀerent from those of the Solar System. In particular,
+giant planets are found very close to the central star on orbits
+of apparently random eccentricity.
+Two main theories have been proposed for the formation
+of giant planets, (i) core accretion, and (ii) gravitational frag-
+mentation. In the core accretion scenario giant planets form by
+coagulation of planetesimals (e.g. Safronov 1969; Goldreich &
+Ward 1973; Pollack et al. 1996). Once a solid body of around
+10 ML is reached, it quickly accretes a large gaseous envelope.
+One of the main problems of this theory is that the timescale for
+planet formation is long. The theory predicts that planets can
+form within a few million years, but observations suggest that
+circumstellar discs may not be that long lived (Haisch, Lada
+& Lada 2001; Cieza et al. 2007). In the gravitational fragmen-
+tation scenario, giant planets form by gravitational instability
+in massive discs (e.g. Kuiper 1951; Cameron 1978; cf. review
+by Durisen et. al 2007). The main advantage of this method is
+that planets form on a dynamical timescale, i.e. within a few
+hundred years.
+There are two conditions that must be fulﬁlled for discs
+to fragment gravitationally. (i) The disc must be gravitation-
+ally unstable, i.e. massive enough so that gravity can overcome
+thermal pressure and centrifugal support (Toomre 1964):
+Q(R) = c(R) κ(R)
+π G Σ(R)
+<∼1 ,
+(1)
+where c is the sound speed, κ is the epicyclic frequency, and
+Σ is the surface density. (ii) The disc must be able to cool fast
+enough for the compressional energy provided by the collapse
+to be radiated away. Theory and simulations (Gammie 2001;
+Johnson & Gammie 2003; Rice et al. 2003, 2005; Mayer et
+al. 2004; Mejia et al. 2005) indicate that the disc cooling must
+happen on a dynamical time-scale,
+tCOOL < C(γ) tORB ,
+0.5 <∼C(γ) <∼2.0 ,
+(2)
+where tORB is the period and γ is the adiabatic exponent.
+However, it is uncertain whether real discs actually sat-
+isfy the above conditions. Boss (2004) and Mayer et al. (2007)
+
+2
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+suggest that convection can provide suﬃciently fast cooling,
+whereas Johnson & Gammie (2003), Boley et al. (2006) and
+Nelson (2006), assert that there is no eﬃcient cooling mecha-
+nism, and hence fragmentation is not possible. The latter point
+of view is supported by analytic studies which suggest that
+convection cannot provide the required cooling (Raﬁkov 2007;
+Whitworth et al. 2007), and that discs cannot cool fast enough,
+at least close (R <∼50 AU) to the central star (Raﬁkov 2005;
+Matzner & Levin 2005; Whitworth & Stamatellos 2006).
+Hydrodynamic simulations have produced contradictory
+results about whether disc fragmentation can produce giant
+planets close to the central star, mainly due the diﬀerent treat-
+ments of radiative transfer in discs. We have recently developed
+an eﬃcient scheme to capture the thermal and radiative eﬀects
+when protostellar gas fragments (see Section 2 and Stamatellos
+et al. 2007). Thus, we are able for the ﬁrst time to perform
+radiative hydrodynamic simulations of discs where the eﬀects
+of the equation of state are included. Moreover the radiative
+scheme allows to include irradiation of the disc by the central
+star.
+The structure of the paper is as follows. In Section 2 we
+describe the method that is used for the radiative hydrodynamic
+simulations. In Section 3 we describe the disc initial setup and
+in Section 4 the radiative hydrodynamic simulations. Finally, in
+Section 5 we discuss the results of these simulations and their
+implications for the possibility of forming giant planets close
+to a star by gravitational fragmentation.
+2. Numerical method
+For the simulations we use the SPH code dragon (Goodwin
+et al. 2004), which invokes an octal tree (to compute grav-
+ity and ﬁnd neighbours), adaptive smoothing lengths, multiple
+particle timesteps, artiﬁcial viscosity (α = 0.1, β = 0.2) with
+the Balsara switch, and a second-order Runge-Kutta integration
+scheme.
+The energy equation is treated with the method of
+Stamatellos et al. (2007). The method takes into account com-
+pressional heating, viscous heating, radiation heating from the
+background, radiation cooling and, implicitly, radiation heating
+from the particle’s neighbourhood.It performs well, both in the
+optically thin and optically thick regime, and it is eﬃcient and
+relatively easy to implement in particle- and grid-based codes.
+The gas is assumed to be a mixture of hydrogen and he-
+lium. We use an equation of state (Black & Bodenheimer 1975;
+Masunaga et al. 1998; Boley et al. 2007) that accounts (i) for
+the rotational and vibrational degrees of freedom of molecular
+hydrogen, and (ii) for the diﬀerent chemical states of hydro-
+gen and helium depending on the temperature and density, i.e.
+the eﬀects of H2 dissociation, H0 ionisation, and the ﬁrst and
+second ionisation of He are included. Hence, the eﬀects of vari-
+ations in the equation of state are taken into account. (We note
+however that (i) the temperatures in the simulations presented
+here are not high enough for the molecular hydrogen to dis-
+sociate, and (ii) contributions from metals are ignored; hence
+the gas composition remains the same, i.e. the mean molecular
+weight µ is constant).
+For the dust and gas opacity we use the parameterization
+by Bell & Lin (1994), κ(ρ, T) = κ0 ρa T b , where κ0, a, b
+are constants that depend on the species and the physical pro-
+cesses contributing to the opacity at each ρ and T. The opacity
+changes due to e.g. ice mantle melting, the sublimation of dust,
+molecular and H−contributions, are all taken into account.
+The code has been extensively tested (see Stamatellos et
+al. 2007). In particular it reproduces the detailed 3D results of
+Masunaga & Inutsuka (2000) and the analytic test of Spiegel
+(1957). We report a further test here in Section 4.1.2.
+3. Disc initial conditions
+We simulate a 0.07 M⊙disc around a 0.5 M⊙star. This is a
+relatively massive disc but such discs have been observed e.g
+in the Orion Nebula cluster (Eisner & Carpenter 2006). The
+disc initially extends from 2 to 40 AU. Its initial surface den-
+sity is Σ(R) ∼R−1/2 and its initial temperature is T(R) ∼R−1.
+These are typical density and temperature proﬁles of discs and
+have been chosen so as to match the initial conditions of the
+simulations of Boley et al. (2006) and Cai et al. (2007).
+More speciﬁcally we assume a disc surface proﬁle
+Σ(R) = Σ0 R−1/2 ,
+(3)
+where Σ0 = 1.6 × 103g cm−2, and R denotes the distance from
+the rotation axis. The disc temperature proﬁle is
+Td(R) =
+"
+T 2
+0
+ R
+AU
+−2
++ T 2
+∞
+#1/2
+.
+(4)
+T0 = 1200 K is the temperature at R ≃1 AU and T∞= 10 K is
+the asymptotic temperature far from the central star.
+To calculate the initial thickness z0(R) of the disc, we bal-
+ance the vertical component of the gravitational force of the star
+and the gravitational force of the underlying disc, against the
+pressure force due to the disc temperature (disc thermal pres-
+sure):
+GM⋆
+R2
+z0(R)
+R
++ πGΣ(R) ≈c2(R)
+z0(R),
+(5)
+where c2(R) = kT(R)/(µmp) is the local sound speed. The
+above equation can be written as
+GM⋆
+R3 z2
+0(R) + πGΣ(R)z0(R) −c2(R) = 0 ,
+(6)
+which is a simple quadratic equation with a positive root
+z0(R) = −πΣ(R)R3
+2M⋆
++
+
+ πΣ(R)R3
+2M⋆
+!2
++
+R3
+GM⋆
+c2(R)
+
+1/2
+(7)
+4. Simulations
+We perform 2 disc simulations; (i) one without stellar irradia-
+tion but with a constant background radiation ﬁeld of TBGR =
+10 K (cf. Boley et al. 2006; Cai et al. 2007), and (ii) one with ra-
+diation from the central star (TBGR ∼R−1). We use 2×105 SPH
+particles to represent the disc. In both cases the disc relaxes
+from the initial conditions to a quasi-steady state. In Fig. 1 we
+
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+3
+Fig. 1. Internal energy of the disc (i) for a disc under low back-
+ground heating (TBGR = 10 K; bottom, red line) and (ii) for
+a disc irradiated by the central star(TBGR(R) ∼R−1; top, blue
+line).
+plot the evolution of the disc internal energy with time for both
+cases. When the heating from the central star is ignored the
+disc relaxes to a lower-temperature quasi-steady state (bottom
+line) than in the case when irradiation by the star is taken into
+account (top line). Otherwise the evolution of the thermal en-
+ergy appears similar in both cases. In the next subsections we
+describe in detail the characteristics of each simulation.
+4.1. Disc evolution under low background heating
+(TBGR = 10 K)
+We assume a constant background radiation ﬁeld of TBGR =
+10 K. The disc relaxes to a quasi-steady state (or “asymptotic
+phase”; cf. Boley et al. 2006) within ∼250 yr. Thereafter, the
+disc cools slowly. Weak spiral arms form in the disc but they do
+not show any tendency to fragment (cf. Fig 2), despite the fact
+that the disc is Toomre unstable at ∼30 −35 AU (Fig 4). This
+is because the disc cannot cool fast enough; the cooling time
+throughout the disc is generally >∼2tORB (Fig. 5), where tORB is
+the local orbital period.
+In Figs. 6 and 7 we plot the azimuthally averaged surface
+density, temperature, Toomre parameter Q, and cooling time
+(in units of the local orbital period). The temperature and cool-
+ing time are additionally averaged vertically relative to the disc
+midplane. The Toomre parameter is calculated using the sur-
+face density and the midplane disc temperature. Each plot con-
+tains 5 lines that correspond to diﬀerent instances during the
+disc evolution (t = 500, 1000, . . ., 2500 yr). The proﬁles are
+essentially independent of the time, i.e. the disc is in a quasi-
+steady state, while it slowly cools (see temperature proﬁle in
+Fig. 6).
+This simulation was repeated using a smaller number of
+SPH particles (5 × 104) and the evolution of the thermal en-
+ergy, surface density, temperature, Toomre parameter and cool-
+Fig. 2. Logarithmic column density (top) and cross-section of
+the density on the x-z plane (bottom) for a disc heated by a
+low-temperature background radiation ﬁeld of TBGR = 10 K. x
+and y are given in cm.
+Fig. 3. Logarithmic temperature in the x-y plane (top) and on
+the x-z plane (bottom) for a disc heated by a low-temperature
+background radiation ﬁeld of TBGR = 10 K.
+ing time were essentially the same. The proﬁles change only
+slowly with time as the disc cools quasi-statically.
+
+4
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+Fig. 4. Toomre parameter the x-y plane (top) and on the x-z
+plane (bottom) for a disc heated by a low-temperature back-
+ground radiation ﬁeld of TBGR = 10 K.
+Fig. 5. Cooling time (in units of the local orbital period) in
+the x-y plane (top) and on the x-z plane (bottom) for a disc
+heated by a low-temperature background radiation ﬁeld of
+TBGR = 10 K.
+4.1.1. Comparison with the simulations of Boley et al.
+(2006) and Cai et al. (2007)
+The spiral arms that develop in the disc are weaker than those
+reported by Boley et al. (2006). The temperatures that are cal-
+culated are generally larger than those of Boley et al. (2006).
+Fig. 6. Surface density (azimuthally averaged) and temperature
+(azimuthally and vertically averaged) at 5 instances during the
+disc evolution (t = 500, 1000, . . ., 2500 yr; green, red, blue,
+cyan, black).
+These diﬀerences at large radii (>∼30 AU) are attributable to
+using a diﬀerent background radiation ﬁeld; in our simulation
+TBGR = 10 K whereas in Boley et al. simulations the disc can
+cool down to 3 K. At small radii they could be due to higher
+viscous heating in our simulations. By comparing the internal
+energies between the two simulations we estimate that the tem-
+peratures we calculate are ∼15% higher. However, considering
+the diﬀerences between the radiative transfer schemes and be-
+tween the hydrodynamic methods (SPH versus grid-based) the
+reported discrepancies are rather small. The Toomre parameter
+in this simulation is generally higher than that of Boley et al.
+(2006) but the cooling times are lower. This is due to the higher
+temperatures in our simulation (Q ∝T 0.5, tCOOL ∝T −3). Both
+simulations show no sign or even any tendency to fragment.
+The results of our simulation are more comparable to the
+results of the simulation by Cai et al. (2007) with external en-
+velope irradiation of 15 K. The strength of the spiral arms in
+our simulation are similar to their simulation. The estimated
+temperatures across the disc are also similar; by comparing the
+internal energies we estimate that the temperatures that we cal-
+culate are less than 3% higher than those reported by Cai et al.
+(2007). Both simulations show no tendency towards fragmen-
+tation.
+We
+conclude
+that
+both
+the
+Indiana
+University
+Hydrodynamics Group code (e.g. Pickett et al. 1998; Mejia et
+al. 2005) and our SPH-RT code produce very similar results,
+
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+5
+Fig. 7. Toomre parameter (azimuthally averaged) and cooling
+time (in units of the local orbital period; also azimuthally aver-
+aged) at 5 instances during the disc evolution (as in Fig. 6).
+which is reassuring since the treatment of radiative transfer
+and hydrodynamics are completely diﬀerent.
+4.1.2. The vertical temperature proﬁle of the disc;
+comparison with analytic calculations
+The radiative hydrodynamic computational scheme has already
+been tested for the case of collapsing clouds and has been
+proved to perform well (Stamatellos et al. 2007). To provide
+a diﬀerent test of this scheme for disc conﬁgurations, we com-
+pare our results with the analytic calculations of Hubeny (1990)
+(cf. Boley et al. 2007).
+Hubeny (1990) studies the vertical structure of a cylindri-
+cally symmetric stationary keplerian disc. The radiation trans-
+port is treated only in the direction vertical to the disc mid-
+plane. The energy is provided by the shear viscosity of the
+Keplerian motion, whereas the self-gravity of the disc is ne-
+glected. Convection and external irradiation are also neglected.
+If it is further assumed that the viscosity is independent of the
+depth in the disc then Hubeny’s LTE gray solution for the tem-
+perature T at optical depth τ from the surface of the disc ap-
+proximates to
+T(τ) = Teﬀ
+(3
+4
+"
+(τ −τθ) + 1√
+3
+#
++
+1
+3κ(τ)Σ
+)1/4
+,
+(8)
+where σT 4
+eﬀis the ﬂux at the disc midplane, perpendicular to
+this plane, Σ is the column density from the surface of the disc
+Fig. 8. Disc temperature proﬁles vertically to the disc mid-
+plane at diﬀerent radii from the central star (6, 10, 15, and
+20 AU, top to bottom). The temperature T is plotted as a func-
+tion of the vertical optical depth τ from the surface to the mid-
+plane of the disc. Points correspond to the results of our model
+(azimuthally averaged) and the lines to the Hubeny (1990) an-
+alytic model.
+to the disc midplane, τθ =
+R σ
+0 κ(σ′) σ′dσ′, where κ(σ) is the
+mass opacity and σ(z) =
+R ∞
+z
+ρ dz
+To satisfy the assumption of a disc in equilibrium we com-
+pare the Hubeny (1990) analytic calculation with a snapshot of
+the disc at t = 2000 yr, i.e. during the quasi-steady state. There
+are spiral arms in the disc but they are relatively weak and
+they should not aﬀect the results of this calculation. However,
+we note that this simulation accounts for external disc irra-
+diation by a background ﬁeld of 10 K and for the disc self
+gravity. Hence, we expect that the vertical temperature pro-
+ﬁle of the disc should similar to the one provided by Hubeny
+(1990) (Eq. 8), but a bit warmer due to these additional heating
+sources.
+In Fig. 8 we present the vertical temperature structure at
+diﬀerent radii from the central star (6, 10, 15, and 20 AU, top
+to bottom). In this graph the temperature is plotted as a function
+of the vertical optical depth from the surface to the midplane of
+the disc. As expected our temperature proﬁles are similar to
+those predicted by Hubeny (1990). There are some deviations
+
+6
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+Fig. 9. Logarithmic column density (top) and cross-section of
+the density on the x-z plane (bottom) for a disc heated by the
+central star.
+Fig. 10. Logarithmic temperature in the x-y plane (top) and on
+the x-z plane (bottom) for a disc heated by the central star.
+at larger distances from the central star at low optical depths;
+in our simulation the disc surface cools more eﬃciently.
+Fig. 11. Toomre parameter the x-y plane (top) and on the x-z
+plane (bottom) for a disc heated by the central star.
+Fig. 12. Cooling time (in units of the local orbital period) in the
+x-y plane (top) and on the x-z plane (bottom) for a disc heated
+by the central star.
+4.2. Disc evolution with stellar heating
+We take into account radiation from the central star by assum-
+ing the background temperature is
+TBGR(R) =
+"
+T 2
+0
+ R
+AU
+−2
++ T 2
+∞
+#1/2
+,
+(9)
+
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+7
+Fig. 13. Surface density (azimuthally averaged) and tempera-
+ture (azimuthally and vertically averaged) at 5 instances dur-
+ing the evolution of a disc heated by the central star (t =
+500, 1000, . . ., 2500 yr; green, red, blue, cyan, black).
+where T0 = 1200 K and T∞= 10 K (cf. Eq. 4). The results
+of this simulation are shown in Figs. 9-14. In this case the
+initial conditions of the disc are closer to equilibrium, hence
+the temperature of the disc of remains almost constant (see
+Fig. 13). The disc is overall hotter than in the previous case due
+to heating from the central star. Due to higher temperature the
+disc cools fast enough to fragment at radii >∼20 AU (Fig. 14).
+However, it does not fragment as it is not gravitational unstable
+Q>∼1.5 K (Fig. 14).
+The eﬀect of the heating from the central star is to stabi-
+lize the disc; in this case the disc appears axisymmetric with
+no signs of spiral arms. This result is consistent with previous
+simulations of discs heated by “envelope-radiation”, i.e. by an
+isotropic background radiation ﬁeld (Boss 2001, 2002; Cai et
+al. 2007), and with analytical calculations (Matzner & Levin
+2005; Raﬁkov 2005; Whitworth & Stamatellos 2006).
+5. Discussion
+We have performed radiative hydrodynamic simulations of the
+inner region of circumstellar discs with initial parameters simi-
+lar to the parameters of Boley et al. (2006) and Cai et al. (2007),
+i.e. a 0.07 M⊙disc around a 0.5 M⊙star. The disc initially
+extends from 2 to 40 AU. The disc initial surface density is
+Σ(R) ∼R−1/2 and the disc initial temperature is T(R) ∼R−1. We
+use a newly developed method to treat the energy equation in
+SPH simulations of discs and an equation of state that includes
+Fig. 14. Azimuthally averaged Toomre parameter and cooling
+time (in units of the local orbital period) at 5 instances the evo-
+lution of the a disc heated by the central star (as in Fig. 6).
+the eﬀects of the rotational degrees of freedom of molecular
+hydrogen and realistic dust opacities.
+Initially we simulated the evolution of the disc under an
+external radiation ﬁeld of temperature 10 K. Our results are
+comparable with the results of Boley et al. (2006) and Cai et al.
+(2007); the disc is gravitationally unstable at R ∼20 −30 AU,
+but it does not fragment because it cannot cool fast enough.
+Spiral arms form in the disc but they are weak and do not
+show any tendency towards fragmentation. The adiabatic in-
+dex is γ = 5/3 outside ∼10 AU where the temperature is less
+than ∼80 K; however closer to the central star where the tem-
+perature is higher, γ = 7/5, due to the excitation of the rota-
+tional degrees of freedom of molecular hydrogen. It has been
+suggested that when γ is decreases from 5/3 to 7/5 , the maxi-
+mum cooling time for the disc to fragment also increases from
+0.5 to 2 tORB (e.g. Johnson & Gammie 2003; Rice et al. 2005).
+Our simulations indicate that in discs the cooling time is always
+>∼2tORB within ∼30 AU, hence such discs are not expected to
+fragment and they do not fragment. The results of the simula-
+tions reported here are similar to the results of the simulations
+of Boley et al. (2006) and Cai et al. (2007) despite using dif-
+ferent treatments for the radiative transfer and for the hydrody-
+namics.
+We also simulated the evolution of a disc in an external
+radiation ﬁeld whose temperature drops as R−1, to mimic the
+irradiation from the central star and envelope. In this case the
+disc can cool fast enough to fragment (because of its higher
+temperature) but it does not fragment because it is not gravi-
+
+8
+D. Stamatellos & A. P. Whitworth: Radiative hydrodynamic simulations of discs
+tationally unstable. The heating from the central star stabilizes
+the disc; no spiral arms form in this case. Hence, discs are even
+less prone to fragment in their inner regions when the eﬀect
+of stellar irradiation is taken into account. This result agrees
+with previous simulation of discs heated by envelope radia-
+tion (Boss 2001, 2002; Cai et al. 2007). It is also in accordance
+with previous analytical calculations (Matzner & Levin 2005;
+Raﬁkov 2005; Whitworth & Stamatellos 2006). Whitworth &
+Stamatellos (2006) argue fragmentation is possible at larger
+distances (>∼100 AU) from the central star where the cooling
+times are suﬃciently short. However, their results suggest that
+fragmentation at large radii produces mostly brown dwarfs and
+occasionally low-mass hydrogen-burning stars or planetary-
+mass objects (Whitworth & Stamatellos 2006; Whitworth et
+al. 2007; Stamatellos, Hubber & Whitworth 2007). If plane-
+tary mass objects form at such large radii they are unlikely to
+migrate inwards to become hot Jupiters. More likely they are
+ejected into the ﬁeld though 3-body interactions.
+Hence, based on the simulations presented in this paper, we
+conclude that gas giant planets probably cannot form close to
+the central star by gravitational fragmentation of discs.
+Acknowledgements. We would like to thank R. Durisen, A. Boley and
+K. Rice for useful discussions. The computations reported here were
+performed using the UK Astrophysical Fluids Facility (UKAFF). We
+also acknowledge support by PPARC grant PP/E000967/1.

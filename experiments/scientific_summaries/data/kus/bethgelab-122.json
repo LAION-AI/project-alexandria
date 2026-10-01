@@ -1,0 +1,2591 @@
+{
+  "document_id": "bethgelab-122",
+  "fulltext_sha256": "bd6e5c628a12f9f4d83f4e3b0b6cb632a31e625a05a4d8ed7cd768b4fc24bd0e",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "9c9c3f594f0fe74ba1d8cdb573ac3b83badbebfc9664da139c31c6752763daff",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study addresses the 'lab-to-fab gap' in organic solar cells by using slot-die coating with a green solvent to manufacture flexible PM6:Y6 devices. Power conversion efficiencies of 6.3% and 7.2% were achieved for binary and ternary devices, respectively. The text highlights the advantages of slot-die coating over spin-coating for scalable, roll-to-roll production.",
+        "entities": [
+          {
+            "name": "Organic Solar Cells (OSCs)",
+            "entity_id": "organic_solar_cells_oscs",
+            "entity_type": "other",
+            "aliases": [
+              "Organic Solar Cells (OSCs)"
+            ],
+            "attributes": {
+              "lab_scale_efficiency_status": "highest efficiencies reached on active areas far below 0.1 cm2",
+              "advantages": "low cost, mechanical flexibility, lightweight, semi-transparent capability, short Energy Payback Time (EPBT)",
+              "challenge": "lab-to-fab gap due to efficiency difference between lab-scale and industry-compatible processes",
+              "model_entity_type": "technology"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "silicon solar cells",
+                "attributes": {
+                  "advantage": "roll-to-roll compatibility"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "non-fullerene acceptors (NFAs)",
+                "attributes": {},
+                "target_id": "non_fullerene_acceptors_nfas"
+              }
+            ]
+          },
+          {
+            "name": "spin-coating",
+            "entity_id": "spin_coating",
+            "entity_type": "method",
+            "aliases": [
+              "spin-coating"
+            ],
+            "attributes": {
+              "usage_status": "most commonly used fabrication technique",
+              "limitations": "poor potential for upscaling, substantial material waste"
+            },
+            "relationships": []
+          },
+          {
+            "name": "slot-die coating",
+            "entity_id": "slot_die_coating",
+            "entity_type": "method",
+            "aliases": [
+              "slot-die coating"
+            ],
+            "attributes": {
+              "suitability": "suitable for roll-to-roll manufacturing",
+              "advantages": "one-dimensional pattern with well-defined width, almost no material waste",
+              "preference_reason": "preferred for highest efficiency systems to minimize lab-to-fab gap"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "PM6:Y6 active layer coating",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6",
+            "entity_id": "pm6_y6",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6"
+            ],
+            "attributes": {
+              "composition": "binary active layer",
+              "solvent_used": "o-xylene (green solvent)",
+              "additives": "none",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "achieved_efficiency",
+                "target": "6.3%",
+                "attributes": {
+                  "device_type": "binary"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "o-xylene",
+            "entity_id": "o_xylene",
+            "entity_type": "other",
+            "aliases": [
+              "o-xylene",
+              "o-xylene (O-XY)"
+            ],
+            "attributes": {
+              "classification": "green solvent",
+              "role": "solvent for PM6:Y6 ink",
+              "model_entity_type": "chemical"
+            },
+            "relationships": []
+          },
+          {
+            "name": "PCBM",
+            "entity_id": "pcbm",
+            "entity_type": "other",
+            "aliases": [
+              "PCBM"
+            ],
+            "attributes": {
+              "role": "third component in ternary device",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "combined_with",
+                "target": "PM6:Y6",
+                "attributes": {},
+                "target_id": "pm6_y6"
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6:PCBM",
+            "entity_id": "pm6_y6_pcbm",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6:PCBM"
+            ],
+            "attributes": {
+              "composition": "ternary active layer",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "achieved_efficiency",
+                "target": "7.2%",
+                "attributes": {
+                  "device_type": "ternary"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "non-fullerene acceptors (NFAs)",
+            "entity_id": "non_fullerene_acceptors_nfas",
+            "entity_type": "other",
+            "aliases": [
+              "non-fullerene acceptors (NFAs)"
+            ],
+            "attributes": {
+              "properties": "allow fine-tuning of energy levels and light absorption, reduce VOC losses, stronger and wider visible-NIR absorption",
+              "model_entity_type": "material_class"
+            },
+            "relationships": [
+              {
+                "predicate": "contribute_to",
+                "target": "higher efficiencies in OSCs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Energy Payback Time (EPBT)",
+            "entity_id": "energy_payback_time_epbt",
+            "entity_type": "measurement",
+            "aliases": [
+              "Energy Payback Time (EPBT)"
+            ],
+            "attributes": {
+              "definition": "time needed to give back the energy used for manufacturing the device",
+              "typical_duration_for_OSCs": "order of weeks"
+            },
+            "relationships": [
+              {
+                "predicate": "related_to",
+                "target": "small amount of energy and material needed for manufacture",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Marcial Fernández Castro",
+            "entity_id": "marcial_fernandez_castro",
+            "entity_type": "person",
+            "aliases": [
+              "Marcial Fernández Castro"
+            ],
+            "attributes": {
+              "affiliation": "Technical University of Denmark"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Jean Truer",
+            "entity_id": "jean_truer",
+            "entity_type": "person",
+            "aliases": [
+              "Jean Truer"
+            ],
+            "attributes": {
+              "affiliation": "Technical University of Denmark"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Espíndola Rodríguez",
+            "entity_id": "espindola_rodriguez",
+            "entity_type": "person",
+            "aliases": [
+              "Espíndola Rodríguez"
+            ],
+            "attributes": {
+              "affiliation": "Technical University of Denmark"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Jens Wenzel",
+            "entity_id": "jens_wenzel",
+            "entity_type": "person",
+            "aliases": [
+              "Jens Wenzel"
+            ],
+            "attributes": {
+              "affiliation": "Technical University of Denmark"
+            },
+            "relationships": [
+              {
+                "predicate": "author_of",
+                "target": "Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 497,
+          "word_count": 497,
+          "sha256": "4f3e2c106ae4c2c7072209f0f3300dd6b74390efab27cae92ee0c2262ab820f0",
+          "sentence_minhash": [
+            78437147519042128,
+            18551641988871988,
+            65506248803936119,
+            176145074706553768,
+            34249088398280546,
+            23277678784159471,
+            38486707612222400,
+            41603480463740449,
+            80930235405919187,
+            282198132564690983,
+            67831053780325945,
+            249638579164605473,
+            21851741698046429,
+            181491262563083502,
+            261472569220426020,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'technology' for 'Organic Solar Cells (OSCs)'",
+          "normalized unsupported entity type 'material' for 'PM6:Y6'",
+          "normalized unsupported entity type 'chemical' for 'o-xylene'",
+          "normalized unsupported entity type 'material' for 'PCBM'",
+          "normalized unsupported entity type 'material' for 'PM6:Y6:PCBM'",
+          "normalized unsupported entity type 'material_class' for 'non-fullerene acceptors (NFAs)'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study introduces PM6 and Y6 as high-efficiency organic solar cell materials with complementary absorption spectra, suitable for scalable manufacturing. It details the fabrication of flexible, slot-die coated devices using a green solvent (o-xylene) without additives, achieving efficiencies up to 7% in ternary configurations. The devices demonstrate high stability, retaining over 99% of initial efficiency after 1000 hours of storage.",
+        "entities": [
+          {
+            "name": "PM6",
+            "entity_id": "pm6",
+            "entity_type": "other",
+            "aliases": [
+              "PM6"
+            ],
+            "attributes": {
+              "role": "donor material",
+              "batch_number": "YY19260CH100",
+              "supplier": "1-Material Inc.",
+              "absorption_range": "460-650 nm",
+              "property": "exhibits temperature-dependent aggregation (TDA) behavior",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "absorbs_at",
+                "target": "highest spectral irradiance point of the solar spectrum",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "combined_with",
+                "target": "Y6",
+                "attributes": {},
+                "target_id": "y6"
+              }
+            ]
+          },
+          {
+            "name": "Y6",
+            "entity_id": "y6",
+            "entity_type": "other",
+            "aliases": [
+              "Y6"
+            ],
+            "attributes": {
+              "role": "acceptor material",
+              "batch_number": "DW7038S",
+              "supplier": "1-Material Inc.",
+              "absorption_range": "660-870 nm",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "complements_absorption_of",
+                "target": "PM6 in the red part of the spectrum",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "combined_with",
+                "target": "PM6",
+                "attributes": {},
+                "target_id": "pm6"
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 blend",
+            "entity_id": "pm6_y6_blend",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 blend"
+            ],
+            "attributes": {
+              "ratio": "1:1",
+              "solvent": "o-xylene (O-XY)",
+              "additives": "none",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "candidate_for",
+                "target": "minimizing the gap between efficiencies obtained using different manufacturing processes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "coated_via",
+                "target": "slot-die coating",
+                "attributes": {},
+                "target_id": "slot_die_coating"
+              }
+            ]
+          },
+          {
+            "name": "o-xylene",
+            "entity_id": "o_xylene",
+            "entity_type": "other",
+            "aliases": [
+              "o-xylene",
+              "o-xylene (O-XY)"
+            ],
+            "attributes": {
+              "purity": "≥ 98%",
+              "supplier": "Sigma-Aldrich",
+              "classification": "green solvent",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "used_as_solvent_for",
+                "target": "PM6:Y6 active layer",
+                "attributes": {},
+                "target_id": "pm6_y6_active_layer"
+              }
+            ]
+          },
+          {
+            "name": "slot-die coating",
+            "entity_id": "slot_die_coating",
+            "entity_type": "method",
+            "aliases": [
+              "slot-die coating"
+            ],
+            "attributes": {
+              "compatibility": "roll-to-roll manufacturing",
+              "waste": "almost no material waste",
+              "condition": "open-air"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "PM6:Y6 active layer",
+                "attributes": {},
+                "target_id": "pm6_y6_active_layer"
+              },
+              {
+                "predicate": "requires_heating_of",
+                "target": "substrate, syringe, tube, and slot-die head",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "flexible organic solar cells (OSCs)",
+            "entity_id": "flexible_organic_solar_cells_oscs",
+            "entity_type": "other",
+            "aliases": [
+              "flexible organic solar cells (OSCs)"
+            ],
+            "attributes": {
+              "substrate": "pre-patterned ITO-coated polyethylene terephthalate (PET)",
+              "structure": "inverted geometry: ITO/ZnO/PM6:Y6/MoO3/Ag",
+              "efficiency_ternary": "up to 7%",
+              "stability": "over 99% of initial efficiency after 1000 h storage",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "fabricated_using",
+                "target": "slot-die coating",
+                "attributes": {},
+                "target_id": "slot_die_coating"
+              },
+              {
+                "predicate": "uses_active_layer",
+                "target": "PM6:Y6",
+                "attributes": {},
+                "target_id": "pm6_y6"
+              }
+            ]
+          },
+          {
+            "name": "PCBM",
+            "entity_id": "pcbm",
+            "entity_type": "other",
+            "aliases": [
+              "PCBM"
+            ],
+            "attributes": {
+              "role": "fullerene acceptor in ternary device",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "added_to",
+                "target": "PM6:Y6 blend",
+                "attributes": {},
+                "target_id": "pm6_y6_blend"
+              }
+            ]
+          },
+          {
+            "name": "ZnO nanoparticle ink",
+            "entity_id": "zno_nanoparticle_ink",
+            "entity_type": "other",
+            "aliases": [
+              "ZnO nanoparticle ink"
+            ],
+            "attributes": {
+              "supplier": "Sigma-Aldrich",
+              "role": "Electron Transport Layer (ETL)",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "coated_using",
+                "target": "homemade roll-coater",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MoO3",
+            "entity_id": "moo3",
+            "entity_type": "other",
+            "aliases": [
+              "MoO3"
+            ],
+            "attributes": {
+              "supplier": "Kurt J. Lesker Co.",
+              "form": "pellets",
+              "role": "Hole Transport Layer (HTL)",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "deposited_by",
+                "target": "thermal evaporation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silver",
+            "entity_id": "silver",
+            "entity_type": "other",
+            "aliases": [
+              "Silver"
+            ],
+            "attributes": {
+              "supplier": "Sigma-Aldrich",
+              "purity": "pure",
+              "role": "back electrode",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "deposited_by",
+                "target": "thermal evaporation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 497,
+          "end_word": 990,
+          "word_count": 493,
+          "sha256": "7d684e04cff042172e8090cb9a577b288c9c908ecc7826bb25318dbee0cdaa7f",
+          "sentence_minhash": [
+            84989070151237717,
+            1306423125707224,
+            26370950827938458,
+            159448631219318875,
+            253921468229647812,
+            62667647458868521,
+            46992937528651961,
+            58132959327070159,
+            69954760574897592,
+            92715222163426349,
+            52289575379892750,
+            39453528430898505,
+            63656278488967776,
+            906306679132868,
+            194885768149381016,
+            63358255188664572
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'PM6'",
+          "normalized unsupported entity type 'material' for 'Y6'",
+          "normalized unsupported entity type 'material' for 'PM6:Y6 blend'",
+          "normalized unsupported entity type 'material' for 'o-xylene (O-XY)'",
+          "normalized unsupported entity type 'device' for 'flexible organic solar cells (OSCs)'",
+          "normalized unsupported entity type 'material' for 'PCBM'",
+          "normalized unsupported entity type 'material' for 'ZnO nanoparticle ink'",
+          "normalized unsupported entity type 'material' for 'MoO3'",
+          "normalized unsupported entity type 'material' for 'Silver'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The fabrication process utilizes a controlled slot-die setup where the active layer is coated at varying temperatures and concentrations, followed by thermal evaporation of transport layers and electrodes. An activation step involving reverse bias current is performed before encapsulation with an epoxy-based glue. Device characterization involves J-V measurements under AM1.5G illumination using a defined aperture area.",
+        "entities": [
+          {
+            "name": "slot-die coating setup",
+            "entity_id": "slot_die_coating_setup",
+            "entity_type": "method",
+            "aliases": [
+              "slot-die coating setup"
+            ],
+            "attributes": {
+              "control_parameters": "drum speed, drum heat, drum-to-head distance",
+              "ink_temperature_requirement": "hot tube required to keep active layer ink hot"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "coating ZnO nanoparticle ink and PM6:Y6 active layer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ZnO nanoparticle ink",
+            "entity_id": "zno_nanoparticle_ink",
+            "entity_type": "other",
+            "aliases": [
+              "ZnO nanoparticle ink"
+            ],
+            "attributes": {
+              "function": "Electron Transport Layer (ETL)",
+              "coating_substrate_temperature": "75 °C",
+              "coating_flow_rate": "0.06 mL/min",
+              "coating_drum_speed": "1.08 m/min",
+              "annealing_temperature": "100 °C",
+              "annealing_duration": "10 min",
+              "annealing_atmosphere": "air",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "coated_by",
+                "target": "slot-die coating setup",
+                "attributes": {},
+                "target_id": "slot_die_coating_setup"
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 active layer",
+            "entity_id": "pm6_y6_active_layer",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 active layer"
+            ],
+            "attributes": {
+              "donor_acceptor_ratio": "1:1",
+              "tested_coating_temperatures": "60, 80, 100, 120 °C",
+              "tested_concentrations": "12, 16, 20, 24, 28 mg/mL",
+              "coating_drum_speed": "1.5 m/min",
+              "coating_flow_rate": "0.12 mL/min",
+              "temperature_control": "head, syringe, drum, and tube kept at same temperature",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "coated_by",
+                "target": "slot-die coating setup",
+                "attributes": {},
+                "target_id": "slot_die_coating_setup"
+              },
+              {
+                "predicate": "based_on",
+                "target": "PM6 and Y6 materials",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MoO3 Hole Transport Layer",
+            "entity_id": "moo3_hole_transport_layer",
+            "entity_type": "other",
+            "aliases": [
+              "MoO3 Hole Transport Layer"
+            ],
+            "attributes": {
+              "thickness": "10 nm",
+              "deposition_method": "thermal evaporation under vacuum",
+              "base_pressure": "2 x 10^-5 mbar",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "evaporated_through",
+                "target": "shadow mask",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Silver back electrode",
+            "entity_id": "silver_back_electrode",
+            "entity_type": "other",
+            "aliases": [
+              "Silver back electrode"
+            ],
+            "attributes": {
+              "thickness": "150 nm",
+              "deposition_method": "thermal evaporation under vacuum",
+              "base_pressure": "2 x 10^-5 mbar",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "evaporated_from",
+                "target": "tungsten boats",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "INFICON XTM/2 system",
+            "entity_id": "inficon_xtm_2_system",
+            "entity_type": "other",
+            "aliases": [
+              "INFICON XTM/2 system"
+            ],
+            "attributes": {
+              "model_entity_type": "instrument"
+            },
+            "relationships": [
+              {
+                "predicate": "monitors",
+                "target": "deposition rate and thickness",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "solar cell fabrication batch",
+            "entity_id": "solar_cell_fabrication_batch",
+            "entity_type": "other",
+            "aliases": [
+              "solar cell fabrication batch"
+            ],
+            "attributes": {
+              "source_material": "one-meter-long active layer stripe",
+              "max_cells_per_evaporation": "24",
+              "min_devices_encapsulated": "8",
+              "approximate_active_area": "0.8 cm^2",
+              "model_entity_type": "process_step"
+            },
+            "relationships": []
+          },
+          {
+            "name": "activation process",
+            "entity_id": "activation_process",
+            "entity_type": "method",
+            "aliases": [
+              "activation process"
+            ],
+            "attributes": {
+              "timing": "before encapsulation",
+              "method": "reverse bias current",
+              "voltage": "-5 V",
+              "max_current": "100 mA",
+              "purpose": "stabilization of J-V curve"
+            },
+            "relationships": []
+          },
+          {
+            "name": "EPXR epoxy-based glue",
+            "entity_id": "epxr_epoxy_based_glue",
+            "entity_type": "other",
+            "aliases": [
+              "EPXR epoxy-based glue"
+            ],
+            "attributes": {
+              "composition": "bisphenol A diglycidyl ether and Chissonox 221 monomers",
+              "function": "encapsulation and oxygen/humidity barrier",
+              "curing_method": "UV light",
+              "curing_duration": "approximately 5 min",
+              "curing_temperature": "66 ± 0.5 °C",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_with",
+                "target": "two glass slides",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "J-V characterization setup",
+            "entity_id": "j_v_characterization_setup",
+            "entity_type": "method",
+            "aliases": [
+              "J-V characterization setup"
+            ],
+            "attributes": {
+              "source_meter": "Keithley 2400",
+              "voltage_step": "50 mV reverse to forward",
+              "illumination": "AM1.5G",
+              "solar_simulator_calibration": "1000 W/m^2",
+              "reference_cell": "monocrystalline silicon certified by Fraunhofer",
+              "aperture_area": "0.3996 cm^2",
+              "shadow_mask_model": "Ossila E2002A1",
+              "statistical_sample_size": "eight devices"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 990,
+          "end_word": 1470,
+          "word_count": 480,
+          "sha256": "41a1b500d94c89075bd259bbafdef7e95b3dd8e004596566c024a3e1fd8da5b6",
+          "sentence_minhash": [
+            82316180561614159,
+            168406626813780505,
+            26370950827938458,
+            141557533923110381,
+            51040448875224741,
+            57869492297846635,
+            32849703842496801,
+            38738255928730065,
+            41398414370036992,
+            143596922374634350,
+            78280491562202942,
+            121931264349593228,
+            63656278488967776,
+            906306679132868,
+            146551046735659332,
+            69242845566341429
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'ZnO nanoparticle ink'",
+          "normalized unsupported entity type 'material' for 'PM6:Y6 active layer'",
+          "normalized unsupported entity type 'material' for 'MoO3 Hole Transport Layer'",
+          "normalized unsupported entity type 'material' for 'Silver back electrode'",
+          "normalized unsupported entity type 'instrument' for 'INFICON XTM/2 system'",
+          "normalized unsupported entity type 'process_step' for 'solar cell fabrication batch'",
+          "normalized unsupported entity type 'material' for 'EPXR epoxy-based glue'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study characterizes PM6:Y6 organic solar cells using EQE, absorbance, and AFM measurements, noting strong absorption between 460 and 870 nm. It demonstrates the feasibility of slot-die coating on flexible substrates using a green solvent without additives. The results indicate that coating temperature significantly influences active layer morphology and device performance.",
+        "entities": [
+          {
+            "name": "QEX10 system",
+            "entity_id": "qex10_system",
+            "entity_type": "other",
+            "aliases": [
+              "QEX10 system"
+            ],
+            "attributes": {
+              "manufacturer": "PV Measurements Inc.",
+              "measurement_range": "300 to 1100 nm",
+              "step_size": "5 nm",
+              "calibration_source": "Si photodiode",
+              "model_entity_type": "measurement_instrument"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "external quantum efficiency (EQE)",
+                "attributes": {},
+                "target_id": "external_quantum_efficiency_eqe"
+              },
+              {
+                "predicate": "measures",
+                "target": "absorbance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DS95-50 AFM instrument",
+            "entity_id": "ds95_50_afm_instrument",
+            "entity_type": "other",
+            "aliases": [
+              "DS95-50 AFM instrument"
+            ],
+            "attributes": {
+              "manufacturer": "Danish Micro Engineering (DME)",
+              "scan_dimension": "5 × 5 µm²",
+              "mode": "noncontact",
+              "model_entity_type": "measurement_instrument"
+            },
+            "relationships": [
+              {
+                "predicate": "measures",
+                "target": "thickness",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 active layer",
+            "entity_id": "pm6_y6_active_layer",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 active layer"
+            ],
+            "attributes": {
+              "absorption_range": "460 nm to 870 nm",
+              "PM6_absorption_region": "460-650 nm",
+              "Y6_absorption_region": "660-870 nm",
+              "solvent": "o-xylene (O-XY)",
+              "concentration": "16 mg/mL",
+              "donor_acceptor_ratio": "1:1",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "coated_by",
+                "target": "slot-die coating",
+                "attributes": {},
+                "target_id": "slot_die_coating"
+              },
+              {
+                "predicate": "deposited_on",
+                "target": "flexible substrate",
+                "attributes": {},
+                "target_id": "flexible_substrate"
+              },
+              {
+                "predicate": "morphology_influenced_by",
+                "target": "coating temperature",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "slot-die coating",
+            "entity_id": "slot_die_coating",
+            "entity_type": "method",
+            "aliases": [
+              "slot-die coating"
+            ],
+            "attributes": {
+              "environment": "open air",
+              "temperature_range_screened": "60 °C to 120 °C",
+              "flow_rate": "fixed for homogeneity",
+              "drum_speed": "fixed for homogeneity"
+            },
+            "relationships": [
+              {
+                "predicate": "applied_to",
+                "target": "PM6:Y6 active layer",
+                "attributes": {},
+                "target_id": "pm6_y6_active_layer"
+              },
+              {
+                "predicate": "affects",
+                "target": "drying kinetics of solvent",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "affects",
+                "target": "donor and acceptor packing",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "flexible substrate",
+            "entity_id": "flexible_substrate",
+            "entity_type": "other",
+            "aliases": [
+              "flexible substrate"
+            ],
+            "attributes": {
+              "type": "pre-patterned ITO-coated polyethylene terephthalate (PET)",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "supports",
+                "target": "PM6:Y6 active layer",
+                "attributes": {},
+                "target_id": "pm6_y6_active_layer"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1470,
+          "end_word": 1968,
+          "word_count": 498,
+          "sha256": "c9acf2d274888d0937340f9f2c16b2cdcde840d6e344dc5a14e5af8eee1c879f",
+          "sentence_minhash": [
+            74280331811192554,
+            1306423125707224,
+            231110926427626308,
+            61919449716151556,
+            42052357859457007,
+            23277678784159471,
+            38486707612222400,
+            22384502142726101,
+            125991694189146616,
+            170723666999752339,
+            78280491562202942,
+            77272953743708039,
+            63656278488967776,
+            79383475117272352,
+            278614866765861159,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'measurement_instrument' for 'QEX10 system'",
+          "normalized unsupported entity type 'measurement_instrument' for 'DS95-50 AFM instrument'",
+          "normalized unsupported entity type 'material' for 'PM6:Y6 active layer'",
+          "normalized unsupported entity type 'material' for 'flexible substrate'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study investigates the impact of slot-die coating temperature on the performance of PM6:Y6 organic solar cells, finding that 100 °C yields optimal efficiency. While higher temperatures improve carrier collection and short-circuit current, they reduce fill factor due to edge aggregation caused by rapid solvent drying. Thermal annealing improves devices coated at lower temperatures but does not benefit those coated at higher temperatures.",
+        "entities": [
+          {
+            "name": "PM6:Y6 organic solar cells",
+            "entity_id": "pm6_y6_organic_solar_cells",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 organic solar cells"
+            ],
+            "attributes": {
+              "configuration": "inverted",
+              "active_layer": "PM6:Y6",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "fabricated_by",
+                "target": "slot-die coating",
+                "attributes": {},
+                "target_id": "slot_die_coating"
+              },
+              {
+                "predicate": "performance_optimized_at",
+                "target": "100 °C coating temperature",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "slot-die coating temperature",
+            "entity_id": "slot_die_coating_temperature",
+            "entity_type": "other",
+            "aliases": [
+              "slot-die coating temperature"
+            ],
+            "attributes": {
+              "tested_range": "60 °C to 120 °C",
+              "optimal_value": "100 °C",
+              "model_entity_type": "process_parameter"
+            },
+            "relationships": [
+              {
+                "predicate": "affects",
+                "target": "solvent drying kinetics",
+                "attributes": {},
+                "target_id": "solvent_drying_kinetics"
+              },
+              {
+                "predicate": "influences",
+                "target": "active layer morphology",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "correlates_with",
+                "target": "power conversion efficiency trend",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "thermal annealing",
+            "entity_id": "thermal_annealing",
+            "entity_type": "other",
+            "aliases": [
+              "thermal annealing"
+            ],
+            "attributes": {
+              "conditions": "120 °C for 3 minutes",
+              "application": "encapsulated devices",
+              "model_entity_type": "process_step"
+            },
+            "relationships": [
+              {
+                "predicate": "improves_short_circuit_current_of",
+                "target": "devices coated at 60 °C and 80 °C",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "does_not_improve",
+                "target": "devices coated at 100 °C and 120 °C",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "enhanced polymer crystallinity",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "fill factor (FF)",
+            "entity_id": "fill_factor_ff",
+            "entity_type": "measurement",
+            "aliases": [
+              "fill factor (FF)"
+            ],
+            "attributes": {
+              "average_at_120C": "42.2%",
+              "average_at_100C": "47.10%",
+              "general_trend": "remains around 45%"
+            },
+            "relationships": [
+              {
+                "predicate": "decreased_by",
+                "target": "material aggregation at edges",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "impacted_by",
+                "target": "inhomogeneities along the stripe",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "short-circuit current",
+            "entity_id": "short_circuit_current",
+            "entity_type": "measurement",
+            "aliases": [
+              "short-circuit current",
+              "short-circuit current (JSC)"
+            ],
+            "attributes": {
+              "trend": "higher at higher coating temperatures"
+            },
+            "relationships": [
+              {
+                "predicate": "indicates",
+                "target": "better carrier collection",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "external quantum efficiency (EQE)",
+            "entity_id": "external_quantum_efficiency_eqe",
+            "entity_type": "measurement",
+            "aliases": [
+              "external quantum efficiency (EQE)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "higher coating temperatures",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "solvent drying kinetics",
+            "entity_id": "solvent_drying_kinetics",
+            "entity_type": "other",
+            "aliases": [
+              "solvent drying kinetics"
+            ],
+            "attributes": {
+              "model_entity_type": "physical_process"
+            },
+            "relationships": [
+              {
+                "predicate": "accelerated_by",
+                "target": "temperatures above 100 °C",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "causes",
+                "target": "aggregation of materials on both edges of the active layer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "power conversion efficiency (PCE)",
+            "entity_id": "power_conversion_efficiency_pce",
+            "entity_type": "measurement",
+            "aliases": [
+              "power conversion efficiency (PCE)"
+            ],
+            "attributes": {
+              "trend": "improves towards higher temperature, saturates around 100 °C"
+            },
+            "relationships": [
+              {
+                "predicate": "maximized_at",
+                "target": "100 °C coating temperature",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1968,
+          "end_word": 2468,
+          "word_count": 500,
+          "sha256": "cf786ed8870dd79a4a2a723e9a1d18e1eb146c6eed6cceee7bae83d5e0449b9f",
+          "sentence_minhash": [
+            177206373619834726,
+            1306423125707224,
+            410803331425804340,
+            89586774885286597,
+            66126288328331465,
+            23277678784159471,
+            29530511455539070,
+            41678443202000680,
+            6624542427768274,
+            54858032611080355,
+            78280491562202942,
+            18804687833942685,
+            63656278488967776,
+            906306679132868,
+            97900561872503879,
+            63358255188664572
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'device' for 'PM6:Y6 organic solar cells'",
+          "normalized unsupported entity type 'process_parameter' for 'slot-die coating temperature'",
+          "normalized unsupported entity type 'process_step' for 'thermal annealing'",
+          "normalized unsupported entity type 'physical_process' for 'solvent drying kinetics'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The study analyzes the impact of slot-die coating temperature on the performance of PM6:Y6 organic solar cells, identifying 100 °C as the optimal condition. Higher temperatures above 100 °C cause rapid solvent drying and material aggregation, reducing fill factor. Recombination analysis reveals that while bimolecular recombination is minimized at 100 °C, trap-assisted recombination remains the dominant mechanism across all tested temperatures.",
+        "entities": [
+          {
+            "name": "PM6:Y6 organic solar cells",
+            "entity_id": "pm6_y6_organic_solar_cells",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 organic solar cells"
+            ],
+            "attributes": {
+              "active_layer": "PM6:Y6",
+              "fabrication_method": "slot-die coating",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "optimal_coating_temperature",
+                "target": "100 °C",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "exhibits",
+                "target": "trap-assisted recombination",
+                "attributes": {
+                  "status": "dominant mechanism"
+                },
+                "target_id": "trap_assisted_recombination"
+              }
+            ]
+          },
+          {
+            "name": "100 °C coating condition",
+            "entity_id": "100_c_coating_condition",
+            "entity_type": "other",
+            "aliases": [
+              "100 °C coating condition"
+            ],
+            "attributes": {
+              "temperature": "100 °C",
+              "model_entity_type": "experimental_condition"
+            },
+            "relationships": [
+              {
+                "predicate": "yields_highest_average_pce",
+                "target": "PM6:Y6 organic solar cells",
+                "attributes": {},
+                "target_id": "pm6_y6_organic_solar_cells"
+              },
+              {
+                "predicate": "minimizes",
+                "target": "bimolecular recombination",
+                "attributes": {
+                  "s_value": "0.978"
+                },
+                "target_id": "bimolecular_recombination"
+              }
+            ]
+          },
+          {
+            "name": "120 °C coating condition",
+            "entity_id": "120_c_coating_condition",
+            "entity_type": "other",
+            "aliases": [
+              "120 °C coating condition"
+            ],
+            "attributes": {
+              "temperature": "120 °C",
+              "model_entity_type": "experimental_condition"
+            },
+            "relationships": [
+              {
+                "predicate": "causes",
+                "target": "material aggregation at active layer edges",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "results_in_lowest_average_fill_factor",
+                "target": "PM6:Y6 organic solar cells",
+                "attributes": {
+                  "value": "42.2%"
+                },
+                "target_id": "pm6_y6_organic_solar_cells"
+              }
+            ]
+          },
+          {
+            "name": "bimolecular recombination",
+            "entity_id": "bimolecular_recombination",
+            "entity_type": "other",
+            "aliases": [
+              "bimolecular recombination"
+            ],
+            "attributes": {
+              "analysis_method": "light intensity dependence of short-circuit current (JSC)",
+              "model_entity_type": "physical_process"
+            },
+            "relationships": [
+              {
+                "predicate": "indicated_by",
+                "target": "exponential factor S",
+                "attributes": {
+                  "ideal_value": "1"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "minimized_at",
+                "target": "100 °C coating condition",
+                "attributes": {},
+                "target_id": "100_c_coating_condition"
+              }
+            ]
+          },
+          {
+            "name": "trap-assisted recombination",
+            "entity_id": "trap_assisted_recombination",
+            "entity_type": "other",
+            "aliases": [
+              "trap-assisted recombination"
+            ],
+            "attributes": {
+              "analysis_method": "slope of VOC versus ln(Pin)",
+              "dominance_indicator": "slope values higher than kT/q",
+              "model_entity_type": "physical_process"
+            },
+            "relationships": [
+              {
+                "predicate": "is_dominant_in",
+                "target": "PM6:Y6 organic solar cells",
+                "attributes": {},
+                "target_id": "pm6_y6_organic_solar_cells"
+              }
+            ]
+          },
+          {
+            "name": "kT/q",
+            "entity_id": "kt_q",
+            "entity_type": "other",
+            "aliases": [
+              "kT/q"
+            ],
+            "attributes": {
+              "definition": "Boltzmann constant times absolute temperature divided by element charge",
+              "model_entity_type": "physical_constant"
+            },
+            "relationships": [
+              {
+                "predicate": "threshold_for",
+                "target": "second-order recombination",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2468,
+          "end_word": 2966,
+          "word_count": 498,
+          "sha256": "9b74d7ac13b261d8b100837c5530cc997af4978f00fb8e7eb4a0d6834e09c304",
+          "sentence_minhash": [
+            177206373619834726,
+            1306423125707224,
+            23103724853578534,
+            89586774885286597,
+            66126288328331465,
+            23277678784159471,
+            29530511455539070,
+            41678443202000680,
+            249356920820546271,
+            59300684974747015,
+            78280491562202942,
+            49775578613387123,
+            12488864069851856,
+            111098460802827733,
+            98254322503569589,
+            212025932163705917
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'device' for 'PM6:Y6 organic solar cells'",
+          "normalized unsupported entity type 'experimental_condition' for '100 °C coating condition'",
+          "normalized unsupported entity type 'experimental_condition' for '120 °C coating condition'",
+          "normalized unsupported entity type 'physical_process' for 'bimolecular recombination'",
+          "normalized unsupported entity type 'physical_process' for 'trap-assisted recombination'",
+          "normalized unsupported entity type 'physical_constant' for 'kT/q'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The optimal coating temperature for PM6:Y6 solar cells was determined to be 100 °C based on power conversion efficiency, layer homogeneity, and the elimination of thermal annealing. Active layer thickness was optimized between 101 nm and 217 nm, with 217 nm yielding the highest average efficiency due to increased light absorption and reduced bimolecular recombination.",
+        "entities": [
+          {
+            "name": "optimal coating temperature",
+            "entity_id": "optimal_coating_temperature",
+            "entity_type": "measurement",
+            "aliases": [
+              "optimal coating temperature"
+            ],
+            "attributes": {
+              "value": "100 °C"
+            },
+            "relationships": [
+              {
+                "predicate": "selected_for",
+                "target": "PM6:Y6 active layer coating",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "justified_by",
+                "target": "higher PCE, ease of coating homogeneous layer, lack of extra thermal annealing steps",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "active layer thickness",
+            "entity_id": "active_layer_thickness",
+            "entity_type": "concept",
+            "aliases": [
+              "active layer thickness"
+            ],
+            "attributes": {
+              "investigated_range": "101 nm to 217 nm",
+              "effect_of_thick_layer": "increased light absorption, increased device robustness for roll-to-roll",
+              "effect_of_thin_layer": "enables semi-transparent devices, reduces charge carrier pathways, decreases recombination probability"
+            },
+            "relationships": [
+              {
+                "predicate": "optimized_in",
+                "target": "PM6:Y6-based solar cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 solar cells with 217 nm active layer",
+            "entity_id": "pm6_y6_solar_cells_with_217_nm_active_layer",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 solar cells with 217 nm active layer"
+            ],
+            "attributes": {
+              "ink_concentration": "24 mg/ml",
+              "highest_pce": "6.3%",
+              "highest_ff": "49.0%",
+              "average_pce": "5.8%",
+              "bimolecular_recombination_slope": "0.987",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibits_lowest",
+                "target": "charge-transport limited behavior",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "coated_at",
+                "target": "100 °C",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 solar cells with 101 nm active layer",
+            "entity_id": "pm6_y6_solar_cells_with_101_nm_active_layer",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 solar cells with 101 nm active layer"
+            ],
+            "attributes": {
+              "average_ff": "42.0%",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "has_thinnest_active_layer",
+                "target": "101 nm",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 solar cells with 116 nm active layer",
+            "entity_id": "pm6_y6_solar_cells_with_116_nm_active_layer",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 solar cells with 116 nm active layer"
+            ],
+            "attributes": {
+              "average_ff": "47.1%",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_ff_improvement_over",
+                "target": "PM6:Y6 solar cells with 101 nm active layer",
+                "attributes": {},
+                "target_id": "pm6_y6_solar_cells_with_101_nm_active_layer"
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 blend",
+            "entity_id": "pm6_y6_blend",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 blend"
+            ],
+            "attributes": {
+              "donor_max_absorption": "625 nm",
+              "acceptor_max_absorption": "820 nm",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "maintains_high_performance",
+                "target": "thick layers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2966,
+          "end_word": 3454,
+          "word_count": 488,
+          "sha256": "c7537dde9a69c3675705b64b872c466d54291a7d18e7162e86ff61af4e0d51bd",
+          "sentence_minhash": [
+            48149665368535894,
+            1306423125707224,
+            479438807803172273,
+            159448631219318875,
+            38019880870462680,
+            99436724310786061,
+            23718652799488495,
+            96292850158067112,
+            246632621214917415,
+            7649729463600173,
+            78280491562202942,
+            127332288920535677,
+            67670066861971234,
+            137272570501844787,
+            37122965930226008,
+            75406061484379541
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'device' for 'PM6:Y6 solar cells with 217 nm active layer'",
+          "normalized unsupported entity type 'device' for 'PM6:Y6 solar cells with 101 nm active layer'",
+          "normalized unsupported entity type 'device' for 'PM6:Y6 solar cells with 116 nm active layer'",
+          "normalized unsupported entity type 'material' for 'PM6:Y6 blend'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study identifies trap-assisted recombination as a dominant loss mechanism in open-air processed PM6:Y6 solar cells due to impurities and interface defects. Introducing PC61BM as a ternary component enhances electron mobility and creates an energy cascade that boosts short-circuit current and overall efficiency. The optimal ternary blend ratios tested were [1:1:0.2] and [1:1.1:0.1], with the latter achieving a slightly higher average power conversion efficiency due to improved fill factor.",
+        "entities": [
+          {
+            "name": "trap-assisted recombination",
+            "entity_id": "trap_assisted_recombination",
+            "entity_type": "other",
+            "aliases": [
+              "trap-assisted recombination"
+            ],
+            "attributes": {
+              "mechanism": "electrons and holes recombine in trap states or recombination centers",
+              "causes": "impurities in materials or interfaces",
+              "observation_condition": "open-circuit conditions"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_in",
+                "target": "PM6:Y6 flexible devices",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "attributed_to",
+                "target": "open-air processing without cleanroom or glovebox",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PC61BM",
+            "entity_id": "pc61bm",
+            "entity_type": "other",
+            "aliases": [
+              "PC61BM"
+            ],
+            "attributes": {
+              "role": "complementary acceptor",
+              "lumo_level": "between -3.7 and -3.9 eV",
+              "properties": "better electron mobility, more balanced charge transport, weak and broad absorption",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "added_to",
+                "target": "PM6:Y6 blend",
+                "attributes": {},
+                "target_id": "pm6_y6_blend"
+              },
+              {
+                "predicate": "creates_energy_cascade_between",
+                "target": "LUMO levels of PM6 and Y6",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "enhances",
+                "target": "JSC and VOC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ternary PM6:Y6:PC61BM blend [1:1:0.2]",
+            "entity_id": "ternary_pm6_y6_pc61bm_blend_1_1_0_2",
+            "entity_type": "other",
+            "aliases": [
+              "ternary PM6:Y6:PC61BM blend [1:1:0.2]"
+            ],
+            "attributes": {
+              "ratio": "1:1:0.2",
+              "average_pce": "6.6%",
+              "average_ff": "47.3%",
+              "max_jsc": "20 mA/cm2",
+              "model_entity_type": "material_configuration"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to_binary",
+                "target": "12% higher JSC",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "fabricated_at",
+                "target": "100 °C",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ternary PM6:Y6:PC61BM blend [1:1.1:0.1]",
+            "entity_id": "ternary_pm6_y6_pc61bm_blend_1_1_1_0_1",
+            "entity_type": "other",
+            "aliases": [
+              "ternary PM6:Y6:PC61BM blend [1:1.1:0.1]"
+            ],
+            "attributes": {
+              "ratio": "1:1.1:0.1",
+              "average_pce": "6.7%",
+              "average_ff": "49.1%",
+              "model_entity_type": "material_configuration"
+            },
+            "relationships": [
+              {
+                "predicate": "outperforms_in_pce",
+                "target": "ternary PM6:Y6:PC61BM blend [1:1:0.2]",
+                "attributes": {},
+                "target_id": "ternary_pm6_y6_pc61bm_blend_1_1_0_2"
+              },
+              {
+                "predicate": "attributed_to",
+                "target": "higher average FF",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 binary devices",
+            "entity_id": "pm6_y6_binary_devices",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 binary devices"
+            ],
+            "attributes": {
+              "coating_temperature": "100 °C",
+              "concentration": "24 mg/mL",
+              "solvent": "O-XY",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "serves_as_baseline_for",
+                "target": "ternary PM6:Y6:PC61BM blend [1:1:0.2]",
+                "attributes": {},
+                "target_id": "ternary_pm6_y6_pc61bm_blend_1_1_0_2"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3454,
+          "end_word": 3933,
+          "word_count": 479,
+          "sha256": "56c280866d0d16cce1a7269efd60e134a9f3424099a1e2206af7a38c7ba7ab5c",
+          "sentence_minhash": [
+            213764341682665763,
+            1306423125707224,
+            89450601222235340,
+            90100587759830422,
+            133839408494452977,
+            62667647458868521,
+            123741237026114870,
+            313930167914164674,
+            266927695903760850,
+            243945572124720763,
+            67831053780325945,
+            165121444977496021,
+            21933493368060407,
+            111098460802827733,
+            320683728421291519,
+            75406061484379541
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'PC61BM'",
+          "normalized unsupported entity type 'material_configuration' for 'ternary PM6:Y6:PC61BM blend [1:1:0.2]'",
+          "normalized unsupported entity type 'material_configuration' for 'ternary PM6:Y6:PC61BM blend [1:1.1:0.1]'",
+          "normalized unsupported entity type 'device' for 'PM6:Y6 binary devices'"
+        ]
+      },
+      {
+        "chunk_index": 8,
+        "context_summary": "The study analyzes exciton dissociation and charge collection efficiencies in binary and ternary organic solar cells to explain performance improvements. It reports that adding PCBM enhances dissociation and collection probabilities, confirming better charge extraction in flexible, slot-die-coated devices. Stability tests show ternary devices retain 99.4% of initial efficiency after 1050 hours, while binary devices retain over 97% after 1500 hours.",
+        "entities": [
+          {
+            "name": "exciton dissociation efficiency (ηdiss)",
+            "entity_id": "exciton_dissociation_efficiency_diss",
+            "entity_type": "measurement",
+            "aliases": [
+              "exciton dissociation efficiency (ηdiss)"
+            ],
+            "attributes": {
+              "definition": "Calculated as Jsc/Jsat",
+              "binary_device_value": "93.7%",
+              "ternary_1:1:0.2_value": "96.3%",
+              "ternary_1:1.1:0.1_value": "95.7%"
+            },
+            "relationships": [
+              {
+                "predicate": "enhanced_by",
+                "target": "addition of PCBM",
+                "attributes": {
+                  "reason": "existence of additional and energetically favorable donor/acceptor interfaces"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "charge collection efficiency (ηcoll)",
+            "entity_id": "charge_collection_efficiency_coll",
+            "entity_type": "measurement",
+            "aliases": [
+              "charge collection efficiency (ηcoll)"
+            ],
+            "attributes": {
+              "definition": "Calculated as Jmax/Jsat",
+              "binary_device_value": "69.6%",
+              "ternary_1:1:0.2_value": "77.7%",
+              "ternary_1:1.1:0.1_value": "73.2%"
+            },
+            "relationships": [
+              {
+                "predicate": "improved_by",
+                "target": "small acceptor fullerene amount",
+                "attributes": {
+                  "context": "OSCs on flexible substrates fabricated using slot-die coating on a roll-platform"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "photocurrent density (Jph)",
+            "entity_id": "photocurrent_density_jph",
+            "entity_type": "measurement",
+            "aliases": [
+              "photocurrent density (Jph)"
+            ],
+            "attributes": {
+              "definition": "Difference between current density under illumination (JL) and dark current density (JD)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "effective voltage (Veff)",
+            "entity_id": "effective_voltage_veff",
+            "entity_type": "measurement",
+            "aliases": [
+              "effective voltage (Veff)"
+            ],
+            "attributes": {
+              "definition": "Voltage at zero Jph (or VOC) minus the applied voltage bias (Vappl)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "saturated current density (Jsat)",
+            "entity_id": "saturated_current_density_jsat",
+            "entity_type": "measurement",
+            "aliases": [
+              "saturated current density (Jsat)"
+            ],
+            "attributes": {
+              "definition": "Saturation value for Jph where generated excitons are fully collected",
+              "condition": "Normally reached when Veff > 2V"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ISOS-D-1 protocol",
+            "entity_id": "isos_d_1_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "ISOS-D-1 protocol"
+            ],
+            "attributes": {
+              "application": "Stability under dark storage"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ternary device stability",
+            "entity_id": "ternary_device_stability",
+            "entity_type": "measurement",
+            "aliases": [
+              "ternary device stability"
+            ],
+            "attributes": {
+              "retention_after_1050_hours": "99.4% of average initial value"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_improvement_in",
+                "target": "some devices after storage time",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "binary device stability",
+            "entity_id": "binary_device_stability",
+            "entity_type": "measurement",
+            "aliases": [
+              "binary device stability"
+            ],
+            "attributes": {
+              "retention_after_1500_hours": "more than 97% of initial average PCE"
+            },
+            "relationships": []
+          },
+          {
+            "name": "PM6:Y6-based OSCs",
+            "entity_id": "pm6_y6_based_oscs",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6-based OSCs"
+            ],
+            "attributes": {
+              "binary_average_pce": "5.8%",
+              "ternary_average_pce": "6.7%",
+              "champion_efficiency": "7.2%",
+              "fabrication_method": "slot-die coating on a roll-platform in open-air",
+              "solvent_system": "green solvents without additives",
+              "model_entity_type": "device"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrates_path_to",
+                "target": "upscaling production of OSCs based on PM6:Y6 system",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 8,
+          "start_word": 3933,
+          "end_word": 4398,
+          "word_count": 465,
+          "sha256": "3c35ac9a4b225ecadbc94b7c60e82a1e6ef921a9fe0dcf1ab2c184752aaebc38",
+          "sentence_minhash": [
+            5783195782540735,
+            1306423125707224,
+            115461717461310760,
+            201948566748835051,
+            69131663696577577,
+            99436724310786061,
+            175774020269814206,
+            234957041613298196,
+            34383880606747972,
+            92715222163426349,
+            78280491562202942,
+            18804687833942685,
+            51125582506972287,
+            906306679132868,
+            29116561381011342,
+            296703126451676242
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'device' for 'PM6:Y6-based OSCs'"
+        ]
+      },
+      {
+        "chunk_index": 9,
+        "context_summary": "The study identifies 100°C as the optimal temperature for hot slot-die coating to maximize power conversion efficiency by reducing bimolecular recombination. The optimal active layer thickness for the PM6:Y6 blend is determined to be approximately 200 nm.",
+        "entities": [
+          {
+            "name": "hot slot-die coating from hot solution",
+            "entity_id": "hot_slot_die_coating_from_hot_solution",
+            "entity_type": "method",
+            "aliases": [
+              "hot slot-die coating from hot solution"
+            ],
+            "attributes": {
+              "purpose": "address temperature aggregation behavior of the blend"
+            },
+            "relationships": [
+              {
+                "predicate": "maximizes",
+                "target": "PCE",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_matching_temperature",
+                "target": "100°C",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PM6:Y6 active layer",
+            "entity_id": "pm6_y6_active_layer",
+            "entity_type": "other",
+            "aliases": [
+              "PM6:Y6 active layer"
+            ],
+            "attributes": {
+              "optimal_thickness": "around 200 nm",
+              "model_entity_type": "material"
+            },
+            "relationships": [
+              {
+                "predicate": "coated_by",
+                "target": "hot slot-die coating from hot solution",
+                "attributes": {},
+                "target_id": "hot_slot_die_coating_from_hot_solution"
+              }
+            ]
+          },
+          {
+            "name": "bimolecular recombination",
+            "entity_id": "bimolecular_recombination",
+            "entity_type": "other",
+            "aliases": [
+              "bimolecular recombination"
+            ],
+            "attributes": {
+              "effect_at_100C": "reduced",
+              "model_entity_type": "physical_process"
+            },
+            "relationships": [
+              {
+                "predicate": "reduction_leads_to",
+                "target": "higher short-circuit current",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "short-circuit current",
+            "entity_id": "short_circuit_current",
+            "entity_type": "measurement",
+            "aliases": [
+              "short-circuit current",
+              "short-circuit current (JSC)"
+            ],
+            "attributes": {
+              "trend_at_100C": "higher"
+            },
+            "relationships": [
+              {
+                "predicate": "contributes_to",
+                "target": "maximized PCE",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 9,
+          "start_word": 4398,
+          "end_word": 4463,
+          "word_count": 65,
+          "sha256": "9f8323a7763213d5eac72f97440b2fea7617024d7465abc719107436d8a47c3b",
+          "sentence_minhash": [
+            474944895140767951,
+            7631789210009076,
+            40863640610520970,
+            201948566748835051,
+            133839408494452977,
+            428209587723997907,
+            407612569066353220,
+            122336056009715880,
+            125991694189146616,
+            243945572124720763,
+            424026378457377608,
+            784288559920140357,
+            63656278488967776,
+            354889809713339272,
+            320683728421291519,
+            75406061484379541
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'material' for 'PM6:Y6 active layer'",
+          "normalized unsupported entity type 'physical_process' for 'bimolecular recombination'"
+        ]
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "o_xylene",
+        "canonical_name": "o-xylene",
+        "aliases": [
+          "o-xylene",
+          "o-xylene (O-XY)"
+        ]
+      },
+      {
+        "canonical_id": "short_circuit_current",
+        "canonical_name": "short-circuit current",
+        "aliases": [
+          "short-circuit current",
+          "short-circuit current (JSC)"
+        ]
+      },
+      {
+        "canonical_id": "organic_solar_cells_oscs",
+        "canonical_name": "Organic Solar Cells (OSCs)",
+        "aliases": [
+          "Organic Solar Cells (OSCs)"
+        ]
+      },
+      {
+        "canonical_id": "spin_coating",
+        "canonical_name": "spin-coating",
+        "aliases": [
+          "spin-coating"
+        ]
+      },
+      {
+        "canonical_id": "slot_die_coating",
+        "canonical_name": "slot-die coating",
+        "aliases": [
+          "slot-die coating"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6",
+        "canonical_name": "PM6:Y6",
+        "aliases": [
+          "PM6:Y6"
+        ]
+      },
+      {
+        "canonical_id": "pcbm",
+        "canonical_name": "PCBM",
+        "aliases": [
+          "PCBM"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_pcbm",
+        "canonical_name": "PM6:Y6:PCBM",
+        "aliases": [
+          "PM6:Y6:PCBM"
+        ]
+      },
+      {
+        "canonical_id": "non_fullerene_acceptors_nfas",
+        "canonical_name": "non-fullerene acceptors (NFAs)",
+        "aliases": [
+          "non-fullerene acceptors (NFAs)"
+        ]
+      },
+      {
+        "canonical_id": "energy_payback_time_epbt",
+        "canonical_name": "Energy Payback Time (EPBT)",
+        "aliases": [
+          "Energy Payback Time (EPBT)"
+        ]
+      },
+      {
+        "canonical_id": "marcial_fernandez_castro",
+        "canonical_name": "Marcial Fernández Castro",
+        "aliases": [
+          "Marcial Fernández Castro"
+        ]
+      },
+      {
+        "canonical_id": "jean_truer",
+        "canonical_name": "Jean Truer",
+        "aliases": [
+          "Jean Truer"
+        ]
+      },
+      {
+        "canonical_id": "espindola_rodriguez",
+        "canonical_name": "Espíndola Rodríguez",
+        "aliases": [
+          "Espíndola Rodríguez"
+        ]
+      },
+      {
+        "canonical_id": "jens_wenzel",
+        "canonical_name": "Jens Wenzel",
+        "aliases": [
+          "Jens Wenzel"
+        ]
+      },
+      {
+        "canonical_id": "pm6",
+        "canonical_name": "PM6",
+        "aliases": [
+          "PM6"
+        ]
+      },
+      {
+        "canonical_id": "y6",
+        "canonical_name": "Y6",
+        "aliases": [
+          "Y6"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_blend",
+        "canonical_name": "PM6:Y6 blend",
+        "aliases": [
+          "PM6:Y6 blend"
+        ]
+      },
+      {
+        "canonical_id": "flexible_organic_solar_cells_oscs",
+        "canonical_name": "flexible organic solar cells (OSCs)",
+        "aliases": [
+          "flexible organic solar cells (OSCs)"
+        ]
+      },
+      {
+        "canonical_id": "zno_nanoparticle_ink",
+        "canonical_name": "ZnO nanoparticle ink",
+        "aliases": [
+          "ZnO nanoparticle ink"
+        ]
+      },
+      {
+        "canonical_id": "moo3",
+        "canonical_name": "MoO3",
+        "aliases": [
+          "MoO3"
+        ]
+      },
+      {
+        "canonical_id": "silver",
+        "canonical_name": "Silver",
+        "aliases": [
+          "Silver"
+        ]
+      },
+      {
+        "canonical_id": "slot_die_coating_setup",
+        "canonical_name": "slot-die coating setup",
+        "aliases": [
+          "slot-die coating setup"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_active_layer",
+        "canonical_name": "PM6:Y6 active layer",
+        "aliases": [
+          "PM6:Y6 active layer"
+        ]
+      },
+      {
+        "canonical_id": "moo3_hole_transport_layer",
+        "canonical_name": "MoO3 Hole Transport Layer",
+        "aliases": [
+          "MoO3 Hole Transport Layer"
+        ]
+      },
+      {
+        "canonical_id": "silver_back_electrode",
+        "canonical_name": "Silver back electrode",
+        "aliases": [
+          "Silver back electrode"
+        ]
+      },
+      {
+        "canonical_id": "inficon_xtm_2_system",
+        "canonical_name": "INFICON XTM/2 system",
+        "aliases": [
+          "INFICON XTM/2 system"
+        ]
+      },
+      {
+        "canonical_id": "solar_cell_fabrication_batch",
+        "canonical_name": "solar cell fabrication batch",
+        "aliases": [
+          "solar cell fabrication batch"
+        ]
+      },
+      {
+        "canonical_id": "activation_process",
+        "canonical_name": "activation process",
+        "aliases": [
+          "activation process"
+        ]
+      },
+      {
+        "canonical_id": "epxr_epoxy_based_glue",
+        "canonical_name": "EPXR epoxy-based glue",
+        "aliases": [
+          "EPXR epoxy-based glue"
+        ]
+      },
+      {
+        "canonical_id": "j_v_characterization_setup",
+        "canonical_name": "J-V characterization setup",
+        "aliases": [
+          "J-V characterization setup"
+        ]
+      },
+      {
+        "canonical_id": "qex10_system",
+        "canonical_name": "QEX10 system",
+        "aliases": [
+          "QEX10 system"
+        ]
+      },
+      {
+        "canonical_id": "ds95_50_afm_instrument",
+        "canonical_name": "DS95-50 AFM instrument",
+        "aliases": [
+          "DS95-50 AFM instrument"
+        ]
+      },
+      {
+        "canonical_id": "flexible_substrate",
+        "canonical_name": "flexible substrate",
+        "aliases": [
+          "flexible substrate"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_organic_solar_cells",
+        "canonical_name": "PM6:Y6 organic solar cells",
+        "aliases": [
+          "PM6:Y6 organic solar cells"
+        ]
+      },
+      {
+        "canonical_id": "slot_die_coating_temperature",
+        "canonical_name": "slot-die coating temperature",
+        "aliases": [
+          "slot-die coating temperature"
+        ]
+      },
+      {
+        "canonical_id": "thermal_annealing",
+        "canonical_name": "thermal annealing",
+        "aliases": [
+          "thermal annealing"
+        ]
+      },
+      {
+        "canonical_id": "fill_factor_ff",
+        "canonical_name": "fill factor (FF)",
+        "aliases": [
+          "fill factor (FF)"
+        ]
+      },
+      {
+        "canonical_id": "external_quantum_efficiency_eqe",
+        "canonical_name": "external quantum efficiency (EQE)",
+        "aliases": [
+          "external quantum efficiency (EQE)"
+        ]
+      },
+      {
+        "canonical_id": "solvent_drying_kinetics",
+        "canonical_name": "solvent drying kinetics",
+        "aliases": [
+          "solvent drying kinetics"
+        ]
+      },
+      {
+        "canonical_id": "power_conversion_efficiency_pce",
+        "canonical_name": "power conversion efficiency (PCE)",
+        "aliases": [
+          "power conversion efficiency (PCE)"
+        ]
+      },
+      {
+        "canonical_id": "100_c_coating_condition",
+        "canonical_name": "100 °C coating condition",
+        "aliases": [
+          "100 °C coating condition"
+        ]
+      },
+      {
+        "canonical_id": "120_c_coating_condition",
+        "canonical_name": "120 °C coating condition",
+        "aliases": [
+          "120 °C coating condition"
+        ]
+      },
+      {
+        "canonical_id": "bimolecular_recombination",
+        "canonical_name": "bimolecular recombination",
+        "aliases": [
+          "bimolecular recombination"
+        ]
+      },
+      {
+        "canonical_id": "trap_assisted_recombination",
+        "canonical_name": "trap-assisted recombination",
+        "aliases": [
+          "trap-assisted recombination"
+        ]
+      },
+      {
+        "canonical_id": "kt_q",
+        "canonical_name": "kT/q",
+        "aliases": [
+          "kT/q"
+        ]
+      },
+      {
+        "canonical_id": "optimal_coating_temperature",
+        "canonical_name": "optimal coating temperature",
+        "aliases": [
+          "optimal coating temperature"
+        ]
+      },
+      {
+        "canonical_id": "active_layer_thickness",
+        "canonical_name": "active layer thickness",
+        "aliases": [
+          "active layer thickness"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_solar_cells_with_217_nm_active_layer",
+        "canonical_name": "PM6:Y6 solar cells with 217 nm active layer",
+        "aliases": [
+          "PM6:Y6 solar cells with 217 nm active layer"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_solar_cells_with_101_nm_active_layer",
+        "canonical_name": "PM6:Y6 solar cells with 101 nm active layer",
+        "aliases": [
+          "PM6:Y6 solar cells with 101 nm active layer"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_solar_cells_with_116_nm_active_layer",
+        "canonical_name": "PM6:Y6 solar cells with 116 nm active layer",
+        "aliases": [
+          "PM6:Y6 solar cells with 116 nm active layer"
+        ]
+      },
+      {
+        "canonical_id": "pc61bm",
+        "canonical_name": "PC61BM",
+        "aliases": [
+          "PC61BM"
+        ]
+      },
+      {
+        "canonical_id": "ternary_pm6_y6_pc61bm_blend_1_1_0_2",
+        "canonical_name": "ternary PM6:Y6:PC61BM blend [1:1:0.2]",
+        "aliases": [
+          "ternary PM6:Y6:PC61BM blend [1:1:0.2]"
+        ]
+      },
+      {
+        "canonical_id": "ternary_pm6_y6_pc61bm_blend_1_1_1_0_1",
+        "canonical_name": "ternary PM6:Y6:PC61BM blend [1:1.1:0.1]",
+        "aliases": [
+          "ternary PM6:Y6:PC61BM blend [1:1.1:0.1]"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_binary_devices",
+        "canonical_name": "PM6:Y6 binary devices",
+        "aliases": [
+          "PM6:Y6 binary devices"
+        ]
+      },
+      {
+        "canonical_id": "exciton_dissociation_efficiency_diss",
+        "canonical_name": "exciton dissociation efficiency (ηdiss)",
+        "aliases": [
+          "exciton dissociation efficiency (ηdiss)"
+        ]
+      },
+      {
+        "canonical_id": "charge_collection_efficiency_coll",
+        "canonical_name": "charge collection efficiency (ηcoll)",
+        "aliases": [
+          "charge collection efficiency (ηcoll)"
+        ]
+      },
+      {
+        "canonical_id": "photocurrent_density_jph",
+        "canonical_name": "photocurrent density (Jph)",
+        "aliases": [
+          "photocurrent density (Jph)"
+        ]
+      },
+      {
+        "canonical_id": "effective_voltage_veff",
+        "canonical_name": "effective voltage (Veff)",
+        "aliases": [
+          "effective voltage (Veff)"
+        ]
+      },
+      {
+        "canonical_id": "saturated_current_density_jsat",
+        "canonical_name": "saturated current density (Jsat)",
+        "aliases": [
+          "saturated current density (Jsat)"
+        ]
+      },
+      {
+        "canonical_id": "isos_d_1_protocol",
+        "canonical_name": "ISOS-D-1 protocol",
+        "aliases": [
+          "ISOS-D-1 protocol"
+        ]
+      },
+      {
+        "canonical_id": "ternary_device_stability",
+        "canonical_name": "ternary device stability",
+        "aliases": [
+          "ternary device stability"
+        ]
+      },
+      {
+        "canonical_id": "binary_device_stability",
+        "canonical_name": "binary device stability",
+        "aliases": [
+          "binary device stability"
+        ]
+      },
+      {
+        "canonical_id": "pm6_y6_based_oscs",
+        "canonical_name": "PM6:Y6-based OSCs",
+        "aliases": [
+          "PM6:Y6-based OSCs"
+        ]
+      },
+      {
+        "canonical_id": "hot_slot_die_coating_from_hot_solution",
+        "canonical_name": "hot slot-die coating from hot solution",
+        "aliases": [
+          "hot slot-die coating from hot solution"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study addresses the 'lab-to-fab gap' in organic solar cells by using slot-die coating with a green solvent to manufacture flexible PM6:Y6 devices. Power conversion efficiencies of 6.3% and 7.2% were achieved for binary and ternary devices, respectively. The text highlights the advantages of slot-die coating over spin-coating for scalable, roll-to-roll production.\",\"entities\":[{\"name\":\"Organic Solar Cells (OSCs)\",\"type\":\"other\",\"attributes\":{\"lab_scale_efficiency_status\":\"highest efficiencies reached on active areas far below 0.1 cm2\",\"advantages\":\"low cost, mechanical flexibility, lightweight, semi-transparent capability, short Energy Payback Time (EPBT)\",\"challenge\":\"lab-to-fab gap due to efficiency difference between lab-scale and industry-compatible processes\",\"model_entity_type\":\"technology\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"silicon solar cells\",\"attributes\":{\"advantage\":\"roll-to-roll compatibility\"},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"non-fullerene acceptors (NFAs)\",\"attributes\":{},\"target_id\":\"non_fullerene_acceptors_nfas\"}]},{\"name\":\"spin-coating\",\"type\":\"method\",\"attributes\":{\"usage_status\":\"most commonly used fabrication technique\",\"limitations\":\"poor potential for upscaling, substantial material waste\"},\"relationships\":[]},{\"name\":\"slot-die coating\",\"type\":\"method\",\"attributes\":{\"suitability\":\"suitable for roll-to-roll manufacturing\",\"advantages\":\"one-dimensional pattern with well-defined width, almost no material waste\",\"preference_reason\":\"preferred for highest efficiency systems to minimize lab-to-fab gap\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"PM6:Y6 active layer coating\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6\",\"type\":\"other\",\"attributes\":{\"composition\":\"binary active layer\",\"solvent_used\":\"o-xylene (green solvent)\",\"additives\":\"none\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"achieved_efficiency\",\"target\":\"6.3%\",\"attributes\":{\"device_type\":\"binary\"},\"target_id\":null}]},{\"name\":\"o-xylene\",\"type\":\"other\",\"attributes\":{\"classification\":\"green solvent\",\"role\":\"solvent for PM6:Y6 ink\",\"model_entity_type\":\"chemical\"},\"relationships\":[]},{\"name\":\"PCBM\",\"type\":\"other\",\"attributes\":{\"role\":\"third component in ternary device\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"combined_with\",\"target\":\"PM6:Y6\",\"attributes\":{},\"target_id\":\"pm6_y6\"}]},{\"name\":\"PM6:Y6:PCBM\",\"type\":\"other\",\"attributes\":{\"composition\":\"ternary active layer\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"achieved_efficiency\",\"target\":\"7.2%\",\"attributes\":{\"device_type\":\"ternary\"},\"target_id\":null}]},{\"name\":\"non-fullerene acceptors (NFAs)\",\"type\":\"other\",\"attributes\":{\"properties\":\"allow fine-tuning of energy levels and light absorption, reduce VOC losses, stronger and wider visible-NIR absorption\",\"model_entity_type\":\"material_class\"},\"relationships\":[{\"predicate\":\"contribute_to\",\"target\":\"higher efficiencies in OSCs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Energy Payback Time (EPBT)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"time needed to give back the energy used for manufacturing the device\",\"typical_duration_for_OSCs\":\"order of weeks\"},\"relationships\":[{\"predicate\":\"related_to\",\"target\":\"small amount of energy and material needed for manufacture\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Marcial Fernández Castro\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Technical University of Denmark\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Jean Truer\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Technical University of Denmark\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Espíndola Rodríguez\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Technical University of Denmark\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Jens Wenzel\",\"type\":\"person\",\"attributes\":{\"affiliation\":\"Technical University of Denmark\"},\"relationships\":[{\"predicate\":\"author_of\",\"target\":\"Environmentally friendly and roll-processed flexible organic solar cells based on PM6:Y6\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study introduces PM6 and Y6 as high-efficiency organic solar cell materials with complementary absorption spectra, suitable for scalable manufacturing. It details the fabrication of flexible, slot-die coated devices using a green solvent (o-xylene) without additives, achieving efficiencies up to 7% in ternary configurations. The devices demonstrate high stability, retaining over 99% of initial efficiency after 1000 hours of storage.\",\"entities\":[{\"name\":\"PM6\",\"type\":\"other\",\"attributes\":{\"role\":\"donor material\",\"batch_number\":\"YY19260CH100\",\"supplier\":\"1-Material Inc.\",\"absorption_range\":\"460-650 nm\",\"property\":\"exhibits temperature-dependent aggregation (TDA) behavior\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"absorbs_at\",\"target\":\"highest spectral irradiance point of the solar spectrum\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"combined_with\",\"target\":\"Y6\",\"attributes\":{},\"target_id\":\"y6\"}]},{\"name\":\"Y6\",\"type\":\"other\",\"attributes\":{\"role\":\"acceptor material\",\"batch_number\":\"DW7038S\",\"supplier\":\"1-Material Inc.\",\"absorption_range\":\"660-870 nm\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"complements_absorption_of\",\"target\":\"PM6 in the red part of the spectrum\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"combined_with\",\"target\":\"PM6\",\"attributes\":{},\"target_id\":\"pm6\"}]},{\"name\":\"PM6:Y6 blend\",\"type\":\"other\",\"attributes\":{\"ratio\":\"1:1\",\"solvent\":\"o-xylene (O-XY)\",\"additives\":\"none\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"candidate_for\",\"target\":\"minimizing the gap between efficiencies obtained using different manufacturing processes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"coated_via\",\"target\":\"slot-die coating\",\"attributes\":{},\"target_id\":\"slot_die_coating\"}]},{\"name\":\"o-xylene\",\"type\":\"other\",\"attributes\":{\"purity\":\"≥ 98%\",\"supplier\":\"Sigma-Aldrich\",\"classification\":\"green solvent\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"used_as_solvent_for\",\"target\":\"PM6:Y6 active layer\",\"attributes\":{},\"target_id\":\"pm6_y6_active_layer\"}]},{\"name\":\"slot-die coating\",\"type\":\"method\",\"attributes\":{\"compatibility\":\"roll-to-roll manufacturing\",\"waste\":\"almost no material waste\",\"condition\":\"open-air\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"PM6:Y6 active layer\",\"attributes\":{},\"target_id\":\"pm6_y6_active_layer\"},{\"predicate\":\"requires_heating_of\",\"target\":\"substrate, syringe, tube, and slot-die head\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"flexible organic solar cells (OSCs)\",\"type\":\"other\",\"attributes\":{\"substrate\":\"pre-patterned ITO-coated polyethylene terephthalate (PET)\",\"structure\":\"inverted geometry: ITO/ZnO/PM6:Y6/MoO3/Ag\",\"efficiency_ternary\":\"up to 7%\",\"stability\":\"over 99% of initial efficiency after 1000 h storage\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"fabricated_using\",\"target\":\"slot-die coating\",\"attributes\":{},\"target_id\":\"slot_die_coating\"},{\"predicate\":\"uses_active_layer\",\"target\":\"PM6:Y6\",\"attributes\":{},\"target_id\":\"pm6_y6\"}]},{\"name\":\"PCBM\",\"type\":\"other\",\"attributes\":{\"role\":\"fullerene acceptor in ternary device\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"added_to\",\"target\":\"PM6:Y6 blend\",\"attributes\":{},\"target_id\":\"pm6_y6_blend\"}]},{\"name\":\"ZnO nanoparticle ink\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Sigma-Aldrich\",\"role\":\"Electron Transport Layer (ETL)\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"coated_using\",\"target\":\"homemade roll-coater\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MoO3\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Kurt J. Lesker Co.\",\"form\":\"pellets\",\"role\":\"Hole Transport Layer (HTL)\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"deposited_by\",\"target\":\"thermal evaporation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silver\",\"type\":\"other\",\"attributes\":{\"supplier\":\"Sigma-Aldrich\",\"purity\":\"pure\",\"role\":\"back electrode\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"deposited_by\",\"target\":\"thermal evaporation\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The fabrication process utilizes a controlled slot-die setup where the active layer is coated at varying temperatures and concentrations, followed by thermal evaporation of transport layers and electrodes. An activation step involving reverse bias current is performed before encapsulation with an epoxy-based glue. Device characterization involves J-V measurements under AM1.5G illumination using a defined aperture area.\",\"entities\":[{\"name\":\"slot-die coating setup\",\"type\":\"method\",\"attributes\":{\"control_parameters\":\"drum speed, drum heat, drum-to-head distance\",\"ink_temperature_requirement\":\"hot tube required to keep active layer ink hot\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"coating ZnO nanoparticle ink and PM6:Y6 active layer\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ZnO nanoparticle ink\",\"type\":\"other\",\"attributes\":{\"function\":\"Electron Transport Layer (ETL)\",\"coating_substrate_temperature\":\"75 °C\",\"coating_flow_rate\":\"0.06 mL/min\",\"coating_drum_speed\":\"1.08 m/min\",\"annealing_temperature\":\"100 °C\",\"annealing_duration\":\"10 min\",\"annealing_atmosphere\":\"air\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"coated_by\",\"target\":\"slot-die coating setup\",\"attributes\":{},\"target_id\":\"slot_die_coating_setup\"}]},{\"name\":\"PM6:Y6 active layer\",\"type\":\"other\",\"attributes\":{\"donor_acceptor_ratio\":\"1:1\",\"tested_coating_temperatures\":\"60, 80, 100, 120 °C\",\"tested_concentrations\":\"12, 16, 20, 24, 28 mg/mL\",\"coating_drum_speed\":\"1.5 m/min\",\"coating_flow_rate\":\"0.12 mL/min\",\"temperature_control\":\"head, syringe, drum, and tube kept at same temperature\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"coated_by\",\"target\":\"slot-die coating setup\",\"attributes\":{},\"target_id\":\"slot_die_coating_setup\"},{\"predicate\":\"based_on\",\"target\":\"PM6 and Y6 materials\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MoO3 Hole Transport Layer\",\"type\":\"other\",\"attributes\":{\"thickness\":\"10 nm\",\"deposition_method\":\"thermal evaporation under vacuum\",\"base_pressure\":\"2 x 10^-5 mbar\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"evaporated_through\",\"target\":\"shadow mask\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Silver back electrode\",\"type\":\"other\",\"attributes\":{\"thickness\":\"150 nm\",\"deposition_method\":\"thermal evaporation under vacuum\",\"base_pressure\":\"2 x 10^-5 mbar\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"evaporated_from\",\"target\":\"tungsten boats\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"INFICON XTM/2 system\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"instrument\"},\"relationships\":[{\"predicate\":\"monitors\",\"target\":\"deposition rate and thickness\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"solar cell fabrication batch\",\"type\":\"other\",\"attributes\":{\"source_material\":\"one-meter-long active layer stripe\",\"max_cells_per_evaporation\":\"24\",\"min_devices_encapsulated\":\"8\",\"approximate_active_area\":\"0.8 cm^2\",\"model_entity_type\":\"process_step\"},\"relationships\":[]},{\"name\":\"activation process\",\"type\":\"method\",\"attributes\":{\"timing\":\"before encapsulation\",\"method\":\"reverse bias current\",\"voltage\":\"-5 V\",\"max_current\":\"100 mA\",\"purpose\":\"stabilization of J-V curve\"},\"relationships\":[]},{\"name\":\"EPXR epoxy-based glue\",\"type\":\"other\",\"attributes\":{\"composition\":\"bisphenol A diglycidyl ether and Chissonox 221 monomers\",\"function\":\"encapsulation and oxygen/humidity barrier\",\"curing_method\":\"UV light\",\"curing_duration\":\"approximately 5 min\",\"curing_temperature\":\"66 ± 0.5 °C\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"applied_with\",\"target\":\"two glass slides\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"J-V characterization setup\",\"type\":\"method\",\"attributes\":{\"source_meter\":\"Keithley 2400\",\"voltage_step\":\"50 mV reverse to forward\",\"illumination\":\"AM1.5G\",\"solar_simulator_calibration\":\"1000 W/m^2\",\"reference_cell\":\"monocrystalline silicon certified by Fraunhofer\",\"aperture_area\":\"0.3996 cm^2\",\"shadow_mask_model\":\"Ossila E2002A1\",\"statistical_sample_size\":\"eight devices\"},\"relationships\":[]}]},{\"context_summary\":\"The study characterizes PM6:Y6 organic solar cells using EQE, absorbance, and AFM measurements, noting strong absorption between 460 and 870 nm. It demonstrates the feasibility of slot-die coating on flexible substrates using a green solvent without additives. The results indicate that coating temperature significantly influences active layer morphology and device performance.\",\"entities\":[{\"name\":\"QEX10 system\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"PV Measurements Inc.\",\"measurement_range\":\"300 to 1100 nm\",\"step_size\":\"5 nm\",\"calibration_source\":\"Si photodiode\",\"model_entity_type\":\"measurement_instrument\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"external quantum efficiency (EQE)\",\"attributes\":{},\"target_id\":\"external_quantum_efficiency_eqe\"},{\"predicate\":\"measures\",\"target\":\"absorbance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DS95-50 AFM instrument\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"Danish Micro Engineering (DME)\",\"scan_dimension\":\"5 × 5 µm²\",\"mode\":\"noncontact\",\"model_entity_type\":\"measurement_instrument\"},\"relationships\":[{\"predicate\":\"measures\",\"target\":\"thickness\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6 active layer\",\"type\":\"other\",\"attributes\":{\"absorption_range\":\"460 nm to 870 nm\",\"PM6_absorption_region\":\"460-650 nm\",\"Y6_absorption_region\":\"660-870 nm\",\"solvent\":\"o-xylene (O-XY)\",\"concentration\":\"16 mg/mL\",\"donor_acceptor_ratio\":\"1:1\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"coated_by\",\"target\":\"slot-die coating\",\"attributes\":{},\"target_id\":\"slot_die_coating\"},{\"predicate\":\"deposited_on\",\"target\":\"flexible substrate\",\"attributes\":{},\"target_id\":\"flexible_substrate\"},{\"predicate\":\"morphology_influenced_by\",\"target\":\"coating temperature\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"slot-die coating\",\"type\":\"method\",\"attributes\":{\"environment\":\"open air\",\"temperature_range_screened\":\"60 °C to 120 °C\",\"flow_rate\":\"fixed for homogeneity\",\"drum_speed\":\"fixed for homogeneity\"},\"relationships\":[{\"predicate\":\"applied_to\",\"target\":\"PM6:Y6 active layer\",\"attributes\":{},\"target_id\":\"pm6_y6_active_layer\"},{\"predicate\":\"affects\",\"target\":\"drying kinetics of solvent\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"affects\",\"target\":\"donor and acceptor packing\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"flexible substrate\",\"type\":\"other\",\"attributes\":{\"type\":\"pre-patterned ITO-coated polyethylene terephthalate (PET)\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"supports\",\"target\":\"PM6:Y6 active layer\",\"attributes\":{},\"target_id\":\"pm6_y6_active_layer\"}]}]},{\"context_summary\":\"The study investigates the impact of slot-die coating temperature on the performance of PM6:Y6 organic solar cells, finding that 100 °C yields optimal efficiency. While higher temperatures improve carrier collection and short-circuit current, they reduce fill factor due to edge aggregation caused by rapid solvent drying. Thermal annealing improves devices coated at lower temperatures but does not benefit those coated at higher temperatures.\",\"entities\":[{\"name\":\"PM6:Y6 organic solar cells\",\"type\":\"other\",\"attributes\":{\"configuration\":\"inverted\",\"active_layer\":\"PM6:Y6\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"fabricated_by\",\"target\":\"slot-die coating\",\"attributes\":{},\"target_id\":\"slot_die_coating\"},{\"predicate\":\"performance_optimized_at\",\"target\":\"100 °C coating temperature\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"slot-die coating temperature\",\"type\":\"other\",\"attributes\":{\"tested_range\":\"60 °C to 120 °C\",\"optimal_value\":\"100 °C\",\"model_entity_type\":\"process_parameter\"},\"relationships\":[{\"predicate\":\"affects\",\"target\":\"solvent drying kinetics\",\"attributes\":{},\"target_id\":\"solvent_drying_kinetics\"},{\"predicate\":\"influences\",\"target\":\"active layer morphology\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"correlates_with\",\"target\":\"power conversion efficiency trend\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"thermal annealing\",\"type\":\"other\",\"attributes\":{\"conditions\":\"120 °C for 3 minutes\",\"application\":\"encapsulated devices\",\"model_entity_type\":\"process_step\"},\"relationships\":[{\"predicate\":\"improves_short_circuit_current_of\",\"target\":\"devices coated at 60 °C and 80 °C\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"does_not_improve\",\"target\":\"devices coated at 100 °C and 120 °C\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"enhanced polymer crystallinity\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"fill factor (FF)\",\"type\":\"measurement\",\"attributes\":{\"average_at_120C\":\"42.2%\",\"average_at_100C\":\"47.10%\",\"general_trend\":\"remains around 45%\"},\"relationships\":[{\"predicate\":\"decreased_by\",\"target\":\"material aggregation at edges\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"impacted_by\",\"target\":\"inhomogeneities along the stripe\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"short-circuit current\",\"type\":\"measurement\",\"attributes\":{\"trend\":\"higher at higher coating temperatures\"},\"relationships\":[{\"predicate\":\"indicates\",\"target\":\"better carrier collection\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"external quantum efficiency (EQE)\",\"type\":\"measurement\",\"attributes\":{},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"higher coating temperatures\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"solvent drying kinetics\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"physical_process\"},\"relationships\":[{\"predicate\":\"accelerated_by\",\"target\":\"temperatures above 100 °C\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"causes\",\"target\":\"aggregation of materials on both edges of the active layer\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"power conversion efficiency (PCE)\",\"type\":\"measurement\",\"attributes\":{\"trend\":\"improves towards higher temperature, saturates around 100 °C\"},\"relationships\":[{\"predicate\":\"maximized_at\",\"target\":\"100 °C coating temperature\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study analyzes the impact of slot-die coating temperature on the performance of PM6:Y6 organic solar cells, identifying 100 °C as the optimal condition. Higher temperatures above 100 °C cause rapid solvent drying and material aggregation, reducing fill factor. Recombination analysis reveals that while bimolecular recombination is minimized at 100 °C, trap-assisted recombination remains the dominant mechanism across all tested temperatures.\",\"entities\":[{\"name\":\"PM6:Y6 organic solar cells\",\"type\":\"other\",\"attributes\":{\"active_layer\":\"PM6:Y6\",\"fabrication_method\":\"slot-die coating\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"optimal_coating_temperature\",\"target\":\"100 °C\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"exhibits\",\"target\":\"trap-assisted recombination\",\"attributes\":{\"status\":\"dominant mechanism\"},\"target_id\":\"trap_assisted_recombination\"}]},{\"name\":\"100 °C coating condition\",\"type\":\"other\",\"attributes\":{\"temperature\":\"100 °C\",\"model_entity_type\":\"experimental_condition\"},\"relationships\":[{\"predicate\":\"yields_highest_average_pce\",\"target\":\"PM6:Y6 organic solar cells\",\"attributes\":{},\"target_id\":\"pm6_y6_organic_solar_cells\"},{\"predicate\":\"minimizes\",\"target\":\"bimolecular recombination\",\"attributes\":{\"s_value\":\"0.978\"},\"target_id\":\"bimolecular_recombination\"}]},{\"name\":\"120 °C coating condition\",\"type\":\"other\",\"attributes\":{\"temperature\":\"120 °C\",\"model_entity_type\":\"experimental_condition\"},\"relationships\":[{\"predicate\":\"causes\",\"target\":\"material aggregation at active layer edges\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"results_in_lowest_average_fill_factor\",\"target\":\"PM6:Y6 organic solar cells\",\"attributes\":{\"value\":\"42.2%\"},\"target_id\":\"pm6_y6_organic_solar_cells\"}]},{\"name\":\"bimolecular recombination\",\"type\":\"other\",\"attributes\":{\"analysis_method\":\"light intensity dependence of short-circuit current (JSC)\",\"model_entity_type\":\"physical_process\"},\"relationships\":[{\"predicate\":\"indicated_by\",\"target\":\"exponential factor S\",\"attributes\":{\"ideal_value\":\"1\"},\"target_id\":null},{\"predicate\":\"minimized_at\",\"target\":\"100 °C coating condition\",\"attributes\":{},\"target_id\":\"100_c_coating_condition\"}]},{\"name\":\"trap-assisted recombination\",\"type\":\"other\",\"attributes\":{\"analysis_method\":\"slope of VOC versus ln(Pin)\",\"dominance_indicator\":\"slope values higher than kT/q\",\"model_entity_type\":\"physical_process\"},\"relationships\":[{\"predicate\":\"is_dominant_in\",\"target\":\"PM6:Y6 organic solar cells\",\"attributes\":{},\"target_id\":\"pm6_y6_organic_solar_cells\"}]},{\"name\":\"kT/q\",\"type\":\"other\",\"attributes\":{\"definition\":\"Boltzmann constant times absolute temperature divided by element charge\",\"model_entity_type\":\"physical_constant\"},\"relationships\":[{\"predicate\":\"threshold_for\",\"target\":\"second-order recombination\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The optimal coating temperature for PM6:Y6 solar cells was determined to be 100 °C based on power conversion efficiency, layer homogeneity, and the elimination of thermal annealing. Active layer thickness was optimized between 101 nm and 217 nm, with 217 nm yielding the highest average efficiency due to increased light absorption and reduced bimolecular recombination.\",\"entities\":[{\"name\":\"optimal coating temperature\",\"type\":\"measurement\",\"attributes\":{\"value\":\"100 °C\"},\"relationships\":[{\"predicate\":\"selected_for\",\"target\":\"PM6:Y6 active layer coating\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"justified_by\",\"target\":\"higher PCE, ease of coating homogeneous layer, lack of extra thermal annealing steps\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"active layer thickness\",\"type\":\"concept\",\"attributes\":{\"investigated_range\":\"101 nm to 217 nm\",\"effect_of_thick_layer\":\"increased light absorption, increased device robustness for roll-to-roll\",\"effect_of_thin_layer\":\"enables semi-transparent devices, reduces charge carrier pathways, decreases recombination probability\"},\"relationships\":[{\"predicate\":\"optimized_in\",\"target\":\"PM6:Y6-based solar cells\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6 solar cells with 217 nm active layer\",\"type\":\"other\",\"attributes\":{\"ink_concentration\":\"24 mg/ml\",\"highest_pce\":\"6.3%\",\"highest_ff\":\"49.0%\",\"average_pce\":\"5.8%\",\"bimolecular_recombination_slope\":\"0.987\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"exhibits_lowest\",\"target\":\"charge-transport limited behavior\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"coated_at\",\"target\":\"100 °C\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6 solar cells with 101 nm active layer\",\"type\":\"other\",\"attributes\":{\"average_ff\":\"42.0%\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"has_thinnest_active_layer\",\"target\":\"101 nm\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6 solar cells with 116 nm active layer\",\"type\":\"other\",\"attributes\":{\"average_ff\":\"47.1%\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"shows_ff_improvement_over\",\"target\":\"PM6:Y6 solar cells with 101 nm active layer\",\"attributes\":{},\"target_id\":\"pm6_y6_solar_cells_with_101_nm_active_layer\"}]},{\"name\":\"PM6:Y6 blend\",\"type\":\"other\",\"attributes\":{\"donor_max_absorption\":\"625 nm\",\"acceptor_max_absorption\":\"820 nm\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"maintains_high_performance\",\"target\":\"thick layers\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study identifies trap-assisted recombination as a dominant loss mechanism in open-air processed PM6:Y6 solar cells due to impurities and interface defects. Introducing PC61BM as a ternary component enhances electron mobility and creates an energy cascade that boosts short-circuit current and overall efficiency. The optimal ternary blend ratios tested were [1:1:0.2] and [1:1.1:0.1], with the latter achieving a slightly higher average power conversion efficiency due to improved fill factor.\",\"entities\":[{\"name\":\"trap-assisted recombination\",\"type\":\"other\",\"attributes\":{\"mechanism\":\"electrons and holes recombine in trap states or recombination centers\",\"causes\":\"impurities in materials or interfaces\",\"observation_condition\":\"open-circuit conditions\"},\"relationships\":[{\"predicate\":\"observed_in\",\"target\":\"PM6:Y6 flexible devices\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"attributed_to\",\"target\":\"open-air processing without cleanroom or glovebox\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PC61BM\",\"type\":\"other\",\"attributes\":{\"role\":\"complementary acceptor\",\"lumo_level\":\"between -3.7 and -3.9 eV\",\"properties\":\"better electron mobility, more balanced charge transport, weak and broad absorption\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"added_to\",\"target\":\"PM6:Y6 blend\",\"attributes\":{},\"target_id\":\"pm6_y6_blend\"},{\"predicate\":\"creates_energy_cascade_between\",\"target\":\"LUMO levels of PM6 and Y6\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"enhances\",\"target\":\"JSC and VOC\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ternary PM6:Y6:PC61BM blend [1:1:0.2]\",\"type\":\"other\",\"attributes\":{\"ratio\":\"1:1:0.2\",\"average_pce\":\"6.6%\",\"average_ff\":\"47.3%\",\"max_jsc\":\"20 mA/cm2\",\"model_entity_type\":\"material_configuration\"},\"relationships\":[{\"predicate\":\"compared_to_binary\",\"target\":\"12% higher JSC\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"fabricated_at\",\"target\":\"100 °C\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ternary PM6:Y6:PC61BM blend [1:1.1:0.1]\",\"type\":\"other\",\"attributes\":{\"ratio\":\"1:1.1:0.1\",\"average_pce\":\"6.7%\",\"average_ff\":\"49.1%\",\"model_entity_type\":\"material_configuration\"},\"relationships\":[{\"predicate\":\"outperforms_in_pce\",\"target\":\"ternary PM6:Y6:PC61BM blend [1:1:0.2]\",\"attributes\":{},\"target_id\":\"ternary_pm6_y6_pc61bm_blend_1_1_0_2\"},{\"predicate\":\"attributed_to\",\"target\":\"higher average FF\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6 binary devices\",\"type\":\"other\",\"attributes\":{\"coating_temperature\":\"100 °C\",\"concentration\":\"24 mg/mL\",\"solvent\":\"O-XY\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"serves_as_baseline_for\",\"target\":\"ternary PM6:Y6:PC61BM blend [1:1:0.2]\",\"attributes\":{},\"target_id\":\"ternary_pm6_y6_pc61bm_blend_1_1_0_2\"}]}]},{\"context_summary\":\"The study analyzes exciton dissociation and charge collection efficiencies in binary and ternary organic solar cells to explain performance improvements. It reports that adding PCBM enhances dissociation and collection probabilities, confirming better charge extraction in flexible, slot-die-coated devices. Stability tests show ternary devices retain 99.4% of initial efficiency after 1050 hours, while binary devices retain over 97% after 1500 hours.\",\"entities\":[{\"name\":\"exciton dissociation efficiency (ηdiss)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Calculated as Jsc/Jsat\",\"binary_device_value\":\"93.7%\",\"ternary_1:1:0.2_value\":\"96.3%\",\"ternary_1:1.1:0.1_value\":\"95.7%\"},\"relationships\":[{\"predicate\":\"enhanced_by\",\"target\":\"addition of PCBM\",\"attributes\":{\"reason\":\"existence of additional and energetically favorable donor/acceptor interfaces\"},\"target_id\":null}]},{\"name\":\"charge collection efficiency (ηcoll)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Calculated as Jmax/Jsat\",\"binary_device_value\":\"69.6%\",\"ternary_1:1:0.2_value\":\"77.7%\",\"ternary_1:1.1:0.1_value\":\"73.2%\"},\"relationships\":[{\"predicate\":\"improved_by\",\"target\":\"small acceptor fullerene amount\",\"attributes\":{\"context\":\"OSCs on flexible substrates fabricated using slot-die coating on a roll-platform\"},\"target_id\":null}]},{\"name\":\"photocurrent density (Jph)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Difference between current density under illumination (JL) and dark current density (JD)\"},\"relationships\":[]},{\"name\":\"effective voltage (Veff)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Voltage at zero Jph (or VOC) minus the applied voltage bias (Vappl)\"},\"relationships\":[]},{\"name\":\"saturated current density (Jsat)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Saturation value for Jph where generated excitons are fully collected\",\"condition\":\"Normally reached when Veff > 2V\"},\"relationships\":[]},{\"name\":\"ISOS-D-1 protocol\",\"type\":\"method\",\"attributes\":{\"application\":\"Stability under dark storage\"},\"relationships\":[]},{\"name\":\"ternary device stability\",\"type\":\"measurement\",\"attributes\":{\"retention_after_1050_hours\":\"99.4% of average initial value\"},\"relationships\":[{\"predicate\":\"observed_improvement_in\",\"target\":\"some devices after storage time\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"binary device stability\",\"type\":\"measurement\",\"attributes\":{\"retention_after_1500_hours\":\"more than 97% of initial average PCE\"},\"relationships\":[]},{\"name\":\"PM6:Y6-based OSCs\",\"type\":\"other\",\"attributes\":{\"binary_average_pce\":\"5.8%\",\"ternary_average_pce\":\"6.7%\",\"champion_efficiency\":\"7.2%\",\"fabrication_method\":\"slot-die coating on a roll-platform in open-air\",\"solvent_system\":\"green solvents without additives\",\"model_entity_type\":\"device\"},\"relationships\":[{\"predicate\":\"demonstrates_path_to\",\"target\":\"upscaling production of OSCs based on PM6:Y6 system\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study identifies 100°C as the optimal temperature for hot slot-die coating to maximize power conversion efficiency by reducing bimolecular recombination. The optimal active layer thickness for the PM6:Y6 blend is determined to be approximately 200 nm.\",\"entities\":[{\"name\":\"hot slot-die coating from hot solution\",\"type\":\"method\",\"attributes\":{\"purpose\":\"address temperature aggregation behavior of the blend\"},\"relationships\":[{\"predicate\":\"maximizes\",\"target\":\"PCE\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"requires_matching_temperature\",\"target\":\"100°C\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PM6:Y6 active layer\",\"type\":\"other\",\"attributes\":{\"optimal_thickness\":\"around 200 nm\",\"model_entity_type\":\"material\"},\"relationships\":[{\"predicate\":\"coated_by\",\"target\":\"hot slot-die coating from hot solution\",\"attributes\":{},\"target_id\":\"hot_slot_die_coating_from_hot_solution\"}]},{\"name\":\"bimolecular recombination\",\"type\":\"other\",\"attributes\":{\"effect_at_100C\":\"reduced\",\"model_entity_type\":\"physical_process\"},\"relationships\":[{\"predicate\":\"reduction_leads_to\",\"target\":\"higher short-circuit current\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"short-circuit current\",\"type\":\"measurement\",\"attributes\":{\"trend_at_100C\":\"higher\"},\"relationships\":[{\"predicate\":\"contributes_to\",\"target\":\"maximized PCE\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

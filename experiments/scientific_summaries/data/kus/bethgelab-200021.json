@@ -1,0 +1,2632 @@
+{
+  "document_id": "bethgelab-200021",
+  "fulltext_sha256": "aa7c3ced0095dfd12cb4e186f48684b79bc4bba351a31f42602b16e434d00d21",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "77ea2ddd30758d4f4618b648d11480c1eda4712ba301d93d882deabce330843c",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study investigates the transcriptional regulation of MIR196A by estrogen and its role as a prognostic biomarker in ER+ breast cancer. MIR196A is transcribed from two distinct genomic loci and targets genes involved in apoptosis, angiogenesis, and cell cycle progression. The research demonstrates that MIR196A expression is dynamically controlled by long-range interactions between ERα-bound enhancers and promoters.",
+        "entities": [
+          {
+            "name": "MIR196A",
+            "entity_id": "mir196a",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A"
+            ],
+            "attributes": {
+              "aliases": "miR-196a",
+              "function": "post-transcriptional regulator",
+              "cancer_role": "oncogene",
+              "prognostic_value": "robust prognostic factor for advanced and post-menopausal ER+ disease",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "transcribed_from",
+                "target": "HOXC locus (Chr12, gene MIR196A2)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "transcribed_from",
+                "target": "HOXB locus (Chr17, gene MIR196A1)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "regulated_by",
+                "target": "ERα",
+                "attributes": {},
+                "target_id": "er"
+              },
+              {
+                "predicate": "targets",
+                "target": "HOX genes",
+                "attributes": {},
+                "target_id": "hox_genes"
+              },
+              {
+                "predicate": "targets",
+                "target": "Fox genes",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "targets",
+                "target": "Cdk inhibitors",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "targets",
+                "target": "annexins",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "targets",
+                "target": "ANXA1",
+                "attributes": {},
+                "target_id": "anxa1"
+              },
+              {
+                "predicate": "targets",
+                "target": "HOXA5",
+                "attributes": {},
+                "target_id": "hoxa5"
+              },
+              {
+                "predicate": "associated_with",
+                "target": "breast cancer risk and progression",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "overexpressed_in",
+                "target": "breast tumours",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXC locus",
+            "entity_id": "hoxc_locus",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC locus"
+            ],
+            "attributes": {
+              "chromosome": "Chr12 in humans",
+              "gene": "MIR196A2",
+              "position_relative_to_HOXC10": "downstream",
+              "model_entity_type": "genomic_location"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "MIR196A2",
+                "attributes": {},
+                "target_id": "mir196a2"
+              }
+            ]
+          },
+          {
+            "name": "HOXB locus",
+            "entity_id": "hoxb_locus",
+            "entity_type": "other",
+            "aliases": [
+              "HOXB locus"
+            ],
+            "attributes": {
+              "chromosome": "Chr17 in humans",
+              "gene": "MIR196A1",
+              "position_relative_to_HOXB9": "upstream",
+              "model_entity_type": "genomic_location"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "MIR196A1",
+                "attributes": {},
+                "target_id": "mir196a1"
+              }
+            ]
+          },
+          {
+            "name": "ERα",
+            "entity_id": "er",
+            "entity_type": "other",
+            "aliases": [
+              "ERα"
+            ],
+            "attributes": {
+              "full_name": "Estrogen Receptor alpha",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "promoter and enhancer elements of MIR196A",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "mediates",
+                "target": "long range transcriptional regulation of MIR196A",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ANXA1",
+            "entity_id": "anxa1",
+            "entity_type": "other",
+            "aliases": [
+              "ANXA1"
+            ],
+            "attributes": {
+              "full_name": "Annexin-1",
+              "function": "mediator of apoptosis",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "targeted_by",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              },
+              {
+                "predicate": "response_to",
+                "target": "VEGF",
+                "attributes": {},
+                "target_id": "vegf"
+              }
+            ]
+          },
+          {
+            "name": "VEGF",
+            "entity_id": "vegf",
+            "entity_type": "other",
+            "aliases": [
+              "VEGF"
+            ],
+            "attributes": {
+              "full_name": "vascular endothelium growth factor",
+              "property": "pro-angiogenic",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "triggers_response_in",
+                "target": "MIR196A targeting of ANXA1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXA5",
+            "entity_id": "hoxa5",
+            "entity_type": "other",
+            "aliases": [
+              "HOXA5"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "targeted_by",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              },
+              {
+                "predicate": "inhibits",
+                "target": "growth, migration and invasion of non-small cell lung cancer cell line",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "rs116149130",
+            "entity_id": "rs116149130",
+            "entity_type": "other",
+            "aliases": [
+              "rs116149130"
+            ],
+            "attributes": {
+              "type": "SNP",
+              "location": "within MIR196A2 gene",
+              "model_entity_type": "genetic_variant"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "decreased risk of breast cancer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MicroRNAs",
+            "entity_id": "micrornas",
+            "entity_type": "other",
+            "aliases": [
+              "MicroRNAs"
+            ],
+            "attributes": {
+              "structure": "short non-coding RNAs",
+              "function": "post-transcriptional regulation of gene expression",
+              "disease_association": "rare inherited syndromes and cancers",
+              "model_entity_type": "molecule_class"
+            },
+            "relationships": [
+              {
+                "predicate": "regulated_by",
+                "target": "germline and somatic mutations and epigenetic deregulation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "basis_for",
+                "target": "antagomiR technology",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 479,
+          "word_count": 479,
+          "sha256": "7d4f36b236ff00b652f074a0c289b9e631b4101e64aada97f8cc31f237fc4682",
+          "sentence_minhash": [
+            14279474218976588,
+            7605519510423274,
+            70426325328220044,
+            21664875658198572,
+            94096409108430648,
+            55295060778826426,
+            23718652799488495,
+            41678443202000680,
+            21048361337280478,
+            76931577636070685,
+            59850382314981648,
+            77272953743708039,
+            16666991694368182,
+            150634699222881283,
+            278614866765861159,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'MIR196A'",
+          "normalized unsupported entity type 'genomic_location' for 'HOXC locus'",
+          "normalized unsupported entity type 'genomic_location' for 'HOXB locus'",
+          "normalized unsupported entity type 'protein' for 'ERα'",
+          "normalized unsupported entity type 'gene' for 'ANXA1'",
+          "normalized unsupported entity type 'protein' for 'VEGF'",
+          "normalized unsupported entity type 'gene' for 'HOXA5'",
+          "normalized unsupported entity type 'genetic_variant' for 'rs116149130'",
+          "normalized unsupported entity type 'molecule_class' for 'MicroRNAs'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "MIR196A directly targets p27/Kip1 to influence the cell cycle and promote oncogenic features in cancer cell lines. The transcriptional regulation of miRNA genes, including MIR196A, involves promoters with specific histone marks and enhancer elements. In breast cancer, MIR196A expression correlates with HOXC genes and is regulated by oestrogen, as demonstrated by RNA polymerase II binding in MCF7 cells.",
+        "entities": [
+          {
+            "name": "MIR196A",
+            "entity_id": "mir196a",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A"
+            ],
+            "attributes": {
+              "function": "influences cell cycle",
+              "target": "p27/Kip1",
+              "effect": "increases growth and pro-oncogenic features",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "targets",
+                "target": "p27/Kip1",
+                "attributes": {},
+                "target_id": "p27_kip1"
+              },
+              {
+                "predicate": "correlates_with",
+                "target": "HOXC genes",
+                "attributes": {},
+                "target_id": "hoxc_genes"
+              },
+              {
+                "predicate": "regulated_by",
+                "target": "oestrogen",
+                "attributes": {},
+                "target_id": "oestrogen"
+              }
+            ]
+          },
+          {
+            "name": "p27/Kip1",
+            "entity_id": "p27_kip1",
+            "entity_type": "other",
+            "aliases": [
+              "p27/Kip1"
+            ],
+            "attributes": {
+              "function": "inhibitor of cell cycle progression",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "targeted_by",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "HOXC genes",
+            "entity_id": "hoxc_genes",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC genes"
+            ],
+            "attributes": {
+              "association": "breast cancer progression",
+              "model_entity_type": "gene_family"
+            },
+            "relationships": [
+              {
+                "predicate": "correlated_with",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "HOXC10",
+            "entity_id": "hoxc10",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC10"
+            ],
+            "attributes": {
+              "correlation_strength": "high",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "correlated_with",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "HOXC11",
+            "entity_id": "hoxc11",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC11"
+            ],
+            "attributes": {
+              "correlation_strength": "strong in normal breast cells",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "correlated_with",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "oestrogen",
+            "entity_id": "oestrogen",
+            "entity_type": "other",
+            "aliases": [
+              "oestrogen"
+            ],
+            "attributes": {
+              "role": "regulator of MIR196A2 and HOXC genes",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "regulates",
+                "target": "MIR196A2",
+                "attributes": {},
+                "target_id": "mir196a2"
+              },
+              {
+                "predicate": "regulates",
+                "target": "HOXC genes",
+                "attributes": {},
+                "target_id": "hoxc_genes"
+              }
+            ]
+          },
+          {
+            "name": "MCF7 cells",
+            "entity_id": "mcf7_cells",
+            "entity_type": "other",
+            "aliases": [
+              "MCF7 breast cancer cell line",
+              "MCF7 cells"
+            ],
+            "attributes": {
+              "disease_model": "breast cancer",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in_study_of",
+                "target": "MIR196A regulation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RNA polymerase II",
+            "entity_id": "rna_polymerase_ii",
+            "entity_type": "other",
+            "aliases": [
+              "RNA polymerase II"
+            ],
+            "attributes": {
+              "binding_dependency": "oestrogen-dependent in MCF7 cells",
+              "model_entity_type": "enzyme"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "region surrounding HOXC10 and MIR196A",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "tamoxifen",
+            "entity_id": "tamoxifen",
+            "entity_type": "other",
+            "aliases": [
+              "tamoxifen"
+            ],
+            "attributes": {
+              "model_entity_type": "drug"
+            },
+            "relationships": [
+              {
+                "predicate": "represses",
+                "target": "RNA polymerase II binding in MCF7 cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "fulvestrant",
+            "entity_id": "fulvestrant",
+            "entity_type": "other",
+            "aliases": [
+              "fulvestrant"
+            ],
+            "attributes": {
+              "model_entity_type": "drug"
+            },
+            "relationships": [
+              {
+                "predicate": "represses",
+                "target": "RNA polymerase II binding in MCF7 cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 479,
+          "end_word": 976,
+          "word_count": 497,
+          "sha256": "c5c46f54f1d3dda2be62b7ad2c03dd149bd7f1cf6af616875863ecea6fd005eb",
+          "sentence_minhash": [
+            2569438931676636,
+            18551641988871988,
+            36072805651584851,
+            21664875658198572,
+            43714454960919411,
+            99436724310786061,
+            23718652799488495,
+            11235087888550032,
+            21048361337280478,
+            9462436175016187,
+            19416574622547768,
+            64449362096044634,
+            21933493368060407,
+            162154343606744493,
+            303264414993015767,
+            115136668860880424
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'MIR196A'",
+          "normalized unsupported entity type 'protein' for 'p27/Kip1'",
+          "normalized unsupported entity type 'gene_family' for 'HOXC genes'",
+          "normalized unsupported entity type 'gene' for 'HOXC10'",
+          "normalized unsupported entity type 'gene' for 'HOXC11'",
+          "normalized unsupported entity type 'molecule' for 'oestrogen'",
+          "normalized unsupported entity type 'cell_line' for 'MCF7 cells'",
+          "normalized unsupported entity type 'enzyme' for 'RNA polymerase II'",
+          "normalized unsupported entity type 'drug' for 'tamoxifen'",
+          "normalized unsupported entity type 'drug' for 'fulvestrant'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "GRO-Seq and validation assays demonstrate that oestradiol specifically increases transcription of the MIR196A2 gene but not MIR196A1 in MCF7 cells. Chromatin interaction analyses reveal that MIR196A2 is regulated by long-range interactions between its promoters and two enhancers: the HOTAIR distal enhancer (HDE) and a novel MIR196A2-Enhancer (mE).",
+        "entities": [
+          {
+            "name": "Global-run-on sequencing (GRO-Seq)",
+            "entity_id": "global_run_on_sequencing_gro_seq",
+            "entity_type": "method",
+            "aliases": [
+              "Global-run-on sequencing (GRO-Seq)"
+            ],
+            "attributes": {
+              "function": "measures nascent RNA",
+              "capability": "assesses changes in transcription with high sensitivity"
+            },
+            "relationships": [
+              {
+                "predicate": "indicated",
+                "target": "dramatic increase in RNA production in the genomic region surrounding MIR196A2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MIR196A2",
+            "entity_id": "mir196a2",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A2"
+            ],
+            "attributes": {
+              "regulation": "transcriptionally regulated by oestrogen",
+              "response": "increased RNA production peaking at 40 mins following addition of oestradiol (E2)",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "validated_by",
+                "target": "qRT-PCR and RNA-Seq from MCF7 cells",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "interacts_with",
+                "target": "HOTAIR distal enhancer (HDE)",
+                "attributes": {},
+                "target_id": "hotair_distal_enhancer_hde"
+              },
+              {
+                "predicate": "interacts_with",
+                "target": "MIR196A2-Enhancer (mE)",
+                "attributes": {},
+                "target_id": "mir196a2_enhancer_me"
+              }
+            ]
+          },
+          {
+            "name": "MIR196A1",
+            "entity_id": "mir196a1",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A1"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "not_responsive_to",
+                "target": "oestradiol (E2)",
+                "attributes": {},
+                "target_id": "oestradiol_e2"
+              }
+            ]
+          },
+          {
+            "name": "oestradiol (E2)",
+            "entity_id": "oestradiol_e2",
+            "entity_type": "other",
+            "aliases": [
+              "oestradiol (E2)"
+            ],
+            "attributes": {
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "induces",
+                "target": "increase in precursor miRNA from MIR196A2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MCF7 cells",
+            "entity_id": "mcf7_cells",
+            "entity_type": "other",
+            "aliases": [
+              "MCF7 breast cancer cell line",
+              "MCF7 cells"
+            ],
+            "attributes": {
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of",
+                "target": "histone methylation pattern assessment",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "subject_of",
+                "target": "ChIA-PET analysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXC10 promoter",
+            "entity_id": "hoxc10_promoter",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC10 promoter"
+            ],
+            "attributes": {
+              "alias": "putative promoter 1 (PP1)",
+              "status": "most active promoter in MCF7 cells",
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "shared_with",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              },
+              {
+                "predicate": "bound_by",
+                "target": "ERα and FOXA1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PP3",
+            "entity_id": "pp3",
+            "entity_type": "other",
+            "aliases": [
+              "PP3",
+              "putative promoter 3 (PP3)"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "bound_by",
+                "target": "ERα and FOXA1",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_3_prime_end_of",
+                "target": "CpG_Hoffman",
+                "attributes": {},
+                "target_id": "cpg_hoffman"
+              }
+            ]
+          },
+          {
+            "name": "ERα",
+            "entity_id": "er",
+            "entity_type": "other",
+            "aliases": [
+              "ERα"
+            ],
+            "attributes": {
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "putative promoters 1 and 3 upstream of miR196A2 transcription start site",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "mediates",
+                "target": "long-range transcriptional regulation via gene looping",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "FOXA1",
+            "entity_id": "foxa1",
+            "entity_type": "other",
+            "aliases": [
+              "FOXA1"
+            ],
+            "attributes": {
+              "role": "pioneer factor",
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "binds_to",
+                "target": "putative promoters 1 and 3 upstream of miR196A2 transcription start site",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ChIA-PET",
+            "entity_id": "chia_pet",
+            "entity_type": "method",
+            "aliases": [
+              "ChIA-PET"
+            ],
+            "attributes": {
+              "full_name": "Chromatin Interact Analysis by Paired End Tags"
+            },
+            "relationships": [
+              {
+                "predicate": "identified",
+                "target": "two major sites of interaction with the MIR196A2 promoters",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOTAIR distal enhancer (HDE)",
+            "entity_id": "hotair_distal_enhancer_hde",
+            "entity_type": "other",
+            "aliases": [
+              "HOTAIR distal enhancer (HDE)"
+            ],
+            "attributes": {
+              "status": "previously identified",
+              "activity": "most active enhancer in MCF7 cells",
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "interacts_with",
+                "target": "MIR196A2/HOXC10 promoter region",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "augments_transcription_of",
+                "target": "PP1 and PP2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MIR196A2-Enhancer (mE)",
+            "entity_id": "mir196a2_enhancer_me",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A2-Enhancer (mE)"
+            ],
+            "attributes": {
+              "status": "novel interacting partner",
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "interacts_with",
+                "target": "MIR196A2/HOXC10 promoter region",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "augments_transcription_of",
+                "target": "PP1 and PP2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CpG_Hoffman",
+            "entity_id": "cpg_hoffman",
+            "entity_type": "other",
+            "aliases": [
+              "CpG_Hoffman"
+            ],
+            "attributes": {
+              "location": "immediately upstream of MIR196A2, falling into the 3' end of PP3",
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "decrease in breast cancer risk",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 976,
+          "end_word": 1442,
+          "word_count": 466,
+          "sha256": "47dbac278bade0f0810d9d9104570deb67e167252770a6781c69fad98d96f6f2",
+          "sentence_minhash": [
+            23542537797554860,
+            18551641988871988,
+            140583634530242717,
+            21664875658198572,
+            88029278269144780,
+            106399766785842052,
+            23718652799488495,
+            11235087888550032,
+            5440412729597067,
+            64310616786040597,
+            128047967744972732,
+            102193620383965101,
+            63656278488967776,
+            34728171186145072,
+            275941709579104045,
+            45203558415543404
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'MIR196A2'",
+          "normalized unsupported entity type 'gene' for 'MIR196A1'",
+          "normalized unsupported entity type 'molecule' for 'oestradiol (E2)'",
+          "normalized unsupported entity type 'cell_line' for 'MCF7 breast cancer cell line'",
+          "normalized unsupported entity type 'genomic_element' for 'HOXC10 promoter'",
+          "normalized unsupported entity type 'genomic_element' for 'putative promoter 3 (PP3)'",
+          "normalized unsupported entity type 'protein' for 'ERα'",
+          "normalized unsupported entity type 'protein' for 'FOXA1'",
+          "normalized unsupported entity type 'genomic_element' for 'HOTAIR distal enhancer (HDE)'",
+          "normalized unsupported entity type 'genomic_element' for 'MIR196A2-Enhancer (mE)'",
+          "normalized unsupported entity type 'genomic_element' for 'CpG_Hoffman'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "MIR196A expression patterns in breast cancer correlate with hormone receptor status and PAM50 subtypes, with high expression linked to poor survival in ER+ disease but better outcomes in triple-negative breast cancer. The gene serves as a prognostic biomarker where high expression predicts poor survival in post-menopausal ER+ patients but good survival in premenopausal patients. DNA methylation of the upstream CpG island is high in cancerous and non-malignant cell lines but low in normal mammary epithelial cells.",
+        "entities": [
+          {
+            "name": "MIR196A",
+            "entity_id": "mir196a",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A"
+            ],
+            "attributes": {
+              "regulator": "ERα",
+              "prognostic_value": "Biomarker for breast cancer progression",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "correlates_with",
+                "target": "hormone receptors (AR, ERα, PGR, HER2) and HR cofactors",
+                "attributes": {
+                  "clusters": "1 and 3"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "negatively_correlates_with",
+                "target": "ERα, PGR, FOXA1, GATA3",
+                "attributes": {
+                  "clusters": "2 and 4"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "associates_with",
+                "target": "EGFR and HER2",
+                "attributes": {
+                  "clusters": "2 and 4"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "expressed_in",
+                "target": "HER2 subtype",
+                "attributes": {
+                  "level": "strong"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "expressed_in",
+                "target": "luminal A and B subtypes",
+                "attributes": {
+                  "level": "very dynamic"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "over_expressed_in",
+                "target": "breast tumours",
+                "attributes": {
+                  "comparison": "normal adjacent tissue"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "increased tumour stage",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor survival",
+                "attributes": {
+                  "condition": "ER+ breast cancer"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "better outcome",
+                "attributes": {
+                  "condition": "triple-negative breast cancer (TNBC)"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "good outcome",
+                "attributes": {
+                  "condition": "premenopausal ER+ disease"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "poor outcome",
+                "attributes": {
+                  "condition": "post-menopausal ER+ disease"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CpG island upstream of MIR196A2",
+            "entity_id": "cpg_island_upstream_of_mir196a2",
+            "entity_type": "other",
+            "aliases": [
+              "CpG island upstream of MIR196A2"
+            ],
+            "attributes": {
+              "alias": "CpG_Hoffman",
+              "location": "3' end of putative promoter 3 (PP3)",
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "methylated_in",
+                "target": "non-malignant MCF10A cells",
+                "attributes": {
+                  "status": "mostly methylated"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "methylated_in",
+                "target": "cancerous MCF7 cells",
+                "attributes": {
+                  "status": "mostly methylated"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "unmethylated_in",
+                "target": "human mammary epithelial cells (HMEC)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "METABRIC cohort",
+            "entity_id": "metabric_cohort",
+            "entity_type": "other",
+            "aliases": [
+              "METABRIC cohort"
+            ],
+            "attributes": {
+              "content": "breast tumour expression data",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_analysis_of",
+                "target": "MIR196A expression",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ER+ breast cancer",
+            "entity_id": "er_breast_cancer",
+            "entity_type": "other",
+            "aliases": [
+              "ER+ breast cancer"
+            ],
+            "attributes": {
+              "receptor_status": "Estrogen receptor positive",
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "prognostic_factor",
+                "target": "MIR196A expression",
+                "attributes": {
+                  "high_expression_outcome": "poor survival"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Triple-negative breast cancer (TNBC)",
+            "entity_id": "triple_negative_breast_cancer_tnbc",
+            "entity_type": "other",
+            "aliases": [
+              "Triple-negative breast cancer (TNBC)"
+            ],
+            "attributes": {
+              "model_entity_type": "disease_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "prognostic_factor",
+                "target": "MIR196A expression",
+                "attributes": {
+                  "high_expression_outcome": "better outcome"
+                },
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1442,
+          "end_word": 1937,
+          "word_count": 495,
+          "sha256": "10b83f71927abe4200f966a878ae5857c6c9ed7c1652db24d86c7f5cc7bfe191",
+          "sentence_minhash": [
+            10893342914538609,
+            24905490170095690,
+            36072805651584851,
+            103230854518152932,
+            28706538147403678,
+            184931539503474386,
+            23718652799488495,
+            11235087888550032,
+            66530823458117479,
+            9462436175016187,
+            55806890076652855,
+            70545347896742007,
+            164575269931903557,
+            131714332375868301,
+            281201072623188781,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'MIR196A'",
+          "normalized unsupported entity type 'genomic_element' for 'CpG island upstream of MIR196A2'",
+          "normalized unsupported entity type 'dataset' for 'METABRIC cohort'",
+          "normalized unsupported entity type 'disease_subtype' for 'ER+ breast cancer'",
+          "normalized unsupported entity type 'disease_subtype' for 'Triple-negative breast cancer (TNBC)'"
+        ]
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "MIR196A expression varies significantly across different breast cancer resistance models, increasing in tamoxifen and chemotherapy resistance but decreasing in fulvestrant resistance. These expression changes correlate with DNA methylation patterns at the HOXC10/MIR196A2 promoters and increased ERα binding in resistant tumors. The discussion links these regulatory mechanisms to the role of ERα and cofactors in maintaining active transcription and low methylation levels.",
+        "entities": [
+          {
+            "name": "MIR196A",
+            "entity_id": "mir196a",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A"
+            ],
+            "attributes": {
+              "expression_pattern": "dynamic and complex",
+              "role": "biomarker for breast cancer progression and therapeutic resistance",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "increased_in",
+                "target": "tamoxifen resistant MCF7 cells (TAMR)",
+                "attributes": {},
+                "target_id": "tamoxifen_resistant_mcf7_cells_tamr"
+              },
+              {
+                "predicate": "depleted_in",
+                "target": "fulvestrant resistance (FASR)",
+                "attributes": {},
+                "target_id": "fulvestrant_resistance_fasr"
+              },
+              {
+                "predicate": "increased_in",
+                "target": "resistant cell lines to paclitaxel and adromycin",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "regulated_by",
+                "target": "ERα",
+                "attributes": {},
+                "target_id": "er"
+              }
+            ]
+          },
+          {
+            "name": "tamoxifen resistant MCF7 cells (TAMR)",
+            "entity_id": "tamoxifen_resistant_mcf7_cells_tamr",
+            "entity_type": "other",
+            "aliases": [
+              "tamoxifen resistant MCF7 cells (TAMR)"
+            ],
+            "attributes": {
+              "resistance_type": "tamoxifen",
+              "model_entity_type": "cell_line_model"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_increased_expression_of",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "fulvestrant resistance (FASR)",
+            "entity_id": "fulvestrant_resistance_fasr",
+            "entity_type": "other",
+            "aliases": [
+              "fulvestrant resistance (FASR)"
+            ],
+            "attributes": {
+              "resistance_type": "fulvestrant",
+              "model_entity_type": "cell_line_model"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_depleted_expression_of",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "HOXC10/MIR196A2 promoters",
+            "entity_id": "hoxc10_mir196a2_promoters",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC10/MIR196A2 promoters"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_region"
+            },
+            "relationships": [
+              {
+                "predicate": "methylation_changes_match_expression_of",
+                "target": "MIR196A",
+                "attributes": {},
+                "target_id": "mir196a"
+              }
+            ]
+          },
+          {
+            "name": "paclitaxel",
+            "entity_id": "paclitaxel",
+            "entity_type": "other",
+            "aliases": [
+              "paclitaxel"
+            ],
+            "attributes": {
+              "category": "chemotherapeutic",
+              "model_entity_type": "drug"
+            },
+            "relationships": []
+          },
+          {
+            "name": "adromycin",
+            "entity_id": "adromycin",
+            "entity_type": "other",
+            "aliases": [
+              "adromycin"
+            ],
+            "attributes": {
+              "category": "chemotherapeutic",
+              "model_entity_type": "drug"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ERα",
+            "entity_id": "er",
+            "entity_type": "other",
+            "aliases": [
+              "ERα"
+            ],
+            "attributes": {
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "binding_sites_identified_in",
+                "target": "genomic region of MIR196A",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "occupancy_increased_in",
+                "target": "non-responders and metastases",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "binding_associated_with",
+                "target": "changes to expression patterns crucial for resistant tumour survival",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Hoffman and colleagues",
+            "entity_id": "hoffman_and_colleagues",
+            "entity_type": "other",
+            "aliases": [
+              "Hoffman and colleagues"
+            ],
+            "attributes": {
+              "model_entity_type": "research_group"
+            },
+            "relationships": [
+              {
+                "predicate": "postulated",
+                "target": "polymorphism within MIR196A2 reduces microRNA maturation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "identified",
+                "target": "upstream CpG island associated with reduced risk when hypermethylated",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "upstream CpG island",
+            "entity_id": "upstream_cpg_island",
+            "entity_type": "other",
+            "aliases": [
+              "upstream CpG island"
+            ],
+            "attributes": {
+              "location": "within transcriptionally active region of HOXC10 and MIR196A2",
+              "methylation_status": "completely methylated in models of oestrogen deprivation and fulvestrant treatment; not methylated in tamoxifen resistant cells",
+              "model_entity_type": "genomic_feature"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "reduced breast cancer risk when hypermethylated",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DNA methylation",
+            "entity_id": "dna_methylation",
+            "entity_type": "other",
+            "aliases": [
+              "DNA methylation"
+            ],
+            "attributes": {
+              "common_association": "repressed transcription",
+              "model_entity_type": "epigenetic_mechanism"
+            },
+            "relationships": [
+              {
+                "predicate": "may_impair",
+                "target": "expression in transcriptional high region",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1937,
+          "end_word": 2436,
+          "word_count": 499,
+          "sha256": "7d16c7b409682f28d5d10a456e7910db0f102227bd7135d50ed0627457bf069f",
+          "sentence_minhash": [
+            14279474218976588,
+            18551641988871988,
+            36072805651584851,
+            53442166147602330,
+            43714454960919411,
+            62667647458868521,
+            23718652799488495,
+            11235087888550032,
+            21048361337280478,
+            9462436175016187,
+            41357020736293434,
+            77272953743708039,
+            63656278488967776,
+            131714332375868301,
+            228232422328342118,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'MIR196A'",
+          "normalized unsupported entity type 'cell_line_model' for 'tamoxifen resistant MCF7 cells (TAMR)'",
+          "normalized unsupported entity type 'cell_line_model' for 'fulvestrant resistance (FASR)'",
+          "normalized unsupported entity type 'genomic_region' for 'HOXC10/MIR196A2 promoters'",
+          "normalized unsupported entity type 'drug' for 'paclitaxel'",
+          "normalized unsupported entity type 'drug' for 'adromycin'",
+          "normalized unsupported entity type 'protein' for 'ERα'",
+          "normalized unsupported entity type 'research_group' for 'Hoffman and colleagues'",
+          "normalized unsupported entity type 'genomic_feature' for 'upstream CpG island'",
+          "normalized unsupported entity type 'epigenetic_mechanism' for 'DNA methylation'"
+        ]
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "HOX gene expression in breast tumours shows a strong correlation with MIR196A, contrasting with normal tissues where the association is not significant. The authors hypothesize that multiple enhancers and ERα binding drive this overexpression in cancer. High MIR196A expression is linked to poor prognosis in ER+ tumours and increased expression in response to tamoxifen and chemotherapy, associated with loss of DNA methylation.",
+        "entities": [
+          {
+            "name": "HOX gene expression",
+            "entity_id": "hox_gene_expression",
+            "entity_type": "concept",
+            "aliases": [
+              "HOX gene expression"
+            ],
+            "attributes": {
+              "control": "tightly controlled in a spatiotemporal manner",
+              "function": "ensure proper axial formation along the anterior-posterior axis"
+            },
+            "relationships": [
+              {
+                "predicate": "appears_dynamic_in",
+                "target": "cell types of the human breast",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MIR196A",
+            "entity_id": "mir196a",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A"
+            ],
+            "attributes": {
+              "encoding": "dual-encoded (two loci)",
+              "prognostic_value": "biomarker of poor prognosis in ER+ tumours, especially in therapy-resistant patients",
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "correlates_with",
+                "target": "HOXC genes in breast tumours",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "association_not_significant_in",
+                "target": "normal tissues",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expression_increases_in_response_to",
+                "target": "tamoxifen",
+                "attributes": {},
+                "target_id": "tamoxifen"
+              },
+              {
+                "predicate": "expression_increases_in_response_to",
+                "target": "chemotherapeutic agents",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "expression_increase_associated_with",
+                "target": "loss of DNA methylation within promoter regions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXC genes",
+            "entity_id": "hoxc_genes",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC genes"
+            ],
+            "attributes": {
+              "model_entity_type": "gene_family"
+            },
+            "relationships": [
+              {
+                "predicate": "strong_correlation_with",
+                "target": "MIR196A in breast tumours",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Beta-globin genes",
+            "entity_id": "beta_globin_genes",
+            "entity_type": "other",
+            "aliases": [
+              "Beta-globin genes"
+            ],
+            "attributes": {
+              "model_entity_type": "gene_family"
+            },
+            "relationships": [
+              {
+                "predicate": "regulated_by",
+                "target": "locus-control-region (LCR)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "c-Myc",
+            "entity_id": "c_myc",
+            "entity_type": "other",
+            "aliases": [
+              "c-Myc"
+            ],
+            "attributes": {
+              "model_entity_type": "gene"
+            },
+            "relationships": [
+              {
+                "predicate": "has_enhancers_active_in",
+                "target": "multiple cancer types",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ERα",
+            "entity_id": "er",
+            "entity_type": "other",
+            "aliases": [
+              "ERα"
+            ],
+            "attributes": {
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "hypothesized_driver_of",
+                "target": "overexpression of HOXC and MIR196A in cancer",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "binding_mediates",
+                "target": "positive response of mature MIR196A transcript to oestrogen stimulation in MCF7 cells",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "binding_peak_location",
+                "target": "PP3",
+                "attributes": {},
+                "target_id": "pp3"
+              }
+            ]
+          },
+          {
+            "name": "PP3",
+            "entity_id": "pp3",
+            "entity_type": "other",
+            "aliases": [
+              "PP3",
+              "putative promoter 3 (PP3)"
+            ],
+            "attributes": {
+              "luciferase_assay_result": "not able to increase luciferase expression",
+              "model_entity_type": "genomic_region"
+            },
+            "relationships": [
+              {
+                "predicate": "contains_ERα_binding_peak",
+                "target": "ERα",
+                "attributes": {},
+                "target_id": "er"
+              },
+              {
+                "predicate": "potentially_important_for_activity_of",
+                "target": "HOXC10 and MIR196A2 promoters",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Jiang et al",
+            "entity_id": "jiang_et_al",
+            "entity_type": "other",
+            "aliases": [
+              "Jiang et al"
+            ],
+            "attributes": {
+              "model_entity_type": "study"
+            },
+            "relationships": [
+              {
+                "predicate": "demonstrated",
+                "target": "mature MIR196A transcript positively responds to oestrogen stimulation in MCF7 cells",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DNA methylation",
+            "entity_id": "dna_methylation",
+            "entity_type": "other",
+            "aliases": [
+              "DNA methylation"
+            ],
+            "attributes": {
+              "role_in_context": "repressive epigenetic modification",
+              "model_entity_type": "epigenetic_modification"
+            },
+            "relationships": [
+              {
+                "predicate": "negatively_correlates_with",
+                "target": "MIR196A expression at several sites within the HOXC locus",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOXC enhancer elements",
+            "entity_id": "hoxc_enhancer_elements",
+            "entity_type": "other",
+            "aliases": [
+              "HOXC enhancer elements"
+            ],
+            "attributes": {
+              "model_entity_type": "genomic_element"
+            },
+            "relationships": [
+              {
+                "predicate": "bind_ER_more_readily_in",
+                "target": "poor responders with ER+ tumours",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2436,
+          "end_word": 2933,
+          "word_count": 497,
+          "sha256": "d1bcfd5b85a544f68641a4d84b981e1d0e2f1b72aea866ea01572ea4dbbbf8eb",
+          "sentence_minhash": [
+            14279474218976588,
+            1306423125707224,
+            36072805651584851,
+            53442166147602330,
+            43714454960919411,
+            57923688049671323,
+            23718652799488495,
+            11235087888550032,
+            110457184008548161,
+            9462436175016187,
+            78280491562202942,
+            76722032415124302,
+            63656278488967776,
+            34728171186145072,
+            79121258578716901,
+            115136668860880424
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene' for 'MIR196A'",
+          "normalized unsupported entity type 'gene_family' for 'HOXC genes'",
+          "normalized unsupported entity type 'gene_family' for 'Beta-globin genes'",
+          "normalized unsupported entity type 'gene' for 'c-Myc'",
+          "normalized unsupported entity type 'protein' for 'ERα'",
+          "normalized unsupported entity type 'genomic_region' for 'PP3'",
+          "normalized unsupported entity type 'study' for 'Jiang et al'",
+          "normalized unsupported entity type 'epigenetic_modification' for 'DNA methylation'",
+          "normalized unsupported entity type 'genomic_element' for 'HOXC enhancer elements'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The text discusses the role of HOX genes in maintaining a stem-cell-like state in cancer and notes that breast cancer subtype prevalence shifts after menopause. It highlights that MIR196A expression has opposite prognostic implications for ER+ breast cancer in pre-menopausal versus post-menopausal women. The passage also details the cell culture and cloning methods used to study MIR196A regulation.",
+        "entities": [
+          {
+            "name": "HOX genes",
+            "entity_id": "hox_genes",
+            "entity_type": "other",
+            "aliases": [
+              "HOX genes"
+            ],
+            "attributes": {
+              "role": "essential in embryonic development",
+              "cancer_function": "sustain a stem-cell like state",
+              "model_entity_type": "gene_family"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "non-terminally-differentiated state",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "luminal breast tumours",
+            "entity_id": "luminal_breast_tumours",
+            "entity_type": "other",
+            "aliases": [
+              "luminal breast tumours"
+            ],
+            "attributes": {
+              "prevalence_younger_women": "33-44% in women younger than 45",
+              "prevalence_older_women": "70-72% in women older than 65",
+              "model_entity_type": "cancer_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_in_prevalence_after",
+                "target": "menopause",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "basal-like tumours",
+            "entity_id": "basal_like_tumours",
+            "entity_type": "other",
+            "aliases": [
+              "basal-like tumours"
+            ],
+            "attributes": {
+              "prevalence": "more common in younger women",
+              "model_entity_type": "cancer_subtype"
+            },
+            "relationships": [
+              {
+                "predicate": "suggests_evolution_of_driving_factors_after",
+                "target": "menopause",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MIR196A",
+            "entity_id": "mir196a",
+            "entity_type": "other",
+            "aliases": [
+              "MIR196A"
+            ],
+            "attributes": {
+              "expression_pattern": "dynamically expressed in normal mammary cells and breast tumours",
+              "prognostic_impact_pre-menopausal": "higher expression associates with good outcome in ER+ tumours",
+              "prognostic_impact_post-menopausal": "higher expression associates with poor outcome in ER+ tumours",
+              "potential_role": "biomarker for progression to therapy resistance",
+              "model_entity_type": "microRNA"
+            },
+            "relationships": [
+              {
+                "predicate": "expression_impacted_by",
+                "target": "menopause",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MCF7 cells",
+            "entity_id": "mcf7_cells",
+            "entity_type": "other",
+            "aliases": [
+              "MCF7 breast cancer cell line",
+              "MCF7 cells"
+            ],
+            "attributes": {
+              "source": "AstraZeneca",
+              "authentication": "short-tandem repeat (STR) profiling by Cell Bank, Australia",
+              "culture_duration": "less than 6 months after authentication",
+              "model_entity_type": "cell_line"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_development_of",
+                "target": "endocrine resistance sub-lines",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "pGL3-Basic",
+            "entity_id": "pgl3_basic",
+            "entity_type": "other",
+            "aliases": [
+              "pGL3-Basic"
+            ],
+            "attributes": {
+              "function": "luciferase reporter plasmid",
+              "model_entity_type": "plasmid"
+            },
+            "relationships": [
+              {
+                "predicate": "cloning_site_enhancers",
+                "target": "BamHI/SalI site",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "cloning_site_promoters",
+                "target": "multiple cloning site immediately upstream of the luciferase gene",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Lipofectamine 3000",
+            "entity_id": "lipofectamine_3000",
+            "entity_type": "other",
+            "aliases": [
+              "Lipofectamine 3000"
+            ],
+            "attributes": {
+              "manufacturer": "Life Technologies",
+              "catalog_number": "L3000-008",
+              "dose": "0.5μL",
+              "model_entity_type": "reagent"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for_transfection_of",
+                "target": "MCF7 cells",
+                "attributes": {},
+                "target_id": "mcf7_cells"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2933,
+          "end_word": 3392,
+          "word_count": 459,
+          "sha256": "910b4ea7306efde6df6e6abfe4edcdaf06efb06d5889dfb9ca07cd44e68a4c15",
+          "sentence_minhash": [
+            124299653684321970,
+            60839570084396778,
+            36072805651584851,
+            59527879293337615,
+            38019880870462680,
+            62667647458868521,
+            23718652799488495,
+            11235087888550032,
+            21048361337280478,
+            7453393536312921,
+            41357020736293434,
+            102193620383965101,
+            8649321992247620,
+            906306679132868,
+            209525468063345493,
+            169349085265771733
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'gene_family' for 'HOX genes'",
+          "normalized unsupported entity type 'cancer_subtype' for 'luminal breast tumours'",
+          "normalized unsupported entity type 'cancer_subtype' for 'basal-like tumours'",
+          "normalized unsupported entity type 'microRNA' for 'MIR196A'",
+          "normalized unsupported entity type 'cell_line' for 'MCF7 cells'",
+          "normalized unsupported entity type 'plasmid' for 'pGL3-Basic'",
+          "normalized unsupported entity type 'reagent' for 'Lipofectamine 3000'"
+        ]
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study details the experimental protocols for luciferase assays, RNA extraction, and genomic data analysis. It specifies the use of specific kits and software for qRT-PCR, RNA-Seq, and survival analysis. The methods include adapting chromosome conformation capture (3C) techniques for analyzing chromatin interactions.",
+        "entities": [
+          {
+            "name": "luciferase assay protocol",
+            "entity_id": "luciferase_assay_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "luciferase assay protocol"
+            ],
+            "attributes": {
+              "timing": "48 hours post transfection",
+              "instrument": "DTX-880 luminometer",
+              "kit": "Dual-Glo Stop and Glo luciferase reporter kit (Promega, E2920)"
+            },
+            "relationships": [
+              {
+                "predicate": "follows",
+                "target": "manufacturer's recommended protocol",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RNA extraction protocol",
+            "entity_id": "rna_extraction_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "RNA extraction protocol"
+            ],
+            "attributes": {
+              "lysis_reagent": "Life Technologies TRIzol® reagent",
+              "extraction_method": "chloroform extraction and isopropanol precipitation",
+              "dnase_treatment": "DNA free kit from Ambion (Life Technologies, AM1906)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "miRNA reverse transcription protocol",
+            "entity_id": "mirna_reverse_transcription_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "miRNA reverse transcription protocol"
+            ],
+            "attributes": {
+              "kit": "miScript RT II kit from Qiagen (218161)"
+            },
+            "relationships": [
+              {
+                "predicate": "follows",
+                "target": "manufacturer's instructions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "miRNA qRT-PCR protocol",
+            "entity_id": "mirna_qrt_pcr_protocol",
+            "entity_type": "method",
+            "aliases": [
+              "miRNA qRT-PCR protocol"
+            ],
+            "attributes": {
+              "kit": "Qiagen's miScript SYBR Green PCR Kit (218073)",
+              "normalization_reference": "snoRNA RNU6b",
+              "instrument": "Corbet Rotorgene-6000"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "primers specific to each mature or precursor miRNA coupled with a universal primer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RNA-Seq data sources",
+            "entity_id": "rna_seq_data_sources",
+            "entity_type": "measurement",
+            "aliases": [
+              "RNA-Seq data sources"
+            ],
+            "attributes": {
+              "oestradiol_treatment_source": "K. Nephew (reference 49)",
+              "resistant_cells_source": "GSE68815 (reference 50)",
+              "hox_gene_expression_source": "Gascard et al (reference 51)"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Genomic Data Analysis Pipeline",
+            "entity_id": "genomic_data_analysis_pipeline",
+            "entity_type": "method",
+            "aliases": [
+              "Genomic Data Analysis Pipeline"
+            ],
+            "attributes": {
+              "chip_seq_accessions": "GSE14664, GSE27463, GSE39495, GSE32222",
+              "histone_chip_seq_source": "ENCODE",
+              "methylation_source": "The Cancer Genome Atlas (TCGA)",
+              "mapping_tool": "Bowtie",
+              "peak_calling_tool": "MACS",
+              "visualization_tool": "Interactive Genome Viewer (IGV)"
+            },
+            "relationships": [
+              {
+                "predicate": "correlates",
+                "target": "DNA methylation of breast tumours with gene expression of MIR196A from TCGA cohort",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Breast Tumour Expression Analysis",
+            "entity_id": "breast_tumour_expression_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Breast Tumour Expression Analysis"
+            ],
+            "attributes": {
+              "data_source": "METABRIC (EGAS00000083)",
+              "clustering_tool": "Multiple Experiment Viewer (MeV)",
+              "clustering_method": "Manhattan average-linkage based clustering of rows and columns",
+              "correlation_tool": "CORREL function of Microsoft Excel"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Survival Analysis",
+            "entity_id": "survival_analysis",
+            "entity_type": "method",
+            "aliases": [
+              "Survival Analysis"
+            ],
+            "attributes": {
+              "regression_tool": "MedCalc for Windows, version 12.7",
+              "survival_curve_tool": "GraphPad Prism",
+              "cutoff_determination_method": "receiver operator characteristic (ROC) curves"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Chromosome conformation capture (3C)",
+            "entity_id": "chromosome_conformation_capture_3c",
+            "entity_type": "method",
+            "aliases": [
+              "Chromosome conformation capture (3C)"
+            ],
+            "attributes": {
+              "protocol_adapted_from": "Vakoc 2005, Hagege 2007, Tan-Wong 2008",
+              "fixative": "1% formaldehyde",
+              "confluence_range": "60-80%",
+              "digestion_enzyme": "HindIII",
+              "control_library_type": "undigested and unligated native gDNA"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3392,
+          "end_word": 3857,
+          "word_count": 465,
+          "sha256": "1136d6c916945b89a9d6eae15e2763d0154ff54238cfe47ab56278addeeb2a32",
+          "sentence_minhash": [
+            10893342914538609,
+            14650795127686911,
+            140583634530242717,
+            11426270078940556,
+            64475416136105428,
+            43416815952622393,
+            50447301471162957,
+            11235087888550032,
+            5440412729597067,
+            7649729463600173,
+            93902136113461712,
+            102193620383965101,
+            35608547618306158,
+            58558631451210278,
+            95169533629451962,
+            10102301350853915
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 8,
+        "context_summary": "The text describes the validation method for 3C libraries using GAPDH primers. It specifies the design of primers for 3C-qPCR relative to HindIII cut sites and enhancer regions.",
+        "entities": [
+          {
+            "name": "GAPDH primers",
+            "entity_id": "gapdh_primers",
+            "entity_type": "method",
+            "aliases": [
+              "GAPDH primers"
+            ],
+            "attributes": {
+              "amplified_fragment_property": "contains no cut sites for the enzymes used",
+              "purpose": "determine digestion and ligation efficiency of each library"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "primers that amplify a fragment containing a HindIII cut site",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "3C-qPCR primers",
+            "entity_id": "3c_qpcr_primers",
+            "entity_type": "method",
+            "aliases": [
+              "3C-qPCR primers"
+            ],
+            "attributes": {
+              "design_location": "100-250 bp up or downstream of each HindIII cut site"
+            },
+            "relationships": [
+              {
+                "predicate": "includes_bait",
+                "target": "primer across the putative enhancer",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 8,
+          "start_word": 3857,
+          "end_word": 3927,
+          "word_count": 70,
+          "sha256": "217d2c88a1111ffaf7614de06dde06744bf44e6f5e51341869d49b43427272c5",
+          "sentence_minhash": [
+            213764341682665763,
+            118789570167728127,
+            461657711145057648,
+            387115513068808186,
+            686274656894489476,
+            271479090592995490,
+            175774020269814206,
+            849319895322551721,
+            266927695903760850,
+            41183111660975745,
+            715149973966033048,
+            242442872322440140,
+            21933493368060407,
+            707044337599109521,
+            228232422328342118,
+            814970946974560281
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "mcf7_cells",
+        "canonical_name": "MCF7 cells",
+        "aliases": [
+          "MCF7 cells",
+          "MCF7 breast cancer cell line"
+        ]
+      },
+      {
+        "canonical_id": "pp3",
+        "canonical_name": "PP3",
+        "aliases": [
+          "PP3",
+          "putative promoter 3 (PP3)"
+        ]
+      },
+      {
+        "canonical_id": "mir196a",
+        "canonical_name": "MIR196A",
+        "aliases": [
+          "MIR196A"
+        ]
+      },
+      {
+        "canonical_id": "hoxc_locus",
+        "canonical_name": "HOXC locus",
+        "aliases": [
+          "HOXC locus"
+        ]
+      },
+      {
+        "canonical_id": "hoxb_locus",
+        "canonical_name": "HOXB locus",
+        "aliases": [
+          "HOXB locus"
+        ]
+      },
+      {
+        "canonical_id": "er",
+        "canonical_name": "ERα",
+        "aliases": [
+          "ERα"
+        ]
+      },
+      {
+        "canonical_id": "anxa1",
+        "canonical_name": "ANXA1",
+        "aliases": [
+          "ANXA1"
+        ]
+      },
+      {
+        "canonical_id": "vegf",
+        "canonical_name": "VEGF",
+        "aliases": [
+          "VEGF"
+        ]
+      },
+      {
+        "canonical_id": "hoxa5",
+        "canonical_name": "HOXA5",
+        "aliases": [
+          "HOXA5"
+        ]
+      },
+      {
+        "canonical_id": "rs116149130",
+        "canonical_name": "rs116149130",
+        "aliases": [
+          "rs116149130"
+        ]
+      },
+      {
+        "canonical_id": "micrornas",
+        "canonical_name": "MicroRNAs",
+        "aliases": [
+          "MicroRNAs"
+        ]
+      },
+      {
+        "canonical_id": "p27_kip1",
+        "canonical_name": "p27/Kip1",
+        "aliases": [
+          "p27/Kip1"
+        ]
+      },
+      {
+        "canonical_id": "hoxc_genes",
+        "canonical_name": "HOXC genes",
+        "aliases": [
+          "HOXC genes"
+        ]
+      },
+      {
+        "canonical_id": "hoxc10",
+        "canonical_name": "HOXC10",
+        "aliases": [
+          "HOXC10"
+        ]
+      },
+      {
+        "canonical_id": "hoxc11",
+        "canonical_name": "HOXC11",
+        "aliases": [
+          "HOXC11"
+        ]
+      },
+      {
+        "canonical_id": "oestrogen",
+        "canonical_name": "oestrogen",
+        "aliases": [
+          "oestrogen"
+        ]
+      },
+      {
+        "canonical_id": "rna_polymerase_ii",
+        "canonical_name": "RNA polymerase II",
+        "aliases": [
+          "RNA polymerase II"
+        ]
+      },
+      {
+        "canonical_id": "tamoxifen",
+        "canonical_name": "tamoxifen",
+        "aliases": [
+          "tamoxifen"
+        ]
+      },
+      {
+        "canonical_id": "fulvestrant",
+        "canonical_name": "fulvestrant",
+        "aliases": [
+          "fulvestrant"
+        ]
+      },
+      {
+        "canonical_id": "global_run_on_sequencing_gro_seq",
+        "canonical_name": "Global-run-on sequencing (GRO-Seq)",
+        "aliases": [
+          "Global-run-on sequencing (GRO-Seq)"
+        ]
+      },
+      {
+        "canonical_id": "mir196a2",
+        "canonical_name": "MIR196A2",
+        "aliases": [
+          "MIR196A2"
+        ]
+      },
+      {
+        "canonical_id": "mir196a1",
+        "canonical_name": "MIR196A1",
+        "aliases": [
+          "MIR196A1"
+        ]
+      },
+      {
+        "canonical_id": "oestradiol_e2",
+        "canonical_name": "oestradiol (E2)",
+        "aliases": [
+          "oestradiol (E2)"
+        ]
+      },
+      {
+        "canonical_id": "hoxc10_promoter",
+        "canonical_name": "HOXC10 promoter",
+        "aliases": [
+          "HOXC10 promoter"
+        ]
+      },
+      {
+        "canonical_id": "foxa1",
+        "canonical_name": "FOXA1",
+        "aliases": [
+          "FOXA1"
+        ]
+      },
+      {
+        "canonical_id": "chia_pet",
+        "canonical_name": "ChIA-PET",
+        "aliases": [
+          "ChIA-PET"
+        ]
+      },
+      {
+        "canonical_id": "hotair_distal_enhancer_hde",
+        "canonical_name": "HOTAIR distal enhancer (HDE)",
+        "aliases": [
+          "HOTAIR distal enhancer (HDE)"
+        ]
+      },
+      {
+        "canonical_id": "mir196a2_enhancer_me",
+        "canonical_name": "MIR196A2-Enhancer (mE)",
+        "aliases": [
+          "MIR196A2-Enhancer (mE)"
+        ]
+      },
+      {
+        "canonical_id": "cpg_hoffman",
+        "canonical_name": "CpG_Hoffman",
+        "aliases": [
+          "CpG_Hoffman"
+        ]
+      },
+      {
+        "canonical_id": "cpg_island_upstream_of_mir196a2",
+        "canonical_name": "CpG island upstream of MIR196A2",
+        "aliases": [
+          "CpG island upstream of MIR196A2"
+        ]
+      },
+      {
+        "canonical_id": "metabric_cohort",
+        "canonical_name": "METABRIC cohort",
+        "aliases": [
+          "METABRIC cohort"
+        ]
+      },
+      {
+        "canonical_id": "er_breast_cancer",
+        "canonical_name": "ER+ breast cancer",
+        "aliases": [
+          "ER+ breast cancer"
+        ]
+      },
+      {
+        "canonical_id": "triple_negative_breast_cancer_tnbc",
+        "canonical_name": "Triple-negative breast cancer (TNBC)",
+        "aliases": [
+          "Triple-negative breast cancer (TNBC)"
+        ]
+      },
+      {
+        "canonical_id": "tamoxifen_resistant_mcf7_cells_tamr",
+        "canonical_name": "tamoxifen resistant MCF7 cells (TAMR)",
+        "aliases": [
+          "tamoxifen resistant MCF7 cells (TAMR)"
+        ]
+      },
+      {
+        "canonical_id": "fulvestrant_resistance_fasr",
+        "canonical_name": "fulvestrant resistance (FASR)",
+        "aliases": [
+          "fulvestrant resistance (FASR)"
+        ]
+      },
+      {
+        "canonical_id": "hoxc10_mir196a2_promoters",
+        "canonical_name": "HOXC10/MIR196A2 promoters",
+        "aliases": [
+          "HOXC10/MIR196A2 promoters"
+        ]
+      },
+      {
+        "canonical_id": "paclitaxel",
+        "canonical_name": "paclitaxel",
+        "aliases": [
+          "paclitaxel"
+        ]
+      },
+      {
+        "canonical_id": "adromycin",
+        "canonical_name": "adromycin",
+        "aliases": [
+          "adromycin"
+        ]
+      },
+      {
+        "canonical_id": "hoffman_and_colleagues",
+        "canonical_name": "Hoffman and colleagues",
+        "aliases": [
+          "Hoffman and colleagues"
+        ]
+      },
+      {
+        "canonical_id": "upstream_cpg_island",
+        "canonical_name": "upstream CpG island",
+        "aliases": [
+          "upstream CpG island"
+        ]
+      },
+      {
+        "canonical_id": "dna_methylation",
+        "canonical_name": "DNA methylation",
+        "aliases": [
+          "DNA methylation"
+        ]
+      },
+      {
+        "canonical_id": "hox_gene_expression",
+        "canonical_name": "HOX gene expression",
+        "aliases": [
+          "HOX gene expression"
+        ]
+      },
+      {
+        "canonical_id": "beta_globin_genes",
+        "canonical_name": "Beta-globin genes",
+        "aliases": [
+          "Beta-globin genes"
+        ]
+      },
+      {
+        "canonical_id": "c_myc",
+        "canonical_name": "c-Myc",
+        "aliases": [
+          "c-Myc"
+        ]
+      },
+      {
+        "canonical_id": "jiang_et_al",
+        "canonical_name": "Jiang et al",
+        "aliases": [
+          "Jiang et al"
+        ]
+      },
+      {
+        "canonical_id": "hoxc_enhancer_elements",
+        "canonical_name": "HOXC enhancer elements",
+        "aliases": [
+          "HOXC enhancer elements"
+        ]
+      },
+      {
+        "canonical_id": "hox_genes",
+        "canonical_name": "HOX genes",
+        "aliases": [
+          "HOX genes"
+        ]
+      },
+      {
+        "canonical_id": "luminal_breast_tumours",
+        "canonical_name": "luminal breast tumours",
+        "aliases": [
+          "luminal breast tumours"
+        ]
+      },
+      {
+        "canonical_id": "basal_like_tumours",
+        "canonical_name": "basal-like tumours",
+        "aliases": [
+          "basal-like tumours"
+        ]
+      },
+      {
+        "canonical_id": "pgl3_basic",
+        "canonical_name": "pGL3-Basic",
+        "aliases": [
+          "pGL3-Basic"
+        ]
+      },
+      {
+        "canonical_id": "lipofectamine_3000",
+        "canonical_name": "Lipofectamine 3000",
+        "aliases": [
+          "Lipofectamine 3000"
+        ]
+      },
+      {
+        "canonical_id": "luciferase_assay_protocol",
+        "canonical_name": "luciferase assay protocol",
+        "aliases": [
+          "luciferase assay protocol"
+        ]
+      },
+      {
+        "canonical_id": "rna_extraction_protocol",
+        "canonical_name": "RNA extraction protocol",
+        "aliases": [
+          "RNA extraction protocol"
+        ]
+      },
+      {
+        "canonical_id": "mirna_reverse_transcription_protocol",
+        "canonical_name": "miRNA reverse transcription protocol",
+        "aliases": [
+          "miRNA reverse transcription protocol"
+        ]
+      },
+      {
+        "canonical_id": "mirna_qrt_pcr_protocol",
+        "canonical_name": "miRNA qRT-PCR protocol",
+        "aliases": [
+          "miRNA qRT-PCR protocol"
+        ]
+      },
+      {
+        "canonical_id": "rna_seq_data_sources",
+        "canonical_name": "RNA-Seq data sources",
+        "aliases": [
+          "RNA-Seq data sources"
+        ]
+      },
+      {
+        "canonical_id": "genomic_data_analysis_pipeline",
+        "canonical_name": "Genomic Data Analysis Pipeline",
+        "aliases": [
+          "Genomic Data Analysis Pipeline"
+        ]
+      },
+      {
+        "canonical_id": "breast_tumour_expression_analysis",
+        "canonical_name": "Breast Tumour Expression Analysis",
+        "aliases": [
+          "Breast Tumour Expression Analysis"
+        ]
+      },
+      {
+        "canonical_id": "survival_analysis",
+        "canonical_name": "Survival Analysis",
+        "aliases": [
+          "Survival Analysis"
+        ]
+      },
+      {
+        "canonical_id": "chromosome_conformation_capture_3c",
+        "canonical_name": "Chromosome conformation capture (3C)",
+        "aliases": [
+          "Chromosome conformation capture (3C)"
+        ]
+      },
+      {
+        "canonical_id": "gapdh_primers",
+        "canonical_name": "GAPDH primers",
+        "aliases": [
+          "GAPDH primers"
+        ]
+      },
+      {
+        "canonical_id": "3c_qpcr_primers",
+        "canonical_name": "3C-qPCR primers",
+        "aliases": [
+          "3C-qPCR primers"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study investigates the transcriptional regulation of MIR196A by estrogen and its role as a prognostic biomarker in ER+ breast cancer. MIR196A is transcribed from two distinct genomic loci and targets genes involved in apoptosis, angiogenesis, and cell cycle progression. The research demonstrates that MIR196A expression is dynamically controlled by long-range interactions between ERα-bound enhancers and promoters.\",\"entities\":[{\"name\":\"MIR196A\",\"type\":\"other\",\"attributes\":{\"aliases\":\"miR-196a\",\"function\":\"post-transcriptional regulator\",\"cancer_role\":\"oncogene\",\"prognostic_value\":\"robust prognostic factor for advanced and post-menopausal ER+ disease\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"transcribed_from\",\"target\":\"HOXC locus (Chr12, gene MIR196A2)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"transcribed_from\",\"target\":\"HOXB locus (Chr17, gene MIR196A1)\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"regulated_by\",\"target\":\"ERα\",\"attributes\":{},\"target_id\":\"er\"},{\"predicate\":\"targets\",\"target\":\"HOX genes\",\"attributes\":{},\"target_id\":\"hox_genes\"},{\"predicate\":\"targets\",\"target\":\"Fox genes\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"targets\",\"target\":\"Cdk inhibitors\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"targets\",\"target\":\"annexins\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"targets\",\"target\":\"ANXA1\",\"attributes\":{},\"target_id\":\"anxa1\"},{\"predicate\":\"targets\",\"target\":\"HOXA5\",\"attributes\":{},\"target_id\":\"hoxa5\"},{\"predicate\":\"associated_with\",\"target\":\"breast cancer risk and progression\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"overexpressed_in\",\"target\":\"breast tumours\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXC locus\",\"type\":\"other\",\"attributes\":{\"chromosome\":\"Chr12 in humans\",\"gene\":\"MIR196A2\",\"position_relative_to_HOXC10\":\"downstream\",\"model_entity_type\":\"genomic_location\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"MIR196A2\",\"attributes\":{},\"target_id\":\"mir196a2\"}]},{\"name\":\"HOXB locus\",\"type\":\"other\",\"attributes\":{\"chromosome\":\"Chr17 in humans\",\"gene\":\"MIR196A1\",\"position_relative_to_HOXB9\":\"upstream\",\"model_entity_type\":\"genomic_location\"},\"relationships\":[{\"predicate\":\"contains\",\"target\":\"MIR196A1\",\"attributes\":{},\"target_id\":\"mir196a1\"}]},{\"name\":\"ERα\",\"type\":\"other\",\"attributes\":{\"full_name\":\"Estrogen Receptor alpha\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"promoter and enhancer elements of MIR196A\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"mediates\",\"target\":\"long range transcriptional regulation of MIR196A\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ANXA1\",\"type\":\"other\",\"attributes\":{\"full_name\":\"Annexin-1\",\"function\":\"mediator of apoptosis\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"targeted_by\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"},{\"predicate\":\"response_to\",\"target\":\"VEGF\",\"attributes\":{},\"target_id\":\"vegf\"}]},{\"name\":\"VEGF\",\"type\":\"other\",\"attributes\":{\"full_name\":\"vascular endothelium growth factor\",\"property\":\"pro-angiogenic\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"triggers_response_in\",\"target\":\"MIR196A targeting of ANXA1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXA5\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"targeted_by\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"},{\"predicate\":\"inhibits\",\"target\":\"growth, migration and invasion of non-small cell lung cancer cell line\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"rs116149130\",\"type\":\"other\",\"attributes\":{\"type\":\"SNP\",\"location\":\"within MIR196A2 gene\",\"model_entity_type\":\"genetic_variant\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"decreased risk of breast cancer\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MicroRNAs\",\"type\":\"other\",\"attributes\":{\"structure\":\"short non-coding RNAs\",\"function\":\"post-transcriptional regulation of gene expression\",\"disease_association\":\"rare inherited syndromes and cancers\",\"model_entity_type\":\"molecule_class\"},\"relationships\":[{\"predicate\":\"regulated_by\",\"target\":\"germline and somatic mutations and epigenetic deregulation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"basis_for\",\"target\":\"antagomiR technology\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"MIR196A directly targets p27/Kip1 to influence the cell cycle and promote oncogenic features in cancer cell lines. The transcriptional regulation of miRNA genes, including MIR196A, involves promoters with specific histone marks and enhancer elements. In breast cancer, MIR196A expression correlates with HOXC genes and is regulated by oestrogen, as demonstrated by RNA polymerase II binding in MCF7 cells.\",\"entities\":[{\"name\":\"MIR196A\",\"type\":\"other\",\"attributes\":{\"function\":\"influences cell cycle\",\"target\":\"p27/Kip1\",\"effect\":\"increases growth and pro-oncogenic features\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"targets\",\"target\":\"p27/Kip1\",\"attributes\":{},\"target_id\":\"p27_kip1\"},{\"predicate\":\"correlates_with\",\"target\":\"HOXC genes\",\"attributes\":{},\"target_id\":\"hoxc_genes\"},{\"predicate\":\"regulated_by\",\"target\":\"oestrogen\",\"attributes\":{},\"target_id\":\"oestrogen\"}]},{\"name\":\"p27/Kip1\",\"type\":\"other\",\"attributes\":{\"function\":\"inhibitor of cell cycle progression\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"targeted_by\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"HOXC genes\",\"type\":\"other\",\"attributes\":{\"association\":\"breast cancer progression\",\"model_entity_type\":\"gene_family\"},\"relationships\":[{\"predicate\":\"correlated_with\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"HOXC10\",\"type\":\"other\",\"attributes\":{\"correlation_strength\":\"high\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"correlated_with\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"HOXC11\",\"type\":\"other\",\"attributes\":{\"correlation_strength\":\"strong in normal breast cells\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"correlated_with\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"oestrogen\",\"type\":\"other\",\"attributes\":{\"role\":\"regulator of MIR196A2 and HOXC genes\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"regulates\",\"target\":\"MIR196A2\",\"attributes\":{},\"target_id\":\"mir196a2\"},{\"predicate\":\"regulates\",\"target\":\"HOXC genes\",\"attributes\":{},\"target_id\":\"hoxc_genes\"}]},{\"name\":\"MCF7 cells\",\"type\":\"other\",\"attributes\":{\"disease_model\":\"breast cancer\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_in_study_of\",\"target\":\"MIR196A regulation\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RNA polymerase II\",\"type\":\"other\",\"attributes\":{\"binding_dependency\":\"oestrogen-dependent in MCF7 cells\",\"model_entity_type\":\"enzyme\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"region surrounding HOXC10 and MIR196A\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"tamoxifen\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"drug\"},\"relationships\":[{\"predicate\":\"represses\",\"target\":\"RNA polymerase II binding in MCF7 cells\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"fulvestrant\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"drug\"},\"relationships\":[{\"predicate\":\"represses\",\"target\":\"RNA polymerase II binding in MCF7 cells\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"GRO-Seq and validation assays demonstrate that oestradiol specifically increases transcription of the MIR196A2 gene but not MIR196A1 in MCF7 cells. Chromatin interaction analyses reveal that MIR196A2 is regulated by long-range interactions between its promoters and two enhancers: the HOTAIR distal enhancer (HDE) and a novel MIR196A2-Enhancer (mE).\",\"entities\":[{\"name\":\"Global-run-on sequencing (GRO-Seq)\",\"type\":\"method\",\"attributes\":{\"function\":\"measures nascent RNA\",\"capability\":\"assesses changes in transcription with high sensitivity\"},\"relationships\":[{\"predicate\":\"indicated\",\"target\":\"dramatic increase in RNA production in the genomic region surrounding MIR196A2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MIR196A2\",\"type\":\"other\",\"attributes\":{\"regulation\":\"transcriptionally regulated by oestrogen\",\"response\":\"increased RNA production peaking at 40 mins following addition of oestradiol (E2)\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"validated_by\",\"target\":\"qRT-PCR and RNA-Seq from MCF7 cells\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"interacts_with\",\"target\":\"HOTAIR distal enhancer (HDE)\",\"attributes\":{},\"target_id\":\"hotair_distal_enhancer_hde\"},{\"predicate\":\"interacts_with\",\"target\":\"MIR196A2-Enhancer (mE)\",\"attributes\":{},\"target_id\":\"mir196a2_enhancer_me\"}]},{\"name\":\"MIR196A1\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"not_responsive_to\",\"target\":\"oestradiol (E2)\",\"attributes\":{},\"target_id\":\"oestradiol_e2\"}]},{\"name\":\"oestradiol (E2)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"induces\",\"target\":\"increase in precursor miRNA from MIR196A2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MCF7 cells\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"subject_of\",\"target\":\"histone methylation pattern assessment\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"subject_of\",\"target\":\"ChIA-PET analysis\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXC10 promoter\",\"type\":\"other\",\"attributes\":{\"alias\":\"putative promoter 1 (PP1)\",\"status\":\"most active promoter in MCF7 cells\",\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"shared_with\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"},{\"predicate\":\"bound_by\",\"target\":\"ERα and FOXA1\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PP3\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"bound_by\",\"target\":\"ERα and FOXA1\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_3_prime_end_of\",\"target\":\"CpG_Hoffman\",\"attributes\":{},\"target_id\":\"cpg_hoffman\"}]},{\"name\":\"ERα\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"putative promoters 1 and 3 upstream of miR196A2 transcription start site\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"mediates\",\"target\":\"long-range transcriptional regulation via gene looping\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"FOXA1\",\"type\":\"other\",\"attributes\":{\"role\":\"pioneer factor\",\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"binds_to\",\"target\":\"putative promoters 1 and 3 upstream of miR196A2 transcription start site\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ChIA-PET\",\"type\":\"method\",\"attributes\":{\"full_name\":\"Chromatin Interact Analysis by Paired End Tags\"},\"relationships\":[{\"predicate\":\"identified\",\"target\":\"two major sites of interaction with the MIR196A2 promoters\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOTAIR distal enhancer (HDE)\",\"type\":\"other\",\"attributes\":{\"status\":\"previously identified\",\"activity\":\"most active enhancer in MCF7 cells\",\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"interacts_with\",\"target\":\"MIR196A2/HOXC10 promoter region\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"augments_transcription_of\",\"target\":\"PP1 and PP2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MIR196A2-Enhancer (mE)\",\"type\":\"other\",\"attributes\":{\"status\":\"novel interacting partner\",\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"interacts_with\",\"target\":\"MIR196A2/HOXC10 promoter region\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"augments_transcription_of\",\"target\":\"PP1 and PP2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CpG_Hoffman\",\"type\":\"other\",\"attributes\":{\"location\":\"immediately upstream of MIR196A2, falling into the 3' end of PP3\",\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"decrease in breast cancer risk\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"MIR196A expression patterns in breast cancer correlate with hormone receptor status and PAM50 subtypes, with high expression linked to poor survival in ER+ disease but better outcomes in triple-negative breast cancer. The gene serves as a prognostic biomarker where high expression predicts poor survival in post-menopausal ER+ patients but good survival in premenopausal patients. DNA methylation of the upstream CpG island is high in cancerous and non-malignant cell lines but low in normal mammary epithelial cells.\",\"entities\":[{\"name\":\"MIR196A\",\"type\":\"other\",\"attributes\":{\"regulator\":\"ERα\",\"prognostic_value\":\"Biomarker for breast cancer progression\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"correlates_with\",\"target\":\"hormone receptors (AR, ERα, PGR, HER2) and HR cofactors\",\"attributes\":{\"clusters\":\"1 and 3\"},\"target_id\":null},{\"predicate\":\"negatively_correlates_with\",\"target\":\"ERα, PGR, FOXA1, GATA3\",\"attributes\":{\"clusters\":\"2 and 4\"},\"target_id\":null},{\"predicate\":\"associates_with\",\"target\":\"EGFR and HER2\",\"attributes\":{\"clusters\":\"2 and 4\"},\"target_id\":null},{\"predicate\":\"expressed_in\",\"target\":\"HER2 subtype\",\"attributes\":{\"level\":\"strong\"},\"target_id\":null},{\"predicate\":\"expressed_in\",\"target\":\"luminal A and B subtypes\",\"attributes\":{\"level\":\"very dynamic\"},\"target_id\":null},{\"predicate\":\"over_expressed_in\",\"target\":\"breast tumours\",\"attributes\":{\"comparison\":\"normal adjacent tissue\"},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"increased tumour stage\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor survival\",\"attributes\":{\"condition\":\"ER+ breast cancer\"},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"better outcome\",\"attributes\":{\"condition\":\"triple-negative breast cancer (TNBC)\"},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"good outcome\",\"attributes\":{\"condition\":\"premenopausal ER+ disease\"},\"target_id\":null},{\"predicate\":\"associated_with\",\"target\":\"poor outcome\",\"attributes\":{\"condition\":\"post-menopausal ER+ disease\"},\"target_id\":null}]},{\"name\":\"CpG island upstream of MIR196A2\",\"type\":\"other\",\"attributes\":{\"alias\":\"CpG_Hoffman\",\"location\":\"3' end of putative promoter 3 (PP3)\",\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"methylated_in\",\"target\":\"non-malignant MCF10A cells\",\"attributes\":{\"status\":\"mostly methylated\"},\"target_id\":null},{\"predicate\":\"methylated_in\",\"target\":\"cancerous MCF7 cells\",\"attributes\":{\"status\":\"mostly methylated\"},\"target_id\":null},{\"predicate\":\"unmethylated_in\",\"target\":\"human mammary epithelial cells (HMEC)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"METABRIC cohort\",\"type\":\"other\",\"attributes\":{\"content\":\"breast tumour expression data\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"used_for_analysis_of\",\"target\":\"MIR196A expression\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ER+ breast cancer\",\"type\":\"other\",\"attributes\":{\"receptor_status\":\"Estrogen receptor positive\",\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"prognostic_factor\",\"target\":\"MIR196A expression\",\"attributes\":{\"high_expression_outcome\":\"poor survival\"},\"target_id\":null}]},{\"name\":\"Triple-negative breast cancer (TNBC)\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"disease_subtype\"},\"relationships\":[{\"predicate\":\"prognostic_factor\",\"target\":\"MIR196A expression\",\"attributes\":{\"high_expression_outcome\":\"better outcome\"},\"target_id\":null}]}]},{\"context_summary\":\"MIR196A expression varies significantly across different breast cancer resistance models, increasing in tamoxifen and chemotherapy resistance but decreasing in fulvestrant resistance. These expression changes correlate with DNA methylation patterns at the HOXC10/MIR196A2 promoters and increased ERα binding in resistant tumors. The discussion links these regulatory mechanisms to the role of ERα and cofactors in maintaining active transcription and low methylation levels.\",\"entities\":[{\"name\":\"MIR196A\",\"type\":\"other\",\"attributes\":{\"expression_pattern\":\"dynamic and complex\",\"role\":\"biomarker for breast cancer progression and therapeutic resistance\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"increased_in\",\"target\":\"tamoxifen resistant MCF7 cells (TAMR)\",\"attributes\":{},\"target_id\":\"tamoxifen_resistant_mcf7_cells_tamr\"},{\"predicate\":\"depleted_in\",\"target\":\"fulvestrant resistance (FASR)\",\"attributes\":{},\"target_id\":\"fulvestrant_resistance_fasr\"},{\"predicate\":\"increased_in\",\"target\":\"resistant cell lines to paclitaxel and adromycin\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"regulated_by\",\"target\":\"ERα\",\"attributes\":{},\"target_id\":\"er\"}]},{\"name\":\"tamoxifen resistant MCF7 cells (TAMR)\",\"type\":\"other\",\"attributes\":{\"resistance_type\":\"tamoxifen\",\"model_entity_type\":\"cell_line_model\"},\"relationships\":[{\"predicate\":\"shows_increased_expression_of\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"fulvestrant resistance (FASR)\",\"type\":\"other\",\"attributes\":{\"resistance_type\":\"fulvestrant\",\"model_entity_type\":\"cell_line_model\"},\"relationships\":[{\"predicate\":\"shows_depleted_expression_of\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"HOXC10/MIR196A2 promoters\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_region\"},\"relationships\":[{\"predicate\":\"methylation_changes_match_expression_of\",\"target\":\"MIR196A\",\"attributes\":{},\"target_id\":\"mir196a\"}]},{\"name\":\"paclitaxel\",\"type\":\"other\",\"attributes\":{\"category\":\"chemotherapeutic\",\"model_entity_type\":\"drug\"},\"relationships\":[]},{\"name\":\"adromycin\",\"type\":\"other\",\"attributes\":{\"category\":\"chemotherapeutic\",\"model_entity_type\":\"drug\"},\"relationships\":[]},{\"name\":\"ERα\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"binding_sites_identified_in\",\"target\":\"genomic region of MIR196A\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"occupancy_increased_in\",\"target\":\"non-responders and metastases\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"binding_associated_with\",\"target\":\"changes to expression patterns crucial for resistant tumour survival\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Hoffman and colleagues\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"research_group\"},\"relationships\":[{\"predicate\":\"postulated\",\"target\":\"polymorphism within MIR196A2 reduces microRNA maturation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"identified\",\"target\":\"upstream CpG island associated with reduced risk when hypermethylated\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"upstream CpG island\",\"type\":\"other\",\"attributes\":{\"location\":\"within transcriptionally active region of HOXC10 and MIR196A2\",\"methylation_status\":\"completely methylated in models of oestrogen deprivation and fulvestrant treatment; not methylated in tamoxifen resistant cells\",\"model_entity_type\":\"genomic_feature\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"reduced breast cancer risk when hypermethylated\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DNA methylation\",\"type\":\"other\",\"attributes\":{\"common_association\":\"repressed transcription\",\"model_entity_type\":\"epigenetic_mechanism\"},\"relationships\":[{\"predicate\":\"may_impair\",\"target\":\"expression in transcriptional high region\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"HOX gene expression in breast tumours shows a strong correlation with MIR196A, contrasting with normal tissues where the association is not significant. The authors hypothesize that multiple enhancers and ERα binding drive this overexpression in cancer. High MIR196A expression is linked to poor prognosis in ER+ tumours and increased expression in response to tamoxifen and chemotherapy, associated with loss of DNA methylation.\",\"entities\":[{\"name\":\"HOX gene expression\",\"type\":\"concept\",\"attributes\":{\"control\":\"tightly controlled in a spatiotemporal manner\",\"function\":\"ensure proper axial formation along the anterior-posterior axis\"},\"relationships\":[{\"predicate\":\"appears_dynamic_in\",\"target\":\"cell types of the human breast\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MIR196A\",\"type\":\"other\",\"attributes\":{\"encoding\":\"dual-encoded (two loci)\",\"prognostic_value\":\"biomarker of poor prognosis in ER+ tumours, especially in therapy-resistant patients\",\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"correlates_with\",\"target\":\"HOXC genes in breast tumours\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"association_not_significant_in\",\"target\":\"normal tissues\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expression_increases_in_response_to\",\"target\":\"tamoxifen\",\"attributes\":{},\"target_id\":\"tamoxifen\"},{\"predicate\":\"expression_increases_in_response_to\",\"target\":\"chemotherapeutic agents\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"expression_increase_associated_with\",\"target\":\"loss of DNA methylation within promoter regions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXC genes\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene_family\"},\"relationships\":[{\"predicate\":\"strong_correlation_with\",\"target\":\"MIR196A in breast tumours\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Beta-globin genes\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene_family\"},\"relationships\":[{\"predicate\":\"regulated_by\",\"target\":\"locus-control-region (LCR)\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"c-Myc\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"gene\"},\"relationships\":[{\"predicate\":\"has_enhancers_active_in\",\"target\":\"multiple cancer types\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ERα\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"protein\"},\"relationships\":[{\"predicate\":\"hypothesized_driver_of\",\"target\":\"overexpression of HOXC and MIR196A in cancer\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"binding_mediates\",\"target\":\"positive response of mature MIR196A transcript to oestrogen stimulation in MCF7 cells\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"binding_peak_location\",\"target\":\"PP3\",\"attributes\":{},\"target_id\":\"pp3\"}]},{\"name\":\"PP3\",\"type\":\"other\",\"attributes\":{\"luciferase_assay_result\":\"not able to increase luciferase expression\",\"model_entity_type\":\"genomic_region\"},\"relationships\":[{\"predicate\":\"contains_ERα_binding_peak\",\"target\":\"ERα\",\"attributes\":{},\"target_id\":\"er\"},{\"predicate\":\"potentially_important_for_activity_of\",\"target\":\"HOXC10 and MIR196A2 promoters\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Jiang et al\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"study\"},\"relationships\":[{\"predicate\":\"demonstrated\",\"target\":\"mature MIR196A transcript positively responds to oestrogen stimulation in MCF7 cells\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"DNA methylation\",\"type\":\"other\",\"attributes\":{\"role_in_context\":\"repressive epigenetic modification\",\"model_entity_type\":\"epigenetic_modification\"},\"relationships\":[{\"predicate\":\"negatively_correlates_with\",\"target\":\"MIR196A expression at several sites within the HOXC locus\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"HOXC enhancer elements\",\"type\":\"other\",\"attributes\":{\"model_entity_type\":\"genomic_element\"},\"relationships\":[{\"predicate\":\"bind_ER_more_readily_in\",\"target\":\"poor responders with ER+ tumours\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text discusses the role of HOX genes in maintaining a stem-cell-like state in cancer and notes that breast cancer subtype prevalence shifts after menopause. It highlights that MIR196A expression has opposite prognostic implications for ER+ breast cancer in pre-menopausal versus post-menopausal women. The passage also details the cell culture and cloning methods used to study MIR196A regulation.\",\"entities\":[{\"name\":\"HOX genes\",\"type\":\"other\",\"attributes\":{\"role\":\"essential in embryonic development\",\"cancer_function\":\"sustain a stem-cell like state\",\"model_entity_type\":\"gene_family\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"non-terminally-differentiated state\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"luminal breast tumours\",\"type\":\"other\",\"attributes\":{\"prevalence_younger_women\":\"33-44% in women younger than 45\",\"prevalence_older_women\":\"70-72% in women older than 65\",\"model_entity_type\":\"cancer_subtype\"},\"relationships\":[{\"predicate\":\"increases_in_prevalence_after\",\"target\":\"menopause\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"basal-like tumours\",\"type\":\"other\",\"attributes\":{\"prevalence\":\"more common in younger women\",\"model_entity_type\":\"cancer_subtype\"},\"relationships\":[{\"predicate\":\"suggests_evolution_of_driving_factors_after\",\"target\":\"menopause\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MIR196A\",\"type\":\"other\",\"attributes\":{\"expression_pattern\":\"dynamically expressed in normal mammary cells and breast tumours\",\"prognostic_impact_pre-menopausal\":\"higher expression associates with good outcome in ER+ tumours\",\"prognostic_impact_post-menopausal\":\"higher expression associates with poor outcome in ER+ tumours\",\"potential_role\":\"biomarker for progression to therapy resistance\",\"model_entity_type\":\"microRNA\"},\"relationships\":[{\"predicate\":\"expression_impacted_by\",\"target\":\"menopause\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MCF7 cells\",\"type\":\"other\",\"attributes\":{\"source\":\"AstraZeneca\",\"authentication\":\"short-tandem repeat (STR) profiling by Cell Bank, Australia\",\"culture_duration\":\"less than 6 months after authentication\",\"model_entity_type\":\"cell_line\"},\"relationships\":[{\"predicate\":\"used_for_development_of\",\"target\":\"endocrine resistance sub-lines\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"pGL3-Basic\",\"type\":\"other\",\"attributes\":{\"function\":\"luciferase reporter plasmid\",\"model_entity_type\":\"plasmid\"},\"relationships\":[{\"predicate\":\"cloning_site_enhancers\",\"target\":\"BamHI/SalI site\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"cloning_site_promoters\",\"target\":\"multiple cloning site immediately upstream of the luciferase gene\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Lipofectamine 3000\",\"type\":\"other\",\"attributes\":{\"manufacturer\":\"Life Technologies\",\"catalog_number\":\"L3000-008\",\"dose\":\"0.5μL\",\"model_entity_type\":\"reagent\"},\"relationships\":[{\"predicate\":\"used_for_transfection_of\",\"target\":\"MCF7 cells\",\"attributes\":{},\"target_id\":\"mcf7_cells\"}]}]},{\"context_summary\":\"The study details the experimental protocols for luciferase assays, RNA extraction, and genomic data analysis. It specifies the use of specific kits and software for qRT-PCR, RNA-Seq, and survival analysis. The methods include adapting chromosome conformation capture (3C) techniques for analyzing chromatin interactions.\",\"entities\":[{\"name\":\"luciferase assay protocol\",\"type\":\"method\",\"attributes\":{\"timing\":\"48 hours post transfection\",\"instrument\":\"DTX-880 luminometer\",\"kit\":\"Dual-Glo Stop and Glo luciferase reporter kit (Promega, E2920)\"},\"relationships\":[{\"predicate\":\"follows\",\"target\":\"manufacturer's recommended protocol\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RNA extraction protocol\",\"type\":\"method\",\"attributes\":{\"lysis_reagent\":\"Life Technologies TRIzol® reagent\",\"extraction_method\":\"chloroform extraction and isopropanol precipitation\",\"dnase_treatment\":\"DNA free kit from Ambion (Life Technologies, AM1906)\"},\"relationships\":[]},{\"name\":\"miRNA reverse transcription protocol\",\"type\":\"method\",\"attributes\":{\"kit\":\"miScript RT II kit from Qiagen (218161)\"},\"relationships\":[{\"predicate\":\"follows\",\"target\":\"manufacturer's instructions\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"miRNA qRT-PCR protocol\",\"type\":\"method\",\"attributes\":{\"kit\":\"Qiagen's miScript SYBR Green PCR Kit (218073)\",\"normalization_reference\":\"snoRNA RNU6b\",\"instrument\":\"Corbet Rotorgene-6000\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"primers specific to each mature or precursor miRNA coupled with a universal primer\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RNA-Seq data sources\",\"type\":\"measurement\",\"attributes\":{\"oestradiol_treatment_source\":\"K. Nephew (reference 49)\",\"resistant_cells_source\":\"GSE68815 (reference 50)\",\"hox_gene_expression_source\":\"Gascard et al (reference 51)\"},\"relationships\":[]},{\"name\":\"Genomic Data Analysis Pipeline\",\"type\":\"method\",\"attributes\":{\"chip_seq_accessions\":\"GSE14664, GSE27463, GSE39495, GSE32222\",\"histone_chip_seq_source\":\"ENCODE\",\"methylation_source\":\"The Cancer Genome Atlas (TCGA)\",\"mapping_tool\":\"Bowtie\",\"peak_calling_tool\":\"MACS\",\"visualization_tool\":\"Interactive Genome Viewer (IGV)\"},\"relationships\":[{\"predicate\":\"correlates\",\"target\":\"DNA methylation of breast tumours with gene expression of MIR196A from TCGA cohort\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Breast Tumour Expression Analysis\",\"type\":\"method\",\"attributes\":{\"data_source\":\"METABRIC (EGAS00000083)\",\"clustering_tool\":\"Multiple Experiment Viewer (MeV)\",\"clustering_method\":\"Manhattan average-linkage based clustering of rows and columns\",\"correlation_tool\":\"CORREL function of Microsoft Excel\"},\"relationships\":[]},{\"name\":\"Survival Analysis\",\"type\":\"method\",\"attributes\":{\"regression_tool\":\"MedCalc for Windows, version 12.7\",\"survival_curve_tool\":\"GraphPad Prism\",\"cutoff_determination_method\":\"receiver operator characteristic (ROC) curves\"},\"relationships\":[]},{\"name\":\"Chromosome conformation capture (3C)\",\"type\":\"method\",\"attributes\":{\"protocol_adapted_from\":\"Vakoc 2005, Hagege 2007, Tan-Wong 2008\",\"fixative\":\"1% formaldehyde\",\"confluence_range\":\"60-80%\",\"digestion_enzyme\":\"HindIII\",\"control_library_type\":\"undigested and unligated native gDNA\"},\"relationships\":[]}]},{\"context_summary\":\"The text describes the validation method for 3C libraries using GAPDH primers. It specifies the design of primers for 3C-qPCR relative to HindIII cut sites and enhancer regions.\",\"entities\":[{\"name\":\"GAPDH primers\",\"type\":\"method\",\"attributes\":{\"amplified_fragment_property\":\"contains no cut sites for the enzymes used\",\"purpose\":\"determine digestion and ligation efficiency of each library\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"primers that amplify a fragment containing a HindIII cut site\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"3C-qPCR primers\",\"type\":\"method\",\"attributes\":{\"design_location\":\"100-250 bp up or downstream of each HindIII cut site\"},\"relationships\":[{\"predicate\":\"includes_bait\",\"target\":\"primer across the putative enhancer\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

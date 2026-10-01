@@ -1,0 +1,1210 @@
+{
+  "document_id": "bethgelab-10047",
+  "fulltext_sha256": "f0be139b8205277b5f62dc4345c48427d0280afe402b478627635231c0a90071",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "a44f6de7c8cf6cd6b8b5f6bce5cce86d7e8727e9f56bb1428ec11d84edd9c242",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "GUIDEMOL is a Python-based graphical user interface for calculating molecular descriptors and 3D grid representations using RDKit. The introduction situates molecular descriptors within QSPR/QSAR methodologies and reviews existing software tools like CDK, OCHEM, and Mordred. It highlights the use of the tkinter package for building accessible interfaces for chemoinformatics users without programming skills.",
+        "entities": [
+          {
+            "name": "GUIDEMOL",
+            "entity_id": "guidemol",
+            "entity_type": "other",
+            "aliases": [
+              "GUIDEMOL"
+            ],
+            "attributes": {
+              "language": "Python",
+              "base_software": "RDKit",
+              "gui_framework": "tkinter",
+              "functionality": "processes molecular structures, calculates molecular descriptors, generates 3D grid representations (electrostatic potential or voxels)",
+              "target_audience": "chemoinformatics users with no programming skills",
+              "source_code_url": "https://github.com/jairesdesousa/guidemol",
+              "cli_availability": "true",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on",
+                "target": "RDKit",
+                "attributes": {},
+                "target_id": "rdkit"
+              },
+              {
+                "predicate": "uses",
+                "target": "tkinter",
+                "attributes": {},
+                "target_id": "tkinter"
+              },
+              {
+                "predicate": "provides_access_to",
+                "target": "RDKit tools",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "RDKit",
+            "entity_id": "rdkit",
+            "entity_type": "other",
+            "aliases": [
+              "RDKit"
+            ],
+            "attributes": {
+              "license": "open-source",
+              "language": "Python",
+              "functionality": "chemoinformatics tools, calculation of molecular descriptors",
+              "usage": "machine learning projects",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "implements",
+                "target": "molecular descriptors",
+                "attributes": {},
+                "target_id": "molecular_descriptors"
+              },
+              {
+                "predicate": "used_by",
+                "target": "GUIDEMOL",
+                "attributes": {},
+                "target_id": "guidemol"
+              }
+            ]
+          },
+          {
+            "name": "tkinter",
+            "entity_id": "tkinter",
+            "entity_type": "other",
+            "aliases": [
+              "tkinter"
+            ],
+            "attributes": {
+              "language": "Python",
+              "description": "standard Python interface to the Tcl/Tk GUI toolkit",
+              "distribution": "usually bundled with Python",
+              "model_entity_type": "software_library"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "Python",
+                "attributes": {},
+                "target_id": "python"
+              },
+              {
+                "predicate": "interface_to",
+                "target": "Tcl/Tk GUI toolkit",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_by",
+                "target": "GUIDEMOL",
+                "attributes": {},
+                "target_id": "guidemol"
+              }
+            ]
+          },
+          {
+            "name": "molecular descriptors",
+            "entity_id": "molecular_descriptors",
+            "entity_type": "concept",
+            "aliases": [
+              "molecular descriptors"
+            ],
+            "attributes": {
+              "role": "core of QSPR/QSAR methodology",
+              "field": "chemoinformatics"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "QSPR/QSAR methodology",
+                "attributes": {},
+                "target_id": "qspr_qsar_methodology"
+              },
+              {
+                "predicate": "calculated_by",
+                "target": "GUIDEMOL",
+                "attributes": {},
+                "target_id": "guidemol"
+              }
+            ]
+          },
+          {
+            "name": "QSPR/QSAR methodology",
+            "entity_id": "qspr_qsar_methodology",
+            "entity_type": "other",
+            "aliases": [
+              "QSPR/QSAR methodology"
+            ],
+            "attributes": {
+              "users": "scientists from different areas with varying computer skills",
+              "model_entity_type": "methodology"
+            },
+            "relationships": [
+              {
+                "predicate": "relies_on",
+                "target": "molecular descriptors",
+                "attributes": {},
+                "target_id": "molecular_descriptors"
+              }
+            ]
+          },
+          {
+            "name": "Chemistry Development Kit (CDK)",
+            "entity_id": "chemistry_development_kit_cdk",
+            "entity_type": "other",
+            "aliases": [
+              "Chemistry Development Kit (CDK)"
+            ],
+            "attributes": {
+              "license": "open-source",
+              "language": "Java",
+              "description": "collection of libraries for chemoinformatics applications",
+              "model_entity_type": "software_platform"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "calculation of molecular descriptors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "PaDEL software",
+            "entity_id": "padel_software",
+            "entity_type": "other",
+            "aliases": [
+              "PaDEL software"
+            ],
+            "attributes": {
+              "type": "graphical user interface (GUI)",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "calculates",
+                "target": "CDK-based molecular descriptors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "CDK Descriptor Calculator GUI",
+            "entity_id": "cdk_descriptor_calculator_gui",
+            "entity_type": "other",
+            "aliases": [
+              "CDK Descriptor Calculator GUI"
+            ],
+            "attributes": {
+              "developer": "Guha",
+              "type": "graphical user interface (GUI)",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "calculates",
+                "target": "CDK-based molecular descriptors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "BlueDesc",
+            "entity_id": "bluedesc",
+            "entity_type": "other",
+            "aliases": [
+              "BlueDesc"
+            ],
+            "attributes": {
+              "type": "command-line tool",
+              "input_format": "MDL SDFile",
+              "output_formats": "ARFF, LIBSVM",
+              "descriptor_count": "up to 174",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "CDK",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "JOELib2",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "OCHEM",
+            "entity_id": "ochem",
+            "entity_type": "other",
+            "aliases": [
+              "OCHEM"
+            ],
+            "attributes": {
+              "cost": "free",
+              "coordinator": "Tetko",
+              "functionality": "implementation of thousands of descriptors, portal for training QSPR models",
+              "model_entity_type": "web_service"
+            },
+            "relationships": [
+              {
+                "predicate": "integrates",
+                "target": "descriptors from different chemoinformatics groups and packages",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ChemDes",
+            "entity_id": "chemdes",
+            "entity_type": "other",
+            "aliases": [
+              "ChemDes"
+            ],
+            "attributes": {
+              "cost": "free",
+              "descriptor_count": "3679 molecular descriptors",
+              "fingerprint_types": "59 types of molecular fingerprints",
+              "model_entity_type": "web_service"
+            },
+            "relationships": [
+              {
+                "predicate": "integrates",
+                "target": "several available packages",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mordred",
+            "entity_id": "mordred",
+            "entity_type": "other",
+            "aliases": [
+              "Mordred"
+            ],
+            "attributes": {
+              "language": "Python",
+              "functionality": "calculation of molecular descriptors",
+              "implementation": "RDKit wrappers and original implementations",
+              "access_modes": "command-line, web application",
+              "model_entity_type": "software_package"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "RDKit",
+                "attributes": {},
+                "target_id": "rdkit"
+              }
+            ]
+          },
+          {
+            "name": "Python",
+            "entity_id": "python",
+            "entity_type": "other",
+            "aliases": [
+              "Python"
+            ],
+            "attributes": {
+              "capability": "easy development of GUIs",
+              "model_entity_type": "programming_language"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "tkinter",
+                "attributes": {},
+                "target_id": "tkinter"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 474,
+          "word_count": 474,
+          "sha256": "2088818f1e779c674539fb1b29b575ae03c318c4755ad907c3295c8cef5ccada",
+          "sentence_minhash": [
+            21343157284432945,
+            18551641988871988,
+            52818052812839525,
+            175877531101271978,
+            14857359349752432,
+            239532995021656703,
+            22742697865333914,
+            125414594280765941,
+            120355823278986985,
+            76931577636070685,
+            57813750656436424,
+            242442872322440140,
+            15874572694676062,
+            54356350401609465,
+            47189708136034628,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'software' for 'GUIDEMOL'",
+          "normalized unsupported entity type 'software' for 'RDKit'",
+          "normalized unsupported entity type 'software_library' for 'tkinter'",
+          "normalized unsupported entity type 'methodology' for 'QSPR/QSAR methodology'",
+          "normalized unsupported entity type 'software_platform' for 'Chemistry Development Kit (CDK)'",
+          "normalized unsupported entity type 'software' for 'PaDEL software'",
+          "normalized unsupported entity type 'software' for 'CDK Descriptor Calculator GUI'",
+          "normalized unsupported entity type 'software' for 'BlueDesc'",
+          "normalized unsupported entity type 'web_service' for 'OCHEM'",
+          "normalized unsupported entity type 'web_service' for 'ChemDes'",
+          "normalized unsupported entity type 'software_package' for 'Mordred'",
+          "normalized unsupported entity type 'programming_language' for 'Python'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "GUIDEMOL is a Python-based graphical user interface for calculating molecular descriptors and 3D grid representations using RDKit. It supports both electrostatic potential and voxel-based 3D molecular encodings, which are utilized in deep learning and 3D-QSAR applications. The software is released under the BSD license and includes a command-line interface for grid calculations.",
+        "entities": [
+          {
+            "name": "GUIDEMOL",
+            "entity_id": "guidemol",
+            "entity_type": "other",
+            "aliases": [
+              "GUIDEMOL"
+            ],
+            "attributes": {
+              "language": "Python",
+              "base_library": "RDKit",
+              "gui_framework": "tkinter",
+              "license": "three-clause Berkeley Software Distribution (BSD)",
+              "source_code_url": "https://github.com/jairesdesousa/guidemol",
+              "purpose": "Calculate molecular descriptors and 3D grid representations",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "implements",
+                "target": "3D grids representing molecules based on electrostatic potential or voxel encoding",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "provides",
+                "target": "command-line interface for 3D grid calculation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "allows",
+                "target": "commercial and non-commercial use",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "JRgui",
+            "entity_id": "jrgui",
+            "entity_type": "other",
+            "aliases": [
+              "JRgui"
+            ],
+            "attributes": {
+              "type": "GUI program",
+              "function": "Calculate Joback and Reid group contribution molecular descriptors",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "developed_by",
+                "target": "Shi and Borchardt",
+                "attributes": {},
+                "target_id": "shi_and_borchardt"
+              },
+              {
+                "predicate": "uses",
+                "target": "RDKit",
+                "attributes": {},
+                "target_id": "rdkit"
+              },
+              {
+                "predicate": "uses",
+                "target": "tkinter module",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Shi and Borchardt",
+            "entity_id": "shi_and_borchardt",
+            "entity_type": "person",
+            "aliases": [
+              "Shi and Borchardt"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "developed",
+                "target": "JRgui",
+                "attributes": {},
+                "target_id": "jrgui"
+              }
+            ]
+          },
+          {
+            "name": "3D grid representations of molecules",
+            "entity_id": "3d_grid_representations_of_molecules",
+            "entity_type": "concept",
+            "aliases": [
+              "3D grid representations of molecules"
+            ],
+            "attributes": {
+              "methods": [
+                "electrostatic potential",
+                "voxel encoding"
+              ],
+              "application": "Processing by complex artificial intelligence algorithms and deep learning neural networks"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "3D-QSAR",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "used_for",
+                "target": "assessing molecular similarity",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "processed_by",
+                "target": "convolutional neural networks",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MMFFOptimizeMolecule",
+            "entity_id": "mmffoptimizemolecule",
+            "entity_type": "method",
+            "aliases": [
+              "MMFFOptimizeMolecule"
+            ],
+            "attributes": {
+              "library": "RDKit",
+              "arguments": "mmffVariant='MMFF94', maxIters=5000"
+            },
+            "relationships": [
+              {
+                "predicate": "used_for",
+                "target": "generation of 3D molecular models from SMILES",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "tkinter",
+            "entity_id": "tkinter",
+            "entity_type": "other",
+            "aliases": [
+              "tkinter"
+            ],
+            "attributes": {
+              "description": "Standard Python interface to the Tcl/Tk GUI toolkit",
+              "model_entity_type": "software_library"
+            },
+            "relationships": [
+              {
+                "predicate": "used_by",
+                "target": "GUIDEMOL",
+                "attributes": {},
+                "target_id": "guidemol"
+              },
+              {
+                "predicate": "used_by",
+                "target": "JRgui",
+                "attributes": {},
+                "target_id": "jrgui"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 474,
+          "end_word": 967,
+          "word_count": 493,
+          "sha256": "f655f027945db6f4ea8c2d9e105dcc22e2dfd42a7601761f28ab1e640246f57c",
+          "sentence_minhash": [
+            282485741492650032,
+            232593725413697090,
+            191473155586454694,
+            201948566748835051,
+            145755254115431189,
+            55295060778826426,
+            8253212952650869,
+            96292850158067112,
+            166844233492045914,
+            104855906141624440,
+            30078602055368083,
+            250560377622259950,
+            15874572694676062,
+            906306679132868,
+            281201072623188781,
+            133280112151204120
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'software' for 'GUIDEMOL'",
+          "normalized unsupported entity type 'software' for 'JRgui'",
+          "normalized unsupported entity type 'software_library' for 'tkinter'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "GUIDEMOL calculates molecular descriptors and 3D grid representations using RDKit, supporting both a graphical user interface and a command-line interface. The software allows for the calculation of electrostatic potential and voxel grids based on specific atomic properties and user-defined parameters.",
+        "entities": [
+          {
+            "name": "GUIDEMOL",
+            "entity_id": "guidemol",
+            "entity_type": "other",
+            "aliases": [
+              "GUIDEMOL"
+            ],
+            "attributes": {
+              "function": "calculates molecular descriptors and 3D grid representations",
+              "interfaces": [
+                "graphical user interface (tkinter)",
+                "command-line interface (CLI)"
+              ],
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "RDKit",
+                "attributes": {},
+                "target_id": "rdkit"
+              },
+              {
+                "predicate": "calculates",
+                "target": "electrostatic potential grid",
+                "attributes": {},
+                "target_id": "electrostatic_potential_grid"
+              },
+              {
+                "predicate": "calculates",
+                "target": "voxel grid",
+                "attributes": {},
+                "target_id": "voxel_grid"
+              }
+            ]
+          },
+          {
+            "name": "RDKit",
+            "entity_id": "rdkit",
+            "entity_type": "other",
+            "aliases": [
+              "RDKit"
+            ],
+            "attributes": {
+              "version_observed": "2022.9.5",
+              "model_entity_type": "software"
+            },
+            "relationships": [
+              {
+                "predicate": "provides_module",
+                "target": "rdMolDescriptors",
+                "attributes": {},
+                "target_id": "rdmoldescriptors"
+              },
+              {
+                "predicate": "provides_function",
+                "target": "Chem.AddHs()",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "provides_function",
+                "target": "AllChem.ComputeGasteigerCharges()",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "provides_function",
+                "target": "GetMMFFPartialCharge()",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "rdMolDescriptors",
+            "entity_id": "rdmoldescriptors",
+            "entity_type": "other",
+            "aliases": [
+              "rdMolDescriptors"
+            ],
+            "attributes": {
+              "belongs_to": "RDKit",
+              "model_entity_type": "software_module"
+            },
+            "relationships": [
+              {
+                "predicate": "contains_descriptors",
+                "target": "RDF, MORSE, WHIM, AUTOCORR3D, GETAWAY, PEOE_VSA, SMR_VSA",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "contains_function",
+                "target": "_CalcCrippenContribs()",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "electrostatic potential grid",
+            "entity_id": "electrostatic_potential_grid",
+            "entity_type": "other",
+            "aliases": [
+              "electrostatic potential grid"
+            ],
+            "attributes": {
+              "structure": "grid of cubes",
+              "charge_sources": [
+                "Gasteiger partial atomic charges",
+                "MMFF partial atomic charges"
+              ],
+              "model_entity_type": "data_representation"
+            },
+            "relationships": [
+              {
+                "predicate": "calculated_by",
+                "target": "GUIDEMOL",
+                "attributes": {},
+                "target_id": "guidemol"
+              },
+              {
+                "predicate": "depends_on",
+                "target": "user-defined cutoff distance",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "depends_on",
+                "target": "grid center coordinates",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "depends_on",
+                "target": "cube size",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "voxel grid",
+            "entity_id": "voxel_grid",
+            "entity_type": "other",
+            "aliases": [
+              "voxel grid"
+            ],
+            "attributes": {
+              "structure": "user-defined 3D grid",
+              "basis": "atomic property",
+              "model_entity_type": "data_representation"
+            },
+            "relationships": [
+              {
+                "predicate": "calculated_by",
+                "target": "GUIDEMOL",
+                "attributes": {},
+                "target_id": "guidemol"
+              },
+              {
+                "predicate": "uses_properties",
+                "target": "atomic number, partial atomic charge (Gasteiger or MMFF), Wildman-Crippen contributions",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "depends_on",
+                "target": "sigma parameter",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "depends_on",
+                "target": "cutoff distance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Wildman-Crippen approach",
+            "entity_id": "wildman_crippen_approach",
+            "entity_type": "method",
+            "aliases": [
+              "Wildman-Crippen approach"
+            ],
+            "attributes": {
+              "application": "calculation of atomic contributions to molecular refractivity and logP"
+            },
+            "relationships": [
+              {
+                "predicate": "implemented_in",
+                "target": "rdMolDescriptors._CalcCrippenContribs()",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "COc1ccc(cc1(OC))Br",
+            "entity_id": "coc1ccc_cc1_oc_br",
+            "entity_type": "other",
+            "aliases": [
+              "COc1ccc(cc1(OC))Br"
+            ],
+            "attributes": {
+              "smiles": "COc1ccc(cc1(OC))Br",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibited_inconsistency_in",
+                "target": "GETAWAY, MORSE, WHIM descriptors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "descriptor_inconsistency",
+            "entity_id": "descriptor_inconsistency",
+            "entity_type": "other",
+            "aliases": [
+              "descriptor_inconsistency"
+            ],
+            "attributes": {
+              "affected_descriptors": [
+                "GETAWAY",
+                "MORSE",
+                "WHIM"
+              ],
+              "rdkit_version": "2022.9.5",
+              "conditions": "different runs or different operating systems",
+              "model_entity_type": "phenomenon"
+            },
+            "relationships": [
+              {
+                "predicate": "observed_in",
+                "target": "COc1ccc(cc1(OC))Br",
+                "attributes": {},
+                "target_id": "coc1ccc_cc1_oc_br"
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 967,
+          "end_word": 1458,
+          "word_count": 491,
+          "sha256": "541cd763b062178b78c93ad7c880e81297b9ed1eb7e463847f6a8a8b753b6dc6",
+          "sentence_minhash": [
+            102678405439059924,
+            18551641988871988,
+            23103724853578534,
+            42943980542307666,
+            148925132169520149,
+            55295060778826426,
+            133419505218039624,
+            96292850158067112,
+            166844233492045914,
+            9462436175016187,
+            30078602055368083,
+            49775578613387123,
+            12488864069851856,
+            109183215498568511,
+            320577595232785959,
+            50577103973234844
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'software' for 'GUIDEMOL'",
+          "normalized unsupported entity type 'software' for 'RDKit'",
+          "normalized unsupported entity type 'software_module' for 'rdMolDescriptors'",
+          "normalized unsupported entity type 'data_representation' for 'electrostatic potential grid'",
+          "normalized unsupported entity type 'data_representation' for 'voxel grid'",
+          "normalized unsupported entity type 'molecule' for 'COc1ccc(cc1(OC))Br'",
+          "normalized unsupported entity type 'phenomenon' for 'descriptor_inconsistency'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The GUIDEMOL command-line interface allows users to calculate electrostatic potential or voxel grids by specifying parameters such as grid center, size, and atomic properties. An example command demonstrates generating an EP grid with Gasteiger charges for molecules in an SDF file. The application's source code is publicly available under a BSD license to facilitate bug detection and fixes.",
+        "entities": [
+          {
+            "name": "GUIDEMOL CLI",
+            "entity_id": "guidemol_cli",
+            "entity_type": "method",
+            "aliases": [
+              "GUIDEMOL CLI"
+            ],
+            "attributes": {
+              "script_name": "guidemol_version.py",
+              "function": "calculates EP or voxel grids"
+            },
+            "relationships": [
+              {
+                "predicate": "requires_input",
+                "target": "input file",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_optional_output",
+                "target": "output file",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_grid_type",
+                "target": "pot or vox",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_atomic_property",
+                "target": "Gasteiger, MMFF, MR, LogP, or AtomicNumber",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_grid_center_coordinates",
+                "target": "cx, cy, cz",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_cube_size",
+                "target": "r",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_cutoff_or_sigma",
+                "target": "w",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "accepts_grid_dimensions",
+                "target": "sx, sy, sz",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Example EP grid calculation command",
+            "entity_id": "example_ep_grid_calculation_command",
+            "entity_type": "event",
+            "aliases": [
+              "Example EP grid calculation command"
+            ],
+            "attributes": {
+              "command": "guidemol.py -i input.sdf -g pot -p Gasteiger -cx 0 -cy 0 -cz 0 -r 0.5 -w 3 -sx 5 -sy 5 -sz 5 -o outfile.csv",
+              "grid_type": "EP",
+              "charge_model": "Gasteiger",
+              "center_coordinates": "(0,0,0)",
+              "side_size": "5 Å",
+              "resolution": "0.5 Å",
+              "cutoff": "3 Å",
+              "input_file": "input.sdf",
+              "output_file": "outfile.csv"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "GUIDEMOL CLI",
+                "attributes": {},
+                "target_id": "guidemol_cli"
+              }
+            ]
+          },
+          {
+            "name": "GUIDEMOL source code",
+            "entity_id": "guidemol_source_code",
+            "entity_type": "other",
+            "aliases": [
+              "GUIDEMOL source code"
+            ],
+            "attributes": {
+              "license": "BSD",
+              "url": "https://github.com/jairesdesousa/guidemol"
+            },
+            "relationships": [
+              {
+                "predicate": "purpose",
+                "target": "facilitate detection and fixing of bugs or limitations",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1458,
+          "end_word": 1692,
+          "word_count": 234,
+          "sha256": "d28760032b5cf93412a8b8630294f93337fa6468361713081cfe697faafb4391",
+          "sentence_minhash": [
+            105826148015467838,
+            18551641988871988,
+            434926524258369661,
+            42943980542307666,
+            26384097017582652,
+            55295060778826426,
+            8253212952650869,
+            394263392636001476,
+            160189919577065396,
+            303065144849235781,
+            30078602055368083,
+            171596837418463449,
+            15874572694676062,
+            109183215498568511,
+            343173896539206701,
+            251498163250050664
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "guidemol",
+        "canonical_name": "GUIDEMOL",
+        "aliases": [
+          "GUIDEMOL"
+        ]
+      },
+      {
+        "canonical_id": "rdkit",
+        "canonical_name": "RDKit",
+        "aliases": [
+          "RDKit"
+        ]
+      },
+      {
+        "canonical_id": "tkinter",
+        "canonical_name": "tkinter",
+        "aliases": [
+          "tkinter"
+        ]
+      },
+      {
+        "canonical_id": "molecular_descriptors",
+        "canonical_name": "molecular descriptors",
+        "aliases": [
+          "molecular descriptors"
+        ]
+      },
+      {
+        "canonical_id": "qspr_qsar_methodology",
+        "canonical_name": "QSPR/QSAR methodology",
+        "aliases": [
+          "QSPR/QSAR methodology"
+        ]
+      },
+      {
+        "canonical_id": "chemistry_development_kit_cdk",
+        "canonical_name": "Chemistry Development Kit (CDK)",
+        "aliases": [
+          "Chemistry Development Kit (CDK)"
+        ]
+      },
+      {
+        "canonical_id": "padel_software",
+        "canonical_name": "PaDEL software",
+        "aliases": [
+          "PaDEL software"
+        ]
+      },
+      {
+        "canonical_id": "cdk_descriptor_calculator_gui",
+        "canonical_name": "CDK Descriptor Calculator GUI",
+        "aliases": [
+          "CDK Descriptor Calculator GUI"
+        ]
+      },
+      {
+        "canonical_id": "bluedesc",
+        "canonical_name": "BlueDesc",
+        "aliases": [
+          "BlueDesc"
+        ]
+      },
+      {
+        "canonical_id": "ochem",
+        "canonical_name": "OCHEM",
+        "aliases": [
+          "OCHEM"
+        ]
+      },
+      {
+        "canonical_id": "chemdes",
+        "canonical_name": "ChemDes",
+        "aliases": [
+          "ChemDes"
+        ]
+      },
+      {
+        "canonical_id": "mordred",
+        "canonical_name": "Mordred",
+        "aliases": [
+          "Mordred"
+        ]
+      },
+      {
+        "canonical_id": "python",
+        "canonical_name": "Python",
+        "aliases": [
+          "Python"
+        ]
+      },
+      {
+        "canonical_id": "jrgui",
+        "canonical_name": "JRgui",
+        "aliases": [
+          "JRgui"
+        ]
+      },
+      {
+        "canonical_id": "shi_and_borchardt",
+        "canonical_name": "Shi and Borchardt",
+        "aliases": [
+          "Shi and Borchardt"
+        ]
+      },
+      {
+        "canonical_id": "3d_grid_representations_of_molecules",
+        "canonical_name": "3D grid representations of molecules",
+        "aliases": [
+          "3D grid representations of molecules"
+        ]
+      },
+      {
+        "canonical_id": "mmffoptimizemolecule",
+        "canonical_name": "MMFFOptimizeMolecule",
+        "aliases": [
+          "MMFFOptimizeMolecule"
+        ]
+      },
+      {
+        "canonical_id": "rdmoldescriptors",
+        "canonical_name": "rdMolDescriptors",
+        "aliases": [
+          "rdMolDescriptors"
+        ]
+      },
+      {
+        "canonical_id": "electrostatic_potential_grid",
+        "canonical_name": "electrostatic potential grid",
+        "aliases": [
+          "electrostatic potential grid"
+        ]
+      },
+      {
+        "canonical_id": "voxel_grid",
+        "canonical_name": "voxel grid",
+        "aliases": [
+          "voxel grid"
+        ]
+      },
+      {
+        "canonical_id": "wildman_crippen_approach",
+        "canonical_name": "Wildman-Crippen approach",
+        "aliases": [
+          "Wildman-Crippen approach"
+        ]
+      },
+      {
+        "canonical_id": "coc1ccc_cc1_oc_br",
+        "canonical_name": "COc1ccc(cc1(OC))Br",
+        "aliases": [
+          "COc1ccc(cc1(OC))Br"
+        ]
+      },
+      {
+        "canonical_id": "descriptor_inconsistency",
+        "canonical_name": "descriptor_inconsistency",
+        "aliases": [
+          "descriptor_inconsistency"
+        ]
+      },
+      {
+        "canonical_id": "guidemol_cli",
+        "canonical_name": "GUIDEMOL CLI",
+        "aliases": [
+          "GUIDEMOL CLI"
+        ]
+      },
+      {
+        "canonical_id": "example_ep_grid_calculation_command",
+        "canonical_name": "Example EP grid calculation command",
+        "aliases": [
+          "Example EP grid calculation command"
+        ]
+      },
+      {
+        "canonical_id": "guidemol_source_code",
+        "canonical_name": "GUIDEMOL source code",
+        "aliases": [
+          "GUIDEMOL source code"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"GUIDEMOL is a Python-based graphical user interface for calculating molecular descriptors and 3D grid representations using RDKit. The introduction situates molecular descriptors within QSPR/QSAR methodologies and reviews existing software tools like CDK, OCHEM, and Mordred. It highlights the use of the tkinter package for building accessible interfaces for chemoinformatics users without programming skills.\",\"entities\":[{\"name\":\"GUIDEMOL\",\"type\":\"other\",\"attributes\":{\"language\":\"Python\",\"base_software\":\"RDKit\",\"gui_framework\":\"tkinter\",\"functionality\":\"processes molecular structures, calculates molecular descriptors, generates 3D grid representations (electrostatic potential or voxels)\",\"target_audience\":\"chemoinformatics users with no programming skills\",\"source_code_url\":\"https://github.com/jairesdesousa/guidemol\",\"cli_availability\":\"true\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"based_on\",\"target\":\"RDKit\",\"attributes\":{},\"target_id\":\"rdkit\"},{\"predicate\":\"uses\",\"target\":\"tkinter\",\"attributes\":{},\"target_id\":\"tkinter\"},{\"predicate\":\"provides_access_to\",\"target\":\"RDKit tools\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"RDKit\",\"type\":\"other\",\"attributes\":{\"license\":\"open-source\",\"language\":\"Python\",\"functionality\":\"chemoinformatics tools, calculation of molecular descriptors\",\"usage\":\"machine learning projects\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"implements\",\"target\":\"molecular descriptors\",\"attributes\":{},\"target_id\":\"molecular_descriptors\"},{\"predicate\":\"used_by\",\"target\":\"GUIDEMOL\",\"attributes\":{},\"target_id\":\"guidemol\"}]},{\"name\":\"tkinter\",\"type\":\"other\",\"attributes\":{\"language\":\"Python\",\"description\":\"standard Python interface to the Tcl/Tk GUI toolkit\",\"distribution\":\"usually bundled with Python\",\"model_entity_type\":\"software_library\"},\"relationships\":[{\"predicate\":\"part_of\",\"target\":\"Python\",\"attributes\":{},\"target_id\":\"python\"},{\"predicate\":\"interface_to\",\"target\":\"Tcl/Tk GUI toolkit\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_by\",\"target\":\"GUIDEMOL\",\"attributes\":{},\"target_id\":\"guidemol\"}]},{\"name\":\"molecular descriptors\",\"type\":\"concept\",\"attributes\":{\"role\":\"core of QSPR/QSAR methodology\",\"field\":\"chemoinformatics\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"QSPR/QSAR methodology\",\"attributes\":{},\"target_id\":\"qspr_qsar_methodology\"},{\"predicate\":\"calculated_by\",\"target\":\"GUIDEMOL\",\"attributes\":{},\"target_id\":\"guidemol\"}]},{\"name\":\"QSPR/QSAR methodology\",\"type\":\"other\",\"attributes\":{\"users\":\"scientists from different areas with varying computer skills\",\"model_entity_type\":\"methodology\"},\"relationships\":[{\"predicate\":\"relies_on\",\"target\":\"molecular descriptors\",\"attributes\":{},\"target_id\":\"molecular_descriptors\"}]},{\"name\":\"Chemistry Development Kit (CDK)\",\"type\":\"other\",\"attributes\":{\"license\":\"open-source\",\"language\":\"Java\",\"description\":\"collection of libraries for chemoinformatics applications\",\"model_entity_type\":\"software_platform\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"calculation of molecular descriptors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"PaDEL software\",\"type\":\"other\",\"attributes\":{\"type\":\"graphical user interface (GUI)\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"calculates\",\"target\":\"CDK-based molecular descriptors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"CDK Descriptor Calculator GUI\",\"type\":\"other\",\"attributes\":{\"developer\":\"Guha\",\"type\":\"graphical user interface (GUI)\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"calculates\",\"target\":\"CDK-based molecular descriptors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"BlueDesc\",\"type\":\"other\",\"attributes\":{\"type\":\"command-line tool\",\"input_format\":\"MDL SDFile\",\"output_formats\":\"ARFF, LIBSVM\",\"descriptor_count\":\"up to 174\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"CDK\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"uses\",\"target\":\"JOELib2\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"OCHEM\",\"type\":\"other\",\"attributes\":{\"cost\":\"free\",\"coordinator\":\"Tetko\",\"functionality\":\"implementation of thousands of descriptors, portal for training QSPR models\",\"model_entity_type\":\"web_service\"},\"relationships\":[{\"predicate\":\"integrates\",\"target\":\"descriptors from different chemoinformatics groups and packages\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ChemDes\",\"type\":\"other\",\"attributes\":{\"cost\":\"free\",\"descriptor_count\":\"3679 molecular descriptors\",\"fingerprint_types\":\"59 types of molecular fingerprints\",\"model_entity_type\":\"web_service\"},\"relationships\":[{\"predicate\":\"integrates\",\"target\":\"several available packages\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Mordred\",\"type\":\"other\",\"attributes\":{\"language\":\"Python\",\"functionality\":\"calculation of molecular descriptors\",\"implementation\":\"RDKit wrappers and original implementations\",\"access_modes\":\"command-line, web application\",\"model_entity_type\":\"software_package\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"RDKit\",\"attributes\":{},\"target_id\":\"rdkit\"}]},{\"name\":\"Python\",\"type\":\"other\",\"attributes\":{\"capability\":\"easy development of GUIs\",\"model_entity_type\":\"programming_language\"},\"relationships\":[{\"predicate\":\"includes\",\"target\":\"tkinter\",\"attributes\":{},\"target_id\":\"tkinter\"}]}]},{\"context_summary\":\"GUIDEMOL is a Python-based graphical user interface for calculating molecular descriptors and 3D grid representations using RDKit. It supports both electrostatic potential and voxel-based 3D molecular encodings, which are utilized in deep learning and 3D-QSAR applications. The software is released under the BSD license and includes a command-line interface for grid calculations.\",\"entities\":[{\"name\":\"GUIDEMOL\",\"type\":\"other\",\"attributes\":{\"language\":\"Python\",\"base_library\":\"RDKit\",\"gui_framework\":\"tkinter\",\"license\":\"three-clause Berkeley Software Distribution (BSD)\",\"source_code_url\":\"https://github.com/jairesdesousa/guidemol\",\"purpose\":\"Calculate molecular descriptors and 3D grid representations\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"implements\",\"target\":\"3D grids representing molecules based on electrostatic potential or voxel encoding\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"provides\",\"target\":\"command-line interface for 3D grid calculation\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"allows\",\"target\":\"commercial and non-commercial use\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"JRgui\",\"type\":\"other\",\"attributes\":{\"type\":\"GUI program\",\"function\":\"Calculate Joback and Reid group contribution molecular descriptors\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"developed_by\",\"target\":\"Shi and Borchardt\",\"attributes\":{},\"target_id\":\"shi_and_borchardt\"},{\"predicate\":\"uses\",\"target\":\"RDKit\",\"attributes\":{},\"target_id\":\"rdkit\"},{\"predicate\":\"uses\",\"target\":\"tkinter module\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Shi and Borchardt\",\"type\":\"person\",\"attributes\":{},\"relationships\":[{\"predicate\":\"developed\",\"target\":\"JRgui\",\"attributes\":{},\"target_id\":\"jrgui\"}]},{\"name\":\"3D grid representations of molecules\",\"type\":\"concept\",\"attributes\":{\"methods\":[\"electrostatic potential\",\"voxel encoding\"],\"application\":\"Processing by complex artificial intelligence algorithms and deep learning neural networks\"},\"relationships\":[{\"predicate\":\"used_in\",\"target\":\"3D-QSAR\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"used_for\",\"target\":\"assessing molecular similarity\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"processed_by\",\"target\":\"convolutional neural networks\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"MMFFOptimizeMolecule\",\"type\":\"method\",\"attributes\":{\"library\":\"RDKit\",\"arguments\":\"mmffVariant='MMFF94', maxIters=5000\"},\"relationships\":[{\"predicate\":\"used_for\",\"target\":\"generation of 3D molecular models from SMILES\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"tkinter\",\"type\":\"other\",\"attributes\":{\"description\":\"Standard Python interface to the Tcl/Tk GUI toolkit\",\"model_entity_type\":\"software_library\"},\"relationships\":[{\"predicate\":\"used_by\",\"target\":\"GUIDEMOL\",\"attributes\":{},\"target_id\":\"guidemol\"},{\"predicate\":\"used_by\",\"target\":\"JRgui\",\"attributes\":{},\"target_id\":\"jrgui\"}]}]},{\"context_summary\":\"GUIDEMOL calculates molecular descriptors and 3D grid representations using RDKit, supporting both a graphical user interface and a command-line interface. The software allows for the calculation of electrostatic potential and voxel grids based on specific atomic properties and user-defined parameters.\",\"entities\":[{\"name\":\"GUIDEMOL\",\"type\":\"other\",\"attributes\":{\"function\":\"calculates molecular descriptors and 3D grid representations\",\"interfaces\":[\"graphical user interface (tkinter)\",\"command-line interface (CLI)\"],\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"RDKit\",\"attributes\":{},\"target_id\":\"rdkit\"},{\"predicate\":\"calculates\",\"target\":\"electrostatic potential grid\",\"attributes\":{},\"target_id\":\"electrostatic_potential_grid\"},{\"predicate\":\"calculates\",\"target\":\"voxel grid\",\"attributes\":{},\"target_id\":\"voxel_grid\"}]},{\"name\":\"RDKit\",\"type\":\"other\",\"attributes\":{\"version_observed\":\"2022.9.5\",\"model_entity_type\":\"software\"},\"relationships\":[{\"predicate\":\"provides_module\",\"target\":\"rdMolDescriptors\",\"attributes\":{},\"target_id\":\"rdmoldescriptors\"},{\"predicate\":\"provides_function\",\"target\":\"Chem.AddHs()\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"provides_function\",\"target\":\"AllChem.ComputeGasteigerCharges()\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"provides_function\",\"target\":\"GetMMFFPartialCharge()\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"rdMolDescriptors\",\"type\":\"other\",\"attributes\":{\"belongs_to\":\"RDKit\",\"model_entity_type\":\"software_module\"},\"relationships\":[{\"predicate\":\"contains_descriptors\",\"target\":\"RDF, MORSE, WHIM, AUTOCORR3D, GETAWAY, PEOE_VSA, SMR_VSA\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"contains_function\",\"target\":\"_CalcCrippenContribs()\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"electrostatic potential grid\",\"type\":\"other\",\"attributes\":{\"structure\":\"grid of cubes\",\"charge_sources\":[\"Gasteiger partial atomic charges\",\"MMFF partial atomic charges\"],\"model_entity_type\":\"data_representation\"},\"relationships\":[{\"predicate\":\"calculated_by\",\"target\":\"GUIDEMOL\",\"attributes\":{},\"target_id\":\"guidemol\"},{\"predicate\":\"depends_on\",\"target\":\"user-defined cutoff distance\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"depends_on\",\"target\":\"grid center coordinates\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"depends_on\",\"target\":\"cube size\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"voxel grid\",\"type\":\"other\",\"attributes\":{\"structure\":\"user-defined 3D grid\",\"basis\":\"atomic property\",\"model_entity_type\":\"data_representation\"},\"relationships\":[{\"predicate\":\"calculated_by\",\"target\":\"GUIDEMOL\",\"attributes\":{},\"target_id\":\"guidemol\"},{\"predicate\":\"uses_properties\",\"target\":\"atomic number, partial atomic charge (Gasteiger or MMFF), Wildman-Crippen contributions\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"depends_on\",\"target\":\"sigma parameter\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"depends_on\",\"target\":\"cutoff distance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Wildman-Crippen approach\",\"type\":\"method\",\"attributes\":{\"application\":\"calculation of atomic contributions to molecular refractivity and logP\"},\"relationships\":[{\"predicate\":\"implemented_in\",\"target\":\"rdMolDescriptors._CalcCrippenContribs()\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"COc1ccc(cc1(OC))Br\",\"type\":\"other\",\"attributes\":{\"smiles\":\"COc1ccc(cc1(OC))Br\",\"model_entity_type\":\"molecule\"},\"relationships\":[{\"predicate\":\"exhibited_inconsistency_in\",\"target\":\"GETAWAY, MORSE, WHIM descriptors\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"descriptor_inconsistency\",\"type\":\"other\",\"attributes\":{\"affected_descriptors\":[\"GETAWAY\",\"MORSE\",\"WHIM\"],\"rdkit_version\":\"2022.9.5\",\"conditions\":\"different runs or different operating systems\",\"model_entity_type\":\"phenomenon\"},\"relationships\":[{\"predicate\":\"observed_in\",\"target\":\"COc1ccc(cc1(OC))Br\",\"attributes\":{},\"target_id\":\"coc1ccc_cc1_oc_br\"}]}]},{\"context_summary\":\"The GUIDEMOL command-line interface allows users to calculate electrostatic potential or voxel grids by specifying parameters such as grid center, size, and atomic properties. An example command demonstrates generating an EP grid with Gasteiger charges for molecules in an SDF file. The application's source code is publicly available under a BSD license to facilitate bug detection and fixes.\",\"entities\":[{\"name\":\"GUIDEMOL CLI\",\"type\":\"method\",\"attributes\":{\"script_name\":\"guidemol_version.py\",\"function\":\"calculates EP or voxel grids\"},\"relationships\":[{\"predicate\":\"requires_input\",\"target\":\"input file\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_optional_output\",\"target\":\"output file\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_grid_type\",\"target\":\"pot or vox\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_atomic_property\",\"target\":\"Gasteiger, MMFF, MR, LogP, or AtomicNumber\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_grid_center_coordinates\",\"target\":\"cx, cy, cz\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_cube_size\",\"target\":\"r\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_cutoff_or_sigma\",\"target\":\"w\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"accepts_grid_dimensions\",\"target\":\"sx, sy, sz\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Example EP grid calculation command\",\"type\":\"event\",\"attributes\":{\"command\":\"guidemol.py -i input.sdf -g pot -p Gasteiger -cx 0 -cy 0 -cz 0 -r 0.5 -w 3 -sx 5 -sy 5 -sz 5 -o outfile.csv\",\"grid_type\":\"EP\",\"charge_model\":\"Gasteiger\",\"center_coordinates\":\"(0,0,0)\",\"side_size\":\"5 Å\",\"resolution\":\"0.5 Å\",\"cutoff\":\"3 Å\",\"input_file\":\"input.sdf\",\"output_file\":\"outfile.csv\"},\"relationships\":[{\"predicate\":\"uses\",\"target\":\"GUIDEMOL CLI\",\"attributes\":{},\"target_id\":\"guidemol_cli\"}]},{\"name\":\"GUIDEMOL source code\",\"type\":\"other\",\"attributes\":{\"license\":\"BSD\",\"url\":\"https://github.com/jairesdesousa/guidemol\"},\"relationships\":[{\"predicate\":\"purpose\",\"target\":\"facilitate detection and fixing of bugs or limitations\",\"attributes\":{},\"target_id\":null}]}]}]"
+}

@@ -1,0 +1,1320 @@
+{
+  "document_id": "bethgelab-50043",
+  "fulltext_sha256": "1e2798147c40faee951910206bf47fa2d91c8860b90000f30454b227d6994df2",
+  "result": {
+    "schema_version": "1.0",
+    "title": "",
+    "abstract_sha256": "8d8dfa05078f3cbc8bbd02eb9dd31142f7973b6f525fbfdfd509843609da312a",
+    "mode": "parallel",
+    "model": "qwen38",
+    "config": {
+      "mode": "parallel",
+      "chunk_words": 500,
+      "context_words": 1000,
+      "previous_units": 10,
+      "canonicalize": true,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 1800,
+      "parse_retries": 1
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The study analyzes metadata from 237 open-access natural science journals to examine the relationship between Article Processing Charges (APC) and journal metrics like Impact Factor (IF) and Eigen Factor (EF). It finds that IF, EF, and citability increase as APC increases, with publishers from developed countries generally having higher values for these metrics than those from developing countries.",
+        "entities": [
+          {
+            "name": "Golden Open Access (GOA) journals",
+            "entity_id": "golden_open_access_goa_journals",
+            "entity_type": "concept",
+            "aliases": [
+              "Golden Open Access (GOA) journals"
+            ],
+            "attributes": {
+              "definition": "Mandatory open access journals that charge publication fees",
+              "effect": "Make research more accessible and citable",
+              "limitation": "Publication fees can be costly and not viable for many researchers"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              },
+              {
+                "predicate": "transitioned_to_by",
+                "target": "high-impact journals",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Article Processing Charges (APC)",
+            "entity_id": "article_processing_charges_apc",
+            "entity_type": "measurement",
+            "aliases": [
+              "Article Processing Charges (APC)"
+            ],
+            "attributes": {
+              "role": "Publication fee for open-access journals",
+              "correlation": "Positively correlated with Impact Factor, Eigen Factor, and citability"
+            },
+            "relationships": [
+              {
+                "predicate": "paid_by",
+                "target": "researchers",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "higher_in",
+                "target": "publishers from developed countries",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Impact Factor (IF)",
+            "entity_id": "impact_factor_if",
+            "entity_type": "measurement",
+            "aliases": [
+              "Impact Factor (IF)"
+            ],
+            "attributes": {
+              "definition": "Metric indicating general impact of a journal",
+              "trend": "Increases as APC increases"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_in",
+                "target": "publishers from developed countries",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Eigen Factor (EF)",
+            "entity_id": "eigen_factor_ef",
+            "entity_type": "measurement",
+            "aliases": [
+              "Eigen Factor (EF)"
+            ],
+            "attributes": {
+              "definition": "Metric indicating relative importance of a journal",
+              "trend": "Increases as APC increases"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_in",
+                "target": "publishers from developed countries",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Citability",
+            "entity_id": "citability",
+            "entity_type": "measurement",
+            "aliases": [
+              "Citability",
+              "citability"
+            ],
+            "attributes": {
+              "definition": "Total number of citations",
+              "trend": "Increases as APC increases"
+            },
+            "relationships": [
+              {
+                "predicate": "higher_in",
+                "target": "publishers from developed countries",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Russell J Gray",
+            "entity_id": "russell_j_gray",
+            "entity_type": "person",
+            "aliases": [
+              "Russell J Gray"
+            ],
+            "attributes": {
+              "role": "Author of the study"
+            },
+            "relationships": [
+              {
+                "predicate": "conducted_study_on",
+                "target": "237 open-access natural science journals",
+                "attributes": {},
+                "target_id": "237_open_access_natural_science_journals"
+              }
+            ]
+          },
+          {
+            "name": "237 open-access natural science journals",
+            "entity_id": "237_open_access_natural_science_journals",
+            "entity_type": "other",
+            "aliases": [
+              "237 open-access natural science journals"
+            ],
+            "attributes": {
+              "count": 237,
+              "field": "natural sciences",
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_by",
+                "target": "Russell J Gray",
+                "attributes": {},
+                "target_id": "russell_j_gray"
+              }
+            ]
+          },
+          {
+            "name": "Sci-Hub",
+            "entity_id": "sci_hub",
+            "entity_type": "organization",
+            "aliases": [
+              "Sci-Hub"
+            ],
+            "attributes": {
+              "category": "Black Open Access"
+            },
+            "relationships": [
+              {
+                "predicate": "contributed_to",
+                "target": "increased availability of journal articles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ResearchGate",
+            "entity_id": "researchgate",
+            "entity_type": "organization",
+            "aliases": [
+              "ResearchGate"
+            ],
+            "attributes": {
+              "category": "Green Open Access"
+            },
+            "relationships": [
+              {
+                "predicate": "contributed_to",
+                "target": "increased availability of journal articles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Ellers et al. (2017)",
+            "entity_id": "ellers_et_al_2017",
+            "entity_type": "other",
+            "aliases": [
+              "Ellers et al. (2017)"
+            ],
+            "attributes": {
+              "finding": "Researchers from developing countries pay full price of developed western nations to publish in high-impact Mega-Journals",
+              "model_entity_type": "study"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_evidence_for",
+                "target": "inequality in publication costs",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "predatory journals",
+            "entity_id": "predatory_journals",
+            "entity_type": "organization",
+            "aliases": [
+              "predatory journals"
+            ],
+            "attributes": {
+              "characteristic": "Low-quality peer review",
+              "risk": "Publish questionable articles impacting manuscript credibility"
+            },
+            "relationships": [
+              {
+                "predicate": "alternative_to",
+                "target": "high-impact journals",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 457,
+          "word_count": 457,
+          "sha256": "50ecfed7b1c0a22278ef7fd99584abeb61cb776c7e4aea1decad131ef4807122",
+          "sentence_minhash": [
+            81440676011694812,
+            18551641988871988,
+            69729176314767099,
+            154552515541579319,
+            43714454960919411,
+            29604043259901871,
+            23718652799488495,
+            41678443202000680,
+            218531490331765554,
+            3380668174306445,
+            78280491562202942,
+            8566262517653704,
+            157018458019500101,
+            118151843130073762,
+            279579572368241561,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for '237 open-access natural science journals'",
+          "normalized unsupported entity type 'study' for 'Ellers et al. (2017)'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The study analyzes metadata from 237 open-access natural science journals to examine the relationship between Article Processing Charges (APC) and journal metrics. It found a linear trend where Impact Factor, Eigen Factor, and citability increase as APC increases. Publishers from developed countries were more likely to have higher APCs and metrics compared to those from developing countries.",
+        "entities": [
+          {
+            "name": "Golden Open Access (GOA) journals",
+            "entity_id": "golden_open_access_goa_journals",
+            "entity_type": "concept",
+            "aliases": [
+              "Golden Open Access (GOA) journals"
+            ],
+            "attributes": {
+              "characteristic": "Mandatory open access",
+              "issue": "High publication costs can limit access for researchers without funding"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "Article Processing Charges (APC)",
+            "entity_id": "article_processing_charges_apc",
+            "entity_type": "measurement",
+            "aliases": [
+              "Article Processing Charges (APC)"
+            ],
+            "attributes": {
+              "role": "Publication cost metric"
+            },
+            "relationships": [
+              {
+                "predicate": "positively_correlated_with",
+                "target": "Impact Factor (IF)",
+                "attributes": {},
+                "target_id": "impact_factor_if"
+              },
+              {
+                "predicate": "positively_correlated_with",
+                "target": "Eigen Factor (EF)",
+                "attributes": {},
+                "target_id": "eigen_factor_ef"
+              },
+              {
+                "predicate": "positively_correlated_with",
+                "target": "Citability",
+                "attributes": {},
+                "target_id": "citability"
+              }
+            ]
+          },
+          {
+            "name": "Impact Factor (IF)",
+            "entity_id": "impact_factor_if",
+            "entity_type": "measurement",
+            "aliases": [
+              "Impact Factor (IF)"
+            ],
+            "attributes": {
+              "definition": "General impact of the journal"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "Eigen Factor (EF)",
+            "entity_id": "eigen_factor_ef",
+            "entity_type": "measurement",
+            "aliases": [
+              "Eigen Factor (EF)"
+            ],
+            "attributes": {
+              "definition": "Relative importance of the journal"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "Citability",
+            "entity_id": "citability",
+            "entity_type": "measurement",
+            "aliases": [
+              "Citability",
+              "citability"
+            ],
+            "attributes": {
+              "definition": "Total number of citations"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "Directory of Open Access Journals (DOAJ)",
+            "entity_id": "directory_of_open_access_journals_doaj",
+            "entity_type": "organization",
+            "aliases": [
+              "Directory of Open Access Journals (DOAJ)"
+            ],
+            "attributes": {
+              "role": "Source of journal metadata"
+            },
+            "relationships": [
+              {
+                "predicate": "provided_data_for",
+                "target": "Study dataset",
+                "attributes": {},
+                "target_id": "study_dataset"
+              }
+            ]
+          },
+          {
+            "name": "Study dataset",
+            "entity_id": "study_dataset",
+            "entity_type": "other",
+            "aliases": [
+              "Study dataset"
+            ],
+            "attributes": {
+              "initial_record_count": 14275,
+              "biological_science_subset_count": 1047,
+              "final_analyzed_count": 237,
+              "exclusion_criteria": "Impact Factor > 40"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "Directory of Open Access Journals (DOAJ)",
+                "attributes": {},
+                "target_id": "directory_of_open_access_journals_doaj"
+              }
+            ]
+          },
+          {
+            "name": "R statistical software",
+            "entity_id": "r_statistical_software",
+            "entity_type": "method",
+            "aliases": [
+              "R statistical software"
+            ],
+            "attributes": {
+              "usage": "Data analysis"
+            },
+            "relationships": [
+              {
+                "predicate": "used_packages",
+                "target": "scholar package",
+                "attributes": {},
+                "target_id": "scholar_package"
+              },
+              {
+                "predicate": "used_packages",
+                "target": "quantmod package",
+                "attributes": {},
+                "target_id": "quantmod_package"
+              },
+              {
+                "predicate": "used_packages",
+                "target": "dplyr package",
+                "attributes": {},
+                "target_id": "dplyr_package"
+              },
+              {
+                "predicate": "used_packages",
+                "target": "reshape2 package",
+                "attributes": {},
+                "target_id": "reshape2_package"
+              },
+              {
+                "predicate": "used_packages",
+                "target": "ggplot2 package",
+                "attributes": {},
+                "target_id": "ggplot2_package"
+              },
+              {
+                "predicate": "used_packages",
+                "target": "ggpubr package",
+                "attributes": {},
+                "target_id": "ggpubr_package"
+              }
+            ]
+          },
+          {
+            "name": "scholar package",
+            "entity_id": "scholar_package",
+            "entity_type": "method",
+            "aliases": [
+              "scholar package"
+            ],
+            "attributes": {
+              "function": "Generate impact factors using journal name strings"
+            },
+            "relationships": []
+          },
+          {
+            "name": "quantmod package",
+            "entity_id": "quantmod_package",
+            "entity_type": "method",
+            "aliases": [
+              "quantmod package"
+            ],
+            "attributes": {
+              "function": "Convert currencies to USD"
+            },
+            "relationships": []
+          },
+          {
+            "name": "dplyr package",
+            "entity_id": "dplyr_package",
+            "entity_type": "method",
+            "aliases": [
+              "dplyr package"
+            ],
+            "attributes": {
+              "function": "Clean and select specific data"
+            },
+            "relationships": []
+          },
+          {
+            "name": "reshape2 package",
+            "entity_id": "reshape2_package",
+            "entity_type": "method",
+            "aliases": [
+              "reshape2 package"
+            ],
+            "attributes": {
+              "function": "Clean and select specific data"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ggplot2 package",
+            "entity_id": "ggplot2_package",
+            "entity_type": "method",
+            "aliases": [
+              "ggplot2 package"
+            ],
+            "attributes": {
+              "function": "Data visualizations"
+            },
+            "relationships": []
+          },
+          {
+            "name": "ggpubr package",
+            "entity_id": "ggpubr_package",
+            "entity_type": "method",
+            "aliases": [
+              "ggpubr package"
+            ],
+            "attributes": {
+              "function": "Calculate Pearson's correlation coefficient"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Developed country publishers",
+            "entity_id": "developed_country_publishers",
+            "entity_type": "organization",
+            "aliases": [
+              "Developed country publishers"
+            ],
+            "attributes": {
+              "trend": "Higher APC, IF, EF, and citability"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_to",
+                "target": "Developing country publishers",
+                "attributes": {},
+                "target_id": "developing_country_publishers"
+              }
+            ]
+          },
+          {
+            "name": "Developing country publishers",
+            "entity_id": "developing_country_publishers",
+            "entity_type": "organization",
+            "aliases": [
+              "Developing country publishers"
+            ],
+            "attributes": {
+              "trend": "Lower APC, IF, EF, and citability compared to developed countries"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 457,
+          "end_word": 947,
+          "word_count": 490,
+          "sha256": "a06183405cb24784147a772efc2fc276b1fd5f633414a1e1fc4b2b16660cb71d",
+          "sentence_minhash": [
+            286508060694227990,
+            18551641988871988,
+            69729176314767099,
+            159448631219318875,
+            26384097017582652,
+            205108012474510946,
+            24705362828007687,
+            41678443202000680,
+            166844233492045914,
+            100982438205662921,
+            128047967744972732,
+            248308669983442933,
+            21933493368060407,
+            161945415629665627,
+            163673062253868623,
+            117472307714712089
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study analyzed 237 open-access natural science journals, finding that Article Processing Charges (APC) are significantly positively correlated with Impact Factor, Eigen Factor, and citability. The data indicates that publishers from developed countries tend to have higher APCs and impact metrics compared to those from developing countries.",
+        "entities": [
+          {
+            "name": "237 open-access natural science journals",
+            "entity_id": "237_open_access_natural_science_journals",
+            "entity_type": "other",
+            "aliases": [
+              "237 open-access natural science journals"
+            ],
+            "attributes": {
+              "count": 237,
+              "mean_apc_usd": 1344.27,
+              "mean_impact_factor": 2.855,
+              "mean_eigen_factor": 0.017,
+              "mean_total_citation_count": 5925.92,
+              "model_entity_type": "dataset"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_in_study",
+                "target": "Golden Open Access inequality study",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Article Processing Charges (APC)",
+            "entity_id": "article_processing_charges_apc",
+            "entity_type": "measurement",
+            "aliases": [
+              "Article Processing Charges (APC)"
+            ],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "positively_correlated_with",
+                "target": "Impact Factor (IF)",
+                "attributes": {
+                  "pearson_r": 0.391,
+                  "p_value": "< .001",
+                  "n": 237
+                },
+                "target_id": "impact_factor_if"
+              },
+              {
+                "predicate": "positively_correlated_with",
+                "target": "Eigen Factor (EF)",
+                "attributes": {
+                  "pearson_r": 0.303,
+                  "p_value": "< .001",
+                  "n": 237
+                },
+                "target_id": "eigen_factor_ef"
+              },
+              {
+                "predicate": "positively_correlated_with",
+                "target": "Citability (total citation count)",
+                "attributes": {
+                  "pearson_r": 0.323,
+                  "p_value": "< .001",
+                  "n": 237
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Impact Factor (IF)",
+            "entity_id": "impact_factor_if",
+            "entity_type": "measurement",
+            "aliases": [
+              "Impact Factor (IF)"
+            ],
+            "attributes": {
+              "definition": "general impact of the journal"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              },
+              {
+                "predicate": "creates_false_perception_of",
+                "target": "reliability of research",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Eigen Factor (EF)",
+            "entity_id": "eigen_factor_ef",
+            "entity_type": "measurement",
+            "aliases": [
+              "Eigen Factor (EF)"
+            ],
+            "attributes": {
+              "definition": "relative importance of the journal"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "Citability",
+            "entity_id": "citability",
+            "entity_type": "measurement",
+            "aliases": [
+              "Citability",
+              "citability"
+            ],
+            "attributes": {
+              "definition": "total number of citations"
+            },
+            "relationships": [
+              {
+                "predicate": "increases_with",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "Developed country publishers",
+            "entity_id": "developed_country_publishers",
+            "entity_type": "organization",
+            "aliases": [
+              "Developed country publishers"
+            ],
+            "attributes": {
+              "model_entity_type": "group"
+            },
+            "relationships": [
+              {
+                "predicate": "more_likely_to_have_higher",
+                "target": "APC, IF, EF, and citability",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Developing country publishers",
+            "entity_id": "developing_country_publishers",
+            "entity_type": "organization",
+            "aliases": [
+              "Developing country publishers"
+            ],
+            "attributes": {
+              "model_entity_type": "group"
+            },
+            "relationships": [
+              {
+                "predicate": "less_likely_to_gain_exposure_for",
+                "target": "research published in their journals",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "less_likely_to_generate",
+                "target": "profit and credibility",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Golden Open Access (GOA) system",
+            "entity_id": "golden_open_access_goa_system",
+            "entity_type": "concept",
+            "aliases": [
+              "Golden Open Access (GOA) system"
+            ],
+            "attributes": {
+              "characteristic": "inherently flawed"
+            },
+            "relationships": [
+              {
+                "predicate": "prioritizes",
+                "target": "publisher profit over scientific integrity",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "gives_rise_to",
+                "target": "predatory journals and editorial complacency",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Independent researchers",
+            "entity_id": "independent_researchers",
+            "entity_type": "other",
+            "aliases": [
+              "Independent researchers"
+            ],
+            "attributes": {
+              "trend": "rising over the past decade",
+              "model_entity_type": "group"
+            },
+            "relationships": [
+              {
+                "predicate": "face_narrower_options_due_to",
+                "target": "lack of institutional affiliation and finance allowances",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "are_no_less_reliable_than",
+                "target": "researchers from privileged institutions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 947,
+          "end_word": 1432,
+          "word_count": 485,
+          "sha256": "b409c1f1ac5b94877170a4b5ba45ca73078c6e5a2166d84496251ddccd313192",
+          "sentence_minhash": [
+            84989070151237717,
+            18551641988871988,
+            69729176314767099,
+            89586774885286597,
+            148925132169520149,
+            23365065082121899,
+            23718652799488495,
+            41678443202000680,
+            266927695903760850,
+            100982438205662921,
+            19416574622547768,
+            8566262517653704,
+            117846755021766026,
+            132529644835130180,
+            288209856713747047,
+            41659475361281372
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'dataset' for '237 open-access natural science journals'",
+          "normalized unsupported entity type 'group' for 'Developed country publishers'",
+          "normalized unsupported entity type 'group' for 'Developing country publishers'",
+          "normalized unsupported entity type 'group' for 'Independent researchers'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text describes how the presence of a developed-country author can void eligibility for Research4Life funding, forcing researchers to publish in lower-impact or predatory journals. It highlights the tension between the geographic location of biodiversity hotspots and the funding criteria for open-access publication fees.",
+        "entities": [
+          {
+            "name": "Research4Life",
+            "entity_id": "research4life",
+            "entity_type": "organization",
+            "aliases": [
+              "Research4Life"
+            ],
+            "attributes": {
+              "function": "provides publication funding assistance",
+              "eligibility_rule": "eligibility is void if an international collaborator from a developed country is named as an author"
+            },
+            "relationships": [
+              {
+                "predicate": "funds",
+                "target": "publication costs in GOA journals",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Sumatran elephant",
+            "entity_id": "sumatran_elephant",
+            "entity_type": "concept",
+            "aliases": [
+              "Sumatran elephant"
+            ],
+            "attributes": {
+              "conservation_status": "critically endangered"
+            },
+            "relationships": [
+              {
+                "predicate": "subject_of_research",
+                "target": "author's personal experience",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Golden Open Access (GOA) journals",
+            "entity_id": "golden_open_access_goa_journals",
+            "entity_type": "concept",
+            "aliases": [
+              "Golden Open Access (GOA) journals"
+            ],
+            "attributes": {
+              "publication_model": "mandatory open access",
+              "cost_constraint": "publication fees often exceed 1000 USD"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "Article Processing Charges (APC)",
+                "attributes": {},
+                "target_id": "article_processing_charges_apc"
+              }
+            ]
+          },
+          {
+            "name": "low-impact journals",
+            "entity_id": "low_impact_journals",
+            "entity_type": "organization",
+            "aliases": [
+              "low-impact journals"
+            ],
+            "attributes": {
+              "citation_rate": "much less than high-impact journals",
+              "perceived_credibility": "generally seen as less credible"
+            },
+            "relationships": [
+              {
+                "predicate": "alternative_to",
+                "target": "high-impact GOA journals",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "biodiversity hotspots",
+            "entity_id": "biodiversity_hotspots",
+            "entity_type": "place",
+            "aliases": [
+              "biodiversity hotspots"
+            ],
+            "attributes": {
+              "location": "mostly in the tropics"
+            },
+            "relationships": [
+              {
+                "predicate": "site_of",
+                "target": "majority of conservation research",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "tropical regions",
+            "entity_id": "tropical_regions",
+            "entity_type": "place",
+            "aliases": [
+              "tropical regions"
+            ],
+            "attributes": {
+              "development_status": "often developing or under-developed",
+              "research_characteristic": "historically include authors from developed countries"
+            },
+            "relationships": [
+              {
+                "predicate": "qualify_for",
+                "target": "Research4Life APC assistance",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "predatory journals",
+            "entity_id": "predatory_journals",
+            "entity_type": "organization",
+            "aliases": [
+              "predatory journals"
+            ],
+            "attributes": {
+              "risk": "potential destination for research due to funding constraints"
+            },
+            "relationships": [
+              {
+                "predicate": "alternative_to",
+                "target": "closed-access or hybrid journals",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1432,
+          "end_word": 1932,
+          "word_count": 500,
+          "sha256": "f5aae2643eea31c89444ec80b272157d5e7a708b9e4dbf0a6ff1f1c8db26c735",
+          "sentence_minhash": [
+            175406989424540837,
+            1306423125707224,
+            57419774234506382,
+            161699613412990481,
+            37626633843728580,
+            428209587723997907,
+            175774020269814206,
+            67257714571907172,
+            41983199813637533,
+            3380668174306445,
+            78280491562202942,
+            8566262517653704,
+            164575269931903557,
+            906306679132868,
+            288073255595829875,
+            479293974736118882
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The author argues that systemic issues in research publication must be addressed to foster inclusivity. The goal is to ensure important research is recognized and researchers can prosper globally. This inclusivity should apply regardless of a researcher's country or institutional affiliation.",
+        "entities": [
+          {
+            "name": "inclusive research environment",
+            "entity_id": "inclusive_research_environment",
+            "entity_type": "concept",
+            "aliases": [
+              "inclusive research environment"
+            ],
+            "attributes": {
+              "goal": "Recognition of important research and prosperity of researchers on a global scale",
+              "criteria": "Independent of country or institutional affiliation"
+            },
+            "relationships": [
+              {
+                "predicate": "requires_addressing",
+                "target": "issues in research publication",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1932,
+          "end_word": 1963,
+          "word_count": 31,
+          "sha256": "051e6f2845b71bfef3470d5b6df55b2d19676812da9b8ffabfaff9099619c313",
+          "sentence_minhash": [
+            911120671258981983,
+            252963467709525922,
+            2034291008047642336,
+            393768547417274638,
+            1988416924748444723,
+            428209587723997907,
+            892423343723712941,
+            549134091678361701,
+            266927695903760850,
+            70518466323290164,
+            2905038718042923445,
+            4294871204027517721,
+            164575269931903557,
+            1666676221163630140,
+            954268653339883149,
+            27591126395472351
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": [
+      {
+        "canonical_id": "citability",
+        "canonical_name": "Citability",
+        "aliases": [
+          "Citability",
+          "citability"
+        ]
+      },
+      {
+        "canonical_id": "golden_open_access_goa_journals",
+        "canonical_name": "Golden Open Access (GOA) journals",
+        "aliases": [
+          "Golden Open Access (GOA) journals"
+        ]
+      },
+      {
+        "canonical_id": "article_processing_charges_apc",
+        "canonical_name": "Article Processing Charges (APC)",
+        "aliases": [
+          "Article Processing Charges (APC)"
+        ]
+      },
+      {
+        "canonical_id": "impact_factor_if",
+        "canonical_name": "Impact Factor (IF)",
+        "aliases": [
+          "Impact Factor (IF)"
+        ]
+      },
+      {
+        "canonical_id": "eigen_factor_ef",
+        "canonical_name": "Eigen Factor (EF)",
+        "aliases": [
+          "Eigen Factor (EF)"
+        ]
+      },
+      {
+        "canonical_id": "russell_j_gray",
+        "canonical_name": "Russell J Gray",
+        "aliases": [
+          "Russell J Gray"
+        ]
+      },
+      {
+        "canonical_id": "237_open_access_natural_science_journals",
+        "canonical_name": "237 open-access natural science journals",
+        "aliases": [
+          "237 open-access natural science journals"
+        ]
+      },
+      {
+        "canonical_id": "sci_hub",
+        "canonical_name": "Sci-Hub",
+        "aliases": [
+          "Sci-Hub"
+        ]
+      },
+      {
+        "canonical_id": "researchgate",
+        "canonical_name": "ResearchGate",
+        "aliases": [
+          "ResearchGate"
+        ]
+      },
+      {
+        "canonical_id": "ellers_et_al_2017",
+        "canonical_name": "Ellers et al. (2017)",
+        "aliases": [
+          "Ellers et al. (2017)"
+        ]
+      },
+      {
+        "canonical_id": "predatory_journals",
+        "canonical_name": "predatory journals",
+        "aliases": [
+          "predatory journals"
+        ]
+      },
+      {
+        "canonical_id": "directory_of_open_access_journals_doaj",
+        "canonical_name": "Directory of Open Access Journals (DOAJ)",
+        "aliases": [
+          "Directory of Open Access Journals (DOAJ)"
+        ]
+      },
+      {
+        "canonical_id": "study_dataset",
+        "canonical_name": "Study dataset",
+        "aliases": [
+          "Study dataset"
+        ]
+      },
+      {
+        "canonical_id": "r_statistical_software",
+        "canonical_name": "R statistical software",
+        "aliases": [
+          "R statistical software"
+        ]
+      },
+      {
+        "canonical_id": "scholar_package",
+        "canonical_name": "scholar package",
+        "aliases": [
+          "scholar package"
+        ]
+      },
+      {
+        "canonical_id": "quantmod_package",
+        "canonical_name": "quantmod package",
+        "aliases": [
+          "quantmod package"
+        ]
+      },
+      {
+        "canonical_id": "dplyr_package",
+        "canonical_name": "dplyr package",
+        "aliases": [
+          "dplyr package"
+        ]
+      },
+      {
+        "canonical_id": "reshape2_package",
+        "canonical_name": "reshape2 package",
+        "aliases": [
+          "reshape2 package"
+        ]
+      },
+      {
+        "canonical_id": "ggplot2_package",
+        "canonical_name": "ggplot2 package",
+        "aliases": [
+          "ggplot2 package"
+        ]
+      },
+      {
+        "canonical_id": "ggpubr_package",
+        "canonical_name": "ggpubr package",
+        "aliases": [
+          "ggpubr package"
+        ]
+      },
+      {
+        "canonical_id": "developed_country_publishers",
+        "canonical_name": "Developed country publishers",
+        "aliases": [
+          "Developed country publishers"
+        ]
+      },
+      {
+        "canonical_id": "developing_country_publishers",
+        "canonical_name": "Developing country publishers",
+        "aliases": [
+          "Developing country publishers"
+        ]
+      },
+      {
+        "canonical_id": "golden_open_access_goa_system",
+        "canonical_name": "Golden Open Access (GOA) system",
+        "aliases": [
+          "Golden Open Access (GOA) system"
+        ]
+      },
+      {
+        "canonical_id": "independent_researchers",
+        "canonical_name": "Independent researchers",
+        "aliases": [
+          "Independent researchers"
+        ]
+      },
+      {
+        "canonical_id": "research4life",
+        "canonical_name": "Research4Life",
+        "aliases": [
+          "Research4Life"
+        ]
+      },
+      {
+        "canonical_id": "sumatran_elephant",
+        "canonical_name": "Sumatran elephant",
+        "aliases": [
+          "Sumatran elephant"
+        ]
+      },
+      {
+        "canonical_id": "low_impact_journals",
+        "canonical_name": "low-impact journals",
+        "aliases": [
+          "low-impact journals"
+        ]
+      },
+      {
+        "canonical_id": "biodiversity_hotspots",
+        "canonical_name": "biodiversity hotspots",
+        "aliases": [
+          "biodiversity hotspots"
+        ]
+      },
+      {
+        "canonical_id": "tropical_regions",
+        "canonical_name": "tropical regions",
+        "aliases": [
+          "tropical regions"
+        ]
+      },
+      {
+        "canonical_id": "inclusive_research_environment",
+        "canonical_name": "inclusive research environment",
+        "aliases": [
+          "inclusive research environment"
+        ]
+      }
+    ]
+  },
+  "judge_context": "[{\"context_summary\":\"The study analyzes metadata from 237 open-access natural science journals to examine the relationship between Article Processing Charges (APC) and journal metrics like Impact Factor (IF) and Eigen Factor (EF). It finds that IF, EF, and citability increase as APC increases, with publishers from developed countries generally having higher values for these metrics than those from developing countries.\",\"entities\":[{\"name\":\"Golden Open Access (GOA) journals\",\"type\":\"concept\",\"attributes\":{\"definition\":\"Mandatory open access journals that charge publication fees\",\"effect\":\"Make research more accessible and citable\",\"limitation\":\"Publication fees can be costly and not viable for many researchers\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"},{\"predicate\":\"transitioned_to_by\",\"target\":\"high-impact journals\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Article Processing Charges (APC)\",\"type\":\"measurement\",\"attributes\":{\"role\":\"Publication fee for open-access journals\",\"correlation\":\"Positively correlated with Impact Factor, Eigen Factor, and citability\"},\"relationships\":[{\"predicate\":\"paid_by\",\"target\":\"researchers\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"higher_in\",\"target\":\"publishers from developed countries\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Impact Factor (IF)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Metric indicating general impact of a journal\",\"trend\":\"Increases as APC increases\"},\"relationships\":[{\"predicate\":\"higher_in\",\"target\":\"publishers from developed countries\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Eigen Factor (EF)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Metric indicating relative importance of a journal\",\"trend\":\"Increases as APC increases\"},\"relationships\":[{\"predicate\":\"higher_in\",\"target\":\"publishers from developed countries\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Citability\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Total number of citations\",\"trend\":\"Increases as APC increases\"},\"relationships\":[{\"predicate\":\"higher_in\",\"target\":\"publishers from developed countries\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Russell J Gray\",\"type\":\"person\",\"attributes\":{\"role\":\"Author of the study\"},\"relationships\":[{\"predicate\":\"conducted_study_on\",\"target\":\"237 open-access natural science journals\",\"attributes\":{},\"target_id\":\"237_open_access_natural_science_journals\"}]},{\"name\":\"237 open-access natural science journals\",\"type\":\"other\",\"attributes\":{\"count\":237,\"field\":\"natural sciences\",\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"analyzed_by\",\"target\":\"Russell J Gray\",\"attributes\":{},\"target_id\":\"russell_j_gray\"}]},{\"name\":\"Sci-Hub\",\"type\":\"organization\",\"attributes\":{\"category\":\"Black Open Access\"},\"relationships\":[{\"predicate\":\"contributed_to\",\"target\":\"increased availability of journal articles\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"ResearchGate\",\"type\":\"organization\",\"attributes\":{\"category\":\"Green Open Access\"},\"relationships\":[{\"predicate\":\"contributed_to\",\"target\":\"increased availability of journal articles\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Ellers et al. (2017)\",\"type\":\"other\",\"attributes\":{\"finding\":\"Researchers from developing countries pay full price of developed western nations to publish in high-impact Mega-Journals\",\"model_entity_type\":\"study\"},\"relationships\":[{\"predicate\":\"provided_evidence_for\",\"target\":\"inequality in publication costs\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"predatory journals\",\"type\":\"organization\",\"attributes\":{\"characteristic\":\"Low-quality peer review\",\"risk\":\"Publish questionable articles impacting manuscript credibility\"},\"relationships\":[{\"predicate\":\"alternative_to\",\"target\":\"high-impact journals\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The study analyzes metadata from 237 open-access natural science journals to examine the relationship between Article Processing Charges (APC) and journal metrics. It found a linear trend where Impact Factor, Eigen Factor, and citability increase as APC increases. Publishers from developed countries were more likely to have higher APCs and metrics compared to those from developing countries.\",\"entities\":[{\"name\":\"Golden Open Access (GOA) journals\",\"type\":\"concept\",\"attributes\":{\"characteristic\":\"Mandatory open access\",\"issue\":\"High publication costs can limit access for researchers without funding\"},\"relationships\":[{\"predicate\":\"associated_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"Article Processing Charges (APC)\",\"type\":\"measurement\",\"attributes\":{\"role\":\"Publication cost metric\"},\"relationships\":[{\"predicate\":\"positively_correlated_with\",\"target\":\"Impact Factor (IF)\",\"attributes\":{},\"target_id\":\"impact_factor_if\"},{\"predicate\":\"positively_correlated_with\",\"target\":\"Eigen Factor (EF)\",\"attributes\":{},\"target_id\":\"eigen_factor_ef\"},{\"predicate\":\"positively_correlated_with\",\"target\":\"Citability\",\"attributes\":{},\"target_id\":\"citability\"}]},{\"name\":\"Impact Factor (IF)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"General impact of the journal\"},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"Eigen Factor (EF)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Relative importance of the journal\"},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"Citability\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"Total number of citations\"},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"Directory of Open Access Journals (DOAJ)\",\"type\":\"organization\",\"attributes\":{\"role\":\"Source of journal metadata\"},\"relationships\":[{\"predicate\":\"provided_data_for\",\"target\":\"Study dataset\",\"attributes\":{},\"target_id\":\"study_dataset\"}]},{\"name\":\"Study dataset\",\"type\":\"other\",\"attributes\":{\"initial_record_count\":14275,\"biological_science_subset_count\":1047,\"final_analyzed_count\":237,\"exclusion_criteria\":\"Impact Factor > 40\"},\"relationships\":[{\"predicate\":\"derived_from\",\"target\":\"Directory of Open Access Journals (DOAJ)\",\"attributes\":{},\"target_id\":\"directory_of_open_access_journals_doaj\"}]},{\"name\":\"R statistical software\",\"type\":\"method\",\"attributes\":{\"usage\":\"Data analysis\"},\"relationships\":[{\"predicate\":\"used_packages\",\"target\":\"scholar package\",\"attributes\":{},\"target_id\":\"scholar_package\"},{\"predicate\":\"used_packages\",\"target\":\"quantmod package\",\"attributes\":{},\"target_id\":\"quantmod_package\"},{\"predicate\":\"used_packages\",\"target\":\"dplyr package\",\"attributes\":{},\"target_id\":\"dplyr_package\"},{\"predicate\":\"used_packages\",\"target\":\"reshape2 package\",\"attributes\":{},\"target_id\":\"reshape2_package\"},{\"predicate\":\"used_packages\",\"target\":\"ggplot2 package\",\"attributes\":{},\"target_id\":\"ggplot2_package\"},{\"predicate\":\"used_packages\",\"target\":\"ggpubr package\",\"attributes\":{},\"target_id\":\"ggpubr_package\"}]},{\"name\":\"scholar package\",\"type\":\"method\",\"attributes\":{\"function\":\"Generate impact factors using journal name strings\"},\"relationships\":[]},{\"name\":\"quantmod package\",\"type\":\"method\",\"attributes\":{\"function\":\"Convert currencies to USD\"},\"relationships\":[]},{\"name\":\"dplyr package\",\"type\":\"method\",\"attributes\":{\"function\":\"Clean and select specific data\"},\"relationships\":[]},{\"name\":\"reshape2 package\",\"type\":\"method\",\"attributes\":{\"function\":\"Clean and select specific data\"},\"relationships\":[]},{\"name\":\"ggplot2 package\",\"type\":\"method\",\"attributes\":{\"function\":\"Data visualizations\"},\"relationships\":[]},{\"name\":\"ggpubr package\",\"type\":\"method\",\"attributes\":{\"function\":\"Calculate Pearson's correlation coefficient\"},\"relationships\":[]},{\"name\":\"Developed country publishers\",\"type\":\"organization\",\"attributes\":{\"trend\":\"Higher APC, IF, EF, and citability\"},\"relationships\":[{\"predicate\":\"compared_to\",\"target\":\"Developing country publishers\",\"attributes\":{},\"target_id\":\"developing_country_publishers\"}]},{\"name\":\"Developing country publishers\",\"type\":\"organization\",\"attributes\":{\"trend\":\"Lower APC, IF, EF, and citability compared to developed countries\"},\"relationships\":[]}]},{\"context_summary\":\"The study analyzed 237 open-access natural science journals, finding that Article Processing Charges (APC) are significantly positively correlated with Impact Factor, Eigen Factor, and citability. The data indicates that publishers from developed countries tend to have higher APCs and impact metrics compared to those from developing countries.\",\"entities\":[{\"name\":\"237 open-access natural science journals\",\"type\":\"other\",\"attributes\":{\"count\":237,\"mean_apc_usd\":1344.27,\"mean_impact_factor\":2.855,\"mean_eigen_factor\":0.017,\"mean_total_citation_count\":5925.92,\"model_entity_type\":\"dataset\"},\"relationships\":[{\"predicate\":\"analyzed_in_study\",\"target\":\"Golden Open Access inequality study\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Article Processing Charges (APC)\",\"type\":\"measurement\",\"attributes\":{},\"relationships\":[{\"predicate\":\"positively_correlated_with\",\"target\":\"Impact Factor (IF)\",\"attributes\":{\"pearson_r\":0.391,\"p_value\":\"< .001\",\"n\":237},\"target_id\":\"impact_factor_if\"},{\"predicate\":\"positively_correlated_with\",\"target\":\"Eigen Factor (EF)\",\"attributes\":{\"pearson_r\":0.303,\"p_value\":\"< .001\",\"n\":237},\"target_id\":\"eigen_factor_ef\"},{\"predicate\":\"positively_correlated_with\",\"target\":\"Citability (total citation count)\",\"attributes\":{\"pearson_r\":0.323,\"p_value\":\"< .001\",\"n\":237},\"target_id\":null}]},{\"name\":\"Impact Factor (IF)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"general impact of the journal\"},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"},{\"predicate\":\"creates_false_perception_of\",\"target\":\"reliability of research\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Eigen Factor (EF)\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"relative importance of the journal\"},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"Citability\",\"type\":\"measurement\",\"attributes\":{\"definition\":\"total number of citations\"},\"relationships\":[{\"predicate\":\"increases_with\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"Developed country publishers\",\"type\":\"organization\",\"attributes\":{\"model_entity_type\":\"group\"},\"relationships\":[{\"predicate\":\"more_likely_to_have_higher\",\"target\":\"APC, IF, EF, and citability\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Developing country publishers\",\"type\":\"organization\",\"attributes\":{\"model_entity_type\":\"group\"},\"relationships\":[{\"predicate\":\"less_likely_to_gain_exposure_for\",\"target\":\"research published in their journals\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"less_likely_to_generate\",\"target\":\"profit and credibility\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Golden Open Access (GOA) system\",\"type\":\"concept\",\"attributes\":{\"characteristic\":\"inherently flawed\"},\"relationships\":[{\"predicate\":\"prioritizes\",\"target\":\"publisher profit over scientific integrity\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"gives_rise_to\",\"target\":\"predatory journals and editorial complacency\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Independent researchers\",\"type\":\"other\",\"attributes\":{\"trend\":\"rising over the past decade\",\"model_entity_type\":\"group\"},\"relationships\":[{\"predicate\":\"face_narrower_options_due_to\",\"target\":\"lack of institutional affiliation and finance allowances\",\"attributes\":{},\"target_id\":null},{\"predicate\":\"are_no_less_reliable_than\",\"target\":\"researchers from privileged institutions\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The text describes how the presence of a developed-country author can void eligibility for Research4Life funding, forcing researchers to publish in lower-impact or predatory journals. It highlights the tension between the geographic location of biodiversity hotspots and the funding criteria for open-access publication fees.\",\"entities\":[{\"name\":\"Research4Life\",\"type\":\"organization\",\"attributes\":{\"function\":\"provides publication funding assistance\",\"eligibility_rule\":\"eligibility is void if an international collaborator from a developed country is named as an author\"},\"relationships\":[{\"predicate\":\"funds\",\"target\":\"publication costs in GOA journals\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Sumatran elephant\",\"type\":\"concept\",\"attributes\":{\"conservation_status\":\"critically endangered\"},\"relationships\":[{\"predicate\":\"subject_of_research\",\"target\":\"author's personal experience\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"Golden Open Access (GOA) journals\",\"type\":\"concept\",\"attributes\":{\"publication_model\":\"mandatory open access\",\"cost_constraint\":\"publication fees often exceed 1000 USD\"},\"relationships\":[{\"predicate\":\"requires\",\"target\":\"Article Processing Charges (APC)\",\"attributes\":{},\"target_id\":\"article_processing_charges_apc\"}]},{\"name\":\"low-impact journals\",\"type\":\"organization\",\"attributes\":{\"citation_rate\":\"much less than high-impact journals\",\"perceived_credibility\":\"generally seen as less credible\"},\"relationships\":[{\"predicate\":\"alternative_to\",\"target\":\"high-impact GOA journals\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"biodiversity hotspots\",\"type\":\"place\",\"attributes\":{\"location\":\"mostly in the tropics\"},\"relationships\":[{\"predicate\":\"site_of\",\"target\":\"majority of conservation research\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"tropical regions\",\"type\":\"place\",\"attributes\":{\"development_status\":\"often developing or under-developed\",\"research_characteristic\":\"historically include authors from developed countries\"},\"relationships\":[{\"predicate\":\"qualify_for\",\"target\":\"Research4Life APC assistance\",\"attributes\":{},\"target_id\":null}]},{\"name\":\"predatory journals\",\"type\":\"organization\",\"attributes\":{\"risk\":\"potential destination for research due to funding constraints\"},\"relationships\":[{\"predicate\":\"alternative_to\",\"target\":\"closed-access or hybrid journals\",\"attributes\":{},\"target_id\":null}]}]},{\"context_summary\":\"The author argues that systemic issues in research publication must be addressed to foster inclusivity. The goal is to ensure important research is recognized and researchers can prosper globally. This inclusivity should apply regardless of a researcher's country or institutional affiliation.\",\"entities\":[{\"name\":\"inclusive research environment\",\"type\":\"concept\",\"attributes\":{\"goal\":\"Recognition of important research and prosperity of researchers on a global scale\",\"criteria\":\"Independent of country or institutional affiliation\"},\"relationships\":[{\"predicate\":\"requires_addressing\",\"target\":\"issues in research publication\",\"attributes\":{},\"target_id\":null}]}]}]"
+}
