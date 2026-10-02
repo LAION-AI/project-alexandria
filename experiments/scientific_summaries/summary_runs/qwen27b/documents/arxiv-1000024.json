@@ -1,0 +1,982 @@
+{
+  "document_id": "arxiv-1000024",
+  "fulltext_sha256": "599bf9c0cb59667f6e1d97602cff49892b150a1a768b407d89b5a4a15d83b103",
+  "summary": {
+    "title": "From Words to Wheels: Automated Style-Customized Policy Generation for Autonomous Driving",
+    "authors": "Xu Han, Xianda Chen, Zhenghan Cai, Pinlong Cai, Meixin Zhu, Xiaowen Chu",
+    "field_subfield": "Autonomous Driving / Reinforcement Learning",
+    "type_of_paper": "Conference Paper / Preprint",
+    "executive_summary": "This paper introduces Words2Wheels, a framework designed to automatically generate customized driving policies for autonomous vehicles (AVs) based on natural language user commands. Current AVs suffer from uniform driving styles that fail to align with individual user preferences, often relying on predefined styles or data-driven methods like Inverse Reinforcement Learning (IRL) that require specific driving data which is difficult to obtain in Robotaxi scenarios. Words2Wheels addresses these limitations by employing a Style-Customized Reward Function (Style Reward) to bridge user input and a Style-Customized Driving Policy (Style Policy) without relying on prior user driving data. The framework leverages Large Language Models (LLMs) and a Driving Style Database to retrieve, adapt, and generalize driving styles. A Statistical Evaluation module ensures alignment by comparing generated policies against natural driving behavior metrics on a reserved test set. Experimental results using the HighD dataset and GPT-4o demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability. In human-in-the-loop comparisons, participants preferred the Words2Wheels-generated style over the Intelligent Driver Model (IDM) in 72% of cases. The system also demonstrated strong generalization capabilities, successfully generating new styles for commands not present in the initial database, and effective fuzzy memory functionality for recalling similar past commands. The study concludes that Words2Wheels offers a novel, efficient, and extensible solution for customized AV driving behavior, with future work aimed at expanding to complex scenarios and refining evaluation modules.",
+    "research_context": [
+      {
+        "Autonomous driving technology has advanced rapidly, but current vehicles face limitations in delivering command-based driving styles.": "command-\nbased driving styles"
+      },
+      {
+        "Existing methods rely on predefined styles requiring expert input or data-driven techniques like Inverse Reinforcement Learning.": "Inverse Reinforcement Learning"
+      },
+      {
+        "These approaches face challenges including difficulty obtaining specific driving data for style matching in Robotaxi scenarios.": "Robotaxi scenarios"
+      },
+      {
+        "There is an inability to align driving style metrics with user preferences and limitations to pre-existing styles.": "pre-existing styles"
+      },
+      {
+        "Foundation models have been explored to process user instructions, but they fall short in adjusting the overall driving policy.": "overall driving policy"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central research question is how to automatically generate customized driving policies based on natural language user commands.": "natural language user commands"
+      },
+      {
+        "The hypothesis is that a Style-Customized Reward Function can generate a Style-Customized Driving Policy without prior driving data.": "without\nrelying on prior"
+      },
+      {
+        "The framework is hypothesized to efficiently retrieve, adapt, and generalize driving styles using LLMs and a Driving Style Database.": "Driving Style Database"
+      },
+      {
+        "It is predicted that a Statistical Evaluation module will ensure alignment with user preferences.": "alignment with user preferences"
+      },
+      {
+        "The study aims to demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability.": "accuracy, generalization, and\nadaptability"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study focuses on the car-following scenario as it constitutes a significant portion of driving behavior.": "car-following scenario"
+      },
+      {
+        "The experiment utilized the HighD dataset, collected by a 4K resolution camera mounted on a drone.": "HighD dataset"
+      },
+      {
+        "Data extraction and kinematic modeling were based on the FollowNet framework.": "FollowNet"
+      },
+      {
+        "15% of the data was reserved as a test set to ensure objectivity in Statistical Evaluation.": "15% data"
+      },
+      {
+        "User commands were categorized into three levels based on their directness: Direct, Indirect with strong hints, and Indirect with mild hints.": "three levels"
+      },
+      {
+        "GPT-4o-2024-08-06 was adopted as the base model with a temperature set to 0.3.": "GPT-4o-2024-08-06"
+      },
+      {
+        "The parameter k was set to 3 for selecting relevant styles and n to 2 for Statistical Evaluation.": "k = 3"
+      },
+      {
+        "The Driving Style Database was initially populated with 8 styles, including data-driven and human-designed reward functions.": "8 initial styles"
+      },
+      {
+        "Proximal Policy Optimization was employed for training the Style Policy from Style Reward.": "Proximal Policy Optimization"
+      },
+      {
+        "Training was run 5 times using different seeds to select the Style Policy with the highest reward.": "5 times"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The system applies Retrieval-Augmented Generation principles where the LLM selects top k relevant style rewards.": "Retrieval-Augmented\nGeneration"
+      },
+      {
+        "If a selected Style Reward matches a semantically similar command, the system directly uses its Style Policy via fuzzy memory.": "fuzzy memory function"
+      },
+      {
+        "If no match is found, the LLM generates m new reward functions based on the most relevant Style Reward.": "m new reward functions"
+      },
+      {
+        "Newly generated reward functions produce new Style Policies via Reinforcement Learning, which can be parallelized.": "parallelized"
+      },
+      {
+        "The Statistical Evaluation module uses a Chain-of-Thought approach to select the n most relevant metrics.": "Chain-of-Thought"
+      },
+      {
+        "The LLM compares policy statistics to natural driving data to enable objective style evaluation.": "natural driving data"
+      },
+      {
+        "The Driving Style Database stores Style Rewards as programming codes and Style Policies as pre-trained neural networks.": "pre-trained neural networks"
+      },
+      {
+        "Analytical data is generated by the Statistical Evaluation module and saved in JSON format.": "JSON format"
+      },
+      {
+        "The framework allows for the continuous expansion of the database with new driving styles generated by the system.": "continuously expanding the style range"
+      }
+    ],
+    "key_results": [
+      {
+        "In human-in-the-loop comparisons, participants judged Words2Wheels to be a better match in 72% of events.": "72%\nevents"
+      },
+      {
+        "In 18.8% of events, both Words2Wheels and IDM were considered equally effective.": "18.8% events"
+      },
+      {
+        "IDM was preferred in only 9.2% of the tested events.": "9.2%"
+      },
+      {
+        "For the command 'Drive as fast as you can', Words2Wheels was preferred in 72.5% of cases.": "72.5%"
+      },
+      {
+        "For the command 'Safety first. I have plenty of time', Words2Wheels was preferred in 79.5% of cases.": "79.5%"
+      },
+      {
+        "The aggressive style showed higher speeds and greater acceleration compared to the conservative style.": "higher speeds"
+      },
+      {
+        "The conservative style maintained a larger gap and relative speed, aligning with expectations.": "larger gap"
+      },
+      {
+        "In generation capability tests, the system successfully generated styles for commands not present in the initial database.": "did\nnot match"
+      },
+      {
+        "In fuzzy memory tests, all test cases were successfully recalled except for one involving snowing conditions.": "one case"
+      },
+      {
+        "The system demonstrated strong overall capabilities in analysis, decision-making, and generation for the vast majority of cases.": "vast majority"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "Words2Wheels bridges the gap between user preferences and driving behavior through automated policy customization.": "automated policy customization"
+      },
+      {
+        "The use of Style-Customized Reward Functions allows for efficient retrieval and generalization without user behavior data.": "without user\nbehavior data"
+      },
+      {
+        "The framework demonstrates that LLMs can effectively interpret natural language commands to drive policy generation.": "natural language\ninput"
+      },
+      {
+        "The Statistical Evaluation module provides a reliable benchmark for evaluating driving style alignment.": "reliable evaluation"
+      },
+      {
+        "The system's ability to generalize to new commands addresses the limitations of pre-existing style libraries.": "generalization problem"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The aggressive style had a larger time headway, which may not align with typical aggressive driving expectations.": "larger time\nheadway"
+      },
+      {
+        "The normal style showed higher jerk, possibly because the LLM did not prioritize these metrics.": "higher jerk"
+      },
+      {
+        "In some cases, the LLM misinterpreted user commands, such as in Case 19.": "Case 19"
+      },
+      {
+        "The LLM's understanding conflicted with human intuition when acceleration and jerk values were negative.": "negative"
+      },
+      {
+        "The study focuses on car-following scenarios, and future work is needed for more complex driving scenarios.": "car-following scenario"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability for customized AV driving behavior.",
+        "supporting_evidence": [
+          {
+            "Participants preferred Words2Wheels over IDM in 72% of events.": "72%\nevents"
+          },
+          {
+            "The system successfully generated new styles for commands not in the initial database.": "did\nnot match"
+          },
+          {
+            "Fuzzy memory function successfully recalled similar commands in most cases.": "successfully recalled"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "IDM was preferred in 9.2% of events.": "9.2%"
+          },
+          {
+            "The LLM misinterpreted commands in a few isolated cases.": "isolated cases"
+          }
+        ],
+        "implications": [
+          {
+            "The framework offers a novel solution for customized AV driving behavior.": "novel solution"
+          },
+          {
+            "It improves user experience by aligning driving styles with user preferences.": "user experience"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "Code and demo are available at https://yokhon.github.io/Words2Wheels/.": "https://yokhon.\ngithub.io/Words2Wheels/"
+      },
+      {
+        "Experimental records are available at https://bit.ly/4giYhB7.": "https://bit.ly/4giYhB7"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "Training was run 5 times using different seeds to ensure robustness.": "5 times"
+      },
+      {
+        "Each command was tested 5 times and outcomes were averaged.": "5 times"
+      },
+      {
+        "The system was tested with 40 commands spanning three levels of directness.": "40 commands"
+      },
+      {
+        "Fuzzy memory was tested with 3 experimental sets of similar inputs.": "3 experimental sets"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 illustrates the Words2Wheels framework generating customized driving policies.": "Fig. 1"
+      },
+      {
+        "Figure 2 shows the workflow, Driving Style Database, and Statistical Evaluation module.": "Fig. 2"
+      },
+      {
+        "Figure 3 provides an example of automated Style Policy generation.": "Fig. 3"
+      },
+      {
+        "Figure 4 shows a simplified example of the Statistical Evaluation module.": "Fig. 4"
+      },
+      {
+        "Figure 5 compares customized policies over style-aware metrics.": "Fig. 5"
+      },
+      {
+        "Figure 6 evaluates generated policies when no aligned styles were provided.": "Fig. 6"
+      },
+      {
+        "Figure 7 displays the user interface for comparing driving style alignment.": "Fig. 7"
+      },
+      {
+        "Table I lists the levels of user commands.": "TABLE I"
+      },
+      {
+        "Table II summarizes human preferences on driving style alignment.": "TABLE II"
+      },
+      {
+        "Table III presents case studies across all command levels.": "TABLE III"
+      },
+      {
+        "Table IV tests the fuzzy memory function with similar commands.": "TABLE IV"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the Words2Wheels framework for automated style-customized policy generation.": "Words2Wheels framework"
+      },
+      {
+        "2. The strongest evidence is the 72% human preference for Words2Wheels over IDM.": "72%\nevents"
+      },
+      {
+        "3. The future path involves expanding to complex scenarios and refining the Statistical Evaluation module.": "complex driving scenarios"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper introduces Words2Wheels, a framework designed to automatically generate customized driving policies for autonomous vehicles (AVs) based on natural language user commands. Current AVs suffer from uniform driving styles that fail to align with individual user preferences, often relying on predefined styles or data-driven methods like Inverse Reinforcement Learning (IRL) that require specific driving data which is difficult to obtain in Robotaxi scenarios. Words2Wheels addresses these limitations by employing a Style-Customized Reward Function (Style Reward) to bridge user input and a Style-Customized Driving Policy (Style Policy) without relying on prior user driving data. The framework leverages Large Language Models (LLMs) and a Driving Style Database to retrieve, adapt, and generalize driving styles. A Statistical Evaluation module ensures alignment by comparing generated policies against natural driving behavior metrics on a reserved test set. Experimental results using the HighD dataset and GPT-4o demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability. In human-in-the-loop comparisons, participants preferred the Words2Wheels-generated style over the Intelligent Driver Model (IDM) in 72% of cases. The system also demonstrated strong generalization capabilities, successfully generating new styles for commands not present in the initial database, and effective fuzzy memory functionality for recalling similar past commands. The study concludes that Words2Wheels offers a novel, efficient, and extensible solution for customized AV driving behavior, with future work aimed at expanding to complex scenarios and refining evaluation modules.\n\nResearch Context\nAutonomous driving technology has advanced rapidly, but current vehicles face limitations in delivering command-based driving styles. Existing methods rely on predefined styles requiring expert input or data-driven techniques like Inverse Reinforcement Learning. These approaches face challenges including difficulty obtaining specific driving data for style matching in Robotaxi scenarios. There is an inability to align driving style metrics with user preferences and limitations to pre-existing styles. Foundation models have been explored to process user instructions, but they fall short in adjusting the overall driving policy.\n\nResearch Question And Hypothesis\nThe central research question is how to automatically generate customized driving policies based on natural language user commands. The hypothesis is that a Style-Customized Reward Function can generate a Style-Customized Driving Policy without prior driving data. The framework is hypothesized to efficiently retrieve, adapt, and generalize driving styles using LLMs and a Driving Style Database. It is predicted that a Statistical Evaluation module will ensure alignment with user preferences. The study aims to demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability.\n\nMethodological Details\nThe study focuses on the car-following scenario as it constitutes a significant portion of driving behavior. The experiment utilized the HighD dataset, collected by a 4K resolution camera mounted on a drone. Data extraction and kinematic modeling were based on the FollowNet framework. 15% of the data was reserved as a test set to ensure objectivity in Statistical Evaluation. User commands were categorized into three levels based on their directness: Direct, Indirect with strong hints, and Indirect with mild hints. GPT-4o-2024-08-06 was adopted as the base model with a temperature set to 0.3. The parameter k was set to 3 for selecting relevant styles and n to 2 for Statistical Evaluation. The Driving Style Database was initially populated with 8 styles, including data-driven and human-designed reward functions. Proximal Policy Optimization was employed for training the Style Policy from Style Reward. Training was run 5 times using different seeds to select the Style Policy with the highest reward.\n\nProcedures And Architectures\nThe system applies Retrieval-Augmented Generation principles where the LLM selects top k relevant style rewards. If a selected Style Reward matches a semantically similar command, the system directly uses its Style Policy via fuzzy memory. If no match is found, the LLM generates m new reward functions based on the most relevant Style Reward. Newly generated reward functions produce new Style Policies via Reinforcement Learning, which can be parallelized. The Statistical Evaluation module uses a Chain-of-Thought approach to select the n most relevant metrics. The LLM compares policy statistics to natural driving data to enable objective style evaluation. The Driving Style Database stores Style Rewards as programming codes and Style Policies as pre-trained neural networks. Analytical data is generated by the Statistical Evaluation module and saved in JSON format. The framework allows for the continuous expansion of the database with new driving styles generated by the system.\n\nKey Results\nIn human-in-the-loop comparisons, participants judged Words2Wheels to be a better match in 72% of events. In 18.8% of events, both Words2Wheels and IDM were considered equally effective. IDM was preferred in only 9.2% of the tested events. For the command 'Drive as fast as you can', Words2Wheels was preferred in 72.5% of cases. For the command 'Safety first. I have plenty of time', Words2Wheels was preferred in 79.5% of cases. The aggressive style showed higher speeds and greater acceleration compared to the conservative style. The conservative style maintained a larger gap and relative speed, aligning with expectations. In generation capability tests, the system successfully generated styles for commands not present in the initial database. In fuzzy memory tests, all test cases were successfully recalled except for one involving snowing conditions. The system demonstrated strong overall capabilities in analysis, decision-making, and generation for the vast majority of cases.\n\nInterpretation And Theoretical Implications\nWords2Wheels bridges the gap between user preferences and driving behavior through automated policy customization. The use of Style-Customized Reward Functions allows for efficient retrieval and generalization without user behavior data. The framework demonstrates that LLMs can effectively interpret natural language commands to drive policy generation. The Statistical Evaluation module provides a reliable benchmark for evaluating driving style alignment. The system's ability to generalize to new commands addresses the limitations of pre-existing style libraries.\n\nContradictions And Limitations\nThe aggressive style had a larger time headway, which may not align with typical aggressive driving expectations. The normal style showed higher jerk, possibly because the LLM did not prioritize these metrics. In some cases, the LLM misinterpreted user commands, such as in Case 19. The LLM's understanding conflicted with human intuition when acceleration and jerk values were negative. The study focuses on car-following scenarios, and future work is needed for more complex driving scenarios.\n\nClaims\nWords2Wheels outperforms existing methods in accuracy, generalization, and adaptability for customized AV driving behavior. Participants preferred Words2Wheels over IDM in 72% of events. The system successfully generated new styles for commands not in the initial database. Fuzzy memory function successfully recalled similar commands in most cases. IDM was preferred in 9.2% of events. The LLM misinterpreted commands in a few isolated cases. The framework offers a novel solution for customized AV driving behavior. It improves user experience by aligning driving styles with user preferences.\n\nData And Code Availability\nCode and demo are available at https://yokhon.github.io/Words2Wheels/. Experimental records are available at https://bit.ly/4giYhB7.\n\nRobustness And Ablation Notes\nTraining was run 5 times using different seeds to ensure robustness. Each command was tested 5 times and outcomes were averaged. The system was tested with 40 commands spanning three levels of directness. Fuzzy memory was tested with 3 experimental sets of similar inputs.\n\nKey Figures Tables\nFigure 1 illustrates the Words2Wheels framework generating customized driving policies. Figure 2 shows the workflow, Driving Style Database, and Statistical Evaluation module. Figure 3 provides an example of automated Style Policy generation. Figure 4 shows a simplified example of the Statistical Evaluation module. Figure 5 compares customized policies over style-aware metrics. Figure 6 evaluates generated policies when no aligned styles were provided. Figure 7 displays the user interface for comparing driving style alignment. Table I lists the levels of user commands. Table II summarizes human preferences on driving style alignment. Table III presents case studies across all command levels. Table IV tests the fuzzy memory function with similar commands.\n\nThree Takeaways\n1. The core contribution is the Words2Wheels framework for automated style-customized policy generation. 2. The strongest evidence is the 72% human preference for Words2Wheels over IDM. 3. The future path involves expanding to complex scenarios and refining the Statistical Evaluation module.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "command-\nbased driving styles",
+      "start": 402,
+      "end": 431,
+      "typographic_alignment": true,
+      "original_quote": "command-based driving styles"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "Inverse Reinforcement Learning",
+      "start": 557,
+      "end": 587,
+      "typographic_alignment": false,
+      "original_quote": "Inverse Reinforcement Learning"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "Robotaxi scenarios",
+      "start": 4346,
+      "end": 4364,
+      "typographic_alignment": false,
+      "original_quote": "Robotaxi scenarios"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "pre-existing styles",
+      "start": 859,
+      "end": 878,
+      "typographic_alignment": false,
+      "original_quote": "pre-existing styles"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "overall driving policy",
+      "start": 5400,
+      "end": 5422,
+      "typographic_alignment": false,
+      "original_quote": "overall driving policy"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "natural language user commands",
+      "start": 9047,
+      "end": 9077,
+      "typographic_alignment": false,
+      "original_quote": "natural language user commands"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "without\nrelying on prior",
+      "start": 1194,
+      "end": 1218,
+      "typographic_alignment": true,
+      "original_quote": "without relying on prior"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "Driving Style Database",
+      "start": 1275,
+      "end": 1297,
+      "typographic_alignment": false,
+      "original_quote": "Driving Style Database"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "alignment with user preferences",
+      "start": 1416,
+      "end": 1447,
+      "typographic_alignment": false,
+      "original_quote": "alignment with user preferences"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "accuracy, generalization, and\nadaptability",
+      "start": 1534,
+      "end": 1576,
+      "typographic_alignment": true,
+      "original_quote": "accuracy, generalization, and adaptability"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "car-following scenario",
+      "start": 18956,
+      "end": 18978,
+      "typographic_alignment": false,
+      "original_quote": "car-following scenario"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "HighD dataset",
+      "start": 19210,
+      "end": 19223,
+      "typographic_alignment": false,
+      "original_quote": "HighD dataset"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "FollowNet",
+      "start": 19403,
+      "end": 19412,
+      "typographic_alignment": false,
+      "original_quote": "FollowNet"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "15% data",
+      "start": 19483,
+      "end": 19491,
+      "typographic_alignment": false,
+      "original_quote": "15% data"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "three levels",
+      "start": 19674,
+      "end": 19686,
+      "typographic_alignment": false,
+      "original_quote": "three levels"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "GPT-4o-2024-08-06",
+      "start": 19879,
+      "end": 19896,
+      "typographic_alignment": false,
+      "original_quote": "GPT-4o-2024-08-06"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "k = 3",
+      "start": 19998,
+      "end": 20003,
+      "typographic_alignment": false,
+      "original_quote": "k = 3"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "8 initial styles",
+      "start": 20275,
+      "end": 20291,
+      "typographic_alignment": false,
+      "original_quote": "8 initial styles"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "Proximal Policy Optimization",
+      "start": 20566,
+      "end": 20594,
+      "typographic_alignment": false,
+      "original_quote": "Proximal Policy Optimization"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "5 times",
+      "start": 20709,
+      "end": 20716,
+      "typographic_alignment": false,
+      "original_quote": "5 times"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "Retrieval-Augmented\nGeneration",
+      "start": 7535,
+      "end": 7565,
+      "typographic_alignment": true,
+      "original_quote": "Retrieval-Augmented Generation"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "fuzzy memory function",
+      "start": 14306,
+      "end": 14327,
+      "typographic_alignment": false,
+      "original_quote": "fuzzy memory function"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "m new reward functions",
+      "start": 14394,
+      "end": 14416,
+      "typographic_alignment": false,
+      "original_quote": "m new reward functions"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "parallelized",
+      "start": 12657,
+      "end": 12669,
+      "typographic_alignment": false,
+      "original_quote": "parallelized"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "Chain-of-Thought",
+      "start": 18195,
+      "end": 18211,
+      "typographic_alignment": false,
+      "original_quote": "Chain-of-Thought"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "natural driving data",
+      "start": 18530,
+      "end": 18550,
+      "typographic_alignment": false,
+      "original_quote": "natural driving data"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "pre-trained neural networks",
+      "start": 15353,
+      "end": 15380,
+      "typographic_alignment": false,
+      "original_quote": "pre-trained neural networks"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "JSON format",
+      "start": 15466,
+      "end": 15477,
+      "typographic_alignment": false,
+      "original_quote": "JSON format"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "continuously expanding the style range",
+      "start": 8378,
+      "end": 8416,
+      "typographic_alignment": false,
+      "original_quote": "continuously expanding the style range"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "72%\nevents",
+      "start": 24078,
+      "end": 24088,
+      "typographic_alignment": true,
+      "original_quote": "72% events"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "18.8% events",
+      "start": 24208,
+      "end": 24220,
+      "typographic_alignment": false,
+      "original_quote": "18.8% events"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "9.2%",
+      "start": 24301,
+      "end": 24305,
+      "typographic_alignment": false,
+      "original_quote": "9.2%"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "72.5%",
+      "start": 24560,
+      "end": 24565,
+      "typographic_alignment": false,
+      "original_quote": "72.5%"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "79.5%",
+      "start": 24616,
+      "end": 24621,
+      "typographic_alignment": false,
+      "original_quote": "79.5%"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "higher speeds",
+      "start": 13438,
+      "end": 13451,
+      "typographic_alignment": false,
+      "original_quote": "higher speeds"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "larger gap",
+      "start": 21502,
+      "end": 21512,
+      "typographic_alignment": false,
+      "original_quote": "larger gap"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "did\nnot match",
+      "start": 22017,
+      "end": 22030,
+      "typographic_alignment": true,
+      "original_quote": "did not match"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "one case",
+      "start": 28079,
+      "end": 28087,
+      "typographic_alignment": false,
+      "original_quote": "one case"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "vast majority",
+      "start": 25996,
+      "end": 26009,
+      "typographic_alignment": false,
+      "original_quote": "vast majority"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "automated policy customization",
+      "start": 6880,
+      "end": 6910,
+      "typographic_alignment": false,
+      "original_quote": "automated policy customization"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "without user\nbehavior data",
+      "start": 7767,
+      "end": 7793,
+      "typographic_alignment": true,
+      "original_quote": "without user behavior data"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "natural language\ninput",
+      "start": 5343,
+      "end": 5365,
+      "typographic_alignment": true,
+      "original_quote": "natural language input"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "reliable evaluation",
+      "start": 8870,
+      "end": 8889,
+      "typographic_alignment": false,
+      "original_quote": "reliable evaluation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "generalization problem",
+      "start": 4831,
+      "end": 4853,
+      "typographic_alignment": false,
+      "original_quote": "generalization problem"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "larger time\nheadway",
+      "start": 21649,
+      "end": 21668,
+      "typographic_alignment": true,
+      "original_quote": "larger time headway"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "higher jerk",
+      "start": 21698,
+      "end": 21709,
+      "typographic_alignment": false,
+      "original_quote": "higher jerk"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "Case 19",
+      "start": 26253,
+      "end": 26260,
+      "typographic_alignment": false,
+      "original_quote": "Case 19"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "negative",
+      "start": 26557,
+      "end": 26565,
+      "typographic_alignment": false,
+      "original_quote": "negative"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "car-following scenario",
+      "start": 18956,
+      "end": 18978,
+      "typographic_alignment": false,
+      "original_quote": "car-following scenario"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "https://yokhon.\ngithub.io/Words2Wheels/",
+      "start": 1667,
+      "end": 1706,
+      "typographic_alignment": true,
+      "original_quote": "https://yokhon.github.io/Words2Wheels/"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "https://bit.ly/4giYhB7",
+      "start": 26673,
+      "end": 26695,
+      "typographic_alignment": false,
+      "original_quote": "https://bit.ly/4giYhB7"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "5 times",
+      "start": 20709,
+      "end": 20716,
+      "typographic_alignment": false,
+      "original_quote": "5 times"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "5 times",
+      "start": 20709,
+      "end": 20716,
+      "typographic_alignment": false,
+      "original_quote": "5 times"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "40 commands",
+      "start": 25226,
+      "end": 25237,
+      "typographic_alignment": false,
+      "original_quote": "40 commands"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "3 experimental sets",
+      "start": 27473,
+      "end": 27492,
+      "typographic_alignment": false,
+      "original_quote": "3 experimental sets"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Fig. 1",
+      "start": 3384,
+      "end": 3390,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 1"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Fig. 2",
+      "start": 6345,
+      "end": 6351,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 2"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Fig. 3",
+      "start": 12459,
+      "end": 12465,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 3"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Fig. 4",
+      "start": 17402,
+      "end": 17408,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 4"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Fig. 5",
+      "start": 20948,
+      "end": 20954,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 5"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "Fig. 6",
+      "start": 22310,
+      "end": 22316,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 6"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "Fig. 7",
+      "start": 23269,
+      "end": 23275,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 7"
+    },
+    {
+      "path": "key_figures_tables[7]",
+      "quote": "TABLE I",
+      "start": 18271,
+      "end": 18278,
+      "typographic_alignment": false,
+      "original_quote": "TABLE I"
+    },
+    {
+      "path": "key_figures_tables[8]",
+      "quote": "TABLE II",
+      "start": 24055,
+      "end": 24063,
+      "typographic_alignment": false,
+      "original_quote": "TABLE II"
+    },
+    {
+      "path": "key_figures_tables[9]",
+      "quote": "TABLE III",
+      "start": 24729,
+      "end": 24738,
+      "typographic_alignment": false,
+      "original_quote": "TABLE III"
+    },
+    {
+      "path": "key_figures_tables[10]",
+      "quote": "TABLE IV",
+      "start": 26696,
+      "end": 26704,
+      "typographic_alignment": false,
+      "original_quote": "TABLE IV"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "Words2Wheels framework",
+      "start": 9145,
+      "end": 9167,
+      "typographic_alignment": false,
+      "original_quote": "Words2Wheels framework"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "72%\nevents",
+      "start": 24078,
+      "end": 24088,
+      "typographic_alignment": true,
+      "original_quote": "72% events"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "complex driving scenarios",
+      "start": 29040,
+      "end": 29065,
+      "typographic_alignment": false,
+      "original_quote": "complex driving scenarios"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "72%\nevents",
+      "start": 24078,
+      "end": 24088,
+      "typographic_alignment": true,
+      "original_quote": "72% events"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "did\nnot match",
+      "start": 22017,
+      "end": 22030,
+      "typographic_alignment": true,
+      "original_quote": "did not match"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "successfully recalled",
+      "start": 28171,
+      "end": 28192,
+      "typographic_alignment": false,
+      "original_quote": "successfully recalled"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "9.2%",
+      "start": 24301,
+      "end": 24305,
+      "typographic_alignment": false,
+      "original_quote": "9.2%"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "isolated cases",
+      "start": 26176,
+      "end": 26190,
+      "typographic_alignment": false,
+      "original_quote": "isolated cases"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "novel solution",
+      "start": 1589,
+      "end": 1603,
+      "typographic_alignment": false,
+      "original_quote": "novel solution"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "user experience",
+      "start": 296,
+      "end": 311,
+      "typographic_alignment": false,
+      "original_quote": "user experience"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"From Words to Wheels: Automated Style-Customized Policy Generation for Autonomous Driving\",\n  \"authors\": \"Xu Han, Xianda Chen, Zhenghan Cai, Pinlong Cai, Meixin Zhu, Xiaowen Chu\",\n  \"field_subfield\": \"Autonomous Driving / Reinforcement Learning\",\n  \"type_of_paper\": \"Conference Paper / Preprint\",\n  \"executive_summary\": \"This paper introduces Words2Wheels, a framework designed to automatically generate customized driving policies for autonomous vehicles (AVs) based on natural language user commands. Current AVs suffer from uniform driving styles that fail to align with individual user preferences, often relying on predefined styles or data-driven methods like Inverse Reinforcement Learning (IRL) that require specific driving data which is difficult to obtain in Robotaxi scenarios. Words2Wheels addresses these limitations by employing a Style-Customized Reward Function (Style Reward) to bridge user input and a Style-Customized Driving Policy (Style Policy) without relying on prior user driving data. The framework leverages Large Language Models (LLMs) and a Driving Style Database to retrieve, adapt, and generalize driving styles. A Statistical Evaluation module ensures alignment by comparing generated policies against natural driving behavior metrics on a reserved test set. Experimental results using the HighD dataset and GPT-4o demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability. In human-in-the-loop comparisons, participants preferred the Words2Wheels-generated style over the Intelligent Driver Model (IDM) in 72% of cases. The system also demonstrated strong generalization capabilities, successfully generating new styles for commands not present in the initial database, and effective fuzzy memory functionality for recalling similar past commands. The study concludes that Words2Wheels offers a novel, efficient, and extensible solution for customized AV driving behavior, with future work aimed at expanding to complex scenarios and refining evaluation modules.\",\n  \"research_context\": [\n    { \"Autonomous driving technology has advanced rapidly, but current vehicles face limitations in delivering command-based driving styles.\": \"command-based driving styles\" },\n    { \"Existing methods rely on predefined styles requiring expert input or data-driven techniques like Inverse Reinforcement Learning.\": \"Inverse Reinforcement Learning\" },\n    { \"These approaches face challenges including difficulty obtaining specific driving data for style matching in Robotaxi scenarios.\": \"Robotaxi scenarios\" },\n    { \"There is an inability to align driving style metrics with user preferences and limitations to pre-existing styles.\": \"pre-existing styles\" },\n    { \"Foundation models have been explored to process user instructions, but they fall short in adjusting the overall driving policy.\": \"overall driving policy\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The central research question is how to automatically generate customized driving policies based on natural language user commands.\": \"natural language user commands\" },\n    { \"The hypothesis is that a Style-Customized Reward Function can generate a Style-Customized Driving Policy without prior driving data.\": \"without relying on prior driving data\" },\n    { \"The framework is hypothesized to efficiently retrieve, adapt, and generalize driving styles using LLMs and a Driving Style Database.\": \"Driving Style Database\" },\n    { \"It is predicted that a Statistical Evaluation module will ensure alignment with user preferences.\": \"alignment with user preferences\" },\n    { \"The study aims to demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability.\": \"accuracy, generalization, and adaptability\" }\n  ],\n  \"methodological_details\": [\n    { \"The study focuses on the car-following scenario as it constitutes a significant portion of driving behavior.\": \"car-following scenario\" },\n    { \"The experiment utilized the HighD dataset, collected by a 4K resolution camera mounted on a drone.\": \"HighD dataset\" },\n    { \"Data extraction and kinematic modeling were based on the FollowNet framework.\": \"FollowNet\" },\n    { \"15% of the data was reserved as a test set to ensure objectivity in Statistical Evaluation.\": \"15% data\" },\n    { \"User commands were categorized into three levels based on their directness: Direct, Indirect with strong hints, and Indirect with mild hints.\": \"three levels\" },\n    { \"GPT-4o-2024-08-06 was adopted as the base model with a temperature set to 0.3.\": \"GPT-4o-2024-08-06\" },\n    { \"The parameter k was set to 3 for selecting relevant styles and n to 2 for Statistical Evaluation.\": \"k = 3\" },\n    { \"The Driving Style Database was initially populated with 8 styles, including data-driven and human-designed reward functions.\": \"8 initial styles\" },\n    { \"Proximal Policy Optimization was employed for training the Style Policy from Style Reward.\": \"Proximal Policy Optimization\" },\n    { \"Training was run 5 times using different seeds to select the Style Policy with the highest reward.\": \"5 times\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The system applies Retrieval-Augmented Generation principles where the LLM selects top k relevant style rewards.\": \"Retrieval-Augmented Generation\" },\n    { \"If a selected Style Reward matches a semantically similar command, the system directly uses its Style Policy via fuzzy memory.\": \"fuzzy memory function\" },\n    { \"If no match is found, the LLM generates m new reward functions based on the most relevant Style Reward.\": \"m new reward functions\" },\n    { \"Newly generated reward functions produce new Style Policies via Reinforcement Learning, which can be parallelized.\": \"parallelized\" },\n    { \"The Statistical Evaluation module uses a Chain-of-Thought approach to select the n most relevant metrics.\": \"Chain-of-Thought\" },\n    { \"The LLM compares policy statistics to natural driving data to enable objective style evaluation.\": \"natural driving data\" },\n    { \"The Driving Style Database stores Style Rewards as programming codes and Style Policies as pre-trained neural networks.\": \"pre-trained neural networks\" },\n    { \"Analytical data is generated by the Statistical Evaluation module and saved in JSON format.\": \"JSON format\" },\n    { \"The framework allows for the continuous expansion of the database with new driving styles generated by the system.\": \"continuously expanding the style range\" }\n  ],\n  \"key_results\": [\n    { \"In human-in-the-loop comparisons, participants judged Words2Wheels to be a better match in 72% of events.\": \"72% events\" },\n    { \"In 18.8% of events, both Words2Wheels and IDM were considered equally effective.\": \"18.8% events\" },\n    { \"IDM was preferred in only 9.2% of the tested events.\": \"9.2%\" },\n    { \"For the command 'Drive as fast as you can', Words2Wheels was preferred in 72.5% of cases.\": \"72.5%\" },\n    { \"For the command 'Safety first. I have plenty of time', Words2Wheels was preferred in 79.5% of cases.\": \"79.5%\" },\n    { \"The aggressive style showed higher speeds and greater acceleration compared to the conservative style.\": \"higher speeds\" },\n    { \"The conservative style maintained a larger gap and relative speed, aligning with expectations.\": \"larger gap\" },\n    { \"In generation capability tests, the system successfully generated styles for commands not present in the initial database.\": \"did not match\" },\n    { \"In fuzzy memory tests, all test cases were successfully recalled except for one involving snowing conditions.\": \"one case\" },\n    { \"The system demonstrated strong overall capabilities in analysis, decision-making, and generation for the vast majority of cases.\": \"vast majority\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"Words2Wheels bridges the gap between user preferences and driving behavior through automated policy customization.\": \"automated policy customization\" },\n    { \"The use of Style-Customized Reward Functions allows for efficient retrieval and generalization without user behavior data.\": \"without user behavior data\" },\n    { \"The framework demonstrates that LLMs can effectively interpret natural language commands to drive policy generation.\": \"interpret natural language commands\" },\n    { \"The Statistical Evaluation module provides a reliable benchmark for evaluating driving style alignment.\": \"reliable evaluation\" },\n    { \"The system's ability to generalize to new commands addresses the limitations of pre-existing style libraries.\": \"generalization problem\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The aggressive style had a larger time headway, which may not align with typical aggressive driving expectations.\": \"larger time headway\" },\n    { \"The normal style showed higher jerk, possibly because the LLM did not prioritize these metrics.\": \"higher jerk\" },\n    { \"In some cases, the LLM misinterpreted user commands, such as in Case 19.\": \"Case 19\" },\n    { \"The LLM's understanding conflicted with human intuition when acceleration and jerk values were negative.\": \"negative\" },\n    { \"The study focuses on car-following scenarios, and future work is needed for more complex driving scenarios.\": \"car-following scenario\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability for customized AV driving behavior.\",\n      \"supporting_evidence\": [\n        { \"Participants preferred Words2Wheels over IDM in 72% of events.\": \"72% events\" },\n        { \"The system successfully generated new styles for commands not in the initial database.\": \"did not match\" },\n        { \"Fuzzy memory function successfully recalled similar commands in most cases.\": \"successfully recalled\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"IDM was preferred in 9.2% of events.\": \"9.2%\" },\n        { \"The LLM misinterpreted commands in a few isolated cases.\": \"isolated cases\" }\n      ],\n      \"implications\": [\n        { \"The framework offers a novel solution for customized AV driving behavior.\": \"novel solution\" },\n        { \"It improves user experience by aligning driving styles with user preferences.\": \"user experience\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"Code and demo are available at https://yokhon.github.io/Words2Wheels/.\": \"https://yokhon.github.io/Words2Wheels/\" },\n    { \"Experimental records are available at https://bit.ly/4giYhB7.\": \"https://bit.ly/4giYhB7\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"Training was run 5 times using different seeds to ensure robustness.\": \"5 times\" },\n    { \"Each command was tested 5 times and outcomes were averaged.\": \"5 times\" },\n    { \"The system was tested with 40 commands spanning three levels of directness.\": \"40 commands\" },\n    { \"Fuzzy memory was tested with 3 experimental sets of similar inputs.\": \"3 experimental sets\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 illustrates the Words2Wheels framework generating customized driving policies.\": \"Fig. 1\" },\n    { \"Figure 2 shows the workflow, Driving Style Database, and Statistical Evaluation module.\": \"Fig. 2\" },\n    { \"Figure 3 provides an example of automated Style Policy generation.\": \"Fig. 3\" },\n    { \"Figure 4 shows a simplified example of the Statistical Evaluation module.\": \"Fig. 4\" },\n    { \"Figure 5 compares customized policies over style-aware metrics.\": \"Fig. 5\" },\n    { \"Figure 6 evaluates generated policies when no aligned styles were provided.\": \"Fig. 6\" },\n    { \"Figure 7 displays the user interface for comparing driving style alignment.\": \"Fig. 7\" },\n    { \"Table I lists the levels of user commands.\": \"TABLE I\" },\n    { \"Table II summarizes human preferences on driving style alignment.\": \"TABLE II\" },\n    { \"Table III presents case studies across all command levels.\": \"TABLE III\" },\n    { \"Table IV tests the fuzzy memory function with similar commands.\": \"TABLE IV\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the Words2Wheels framework for automated style-customized policy generation.\": \"Words2Wheels framework\" },\n    { \"2. The strongest evidence is the 72% human preference for Words2Wheels over IDM.\": \"72% events\" },\n    { \"3. The future path involves expanding to complex scenarios and refining the Statistical Evaluation module.\": \"complex driving scenarios\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8999,
+        "total_tokens": 11907,
+        "completion_tokens": 2908,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8999,
+      "elapsed_seconds": 255.48230024799705,
+      "max_tokens": 16000,
+      "seed": 1868972645,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "8cc1151606596b60d6f5cb233ce557bcb20bd8b8c20f35a980b565a5b2c69cf3",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "Evidence must be a nonempty <=5-word quote: research_question_and_hypothesis[1]",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: interpret natural language commands"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to automatically generate customized driving policies based on natural language user commands.\": \"natural language user commands\"\n    },\n    {\n      \"The hypothesis is that a Style-Customized Reward Function can generate a Style-Customized Driving Policy without prior driving data.\": \"without prior driving data\"\n    },\n    {\n      \"The framework is hypothesized to efficiently retrieve, adapt, and generalize driving styles using LLMs and a Driving Style Database.\": \"Driving Style Database\"\n    },\n    {\n      \"It is predicted that a Statistical Evaluation module will ensure alignment with user preferences.\": \"alignment with user preferences\"\n    },\n    {\n      \"The study aims to demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability.\": \"accuracy, generalization, and adaptability\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"Words2Wheels bridges the gap between user preferences and driving behavior through automated policy customization.\": \"automated policy customization\"\n    },\n    {\n      \"The use of Style-Customized Reward Functions allows for efficient retrieval and generalization without user behavior data.\": \"without user behavior data\"\n    },\n    {\n      \"The framework demonstrates that LLMs can effectively interpret natural language commands to drive policy generation.\": \"natural language input\"\n    },\n    {\n      \"The Statistical Evaluation module provides a reliable benchmark for evaluating driving style alignment.\": \"reliable evaluation\"\n    },\n    {\n      \"The system's ability to generalize to new commands addresses the limitations of pre-existing style libraries.\": \"generalization problem\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7575,
+        "total_tokens": 7966,
+        "completion_tokens": 391,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7575,
+      "elapsed_seconds": 43.062111627310514,
+      "max_tokens": 4096,
+      "seed": 1868972646,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "44e57fe072b4e13bb175f8053b0729d616d223c122d238a14d2499126f64eab4",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "interpretation_and_theoretical_implications"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: without prior driving data"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to automatically generate customized driving policies based on natural language user commands.\": \"natural language user commands\"\n    },\n    {\n      \"The hypothesis is that a Style-Customized Reward Function can generate a Style-Customized Driving Policy without prior driving data.\": \"without relying on prior\"\n    },\n    {\n      \"The framework is hypothesized to efficiently retrieve, adapt, and generalize driving styles using LLMs and a Driving Style Database.\": \"Driving Style Database\"\n    },\n    {\n      \"It is predicted that a Statistical Evaluation module will ensure alignment with user preferences.\": \"alignment with user preferences\"\n    },\n    {\n      \"The study aims to demonstrate that Words2Wheels outperforms existing methods in accuracy, generalization, and adaptability.\": \"accuracy, generalization, and adaptability\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7391,
+        "total_tokens": 7601,
+        "completion_tokens": 210,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7391,
+      "elapsed_seconds": 15.933063544332981,
+      "max_tokens": 4096,
+      "seed": 1868972647,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "eb91da5a672d40abd5d98f9ace20efb236527376355638cf7da5b8fb953c49e0",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 8999,
+  "elapsed_seconds": 314.6585440337658,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

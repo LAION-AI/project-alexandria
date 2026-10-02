@@ -1,0 +1,994 @@
+{
+  "document_id": "bethgelab-146",
+  "fulltext_sha256": "652ad4ed5affc62698e2c395d4c32c9181dc6c617e96278277aef11508225f9a",
+  "summary": {
+    "title": "Low density interior in supercooled aqueous nanodroplets expels ions to the subsurface",
+    "authors": "Shahrazad M A Malek, Ivan Saika-Voivod, Styliani Consta",
+    "field_subfield": "Physical Chemistry, Nanoscience",
+    "type_of_paper": "Computational Study",
+    "executive_summary": "This study investigates the spatial distribution of sodium ions in supercooled aqueous nanodroplets using molecular dynamics simulations and an analytical reference model. The authors demonstrate that at room temperature, the radial distribution of a single Na+ ion is nearly uniform within the droplet core, consistent with a newly proposed \"electrostatic confinement\" model that predicts a harmonic potential centered at the droplet's center of mass. However, at supercooled temperatures (200 K), the internal structure of the water changes significantly. A low-density core with tetrahedral ordering forms, surrounded by a high-density, more disordered subsurface. The simulations reveal that Na+ ions are expelled from this low-density tetrahedral core and preferentially reside in the denser subsurface region. This behavior contrasts with room temperature conditions and cannot be explained by the standard non-linear Poisson-Boltzmann equation, which assumes a homogeneous dielectric. The study highlights the critical role of solvent structure in determining ion location, with implications for atmospheric aerosols and mass spectrometry techniques like electrospray ionization. The findings suggest that the heterogeneous environment of supercooled droplets fundamentally alters ion solvation, potentially affecting chemical reactivity and the preservation of macromolecular conformations. The authors propose that this work serves as a starting point for understanding the structure of supercooled electrosprayed droplets used in native mass spectrometry.",
+    "research_context": [
+      {
+        "The spatial distribution of ions in droplets is crucial for chemical reactivity in aerosols.": "chemical reactivity"
+      },
+      {
+        "Previous studies focused on room temperature or small clusters up to 100 water molecules.": "room or elevated"
+      },
+      {
+        "Supercooled clusters are challenging to equilibrate, limiting prior computational studies.": "challenging to be equilibrated"
+      },
+      {
+        "Recent simulations revealed an anomalous inverted radial density profile in supercooled water.": "inverted radial density"
+      },
+      {
+        "A low-density core with tetrahedral ordering was observed in larger supercooled droplets.": "lowdensity core"
+      },
+      {
+        "The distribution of ions in supercooled droplets remains completely unknown.": "completely unknown"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study investigates the location of single and multiple ions in supercooled aqueous clusters.": "location of a single"
+      },
+      {
+        "The authors hypothesize that the low-density core differentiates ion distribution from room temperature.": "differentiate the ion distribution"
+      },
+      {
+        "They propose that ions will be expelled from the tetrahedral core to the subsurface.": "expels the Na + ions"
+      },
+      {
+        "An analytical model is introduced to explain forces determining ion location.": "reference analytical model"
+      },
+      {
+        "The model predicts a harmonic potential centered at the droplet's center of mass.": "harmonic potential"
+      },
+      {
+        "This effect is named \"electrostatic confinement\" (EC).": "electrostatic confinement"
+      }
+    ],
+    "methodological_details": [
+      {
+        "Simulations were performed using GROMACS v4.6.1 molecular dynamics.": "GROMACS v4.6.1"
+      },
+      {
+        "Water was modeled with the TIP4P/2005 potential.": "TIP4P/2005"
+      },
+      {
+        "Na+ ions used OPLS-AA parameters with a charge of +1e.": "OPLS-AA parameters"
+      },
+      {
+        "Temperatures studied were 200 K, 260 K, and 300 K.": "200 K, 260 K"
+      },
+      {
+        "System sizes ranged from 100 to 1100 water molecules.": "100 H 2 O"
+      },
+      {
+        "Simulations were run in the canonical ensemble with Nosé-Hoover thermostat.": "Nosé-Hoover thermostat"
+      },
+      {
+        "Equilibration was verified by comparing runs starting from center and surface.": "converge for the two"
+      },
+      {
+        "Voronoi volumes and tetrahedral order parameters were calculated for structure analysis.": "Voronoi volumes"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The analytical model sums electrostatic and surface energy of a deformable droplet.": "electrostatic energy and surface"
+      },
+      {
+        "The energy related to ion distance from COM is harmonic.": "harmonic potential"
+      },
+      {
+        "The spring constant K(ε) depends on the dielectric constant.": "spring constant K(ε)"
+      },
+      {
+        "Maximum confinement occurs at ε ≈ 2.73.": "maximum of the coefficient K(ε)"
+      },
+      {
+        "Simulations used a leap-frog algorithm with a 2 fs time step.": "leap-frog algorithm"
+      },
+      {
+        "Cutoff for interactions was set to L/2 to capture long-range effects.": "L/2"
+      },
+      {
+        "Relaxation times were estimated from neighbor correlation functions.": "neighbor correlation function"
+      }
+    ],
+    "key_results": [
+      {
+        "At 300 K, the Na+ radial distribution is nearly uniform in the core.": "nearly uniform"
+      },
+      {
+        "At 200 K, the Na+ peak shifts to the subsurface region.": "peak of ρ N a"
+      },
+      {
+        "The subsurface peak coincides with the peak in Voronoi-based density.": "peak in ρ v"
+      },
+      {
+        "Multiple ions also show a maximum at the subsurface location at 200 K.": "maximum at the same"
+      },
+      {
+        "The tetrahedral order parameter decreases at the subsurface density peak.": "significant decrease"
+      },
+      {
+        "The distance to the fifth neighbor increases at the subsurface, indicating disorder.": "more disordered structure"
+      },
+      {
+        "For 776 H2O at 300 K, ion decay fits an exponential with λPB ≈ 1.2 nm.": "λ P B ≈ 1.2"
+      },
+      {
+        "For 1100 H2O at 300 K, ion decay fits an exponential with λPB ≈ 1.3 nm.": "λ P B ≈ 1.3"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "Ions prefer the high-density, disordered subsurface over the low-density tetrahedral core.": "prefer the relatively disordered"
+      },
+      {
+        "The dielectric constant increases with density, favoring subsurface residence.": "dielectric constant increases"
+      },
+      {
+        "The electrostatic confinement model explains room temperature behavior but not supercooling.": "consistent with the simulation"
+      },
+      {
+        "The heterogeneous solvent structure at supercooling drives ion expulsion from the core.": "heterogeneous solvent structure"
+      },
+      {
+        "This finding challenges standard Poisson-Boltzmann predictions for supercooled droplets.": "cannot be explained"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The electrostatic confinement model fails to predict ion location at supercooling.": "not at supercooling"
+      },
+      {
+        "Small clusters (N=100) do not form a tetrahedral core due to shape fluctuations.": "large relative shape"
+      },
+      {
+        "Sampling is challenging, requiring simulation times of 10-100 ns.": "10 ns 100 ns"
+      },
+      {
+        "The model does not account for ion size or hydrophobic effects.": "ion size and hydrophobic"
+      },
+      {
+        "Evaporative cooling effects are not fully captured in the simulations.": "evaporative cooling"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Supercooled aqueous nanodroplets expel ions to the subsurface due to a low-density tetrahedral core.",
+        "supporting_evidence": [
+          {
+            "The Na+ peak is located within 0.1 nm of the subsurface density peak.": "within 0.1 nm"
+          },
+          {
+            "The tetrahedral order parameter decreases at the subsurface.": "significant decrease"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "At room temperature, the ion distribution is nearly uniform.": "nearly uniform"
+          }
+        ],
+        "implications": [
+          {
+            "This affects chemical reactivity in atmospheric aerosols.": "chemical reactivity"
+          },
+          {
+            "It impacts the interpretation of mass spectrometry data.": "mass spectrometry"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "Equilibration was tested by starting ions at the center and surface.": "converge for the two"
+      },
+      {
+        "Results were consistent across different starting conditions.": "degree of equilibration"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 plots the spring constant K(ε) versus dielectric constant.": "spring constant"
+      },
+      {
+        "Figure 3 shows radial density profiles for pure water and Na+ ions.": "ρ(r) and ρ v"
+      },
+      {
+        "Figure 4 details the structure and ion location for N=776 at 200 K and 300 K.": "Fig. 4"
+      },
+      {
+        "Figure 5 compares multiple ion distributions at 300 K and 200 K.": "Fig. 5"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. Supercooled droplets have a low-density tetrahedral core that expels ions to the subsurface.": "expels the Na + ions"
+      },
+      {
+        "2. The electrostatic confinement model explains room temperature ion distribution but not supercooling.": "electrostatic confinement"
+      },
+      {
+        "3. This work provides a starting point for studying supercooled electrosprayed droplets.": "starting point"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis study investigates the spatial distribution of sodium ions in supercooled aqueous nanodroplets using molecular dynamics simulations and an analytical reference model. The authors demonstrate that at room temperature, the radial distribution of a single Na+ ion is nearly uniform within the droplet core, consistent with a newly proposed \"electrostatic confinement\" model that predicts a harmonic potential centered at the droplet's center of mass. However, at supercooled temperatures (200 K), the internal structure of the water changes significantly. A low-density core with tetrahedral ordering forms, surrounded by a high-density, more disordered subsurface. The simulations reveal that Na+ ions are expelled from this low-density tetrahedral core and preferentially reside in the denser subsurface region. This behavior contrasts with room temperature conditions and cannot be explained by the standard non-linear Poisson-Boltzmann equation, which assumes a homogeneous dielectric. The study highlights the critical role of solvent structure in determining ion location, with implications for atmospheric aerosols and mass spectrometry techniques like electrospray ionization. The findings suggest that the heterogeneous environment of supercooled droplets fundamentally alters ion solvation, potentially affecting chemical reactivity and the preservation of macromolecular conformations. The authors propose that this work serves as a starting point for understanding the structure of supercooled electrosprayed droplets used in native mass spectrometry.\n\nResearch Context\nThe spatial distribution of ions in droplets is crucial for chemical reactivity in aerosols. Previous studies focused on room temperature or small clusters up to 100 water molecules. Supercooled clusters are challenging to equilibrate, limiting prior computational studies. Recent simulations revealed an anomalous inverted radial density profile in supercooled water. A low-density core with tetrahedral ordering was observed in larger supercooled droplets. The distribution of ions in supercooled droplets remains completely unknown.\n\nResearch Question And Hypothesis\nThe study investigates the location of single and multiple ions in supercooled aqueous clusters. The authors hypothesize that the low-density core differentiates ion distribution from room temperature. They propose that ions will be expelled from the tetrahedral core to the subsurface. An analytical model is introduced to explain forces determining ion location. The model predicts a harmonic potential centered at the droplet's center of mass. This effect is named \"electrostatic confinement\" (EC).\n\nMethodological Details\nSimulations were performed using GROMACS v4.6.1 molecular dynamics. Water was modeled with the TIP4P/2005 potential. Na+ ions used OPLS-AA parameters with a charge of +1e. Temperatures studied were 200 K, 260 K, and 300 K. System sizes ranged from 100 to 1100 water molecules. Simulations were run in the canonical ensemble with Nosé-Hoover thermostat. Equilibration was verified by comparing runs starting from center and surface. Voronoi volumes and tetrahedral order parameters were calculated for structure analysis.\n\nProcedures And Architectures\nThe analytical model sums electrostatic and surface energy of a deformable droplet. The energy related to ion distance from COM is harmonic. The spring constant K(ε) depends on the dielectric constant. Maximum confinement occurs at ε ≈ 2.73. Simulations used a leap-frog algorithm with a 2 fs time step. Cutoff for interactions was set to L/2 to capture long-range effects. Relaxation times were estimated from neighbor correlation functions.\n\nKey Results\nAt 300 K, the Na+ radial distribution is nearly uniform in the core. At 200 K, the Na+ peak shifts to the subsurface region. The subsurface peak coincides with the peak in Voronoi-based density. Multiple ions also show a maximum at the subsurface location at 200 K. The tetrahedral order parameter decreases at the subsurface density peak. The distance to the fifth neighbor increases at the subsurface, indicating disorder. For 776 H2O at 300 K, ion decay fits an exponential with λPB ≈ 1.2 nm. For 1100 H2O at 300 K, ion decay fits an exponential with λPB ≈ 1.3 nm.\n\nInterpretation And Theoretical Implications\nIons prefer the high-density, disordered subsurface over the low-density tetrahedral core. The dielectric constant increases with density, favoring subsurface residence. The electrostatic confinement model explains room temperature behavior but not supercooling. The heterogeneous solvent structure at supercooling drives ion expulsion from the core. This finding challenges standard Poisson-Boltzmann predictions for supercooled droplets.\n\nContradictions And Limitations\nThe electrostatic confinement model fails to predict ion location at supercooling. Small clusters (N=100) do not form a tetrahedral core due to shape fluctuations. Sampling is challenging, requiring simulation times of 10-100 ns. The model does not account for ion size or hydrophobic effects. Evaporative cooling effects are not fully captured in the simulations.\n\nClaims\nSupercooled aqueous nanodroplets expel ions to the subsurface due to a low-density tetrahedral core. The Na+ peak is located within 0.1 nm of the subsurface density peak. The tetrahedral order parameter decreases at the subsurface. At room temperature, the ion distribution is nearly uniform. This affects chemical reactivity in atmospheric aerosols. It impacts the interpretation of mass spectrometry data.\n\nRobustness And Ablation Notes\nEquilibration was tested by starting ions at the center and surface. Results were consistent across different starting conditions.\n\nKey Figures Tables\nFigure 1 plots the spring constant K(ε) versus dielectric constant. Figure 3 shows radial density profiles for pure water and Na+ ions. Figure 4 details the structure and ion location for N=776 at 200 K and 300 K. Figure 5 compares multiple ion distributions at 300 K and 200 K.\n\nThree Takeaways\n1. Supercooled droplets have a low-density tetrahedral core that expels ions to the subsurface. 2. The electrostatic confinement model explains room temperature ion distribution but not supercooling. 3. This work provides a starting point for studying supercooled electrosprayed droplets.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "chemical reactivity",
+      "start": 361,
+      "end": 380,
+      "typographic_alignment": false,
+      "original_quote": "chemical reactivity"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "room or elevated",
+      "start": 3363,
+      "end": 3379,
+      "typographic_alignment": false,
+      "original_quote": "room or elevated"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "challenging to be equilibrated",
+      "start": 3521,
+      "end": 3551,
+      "typographic_alignment": false,
+      "original_quote": "challenging to be equilibrated"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "inverted radial density",
+      "start": 5339,
+      "end": 5362,
+      "typographic_alignment": false,
+      "original_quote": "inverted radial density"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "lowdensity core",
+      "start": 5433,
+      "end": 5448,
+      "typographic_alignment": false,
+      "original_quote": "lowdensity core"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "completely unknown",
+      "start": 4966,
+      "end": 4984,
+      "typographic_alignment": false,
+      "original_quote": "completely unknown"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "location of a single",
+      "start": 3598,
+      "end": 3618,
+      "typographic_alignment": false,
+      "original_quote": "location of a single"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "differentiate the ion distribution",
+      "start": 5741,
+      "end": 5775,
+      "typographic_alignment": false,
+      "original_quote": "differentiate the ion distribution"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "expels the Na + ions",
+      "start": 561,
+      "end": 581,
+      "typographic_alignment": false,
+      "original_quote": "expels the Na + ions"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "reference analytical model",
+      "start": 6105,
+      "end": 6131,
+      "typographic_alignment": false,
+      "original_quote": "reference analytical model"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "harmonic potential",
+      "start": 1025,
+      "end": 1043,
+      "typographic_alignment": false,
+      "original_quote": "harmonic potential"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "electrostatic confinement",
+      "start": 1107,
+      "end": 1132,
+      "typographic_alignment": false,
+      "original_quote": "electrostatic confinement"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "GROMACS v4.6.1",
+      "start": 11261,
+      "end": 11275,
+      "typographic_alignment": false,
+      "original_quote": "GROMACS v4.6.1"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "TIP4P/2005",
+      "start": 11338,
+      "end": 11348,
+      "typographic_alignment": false,
+      "original_quote": "TIP4P/2005"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "OPLS-AA parameters",
+      "start": 11429,
+      "end": 11447,
+      "typographic_alignment": false,
+      "original_quote": "OPLS-AA parameters"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "200 K, 260 K",
+      "start": 11041,
+      "end": 11053,
+      "typographic_alignment": false,
+      "original_quote": "200 K, 260 K"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "100 H 2 O",
+      "start": 3742,
+      "end": 3751,
+      "typographic_alignment": false,
+      "original_quote": "100 H 2 O"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "Nosé-Hoover thermostat",
+      "start": 12086,
+      "end": 12108,
+      "typographic_alignment": false,
+      "original_quote": "Nosé-Hoover thermostat"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "converge for the two",
+      "start": 13684,
+      "end": 13704,
+      "typographic_alignment": false,
+      "original_quote": "converge for the two"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "Voronoi volumes",
+      "start": 14301,
+      "end": 14316,
+      "typographic_alignment": false,
+      "original_quote": "Voronoi volumes"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "electrostatic energy and surface",
+      "start": 6279,
+      "end": 6311,
+      "typographic_alignment": false,
+      "original_quote": "electrostatic energy and surface"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "harmonic potential",
+      "start": 1025,
+      "end": 1043,
+      "typographic_alignment": false,
+      "original_quote": "harmonic potential"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "spring constant K(ε)",
+      "start": 7722,
+      "end": 7742,
+      "typographic_alignment": false,
+      "original_quote": "spring constant K(ε)"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "maximum of the coefficient K(ε)",
+      "start": 8356,
+      "end": 8387,
+      "typographic_alignment": false,
+      "original_quote": "maximum of the coefficient K(ε)"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "leap-frog algorithm",
+      "start": 12184,
+      "end": 12203,
+      "typographic_alignment": false,
+      "original_quote": "leap-frog algorithm"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "L/2",
+      "start": 11798,
+      "end": 11801,
+      "typographic_alignment": false,
+      "original_quote": "L/2"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "neighbor correlation function",
+      "start": 12693,
+      "end": 12722,
+      "typographic_alignment": false,
+      "original_quote": "neighbor correlation function"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "nearly uniform",
+      "start": 726,
+      "end": 740,
+      "typographic_alignment": false,
+      "original_quote": "nearly uniform"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "peak of ρ N a",
+      "start": 19162,
+      "end": 19175,
+      "typographic_alignment": false,
+      "original_quote": "peak of ρ N a"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "peak in ρ v",
+      "start": 19212,
+      "end": 19223,
+      "typographic_alignment": false,
+      "original_quote": "peak in ρ v"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "maximum at the same",
+      "start": 25183,
+      "end": 25202,
+      "typographic_alignment": false,
+      "original_quote": "maximum at the same"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "significant decrease",
+      "start": 21181,
+      "end": 21201,
+      "typographic_alignment": false,
+      "original_quote": "significant decrease"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "more disordered structure",
+      "start": 21381,
+      "end": 21406,
+      "typographic_alignment": false,
+      "original_quote": "more disordered structure"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "λ P B ≈ 1.2",
+      "start": 24449,
+      "end": 24460,
+      "typographic_alignment": false,
+      "original_quote": "λ P B ≈ 1.2"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "λ P B ≈ 1.3",
+      "start": 24535,
+      "end": 24546,
+      "typographic_alignment": false,
+      "original_quote": "λ P B ≈ 1.3"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "prefer the relatively disordered",
+      "start": 21553,
+      "end": 21585,
+      "typographic_alignment": false,
+      "original_quote": "prefer the relatively disordered"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "dielectric constant increases",
+      "start": 19535,
+      "end": 19564,
+      "typographic_alignment": false,
+      "original_quote": "dielectric constant increases"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "consistent with the simulation",
+      "start": 1163,
+      "end": 1193,
+      "typographic_alignment": false,
+      "original_quote": "consistent with the simulation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "heterogeneous solvent structure",
+      "start": 25629,
+      "end": 25660,
+      "typographic_alignment": false,
+      "original_quote": "heterogeneous solvent structure"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "cannot be explained",
+      "start": 26610,
+      "end": 26629,
+      "typographic_alignment": false,
+      "original_quote": "cannot be explained"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "not at supercooling",
+      "start": 1249,
+      "end": 1268,
+      "typographic_alignment": false,
+      "original_quote": "not at supercooling"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "large relative shape",
+      "start": 26212,
+      "end": 26232,
+      "typographic_alignment": false,
+      "original_quote": "large relative shape"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "10 ns 100 ns",
+      "start": 10331,
+      "end": 10343,
+      "typographic_alignment": false,
+      "original_quote": "10 ns 100 ns"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "ion size and hydrophobic",
+      "start": 27362,
+      "end": 27386,
+      "typographic_alignment": false,
+      "original_quote": "ion size and hydrophobic"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "evaporative cooling",
+      "start": 2710,
+      "end": 2729,
+      "typographic_alignment": false,
+      "original_quote": "evaporative cooling"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "converge for the two",
+      "start": 13684,
+      "end": 13704,
+      "typographic_alignment": false,
+      "original_quote": "converge for the two"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "degree of equilibration",
+      "start": 20822,
+      "end": 20845,
+      "typographic_alignment": false,
+      "original_quote": "degree of equilibration"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "spring constant",
+      "start": 7722,
+      "end": 7737,
+      "typographic_alignment": false,
+      "original_quote": "spring constant"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "ρ(r) and ρ v",
+      "start": 15665,
+      "end": 15677,
+      "typographic_alignment": false,
+      "original_quote": "ρ(r) and ρ v"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Fig. 4",
+      "start": 20372,
+      "end": 20378,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 4"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Fig. 5",
+      "start": 22976,
+      "end": 22982,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 5"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "expels the Na + ions",
+      "start": 561,
+      "end": 581,
+      "typographic_alignment": false,
+      "original_quote": "expels the Na + ions"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "electrostatic confinement",
+      "start": 1107,
+      "end": 1132,
+      "typographic_alignment": false,
+      "original_quote": "electrostatic confinement"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "starting point",
+      "start": 1305,
+      "end": 1319,
+      "typographic_alignment": false,
+      "original_quote": "starting point"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "within 0.1 nm",
+      "start": 19191,
+      "end": 19204,
+      "typographic_alignment": false,
+      "original_quote": "within 0.1 nm"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "significant decrease",
+      "start": 21181,
+      "end": 21201,
+      "typographic_alignment": false,
+      "original_quote": "significant decrease"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "nearly uniform",
+      "start": 726,
+      "end": 740,
+      "typographic_alignment": false,
+      "original_quote": "nearly uniform"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "chemical reactivity",
+      "start": 361,
+      "end": 380,
+      "typographic_alignment": false,
+      "original_quote": "chemical reactivity"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "mass spectrometry",
+      "start": 1750,
+      "end": 1767,
+      "typographic_alignment": false,
+      "original_quote": "mass spectrometry"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"Low density interior in supercooled aqueous nanodroplets expels ions to the subsurface\",\n  \"authors\": \"Shahrazad M A Malek, Ivan Saika-Voivod, Styliani Consta\",\n  \"field_subfield\": \"Physical Chemistry, Nanoscience\",\n  \"type_of_paper\": \"Computational Study\",\n  \"executive_summary\": \"This study investigates the spatial distribution of sodium ions in supercooled aqueous nanodroplets using molecular dynamics simulations and an analytical reference model. The authors demonstrate that at room temperature, the radial distribution of a single Na+ ion is nearly uniform within the droplet core, consistent with a newly proposed \\\"electrostatic confinement\\\" model that predicts a harmonic potential centered at the droplet's center of mass. However, at supercooled temperatures (200 K), the internal structure of the water changes significantly. A low-density core with tetrahedral ordering forms, surrounded by a high-density, more disordered subsurface. The simulations reveal that Na+ ions are expelled from this low-density tetrahedral core and preferentially reside in the denser subsurface region. This behavior contrasts with room temperature conditions and cannot be explained by the standard non-linear Poisson-Boltzmann equation, which assumes a homogeneous dielectric. The study highlights the critical role of solvent structure in determining ion location, with implications for atmospheric aerosols and mass spectrometry techniques like electrospray ionization. The findings suggest that the heterogeneous environment of supercooled droplets fundamentally alters ion solvation, potentially affecting chemical reactivity and the preservation of macromolecular conformations. The authors propose that this work serves as a starting point for understanding the structure of supercooled electrosprayed droplets used in native mass spectrometry.\",\n  \"research_context\": [\n    { \"The spatial distribution of ions in droplets is crucial for chemical reactivity in aerosols.\": \"chemical reactivity\" },\n    { \"Previous studies focused on room temperature or small clusters up to 100 water molecules.\": \"room or elevated\" },\n    { \"Supercooled clusters are challenging to equilibrate, limiting prior computational studies.\": \"challenging to be equilibrated\" },\n    { \"Recent simulations revealed an anomalous inverted radial density profile in supercooled water.\": \"inverted radial density\" },\n    { \"A low-density core with tetrahedral ordering was observed in larger supercooled droplets.\": \"lowdensity core\" },\n    { \"The distribution of ions in supercooled droplets remains completely unknown.\": \"completely unknown\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study investigates the location of single and multiple ions in supercooled aqueous clusters.\": \"location of a single\" },\n    { \"The authors hypothesize that the low-density core differentiates ion distribution from room temperature.\": \"differentiate the ion distribution\" },\n    { \"They propose that ions will be expelled from the tetrahedral core to the subsurface.\": \"expels the Na + ions\" },\n    { \"An analytical model is introduced to explain forces determining ion location.\": \"reference analytical model\" },\n    { \"The model predicts a harmonic potential centered at the droplet's center of mass.\": \"harmonic potential\" },\n    { \"This effect is named \\\"electrostatic confinement\\\" (EC).\": \"electrostatic confinement\" }\n  ],\n  \"methodological_details\": [\n    { \"Simulations were performed using GROMACS v4.6.1 molecular dynamics.\": \"GROMACS v4.6.1\" },\n    { \"Water was modeled with the TIP4P/2005 potential.\": \"TIP4P/2005\" },\n    { \"Na+ ions used OPLS-AA parameters with a charge of +1e.\": \"OPLS-AA parameters\" },\n    { \"Temperatures studied were 200 K, 260 K, and 300 K.\": \"200 K, 260 K\" },\n    { \"System sizes ranged from 100 to 1100 water molecules.\": \"100 H 2 O\" },\n    { \"Simulations were run in the canonical ensemble with Nosé-Hoover thermostat.\": \"Nosé-Hoover thermostat\" },\n    { \"Equilibration was verified by comparing runs starting from center and surface.\": \"converge for the two\" },\n    { \"Voronoi volumes and tetrahedral order parameters were calculated for structure analysis.\": \"Voronoi volumes\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The analytical model sums electrostatic and surface energy of a deformable droplet.\": \"electrostatic energy and surface\" },\n    { \"The energy related to ion distance from COM is harmonic.\": \"harmonic potential\" },\n    { \"The spring constant K(ε) depends on the dielectric constant.\": \"spring constant K(ε)\" },\n    { \"Maximum confinement occurs at ε ≈ 2.73.\": \"ε = 1 + √ 3\" },\n    { \"Simulations used a leap-frog algorithm with a 2 fs time step.\": \"leap-frog algorithm\" },\n    { \"Cutoff for interactions was set to L/2 to capture long-range effects.\": \"L/2\" },\n    { \"Relaxation times were estimated from neighbor correlation functions.\": \"neighbor correlation function\" }\n  ],\n  \"key_results\": [\n    { \"At 300 K, the Na+ radial distribution is nearly uniform in the core.\": \"nearly uniform\" },\n    { \"At 200 K, the Na+ peak shifts to the subsurface region.\": \"peak of ρ N a\" },\n    { \"The subsurface peak coincides with the peak in Voronoi-based density.\": \"peak in ρ v\" },\n    { \"Multiple ions also show a maximum at the subsurface location at 200 K.\": \"maximum at the same\" },\n    { \"The tetrahedral order parameter decreases at the subsurface density peak.\": \"significant decrease\" },\n    { \"The distance to the fifth neighbor increases at the subsurface, indicating disorder.\": \"more disordered structure\" },\n    { \"For 776 H2O at 300 K, ion decay fits an exponential with λPB ≈ 1.2 nm.\": \"λ P B ≈ 1.2\" },\n    { \"For 1100 H2O at 300 K, ion decay fits an exponential with λPB ≈ 1.3 nm.\": \"λ P B ≈ 1.3\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"Ions prefer the high-density, disordered subsurface over the low-density tetrahedral core.\": \"prefer the relatively disordered\" },\n    { \"The dielectric constant increases with density, favoring subsurface residence.\": \"dielectric constant increases\" },\n    { \"The electrostatic confinement model explains room temperature behavior but not supercooling.\": \"consistent with the simulation\" },\n    { \"The heterogeneous solvent structure at supercooling drives ion expulsion from the core.\": \"heterogeneous solvent structure\" },\n    { \"This finding challenges standard Poisson-Boltzmann predictions for supercooled droplets.\": \"cannot be explained\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The electrostatic confinement model fails to predict ion location at supercooling.\": \"not at supercooling\" },\n    { \"Small clusters (N=100) do not form a tetrahedral core due to shape fluctuations.\": \"large relative shape\" },\n    { \"Sampling is challenging, requiring simulation times of 10-100 ns.\": \"10 ns 100 ns\" },\n    { \"The model does not account for ion size or hydrophobic effects.\": \"ion size and hydrophobic\" },\n    { \"Evaporative cooling effects are not fully captured in the simulations.\": \"evaporative cooling\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Supercooled aqueous nanodroplets expel ions to the subsurface due to a low-density tetrahedral core.\",\n      \"supporting_evidence\": [\n        { \"The Na+ peak is located within 0.1 nm of the subsurface density peak.\": \"within 0.1 nm\" },\n        { \"The tetrahedral order parameter decreases at the subsurface.\": \"significant decrease\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"At room temperature, the ion distribution is nearly uniform.\": \"nearly uniform\" }\n      ],\n      \"implications\": [\n        { \"This affects chemical reactivity in atmospheric aerosols.\": \"chemical reactivity\" },\n        { \"It impacts the interpretation of mass spectrometry data.\": \"mass spectrometry\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": \"\",\n  \"robustness_and_ablation_notes\": [\n    { \"Equilibration was tested by starting ions at the center and surface.\": \"converge for the two\" },\n    { \"Results were consistent across different starting conditions.\": \"degree of equilibration\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 plots the spring constant K(ε) versus dielectric constant.\": \"spring constant\" },\n    { \"Figure 3 shows radial density profiles for pure water and Na+ ions.\": \"ρ(r) and ρ v\" },\n    { \"Figure 4 details the structure and ion location for N=776 at 200 K and 300 K.\": \"Fig. 4\" },\n    { \"Figure 5 compares multiple ion distributions at 300 K and 200 K.\": \"Fig. 5\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. Supercooled droplets have a low-density tetrahedral core that expels ions to the subsurface.\": \"expels the Na + ions\" },\n    { \"2. The electrostatic confinement model explains room temperature ion distribution but not supercooling.\": \"electrostatic confinement\" },\n    { \"3. This work provides a starting point for studying supercooled electrosprayed droplets.\": \"starting point\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8912,
+        "total_tokens": 11262,
+        "completion_tokens": 2350,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8912,
+      "elapsed_seconds": 211.08781768009067,
+      "max_tokens": 16000,
+      "seed": 749860938,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "00f78a2d649d730a9806957d1cdb7553422e1a287e88173c60b1c2f31876be1a",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "Evidence must be a nonempty <=5-word quote: procedures_and_architectures[3]"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The analytical model sums electrostatic and surface energy of a deformable droplet.\": \"electrostatic energy and surface\"\n    },\n    {\n      \"The energy related to ion distance from COM is harmonic.\": \"harmonic potential\"\n    },\n    {\n      \"The spring constant K(ε) depends on the dielectric constant.\": \"spring constant K(ε)\"\n    },\n    {\n      \"Maximum confinement occurs at ε ≈ 2.73.\": \"ε = 1 + √ 3\"\n    },\n    {\n      \"Simulations used a leap-frog algorithm with a 2 fs time step.\": \"leap-frog algorithm\"\n    },\n    {\n      \"Cutoff for interactions was set to L/2 to capture long-range effects.\": \"L/2\"\n    },\n    {\n      \"Relaxation times were estimated from neighbor correlation functions.\": \"neighbor correlation function\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7307,
+        "total_tokens": 7539,
+        "completion_tokens": 232,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7307,
+      "elapsed_seconds": 21.584475189447403,
+      "max_tokens": 4096,
+      "seed": 749860939,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "038eb6339d116563635352860c5b11474388ace4b3cbcfd5d0c9e591bc753fc7",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "Evidence must be a nonempty <=5-word quote: procedures_and_architectures[3]"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The analytical model sums electrostatic and surface energy of a deformable droplet.\": \"electrostatic energy and surface\"\n    },\n    {\n      \"The energy related to ion distance from COM is harmonic.\": \"harmonic potential\"\n    },\n    {\n      \"The spring constant K(ε) depends on the dielectric constant.\": \"spring constant K(ε)\"\n    },\n    {\n      \"Maximum confinement occurs at ε ≈ 2.73.\": \"ε = 1 + √ 3\"\n    },\n    {\n      \"Simulations used a leap-frog algorithm with a 2 fs time step.\": \"leap-frog algorithm\"\n    },\n    {\n      \"Cutoff for interactions was set to L/2 to capture long-range effects.\": \"L/2\"\n    },\n    {\n      \"Relaxation times were estimated from neighbor correlation functions.\": \"neighbor correlation function\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7307,
+        "total_tokens": 7539,
+        "completion_tokens": 232,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7307,
+      "elapsed_seconds": 21.005297303199768,
+      "max_tokens": 4096,
+      "seed": 749860940,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "038eb6339d116563635352860c5b11474388ace4b3cbcfd5d0c9e591bc753fc7",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "Evidence must be a nonempty <=5-word quote: procedures_and_architectures[3]"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The analytical model sums electrostatic and surface energy of a deformable droplet.\": \"electrostatic energy and surface\"\n    },\n    {\n      \"The energy related to ion distance from COM is harmonic.\": \"harmonic potential\"\n    },\n    {\n      \"The spring constant K(ε) depends on the dielectric constant.\": \"spring constant K(ε)\"\n    },\n    {\n      \"Maximum confinement occurs at ε ≈ 2.73.\": \"ε = 1 + √ 3\"\n    },\n    {\n      \"Simulations used a leap-frog algorithm with a 2 fs time step.\": \"leap-frog algorithm\"\n    },\n    {\n      \"Cutoff for interactions was set to L/2 to capture long-range effects.\": \"L/2\"\n    },\n    {\n      \"Relaxation times were estimated from neighbor correlation functions.\": \"neighbor correlation function\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7307,
+        "total_tokens": 7539,
+        "completion_tokens": 232,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7307,
+      "elapsed_seconds": 17.020672511309385,
+      "max_tokens": 4096,
+      "seed": 749860941,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "038eb6339d116563635352860c5b11474388ace4b3cbcfd5d0c9e591bc753fc7",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "Evidence must be a nonempty <=5-word quote: procedures_and_architectures[3]"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The analytical model sums electrostatic and surface energy of a deformable droplet.\": \"electrostatic energy and surface\"\n    },\n    {\n      \"The energy related to ion distance from COM is harmonic.\": \"harmonic potential\"\n    },\n    {\n      \"The spring constant K(ε) depends on the dielectric constant.\": \"spring constant K(ε)\"\n    },\n    {\n      \"Maximum confinement occurs at ε ≈ 2.73.\": \"ε = 1 + √ 3\"\n    },\n    {\n      \"Simulations used a leap-frog algorithm with a 2 fs time step.\": \"leap-frog algorithm\"\n    },\n    {\n      \"Cutoff for interactions was set to L/2 to capture long-range effects.\": \"L/2\"\n    },\n    {\n      \"Relaxation times were estimated from neighbor correlation functions.\": \"neighbor correlation function\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7307,
+        "total_tokens": 7539,
+        "completion_tokens": 232,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7307,
+      "elapsed_seconds": 35.36495481804013,
+      "max_tokens": 4096,
+      "seed": 749860942,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "038eb6339d116563635352860c5b11474388ace4b3cbcfd5d0c9e591bc753fc7",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "Evidence must be a nonempty <=5-word quote: procedures_and_architectures[3]"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The analytical model sums electrostatic and surface energy of a deformable droplet.\": \"electrostatic energy and surface\"\n    },\n    {\n      \"The energy related to ion distance from COM is harmonic.\": \"harmonic potential\"\n    },\n    {\n      \"The spring constant K(ε) depends on the dielectric constant.\": \"spring constant K(ε)\"\n    },\n    {\n      \"Maximum confinement occurs at ε ≈ 2.73.\": \"ε = 1 + √ 3\"\n    },\n    {\n      \"Simulations used a leap-frog algorithm with a 2 fs time step.\": \"leap-frog algorithm\"\n    },\n    {\n      \"Cutoff for interactions was set to L/2 to capture long-range effects.\": \"L/2\"\n    },\n    {\n      \"Relaxation times were estimated from neighbor correlation functions.\": \"neighbor correlation function\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7307,
+        "total_tokens": 7539,
+        "completion_tokens": 232,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7307,
+      "elapsed_seconds": 21.109759617596865,
+      "max_tokens": 4096,
+      "seed": 749860943,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "038eb6339d116563635352860c5b11474388ace4b3cbcfd5d0c9e591bc753fc7",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "Evidence must be a nonempty <=5-word quote: procedures_and_architectures[3]"
+      }
+    },
+    {
+      "response": "{\n\"q0\": 6\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7510,
+        "total_tokens": 7521,
+        "completion_tokens": 11,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7510,
+      "elapsed_seconds": 5.631783481687307,
+      "max_tokens": 2048,
+      "seed": 749861038,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "68fea2545d388a8a63290f3cf8a833860d77a2bd5a1531d05bb2bb34d6f4d5f1",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "procedures_and_architectures",
+            3
+          ],
+          "narrative": "Maximum confinement occurs at ε ≈ 2.73.",
+          "invalid_quote": "ε = 1 + √ 3",
+          "candidates": [
+            {
+              "quote": "3 ≈ 2.73.",
+              "start": 8413,
+              "end": 8422
+            },
+            {
+              "quote": "3 ≈ 2.73. If",
+              "start": 8413,
+              "end": 8425
+            },
+            {
+              "quote": "√ 3 ≈ 2.73.",
+              "start": 8411,
+              "end": 8422
+            },
+            {
+              "quote": "3 ≈ 2.73. If the",
+              "start": 8413,
+              "end": 8429
+            },
+            {
+              "quote": "√ 3 ≈ 2.73. If",
+              "start": 8411,
+              "end": 8425
+            },
+            {
+              "quote": "+ √ 3 ≈ 2.73.",
+              "start": 8409,
+              "end": 8422
+            },
+            {
+              "quote": "maximum of the coefficient K(ε)",
+              "start": 8356,
+              "end": 8387
+            },
+            {
+              "quote": "2.73. If the",
+              "start": 8417,
+              "end": 8429
+            },
+            {
+              "quote": "≈ 2.73. If",
+              "start": 8415,
+              "end": 8425
+            },
+            {
+              "quote": "2.73. If the ion",
+              "start": 8417,
+              "end": 8433
+            },
+            {
+              "quote": "≈ 2.73. If the",
+              "start": 8415,
+              "end": 8429
+            },
+            {
+              "quote": "2.73. If the ion is",
+              "start": 8417,
+              "end": 8436
+            },
+            {
+              "quote": "≈ 2.73. If the ion",
+              "start": 8415,
+              "end": 8433
+            },
+            {
+              "quote": "ε = 1",
+              "start": 8403,
+              "end": 8408
+            },
+            {
+              "quote": "1 and ε",
+              "start": 7969,
+              "end": 7976
+            },
+            {
+              "quote": "ε = 1 +",
+              "start": 8403,
+              "end": 8410
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 8912,
+  "elapsed_seconds": 333.0196679607034,
+  "removed_unsupported_entries": [],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "procedures_and_architectures",
+        3
+      ],
+      "quote": "maximum of the coefficient K(ε)",
+      "start": 8356,
+      "end": 8387
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

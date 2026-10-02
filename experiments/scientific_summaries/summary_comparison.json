@@ -1,12 +1,12 @@
 {
-  "updated_utc": "2026-10-02T05:24:59.958635+00:00",
+  "updated_utc": "2026-10-02T06:57:17.664426+00:00",
   "papers": 97,
   "questions": 970,
   "complete": false,
   "progress": {
     "qwen27b": {
-      "validated_summaries": 23,
-      "failed_generation_records": 10,
+      "validated_summaries": 97,
+      "failed_generation_records": 11,
       "resolved_failure_ids": [
         "arxiv-10019",
         "arxiv-10021",
@@ -17,10 +17,11 @@
         "arxiv-109",
         "arxiv-115",
         "arxiv-136",
-        "arxiv-149"
+        "arxiv-149",
+        "bethgelab-10028"
       ],
       "unresolved_failure_ids": [],
-      "evaluated": false
+      "evaluated": true
     },
     "ornith15_9b": {
       "validated_summaries": 0,
@@ -100,6 +101,313 @@
       ]
     }
   },
-  "models": {},
+  "models": {
+    "qwen27b": {
+      "config": {
+        "model": "Pilcothink/Qwen3.8-27B-MixedInt4-AutoRound",
+        "revision": "4756e3e4871aefd8d7cd5b0f6155ae5490451c1e",
+        "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+        "prompt_file_sha256": "503a425c96ae5cce9d5e1d53635eaac25433e48d248e2c50cde560218aa54d70",
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "thinking": false,
+        "max_tokens": 16000,
+        "concurrency": 8,
+        "attempts": 6,
+        "context_limit": 32768,
+        "runtime": "vllm",
+        "weights_sha256": "",
+        "allocated_gpus": 2,
+        "repair_protocol": "field_local_strict_grounding_v2",
+        "repair_system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+        "student_input": "all_substantive_narrative_fields_without_grounding_quotes_or_citation_rankings"
+      },
+      "elapsed_seconds": 8271.66884149611,
+      "summary": {
+        "no_context": {
+          "correct": 600,
+          "total": 970,
+          "invalid": 3,
+          "accuracy": 0.6185567010309279,
+          "ci95": [
+            0.5835051546391753,
+            0.6525773195876289
+          ]
+        },
+        "original": {
+          "correct": 942,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9711340206185567,
+          "ci95": [
+            0.9587628865979382,
+            0.9814432989690721
+          ]
+        },
+        "summary": {
+          "correct": 833,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.8587628865979381,
+          "ci95": [
+            0.8340206185567011,
+            0.8814432989690721
+          ]
+        },
+        "knowledge_units": {
+          "correct": 896,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9237113402061856,
+          "ci95": [
+            0.9041237113402062,
+            0.9412371134020618
+          ]
+        },
+        "qwen_summary": {
+          "correct": 872,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.8989690721649485,
+          "ci95": [
+            0.877319587628866,
+            0.9195876288659793
+          ]
+        },
+        "summary_minus_original": {
+          "accuracy": -0.1123711340206186,
+          "ci95": [
+            -0.13505154639175254,
+            -0.0907216494845361
+          ]
+        },
+        "knowledge_units_minus_original": {
+          "accuracy": -0.04742268041237108,
+          "ci95": [
+            -0.06391752577319587,
+            -0.031958762886597936
+          ]
+        },
+        "knowledge_units_minus_summary": {
+          "accuracy": 0.06494845360824753,
+          "ci95": [
+            0.04536082474226799,
+            0.08556701030927838
+          ]
+        },
+        "qwen_summary_minus_original": {
+          "accuracy": -0.07216494845360821,
+          "ci95": [
+            -0.09278350515463918,
+            -0.05257731958762879
+          ]
+        },
+        "qwen_summary_minus_summary": {
+          "accuracy": 0.04020618556701039,
+          "ci95": [
+            0.019587628865979423,
+            0.06082474226804124
+          ]
+        },
+        "qwen_summary_minus_knowledge_units": {
+          "accuracy": -0.024742268041237137,
+          "ci95": [
+            -0.04432989690721645,
+            -0.006185567010309256
+          ]
+        }
+      },
+      "subsets": {
+        "arxiv": {
+          "no_context": {
+            "correct": 295,
+            "total": 500,
+            "invalid": 3,
+            "accuracy": 0.59,
+            "ci95": [
+              0.54,
+              0.64
+            ]
+          },
+          "original": {
+            "correct": 480,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.96,
+            "ci95": [
+              0.94,
+              0.976
+            ]
+          },
+          "summary": {
+            "correct": 413,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.826,
+            "ci95": [
+              0.79,
+              0.86
+            ]
+          },
+          "knowledge_units": {
+            "correct": 451,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.902,
+            "ci95": [
+              0.87,
+              0.93
+            ]
+          },
+          "qwen_summary": {
+            "correct": 433,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.866,
+            "ci95": [
+              0.832,
+              0.898
+            ]
+          },
+          "summary_minus_original": {
+            "accuracy": -0.134,
+            "ci95": [
+              -0.16799999999999993,
+              -0.09999999999999998
+            ]
+          },
+          "knowledge_units_minus_original": {
+            "accuracy": -0.05799999999999994,
+            "ci95": [
+              -0.08599999999999997,
+              -0.03199999999999992
+            ]
+          },
+          "knowledge_units_minus_summary": {
+            "accuracy": 0.07600000000000007,
+            "ci95": [
+              0.04600000000000004,
+              0.10599999999999998
+            ]
+          },
+          "qwen_summary_minus_original": {
+            "accuracy": -0.09399999999999997,
+            "ci95": [
+              -0.13,
+              -0.061999999999999944
+            ]
+          },
+          "qwen_summary_minus_summary": {
+            "accuracy": 0.040000000000000036,
+            "ci95": [
+              0.008000000000000007,
+              0.07199999999999995
+            ]
+          },
+          "qwen_summary_minus_knowledge_units": {
+            "accuracy": -0.03600000000000003,
+            "ci95": [
+              -0.06600000000000006,
+              -0.008000000000000007
+            ]
+          }
+        },
+        "bethgelab": {
+          "no_context": {
+            "correct": 305,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.648936170212766,
+            "ci95": [
+              0.6042553191489362,
+              0.6936170212765957
+            ]
+          },
+          "original": {
+            "correct": 462,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9829787234042553,
+            "ci95": [
+              0.9723404255319149,
+              0.9936170212765958
+            ]
+          },
+          "summary": {
+            "correct": 420,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.8936170212765957,
+            "ci95": [
+              0.8638297872340426,
+              0.9212765957446809
+            ]
+          },
+          "knowledge_units": {
+            "correct": 445,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9468085106382979,
+            "ci95": [
+              0.925531914893617,
+              0.9659574468085106
+            ]
+          },
+          "qwen_summary": {
+            "correct": 439,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9340425531914893,
+            "ci95": [
+              0.9127659574468086,
+              0.9553191489361702
+            ]
+          },
+          "summary_minus_original": {
+            "accuracy": -0.08936170212765959,
+            "ci95": [
+              -0.11489361702127665,
+              -0.06382978723404253
+            ]
+          },
+          "knowledge_units_minus_original": {
+            "accuracy": -0.036170212765957444,
+            "ci95": [
+              -0.05319148936170215,
+              -0.021276595744680882
+            ]
+          },
+          "knowledge_units_minus_summary": {
+            "accuracy": 0.05319148936170215,
+            "ci95": [
+              0.02765957446808509,
+              0.07872340425531921
+            ]
+          },
+          "qwen_summary_minus_original": {
+            "accuracy": -0.04893617021276597,
+            "ci95": [
+              -0.06808510638297871,
+              -0.029787234042553234
+            ]
+          },
+          "qwen_summary_minus_summary": {
+            "accuracy": 0.04042553191489362,
+            "ci95": [
+              0.014893617021276562,
+              0.06595744680851068
+            ]
+          },
+          "qwen_summary_minus_knowledge_units": {
+            "accuracy": -0.012765957446808529,
+            "ci95": [
+              -0.036170212765957444,
+              0.010638297872340385
+            ]
+          }
+        }
+      }
+    }
+  },
   "paired_model_differences": {}
 }

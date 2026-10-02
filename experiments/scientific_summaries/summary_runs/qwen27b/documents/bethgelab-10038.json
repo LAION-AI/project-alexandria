@@ -1,0 +1,1472 @@
+{
+  "document_id": "bethgelab-10038",
+  "fulltext_sha256": "239b0964b4ee281617cec4a7344b292c5dd05cdc1e07db933a2e9df7fecd52fb",
+  "summary": {
+    "title": "Non-idealities in CO2 electroreduction mechanisms revealed by automation-assisted kinetic analysis",
+    "authors": "Joy S Zeng, Vineet Padia, Joseph H Maalouf, Aditya M Limaye, Alexander H Liu, Michael A Yusov, Ian W Hunter, Karthish Manthiram",
+    "field_subfield": "Electrochemistry, CO2 Reduction Reaction (CO2RR)",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This study addresses the limitations of traditional linearized kinetic analyses (Tafel and order dependence) in electrocatalysis, which often fail to capture complex reaction phenomena such as surface coverage effects and mixed control. The authors introduce a robotic system that automates the sequential testing of up to ten electrochemical cells, allowing for varied electrodes, electrolytes, gas compositions, and voltages. This automation facilitates cohesive kinetic analysis, a robust strategy requiring extensive data over wide reaction conditions. Using this platform, the team investigated the mechanism of CO2 electroreduction to carbon monoxide (CO) at immobilized metal tetrapyrroles: cobalt phthalocyanine (CoPc), cobalt tetraphenylporphyrin (CoTPP), and iron phthalocyanine (FePc). The results reveal significant non-idealities in reaction rate data, specifically non-linear and potential-dependent bicarbonate and CO2 order dependences. For CoPc and CoTPP, bicarbonate inhibition is attenuated at more reductive potentials, consistent with models involving bicarbonate poisoning and potential-dependent mixed control. In contrast, FePc exhibits stronger bicarbonate inhibition at more reductive potentials, suggesting a different mechanism where the most abundant reactive intermediate is a species prior to the unoccupied site. The study demonstrates that complex mechanisms, unexplainable by standard Tafel analysis, are prevalent in this class of catalysts. The robotic workflow proved more time-efficient and reliable, with data correlating well with previous manual studies despite lower absolute rates. The work highlights the importance of considering electrolyte poisoning, coverage effects, and mixed control in interpreting CO2RR kinetics, suggesting that apparent contradictions in literature may stem from limited operating condition ranges. Future work will focus on incorporating membranes and automated mechanism enumeration to further standardize and accelerate electrocatalytic research.",
+    "research_context": [
+      {
+        "Traditional electrocatalysis kinetics rely on linearized rate data.": "linearized rate data"
+      },
+      {
+        "These methods assume independent factorization of voltage and concentration.": "factored separately"
+      },
+      {
+        "Complex phenomena like coverage effects break these assumptions.": "coverage effects"
+      },
+      {
+        "Cohesive kinetic analysis offers a more robust alternative.": "cohesive kinetic analysis"
+      },
+      {
+        "This approach requires large datasets over wide conditions.": "wide ranges of reaction conditions"
+      },
+      {
+        "Manual data collection is slow and error-prone.": "months of intensive"
+      },
+      {
+        "Existing automation focuses on high-throughput screening.": "high-throughput catalyst"
+      },
+      {
+        "Miniaturization limits product quantification for kinetic analysis.": "difficult to quantify reaction products"
+      },
+      {
+        "Parallelization often lacks individual online product detection.": "aggregating effluents"
+      },
+      {
+        "Sequential testing with online quantification is ideal.": "sequential electrochemical testing"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to automate electrochemical rate data collection.": "automate electrochemical reaction rate data"
+      },
+      {
+        "The robotic system accommodates varied experimental parameters.": "different electrode, electrolyte"
+      },
+      {
+        "The primary goal is to investigate CO2RR mechanisms.": "investigate the mechanism of CO2RR"
+      },
+      {
+        "Specific catalysts include CoPc, CoTPP, and FePc.": "cobalt phthalocyanine (CoPc)"
+      },
+      {
+        "The hypothesis is that non-idealities are prevalent.": "non-idealities in reaction rate data"
+      },
+      {
+        "These non-idealities manifest as changing order dependences.": "change with different applied potentials"
+      },
+      {
+        "The authors predict complex mechanisms explain these trends.": "complex reaction mechanisms"
+      },
+      {
+        "Phenomena like electrolyte poisoning are expected to be key.": "electrolyte poisoning"
+      },
+      {
+        "The study seeks to reconcile conflicting literature reports.": "differences in operating conditions"
+      },
+      {
+        "It is hypothesized that standard Tafel analysis is insufficient.": "not amenable to common Tafel"
+      }
+    ],
+    "methodological_details": [
+      {
+        "CoPc catalysts were drop-casted onto Toray060 carbon paper.": "Toray060 carbon paper"
+      },
+      {
+        "CoPc loading was 5.98 x 10^-11 mol/cm2.": "5.98 x 10 -11"
+      },
+      {
+        "CoTPP and FePc used carbon black-containing DMF.": "carbon black-containing DMF"
+      },
+      {
+        "CoTPP loading was 5.11 x 10^-10 mol/cm2.": "5.11 x 10 -10"
+      },
+      {
+        "FePc loading was 8.04 x 10^-10 mol/cm2.": "8.04 x 10 -10"
+      },
+      {
+        "Electrolytes were prepared from Na2CO3 and NaClO4 stocks.": "Na2CO3 (Sigma Aldrich)"
+      },
+      {
+        "Stock solutions were bubbled overnight with CO2.": "bubbled overnight with CO2"
+      },
+      {
+        "Final electrolytes had 1 mol/L ionic strength.": "1 mol/L ionic strength"
+      },
+      {
+        "Electrolyses were queued in batches of ten.": "batches of ten"
+      },
+      {
+        "A leak-free Ag/AgCl reference electrode was used.": "Ag/AgCl reference electrode"
+      },
+      {
+        "The reference electrode was calibrated daily.": "calibrated against a saturated"
+      },
+      {
+        "Data was uploaded to an SQL database.": "SQL database"
+      },
+      {
+        "A python script processed the data files.": "python script"
+      },
+      {
+        "The robot houses a single cell body.": "single cell body"
+      },
+      {
+        "Ten cell pan pairs house working electrodes.": "ten cell pan pairs"
+      },
+      {
+        "The cell body moves horizontally and vertically.": "moves horizontally"
+      },
+      {
+        "Online product quantification used a gas chromatograph.": "gas chromatograph"
+      },
+      {
+        "The working electrode exposed a 10 mm diameter circle.": "10 mm diameter circle"
+      },
+      {
+        "A 0.25 mm platinum wire counter electrode was used.": "0.25 mm diameter"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The robot sequentially tests each cell pan.": "sequentially perform electrochemistry"
+      },
+      {
+        "Electrolyte is pumped through the 'electrolyte in' port.": "electrolyte in"
+      },
+      {
+        "Gas flow is initiated before voltage application.": "initiates gas flow"
+      },
+      {
+        "Voltage is applied after a few minutes.": "applies voltage"
+      },
+      {
+        "Online detection of CO and H2 occurs.": "online detection of CO"
+      },
+      {
+        "Electrolyte is pumped out via 'electrolyte out' tubing.": "electrolyte out"
+      },
+      {
+        "Cell body cleaning uses a wash station.": "wash station"
+      },
+      {
+        "MilliQ water is pumped for cleaning cycles.": "milliQ water"
+      },
+      {
+        "The cell body is rinsed after ten electrolyses.": "rinsed after the completion"
+      },
+      {
+        "The setup is a three-electrode, undivided compartment cell.": "undivided compartment cell"
+      },
+      {
+        "No membrane separates anode and cathode.": "lack of membrane"
+      },
+      {
+        "Oxygen crossover can cause parasitic ORR current.": "parasitic oxygen reduction"
+      },
+      {
+        "Average Faradaic efficiency closure was ~60%.": "c.a. 60%"
+      },
+      {
+        "Pt counter electrode prevents anode product attribution.": "Pt, rather than carbon"
+      },
+      {
+        "High HER Faradaic efficiencies were observed.": "30 to 60%"
+      },
+      {
+        "CO2 was bubbled into the electrolyte.": "bubbled CO2 into the electrolyte"
+      },
+      {
+        "Currents were below mass transport limits.": "below the theoretical mass transport"
+      }
+    ],
+    "key_results": [
+      {
+        "Newly measured CO rates were up to ten times lower.": "ten times lower"
+      },
+      {
+        "Faradaic efficiencies toward CO were typically under 30%.": "under 30%"
+      },
+      {
+        "Previous kinetic trends in CO production were preserved.": "kinetic trends in CO production"
+      },
+      {
+        "New data correlated well with previous work.": "well-correlated with that of"
+      },
+      {
+        "Non-ideal mechanisms showed curvature in data.": "curvature and potential dependent"
+      },
+      {
+        "Bicarbonate inhibition was voltage-dependent for all catalysts.": "voltage-dependent bicarbonate inhibition"
+      },
+      {
+        "CoPc and CoTPP showed negative bicarbonate dependence at less reductive potentials.": "most negative at less reductive"
+      },
+      {
+        "CoPc and CoTPP showed positive dependence at more reductive potentials.": "positive at more reductive"
+      },
+      {
+        "FePc showed greater bicarbonate inhibition at more reductive potentials.": "greater bicarbonate inhibition occurs"
+      },
+      {
+        "CoPc CO2 order dependence appeared ideal and first order.": "simple first order dependence"
+      },
+      {
+        "CoTPP CO2 order was slightly below one.": "slightly below one"
+      },
+      {
+        "CoTPP CO2 order decreased at more reductive potentials.": "decrease at more reductive"
+      },
+      {
+        "FePc CO2 order was more attenuated at less reductive potentials.": "more attenuated at less reductive"
+      },
+      {
+        "FePc CO2 order curves intersected at low pressures.": "curves for the two different"
+      },
+      {
+        "Voltage inhibited the reaction at low CO2 pressures for FePc.": "voltage inhibits the reaction"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "CoPc and CoTPP mechanisms involve bicarbonate poisoning.": "bicarbonate poisoning"
+      },
+      {
+        "These mechanisms also involve potential-dependent mixed control.": "potential-dependent mixed control"
+      },
+      {
+        "Poisoning is described by positive electrosorption valency.": "positive electrosorption valency"
+      },
+      {
+        "FePc mechanism involves a species prior to the unoccupied site.": "species prior to the unoccupied"
+      },
+      {
+        "This explains the contrasting bicarbonate trend in FePc.": "ostensibly contrasting local picture"
+      },
+      {
+        "On-cycle poisoning species can also explain trends.": "on-cycle poisoning species"
+      },
+      {
+        "Complex mechanisms are prevalent in metal tetrapyrroles.": "quite prevalent across this class"
+      },
+      {
+        "Standard Tafel analysis misses these complexities.": "not captured with traditional Tafel"
+      },
+      {
+        "Literature contradictions may arise from limited condition ranges.": "limited range of operating conditions"
+      },
+      {
+        "Automation enables robust cohesive kinetic analysis.": "convergence of automation with cohesive"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The undivided cell design allows oxygen crossover.": "oxygen evolved at the counter"
+      },
+      {
+        "This leads to incomplete Faradaic efficiency closure.": "incomplete Faradaic efficiency"
+      },
+      {
+        "High HER Faradaic efficiencies were observed.": "relatively high FEs toward HER"
+      },
+      {
+        "Pt deposition might affect HER sites.": "Pt deposition"
+      },
+      {
+        "Bubbling CO2 may influence measured kinetics.": "flow configuration can have unexpected"
+      },
+      {
+        "New rates were lower than previously reported.": "up to ten times lower"
+      },
+      {
+        "Models only qualitatively capture observed trends.": "qualitatively capture the observed trends"
+      },
+      {
+        "Models do not quantitatively fit all data.": "do not quantitatively"
+      },
+      {
+        "Specific reaction mechanisms were not definitively proposed.": "rather than proposing a specific"
+      },
+      {
+        "The study relies on conceptual and generalized analyses.": "conceptual and generalized analyses"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Automation enables robust cohesive kinetic analysis for electrocatalysis.",
+        "supporting_evidence": [
+          {
+            "The robotic system automates sequential testing.": "automates sequential testing"
+          },
+          {
+            "It accommodates varied experimental conditions.": "different electrode, electrolyte"
+          },
+          {
+            "Data collection is more time-efficient.": "time-and labor-efficient"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The undivided cell design has limitations.": "undivided compartment cell"
+          },
+          {
+            "Oxygen crossover affects Faradaic efficiency.": "oxygen reduction"
+          }
+        ],
+        "implications": [
+          {
+            "This approach can reveal complex mechanisms.": "dissecting electrocatalytic reaction complexity"
+          },
+          {
+            "It standardizes and accelerates data collection.": "standardize and accelerate the workflow"
+          }
+        ]
+      },
+      {
+        "description": "CO2RR at metal tetrapyrroles involves complex, non-linearizable mechanisms.",
+        "supporting_evidence": [
+          {
+            "Bicarbonate order dependences change with potential.": "change with different applied potentials"
+          },
+          {
+            "CO2 order dependences are non-linear.": "non-linear and/or condition-dependent"
+          },
+          {
+            "These trends are unexplainable by standard models.": "unexplainable with mechanisms typically invoked"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "CoPc CO2 order appeared ideal.": "appears quite ideal"
+          }
+        ],
+        "implications": [
+          {
+            "Standard Tafel analysis is insufficient.": "not amenable to common Tafel"
+          },
+          {
+            "Electrolyte poisoning and mixed control are key.": "electrolyte poisoning"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "All experimental data is available as xlsx.": "All experimental data reported"
+      },
+      {
+        "Supporting information includes protocols and data.": "detailed experimental protocols"
+      },
+      {
+        "The work is licensed under CC BY-NC-ND 4.0.": "CC BY-NC-ND 4.0"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "Data robustness was evaluated against literature precedent.": "evaluated data robustness"
+      },
+      {
+        "New data correlated well with previous work.": "well-correlated with that of"
+      },
+      {
+        "Kinetic trends were preserved despite lower rates.": "kinetic trends in CO production"
+      },
+      {
+        "Models were tested for goodness-of-fit.": "statistical goodness-of-fit metrics"
+      },
+      {
+        "Some models could not fit observed trends.": "models that cannot fit"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the robot design and cell assembly.": "Figure 1A"
+      },
+      {
+        "Figure 2 illustrates bicarbonate dependence and mechanisms.": "Figures 2A-C"
+      },
+      {
+        "Figure 3 shows CO2 dependence and mechanisms.": "Figures 3A-3C"
+      },
+      {
+        "Figure S5 shows Faradaic efficiency closure.": "Figure S5"
+      },
+      {
+        "Figure S7 compares new and previous kinetic trends.": "Figure S7"
+      },
+      {
+        "Figure S8 shows correlation with previous data.": "Figure S8"
+      },
+      {
+        "Figure S10 shows Faradaic efficiencies toward CO and H2.": "Figure S10"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. A robotic system automates electrochemical kinetic data collection.": "robotic system"
+      },
+      {
+        "2. CO2RR at metal tetrapyrroles exhibits complex, non-linear kinetics.": "non-idealities in reaction rate data"
+      },
+      {
+        "3. Future work will improve automation and mechanism enumeration.": "automatically enumerate mechanisms"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis study addresses the limitations of traditional linearized kinetic analyses (Tafel and order dependence) in electrocatalysis, which often fail to capture complex reaction phenomena such as surface coverage effects and mixed control. The authors introduce a robotic system that automates the sequential testing of up to ten electrochemical cells, allowing for varied electrodes, electrolytes, gas compositions, and voltages. This automation facilitates cohesive kinetic analysis, a robust strategy requiring extensive data over wide reaction conditions. Using this platform, the team investigated the mechanism of CO2 electroreduction to carbon monoxide (CO) at immobilized metal tetrapyrroles: cobalt phthalocyanine (CoPc), cobalt tetraphenylporphyrin (CoTPP), and iron phthalocyanine (FePc). The results reveal significant non-idealities in reaction rate data, specifically non-linear and potential-dependent bicarbonate and CO2 order dependences. For CoPc and CoTPP, bicarbonate inhibition is attenuated at more reductive potentials, consistent with models involving bicarbonate poisoning and potential-dependent mixed control. In contrast, FePc exhibits stronger bicarbonate inhibition at more reductive potentials, suggesting a different mechanism where the most abundant reactive intermediate is a species prior to the unoccupied site. The study demonstrates that complex mechanisms, unexplainable by standard Tafel analysis, are prevalent in this class of catalysts. The robotic workflow proved more time-efficient and reliable, with data correlating well with previous manual studies despite lower absolute rates. The work highlights the importance of considering electrolyte poisoning, coverage effects, and mixed control in interpreting CO2RR kinetics, suggesting that apparent contradictions in literature may stem from limited operating condition ranges. Future work will focus on incorporating membranes and automated mechanism enumeration to further standardize and accelerate electrocatalytic research.\n\nResearch Context\nTraditional electrocatalysis kinetics rely on linearized rate data. These methods assume independent factorization of voltage and concentration. Complex phenomena like coverage effects break these assumptions. Cohesive kinetic analysis offers a more robust alternative. This approach requires large datasets over wide conditions. Manual data collection is slow and error-prone. Existing automation focuses on high-throughput screening. Miniaturization limits product quantification for kinetic analysis. Parallelization often lacks individual online product detection. Sequential testing with online quantification is ideal.\n\nResearch Question And Hypothesis\nThe study aims to automate electrochemical rate data collection. The robotic system accommodates varied experimental parameters. The primary goal is to investigate CO2RR mechanisms. Specific catalysts include CoPc, CoTPP, and FePc. The hypothesis is that non-idealities are prevalent. These non-idealities manifest as changing order dependences. The authors predict complex mechanisms explain these trends. Phenomena like electrolyte poisoning are expected to be key. The study seeks to reconcile conflicting literature reports. It is hypothesized that standard Tafel analysis is insufficient.\n\nMethodological Details\nCoPc catalysts were drop-casted onto Toray060 carbon paper. CoPc loading was 5.98 x 10^-11 mol/cm2. CoTPP and FePc used carbon black-containing DMF. CoTPP loading was 5.11 x 10^-10 mol/cm2. FePc loading was 8.04 x 10^-10 mol/cm2. Electrolytes were prepared from Na2CO3 and NaClO4 stocks. Stock solutions were bubbled overnight with CO2. Final electrolytes had 1 mol/L ionic strength. Electrolyses were queued in batches of ten. A leak-free Ag/AgCl reference electrode was used. The reference electrode was calibrated daily. Data was uploaded to an SQL database. A python script processed the data files. The robot houses a single cell body. Ten cell pan pairs house working electrodes. The cell body moves horizontally and vertically. Online product quantification used a gas chromatograph. The working electrode exposed a 10 mm diameter circle. A 0.25 mm platinum wire counter electrode was used.\n\nProcedures And Architectures\nThe robot sequentially tests each cell pan. Electrolyte is pumped through the 'electrolyte in' port. Gas flow is initiated before voltage application. Voltage is applied after a few minutes. Online detection of CO and H2 occurs. Electrolyte is pumped out via 'electrolyte out' tubing. Cell body cleaning uses a wash station. MilliQ water is pumped for cleaning cycles. The cell body is rinsed after ten electrolyses. The setup is a three-electrode, undivided compartment cell. No membrane separates anode and cathode. Oxygen crossover can cause parasitic ORR current. Average Faradaic efficiency closure was ~60%. Pt counter electrode prevents anode product attribution. High HER Faradaic efficiencies were observed. CO2 was bubbled into the electrolyte. Currents were below mass transport limits.\n\nKey Results\nNewly measured CO rates were up to ten times lower. Faradaic efficiencies toward CO were typically under 30%. Previous kinetic trends in CO production were preserved. New data correlated well with previous work. Non-ideal mechanisms showed curvature in data. Bicarbonate inhibition was voltage-dependent for all catalysts. CoPc and CoTPP showed negative bicarbonate dependence at less reductive potentials. CoPc and CoTPP showed positive dependence at more reductive potentials. FePc showed greater bicarbonate inhibition at more reductive potentials. CoPc CO2 order dependence appeared ideal and first order. CoTPP CO2 order was slightly below one. CoTPP CO2 order decreased at more reductive potentials. FePc CO2 order was more attenuated at less reductive potentials. FePc CO2 order curves intersected at low pressures. Voltage inhibited the reaction at low CO2 pressures for FePc.\n\nInterpretation And Theoretical Implications\nCoPc and CoTPP mechanisms involve bicarbonate poisoning. These mechanisms also involve potential-dependent mixed control. Poisoning is described by positive electrosorption valency. FePc mechanism involves a species prior to the unoccupied site. This explains the contrasting bicarbonate trend in FePc. On-cycle poisoning species can also explain trends. Complex mechanisms are prevalent in metal tetrapyrroles. Standard Tafel analysis misses these complexities. Literature contradictions may arise from limited condition ranges. Automation enables robust cohesive kinetic analysis.\n\nContradictions And Limitations\nThe undivided cell design allows oxygen crossover. This leads to incomplete Faradaic efficiency closure. High HER Faradaic efficiencies were observed. Pt deposition might affect HER sites. Bubbling CO2 may influence measured kinetics. New rates were lower than previously reported. Models only qualitatively capture observed trends. Models do not quantitatively fit all data. Specific reaction mechanisms were not definitively proposed. The study relies on conceptual and generalized analyses.\n\nClaims\nAutomation enables robust cohesive kinetic analysis for electrocatalysis. The robotic system automates sequential testing. It accommodates varied experimental conditions. Data collection is more time-efficient. The undivided cell design has limitations. Oxygen crossover affects Faradaic efficiency. This approach can reveal complex mechanisms. It standardizes and accelerates data collection.\nCO2RR at metal tetrapyrroles involves complex, non-linearizable mechanisms. Bicarbonate order dependences change with potential. CO2 order dependences are non-linear. These trends are unexplainable by standard models. CoPc CO2 order appeared ideal. Standard Tafel analysis is insufficient. Electrolyte poisoning and mixed control are key.\n\nData And Code Availability\nAll experimental data is available as xlsx. Supporting information includes protocols and data. The work is licensed under CC BY-NC-ND 4.0.\n\nRobustness And Ablation Notes\nData robustness was evaluated against literature precedent. New data correlated well with previous work. Kinetic trends were preserved despite lower rates. Models were tested for goodness-of-fit. Some models could not fit observed trends.\n\nKey Figures Tables\nFigure 1 shows the robot design and cell assembly. Figure 2 illustrates bicarbonate dependence and mechanisms. Figure 3 shows CO2 dependence and mechanisms. Figure S5 shows Faradaic efficiency closure. Figure S7 compares new and previous kinetic trends. Figure S8 shows correlation with previous data. Figure S10 shows Faradaic efficiencies toward CO and H2.\n\nThree Takeaways\n1. A robotic system automates electrochemical kinetic data collection. 2. CO2RR at metal tetrapyrroles exhibits complex, non-linear kinetics. 3. Future work will improve automation and mechanism enumeration.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "linearized rate data",
+      "start": 2666,
+      "end": 2686,
+      "typographic_alignment": false,
+      "original_quote": "linearized rate data"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "factored separately",
+      "start": 2837,
+      "end": 2856,
+      "typographic_alignment": false,
+      "original_quote": "factored separately"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "coverage effects",
+      "start": 837,
+      "end": 853,
+      "typographic_alignment": false,
+      "original_quote": "coverage effects"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "cohesive kinetic analysis",
+      "start": 5113,
+      "end": 5138,
+      "typographic_alignment": false,
+      "original_quote": "cohesive kinetic analysis"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "wide ranges of reaction conditions",
+      "start": 4306,
+      "end": 4340,
+      "typographic_alignment": false,
+      "original_quote": "wide ranges of reaction conditions"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "months of intensive",
+      "start": 5874,
+      "end": 5893,
+      "typographic_alignment": false,
+      "original_quote": "months of intensive"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "high-throughput catalyst",
+      "start": 6171,
+      "end": 6195,
+      "typographic_alignment": false,
+      "original_quote": "high-throughput catalyst"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "difficult to quantify reaction products",
+      "start": 6482,
+      "end": 6521,
+      "typographic_alignment": false,
+      "original_quote": "difficult to quantify reaction products"
+    },
+    {
+      "path": "research_context[8]",
+      "quote": "aggregating effluents",
+      "start": 6940,
+      "end": 6961,
+      "typographic_alignment": false,
+      "original_quote": "aggregating effluents"
+    },
+    {
+      "path": "research_context[9]",
+      "quote": "sequential electrochemical testing",
+      "start": 7255,
+      "end": 7289,
+      "typographic_alignment": false,
+      "original_quote": "sequential electrochemical testing"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "automate electrochemical reaction rate data",
+      "start": 7762,
+      "end": 7805,
+      "typographic_alignment": false,
+      "original_quote": "automate electrochemical reaction rate data"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "different electrode, electrolyte",
+      "start": 1437,
+      "end": 1469,
+      "typographic_alignment": false,
+      "original_quote": "different electrode, electrolyte"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "investigate the mechanism of CO2RR",
+      "start": 8331,
+      "end": 8365,
+      "typographic_alignment": false,
+      "original_quote": "investigate the mechanism of CO2RR"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "cobalt phthalocyanine (CoPc)",
+      "start": 1687,
+      "end": 1715,
+      "typographic_alignment": false,
+      "original_quote": "cobalt phthalocyanine (CoPc)"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "non-idealities in reaction rate data",
+      "start": 8826,
+      "end": 8862,
+      "typographic_alignment": false,
+      "original_quote": "non-idealities in reaction rate data"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "change with different applied potentials",
+      "start": 9006,
+      "end": 9046,
+      "typographic_alignment": false,
+      "original_quote": "change with different applied potentials"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "complex reaction mechanisms",
+      "start": 1807,
+      "end": 1834,
+      "typographic_alignment": false,
+      "original_quote": "complex reaction mechanisms"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "electrolyte poisoning",
+      "start": 1956,
+      "end": 1977,
+      "typographic_alignment": false,
+      "original_quote": "electrolyte poisoning"
+    },
+    {
+      "path": "research_question_and_hypothesis[8]",
+      "quote": "differences in operating conditions",
+      "start": 28001,
+      "end": 28036,
+      "typographic_alignment": false,
+      "original_quote": "differences in operating conditions"
+    },
+    {
+      "path": "research_question_and_hypothesis[9]",
+      "quote": "not amenable to common Tafel",
+      "start": 2402,
+      "end": 2430,
+      "typographic_alignment": false,
+      "original_quote": "not amenable to common Tafel"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "Toray060 carbon paper",
+      "start": 9542,
+      "end": 9563,
+      "typographic_alignment": false,
+      "original_quote": "Toray060 carbon paper"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "5.98 x 10 -11",
+      "start": 9608,
+      "end": 9621,
+      "typographic_alignment": false,
+      "original_quote": "5.98 x 10 -11"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "carbon black-containing DMF",
+      "start": 9714,
+      "end": 9741,
+      "typographic_alignment": false,
+      "original_quote": "carbon black-containing DMF"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "5.11 x 10 -10",
+      "start": 9783,
+      "end": 9796,
+      "typographic_alignment": false,
+      "original_quote": "5.11 x 10 -10"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "8.04 x 10 -10",
+      "start": 9810,
+      "end": 9823,
+      "typographic_alignment": false,
+      "original_quote": "8.04 x 10 -10"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "Na2CO3 (Sigma Aldrich)",
+      "start": 10136,
+      "end": 10158,
+      "typographic_alignment": false,
+      "original_quote": "Na2CO3 (Sigma Aldrich)"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "bubbled overnight with CO2",
+      "start": 10240,
+      "end": 10266,
+      "typographic_alignment": false,
+      "original_quote": "bubbled overnight with CO2"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "1 mol/L ionic strength",
+      "start": 10335,
+      "end": 10357,
+      "typographic_alignment": false,
+      "original_quote": "1 mol/L ionic strength"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "batches of ten",
+      "start": 10546,
+      "end": 10560,
+      "typographic_alignment": false,
+      "original_quote": "batches of ten"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "Ag/AgCl reference electrode",
+      "start": 10855,
+      "end": 10882,
+      "typographic_alignment": false,
+      "original_quote": "Ag/AgCl reference electrode"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "calibrated against a saturated",
+      "start": 10912,
+      "end": 10942,
+      "typographic_alignment": false,
+      "original_quote": "calibrated against a saturated"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "SQL database",
+      "start": 11263,
+      "end": 11275,
+      "typographic_alignment": false,
+      "original_quote": "SQL database"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "python script",
+      "start": 11279,
+      "end": 11292,
+      "typographic_alignment": false,
+      "original_quote": "python script"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "single cell body",
+      "start": 11546,
+      "end": 11562,
+      "typographic_alignment": false,
+      "original_quote": "single cell body"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "ten cell pan pairs",
+      "start": 11639,
+      "end": 11657,
+      "typographic_alignment": false,
+      "original_quote": "ten cell pan pairs"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "moves horizontally",
+      "start": 11722,
+      "end": 11740,
+      "typographic_alignment": false,
+      "original_quote": "moves horizontally"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "gas chromatograph",
+      "start": 12749,
+      "end": 12766,
+      "typographic_alignment": false,
+      "original_quote": "gas chromatograph"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "10 mm diameter circle",
+      "start": 14520,
+      "end": 14541,
+      "typographic_alignment": false,
+      "original_quote": "10 mm diameter circle"
+    },
+    {
+      "path": "methodological_details[18]",
+      "quote": "0.25 mm diameter",
+      "start": 14675,
+      "end": 14691,
+      "typographic_alignment": false,
+      "original_quote": "0.25 mm diameter"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "sequentially perform electrochemistry",
+      "start": 11744,
+      "end": 11781,
+      "typographic_alignment": false,
+      "original_quote": "sequentially perform electrochemistry"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "electrolyte in",
+      "start": 12027,
+      "end": 12041,
+      "typographic_alignment": false,
+      "original_quote": "electrolyte in"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "initiates gas flow",
+      "start": 12591,
+      "end": 12609,
+      "typographic_alignment": false,
+      "original_quote": "initiates gas flow"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "applies voltage",
+      "start": 12686,
+      "end": 12701,
+      "typographic_alignment": false,
+      "original_quote": "applies voltage"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "online detection of CO",
+      "start": 12807,
+      "end": 12829,
+      "typographic_alignment": false,
+      "original_quote": "online detection of CO"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "electrolyte out",
+      "start": 12977,
+      "end": 12992,
+      "typographic_alignment": false,
+      "original_quote": "electrolyte out"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "wash station",
+      "start": 13119,
+      "end": 13131,
+      "typographic_alignment": false,
+      "original_quote": "wash station"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "milliQ water",
+      "start": 13186,
+      "end": 13198,
+      "typographic_alignment": false,
+      "original_quote": "milliQ water"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "rinsed after the completion",
+      "start": 13328,
+      "end": 13355,
+      "typographic_alignment": false,
+      "original_quote": "rinsed after the completion"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "undivided compartment cell",
+      "start": 14305,
+      "end": 14331,
+      "typographic_alignment": false,
+      "original_quote": "undivided compartment cell"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "lack of membrane",
+      "start": 14915,
+      "end": 14931,
+      "typographic_alignment": false,
+      "original_quote": "lack of membrane"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "parasitic oxygen reduction",
+      "start": 15330,
+      "end": 15356,
+      "typographic_alignment": false,
+      "original_quote": "parasitic oxygen reduction"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "c.a. 60%",
+      "start": 15491,
+      "end": 15499,
+      "typographic_alignment": false,
+      "original_quote": "c.a. 60%"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "Pt, rather than carbon",
+      "start": 15665,
+      "end": 15687,
+      "typographic_alignment": false,
+      "original_quote": "Pt, rather than carbon"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "30 to 60%",
+      "start": 16010,
+      "end": 16019,
+      "typographic_alignment": false,
+      "original_quote": "30 to 60%"
+    },
+    {
+      "path": "procedures_and_architectures[15]",
+      "quote": "bubbled CO2 into the electrolyte",
+      "start": 16499,
+      "end": 16531,
+      "typographic_alignment": false,
+      "original_quote": "bubbled CO2 into the electrolyte"
+    },
+    {
+      "path": "procedures_and_architectures[16]",
+      "quote": "below the theoretical mass transport",
+      "start": 16577,
+      "end": 16613,
+      "typographic_alignment": false,
+      "original_quote": "below the theoretical mass transport"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "ten times lower",
+      "start": 17225,
+      "end": 17240,
+      "typographic_alignment": false,
+      "original_quote": "ten times lower"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "under 30%",
+      "start": 17376,
+      "end": 17385,
+      "typographic_alignment": false,
+      "original_quote": "under 30%"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "kinetic trends in CO production",
+      "start": 17452,
+      "end": 17483,
+      "typographic_alignment": false,
+      "original_quote": "kinetic trends in CO production"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "well-correlated with that of",
+      "start": 17550,
+      "end": 17578,
+      "typographic_alignment": false,
+      "original_quote": "well-correlated with that of"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "curvature and potential dependent",
+      "start": 17676,
+      "end": 17709,
+      "typographic_alignment": false,
+      "original_quote": "curvature and potential dependent"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "voltage-dependent bicarbonate inhibition",
+      "start": 19804,
+      "end": 19844,
+      "typographic_alignment": false,
+      "original_quote": "voltage-dependent bicarbonate inhibition"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "most negative at less reductive",
+      "start": 19924,
+      "end": 19955,
+      "typographic_alignment": false,
+      "original_quote": "most negative at less reductive"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "positive at more reductive",
+      "start": 19979,
+      "end": 20005,
+      "typographic_alignment": false,
+      "original_quote": "positive at more reductive"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "greater bicarbonate inhibition occurs",
+      "start": 20062,
+      "end": 20099,
+      "typographic_alignment": false,
+      "original_quote": "greater bicarbonate inhibition occurs"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "simple first order dependence",
+      "start": 24549,
+      "end": 24578,
+      "typographic_alignment": false,
+      "original_quote": "simple first order dependence"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "slightly below one",
+      "start": 24675,
+      "end": 24693,
+      "typographic_alignment": false,
+      "original_quote": "slightly below one"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "decrease at more reductive",
+      "start": 24724,
+      "end": 24750,
+      "typographic_alignment": false,
+      "original_quote": "decrease at more reductive"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "more attenuated at less reductive",
+      "start": 25193,
+      "end": 25226,
+      "typographic_alignment": false,
+      "original_quote": "more attenuated at less reductive"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "curves for the two different",
+      "start": 25278,
+      "end": 25306,
+      "typographic_alignment": false,
+      "original_quote": "curves for the two different"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "voltage inhibits the reaction",
+      "start": 25372,
+      "end": 25401,
+      "typographic_alignment": false,
+      "original_quote": "voltage inhibits the reaction"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "bicarbonate poisoning",
+      "start": 20802,
+      "end": 20823,
+      "typographic_alignment": false,
+      "original_quote": "bicarbonate poisoning"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "potential-dependent mixed control",
+      "start": 20832,
+      "end": 20865,
+      "typographic_alignment": false,
+      "original_quote": "potential-dependent mixed control"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "positive electrosorption valency",
+      "start": 20385,
+      "end": 20417,
+      "typographic_alignment": false,
+      "original_quote": "positive electrosorption valency"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "species prior to the unoccupied",
+      "start": 21824,
+      "end": 21855,
+      "typographic_alignment": false,
+      "original_quote": "species prior to the unoccupied"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "ostensibly contrasting local picture",
+      "start": 21664,
+      "end": 21700,
+      "typographic_alignment": false,
+      "original_quote": "ostensibly contrasting local picture"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "on-cycle poisoning species",
+      "start": 22750,
+      "end": 22776,
+      "typographic_alignment": false,
+      "original_quote": "on-cycle poisoning species"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "quite prevalent across this class",
+      "start": 2468,
+      "end": 2501,
+      "typographic_alignment": false,
+      "original_quote": "quite prevalent across this class"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "not captured with traditional Tafel",
+      "start": 5053,
+      "end": 5088,
+      "typographic_alignment": false,
+      "original_quote": "not captured with traditional Tafel"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[8]",
+      "quote": "limited range of operating conditions",
+      "start": 28079,
+      "end": 28116,
+      "typographic_alignment": false,
+      "original_quote": "limited range of operating conditions"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[9]",
+      "quote": "convergence of automation with cohesive",
+      "start": 28847,
+      "end": 28886,
+      "typographic_alignment": false,
+      "original_quote": "convergence of automation with cohesive"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "oxygen evolved at the counter",
+      "start": 15238,
+      "end": 15267,
+      "typographic_alignment": false,
+      "original_quote": "oxygen evolved at the counter"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "incomplete Faradaic efficiency",
+      "start": 15404,
+      "end": 15434,
+      "typographic_alignment": false,
+      "original_quote": "incomplete Faradaic efficiency"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "relatively high FEs toward HER",
+      "start": 15961,
+      "end": 15991,
+      "typographic_alignment": false,
+      "original_quote": "relatively high FEs toward HER"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "Pt deposition",
+      "start": 16343,
+      "end": 16356,
+      "typographic_alignment": false,
+      "original_quote": "Pt deposition"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "flow configuration can have unexpected",
+      "start": 16693,
+      "end": 16731,
+      "typographic_alignment": false,
+      "original_quote": "flow configuration can have unexpected"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "up to ten times lower",
+      "start": 17219,
+      "end": 17240,
+      "typographic_alignment": false,
+      "original_quote": "up to ten times lower"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "qualitatively capture the observed trends",
+      "start": 19161,
+      "end": 19202,
+      "typographic_alignment": false,
+      "original_quote": "qualitatively capture the observed trends"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "do not quantitatively",
+      "start": 19208,
+      "end": 19229,
+      "typographic_alignment": false,
+      "original_quote": "do not quantitatively"
+    },
+    {
+      "path": "contradictions_and_limitations[8]",
+      "quote": "rather than proposing a specific",
+      "start": 19312,
+      "end": 19344,
+      "typographic_alignment": false,
+      "original_quote": "rather than proposing a specific"
+    },
+    {
+      "path": "contradictions_and_limitations[9]",
+      "quote": "conceptual and generalized analyses",
+      "start": 18906,
+      "end": 18941,
+      "typographic_alignment": false,
+      "original_quote": "conceptual and generalized analyses"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "All experimental data reported",
+      "start": 29183,
+      "end": 29213,
+      "typographic_alignment": false,
+      "original_quote": "All experimental data reported"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "detailed experimental protocols",
+      "start": 29098,
+      "end": 29129,
+      "typographic_alignment": false,
+      "original_quote": "detailed experimental protocols"
+    },
+    {
+      "path": "data_and_code_availability[2]",
+      "quote": "CC BY-NC-ND 4.0",
+      "start": 29373,
+      "end": 29388,
+      "typographic_alignment": false,
+      "original_quote": "CC BY-NC-ND 4.0"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "evaluated data robustness",
+      "start": 16860,
+      "end": 16885,
+      "typographic_alignment": false,
+      "original_quote": "evaluated data robustness"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "well-correlated with that of",
+      "start": 17550,
+      "end": 17578,
+      "typographic_alignment": false,
+      "original_quote": "well-correlated with that of"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "kinetic trends in CO production",
+      "start": 17452,
+      "end": 17483,
+      "typographic_alignment": false,
+      "original_quote": "kinetic trends in CO production"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "statistical goodness-of-fit metrics",
+      "start": 19235,
+      "end": 19270,
+      "typographic_alignment": false,
+      "original_quote": "statistical goodness-of-fit metrics"
+    },
+    {
+      "path": "robustness_and_ablation_notes[4]",
+      "quote": "models that cannot fit",
+      "start": 24275,
+      "end": 24297,
+      "typographic_alignment": false,
+      "original_quote": "models that cannot fit"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Figure 1A",
+      "start": 11865,
+      "end": 11874,
+      "typographic_alignment": false,
+      "original_quote": "Figure 1A"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Figures 2A-C",
+      "start": 19846,
+      "end": 19858,
+      "typographic_alignment": false,
+      "original_quote": "Figures 2A-C"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Figures 3A-3C",
+      "start": 24469,
+      "end": 24482,
+      "typographic_alignment": false,
+      "original_quote": "Figures 3A-3C"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Figure S5",
+      "start": 15620,
+      "end": 15629,
+      "typographic_alignment": false,
+      "original_quote": "Figure S5"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Figure S7",
+      "start": 17500,
+      "end": 17509,
+      "typographic_alignment": false,
+      "original_quote": "Figure S7"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "Figure S8",
+      "start": 17598,
+      "end": 17607,
+      "typographic_alignment": false,
+      "original_quote": "Figure S8"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "Figure S10",
+      "start": 16021,
+      "end": 16031,
+      "typographic_alignment": false,
+      "original_quote": "Figure S10"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "robotic system",
+      "start": 1252,
+      "end": 1266,
+      "typographic_alignment": false,
+      "original_quote": "robotic system"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "non-idealities in reaction rate data",
+      "start": 8826,
+      "end": 8862,
+      "typographic_alignment": false,
+      "original_quote": "non-idealities in reaction rate data"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "automatically enumerate mechanisms",
+      "start": 28406,
+      "end": 28440,
+      "typographic_alignment": false,
+      "original_quote": "automatically enumerate mechanisms"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "automates sequential testing",
+      "start": 13816,
+      "end": 13844,
+      "typographic_alignment": false,
+      "original_quote": "automates sequential testing"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "different electrode, electrolyte",
+      "start": 1437,
+      "end": 1469,
+      "typographic_alignment": false,
+      "original_quote": "different electrode, electrolyte"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "time-and labor-efficient",
+      "start": 26366,
+      "end": 26390,
+      "typographic_alignment": false,
+      "original_quote": "time-and labor-efficient"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "undivided compartment cell",
+      "start": 14305,
+      "end": 14331,
+      "typographic_alignment": false,
+      "original_quote": "undivided compartment cell"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "oxygen reduction",
+      "start": 15340,
+      "end": 15356,
+      "typographic_alignment": false,
+      "original_quote": "oxygen reduction"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "dissecting electrocatalytic reaction complexity",
+      "start": 28954,
+      "end": 29001,
+      "typographic_alignment": false,
+      "original_quote": "dissecting electrocatalytic reaction complexity"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "standardize and accelerate the workflow",
+      "start": 28508,
+      "end": 28547,
+      "typographic_alignment": false,
+      "original_quote": "standardize and accelerate the workflow"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "change with different applied potentials",
+      "start": 9006,
+      "end": 9046,
+      "typographic_alignment": false,
+      "original_quote": "change with different applied potentials"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "non-linear and/or condition-dependent",
+      "start": 18389,
+      "end": 18426,
+      "typographic_alignment": false,
+      "original_quote": "non-linear and/or condition-dependent"
+    },
+    {
+      "path": "claims[1].supporting_evidence[2]",
+      "quote": "unexplainable with mechanisms typically invoked",
+      "start": 18642,
+      "end": 18689,
+      "typographic_alignment": false,
+      "original_quote": "unexplainable with mechanisms typically invoked"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "appears quite ideal",
+      "start": 24520,
+      "end": 24539,
+      "typographic_alignment": false,
+      "original_quote": "appears quite ideal"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "not amenable to common Tafel",
+      "start": 2402,
+      "end": 2430,
+      "typographic_alignment": false,
+      "original_quote": "not amenable to common Tafel"
+    },
+    {
+      "path": "claims[1].implications[1]",
+      "quote": "electrolyte poisoning",
+      "start": 1956,
+      "end": 1977,
+      "typographic_alignment": false,
+      "original_quote": "electrolyte poisoning"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"Non-idealities in CO2 electroreduction mechanisms revealed by automation-assisted kinetic analysis\",\n  \"authors\": \"Joy S Zeng, Vineet Padia, Joseph H Maalouf, Aditya M Limaye, Alexander H Liu, Michael A Yusov, Ian W Hunter, Karthish Manthiram\",\n  \"field_subfield\": \"Electrochemistry, CO2 Reduction Reaction (CO2RR)\",\n  \"type_of_paper\": \"Research Article\",\n  \"executive_summary\": \"This study addresses the limitations of traditional linearized kinetic analyses (Tafel and order dependence) in electrocatalysis, which often fail to capture complex reaction phenomena such as surface coverage effects and mixed control. The authors introduce a robotic system that automates the sequential testing of up to ten electrochemical cells, allowing for varied electrodes, electrolytes, gas compositions, and voltages. This automation facilitates cohesive kinetic analysis, a robust strategy requiring extensive data over wide reaction conditions. Using this platform, the team investigated the mechanism of CO2 electroreduction to carbon monoxide (CO) at immobilized metal tetrapyrroles: cobalt phthalocyanine (CoPc), cobalt tetraphenylporphyrin (CoTPP), and iron phthalocyanine (FePc). The results reveal significant non-idealities in reaction rate data, specifically non-linear and potential-dependent bicarbonate and CO2 order dependences. For CoPc and CoTPP, bicarbonate inhibition is attenuated at more reductive potentials, consistent with models involving bicarbonate poisoning and potential-dependent mixed control. In contrast, FePc exhibits stronger bicarbonate inhibition at more reductive potentials, suggesting a different mechanism where the most abundant reactive intermediate is a species prior to the unoccupied site. The study demonstrates that complex mechanisms, unexplainable by standard Tafel analysis, are prevalent in this class of catalysts. The robotic workflow proved more time-efficient and reliable, with data correlating well with previous manual studies despite lower absolute rates. The work highlights the importance of considering electrolyte poisoning, coverage effects, and mixed control in interpreting CO2RR kinetics, suggesting that apparent contradictions in literature may stem from limited operating condition ranges. Future work will focus on incorporating membranes and automated mechanism enumeration to further standardize and accelerate electrocatalytic research.\",\n  \"research_context\": [\n    { \"Traditional electrocatalysis kinetics rely on linearized rate data.\": \"linearized rate data\" },\n    { \"These methods assume independent factorization of voltage and concentration.\": \"factored separately\" },\n    { \"Complex phenomena like coverage effects break these assumptions.\": \"coverage effects\" },\n    { \"Cohesive kinetic analysis offers a more robust alternative.\": \"cohesive kinetic analysis\" },\n    { \"This approach requires large datasets over wide conditions.\": \"wide ranges of reaction conditions\" },\n    { \"Manual data collection is slow and error-prone.\": \"months of intensive\" },\n    { \"Existing automation focuses on high-throughput screening.\": \"high-throughput catalyst\" },\n    { \"Miniaturization limits product quantification for kinetic analysis.\": \"difficult to quantify reaction products\" },\n    { \"Parallelization often lacks individual online product detection.\": \"aggregating effluents\" },\n    { \"Sequential testing with online quantification is ideal.\": \"sequential electrochemical testing\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to automate electrochemical rate data collection.\": \"automate electrochemical reaction rate data\" },\n    { \"The robotic system accommodates varied experimental parameters.\": \"different electrode, electrolyte\" },\n    { \"The primary goal is to investigate CO2RR mechanisms.\": \"investigate the mechanism of CO2RR\" },\n    { \"Specific catalysts include CoPc, CoTPP, and FePc.\": \"cobalt phthalocyanine (CoPc)\" },\n    { \"The hypothesis is that non-idealities are prevalent.\": \"non-idealities in reaction rate data\" },\n    { \"These non-idealities manifest as changing order dependences.\": \"change with different applied potentials\" },\n    { \"The authors predict complex mechanisms explain these trends.\": \"complex reaction mechanisms\" },\n    { \"Phenomena like electrolyte poisoning are expected to be key.\": \"electrolyte poisoning\" },\n    { \"The study seeks to reconcile conflicting literature reports.\": \"reconciled by differences in operating conditions\" },\n    { \"It is hypothesized that standard Tafel analysis is insufficient.\": \"not amenable to common Tafel\" }\n  ],\n  \"methodological_details\": [\n    { \"CoPc catalysts were drop-casted onto Toray060 carbon paper.\": \"Toray060 carbon paper\" },\n    { \"CoPc loading was 5.98 x 10^-11 mol/cm2.\": \"5.98 x 10 -11\" },\n    { \"CoTPP and FePc used carbon black-containing DMF.\": \"carbon black-containing DMF\" },\n    { \"CoTPP loading was 5.11 x 10^-10 mol/cm2.\": \"5.11 x 10 -10\" },\n    { \"FePc loading was 8.04 x 10^-10 mol/cm2.\": \"8.04 x 10 -10\" },\n    { \"Electrolytes were prepared from Na2CO3 and NaClO4 stocks.\": \"Na2CO3 (Sigma Aldrich)\" },\n    { \"Stock solutions were bubbled overnight with CO2.\": \"bubbled overnight with CO2\" },\n    { \"Final electrolytes had 1 mol/L ionic strength.\": \"1 mol/L ionic strength\" },\n    { \"Electrolyses were queued in batches of ten.\": \"batches of ten\" },\n    { \"A leak-free Ag/AgCl reference electrode was used.\": \"Ag/AgCl reference electrode\" },\n    { \"The reference electrode was calibrated daily.\": \"calibrated against a saturated\" },\n    { \"Data was uploaded to an SQL database.\": \"SQL database\" },\n    { \"A python script processed the data files.\": \"python script\" },\n    { \"The robot houses a single cell body.\": \"single cell body\" },\n    { \"Ten cell pan pairs house working electrodes.\": \"ten cell pan pairs\" },\n    { \"The cell body moves horizontally and vertically.\": \"moves horizontally\" },\n    { \"Online product quantification used a gas chromatograph.\": \"gas chromatograph\" },\n    { \"The working electrode exposed a 10 mm diameter circle.\": \"10 mm diameter circle\" },\n    { \"A 0.25 mm platinum wire counter electrode was used.\": \"0.25 mm diameter\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The robot sequentially tests each cell pan.\": \"sequentially perform electrochemistry\" },\n    { \"Electrolyte is pumped through the 'electrolyte in' port.\": \"electrolyte in\" },\n    { \"Gas flow is initiated before voltage application.\": \"initiates gas flow\" },\n    { \"Voltage is applied after a few minutes.\": \"applies voltage\" },\n    { \"Online detection of CO and H2 occurs.\": \"online detection of CO\" },\n    { \"Electrolyte is pumped out via 'electrolyte out' tubing.\": \"electrolyte out\" },\n    { \"Cell body cleaning uses a wash station.\": \"wash station\" },\n    { \"MilliQ water is pumped for cleaning cycles.\": \"milliQ water\" },\n    { \"The cell body is rinsed after ten electrolyses.\": \"rinsed after the completion\" },\n    { \"The setup is a three-electrode, undivided compartment cell.\": \"undivided compartment cell\" },\n    { \"No membrane separates anode and cathode.\": \"lack of membrane\" },\n    { \"Oxygen crossover can cause parasitic ORR current.\": \"parasitic oxygen reduction\" },\n    { \"Average Faradaic efficiency closure was ~60%.\": \"c.a. 60%\" },\n    { \"Pt counter electrode prevents anode product attribution.\": \"Pt, rather than carbon\" },\n    { \"High HER Faradaic efficiencies were observed.\": \"30 to 60%\" },\n    { \"CO2 was bubbled into the electrolyte.\": \"bubbled CO2 into the electrolyte\" },\n    { \"Currents were below mass transport limits.\": \"below the theoretical mass transport\" }\n  ],\n  \"key_results\": [\n    { \"Newly measured CO rates were up to ten times lower.\": \"ten times lower\" },\n    { \"Faradaic efficiencies toward CO were typically under 30%.\": \"under 30%\" },\n    { \"Previous kinetic trends in CO production were preserved.\": \"kinetic trends in CO production\" },\n    { \"New data correlated well with previous work.\": \"well-correlated with that of\" },\n    { \"Non-ideal mechanisms showed curvature in data.\": \"curvature and potential dependent\" },\n    { \"Bicarbonate inhibition was voltage-dependent for all catalysts.\": \"voltage-dependent bicarbonate inhibition\" },\n    { \"CoPc and CoTPP showed negative bicarbonate dependence at less reductive potentials.\": \"most negative at less reductive\" },\n    { \"CoPc and CoTPP showed positive dependence at more reductive potentials.\": \"positive at more reductive\" },\n    { \"FePc showed greater bicarbonate inhibition at more reductive potentials.\": \"greater bicarbonate inhibition occurs\" },\n    { \"CoPc CO2 order dependence appeared ideal and first order.\": \"simple first order dependence\" },\n    { \"CoTPP CO2 order was slightly below one.\": \"slightly below one\" },\n    { \"CoTPP CO2 order decreased at more reductive potentials.\": \"decrease at more reductive\" },\n    { \"FePc CO2 order was more attenuated at less reductive potentials.\": \"more attenuated at less reductive\" },\n    { \"FePc CO2 order curves intersected at low pressures.\": \"curves for the two different\" },\n    { \"Voltage inhibited the reaction at low CO2 pressures for FePc.\": \"voltage inhibits the reaction\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"CoPc and CoTPP mechanisms involve bicarbonate poisoning.\": \"bicarbonate poisoning\" },\n    { \"These mechanisms also involve potential-dependent mixed control.\": \"potential-dependent mixed control\" },\n    { \"Poisoning is described by positive electrosorption valency.\": \"positive electrosorption valency\" },\n    { \"FePc mechanism involves a species prior to the unoccupied site.\": \"species prior to the unoccupied\" },\n    { \"This explains the contrasting bicarbonate trend in FePc.\": \"ostensibly contrasting local picture\" },\n    { \"On-cycle poisoning species can also explain trends.\": \"on-cycle poisoning species\" },\n    { \"Complex mechanisms are prevalent in metal tetrapyrroles.\": \"quite prevalent across this class\" },\n    { \"Standard Tafel analysis misses these complexities.\": \"not captured with traditional Tafel\" },\n    { \"Literature contradictions may arise from limited condition ranges.\": \"limited range of operating conditions\" },\n    { \"Automation enables robust cohesive kinetic analysis.\": \"convergence of automation with cohesive\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The undivided cell design allows oxygen crossover.\": \"oxygen evolved at the counter\" },\n    { \"This leads to incomplete Faradaic efficiency closure.\": \"incomplete Faradaic efficiency\" },\n    { \"High HER Faradaic efficiencies were observed.\": \"relatively high FEs toward HER\" },\n    { \"Pt deposition might affect HER sites.\": \"Pt deposition\" },\n    { \"Bubbling CO2 may influence measured kinetics.\": \"flow configuration can have unexpected\" },\n    { \"New rates were lower than previously reported.\": \"up to ten times lower\" },\n    { \"Models only qualitatively capture observed trends.\": \"qualitatively capture the observed trends\" },\n    { \"Models do not quantitatively fit all data.\": \"do not quantitatively\" },\n    { \"Specific reaction mechanisms were not definitively proposed.\": \"rather than proposing a specific\" },\n    { \"The study relies on conceptual and generalized analyses.\": \"conceptual and generalized analyses\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Automation enables robust cohesive kinetic analysis for electrocatalysis.\",\n      \"supporting_evidence\": [\n        { \"The robotic system automates sequential testing.\": \"automates sequential testing\" },\n        { \"It accommodates varied experimental conditions.\": \"different electrode, electrolyte\" },\n        { \"Data collection is more time-efficient.\": \"time-and labor-efficient\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The undivided cell design has limitations.\": \"undivided compartment cell\" },\n        { \"Oxygen crossover affects Faradaic efficiency.\": \"oxygen reduction\" }\n      ],\n      \"implications\": [\n        { \"This approach can reveal complex mechanisms.\": \"dissecting electrocatalytic reaction complexity\" },\n        { \"It standardizes and accelerates data collection.\": \"standardize and accelerate the workflow\" }\n      ]\n    },\n    {\n      \"description\": \"CO2RR at metal tetrapyrroles involves complex, non-linearizable mechanisms.\",\n      \"supporting_evidence\": [\n        { \"Bicarbonate order dependences change with potential.\": \"change with different applied potentials\" },\n        { \"CO2 order dependences are non-linear.\": \"non-linear and/or condition-dependent\" },\n        { \"These trends are unexplainable by standard models.\": \"unexplainable with mechanisms typically invoked\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"CoPc CO2 order appeared ideal.\": \"appears quite ideal\" }\n      ],\n      \"implications\": [\n        { \"Standard Tafel analysis is insufficient.\": \"not amenable to common Tafel\" },\n        { \"Electrolyte poisoning and mixed control are key.\": \"electrolyte poisoning and potentialdependent\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"All experimental data is available as xlsx.\": \"All experimental data reported\" },\n    { \"Supporting information includes protocols and data.\": \"detailed experimental protocols\" },\n    { \"The work is licensed under CC BY-NC-ND 4.0.\": \"CC BY-NC-ND 4.0\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"Data robustness was evaluated against literature precedent.\": \"evaluated data robustness\" },\n    { \"New data correlated well with previous work.\": \"well-correlated with that of\" },\n    { \"Kinetic trends were preserved despite lower rates.\": \"kinetic trends in CO production\" },\n    { \"Models were tested for goodness-of-fit.\": \"statistical goodness-of-fit metrics\" },\n    { \"Some models could not fit observed trends.\": \"models that cannot fit\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 shows the robot design and cell assembly.\": \"Figure 1A\" },\n    { \"Figure 2 illustrates bicarbonate dependence and mechanisms.\": \"Figures 2A-C\" },\n    { \"Figure 3 shows CO2 dependence and mechanisms.\": \"Figures 3A-3C\" },\n    { \"Figure S5 shows Faradaic efficiency closure.\": \"Figure S5\" },\n    { \"Figure S7 compares new and previous kinetic trends.\": \"Figure S7\" },\n    { \"Figure S8 shows correlation with previous data.\": \"Figure S8\" },\n    { \"Figure S10 shows Faradaic efficiencies toward CO and H2.\": \"Figure S10\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. A robotic system automates electrochemical kinetic data collection.\": \"robotic system\" },\n    { \"2. CO2RR at metal tetrapyrroles exhibits complex, non-linear kinetics.\": \"non-idealities in reaction rate data\" },\n    { \"3. Future work will improve automation and mechanism enumeration.\": \"automatically enumerate mechanisms\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8133,
+        "total_tokens": 11863,
+        "completion_tokens": 3730,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8133,
+      "elapsed_seconds": 320.79552041366696,
+      "max_tokens": 16000,
+      "seed": 1375877230,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "603d2008ad658eb493feb5b9202931277a9a85a17aa4a26506f64dc0f57d20a2",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "Evidence must be a nonempty <=5-word quote: research_question_and_hypothesis[8]",
+        "claims": "evidence quote is not present in fulltext: electrolyte poisoning and potentialdependent"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The study aims to automate electrochemical rate data collection.\": \"automate electrochemical reaction rate data\"\n    },\n    {\n      \"The robotic system accommodates varied experimental parameters.\": \"different electrode, electrolyte\"\n    },\n    {\n      \"The primary goal is to investigate CO2RR mechanisms.\": \"investigate the mechanism of CO2RR\"\n    },\n    {\n      \"Specific catalysts include CoPc, CoTPP, and FePc.\": \"cobalt phthalocyanine (CoPc)\"\n    },\n    {\n      \"The hypothesis is that non-idealities are prevalent.\": \"non-idealities in reaction rate data\"\n    },\n    {\n      \"These non-idealities manifest as changing order dependences.\": \"change with different applied potentials\"\n    },\n    {\n      \"The authors predict complex mechanisms explain these trends.\": \"complex reaction mechanisms\"\n    },\n    {\n      \"Phenomena like electrolyte poisoning are expected to be key.\": \"electrolyte poisoning\"\n    },\n    {\n      \"The study seeks to reconcile conflicting literature reports.\": \"differences in operating conditions\"\n    },\n    {\n      \"It is hypothesized that standard Tafel analysis is insufficient.\": \"not amenable to common Tafel\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Automation enables robust cohesive kinetic analysis for electrocatalysis.\",\n      \"supporting_evidence\": [\n        {\n          \"The robotic system automates sequential testing.\": \"automates sequential testing\"\n        },\n        {\n          \"It accommodates varied experimental conditions.\": \"different electrode, electrolyte\"\n        },\n        {\n          \"Data collection is more time-efficient.\": \"time-and labor-efficient\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The undivided cell design has limitations.\": \"undivided compartment cell\"\n        },\n        {\n          \"Oxygen crossover affects Faradaic efficiency.\": \"oxygen reduction\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This approach can reveal complex mechanisms.\": \"dissecting electrocatalytic reaction complexity\"\n        },\n        {\n          \"It standardizes and accelerates data collection.\": \"standardize and accelerate the workflow\"\n        }\n      ]\n    },\n    {\n      \"description\": \"CO2RR at metal tetrapyrroles involves complex, non-linearizable mechanisms.\",\n      \"supporting_evidence\": [\n        {\n          \"Bicarbonate order dependences change with potential.\": \"change with different applied potentials\"\n        },\n        {\n          \"CO2 order dependences are non-linear.\": \"non-linear and/or condition-dependent\"\n        },\n        {\n          \"These trends are unexplainable by standard models.\": \"unexplainable with mechanisms typically invoked\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"CoPc CO2 order appeared ideal.\": \"appears quite ideal\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Standard Tafel analysis is insufficient.\": \"not amenable to common Tafel\"\n        },\n        {\n          \"Electrolyte poisoning and mixed control are key.\": \"electrolyte poisoning\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6958,
+        "total_tokens": 7747,
+        "completion_tokens": 789,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6958,
+      "elapsed_seconds": 79.34872131422162,
+      "max_tokens": 4096,
+      "seed": 1375877231,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "0f0b6d6da22ae3691d46fb44f32ab30eded48861290f5ecdfeb2b5397c0e722a",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "claims"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 8133,
+  "elapsed_seconds": 400.2236621193588,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

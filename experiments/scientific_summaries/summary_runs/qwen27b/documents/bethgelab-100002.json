@@ -1,0 +1,936 @@
+{
+  "document_id": "bethgelab-100002",
+  "fulltext_sha256": "9cfd749620877169e7af30ce0e929738eab4d6b0c917acbbc6b9983017bb5044",
+  "summary": {
+    "title": "EcoEvoApps: Interactive Apps for Theoretical Models in Ecology and Evolutionary Biology",
+    "authors": "Rosa M Mcguire, Kenji T Hayashi, Xinyi Yan, Marcel Caritá Vaz, Damla Cino Glu, Madeline C Cowen, Alejandra Martínez-Blancas, Lauren L Sullivan, Sheila Vazquez-Morales, Gaurav S Kandlikar",
+    "field_subfield": "Ecology and Evolutionary Biology (EEB) / Educational Technology",
+    "type_of_paper": "Software/Methodology Paper",
+    "executive_summary": "This paper introduces EcoEvoApps, an open-source R package and website designed to bridge the gap between theoretical and empirical research in Ecology and Evolutionary Biology (EEB). The primary motivation is to address the barrier that mathematical models often present to empiricists, who may find equation-heavy literature intimidating or less accessible. EcoEvoApps provides a collection of 11 interactive Shiny apps that simulate fundamental EEB models, such as predator-prey dynamics, island biogeography, and resource competition. These apps allow users to explore model structures and outcomes by manipulating parameters, thereby fostering a deeper conceptual understanding without requiring extensive coding or analytical skills. The package also includes underlying R functions for simulating and visualizing model dynamics, serving as a gateway for users to transition from interactive exploration to command-line implementation. The authors evaluated the educational utility of these apps in classroom settings at the University of California, Los Angeles (UCLA) and the University of Missouri (MU). Surveys of 51 students at UCLA indicated that an overwhelming majority (40/51) found the apps moderately to very helpful for understanding the models. Similar positive results were observed at MU, with notable gains in student confidence, particularly among those with higher initial interest in the topics. The project is designed to be collaborative and inclusive, with apps available in multiple languages including English, Spanish, Chinese, Turkish, and Portuguese. The authors invite community contributions to expand the model library, add new features, and develop teaching plans. By leveraging the R ecosystem, EcoEvoApps offers a customizable, accessible, and open-source alternative to existing educational resources, aiming to facilitate communication and collaboration between theoretical and empirical researchers in the EEB community.",
+    "research_context": [
+      {
+        "Integrating theory with observations is a fundamental driver of progress in life sciences.": "fundamental driver"
+      },
+      {
+        "Mathematical models enable generalization and clarify biological factors.": "enable generalization"
+      },
+      {
+        "Equation-heavy papers are often cited less frequently.": "cited less often"
+      },
+      {
+        "Instructors of quantitative courses often receive worse student evaluations.": "worse student evaluations"
+      },
+      {
+        "Previous calls for quantitative training focused on statistics or programming.": "statistical models"
+      },
+      {
+        "Interactive tools help increase student interest in quantitative concepts.": "interactive tools"
+      },
+      {
+        "There is a need for better pedagogy of theoretical models.": "pedagogy of theoretical models"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to provide a platform for interactive simulations of EEB models.": "interactive simulations"
+      },
+      {
+        "The hypothesis is that interactive apps facilitate communication between theoretical and empirical researchers.": "facilitate communication"
+      },
+      {
+        "The apps are expected to help users gain familiarity with model structure.": "model structure"
+      },
+      {
+        "The package serves as a bridge to coding and implementing theoretical models.": "bridge to help users"
+      },
+      {
+        "The study evaluates the utility of these apps in classroom settings.": "classroom settings"
+      },
+      {
+        "It is predicted that apps will help students understand specific model topics.": "understand the model"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The core of the package consists of 11 interactive Shiny apps.": "11 interactive apps"
+      },
+      {
+        "Models were selected by surveying undergraduate ecology syllabi and textbooks.": "surveying syllabi"
+      },
+      {
+        "Apps include descriptions, parameter tables, and literature references.": "parameter definitions"
+      },
+      {
+        "Nine apps are available in English, Spanish, Chinese, Turkish, and Portuguese.": "English, Spanish, and Chinese"
+      },
+      {
+        "Apps are hosted on RStudio's shinyapps.io servers.": "shinyapps.io servers"
+      },
+      {
+        "The package includes functions with the prefix shiny_ for local deployment.": "prefix shiny_"
+      },
+      {
+        "Simulations are conducted by functions with the prefix run_.": "prefix run_"
+      },
+      {
+        "Plotting functions are prefixed with plot_ and return ggplot2 objects.": "prefixed plot_"
+      },
+      {
+        "A classroom survey was conducted with 51 students at UCLA.": "51 students"
+      },
+      {
+        "The survey used a scale of 1-7 to rate helpfulness.": "scale of 1-7"
+      },
+      {
+        "Similar surveys were conducted at the University of Missouri.": "University of Missouri"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The package is an open-source R package named ecoevoapps.": "open-source R package"
+      },
+      {
+        "The website is hosted at https://ecoevoapps.gitlab.io.": "ecoevoapps.gitlab.io"
+      },
+      {
+        "The predator-prey app includes tabs for Lotka-Volterra and extensions.": "Lotka-Volterra model"
+      },
+      {
+        "Extensions include logistic growth and type II functional response.": "type II functional response"
+      },
+      {
+        "The run_predprey_model() function takes params, init, and time as inputs.": "run_predprey_model()"
+      },
+      {
+        "The function returns a dataframe of population sizes over time.": "dataframe of the population"
+      },
+      {
+        "Users can customize and deploy their own app instances.": "customize and deploy"
+      },
+      {
+        "Model-specific vignettes provide instructions for simulating dynamics in R.": "model-specific vignettes"
+      },
+      {
+        "The package can be installed from GitLab.": "installed from GitLab"
+      },
+      {
+        "The project invites contributions for new apps and translations.": "contribute to the project"
+      }
+    ],
+    "key_results": [
+      {
+        "An overwhelming majority of students (40/51) found the apps helpful.": "40/51"
+      },
+      {
+        "Students rated the apps as moderately to very helpful (6 or 7).": "response of 6 or 7"
+      },
+      {
+        "Students reported better understanding of concepts like carrying capacity.": "carrying capacity"
+      },
+      {
+        "Similar results were found in surveys at the University of Missouri.": "similar results"
+      },
+      {
+        "Using interactive apps led to substantial gains in student confidence.": "substantial gains"
+      },
+      {
+        "Confidence gains were especially high among students with higher interest.": "higher interest"
+      },
+      {
+        "The paradox of enrichment can be visualized by altering carrying capacity.": "paradox of enrichment"
+      },
+      {
+        "Low carrying capacity results in stable oscillations or equilibrium.": "stable oscillations"
+      },
+      {
+        "High carrying capacity results in unstable oscillations.": "unstable oscillations"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "Interactive tools help disentangle complex interactions and feedbacks.": "disentangle complex interactions"
+      },
+      {
+        "The apps bridge the gap between theoretical and empirical researchers.": "bridge to help users"
+      },
+      {
+        "Simulation-based learning provides easier access to theoretical insights.": "easier access"
+      },
+      {
+        "The open-source nature allows for community customization and expansion.": "entirely open-source"
+      },
+      {
+        "The project aims to complement existing educational web resources.": "existing interactive EEB"
+      },
+      {
+        "Future work will prioritize evolutionary biology and population genetics models.": "evolutionary biology"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "Simulation-based learning may not provide all insights of analytical solutions.": "analytical solutions"
+      },
+      {
+        "The current release focuses primarily on ecological models.": "ecological focus"
+      },
+      {
+        "The study relies on self-reported student surveys for efficacy.": "student surveys"
+      },
+      {
+        "The sample size for the primary survey was 51 students.": "51 students"
+      },
+      {
+        "The package is in its first release and expected to grow.": "first release"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Interactive Shiny apps effectively facilitate the understanding of theoretical EEB models in classroom settings.",
+        "supporting_evidence": [
+          {
+            "40 out of 51 students rated the apps as helpful.": "40/51"
+          },
+          {
+            "Students reported improved understanding of specific concepts.": "better understand"
+          },
+          {
+            "Confidence in models increased after using the apps.": "gains in student confidence"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Simulation may not replace analytical solutions entirely.": "analytical solutions"
+          }
+        ],
+        "implications": [
+          {
+            "Educators can use these apps to teach quantitative models.": "teaching mathematical models"
+          },
+          {
+            "The apps lower the barrier to entry for theoretical models.": "easier access"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "The package is available as an open-source R package.": "open-source R package"
+      },
+      {
+        "The website is hosted on GitLab.": "ecoevoapps.gitlab.io"
+      },
+      {
+        "Apps are available on RStudio's shinyapps.io.": "shinyapps.io"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "The package includes functions for simulating and visualizing dynamics.": "simulating and visualizing"
+      },
+      {
+        "Users can customize app instances for specific lessons.": "customize and deploy"
+      }
+    ],
+    "ethical_considerations": [
+      {
+        "Classroom surveys were reviewed by UCLA and MU IRBs.": "Institutional Review Board"
+      },
+      {
+        "The studies were determined to constitute exempt studies.": "constitute \"exempt\" studies"
+      }
+    ],
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the predator-prey dynamics app with model extensions.": "predator-prey dynamics"
+      },
+      {
+        "Figure 2 illustrates the paradox of enrichment with varying K.": "paradox of enrichment"
+      },
+      {
+        "Figure 3 presents survey results on student helpfulness ratings.": "helpful for learning"
+      },
+      {
+        "Table 1 lists the models and functions included in the package.": "Models and functions"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. EcoEvoApps provides interactive Shiny apps for fundamental EEB models.": "interactive apps"
+      },
+      {
+        "2. Classroom surveys show high student satisfaction and improved understanding.": "moderately to very helpful"
+      },
+      {
+        "3. The open-source R package invites community contributions for expansion.": "open-source"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper introduces EcoEvoApps, an open-source R package and website designed to bridge the gap between theoretical and empirical research in Ecology and Evolutionary Biology (EEB). The primary motivation is to address the barrier that mathematical models often present to empiricists, who may find equation-heavy literature intimidating or less accessible. EcoEvoApps provides a collection of 11 interactive Shiny apps that simulate fundamental EEB models, such as predator-prey dynamics, island biogeography, and resource competition. These apps allow users to explore model structures and outcomes by manipulating parameters, thereby fostering a deeper conceptual understanding without requiring extensive coding or analytical skills. The package also includes underlying R functions for simulating and visualizing model dynamics, serving as a gateway for users to transition from interactive exploration to command-line implementation. The authors evaluated the educational utility of these apps in classroom settings at the University of California, Los Angeles (UCLA) and the University of Missouri (MU). Surveys of 51 students at UCLA indicated that an overwhelming majority (40/51) found the apps moderately to very helpful for understanding the models. Similar positive results were observed at MU, with notable gains in student confidence, particularly among those with higher initial interest in the topics. The project is designed to be collaborative and inclusive, with apps available in multiple languages including English, Spanish, Chinese, Turkish, and Portuguese. The authors invite community contributions to expand the model library, add new features, and develop teaching plans. By leveraging the R ecosystem, EcoEvoApps offers a customizable, accessible, and open-source alternative to existing educational resources, aiming to facilitate communication and collaboration between theoretical and empirical researchers in the EEB community.\n\nResearch Context\nIntegrating theory with observations is a fundamental driver of progress in life sciences. Mathematical models enable generalization and clarify biological factors. Equation-heavy papers are often cited less frequently. Instructors of quantitative courses often receive worse student evaluations. Previous calls for quantitative training focused on statistics or programming. Interactive tools help increase student interest in quantitative concepts. There is a need for better pedagogy of theoretical models.\n\nResearch Question And Hypothesis\nThe study aims to provide a platform for interactive simulations of EEB models. The hypothesis is that interactive apps facilitate communication between theoretical and empirical researchers. The apps are expected to help users gain familiarity with model structure. The package serves as a bridge to coding and implementing theoretical models. The study evaluates the utility of these apps in classroom settings. It is predicted that apps will help students understand specific model topics.\n\nMethodological Details\nThe core of the package consists of 11 interactive Shiny apps. Models were selected by surveying undergraduate ecology syllabi and textbooks. Apps include descriptions, parameter tables, and literature references. Nine apps are available in English, Spanish, Chinese, Turkish, and Portuguese. Apps are hosted on RStudio's shinyapps.io servers. The package includes functions with the prefix shiny_ for local deployment. Simulations are conducted by functions with the prefix run_. Plotting functions are prefixed with plot_ and return ggplot2 objects. A classroom survey was conducted with 51 students at UCLA. The survey used a scale of 1-7 to rate helpfulness. Similar surveys were conducted at the University of Missouri.\n\nProcedures And Architectures\nThe package is an open-source R package named ecoevoapps. The website is hosted at https://ecoevoapps.gitlab.io. The predator-prey app includes tabs for Lotka-Volterra and extensions. Extensions include logistic growth and type II functional response. The run_predprey_model() function takes params, init, and time as inputs. The function returns a dataframe of population sizes over time. Users can customize and deploy their own app instances. Model-specific vignettes provide instructions for simulating dynamics in R. The package can be installed from GitLab. The project invites contributions for new apps and translations.\n\nKey Results\nAn overwhelming majority of students (40/51) found the apps helpful. Students rated the apps as moderately to very helpful (6 or 7). Students reported better understanding of concepts like carrying capacity. Similar results were found in surveys at the University of Missouri. Using interactive apps led to substantial gains in student confidence. Confidence gains were especially high among students with higher interest. The paradox of enrichment can be visualized by altering carrying capacity. Low carrying capacity results in stable oscillations or equilibrium. High carrying capacity results in unstable oscillations.\n\nInterpretation And Theoretical Implications\nInteractive tools help disentangle complex interactions and feedbacks. The apps bridge the gap between theoretical and empirical researchers. Simulation-based learning provides easier access to theoretical insights. The open-source nature allows for community customization and expansion. The project aims to complement existing educational web resources. Future work will prioritize evolutionary biology and population genetics models.\n\nContradictions And Limitations\nSimulation-based learning may not provide all insights of analytical solutions. The current release focuses primarily on ecological models. The study relies on self-reported student surveys for efficacy. The sample size for the primary survey was 51 students. The package is in its first release and expected to grow.\n\nClaims\nInteractive Shiny apps effectively facilitate the understanding of theoretical EEB models in classroom settings. 40 out of 51 students rated the apps as helpful. Students reported improved understanding of specific concepts. Confidence in models increased after using the apps. Simulation may not replace analytical solutions entirely. Educators can use these apps to teach quantitative models. The apps lower the barrier to entry for theoretical models.\n\nData And Code Availability\nThe package is available as an open-source R package. The website is hosted on GitLab. Apps are available on RStudio's shinyapps.io.\n\nRobustness And Ablation Notes\nThe package includes functions for simulating and visualizing dynamics. Users can customize app instances for specific lessons.\n\nEthical Considerations\nClassroom surveys were reviewed by UCLA and MU IRBs. The studies were determined to constitute exempt studies.\n\nKey Figures Tables\nFigure 1 shows the predator-prey dynamics app with model extensions. Figure 2 illustrates the paradox of enrichment with varying K. Figure 3 presents survey results on student helpfulness ratings. Table 1 lists the models and functions included in the package.\n\nThree Takeaways\n1. EcoEvoApps provides interactive Shiny apps for fundamental EEB models. 2. Classroom surveys show high student satisfaction and improved understanding. 3. The open-source R package invites community contributions for expansion.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "fundamental driver",
+      "start": 1254,
+      "end": 1272,
+      "typographic_alignment": false,
+      "original_quote": "fundamental driver"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "enable generalization",
+      "start": 1542,
+      "end": 1563,
+      "typographic_alignment": false,
+      "original_quote": "enable generalization"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "cited less often",
+      "start": 2581,
+      "end": 2597,
+      "typographic_alignment": false,
+      "original_quote": "cited less often"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "worse student evaluations",
+      "start": 2685,
+      "end": 2710,
+      "typographic_alignment": false,
+      "original_quote": "worse student evaluations"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "statistical models",
+      "start": 2992,
+      "end": 3010,
+      "typographic_alignment": false,
+      "original_quote": "statistical models"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "interactive tools",
+      "start": 3331,
+      "end": 3348,
+      "typographic_alignment": false,
+      "original_quote": "interactive tools"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "pedagogy of theoretical models",
+      "start": 3163,
+      "end": 3193,
+      "typographic_alignment": false,
+      "original_quote": "pedagogy of theoretical models"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "interactive simulations",
+      "start": 3589,
+      "end": 3612,
+      "typographic_alignment": false,
+      "original_quote": "interactive simulations"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "facilitate communication",
+      "start": 3653,
+      "end": 3677,
+      "typographic_alignment": false,
+      "original_quote": "facilitate communication"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "model structure",
+      "start": 3391,
+      "end": 3406,
+      "typographic_alignment": false,
+      "original_quote": "model structure"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "bridge to help users",
+      "start": 4061,
+      "end": 4081,
+      "typographic_alignment": false,
+      "original_quote": "bridge to help users"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "classroom settings",
+      "start": 4361,
+      "end": 4379,
+      "typographic_alignment": false,
+      "original_quote": "classroom settings"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "understand the model",
+      "start": 11258,
+      "end": 11278,
+      "typographic_alignment": false,
+      "original_quote": "understand the model"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "11 interactive apps",
+      "start": 4677,
+      "end": 4696,
+      "typographic_alignment": false,
+      "original_quote": "11 interactive apps"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "surveying syllabi",
+      "start": 4872,
+      "end": 4889,
+      "typographic_alignment": false,
+      "original_quote": "surveying syllabi"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "parameter definitions",
+      "start": 5644,
+      "end": 5665,
+      "typographic_alignment": false,
+      "original_quote": "parameter definitions"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "English, Spanish, and Chinese",
+      "start": 5747,
+      "end": 5776,
+      "typographic_alignment": false,
+      "original_quote": "English, Spanish, and Chinese"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "shinyapps.io servers",
+      "start": 6049,
+      "end": 6069,
+      "typographic_alignment": false,
+      "original_quote": "shinyapps.io servers"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "prefix shiny_",
+      "start": 6252,
+      "end": 6265,
+      "typographic_alignment": false,
+      "original_quote": "prefix shiny_"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "prefix run_",
+      "start": 6931,
+      "end": 6942,
+      "typographic_alignment": false,
+      "original_quote": "prefix run_"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "prefixed plot_",
+      "start": 7451,
+      "end": 7465,
+      "typographic_alignment": false,
+      "original_quote": "prefixed plot_"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "51 students",
+      "start": 10661,
+      "end": 10672,
+      "typographic_alignment": false,
+      "original_quote": "51 students"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "scale of 1-7",
+      "start": 11204,
+      "end": 11216,
+      "typographic_alignment": false,
+      "original_quote": "scale of 1-7"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "University of Missouri",
+      "start": 435,
+      "end": 457,
+      "typographic_alignment": false,
+      "original_quote": "University of Missouri"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "open-source R package",
+      "start": 3775,
+      "end": 3796,
+      "typographic_alignment": false,
+      "original_quote": "open-source R package"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "ecoevoapps.gitlab.io",
+      "start": 3831,
+      "end": 3851,
+      "typographic_alignment": false,
+      "original_quote": "ecoevoapps.gitlab.io"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "Lotka-Volterra model",
+      "start": 5390,
+      "end": 5410,
+      "typographic_alignment": false,
+      "original_quote": "Lotka-Volterra model"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "type II functional response",
+      "start": 5501,
+      "end": 5528,
+      "typographic_alignment": false,
+      "original_quote": "type II functional response"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "run_predprey_model()",
+      "start": 7061,
+      "end": 7081,
+      "typographic_alignment": false,
+      "original_quote": "run_predprey_model()"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "dataframe of the population",
+      "start": 7311,
+      "end": 7338,
+      "typographic_alignment": false,
+      "original_quote": "dataframe of the population"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "customize and deploy",
+      "start": 6365,
+      "end": 6385,
+      "typographic_alignment": false,
+      "original_quote": "customize and deploy"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "model-specific vignettes",
+      "start": 6556,
+      "end": 6580,
+      "typographic_alignment": false,
+      "original_quote": "model-specific vignettes"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "installed from GitLab",
+      "start": 8683,
+      "end": 8704,
+      "typographic_alignment": false,
+      "original_quote": "installed from GitLab"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "contribute to the project",
+      "start": 4421,
+      "end": 4446,
+      "typographic_alignment": false,
+      "original_quote": "contribute to the project"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "40/51",
+      "start": 11383,
+      "end": 11388,
+      "typographic_alignment": false,
+      "original_quote": "40/51"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "response of 6 or 7",
+      "start": 11479,
+      "end": 11497,
+      "typographic_alignment": false,
+      "original_quote": "response of 6 or 7"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "carrying capacity",
+      "start": 9249,
+      "end": 9266,
+      "typographic_alignment": false,
+      "original_quote": "carrying capacity"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "similar results",
+      "start": 11880,
+      "end": 11895,
+      "typographic_alignment": false,
+      "original_quote": "similar results"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "substantial gains",
+      "start": 12070,
+      "end": 12087,
+      "typographic_alignment": false,
+      "original_quote": "substantial gains"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "higher interest",
+      "start": 12149,
+      "end": 12164,
+      "typographic_alignment": false,
+      "original_quote": "higher interest"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "paradox of enrichment",
+      "start": 9123,
+      "end": 9144,
+      "typographic_alignment": false,
+      "original_quote": "paradox of enrichment"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "stable oscillations",
+      "start": 9394,
+      "end": 9413,
+      "typographic_alignment": false,
+      "original_quote": "stable oscillations"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "unstable oscillations",
+      "start": 9514,
+      "end": 9535,
+      "typographic_alignment": false,
+      "original_quote": "unstable oscillations"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "disentangle complex interactions",
+      "start": 1722,
+      "end": 1754,
+      "typographic_alignment": false,
+      "original_quote": "disentangle complex interactions"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "bridge to help users",
+      "start": 4061,
+      "end": 4081,
+      "typographic_alignment": false,
+      "original_quote": "bridge to help users"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "easier access",
+      "start": 13162,
+      "end": 13175,
+      "typographic_alignment": false,
+      "original_quote": "easier access"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "entirely open-source",
+      "start": 13666,
+      "end": 13686,
+      "typographic_alignment": false,
+      "original_quote": "entirely open-source"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "existing interactive EEB",
+      "start": 13419,
+      "end": 13443,
+      "typographic_alignment": false,
+      "original_quote": "existing interactive EEB"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "evolutionary biology",
+      "start": 1370,
+      "end": 1390,
+      "typographic_alignment": false,
+      "original_quote": "evolutionary biology"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "analytical solutions",
+      "start": 2438,
+      "end": 2458,
+      "typographic_alignment": false,
+      "original_quote": "analytical solutions"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "ecological focus",
+      "start": 14055,
+      "end": 14071,
+      "typographic_alignment": false,
+      "original_quote": "ecological focus"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "student surveys",
+      "start": 919,
+      "end": 934,
+      "typographic_alignment": false,
+      "original_quote": "student surveys"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "51 students",
+      "start": 10661,
+      "end": 10672,
+      "typographic_alignment": false,
+      "original_quote": "51 students"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "first release",
+      "start": 4841,
+      "end": 4854,
+      "typographic_alignment": false,
+      "original_quote": "first release"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "open-source R package",
+      "start": 3775,
+      "end": 3796,
+      "typographic_alignment": false,
+      "original_quote": "open-source R package"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "ecoevoapps.gitlab.io",
+      "start": 3831,
+      "end": 3851,
+      "typographic_alignment": false,
+      "original_quote": "ecoevoapps.gitlab.io"
+    },
+    {
+      "path": "data_and_code_availability[2]",
+      "quote": "shinyapps.io",
+      "start": 6049,
+      "end": 6061,
+      "typographic_alignment": false,
+      "original_quote": "shinyapps.io"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "simulating and visualizing",
+      "start": 6717,
+      "end": 6743,
+      "typographic_alignment": false,
+      "original_quote": "simulating and visualizing"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "customize and deploy",
+      "start": 6365,
+      "end": 6385,
+      "typographic_alignment": false,
+      "original_quote": "customize and deploy"
+    },
+    {
+      "path": "ethical_considerations[0]",
+      "quote": "Institutional Review Board",
+      "start": 12241,
+      "end": 12267,
+      "typographic_alignment": false,
+      "original_quote": "Institutional Review Board"
+    },
+    {
+      "path": "ethical_considerations[1]",
+      "quote": "constitute \"exempt\" studies",
+      "start": 12321,
+      "end": 12348,
+      "typographic_alignment": false,
+      "original_quote": "constitute \"exempt\" studies"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "predator-prey dynamics",
+      "start": 5322,
+      "end": 5344,
+      "typographic_alignment": false,
+      "original_quote": "predator-prey dynamics"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "paradox of enrichment",
+      "start": 9123,
+      "end": 9144,
+      "typographic_alignment": false,
+      "original_quote": "paradox of enrichment"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "helpful for learning",
+      "start": 11437,
+      "end": 11457,
+      "typographic_alignment": false,
+      "original_quote": "helpful for learning"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Models and functions",
+      "start": 14343,
+      "end": 14363,
+      "typographic_alignment": false,
+      "original_quote": "Models and functions"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "interactive apps",
+      "start": 3900,
+      "end": 3916,
+      "typographic_alignment": false,
+      "original_quote": "interactive apps"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "moderately to very helpful",
+      "start": 11418,
+      "end": 11444,
+      "typographic_alignment": false,
+      "original_quote": "moderately to very helpful"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "open-source",
+      "start": 3775,
+      "end": 3786,
+      "typographic_alignment": false,
+      "original_quote": "open-source"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "40/51",
+      "start": 11383,
+      "end": 11388,
+      "typographic_alignment": false,
+      "original_quote": "40/51"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "better understand",
+      "start": 11548,
+      "end": 11565,
+      "typographic_alignment": false,
+      "original_quote": "better understand"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "gains in student confidence",
+      "start": 12082,
+      "end": 12109,
+      "typographic_alignment": false,
+      "original_quote": "gains in student confidence"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "analytical solutions",
+      "start": 2438,
+      "end": 2458,
+      "typographic_alignment": false,
+      "original_quote": "analytical solutions"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "teaching mathematical models",
+      "start": 10560,
+      "end": 10588,
+      "typographic_alignment": false,
+      "original_quote": "teaching mathematical models"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "easier access",
+      "start": 13162,
+      "end": 13175,
+      "typographic_alignment": false,
+      "original_quote": "easier access"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"EcoEvoApps: Interactive Apps for Theoretical Models in Ecology and Evolutionary Biology\",\n  \"authors\": \"Rosa M Mcguire, Kenji T Hayashi, Xinyi Yan, Marcel Caritá Vaz, Damla Cino Glu, Madeline C Cowen, Alejandra Martínez-Blancas, Lauren L Sullivan, Sheila Vazquez-Morales, Gaurav S Kandlikar\",\n  \"field_subfield\": \"Ecology and Evolutionary Biology (EEB) / Educational Technology\",\n  \"type_of_paper\": \"Software/Methodology Paper\",\n  \"executive_summary\": \"This paper introduces EcoEvoApps, an open-source R package and website designed to bridge the gap between theoretical and empirical research in Ecology and Evolutionary Biology (EEB). The primary motivation is to address the barrier that mathematical models often present to empiricists, who may find equation-heavy literature intimidating or less accessible. EcoEvoApps provides a collection of 11 interactive Shiny apps that simulate fundamental EEB models, such as predator-prey dynamics, island biogeography, and resource competition. These apps allow users to explore model structures and outcomes by manipulating parameters, thereby fostering a deeper conceptual understanding without requiring extensive coding or analytical skills. The package also includes underlying R functions for simulating and visualizing model dynamics, serving as a gateway for users to transition from interactive exploration to command-line implementation. The authors evaluated the educational utility of these apps in classroom settings at the University of California, Los Angeles (UCLA) and the University of Missouri (MU). Surveys of 51 students at UCLA indicated that an overwhelming majority (40/51) found the apps moderately to very helpful for understanding the models. Similar positive results were observed at MU, with notable gains in student confidence, particularly among those with higher initial interest in the topics. The project is designed to be collaborative and inclusive, with apps available in multiple languages including English, Spanish, Chinese, Turkish, and Portuguese. The authors invite community contributions to expand the model library, add new features, and develop teaching plans. By leveraging the R ecosystem, EcoEvoApps offers a customizable, accessible, and open-source alternative to existing educational resources, aiming to facilitate communication and collaboration between theoretical and empirical researchers in the EEB community.\",\n  \"research_context\": [\n    { \"Integrating theory with observations is a fundamental driver of progress in life sciences.\": \"fundamental driver\" },\n    { \"Mathematical models enable generalization and clarify biological factors.\": \"enable generalization\" },\n    { \"Equation-heavy papers are often cited less frequently.\": \"cited less often\" },\n    { \"Instructors of quantitative courses often receive worse student evaluations.\": \"worse student evaluations\" },\n    { \"Previous calls for quantitative training focused on statistics or programming.\": \"statistical models\" },\n    { \"Interactive tools help increase student interest in quantitative concepts.\": \"interactive tools\" },\n    { \"There is a need for better pedagogy of theoretical models.\": \"pedagogy of theoretical models\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to provide a platform for interactive simulations of EEB models.\": \"interactive simulations\" },\n    { \"The hypothesis is that interactive apps facilitate communication between theoretical and empirical researchers.\": \"facilitate communication\" },\n    { \"The apps are expected to help users gain familiarity with model structure.\": \"model structure\" },\n    { \"The package serves as a bridge to coding and implementing theoretical models.\": \"bridge to help users\" },\n    { \"The study evaluates the utility of these apps in classroom settings.\": \"classroom settings\" },\n    { \"It is predicted that apps will help students understand specific model topics.\": \"understand the model\" }\n  ],\n  \"methodological_details\": [\n    { \"The core of the package consists of 11 interactive Shiny apps.\": \"11 interactive apps\" },\n    { \"Models were selected by surveying undergraduate ecology syllabi and textbooks.\": \"surveying syllabi\" },\n    { \"Apps include descriptions, parameter tables, and literature references.\": \"parameter definitions\" },\n    { \"Nine apps are available in English, Spanish, Chinese, Turkish, and Portuguese.\": \"English, Spanish, and Chinese\" },\n    { \"Apps are hosted on RStudio's shinyapps.io servers.\": \"shinyapps.io servers\" },\n    { \"The package includes functions with the prefix shiny_ for local deployment.\": \"prefix shiny_\" },\n    { \"Simulations are conducted by functions with the prefix run_.\": \"prefix run_\" },\n    { \"Plotting functions are prefixed with plot_ and return ggplot2 objects.\": \"prefix plot_\" },\n    { \"A classroom survey was conducted with 51 students at UCLA.\": \"51 students\" },\n    { \"The survey used a scale of 1-7 to rate helpfulness.\": \"scale of 1-7\" },\n    { \"Similar surveys were conducted at the University of Missouri.\": \"University of Missouri\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The package is an open-source R package named ecoevoapps.\": \"open-source R package\" },\n    { \"The website is hosted at https://ecoevoapps.gitlab.io.\": \"ecoevoapps.gitlab.io\" },\n    { \"The predator-prey app includes tabs for Lotka-Volterra and extensions.\": \"Lotka-Volterra model\" },\n    { \"Extensions include logistic growth and type II functional response.\": \"type II functional response\" },\n    { \"The run_predprey_model() function takes params, init, and time as inputs.\": \"run_predprey_model()\" },\n    { \"The function returns a dataframe of population sizes over time.\": \"dataframe of the population\" },\n    { \"Users can customize and deploy their own app instances.\": \"customize and deploy\" },\n    { \"Model-specific vignettes provide instructions for simulating dynamics in R.\": \"model-specific vignettes\" },\n    { \"The package can be installed from GitLab.\": \"installed from GitLab\" },\n    { \"The project invites contributions for new apps and translations.\": \"contribute to the project\" }\n  ],\n  \"key_results\": [\n    { \"An overwhelming majority of students (40/51) found the apps helpful.\": \"40/51\" },\n    { \"Students rated the apps as moderately to very helpful (6 or 7).\": \"response of 6 or 7\" },\n    { \"Students reported better understanding of concepts like carrying capacity.\": \"carrying capacity\" },\n    { \"Similar results were found in surveys at the University of Missouri.\": \"similar results\" },\n    { \"Using interactive apps led to substantial gains in student confidence.\": \"substantial gains\" },\n    { \"Confidence gains were especially high among students with higher interest.\": \"higher interest\" },\n    { \"The paradox of enrichment can be visualized by altering carrying capacity.\": \"paradox of enrichment\" },\n    { \"Low carrying capacity results in stable oscillations or equilibrium.\": \"stable oscillations\" },\n    { \"High carrying capacity results in unstable oscillations.\": \"unstable oscillations\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"Interactive tools help disentangle complex interactions and feedbacks.\": \"disentangle complex interactions\" },\n    { \"The apps bridge the gap between theoretical and empirical researchers.\": \"bridge to help users\" },\n    { \"Simulation-based learning provides easier access to theoretical insights.\": \"easier access\" },\n    { \"The open-source nature allows for community customization and expansion.\": \"entirely open-source\" },\n    { \"The project aims to complement existing educational web resources.\": \"existing interactive EEB\" },\n    { \"Future work will prioritize evolutionary biology and population genetics models.\": \"evolutionary biology\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"Simulation-based learning may not provide all insights of analytical solutions.\": \"analytical solutions\" },\n    { \"The current release focuses primarily on ecological models.\": \"ecological focus\" },\n    { \"The study relies on self-reported student surveys for efficacy.\": \"student surveys\" },\n    { \"The sample size for the primary survey was 51 students.\": \"51 students\" },\n    { \"The package is in its first release and expected to grow.\": \"first release\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Interactive Shiny apps effectively facilitate the understanding of theoretical EEB models in classroom settings.\",\n      \"supporting_evidence\": [\n        { \"40 out of 51 students rated the apps as helpful.\": \"40/51\" },\n        { \"Students reported improved understanding of specific concepts.\": \"better understand\" },\n        { \"Confidence in models increased after using the apps.\": \"gains in student confidence\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Simulation may not replace analytical solutions entirely.\": \"analytical solutions\" }\n      ],\n      \"implications\": [\n        { \"Educators can use these apps to teach quantitative models.\": \"teaching mathematical models\" },\n        { \"The apps lower the barrier to entry for theoretical models.\": \"easier access\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"The package is available as an open-source R package.\": \"open-source R package\" },\n    { \"The website is hosted on GitLab.\": \"ecoevoapps.gitlab.io\" },\n    { \"Apps are available on RStudio's shinyapps.io.\": \"shinyapps.io\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"The package includes functions for simulating and visualizing dynamics.\": \"simulating and visualizing\" },\n    { \"Users can customize app instances for specific lessons.\": \"customize and deploy\" }\n  ],\n  \"ethical_considerations\": [\n    { \"Classroom surveys were reviewed by UCLA and MU IRBs.\": \"Institutional Review Board\" },\n    { \"The studies were determined to constitute exempt studies.\": \"exempt studies\" }\n  ],\n  \"key_figures_tables\": [\n    { \"Figure 1 shows the predator-prey dynamics app with model extensions.\": \"predator-prey dynamics\" },\n    { \"Figure 2 illustrates the paradox of enrichment with varying K.\": \"paradox of enrichment\" },\n    { \"Figure 3 presents survey results on student helpfulness ratings.\": \"helpful for learning\" },\n    { \"Table 1 lists the models and functions included in the package.\": \"Models and functions\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. EcoEvoApps provides interactive Shiny apps for fundamental EEB models.\": \"interactive apps\" },\n    { \"2. Classroom surveys show high student satisfaction and improved understanding.\": \"moderately to very helpful\" },\n    { \"3. The open-source R package invites community contributions for expansion.\": \"open-source\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5252,
+        "total_tokens": 7737,
+        "completion_tokens": 2485,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5252,
+      "elapsed_seconds": 227.2517572492361,
+      "max_tokens": 16000,
+      "seed": 933866855,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "9492e1d4044469c0e8cb387165eaacd04e2c6164db56c46223001b613bd41415",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: prefix plot_",
+        "ethical_considerations": "evidence quote is not present in fulltext: exempt studies"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The core of the package consists of 11 interactive Shiny apps.\": \"11 interactive apps\"\n    },\n    {\n      \"Models were selected by surveying undergraduate ecology syllabi and textbooks.\": \"surveying syllabi\"\n    },\n    {\n      \"Apps include descriptions, parameter tables, and literature references.\": \"parameter definitions\"\n    },\n    {\n      \"Nine apps are available in English, Spanish, Chinese, Turkish, and Portuguese.\": \"English, Spanish, and Chinese\"\n    },\n    {\n      \"Apps are hosted on RStudio's shinyapps.io servers.\": \"shinyapps.io servers\"\n    },\n    {\n      \"The package includes functions with the prefix shiny_ for local deployment.\": \"prefix shiny_\"\n    },\n    {\n      \"Simulations are conducted by functions with the prefix run_.\": \"prefix run_\"\n    },\n    {\n      \"Plotting functions are prefixed with plot_ and return ggplot2 objects.\": \"prefixed plot_\"\n    },\n    {\n      \"A classroom survey was conducted with 51 students at UCLA.\": \"51 students\"\n    },\n    {\n      \"The survey used a scale of 1-7 to rate helpfulness.\": \"scale of 1-7\"\n    },\n    {\n      \"Similar surveys were conducted at the University of Missouri.\": \"University of Missouri\"\n    }\n  ],\n  \"ethical_considerations\": [\n    {\n      \"Classroom surveys were reviewed by UCLA and MU IRBs.\": \"Institutional Review Board\"\n    },\n    {\n      \"The studies were determined to constitute exempt studies.\": \"constitute \\\"exempt\\\" studies\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 3793,
+        "total_tokens": 4194,
+        "completion_tokens": 401,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 3793,
+      "elapsed_seconds": 34.618716821074486,
+      "max_tokens": 4096,
+      "seed": 933866856,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "c93034ea998a9564e3a05a99813bbbde8009d7a5290008b8c3af101dbd5d798d",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "ethical_considerations"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 5252,
+  "elapsed_seconds": 261.93117409944534,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

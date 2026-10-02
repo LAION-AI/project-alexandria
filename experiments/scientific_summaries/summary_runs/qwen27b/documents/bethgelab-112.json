@@ -1,0 +1,1260 @@
+{
+  "document_id": "bethgelab-112",
+  "fulltext_sha256": "fd503644a165f9bc44ed1d8e0b01741c9a7a31567f0ed9ff46878c83c3d718d7",
+  "summary": {
+    "title": "Learning design rules for selective oxidation catalysts from highthroughput experimentation and artificial intelligence",
+    "authors": "Lucas Foppa, Christopher Sutton, Luca M Ghiringhelli, Sandip De, Patricia Löser, Stephan A Schunk, Ansgar Schäfer, Matthias Scheffler",
+    "field_subfield": "Catalysis, Materials Science, Artificial Intelligence",
+    "type_of_paper": "Research Article",
+    "executive_summary": "The design of heterogeneous catalysts is hindered by the complexity of materials and the scarcity of high-performing candidates within the vast space of possible compositions. This study demonstrates the application of subgroup-discovery (SGD) artificial intelligence to a hybrid dataset combining high-throughput experimentation (HTE) and density-functional-theory (DFT) calculations to identify design rules for selective oxidation catalysts. The researchers synthesized and tested 120 SiO2-supported catalysts containing ruthenium, tungsten, and phosphorus in the catalytic oxidation of propylene. Using the yield of value-added oxygenates (acrolein and acrylic acid) as the target, the SGD approach identified specific constraints on key physicochemical parameters that exclusively describe materials with outstanding performance. The identified rules constrain the reaction temperature to 280–300°C, the phosphorus content to >0.55, and the composition-weighted electronegativity to 3.910–4.002 eV. These rules not only rationalize the local reactivity patterns associated with exceptional performance but also guide the design of more complex catalysts. By applying these rules, the authors designed four- and five-component catalysts containing additional elements such as tellurium and tantalum. Experimental validation showed that these new materials achieved oxygenate yields up to 60.19% and 59.60%, respectively, which are significantly higher than the maximum yield of 26.85% observed in the three-component training set. The study highlights that while the temperature rule was not directly transferable to the more complex materials, the composition-dependent rules successfully predicted high-performing candidates, demonstrating the potential of SGD for rational catalyst design in complex materials spaces.",
+    "research_context": [
+      {
+        "Heterogeneous catalysis is governed by an intricate interplay of multiple processes.": "intricate interplay"
+      },
+      {
+        "The explicit atomistic modelling of the full catalytic progression by first-principles methods is impractical.": "first-principles methods"
+      },
+      {
+        "High-throughput experimentation (HTE) is used to test large amounts of materials.": "high-throughput experimentation"
+      },
+      {
+        "Utilizing the information obtained by the experiments to decide on the next promising materials is not straightforward.": "not straightforward"
+      },
+      {
+        "The number of good catalysts is very small compared to the number of possible materials.": "very small"
+      },
+      {
+        "Detailed characterization of each material in large libraries is typically not feasible.": "not feasible"
+      },
+      {
+        "Distinct catalytic mechanisms might operate depending on the materials and reaction conditions.": "distinct catalytic mechanisms"
+      },
+      {
+        "Global models trained to describe all materials simultaneously may not allow focused modelling.": "global models"
+      },
+      {
+        "Alternative approaches for catalyst design are therefore required.": "Alternative approaches"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to identify key physicochemical descriptive parameters and constraints on their values.": "key physicochemical"
+      },
+      {
+        "These rules are particularly associated with high performance in selective oxidation.": "high performance"
+      },
+      {
+        "The reactivity measured by HTE is used as the target in the SGD analysis.": "HTE"
+      },
+      {
+        "Temperature and composition-dependent physicochemical properties evaluated with DFT are used as candidate parameters.": "DFT calculations"
+      },
+      {
+        "The hypothesis is that SGD can identify local behavior reflecting specific underlying processes.": "local behavior"
+      },
+      {
+        "The approach circumvents the need for explicit modelling of the full catalytic progression.": "explicit modelling"
+      },
+      {
+        "Candidate descriptive materials parameters can be calculated by first-principles methods.": "first-principles methods"
+      },
+      {
+        "The resulting SG rules can identify promising catalyst candidates not yet synthesized.": "promising catalyst candidates"
+      },
+      {
+        "The goal is to describe materials and conditions giving high yields of oxygenates.": "high yields"
+      }
+    ],
+    "methodological_details": [
+      {
+        "120 different three-component catalyst compositions containing ruthenium, tungsten, and phosphorus were synthesized.": "120 different"
+      },
+      {
+        "The catalysts were supported on SiO2 pseudo-liquid support.": "SiO2 pseudo-liquid"
+      },
+      {
+        "Reactions were carried out in tubular, fixed-bed reactors.": "fixed-bed reactors"
+      },
+      {
+        "The reaction feed included Ar, H2O, N2, O2, and propylene.": "propylene"
+      },
+      {
+        "Molar rates were 4.015, 4.015, 104.40, 20.08, and 1.57 mmol/h respectively.": "1.57 mmol/h"
+      },
+      {
+        "The same mass of catalyst was used in all reactions.": "same mass"
+      },
+      {
+        "Contact time was kept fixed across experiments.": "kept fixed"
+      },
+      {
+        "Reaction temperatures between 200ºC and 400ºC were examined.": "200ºC and 400ºC"
+      },
+      {
+        "The target variable was the yield of oxygenates (acrolein and acrylic acid).": "yield of oxygenates"
+      },
+      {
+        "Eleven descriptive parameters were used in the SGD analysis.": "11 descriptive parameters"
+      },
+      {
+        "Properties were calculated for isolated atoms using DFT-PBEsol and FHI-aims code.": "DFT-PBEsol"
+      },
+      {
+        "Per-element free-atom properties were converted to system-specific properties via composition-weighted average.": "composition-weighted average"
+      },
+      {
+        "Oxygen content was not included in the material's characterization.": "not included"
+      },
+      {
+        "The quality function uses coverage and cumulative Jensen-Shannon divergence.": "Janson-Shannon divergence"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The subgroup-discovery (SGD) artificial-intelligence local approach was applied.": "subgroup-discovery"
+      },
+      {
+        "SGD starts with the generation of a pool of propositions.": "pool of propositions"
+      },
+      {
+        "Propositions are inequalities constraining the values of continuous candidate descriptive parameters.": "inequalities"
+      },
+      {
+        "SGD identifies selectors formed by propositions and the AND connector.": "\"AND\" connector"
+      },
+      {
+        "Selectors result in the selection of subgroups with outstanding target value distributions.": "outstanding distributions"
+      },
+      {
+        "The quality function measures how outstanding specific subselections of data points are.": "quality function"
+      },
+      {
+        "The coverage term controls the subgroup size and prevents small SGs.": "coverage term"
+      },
+      {
+        "The Jensen-Shannon divergence measures dissimilarity between two distributions.": "dissimilarity"
+      },
+      {
+        "The approach identifies a local behavior rather than a global model.": "local behavior"
+      },
+      {
+        "For four-component materials, phosphorus content was fixed to 0.60.": "0.60"
+      },
+      {
+        "Ruthenium molar content was fixed to 0.05 for four-component materials.": "0.05"
+      },
+      {
+        "V_C elements were selected based on octahedral coordination and atomic radius difference.": "octahedral coordination"
+      },
+      {
+        "The maximum atomic radius difference compared to tungsten was 0.10 Å.": "0.10 Å"
+      },
+      {
+        "Considered V_C elements included niobium, tantalum, chromium, molybdenum, tin, antimony, and tellurium.": "tellurium"
+      },
+      {
+        "Lead was also included as it was experimentally tested.": "lead"
+      }
+    ],
+    "key_results": [
+      {
+        "50% of the measured materials and conditions result in less than 2% oxygenates yield.": "less than 2%"
+      },
+      {
+        "Only 41 measurements out of 1220 are associated to yields of oxygenates above 20%.": "41 measurements"
+      },
+      {
+        "The average oxygenates yield over the whole data set is equal to 4.83%.": "4.83%"
+      },
+      {
+        "The maximum oxygenates yield value is 26.85%.": "26.85 %"
+      },
+      {
+        "The selected SG contains only 15 data points, approximately 1.2% of the data set.": "15 data points"
+      },
+      {
+        "The average yield of oxygenates in this SG is equal to 24.15%.": "24.15%"
+      },
+      {
+        "The SG is described by rules: 280 ≤ T ≤ 300ºC, P > 0.55, and 3.910 ≤ VY < 4.002 eV.": "3.910"
+      },
+      {
+        "The highest yield of oxygenates for four-component materials is 60.19% at 400ºC.": "60.19 %"
+      },
+      {
+        "This highest yield contains 0.35 molar fraction of tellurium.": "0.35 molar fraction"
+      },
+      {
+        "The highest yield of oxygenates for five-component materials is 59.60% at 400ºC.": "59.60%"
+      },
+      {
+        "This five-component catalyst contains tantalum as the V^ element.": "tantalum"
+      },
+      {
+        "The composition-averaged electronegativity for this five-component material is 3.947 eV.": "3.947 eV"
+      },
+      {
+        "The four- and five-component yields are up to twice as large as three-component materials.": "twice as large"
+      },
+      {
+        "The SG for four- and five-component data contains 18 data points.": "18 data points"
+      },
+      {
+        "The rules for the new SG constrain T ≥ 360ºC, L_+1 ≤ 1.001 Å, and VH < -1.593 eV.": "360"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The rules reflect the underlying processes particularly associated to high performance.": "underlying processes"
+      },
+      {
+        "High phosphorus content is needed to achieve outstanding performance.": "high phosphorus"
+      },
+      {
+        "This could be related to the dilution of metal active sites.": "dilution"
+      },
+      {
+        "The electronegativity rule effectively limits the range of Ru contents.": "limits the range"
+      },
+      {
+        "Ru is needed for conversion but too much leads to combustion products.": "combustion products"
+      },
+      {
+        "The SG rules are not strongly affected by variations on the data used.": "not strongly affected"
+      },
+      {
+        "The approach detects interpretable, chemically meaningful, and complex patterns.": "chemically meaningful"
+      },
+      {
+        "The identified rules guide the design of more complex catalysts.": "guide the design"
+      },
+      {
+        "The local modelling approach is suitable for search of exceptional materials.": "local modelling"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The atomic structures of all the tested catalysts are not known in detail.": "not known"
+      },
+      {
+        "The oxygen content is not included in the material's characterization.": "not included"
+      },
+      {
+        "The SG rule on reaction temperature is not transferable to four-component materials.": "not transferable"
+      },
+      {
+        "It is unclear if the SG rules can identify exceptional materials for arbitrary Ru content.": "unclear"
+      },
+      {
+        "Different mechanisms may operate on materials with significantly different radii.": "different mechanisms"
+      },
+      {
+        "The analysis was focused on low ruthenium contents.": "low ruthenium"
+      },
+      {
+        "The SGD analysis might need new data points for unexplored portions of materials space.": "new data points"
+      }
+    ],
+    "claims": [
+      {
+        "description": "SGD identifies specific physicochemical constraints that predict high catalytic performance in selective oxidation.",
+        "supporting_evidence": [
+          {
+            "The SG rules describe materials with outstanding catalytic performance.": "outstanding catalytic"
+          },
+          {
+            "The rules constrain temperature, phosphorus content, and electronegativity.": "electronegativity"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The temperature rule did not transfer to four-component materials.": "not transferable"
+          }
+        ],
+        "implications": [
+          {
+            "These rules can guide the design of new catalysts.": "guide the design"
+          }
+        ]
+      },
+      {
+        "description": "The derived rules successfully predict high-performing four- and five-component catalysts.",
+        "supporting_evidence": [
+          {
+            "Four-component catalysts achieved yields up to 60.19%.": "60.19 %"
+          },
+          {
+            "Five-component catalysts achieved yields up to 59.60%.": "59.60%"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The highest yields for complex materials occurred at higher temperatures.": "higher temperatures"
+          }
+        ],
+        "implications": [
+          {
+            "The approach generalizes to more complex materials.": "generalizable rules"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "Further calculation details and values for elemental properties are available in the ESI.": "electronic supporting information"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "Similar SG rules are obtained when training with randomly-selected 90% of data points.": "90% of the data"
+      },
+      {
+        "Rules are similar when data points with yield lower than 3% are excluded.": "lower than 3%"
+      },
+      {
+        "The ranges of variation for thresholds are similar to the main results.": "similar to the thresholds"
+      },
+      {
+        "The SG rules are not strongly affected by variations on the data.": "not strongly affected"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 illustrates the SGD approach and the selective oxidation reaction.": "Fig. 1A"
+      },
+      {
+        "Figure 2 shows the distribution of yield and the SG rules for three-component catalysts.": "Fig. 2C"
+      },
+      {
+        "Figure 3 shows the ternary diagram of Ru content.": "Fig. 3B"
+      },
+      {
+        "Figure 4 shows the catalyst map for four-component materials and experimental results.": "Fig. 4A"
+      },
+      {
+        "Figure 5 shows the SG analysis for four- and five-component materials.": "Fig. 5C"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the application of SGD to HTE and DFT data to find catalyst design rules.": "SGD"
+      },
+      {
+        "2. The strongest evidence is the successful prediction of high-yield four- and five-component catalysts.": "60.19 %"
+      },
+      {
+        "3. The future path involves exploring unexplored portions of the materials space.": "unexplored portions"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThe design of heterogeneous catalysts is hindered by the complexity of materials and the scarcity of high-performing candidates within the vast space of possible compositions. This study demonstrates the application of subgroup-discovery (SGD) artificial intelligence to a hybrid dataset combining high-throughput experimentation (HTE) and density-functional-theory (DFT) calculations to identify design rules for selective oxidation catalysts. The researchers synthesized and tested 120 SiO2-supported catalysts containing ruthenium, tungsten, and phosphorus in the catalytic oxidation of propylene. Using the yield of value-added oxygenates (acrolein and acrylic acid) as the target, the SGD approach identified specific constraints on key physicochemical parameters that exclusively describe materials with outstanding performance. The identified rules constrain the reaction temperature to 280–300°C, the phosphorus content to >0.55, and the composition-weighted electronegativity to 3.910–4.002 eV. These rules not only rationalize the local reactivity patterns associated with exceptional performance but also guide the design of more complex catalysts. By applying these rules, the authors designed four- and five-component catalysts containing additional elements such as tellurium and tantalum. Experimental validation showed that these new materials achieved oxygenate yields up to 60.19% and 59.60%, respectively, which are significantly higher than the maximum yield of 26.85% observed in the three-component training set. The study highlights that while the temperature rule was not directly transferable to the more complex materials, the composition-dependent rules successfully predicted high-performing candidates, demonstrating the potential of SGD for rational catalyst design in complex materials spaces.\n\nResearch Context\nHeterogeneous catalysis is governed by an intricate interplay of multiple processes. The explicit atomistic modelling of the full catalytic progression by first-principles methods is impractical. High-throughput experimentation (HTE) is used to test large amounts of materials. Utilizing the information obtained by the experiments to decide on the next promising materials is not straightforward. The number of good catalysts is very small compared to the number of possible materials. Detailed characterization of each material in large libraries is typically not feasible. Distinct catalytic mechanisms might operate depending on the materials and reaction conditions. Global models trained to describe all materials simultaneously may not allow focused modelling. Alternative approaches for catalyst design are therefore required.\n\nResearch Question And Hypothesis\nThe study aims to identify key physicochemical descriptive parameters and constraints on their values. These rules are particularly associated with high performance in selective oxidation. The reactivity measured by HTE is used as the target in the SGD analysis. Temperature and composition-dependent physicochemical properties evaluated with DFT are used as candidate parameters. The hypothesis is that SGD can identify local behavior reflecting specific underlying processes. The approach circumvents the need for explicit modelling of the full catalytic progression. Candidate descriptive materials parameters can be calculated by first-principles methods. The resulting SG rules can identify promising catalyst candidates not yet synthesized. The goal is to describe materials and conditions giving high yields of oxygenates.\n\nMethodological Details\n120 different three-component catalyst compositions containing ruthenium, tungsten, and phosphorus were synthesized. The catalysts were supported on SiO2 pseudo-liquid support. Reactions were carried out in tubular, fixed-bed reactors. The reaction feed included Ar, H2O, N2, O2, and propylene. Molar rates were 4.015, 4.015, 104.40, 20.08, and 1.57 mmol/h respectively. The same mass of catalyst was used in all reactions. Contact time was kept fixed across experiments. Reaction temperatures between 200ºC and 400ºC were examined. The target variable was the yield of oxygenates (acrolein and acrylic acid). Eleven descriptive parameters were used in the SGD analysis. Properties were calculated for isolated atoms using DFT-PBEsol and FHI-aims code. Per-element free-atom properties were converted to system-specific properties via composition-weighted average. Oxygen content was not included in the material's characterization. The quality function uses coverage and cumulative Jensen-Shannon divergence.\n\nProcedures And Architectures\nThe subgroup-discovery (SGD) artificial-intelligence local approach was applied. SGD starts with the generation of a pool of propositions. Propositions are inequalities constraining the values of continuous candidate descriptive parameters. SGD identifies selectors formed by propositions and the AND connector. Selectors result in the selection of subgroups with outstanding target value distributions. The quality function measures how outstanding specific subselections of data points are. The coverage term controls the subgroup size and prevents small SGs. The Jensen-Shannon divergence measures dissimilarity between two distributions. The approach identifies a local behavior rather than a global model. For four-component materials, phosphorus content was fixed to 0.60. Ruthenium molar content was fixed to 0.05 for four-component materials. V_C elements were selected based on octahedral coordination and atomic radius difference. The maximum atomic radius difference compared to tungsten was 0.10 Å. Considered V_C elements included niobium, tantalum, chromium, molybdenum, tin, antimony, and tellurium. Lead was also included as it was experimentally tested.\n\nKey Results\n50% of the measured materials and conditions result in less than 2% oxygenates yield. Only 41 measurements out of 1220 are associated to yields of oxygenates above 20%. The average oxygenates yield over the whole data set is equal to 4.83%. The maximum oxygenates yield value is 26.85%. The selected SG contains only 15 data points, approximately 1.2% of the data set. The average yield of oxygenates in this SG is equal to 24.15%. The SG is described by rules: 280 ≤ T ≤ 300ºC, P > 0.55, and 3.910 ≤ VY < 4.002 eV. The highest yield of oxygenates for four-component materials is 60.19% at 400ºC. This highest yield contains 0.35 molar fraction of tellurium. The highest yield of oxygenates for five-component materials is 59.60% at 400ºC. This five-component catalyst contains tantalum as the V^ element. The composition-averaged electronegativity for this five-component material is 3.947 eV. The four- and five-component yields are up to twice as large as three-component materials. The SG for four- and five-component data contains 18 data points. The rules for the new SG constrain T ≥ 360ºC, L_+1 ≤ 1.001 Å, and VH < -1.593 eV.\n\nInterpretation And Theoretical Implications\nThe rules reflect the underlying processes particularly associated to high performance. High phosphorus content is needed to achieve outstanding performance. This could be related to the dilution of metal active sites. The electronegativity rule effectively limits the range of Ru contents. Ru is needed for conversion but too much leads to combustion products. The SG rules are not strongly affected by variations on the data used. The approach detects interpretable, chemically meaningful, and complex patterns. The identified rules guide the design of more complex catalysts. The local modelling approach is suitable for search of exceptional materials.\n\nContradictions And Limitations\nThe atomic structures of all the tested catalysts are not known in detail. The oxygen content is not included in the material's characterization. The SG rule on reaction temperature is not transferable to four-component materials. It is unclear if the SG rules can identify exceptional materials for arbitrary Ru content. Different mechanisms may operate on materials with significantly different radii. The analysis was focused on low ruthenium contents. The SGD analysis might need new data points for unexplored portions of materials space.\n\nClaims\nSGD identifies specific physicochemical constraints that predict high catalytic performance in selective oxidation. The SG rules describe materials with outstanding catalytic performance. The rules constrain temperature, phosphorus content, and electronegativity. The temperature rule did not transfer to four-component materials. These rules can guide the design of new catalysts.\nThe derived rules successfully predict high-performing four- and five-component catalysts. Four-component catalysts achieved yields up to 60.19%. Five-component catalysts achieved yields up to 59.60%. The highest yields for complex materials occurred at higher temperatures. The approach generalizes to more complex materials.\n\nData And Code Availability\nFurther calculation details and values for elemental properties are available in the ESI.\n\nRobustness And Ablation Notes\nSimilar SG rules are obtained when training with randomly-selected 90% of data points. Rules are similar when data points with yield lower than 3% are excluded. The ranges of variation for thresholds are similar to the main results. The SG rules are not strongly affected by variations on the data.\n\nKey Figures Tables\nFigure 1 illustrates the SGD approach and the selective oxidation reaction. Figure 2 shows the distribution of yield and the SG rules for three-component catalysts. Figure 3 shows the ternary diagram of Ru content. Figure 4 shows the catalyst map for four-component materials and experimental results. Figure 5 shows the SG analysis for four- and five-component materials.\n\nThree Takeaways\n1. The core contribution is the application of SGD to HTE and DFT data to find catalyst design rules. 2. The strongest evidence is the successful prediction of high-yield four- and five-component catalysts. 3. The future path involves exploring unexplored portions of the materials space.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "intricate interplay",
+      "start": 1838,
+      "end": 1857,
+      "typographic_alignment": false,
+      "original_quote": "intricate interplay"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "first-principles methods",
+      "start": 6034,
+      "end": 6058,
+      "typographic_alignment": false,
+      "original_quote": "first-principles methods"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "high-throughput experimentation",
+      "start": 978,
+      "end": 1009,
+      "typographic_alignment": false,
+      "original_quote": "high-throughput experimentation"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "not straightforward",
+      "start": 2544,
+      "end": 2563,
+      "typographic_alignment": false,
+      "original_quote": "not straightforward"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "very small",
+      "start": 588,
+      "end": 598,
+      "typographic_alignment": false,
+      "original_quote": "very small"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "not feasible",
+      "start": 2864,
+      "end": 2876,
+      "typographic_alignment": false,
+      "original_quote": "not feasible"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "distinct catalytic mechanisms",
+      "start": 3143,
+      "end": 3172,
+      "typographic_alignment": false,
+      "original_quote": "distinct catalytic mechanisms"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "global models",
+      "start": 3432,
+      "end": 3445,
+      "typographic_alignment": false,
+      "original_quote": "global models"
+    },
+    {
+      "path": "research_context[8]",
+      "quote": "Alternative approaches",
+      "start": 3830,
+      "end": 3852,
+      "typographic_alignment": false,
+      "original_quote": "Alternative approaches"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "key physicochemical",
+      "start": 812,
+      "end": 831,
+      "typographic_alignment": false,
+      "original_quote": "key physicochemical"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "high performance",
+      "start": 1656,
+      "end": 1672,
+      "typographic_alignment": false,
+      "original_quote": "high performance"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "HTE",
+      "start": 2378,
+      "end": 2381,
+      "typographic_alignment": false,
+      "original_quote": "HTE"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "DFT calculations",
+      "start": 24329,
+      "end": 24345,
+      "typographic_alignment": false,
+      "original_quote": "DFT calculations"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "local behavior",
+      "start": 5529,
+      "end": 5543,
+      "typographic_alignment": false,
+      "original_quote": "local behavior"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "explicit modelling",
+      "start": 5890,
+      "end": 5908,
+      "typographic_alignment": false,
+      "original_quote": "explicit modelling"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "first-principles methods",
+      "start": 6034,
+      "end": 6058,
+      "typographic_alignment": false,
+      "original_quote": "first-principles methods"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "promising catalyst candidates",
+      "start": 6178,
+      "end": 6207,
+      "typographic_alignment": false,
+      "original_quote": "promising catalyst candidates"
+    },
+    {
+      "path": "research_question_and_hypothesis[8]",
+      "quote": "high yields",
+      "start": 1492,
+      "end": 1503,
+      "typographic_alignment": false,
+      "original_quote": "high yields"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "120 different",
+      "start": 7690,
+      "end": 7703,
+      "typographic_alignment": false,
+      "original_quote": "120 different"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "SiO2 pseudo-liquid",
+      "start": 8619,
+      "end": 8637,
+      "typographic_alignment": false,
+      "original_quote": "SiO2 pseudo-liquid"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "fixed-bed reactors",
+      "start": 8238,
+      "end": 8256,
+      "typographic_alignment": false,
+      "original_quote": "fixed-bed reactors"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "propylene",
+      "start": 1144,
+      "end": 1153,
+      "typographic_alignment": false,
+      "original_quote": "propylene"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "1.57 mmol/h",
+      "start": 8378,
+      "end": 8389,
+      "typographic_alignment": false,
+      "original_quote": "1.57 mmol/h"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "same mass",
+      "start": 8409,
+      "end": 8418,
+      "typographic_alignment": false,
+      "original_quote": "same mass"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "kept fixed",
+      "start": 8538,
+      "end": 8548,
+      "typographic_alignment": false,
+      "original_quote": "kept fixed"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "200ºC and 400ºC",
+      "start": 7882,
+      "end": 7897,
+      "typographic_alignment": false,
+      "original_quote": "200ºC and 400ºC"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "yield of oxygenates",
+      "start": 9957,
+      "end": 9976,
+      "typographic_alignment": false,
+      "original_quote": "yield of oxygenates"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "11 descriptive parameters",
+      "start": 11626,
+      "end": 11651,
+      "typographic_alignment": false,
+      "original_quote": "11 descriptive parameters"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "DFT-PBEsol",
+      "start": 10603,
+      "end": 10613,
+      "typographic_alignment": false,
+      "original_quote": "DFT-PBEsol"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "composition-weighted average",
+      "start": 10979,
+      "end": 11007,
+      "typographic_alignment": false,
+      "original_quote": "composition-weighted average"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "not included",
+      "start": 11394,
+      "end": 11406,
+      "typographic_alignment": false,
+      "original_quote": "not included"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "Janson-Shannon divergence",
+      "start": 11931,
+      "end": 11956,
+      "typographic_alignment": false,
+      "original_quote": "Janson-Shannon divergence"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "subgroup-discovery",
+      "start": 667,
+      "end": 685,
+      "typographic_alignment": false,
+      "original_quote": "subgroup-discovery"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "pool of propositions",
+      "start": 4559,
+      "end": 4579,
+      "typographic_alignment": false,
+      "original_quote": "pool of propositions"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "inequalities",
+      "start": 4739,
+      "end": 4751,
+      "typographic_alignment": false,
+      "original_quote": "inequalities"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "\"AND\" connector",
+      "start": 4875,
+      "end": 4890,
+      "typographic_alignment": false,
+      "original_quote": "\"AND\" connector"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "outstanding distributions",
+      "start": 4990,
+      "end": 5015,
+      "typographic_alignment": false,
+      "original_quote": "outstanding distributions"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "quality function",
+      "start": 5412,
+      "end": 5428,
+      "typographic_alignment": false,
+      "original_quote": "quality function"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "coverage term",
+      "start": 12085,
+      "end": 12098,
+      "typographic_alignment": false,
+      "original_quote": "coverage term"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "dissimilarity",
+      "start": 12439,
+      "end": 12452,
+      "typographic_alignment": false,
+      "original_quote": "dissimilarity"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "local behavior",
+      "start": 5529,
+      "end": 5543,
+      "typographic_alignment": false,
+      "original_quote": "local behavior"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "0.60",
+      "start": 16685,
+      "end": 16689,
+      "typographic_alignment": false,
+      "original_quote": "0.60"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "0.05",
+      "start": 16868,
+      "end": 16872,
+      "typographic_alignment": false,
+      "original_quote": "0.05"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "octahedral coordination",
+      "start": 17498,
+      "end": 17521,
+      "typographic_alignment": false,
+      "original_quote": "octahedral coordination"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "0.10 Å",
+      "start": 17665,
+      "end": 17671,
+      "typographic_alignment": false,
+      "original_quote": "0.10 Å"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "tellurium",
+      "start": 17954,
+      "end": 17963,
+      "typographic_alignment": false,
+      "original_quote": "tellurium"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "lead",
+      "start": 3311,
+      "end": 3315,
+      "typographic_alignment": false,
+      "original_quote": "lead"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "less than 2%",
+      "start": 13584,
+      "end": 13596,
+      "typographic_alignment": false,
+      "original_quote": "less than 2%"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "41 measurements",
+      "start": 13623,
+      "end": 13638,
+      "typographic_alignment": false,
+      "original_quote": "41 measurements"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "4.83%",
+      "start": 13768,
+      "end": 13773,
+      "typographic_alignment": false,
+      "original_quote": "4.83%"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "26.85 %",
+      "start": 13812,
+      "end": 13819,
+      "typographic_alignment": true,
+      "original_quote": "26.85%"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "15 data points",
+      "start": 14183,
+      "end": 14197,
+      "typographic_alignment": false,
+      "original_quote": "15 data points"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "24.15%",
+      "start": 14365,
+      "end": 14371,
+      "typographic_alignment": false,
+      "original_quote": "24.15%"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "3.910",
+      "start": 14532,
+      "end": 14537,
+      "typographic_alignment": false,
+      "original_quote": "3.910"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "60.19 %",
+      "start": 19892,
+      "end": 19899,
+      "typographic_alignment": true,
+      "original_quote": "60.19%"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "0.35 molar fraction",
+      "start": 19919,
+      "end": 19938,
+      "typographic_alignment": false,
+      "original_quote": "0.35 molar fraction"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "59.60%",
+      "start": 21334,
+      "end": 21340,
+      "typographic_alignment": false,
+      "original_quote": "59.60%"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "tantalum",
+      "start": 17903,
+      "end": 17911,
+      "typographic_alignment": false,
+      "original_quote": "tantalum"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "3.947 eV",
+      "start": 20871,
+      "end": 20879,
+      "typographic_alignment": false,
+      "original_quote": "3.947 eV"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "twice as large",
+      "start": 21362,
+      "end": 21376,
+      "typographic_alignment": false,
+      "original_quote": "twice as large"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "18 data points",
+      "start": 22206,
+      "end": 22220,
+      "typographic_alignment": false,
+      "original_quote": "18 data points"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "360",
+      "start": 22566,
+      "end": 22569,
+      "typographic_alignment": false,
+      "original_quote": "360"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "underlying processes",
+      "start": 1608,
+      "end": 1628,
+      "typographic_alignment": false,
+      "original_quote": "underlying processes"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "high phosphorus",
+      "start": 14794,
+      "end": 14809,
+      "typographic_alignment": false,
+      "original_quote": "high phosphorus"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "dilution",
+      "start": 7573,
+      "end": 7581,
+      "typographic_alignment": false,
+      "original_quote": "dilution"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "limits the range",
+      "start": 15085,
+      "end": 15101,
+      "typographic_alignment": false,
+      "original_quote": "limits the range"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "combustion products",
+      "start": 7311,
+      "end": 7330,
+      "typographic_alignment": false,
+      "original_quote": "combustion products"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "not strongly affected",
+      "start": 15959,
+      "end": 15980,
+      "typographic_alignment": false,
+      "original_quote": "not strongly affected"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "chemically meaningful",
+      "start": 16139,
+      "end": 16160,
+      "typographic_alignment": false,
+      "original_quote": "chemically meaningful"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "guide the design",
+      "start": 1682,
+      "end": 1698,
+      "typographic_alignment": false,
+      "original_quote": "guide the design"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[8]",
+      "quote": "local modelling",
+      "start": 25290,
+      "end": 25305,
+      "typographic_alignment": false,
+      "original_quote": "local modelling"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "not known",
+      "start": 8763,
+      "end": 8772,
+      "typographic_alignment": false,
+      "original_quote": "not known"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "not included",
+      "start": 11394,
+      "end": 11406,
+      "typographic_alignment": false,
+      "original_quote": "not included"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "not transferable",
+      "start": 21874,
+      "end": 21890,
+      "typographic_alignment": false,
+      "original_quote": "not transferable"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "unclear",
+      "start": 23574,
+      "end": 23581,
+      "typographic_alignment": false,
+      "original_quote": "unclear"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "different mechanisms",
+      "start": 23812,
+      "end": 23832,
+      "typographic_alignment": false,
+      "original_quote": "different mechanisms"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "low ruthenium",
+      "start": 16902,
+      "end": 16915,
+      "typographic_alignment": false,
+      "original_quote": "low ruthenium"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "new data points",
+      "start": 23979,
+      "end": 23994,
+      "typographic_alignment": false,
+      "original_quote": "new data points"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "electronic supporting information",
+      "start": 10745,
+      "end": 10778,
+      "typographic_alignment": false,
+      "original_quote": "electronic supporting information"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "90% of the data",
+      "start": 15412,
+      "end": 15427,
+      "typographic_alignment": false,
+      "original_quote": "90% of the data"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "lower than 3%",
+      "start": 15526,
+      "end": 15539,
+      "typographic_alignment": false,
+      "original_quote": "lower than 3%"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "similar to the thresholds",
+      "start": 15869,
+      "end": 15894,
+      "typographic_alignment": false,
+      "original_quote": "similar to the thresholds"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "not strongly affected",
+      "start": 15959,
+      "end": 15980,
+      "typographic_alignment": false,
+      "original_quote": "not strongly affected"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Fig. 1A",
+      "start": 5073,
+      "end": 5080,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 1A"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Fig. 2C",
+      "start": 14555,
+      "end": 14562,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 2C"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Fig. 3B",
+      "start": 15153,
+      "end": 15160,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 3B"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Fig. 4A",
+      "start": 18584,
+      "end": 18591,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 4A"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Fig. 5C",
+      "start": 22509,
+      "end": 22516,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 5C"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "SGD",
+      "start": 687,
+      "end": 690,
+      "typographic_alignment": false,
+      "original_quote": "SGD"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "60.19 %",
+      "start": 19892,
+      "end": 19899,
+      "typographic_alignment": true,
+      "original_quote": "60.19%"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "unexplored portions",
+      "start": 24016,
+      "end": 24035,
+      "typographic_alignment": false,
+      "original_quote": "unexplored portions"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "outstanding catalytic",
+      "start": 934,
+      "end": 955,
+      "typographic_alignment": false,
+      "original_quote": "outstanding catalytic"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "electronegativity",
+      "start": 1430,
+      "end": 1447,
+      "typographic_alignment": false,
+      "original_quote": "electronegativity"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "not transferable",
+      "start": 21874,
+      "end": 21890,
+      "typographic_alignment": false,
+      "original_quote": "not transferable"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "guide the design",
+      "start": 1682,
+      "end": 1698,
+      "typographic_alignment": false,
+      "original_quote": "guide the design"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "60.19 %",
+      "start": 19892,
+      "end": 19899,
+      "typographic_alignment": true,
+      "original_quote": "60.19%"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "59.60%",
+      "start": 21334,
+      "end": 21340,
+      "typographic_alignment": false,
+      "original_quote": "59.60%"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "higher temperatures",
+      "start": 21674,
+      "end": 21693,
+      "typographic_alignment": false,
+      "original_quote": "higher temperatures"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "generalizable rules",
+      "start": 21029,
+      "end": 21048,
+      "typographic_alignment": false,
+      "original_quote": "generalizable rules"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"metadata\": {\n\"title\": \"Learning design rules for selective oxidation catalysts from highthroughput experimentation and artificial intelligence\",\n\"authors\": \"Lucas Foppa, Christopher Sutton, Luca M Ghiringhelli, Sandip De, Patricia Löser, Stephan A Schunk, Ansgar Schäfer, Matthias Scheffler\",\n\"field_subfield\": \"Catalysis / Machine Learning\",\n\"type_of_paper\": \"Research Article\"\n},\n\"executive_summary\": \"The design of heterogeneous catalysts is hindered by the vastness of the materials space and the rarity of high-performing candidates. This study introduces a subgroup-discovery (SGD) artificial intelligence approach to identify specific physicochemical constraints that define exceptional catalytic performance in the selective oxidation of propylene. The authors synthesized and tested 120 SiO2-supported catalysts containing ruthenium, tungsten, and phosphorus using high-throughput experimentation (HTE). By combining experimental yield data with density-functional-theory (DFT) calculated free-atom properties, the SGD algorithm identified three key parameters: temperature, phosphorus content, and composition-weighted electronegativity. These parameters formed rules that exclusively described materials and conditions yielding high amounts of acrolein and acrylic acid. The identified subgroup contained only 1.2% of the data points but exhibited an average yield five times higher than the dataset average. Crucially, these rules were used to guide the design of more complex four- and five-component catalysts. Experimental validation showed that the SG rules correctly predicted high-performing compositions, with the best five-component catalyst achieving an oxygenate yield of 59.60%, more than double the maximum yield of the training set. This demonstrates that local modeling via SGD can uncover interpretable, chemically meaningful patterns that global models miss, enabling the rational design of novel, high-performance catalysts beyond the initial training space.\",\n\"research_context\": [\n{ \"Heterogeneous catalysis design is challenging due to complex surface reaction networks and dynamic restructuring.\": \"intricate interplay of multiple processes\" },\n{ \"Explicit atomistic modeling of full catalytic progression by first-principles methods is impractical.\": \"firstprinciples methods is impractical\" },\n{ \"High-throughput experimentation (HTE) allows testing large amounts of materials but lacks straightforward guidance for next steps.\": \"high-throughput experimentation (HTE)\" },\n{ \"The number of good catalysts is very small compared to possible materials, making direct approaches unlikely.\": \"number of good catalysts\" },\n{ \"Global models minimize average prediction error but fail to focus on the most interesting high-performance materials.\": \"minimizing the expected average prediction error\" },\n{ \"Alternative approaches are required to identify novel catalysts from unbalanced high- and low-performance data distributions.\": \"unbalanced distribution between high-and lowperformance\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"The study aims to identify key physicochemical descriptive parameters and constraints associated with high catalytic performance.\": \"identify key physicochemical descriptive parameters\" },\n{ \"The hypothesis is that subgroup-discovery (SGD) can find local rules describing exceptional behavior better than global models.\": \"subgroup-discovery (SGD) artificialintelligence local approach\" },\n{ \"The target variable is the yield of value-added oxygenate products, specifically acrolein and acrylic acid.\": \"yield of oxygenates\" },\n{ \"Candidate descriptive parameters include temperature and composition-dependent properties derived from DFT free-atom calculations.\": \"density-functional-theory (DFT) calculations\" },\n{ \"The approach seeks to circumvent the need for explicit modeling of the full catalytic progression.\": \"circumvent the need for the explicit modelling\" },\n{ \"The identified rules are expected to guide the design of more complex catalysts containing additional elements.\": \"guide the design of more complex catalysts\" }\n],\n\"methodological_details\": [\n{ \"120 different three-component catalyst compositions containing ruthenium, tungsten, and phosphorus were synthesized.\": \"120 different three-component catalyst compositions\" },\n{ \"Catalysts were supported on SiO2 and tested in the catalytic oxidation of propylene.\": \"SiO2-supported catalysts\" },\n{ \"Reactions were performed in tubular, fixed-bed reactors with a specific molar feed rate.\": \"tubular, fixed-bed reactors\" },\n{ \"Reaction temperatures ranged from 200ºC to 400ºC for each catalyst composition.\": \"between 200ºC and 400ºC\" },\n{ \"The feed included Ar, H2O, N2, O2, and propylene with specific molar rates.\": \"Ar, H2O, N2, O2 and propylene\" },\n{ \"The contact time was kept fixed across experiments by using the same catalyst mass.\": \"contact time, in terms of volumetric flow\" },\n{ \"Eleven descriptive parameters were used, including temperature and ten composition-weighted free-atom properties.\": \"11 descriptive parameters\" },\n{ \"Free-atom properties were calculated using DFT-PBEsol and the FHI-aims code.\": \"DFT-PBEsol\" },\n{ \"The target variable was the yield of oxygenates, defined as the sum of acrolein and acrylic acid yields.\": \"yield of oxygenates\" },\n{ \"The dataset contained 1220 measurements in total for the three-component analysis.\": \"out of 1220\" }\n],\n\"procedures_and_architectures\": [\n{ \"The SGD approach generates a pool of propositions, which are inequalities constraining continuous parameters.\": \"propositions (π), statements about the data\" },\n{ \"Selectors are formed by combining propositions with the 'AND' connector to select subgroups.\": \"selectors (σ), i.e., statements formed\" },\n{ \"A quality function measures how outstanding specific subselections of data points are.\": \"maximizing a quality function\" },\n{ \"The quality function includes a coverage term to prevent selection of very small subgroups.\": \"coverage term controls the subgroup size\" },\n{ \"The second term of the quality function is the cumulative Jensen-Shannon divergence.\": \"cumulative Janson-Shannon divergence\" },\n{ \"Jensen-Shannon divergence measures dissimilarity between the subgroup target distribution and the whole dataset distribution.\": \"dissimilarity between two distributions\" },\n{ \"The algorithm identifies local behavior by focusing on exceptional high-performing materials.\": \"identifies a local behavior\" },\n{ \"For four-component design, phosphorus content was fixed to 0.60 and ruthenium to 0.05.\": \"fix the phosphorus content to 0.60\" },\n{ \"Additional elements (V_C) were selected based on octahedral coordination and atomic radius similarity to tungsten.\": \"octahedral coordination patterns\" },\n{ \"Five-component materials were designed by fixing tellurium as V_C and varying V^ elements.\": \"V Ç was fixed as tellurium\" }\n],\n\"key_results\": [\n{ \"50% of the measured materials and conditions resulted in less than 2% oxygenates yield.\": \"less than 2% oxygenates yield\" },\n{ \"Only 41 out of 1220 measurements were associated with yields of oxygenates above 20%.\": \"41 measurements, out of 1220\" },\n{ \"The average oxygenates yield over the whole dataset was 4.83%.\": \"average oxygenates yield over the whole data set is equal to 4.83%\" },\n{ \"The maximum oxygenates yield in the three-component dataset was 26.85%.\": \"maximum $ %&'()*+,)- value is 26.85 %\" },\n{ \"The identified subgroup contained 15 data points, approximately 1.2% of the dataset.\": \"contains only 15 data points\" },\n{ \"The average yield in the subgroup was 24.15%, five times higher than the dataset average.\": \"average yield of oxygenates in this SG is equal to 24.15%\" },\n{ \"Key rules identified were 280 ≤ T ≤ 300ºC, P content > 0.55, and electronegativity 3.910 ≤ VY < 4.002 eV.\": \"280 ≤ I ≤ 300℃\" },\n{ \"The best four-component catalyst achieved an oxygenate yield of 60.19% at 400ºC.\": \"highest yield of oxygenates (60.19 % at 400ºC)\" },\n{ \"The best five-component catalyst achieved an oxygenate yield of 59.60% at 400ºC.\": \"highest yield of oxygenates (59.60 % at 400ºC)\" },\n{ \"The five-component catalyst contained tantalum as the V^ element with an electronegativity of 3.947 eV.\": \"contains tantalum as V ^ element\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"The SG rules reflect underlying processes associated with high performance, such as dilution of metal sites.\": \"dilution of metal active sites\" },\n{ \"High phosphorus content is needed to achieve outstanding performance, likely due to phosphate matrix effects.\": \"relatively high phosphorus content is needed\" },\n{ \"Composition-averaged electronegativity limits the range of ruthenium contents to avoid combustion products.\": \"limits the range of Ru contents\" },\n{ \"The approach demonstrates that local modeling can detect interpretable, chemically meaningful patterns.\": \"interpretable, chemically meaningful, and complex patterns\" },\n{ \"The rules are robust to variations in training data, as shown by cross-validation studies.\": \"not strongly affected by variations on the data\" },\n{ \"The method allows for the design of catalysts with significantly higher performance than the training set.\": \"significantly more performant that any of the observations\" }\n],\n\"contradictions_and_limitations\": [\n{ \"The SG rule on temperature derived from three-component data is not transferable to four-component materials.\": \"not transferable to the four-component ones\" },\n{ \"It is unclear if the rules apply to arbitrary ruthenium contents or elements with different radii.\": \"unclear if the SG rules presented in Fig. 5C\" },\n{ \"Different mechanisms may operate on materials with significantly different atomic radii.\": \"different mechanisms may operate on these materials\" },\n{ \"The atomic structures of the tested catalysts are not known in detail.\": \"atomic structures of all the tested catalysts are not known\" },\n{ \"Oxygen content is not included in material characterization because its proportion is unknown.\": \"oxygen content is not included\" },\n{ \"The study focuses on low ruthenium contents to ensure combustion products are not significant.\": \"focus on such relatively low ruthenium loadings\" }\n],\n\"claims\": [\n{\n\"description\": \"Subgroup discovery identifies specific physicochemical constraints that define exceptional catalytic performance better than global models.\",\n\"supporting_evidence\": [\n{ \"SGD identified rules for temperature, phosphorus content, and electronegativity.\": \"rules on three descriptive parameters\" },\n{ \"The subgroup had an average yield five times higher than the dataset average.\": \"five times higher than the average\" }\n],\n\"contradicting_evidence\": [\n{ \"The temperature rule did not transfer to four-component materials.\": \"not transferable to the four-component ones\" }\n],\n\"implications\": [\n{ \"This approach enables rational design of novel catalysts beyond the training space.\": \"guide the design of more complex catalysts\" }\n]\n},\n{\n\"description\": \"The identified SG rules can guide the design of more complex four- and five-component catalysts with higher performance.\",\n\"supporting_evidence\": [\n{ \"Four-component catalysts achieved yields up to 60.19%.\": \"highest yield of oxygenates (60.19 % at 400ºC)\" },\n{ \"Five-component catalysts achieved yields up to 59.60%.\": \"highest yield of oxygenates (59.60 % at 400ºC)\" },\n{ \"These yields are more than twice the maximum of the training set.\": \"up to twice as large as those obtained\" }\n],\n\"contradicting_evidence\": [\n{ \"The highest yields for complex catalysts occurred at higher temperatures (400ºC) than the training rule (300ºC).\": \"highest yields of oxygenates at higher temperatures\" }\n],\n\"implications\": [\n{ \"The method is suitable for searching exceptional materials where explicit theoretical modeling is difficult.\": \"suitable for the search of exceptional materials\" }\n]\n}\n],\n\"data_and_code_availability\": [\n{ \"Detailed calculation details and values for elemental properties are available in the electronic supporting information.\": \"available in the electronic supporting information\" },\n{ \"Further SGD details, including the description of the approach, are available in ESI.\": \"available in ESI\" }\n],\n\"robustness_and_ablation_notes\": [\n{ \"Similar SG rules were obtained when training with randomly-selected 90% of the data points.\": \"randomly-selected 90% of the data points\" },\n{ \"Rules were consistent when data points with yield lower than 3% were excluded from training.\": \"yield of oxygenates lower than 3%\" },\n{ \"The ranges of variation for minimum and maximum thresholds were similar to the main results.\": \"similar to the thresholds shown in Fig. 2F\" },\n{ \"These results indicate the SG rules are not strongly affected by variations in training data.\": \"not strongly affected by variations on the data\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n{ \"Figure 1 illustrates the SGD approach and the selective oxidation reaction scheme.\": \"Fig. 1A\" },\n{ \"Figure 2 shows the distribution of oxygenates yield and the identified subgroup rules.\": \"Fig. 2A and B\" },\n{ \"Figure 3 presents the ternary diagram limiting ruthenium content based on electronegativity.\": \"ternary diagram of Fig. 3B\" },\n{ \"Figure 4 displays the catalyst map for four-component materials and experimental yields.\": \"Fig. 4A\" },\n{ \"Figure 5 shows the SGD analysis for four- and five-component data with new rules.\": \"Fig. 5A and B\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n{ \"1. The core contribution is the application of subgroup discovery to identify interpretable rules for exceptional catalyst performance.\": \"subgroup-discovery (SGD) artificialintelligence local approach\" },\n{ \"2. The strongest evidence is the successful design of five-component catalysts with yields more than double the training set maximum.\": \"oxygenate yield more than twice as large\" },\n{ \"3. The future path involves applying SGD to unexplored materials spaces with different mechanisms and compositions.\": \"so-far unexplored portions of the materials space\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7700,
+        "total_tokens": 11030,
+        "completion_tokens": 3330,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7700,
+      "elapsed_seconds": 305.379833843559,
+      "max_tokens": 16000,
+      "seed": 1717923523,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "4637c63d3b49727c0cd14b3ba8497b628cac2724369035feb75ac604d3d8d66e",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_error": "Generation lacks exact Schema-v4 keys"
+    },
+    {
+      "response": "{\n  \"title\": \"Learning design rules for selective oxidation catalysts from highthroughput experimentation and artificial intelligence\",\n  \"authors\": \"Lucas Foppa, Christopher Sutton, Luca M Ghiringhelli, Sandip De, Patricia Löser, Stephan A Schunk, Ansgar Schäfer, Matthias Scheffler\",\n  \"field_subfield\": \"Catalysis, Materials Science, Artificial Intelligence\",\n  \"type_of_paper\": \"Research Article\",\n  \"executive_summary\": \"The design of heterogeneous catalysts is hindered by the complexity of materials and the scarcity of high-performing candidates within the vast space of possible compositions. This study demonstrates the application of subgroup-discovery (SGD) artificial intelligence to a hybrid dataset combining high-throughput experimentation (HTE) and density-functional-theory (DFT) calculations to identify design rules for selective oxidation catalysts. The researchers synthesized and tested 120 SiO2-supported catalysts containing ruthenium, tungsten, and phosphorus in the catalytic oxidation of propylene. Using the yield of value-added oxygenates (acrolein and acrylic acid) as the target, the SGD approach identified specific constraints on key physicochemical parameters that exclusively describe materials with outstanding performance. The identified rules constrain the reaction temperature to 280–300°C, the phosphorus content to >0.55, and the composition-weighted electronegativity to 3.910–4.002 eV. These rules not only rationalize the local reactivity patterns associated with exceptional performance but also guide the design of more complex catalysts. By applying these rules, the authors designed four- and five-component catalysts containing additional elements such as tellurium and tantalum. Experimental validation showed that these new materials achieved oxygenate yields up to 60.19% and 59.60%, respectively, which are significantly higher than the maximum yield of 26.85% observed in the three-component training set. The study highlights that while the temperature rule was not directly transferable to the more complex materials, the composition-dependent rules successfully predicted high-performing candidates, demonstrating the potential of SGD for rational catalyst design in complex materials spaces.\",\n  \"research_context\": [\n    { \"Heterogeneous catalysis is governed by an intricate interplay of multiple processes.\": \"intricate interplay\" },\n    { \"The explicit atomistic modelling of the full catalytic progression by first-principles methods is impractical.\": \"first-principles methods\" },\n    { \"High-throughput experimentation (HTE) is used to test large amounts of materials.\": \"high-throughput experimentation\" },\n    { \"Utilizing the information obtained by the experiments to decide on the next promising materials is not straightforward.\": \"not straightforward\" },\n    { \"The number of good catalysts is very small compared to the number of possible materials.\": \"very small\" },\n    { \"Detailed characterization of each material in large libraries is typically not feasible.\": \"not feasible\" },\n    { \"Distinct catalytic mechanisms might operate depending on the materials and reaction conditions.\": \"distinct catalytic mechanisms\" },\n    { \"Global models trained to describe all materials simultaneously may not allow focused modelling.\": \"global models\" },\n    { \"Alternative approaches for catalyst design are therefore required.\": \"Alternative approaches\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to identify key physicochemical descriptive parameters and constraints on their values.\": \"key physicochemical\" },\n    { \"These rules are particularly associated with high performance in selective oxidation.\": \"high performance\" },\n    { \"The reactivity measured by HTE is used as the target in the SGD analysis.\": \"HTE\" },\n    { \"Temperature and composition-dependent physicochemical properties evaluated with DFT are used as candidate parameters.\": \"DFT calculations\" },\n    { \"The hypothesis is that SGD can identify local behavior reflecting specific underlying processes.\": \"local behavior\" },\n    { \"The approach circumvents the need for explicit modelling of the full catalytic progression.\": \"explicit modelling\" },\n    { \"Candidate descriptive materials parameters can be calculated by first-principles methods.\": \"first-principles methods\" },\n    { \"The resulting SG rules can identify promising catalyst candidates not yet synthesized.\": \"promising catalyst candidates\" },\n    { \"The goal is to describe materials and conditions giving high yields of oxygenates.\": \"high yields\" }\n  ],\n  \"methodological_details\": [\n    { \"120 different three-component catalyst compositions containing ruthenium, tungsten, and phosphorus were synthesized.\": \"120 different\" },\n    { \"The catalysts were supported on SiO2 pseudo-liquid support.\": \"SiO2 pseudo-liquid\" },\n    { \"Reactions were carried out in tubular, fixed-bed reactors.\": \"fixed-bed reactors\" },\n    { \"The reaction feed included Ar, H2O, N2, O2, and propylene.\": \"propylene\" },\n    { \"Molar rates were 4.015, 4.015, 104.40, 20.08, and 1.57 mmol/h respectively.\": \"1.57 mmol/h\" },\n    { \"The same mass of catalyst was used in all reactions.\": \"same mass\" },\n    { \"Contact time was kept fixed across experiments.\": \"kept fixed\" },\n    { \"Reaction temperatures between 200ºC and 400ºC were examined.\": \"200ºC and 400ºC\" },\n    { \"The target variable was the yield of oxygenates (acrolein and acrylic acid).\": \"yield of oxygenates\" },\n    { \"Eleven descriptive parameters were used in the SGD analysis.\": \"11 descriptive parameters\" },\n    { \"Properties were calculated for isolated atoms using DFT-PBEsol and FHI-aims code.\": \"DFT-PBEsol\" },\n    { \"Per-element free-atom properties were converted to system-specific properties via composition-weighted average.\": \"composition-weighted average\" },\n    { \"Oxygen content was not included in the material's characterization.\": \"not included\" },\n    { \"The quality function uses coverage and cumulative Jensen-Shannon divergence.\": \"Jensen-Shannon divergence\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The subgroup-discovery (SGD) artificial-intelligence local approach was applied.\": \"subgroup-discovery\" },\n    { \"SGD starts with the generation of a pool of propositions.\": \"pool of propositions\" },\n    { \"Propositions are inequalities constraining the values of continuous candidate descriptive parameters.\": \"inequalities\" },\n    { \"SGD identifies selectors formed by propositions and the AND connector.\": \"AND connector\" },\n    { \"Selectors result in the selection of subgroups with outstanding target value distributions.\": \"outstanding distributions\" },\n    { \"The quality function measures how outstanding specific subselections of data points are.\": \"quality function\" },\n    { \"The coverage term controls the subgroup size and prevents small SGs.\": \"coverage term\" },\n    { \"The Jensen-Shannon divergence measures dissimilarity between two distributions.\": \"dissimilarity\" },\n    { \"The approach identifies a local behavior rather than a global model.\": \"local behavior\" },\n    { \"For four-component materials, phosphorus content was fixed to 0.60.\": \"0.60\" },\n    { \"Ruthenium molar content was fixed to 0.05 for four-component materials.\": \"0.05\" },\n    { \"V_C elements were selected based on octahedral coordination and atomic radius difference.\": \"octahedral coordination\" },\n    { \"The maximum atomic radius difference compared to tungsten was 0.10 Å.\": \"0.10 Å\" },\n    { \"Considered V_C elements included niobium, tantalum, chromium, molybdenum, tin, antimony, and tellurium.\": \"tellurium\" },\n    { \"Lead was also included as it was experimentally tested.\": \"lead\" }\n  ],\n  \"key_results\": [\n    { \"50% of the measured materials and conditions result in less than 2% oxygenates yield.\": \"less than 2%\" },\n    { \"Only 41 measurements out of 1220 are associated to yields of oxygenates above 20%.\": \"41 measurements\" },\n    { \"The average oxygenates yield over the whole data set is equal to 4.83%.\": \"4.83%\" },\n    { \"The maximum oxygenates yield value is 26.85%.\": \"26.85%\" },\n    { \"The selected SG contains only 15 data points, approximately 1.2% of the data set.\": \"15 data points\" },\n    { \"The average yield of oxygenates in this SG is equal to 24.15%.\": \"24.15%\" },\n    { \"The SG is described by rules: 280 ≤ T ≤ 300ºC, P > 0.55, and 3.910 ≤ VY < 4.002 eV.\": \"3.910\" },\n    { \"The highest yield of oxygenates for four-component materials is 60.19% at 400ºC.\": \"60.19%\" },\n    { \"This highest yield contains 0.35 molar fraction of tellurium.\": \"0.35 molar fraction\" },\n    { \"The highest yield of oxygenates for five-component materials is 59.60% at 400ºC.\": \"59.60%\" },\n    { \"This five-component catalyst contains tantalum as the V^ element.\": \"tantalum\" },\n    { \"The composition-averaged electronegativity for this five-component material is 3.947 eV.\": \"3.947 eV\" },\n    { \"The four- and five-component yields are up to twice as large as three-component materials.\": \"twice as large\" },\n    { \"The SG for four- and five-component data contains 18 data points.\": \"18 data points\" },\n    { \"The rules for the new SG constrain T ≥ 360ºC, L_+1 ≤ 1.001 Å, and VH < -1.593 eV.\": \"360\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The rules reflect the underlying processes particularly associated to high performance.\": \"underlying processes\" },\n    { \"High phosphorus content is needed to achieve outstanding performance.\": \"high phosphorus\" },\n    { \"This could be related to the dilution of metal active sites.\": \"dilution\" },\n    { \"The electronegativity rule effectively limits the range of Ru contents.\": \"limits the range\" },\n    { \"Ru is needed for conversion but too much leads to combustion products.\": \"combustion products\" },\n    { \"The SG rules are not strongly affected by variations on the data used.\": \"not strongly affected\" },\n    { \"The approach detects interpretable, chemically meaningful, and complex patterns.\": \"chemically meaningful\" },\n    { \"The identified rules guide the design of more complex catalysts.\": \"guide the design\" },\n    { \"The local modelling approach is suitable for search of exceptional materials.\": \"local modelling\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The atomic structures of all the tested catalysts are not known in detail.\": \"not known\" },\n    { \"The oxygen content is not included in the material's characterization.\": \"not included\" },\n    { \"The SG rule on reaction temperature is not transferable to four-component materials.\": \"not transferable\" },\n    { \"It is unclear if the SG rules can identify exceptional materials for arbitrary Ru content.\": \"unclear\" },\n    { \"Different mechanisms may operate on materials with significantly different radii.\": \"different mechanisms\" },\n    { \"The analysis was focused on low ruthenium contents.\": \"low ruthenium\" },\n    { \"The SGD analysis might need new data points for unexplored portions of materials space.\": \"new data points\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"SGD identifies specific physicochemical constraints that predict high catalytic performance in selective oxidation.\",\n      \"supporting_evidence\": [\n        { \"The SG rules describe materials with outstanding catalytic performance.\": \"outstanding catalytic\" },\n        { \"The rules constrain temperature, phosphorus content, and electronegativity.\": \"electronegativity\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The temperature rule did not transfer to four-component materials.\": \"not transferable\" }\n      ],\n      \"implications\": [\n        { \"These rules can guide the design of new catalysts.\": \"guide the design\" }\n      ]\n    },\n    {\n      \"description\": \"The derived rules successfully predict high-performing four- and five-component catalysts.\",\n      \"supporting_evidence\": [\n        { \"Four-component catalysts achieved yields up to 60.19%.\": \"60.19%\" },\n        { \"Five-component catalysts achieved yields up to 59.60%.\": \"59.60%\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The highest yields for complex materials occurred at higher temperatures.\": \"higher temperatures\" }\n      ],\n      \"implications\": [\n        { \"The approach generalizes to more complex materials.\": \"generalizable rules\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"Further calculation details and values for elemental properties are available in the ESI.\": \"electronic supporting information\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"Similar SG rules are obtained when training with randomly-selected 90% of data points.\": \"90% of the data\" },\n    { \"Rules are similar when data points with yield lower than 3% are excluded.\": \"lower than 3%\" },\n    { \"The ranges of variation for thresholds are similar to the main results.\": \"similar to the thresholds\" },\n    { \"The SG rules are not strongly affected by variations on the data.\": \"not strongly affected\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 illustrates the SGD approach and the selective oxidation reaction.\": \"Fig. 1A\" },\n    { \"Figure 2 shows the distribution of yield and the SG rules for three-component catalysts.\": \"Fig. 2C\" },\n    { \"Figure 3 shows the ternary diagram of Ru content.\": \"Fig. 3B\" },\n    { \"Figure 4 shows the catalyst map for four-component materials and experimental results.\": \"Fig. 4A\" },\n    { \"Figure 5 shows the SG analysis for four- and five-component materials.\": \"Fig. 5C\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the application of SGD to HTE and DFT data to find catalyst design rules.\": \"SGD\" },\n    { \"2. The strongest evidence is the successful prediction of high-yield four- and five-component catalysts.\": \"60.19%\" },\n    { \"3. The future path involves exploring unexplored portions of the materials space.\": \"unexplored portions\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7717,
+        "total_tokens": 11242,
+        "completion_tokens": 3525,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7717,
+      "elapsed_seconds": 309.1333595775068,
+      "max_tokens": 16000,
+      "seed": 1717923524,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "d8818311dae16cbac3562433515a69ed4e3e48842ceb245f8a41e8751193912c",
+      "attempt": 2,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Jensen-Shannon divergence",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: AND connector"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"120 different three-component catalyst compositions containing ruthenium, tungsten, and phosphorus were synthesized.\": \"120 different\"\n    },\n    {\n      \"The catalysts were supported on SiO2 pseudo-liquid support.\": \"SiO2 pseudo-liquid\"\n    },\n    {\n      \"Reactions were carried out in tubular, fixed-bed reactors.\": \"fixed-bed reactors\"\n    },\n    {\n      \"The reaction feed included Ar, H2O, N2, O2, and propylene.\": \"propylene\"\n    },\n    {\n      \"Molar rates were 4.015, 4.015, 104.40, 20.08, and 1.57 mmol/h respectively.\": \"1.57 mmol/h\"\n    },\n    {\n      \"The same mass of catalyst was used in all reactions.\": \"same mass\"\n    },\n    {\n      \"Contact time was kept fixed across experiments.\": \"kept fixed\"\n    },\n    {\n      \"Reaction temperatures between 200ºC and 400ºC were examined.\": \"200ºC and 400ºC\"\n    },\n    {\n      \"The target variable was the yield of oxygenates (acrolein and acrylic acid).\": \"yield of oxygenates\"\n    },\n    {\n      \"Eleven descriptive parameters were used in the SGD analysis.\": \"11 descriptive parameters\"\n    },\n    {\n      \"Properties were calculated for isolated atoms using DFT-PBEsol and FHI-aims code.\": \"DFT-PBEsol\"\n    },\n    {\n      \"Per-element free-atom properties were converted to system-specific properties via composition-weighted average.\": \"composition-weighted average\"\n    },\n    {\n      \"Oxygen content was not included in the material's characterization.\": \"not included\"\n    },\n    {\n      \"The quality function uses coverage and cumulative Jensen-Shannon divergence.\": \"Janson-Shannon divergence\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"The subgroup-discovery (SGD) artificial-intelligence local approach was applied.\": \"subgroup-discovery\"\n    },\n    {\n      \"SGD starts with the generation of a pool of propositions.\": \"pool of propositions\"\n    },\n    {\n      \"Propositions are inequalities constraining the values of continuous candidate descriptive parameters.\": \"inequalities\"\n    },\n    {\n      \"SGD identifies selectors formed by propositions and the AND connector.\": \"\\\"AND\\\" connector\"\n    },\n    {\n      \"Selectors result in the selection of subgroups with outstanding target value distributions.\": \"outstanding distributions\"\n    },\n    {\n      \"The quality function measures how outstanding specific subselections of data points are.\": \"quality function\"\n    },\n    {\n      \"The coverage term controls the subgroup size and prevents small SGs.\": \"coverage term\"\n    },\n    {\n      \"The Jensen-Shannon divergence measures dissimilarity between two distributions.\": \"dissimilarity\"\n    },\n    {\n      \"The approach identifies a local behavior rather than a global model.\": \"local behavior\"\n    },\n    {\n      \"For four-component materials, phosphorus content was fixed to 0.60.\": \"0.60\"\n    },\n    {\n      \"Ruthenium molar content was fixed to 0.05 for four-component materials.\": \"0.05\"\n    },\n    {\n      \"V_C elements were selected based on octahedral coordination and atomic radius difference.\": \"octahedral coordination\"\n    },\n    {\n      \"The maximum atomic radius difference compared to tungsten was 0.10 Å.\": \"0.10 Å\"\n    },\n    {\n      \"Considered V_C elements included niobium, tantalum, chromium, molybdenum, tin, antimony, and tellurium.\": \"tellurium\"\n    },\n    {\n      \"Lead was also included as it was experimentally tested.\": \"lead\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6677,
+        "total_tokens": 7632,
+        "completion_tokens": 955,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6677,
+      "elapsed_seconds": 92.20372251048684,
+      "max_tokens": 4096,
+      "seed": 1717923525,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6b7d227cebacfe9248ff75f9f98b564073051f5f5f1e39bdadb05f53f23aea1b",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "procedures_and_architectures"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 7700,
+  "elapsed_seconds": 706.8960688561201,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

@@ -1,0 +1,1372 @@
+{
+  "document_id": "bethgelab-50047",
+  "fulltext_sha256": "9d6e795b20211d71799050c9282d0c0b9c3838aa8232d78b803accb410b2d33d",
+  "summary": {
+    "title": "Efficient and Flexible Integration of Variant Characteristics in Rare Variant Association Studies Using Integrated Nested Laplace Approximation",
+    "authors": "Hana Susak, Laura Serra-Saurina, Raquel Rabionet Janssen, Laura Domènech, Mattia Bosio, Francesc Muyas, Xavier Estivill, Georgia Escaramís, Stephan Ossowski",
+    "field_subfield": "Genetics, Bioinformatics",
+    "type_of_paper": "Methodology/Software",
+    "executive_summary": "This paper introduces BATI, a novel Bayesian rare variant association test using Integrated Nested Laplace Approximation (INLA), and the rvGWAS framework. Rare variant association studies (RVAS) often lack power in small to medium-sized cohorts, particularly when genetic variation explains a small fraction of phenotypic variance. Existing methods like burden tests and variance component tests (e.g., SKAT, MiST) have limitations regarding heterogeneous effects or computational intensity. BATI addresses these by allowing the integration of individual or variant-specific features as covariates while efficiently performing inference based on full model estimation. The authors demonstrate that BATI outperforms established RVAS methods on realistic, semi-synthetic whole-exome sequencing cohorts, especially when using meaningful biological context such as functional annotation. Specifically, BATI achieves power above 75% in scenarios where competing tests fail, such as when risk variants explain less than 0.5% of phenotypic variance. The rvGWAS framework integrates BATI with five existing tests (Burden, SKAT-O, KBAC, MiST, HBMR) to support rare variant association for genes or other biological units. Applying rvGWAS to a Chronic Lymphocytic Leukemia study, the authors identified eight candidate predisposition genes, including EHMT2 and COPS7A. The study highlights that leveraging variant characteristics and fast INLA estimation significantly improves detection power for rare variants in complex diseases.",
+    "research_context": [
+      {
+        "Rare variants play an important role in the etiology of complex diseases.": "important role"
+      },
+      {
+        "Next-generation sequencing facilitates association of rare variants with complex diseases.": "facilitates the association"
+      },
+      {
+        "Rare variant association studies still lack power in small to medium-sized cohorts.": "lack power"
+      },
+      {
+        "Traditional statistical methods like GWAS require extremely large sample sizes for rare variants.": "extremely large sample sizes"
+      },
+      {
+        "Burden tests are powerful when effects are one-sided, which is rarely the case.": "rarely the case"
+      },
+      {
+        "Variance component tests like SKAT address heterogeneous effects among rare variants.": "heterogeneous effects"
+      },
+      {
+        "MiST proposed a mixed effects test considering biological characteristics of variants.": "biological characteristics"
+      },
+      {
+        "MiST requires multiple integration, making it computationally intensive for genome-wide scans.": "computationally intensive"
+      },
+      {
+        "INLA is a non-sampling based numerical approximation procedure faster than MCMC.": "faster than MCMC"
+      },
+      {
+        "INLA is more accurate than MCMC when given the same computational resources.": "more accurate"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central research question is how to efficiently integrate variant characteristics in RVAS.": "variant-specific features"
+      },
+      {
+        "The hypothesis is that a Bayesian approach using INLA improves power.": "Bayesian alternative"
+      },
+      {
+        "BATI allows integration of individual or variant-specific features as covariates.": "variant-specific features"
+      },
+      {
+        "BATI performs inference based on full model estimation efficiently.": "full model estimation"
+      },
+      {
+        "It is predicted that BATI outperforms existing methods with biological context.": "outperforms established RVAS methods"
+      },
+      {
+        "BATI should achieve high power when risk variants explain small variance.": "power above 75%"
+      },
+      {
+        "The framework rvGWAS supports analysis of genes or other biological units.": "biological unit"
+      },
+      {
+        "BATI should cope with complex population structure and confounders.": "complex population structure"
+      },
+      {
+        "Difference in deviance information criterion is proposed for model selection.": "difference in deviance"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study uses a novel Bayesian rare variant Association Test using INLA.": "Bayesian rare variant"
+      },
+      {
+        "INLA was implemented using the R-INLA project version 17.06.20.": "version 17.06.20"
+      },
+      {
+        "The method builds a hierarchical Bayesian approach to the GLMM.": "hierarchical Bayesian approach"
+      },
+      {
+        "BATI integrates categorical and numeric characteristics of genetic variants.": "categorical and numeric"
+      },
+      {
+        "Realistic semi-synthetic simulations of whole-exome sequencing case-control studies were developed.": "semi-synthetic"
+      },
+      {
+        "The simulator combines real WES datasets with known risk variants.": "real WES datasets"
+      },
+      {
+        "Predisposition variants from ClinVar were introduced into VCF files of cases.": "ClinVar"
+      },
+      {
+        "Two large datasets were used: 1000GP and an Iberian cohort.": "Iberian cohort"
+      },
+      {
+        "From 1000GP, half of the samples were selected as cases.": "half of the samples"
+      },
+      {
+        "For the Iberian cohort, one third were selected as cases.": "one third"
+      },
+      {
+        "Breast cancer risk variants annotated as exonic or splicing were queried.": "exonic or splicing"
+      },
+      {
+        "Variants with MAF higher than 0.01 were removed.": "MAF higher than 0.01"
+      },
+      {
+        "RVAS tests were performed on randomly split cohorts without risk variants.": "randomly split cohorts"
+      },
+      {
+        "Significance thresholds were obtained for 5%, 0.1%, and 0.01% TIER.": "0.01% TIER"
+      },
+      {
+        "The median from 10 random splits was used as thresholds.": "median from 10"
+      },
+      {
+        "A Chronic Lymphocytic Leukemia study was analyzed using rvGWAS.": "Chronic Lymphocytic Leukemia"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The model assumes N individuals with observed phenotypes in an exponential family.": "exponential family"
+      },
+      {
+        "INLA produces a numerical approximation to the posteriors of interest.": "numerical approximation"
+      },
+      {
+        "The null hypothesis assumes no genetic effects on the phenotype.": "no genetic effects"
+      },
+      {
+        "The alternative hypothesis assumes a genetic effect on the phenotype.": "genetic effect"
+      },
+      {
+        "Deviance Information Criteria (DIC) is used for model goodness of fit.": "Deviance Information Criteria"
+      },
+      {
+        "Difference in DIC between H0 and H1 is used for model selection.": "difference in"
+      },
+      {
+        "Simulations are used to evaluate the ability of ΔDIC to choose models.": "use of simulations"
+      },
+      {
+        "Individuals are randomly assigned to cases or controls for type I error.": "randomly assign"
+      },
+      {
+        "S datasets are generated by shuffling cases and controls.": "shuffling cases"
+      },
+      {
+        "S = 10 was used for model selection in the benchmark study.": "S = 10"
+      },
+      {
+        "rvGWAS integrates quality control, filtering, and detection of data stratification.": "quality control"
+      },
+      {
+        "rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.": "SKAT-O"
+      },
+      {
+        "The simulator introduces predisposition variants into the VCF files.": "VCF files"
+      },
+      {
+        "Power analysis was conducted across 100 simulations for each gene.": "100 simulations"
+      }
+    ],
+    "key_results": [
+      {
+        "BATI outperforms established RVAS methods on realistic semi-synthetic cohorts.": "outperforms established"
+      },
+      {
+        "BATI achieves power above 75% when risk variants explain <0.5% variance.": "power above 75%"
+      },
+      {
+        "BATI's performance is stable despite smaller cohort size in Iberian cohort.": "stable despite"
+      },
+      {
+        "At 0.5% VE and 0.01% TIER, BATI achieves power close to 100%.": "power close to 100%"
+      },
+      {
+        "BATI calls most genes with TIER 0.01% even at VE of 0.5%.": "TIER 0.01%"
+      },
+      {
+        "BATI calls all genes at TIER 0.1% with >80% power.": ">80% power"
+      },
+      {
+        "Burden, KBAC, and SKAT-O fail to call BRCA2 at low VE.": "fail to call"
+      },
+      {
+        "HBMR fails to call BARD1, CHEK2, and PALB2 at TIER 0.1%.": "fails to call"
+      },
+      {
+        "MiST failed to identify any risk gene at low VE or low TIER.": "failed to identify"
+      },
+      {
+        "Applying rvGWAS to CLL identified eight candidate predisposition genes.": "eight candidate"
+      },
+      {
+        "EHMT2 and COPS7A were identified as candidate predisposition genes.": "EHMT2"
+      },
+      {
+        "BATI strongly benefits from inclusion of variant characteristics as covariates.": "benefits from"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "BATI leverages both categorical and numerical variant characteristics.": "categorical and numerical"
+      },
+      {
+        "BATI gains power if risk genes contain mostly LoF variants.": "LoF variants"
+      },
+      {
+        "BATI performs at least as good as other methods for missense variants.": "missense variants"
+      },
+      {
+        "Semi-synthetic benchmarks provide more realistic noise levels than pure simulations.": "realistic background noise"
+      },
+      {
+        "Differences between methods are profound when variance explained is low.": "substantially more profound"
+      },
+      {
+        "MiST performed poorly due to zero-inflated p-values from low variant counts.": "zero-inflated p-values"
+      },
+      {
+        "Combining Burden and SKAT-type methods with different approaches is beneficial.": "combine Burden"
+      },
+      {
+        "BATI represents a flexible testing approach for future extension.": "flexible testing approach"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "MiST showed favorable results on purely artificial benchmark sets.": "favorable results"
+      },
+      {
+        "MiST performed poorly on realistic WES cohorts.": "performed poorly"
+      },
+      {
+        "Simulated variant data lacks complexity and noise-level of real data.": "lack the complexity"
+      },
+      {
+        "Previous benchmarks resulted in overly optimistic performances.": "overly optimistic"
+      },
+      {
+        "Model estimation with complex data structures is computationally heavy.": "computationally heavy"
+      },
+      {
+        "The study focuses on case-control studies using WES or WGS.": "case-control studies"
+      }
+    ],
+    "claims": [
+      {
+        "description": "BATI outperforms existing RVAS methods when using biological context.",
+        "supporting_evidence": [
+          {
+            "BATI outperforms established RVAS methods on realistic cohorts.": "outperforms established"
+          },
+          {
+            "BATI achieves power above 75% in low variance scenarios.": "power above 75%"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "MiST showed favorable results on purely artificial benchmark sets.": "favorable results"
+          }
+        ],
+        "implications": [
+          {
+            "BATI is a flexible testing approach for future extension.": "flexible testing approach"
+          }
+        ]
+      },
+      {
+        "description": "rvGWAS facilitates user-friendly analysis of RVAS.",
+        "supporting_evidence": [
+          {
+            "rvGWAS integrates quality control and filtering.": "quality control"
+          },
+          {
+            "rvGWAS includes multiple existing and new tests.": "SKAT-O"
+          }
+        ],
+        "contradicting_evidence": "",
+        "implications": [
+          {
+            "Applying rvGWAS to CLL identified eight candidate genes.": "eight candidate"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "BATI's performance is stable despite smaller cohort size.": "stable despite"
+      },
+      {
+        "BATI calls most genes at TIER 0.01% even at low VE.": "TIER 0.01%"
+      },
+      {
+        "BATI calls all genes at TIER 0.1% with >80% power.": ">80% power"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 3 shows gene-wise power analysis for the 1000GP cohort.": "Fig 3"
+      },
+      {
+        "Table 2 presents power results for different tests and genes.": "Table 2"
+      },
+      {
+        "Supplementary S6 Fig shows estimated significance thresholds.": "S6 Fig"
+      },
+      {
+        "Supplementary S8 Fig shows benchmark results for the Iberian cohort.": "S8 Fig"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the BATI test using INLA for RVAS.": "BATI"
+      },
+      {
+        "2. The strongest evidence is BATI's power above 75% in low variance scenarios.": "power above 75%"
+      },
+      {
+        "3. The future path is extending BATI with more covariates.": "further extended"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper introduces BATI, a novel Bayesian rare variant association test using Integrated Nested Laplace Approximation (INLA), and the rvGWAS framework. Rare variant association studies (RVAS) often lack power in small to medium-sized cohorts, particularly when genetic variation explains a small fraction of phenotypic variance. Existing methods like burden tests and variance component tests (e.g., SKAT, MiST) have limitations regarding heterogeneous effects or computational intensity. BATI addresses these by allowing the integration of individual or variant-specific features as covariates while efficiently performing inference based on full model estimation. The authors demonstrate that BATI outperforms established RVAS methods on realistic, semi-synthetic whole-exome sequencing cohorts, especially when using meaningful biological context such as functional annotation. Specifically, BATI achieves power above 75% in scenarios where competing tests fail, such as when risk variants explain less than 0.5% of phenotypic variance. The rvGWAS framework integrates BATI with five existing tests (Burden, SKAT-O, KBAC, MiST, HBMR) to support rare variant association for genes or other biological units. Applying rvGWAS to a Chronic Lymphocytic Leukemia study, the authors identified eight candidate predisposition genes, including EHMT2 and COPS7A. The study highlights that leveraging variant characteristics and fast INLA estimation significantly improves detection power for rare variants in complex diseases.\n\nResearch Context\nRare variants play an important role in the etiology of complex diseases. Next-generation sequencing facilitates association of rare variants with complex diseases. Rare variant association studies still lack power in small to medium-sized cohorts. Traditional statistical methods like GWAS require extremely large sample sizes for rare variants. Burden tests are powerful when effects are one-sided, which is rarely the case. Variance component tests like SKAT address heterogeneous effects among rare variants. MiST proposed a mixed effects test considering biological characteristics of variants. MiST requires multiple integration, making it computationally intensive for genome-wide scans. INLA is a non-sampling based numerical approximation procedure faster than MCMC. INLA is more accurate than MCMC when given the same computational resources.\n\nResearch Question And Hypothesis\nThe central research question is how to efficiently integrate variant characteristics in RVAS. The hypothesis is that a Bayesian approach using INLA improves power. BATI allows integration of individual or variant-specific features as covariates. BATI performs inference based on full model estimation efficiently. It is predicted that BATI outperforms existing methods with biological context. BATI should achieve high power when risk variants explain small variance. The framework rvGWAS supports analysis of genes or other biological units. BATI should cope with complex population structure and confounders. Difference in deviance information criterion is proposed for model selection.\n\nMethodological Details\nThe study uses a novel Bayesian rare variant Association Test using INLA. INLA was implemented using the R-INLA project version 17.06.20. The method builds a hierarchical Bayesian approach to the GLMM. BATI integrates categorical and numeric characteristics of genetic variants. Realistic semi-synthetic simulations of whole-exome sequencing case-control studies were developed. The simulator combines real WES datasets with known risk variants. Predisposition variants from ClinVar were introduced into VCF files of cases. Two large datasets were used: 1000GP and an Iberian cohort. From 1000GP, half of the samples were selected as cases. For the Iberian cohort, one third were selected as cases. Breast cancer risk variants annotated as exonic or splicing were queried. Variants with MAF higher than 0.01 were removed. RVAS tests were performed on randomly split cohorts without risk variants. Significance thresholds were obtained for 5%, 0.1%, and 0.01% TIER. The median from 10 random splits was used as thresholds. A Chronic Lymphocytic Leukemia study was analyzed using rvGWAS.\n\nProcedures And Architectures\nThe model assumes N individuals with observed phenotypes in an exponential family. INLA produces a numerical approximation to the posteriors of interest. The null hypothesis assumes no genetic effects on the phenotype. The alternative hypothesis assumes a genetic effect on the phenotype. Deviance Information Criteria (DIC) is used for model goodness of fit. Difference in DIC between H0 and H1 is used for model selection. Simulations are used to evaluate the ability of ΔDIC to choose models. Individuals are randomly assigned to cases or controls for type I error. S datasets are generated by shuffling cases and controls. S = 10 was used for model selection in the benchmark study. rvGWAS integrates quality control, filtering, and detection of data stratification. rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI. The simulator introduces predisposition variants into the VCF files. Power analysis was conducted across 100 simulations for each gene.\n\nKey Results\nBATI outperforms established RVAS methods on realistic semi-synthetic cohorts. BATI achieves power above 75% when risk variants explain <0.5% variance. BATI's performance is stable despite smaller cohort size in Iberian cohort. At 0.5% VE and 0.01% TIER, BATI achieves power close to 100%. BATI calls most genes with TIER 0.01% even at VE of 0.5%. BATI calls all genes at TIER 0.1% with >80% power. Burden, KBAC, and SKAT-O fail to call BRCA2 at low VE. HBMR fails to call BARD1, CHEK2, and PALB2 at TIER 0.1%. MiST failed to identify any risk gene at low VE or low TIER. Applying rvGWAS to CLL identified eight candidate predisposition genes. EHMT2 and COPS7A were identified as candidate predisposition genes. BATI strongly benefits from inclusion of variant characteristics as covariates.\n\nInterpretation And Theoretical Implications\nBATI leverages both categorical and numerical variant characteristics. BATI gains power if risk genes contain mostly LoF variants. BATI performs at least as good as other methods for missense variants. Semi-synthetic benchmarks provide more realistic noise levels than pure simulations. Differences between methods are profound when variance explained is low. MiST performed poorly due to zero-inflated p-values from low variant counts. Combining Burden and SKAT-type methods with different approaches is beneficial. BATI represents a flexible testing approach for future extension.\n\nContradictions And Limitations\nMiST showed favorable results on purely artificial benchmark sets. MiST performed poorly on realistic WES cohorts. Simulated variant data lacks complexity and noise-level of real data. Previous benchmarks resulted in overly optimistic performances. Model estimation with complex data structures is computationally heavy. The study focuses on case-control studies using WES or WGS.\n\nClaims\nBATI outperforms existing RVAS methods when using biological context. BATI outperforms established RVAS methods on realistic cohorts. BATI achieves power above 75% in low variance scenarios. MiST showed favorable results on purely artificial benchmark sets. BATI is a flexible testing approach for future extension.\nrvGWAS facilitates user-friendly analysis of RVAS. rvGWAS integrates quality control and filtering. rvGWAS includes multiple existing and new tests.  Applying rvGWAS to CLL identified eight candidate genes.\n\nRobustness And Ablation Notes\nBATI's performance is stable despite smaller cohort size. BATI calls most genes at TIER 0.01% even at low VE. BATI calls all genes at TIER 0.1% with >80% power.\n\nKey Figures Tables\nFigure 3 shows gene-wise power analysis for the 1000GP cohort. Table 2 presents power results for different tests and genes. Supplementary S6 Fig shows estimated significance thresholds. Supplementary S8 Fig shows benchmark results for the Iberian cohort.\n\nThree Takeaways\n1. The core contribution is the BATI test using INLA for RVAS. 2. The strongest evidence is BATI's power above 75% in low variance scenarios. 3. The future path is extending BATI with more covariates.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "important role",
+      "start": 753,
+      "end": 767,
+      "typographic_alignment": false,
+      "original_quote": "important role"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "facilitates the association",
+      "start": 925,
+      "end": 952,
+      "typographic_alignment": false,
+      "original_quote": "facilitates the association"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "lack power",
+      "start": 1118,
+      "end": 1128,
+      "typographic_alignment": false,
+      "original_quote": "lack power"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "extremely large sample sizes",
+      "start": 4126,
+      "end": 4154,
+      "typographic_alignment": false,
+      "original_quote": "extremely large sample sizes"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "rarely the case",
+      "start": 4889,
+      "end": 4904,
+      "typographic_alignment": false,
+      "original_quote": "rarely the case"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "heterogeneous effects",
+      "start": 5064,
+      "end": 5085,
+      "typographic_alignment": false,
+      "original_quote": "heterogeneous effects"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "biological characteristics",
+      "start": 5959,
+      "end": 5985,
+      "typographic_alignment": false,
+      "original_quote": "biological characteristics"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "computationally intensive",
+      "start": 6816,
+      "end": 6841,
+      "typographic_alignment": false,
+      "original_quote": "computationally intensive"
+    },
+    {
+      "path": "research_context[8]",
+      "quote": "faster than MCMC",
+      "start": 8003,
+      "end": 8019,
+      "typographic_alignment": false,
+      "original_quote": "faster than MCMC"
+    },
+    {
+      "path": "research_context[9]",
+      "quote": "more accurate",
+      "start": 8104,
+      "end": 8117,
+      "typographic_alignment": false,
+      "original_quote": "more accurate"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "variant-specific features",
+      "start": 1429,
+      "end": 1454,
+      "typographic_alignment": false,
+      "original_quote": "variant-specific features"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "Bayesian alternative",
+      "start": 7098,
+      "end": 7118,
+      "typographic_alignment": false,
+      "original_quote": "Bayesian alternative"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "variant-specific features",
+      "start": 1429,
+      "end": 1454,
+      "typographic_alignment": false,
+      "original_quote": "variant-specific features"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "full model estimation",
+      "start": 1518,
+      "end": 1539,
+      "typographic_alignment": false,
+      "original_quote": "full model estimation"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "outperforms established RVAS methods",
+      "start": 1566,
+      "end": 1602,
+      "typographic_alignment": false,
+      "original_quote": "outperforms established RVAS methods"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "power above 75%",
+      "start": 1775,
+      "end": 1790,
+      "typographic_alignment": false,
+      "original_quote": "power above 75%"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "biological unit",
+      "start": 2196,
+      "end": 2211,
+      "typographic_alignment": false,
+      "original_quote": "biological unit"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "complex population structure",
+      "start": 9041,
+      "end": 9069,
+      "typographic_alignment": false,
+      "original_quote": "complex population structure"
+    },
+    {
+      "path": "research_question_and_hypothesis[8]",
+      "quote": "difference in deviance",
+      "start": 9125,
+      "end": 9147,
+      "typographic_alignment": false,
+      "original_quote": "difference in deviance"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "Bayesian rare variant",
+      "start": 1267,
+      "end": 1288,
+      "typographic_alignment": false,
+      "original_quote": "Bayesian rare variant"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "version 17.06.20",
+      "start": 9709,
+      "end": 9725,
+      "typographic_alignment": false,
+      "original_quote": "version 17.06.20"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "hierarchical Bayesian approach",
+      "start": 9738,
+      "end": 9768,
+      "typographic_alignment": false,
+      "original_quote": "hierarchical Bayesian approach"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "categorical and numeric",
+      "start": 9954,
+      "end": 9977,
+      "typographic_alignment": false,
+      "original_quote": "categorical and numeric"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "semi-synthetic",
+      "start": 1617,
+      "end": 1631,
+      "typographic_alignment": false,
+      "original_quote": "semi-synthetic"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "real WES datasets",
+      "start": 12462,
+      "end": 12479,
+      "typographic_alignment": false,
+      "original_quote": "real WES datasets"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "ClinVar",
+      "start": 12675,
+      "end": 12682,
+      "typographic_alignment": false,
+      "original_quote": "ClinVar"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "Iberian cohort",
+      "start": 12932,
+      "end": 12946,
+      "typographic_alignment": false,
+      "original_quote": "Iberian cohort"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "half of the samples",
+      "start": 12860,
+      "end": 12879,
+      "typographic_alignment": false,
+      "original_quote": "half of the samples"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "one third",
+      "start": 12959,
+      "end": 12968,
+      "typographic_alignment": false,
+      "original_quote": "one third"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "exonic or splicing",
+      "start": 13229,
+      "end": 13247,
+      "typographic_alignment": false,
+      "original_quote": "exonic or splicing"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "MAF higher than 0.01",
+      "start": 13278,
+      "end": 13298,
+      "typographic_alignment": false,
+      "original_quote": "MAF higher than 0.01"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "randomly split cohorts",
+      "start": 13477,
+      "end": 13499,
+      "typographic_alignment": false,
+      "original_quote": "randomly split cohorts"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "0.01% TIER",
+      "start": 13904,
+      "end": 13914,
+      "typographic_alignment": false,
+      "original_quote": "0.01% TIER"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "median from 10",
+      "start": 14358,
+      "end": 14372,
+      "typographic_alignment": false,
+      "original_quote": "median from 10"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "Chronic Lymphocytic Leukemia",
+      "start": 2344,
+      "end": 2372,
+      "typographic_alignment": false,
+      "original_quote": "Chronic Lymphocytic Leukemia"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "exponential family",
+      "start": 10272,
+      "end": 10290,
+      "typographic_alignment": false,
+      "original_quote": "exponential family"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "numerical approximation",
+      "start": 7803,
+      "end": 7826,
+      "typographic_alignment": false,
+      "original_quote": "numerical approximation"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "no genetic effects",
+      "start": 10534,
+      "end": 10552,
+      "typographic_alignment": false,
+      "original_quote": "no genetic effects"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "genetic effect",
+      "start": 10537,
+      "end": 10551,
+      "typographic_alignment": false,
+      "original_quote": "genetic effect"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "Deviance Information Criteria",
+      "start": 10818,
+      "end": 10847,
+      "typographic_alignment": false,
+      "original_quote": "Deviance Information Criteria"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "difference in",
+      "start": 9125,
+      "end": 9138,
+      "typographic_alignment": false,
+      "original_quote": "difference in"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "use of simulations",
+      "start": 11311,
+      "end": 11329,
+      "typographic_alignment": false,
+      "original_quote": "use of simulations"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "randomly assign",
+      "start": 11502,
+      "end": 11517,
+      "typographic_alignment": false,
+      "original_quote": "randomly assign"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "shuffling cases",
+      "start": 11921,
+      "end": 11936,
+      "typographic_alignment": false,
+      "original_quote": "shuffling cases"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "S = 10",
+      "start": 12049,
+      "end": 12055,
+      "typographic_alignment": false,
+      "original_quote": "S = 10"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "quality control",
+      "start": 2293,
+      "end": 2308,
+      "typographic_alignment": false,
+      "original_quote": "quality control"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "SKAT-O",
+      "start": 5568,
+      "end": 5574,
+      "typographic_alignment": false,
+      "original_quote": "SKAT-O"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "VCF files",
+      "start": 12716,
+      "end": 12725,
+      "typographic_alignment": false,
+      "original_quote": "VCF files"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "100 simulations",
+      "start": 15341,
+      "end": 15356,
+      "typographic_alignment": false,
+      "original_quote": "100 simulations"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "outperforms established",
+      "start": 1566,
+      "end": 1589,
+      "typographic_alignment": false,
+      "original_quote": "outperforms established"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "power above 75%",
+      "start": 1775,
+      "end": 1790,
+      "typographic_alignment": false,
+      "original_quote": "power above 75%"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "stable despite",
+      "start": 14764,
+      "end": 14778,
+      "typographic_alignment": false,
+      "original_quote": "stable despite"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "power close to 100%",
+      "start": 14967,
+      "end": 14986,
+      "typographic_alignment": false,
+      "original_quote": "power close to 100%"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "TIER 0.01%",
+      "start": 15915,
+      "end": 15925,
+      "typographic_alignment": false,
+      "original_quote": "TIER 0.01%"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": ">80% power",
+      "start": 15978,
+      "end": 15988,
+      "typographic_alignment": false,
+      "original_quote": ">80% power"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "fail to call",
+      "start": 16037,
+      "end": 16049,
+      "typographic_alignment": false,
+      "original_quote": "fail to call"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "fails to call",
+      "start": 16099,
+      "end": 16112,
+      "typographic_alignment": false,
+      "original_quote": "fails to call"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "failed to identify",
+      "start": 19373,
+      "end": 19391,
+      "typographic_alignment": false,
+      "original_quote": "failed to identify"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "eight candidate",
+      "start": 2393,
+      "end": 2408,
+      "typographic_alignment": false,
+      "original_quote": "eight candidate"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "EHMT2",
+      "start": 2441,
+      "end": 2446,
+      "typographic_alignment": false,
+      "original_quote": "EHMT2"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "benefits from",
+      "start": 16935,
+      "end": 16948,
+      "typographic_alignment": false,
+      "original_quote": "benefits from"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "categorical and numerical",
+      "start": 16872,
+      "end": 16897,
+      "typographic_alignment": false,
+      "original_quote": "categorical and numerical"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "LoF variants",
+      "start": 17058,
+      "end": 17070,
+      "typographic_alignment": false,
+      "original_quote": "LoF variants"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "missense variants",
+      "start": 17166,
+      "end": 17183,
+      "typographic_alignment": false,
+      "original_quote": "missense variants"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "realistic background noise",
+      "start": 18169,
+      "end": 18195,
+      "typographic_alignment": false,
+      "original_quote": "realistic background noise"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "substantially more profound",
+      "start": 18934,
+      "end": 18961,
+      "typographic_alignment": false,
+      "original_quote": "substantially more profound"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "zero-inflated p-values",
+      "start": 19275,
+      "end": 19297,
+      "typographic_alignment": false,
+      "original_quote": "zero-inflated p-values"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "combine Burden",
+      "start": 19814,
+      "end": 19828,
+      "typographic_alignment": false,
+      "original_quote": "combine Burden"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "flexible testing approach",
+      "start": 20280,
+      "end": 20305,
+      "typographic_alignment": false,
+      "original_quote": "flexible testing approach"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "favorable results",
+      "start": 19136,
+      "end": 19153,
+      "typographic_alignment": false,
+      "original_quote": "favorable results"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "performed poorly",
+      "start": 19200,
+      "end": 19216,
+      "typographic_alignment": false,
+      "original_quote": "performed poorly"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "lack the complexity",
+      "start": 17732,
+      "end": 17751,
+      "typographic_alignment": false,
+      "original_quote": "lack the complexity"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "overly optimistic",
+      "start": 17795,
+      "end": 17812,
+      "typographic_alignment": false,
+      "original_quote": "overly optimistic"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "computationally heavy",
+      "start": 17340,
+      "end": 17361,
+      "typographic_alignment": false,
+      "original_quote": "computationally heavy"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "case-control studies",
+      "start": 4483,
+      "end": 4503,
+      "typographic_alignment": false,
+      "original_quote": "case-control studies"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "stable despite",
+      "start": 14764,
+      "end": 14778,
+      "typographic_alignment": false,
+      "original_quote": "stable despite"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "TIER 0.01%",
+      "start": 15915,
+      "end": 15925,
+      "typographic_alignment": false,
+      "original_quote": "TIER 0.01%"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": ">80% power",
+      "start": 15978,
+      "end": 15988,
+      "typographic_alignment": false,
+      "original_quote": ">80% power"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Fig 3",
+      "start": 15415,
+      "end": 15420,
+      "typographic_alignment": false,
+      "original_quote": "Fig 3"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Table 2",
+      "start": 15425,
+      "end": 15432,
+      "typographic_alignment": false,
+      "original_quote": "Table 2"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "S6 Fig",
+      "start": 14135,
+      "end": 14141,
+      "typographic_alignment": false,
+      "original_quote": "S6 Fig"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "S8 Fig",
+      "start": 14607,
+      "end": 14613,
+      "typographic_alignment": false,
+      "original_quote": "S8 Fig"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "BATI",
+      "start": 1353,
+      "end": 1357,
+      "typographic_alignment": false,
+      "original_quote": "BATI"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "power above 75%",
+      "start": 1775,
+      "end": 1790,
+      "typographic_alignment": false,
+      "original_quote": "power above 75%"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "further extended",
+      "start": 20318,
+      "end": 20334,
+      "typographic_alignment": false,
+      "original_quote": "further extended"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "outperforms established",
+      "start": 1566,
+      "end": 1589,
+      "typographic_alignment": false,
+      "original_quote": "outperforms established"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "power above 75%",
+      "start": 1775,
+      "end": 1790,
+      "typographic_alignment": false,
+      "original_quote": "power above 75%"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "favorable results",
+      "start": 19136,
+      "end": 19153,
+      "typographic_alignment": false,
+      "original_quote": "favorable results"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "flexible testing approach",
+      "start": 20280,
+      "end": 20305,
+      "typographic_alignment": false,
+      "original_quote": "flexible testing approach"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "quality control",
+      "start": 2293,
+      "end": 2308,
+      "typographic_alignment": false,
+      "original_quote": "quality control"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "SKAT-O",
+      "start": 5568,
+      "end": 5574,
+      "typographic_alignment": false,
+      "original_quote": "SKAT-O"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "eight candidate",
+      "start": 2393,
+      "end": 2408,
+      "typographic_alignment": false,
+      "original_quote": "eight candidate"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"Efficient and Flexible Integration of Variant Characteristics in Rare Variant Association Studies Using Integrated Nested Laplace Approximation\",\n  \"authors\": \"Hana Susak, Laura Serra-Saurina, Raquel Rabionet Janssen, Laura Domènech, Mattia Bosio, Francesc Muyas, Xavier Estivill, Georgia Escaramís, Stephan Ossowski\",\n  \"field_subfield\": \"Genetics, Bioinformatics\",\n  \"type_of_paper\": \"Methodology/Software\",\n  \"executive_summary\": \"This paper introduces BATI, a novel Bayesian rare variant association test using Integrated Nested Laplace Approximation (INLA), and the rvGWAS framework. Rare variant association studies (RVAS) often lack power in small to medium-sized cohorts, particularly when genetic variation explains a small fraction of phenotypic variance. Existing methods like burden tests and variance component tests (e.g., SKAT, MiST) have limitations regarding heterogeneous effects or computational intensity. BATI addresses these by allowing the integration of individual or variant-specific features as covariates while efficiently performing inference based on full model estimation. The authors demonstrate that BATI outperforms established RVAS methods on realistic, semi-synthetic whole-exome sequencing cohorts, especially when using meaningful biological context such as functional annotation. Specifically, BATI achieves power above 75% in scenarios where competing tests fail, such as when risk variants explain less than 0.5% of phenotypic variance. The rvGWAS framework integrates BATI with five existing tests (Burden, SKAT-O, KBAC, MiST, HBMR) to support rare variant association for genes or other biological units. Applying rvGWAS to a Chronic Lymphocytic Leukemia study, the authors identified eight candidate predisposition genes, including EHMT2 and COPS7A. The study highlights that leveraging variant characteristics and fast INLA estimation significantly improves detection power for rare variants in complex diseases.\",\n  \"research_context\": [\n    { \"Rare variants play an important role in the etiology of complex diseases.\": \"important role\" },\n    { \"Next-generation sequencing facilitates association of rare variants with complex diseases.\": \"facilitates the association\" },\n    { \"Rare variant association studies still lack power in small to medium-sized cohorts.\": \"lack power\" },\n    { \"Traditional statistical methods like GWAS require extremely large sample sizes for rare variants.\": \"extremely large sample sizes\" },\n    { \"Burden tests are powerful when effects are one-sided, which is rarely the case.\": \"rarely the case\" },\n    { \"Variance component tests like SKAT address heterogeneous effects among rare variants.\": \"heterogeneous effects\" },\n    { \"MiST proposed a mixed effects test considering biological characteristics of variants.\": \"biological characteristics\" },\n    { \"MiST requires multiple integration, making it computationally intensive for genome-wide scans.\": \"computationally intensive\" },\n    { \"INLA is a non-sampling based numerical approximation procedure faster than MCMC.\": \"faster than MCMC\" },\n    { \"INLA is more accurate than MCMC when given the same computational resources.\": \"more accurate\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The central research question is how to efficiently integrate variant characteristics in RVAS.\": \"integrate variant characteristics\" },\n    { \"The hypothesis is that a Bayesian approach using INLA improves power.\": \"Bayesian alternative\" },\n    { \"BATI allows integration of individual or variant-specific features as covariates.\": \"variant-specific features\" },\n    { \"BATI performs inference based on full model estimation efficiently.\": \"full model estimation\" },\n    { \"It is predicted that BATI outperforms existing methods with biological context.\": \"outperforms established RVAS methods\" },\n    { \"BATI should achieve high power when risk variants explain small variance.\": \"power above 75%\" },\n    { \"The framework rvGWAS supports analysis of genes or other biological units.\": \"biological unit\" },\n    { \"BATI should cope with complex population structure and confounders.\": \"complex population structure\" },\n    { \"Difference in deviance information criterion is proposed for model selection.\": \"difference in deviance\" }\n  ],\n  \"methodological_details\": [\n    { \"The study uses a novel Bayesian rare variant Association Test using INLA.\": \"Bayesian rare variant\" },\n    { \"INLA was implemented using the R-INLA project version 17.06.20.\": \"version 17.06.20\" },\n    { \"The method builds a hierarchical Bayesian approach to the GLMM.\": \"hierarchical Bayesian approach\" },\n    { \"BATI integrates categorical and numeric characteristics of genetic variants.\": \"categorical and numeric\" },\n    { \"Realistic semi-synthetic simulations of whole-exome sequencing case-control studies were developed.\": \"semi-synthetic simulations\" },\n    { \"The simulator combines real WES datasets with known risk variants.\": \"real WES datasets\" },\n    { \"Predisposition variants from ClinVar were introduced into VCF files of cases.\": \"ClinVar\" },\n    { \"Two large datasets were used: 1000GP and an Iberian cohort.\": \"Iberian cohort\" },\n    { \"From 1000GP, half of the samples were selected as cases.\": \"half of the samples\" },\n    { \"For the Iberian cohort, one third were selected as cases.\": \"one third\" },\n    { \"Breast cancer risk variants annotated as exonic or splicing were queried.\": \"exonic or splicing\" },\n    { \"Variants with MAF higher than 0.01 were removed.\": \"MAF higher than 0.01\" },\n    { \"RVAS tests were performed on randomly split cohorts without risk variants.\": \"randomly split cohorts\" },\n    { \"Significance thresholds were obtained for 5%, 0.1%, and 0.01% TIER.\": \"0.01% TIER\" },\n    { \"The median from 10 random splits was used as thresholds.\": \"median from 10\" },\n    { \"A Chronic Lymphocytic Leukemia study was analyzed using rvGWAS.\": \"Chronic Lymphocytic Leukemia\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The model assumes N individuals with observed phenotypes in an exponential family.\": \"exponential family\" },\n    { \"INLA produces a numerical approximation to the posteriors of interest.\": \"numerical approximation\" },\n    { \"The null hypothesis assumes no genetic effects on the phenotype.\": \"no genetic effects\" },\n    { \"The alternative hypothesis assumes a genetic effect on the phenotype.\": \"genetic effect\" },\n    { \"Deviance Information Criteria (DIC) is used for model goodness of fit.\": \"Deviance Information Criteria\" },\n    { \"Difference in DIC between H0 and H1 is used for model selection.\": \"difference in\" },\n    { \"Values of ΔDIC > 10 are recommended to reject the null-hypothesis.\": \"ΔDIC > 10\" },\n    { \"Simulations are used to evaluate the ability of ΔDIC to choose models.\": \"use of simulations\" },\n    { \"Individuals are randomly assigned to cases or controls for type I error.\": \"randomly assign\" },\n    { \"S datasets are generated by shuffling cases and controls.\": \"shuffling cases\" },\n    { \"S = 10 was used for model selection in the benchmark study.\": \"S = 10\" },\n    { \"rvGWAS integrates quality control, filtering, and detection of data stratification.\": \"quality control\" },\n    { \"rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.\": \"SKAT-O\" },\n    { \"The simulator introduces predisposition variants into the VCF files.\": \"VCF files\" },\n    { \"Power analysis was conducted across 100 simulations for each gene.\": \"100 simulations\" }\n  ],\n  \"key_results\": [\n    { \"BATI outperforms established RVAS methods on realistic semi-synthetic cohorts.\": \"outperforms established\" },\n    { \"BATI achieves power above 75% when risk variants explain <0.5% variance.\": \"power above 75%\" },\n    { \"BATI's performance is stable despite smaller cohort size in Iberian cohort.\": \"stable despite\" },\n    { \"At 0.5% VE and 0.01% TIER, BATI achieves power close to 100%.\": \"power close to 100%\" },\n    { \"BATI calls most genes with TIER 0.01% even at VE of 0.5%.\": \"TIER 0.01%\" },\n    { \"BATI calls all genes at TIER 0.1% with >80% power.\": \">80% power\" },\n    { \"Burden, KBAC, and SKAT-O fail to call BRCA2 at low VE.\": \"fail to call\" },\n    { \"HBMR fails to call BARD1, CHEK2, and PALB2 at TIER 0.1%.\": \"fails to call\" },\n    { \"MiST failed to identify any risk gene at low VE or low TIER.\": \"failed to identify\" },\n    { \"Applying rvGWAS to CLL identified eight candidate predisposition genes.\": \"eight candidate\" },\n    { \"EHMT2 and COPS7A were identified as candidate predisposition genes.\": \"EHMT2\" },\n    { \"BATI strongly benefits from inclusion of variant characteristics as covariates.\": \"benefits from\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"BATI leverages both categorical and numerical variant characteristics.\": \"categorical and numerical\" },\n    { \"BATI gains power if risk genes contain mostly LoF variants.\": \"LoF variants\" },\n    { \"BATI performs at least as good as other methods for missense variants.\": \"missense variants\" },\n    { \"Semi-synthetic benchmarks provide more realistic noise levels than pure simulations.\": \"realistic background noise\" },\n    { \"Differences between methods are profound when variance explained is low.\": \"substantially more profound\" },\n    { \"MiST performed poorly due to zero-inflated p-values from low variant counts.\": \"zero-inflated p-values\" },\n    { \"Combining Burden and SKAT-type methods with different approaches is beneficial.\": \"combine Burden\" },\n    { \"BATI represents a flexible testing approach for future extension.\": \"flexible testing approach\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"MiST showed favorable results on purely artificial benchmark sets.\": \"favorable results\" },\n    { \"MiST performed poorly on realistic WES cohorts.\": \"performed poorly\" },\n    { \"Simulated variant data lacks complexity and noise-level of real data.\": \"lack the complexity\" },\n    { \"Previous benchmarks resulted in overly optimistic performances.\": \"overly optimistic\" },\n    { \"Model estimation with complex data structures is computationally heavy.\": \"computationally heavy\" },\n    { \"The study focuses on case-control studies using WES or WGS.\": \"case-control studies\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BATI outperforms existing RVAS methods when using biological context.\",\n      \"supporting_evidence\": [\n        { \"BATI outperforms established RVAS methods on realistic cohorts.\": \"outperforms established\" },\n        { \"BATI achieves power above 75% in low variance scenarios.\": \"power above 75%\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"MiST showed favorable results on purely artificial benchmark sets.\": \"favorable results\" }\n      ],\n      \"implications\": [\n        { \"BATI is a flexible testing approach for future extension.\": \"flexible testing approach\" }\n      ]\n    },\n    {\n      \"description\": \"rvGWAS facilitates user-friendly analysis of RVAS.\",\n      \"supporting_evidence\": [\n        { \"rvGWAS integrates quality control and filtering.\": \"quality control\" },\n        { \"rvGWAS includes multiple existing and new tests.\": \"SKAT-O\" }\n      ],\n      \"contradicting_evidence\": [],\n      \"implications\": [\n        { \"Applying rvGWAS to CLL identified eight candidate genes.\": \"eight candidate\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": \"\",\n  \"robustness_and_ablation_notes\": [\n    { \"BATI's performance is stable despite smaller cohort size.\": \"stable despite\" },\n    { \"BATI calls most genes at TIER 0.01% even at low VE.\": \"TIER 0.01%\" },\n    { \"BATI calls all genes at TIER 0.1% with >80% power.\": \">80% power\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 3 shows gene-wise power analysis for the 1000GP cohort.\": \"Fig 3\" },\n    { \"Table 2 presents power results for different tests and genes.\": \"Table 2\" },\n    { \"Supplementary S6 Fig shows estimated significance thresholds.\": \"S6 Fig\" },\n    { \"Supplementary S8 Fig shows benchmark results for the Iberian cohort.\": \"S8 Fig\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the BATI test using INLA for RVAS.\": \"BATI\" },\n    { \"2. The strongest evidence is BATI's power above 75% in low variance scenarios.\": \"power above 75%\" },\n    { \"3. The future path is extending BATI with more covariates.\": \"further extended\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6365,
+        "total_tokens": 9539,
+        "completion_tokens": 3174,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6365,
+      "elapsed_seconds": 262.2309533432126,
+      "max_tokens": 16000,
+      "seed": 318708825,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "bfdc572d1dddec07880f700b2d631ea3718279df1d971f7bbd57291b431a358f",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: integrate variant characteristics",
+        "methodological_details": "evidence quote is not present in fulltext: semi-synthetic simulations",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: ΔDIC > 10",
+        "claims": "Grounded field must be a nonempty list or empty string: claims[1].contradicting_evidence"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to efficiently integrate variant characteristics in RVAS.\": \"variant-specific features\"\n    },\n    {\n      \"The hypothesis is that a Bayesian approach using INLA improves power.\": \"Bayesian alternative\"\n    },\n    {\n      \"BATI allows integration of individual or variant-specific features as covariates.\": \"variant-specific features\"\n    },\n    {\n      \"BATI performs inference based on full model estimation efficiently.\": \"full model estimation\"\n    },\n    {\n      \"It is predicted that BATI outperforms existing methods with biological context.\": \"outperforms established RVAS methods\"\n    },\n    {\n      \"BATI should achieve high power when risk variants explain small variance.\": \"power above 75%\"\n    },\n    {\n      \"The framework rvGWAS supports analysis of genes or other biological units.\": \"biological unit\"\n    },\n    {\n      \"BATI should cope with complex population structure and confounders.\": \"complex population structure\"\n    },\n    {\n      \"Difference in deviance information criterion is proposed for model selection.\": \"difference in deviance\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The study uses a novel Bayesian rare variant Association Test using INLA.\": \"Bayesian rare variant\"\n    },\n    {\n      \"INLA was implemented using the R-INLA project version 17.06.20.\": \"version 17.06.20\"\n    },\n    {\n      \"The method builds a hierarchical Bayesian approach to the GLMM.\": \"hierarchical Bayesian approach\"\n    },\n    {\n      \"BATI integrates categorical and numeric characteristics of genetic variants.\": \"categorical and numeric\"\n    },\n    {\n      \"Realistic semi-synthetic simulations of whole-exome sequencing case-control studies were developed.\": \"semi-synthetic\"\n    },\n    {\n      \"The simulator combines real WES datasets with known risk variants.\": \"real WES datasets\"\n    },\n    {\n      \"Predisposition variants from ClinVar were introduced into VCF files of cases.\": \"ClinVar\"\n    },\n    {\n      \"Two large datasets were used: 1000GP and an Iberian cohort.\": \"Iberian cohort\"\n    },\n    {\n      \"From 1000GP, half of the samples were selected as cases.\": \"half of the samples\"\n    },\n    {\n      \"For the Iberian cohort, one third were selected as cases.\": \"one third\"\n    },\n    {\n      \"Breast cancer risk variants annotated as exonic or splicing were queried.\": \"exonic or splicing\"\n    },\n    {\n      \"Variants with MAF higher than 0.01 were removed.\": \"MAF higher than 0.01\"\n    },\n    {\n      \"RVAS tests were performed on randomly split cohorts without risk variants.\": \"randomly split cohorts\"\n    },\n    {\n      \"Significance thresholds were obtained for 5%, 0.1%, and 0.01% TIER.\": \"0.01% TIER\"\n    },\n    {\n      \"The median from 10 random splits was used as thresholds.\": \"median from 10\"\n    },\n    {\n      \"A Chronic Lymphocytic Leukemia study was analyzed using rvGWAS.\": \"Chronic Lymphocytic Leukemia\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"The model assumes N individuals with observed phenotypes in an exponential family.\": \"exponential family\"\n    },\n    {\n      \"INLA produces a numerical approximation to the posteriors of interest.\": \"numerical approximation\"\n    },\n    {\n      \"The null hypothesis assumes no genetic effects on the phenotype.\": \"no genetic effects\"\n    },\n    {\n      \"The alternative hypothesis assumes a genetic effect on the phenotype.\": \"genetic effect\"\n    },\n    {\n      \"Deviance Information Criteria (DIC) is used for model goodness of fit.\": \"Deviance Information Criteria\"\n    },\n    {\n      \"Difference in DIC between H0 and H1 is used for model selection.\": \"difference in\"\n    },\n    {\n      \"Values of ΔDIC > 10 are recommended to reject the null-hypothesis.\": \"ΔDIC > 10\"\n    },\n    {\n      \"Simulations are used to evaluate the ability of ΔDIC to choose models.\": \"use of simulations\"\n    },\n    {\n      \"Individuals are randomly assigned to cases or controls for type I error.\": \"randomly assign\"\n    },\n    {\n      \"S datasets are generated by shuffling cases and controls.\": \"shuffling cases\"\n    },\n    {\n      \"S = 10 was used for model selection in the benchmark study.\": \"S = 10\"\n    },\n    {\n      \"rvGWAS integrates quality control, filtering, and detection of data stratification.\": \"quality control\"\n    },\n    {\n      \"rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.\": \"SKAT-O\"\n    },\n    {\n      \"The simulator introduces predisposition variants into the VCF files.\": \"VCF files\"\n    },\n    {\n      \"Power analysis was conducted across 100 simulations for each gene.\": \"100 simulations\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BATI outperforms existing RVAS methods when using biological context.\",\n      \"supporting_evidence\": [\n        {\n          \"BATI outperforms established RVAS methods on realistic cohorts.\": \"outperforms established\"\n        },\n        {\n          \"BATI achieves power above 75% in low variance scenarios.\": \"power above 75%\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"MiST showed favorable results on purely artificial benchmark sets.\": \"favorable results\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"BATI is a flexible testing approach for future extension.\": \"flexible testing approach\"\n        }\n      ]\n    },\n    {\n      \"description\": \"rvGWAS facilitates user-friendly analysis of RVAS.\",\n      \"supporting_evidence\": [\n        {\n          \"rvGWAS integrates quality control and filtering.\": \"quality control\"\n        },\n        {\n          \"rvGWAS includes multiple existing and new tests.\": \"SKAT-O\"\n        }\n      ],\n      \"contradicting_evidence\": \"\",\n      \"implications\": [\n        {\n          \"Applying rvGWAS to CLL identified eight candidate genes.\": \"eight candidate\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5867,
+        "total_tokens": 7457,
+        "completion_tokens": 1590,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5867,
+      "elapsed_seconds": 138.71600664407015,
+      "max_tokens": 4096,
+      "seed": 318708826,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "cdd1ba6f1637d69eb330edb2a73b83651fa6d62dbfcf3bed1e79d859936fcddd",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: ΔDIC > 10"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The model assumes N individuals with observed phenotypes in an exponential family.\": \"exponential family\"\n    },\n    {\n      \"INLA produces a numerical approximation to the posteriors of interest.\": \"numerical approximation\"\n    },\n    {\n      \"The null hypothesis assumes no genetic effects on the phenotype.\": \"no genetic effects\"\n    },\n    {\n      \"The alternative hypothesis assumes a genetic effect on the phenotype.\": \"genetic effect\"\n    },\n    {\n      \"Deviance Information Criteria (DIC) is used for model goodness of fit.\": \"Deviance Information Criteria\"\n    },\n    {\n      \"Difference in DIC between H0 and H1 is used for model selection.\": \"difference in\"\n    },\n    {\n      \"Values of ΔDIC > 10 are recommended to reject the null-hypothesis.\": \"ΔDIC > 10\"\n    },\n    {\n      \"Simulations are used to evaluate the ability of ΔDIC to choose models.\": \"use of simulations\"\n    },\n    {\n      \"Individuals are randomly assigned to cases or controls for type I error.\": \"randomly assign\"\n    },\n    {\n      \"S datasets are generated by shuffling cases and controls.\": \"shuffling cases\"\n    },\n    {\n      \"S = 10 was used for model selection in the benchmark study.\": \"S = 10\"\n    },\n    {\n      \"rvGWAS integrates quality control, filtering, and detection of data stratification.\": \"quality control\"\n    },\n    {\n      \"rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.\": \"SKAT-O\"\n    },\n    {\n      \"The simulator introduces predisposition variants into the VCF files.\": \"VCF files\"\n    },\n    {\n      \"Power analysis was conducted across 100 simulations for each gene.\": \"100 simulations\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4937,
+        "total_tokens": 5403,
+        "completion_tokens": 466,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4937,
+      "elapsed_seconds": 37.50917760655284,
+      "max_tokens": 4096,
+      "seed": 318708827,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "54bb7922da02deb2b990ed36211c1fe33f5360ab290de9842998bf79786b6063",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: ΔDIC > 10"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The model assumes N individuals with observed phenotypes in an exponential family.\": \"exponential family\"\n    },\n    {\n      \"INLA produces a numerical approximation to the posteriors of interest.\": \"numerical approximation\"\n    },\n    {\n      \"The null hypothesis assumes no genetic effects on the phenotype.\": \"no genetic effects\"\n    },\n    {\n      \"The alternative hypothesis assumes a genetic effect on the phenotype.\": \"genetic effect\"\n    },\n    {\n      \"Deviance Information Criteria (DIC) is used for model goodness of fit.\": \"Deviance Information Criteria\"\n    },\n    {\n      \"Difference in DIC between H0 and H1 is used for model selection.\": \"difference in\"\n    },\n    {\n      \"Values of ΔDIC > 10 are recommended to reject the null-hypothesis.\": \"ΔDIC > 10\"\n    },\n    {\n      \"Simulations are used to evaluate the ability of ΔDIC to choose models.\": \"use of simulations\"\n    },\n    {\n      \"Individuals are randomly assigned to cases or controls for type I error.\": \"randomly assign\"\n    },\n    {\n      \"S datasets are generated by shuffling cases and controls.\": \"shuffling cases\"\n    },\n    {\n      \"S = 10 was used for model selection in the benchmark study.\": \"S = 10\"\n    },\n    {\n      \"rvGWAS integrates quality control, filtering, and detection of data stratification.\": \"quality control\"\n    },\n    {\n      \"rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.\": \"SKAT-O\"\n    },\n    {\n      \"The simulator introduces predisposition variants into the VCF files.\": \"VCF files\"\n    },\n    {\n      \"Power analysis was conducted across 100 simulations for each gene.\": \"100 simulations\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4937,
+        "total_tokens": 5403,
+        "completion_tokens": 466,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4937,
+      "elapsed_seconds": 45.982605781406164,
+      "max_tokens": 4096,
+      "seed": 318708828,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "54bb7922da02deb2b990ed36211c1fe33f5360ab290de9842998bf79786b6063",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: ΔDIC > 10"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The model assumes N individuals with observed phenotypes in an exponential family.\": \"exponential family\"\n    },\n    {\n      \"INLA produces a numerical approximation to the posteriors of interest.\": \"numerical approximation\"\n    },\n    {\n      \"The null hypothesis assumes no genetic effects on the phenotype.\": \"no genetic effects\"\n    },\n    {\n      \"The alternative hypothesis assumes a genetic effect on the phenotype.\": \"genetic effect\"\n    },\n    {\n      \"Deviance Information Criteria (DIC) is used for model goodness of fit.\": \"Deviance Information Criteria\"\n    },\n    {\n      \"Difference in DIC between H0 and H1 is used for model selection.\": \"difference in\"\n    },\n    {\n      \"Values of ΔDIC > 10 are recommended to reject the null-hypothesis.\": \"ΔDIC > 10\"\n    },\n    {\n      \"Simulations are used to evaluate the ability of ΔDIC to choose models.\": \"use of simulations\"\n    },\n    {\n      \"Individuals are randomly assigned to cases or controls for type I error.\": \"randomly assign\"\n    },\n    {\n      \"S datasets are generated by shuffling cases and controls.\": \"shuffling cases\"\n    },\n    {\n      \"S = 10 was used for model selection in the benchmark study.\": \"S = 10\"\n    },\n    {\n      \"rvGWAS integrates quality control, filtering, and detection of data stratification.\": \"quality control\"\n    },\n    {\n      \"rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.\": \"SKAT-O\"\n    },\n    {\n      \"The simulator introduces predisposition variants into the VCF files.\": \"VCF files\"\n    },\n    {\n      \"Power analysis was conducted across 100 simulations for each gene.\": \"100 simulations\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4937,
+        "total_tokens": 5403,
+        "completion_tokens": 466,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4937,
+      "elapsed_seconds": 38.73284808173776,
+      "max_tokens": 4096,
+      "seed": 318708829,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "54bb7922da02deb2b990ed36211c1fe33f5360ab290de9842998bf79786b6063",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: ΔDIC > 10"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"The model assumes N individuals with observed phenotypes in an exponential family.\": \"exponential family\"\n    },\n    {\n      \"INLA produces a numerical approximation to the posteriors of interest.\": \"numerical approximation\"\n    },\n    {\n      \"The null hypothesis assumes no genetic effects on the phenotype.\": \"no genetic effects\"\n    },\n    {\n      \"The alternative hypothesis assumes a genetic effect on the phenotype.\": \"genetic effect\"\n    },\n    {\n      \"Deviance Information Criteria (DIC) is used for model goodness of fit.\": \"Deviance Information Criteria\"\n    },\n    {\n      \"Difference in DIC between H0 and H1 is used for model selection.\": \"difference in\"\n    },\n    {\n      \"Values of ΔDIC > 10 are recommended to reject the null-hypothesis.\": \"ΔDIC > 10\"\n    },\n    {\n      \"Simulations are used to evaluate the ability of ΔDIC to choose models.\": \"use of simulations\"\n    },\n    {\n      \"Individuals are randomly assigned to cases or controls for type I error.\": \"randomly assign\"\n    },\n    {\n      \"S datasets are generated by shuffling cases and controls.\": \"shuffling cases\"\n    },\n    {\n      \"S = 10 was used for model selection in the benchmark study.\": \"S = 10\"\n    },\n    {\n      \"rvGWAS integrates quality control, filtering, and detection of data stratification.\": \"quality control\"\n    },\n    {\n      \"rvGWAS includes Burden, SKAT-O, KBAC, MiST, HBMR, and BATI.\": \"SKAT-O\"\n    },\n    {\n      \"The simulator introduces predisposition variants into the VCF files.\": \"VCF files\"\n    },\n    {\n      \"Power analysis was conducted across 100 simulations for each gene.\": \"100 simulations\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4937,
+        "total_tokens": 5403,
+        "completion_tokens": 466,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4937,
+      "elapsed_seconds": 45.540650479495525,
+      "max_tokens": 4096,
+      "seed": 318708830,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "54bb7922da02deb2b990ed36211c1fe33f5360ab290de9842998bf79786b6063",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: ΔDIC > 10"
+      }
+    },
+    {
+      "response": "{\n\"q0\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4963,
+        "total_tokens": 4975,
+        "completion_tokens": 12,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4963,
+      "elapsed_seconds": 4.029209922999144,
+      "max_tokens": 2048,
+      "seed": 318708925,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "25d7ecc5dc54282aacad4ca800215badd9513339cab497153ec2dcdbfe679323",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "procedures_and_architectures",
+            6
+          ],
+          "narrative": "Values of ΔDIC > 10 are recommended to reject the null-hypothesis.",
+          "invalid_quote": "ΔDIC > 10",
+          "candidates": [
+            {
+              "quote": "recommended to reject the null-hypothesis.",
+              "start": 11152,
+              "end": 11194
+            },
+            {
+              "quote": "reject the null-hypothesis.",
+              "start": 11167,
+              "end": 11194
+            },
+            {
+              "quote": "reject the null-hypothesis. However,",
+              "start": 11167,
+              "end": 11203
+            },
+            {
+              "quote": "to reject the null-hypothesis.",
+              "start": 11164,
+              "end": 11194
+            },
+            {
+              "quote": "reject the null-hypothesis. However, to",
+              "start": 11167,
+              "end": 11206
+            },
+            {
+              "quote": "to reject the null-hypothesis. However,",
+              "start": 11164,
+              "end": 11203
+            },
+            {
+              "quote": "recommended to reject",
+              "start": 11152,
+              "end": 11173
+            },
+            {
+              "quote": "recommended to reject the",
+              "start": 11152,
+              "end": 11177
+            },
+            {
+              "quote": "are recommended to reject",
+              "start": 11148,
+              "end": 11173
+            },
+            {
+              "quote": "are recommended to reject the",
+              "start": 11148,
+              "end": 11177
+            },
+            {
+              "quote": "1 are recommended to reject",
+              "start": 11146,
+              "end": 11173
+            },
+            {
+              "quote": "null-hypothesis. However, to",
+              "start": 11178,
+              "end": 11206
+            },
+            {
+              "quote": "the null-hypothesis. However,",
+              "start": 11174,
+              "end": 11203
+            },
+            {
+              "quote": "null hypothesis assumes",
+              "start": 10510,
+              "end": 10533
+            },
+            {
+              "quote": "the null hypothesis",
+              "start": 10506,
+              "end": 10525
+            },
+            {
+              "quote": "null hypothesis of",
+              "start": 6898,
+              "end": 6916
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6365,
+  "elapsed_seconds": 573.0137313380837,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "procedures_and_architectures",
+        6
+      ],
+      "entry": {
+        "Values of ΔDIC > 10 are recommended to reject the null-hypothesis.": "ΔDIC > 10"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

@@ -1,0 +1,1549 @@
+{
+  "document_id": "bethgelab-100003",
+  "fulltext_sha256": "191f8cffbe90985061b6946db049ff8f556f014bb0268187a365732f60fc01eb",
+  "summary": {
+    "title": "Tumor PD-L1 selectively suppresses type I interferon in myeloid cells to suppress CTL recruitment to promote lung metastasis",
+    "authors": "John D Klement, Priscilla S Redd, Chunwan Lu, Alyssa D Merting, Dakota B Poschel, Dafeng Yang, Gang Zhou, David H Munn, Kebin Liu",
+    "field_subfield": "Immunology / Cancer Biology",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This study investigates the mechanism by which tumor-expressed PD-L1 (tPD-L1) promotes immune suppression, specifically focusing on lung metastasis in triple-negative breast cancer (TNBC) and colorectal cancer (CRC) models. Contrary to the prevailing paradigm that tPD-L1 directly inhibits cytotoxic T lymphocyte (CTL) activity via PD-1 engagement, the authors demonstrate that tPD-L1 has no direct effect on CTL killing when only tumor cells and CTLs are present. Instead, tPD-L1 functions by engaging PD-1 on myeloid cells (mPD-1), creating an immunosuppressive niche that suppresses type I interferon (IFN-I) signaling. Using CRISPR-Cas9 knockout models of 4T1 and CT26 cells, the study shows that while PD-L1 loss does not affect primary tumor growth, it significantly reduces lung metastasis in a CTL-dependent manner. Single-cell RNA sequencing reveals that tPD-L1 engagement with mPD-1 activates SHP-2, which dephosphorylates STAT1, thereby repressing the expression of chemokines Cxcl9 and Cxcl10. This repression impairs the recruitment of CTLs to the lung metastatic site. The study further validates these findings in human patient cohorts, showing that response to PD-1 blockade immunotherapy correlates with the restoration of IFN-I signaling in myeloid cells. The authors conclude that the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis is critical for controlling CTL infiltration in lung metastasis, providing a mechanistic basis for the efficacy of checkpoint blockade in neoadjuvant and adjuvant settings. This work shifts the focus from direct CTL inhibition to myeloid-mediated suppression of chemokine production, highlighting the importance of the tumor microenvironment in metastatic progression.",
+    "research_context": [
+      {
+        "The mechanism of tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood.": "intermediate cell"
+      },
+      {
+        "PD-L1 and PD-1 immune checkpoint blockade is believed to function by blocking PD-L1 to PD-1 engagement.": "immune checkpoint blockade"
+      },
+      {
+        "Particular attention has been paid to the role of tumor-expressed PD-L1 as a direct molecular shield.": "direct molecular shield"
+      },
+      {
+        "Emerging data suggests response to PD-1/L1 blockade may depend on tumor anatomic sites.": "tumor anatomic sites"
+      },
+      {
+        "The dominant cause of mortality is metastatic growth, not primary tumor growth.": "metastatic growth"
+      },
+      {
+        "How tPD-L1 might differentially drive metastasis from primary tumor is unknown.": "differentially drive metastasis"
+      },
+      {
+        "PD-1 expression in non-T cell populations is important for tumor immune evasion.": "non-T cell"
+      },
+      {
+        "How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.": "CTL suppression"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central question is whether tPD-L1 directly protects tumor cells from CTL cytotoxicity.": "CTL cytotoxicity"
+      },
+      {
+        "The authors hypothesize that tPD-L1 targets myeloid cell-expressed PD-1 to suppress type I IFN.": "myeloid cell-expressed PD-1"
+      },
+      {
+        "This suppression represses Cxcl9 and Cxcl10 expression in myeloid cells.": "Cxcl9 and Cxcl10"
+      },
+      {
+        "This impairs CTL recruitment to the lung niche to enhance established lung metastasis.": "lung metastasis"
+      },
+      {
+        "The study aims to determine if tPD-L1 exhibits no direct effect on CTL activity.": "no direct effect"
+      },
+      {
+        "It is hypothesized that a third factor in the lung metastatic niche is necessary.": "third factor"
+      },
+      {
+        "The hypothesis is that tPD-L1 engages mPD-1 to antagonize type I interferon signaling.": "antagonize type I interferon"
+      },
+      {
+        "The predicted outcome is that PD-L1 loss will decrease lung metastasis in a CTL-dependent manner.": "CTL-dependent manner"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study used 4T1 murine triple negative breast cancer and CT26 colorectal cancer cell lines.": "4T1"
+      },
+      {
+        "Cd274 encoding PD-L1 was deleted using CRISPR-Cas9 in these cell lines.": "lentiCRISPRv2"
+      },
+      {
+        "An in vitro CTL-tumor interaction system using 2/20 tumor-specific CTLs was utilized.": "2/20"
+      },
+      {
+        "2/20 cells recognize the H2-Ld-restricted AH1 epitope of gp70 protein.": "AH1 epitope"
+      },
+      {
+        "In vivo models included orthotopic injection for primary tumors and tail vein injection for metastasis.": "tail vein injection"
+      },
+      {
+        "Lung metastasis was quantified by harvesting lungs and inflating with India ink solution.": "India ink solution"
+      },
+      {
+        "RNA sequencing was performed on lungs colonized by WT and PD-L1-deficient 4T1 cells.": "RNA sequencing"
+      },
+      {
+        "Single-cell RNA sequencing was performed on CD45+ leukocytes from colonized lungs.": "single-cell RNA sequencing"
+      },
+      {
+        "Approximately 7500 cells were analyzed using UMAP for dimensional reduction.": "7500 cells"
+      },
+      {
+        "Flow cytometry was used to validate transcriptomic data in 4T1-colonized lungs.": "flow cytometry"
+      },
+      {
+        "Myeloid cells were depleted using clodronate liposomes in tumor-bearing mice.": "clodronate liposomes"
+      },
+      {
+        "Human patient data from metastatic basal cell carcinoma was analyzed.": "basal cell carcinoma"
+      },
+      {
+        "Statistical analysis was conducted using Prism8 and two-tailed Student's t-test.": "Prism8"
+      },
+      {
+        "Bulk RNA sequencing used STARv2.5 for alignment and DESeq2 for quantification.": "DESeq2"
+      },
+      {
+        "Single-cell libraries were generated using the Chromium Single Cell 3' Reagent Kit v3.": "Chromium Single Cell"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "HEK293FT cells were co-transfected with pCMV-VSV-G, psPAX2, and lentiCRISPRv2 plasmids.": "lentiCRISPRv2"
+      },
+      {
+        "Tumor cells were transduced with lentivirus and selected with puromycin.": "puromycin"
+      },
+      {
+        "Cells were sorted for marker-negative cells using a BD FACSARIA.": "BD FACSARIA"
+      },
+      {
+        "4T1 orthotopic tumors were established by injection at the right second mammary gland.": "right second mammary gland"
+      },
+      {
+        "CT26 subcutaneous tumors were established by injection at the right flank.": "right flank"
+      },
+      {
+        "For experimental metastasis, tumor cells were injected into the lateral tail vein.": "lateral tail vein"
+      },
+      {
+        "Anti-CD8α or isotype control antibodies were injected i.v. every other day.": "anti-CD8α"
+      },
+      {
+        "Samples were blocked in FACS Buffer containing mouse FcBlock.": "mouse\nFcBlock"
+      },
+      {
+        "Intracellular staining was performed using Cytofix/Cytoperm Plus kit.": "Cytofix/Cytoperm Plus"
+      },
+      {
+        "Data was acquired on FACSCalibur or LSRFortessa and analyzed with FlowJo v10.6.0.": "FlowJo v10.6.0"
+      },
+      {
+        "RNA was extracted using Direct-zol RNA microprep kit.": "Direct-zol RNA"
+      },
+      {
+        "Reads were aligned to mm10 reference genome using STARv2.5.": "STARv2.5"
+      },
+      {
+        "scRNA-seq libraries were sequenced on Illumina NextSeq 500 platform.": "Illumina NextSeq 500"
+      },
+      {
+        "Cells were clustered using the first fifty principal components.": "fifty principal components"
+      },
+      {
+        "Clusters were annotated by comparison to pre-existing RNA-sequencing datasets using SingleR.": "SingleR"
+      }
+    ],
+    "key_results": [
+      {
+        "tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.": "no survival advantage"
+      },
+      {
+        "No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.": "primary tumor growth"
+      },
+      {
+        "Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.": "decreases lung metastasis"
+      },
+      {
+        "Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.": "CD3 + cells"
+      },
+      {
+        "No difference in initial tumor cell colonization was seen one day after tail vein injection.": "initial tumor cell colonization"
+      },
+      {
+        "PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.": "RAGII-KO mice"
+      },
+      {
+        "Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.": "MHC class I"
+      },
+      {
+        "Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.": "myeloid PD-1"
+      },
+      {
+        "Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.": "myeloid cells"
+      },
+      {
+        "Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.": "antigen presentation machinery"
+      },
+      {
+        "Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.": "Pdcd1lg2"
+      },
+      {
+        "Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.": "SHP-2 activation"
+      },
+      {
+        "Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.": "PD-L1 expression enhanced IFN production"
+      },
+      {
+        "Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.": "diminished tPD-L1 function"
+      },
+      {
+        "Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.": "IFN-I response"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The study uncouples the role of tPD-L1 at the metastatic site from primary tumor growth.": "uncouple the role"
+      },
+      {
+        "tPD-L1 binds to mPD-1 to enforce an immunologically cold microenvironment.": "immunologically cold"
+      },
+      {
+        "The tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis controls CTL tumor infiltration.": "CTL tumor infiltration"
+      },
+      {
+        "This axis underlies the efficacy of ICB immunotherapy in neoadjuvant and adjuvant settings.": "neoadjuvant and the adjuvant"
+      },
+      {
+        "The PD-1/L1 axis functions as a negative feedback circuit for type I interferon.": "negative feedback circuit"
+      },
+      {
+        "Low response rates in interferon alpha therapies may be due to compensatory PD-1/L1 upregulation.": "compensatory PD-1/L1"
+      },
+      {
+        "Type I interferon signaling is essential for myeloid cell function in CTL recruitment.": "CTL recruitment"
+      },
+      {
+        "This work highlights the importance of myeloid cells in bridging tPD-L1 to CTL suppression.": "bridging tPD-L1"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "Conflicting findings for the role of tPD-L1 in PD-1 blockade efficacy have been reported.": "Conflicting findings"
+      },
+      {
+        "There is a consensus that tPD-L1 may be sufficient but not necessary for response.": "sufficient, but not necessary"
+      },
+      {
+        "One limitation is that the study exclusively analyzed lung metastases.": "exclusively analyzed lung metastases"
+      },
+      {
+        "Lung metastases may have a uniquely inflamed microenvironment due to barrier tissue location.": "uniquely inflamed microenvironment"
+      },
+      {
+        "The mechanism underlying tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood.": "incompletely understood"
+      },
+      {
+        "How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.": "incompletely understood"
+      }
+    ],
+    "claims": [
+      {
+        "description": "tPD-L1 does not directly suppress CTL activation or lytic function when only tumor cells and CTLs are present.",
+        "supporting_evidence": [
+          {
+            "In vitro cytotoxicity results show no difference in killing between WT and KO cells.": "no difference"
+          },
+          {
+            "2/20 CTLs exert antigen-specific cytotoxicity within minutes.": "antigen-specific cytotoxicity"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Previous paradigms suggest tPD-L1 serves as a direct molecular shield against CTL lysis.": "direct molecular shield"
+          }
+        ],
+        "implications": [
+          {
+            "This shifts the focus to indirect mechanisms involving other cell types.": "indirect protective role"
+          }
+        ]
+      },
+      {
+        "description": "tPD-L1 promotes lung metastasis by engaging myeloid PD-1 to suppress type I interferon signaling.",
+        "supporting_evidence": [
+          {
+            "PD-L1 loss significantly decreases lung metastasis in a CTL-dependent manner.": "decreases lung metastasis"
+          },
+          {
+            "Single-cell RNA sequencing shows tPD-L1 antagonizes type I IFN in myeloid cells.": "antagonize type I interferon"
+          },
+          {
+            "Depletion of myeloid cells impairs tPD-L1 promotion of lung metastasis.": "impaired tPD-L1 promotion"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "No difference in primary tumor growth was observed.": "primary tumor growth"
+          }
+        ],
+        "implications": [
+          {
+            "This identifies a new axis for CTL recruitment control in metastasis.": "CTL recruitment"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.": "MHC class I"
+      },
+      {
+        "Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.": "clodronate liposomes"
+      },
+      {
+        "Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.": "PD-L1 expression enhanced IFN production"
+      },
+      {
+        "The study used both bulk and single-cell RNA sequencing for robust validation.": "single-cell RNA sequencing"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows tPD-L1 confers no survival advantage in in vitro CTL-tumor interaction.": "no survival advantage"
+      },
+      {
+        "Figure 2 shows no difference in primary tumor growth between WT and KO cells.": "primary tumor growth"
+      },
+      {
+        "Figure 3 shows increased CD3+ infiltration in lung after tPD-L1 loss.": "CD3 + cells"
+      },
+      {
+        "Figure 4 shows single-cell RNA sequencing of CD45+ leukocytes from colonized lungs.": "single-cell RNA sequencing"
+      },
+      {
+        "Figure 5 shows validation of transcriptomic data by flow cytometry.": "flow cytometry"
+      },
+      {
+        "Figure 6 shows tPD-L1 engagement with mPD-1 creates an immunosuppressive niche.": "immunosuppressive niche"
+      },
+      {
+        "Figure 7 shows human patient response to PD-1 blockade correlates with IFN-I response.": "IFN-I response"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the identification of the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis in lung metastasis.": "tPD-L1/mPD-1/IFN-I"
+      },
+      {
+        "2. The strongest evidence is the significant decrease in lung metastasis upon PD-L1 knockout in a CTL-dependent manner.": "decreases lung metastasis"
+      },
+      {
+        "3. The future path involves exploring this axis in other metastatic sites and clinical trials.": "neoadjuvant and the adjuvant"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis study investigates the mechanism by which tumor-expressed PD-L1 (tPD-L1) promotes immune suppression, specifically focusing on lung metastasis in triple-negative breast cancer (TNBC) and colorectal cancer (CRC) models. Contrary to the prevailing paradigm that tPD-L1 directly inhibits cytotoxic T lymphocyte (CTL) activity via PD-1 engagement, the authors demonstrate that tPD-L1 has no direct effect on CTL killing when only tumor cells and CTLs are present. Instead, tPD-L1 functions by engaging PD-1 on myeloid cells (mPD-1), creating an immunosuppressive niche that suppresses type I interferon (IFN-I) signaling. Using CRISPR-Cas9 knockout models of 4T1 and CT26 cells, the study shows that while PD-L1 loss does not affect primary tumor growth, it significantly reduces lung metastasis in a CTL-dependent manner. Single-cell RNA sequencing reveals that tPD-L1 engagement with mPD-1 activates SHP-2, which dephosphorylates STAT1, thereby repressing the expression of chemokines Cxcl9 and Cxcl10. This repression impairs the recruitment of CTLs to the lung metastatic site. The study further validates these findings in human patient cohorts, showing that response to PD-1 blockade immunotherapy correlates with the restoration of IFN-I signaling in myeloid cells. The authors conclude that the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis is critical for controlling CTL infiltration in lung metastasis, providing a mechanistic basis for the efficacy of checkpoint blockade in neoadjuvant and adjuvant settings. This work shifts the focus from direct CTL inhibition to myeloid-mediated suppression of chemokine production, highlighting the importance of the tumor microenvironment in metastatic progression.\n\nResearch Context\nThe mechanism of tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood. PD-L1 and PD-1 immune checkpoint blockade is believed to function by blocking PD-L1 to PD-1 engagement. Particular attention has been paid to the role of tumor-expressed PD-L1 as a direct molecular shield. Emerging data suggests response to PD-1/L1 blockade may depend on tumor anatomic sites. The dominant cause of mortality is metastatic growth, not primary tumor growth. How tPD-L1 might differentially drive metastasis from primary tumor is unknown. PD-1 expression in non-T cell populations is important for tumor immune evasion. How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.\n\nResearch Question And Hypothesis\nThe central question is whether tPD-L1 directly protects tumor cells from CTL cytotoxicity. The authors hypothesize that tPD-L1 targets myeloid cell-expressed PD-1 to suppress type I IFN. This suppression represses Cxcl9 and Cxcl10 expression in myeloid cells. This impairs CTL recruitment to the lung niche to enhance established lung metastasis. The study aims to determine if tPD-L1 exhibits no direct effect on CTL activity. It is hypothesized that a third factor in the lung metastatic niche is necessary. The hypothesis is that tPD-L1 engages mPD-1 to antagonize type I interferon signaling. The predicted outcome is that PD-L1 loss will decrease lung metastasis in a CTL-dependent manner.\n\nMethodological Details\nThe study used 4T1 murine triple negative breast cancer and CT26 colorectal cancer cell lines. Cd274 encoding PD-L1 was deleted using CRISPR-Cas9 in these cell lines. An in vitro CTL-tumor interaction system using 2/20 tumor-specific CTLs was utilized. 2/20 cells recognize the H2-Ld-restricted AH1 epitope of gp70 protein. In vivo models included orthotopic injection for primary tumors and tail vein injection for metastasis. Lung metastasis was quantified by harvesting lungs and inflating with India ink solution. RNA sequencing was performed on lungs colonized by WT and PD-L1-deficient 4T1 cells. Single-cell RNA sequencing was performed on CD45+ leukocytes from colonized lungs. Approximately 7500 cells were analyzed using UMAP for dimensional reduction. Flow cytometry was used to validate transcriptomic data in 4T1-colonized lungs. Myeloid cells were depleted using clodronate liposomes in tumor-bearing mice. Human patient data from metastatic basal cell carcinoma was analyzed. Statistical analysis was conducted using Prism8 and two-tailed Student's t-test. Bulk RNA sequencing used STARv2.5 for alignment and DESeq2 for quantification. Single-cell libraries were generated using the Chromium Single Cell 3' Reagent Kit v3.\n\nProcedures And Architectures\nHEK293FT cells were co-transfected with pCMV-VSV-G, psPAX2, and lentiCRISPRv2 plasmids. Tumor cells were transduced with lentivirus and selected with puromycin. Cells were sorted for marker-negative cells using a BD FACSARIA. 4T1 orthotopic tumors were established by injection at the right second mammary gland. CT26 subcutaneous tumors were established by injection at the right flank. For experimental metastasis, tumor cells were injected into the lateral tail vein. Anti-CD8α or isotype control antibodies were injected i.v. every other day. Samples were blocked in FACS Buffer containing mouse FcBlock. Intracellular staining was performed using Cytofix/Cytoperm Plus kit. Data was acquired on FACSCalibur or LSRFortessa and analyzed with FlowJo v10.6.0. RNA was extracted using Direct-zol RNA microprep kit. Reads were aligned to mm10 reference genome using STARv2.5. scRNA-seq libraries were sequenced on Illumina NextSeq 500 platform. Cells were clustered using the first fifty principal components. Clusters were annotated by comparison to pre-existing RNA-sequencing datasets using SingleR.\n\nKey Results\ntPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell. No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells. Knocking out PD-L1 in tumor cells significantly decreases lung metastasis. Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1. No difference in initial tumor cell colonization was seen one day after tail vein injection. PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice. Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis. Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN. Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche. Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss. Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells. Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels. Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production. Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth. Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\n\nInterpretation And Theoretical Implications\nThe study uncouples the role of tPD-L1 at the metastatic site from primary tumor growth. tPD-L1 binds to mPD-1 to enforce an immunologically cold microenvironment. The tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis controls CTL tumor infiltration. This axis underlies the efficacy of ICB immunotherapy in neoadjuvant and adjuvant settings. The PD-1/L1 axis functions as a negative feedback circuit for type I interferon. Low response rates in interferon alpha therapies may be due to compensatory PD-1/L1 upregulation. Type I interferon signaling is essential for myeloid cell function in CTL recruitment. This work highlights the importance of myeloid cells in bridging tPD-L1 to CTL suppression.\n\nContradictions And Limitations\nConflicting findings for the role of tPD-L1 in PD-1 blockade efficacy have been reported. There is a consensus that tPD-L1 may be sufficient but not necessary for response. One limitation is that the study exclusively analyzed lung metastases. Lung metastases may have a uniquely inflamed microenvironment due to barrier tissue location. The mechanism underlying tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood. How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.\n\nClaims\ntPD-L1 does not directly suppress CTL activation or lytic function when only tumor cells and CTLs are present. In vitro cytotoxicity results show no difference in killing between WT and KO cells. 2/20 CTLs exert antigen-specific cytotoxicity within minutes. Previous paradigms suggest tPD-L1 serves as a direct molecular shield against CTL lysis. This shifts the focus to indirect mechanisms involving other cell types.\ntPD-L1 promotes lung metastasis by engaging myeloid PD-1 to suppress type I interferon signaling. PD-L1 loss significantly decreases lung metastasis in a CTL-dependent manner. Single-cell RNA sequencing shows tPD-L1 antagonizes type I IFN in myeloid cells. Depletion of myeloid cells impairs tPD-L1 promotion of lung metastasis. No difference in primary tumor growth was observed. This identifies a new axis for CTL recruitment control in metastasis.\n\nRobustness And Ablation Notes\nAblation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect. Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells. Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production. The study used both bulk and single-cell RNA sequencing for robust validation.\n\nKey Figures Tables\nFigure 1 shows tPD-L1 confers no survival advantage in in vitro CTL-tumor interaction. Figure 2 shows no difference in primary tumor growth between WT and KO cells. Figure 3 shows increased CD3+ infiltration in lung after tPD-L1 loss. Figure 4 shows single-cell RNA sequencing of CD45+ leukocytes from colonized lungs. Figure 5 shows validation of transcriptomic data by flow cytometry. Figure 6 shows tPD-L1 engagement with mPD-1 creates an immunosuppressive niche. Figure 7 shows human patient response to PD-1 blockade correlates with IFN-I response.\n\nThree Takeaways\n1. The core contribution is the identification of the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis in lung metastasis. 2. The strongest evidence is the significant decrease in lung metastasis upon PD-L1 knockout in a CTL-dependent manner. 3. The future path involves exploring this axis in other metastatic sites and clinical trials.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "intermediate cell",
+      "start": 726,
+      "end": 743,
+      "typographic_alignment": false,
+      "original_quote": "intermediate cell"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "immune checkpoint blockade",
+      "start": 1627,
+      "end": 1653,
+      "typographic_alignment": false,
+      "original_quote": "immune checkpoint blockade"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "direct molecular shield",
+      "start": 2291,
+      "end": 2314,
+      "typographic_alignment": false,
+      "original_quote": "direct molecular shield"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "tumor anatomic sites",
+      "start": 2508,
+      "end": 2528,
+      "typographic_alignment": false,
+      "original_quote": "tumor anatomic sites"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "metastatic growth",
+      "start": 2769,
+      "end": 2786,
+      "typographic_alignment": false,
+      "original_quote": "metastatic growth"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "differentially drive metastasis",
+      "start": 3493,
+      "end": 3524,
+      "typographic_alignment": false,
+      "original_quote": "differentially drive metastasis"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "non-T cell",
+      "start": 3778,
+      "end": 3788,
+      "typographic_alignment": false,
+      "original_quote": "non-T cell"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "CTL suppression",
+      "start": 3823,
+      "end": 3838,
+      "typographic_alignment": false,
+      "original_quote": "CTL suppression"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "CTL cytotoxicity",
+      "start": 4491,
+      "end": 4507,
+      "typographic_alignment": false,
+      "original_quote": "CTL cytotoxicity"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "myeloid cell-expressed PD-1",
+      "start": 4031,
+      "end": 4058,
+      "typographic_alignment": false,
+      "original_quote": "myeloid cell-expressed PD-1"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "Cxcl9 and Cxcl10",
+      "start": 1297,
+      "end": 1313,
+      "typographic_alignment": false,
+      "original_quote": "Cxcl9 and Cxcl10"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "lung metastasis",
+      "start": 116,
+      "end": 131,
+      "typographic_alignment": false,
+      "original_quote": "lung metastasis"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "no direct effect",
+      "start": 3903,
+      "end": 3919,
+      "typographic_alignment": false,
+      "original_quote": "no direct effect"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "third factor",
+      "start": 8405,
+      "end": 8417,
+      "typographic_alignment": false,
+      "original_quote": "third factor"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "antagonize type I interferon",
+      "start": 1229,
+      "end": 1257,
+      "typographic_alignment": false,
+      "original_quote": "antagonize type I interferon"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "CTL-dependent manner",
+      "start": 1054,
+      "end": 1074,
+      "typographic_alignment": false,
+      "original_quote": "CTL-dependent manner"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "4T1",
+      "start": 4706,
+      "end": 4709,
+      "typographic_alignment": false,
+      "original_quote": "4T1"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "lentiCRISPRv2",
+      "start": 18576,
+      "end": 18589,
+      "typographic_alignment": false,
+      "original_quote": "lentiCRISPRv2"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "2/20",
+      "start": 5297,
+      "end": 5301,
+      "typographic_alignment": false,
+      "original_quote": "2/20"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "AH1 epitope",
+      "start": 5419,
+      "end": 5430,
+      "typographic_alignment": false,
+      "original_quote": "AH1 epitope"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "tail vein injection",
+      "start": 7525,
+      "end": 7544,
+      "typographic_alignment": false,
+      "original_quote": "tail vein injection"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "India ink solution",
+      "start": 19272,
+      "end": 19290,
+      "typographic_alignment": false,
+      "original_quote": "India ink solution"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "RNA sequencing",
+      "start": 1161,
+      "end": 1175,
+      "typographic_alignment": false,
+      "original_quote": "RNA sequencing"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "single-cell RNA sequencing",
+      "start": 8938,
+      "end": 8964,
+      "typographic_alignment": false,
+      "original_quote": "single-cell RNA sequencing"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "7500 cells",
+      "start": 9112,
+      "end": 9122,
+      "typographic_alignment": false,
+      "original_quote": "7500 cells"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "flow cytometry",
+      "start": 11457,
+      "end": 11471,
+      "typographic_alignment": false,
+      "original_quote": "flow cytometry"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "clodronate liposomes",
+      "start": 12467,
+      "end": 12487,
+      "typographic_alignment": false,
+      "original_quote": "clodronate liposomes"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "basal cell carcinoma",
+      "start": 13113,
+      "end": 13133,
+      "typographic_alignment": false,
+      "original_quote": "basal cell carcinoma"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "Prism8",
+      "start": 20278,
+      "end": 20284,
+      "typographic_alignment": false,
+      "original_quote": "Prism8"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "DESeq2",
+      "start": 21104,
+      "end": 21110,
+      "typographic_alignment": false,
+      "original_quote": "DESeq2"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "Chromium Single Cell",
+      "start": 21834,
+      "end": 21854,
+      "typographic_alignment": false,
+      "original_quote": "Chromium Single Cell"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "lentiCRISPRv2",
+      "start": 18576,
+      "end": 18589,
+      "typographic_alignment": false,
+      "original_quote": "lentiCRISPRv2"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "puromycin",
+      "start": 18832,
+      "end": 18841,
+      "typographic_alignment": false,
+      "original_quote": "puromycin"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "BD FACSARIA",
+      "start": 18901,
+      "end": 18912,
+      "typographic_alignment": false,
+      "original_quote": "BD FACSARIA"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "right second mammary gland",
+      "start": 19012,
+      "end": 19038,
+      "typographic_alignment": false,
+      "original_quote": "right second mammary gland"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "right flank",
+      "start": 19102,
+      "end": 19113,
+      "typographic_alignment": false,
+      "original_quote": "right flank"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "lateral tail vein",
+      "start": 19186,
+      "end": 19203,
+      "typographic_alignment": false,
+      "original_quote": "lateral tail vein"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "anti-CD8α",
+      "start": 19378,
+      "end": 19387,
+      "typographic_alignment": false,
+      "original_quote": "anti-CD8α"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "mouse\nFcBlock",
+      "start": 19595,
+      "end": 19608,
+      "typographic_alignment": true,
+      "original_quote": "mouse FcBlock"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "Cytofix/Cytoperm Plus",
+      "start": 19932,
+      "end": 19953,
+      "typographic_alignment": false,
+      "original_quote": "Cytofix/Cytoperm Plus"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "FlowJo v10.6.0",
+      "start": 20178,
+      "end": 20192,
+      "typographic_alignment": false,
+      "original_quote": "FlowJo v10.6.0"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "Direct-zol RNA",
+      "start": 20696,
+      "end": 20710,
+      "typographic_alignment": false,
+      "original_quote": "Direct-zol RNA"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "STARv2.5",
+      "start": 21009,
+      "end": 21017,
+      "typographic_alignment": false,
+      "original_quote": "STARv2.5"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "Illumina NextSeq 500",
+      "start": 21966,
+      "end": 21986,
+      "typographic_alignment": false,
+      "original_quote": "Illumina NextSeq 500"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "fifty principal components",
+      "start": 22960,
+      "end": 22986,
+      "typographic_alignment": false,
+      "original_quote": "fifty principal components"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "SingleR",
+      "start": 23076,
+      "end": 23083,
+      "typographic_alignment": false,
+      "original_quote": "SingleR"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "no survival advantage",
+      "start": 6222,
+      "end": 6243,
+      "typographic_alignment": false,
+      "original_quote": "no survival advantage"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "primary tumor growth",
+      "start": 983,
+      "end": 1003,
+      "typographic_alignment": false,
+      "original_quote": "primary tumor growth"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "decreases lung metastasis",
+      "start": 1023,
+      "end": 1048,
+      "typographic_alignment": false,
+      "original_quote": "decreases lung metastasis"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "CD3 + cells",
+      "start": 7227,
+      "end": 7238,
+      "typographic_alignment": false,
+      "original_quote": "CD3 + cells"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "initial tumor cell colonization",
+      "start": 7420,
+      "end": 7451,
+      "typographic_alignment": false,
+      "original_quote": "initial tumor cell colonization"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "RAGII-KO mice",
+      "start": 7744,
+      "end": 7757,
+      "typographic_alignment": false,
+      "original_quote": "RAGII-KO mice"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "MHC class I",
+      "start": 7886,
+      "end": 7897,
+      "typographic_alignment": false,
+      "original_quote": "MHC class I"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "myeloid PD-1",
+      "start": 1205,
+      "end": 1217,
+      "typographic_alignment": false,
+      "original_quote": "myeloid PD-1"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "myeloid cells",
+      "start": 63,
+      "end": 76,
+      "typographic_alignment": false,
+      "original_quote": "myeloid cells"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "antigen presentation machinery",
+      "start": 9694,
+      "end": 9724,
+      "typographic_alignment": false,
+      "original_quote": "antigen presentation machinery"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "Pdcd1lg2",
+      "start": 10037,
+      "end": 10045,
+      "typographic_alignment": false,
+      "original_quote": "Pdcd1lg2"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "SHP-2 activation",
+      "start": 11277,
+      "end": 11293,
+      "typographic_alignment": false,
+      "original_quote": "SHP-2 activation"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "PD-L1 expression enhanced IFN production",
+      "start": 11967,
+      "end": 12008,
+      "typographic_alignment": false,
+      "original_quote": "PD-L1 expression enhanced IFN production"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "diminished tPD-L1 function",
+      "start": 12577,
+      "end": 12603,
+      "typographic_alignment": false,
+      "original_quote": "diminished tPD-L1 function"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "IFN-I response",
+      "start": 1441,
+      "end": 1455,
+      "typographic_alignment": false,
+      "original_quote": "IFN-I response"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "uncouple the role",
+      "start": 14803,
+      "end": 14820,
+      "typographic_alignment": false,
+      "original_quote": "uncouple the role"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "immunologically cold",
+      "start": 14893,
+      "end": 14913,
+      "typographic_alignment": false,
+      "original_quote": "immunologically cold"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "CTL tumor infiltration",
+      "start": 1551,
+      "end": 1573,
+      "typographic_alignment": false,
+      "original_quote": "CTL tumor infiltration"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "neoadjuvant and the adjuvant",
+      "start": 2986,
+      "end": 3014,
+      "typographic_alignment": false,
+      "original_quote": "neoadjuvant and the adjuvant"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "negative feedback circuit",
+      "start": 12128,
+      "end": 12153,
+      "typographic_alignment": false,
+      "original_quote": "negative feedback circuit"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "compensatory PD-1/L1",
+      "start": 16432,
+      "end": 16452,
+      "typographic_alignment": false,
+      "original_quote": "compensatory PD-1/L1"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "CTL recruitment",
+      "start": 89,
+      "end": 104,
+      "typographic_alignment": false,
+      "original_quote": "CTL recruitment"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "bridging tPD-L1",
+      "start": 4369,
+      "end": 4384,
+      "typographic_alignment": false,
+      "original_quote": "bridging tPD-L1"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "Conflicting findings",
+      "start": 14932,
+      "end": 14952,
+      "typographic_alignment": false,
+      "original_quote": "Conflicting findings"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "sufficient, but not necessary",
+      "start": 15082,
+      "end": 15111,
+      "typographic_alignment": false,
+      "original_quote": "sufficient, but not necessary"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "exclusively analyzed lung metastases",
+      "start": 17827,
+      "end": 17863,
+      "typographic_alignment": false,
+      "original_quote": "exclusively analyzed lung metastases"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "uniquely inflamed microenvironment",
+      "start": 17923,
+      "end": 17957,
+      "typographic_alignment": false,
+      "original_quote": "uniquely inflamed microenvironment"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "incompletely understood",
+      "start": 747,
+      "end": 770,
+      "typographic_alignment": false,
+      "original_quote": "incompletely understood"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "incompletely understood",
+      "start": 747,
+      "end": 770,
+      "typographic_alignment": false,
+      "original_quote": "incompletely understood"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "MHC class I",
+      "start": 7886,
+      "end": 7897,
+      "typographic_alignment": false,
+      "original_quote": "MHC class I"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "clodronate liposomes",
+      "start": 12467,
+      "end": 12487,
+      "typographic_alignment": false,
+      "original_quote": "clodronate liposomes"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "PD-L1 expression enhanced IFN production",
+      "start": 11967,
+      "end": 12008,
+      "typographic_alignment": false,
+      "original_quote": "PD-L1 expression enhanced IFN production"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "single-cell RNA sequencing",
+      "start": 8938,
+      "end": 8964,
+      "typographic_alignment": false,
+      "original_quote": "single-cell RNA sequencing"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "no survival advantage",
+      "start": 6222,
+      "end": 6243,
+      "typographic_alignment": false,
+      "original_quote": "no survival advantage"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "primary tumor growth",
+      "start": 983,
+      "end": 1003,
+      "typographic_alignment": false,
+      "original_quote": "primary tumor growth"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "CD3 + cells",
+      "start": 7227,
+      "end": 7238,
+      "typographic_alignment": true,
+      "original_quote": "CD3+ cells"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "single-cell RNA sequencing",
+      "start": 8938,
+      "end": 8964,
+      "typographic_alignment": false,
+      "original_quote": "single-cell RNA sequencing"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "flow cytometry",
+      "start": 11457,
+      "end": 11471,
+      "typographic_alignment": false,
+      "original_quote": "flow cytometry"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "immunosuppressive niche",
+      "start": 10554,
+      "end": 10577,
+      "typographic_alignment": false,
+      "original_quote": "immunosuppressive niche"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "IFN-I response",
+      "start": 1441,
+      "end": 1455,
+      "typographic_alignment": false,
+      "original_quote": "IFN-I response"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "tPD-L1/mPD-1/IFN-I",
+      "start": 1503,
+      "end": 1521,
+      "typographic_alignment": false,
+      "original_quote": "tPD-L1/mPD-1/IFN-I"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "decreases lung metastasis",
+      "start": 1023,
+      "end": 1048,
+      "typographic_alignment": false,
+      "original_quote": "decreases lung metastasis"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "neoadjuvant and the adjuvant",
+      "start": 2986,
+      "end": 3014,
+      "typographic_alignment": false,
+      "original_quote": "neoadjuvant and the adjuvant"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "no difference",
+      "start": 6789,
+      "end": 6802,
+      "typographic_alignment": false,
+      "original_quote": "no difference"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "antigen-specific cytotoxicity",
+      "start": 5553,
+      "end": 5582,
+      "typographic_alignment": false,
+      "original_quote": "antigen-specific cytotoxicity"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "direct molecular shield",
+      "start": 2291,
+      "end": 2314,
+      "typographic_alignment": false,
+      "original_quote": "direct molecular shield"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "indirect protective role",
+      "start": 8496,
+      "end": 8520,
+      "typographic_alignment": false,
+      "original_quote": "indirect protective role"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "decreases lung metastasis",
+      "start": 1023,
+      "end": 1048,
+      "typographic_alignment": false,
+      "original_quote": "decreases lung metastasis"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "antagonize type I interferon",
+      "start": 1229,
+      "end": 1257,
+      "typographic_alignment": false,
+      "original_quote": "antagonize type I interferon"
+    },
+    {
+      "path": "claims[1].supporting_evidence[2]",
+      "quote": "impaired tPD-L1 promotion",
+      "start": 1103,
+      "end": 1128,
+      "typographic_alignment": false,
+      "original_quote": "impaired tPD-L1 promotion"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "primary tumor growth",
+      "start": 983,
+      "end": 1003,
+      "typographic_alignment": false,
+      "original_quote": "primary tumor growth"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "CTL recruitment",
+      "start": 89,
+      "end": 104,
+      "typographic_alignment": false,
+      "original_quote": "CTL recruitment"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"Tumor PD-L1 selectively suppresses type I interferon in myeloid cells to suppress CTL recruitment to promote lung metastasis\",\n\"authors\": \"John D Klement, Priscilla S Redd, Chunwan Lu, Alyssa D Merting, Dakota B Poschel, Dafeng Yang, Gang Zhou, David H Munn, Kebin Liu\",\n\"field_subfield\": \"Immunology / Cancer Biology\",\n\"type_of_paper\": \"Research Article\",\n\"executive_summary\": \"This study investigates the mechanism by which tumor-expressed PD-L1 (tPD-L1) promotes immune suppression, specifically focusing on lung metastasis in triple-negative breast cancer (TNBC) and colorectal cancer (CRC) models. Contrary to the prevailing paradigm that tPD-L1 directly inhibits cytotoxic T lymphocyte (CTL) activity via PD-1 engagement, the authors demonstrate that tPD-L1 has no direct effect on CTL killing when only tumor cells and CTLs are present. Instead, tPD-L1 functions by engaging PD-1 on myeloid cells (mPD-1), creating an immunosuppressive niche that suppresses type I interferon (IFN-I) signaling. Using CRISPR-Cas9 knockout models of 4T1 and CT26 cells, the study shows that while PD-L1 loss does not affect primary tumor growth, it significantly reduces lung metastasis in a CTL-dependent manner. Single-cell RNA sequencing reveals that tPD-L1 engagement with mPD-1 activates SHP-2, which dephosphorylates STAT1, thereby repressing the expression of chemokines Cxcl9 and Cxcl10. This repression impairs the recruitment of CTLs to the lung metastatic site. The study further validates these findings in human patient cohorts, showing that response to PD-1 blockade immunotherapy correlates with the restoration of IFN-I signaling in myeloid cells. The authors conclude that the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis is critical for controlling CTL infiltration in lung metastasis, providing a mechanistic basis for the efficacy of checkpoint blockade in neoadjuvant and adjuvant settings. This work shifts the focus from direct CTL inhibition to myeloid-mediated suppression of chemokine production, highlighting the importance of the tumor microenvironment in metastatic progression.\",\n\"research_context\": [\n{ \"The mechanism of tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood.\": \"intermediate cell\" },\n{ \"PD-L1 and PD-1 immune checkpoint blockade is believed to function by blocking PD-L1 to PD-1 engagement.\": \"immune checkpoint blockade\" },\n{ \"Particular attention has been paid to the role of tumor-expressed PD-L1 as a direct molecular shield.\": \"direct molecular shield\" },\n{ \"Emerging data suggests response to PD-1/L1 blockade may depend on tumor anatomic sites.\": \"tumor anatomic sites\" },\n{ \"The dominant cause of mortality is metastatic growth, not primary tumor growth.\": \"metastatic growth\" },\n{ \"How tPD-L1 might differentially drive metastasis from primary tumor is unknown.\": \"differentially drive metastasis\" },\n{ \"PD-1 expression in non-T cell populations is important for tumor immune evasion.\": \"non-T cell\" },\n{ \"How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.\": \"CTL suppression\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"The central question is whether tPD-L1 directly protects tumor cells from CTL cytotoxicity.\": \"CTL cytotoxicity\" },\n{ \"The authors hypothesize that tPD-L1 targets myeloid cell-expressed PD-1 to suppress type I IFN.\": \"myeloid cell-expressed PD-1\" },\n{ \"This suppression represses Cxcl9 and Cxcl10 expression in myeloid cells.\": \"Cxcl9 and Cxcl10\" },\n{ \"This impairs CTL recruitment to the lung niche to enhance established lung metastasis.\": \"lung metastasis\" },\n{ \"The study aims to determine if tPD-L1 exhibits no direct effect on CTL activity.\": \"no direct effect\" },\n{ \"It is hypothesized that a third factor in the lung metastatic niche is necessary.\": \"third factor\" },\n{ \"The hypothesis is that tPD-L1 engages mPD-1 to antagonize type I interferon signaling.\": \"antagonize type I interferon\" },\n{ \"The predicted outcome is that PD-L1 loss will decrease lung metastasis in a CTL-dependent manner.\": \"CTL-dependent manner\" }\n],\n\"methodological_details\": [\n{ \"The study used 4T1 murine triple negative breast cancer and CT26 colorectal cancer cell lines.\": \"4T1\" },\n{ \"Cd274 encoding PD-L1 was deleted using CRISPR-Cas9 in these cell lines.\": \"CRISPR-Cas9\" },\n{ \"An in vitro CTL-tumor interaction system using 2/20 tumor-specific CTLs was utilized.\": \"2/20\" },\n{ \"2/20 cells recognize the H2-Ld-restricted AH1 epitope of gp70 protein.\": \"AH1 epitope\" },\n{ \"In vivo models included orthotopic injection for primary tumors and tail vein injection for metastasis.\": \"tail vein injection\" },\n{ \"Lung metastasis was quantified by harvesting lungs and inflating with India ink solution.\": \"India ink solution\" },\n{ \"RNA sequencing was performed on lungs colonized by WT and PD-L1-deficient 4T1 cells.\": \"RNA sequencing\" },\n{ \"Single-cell RNA sequencing was performed on CD45+ leukocytes from colonized lungs.\": \"single-cell RNA sequencing\" },\n{ \"Approximately 7500 cells were analyzed using UMAP for dimensional reduction.\": \"7500 cells\" },\n{ \"Flow cytometry was used to validate transcriptomic data in 4T1-colonized lungs.\": \"flow cytometry\" },\n{ \"Myeloid cells were depleted using clodronate liposomes in tumor-bearing mice.\": \"clodronate liposomes\" },\n{ \"Human patient data from metastatic basal cell carcinoma was analyzed.\": \"basal cell carcinoma\" },\n{ \"Statistical analysis was conducted using Prism8 and two-tailed Student's t-test.\": \"Prism8\" },\n{ \"Bulk RNA sequencing used STARv2.5 for alignment and DESeq2 for quantification.\": \"DESeq2\" },\n{ \"Single-cell libraries were generated using the Chromium Single Cell 3' Reagent Kit v3.\": \"Chromium Single Cell\" }\n],\n\"procedures_and_architectures\": [\n{ \"HEK293FT cells were co-transfected with pCMV-VSV-G, psPAX2, and lentiCRISPRv2 plasmids.\": \"lentiCRISPRv2\" },\n{ \"Tumor cells were transduced with lentivirus and selected with puromycin.\": \"puromycin\" },\n{ \"Cells were sorted for marker-negative cells using a BD FACSARIA.\": \"BD FACSARIA\" },\n{ \"4T1 orthotopic tumors were established by injection at the right second mammary gland.\": \"right second mammary gland\" },\n{ \"CT26 subcutaneous tumors were established by injection at the right flank.\": \"right flank\" },\n{ \"For experimental metastasis, tumor cells were injected into the lateral tail vein.\": \"lateral tail vein\" },\n{ \"Anti-CD8α or isotype control antibodies were injected i.v. every other day.\": \"anti-CD8α\" },\n{ \"Samples were blocked in FACS Buffer containing mouse FcBlock.\": \"mouse FcBlock\" },\n{ \"Intracellular staining was performed using Cytofix/Cytoperm Plus kit.\": \"Cytofix/Cytoperm Plus\" },\n{ \"Data was acquired on FACSCalibur or LSRFortessa and analyzed with FlowJo v10.6.0.\": \"FlowJo v10.6.0\" },\n{ \"RNA was extracted using Direct-zol RNA microprep kit.\": \"Direct-zol RNA\" },\n{ \"Reads were aligned to mm10 reference genome using STARv2.5.\": \"STARv2.5\" },\n{ \"scRNA-seq libraries were sequenced on Illumina NextSeq 500 platform.\": \"Illumina NextSeq 500\" },\n{ \"Cells were clustered using the first fifty principal components.\": \"fifty principal components\" },\n{ \"Clusters were annotated by comparison to pre-existing RNA-sequencing datasets using SingleR.\": \"SingleR\" }\n],\n\"key_results\": [\n{ \"tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.\": \"no survival advantage\" },\n{ \"No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.\": \"primary tumor growth\" },\n{ \"Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.\": \"decreases lung metastasis\" },\n{ \"Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.\": \"CD3+ cells\" },\n{ \"No difference in initial tumor cell colonization was seen one day after tail vein injection.\": \"initial tumor cell colonization\" },\n{ \"PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.\": \"RAGII-KO mice\" },\n{ \"Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.\": \"MHC class I\" },\n{ \"Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.\": \"myeloid PD-1\" },\n{ \"Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.\": \"myeloid cells\" },\n{ \"Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.\": \"antigen presentation machinery\" },\n{ \"Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.\": \"Pdcd1lg2\" },\n{ \"Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.\": \"SHP-2 activation\" },\n{ \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\" },\n{ \"Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.\": \"diminished tPD-L1 function\" },\n{ \"Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\": \"IFN-I response\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"The study uncouples the role of tPD-L1 at the metastatic site from primary tumor growth.\": \"uncouple the role\" },\n{ \"tPD-L1 binds to mPD-1 to enforce an immunologically cold microenvironment.\": \"immunologically cold\" },\n{ \"The tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis controls CTL tumor infiltration.\": \"CTL tumor infiltration\" },\n{ \"This axis underlies the efficacy of ICB immunotherapy in neoadjuvant and adjuvant settings.\": \"neoadjuvant and the adjuvant\" },\n{ \"The PD-1/L1 axis functions as a negative feedback circuit for type I interferon.\": \"negative feedback circuit\" },\n{ \"Low response rates in interferon alpha therapies may be due to compensatory PD-1/L1 upregulation.\": \"compensatory PD-1/L1\" },\n{ \"Type I interferon signaling is essential for myeloid cell function in CTL recruitment.\": \"CTL recruitment\" },\n{ \"This work highlights the importance of myeloid cells in bridging tPD-L1 to CTL suppression.\": \"bridging tPD-L1\" }\n],\n\"contradictions_and_limitations\": [\n{ \"Conflicting findings for the role of tPD-L1 in PD-1 blockade efficacy have been reported.\": \"Conflicting findings\" },\n{ \"There is a consensus that tPD-L1 may be sufficient but not necessary for response.\": \"sufficient, but not necessary\" },\n{ \"One limitation is that the study exclusively analyzed lung metastases.\": \"exclusively analyzed lung metastases\" },\n{ \"Lung metastases may have a uniquely inflamed microenvironment due to barrier tissue location.\": \"uniquely inflamed microenvironment\" },\n{ \"The mechanism underlying tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood.\": \"incompletely understood\" },\n{ \"How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.\": \"incompletely understood\" },\n{ \"The study does not report on other metastatic sites beyond the lung.\": \"lung metastases\" },\n{ \"The specific random seeds or train/test splits for human data analysis are not detailed.\": \"random seed\" }\n],\n\"claims\": [\n{\n\"description\": \"tPD-L1 does not directly suppress CTL activation or lytic function when only tumor cells and CTLs are present.\",\n\"supporting_evidence\": [\n{ \"In vitro cytotoxicity results show no difference in killing between WT and KO cells.\": \"no difference\" },\n{ \"2/20 CTLs exert antigen-specific cytotoxicity within minutes.\": \"antigen-specific cytotoxicity\" }\n],\n\"contradicting_evidence\": [\n{ \"Previous paradigms suggest tPD-L1 serves as a direct molecular shield against CTL lysis.\": \"direct molecular shield\" }\n],\n\"implications\": [\n{ \"This shifts the focus to indirect mechanisms involving other cell types.\": \"indirect protective role\" }\n]\n},\n{\n\"description\": \"tPD-L1 promotes lung metastasis by engaging myeloid PD-1 to suppress type I interferon signaling.\",\n\"supporting_evidence\": [\n{ \"PD-L1 loss significantly decreases lung metastasis in a CTL-dependent manner.\": \"decreases lung metastasis\" },\n{ \"Single-cell RNA sequencing shows tPD-L1 antagonizes type I IFN in myeloid cells.\": \"antagonize type I interferon\" },\n{ \"Depletion of myeloid cells impairs tPD-L1 promotion of lung metastasis.\": \"impaired tPD-L1 promotion\" }\n],\n\"contradicting_evidence\": [\n{ \"No difference in primary tumor growth was observed.\": \"primary tumor growth\" }\n],\n\"implications\": [\n{ \"This identifies a new axis for CTL recruitment control in metastasis.\": \"CTL recruitment\" }\n]\n}\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n{ \"Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.\": \"MHC class I\" },\n{ \"Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.\": \"clodronate liposomes\" },\n{ \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"enhanced IFNβ production\" },\n{ \"The study used both bulk and single-cell RNA sequencing for robust validation.\": \"single-cell RNA sequencing\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n{ \"Figure 1 shows tPD-L1 confers no survival advantage in in vitro CTL-tumor interaction.\": \"no survival advantage\" },\n{ \"Figure 2 shows no difference in primary tumor growth between WT and KO cells.\": \"primary tumor growth\" },\n{ \"Figure 3 shows increased CD3+ infiltration in lung after tPD-L1 loss.\": \"CD3+ cells\" },\n{ \"Figure 4 shows single-cell RNA sequencing of CD45+ leukocytes from colonized lungs.\": \"single-cell RNA sequencing\" },\n{ \"Figure 5 shows validation of transcriptomic data by flow cytometry.\": \"flow cytometry\" },\n{ \"Figure 6 shows tPD-L1 engagement with mPD-1 creates an immunosuppressive niche.\": \"immunosuppressive niche\" },\n{ \"Figure 7 shows human patient response to PD-1 blockade correlates with IFN-I response.\": \"IFN-I response\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n{ \"1. The core contribution is the identification of the tPD-L1/mPD-1/IFN-I/STAT1/Cxcl9/10 axis in lung metastasis.\": \"tPD-L1/mPD-1/IFN-I\" },\n{ \"2. The strongest evidence is the significant decrease in lung metastasis upon PD-L1 knockout in a CTL-dependent manner.\": \"decreases lung metastasis\" },\n{ \"3. The future path involves exploring this axis in other metastatic sites and clinical trials.\": \"neoadjuvant and the adjuvant\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8232,
+        "total_tokens": 12088,
+        "completion_tokens": 3856,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8232,
+      "elapsed_seconds": 330.5852071493864,
+      "max_tokens": 16000,
+      "seed": 1914107345,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "fe365e9732d35991636058478c321ee66a6c4be692ad4d52c8a6d673e2e7b404",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: CRISPR-Cas9",
+        "key_results": "evidence quote is not present in fulltext: IFNβ production",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: random seed",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: enhanced IFNβ production"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study used 4T1 murine triple negative breast cancer and CT26 colorectal cancer cell lines.\": \"4T1\"\n    },\n    {\n      \"Cd274 encoding PD-L1 was deleted using CRISPR-Cas9 in these cell lines.\": \"lentiCRISPRv2\"\n    },\n    {\n      \"An in vitro CTL-tumor interaction system using 2/20 tumor-specific CTLs was utilized.\": \"2/20\"\n    },\n    {\n      \"2/20 cells recognize the H2-Ld-restricted AH1 epitope of gp70 protein.\": \"AH1 epitope\"\n    },\n    {\n      \"In vivo models included orthotopic injection for primary tumors and tail vein injection for metastasis.\": \"tail vein injection\"\n    },\n    {\n      \"Lung metastasis was quantified by harvesting lungs and inflating with India ink solution.\": \"India ink solution\"\n    },\n    {\n      \"RNA sequencing was performed on lungs colonized by WT and PD-L1-deficient 4T1 cells.\": \"RNA sequencing\"\n    },\n    {\n      \"Single-cell RNA sequencing was performed on CD45+ leukocytes from colonized lungs.\": \"single-cell RNA sequencing\"\n    },\n    {\n      \"Approximately 7500 cells were analyzed using UMAP for dimensional reduction.\": \"7500 cells\"\n    },\n    {\n      \"Flow cytometry was used to validate transcriptomic data in 4T1-colonized lungs.\": \"flow cytometry\"\n    },\n    {\n      \"Myeloid cells were depleted using clodronate liposomes in tumor-bearing mice.\": \"clodronate liposomes\"\n    },\n    {\n      \"Human patient data from metastatic basal cell carcinoma was analyzed.\": \"basal cell carcinoma\"\n    },\n    {\n      \"Statistical analysis was conducted using Prism8 and two-tailed Student's t-test.\": \"Prism8\"\n    },\n    {\n      \"Bulk RNA sequencing used STARv2.5 for alignment and DESeq2 for quantification.\": \"DESeq2\"\n    },\n    {\n      \"Single-cell libraries were generated using the Chromium Single Cell 3' Reagent Kit v3.\": \"Chromium Single Cell\"\n    }\n  ],\n  \"key_results\": [\n    {\n      \"tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.\": \"no survival advantage\"\n    },\n    {\n      \"No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.\": \"primary tumor growth\"\n    },\n    {\n      \"Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.\": \"decreases lung metastasis\"\n    },\n    {\n      \"Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.\": \"CD3+ cells\"\n    },\n    {\n      \"No difference in initial tumor cell colonization was seen one day after tail vein injection.\": \"initial tumor cell colonization\"\n    },\n    {\n      \"PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.\": \"RAGII-KO mice\"\n    },\n    {\n      \"Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.\": \"MHC class I\"\n    },\n    {\n      \"Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.\": \"myeloid PD-1\"\n    },\n    {\n      \"Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.\": \"myeloid cells\"\n    },\n    {\n      \"Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.\": \"antigen presentation machinery\"\n    },\n    {\n      \"Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.\": \"Pdcd1lg2\"\n    },\n    {\n      \"Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.\": \"SHP-2 activation\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ\"\n    },\n    {\n      \"Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.\": \"diminished tPD-L1 function\"\n    },\n    {\n      \"Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\": \"IFN-I response\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"Conflicting findings for the role of tPD-L1 in PD-1 blockade efficacy have been reported.\": \"Conflicting findings\"\n    },\n    {\n      \"There is a consensus that tPD-L1 may be sufficient but not necessary for response.\": \"sufficient, but not necessary\"\n    },\n    {\n      \"One limitation is that the study exclusively analyzed lung metastases.\": \"exclusively analyzed lung metastases\"\n    },\n    {\n      \"Lung metastases may have a uniquely inflamed microenvironment due to barrier tissue location.\": \"uniquely inflamed microenvironment\"\n    },\n    {\n      \"The mechanism underlying tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood.\": \"incompletely understood\"\n    },\n    {\n      \"How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.\": \"incompletely understood\"\n    },\n    {\n      \"The study does not report on other metastatic sites beyond the lung.\": \"lung metastases\"\n    },\n    \"\"\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.\": \"MHC class I\"\n    },\n    {\n      \"Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.\": \"clodronate liposomes\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ\"\n    },\n    {\n      \"The study used both bulk and single-cell RNA sequencing for robust validation.\": \"single-cell RNA sequencing\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7799,
+        "total_tokens": 9333,
+        "completion_tokens": 1534,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7799,
+      "elapsed_seconds": 133.5580605380237,
+      "max_tokens": 4096,
+      "seed": 1914107346,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ad3fd208771fba9bc0775852acbd059c176d72a75e7d35aa7a1f71ead2602c4a",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "key_results",
+        "contradictions_and_limitations",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: IFNβ",
+        "contradictions_and_limitations": "Grounded entry must have one narrative key: contradictions_and_limitations",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: IFNβ"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.\": \"no survival advantage\"\n    },\n    {\n      \"No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.\": \"primary tumor growth\"\n    },\n    {\n      \"Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.\": \"decreases lung metastasis\"\n    },\n    {\n      \"Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.\": \"CD3 + cells\"\n    },\n    {\n      \"No difference in initial tumor cell colonization was seen one day after tail vein injection.\": \"initial tumor cell colonization\"\n    },\n    {\n      \"PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.\": \"RAGII-KO mice\"\n    },\n    {\n      \"Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.\": \"MHC class I\"\n    },\n    {\n      \"Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.\": \"myeloid PD-1\"\n    },\n    {\n      \"Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.\": \"myeloid cells\"\n    },\n    {\n      \"Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.\": \"antigen presentation machinery\"\n    },\n    {\n      \"Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.\": \"Pdcd1lg2\"\n    },\n    {\n      \"Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.\": \"SHP-2 activation\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\"\n    },\n    {\n      \"Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.\": \"diminished tPD-L1 function\"\n    },\n    {\n      \"Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\": \"IFN-I response\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"Conflicting findings for the role of tPD-L1 in PD-1 blockade efficacy have been reported.\": \"Conflicting findings\"\n    },\n    {\n      \"There is a consensus that tPD-L1 may be sufficient but not necessary for response.\": \"sufficient, but not necessary\"\n    },\n    {\n      \"One limitation is that the study exclusively analyzed lung metastases.\": \"exclusively analyzed lung metastases\"\n    },\n    {\n      \"Lung metastases may have a uniquely inflamed microenvironment due to barrier tissue location.\": \"uniquely inflamed microenvironment\"\n    },\n    {\n      \"The mechanism underlying tPD-L1 induction of immune suppression via an intermediate cell is incompletely understood.\": \"incompletely understood\"\n    },\n    {\n      \"How non-T cell-expressed PD-1 connects tPD-L1 to CTL suppression is incompletely understood.\": \"incompletely understood\"\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.\": \"MHC class I\"\n    },\n    {\n      \"Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.\": \"clodronate liposomes\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\"\n    },\n    {\n      \"The study used both bulk and single-cell RNA sequencing for robust validation.\": \"single-cell RNA sequencing\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7292,
+        "total_tokens": 8259,
+        "completion_tokens": 967,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7292,
+      "elapsed_seconds": 83.88481248170137,
+      "max_tokens": 4096,
+      "seed": 1914107347,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "f8cef11f2a5422fcfd233af7beaf54b8496e6f99391f6eec77c79a909fc19037",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results",
+        "contradictions_and_limitations",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: IFNβ production",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: IFNβ production"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.\": \"no survival advantage\"\n    },\n    {\n      \"No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.\": \"primary tumor growth\"\n    },\n    {\n      \"Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.\": \"decreases lung metastasis\"\n    },\n    {\n      \"Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.\": \"CD3 + cells\"\n    },\n    {\n      \"No difference in initial tumor cell colonization was seen one day after tail vein injection.\": \"initial tumor cell colonization\"\n    },\n    {\n      \"PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.\": \"RAGII-KO mice\"\n    },\n    {\n      \"Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.\": \"MHC class I\"\n    },\n    {\n      \"Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.\": \"myeloid PD-1\"\n    },\n    {\n      \"Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.\": \"myeloid cells\"\n    },\n    {\n      \"Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.\": \"antigen presentation machinery\"\n    },\n    {\n      \"Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.\": \"Pdcd1lg2\"\n    },\n    {\n      \"Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.\": \"SHP-2 activation\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\"\n    },\n    {\n      \"Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.\": \"diminished tPD-L1 function\"\n    },\n    {\n      \"Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\": \"IFN-I response\"\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.\": \"MHC class I\"\n    },\n    {\n      \"Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.\": \"clodronate liposomes\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\"\n    },\n    {\n      \"The study used both bulk and single-cell RNA sequencing for robust validation.\": \"single-cell RNA sequencing\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7078,
+        "total_tokens": 7817,
+        "completion_tokens": 739,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7078,
+      "elapsed_seconds": 74.75100880861282,
+      "max_tokens": 4096,
+      "seed": 1914107348,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "7f4d577d05c5b2951298d2258736fdfe77f78452eda397f8276f7474a5e6ecdf",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: IFNβ production",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: IFNβ production"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.\": \"no survival advantage\"\n    },\n    {\n      \"No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.\": \"primary tumor growth\"\n    },\n    {\n      \"Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.\": \"decreases lung metastasis\"\n    },\n    {\n      \"Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.\": \"CD3 + cells\"\n    },\n    {\n      \"No difference in initial tumor cell colonization was seen one day after tail vein injection.\": \"initial tumor cell colonization\"\n    },\n    {\n      \"PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.\": \"RAGII-KO mice\"\n    },\n    {\n      \"Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.\": \"MHC class I\"\n    },\n    {\n      \"Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.\": \"myeloid PD-1\"\n    },\n    {\n      \"Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.\": \"myeloid cells\"\n    },\n    {\n      \"Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.\": \"antigen presentation machinery\"\n    },\n    {\n      \"Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.\": \"Pdcd1lg2\"\n    },\n    {\n      \"Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.\": \"SHP-2 activation\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ\"\n    },\n    {\n      \"Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.\": \"diminished tPD-L1 function\"\n    },\n    {\n      \"Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\": \"IFN-I response\"\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.\": \"MHC class I\"\n    },\n    {\n      \"Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.\": \"clodronate liposomes\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ\"\n    },\n    {\n      \"The study used both bulk and single-cell RNA sequencing for robust validation.\": \"single-cell RNA sequencing\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7078,
+        "total_tokens": 7815,
+        "completion_tokens": 737,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7078,
+      "elapsed_seconds": 57.85917067155242,
+      "max_tokens": 4096,
+      "seed": 1914107349,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "7f4d577d05c5b2951298d2258736fdfe77f78452eda397f8276f7474a5e6ecdf",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: IFNβ",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: IFNβ"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"tPD-L1 confers no survival advantage when an antigen-specific effector CTL encounters a tumor cell.\": \"no survival advantage\"\n    },\n    {\n      \"No difference was observed in primary tumor growth between PD-L1 WT and KO 4T1 cells.\": \"primary tumor growth\"\n    },\n    {\n      \"Knocking out PD-L1 in tumor cells significantly decreases lung metastasis.\": \"decreases lung metastasis\"\n    },\n    {\n      \"Increased infiltration of CD3+ cells was observed in the lung after loss of tPD-L1.\": \"CD3 + cells\"\n    },\n    {\n      \"No difference in initial tumor cell colonization was seen one day after tail vein injection.\": \"initial tumor cell colonization\"\n    },\n    {\n      \"PD-L1-deficient and competent 4T1 metastasized equally in RAGII-KO mice.\": \"RAGII-KO mice\"\n    },\n    {\n      \"Genetic ablation of MHC class I and CD8+ T cell depletion revealed tPD-L1 drives metastasis.\": \"MHC class I\"\n    },\n    {\n      \"Single-cell RNA sequencing revealed tPD-L1 engages myeloid PD-1 to antagonize type I IFN.\": \"myeloid PD-1\"\n    },\n    {\n      \"Expression changes were observed in myeloid cells, not CTLs, in the metastatic niche.\": \"myeloid cells\"\n    },\n    {\n      \"Enhanced antigen presentation machinery was detected in macrophages following tPD-L1 loss.\": \"antigen presentation machinery\"\n    },\n    {\n      \"Pdcd1lg2 encoding PD-L2 was identified as a marker for IFN-stimulated myeloid cells.\": \"Pdcd1lg2\"\n    },\n    {\n      \"Engagement with 4T1 tPD-L1 enhanced SHP-2 activation and decreased pSTAT1 levels.\": \"SHP-2 activation\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\"\n    },\n    {\n      \"Depletion of myeloid cells diminished tPD-L1 function in promoting lung tumor growth.\": \"diminished tPD-L1 function\"\n    },\n    {\n      \"Human patient response to PD-1 blockade correlates with IFN-I response in myeloid cells.\": \"IFN-I response\"\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"Ablation of MHC class I and CD8+ T cells confirmed the CTL-dependent nature of the effect.\": \"MHC class I\"\n    },\n    {\n      \"Depletion of myeloid cells using clodronate liposomes validated the role of myeloid cells.\": \"clodronate liposomes\"\n    },\n    {\n      \"Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.\": \"IFNβ production\"\n    },\n    {\n      \"The study used both bulk and single-cell RNA sequencing for robust validation.\": \"single-cell RNA sequencing\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7072,
+        "total_tokens": 7811,
+        "completion_tokens": 739,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7072,
+      "elapsed_seconds": 58.15179808065295,
+      "max_tokens": 4096,
+      "seed": 1914107350,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "5c56346871580cf7af39c5a3e4f7745fdbb01a627bb7e5f2697a58294246feb3",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: IFNβ production",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: IFNβ production"
+      }
+    },
+    {
+      "response": "{\n  \"q0\": 1,\n  \"q1\": 1\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7454,
+        "total_tokens": 7475,
+        "completion_tokens": 21,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7454,
+      "elapsed_seconds": 6.3864897564053535,
+      "max_tokens": 2048,
+      "seed": 1914107445,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "09ef4f7dccda2051d983a6c3a71b9cbff6bdbec13d13a674b283faaaf9f00f2f",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "key_results",
+            12
+          ],
+          "narrative": "Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.",
+          "invalid_quote": "IFNβ production",
+          "candidates": [
+            {
+              "quote": "disruption of RAW PD-1 expression",
+              "start": 11926,
+              "end": 11959
+            },
+            {
+              "quote": "PD-L1 expression enhanced IFN production",
+              "start": 11967,
+              "end": 12008
+            },
+            {
+              "quote": "RAW PD-1 expression or 4T1",
+              "start": 11940,
+              "end": 11966
+            },
+            {
+              "quote": "4T1 PD-L1 expression enhanced",
+              "start": 11963,
+              "end": 11992
+            },
+            {
+              "quote": "4T1 PD-L1 expression enhanced IFN",
+              "start": 11963,
+              "end": 11997
+            },
+            {
+              "quote": "or 4T1 PD-L1 expression enhanced",
+              "start": 11960,
+              "end": 11992
+            },
+            {
+              "quote": "disruption of RAW PD-1",
+              "start": 11926,
+              "end": 11948
+            },
+            {
+              "quote": "Accordingly, disruption of RAW PD-1",
+              "start": 11913,
+              "end": 11948
+            },
+            {
+              "quote": "PD-1 expression or 4T1 PD-L1",
+              "start": 11944,
+              "end": 11972
+            },
+            {
+              "quote": "PD-1 expression was enhanced",
+              "start": 10912,
+              "end": 10940
+            },
+            {
+              "quote": "PD-1 expression was enhanced following",
+              "start": 10912,
+              "end": 10950
+            },
+            {
+              "quote": "surface PD-1 expression was enhanced",
+              "start": 10904,
+              "end": 10940
+            },
+            {
+              "quote": "RAW PD-1 expression",
+              "start": 11940,
+              "end": 11959
+            },
+            {
+              "quote": "RAW PD-1 expression or",
+              "start": 11940,
+              "end": 11962
+            },
+            {
+              "quote": "of RAW PD-1 expression",
+              "start": 11937,
+              "end": 11959
+            },
+            {
+              "quote": "of RAW PD-1 expression or",
+              "start": 11937,
+              "end": 11962
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "robustness_and_ablation_notes",
+            2
+          ],
+          "narrative": "Disruption of RAW PD-1 or 4T1 PD-L1 expression enhanced IFNβ production.",
+          "invalid_quote": "IFNβ production",
+          "candidates": [
+            {
+              "quote": "disruption of RAW PD-1 expression",
+              "start": 11926,
+              "end": 11959
+            },
+            {
+              "quote": "PD-L1 expression enhanced IFN production",
+              "start": 11967,
+              "end": 12008
+            },
+            {
+              "quote": "RAW PD-1 expression or 4T1",
+              "start": 11940,
+              "end": 11966
+            },
+            {
+              "quote": "4T1 PD-L1 expression enhanced",
+              "start": 11963,
+              "end": 11992
+            },
+            {
+              "quote": "4T1 PD-L1 expression enhanced IFN",
+              "start": 11963,
+              "end": 11997
+            },
+            {
+              "quote": "or 4T1 PD-L1 expression enhanced",
+              "start": 11960,
+              "end": 11992
+            },
+            {
+              "quote": "disruption of RAW PD-1",
+              "start": 11926,
+              "end": 11948
+            },
+            {
+              "quote": "Accordingly, disruption of RAW PD-1",
+              "start": 11913,
+              "end": 11948
+            },
+            {
+              "quote": "PD-1 expression or 4T1 PD-L1",
+              "start": 11944,
+              "end": 11972
+            },
+            {
+              "quote": "PD-1 expression was enhanced",
+              "start": 10912,
+              "end": 10940
+            },
+            {
+              "quote": "PD-1 expression was enhanced following",
+              "start": 10912,
+              "end": 10950
+            },
+            {
+              "quote": "surface PD-1 expression was enhanced",
+              "start": 10904,
+              "end": 10940
+            },
+            {
+              "quote": "RAW PD-1 expression",
+              "start": 11940,
+              "end": 11959
+            },
+            {
+              "quote": "RAW PD-1 expression or",
+              "start": 11940,
+              "end": 11962
+            },
+            {
+              "quote": "of RAW PD-1 expression",
+              "start": 11937,
+              "end": 11959
+            },
+            {
+              "quote": "of RAW PD-1 expression or",
+              "start": 11937,
+              "end": 11962
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 8232,
+  "elapsed_seconds": 745.6609887629747,
+  "removed_unsupported_entries": [],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "robustness_and_ablation_notes",
+        2
+      ],
+      "quote": "PD-L1 expression enhanced IFN production",
+      "start": 11967,
+      "end": 12008
+    },
+    {
+      "path": [
+        "key_results",
+        12
+      ],
+      "quote": "PD-L1 expression enhanced IFN production",
+      "start": 11967,
+      "end": 12008
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

@@ -1,0 +1,2104 @@
+{
+  "document_id": "arxiv-500047",
+  "fulltext_sha256": "fcff490a64b2456f6c33424fb8d3c475d4f6fb19c9718bdd608d8cb06844c31b",
+  "summary": {
+    "title": "Design of Real-time Semantic Segmentation Decoder for Automated Driving",
+    "authors": "Arindam Das, Saranya Kandan, Senthil Yogamani, Pavel Kˇr´ıˇzek",
+    "field_subfield": "Computer Vision, Automated Driving",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This paper addresses the computational challenges of deploying semantic segmentation models on embedded platforms for automated driving. While significant research has focused on efficient encoders, the authors argue that decoders are also computationally expensive and require specific optimization for real-time performance. The study proposes a novel efficient non-bottleneck layer and a family of decoders designed to fit within a small run-time budget. The architecture assumes a task-independent, lightweight encoder (VGG10) that provides shared features for multi-task learning, unlike previous methods that used task-specific encoders. The proposed decoder utilizes residual learning and cascaded skip connections to handle high gradient flow and learn semantic features from the generic encoder's output. Experiments were conducted on a proprietary dataset of urban scenes with four classes: lanes, curb, road, and void. The model was trained end-to-end using the Keras framework on an NVIDIA Titan X GPU. The results demonstrate that the optimal decoder configuration achieved a 10% improvement in mean Intersection over Union (IoU) compared to a baseline. Specifically, improvements of 12% and 18% were observed for the more difficult classes of lanes and curb, respectively. The proposed network maintains a runtime increase of less than 2ms compared to a standard FCN decoder on custom automotive hardware. The study concludes that efficient decoder design is critical for segmentation tasks and suggests future work on meta-learning optimal configurations within fixed run-time budgets.",
+    "research_context": [
+      {
+        "Semantic segmentation is computationally intensive for embedded deployment.": "computationally intensive"
+      },
+      {
+        "Efficient network design is critical for real-time automated driving.": "real-time performance"
+      },
+      {
+        "Recent research has focused on designing efficient encoders.": "efﬁcient encoders"
+      },
+      {
+        "Decoders are also computationally expensive for semantic segmentation.": "computationally expensive"
+      },
+      {
+        "Existing methods often use task-specific encoders.": "task independent"
+      },
+      {
+        "This work focuses on efficient decoder design.": "efﬁcient design"
+      },
+      {
+        "The encoder is assumed to be task-independent.": "task independent"
+      },
+      {
+        "A VGG10 encoder is used to provide shared features.": "VGG10"
+      },
+      {
+        "The goal is to fit within a small run-time budget.": "run-time budget"
+      },
+      {
+        "The study demonstrates a 10% improvement from baseline.": "10% improvement"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central research question is how to design an efficient segmentation decoder.": "efﬁcient design"
+      },
+      {
+        "The hypothesis is that a task-independent encoder requires a specialized decoder.": "task independent"
+      },
+      {
+        "The proposed non-bottleneck layer should handle high gradient flow.": "high gradient"
+      },
+      {
+        "Cascaded skip connections are hypothesized to improve performance on underrepresented classes.": "skip connections"
+      },
+      {
+        "The decoder should learn semantic features from generic encoder outputs.": "semantic features"
+      },
+      {
+        "The design should fit within embedded platform run-time constraints.": "run-time budget"
+      },
+      {
+        "It is predicted that specific decoder variants will outperform baselines.": "baseline performance"
+      },
+      {
+        "The optimal configuration is expected to improve mean IoU.": "mean IoU"
+      },
+      {
+        "The method should be suitable for real-time execution.": "real time"
+      },
+      {
+        "The approach aims to support multi-task learning systems.": "multi-task learning"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study uses a proprietary dataset owned by the organization.": "owned by our"
+      },
+      {
+        "Each image in the dataset has dimensions of 1280X384.": "1280X384"
+      },
+      {
+        "The dataset consists mostly of urban scenes.": "urban scenes"
+      },
+      {
+        "The dataset includes diverse lighting conditions and dense shadows.": "dense shadow"
+      },
+      {
+        "Semantic segmentation was performed on four critical classes.": "4 critical classes"
+      },
+      {
+        "The classes are lanes, curb, road, and void.": "lanes, curb"
+      },
+      {
+        "The dataset is divided into training, validation, and test sets.": "Training, Validation"
+      },
+      {
+        "The training set contains 3016 images.": "3016"
+      },
+      {
+        "The validation set contains 981 images.": "981"
+      },
+      {
+        "The test set contains 1002 images.": "1002"
+      },
+      {
+        "Single-channel annotations were developed for each sample image.": "single channel"
+      },
+      {
+        "The encoder is a VGG-style classifier with 10 layers.": "10 layers"
+      },
+      {
+        "The encoder was pre-trained on ImageNet.": "ImageNet"
+      },
+      {
+        "Weights were transferred to the semantic segmentation task.": "transfer the weights"
+      },
+      {
+        "The implementation was executed using the Keras framework.": "Keras"
+      },
+      {
+        "The Adam optimizer was used for training.": "Adam"
+      },
+      {
+        "Weight decay was set to 0.9.": "0.9"
+      },
+      {
+        "The batch size was set to 4.": "batch size"
+      },
+      {
+        "The initial learning rate was 0.0005.": "0.0005"
+      },
+      {
+        "A standard polynomial decay strategy was used.": "polynomial\ndecay"
+      },
+      {
+        "Training lasted for 350K iterations.": "350K"
+      },
+      {
+        "Dropout was not used in the model.": "Dropout"
+      },
+      {
+        "Experiments were run on an NVIDIA Titan X 12G GPU.": "experiments, we used NVIDIA"
+      },
+      {
+        "The GPU had 24 GB of RAM.": "24 GB RAM"
+      },
+      {
+        "No data augmentation technique was performed.": "data\naugmentation"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The proposed network consists of an encoder and a decoder.": "encoder and decoder"
+      },
+      {
+        "The encoder extracts features from various feature dimensions.": "extract features"
+      },
+      {
+        "The decoder reconstructs the original input space.": "reconstructs the original"
+      },
+      {
+        "Deconvolution layers are used instead of max-unpooling.": "deconvolution layer"
+      },
+      {
+        "The encoder uses convolution with stride 2 followed by max-pooling.": "stride 2"
+      },
+      {
+        "Convolution layers use a kernel size of 5X5.": "5X5"
+      },
+      {
+        "Batch-Normalization is used to speed up convergence.": "Batch-\nNormalization"
+      },
+      {
+        "ReLU is used to add non-linearity.": "ReLU"
+      },
+      {
+        "The last encoder layer produces 256 feature maps.": "256 feature maps"
+      },
+      {
+        "The decoder uses a novel non-bottleneck layer.": "non-bottleneck layer"
+      },
+      {
+        "The non-bottleneck layer is based on residual learning.": "residual learning"
+      },
+      {
+        "The layer contains both 1D and 3D kernels.": "1D and 3D"
+      },
+      {
+        "1D kernels extract information in one direction.": "one\ndirection"
+      },
+      {
+        "3D kernels gather features from bigger receptive areas.": "bigger receptive"
+      },
+      {
+        "Features from different kernels are fused.": "fused"
+      },
+      {
+        "Multiple skip connections help handle high gradient flow.": "skip connections"
+      },
+      {
+        "There are two variants of the non-bottleneck layer.": "two variants"
+      },
+      {
+        "Type-2 uses dilated convolution with kernel sizes 3X3 and 5X5.": "dilated convolution"
+      },
+      {
+        "The dilation rate is kept constant at 1.": "dilation rate"
+      },
+      {
+        "Feature maps are downsampled from 256 to 4.": "256\nto 4"
+      },
+      {
+        "Non-bottleneck layers are placed between deconvolution layers.": "between two deconvolution"
+      },
+      {
+        "Intermediate feature maps are pulled from the encoder.": "feature maps"
+      },
+      {
+        "The network is trained end-to-end.": "end to end"
+      }
+    ],
+    "key_results": [
+      {
+        "The optimal decoder configuration achieved a mean IoU of 0.7441.": "0.7441"
+      },
+      {
+        "The baseline decoder D1 achieved a mean IoU of 0.7255.": "0.7255"
+      },
+      {
+        "The optimal configuration improved mean IoU by 10%.": "10% improvement"
+      },
+      {
+        "The optimal configuration achieved a Lanes IoU of 0.5304.": "0.5304"
+      },
+      {
+        "The optimal configuration achieved a Curb IoU of 0.4696.": "0.4696"
+      },
+      {
+        "The optimal configuration achieved a Road IoU of 0.9314.": "0.9314"
+      },
+      {
+        "The optimal configuration achieved a Lanes accuracy of 0.6118.": "0.6118"
+      },
+      {
+        "The optimal configuration achieved a Curb accuracy of 0.6588.": "0.6588"
+      },
+      {
+        "The optimal configuration achieved a Road accuracy of 0.9689.": "0.9689"
+      },
+      {
+        "Decoder D8 achieved a mean IoU of 0.727.": "0.727"
+      },
+      {
+        "Decoder D6 achieved a mean IoU of 0.7106.": "0.7106"
+      },
+      {
+        "Decoder D7 achieved the lowest mean IoU of 0.6458.": "0.6458"
+      },
+      {
+        "The optimal configuration improved Lanes IoU by 12%.": "12%"
+      },
+      {
+        "The optimal configuration improved Curb IoU by 18%.": "18%"
+      },
+      {
+        "The runtime increase was less than 2ms compared to FCN.": "2ms increase"
+      },
+      {
+        "The non-bottleneck layers worked better for curb class.": "better for curb"
+      },
+      {
+        "There was a slight deterioration for lanes in some variants.": "deterioration for lanes"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The design of efficient decoders is critical for segmentation tasks.": "crit-\nical role for segmentation"
+      },
+      {
+        "Decoders cover a significant portion of overall computation.": "signif-\nicant portion"
+      },
+      {
+        "Task-independent encoders require decoders to learn semantic features.": "semantic features"
+      },
+      {
+        "Cascaded skip connections effectively handle high gradient flow.": "high gradient"
+      },
+      {
+        "The non-bottleneck layer addresses class imbalance issues.": "class imbalance"
+      },
+      {
+        "The approach supports multi-task learning systems.": "multi-task learning"
+      },
+      {
+        "Efficient decoder design complements efficient encoder research.": "efﬁcient encoders"
+      },
+      {
+        "The method is suitable for embedded platforms.": "embedded platform"
+      },
+      {
+        "The study demonstrates the need for further decoder research.": "further research"
+      },
+      {
+        "Meta-learning could be used to learn optimal configurations.": "meta-\nlearning"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The dataset is proprietary and not publicly available.": "owned by our"
+      },
+      {
+        "The study focuses on only four classes.": "4 critical classes"
+      },
+      {
+        "No data augmentation was used during training.": "data\naugmentation"
+      },
+      {
+        "The encoder is much wider than the decoder.": "wider than the"
+      },
+      {
+        "The encoder consumes most of the run time.": "most of the"
+      },
+      {
+        "Dilated convolution is computationally expensive.": "computationally expensive"
+      },
+      {
+        "The dilation rate was kept constant at 1.": "dilation rate"
+      },
+      {
+        "Residual learning is not efficient for lesser depth networks.": "lesser depth"
+      },
+      {
+        "Aggregated residual transformation showed adverse effects.": "adverse effect"
+      }
+    ],
+    "claims": [
+      {
+        "description": "The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.",
+        "supporting_evidence": [
+          {
+            "The optimal configuration achieved a 10% improvement in mean IoU.": "10% improvement"
+          },
+          {
+            "The runtime increase was less than 2ms.": "2ms increase"
+          },
+          {
+            "The method handles high gradient flow effectively.": "high gradient"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "There was a slight deterioration for lanes in some variants.": "deterioration for lanes"
+          },
+          {
+            "The encoder consumes most of the run time.": "most of the"
+          }
+        ],
+        "implications": [
+          {
+            "The approach supports multi-task learning.": "multi-task learning"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The study experimented with multiple decoder variants D1 through D8.": "D1"
+      },
+      {
+        "Decoder D1 uses the non-bottleneck layer without 1X1 convolution.": "without 1X1"
+      },
+      {
+        "Decoder D2 does not use the second skip connection.": "second skip"
+      },
+      {
+        "Decoder D3 uses a batch size of 8.": "batch size"
+      },
+      {
+        "Decoder D4 does not use 1X1 convolution before 3X3 and 5X5.": "1X1 convolution"
+      },
+      {
+        "Decoder D5 uses 3X1 and 1X3 convolutions.": "3X1, 1X3"
+      },
+      {
+        "Decoder D6 uses a batch size of 4.": "batch size"
+      },
+      {
+        "Decoder D7 uses different kernel sizes in deconvolution layers.": "kernel size"
+      },
+      {
+        "Decoder D8 uses the same non-bottleneck as D7 without 3X3 and 5X5.": "without 3X3"
+      },
+      {
+        "The optimal configuration was obtained after several optimization efforts.": "optimization efforts"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the typical encoder-decoder architecture.": "encoder-decoder architecture"
+      },
+      {
+        "Figure 2 illustrates the non-bottleneck layers.": "non-bottleneck layers"
+      },
+      {
+        "Figure 3 shows the CNN based encoder-decoder architecture.": "encoder-decoder architecture"
+      },
+      {
+        "Figure 4 compares the proposed decoder against a standard FCN.": "standard FCN"
+      },
+      {
+        "Table 1 presents results of different decoder variants.": "different variants"
+      },
+      {
+        "Table 1 includes average class accuracy and IoU scores.": "IoU score"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a novel efficient non-bottleneck layer for decoders.": "non-bottleneck layer"
+      },
+      {
+        "2. The strongest evidence is the 10% improvement in mean IoU.": "10% improvement"
+      },
+      {
+        "3. The future path involves meta-learning optimal configurations.": "meta-\nlearning"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper addresses the computational challenges of deploying semantic segmentation models on embedded platforms for automated driving. While significant research has focused on efficient encoders, the authors argue that decoders are also computationally expensive and require specific optimization for real-time performance. The study proposes a novel efficient non-bottleneck layer and a family of decoders designed to fit within a small run-time budget. The architecture assumes a task-independent, lightweight encoder (VGG10) that provides shared features for multi-task learning, unlike previous methods that used task-specific encoders. The proposed decoder utilizes residual learning and cascaded skip connections to handle high gradient flow and learn semantic features from the generic encoder's output. Experiments were conducted on a proprietary dataset of urban scenes with four classes: lanes, curb, road, and void. The model was trained end-to-end using the Keras framework on an NVIDIA Titan X GPU. The results demonstrate that the optimal decoder configuration achieved a 10% improvement in mean Intersection over Union (IoU) compared to a baseline. Specifically, improvements of 12% and 18% were observed for the more difficult classes of lanes and curb, respectively. The proposed network maintains a runtime increase of less than 2ms compared to a standard FCN decoder on custom automotive hardware. The study concludes that efficient decoder design is critical for segmentation tasks and suggests future work on meta-learning optimal configurations within fixed run-time budgets.\n\nResearch Context\nSemantic segmentation is computationally intensive for embedded deployment. Efficient network design is critical for real-time automated driving. Recent research has focused on designing efficient encoders. Decoders are also computationally expensive for semantic segmentation. Existing methods often use task-specific encoders. This work focuses on efficient decoder design. The encoder is assumed to be task-independent. A VGG10 encoder is used to provide shared features. The goal is to fit within a small run-time budget. The study demonstrates a 10% improvement from baseline.\n\nResearch Question And Hypothesis\nThe central research question is how to design an efficient segmentation decoder. The hypothesis is that a task-independent encoder requires a specialized decoder. The proposed non-bottleneck layer should handle high gradient flow. Cascaded skip connections are hypothesized to improve performance on underrepresented classes. The decoder should learn semantic features from generic encoder outputs. The design should fit within embedded platform run-time constraints. It is predicted that specific decoder variants will outperform baselines. The optimal configuration is expected to improve mean IoU. The method should be suitable for real-time execution. The approach aims to support multi-task learning systems.\n\nMethodological Details\nThe study uses a proprietary dataset owned by the organization. Each image in the dataset has dimensions of 1280X384. The dataset consists mostly of urban scenes. The dataset includes diverse lighting conditions and dense shadows. Semantic segmentation was performed on four critical classes. The classes are lanes, curb, road, and void. The dataset is divided into training, validation, and test sets. The training set contains 3016 images. The validation set contains 981 images. The test set contains 1002 images. Single-channel annotations were developed for each sample image. The encoder is a VGG-style classifier with 10 layers. The encoder was pre-trained on ImageNet. Weights were transferred to the semantic segmentation task. The implementation was executed using the Keras framework. The Adam optimizer was used for training. Weight decay was set to 0.9. The batch size was set to 4. The initial learning rate was 0.0005. A standard polynomial decay strategy was used. Training lasted for 350K iterations. Dropout was not used in the model. Experiments were run on an NVIDIA Titan X 12G GPU. The GPU had 24 GB of RAM. No data augmentation technique was performed.\n\nProcedures And Architectures\nThe proposed network consists of an encoder and a decoder. The encoder extracts features from various feature dimensions. The decoder reconstructs the original input space. Deconvolution layers are used instead of max-unpooling. The encoder uses convolution with stride 2 followed by max-pooling. Convolution layers use a kernel size of 5X5. Batch-Normalization is used to speed up convergence. ReLU is used to add non-linearity. The last encoder layer produces 256 feature maps. The decoder uses a novel non-bottleneck layer. The non-bottleneck layer is based on residual learning. The layer contains both 1D and 3D kernels. 1D kernels extract information in one direction. 3D kernels gather features from bigger receptive areas. Features from different kernels are fused. Multiple skip connections help handle high gradient flow. There are two variants of the non-bottleneck layer. Type-2 uses dilated convolution with kernel sizes 3X3 and 5X5. The dilation rate is kept constant at 1. Feature maps are downsampled from 256 to 4. Non-bottleneck layers are placed between deconvolution layers. Intermediate feature maps are pulled from the encoder. The network is trained end-to-end.\n\nKey Results\nThe optimal decoder configuration achieved a mean IoU of 0.7441. The baseline decoder D1 achieved a mean IoU of 0.7255. The optimal configuration improved mean IoU by 10%. The optimal configuration achieved a Lanes IoU of 0.5304. The optimal configuration achieved a Curb IoU of 0.4696. The optimal configuration achieved a Road IoU of 0.9314. The optimal configuration achieved a Lanes accuracy of 0.6118. The optimal configuration achieved a Curb accuracy of 0.6588. The optimal configuration achieved a Road accuracy of 0.9689. Decoder D8 achieved a mean IoU of 0.727. Decoder D6 achieved a mean IoU of 0.7106. Decoder D7 achieved the lowest mean IoU of 0.6458. The optimal configuration improved Lanes IoU by 12%. The optimal configuration improved Curb IoU by 18%. The runtime increase was less than 2ms compared to FCN. The non-bottleneck layers worked better for curb class. There was a slight deterioration for lanes in some variants.\n\nInterpretation And Theoretical Implications\nThe design of efficient decoders is critical for segmentation tasks. Decoders cover a significant portion of overall computation. Task-independent encoders require decoders to learn semantic features. Cascaded skip connections effectively handle high gradient flow. The non-bottleneck layer addresses class imbalance issues. The approach supports multi-task learning systems. Efficient decoder design complements efficient encoder research. The method is suitable for embedded platforms. The study demonstrates the need for further decoder research. Meta-learning could be used to learn optimal configurations.\n\nContradictions And Limitations\nThe dataset is proprietary and not publicly available. The study focuses on only four classes. No data augmentation was used during training. The encoder is much wider than the decoder. The encoder consumes most of the run time. Dilated convolution is computationally expensive. The dilation rate was kept constant at 1. Residual learning is not efficient for lesser depth networks. Aggregated residual transformation showed adverse effects.\n\nClaims\nThe proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance. The optimal configuration achieved a 10% improvement in mean IoU. The runtime increase was less than 2ms. The method handles high gradient flow effectively. There was a slight deterioration for lanes in some variants. The encoder consumes most of the run time. The approach supports multi-task learning.\n\nRobustness And Ablation Notes\nThe study experimented with multiple decoder variants D1 through D8. Decoder D1 uses the non-bottleneck layer without 1X1 convolution. Decoder D2 does not use the second skip connection. Decoder D3 uses a batch size of 8. Decoder D4 does not use 1X1 convolution before 3X3 and 5X5. Decoder D5 uses 3X1 and 1X3 convolutions. Decoder D6 uses a batch size of 4. Decoder D7 uses different kernel sizes in deconvolution layers. Decoder D8 uses the same non-bottleneck as D7 without 3X3 and 5X5. The optimal configuration was obtained after several optimization efforts.\n\nKey Figures Tables\nFigure 1 shows the typical encoder-decoder architecture. Figure 2 illustrates the non-bottleneck layers. Figure 3 shows the CNN based encoder-decoder architecture. Figure 4 compares the proposed decoder against a standard FCN. Table 1 presents results of different decoder variants. Table 1 includes average class accuracy and IoU scores.\n\nThree Takeaways\n1. The core contribution is a novel efficient non-bottleneck layer for decoders. 2. The strongest evidence is the 10% improvement in mean IoU. 3. The future path involves meta-learning optimal configurations.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "computationally intensive",
+      "start": 458,
+      "end": 483,
+      "typographic_alignment": false,
+      "original_quote": "computationally intensive"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "real-time performance",
+      "start": 685,
+      "end": 706,
+      "typographic_alignment": false,
+      "original_quote": "real-time performance"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "efﬁcient encoders",
+      "start": 764,
+      "end": 781,
+      "typographic_alignment": true,
+      "original_quote": "efficient encoders"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "computationally expensive",
+      "start": 896,
+      "end": 921,
+      "typographic_alignment": false,
+      "original_quote": "computationally expensive"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "task independent",
+      "start": 7930,
+      "end": 7946,
+      "typographic_alignment": false,
+      "original_quote": "task independent"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "efﬁcient design",
+      "start": 988,
+      "end": 1003,
+      "typographic_alignment": true,
+      "original_quote": "efficient design"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "task independent",
+      "start": 7930,
+      "end": 7946,
+      "typographic_alignment": false,
+      "original_quote": "task independent"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "VGG10",
+      "start": 1266,
+      "end": 1271,
+      "typographic_alignment": false,
+      "original_quote": "VGG10"
+    },
+    {
+      "path": "research_context[8]",
+      "quote": "run-time budget",
+      "start": 1244,
+      "end": 1259,
+      "typographic_alignment": false,
+      "original_quote": "run-time budget"
+    },
+    {
+      "path": "research_context[9]",
+      "quote": "10% improvement",
+      "start": 24197,
+      "end": 24212,
+      "typographic_alignment": false,
+      "original_quote": "10% improvement"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "efﬁcient design",
+      "start": 988,
+      "end": 1003,
+      "typographic_alignment": true,
+      "original_quote": "efficient design"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "task independent",
+      "start": 7930,
+      "end": 7946,
+      "typographic_alignment": false,
+      "original_quote": "task independent"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "high gradient",
+      "start": 3351,
+      "end": 3364,
+      "typographic_alignment": false,
+      "original_quote": "high gradient"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "skip connections",
+      "start": 4489,
+      "end": 4505,
+      "typographic_alignment": false,
+      "original_quote": "skip connections"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "semantic features",
+      "start": 5987,
+      "end": 6004,
+      "typographic_alignment": false,
+      "original_quote": "semantic features"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "run-time budget",
+      "start": 1244,
+      "end": 1259,
+      "typographic_alignment": false,
+      "original_quote": "run-time budget"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "baseline performance",
+      "start": 1408,
+      "end": 1428,
+      "typographic_alignment": false,
+      "original_quote": "baseline performance"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "mean IoU",
+      "start": 24239,
+      "end": 24247,
+      "typographic_alignment": false,
+      "original_quote": "mean IoU"
+    },
+    {
+      "path": "research_question_and_hypothesis[8]",
+      "quote": "real time",
+      "start": 3417,
+      "end": 3426,
+      "typographic_alignment": false,
+      "original_quote": "real time"
+    },
+    {
+      "path": "research_question_and_hypothesis[9]",
+      "quote": "multi-task learning",
+      "start": 1121,
+      "end": 1140,
+      "typographic_alignment": false,
+      "original_quote": "multi-task learning"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "owned by our",
+      "start": 16541,
+      "end": 16553,
+      "typographic_alignment": false,
+      "original_quote": "owned by our"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "1280X384",
+      "start": 16672,
+      "end": 16680,
+      "typographic_alignment": false,
+      "original_quote": "1280X384"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "urban scenes",
+      "start": 16731,
+      "end": 16743,
+      "typographic_alignment": false,
+      "original_quote": "urban scenes"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "dense shadow",
+      "start": 16791,
+      "end": 16803,
+      "typographic_alignment": false,
+      "original_quote": "dense shadow"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "4 critical classes",
+      "start": 16918,
+      "end": 16936,
+      "typographic_alignment": false,
+      "original_quote": "4 critical classes"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "lanes, curb",
+      "start": 16946,
+      "end": 16957,
+      "typographic_alignment": false,
+      "original_quote": "lanes, curb"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "Training, Validation",
+      "start": 17027,
+      "end": 17047,
+      "typographic_alignment": false,
+      "original_quote": "Training, Validation"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "3016",
+      "start": 17077,
+      "end": 17081,
+      "typographic_alignment": false,
+      "original_quote": "3016"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "981",
+      "start": 17083,
+      "end": 17086,
+      "typographic_alignment": false,
+      "original_quote": "981"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "1002",
+      "start": 17091,
+      "end": 17095,
+      "typographic_alignment": false,
+      "original_quote": "1002"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "single channel",
+      "start": 17152,
+      "end": 17166,
+      "typographic_alignment": false,
+      "original_quote": "single channel"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "10 layers",
+      "start": 8672,
+      "end": 8681,
+      "typographic_alignment": false,
+      "original_quote": "10 layers"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "ImageNet",
+      "start": 2432,
+      "end": 2440,
+      "typographic_alignment": false,
+      "original_quote": "ImageNet"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "transfer the weights",
+      "start": 17305,
+      "end": 17325,
+      "typographic_alignment": false,
+      "original_quote": "transfer the weights"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "Keras",
+      "start": 18049,
+      "end": 18054,
+      "typographic_alignment": false,
+      "original_quote": "Keras"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "Adam",
+      "start": 18116,
+      "end": 18120,
+      "typographic_alignment": false,
+      "original_quote": "Adam"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "0.9",
+      "start": 18241,
+      "end": 18244,
+      "typographic_alignment": false,
+      "original_quote": "0.9"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "batch size",
+      "start": 18218,
+      "end": 18228,
+      "typographic_alignment": false,
+      "original_quote": "batch size"
+    },
+    {
+      "path": "methodological_details[18]",
+      "quote": "0.0005",
+      "start": 18291,
+      "end": 18297,
+      "typographic_alignment": false,
+      "original_quote": "0.0005"
+    },
+    {
+      "path": "methodological_details[19]",
+      "quote": "polynomial\ndecay",
+      "start": 18342,
+      "end": 18358,
+      "typographic_alignment": true,
+      "original_quote": "polynomial decay"
+    },
+    {
+      "path": "methodological_details[20]",
+      "quote": "350K",
+      "start": 18396,
+      "end": 18400,
+      "typographic_alignment": false,
+      "original_quote": "350K"
+    },
+    {
+      "path": "methodological_details[21]",
+      "quote": "Dropout",
+      "start": 18415,
+      "end": 18422,
+      "typographic_alignment": false,
+      "original_quote": "Dropout"
+    },
+    {
+      "path": "methodological_details[22]",
+      "quote": "experiments, we used NVIDIA",
+      "start": 18483,
+      "end": 18510,
+      "typographic_alignment": false,
+      "original_quote": "experiments, we used NVIDIA"
+    },
+    {
+      "path": "methodological_details[23]",
+      "quote": "24 GB RAM",
+      "start": 18534,
+      "end": 18543,
+      "typographic_alignment": false,
+      "original_quote": "24 GB RAM"
+    },
+    {
+      "path": "methodological_details[24]",
+      "quote": "data\naugmentation",
+      "start": 19875,
+      "end": 19892,
+      "typographic_alignment": true,
+      "original_quote": "data augmentation"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "encoder and decoder",
+      "start": 7114,
+      "end": 7133,
+      "typographic_alignment": false,
+      "original_quote": "encoder and decoder"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "extract features",
+      "start": 7242,
+      "end": 7258,
+      "typographic_alignment": false,
+      "original_quote": "extract features"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "reconstructs the original",
+      "start": 7479,
+      "end": 7504,
+      "typographic_alignment": false,
+      "original_quote": "reconstructs the original"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "deconvolution layer",
+      "start": 7544,
+      "end": 7563,
+      "typographic_alignment": false,
+      "original_quote": "deconvolution layer"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "stride 2",
+      "start": 9138,
+      "end": 9146,
+      "typographic_alignment": false,
+      "original_quote": "stride 2"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "5X5",
+      "start": 9862,
+      "end": 9865,
+      "typographic_alignment": false,
+      "original_quote": "5X5"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "Batch-\nNormalization",
+      "start": 9878,
+      "end": 9898,
+      "typographic_alignment": true,
+      "original_quote": "Batch-Normalization"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "ReLU",
+      "start": 9957,
+      "end": 9961,
+      "typographic_alignment": false,
+      "original_quote": "ReLU"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "256 feature maps",
+      "start": 10049,
+      "end": 10065,
+      "typographic_alignment": false,
+      "original_quote": "256 feature maps"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "non-bottleneck layer",
+      "start": 1176,
+      "end": 1196,
+      "typographic_alignment": false,
+      "original_quote": "non-bottleneck layer"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "residual learning",
+      "start": 3148,
+      "end": 3165,
+      "typographic_alignment": false,
+      "original_quote": "residual learning"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "1D and 3D",
+      "start": 12168,
+      "end": 12177,
+      "typographic_alignment": false,
+      "original_quote": "1D and 3D"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "one\ndirection",
+      "start": 12238,
+      "end": 12251,
+      "typographic_alignment": true,
+      "original_quote": "one direction"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "bigger receptive",
+      "start": 12309,
+      "end": 12325,
+      "typographic_alignment": false,
+      "original_quote": "bigger receptive"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "fused",
+      "start": 12535,
+      "end": 12540,
+      "typographic_alignment": false,
+      "original_quote": "fused"
+    },
+    {
+      "path": "procedures_and_architectures[15]",
+      "quote": "skip connections",
+      "start": 4489,
+      "end": 4505,
+      "typographic_alignment": false,
+      "original_quote": "skip connections"
+    },
+    {
+      "path": "procedures_and_architectures[16]",
+      "quote": "two variants",
+      "start": 13013,
+      "end": 13025,
+      "typographic_alignment": false,
+      "original_quote": "two variants"
+    },
+    {
+      "path": "procedures_and_architectures[17]",
+      "quote": "dilated convolution",
+      "start": 4620,
+      "end": 4639,
+      "typographic_alignment": false,
+      "original_quote": "dilated convolution"
+    },
+    {
+      "path": "procedures_and_architectures[18]",
+      "quote": "dilation rate",
+      "start": 13376,
+      "end": 13389,
+      "typographic_alignment": false,
+      "original_quote": "dilation rate"
+    },
+    {
+      "path": "procedures_and_architectures[19]",
+      "quote": "256\nto 4",
+      "start": 14264,
+      "end": 14272,
+      "typographic_alignment": true,
+      "original_quote": "256 to 4"
+    },
+    {
+      "path": "procedures_and_architectures[20]",
+      "quote": "between two deconvolution",
+      "start": 22066,
+      "end": 22091,
+      "typographic_alignment": false,
+      "original_quote": "between two deconvolution"
+    },
+    {
+      "path": "procedures_and_architectures[21]",
+      "quote": "feature maps",
+      "start": 2902,
+      "end": 2914,
+      "typographic_alignment": false,
+      "original_quote": "feature maps"
+    },
+    {
+      "path": "procedures_and_architectures[22]",
+      "quote": "end to end",
+      "start": 19409,
+      "end": 19419,
+      "typographic_alignment": false,
+      "original_quote": "end to end"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "0.7441",
+      "start": 23434,
+      "end": 23440,
+      "typographic_alignment": false,
+      "original_quote": "0.7441"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "0.7255",
+      "start": 22661,
+      "end": 22667,
+      "typographic_alignment": false,
+      "original_quote": "0.7255"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "10% improvement",
+      "start": 24197,
+      "end": 24212,
+      "typographic_alignment": false,
+      "original_quote": "10% improvement"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "0.5304",
+      "start": 23413,
+      "end": 23419,
+      "typographic_alignment": false,
+      "original_quote": "0.5304"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "0.4696",
+      "start": 23420,
+      "end": 23426,
+      "typographic_alignment": false,
+      "original_quote": "0.4696"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "0.9314",
+      "start": 23427,
+      "end": 23433,
+      "typographic_alignment": false,
+      "original_quote": "0.9314"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "0.6118",
+      "start": 23392,
+      "end": 23398,
+      "typographic_alignment": false,
+      "original_quote": "0.6118"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "0.6588",
+      "start": 23399,
+      "end": 23405,
+      "typographic_alignment": false,
+      "original_quote": "0.6588"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "0.9689",
+      "start": 22737,
+      "end": 22743,
+      "typographic_alignment": false,
+      "original_quote": "0.9689"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "0.727",
+      "start": 23024,
+      "end": 23029,
+      "typographic_alignment": false,
+      "original_quote": "0.727"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "0.7106",
+      "start": 22920,
+      "end": 22926,
+      "typographic_alignment": false,
+      "original_quote": "0.7106"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "0.6458",
+      "start": 22972,
+      "end": 22978,
+      "typographic_alignment": false,
+      "original_quote": "0.6458"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "12%",
+      "start": 24378,
+      "end": 24381,
+      "typographic_alignment": false,
+      "original_quote": "12%"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "18%",
+      "start": 24386,
+      "end": 24389,
+      "typographic_alignment": false,
+      "original_quote": "18%"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "2ms increase",
+      "start": 23705,
+      "end": 23717,
+      "typographic_alignment": false,
+      "original_quote": "2ms increase"
+    },
+    {
+      "path": "key_results[15]",
+      "quote": "better for curb",
+      "start": 19957,
+      "end": 19972,
+      "typographic_alignment": false,
+      "original_quote": "better for curb"
+    },
+    {
+      "path": "key_results[16]",
+      "quote": "deterioration for lanes",
+      "start": 19998,
+      "end": 20021,
+      "typographic_alignment": false,
+      "original_quote": "deterioration for lanes"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "crit-\nical role for segmentation",
+      "start": 24475,
+      "end": 24507,
+      "typographic_alignment": false,
+      "original_quote": "crit-\nical role for segmentation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "signif-\nicant portion",
+      "start": 24529,
+      "end": 24550,
+      "typographic_alignment": false,
+      "original_quote": "signif-\nicant portion"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "semantic features",
+      "start": 5987,
+      "end": 6004,
+      "typographic_alignment": false,
+      "original_quote": "semantic features"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "high gradient",
+      "start": 3351,
+      "end": 3364,
+      "typographic_alignment": false,
+      "original_quote": "high gradient"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "class imbalance",
+      "start": 22346,
+      "end": 22361,
+      "typographic_alignment": false,
+      "original_quote": "class imbalance"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "multi-task learning",
+      "start": 1121,
+      "end": 1140,
+      "typographic_alignment": false,
+      "original_quote": "multi-task learning"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "efﬁcient encoders",
+      "start": 764,
+      "end": 781,
+      "typographic_alignment": true,
+      "original_quote": "efficient encoders"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "embedded platform",
+      "start": 1896,
+      "end": 1913,
+      "typographic_alignment": false,
+      "original_quote": "embedded platform"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[8]",
+      "quote": "further research",
+      "start": 24659,
+      "end": 24675,
+      "typographic_alignment": false,
+      "original_quote": "further research"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[9]",
+      "quote": "meta-\nlearning",
+      "start": 24840,
+      "end": 24854,
+      "typographic_alignment": true,
+      "original_quote": "meta-learning"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "owned by our",
+      "start": 16541,
+      "end": 16553,
+      "typographic_alignment": false,
+      "original_quote": "owned by our"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "4 critical classes",
+      "start": 16918,
+      "end": 16936,
+      "typographic_alignment": false,
+      "original_quote": "4 critical classes"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "data\naugmentation",
+      "start": 19875,
+      "end": 19892,
+      "typographic_alignment": true,
+      "original_quote": "data augmentation"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "wider than the",
+      "start": 15507,
+      "end": 15521,
+      "typographic_alignment": false,
+      "original_quote": "wider than the"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "most of the",
+      "start": 12052,
+      "end": 12063,
+      "typographic_alignment": false,
+      "original_quote": "most of the"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "computationally expensive",
+      "start": 896,
+      "end": 921,
+      "typographic_alignment": false,
+      "original_quote": "computationally expensive"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "dilation rate",
+      "start": 13376,
+      "end": 13389,
+      "typographic_alignment": false,
+      "original_quote": "dilation rate"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "lesser depth",
+      "start": 10791,
+      "end": 10803,
+      "typographic_alignment": false,
+      "original_quote": "lesser depth"
+    },
+    {
+      "path": "contradictions_and_limitations[8]",
+      "quote": "adverse effect",
+      "start": 15765,
+      "end": 15779,
+      "typographic_alignment": false,
+      "original_quote": "adverse effect"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "D1",
+      "start": 20354,
+      "end": 20356,
+      "typographic_alignment": false,
+      "original_quote": "D1"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "without 1X1",
+      "start": 20396,
+      "end": 20407,
+      "typographic_alignment": false,
+      "original_quote": "without 1X1"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "second skip",
+      "start": 20498,
+      "end": 20509,
+      "typographic_alignment": false,
+      "original_quote": "second skip"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "batch size",
+      "start": 18218,
+      "end": 18228,
+      "typographic_alignment": false,
+      "original_quote": "batch size"
+    },
+    {
+      "path": "robustness_and_ablation_notes[4]",
+      "quote": "1X1 convolution",
+      "start": 20404,
+      "end": 20419,
+      "typographic_alignment": false,
+      "original_quote": "1X1 convolution"
+    },
+    {
+      "path": "robustness_and_ablation_notes[5]",
+      "quote": "3X1, 1X3",
+      "start": 20821,
+      "end": 20829,
+      "typographic_alignment": false,
+      "original_quote": "3X1, 1X3"
+    },
+    {
+      "path": "robustness_and_ablation_notes[6]",
+      "quote": "batch size",
+      "start": 18218,
+      "end": 18228,
+      "typographic_alignment": false,
+      "original_quote": "batch size"
+    },
+    {
+      "path": "robustness_and_ablation_notes[7]",
+      "quote": "kernel size",
+      "start": 13173,
+      "end": 13184,
+      "typographic_alignment": false,
+      "original_quote": "kernel size"
+    },
+    {
+      "path": "robustness_and_ablation_notes[8]",
+      "quote": "without 3X3",
+      "start": 21545,
+      "end": 21556,
+      "typographic_alignment": false,
+      "original_quote": "without 3X3"
+    },
+    {
+      "path": "robustness_and_ablation_notes[9]",
+      "quote": "optimization efforts",
+      "start": 22217,
+      "end": 22237,
+      "typographic_alignment": false,
+      "original_quote": "optimization efforts"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "encoder-decoder architecture",
+      "start": 9222,
+      "end": 9250,
+      "typographic_alignment": false,
+      "original_quote": "encoder-decoder architecture"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "non-bottleneck layers",
+      "start": 10251,
+      "end": 10272,
+      "typographic_alignment": false,
+      "original_quote": "non-bottleneck layers"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "encoder-decoder architecture",
+      "start": 9222,
+      "end": 9250,
+      "typographic_alignment": false,
+      "original_quote": "encoder-decoder architecture"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "standard FCN",
+      "start": 16483,
+      "end": 16495,
+      "typographic_alignment": false,
+      "original_quote": "standard FCN"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "different variants",
+      "start": 19287,
+      "end": 19305,
+      "typographic_alignment": false,
+      "original_quote": "different variants"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "IoU score",
+      "start": 22548,
+      "end": 22557,
+      "typographic_alignment": false,
+      "original_quote": "IoU score"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "non-bottleneck layer",
+      "start": 1176,
+      "end": 1196,
+      "typographic_alignment": false,
+      "original_quote": "non-bottleneck layer"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "10% improvement",
+      "start": 24197,
+      "end": 24212,
+      "typographic_alignment": false,
+      "original_quote": "10% improvement"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "meta-\nlearning",
+      "start": 24840,
+      "end": 24854,
+      "typographic_alignment": true,
+      "original_quote": "meta-learning"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "10% improvement",
+      "start": 24197,
+      "end": 24212,
+      "typographic_alignment": false,
+      "original_quote": "10% improvement"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "2ms increase",
+      "start": 23705,
+      "end": 23717,
+      "typographic_alignment": false,
+      "original_quote": "2ms increase"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "high gradient",
+      "start": 3351,
+      "end": 3364,
+      "typographic_alignment": false,
+      "original_quote": "high gradient"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "deterioration for lanes",
+      "start": 19998,
+      "end": 20021,
+      "typographic_alignment": false,
+      "original_quote": "deterioration for lanes"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "most of the",
+      "start": 12052,
+      "end": 12063,
+      "typographic_alignment": false,
+      "original_quote": "most of the"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "multi-task learning",
+      "start": 1121,
+      "end": 1140,
+      "typographic_alignment": false,
+      "original_quote": "multi-task learning"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"Design of Real-time Semantic Segmentation Decoder for Automated Driving\",\n\"authors\": \"Arindam Das, Saranya Kandan, Senthil Yogamani, Pavel Kˇr´ıˇzek\",\n\"field_subfield\": \"Computer Vision, Automated Driving\",\n\"type_of_paper\": \"Research Article\",\n\"executive_summary\": \"This paper addresses the computational challenges of deploying semantic segmentation models on embedded platforms for automated driving. While significant research has focused on efficient encoders, the authors argue that decoders are also computationally expensive and require specific optimization for real-time performance. The study proposes a novel efficient non-bottleneck layer and a family of decoders designed to fit within a small run-time budget. The architecture assumes a task-independent, lightweight encoder (VGG10) that provides shared features for multi-task learning, unlike previous methods that used task-specific encoders. The proposed decoder utilizes residual learning and cascaded skip connections to handle high gradient flow and learn semantic features from the generic encoder's output. Experiments were conducted on a proprietary dataset of urban scenes with four classes: lanes, curb, road, and void. The model was trained end-to-end using the Keras framework on an NVIDIA Titan X GPU. The results demonstrate that the optimal decoder configuration achieved a 10% improvement in mean Intersection over Union (IoU) compared to a baseline. Specifically, improvements of 12% and 18% were observed for the more difficult classes of lanes and curb, respectively. The proposed network maintains a runtime increase of less than 2ms compared to a standard FCN decoder on custom automotive hardware. The study concludes that efficient decoder design is critical for segmentation tasks and suggests future work on meta-learning optimal configurations within fixed run-time budgets.\",\n\"research_context\": [\n  { \"Semantic segmentation is computationally intensive for embedded deployment.\": \"computationally intensive\" },\n  { \"Efficient network design is critical for real-time automated driving.\": \"real-time performance\" },\n  { \"Recent research has focused on designing efficient encoders.\": \"efficient encoders\" },\n  { \"Decoders are also computationally expensive for semantic segmentation.\": \"computationally expensive\" },\n  { \"Existing methods often use task-specific encoders.\": \"task specific\" },\n  { \"This work focuses on efficient decoder design.\": \"efficient design\" },\n  { \"The encoder is assumed to be task-independent.\": \"task independent\" },\n  { \"A VGG10 encoder is used to provide shared features.\": \"VGG10\" },\n  { \"The goal is to fit within a small run-time budget.\": \"run-time budget\" },\n  { \"The study demonstrates a 10% improvement from baseline.\": \"10% improvement\" }\n],\n\"research_question_and_hypothesis\": [\n  { \"The central research question is how to design an efficient segmentation decoder.\": \"efficient design\" },\n  { \"The hypothesis is that a task-independent encoder requires a specialized decoder.\": \"task independent\" },\n  { \"The proposed non-bottleneck layer should handle high gradient flow.\": \"high gradient\" },\n  { \"Cascaded skip connections are hypothesized to improve performance on underrepresented classes.\": \"skip connections\" },\n  { \"The decoder should learn semantic features from generic encoder outputs.\": \"semantic features\" },\n  { \"The design should fit within embedded platform run-time constraints.\": \"run-time budget\" },\n  { \"It is predicted that specific decoder variants will outperform baselines.\": \"baseline performance\" },\n  { \"The optimal configuration is expected to improve mean IoU.\": \"mean IoU\" },\n  { \"The method should be suitable for real-time execution.\": \"real time\" },\n  { \"The approach aims to support multi-task learning systems.\": \"multi-task learning\" }\n],\n\"methodological_details\": [\n  { \"The study uses a proprietary dataset owned by the organization.\": \"owned by our\" },\n  { \"Each image in the dataset has dimensions of 1280X384.\": \"1280X384\" },\n  { \"The dataset consists mostly of urban scenes.\": \"urban scenes\" },\n  { \"The dataset includes diverse lighting conditions and dense shadows.\": \"dense shadow\" },\n  { \"Semantic segmentation was performed on four critical classes.\": \"4 critical classes\" },\n  { \"The classes are lanes, curb, road, and void.\": \"lanes, curb\" },\n  { \"The dataset is divided into training, validation, and test sets.\": \"Training, Validation\" },\n  { \"The training set contains 3016 images.\": \"3016\" },\n  { \"The validation set contains 981 images.\": \"981\" },\n  { \"The test set contains 1002 images.\": \"1002\" },\n  { \"Single-channel annotations were developed for each sample image.\": \"single channel\" },\n  { \"The encoder is a VGG-style classifier with 10 layers.\": \"10 layers\" },\n  { \"The encoder was pre-trained on ImageNet.\": \"ImageNet\" },\n  { \"Weights were transferred to the semantic segmentation task.\": \"transfer the weights\" },\n  { \"The implementation was executed using the Keras framework.\": \"Keras\" },\n  { \"The Adam optimizer was used for training.\": \"Adam\" },\n  { \"Weight decay was set to 0.9.\": \"0.9\" },\n  { \"The batch size was set to 4.\": \"batch size\" },\n  { \"The initial learning rate was 0.0005.\": \"0.0005\" },\n  { \"A standard polynomial decay strategy was used.\": \"polynomial decay\" },\n  { \"Training lasted for 350K iterations.\": \"350K iterations\" },\n  { \"Dropout was not used in the model.\": \"Dropout\" },\n  { \"Experiments were run on an NVIDIA Titan X 12G GPU.\": \"NVIDIA Titan X\" },\n  { \"The GPU had 24 GB of RAM.\": \"24 GB RAM\" },\n  { \"No data augmentation technique was performed.\": \"data augmentation\" }\n],\n\"procedures_and_architectures\": [\n  { \"The proposed network consists of an encoder and a decoder.\": \"encoder and decoder\" },\n  { \"The encoder extracts features from various feature dimensions.\": \"extract features\" },\n  { \"The decoder reconstructs the original input space.\": \"reconstructs the original\" },\n  { \"Deconvolution layers are used instead of max-unpooling.\": \"deconvolution layer\" },\n  { \"The encoder uses convolution with stride 2 followed by max-pooling.\": \"stride 2\" },\n  { \"Convolution layers use a kernel size of 5X5.\": \"5X5\" },\n  { \"Batch-Normalization is used to speed up convergence.\": \"Batch-Normalization\" },\n  { \"ReLU is used to add non-linearity.\": \"ReLU\" },\n  { \"The last encoder layer produces 256 feature maps.\": \"256 feature maps\" },\n  { \"The decoder uses a novel non-bottleneck layer.\": \"non-bottleneck layer\" },\n  { \"The non-bottleneck layer is based on residual learning.\": \"residual learning\" },\n  { \"The layer contains both 1D and 3D kernels.\": \"1D and 3D\" },\n  { \"1D kernels extract information in one direction.\": \"one direction\" },\n  { \"3D kernels gather features from bigger receptive areas.\": \"bigger receptive\" },\n  { \"Features from different kernels are fused.\": \"fused\" },\n  { \"Multiple skip connections help handle high gradient flow.\": \"skip connections\" },\n  { \"There are two variants of the non-bottleneck layer.\": \"two variants\" },\n  { \"Type-2 uses dilated convolution with kernel sizes 3X3 and 5X5.\": \"dilated convolution\" },\n  { \"The dilation rate is kept constant at 1.\": \"dilation rate\" },\n  { \"Feature maps are downsampled from 256 to 4.\": \"256 to 4\" },\n  { \"Non-bottleneck layers are placed between deconvolution layers.\": \"between two deconvolution\" },\n  { \"Intermediate feature maps are pulled from the encoder.\": \"intermediate feature maps\" },\n  { \"The network is trained end-to-end.\": \"end to end\" }\n],\n\"key_results\": [\n  { \"The optimal decoder configuration achieved a mean IoU of 0.7441.\": \"0.7441\" },\n  { \"The baseline decoder D1 achieved a mean IoU of 0.7255.\": \"0.7255\" },\n  { \"The optimal configuration improved mean IoU by 10%.\": \"10% improvement\" },\n  { \"The optimal configuration achieved a Lanes IoU of 0.5304.\": \"0.5304\" },\n  { \"The optimal configuration achieved a Curb IoU of 0.4696.\": \"0.4696\" },\n  { \"The optimal configuration achieved a Road IoU of 0.9314.\": \"0.9314\" },\n  { \"The optimal configuration achieved a Lanes accuracy of 0.6118.\": \"0.6118\" },\n  { \"The optimal configuration achieved a Curb accuracy of 0.6588.\": \"0.6588\" },\n  { \"The optimal configuration achieved a Road accuracy of 0.9689.\": \"0.9689\" },\n  { \"Decoder D8 achieved a mean IoU of 0.727.\": \"0.727\" },\n  { \"Decoder D6 achieved a mean IoU of 0.7106.\": \"0.7106\" },\n  { \"Decoder D7 achieved the lowest mean IoU of 0.6458.\": \"0.6458\" },\n  { \"The optimal configuration improved Lanes IoU by 12%.\": \"12%\" },\n  { \"The optimal configuration improved Curb IoU by 18%.\": \"18%\" },\n  { \"The runtime increase was less than 2ms compared to FCN.\": \"2ms increase\" },\n  { \"The non-bottleneck layers worked better for curb class.\": \"better for curb\" },\n  { \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\" }\n],\n\"interpretation_and_theoretical_implications\": [\n  { \"The design of efficient decoders is critical for segmentation tasks.\": \"critical role\" },\n  { \"Decoders cover a significant portion of overall computation.\": \"significant portion\" },\n  { \"Task-independent encoders require decoders to learn semantic features.\": \"semantic features\" },\n  { \"Cascaded skip connections effectively handle high gradient flow.\": \"high gradient\" },\n  { \"The non-bottleneck layer addresses class imbalance issues.\": \"class imbalance\" },\n  { \"The approach supports multi-task learning systems.\": \"multi-task learning\" },\n  { \"Efficient decoder design complements efficient encoder research.\": \"efficient encoders\" },\n  { \"The method is suitable for embedded platforms.\": \"embedded platform\" },\n  { \"The study demonstrates the need for further decoder research.\": \"further research\" },\n  { \"Meta-learning could be used to learn optimal configurations.\": \"meta-learning\" }\n],\n\"contradictions_and_limitations\": [\n  { \"The dataset is proprietary and not publicly available.\": \"owned by our\" },\n  { \"The study focuses on only four classes.\": \"4 critical classes\" },\n  { \"No data augmentation was used during training.\": \"data augmentation\" },\n  { \"The encoder is much wider than the decoder.\": \"wider than the\" },\n  { \"The encoder consumes most of the run time.\": \"most of the\" },\n  { \"Dilated convolution is computationally expensive.\": \"computationally expensive\" },\n  { \"The dilation rate was kept constant at 1.\": \"dilation rate\" },\n  { \"Residual learning is not efficient for lesser depth networks.\": \"lesser depth\" },\n  { \"Aggregated residual transformation showed adverse effects.\": \"adverse effect\" },\n  { \"The study does not report random seeds or specific train/test splits beyond counts.\": \"random seed\" }\n],\n\"claims\": [\n  {\n    \"description\": \"The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.\",\n    \"supporting_evidence\": [\n      { \"The optimal configuration achieved a 10% improvement in mean IoU.\": \"10% improvement\" },\n      { \"The runtime increase was less than 2ms.\": \"2ms increase\" },\n      { \"The method handles high gradient flow effectively.\": \"high gradient\" }\n    ],\n    \"contradicting_evidence\": [\n      { \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\" },\n      { \"The encoder consumes most of the run time.\": \"most of the\" }\n    ],\n    \"implications\": [\n      { \"Efficient decoder design is crucial for embedded systems.\": \"critical role\" },\n      { \"The approach supports multi-task learning.\": \"multi-task learning\" }\n    ]\n  }\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n  { \"The study experimented with multiple decoder variants D1 through D8.\": \"D1 through D8\" },\n  { \"Decoder D1 uses the non-bottleneck layer without 1X1 convolution.\": \"without 1X1\" },\n  { \"Decoder D2 does not use the second skip connection.\": \"second skip\" },\n  { \"Decoder D3 uses a batch size of 8.\": \"batch size\" },\n  { \"Decoder D4 does not use 1X1 convolution before 3X3 and 5X5.\": \"1X1 convolution\" },\n  { \"Decoder D5 uses 3X1 and 1X3 convolutions.\": \"3X1, 1X3\" },\n  { \"Decoder D6 uses a batch size of 4.\": \"batch size\" },\n  { \"Decoder D7 uses different kernel sizes in deconvolution layers.\": \"kernel size\" },\n  { \"Decoder D8 uses the same non-bottleneck as D7 without 3X3 and 5X5.\": \"without 3X3\" },\n  { \"The optimal configuration was obtained after several optimization efforts.\": \"optimization efforts\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n  { \"Figure 1 shows the typical encoder-decoder architecture.\": \"encoder-decoder architecture\" },\n  { \"Figure 2 illustrates the non-bottleneck layers.\": \"non-bottleneck layers\" },\n  { \"Figure 3 shows the CNN based encoder-decoder architecture.\": \"encoder-decoder architecture\" },\n  { \"Figure 4 compares the proposed decoder against a standard FCN.\": \"standard FCN\" },\n  { \"Table 1 presents results of different decoder variants.\": \"different variants\" },\n  { \"Table 1 includes average class accuracy and IoU scores.\": \"IoU score\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n  { \"1. The core contribution is a novel efficient non-bottleneck layer for decoders.\": \"non-bottleneck layer\" },\n  { \"2. The strongest evidence is the 10% improvement in mean IoU.\": \"10% improvement\" },\n  { \"3. The future path involves meta-learning optimal configurations.\": \"meta-learning\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8970,
+        "total_tokens": 12581,
+        "completion_tokens": 3611,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8970,
+      "elapsed_seconds": 325.43696094304323,
+      "max_tokens": 16000,
+      "seed": 1486169672,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "97a5e5bc22f8db2cf1a9d01cd3f203d0ce71f8171d0a3f04e7cf039cc7d89274",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "evidence quote is not present in fulltext: task specific",
+        "methodological_details": "evidence quote is not present in fulltext: 350K iterations",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: intermediate feature maps",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: critical role",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: random seed",
+        "claims": "evidence quote is not present in fulltext: critical role",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: D1 through D8"
+      }
+    },
+    {
+      "response": "{\n  \"research_context\": [\n    {\n      \"Semantic segmentation is computationally intensive for embedded deployment.\": \"computationally intensive\"\n    },\n    {\n      \"Efficient network design is critical for real-time automated driving.\": \"real-time performance\"\n    },\n    {\n      \"Recent research has focused on designing efficient encoders.\": \"efficient encoders\"\n    },\n    {\n      \"Decoders are also computationally expensive for semantic segmentation.\": \"computationally expensive\"\n    },\n    {\n      \"Existing methods often use task-specific encoders.\": \"task independent\"\n    },\n    {\n      \"This work focuses on efficient decoder design.\": \"efficient design\"\n    },\n    {\n      \"The encoder is assumed to be task-independent.\": \"task independent\"\n    },\n    {\n      \"A VGG10 encoder is used to provide shared features.\": \"VGG10\"\n    },\n    {\n      \"The goal is to fit within a small run-time budget.\": \"run-time budget\"\n    },\n    {\n      \"The study demonstrates a 10% improvement from baseline.\": \"10% improvement\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The study uses a proprietary dataset owned by the organization.\": \"owned by our\"\n    },\n    {\n      \"Each image in the dataset has dimensions of 1280X384.\": \"1280X384\"\n    },\n    {\n      \"The dataset consists mostly of urban scenes.\": \"urban scenes\"\n    },\n    {\n      \"The dataset includes diverse lighting conditions and dense shadows.\": \"dense shadow\"\n    },\n    {\n      \"Semantic segmentation was performed on four critical classes.\": \"4 critical classes\"\n    },\n    {\n      \"The classes are lanes, curb, road, and void.\": \"lanes, curb\"\n    },\n    {\n      \"The dataset is divided into training, validation, and test sets.\": \"Training, Validation\"\n    },\n    {\n      \"The training set contains 3016 images.\": \"3016\"\n    },\n    {\n      \"The validation set contains 981 images.\": \"981\"\n    },\n    {\n      \"The test set contains 1002 images.\": \"1002\"\n    },\n    {\n      \"Single-channel annotations were developed for each sample image.\": \"single channel\"\n    },\n    {\n      \"The encoder is a VGG-style classifier with 10 layers.\": \"10 layers\"\n    },\n    {\n      \"The encoder was pre-trained on ImageNet.\": \"ImageNet\"\n    },\n    {\n      \"Weights were transferred to the semantic segmentation task.\": \"transfer the weights\"\n    },\n    {\n      \"The implementation was executed using the Keras framework.\": \"Keras\"\n    },\n    {\n      \"The Adam optimizer was used for training.\": \"Adam\"\n    },\n    {\n      \"Weight decay was set to 0.9.\": \"0.9\"\n    },\n    {\n      \"The batch size was set to 4.\": \"batch size\"\n    },\n    {\n      \"The initial learning rate was 0.0005.\": \"0.0005\"\n    },\n    {\n      \"A standard polynomial decay strategy was used.\": \"polynomial decay\"\n    },\n    {\n      \"Training lasted for 350K iterations.\": \"350K\"\n    },\n    {\n      \"Dropout was not used in the model.\": \"Dropout\"\n    },\n    {\n      \"Experiments were run on an NVIDIA Titan X 12G GPU.\": \"Titan X\"\n    },\n    {\n      \"The GPU had 24 GB of RAM.\": \"24 GB RAM\"\n    },\n    {\n      \"No data augmentation technique was performed.\": \"data augmentation\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"The proposed network consists of an encoder and a decoder.\": \"encoder and decoder\"\n    },\n    {\n      \"The encoder extracts features from various feature dimensions.\": \"extract features\"\n    },\n    {\n      \"The decoder reconstructs the original input space.\": \"reconstructs the original\"\n    },\n    {\n      \"Deconvolution layers are used instead of max-unpooling.\": \"deconvolution layer\"\n    },\n    {\n      \"The encoder uses convolution with stride 2 followed by max-pooling.\": \"stride 2\"\n    },\n    {\n      \"Convolution layers use a kernel size of 5X5.\": \"5X5\"\n    },\n    {\n      \"Batch-Normalization is used to speed up convergence.\": \"Batch-Normalization\"\n    },\n    {\n      \"ReLU is used to add non-linearity.\": \"ReLU\"\n    },\n    {\n      \"The last encoder layer produces 256 feature maps.\": \"256 feature maps\"\n    },\n    {\n      \"The decoder uses a novel non-bottleneck layer.\": \"non-bottleneck layer\"\n    },\n    {\n      \"The non-bottleneck layer is based on residual learning.\": \"residual learning\"\n    },\n    {\n      \"The layer contains both 1D and 3D kernels.\": \"1D and 3D\"\n    },\n    {\n      \"1D kernels extract information in one direction.\": \"one direction\"\n    },\n    {\n      \"3D kernels gather features from bigger receptive areas.\": \"bigger receptive\"\n    },\n    {\n      \"Features from different kernels are fused.\": \"fused\"\n    },\n    {\n      \"Multiple skip connections help handle high gradient flow.\": \"skip connections\"\n    },\n    {\n      \"There are two variants of the non-bottleneck layer.\": \"two variants\"\n    },\n    {\n      \"Type-2 uses dilated convolution with kernel sizes 3X3 and 5X5.\": \"dilated convolution\"\n    },\n    {\n      \"The dilation rate is kept constant at 1.\": \"dilation rate\"\n    },\n    {\n      \"Feature maps are downsampled from 256 to 4.\": \"256 to 4\"\n    },\n    {\n      \"Non-bottleneck layers are placed between deconvolution layers.\": \"between two deconvolution\"\n    },\n    {\n      \"Intermediate feature maps are pulled from the encoder.\": \"feature maps\"\n    },\n    {\n      \"The network is trained end-to-end.\": \"end to end\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The design of efficient decoders is critical for segmentation tasks.\": \"critical role\"\n    },\n    {\n      \"Decoders cover a significant portion of overall computation.\": \"significant portion\"\n    },\n    {\n      \"Task-independent encoders require decoders to learn semantic features.\": \"semantic features\"\n    },\n    {\n      \"Cascaded skip connections effectively handle high gradient flow.\": \"high gradient\"\n    },\n    {\n      \"The non-bottleneck layer addresses class imbalance issues.\": \"class imbalance\"\n    },\n    {\n      \"The approach supports multi-task learning systems.\": \"multi-task learning\"\n    },\n    {\n      \"Efficient decoder design complements efficient encoder research.\": \"efficient encoders\"\n    },\n    {\n      \"The method is suitable for embedded platforms.\": \"embedded platform\"\n    },\n    {\n      \"The study demonstrates the need for further decoder research.\": \"further research\"\n    },\n    {\n      \"Meta-learning could be used to learn optimal configurations.\": \"meta-learning\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The dataset is proprietary and not publicly available.\": \"owned by our\"\n    },\n    {\n      \"The study focuses on only four classes.\": \"4 critical classes\"\n    },\n    {\n      \"No data augmentation was used during training.\": \"data augmentation\"\n    },\n    {\n      \"The encoder is much wider than the decoder.\": \"wider than the\"\n    },\n    {\n      \"The encoder consumes most of the run time.\": \"most of the\"\n    },\n    {\n      \"Dilated convolution is computationally expensive.\": \"computationally expensive\"\n    },\n    {\n      \"The dilation rate was kept constant at 1.\": \"dilation rate\"\n    },\n    {\n      \"Residual learning is not efficient for lesser depth networks.\": \"lesser depth\"\n    },\n    {\n      \"Aggregated residual transformation showed adverse effects.\": \"adverse effect\"\n    },\n    {\n      \"The study does not report random seeds or specific train/test splits beyond counts.\": \"\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.\",\n      \"supporting_evidence\": [\n        {\n          \"The optimal configuration achieved a 10% improvement in mean IoU.\": \"10% improvement\"\n        },\n        {\n          \"The runtime increase was less than 2ms.\": \"2ms increase\"\n        },\n        {\n          \"The method handles high gradient flow effectively.\": \"high gradient\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\"\n        },\n        {\n          \"The encoder consumes most of the run time.\": \"most of the\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Efficient decoder design is crucial for embedded systems.\": \"critical role\"\n        },\n        {\n          \"The approach supports multi-task learning.\": \"multi-task learning\"\n        }\n      ]\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study experimented with multiple decoder variants D1 through D8.\": \"D1\"\n    },\n    {\n      \"Decoder D1 uses the non-bottleneck layer without 1X1 convolution.\": \"without 1X1\"\n    },\n    {\n      \"Decoder D2 does not use the second skip connection.\": \"second skip\"\n    },\n    {\n      \"Decoder D3 uses a batch size of 8.\": \"batch size\"\n    },\n    {\n      \"Decoder D4 does not use 1X1 convolution before 3X3 and 5X5.\": \"1X1 convolution\"\n    },\n    {\n      \"Decoder D5 uses 3X1 and 1X3 convolutions.\": \"3X1, 1X3\"\n    },\n    {\n      \"Decoder D6 uses a batch size of 4.\": \"batch size\"\n    },\n    {\n      \"Decoder D7 uses different kernel sizes in deconvolution layers.\": \"kernel size\"\n    },\n    {\n      \"Decoder D8 uses the same non-bottleneck as D7 without 3X3 and 5X5.\": \"without 3X3\"\n    },\n    {\n      \"The optimal configuration was obtained after several optimization efforts.\": \"optimization efforts\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9326,
+        "total_tokens": 11963,
+        "completion_tokens": 2637,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9326,
+      "elapsed_seconds": 259.1681053750217,
+      "max_tokens": 4096,
+      "seed": 1486169673,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "02f09db926c60bbf4c044370ca65ead97db12463b9378e069b5bc5d30e5ed867",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_context",
+        "methodological_details",
+        "procedures_and_architectures",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Titan X",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: critical role",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[9]",
+        "claims": "evidence quote is not present in fulltext: critical role"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses a proprietary dataset owned by the organization.\": \"owned by our\"\n    },\n    {\n      \"Each image in the dataset has dimensions of 1280X384.\": \"1280X384\"\n    },\n    {\n      \"The dataset consists mostly of urban scenes.\": \"urban scenes\"\n    },\n    {\n      \"The dataset includes diverse lighting conditions and dense shadows.\": \"dense shadow\"\n    },\n    {\n      \"Semantic segmentation was performed on four critical classes.\": \"4 critical classes\"\n    },\n    {\n      \"The classes are lanes, curb, road, and void.\": \"lanes, curb\"\n    },\n    {\n      \"The dataset is divided into training, validation, and test sets.\": \"Training, Validation\"\n    },\n    {\n      \"The training set contains 3016 images.\": \"3016\"\n    },\n    {\n      \"The validation set contains 981 images.\": \"981\"\n    },\n    {\n      \"The test set contains 1002 images.\": \"1002\"\n    },\n    {\n      \"Single-channel annotations were developed for each sample image.\": \"single channel\"\n    },\n    {\n      \"The encoder is a VGG-style classifier with 10 layers.\": \"10 layers\"\n    },\n    {\n      \"The encoder was pre-trained on ImageNet.\": \"ImageNet\"\n    },\n    {\n      \"Weights were transferred to the semantic segmentation task.\": \"transfer the weights\"\n    },\n    {\n      \"The implementation was executed using the Keras framework.\": \"Keras\"\n    },\n    {\n      \"The Adam optimizer was used for training.\": \"Adam\"\n    },\n    {\n      \"Weight decay was set to 0.9.\": \"0.9\"\n    },\n    {\n      \"The batch size was set to 4.\": \"batch size\"\n    },\n    {\n      \"The initial learning rate was 0.0005.\": \"0.0005\"\n    },\n    {\n      \"A standard polynomial decay strategy was used.\": \"polynomial decay\"\n    },\n    {\n      \"Training lasted for 350K iterations.\": \"350K\"\n    },\n    {\n      \"Dropout was not used in the model.\": \"Dropout\"\n    },\n    {\n      \"Experiments were run on an NVIDIA Titan X 12G GPU.\": \"NVIDIA Titan X\"\n    },\n    {\n      \"The GPU had 24 GB of RAM.\": \"24 GB RAM\"\n    },\n    {\n      \"No data augmentation technique was performed.\": \"data augmentation\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The design of efficient decoders is critical for segmentation tasks.\": \"critical role\"\n    },\n    {\n      \"Decoders cover a significant portion of overall computation.\": \"significant portion\"\n    },\n    {\n      \"Task-independent encoders require decoders to learn semantic features.\": \"semantic features\"\n    },\n    {\n      \"Cascaded skip connections effectively handle high gradient flow.\": \"high gradient\"\n    },\n    {\n      \"The non-bottleneck layer addresses class imbalance issues.\": \"class imbalance\"\n    },\n    {\n      \"The approach supports multi-task learning systems.\": \"multi-task learning\"\n    },\n    {\n      \"Efficient decoder design complements efficient encoder research.\": \"efficient encoders\"\n    },\n    {\n      \"The method is suitable for embedded platforms.\": \"embedded platform\"\n    },\n    {\n      \"The study demonstrates the need for further decoder research.\": \"further research\"\n    },\n    {\n      \"Meta-learning could be used to learn optimal configurations.\": \"meta-learning\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The dataset is proprietary and not publicly available.\": \"owned by our\"\n    },\n    {\n      \"The study focuses on only four classes.\": \"4 critical classes\"\n    },\n    {\n      \"No data augmentation was used during training.\": \"data augmentation\"\n    },\n    {\n      \"The encoder is much wider than the decoder.\": \"wider than the\"\n    },\n    {\n      \"The encoder consumes most of the run time.\": \"most of the\"\n    },\n    {\n      \"Dilated convolution is computationally expensive.\": \"computationally expensive\"\n    },\n    {\n      \"The dilation rate was kept constant at 1.\": \"dilation rate\"\n    },\n    {\n      \"Residual learning is not efficient for lesser depth networks.\": \"lesser depth\"\n    },\n    {\n      \"Aggregated residual transformation showed adverse effects.\": \"adverse effect\"\n    },\n    \"\"\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.\",\n      \"supporting_evidence\": [\n        {\n          \"The optimal configuration achieved a 10% improvement in mean IoU.\": \"10% improvement\"\n        },\n        {\n          \"The runtime increase was less than 2ms.\": \"2ms increase\"\n        },\n        {\n          \"The method handles high gradient flow effectively.\": \"high gradient\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\"\n        },\n        {\n          \"The encoder consumes most of the run time.\": \"most of the\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Efficient decoder design is crucial for embedded systems.\": \"critical role\"\n        },\n        {\n          \"The approach supports multi-task learning.\": \"multi-task learning\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8301,
+        "total_tokens": 9705,
+        "completion_tokens": 1404,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8301,
+      "elapsed_seconds": 132.42665850371122,
+      "max_tokens": 4096,
+      "seed": 1486169674,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "2cc095141def70ea479a2dfa58542a2da55a16fdde270f2f8c16f7151254a44d",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: NVIDIA Titan X",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: critical role",
+        "contradictions_and_limitations": "Grounded entry must have one narrative key: contradictions_and_limitations",
+        "claims": "evidence quote is not present in fulltext: critical role"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses a proprietary dataset owned by the organization.\": \"owned by our\"\n    },\n    {\n      \"Each image in the dataset has dimensions of 1280X384.\": \"1280X384\"\n    },\n    {\n      \"The dataset consists mostly of urban scenes.\": \"urban scenes\"\n    },\n    {\n      \"The dataset includes diverse lighting conditions and dense shadows.\": \"dense shadow\"\n    },\n    {\n      \"Semantic segmentation was performed on four critical classes.\": \"4 critical classes\"\n    },\n    {\n      \"The classes are lanes, curb, road, and void.\": \"lanes, curb\"\n    },\n    {\n      \"The dataset is divided into training, validation, and test sets.\": \"Training, Validation\"\n    },\n    {\n      \"The training set contains 3016 images.\": \"3016\"\n    },\n    {\n      \"The validation set contains 981 images.\": \"981\"\n    },\n    {\n      \"The test set contains 1002 images.\": \"1002\"\n    },\n    {\n      \"Single-channel annotations were developed for each sample image.\": \"single channel\"\n    },\n    {\n      \"The encoder is a VGG-style classifier with 10 layers.\": \"10 layers\"\n    },\n    {\n      \"The encoder was pre-trained on ImageNet.\": \"ImageNet\"\n    },\n    {\n      \"Weights were transferred to the semantic segmentation task.\": \"transfer the weights\"\n    },\n    {\n      \"The implementation was executed using the Keras framework.\": \"Keras\"\n    },\n    {\n      \"The Adam optimizer was used for training.\": \"Adam\"\n    },\n    {\n      \"Weight decay was set to 0.9.\": \"0.9\"\n    },\n    {\n      \"The batch size was set to 4.\": \"batch size\"\n    },\n    {\n      \"The initial learning rate was 0.0005.\": \"0.0005\"\n    },\n    {\n      \"A standard polynomial decay strategy was used.\": \"polynomial decay\"\n    },\n    {\n      \"Training lasted for 350K iterations.\": \"350K\"\n    },\n    {\n      \"Dropout was not used in the model.\": \"Dropout\"\n    },\n    {\n      \"Experiments were run on an NVIDIA Titan X 12G GPU.\": \"Titan X\"\n    },\n    {\n      \"The GPU had 24 GB of RAM.\": \"24 GB RAM\"\n    },\n    {\n      \"No data augmentation technique was performed.\": \"data augmentation\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The design of efficient decoders is critical for segmentation tasks.\": \"critical role\"\n    },\n    {\n      \"Decoders cover a significant portion of overall computation.\": \"significant portion\"\n    },\n    {\n      \"Task-independent encoders require decoders to learn semantic features.\": \"semantic features\"\n    },\n    {\n      \"Cascaded skip connections effectively handle high gradient flow.\": \"high gradient\"\n    },\n    {\n      \"The non-bottleneck layer addresses class imbalance issues.\": \"class imbalance\"\n    },\n    {\n      \"The approach supports multi-task learning systems.\": \"multi-task learning\"\n    },\n    {\n      \"Efficient decoder design complements efficient encoder research.\": \"efficient encoders\"\n    },\n    {\n      \"The method is suitable for embedded platforms.\": \"embedded platform\"\n    },\n    {\n      \"The study demonstrates the need for further decoder research.\": \"further research\"\n    },\n    {\n      \"Meta-learning could be used to learn optimal configurations.\": \"meta-learning\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The dataset is proprietary and not publicly available.\": \"owned by our\"\n    },\n    {\n      \"The study focuses on only four classes.\": \"4 critical classes\"\n    },\n    {\n      \"No data augmentation was used during training.\": \"data augmentation\"\n    },\n    {\n      \"The encoder is much wider than the decoder.\": \"wider than the\"\n    },\n    {\n      \"The encoder consumes most of the run time.\": \"most of the\"\n    },\n    {\n      \"Dilated convolution is computationally expensive.\": \"computationally expensive\"\n    },\n    {\n      \"The dilation rate was kept constant at 1.\": \"dilation rate\"\n    },\n    {\n      \"Residual learning is not efficient for lesser depth networks.\": \"lesser depth\"\n    },\n    {\n      \"Aggregated residual transformation showed adverse effects.\": \"adverse effect\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.\",\n      \"supporting_evidence\": [\n        {\n          \"The optimal configuration achieved a 10% improvement in mean IoU.\": \"10% improvement\"\n        },\n        {\n          \"The runtime increase was less than 2ms.\": \"2ms increase\"\n        },\n        {\n          \"The method handles high gradient flow effectively.\": \"high gradient\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\"\n        },\n        {\n          \"The encoder consumes most of the run time.\": \"most of the\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Efficient decoder design is crucial for embedded systems.\": \"critical role\"\n        },\n        {\n          \"The approach supports multi-task learning.\": \"multi-task learning\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8269,
+        "total_tokens": 9668,
+        "completion_tokens": 1399,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8269,
+      "elapsed_seconds": 114.58165254816413,
+      "max_tokens": 4096,
+      "seed": 1486169675,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "b104d917f1fa312830b2a6d00df54ebbce754f9ab9fdb13f03d1010635a0e413",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Titan X",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: critical role",
+        "claims": "evidence quote is not present in fulltext: critical role"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses a proprietary dataset owned by the organization.\": \"owned by our\"\n    },\n    {\n      \"Each image in the dataset has dimensions of 1280X384.\": \"1280X384\"\n    },\n    {\n      \"The dataset consists mostly of urban scenes.\": \"urban scenes\"\n    },\n    {\n      \"The dataset includes diverse lighting conditions and dense shadows.\": \"dense shadow\"\n    },\n    {\n      \"Semantic segmentation was performed on four critical classes.\": \"4 critical classes\"\n    },\n    {\n      \"The classes are lanes, curb, road, and void.\": \"lanes, curb\"\n    },\n    {\n      \"The dataset is divided into training, validation, and test sets.\": \"Training, Validation\"\n    },\n    {\n      \"The training set contains 3016 images.\": \"3016\"\n    },\n    {\n      \"The validation set contains 981 images.\": \"981\"\n    },\n    {\n      \"The test set contains 1002 images.\": \"1002\"\n    },\n    {\n      \"Single-channel annotations were developed for each sample image.\": \"single channel\"\n    },\n    {\n      \"The encoder is a VGG-style classifier with 10 layers.\": \"10 layers\"\n    },\n    {\n      \"The encoder was pre-trained on ImageNet.\": \"ImageNet\"\n    },\n    {\n      \"Weights were transferred to the semantic segmentation task.\": \"transfer the weights\"\n    },\n    {\n      \"The implementation was executed using the Keras framework.\": \"Keras\"\n    },\n    {\n      \"The Adam optimizer was used for training.\": \"Adam\"\n    },\n    {\n      \"Weight decay was set to 0.9.\": \"0.9\"\n    },\n    {\n      \"The batch size was set to 4.\": \"batch size\"\n    },\n    {\n      \"The initial learning rate was 0.0005.\": \"0.0005\"\n    },\n    {\n      \"A standard polynomial decay strategy was used.\": \"polynomial decay\"\n    },\n    {\n      \"Training lasted for 350K iterations.\": \"350K\"\n    },\n    {\n      \"Dropout was not used in the model.\": \"Dropout\"\n    },\n    {\n      \"Experiments were run on an NVIDIA Titan X 12G GPU.\": \"NVIDIA Titan\"\n    },\n    {\n      \"The GPU had 24 GB of RAM.\": \"24 GB RAM\"\n    },\n    {\n      \"No data augmentation technique was performed.\": \"data augmentation\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The design of efficient decoders is critical for segmentation tasks.\": \"critical role\"\n    },\n    {\n      \"Decoders cover a significant portion of overall computation.\": \"significant portion\"\n    },\n    {\n      \"Task-independent encoders require decoders to learn semantic features.\": \"semantic features\"\n    },\n    {\n      \"Cascaded skip connections effectively handle high gradient flow.\": \"high gradient\"\n    },\n    {\n      \"The non-bottleneck layer addresses class imbalance issues.\": \"class imbalance\"\n    },\n    {\n      \"The approach supports multi-task learning systems.\": \"multi-task learning\"\n    },\n    {\n      \"Efficient decoder design complements efficient encoder research.\": \"efficient encoders\"\n    },\n    {\n      \"The method is suitable for embedded platforms.\": \"embedded platform\"\n    },\n    {\n      \"The study demonstrates the need for further decoder research.\": \"further research\"\n    },\n    {\n      \"Meta-learning could be used to learn optimal configurations.\": \"meta-learning\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.\",\n      \"supporting_evidence\": [\n        {\n          \"The optimal configuration achieved a 10% improvement in mean IoU.\": \"10% improvement\"\n        },\n        {\n          \"The runtime increase was less than 2ms.\": \"2ms increase\"\n        },\n        {\n          \"The method handles high gradient flow effectively.\": \"high gradient\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\"\n        },\n        {\n          \"The encoder consumes most of the run time.\": \"most of the\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Efficient decoder design is crucial for embedded systems.\": \"critical role\"\n        },\n        {\n          \"The approach supports multi-task learning.\": \"multi-task learning\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8088,
+        "total_tokens": 9258,
+        "completion_tokens": 1170,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8088,
+      "elapsed_seconds": 109.37973600998521,
+      "max_tokens": 4096,
+      "seed": 1486169676,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "14ab046a42eaf59d5828e26e057c2dbabb619767f7f2df83812624334d80ad97",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: NVIDIA Titan",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: critical role",
+        "claims": "evidence quote is not present in fulltext: critical role"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses a proprietary dataset owned by the organization.\": \"owned by our\"\n    },\n    {\n      \"Each image in the dataset has dimensions of 1280X384.\": \"1280X384\"\n    },\n    {\n      \"The dataset consists mostly of urban scenes.\": \"urban scenes\"\n    },\n    {\n      \"The dataset includes diverse lighting conditions and dense shadows.\": \"dense shadow\"\n    },\n    {\n      \"Semantic segmentation was performed on four critical classes.\": \"4 critical classes\"\n    },\n    {\n      \"The classes are lanes, curb, road, and void.\": \"lanes, curb\"\n    },\n    {\n      \"The dataset is divided into training, validation, and test sets.\": \"Training, Validation\"\n    },\n    {\n      \"The training set contains 3016 images.\": \"3016\"\n    },\n    {\n      \"The validation set contains 981 images.\": \"981\"\n    },\n    {\n      \"The test set contains 1002 images.\": \"1002\"\n    },\n    {\n      \"Single-channel annotations were developed for each sample image.\": \"single channel\"\n    },\n    {\n      \"The encoder is a VGG-style classifier with 10 layers.\": \"10 layers\"\n    },\n    {\n      \"The encoder was pre-trained on ImageNet.\": \"ImageNet\"\n    },\n    {\n      \"Weights were transferred to the semantic segmentation task.\": \"transfer the weights\"\n    },\n    {\n      \"The implementation was executed using the Keras framework.\": \"Keras\"\n    },\n    {\n      \"The Adam optimizer was used for training.\": \"Adam\"\n    },\n    {\n      \"Weight decay was set to 0.9.\": \"0.9\"\n    },\n    {\n      \"The batch size was set to 4.\": \"batch size\"\n    },\n    {\n      \"The initial learning rate was 0.0005.\": \"0.0005\"\n    },\n    {\n      \"A standard polynomial decay strategy was used.\": \"polynomial decay\"\n    },\n    {\n      \"Training lasted for 350K iterations.\": \"350K\"\n    },\n    {\n      \"Dropout was not used in the model.\": \"Dropout\"\n    },\n    {\n      \"Experiments were run on an NVIDIA Titan X 12G GPU.\": \"Titan X\"\n    },\n    {\n      \"The GPU had 24 GB of RAM.\": \"24 GB RAM\"\n    },\n    {\n      \"No data augmentation technique was performed.\": \"data augmentation\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The design of efficient decoders is critical for segmentation tasks.\": \"critical role\"\n    },\n    {\n      \"Decoders cover a significant portion of overall computation.\": \"significant portion\"\n    },\n    {\n      \"Task-independent encoders require decoders to learn semantic features.\": \"semantic features\"\n    },\n    {\n      \"Cascaded skip connections effectively handle high gradient flow.\": \"high gradient\"\n    },\n    {\n      \"The non-bottleneck layer addresses class imbalance issues.\": \"class imbalance\"\n    },\n    {\n      \"The approach supports multi-task learning systems.\": \"multi-task learning\"\n    },\n    {\n      \"Efficient decoder design complements efficient encoder research.\": \"efficient encoders\"\n    },\n    {\n      \"The method is suitable for embedded platforms.\": \"embedded platform\"\n    },\n    {\n      \"The study demonstrates the need for further decoder research.\": \"further research\"\n    },\n    {\n      \"Meta-learning could be used to learn optimal configurations.\": \"meta-learning\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed non-bottleneck layer and decoder family improve segmentation accuracy while maintaining real-time performance.\",\n      \"supporting_evidence\": [\n        {\n          \"The optimal configuration achieved a 10% improvement in mean IoU.\": \"10% improvement\"\n        },\n        {\n          \"The runtime increase was less than 2ms.\": \"2ms increase\"\n        },\n        {\n          \"The method handles high gradient flow effectively.\": \"high gradient\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"There was a slight deterioration for lanes in some variants.\": \"deterioration for lanes\"\n        },\n        {\n          \"The encoder consumes most of the run time.\": \"most of the\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Efficient decoder design is crucial for embedded systems.\": \"critical role\"\n        },\n        {\n          \"The approach supports multi-task learning.\": \"multi-task learning\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8089,
+        "total_tokens": 9258,
+        "completion_tokens": 1169,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8089,
+      "elapsed_seconds": 96.91496996581554,
+      "max_tokens": 4096,
+      "seed": 1486169677,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "c8ac03b3d73e9f13330d009dde6375627b210a1021f741c773643940828d0531",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Titan X",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: critical role",
+        "claims": "evidence quote is not present in fulltext: critical role"
+      }
+    },
+    {
+      "response": "{\n  \"q0\": 14,\n  \"q1\": 6,\n  \"q2\": 14,\n  \"q3\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9084,
+        "total_tokens": 9126,
+        "completion_tokens": 42,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9084,
+      "elapsed_seconds": 8.990309718996286,
+      "max_tokens": 2048,
+      "seed": 1486169772,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "6f27882cec23f262078d617f78d74781bfddbf8a9b1c2704702d8a1c368f192d",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "methodological_details",
+            22
+          ],
+          "narrative": "Experiments were run on an NVIDIA Titan X 12G GPU.",
+          "invalid_quote": "Titan X",
+          "candidates": [
+            {
+              "quote": "X 12G GPU",
+              "start": 18519,
+              "end": 18528
+            },
+            {
+              "quote": "X 12G GPU with",
+              "start": 18519,
+              "end": 18533
+            },
+            {
+              "quote": "tan X 12G GPU",
+              "start": 18515,
+              "end": 18528
+            },
+            {
+              "quote": "X 12G GPU with 24",
+              "start": 18519,
+              "end": 18536
+            },
+            {
+              "quote": "tan X 12G GPU with",
+              "start": 18515,
+              "end": 18533
+            },
+            {
+              "quote": "Ti-\ntan X 12G GPU",
+              "start": 18511,
+              "end": 18528
+            },
+            {
+              "quote": "NVIDIA Ti-\ntan X 12G",
+              "start": 18504,
+              "end": 18524
+            },
+            {
+              "quote": "12G GPU with",
+              "start": 18521,
+              "end": 18533
+            },
+            {
+              "quote": "tan X 12G",
+              "start": 18515,
+              "end": 18524
+            },
+            {
+              "quote": "12G GPU with 24",
+              "start": 18521,
+              "end": 18536
+            },
+            {
+              "quote": "Ti-\ntan X 12G",
+              "start": 18511,
+              "end": 18524
+            },
+            {
+              "quote": "NVIDIA Ti-\ntan X",
+              "start": 18504,
+              "end": 18520
+            },
+            {
+              "quote": "12G GPU with 24 GB",
+              "start": 18521,
+              "end": 18539
+            },
+            {
+              "quote": "used NVIDIA Ti-\ntan X",
+              "start": 18499,
+              "end": 18520
+            },
+            {
+              "quote": "experiments, we used NVIDIA",
+              "start": 18483,
+              "end": 18510
+            },
+            {
+              "quote": "experiments, we used NVIDIA Ti-",
+              "start": 18483,
+              "end": 18514
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "interpretation_and_theoretical_implications",
+            0
+          ],
+          "narrative": "The design of efficient decoders is critical for segmentation tasks.",
+          "invalid_quote": "critical role",
+          "candidates": [
+            {
+              "quote": "role for segmentation tasks",
+              "start": 24486,
+              "end": 24513
+            },
+            {
+              "quote": "role for segmentation tasks as",
+              "start": 24486,
+              "end": 24516
+            },
+            {
+              "quote": "ical role for segmentation tasks",
+              "start": 24481,
+              "end": 24513
+            },
+            {
+              "quote": "efﬁcient design of the segmentation",
+              "start": 988,
+              "end": 1023
+            },
+            {
+              "quote": "role for segmentation",
+              "start": 24486,
+              "end": 24507
+            },
+            {
+              "quote": "ical role for segmentation",
+              "start": 24481,
+              "end": 24507
+            },
+            {
+              "quote": "crit-\nical role for segmentation",
+              "start": 24475,
+              "end": 24507
+            },
+            {
+              "quote": "design is a critical",
+              "start": 589,
+              "end": 609
+            },
+            {
+              "quote": "design is a critical aspect",
+              "start": 589,
+              "end": 616
+            },
+            {
+              "quote": "network design is a critical",
+              "start": 581,
+              "end": 609
+            },
+            {
+              "quote": "tasks, decoders are",
+              "start": 876,
+              "end": 895
+            },
+            {
+              "quote": "detection tasks, decoders",
+              "start": 866,
+              "end": 891
+            },
+            {
+              "quote": "tasks, decoders are computationally",
+              "start": 876,
+              "end": 911
+            },
+            {
+              "quote": "detection tasks, decoders are",
+              "start": 866,
+              "end": 895
+            },
+            {
+              "quote": "object detection tasks, decoders",
+              "start": 859,
+              "end": 891
+            },
+            {
+              "quote": "decoders to accomplish separate\ntasks",
+              "start": 8033,
+              "end": 8070
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "path": [
+            "interpretation_and_theoretical_implications",
+            1
+          ],
+          "narrative": "Decoders cover a significant portion of overall computation.",
+          "invalid_quote": "significant portion",
+          "candidates": [
+            {
+              "quote": "portion of the overall computation",
+              "start": 24543,
+              "end": 24577
+            },
+            {
+              "quote": "portion of the overall",
+              "start": 24543,
+              "end": 24565
+            },
+            {
+              "quote": "icant portion of the overall",
+              "start": 24537,
+              "end": 24565
+            },
+            {
+              "quote": "overall computation of",
+              "start": 24558,
+              "end": 24580
+            },
+            {
+              "quote": "the overall computation",
+              "start": 24554,
+              "end": 24577
+            },
+            {
+              "quote": "overall computation of the",
+              "start": 24558,
+              "end": 24584
+            },
+            {
+              "quote": "the overall computation of",
+              "start": 24554,
+              "end": 24580
+            },
+            {
+              "quote": "of the overall computation",
+              "start": 24551,
+              "end": 24577
+            },
+            {
+              "quote": "overall computation of the net-",
+              "start": 24558,
+              "end": 24589
+            },
+            {
+              "quote": "the overall computation of the",
+              "start": 24554,
+              "end": 24584
+            },
+            {
+              "quote": "of the overall computation of",
+              "start": 24551,
+              "end": 24580
+            },
+            {
+              "quote": "of the overall",
+              "start": 24551,
+              "end": 24565
+            },
+            {
+              "quote": "portion of the",
+              "start": 24543,
+              "end": 24557
+            },
+            {
+              "quote": "icant portion of",
+              "start": 24537,
+              "end": 24553
+            },
+            {
+              "quote": "signif-\nicant portion",
+              "start": 24529,
+              "end": 24550
+            },
+            {
+              "quote": "icant portion of the",
+              "start": 24537,
+              "end": 24557
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "path": [
+            "claims",
+            0,
+            "implications",
+            0
+          ],
+          "narrative": "Efficient decoder design is crucial for embedded systems.",
+          "invalid_quote": "critical role",
+          "candidates": [
+            {
+              "quote": "design an efﬁcient decoder",
+              "start": 18944,
+              "end": 18970
+            },
+            {
+              "quote": "design of an efﬁcient decoder",
+              "start": 24434,
+              "end": 24463
+            },
+            {
+              "quote": "design of an efﬁcient decoder,",
+              "start": 19026,
+              "end": 19056
+            },
+            {
+              "quote": "design an efﬁcient decoder\nthat",
+              "start": 18944,
+              "end": 18975
+            },
+            {
+              "quote": "to design an efﬁcient decoder",
+              "start": 18941,
+              "end": 18970
+            },
+            {
+              "quote": "design is a critical",
+              "start": 589,
+              "end": 609
+            },
+            {
+              "quote": "design is a critical aspect",
+              "start": 589,
+              "end": 616
+            },
+            {
+              "quote": "network design is a critical",
+              "start": 581,
+              "end": 609
+            },
+            {
+              "quote": "Design of efﬁcient",
+              "start": 23859,
+              "end": 23877
+            },
+            {
+              "quote": "design an efﬁcient",
+              "start": 18944,
+              "end": 18962
+            },
+            {
+              "quote": "design efﬁcient models",
+              "start": 1935,
+              "end": 1957
+            },
+            {
+              "quote": "to design efﬁcient",
+              "start": 1932,
+              "end": 1950
+            },
+            {
+              "quote": "efﬁcient design of",
+              "start": 988,
+              "end": 1006
+            },
+            {
+              "quote": "on efﬁcient design",
+              "start": 985,
+              "end": 1003
+            },
+            {
+              "quote": "efﬁcient network design",
+              "start": 572,
+              "end": 595
+            },
+            {
+              "quote": "design of an efﬁcient",
+              "start": 24434,
+              "end": 24455
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 8970,
+  "elapsed_seconds": 1047.8213627152145,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "claims",
+        0,
+        "implications",
+        0
+      ],
+      "entry": {
+        "Efficient decoder design is crucial for embedded systems.": "critical role"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "interpretation_and_theoretical_implications",
+        1
+      ],
+      "quote": "signif-\nicant portion",
+      "start": 24529,
+      "end": 24550
+    },
+    {
+      "path": [
+        "interpretation_and_theoretical_implications",
+        0
+      ],
+      "quote": "crit-\nical role for segmentation",
+      "start": 24475,
+      "end": 24507
+    },
+    {
+      "path": [
+        "methodological_details",
+        22
+      ],
+      "quote": "experiments, we used NVIDIA",
+      "start": 18483,
+      "end": 18510
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

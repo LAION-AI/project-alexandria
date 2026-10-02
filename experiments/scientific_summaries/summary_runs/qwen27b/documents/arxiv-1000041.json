@@ -1,0 +1,2756 @@
+{
+  "document_id": "arxiv-1000041",
+  "fulltext_sha256": "83257df2ae2813b5e8b11ee8aafef662ef858be938ea333bae7f7e44fcd56b78",
+  "summary": {
+    "title": "Enabling Real-Time Conversations with Minimal Training Costs",
+    "authors": "Wang Xu, Shuo Wang, Weilin Zhao, Xu Han, Yukun Yan, Yudi Zhang, Zhe Tao, Zhiyuan Liu, Wanxiang Che",
+    "field_subfield": "Natural Language Processing / Dialogue Systems",
+    "type_of_paper": "Research Article",
+    "executive_summary": "Large language models (LLMs) typically operate on a turn-based paradigm, which precludes real-time interaction during response generation. To address this, duplex models have been proposed to facilitate real-time interactive feedback, but they often require substantial computational resources for retraining. This paper presents DUO (DUplex decOding), a novel channel-based parallel decoding mechanism that equips LLMs with duplex capabilities using minimal additional training. DUO employs a channel-division-multiplexing strategy, allowing the model to generate output autoregressively while simultaneously processing input tokens. Two state tokens are introduced to signal whether a query should be addressed or ignored, enabling the model to handle interruptions and non-awakening interactions effectively. The method is implemented using FlexAttention to manage non-standard attention mechanisms without increasing the number of forward passes compared to standard decoding. Experiments were conducted using MiniCPM-2.4B as the foundation model, trained on only 10K samples, compared to MiniCPM-Duplex which required approximately 5,000K samples. Human evaluation results indicate that DUO significantly enhances the naturalness and human-likeness of user-AI interactions while maintaining comparable levels of factuality and faithfulness. Standard benchmark evaluations show that DUO preserves the original capabilities of the base model to a greater extent than MiniCPM-Duplex, which suffers performance drops when trained on smaller datasets. The study demonstrates that DUO achieves real-time interactive feedback, including handling interruptions and filtering background dialogues, with significantly lower training costs (25 minutes on 8 GPUs vs. 36 hours on 40 GPUs). Future work aims to extend DUO to multimodal settings, where input tokens could be features extracted from various modalities.",
+    "research_context": [
+      {
+        "Conventional LLM-powered dialogue systems operate on a turn-based paradigm.": "turn-based paradigm"
+      },
+      {
+        "This paradigm precludes real-time interaction during response generation.": "preclude real-\ntime interaction"
+      },
+      {
+        "Researchers have proposed duplex models to address this limitation.": "proposed duplex models"
+      },
+      {
+        "These models can dynamically adapt to user input.": "dynamically adapt"
+      },
+      {
+        "However, these methods typically require substantial computational resources.": "substantial\ncomputational resources"
+      },
+      {
+        "Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.": "time-division-multiplexing"
+      },
+      {
+        "This approach requires significant resources due to divergent training procedures.": "diverges substantially"
+      },
+      {
+        "The gap is the high overhead of acquiring duplex ability.": "re-\nduce overhead,"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.": "channel-\ndivision-multiplexing"
+      },
+      {
+        "The method predicts that parallel decoding of queries and responses will work.": "parallel decoding"
+      },
+      {
+        "It is hypothesized that minimal additional training is sufficient for this capability.": "minimal additional\ntraining"
+      },
+      {
+        "The study aims to enhance the naturalness and human-likeness of interactions.": "naturalness\nand human-likeness"
+      },
+      {
+        "The predicted outcome is that the model can handle interruptions effectively.": "interruption interaction"
+      },
+      {
+        "The approach is expected to preserve the original model's capabilities.": "preserves the model’s original capabilities"
+      },
+      {
+        "The hypothesis includes the ability to filter non-query inputs.": "filter out"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study uses MiniCPM-2.4B as the foundation model.": "MiniCPM-2.4B"
+      },
+      {
+        "A dataset of 10K samples was constructed for training.": "10K samples"
+      },
+      {
+        "The dataset was adapted from Duplex-UltraChat.": "Duplex-UltraChat"
+      },
+      {
+        "Two state tokens were introduced to indicate query status.": "two state tokens"
+      },
+      {
+        "State token <1> denotes that the input is a user query.": "State token <1>"
+      },
+      {
+        "State token <2> denotes that the new input is no-query text.": "State\ntoken <2>"
+      },
+      {
+        "Non-query text was generated using ChatGPT.": "ChatGPT"
+      },
+      {
+        "The training used a learning rate of 1e-5.": "1e-5 learning rate"
+      },
+      {
+        "A constant learning rate scheduler was employed.": "constant\nlearning rate"
+      },
+      {
+        "The batch size was set to 112.": "batch size of 112"
+      },
+      {
+        "The maximum sequence length was 4,096.": "maximum length of 4,096"
+      },
+      {
+        "Training was conducted for 400 steps.": "400 steps"
+      },
+      {
+        "The model was trained on 8 NVIDIA A100 GPUs.": "8 NVIDIA A100"
+      },
+      {
+        "The total training time was approximately 25 minutes.": "about 25 minutes"
+      },
+      {
+        "The baseline MiniCPM-Duplex was trained for 10,000 steps.": "10,000 steps"
+      },
+      {
+        "The baseline used 40 NVIDIA A100 GPUs.": "40 NVIDIA A100"
+      },
+      {
+        "The baseline training time was 36 hours.": "36 hours"
+      },
+      {
+        "The input channel predicted tokens alpha were set to 4.": "tokens α are set"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "DUO processes inputs and outputs cyclically.": "cyclically"
+      },
+      {
+        "The output channel generates new tokens autoregressively.": "autoregressively"
+      },
+      {
+        "The input channel pre-fills the key-value cache.": "key-value cache"
+      },
+      {
+        "A channel-aware causal mask is used for attention.": "Channel-\nAware \nCausal \nMask"
+      },
+      {
+        "Tokens from input and output channels do not attend to each other.": "do not attend"
+      },
+      {
+        "This preserves language modeling in each channel.": "language modeling"
+      },
+      {
+        "Channel transition is activated when state tokens are predicted.": "Channel Transition"
+      },
+      {
+        "DUO does not increase the number of forward passes.": "forward passes"
+      },
+      {
+        "The decoding strategy is based on the Ouroboros repository.": "Ouroboros"
+      },
+      {
+        "The model decides whether a query is addressed or ignored.": "addressed or ignored"
+      },
+      {
+        "The input channel predicts the next tokens.": "predicts the next tokens"
+      },
+      {
+        "The output channel persists in generating tokens.": "persists in generating"
+      },
+      {
+        "The key-value cache of predicted tokens is managed.": "management of the"
+      }
+    ],
+    "key_results": [
+      {
+        "MiniCPM-Duo demonstrates superior responsiveness compared to MiniCPM-Duplex.": "superior\nresponsiveness"
+      },
+      {
+        "MiniCPM-Duo shows better human-likeness than the baseline.": "human-likeness"
+      },
+      {
+        "Factuality levels are comparable between the two models.": "comparable\nlevels"
+      },
+      {
+        "Faithfulness is maintained at similar levels.": "faithfulness"
+      },
+      {
+        "MiniCPM-Duo exhibits a substantial advantage in overall performance.": "substantial advantage"
+      },
+      {
+        "On CMMLU, MiniCPM-Duo achieved a score of 50.66.": "50.66"
+      },
+      {
+        "On MMLU, MiniCPM-Duo achieved a score of 53.13.": "53.13"
+      },
+      {
+        "On BBH, MiniCPM-Duo achieved a score of 36.51.": "36.51"
+      },
+      {
+        "On HumanEval, MiniCPM-Duo achieved a score of 51.83.": "51.83"
+      },
+      {
+        "On MBPP, MiniCPM-Duo achieved a score of 38.19.": "38.19"
+      },
+      {
+        "On GSM8K, MiniCPM-Duo achieved a score of 42.15.": "42.15"
+      },
+      {
+        "On ARC-e, MiniCPM-Duo achieved a score of 84.93.": "84.93"
+      },
+      {
+        "On ARC-c, MiniCPM-Duo achieved a score of 70.48.": "70.48"
+      },
+      {
+        "On HellaSwag, MiniCPM-Duo achieved a score of 59.78.": "59.78"
+      },
+      {
+        "MiniCPM-Duplex trained on 10K samples showed performance drops.": "performances drop"
+      },
+      {
+        "The duplex capability of inadequately trained MiniCPM-Duplex was poor.": "relatively poor"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The method effectively implements channel-division-multiplexing decoding.": "channel-\ndivision-multiplexing"
+      },
+      {
+        "This approach preserves the original model's capabilities.": "preserves the model’s original capabilities"
+      },
+      {
+        "The minimal training cost is a significant theoretical advantage.": "minimal training costs"
+      },
+      {
+        "The model can handle non-awakening interactions effectively.": "non-awakening interactions"
+      },
+      {
+        "The state tokens provide a mechanism for query filtering.": "state tokens"
+      },
+      {
+        "The approach is versatile and adaptable to multimodal settings.": "multimodal settings"
+      },
+      {
+        "The method enhances the fluidity of human-AI interaction.": "fluidity"
+      },
+      {
+        "The results support the hypothesis of efficient duplex learning.": "minimal additional\ntraining"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The study has limitations in the scope of multimodal testing.": "multimodal testing"
+      },
+      {
+        "Experiments primarily focused on language models.": "language models"
+      },
+      {
+        "This may limit the generalizability of findings.": "generalizability"
+      },
+      {
+        "The dataset size is significantly smaller than the baseline.": "significantly smaller"
+      },
+      {
+        "The human evaluation involved only three participants.": "three participants"
+      },
+      {
+        "The evaluation was based on 40 dialogue sessions.": "40 multi-turn"
+      }
+    ],
+    "claims": [
+      {
+        "description": "DUO enables real-time conversations with minimal training costs.",
+        "supporting_evidence": [
+          {
+            "The method requires minimal additional training.": "minimal additional\ntraining"
+          },
+          {
+            "Training took only 25 minutes.": "about 25 minutes"
+          },
+          {
+            "Only 10K samples were used.": "10K samples"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The baseline required 36 hours of training.": "36 hours"
+          },
+          {
+            "The baseline used 5,000K samples.": "5,000K samples"
+          }
+        ],
+        "implications": ""
+      },
+      {
+        "description": "DUO enhances the naturalness and human-likeness of interactions.",
+        "supporting_evidence": [
+          {
+            "MiniCPM-Duo shows superior human-likeness.": "demonstrates superior\nresponsiveness and human-likeness"
+          },
+          {
+            "It demonstrates superior responsiveness.": "superior\nresponsiveness"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Factuality and faithfulness are comparable, not superior.": "comparable\nlevels"
+          }
+        ],
+        "implications": [
+          {
+            "It makes interactions more fluid.": "fluidity"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "The decoding strategy is based on the Ouroboros repository.": "Ouroboros"
+      },
+      {
+        "An interactive demo is available for MiniCPM-Duplex.": "interactive demo"
+      },
+      {
+        "The dataset was constructed from Duplex-UltraChat.": "Duplex-UltraChat"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "The study compares DUO with MiniCPM-Duplex trained on the same data scale.": "same scale dataset"
+      },
+      {
+        "MiniCPM-Duplex showed performance drops with smaller data.": "performances drop"
+      },
+      {
+        "DUO preserves original capabilities better.": "original capabilities\nto a greater"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 illustrates the channel-based parallel decoding.": "Channel-based Parallel Decoding"
+      },
+      {
+        "Figure 2 shows the human evaluation comparison.": "comparison result"
+      },
+      {
+        "Figure 3 presents a case study of the model's behavior.": "Case study"
+      },
+      {
+        "Table 1 presents performances on standard benchmarks.": "standard benchmarks"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the DUO decoding method.": "a DUplex decOding (DUO) approach,"
+      },
+      {
+        "2. The strongest evidence is the minimal training cost.": "minimal training costs"
+      },
+      {
+        "3. The future path is extending to multimodal settings.": "multimodal settings"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nLarge language models (LLMs) typically operate on a turn-based paradigm, which precludes real-time interaction during response generation. To address this, duplex models have been proposed to facilitate real-time interactive feedback, but they often require substantial computational resources for retraining. This paper presents DUO (DUplex decOding), a novel channel-based parallel decoding mechanism that equips LLMs with duplex capabilities using minimal additional training. DUO employs a channel-division-multiplexing strategy, allowing the model to generate output autoregressively while simultaneously processing input tokens. Two state tokens are introduced to signal whether a query should be addressed or ignored, enabling the model to handle interruptions and non-awakening interactions effectively. The method is implemented using FlexAttention to manage non-standard attention mechanisms without increasing the number of forward passes compared to standard decoding. Experiments were conducted using MiniCPM-2.4B as the foundation model, trained on only 10K samples, compared to MiniCPM-Duplex which required approximately 5,000K samples. Human evaluation results indicate that DUO significantly enhances the naturalness and human-likeness of user-AI interactions while maintaining comparable levels of factuality and faithfulness. Standard benchmark evaluations show that DUO preserves the original capabilities of the base model to a greater extent than MiniCPM-Duplex, which suffers performance drops when trained on smaller datasets. The study demonstrates that DUO achieves real-time interactive feedback, including handling interruptions and filtering background dialogues, with significantly lower training costs (25 minutes on 8 GPUs vs. 36 hours on 40 GPUs). Future work aims to extend DUO to multimodal settings, where input tokens could be features extracted from various modalities.\n\nResearch Context\nConventional LLM-powered dialogue systems operate on a turn-based paradigm. This paradigm precludes real-time interaction during response generation. Researchers have proposed duplex models to address this limitation. These models can dynamically adapt to user input. However, these methods typically require substantial computational resources. Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies. This approach requires significant resources due to divergent training procedures. The gap is the high overhead of acquiring duplex ability.\n\nResearch Question And Hypothesis\nThe hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability. The method predicts that parallel decoding of queries and responses will work. It is hypothesized that minimal additional training is sufficient for this capability. The study aims to enhance the naturalness and human-likeness of interactions. The predicted outcome is that the model can handle interruptions effectively. The approach is expected to preserve the original model's capabilities. The hypothesis includes the ability to filter non-query inputs.\n\nMethodological Details\nThe study uses MiniCPM-2.4B as the foundation model. A dataset of 10K samples was constructed for training. The dataset was adapted from Duplex-UltraChat. Two state tokens were introduced to indicate query status. State token <1> denotes that the input is a user query. State token <2> denotes that the new input is no-query text. Non-query text was generated using ChatGPT. The training used a learning rate of 1e-5. A constant learning rate scheduler was employed. The batch size was set to 112. The maximum sequence length was 4,096. Training was conducted for 400 steps. The model was trained on 8 NVIDIA A100 GPUs. The total training time was approximately 25 minutes. The baseline MiniCPM-Duplex was trained for 10,000 steps. The baseline used 40 NVIDIA A100 GPUs. The baseline training time was 36 hours. The input channel predicted tokens alpha were set to 4.\n\nProcedures And Architectures\nDUO processes inputs and outputs cyclically. The output channel generates new tokens autoregressively. The input channel pre-fills the key-value cache. A channel-aware causal mask is used for attention. Tokens from input and output channels do not attend to each other. This preserves language modeling in each channel. Channel transition is activated when state tokens are predicted. DUO does not increase the number of forward passes. The decoding strategy is based on the Ouroboros repository. The model decides whether a query is addressed or ignored. The input channel predicts the next tokens. The output channel persists in generating tokens. The key-value cache of predicted tokens is managed.\n\nKey Results\nMiniCPM-Duo demonstrates superior responsiveness compared to MiniCPM-Duplex. MiniCPM-Duo shows better human-likeness than the baseline. Factuality levels are comparable between the two models. Faithfulness is maintained at similar levels. MiniCPM-Duo exhibits a substantial advantage in overall performance. On CMMLU, MiniCPM-Duo achieved a score of 50.66. On MMLU, MiniCPM-Duo achieved a score of 53.13. On BBH, MiniCPM-Duo achieved a score of 36.51. On HumanEval, MiniCPM-Duo achieved a score of 51.83. On MBPP, MiniCPM-Duo achieved a score of 38.19. On GSM8K, MiniCPM-Duo achieved a score of 42.15. On ARC-e, MiniCPM-Duo achieved a score of 84.93. On ARC-c, MiniCPM-Duo achieved a score of 70.48. On HellaSwag, MiniCPM-Duo achieved a score of 59.78. MiniCPM-Duplex trained on 10K samples showed performance drops. The duplex capability of inadequately trained MiniCPM-Duplex was poor.\n\nInterpretation And Theoretical Implications\nThe method effectively implements channel-division-multiplexing decoding. This approach preserves the original model's capabilities. The minimal training cost is a significant theoretical advantage. The model can handle non-awakening interactions effectively. The state tokens provide a mechanism for query filtering. The approach is versatile and adaptable to multimodal settings. The method enhances the fluidity of human-AI interaction. The results support the hypothesis of efficient duplex learning.\n\nContradictions And Limitations\nThe study has limitations in the scope of multimodal testing. Experiments primarily focused on language models. This may limit the generalizability of findings. The dataset size is significantly smaller than the baseline. The human evaluation involved only three participants. The evaluation was based on 40 dialogue sessions.\n\nClaims\nDUO enables real-time conversations with minimal training costs. The method requires minimal additional training. Training took only 25 minutes. Only 10K samples were used. The baseline required 36 hours of training. The baseline used 5,000K samples. \nDUO enhances the naturalness and human-likeness of interactions. MiniCPM-Duo shows superior human-likeness. It demonstrates superior responsiveness. Factuality and faithfulness are comparable, not superior. It makes interactions more fluid.\n\nData And Code Availability\nThe decoding strategy is based on the Ouroboros repository. An interactive demo is available for MiniCPM-Duplex. The dataset was constructed from Duplex-UltraChat.\n\nRobustness And Ablation Notes\nThe study compares DUO with MiniCPM-Duplex trained on the same data scale. MiniCPM-Duplex showed performance drops with smaller data. DUO preserves original capabilities better.\n\nKey Figures Tables\nFigure 1 illustrates the channel-based parallel decoding. Figure 2 shows the human evaluation comparison. Figure 3 presents a case study of the model's behavior. Table 1 presents performances on standard benchmarks.\n\nThree Takeaways\n1. The core contribution is the DUO decoding method. 2. The strongest evidence is the minimal training cost. 3. The future path is extending to multimodal settings.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "turn-based paradigm",
+      "start": 534,
+      "end": 553,
+      "typographic_alignment": false,
+      "original_quote": "turn-based paradigm"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "preclude real-\ntime interaction",
+      "start": 555,
+      "end": 586,
+      "typographic_alignment": true,
+      "original_quote": "preclude real-time interaction"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "proposed duplex models",
+      "start": 660,
+      "end": 682,
+      "typographic_alignment": false,
+      "original_quote": "proposed duplex models"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "dynamically adapt",
+      "start": 701,
+      "end": 718,
+      "typographic_alignment": false,
+      "original_quote": "dynamically adapt"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "substantial\ncomputational resources",
+      "start": 14319,
+      "end": 14354,
+      "typographic_alignment": true,
+      "original_quote": "substantial computational resources"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "time-division-multiplexing",
+      "start": 2518,
+      "end": 2544,
+      "typographic_alignment": false,
+      "original_quote": "time-division-multiplexing"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "diverges substantially",
+      "start": 3050,
+      "end": 3072,
+      "typographic_alignment": false,
+      "original_quote": "diverges substantially"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "re-\nduce overhead,",
+      "start": 885,
+      "end": 903,
+      "typographic_alignment": false,
+      "original_quote": "re-\nduce overhead,"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "channel-\ndivision-multiplexing",
+      "start": 1159,
+      "end": 1189,
+      "typographic_alignment": true,
+      "original_quote": "channel-division-multiplexing"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "parallel decoding",
+      "start": 3188,
+      "end": 3205,
+      "typographic_alignment": false,
+      "original_quote": "parallel decoding"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "minimal additional\ntraining",
+      "start": 1005,
+      "end": 1032,
+      "typographic_alignment": true,
+      "original_quote": "minimal additional training"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "naturalness\nand human-likeness",
+      "start": 1293,
+      "end": 1323,
+      "typographic_alignment": true,
+      "original_quote": "naturalness and human-likeness"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "interruption interaction",
+      "start": 3888,
+      "end": 3912,
+      "typographic_alignment": false,
+      "original_quote": "interruption interaction"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "preserves the model’s original capabilities",
+      "start": 14442,
+      "end": 14485,
+      "typographic_alignment": false,
+      "original_quote": "preserves the model’s original capabilities"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "filter out",
+      "start": 3963,
+      "end": 3973,
+      "typographic_alignment": false,
+      "original_quote": "filter out"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "MiniCPM-2.4B",
+      "start": 9586,
+      "end": 9598,
+      "typographic_alignment": false,
+      "original_quote": "MiniCPM-2.4B"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "10K samples",
+      "start": 9645,
+      "end": 9656,
+      "typographic_alignment": false,
+      "original_quote": "10K samples"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "Duplex-UltraChat",
+      "start": 9056,
+      "end": 9072,
+      "typographic_alignment": false,
+      "original_quote": "Duplex-UltraChat"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "two state tokens",
+      "start": 3366,
+      "end": 3382,
+      "typographic_alignment": false,
+      "original_quote": "two state tokens"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "State token <1>",
+      "start": 6662,
+      "end": 6677,
+      "typographic_alignment": false,
+      "original_quote": "State token <1>"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "State\ntoken <2>",
+      "start": 6841,
+      "end": 6856,
+      "typographic_alignment": true,
+      "original_quote": "State token <2>"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "ChatGPT",
+      "start": 9357,
+      "end": 9364,
+      "typographic_alignment": false,
+      "original_quote": "ChatGPT"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "1e-5 learning rate",
+      "start": 10025,
+      "end": 10043,
+      "typographic_alignment": false,
+      "original_quote": "1e-5 learning rate"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "constant\nlearning rate",
+      "start": 10047,
+      "end": 10069,
+      "typographic_alignment": true,
+      "original_quote": "constant learning rate"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "batch size of 112",
+      "start": 10083,
+      "end": 10100,
+      "typographic_alignment": false,
+      "original_quote": "batch size of 112"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "maximum length of 4,096",
+      "start": 10371,
+      "end": 10394,
+      "typographic_alignment": false,
+      "original_quote": "maximum length of 4,096"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "400 steps",
+      "start": 10478,
+      "end": 10487,
+      "typographic_alignment": false,
+      "original_quote": "400 steps"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "8 NVIDIA A100",
+      "start": 10491,
+      "end": 10504,
+      "typographic_alignment": false,
+      "original_quote": "8 NVIDIA A100"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "about 25 minutes",
+      "start": 10514,
+      "end": 10530,
+      "typographic_alignment": false,
+      "original_quote": "about 25 minutes"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "10,000 steps",
+      "start": 10571,
+      "end": 10583,
+      "typographic_alignment": false,
+      "original_quote": "10,000 steps"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "40 NVIDIA A100",
+      "start": 10587,
+      "end": 10601,
+      "typographic_alignment": false,
+      "original_quote": "40 NVIDIA A100"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "36 hours",
+      "start": 10611,
+      "end": 10619,
+      "typographic_alignment": false,
+      "original_quote": "36 hours"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "tokens α are set",
+      "start": 10712,
+      "end": 10728,
+      "typographic_alignment": false,
+      "original_quote": "tokens α are set"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "cyclically",
+      "start": 5016,
+      "end": 5026,
+      "typographic_alignment": false,
+      "original_quote": "cyclically"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "autoregressively",
+      "start": 5085,
+      "end": 5101,
+      "typographic_alignment": false,
+      "original_quote": "autoregressively"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "key-value cache",
+      "start": 5142,
+      "end": 5157,
+      "typographic_alignment": false,
+      "original_quote": "key-value cache"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "Channel-\nAware \nCausal \nMask",
+      "start": 4128,
+      "end": 4156,
+      "typographic_alignment": true,
+      "original_quote": "Channel-Aware Causal Mask"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "do not attend",
+      "start": 4573,
+      "end": 4586,
+      "typographic_alignment": false,
+      "original_quote": "do not attend"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "language modeling",
+      "start": 5743,
+      "end": 5760,
+      "typographic_alignment": false,
+      "original_quote": "language modeling"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "Channel Transition",
+      "start": 4249,
+      "end": 4267,
+      "typographic_alignment": false,
+      "original_quote": "Channel Transition"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "forward passes",
+      "start": 8344,
+      "end": 8358,
+      "typographic_alignment": false,
+      "original_quote": "forward passes"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "Ouroboros",
+      "start": 12185,
+      "end": 12194,
+      "typographic_alignment": false,
+      "original_quote": "Ouroboros"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "addressed or ignored",
+      "start": 3432,
+      "end": 3452,
+      "typographic_alignment": false,
+      "original_quote": "addressed or ignored"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "predicts the next tokens",
+      "start": 15098,
+      "end": 15122,
+      "typographic_alignment": false,
+      "original_quote": "predicts the next tokens"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "persists in generating",
+      "start": 5936,
+      "end": 5958,
+      "typographic_alignment": false,
+      "original_quote": "persists in generating"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "management of the",
+      "start": 8258,
+      "end": 8275,
+      "typographic_alignment": false,
+      "original_quote": "management of the"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "superior\nresponsiveness",
+      "start": 13347,
+      "end": 13370,
+      "typographic_alignment": true,
+      "original_quote": "superior responsiveness"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "human-likeness",
+      "start": 1309,
+      "end": 1323,
+      "typographic_alignment": false,
+      "original_quote": "human-likeness"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "comparable\nlevels",
+      "start": 13436,
+      "end": 13453,
+      "typographic_alignment": true,
+      "original_quote": "comparable levels"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "faithfulness",
+      "start": 10331,
+      "end": 10343,
+      "typographic_alignment": false,
+      "original_quote": "faithfulness"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "substantial advantage",
+      "start": 13522,
+      "end": 13543,
+      "typographic_alignment": false,
+      "original_quote": "substantial advantage"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "50.66",
+      "start": 12911,
+      "end": 12916,
+      "typographic_alignment": false,
+      "original_quote": "50.66"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "53.13",
+      "start": 12940,
+      "end": 12945,
+      "typographic_alignment": false,
+      "original_quote": "53.13"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "36.51",
+      "start": 12968,
+      "end": 12973,
+      "typographic_alignment": false,
+      "original_quote": "36.51"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "51.83",
+      "start": 13002,
+      "end": 13007,
+      "typographic_alignment": false,
+      "original_quote": "51.83"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "38.19",
+      "start": 13031,
+      "end": 13036,
+      "typographic_alignment": false,
+      "original_quote": "38.19"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "42.15",
+      "start": 13061,
+      "end": 13066,
+      "typographic_alignment": false,
+      "original_quote": "42.15"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "84.93",
+      "start": 13091,
+      "end": 13096,
+      "typographic_alignment": false,
+      "original_quote": "84.93"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "70.48",
+      "start": 13121,
+      "end": 13126,
+      "typographic_alignment": false,
+      "original_quote": "70.48"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "59.78",
+      "start": 13155,
+      "end": 13160,
+      "typographic_alignment": false,
+      "original_quote": "59.78"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "performances drop",
+      "start": 14832,
+      "end": 14849,
+      "typographic_alignment": false,
+      "original_quote": "performances drop"
+    },
+    {
+      "path": "key_results[15]",
+      "quote": "relatively poor",
+      "start": 14928,
+      "end": 14943,
+      "typographic_alignment": false,
+      "original_quote": "relatively poor"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "channel-\ndivision-multiplexing",
+      "start": 1159,
+      "end": 1189,
+      "typographic_alignment": true,
+      "original_quote": "channel-division-multiplexing"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "preserves the model’s original capabilities",
+      "start": 14442,
+      "end": 14485,
+      "typographic_alignment": false,
+      "original_quote": "preserves the model’s original capabilities"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "minimal training costs",
+      "start": 1353,
+      "end": 1375,
+      "typographic_alignment": false,
+      "original_quote": "minimal training costs"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "non-awakening interactions",
+      "start": 8003,
+      "end": 8029,
+      "typographic_alignment": false,
+      "original_quote": "non-awakening interactions"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "state tokens",
+      "start": 3370,
+      "end": 3382,
+      "typographic_alignment": false,
+      "original_quote": "state tokens"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "multimodal settings",
+      "start": 16440,
+      "end": 16459,
+      "typographic_alignment": false,
+      "original_quote": "multimodal settings"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "fluidity",
+      "start": 2173,
+      "end": 2181,
+      "typographic_alignment": false,
+      "original_quote": "fluidity"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "minimal additional\ntraining",
+      "start": 1005,
+      "end": 1032,
+      "typographic_alignment": true,
+      "original_quote": "minimal additional training"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "multimodal testing",
+      "start": 16250,
+      "end": 16268,
+      "typographic_alignment": false,
+      "original_quote": "multimodal testing"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "language models",
+      "start": 352,
+      "end": 367,
+      "typographic_alignment": false,
+      "original_quote": "language models"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "generalizability",
+      "start": 16349,
+      "end": 16365,
+      "typographic_alignment": false,
+      "original_quote": "generalizability"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "significantly smaller",
+      "start": 9762,
+      "end": 9783,
+      "typographic_alignment": false,
+      "original_quote": "significantly smaller"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "three participants",
+      "start": 11828,
+      "end": 11846,
+      "typographic_alignment": false,
+      "original_quote": "three participants"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "40 multi-turn",
+      "start": 11681,
+      "end": 11694,
+      "typographic_alignment": false,
+      "original_quote": "40 multi-turn"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "Ouroboros",
+      "start": 12185,
+      "end": 12194,
+      "typographic_alignment": false,
+      "original_quote": "Ouroboros"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "interactive demo",
+      "start": 11411,
+      "end": 11427,
+      "typographic_alignment": false,
+      "original_quote": "interactive demo"
+    },
+    {
+      "path": "data_and_code_availability[2]",
+      "quote": "Duplex-UltraChat",
+      "start": 9056,
+      "end": 9072,
+      "typographic_alignment": false,
+      "original_quote": "Duplex-UltraChat"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "same scale dataset",
+      "start": 14707,
+      "end": 14725,
+      "typographic_alignment": false,
+      "original_quote": "same scale dataset"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "performances drop",
+      "start": 14832,
+      "end": 14849,
+      "typographic_alignment": false,
+      "original_quote": "performances drop"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "original capabilities\nto a greater",
+      "start": 14464,
+      "end": 14498,
+      "typographic_alignment": false,
+      "original_quote": "original capabilities\nto a greater"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Channel-based Parallel Decoding",
+      "start": 4096,
+      "end": 4127,
+      "typographic_alignment": false,
+      "original_quote": "Channel-based Parallel Decoding"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "comparison result",
+      "start": 10225,
+      "end": 10242,
+      "typographic_alignment": false,
+      "original_quote": "comparison result"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Case study",
+      "start": 12739,
+      "end": 12749,
+      "typographic_alignment": false,
+      "original_quote": "Case study"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "standard benchmarks",
+      "start": 3650,
+      "end": 3669,
+      "typographic_alignment": false,
+      "original_quote": "standard benchmarks"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "a DUplex decOding (DUO) approach,",
+      "start": 3132,
+      "end": 3165,
+      "typographic_alignment": false,
+      "original_quote": "a DUplex decOding (DUO) approach,"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "minimal training costs",
+      "start": 1353,
+      "end": 1375,
+      "typographic_alignment": false,
+      "original_quote": "minimal training costs"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "multimodal settings",
+      "start": 16440,
+      "end": 16459,
+      "typographic_alignment": false,
+      "original_quote": "multimodal settings"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "minimal additional\ntraining",
+      "start": 1005,
+      "end": 1032,
+      "typographic_alignment": true,
+      "original_quote": "minimal additional training"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "about 25 minutes",
+      "start": 10514,
+      "end": 10530,
+      "typographic_alignment": false,
+      "original_quote": "about 25 minutes"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "10K samples",
+      "start": 9645,
+      "end": 9656,
+      "typographic_alignment": false,
+      "original_quote": "10K samples"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "36 hours",
+      "start": 10611,
+      "end": 10619,
+      "typographic_alignment": false,
+      "original_quote": "36 hours"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "5,000K samples",
+      "start": 9853,
+      "end": 9867,
+      "typographic_alignment": false,
+      "original_quote": "5,000K samples"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "demonstrates superior\nresponsiveness and human-likeness",
+      "start": 13334,
+      "end": 13389,
+      "typographic_alignment": false,
+      "original_quote": "demonstrates superior\nresponsiveness and human-likeness"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "superior\nresponsiveness",
+      "start": 13347,
+      "end": 13370,
+      "typographic_alignment": true,
+      "original_quote": "superior responsiveness"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "comparable\nlevels",
+      "start": 13436,
+      "end": 13453,
+      "typographic_alignment": true,
+      "original_quote": "comparable levels"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "fluidity",
+      "start": 2173,
+      "end": 2181,
+      "typographic_alignment": false,
+      "original_quote": "fluidity"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"Enabling Real-Time Conversations with Minimal Training Costs\",\n  \"authors\": \"Wang Xu, Shuo Wang, Weilin Zhao, Xu Han, Yukun Yan, Yudi Zhang, Zhe Tao, Zhiyuan Liu, Wanxiang Che\",\n  \"field_subfield\": \"Natural Language Processing / Dialogue Systems\",\n  \"type_of_paper\": \"Research Article\",\n  \"executive_summary\": \"Large language models (LLMs) typically operate on a turn-based paradigm, which precludes real-time interaction during response generation. To address this, duplex models have been proposed to facilitate real-time interactive feedback, but they often require substantial computational resources for retraining. This paper presents DUO (DUplex decOding), a novel channel-based parallel decoding mechanism that equips LLMs with duplex capabilities using minimal additional training. DUO employs a channel-division-multiplexing strategy, allowing the model to generate output autoregressively while simultaneously processing input tokens. Two state tokens are introduced to signal whether a query should be addressed or ignored, enabling the model to handle interruptions and non-awakening interactions effectively. The method is implemented using FlexAttention to manage non-standard attention mechanisms without increasing the number of forward passes compared to standard decoding. Experiments were conducted using MiniCPM-2.4B as the foundation model, trained on only 10K samples, compared to MiniCPM-Duplex which required approximately 5,000K samples. Human evaluation results indicate that DUO significantly enhances the naturalness and human-likeness of user-AI interactions while maintaining comparable levels of factuality and faithfulness. Standard benchmark evaluations show that DUO preserves the original capabilities of the base model to a greater extent than MiniCPM-Duplex, which suffers performance drops when trained on smaller datasets. The study demonstrates that DUO achieves real-time interactive feedback, including handling interruptions and filtering background dialogues, with significantly lower training costs (25 minutes on 8 GPUs vs. 36 hours on 40 GPUs). Future work aims to extend DUO to multimodal settings, where input tokens could be features extracted from various modalities.\",\n  \"research_context\": [\n    { \"Conventional LLM-powered dialogue systems operate on a turn-based paradigm.\": \"turn-based paradigm\" },\n    { \"This paradigm precludes real-time interaction during response generation.\": \"preclude real-time interaction\" },\n    { \"Researchers have proposed duplex models to address this limitation.\": \"proposed duplex models\" },\n    { \"These models can dynamically adapt to user input.\": \"dynamically adapt\" },\n    { \"However, these methods typically require substantial computational resources.\": \"substantial computational resources\" },\n    { \"Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.\": \"time-division-multiplexing strategy\" },\n    { \"This approach requires significant resources due to divergent training procedures.\": \"diverges substantially\" },\n    { \"The gap is the high overhead of acquiring duplex ability.\": \"high overhead\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The central research question is how to reduce the training overhead for duplex models.\": \"reduce overhead\" },\n    { \"The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.\": \"channel-division-multiplexing decoding\" },\n    { \"The method predicts that parallel decoding of queries and responses will work.\": \"parallel decoding\" },\n    { \"It is hypothesized that minimal additional training is sufficient for this capability.\": \"minimal additional training\" },\n    { \"The study aims to enhance the naturalness and human-likeness of interactions.\": \"naturalness and human-likeness\" },\n    { \"The predicted outcome is that the model can handle interruptions effectively.\": \"handle interruptions\" },\n    { \"The approach is expected to preserve the original model's capabilities.\": \"preserving the ability\" },\n    { \"The hypothesis includes the ability to filter non-query inputs.\": \"filter out\" }\n  ],\n  \"methodological_details\": [\n    { \"The study uses MiniCPM-2.4B as the foundation model.\": \"MiniCPM-2.4B\" },\n    { \"A dataset of 10K samples was constructed for training.\": \"10K samples\" },\n    { \"The dataset was adapted from Duplex-UltraChat.\": \"Duplex-UltraChat\" },\n    { \"Two state tokens were introduced to indicate query status.\": \"two state tokens\" },\n    { \"State token <1> denotes that the input is a user query.\": \"State token <1>\" },\n    { \"State token <2> denotes that the new input is no-query text.\": \"State token <2>\" },\n    { \"Non-query text was generated using ChatGPT.\": \"ChatGPT\" },\n    { \"The training used a learning rate of 1e-5.\": \"1e-5 learning rate\" },\n    { \"A constant learning rate scheduler was employed.\": \"constant learning rate\" },\n    { \"The batch size was set to 112.\": \"batch size of 112\" },\n    { \"The maximum sequence length was 4,096.\": \"maximum length of 4,096\" },\n    { \"Training was conducted for 400 steps.\": \"400 steps\" },\n    { \"The model was trained on 8 NVIDIA A100 GPUs.\": \"8 NVIDIA A100\" },\n    { \"The total training time was approximately 25 minutes.\": \"about 25 minutes\" },\n    { \"The baseline MiniCPM-Duplex was trained for 10,000 steps.\": \"10,000 steps\" },\n    { \"The baseline used 40 NVIDIA A100 GPUs.\": \"40 NVIDIA A100\" },\n    { \"The baseline training time was 36 hours.\": \"36 hours\" },\n    { \"The input channel predicted tokens alpha were set to 4.\": \"tokens α are set to 4\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"DUO processes inputs and outputs cyclically.\": \"cyclically\" },\n    { \"The output channel generates new tokens autoregressively.\": \"autoregressively\" },\n    { \"The input channel pre-fills the key-value cache.\": \"key-value cache\" },\n    { \"A channel-aware causal mask is used for attention.\": \"Channel-Aware Causal Mask\" },\n    { \"Tokens from input and output channels do not attend to each other.\": \"do not attend\" },\n    { \"This preserves language modeling in each channel.\": \"preserves language modeling\" },\n    { \"Channel transition is activated when state tokens are predicted.\": \"Channel Transition\" },\n    { \"The method uses FlexAttention for implementation.\": \"FlexAttention\" },\n    { \"DUO does not increase the number of forward passes.\": \"forward passes\" },\n    { \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\" },\n    { \"The model decides whether a query is addressed or ignored.\": \"addressed or ignored\" },\n    { \"The input channel predicts the next tokens.\": \"predicts the next tokens\" },\n    { \"The output channel persists in generating tokens.\": \"persists in generating\" },\n    { \"The key-value cache of predicted tokens is managed.\": \"management of the\" }\n  ],\n  \"key_results\": [\n    { \"MiniCPM-Duo demonstrates superior responsiveness compared to MiniCPM-Duplex.\": \"superior responsiveness\" },\n    { \"MiniCPM-Duo shows better human-likeness than the baseline.\": \"human-likeness\" },\n    { \"Factuality levels are comparable between the two models.\": \"comparable levels\" },\n    { \"Faithfulness is maintained at similar levels.\": \"faithfulness\" },\n    { \"MiniCPM-Duo exhibits a substantial advantage in overall performance.\": \"substantial advantage\" },\n    { \"On CMMLU, MiniCPM-Duo achieved a score of 50.66.\": \"50.66\" },\n    { \"On MMLU, MiniCPM-Duo achieved a score of 53.13.\": \"53.13\" },\n    { \"On BBH, MiniCPM-Duo achieved a score of 36.51.\": \"36.51\" },\n    { \"On HumanEval, MiniCPM-Duo achieved a score of 51.83.\": \"51.83\" },\n    { \"On MBPP, MiniCPM-Duo achieved a score of 38.19.\": \"38.19\" },\n    { \"On GSM8K, MiniCPM-Duo achieved a score of 42.15.\": \"42.15\" },\n    { \"On ARC-e, MiniCPM-Duo achieved a score of 84.93.\": \"84.93\" },\n    { \"On ARC-c, MiniCPM-Duo achieved a score of 70.48.\": \"70.48\" },\n    { \"On HellaSwag, MiniCPM-Duo achieved a score of 59.78.\": \"59.78\" },\n    { \"MiniCPM-Duplex trained on 10K samples showed performance drops.\": \"performances drop\" },\n    { \"The duplex capability of inadequately trained MiniCPM-Duplex was poor.\": \"relatively poor\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The method effectively implements channel-division-multiplexing decoding.\": \"channel-division-multiplexing\" },\n    { \"This approach preserves the original model's capabilities.\": \"preserves the ability\" },\n    { \"The minimal training cost is a significant theoretical advantage.\": \"minimal training costs\" },\n    { \"The model can handle non-awakening interactions effectively.\": \"non-awakening interactions\" },\n    { \"The state tokens provide a mechanism for query filtering.\": \"state tokens\" },\n    { \"The approach is versatile and adaptable to multimodal settings.\": \"multimodal settings\" },\n    { \"The method enhances the fluidity of human-AI interaction.\": \"fluidity\" },\n    { \"The results support the hypothesis of efficient duplex learning.\": \"minimal additional training\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The study has limitations in the scope of multimodal testing.\": \"multimodal testing\" },\n    { \"Experiments primarily focused on language models.\": \"language models\" },\n    { \"This may limit the generalizability of findings.\": \"generalizability\" },\n    { \"The dataset size is significantly smaller than the baseline.\": \"significantly smaller\" },\n    { \"The human evaluation involved only three participants.\": \"three participants\" },\n    { \"The evaluation was based on 40 dialogue sessions.\": \"40 multi-turn\" },\n    { \"The study does not report random seeds.\": \"\" },\n    { \"The study does not report detailed demographic data of evaluators.\": \"\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"DUO enables real-time conversations with minimal training costs.\",\n      \"supporting_evidence\": [\n        { \"The method requires minimal additional training.\": \"minimal additional training\" },\n        { \"Training took only 25 minutes.\": \"about 25 minutes\" },\n        { \"Only 10K samples were used.\": \"10K samples\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The baseline required 36 hours of training.\": \"36 hours\" },\n        { \"The baseline used 5,000K samples.\": \"5,000K samples\" }\n      ],\n      \"implications\": [\n        { \"This reduces the computational overhead for duplex models.\": \"reduce overhead\" },\n        { \"It makes duplex capabilities more accessible.\": \"accessible\" }\n      ]\n    },\n    {\n      \"description\": \"DUO enhances the naturalness and human-likeness of interactions.\",\n      \"supporting_evidence\": [\n        { \"MiniCPM-Duo shows superior human-likeness.\": \"superior human-likeness\" },\n        { \"It demonstrates superior responsiveness.\": \"superior responsiveness\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Factuality and faithfulness are comparable, not superior.\": \"comparable levels\" }\n      ],\n      \"implications\": [\n        { \"This improves the user experience.\": \"user experience\" },\n        { \"It makes interactions more fluid.\": \"fluidity\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\" },\n    { \"An interactive demo is available for MiniCPM-Duplex.\": \"interactive demo\" },\n    { \"The dataset was constructed from Duplex-UltraChat.\": \"Duplex-UltraChat\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"The study compares DUO with MiniCPM-Duplex trained on the same data scale.\": \"same scale dataset\" },\n    { \"MiniCPM-Duplex showed performance drops with smaller data.\": \"performances drop\" },\n    { \"DUO preserves original capabilities better.\": \"preserves the ability\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 illustrates the channel-based parallel decoding.\": \"Channel-based Parallel Decoding\" },\n    { \"Figure 2 shows the human evaluation comparison.\": \"comparison result\" },\n    { \"Figure 3 presents a case study of the model's behavior.\": \"Case study\" },\n    { \"Table 1 presents performances on standard benchmarks.\": \"standard benchmarks\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the DUO decoding method.\": \"DUO approach\" },\n    { \"2. The strongest evidence is the minimal training cost.\": \"minimal training costs\" },\n    { \"3. The future path is extending to multimodal settings.\": \"multimodal settings\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6525,
+        "total_tokens": 9781,
+        "completion_tokens": 3256,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6525,
+      "elapsed_seconds": 299.8002379871905,
+      "max_tokens": 16000,
+      "seed": 2107784539,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "25a0e0504b25d0d4cbc605273f7c95c21c28879d0c24cf61ce743ff1ead2aae4",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "evidence quote is not present in fulltext: time-division-multiplexing strategy",
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: reduce overhead",
+        "methodological_details": "Evidence must be a nonempty <=5-word quote: methodological_details[17]",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: preserves language modeling",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: preserves the ability",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[6]",
+        "claims": "evidence quote is not present in fulltext: reduce overhead",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: preserves the ability",
+        "three_takeaways": "evidence quote is not present in fulltext: DUO approach"
+      }
+    },
+    {
+      "response": "{\n  \"research_context\": [\n    {\n      \"Conventional LLM-powered dialogue systems operate on a turn-based paradigm.\": \"turn-based paradigm\"\n    },\n    {\n      \"This paradigm precludes real-time interaction during response generation.\": \"preclude real-time interaction\"\n    },\n    {\n      \"Researchers have proposed duplex models to address this limitation.\": \"proposed duplex models\"\n    },\n    {\n      \"These models can dynamically adapt to user input.\": \"dynamically adapt\"\n    },\n    {\n      \"However, these methods typically require substantial computational resources.\": \"substantial computational resources\"\n    },\n    {\n      \"Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.\": \"time-division-multiplexing\"\n    },\n    {\n      \"This approach requires significant resources due to divergent training procedures.\": \"diverges substantially\"\n    },\n    {\n      \"The gap is the high overhead of acquiring duplex ability.\": \"\"\n    }\n  ],\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to reduce the training overhead for duplex models.\": \"reduce overhead\"\n    },\n    {\n      \"The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"The method predicts that parallel decoding of queries and responses will work.\": \"parallel decoding\"\n    },\n    {\n      \"It is hypothesized that minimal additional training is sufficient for this capability.\": \"minimal additional training\"\n    },\n    {\n      \"The study aims to enhance the naturalness and human-likeness of interactions.\": \"naturalness and human-likeness\"\n    },\n    {\n      \"The predicted outcome is that the model can handle interruptions effectively.\": \"\"\n    },\n    {\n      \"The approach is expected to preserve the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The hypothesis includes the ability to filter non-query inputs.\": \"filter out\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The study uses MiniCPM-2.4B as the foundation model.\": \"MiniCPM-2.4B\"\n    },\n    {\n      \"A dataset of 10K samples was constructed for training.\": \"10K samples\"\n    },\n    {\n      \"The dataset was adapted from Duplex-UltraChat.\": \"Duplex-UltraChat\"\n    },\n    {\n      \"Two state tokens were introduced to indicate query status.\": \"two state tokens\"\n    },\n    {\n      \"State token <1> denotes that the input is a user query.\": \"State token <1>\"\n    },\n    {\n      \"State token <2> denotes that the new input is no-query text.\": \"State token <2>\"\n    },\n    {\n      \"Non-query text was generated using ChatGPT.\": \"ChatGPT\"\n    },\n    {\n      \"The training used a learning rate of 1e-5.\": \"1e-5 learning rate\"\n    },\n    {\n      \"A constant learning rate scheduler was employed.\": \"constant learning rate\"\n    },\n    {\n      \"The batch size was set to 112.\": \"batch size of 112\"\n    },\n    {\n      \"The maximum sequence length was 4,096.\": \"maximum length of 4,096\"\n    },\n    {\n      \"Training was conducted for 400 steps.\": \"400 steps\"\n    },\n    {\n      \"The model was trained on 8 NVIDIA A100 GPUs.\": \"8 NVIDIA A100\"\n    },\n    {\n      \"The total training time was approximately 25 minutes.\": \"about 25 minutes\"\n    },\n    {\n      \"The baseline MiniCPM-Duplex was trained for 10,000 steps.\": \"10,000 steps\"\n    },\n    {\n      \"The baseline used 40 NVIDIA A100 GPUs.\": \"40 NVIDIA A100\"\n    },\n    {\n      \"The baseline training time was 36 hours.\": \"36 hours\"\n    },\n    {\n      \"The input channel predicted tokens alpha were set to 4.\": \"tokens α are set\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"DUO processes inputs and outputs cyclically.\": \"cyclically\"\n    },\n    {\n      \"The output channel generates new tokens autoregressively.\": \"autoregressively\"\n    },\n    {\n      \"The input channel pre-fills the key-value cache.\": \"key-value cache\"\n    },\n    {\n      \"A channel-aware causal mask is used for attention.\": \"Channel-Aware Causal Mask\"\n    },\n    {\n      \"Tokens from input and output channels do not attend to each other.\": \"do not attend\"\n    },\n    {\n      \"This preserves language modeling in each channel.\": \"preserves language modeling\"\n    },\n    {\n      \"Channel transition is activated when state tokens are predicted.\": \"Channel Transition\"\n    },\n    {\n      \"The method uses FlexAttention for implementation.\": \"FlexAttention\"\n    },\n    {\n      \"DUO does not increase the number of forward passes.\": \"forward passes\"\n    },\n    {\n      \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\"\n    },\n    {\n      \"The model decides whether a query is addressed or ignored.\": \"addressed or ignored\"\n    },\n    {\n      \"The input channel predicts the next tokens.\": \"predicts the next tokens\"\n    },\n    {\n      \"The output channel persists in generating tokens.\": \"persists in generating\"\n    },\n    {\n      \"The key-value cache of predicted tokens is managed.\": \"management of the\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The method effectively implements channel-division-multiplexing decoding.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"This approach preserves the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The minimal training cost is a significant theoretical advantage.\": \"minimal training costs\"\n    },\n    {\n      \"The model can handle non-awakening interactions effectively.\": \"non-awakening interactions\"\n    },\n    {\n      \"The state tokens provide a mechanism for query filtering.\": \"state tokens\"\n    },\n    {\n      \"The approach is versatile and adaptable to multimodal settings.\": \"multimodal settings\"\n    },\n    {\n      \"The method enhances the fluidity of human-AI interaction.\": \"fluidity\"\n    },\n    {\n      \"The results support the hypothesis of efficient duplex learning.\": \"minimal additional training\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The study has limitations in the scope of multimodal testing.\": \"multimodal testing\"\n    },\n    {\n      \"Experiments primarily focused on language models.\": \"language models\"\n    },\n    {\n      \"This may limit the generalizability of findings.\": \"generalizability\"\n    },\n    {\n      \"The dataset size is significantly smaller than the baseline.\": \"significantly smaller\"\n    },\n    {\n      \"The human evaluation involved only three participants.\": \"three participants\"\n    },\n    {\n      \"The evaluation was based on 40 dialogue sessions.\": \"40 multi-turn\"\n    },\n    {\n      \"The study does not report random seeds.\": \"\"\n    },\n    {\n      \"The study does not report detailed demographic data of evaluators.\": \"\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"DUO enables real-time conversations with minimal training costs.\",\n      \"supporting_evidence\": [\n        {\n          \"The method requires minimal additional training.\": \"minimal additional training\"\n        },\n        {\n          \"Training took only 25 minutes.\": \"about 25 minutes\"\n        },\n        {\n          \"Only 10K samples were used.\": \"10K samples\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The baseline required 36 hours of training.\": \"36 hours\"\n        },\n        {\n          \"The baseline used 5,000K samples.\": \"5,000K samples\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This reduces the computational overhead for duplex models.\": \"reduce overhead\"\n        },\n        {\n          \"It makes duplex capabilities more accessible.\": \"\"\n        }\n      ]\n    },\n    {\n      \"description\": \"DUO enhances the naturalness and human-likeness of interactions.\",\n      \"supporting_evidence\": [\n        {\n          \"MiniCPM-Duo shows superior human-likeness.\": \"superior human-likeness\"\n        },\n        {\n          \"It demonstrates superior responsiveness.\": \"superior responsiveness\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Factuality and faithfulness are comparable, not superior.\": \"comparable levels\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This improves the user experience.\": \"\"\n        },\n        {\n          \"It makes interactions more fluid.\": \"fluidity\"\n        }\n      ]\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares DUO with MiniCPM-Duplex trained on the same data scale.\": \"same scale dataset\"\n    },\n    {\n      \"MiniCPM-Duplex showed performance drops with smaller data.\": \"performances drop\"\n    },\n    {\n      \"DUO preserves original capabilities better.\": \"preserving the ability\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is the DUO decoding method.\": \"DUO approach\"\n    },\n    {\n      \"2. The strongest evidence is the minimal training cost.\": \"minimal training costs\"\n    },\n    {\n      \"3. The future path is extending to multimodal settings.\": \"multimodal settings\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6955,
+        "total_tokens": 9386,
+        "completion_tokens": 2431,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6955,
+      "elapsed_seconds": 209.08725000172853,
+      "max_tokens": 4096,
+      "seed": 2107784540,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ae0d0e2d9331c89e05857bd7c60b68997338812c405b32a91e9bf2b1b6120ec2",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "robustness_and_ablation_notes",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "Evidence must be a nonempty <=5-word quote: research_context[7]",
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: reduce overhead",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: preserves language modeling",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: preserving the ability",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[6]",
+        "claims": "evidence quote is not present in fulltext: reduce overhead",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: preserving the ability",
+        "three_takeaways": "evidence quote is not present in fulltext: DUO approach"
+      }
+    },
+    {
+      "response": "{\n  \"research_context\": [\n    {\n      \"Conventional LLM-powered dialogue systems operate on a turn-based paradigm.\": \"turn-based paradigm\"\n    },\n    {\n      \"This paradigm precludes real-time interaction during response generation.\": \"preclude real-time interaction\"\n    },\n    {\n      \"Researchers have proposed duplex models to address this limitation.\": \"proposed duplex models\"\n    },\n    {\n      \"These models can dynamically adapt to user input.\": \"dynamically adapt\"\n    },\n    {\n      \"However, these methods typically require substantial computational resources.\": \"substantial computational resources\"\n    },\n    {\n      \"Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.\": \"time-division-multiplexing\"\n    },\n    {\n      \"This approach requires significant resources due to divergent training procedures.\": \"diverges substantially\"\n    },\n    {\n      \"The gap is the high overhead of acquiring duplex ability.\": \"reduce overhead\"\n    }\n  ],\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to reduce the training overhead for duplex models.\": \"reduce overhead\"\n    },\n    {\n      \"The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"The method predicts that parallel decoding of queries and responses will work.\": \"parallel decoding\"\n    },\n    {\n      \"It is hypothesized that minimal additional training is sufficient for this capability.\": \"minimal additional training\"\n    },\n    {\n      \"The study aims to enhance the naturalness and human-likeness of interactions.\": \"naturalness and human-likeness\"\n    },\n    {\n      \"The predicted outcome is that the model can handle interruptions effectively.\": \"interruption interaction\"\n    },\n    {\n      \"The approach is expected to preserve the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The hypothesis includes the ability to filter non-query inputs.\": \"filter out\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"DUO processes inputs and outputs cyclically.\": \"cyclically\"\n    },\n    {\n      \"The output channel generates new tokens autoregressively.\": \"autoregressively\"\n    },\n    {\n      \"The input channel pre-fills the key-value cache.\": \"key-value cache\"\n    },\n    {\n      \"A channel-aware causal mask is used for attention.\": \"Channel-Aware Causal Mask\"\n    },\n    {\n      \"Tokens from input and output channels do not attend to each other.\": \"do not attend\"\n    },\n    {\n      \"This preserves language modeling in each channel.\": \"language modeling\"\n    },\n    {\n      \"Channel transition is activated when state tokens are predicted.\": \"Channel Transition\"\n    },\n    {\n      \"The method uses FlexAttention for implementation.\": \"FlexAttention\"\n    },\n    {\n      \"DUO does not increase the number of forward passes.\": \"forward passes\"\n    },\n    {\n      \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\"\n    },\n    {\n      \"The model decides whether a query is addressed or ignored.\": \"addressed or ignored\"\n    },\n    {\n      \"The input channel predicts the next tokens.\": \"predicts the next tokens\"\n    },\n    {\n      \"The output channel persists in generating tokens.\": \"persists in generating\"\n    },\n    {\n      \"The key-value cache of predicted tokens is managed.\": \"management of the\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The method effectively implements channel-division-multiplexing decoding.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"This approach preserves the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The minimal training cost is a significant theoretical advantage.\": \"minimal training costs\"\n    },\n    {\n      \"The model can handle non-awakening interactions effectively.\": \"non-awakening interactions\"\n    },\n    {\n      \"The state tokens provide a mechanism for query filtering.\": \"state tokens\"\n    },\n    {\n      \"The approach is versatile and adaptable to multimodal settings.\": \"multimodal settings\"\n    },\n    {\n      \"The method enhances the fluidity of human-AI interaction.\": \"fluidity\"\n    },\n    {\n      \"The results support the hypothesis of efficient duplex learning.\": \"minimal additional training\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The study has limitations in the scope of multimodal testing.\": \"multimodal testing\"\n    },\n    {\n      \"Experiments primarily focused on language models.\": \"language models\"\n    },\n    {\n      \"This may limit the generalizability of findings.\": \"generalizability\"\n    },\n    {\n      \"The dataset size is significantly smaller than the baseline.\": \"significantly smaller\"\n    },\n    {\n      \"The human evaluation involved only three participants.\": \"three participants\"\n    },\n    {\n      \"The evaluation was based on 40 dialogue sessions.\": \"40 multi-turn\"\n    },\n    {\n      \"The study does not report random seeds.\": \"\"\n    },\n    {\n      \"The study does not report detailed demographic data of evaluators.\": \"\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"DUO enables real-time conversations with minimal training costs.\",\n      \"supporting_evidence\": [\n        {\n          \"The method requires minimal additional training.\": \"minimal additional training\"\n        },\n        {\n          \"Training took only 25 minutes.\": \"about 25 minutes\"\n        },\n        {\n          \"Only 10K samples were used.\": \"10K samples\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The baseline required 36 hours of training.\": \"36 hours\"\n        },\n        {\n          \"The baseline used 5,000K samples.\": \"5,000K samples\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This reduces the computational overhead for duplex models.\": \"reduce overhead\"\n        },\n        {\n          \"It makes duplex capabilities more accessible.\": \"\"\n        }\n      ]\n    },\n    {\n      \"description\": \"DUO enhances the naturalness and human-likeness of interactions.\",\n      \"supporting_evidence\": [\n        {\n          \"MiniCPM-Duo shows superior human-likeness.\": \"superior human-likeness\"\n        },\n        {\n          \"It demonstrates superior responsiveness.\": \"superior responsiveness\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Factuality and faithfulness are comparable, not superior.\": \"comparable levels\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This improves the user experience.\": \"\"\n        },\n        {\n          \"It makes interactions more fluid.\": \"fluidity\"\n        }\n      ]\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares DUO with MiniCPM-Duplex trained on the same data scale.\": \"same scale dataset\"\n    },\n    {\n      \"MiniCPM-Duplex showed performance drops with smaller data.\": \"performances drop\"\n    },\n    {\n      \"DUO preserves original capabilities better.\": \"preserving the ability\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is the DUO decoding method.\": \"DUO approach\"\n    },\n    {\n      \"2. The strongest evidence is the minimal training cost.\": \"minimal training costs\"\n    },\n    {\n      \"3. The future path is extending to multimodal settings.\": \"multimodal settings\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6462,
+        "total_tokens": 8358,
+        "completion_tokens": 1896,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6462,
+      "elapsed_seconds": 167.493865609169,
+      "max_tokens": 4096,
+      "seed": 2107784541,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "648be609a184ced9a0289b3b285823cd84d8bc39af7d264346b1ea4980d93308",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_context",
+        "research_question_and_hypothesis",
+        "procedures_and_architectures",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "robustness_and_ablation_notes",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "evidence quote is not present in fulltext: reduce overhead",
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: reduce overhead",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: FlexAttention",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: preserving the ability",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[6]",
+        "claims": "evidence quote is not present in fulltext: reduce overhead",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: preserving the ability",
+        "three_takeaways": "evidence quote is not present in fulltext: DUO approach"
+      }
+    },
+    {
+      "response": "{\n  \"research_context\": [\n    {\n      \"Conventional LLM-powered dialogue systems operate on a turn-based paradigm.\": \"turn-based paradigm\"\n    },\n    {\n      \"This paradigm precludes real-time interaction during response generation.\": \"preclude real-time interaction\"\n    },\n    {\n      \"Researchers have proposed duplex models to address this limitation.\": \"proposed duplex models\"\n    },\n    {\n      \"These models can dynamically adapt to user input.\": \"dynamically adapt\"\n    },\n    {\n      \"However, these methods typically require substantial computational resources.\": \"substantial computational resources\"\n    },\n    {\n      \"Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.\": \"time-division-multiplexing\"\n    },\n    {\n      \"This approach requires significant resources due to divergent training procedures.\": \"diverges substantially\"\n    },\n    {\n      \"The gap is the high overhead of acquiring duplex ability.\": \"reduce overhead\"\n    }\n  ],\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to reduce the training overhead for duplex models.\": \"reduce overhead\"\n    },\n    {\n      \"The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"The method predicts that parallel decoding of queries and responses will work.\": \"parallel decoding\"\n    },\n    {\n      \"It is hypothesized that minimal additional training is sufficient for this capability.\": \"minimal additional training\"\n    },\n    {\n      \"The study aims to enhance the naturalness and human-likeness of interactions.\": \"naturalness and human-likeness\"\n    },\n    {\n      \"The predicted outcome is that the model can handle interruptions effectively.\": \"interruption interaction\"\n    },\n    {\n      \"The approach is expected to preserve the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The hypothesis includes the ability to filter non-query inputs.\": \"filter out\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"DUO processes inputs and outputs cyclically.\": \"cyclically\"\n    },\n    {\n      \"The output channel generates new tokens autoregressively.\": \"autoregressively\"\n    },\n    {\n      \"The input channel pre-fills the key-value cache.\": \"key-value cache\"\n    },\n    {\n      \"A channel-aware causal mask is used for attention.\": \"Channel-Aware Causal Mask\"\n    },\n    {\n      \"Tokens from input and output channels do not attend to each other.\": \"do not attend\"\n    },\n    {\n      \"This preserves language modeling in each channel.\": \"language modeling\"\n    },\n    {\n      \"Channel transition is activated when state tokens are predicted.\": \"Channel Transition\"\n    },\n    {\n      \"The method uses FlexAttention for implementation.\": \"FlexAttention\"\n    },\n    {\n      \"DUO does not increase the number of forward passes.\": \"forward passes\"\n    },\n    {\n      \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\"\n    },\n    {\n      \"The model decides whether a query is addressed or ignored.\": \"addressed or ignored\"\n    },\n    {\n      \"The input channel predicts the next tokens.\": \"predicts the next tokens\"\n    },\n    {\n      \"The output channel persists in generating tokens.\": \"persists in generating\"\n    },\n    {\n      \"The key-value cache of predicted tokens is managed.\": \"management of the\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The method effectively implements channel-division-multiplexing decoding.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"This approach preserves the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The minimal training cost is a significant theoretical advantage.\": \"minimal training costs\"\n    },\n    {\n      \"The model can handle non-awakening interactions effectively.\": \"non-awakening interactions\"\n    },\n    {\n      \"The state tokens provide a mechanism for query filtering.\": \"state tokens\"\n    },\n    {\n      \"The approach is versatile and adaptable to multimodal settings.\": \"multimodal settings\"\n    },\n    {\n      \"The method enhances the fluidity of human-AI interaction.\": \"fluidity\"\n    },\n    {\n      \"The results support the hypothesis of efficient duplex learning.\": \"minimal additional training\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The study has limitations in the scope of multimodal testing.\": \"multimodal testing\"\n    },\n    {\n      \"Experiments primarily focused on language models.\": \"language models\"\n    },\n    {\n      \"This may limit the generalizability of findings.\": \"generalizability\"\n    },\n    {\n      \"The dataset size is significantly smaller than the baseline.\": \"significantly smaller\"\n    },\n    {\n      \"The human evaluation involved only three participants.\": \"three participants\"\n    },\n    {\n      \"The evaluation was based on 40 dialogue sessions.\": \"40 multi-turn\"\n    },\n    {\n      \"The study does not report random seeds.\": \"\"\n    },\n    {\n      \"The study does not report detailed demographic data of evaluators.\": \"\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"DUO enables real-time conversations with minimal training costs.\",\n      \"supporting_evidence\": [\n        {\n          \"The method requires minimal additional training.\": \"minimal additional training\"\n        },\n        {\n          \"Training took only 25 minutes.\": \"about 25 minutes\"\n        },\n        {\n          \"Only 10K samples were used.\": \"10K samples\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The baseline required 36 hours of training.\": \"36 hours\"\n        },\n        {\n          \"The baseline used 5,000K samples.\": \"5,000K samples\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This reduces the computational overhead for duplex models.\": \"reduce overhead\"\n        },\n        {\n          \"It makes duplex capabilities more accessible.\": \"\"\n        }\n      ]\n    },\n    {\n      \"description\": \"DUO enhances the naturalness and human-likeness of interactions.\",\n      \"supporting_evidence\": [\n        {\n          \"MiniCPM-Duo shows superior human-likeness.\": \"superior human-likeness\"\n        },\n        {\n          \"It demonstrates superior responsiveness.\": \"superior responsiveness\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Factuality and faithfulness are comparable, not superior.\": \"comparable levels\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This improves the user experience.\": \"\"\n        },\n        {\n          \"It makes interactions more fluid.\": \"fluidity\"\n        }\n      ]\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares DUO with MiniCPM-Duplex trained on the same data scale.\": \"same scale dataset\"\n    },\n    {\n      \"MiniCPM-Duplex showed performance drops with smaller data.\": \"performances drop\"\n    },\n    {\n      \"DUO preserves original capabilities better.\": \"preserving the ability\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is the DUO decoding method.\": \"DUO approach\"\n    },\n    {\n      \"2. The strongest evidence is the minimal training cost.\": \"minimal training costs\"\n    },\n    {\n      \"3. The future path is extending to multimodal settings.\": \"multimodal settings\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6433,
+        "total_tokens": 8329,
+        "completion_tokens": 1896,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6433,
+      "elapsed_seconds": 165.3812568373978,
+      "max_tokens": 4096,
+      "seed": 2107784542,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ce9477d75b413f7001e8c00a2edc3c4caffae1d0ceba3f61946ef14bb54adf2e",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_context",
+        "research_question_and_hypothesis",
+        "procedures_and_architectures",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "robustness_and_ablation_notes",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "evidence quote is not present in fulltext: reduce overhead",
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: reduce overhead",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: FlexAttention",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: preserving the ability",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[6]",
+        "claims": "evidence quote is not present in fulltext: reduce overhead",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: preserving the ability",
+        "three_takeaways": "evidence quote is not present in fulltext: DUO approach"
+      }
+    },
+    {
+      "response": "{\n  \"research_context\": [\n    {\n      \"Conventional LLM-powered dialogue systems operate on a turn-based paradigm.\": \"turn-based paradigm\"\n    },\n    {\n      \"This paradigm precludes real-time interaction during response generation.\": \"preclude real-time interaction\"\n    },\n    {\n      \"Researchers have proposed duplex models to address this limitation.\": \"proposed duplex models\"\n    },\n    {\n      \"These models can dynamically adapt to user input.\": \"dynamically adapt\"\n    },\n    {\n      \"However, these methods typically require substantial computational resources.\": \"substantial computational resources\"\n    },\n    {\n      \"Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.\": \"time-division-multiplexing\"\n    },\n    {\n      \"This approach requires significant resources due to divergent training procedures.\": \"diverges substantially\"\n    },\n    {\n      \"The gap is the high overhead of acquiring duplex ability.\": \"reduce overhead\"\n    }\n  ],\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to reduce the training overhead for duplex models.\": \"reduce overhead\"\n    },\n    {\n      \"The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"The method predicts that parallel decoding of queries and responses will work.\": \"parallel decoding\"\n    },\n    {\n      \"It is hypothesized that minimal additional training is sufficient for this capability.\": \"minimal additional training\"\n    },\n    {\n      \"The study aims to enhance the naturalness and human-likeness of interactions.\": \"naturalness and human-likeness\"\n    },\n    {\n      \"The predicted outcome is that the model can handle interruptions effectively.\": \"interruption interaction\"\n    },\n    {\n      \"The approach is expected to preserve the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The hypothesis includes the ability to filter non-query inputs.\": \"filter out\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"DUO processes inputs and outputs cyclically.\": \"cyclically\"\n    },\n    {\n      \"The output channel generates new tokens autoregressively.\": \"autoregressively\"\n    },\n    {\n      \"The input channel pre-fills the key-value cache.\": \"key-value cache\"\n    },\n    {\n      \"A channel-aware causal mask is used for attention.\": \"Channel-Aware Causal Mask\"\n    },\n    {\n      \"Tokens from input and output channels do not attend to each other.\": \"do not attend\"\n    },\n    {\n      \"This preserves language modeling in each channel.\": \"language modeling\"\n    },\n    {\n      \"Channel transition is activated when state tokens are predicted.\": \"Channel Transition\"\n    },\n    {\n      \"The method uses FlexAttention for implementation.\": \"FlexAttention\"\n    },\n    {\n      \"DUO does not increase the number of forward passes.\": \"forward passes\"\n    },\n    {\n      \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\"\n    },\n    {\n      \"The model decides whether a query is addressed or ignored.\": \"addressed or ignored\"\n    },\n    {\n      \"The input channel predicts the next tokens.\": \"predicts the next tokens\"\n    },\n    {\n      \"The output channel persists in generating tokens.\": \"persists in generating\"\n    },\n    {\n      \"The key-value cache of predicted tokens is managed.\": \"management of the\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The method effectively implements channel-division-multiplexing decoding.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"This approach preserves the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The minimal training cost is a significant theoretical advantage.\": \"minimal training costs\"\n    },\n    {\n      \"The model can handle non-awakening interactions effectively.\": \"non-awakening interactions\"\n    },\n    {\n      \"The state tokens provide a mechanism for query filtering.\": \"state tokens\"\n    },\n    {\n      \"The approach is versatile and adaptable to multimodal settings.\": \"multimodal settings\"\n    },\n    {\n      \"The method enhances the fluidity of human-AI interaction.\": \"fluidity\"\n    },\n    {\n      \"The results support the hypothesis of efficient duplex learning.\": \"minimal additional training\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The study has limitations in the scope of multimodal testing.\": \"multimodal testing\"\n    },\n    {\n      \"Experiments primarily focused on language models.\": \"language models\"\n    },\n    {\n      \"This may limit the generalizability of findings.\": \"generalizability\"\n    },\n    {\n      \"The dataset size is significantly smaller than the baseline.\": \"significantly smaller\"\n    },\n    {\n      \"The human evaluation involved only three participants.\": \"three participants\"\n    },\n    {\n      \"The evaluation was based on 40 dialogue sessions.\": \"40 multi-turn\"\n    },\n    {\n      \"The study does not report random seeds.\": \"\"\n    },\n    {\n      \"The study does not report detailed demographic data of evaluators.\": \"\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"DUO enables real-time conversations with minimal training costs.\",\n      \"supporting_evidence\": [\n        {\n          \"The method requires minimal additional training.\": \"minimal additional training\"\n        },\n        {\n          \"Training took only 25 minutes.\": \"about 25 minutes\"\n        },\n        {\n          \"Only 10K samples were used.\": \"10K samples\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The baseline required 36 hours of training.\": \"36 hours\"\n        },\n        {\n          \"The baseline used 5,000K samples.\": \"5,000K samples\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This reduces the computational overhead for duplex models.\": \"reduce overhead\"\n        },\n        {\n          \"It makes duplex capabilities more accessible.\": \"\"\n        }\n      ]\n    },\n    {\n      \"description\": \"DUO enhances the naturalness and human-likeness of interactions.\",\n      \"supporting_evidence\": [\n        {\n          \"MiniCPM-Duo shows superior human-likeness.\": \"superior human-likeness\"\n        },\n        {\n          \"It demonstrates superior responsiveness.\": \"superior responsiveness\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Factuality and faithfulness are comparable, not superior.\": \"comparable levels\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This improves the user experience.\": \"\"\n        },\n        {\n          \"It makes interactions more fluid.\": \"fluidity\"\n        }\n      ]\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares DUO with MiniCPM-Duplex trained on the same data scale.\": \"same scale dataset\"\n    },\n    {\n      \"MiniCPM-Duplex showed performance drops with smaller data.\": \"performances drop\"\n    },\n    {\n      \"DUO preserves original capabilities better.\": \"preserving the ability\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is the DUO decoding method.\": \"DUO approach\"\n    },\n    {\n      \"2. The strongest evidence is the minimal training cost.\": \"minimal training costs\"\n    },\n    {\n      \"3. The future path is extending to multimodal settings.\": \"multimodal settings\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6433,
+        "total_tokens": 8329,
+        "completion_tokens": 1896,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6433,
+      "elapsed_seconds": 177.39851857721806,
+      "max_tokens": 4096,
+      "seed": 2107784543,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ce9477d75b413f7001e8c00a2edc3c4caffae1d0ceba3f61946ef14bb54adf2e",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_context",
+        "research_question_and_hypothesis",
+        "procedures_and_architectures",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "robustness_and_ablation_notes",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "evidence quote is not present in fulltext: reduce overhead",
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: reduce overhead",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: FlexAttention",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: preserving the ability",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[6]",
+        "claims": "evidence quote is not present in fulltext: reduce overhead",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: preserving the ability",
+        "three_takeaways": "evidence quote is not present in fulltext: DUO approach"
+      }
+    },
+    {
+      "response": "{\n  \"research_context\": [\n    {\n      \"Conventional LLM-powered dialogue systems operate on a turn-based paradigm.\": \"turn-based paradigm\"\n    },\n    {\n      \"This paradigm precludes real-time interaction during response generation.\": \"preclude real-time interaction\"\n    },\n    {\n      \"Researchers have proposed duplex models to address this limitation.\": \"proposed duplex models\"\n    },\n    {\n      \"These models can dynamically adapt to user input.\": \"dynamically adapt\"\n    },\n    {\n      \"However, these methods typically require substantial computational resources.\": \"substantial computational resources\"\n    },\n    {\n      \"Existing approaches like MiniCPM-Duplex use time-division-multiplexing strategies.\": \"time-division-multiplexing\"\n    },\n    {\n      \"This approach requires significant resources due to divergent training procedures.\": \"diverges substantially\"\n    },\n    {\n      \"The gap is the high overhead of acquiring duplex ability.\": \"To reduce overhead\"\n    }\n  ],\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central research question is how to reduce the training overhead for duplex models.\": \"To reduce overhead\"\n    },\n    {\n      \"The hypothesis is that a channel-division-multiplexing decoding strategy can enable duplex ability.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"The method predicts that parallel decoding of queries and responses will work.\": \"parallel decoding\"\n    },\n    {\n      \"It is hypothesized that minimal additional training is sufficient for this capability.\": \"minimal additional training\"\n    },\n    {\n      \"The study aims to enhance the naturalness and human-likeness of interactions.\": \"naturalness and human-likeness\"\n    },\n    {\n      \"The predicted outcome is that the model can handle interruptions effectively.\": \"interruption interaction\"\n    },\n    {\n      \"The approach is expected to preserve the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The hypothesis includes the ability to filter non-query inputs.\": \"filter out\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"DUO processes inputs and outputs cyclically.\": \"cyclically\"\n    },\n    {\n      \"The output channel generates new tokens autoregressively.\": \"autoregressively\"\n    },\n    {\n      \"The input channel pre-fills the key-value cache.\": \"key-value cache\"\n    },\n    {\n      \"A channel-aware causal mask is used for attention.\": \"Channel-Aware Causal Mask\"\n    },\n    {\n      \"Tokens from input and output channels do not attend to each other.\": \"do not attend\"\n    },\n    {\n      \"This preserves language modeling in each channel.\": \"language modeling\"\n    },\n    {\n      \"Channel transition is activated when state tokens are predicted.\": \"Channel Transition\"\n    },\n    {\n      \"The method uses FlexAttention for implementation.\": \"FlexAttention\"\n    },\n    {\n      \"DUO does not increase the number of forward passes.\": \"forward passes\"\n    },\n    {\n      \"The decoding strategy is based on the Ouroboros repository.\": \"Ouroboros\"\n    },\n    {\n      \"The model decides whether a query is addressed or ignored.\": \"addressed or ignored\"\n    },\n    {\n      \"The input channel predicts the next tokens.\": \"predicts the next tokens\"\n    },\n    {\n      \"The output channel persists in generating tokens.\": \"persists in generating\"\n    },\n    {\n      \"The key-value cache of predicted tokens is managed.\": \"management of the\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The method effectively implements channel-division-multiplexing decoding.\": \"channel-division-multiplexing\"\n    },\n    {\n      \"This approach preserves the original model's capabilities.\": \"preserving the ability\"\n    },\n    {\n      \"The minimal training cost is a significant theoretical advantage.\": \"minimal training costs\"\n    },\n    {\n      \"The model can handle non-awakening interactions effectively.\": \"non-awakening interactions\"\n    },\n    {\n      \"The state tokens provide a mechanism for query filtering.\": \"state tokens\"\n    },\n    {\n      \"The approach is versatile and adaptable to multimodal settings.\": \"multimodal settings\"\n    },\n    {\n      \"The method enhances the fluidity of human-AI interaction.\": \"fluidity\"\n    },\n    {\n      \"The results support the hypothesis of efficient duplex learning.\": \"minimal additional training\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The study has limitations in the scope of multimodal testing.\": \"multimodal testing\"\n    },\n    {\n      \"Experiments primarily focused on language models.\": \"language models\"\n    },\n    {\n      \"This may limit the generalizability of findings.\": \"generalizability\"\n    },\n    {\n      \"The dataset size is significantly smaller than the baseline.\": \"significantly smaller\"\n    },\n    {\n      \"The human evaluation involved only three participants.\": \"three participants\"\n    },\n    {\n      \"The evaluation was based on 40 dialogue sessions.\": \"40 multi-turn\"\n    },\n    {\n      \"The study does not report random seeds.\": \"\"\n    },\n    {\n      \"The study does not report detailed demographic data of evaluators.\": \"\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"DUO enables real-time conversations with minimal training costs.\",\n      \"supporting_evidence\": [\n        {\n          \"The method requires minimal additional training.\": \"minimal additional training\"\n        },\n        {\n          \"Training took only 25 minutes.\": \"about 25 minutes\"\n        },\n        {\n          \"Only 10K samples were used.\": \"10K samples\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The baseline required 36 hours of training.\": \"36 hours\"\n        },\n        {\n          \"The baseline used 5,000K samples.\": \"5,000K samples\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This reduces the computational overhead for duplex models.\": \"To reduce overhead\"\n        },\n        {\n          \"It makes duplex capabilities more accessible.\": \"\"\n        }\n      ]\n    },\n    {\n      \"description\": \"DUO enhances the naturalness and human-likeness of interactions.\",\n      \"supporting_evidence\": [\n        {\n          \"MiniCPM-Duo shows superior human-likeness.\": \"superior human-likeness\"\n        },\n        {\n          \"It demonstrates superior responsiveness.\": \"superior responsiveness\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Factuality and faithfulness are comparable, not superior.\": \"comparable levels\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This improves the user experience.\": \"\"\n        },\n        {\n          \"It makes interactions more fluid.\": \"fluidity\"\n        }\n      ]\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares DUO with MiniCPM-Duplex trained on the same data scale.\": \"same scale dataset\"\n    },\n    {\n      \"MiniCPM-Duplex showed performance drops with smaller data.\": \"performances drop\"\n    },\n    {\n      \"DUO preserves original capabilities better.\": \"preserving the ability\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is the DUO decoding method.\": \"DUO approach\"\n    },\n    {\n      \"2. The strongest evidence is the minimal training cost.\": \"minimal training costs\"\n    },\n    {\n      \"3. The future path is extending to multimodal settings.\": \"multimodal settings\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6433,
+        "total_tokens": 8332,
+        "completion_tokens": 1899,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6433,
+      "elapsed_seconds": 162.17795994877815,
+      "max_tokens": 4096,
+      "seed": 2107784544,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ce9477d75b413f7001e8c00a2edc3c4caffae1d0ceba3f61946ef14bb54adf2e",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_context",
+        "research_question_and_hypothesis",
+        "procedures_and_architectures",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "robustness_and_ablation_notes",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_context": "evidence quote is not present in fulltext: To reduce overhead",
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: To reduce overhead",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: FlexAttention",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: preserving the ability",
+        "contradictions_and_limitations": "Evidence must be a nonempty <=5-word quote: contradictions_and_limitations[6]",
+        "claims": "evidence quote is not present in fulltext: To reduce overhead",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: preserving the ability",
+        "three_takeaways": "evidence quote is not present in fulltext: DUO approach"
+      }
+    },
+    {
+      "response": "{\n\"q0\": 12,\n\"q1\": \"drop\",\n\"q2\": 5,\n\"q3\": \"drop\",\n\"q4\": 0,\n\"q5\": \"drop\",\n\"q6\": \"drop\",\n\"q7\": 8\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8694,
+        "total_tokens": 8762,
+        "completion_tokens": 68,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8694,
+      "elapsed_seconds": 11.078661546111107,
+      "max_tokens": 2048,
+      "seed": 2107784639,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "232b1440060bf59e879eebb2fbb14ae0c685a576c8291d4a317c1c7ad479121c",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "research_context",
+            7
+          ],
+          "narrative": "The gap is the high overhead of acquiring duplex ability.",
+          "invalid_quote": "To reduce overhead",
+          "candidates": [
+            {
+              "quote": "ability. To re-\nduce overhead,",
+              "start": 873,
+              "end": 903
+            },
+            {
+              "quote": "duplex ability, requiring",
+              "start": 979,
+              "end": 1004
+            },
+            {
+              "quote": "with\nduplex ability,",
+              "start": 974,
+              "end": 994
+            },
+            {
+              "quote": "duplex ability, requiring minimal",
+              "start": 979,
+              "end": 1012
+            },
+            {
+              "quote": "with\nduplex ability, requiring",
+              "start": 974,
+              "end": 1004
+            },
+            {
+              "quote": "LLMs with\nduplex ability,",
+              "start": 969,
+              "end": 994
+            },
+            {
+              "quote": "duplex ability, requiring minimal additional",
+              "start": 979,
+              "end": 1023
+            },
+            {
+              "quote": "with\nduplex ability, requiring minimal",
+              "start": 974,
+              "end": 1012
+            },
+            {
+              "quote": "LLMs with\nduplex ability, requiring",
+              "start": 969,
+              "end": 1004
+            },
+            {
+              "quote": "enhances LLMs with\nduplex ability,",
+              "start": 960,
+              "end": 994
+            },
+            {
+              "quote": "overhead, this paper",
+              "start": 894,
+              "end": 914
+            },
+            {
+              "quote": "duce overhead, this",
+              "start": 889,
+              "end": 908
+            },
+            {
+              "quote": "re-\nduce overhead,",
+              "start": 885,
+              "end": 903
+            },
+            {
+              "quote": "overhead, this paper presents",
+              "start": 894,
+              "end": 923
+            },
+            {
+              "quote": "duce overhead, this paper",
+              "start": 889,
+              "end": 914
+            },
+            {
+              "quote": "re-\nduce overhead, this",
+              "start": 885,
+              "end": 908
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "research_question_and_hypothesis",
+            0
+          ],
+          "narrative": "The central research question is how to reduce the training overhead for duplex models.",
+          "invalid_quote": "To reduce overhead",
+          "candidates": [
+            {
+              "quote": "how the MiniCPM-Duplex",
+              "start": 14642,
+              "end": 14664
+            },
+            {
+              "quote": "how the MiniCPM-Duplex performs",
+              "start": 14642,
+              "end": 14673
+            },
+            {
+              "quote": "study how the MiniCPM-Duplex",
+              "start": 14636,
+              "end": 14664
+            },
+            {
+              "quote": "how the MiniCPM-Duplex performs\nwhen",
+              "start": 14642,
+              "end": 14678
+            },
+            {
+              "quote": "study how the MiniCPM-Duplex performs",
+              "start": 14636,
+              "end": 14673
+            },
+            {
+              "quote": "We study how the MiniCPM-Duplex",
+              "start": 14633,
+              "end": 14664
+            },
+            {
+              "quote": "models with duplex",
+              "start": 16140,
+              "end": 16158
+            },
+            {
+              "quote": "duplex models to",
+              "start": 2288,
+              "end": 2304
+            },
+            {
+              "quote": "proposed duplex models",
+              "start": 2279,
+              "end": 2301
+            },
+            {
+              "quote": "duplex models. These",
+              "start": 669,
+              "end": 689
+            },
+            {
+              "quote": "proposed duplex models.",
+              "start": 660,
+              "end": 683
+            },
+            {
+              "quote": "models with duplex capa-",
+              "start": 16140,
+              "end": 16164
+            },
+            {
+              "quote": "language models with duplex",
+              "start": 16131,
+              "end": 16158
+            },
+            {
+              "quote": "models with duplex abilities,",
+              "start": 15731,
+              "end": 15760
+            },
+            {
+              "quote": "equips models with duplex",
+              "start": 15724,
+              "end": 15749
+            },
+            {
+              "quote": "duplex models to\naddress",
+              "start": 2288,
+              "end": 2312
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "path": [
+            "research_question_and_hypothesis",
+            6
+          ],
+          "narrative": "The approach is expected to preserve the original model's capabilities.",
+          "invalid_quote": "preserving the ability",
+          "candidates": [
+            {
+              "quote": "model’s original capabilities",
+              "start": 14456,
+              "end": 14485
+            },
+            {
+              "quote": "model’s original capabilities\nto",
+              "start": 14456,
+              "end": 14488
+            },
+            {
+              "quote": "the model’s original capabilities",
+              "start": 14452,
+              "end": 14485
+            },
+            {
+              "quote": "model’s original capabilities\nto a",
+              "start": 14456,
+              "end": 14490
+            },
+            {
+              "quote": "the model’s original capabilities\nto",
+              "start": 14452,
+              "end": 14488
+            },
+            {
+              "quote": "preserves the model’s original capabilities",
+              "start": 14442,
+              "end": 14485
+            },
+            {
+              "quote": "the model’s original",
+              "start": 14452,
+              "end": 14472
+            },
+            {
+              "quote": "preserves the model’s original",
+              "start": 14442,
+              "end": 14472
+            },
+            {
+              "quote": "method preserves the model’s original",
+              "start": 14435,
+              "end": 14472
+            },
+            {
+              "quote": "original capabilities\nto",
+              "start": 14464,
+              "end": 14488
+            },
+            {
+              "quote": "original capabilities\nto a",
+              "start": 14464,
+              "end": 14490
+            },
+            {
+              "quote": "original capabilities\nto a greater",
+              "start": 14464,
+              "end": 14498
+            },
+            {
+              "quote": "original model. The",
+              "start": 7848,
+              "end": 7867
+            },
+            {
+              "quote": "the original model.",
+              "start": 7844,
+              "end": 7863
+            },
+            {
+              "quote": "original model. The training",
+              "start": 7848,
+              "end": 7876
+            },
+            {
+              "quote": "the original model. The",
+              "start": 7844,
+              "end": 7867
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "path": [
+            "procedures_and_architectures",
+            7
+          ],
+          "narrative": "The method uses FlexAttention for implementation.",
+          "invalid_quote": "FlexAttention",
+          "candidates": [
+            {
+              "quote": "uses the follow-",
+              "start": 9988,
+              "end": 10004
+            },
+            {
+              "quote": "MiniCPM-Duo uses the",
+              "start": 9976,
+              "end": 9996
+            },
+            {
+              "quote": "of MiniCPM-Duo uses",
+              "start": 9973,
+              "end": 9992
+            },
+            {
+              "quote": "uses the follow-\ning",
+              "start": 9988,
+              "end": 10008
+            },
+            {
+              "quote": "MiniCPM-Duo uses the follow-",
+              "start": 9976,
+              "end": 10004
+            },
+            {
+              "quote": "of MiniCPM-Duo uses the",
+              "start": 9973,
+              "end": 9996
+            },
+            {
+              "quote": "training of MiniCPM-Duo uses",
+              "start": 9964,
+              "end": 9992
+            },
+            {
+              "quote": "uses the follow-\ning hyperparameter:",
+              "start": 9988,
+              "end": 10024
+            },
+            {
+              "quote": "MiniCPM-Duo uses the follow-\ning",
+              "start": 9976,
+              "end": 10008
+            },
+            {
+              "quote": "of MiniCPM-Duo uses the follow-",
+              "start": 9973,
+              "end": 10004
+            },
+            {
+              "quote": "training of MiniCPM-Duo uses the",
+              "start": 9964,
+              "end": 9996
+            },
+            {
+              "quote": "The training of MiniCPM-Duo uses",
+              "start": 9960,
+              "end": 9992
+            },
+            {
+              "quote": "method that\nequips",
+              "start": 15712,
+              "end": 15730
+            },
+            {
+              "quote": "novel method that",
+              "start": 15706,
+              "end": 15723
+            },
+            {
+              "quote": "a novel method",
+              "start": 15704,
+              "end": 15718
+            },
+            {
+              "quote": "method preserves the",
+              "start": 14435,
+              "end": 14455
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "path": [
+            "interpretation_and_theoretical_implications",
+            1
+          ],
+          "narrative": "This approach preserves the original model's capabilities.",
+          "invalid_quote": "preserving the ability",
+          "candidates": [
+            {
+              "quote": "preserves the model’s original capabilities",
+              "start": 14442,
+              "end": 14485
+            },
+            {
+              "quote": "preserves the model’s original",
+              "start": 14442,
+              "end": 14472
+            },
+            {
+              "quote": "method preserves the model’s original",
+              "start": 14435,
+              "end": 14472
+            },
+            {
+              "quote": "model’s original capabilities",
+              "start": 14456,
+              "end": 14485
+            },
+            {
+              "quote": "model’s original capabilities\nto",
+              "start": 14456,
+              "end": 14488
+            },
+            {
+              "quote": "the model’s original capabilities",
+              "start": 14452,
+              "end": 14485
+            },
+            {
+              "quote": "model’s original capabilities\nto a",
+              "start": 14456,
+              "end": 14490
+            },
+            {
+              "quote": "the model’s original capabilities\nto",
+              "start": 14452,
+              "end": 14488
+            },
+            {
+              "quote": "preserves the model’s",
+              "start": 14442,
+              "end": 14463
+            },
+            {
+              "quote": "method preserves the model’s",
+              "start": 14435,
+              "end": 14463
+            },
+            {
+              "quote": "proposed\nmethod preserves the model’s",
+              "start": 14426,
+              "end": 14463
+            },
+            {
+              "quote": "the model’s original",
+              "start": 14452,
+              "end": 14472
+            },
+            {
+              "quote": "original capabilities\nto",
+              "start": 14464,
+              "end": 14488
+            },
+            {
+              "quote": "original capabilities\nto a",
+              "start": 14464,
+              "end": 14490
+            },
+            {
+              "quote": "original capabilities\nto a greater",
+              "start": 14464,
+              "end": 14498
+            },
+            {
+              "quote": "original model. The",
+              "start": 7848,
+              "end": 7867
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "path": [
+            "contradictions_and_limitations",
+            6
+          ],
+          "narrative": "The study does not report random seeds.",
+          "invalid_quote": "",
+          "candidates": [
+            {
+              "quote": "does Southgate \nCollege",
+              "start": 12300,
+              "end": 12323
+            },
+            {
+              "quote": "how does Southgate",
+              "start": 12296,
+              "end": 12314
+            },
+            {
+              "quote": "... how does",
+              "start": 12292,
+              "end": 12304
+            },
+            {
+              "quote": "does Southgate College",
+              "start": 12261,
+              "end": 12283
+            },
+            {
+              "quote": "idle\nhow does",
+              "start": 12252,
+              "end": 12265
+            },
+            {
+              "quote": "does not in-",
+              "start": 8310,
+              "end": 8322
+            },
+            {
+              "quote": "DUO does not",
+              "start": 8306,
+              "end": 8318
+            },
+            {
+              "quote": "Importantly, DUO does",
+              "start": 8293,
+              "end": 8314
+            },
+            {
+              "quote": "does not address.",
+              "start": 8061,
+              "end": 8078
+            },
+            {
+              "quote": "MiniCPM-Duplex does not",
+              "start": 8046,
+              "end": 8069
+            },
+            {
+              "quote": "that MiniCPM-Duplex does",
+              "start": 8041,
+              "end": 8065
+            },
+            {
+              "quote": "does Southgate \nCollege ensure",
+              "start": 12300,
+              "end": 12330
+            },
+            {
+              "quote": "how does Southgate \nCollege",
+              "start": 12296,
+              "end": 12323
+            },
+            {
+              "quote": "... how does Southgate",
+              "start": 12292,
+              "end": 12314
+            },
+            {
+              "quote": "ensure \n... how does",
+              "start": 12284,
+              "end": 12304
+            },
+            {
+              "quote": "does Southgate College ensure",
+              "start": 12261,
+              "end": 12290
+            }
+          ]
+        },
+        {
+          "id": "q6",
+          "path": [
+            "contradictions_and_limitations",
+            7
+          ],
+          "narrative": "The study does not report detailed demographic data of evaluators.",
+          "invalid_quote": "",
+          "candidates": [
+            {
+              "quote": "does Southgate \nCollege",
+              "start": 12300,
+              "end": 12323
+            },
+            {
+              "quote": "how does Southgate",
+              "start": 12296,
+              "end": 12314
+            },
+            {
+              "quote": "... how does",
+              "start": 12292,
+              "end": 12304
+            },
+            {
+              "quote": "does Southgate College",
+              "start": 12261,
+              "end": 12283
+            },
+            {
+              "quote": "idle\nhow does",
+              "start": 12252,
+              "end": 12265
+            },
+            {
+              "quote": "does not in-",
+              "start": 8310,
+              "end": 8322
+            },
+            {
+              "quote": "DUO does not",
+              "start": 8306,
+              "end": 8318
+            },
+            {
+              "quote": "Importantly, DUO does",
+              "start": 8293,
+              "end": 8314
+            },
+            {
+              "quote": "does not address.",
+              "start": 8061,
+              "end": 8078
+            },
+            {
+              "quote": "MiniCPM-Duplex does not",
+              "start": 8046,
+              "end": 8069
+            },
+            {
+              "quote": "that MiniCPM-Duplex does",
+              "start": 8041,
+              "end": 8065
+            },
+            {
+              "quote": "does Southgate \nCollege ensure",
+              "start": 12300,
+              "end": 12330
+            },
+            {
+              "quote": "how does Southgate \nCollege",
+              "start": 12296,
+              "end": 12323
+            },
+            {
+              "quote": "... how does Southgate",
+              "start": 12292,
+              "end": 12314
+            },
+            {
+              "quote": "ensure \n... how does",
+              "start": 12284,
+              "end": 12304
+            },
+            {
+              "quote": "does Southgate College ensure",
+              "start": 12261,
+              "end": 12290
+            }
+          ]
+        },
+        {
+          "id": "q7",
+          "path": [
+            "robustness_and_ablation_notes",
+            2
+          ],
+          "narrative": "DUO preserves original capabilities better.",
+          "invalid_quote": "preserving the ability",
+          "candidates": [
+            {
+              "quote": "preserves the model’s original capabilities",
+              "start": 14442,
+              "end": 14485
+            },
+            {
+              "quote": "preserves the model’s original",
+              "start": 14442,
+              "end": 14472
+            },
+            {
+              "quote": "method preserves the model’s original",
+              "start": 14435,
+              "end": 14472
+            },
+            {
+              "quote": "original capabilities\nto",
+              "start": 14464,
+              "end": 14488
+            },
+            {
+              "quote": "model’s original capabilities",
+              "start": 14456,
+              "end": 14485
+            },
+            {
+              "quote": "original capabilities\nto a",
+              "start": 14464,
+              "end": 14490
+            },
+            {
+              "quote": "model’s original capabilities\nto",
+              "start": 14456,
+              "end": 14488
+            },
+            {
+              "quote": "the model’s original capabilities",
+              "start": 14452,
+              "end": 14485
+            },
+            {
+              "quote": "original capabilities\nto a greater",
+              "start": 14464,
+              "end": 14498
+            },
+            {
+              "quote": "model’s original capabilities\nto a",
+              "start": 14456,
+              "end": 14490
+            },
+            {
+              "quote": "the model’s original capabilities\nto",
+              "start": 14452,
+              "end": 14488
+            },
+            {
+              "quote": "preserves the model’s",
+              "start": 14442,
+              "end": 14463
+            },
+            {
+              "quote": "method preserves the",
+              "start": 14435,
+              "end": 14455
+            },
+            {
+              "quote": "proposed\nmethod preserves",
+              "start": 14426,
+              "end": 14451
+            },
+            {
+              "quote": "preserving the abil-",
+              "start": 7815,
+              "end": 7835
+            },
+            {
+              "quote": "thereby preserving the",
+              "start": 7807,
+              "end": 7829
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    },
+    {
+      "response": "{\n\"q0\": 5,\n\"q1\": \"drop\",\n\"q2\": \"drop\",\n\"q3\": 3,\n\"q4\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7205,
+        "total_tokens": 7249,
+        "completion_tokens": 44,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7205,
+      "elapsed_seconds": 16.506056636571884,
+      "max_tokens": 2048,
+      "seed": 2107784640,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "70094c2a3a377f27fc3e45baba4be27ca5c95ce51c58cfc5c46c6f3bae994c4a",
+      "phase": "source_anchor_selection",
+      "attempt": 8,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "three_takeaways",
+            0
+          ],
+          "narrative": "1. The core contribution is the DUO decoding method.",
+          "invalid_quote": "DUO approach",
+          "candidates": [
+            {
+              "quote": "decOding (DUO) approach,",
+              "start": 3141,
+              "end": 3165
+            },
+            {
+              "quote": "decOding (DUO) approach, a",
+              "start": 3141,
+              "end": 3167
+            },
+            {
+              "quote": "DUplex decOding (DUO) approach,",
+              "start": 3134,
+              "end": 3165
+            },
+            {
+              "quote": "decOding (DUO) approach, a\nnovel",
+              "start": 3141,
+              "end": 3173
+            },
+            {
+              "quote": "DUplex decOding (DUO) approach, a",
+              "start": 3134,
+              "end": 3167
+            },
+            {
+              "quote": "a DUplex decOding (DUO) approach,",
+              "start": 3132,
+              "end": 3165
+            },
+            {
+              "quote": "decoding approach that",
+              "start": 937,
+              "end": 959
+            },
+            {
+              "quote": "duplex\ndecoding approach",
+              "start": 930,
+              "end": 954
+            },
+            {
+              "quote": "decoding approach that enhances",
+              "start": 937,
+              "end": 968
+            },
+            {
+              "quote": "duplex\ndecoding approach that",
+              "start": 930,
+              "end": 959
+            },
+            {
+              "quote": "new duplex\ndecoding approach",
+              "start": 926,
+              "end": 954
+            },
+            {
+              "quote": "decoding approach that enhances LLMs",
+              "start": 937,
+              "end": 973
+            },
+            {
+              "quote": "duplex\ndecoding approach that enhances",
+              "start": 930,
+              "end": 968
+            },
+            {
+              "quote": "new duplex\ndecoding approach that",
+              "start": 926,
+              "end": 959
+            },
+            {
+              "quote": "a new duplex\ndecoding approach",
+              "start": 924,
+              "end": 954
+            },
+            {
+              "quote": "(DUO) approach, a",
+              "start": 3150,
+              "end": 3167
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "claims",
+            0,
+            "implications",
+            0
+          ],
+          "narrative": "This reduces the computational overhead for duplex models.",
+          "invalid_quote": "To reduce overhead",
+          "candidates": [
+            {
+              "quote": "MiniCPM-Duplex requires substantial\ncomputational",
+              "start": 14295,
+              "end": 14344
+            },
+            {
+              "quote": "MiniCPM-Duplex requires substantial\ncomputational resources",
+              "start": 14295,
+              "end": 14354
+            },
+            {
+              "quote": "that MiniCPM-Duplex requires substantial\ncomputational",
+              "start": 14290,
+              "end": 14344
+            },
+            {
+              "quote": "models with duplex",
+              "start": 16140,
+              "end": 16158
+            },
+            {
+              "quote": "duplex models to",
+              "start": 2288,
+              "end": 2304
+            },
+            {
+              "quote": "proposed duplex models",
+              "start": 2279,
+              "end": 2301
+            },
+            {
+              "quote": "duplex models. These",
+              "start": 669,
+              "end": 689
+            },
+            {
+              "quote": "proposed duplex models.",
+              "start": 660,
+              "end": 683
+            },
+            {
+              "quote": "models with duplex capa-",
+              "start": 16140,
+              "end": 16164
+            },
+            {
+              "quote": "language models with duplex",
+              "start": 16131,
+              "end": 16158
+            },
+            {
+              "quote": "models with duplex abilities,",
+              "start": 15731,
+              "end": 15760
+            },
+            {
+              "quote": "equips models with duplex",
+              "start": 15724,
+              "end": 15749
+            },
+            {
+              "quote": "duplex models to\naddress",
+              "start": 2288,
+              "end": 2312
+            },
+            {
+              "quote": "proposed duplex models to",
+              "start": 2279,
+              "end": 2304
+            },
+            {
+              "quote": "have proposed duplex models",
+              "start": 2274,
+              "end": 2301
+            },
+            {
+              "quote": "duplex models. These models",
+              "start": 669,
+              "end": 696
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "path": [
+            "claims",
+            0,
+            "implications",
+            1
+          ],
+          "narrative": "It makes duplex capabilities more accessible.",
+          "invalid_quote": "",
+          "candidates": [
+            {
+              "quote": "duplex capabilities. Our",
+              "start": 3238,
+              "end": 3262
+            },
+            {
+              "quote": "with duplex capabilities.",
+              "start": 3233,
+              "end": 3258
+            },
+            {
+              "quote": "duplex capabilities. Our ap-",
+              "start": 3238,
+              "end": 3266
+            },
+            {
+              "quote": "with duplex capabilities. Our",
+              "start": 3233,
+              "end": 3262
+            },
+            {
+              "quote": "LLMs with duplex capabilities.",
+              "start": 3228,
+              "end": 3258
+            },
+            {
+              "quote": "duplex capabilities. Our ap-\nproach",
+              "start": 3238,
+              "end": 3273
+            },
+            {
+              "quote": "with duplex capabilities. Our ap-",
+              "start": 3233,
+              "end": 3266
+            },
+            {
+              "quote": "LLMs with duplex capabilities. Our",
+              "start": 3228,
+              "end": 3262
+            },
+            {
+              "quote": "equips LLMs with duplex capabilities.",
+              "start": 3221,
+              "end": 3258
+            },
+            {
+              "quote": "more, if the",
+              "start": 4774,
+              "end": 4786
+            },
+            {
+              "quote": "Further-\nmore, if",
+              "start": 4765,
+              "end": 4782
+            },
+            {
+              "quote": "input. Further-\nmore,",
+              "start": 4758,
+              "end": 4779
+            },
+            {
+              "quote": "more, if the user",
+              "start": 4774,
+              "end": 4791
+            },
+            {
+              "quote": "Further-\nmore, if the",
+              "start": 4765,
+              "end": 4786
+            },
+            {
+              "quote": "input. Further-\nmore, if",
+              "start": 4758,
+              "end": 4782
+            },
+            {
+              "quote": "non-query input. Further-\nmore,",
+              "start": 4748,
+              "end": 4779
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "path": [
+            "claims",
+            1,
+            "supporting_evidence",
+            0
+          ],
+          "narrative": "MiniCPM-Duo shows superior human-likeness.",
+          "invalid_quote": "superior human-likeness",
+          "candidates": [
+            {
+              "quote": "Human-likeness\nFactuality\nFaithfulness\nOverall\nMiniCPM-Duo",
+              "start": 10123,
+              "end": 10181
+            },
+            {
+              "quote": "superior\nresponsiveness and human-likeness",
+              "start": 13347,
+              "end": 13389
+            },
+            {
+              "quote": "superior\nresponsiveness and human-likeness compared",
+              "start": 13347,
+              "end": 13398
+            },
+            {
+              "quote": "demonstrates superior\nresponsiveness and human-likeness",
+              "start": 13334,
+              "end": 13389
+            },
+            {
+              "quote": "MiniCPM-Duo demonstrates superior",
+              "start": 13322,
+              "end": 13355
+            },
+            {
+              "quote": "MiniCPM-Duo demonstrates superior\nresponsiveness",
+              "start": 13322,
+              "end": 13370
+            },
+            {
+              "quote": "2. MiniCPM-Duo demonstrates superior",
+              "start": 13319,
+              "end": 13355
+            },
+            {
+              "quote": "MiniCPM-Duo demonstrates superior\nresponsiveness and",
+              "start": 13322,
+              "end": 13374
+            },
+            {
+              "quote": "2. MiniCPM-Duo demonstrates superior\nresponsiveness",
+              "start": 13319,
+              "end": 13370
+            },
+            {
+              "quote": "Figure 2. MiniCPM-Duo demonstrates superior",
+              "start": 13312,
+              "end": 13355
+            },
+            {
+              "quote": "human-likeness compared to\nMiniCPM-Duplex,",
+              "start": 13375,
+              "end": 13417
+            },
+            {
+              "quote": "human-likeness compared to\nMiniCPM-Duplex, while",
+              "start": 13375,
+              "end": 13423
+            },
+            {
+              "quote": "and human-likeness compared to\nMiniCPM-Duplex,",
+              "start": 13371,
+              "end": 13417
+            },
+            {
+              "quote": "MiniCPM-Duplex on responsiveness, human-\nlikeness,",
+              "start": 10268,
+              "end": 10318
+            },
+            {
+              "quote": "human-likeness compared to",
+              "start": 13375,
+              "end": 13401
+            },
+            {
+              "quote": "and human-likeness compared",
+              "start": 13371,
+              "end": 13398
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "path": [
+            "claims",
+            1,
+            "implications",
+            0
+          ],
+          "narrative": "This improves the user experience.",
+          "invalid_quote": "",
+          "candidates": [
+            {
+              "quote": "experience.\nWe have",
+              "start": 9028,
+              "end": 9047
+            },
+            {
+              "quote": "interactive experience.\nWe",
+              "start": 9016,
+              "end": 9042
+            },
+            {
+              "quote": "the interactive experience.",
+              "start": 9012,
+              "end": 9039
+            },
+            {
+              "quote": "experience (Hill et",
+              "start": 1805,
+              "end": 1824
+            },
+            {
+              "quote": "interactive experience (Hill",
+              "start": 1793,
+              "end": 1821
+            },
+            {
+              "quote": "the interactive experience",
+              "start": 1789,
+              "end": 1815
+            },
+            {
+              "quote": "experience is important.",
+              "start": 1711,
+              "end": 1735
+            },
+            {
+              "quote": "interaction experience is",
+              "start": 1699,
+              "end": 1724
+            },
+            {
+              "quote": "these interaction experience",
+              "start": 1693,
+              "end": 1721
+            },
+            {
+              "quote": "experience.\nWe have adapted",
+              "start": 9028,
+              "end": 9055
+            },
+            {
+              "quote": "interactive experience.\nWe have",
+              "start": 9016,
+              "end": 9047
+            },
+            {
+              "quote": "the interactive experience.\nWe",
+              "start": 9012,
+              "end": 9042
+            },
+            {
+              "quote": "enhance the interactive experience.",
+              "start": 9004,
+              "end": 9039
+            },
+            {
+              "quote": "experience (Hill et al.,",
+              "start": 1805,
+              "end": 1829
+            },
+            {
+              "quote": "interactive experience (Hill et",
+              "start": 1793,
+              "end": 1824
+            },
+            {
+              "quote": "the interactive experience (Hill",
+              "start": 1789,
+              "end": 1821
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6525,
+  "elapsed_seconds": 1209.8223978430033,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "contradictions_and_limitations",
+        7
+      ],
+      "entry": {
+        "The study does not report detailed demographic data of evaluators.": ""
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "contradictions_and_limitations",
+        6
+      ],
+      "entry": {
+        "The study does not report random seeds.": ""
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "procedures_and_architectures",
+        7
+      ],
+      "entry": {
+        "The method uses FlexAttention for implementation.": "FlexAttention"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "research_question_and_hypothesis",
+        0
+      ],
+      "entry": {
+        "The central research question is how to reduce the training overhead for duplex models.": "To reduce overhead"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "claims",
+        1,
+        "implications",
+        0
+      ],
+      "entry": {
+        "This improves the user experience.": ""
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "claims",
+        0,
+        "implications",
+        1
+      ],
+      "entry": {
+        "It makes duplex capabilities more accessible.": ""
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "claims",
+        0,
+        "implications",
+        0
+      ],
+      "entry": {
+        "This reduces the computational overhead for duplex models.": "To reduce overhead"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "robustness_and_ablation_notes",
+        2
+      ],
+      "quote": "original capabilities\nto a greater",
+      "start": 14464,
+      "end": 14498
+    },
+    {
+      "path": [
+        "interpretation_and_theoretical_implications",
+        1
+      ],
+      "quote": "preserves the model’s original capabilities",
+      "start": 14442,
+      "end": 14485
+    },
+    {
+      "path": [
+        "research_question_and_hypothesis",
+        6
+      ],
+      "quote": "preserves the model’s original capabilities",
+      "start": 14442,
+      "end": 14485
+    },
+    {
+      "path": [
+        "research_context",
+        7
+      ],
+      "quote": "re-\nduce overhead,",
+      "start": 885,
+      "end": 903
+    },
+    {
+      "path": [
+        "claims",
+        1,
+        "supporting_evidence",
+        0
+      ],
+      "quote": "demonstrates superior\nresponsiveness and human-likeness",
+      "start": 13334,
+      "end": 13389
+    },
+    {
+      "path": [
+        "three_takeaways",
+        0
+      ],
+      "quote": "a DUplex decOding (DUO) approach,",
+      "start": 3132,
+      "end": 3165
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

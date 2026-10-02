@@ -1,0 +1,1330 @@
+{
+  "document_id": "bethgelab-10021",
+  "fulltext_sha256": "2446e0dd5be16da1204fedf141879b6bdebf78065b128fc9678b60c6503d9536",
+  "summary": {
+    "title": "A Workflow for Identifying Viable Crystal Structures with Partially Occupied Sites Applied to Solid Electrolyte: Cubic Li 7 La 3 Zr 2 O 12",
+    "authors": "Julian Holland; Tom Demeyere; Arihant Bhandari; Felix Hanke; Victor Milman; Chris-Kriton Skylaris",
+    "field_subfield": "Materials Science; Solid State Chemistry",
+    "type_of_paper": "Computational Study / Methodology",
+    "executive_summary": "This study addresses the lack of consensus regarding the ground state configuration of cubic Li7La3Zr2O12 (c-LLZO), a prominent solid electrolyte candidate. Previous experimental and theoretical works have failed to identify the stable structure due to the vast combinatorial space of possible Li site occupancies. The authors present a novel methodology to identify energetically favorable configurations by systematically generating and ranking all possible structures. The workflow begins by eliminating physically impossible structures where Li atoms overlap, using a minimum Li-Li distance constraint of 1.7 Å. This geometric constraint significantly reduces the configuration space by limiting the possible 24d:96h site ratios. Further reduction is achieved by removing symmetry-equivalent duplicates using local sensitive hashing (LSH), which scales linearly with the number of structures. The remaining unique structures are then energetically ordered using a machine learning model, specifically a multiple linear regression (MLR) trained on Density Functional Theory (DFT) data. The DFT calculations were performed using the ONETEP code with the PBE functional. The study finds that the lowest energy structures predominantly feature an 8:48 ratio of 24d to 96h site occupancy. Four structures are identified within 0.026 eV of the global minimum energy. The authors demonstrate that a large portion of previously reported structures in the literature may not be feasible or stable due to violating the minimum Li-Li distance constraint. The generated structures are made available in a public database to improve reproducibility and accuracy in future c-LLZO research. This work provides a robust framework for identifying viable crystal structures in materials with partially occupied sites, extending beyond c-LLZO to other ion conductors.",
+    "research_context": [
+      {
+        "Experimental and theoretical works have failed to uncover the ground state configuration of cubic Li7La3Zr2O12.": "unable to uncover"
+      },
+      {
+        "Computational studies typically rely on an initial low-energy structure as a reference point.": "initial low-energy structure"
+      },
+      {
+        "There is no consensus on the Li occupancy of c-LLZO in the literature.": "no consensus"
+      },
+      {
+        "Previous studies often use experimental values as starting points for idealised unit cells.": "starting point"
+      },
+      {
+        "The range of predicted structures indicates disagreement about the ground state.": "disagreement about the ground state"
+      },
+      {
+        "Without knowing if structures are close to the ground state, properties may not be well described.": "not be well described"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to find and rank all possible Li site occupancies for c-LLZO.": "find and rank"
+      },
+      {
+        "The authors intend to produce all possible structures of a c-LLZO unit cell.": "produce all possible structures"
+      },
+      {
+        "They seek to ascertain if there is a significant energy difference in structure choice.": "significant energy difference"
+      },
+      {
+        "The study hopes to elicit if structural properties like 24d:96h ratio indicate energy.": "indicative of a structure's energy"
+      },
+      {
+        "The methodology aims to identify energetically favourable configurations of c-LLZO.": "energetically favourable configurations"
+      },
+      {
+        "The method is designed to be extended to other ion conductors.": "extended to other ion conductors"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The total number of ways to populate 120 sites with 56 Li is approximately 7.4 × 10^34.": "7.4 × 10 34"
+      },
+      {
+        "A brute-force combinatorial method is unviable due to this large number.": "brute-force combinatorial method"
+      },
+      {
+        "Structures with overlapping Li atoms are eliminated using a minimal Li-Li distance.": "eliminating all overlapping Li atoms"
+      },
+      {
+        "The chosen minimal Li-Li distance is 1.7 Å.": "1.7 Å"
+      },
+      {
+        "This distance is less than 2 times the ionic radius of a Li atom.": "2 times the ionic radius"
+      },
+      {
+        "The 48g site is neglected as it is not reported in most refinements.": "include the 48g site"
+      },
+      {
+        "The crystal structure sites reported by Buschmann et al. are used as the framework.": "Buschmann et al."
+      },
+      {
+        "The total number of generated structures is approximately 2.3 × 10^8.": "2.3 × 10 8"
+      },
+      {
+        "Symmetry-equivalent duplicates are removed using local sensitive hashing (LSH).": "local sensitive hashing"
+      },
+      {
+        "LSH optimizes pairwise comparison from O(N^2) to O(N).": "O(N 2 )"
+      },
+      {
+        "Only approximately 1% of structures are symmetrically unique.": "approximately 1%"
+      },
+      {
+        "The configuration space is reduced to around 2 × 10^6 structures.": "2 × 10 6 structures"
+      },
+      {
+        "DFT calculations were performed on 1235 single point structures.": "1235 single point DFT"
+      },
+      {
+        "The first subset consisted of the 200 energetically lowest structures according to COMPASSIII.": "200 energetically lowest"
+      },
+      {
+        "The second subset was a random selection of approximately 1000 structures.": "random selection of approximately 1000"
+      },
+      {
+        "DFT calculations were performed with the ONETEP code.": "ONETEP code"
+      },
+      {
+        "The PBE GGA exchange correlation functional was used.": "PBE GGA"
+      },
+      {
+        "A kinetic energy cutoff of 830 eV was applied.": "830 eV"
+      },
+      {
+        "A multiple linear regression (MLR) model was fitted to the DFT energies.": "multiple linear regression"
+      },
+      {
+        "Structures were represented by a frequency occurrence list of Li-Li interactions.": "frequency occurrence list"
+      },
+      {
+        "Data were split into test and training sets with a 1:3 ratio.": "1:3 ratio"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "All possible 24d permutations are generated for a given 24d occupancy.": "generate all possible 24d permutations"
+      },
+      {
+        "Directly neighbouring 96h sites are eliminated from consideration.": "eliminating directly neighbouring 96h sites"
+      },
+      {
+        "Remaining 96h sites are populated such that no two nearest neighbours are occupied.": "no two nearest neighbours"
+      },
+      {
+        "An upper triangular connectivity matrix of the Li sub-lattice is constructed.": "upper triangular connectivity matrix"
+      },
+      {
+        "The matrix is flattened and sorted to ensure uniformity.": "flattened and sorted"
+      },
+      {
+        "LSH is used to perform fast approximate similarity searches.": "fast approximate similarity searches"
+      },
+      {
+        "The method is limited to comparison of monoatomic sub-lattices with predefined positions.": "monoatomic sub-lattices"
+      },
+      {
+        "The method was validated for 13:43 and 12:44 ratios.": "13:43 and 12:44 ratios"
+      },
+      {
+        "DFT calculations were performed on small subsets to fit the MLR model.": "small subsets"
+      },
+      {
+        "The COMPASSIII forcefield was used to pre-select the lowest energy structures.": "COMPASSIII forcefield"
+      },
+      {
+        "ONETEP was used for DFT calculations with linear scaling.": "scales linearly"
+      },
+      {
+        "CASTEP on-the-fly generated pseudopotentials were used.": "CASTEP on-the-fly"
+      },
+      {
+        "Geometry optimisation calculations were performed on the final four structures.": "geometry optimisation calculations"
+      },
+      {
+        "Broyder-Fletcher-Goldfarb-Shanno (BFGS) was used for geometry optimisation.": "BFGS"
+      }
+    ],
+    "key_results": [
+      {
+        "The MLR model achieved a correlation of 0.9996 on the test set.": "0.9996"
+      },
+      {
+        "All structures occur within a range of 5.8 eV of the lowest energy structure.": "5.8 eV"
+      },
+      {
+        "19 out of the 20 lowest energy structures have a ratio of 8:48.": "19 out of the 20"
+      },
+      {
+        "The 19th lowest energy structure has a ratio of 9:47.": "9:47"
+      },
+      {
+        "The average energy for all structures is 1.47 eV higher than the ground state.": "1.47 eV"
+      },
+      {
+        "The average energy for each ratio increases with increasing 24d occupancy.": "increases with increasing 24d occupancy"
+      },
+      {
+        "There is an energetic preference to avoid 24d occupation where possible.": "avoid 24d occupation"
+      },
+      {
+        "Four structures, all 8:48, are within 0.026 eV of the lowest energy structure.": "0.026 eV"
+      },
+      {
+        "The four lowest energy structures have very similar atomic coordinates.": "very similar atomic coordinates"
+      },
+      {
+        "All four lowest structures have the same 24d configuration.": "same 24d configuration"
+      },
+      {
+        "Only slight variations exist in the 96h configuration of the lowest structures.": "slight variations in the 96h"
+      },
+      {
+        "Geometry optimisation narrows the energy gap between the final four structures.": "energy gap between them narrows"
+      },
+      {
+        "A large proportion of experimental and theoretical literature structures are not feasible.": "not reflective of a real"
+      },
+      {
+        "The 96h to 24d transition yielded the lowest overall energy structure.": "lowest overall energy structure"
+      },
+      {
+        "This lowest energy structure was 0.58 eV lower than the single point minimum.": "0.58 eV lower"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The methodology enables the isolation of low-energy structures for crystallographically predicted structures.": "isolation of low-energy structures"
+      },
+      {
+        "Geometrical constraints from the methodology determine that many reported structures may not be feasible.": "may not be feasible"
+      },
+      {
+        "The method can be extended to other ion conductors and partially occupied crystals.": "extended to other ion conductors"
+      },
+      {
+        "Providing all structures aims to improve accuracy and reproducibility in c-LLZO research.": "improve accuracy and reproducibility"
+      },
+      {
+        "The study highlights that a large portion of literature structures are not reflective of real systems.": "not reflective of a real"
+      },
+      {
+        "The workflow provides a fast evaluation procedure for crystals with partially occupied sites.": "fast evaluation procedure"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The energetic ordering procedure does not include entropic contributions.": "does not include entropic contributions"
+      },
+      {
+        "The study assumes a reasonable retention of ordering upon geometry relaxation.": "retention of ordering"
+      },
+      {
+        "A large-scale energy prediction of geometry optimised structures is outside the scope.": "outside the scope"
+      },
+      {
+        "The LSH method is limited to monoatomic sub-lattices with predefined positions.": "limited to comparison of monoatomic"
+      },
+      {
+        "The trade-off for increased speed is the high specificity of the method.": "high specificity of the method"
+      },
+      {
+        "COMPASSIII predicts a more pronounced separation of energies than ONETEP.": "more pronounced separation"
+      },
+      {
+        "The issue with COMPASSIII was considered too large to surmount in this paper.": "too large to surmount"
+      },
+      {
+        "The choice of initial structure in previous studies was mostly for convenience.": "mostly for convenience"
+      },
+      {
+        "Coulombic forces alone are not sufficient to energetically order c-LLZO structures.": "not sufficient to energetically order"
+      }
+    ],
+    "claims": [
+      {
+        "description": "A significant portion of previously reported c-LLZO structures are not physically feasible due to Li-Li overlap.",
+        "supporting_evidence": [
+          {
+            "The study eliminates structures involving overlapping Li atoms.": "eliminating structures that involve"
+          },
+          {
+            "A minimal Li-Li distance of 1.7 Å is imposed.": "1.7 Å"
+          },
+          {
+            "A large portion of literature structures may not be feasible.": "may not be feasible"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Some literature structures might be valid if dopants are considered.": "dopants on 24d sites"
+          }
+        ],
+        "implications": [
+          {
+            "Future research should verify structures against this geometric constraint.": "improve accuracy and reproducibility"
+          }
+        ]
+      },
+      {
+        "description": "The 8:48 ratio of 24d to 96h site occupancy is energetically preferred.",
+        "supporting_evidence": [
+          {
+            "19 of the 20 lowest energy structures have an 8:48 ratio.": "19 out of the 20"
+          },
+          {
+            "Average energy increases with increasing 24d occupancy.": "increases with increasing 24d occupancy"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "One of the lowest structures has a 9:47 ratio.": "9:47"
+          }
+        ],
+        "implications": [
+          {
+            "This ratio should be prioritized in future computational studies.": "energetic preference to avoid 24d"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "All structures generated are published in a freely accessible database.": "freely accessible database"
+      },
+      {
+        "The database aims to improve accuracy and reproducibility in c-LLZO research.": "improve accuracy and reproducibility"
+      },
+      {
+        "Scripts for symmetry checking are provided with the database.": "Both scripts are provided"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "The symmetry checking method was validated against ASE for 12:44 and 13:43 ratios.": "validated this method"
+      },
+      {
+        "The same number of structures were produced using both methods.": "same number of structures"
+      },
+      {
+        "Including symmetry in the MLR model made a negligible difference.": "negligible difference"
+      },
+      {
+        "Geometry relaxation was tested on a small dataset of 20 structures.": "20 structures"
+      },
+      {
+        "A negative correlation was found between distance moved and final energy.": "negative correlation"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the 24d:96h ratios that cannot exist without Li-Li interaction.": "cannot exist without"
+      },
+      {
+        "Figure 2b shows the energy distribution of structures.": "Figure 2b"
+      },
+      {
+        "Figure 3 shows the workflow to find the 4 final structures.": "Figure 3"
+      },
+      {
+        "Table 1 gives the number of structures for each 24d:96h ratio.": "Table 1"
+      },
+      {
+        "Figure S3 compares DFT energies to COMPASSIII predictions.": "Figure S3"
+      },
+      {
+        "Figure S4 shows the energy of a Li Dimer with changing distance.": "Figure S4"
+      },
+      {
+        "Figure S5 plots MLR energies against space group order.": "Figure S5"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a workflow to identify viable crystal structures with partially occupied sites.": "Viable Crystal Structures"
+      },
+      {
+        "2. The strongest evidence is the identification of four low-energy structures with an 8:48 ratio.": "four structures, all 8:48"
+      },
+      {
+        "3. The future path is the extension of this method to other ion conductors.": "extended to other ion conductors"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis study addresses the lack of consensus regarding the ground state configuration of cubic Li7La3Zr2O12 (c-LLZO), a prominent solid electrolyte candidate. Previous experimental and theoretical works have failed to identify the stable structure due to the vast combinatorial space of possible Li site occupancies. The authors present a novel methodology to identify energetically favorable configurations by systematically generating and ranking all possible structures. The workflow begins by eliminating physically impossible structures where Li atoms overlap, using a minimum Li-Li distance constraint of 1.7 Å. This geometric constraint significantly reduces the configuration space by limiting the possible 24d:96h site ratios. Further reduction is achieved by removing symmetry-equivalent duplicates using local sensitive hashing (LSH), which scales linearly with the number of structures. The remaining unique structures are then energetically ordered using a machine learning model, specifically a multiple linear regression (MLR) trained on Density Functional Theory (DFT) data. The DFT calculations were performed using the ONETEP code with the PBE functional. The study finds that the lowest energy structures predominantly feature an 8:48 ratio of 24d to 96h site occupancy. Four structures are identified within 0.026 eV of the global minimum energy. The authors demonstrate that a large portion of previously reported structures in the literature may not be feasible or stable due to violating the minimum Li-Li distance constraint. The generated structures are made available in a public database to improve reproducibility and accuracy in future c-LLZO research. This work provides a robust framework for identifying viable crystal structures in materials with partially occupied sites, extending beyond c-LLZO to other ion conductors.\n\nResearch Context\nExperimental and theoretical works have failed to uncover the ground state configuration of cubic Li7La3Zr2O12. Computational studies typically rely on an initial low-energy structure as a reference point. There is no consensus on the Li occupancy of c-LLZO in the literature. Previous studies often use experimental values as starting points for idealised unit cells. The range of predicted structures indicates disagreement about the ground state. Without knowing if structures are close to the ground state, properties may not be well described.\n\nResearch Question And Hypothesis\nThe study aims to find and rank all possible Li site occupancies for c-LLZO. The authors intend to produce all possible structures of a c-LLZO unit cell. They seek to ascertain if there is a significant energy difference in structure choice. The study hopes to elicit if structural properties like 24d:96h ratio indicate energy. The methodology aims to identify energetically favourable configurations of c-LLZO. The method is designed to be extended to other ion conductors.\n\nMethodological Details\nThe total number of ways to populate 120 sites with 56 Li is approximately 7.4 × 10^34. A brute-force combinatorial method is unviable due to this large number. Structures with overlapping Li atoms are eliminated using a minimal Li-Li distance. The chosen minimal Li-Li distance is 1.7 Å. This distance is less than 2 times the ionic radius of a Li atom. The 48g site is neglected as it is not reported in most refinements. The crystal structure sites reported by Buschmann et al. are used as the framework. The total number of generated structures is approximately 2.3 × 10^8. Symmetry-equivalent duplicates are removed using local sensitive hashing (LSH). LSH optimizes pairwise comparison from O(N^2) to O(N). Only approximately 1% of structures are symmetrically unique. The configuration space is reduced to around 2 × 10^6 structures. DFT calculations were performed on 1235 single point structures. The first subset consisted of the 200 energetically lowest structures according to COMPASSIII. The second subset was a random selection of approximately 1000 structures. DFT calculations were performed with the ONETEP code. The PBE GGA exchange correlation functional was used. A kinetic energy cutoff of 830 eV was applied. A multiple linear regression (MLR) model was fitted to the DFT energies. Structures were represented by a frequency occurrence list of Li-Li interactions. Data were split into test and training sets with a 1:3 ratio.\n\nProcedures And Architectures\nAll possible 24d permutations are generated for a given 24d occupancy. Directly neighbouring 96h sites are eliminated from consideration. Remaining 96h sites are populated such that no two nearest neighbours are occupied. An upper triangular connectivity matrix of the Li sub-lattice is constructed. The matrix is flattened and sorted to ensure uniformity. LSH is used to perform fast approximate similarity searches. The method is limited to comparison of monoatomic sub-lattices with predefined positions. The method was validated for 13:43 and 12:44 ratios. DFT calculations were performed on small subsets to fit the MLR model. The COMPASSIII forcefield was used to pre-select the lowest energy structures. ONETEP was used for DFT calculations with linear scaling. CASTEP on-the-fly generated pseudopotentials were used. Geometry optimisation calculations were performed on the final four structures. Broyder-Fletcher-Goldfarb-Shanno (BFGS) was used for geometry optimisation.\n\nKey Results\nThe MLR model achieved a correlation of 0.9996 on the test set. All structures occur within a range of 5.8 eV of the lowest energy structure. 19 out of the 20 lowest energy structures have a ratio of 8:48. The 19th lowest energy structure has a ratio of 9:47. The average energy for all structures is 1.47 eV higher than the ground state. The average energy for each ratio increases with increasing 24d occupancy. There is an energetic preference to avoid 24d occupation where possible. Four structures, all 8:48, are within 0.026 eV of the lowest energy structure. The four lowest energy structures have very similar atomic coordinates. All four lowest structures have the same 24d configuration. Only slight variations exist in the 96h configuration of the lowest structures. Geometry optimisation narrows the energy gap between the final four structures. A large proportion of experimental and theoretical literature structures are not feasible. The 96h to 24d transition yielded the lowest overall energy structure. This lowest energy structure was 0.58 eV lower than the single point minimum.\n\nInterpretation And Theoretical Implications\nThe methodology enables the isolation of low-energy structures for crystallographically predicted structures. Geometrical constraints from the methodology determine that many reported structures may not be feasible. The method can be extended to other ion conductors and partially occupied crystals. Providing all structures aims to improve accuracy and reproducibility in c-LLZO research. The study highlights that a large portion of literature structures are not reflective of real systems. The workflow provides a fast evaluation procedure for crystals with partially occupied sites.\n\nContradictions And Limitations\nThe energetic ordering procedure does not include entropic contributions. The study assumes a reasonable retention of ordering upon geometry relaxation. A large-scale energy prediction of geometry optimised structures is outside the scope. The LSH method is limited to monoatomic sub-lattices with predefined positions. The trade-off for increased speed is the high specificity of the method. COMPASSIII predicts a more pronounced separation of energies than ONETEP. The issue with COMPASSIII was considered too large to surmount in this paper. The choice of initial structure in previous studies was mostly for convenience. Coulombic forces alone are not sufficient to energetically order c-LLZO structures.\n\nClaims\nA significant portion of previously reported c-LLZO structures are not physically feasible due to Li-Li overlap. The study eliminates structures involving overlapping Li atoms. A minimal Li-Li distance of 1.7 Å is imposed. A large portion of literature structures may not be feasible. Some literature structures might be valid if dopants are considered. Future research should verify structures against this geometric constraint.\nThe 8:48 ratio of 24d to 96h site occupancy is energetically preferred. 19 of the 20 lowest energy structures have an 8:48 ratio. Average energy increases with increasing 24d occupancy. One of the lowest structures has a 9:47 ratio. This ratio should be prioritized in future computational studies.\n\nData And Code Availability\nAll structures generated are published in a freely accessible database. The database aims to improve accuracy and reproducibility in c-LLZO research. Scripts for symmetry checking are provided with the database.\n\nRobustness And Ablation Notes\nThe symmetry checking method was validated against ASE for 12:44 and 13:43 ratios. The same number of structures were produced using both methods. Including symmetry in the MLR model made a negligible difference. Geometry relaxation was tested on a small dataset of 20 structures. A negative correlation was found between distance moved and final energy.\n\nKey Figures Tables\nFigure 1 shows the 24d:96h ratios that cannot exist without Li-Li interaction. Figure 2b shows the energy distribution of structures. Figure 3 shows the workflow to find the 4 final structures. Table 1 gives the number of structures for each 24d:96h ratio. Figure S3 compares DFT energies to COMPASSIII predictions. Figure S4 shows the energy of a Li Dimer with changing distance. Figure S5 plots MLR energies against space group order.\n\nThree Takeaways\n1. The core contribution is a workflow to identify viable crystal structures with partially occupied sites. 2. The strongest evidence is the identification of four low-energy structures with an 8:48 ratio. 3. The future path is the extension of this method to other ion conductors.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "unable to uncover",
+      "start": 319,
+      "end": 336,
+      "typographic_alignment": false,
+      "original_quote": "unable to uncover"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "initial low-energy structure",
+      "start": 478,
+      "end": 506,
+      "typographic_alignment": false,
+      "original_quote": "initial low-energy structure"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "no consensus",
+      "start": 3600,
+      "end": 3612,
+      "typographic_alignment": false,
+      "original_quote": "no consensus"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "starting point",
+      "start": 3836,
+      "end": 3850,
+      "typographic_alignment": false,
+      "original_quote": "starting point"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "disagreement about the ground state",
+      "start": 3996,
+      "end": 4031,
+      "typographic_alignment": false,
+      "original_quote": "disagreement about the ground state"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "not be well described",
+      "start": 4198,
+      "end": 4219,
+      "typographic_alignment": false,
+      "original_quote": "not be well described"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "find and rank",
+      "start": 3699,
+      "end": 3712,
+      "typographic_alignment": false,
+      "original_quote": "find and rank"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "produce all possible structures",
+      "start": 4269,
+      "end": 4300,
+      "typographic_alignment": false,
+      "original_quote": "produce all possible structures"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "significant energy difference",
+      "start": 4383,
+      "end": 4412,
+      "typographic_alignment": false,
+      "original_quote": "significant energy difference"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "indicative of a structure's energy",
+      "start": 4535,
+      "end": 4569,
+      "typographic_alignment": false,
+      "original_quote": "indicative of a structure's energy"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "energetically favourable configurations",
+      "start": 581,
+      "end": 620,
+      "typographic_alignment": false,
+      "original_quote": "energetically favourable configurations"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "extended to other ion conductors",
+      "start": 1246,
+      "end": 1278,
+      "typographic_alignment": false,
+      "original_quote": "extended to other ion conductors"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "7.4 × 10 34",
+      "start": 5009,
+      "end": 5020,
+      "typographic_alignment": false,
+      "original_quote": "7.4 × 10 34"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "brute-force combinatorial method",
+      "start": 5035,
+      "end": 5067,
+      "typographic_alignment": false,
+      "original_quote": "brute-force combinatorial method"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "eliminating all overlapping Li atoms",
+      "start": 5126,
+      "end": 5162,
+      "typographic_alignment": false,
+      "original_quote": "eliminating all overlapping Li atoms"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "1.7 Å",
+      "start": 3470,
+      "end": 3475,
+      "typographic_alignment": false,
+      "original_quote": "1.7 Å"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "2 times the ionic radius",
+      "start": 5279,
+      "end": 5303,
+      "typographic_alignment": false,
+      "original_quote": "2 times the ionic radius"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "include the 48g site",
+      "start": 4585,
+      "end": 4605,
+      "typographic_alignment": false,
+      "original_quote": "include the 48g site"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "Buschmann et al.",
+      "start": 6739,
+      "end": 6755,
+      "typographic_alignment": false,
+      "original_quote": "Buschmann et al."
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "2.3 × 10 8",
+      "start": 6871,
+      "end": 6881,
+      "typographic_alignment": false,
+      "original_quote": "2.3 × 10 8"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "local sensitive hashing",
+      "start": 7497,
+      "end": 7520,
+      "typographic_alignment": false,
+      "original_quote": "local sensitive hashing"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "O(N 2 )",
+      "start": 7706,
+      "end": 7713,
+      "typographic_alignment": true,
+      "original_quote": "O(N 2)"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "approximately 1%",
+      "start": 8428,
+      "end": 8444,
+      "typographic_alignment": false,
+      "original_quote": "approximately 1%"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "2 × 10 6 structures",
+      "start": 8617,
+      "end": 8636,
+      "typographic_alignment": false,
+      "original_quote": "2 × 10 6 structures"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "1235 single point DFT",
+      "start": 9235,
+      "end": 9256,
+      "typographic_alignment": false,
+      "original_quote": "1235 single point DFT"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "200 energetically lowest",
+      "start": 8990,
+      "end": 9014,
+      "typographic_alignment": false,
+      "original_quote": "200 energetically lowest"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "random selection of approximately 1000",
+      "start": 9113,
+      "end": 9151,
+      "typographic_alignment": false,
+      "original_quote": "random selection of approximately 1000"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "ONETEP code",
+      "start": 9331,
+      "end": 9342,
+      "typographic_alignment": false,
+      "original_quote": "ONETEP code"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "PBE GGA",
+      "start": 9481,
+      "end": 9488,
+      "typographic_alignment": false,
+      "original_quote": "PBE GGA"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "830 eV",
+      "start": 9555,
+      "end": 9561,
+      "typographic_alignment": false,
+      "original_quote": "830 eV"
+    },
+    {
+      "path": "methodological_details[18]",
+      "quote": "multiple linear regression",
+      "start": 8855,
+      "end": 8881,
+      "typographic_alignment": false,
+      "original_quote": "multiple linear regression"
+    },
+    {
+      "path": "methodological_details[19]",
+      "quote": "frequency occurrence list",
+      "start": 10116,
+      "end": 10141,
+      "typographic_alignment": false,
+      "original_quote": "frequency occurrence list"
+    },
+    {
+      "path": "methodological_details[20]",
+      "quote": "1:3 ratio",
+      "start": 10370,
+      "end": 10379,
+      "typographic_alignment": false,
+      "original_quote": "1:3 ratio"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "generate all possible 24d permutations",
+      "start": 6364,
+      "end": 6402,
+      "typographic_alignment": false,
+      "original_quote": "generate all possible 24d permutations"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "eliminating directly neighbouring 96h sites",
+      "start": 6430,
+      "end": 6473,
+      "typographic_alignment": false,
+      "original_quote": "eliminating directly neighbouring 96h sites"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "no two nearest neighbours",
+      "start": 6545,
+      "end": 6570,
+      "typographic_alignment": false,
+      "original_quote": "no two nearest neighbours"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "upper triangular connectivity matrix",
+      "start": 7005,
+      "end": 7041,
+      "typographic_alignment": false,
+      "original_quote": "upper triangular connectivity matrix"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "flattened and sorted",
+      "start": 7197,
+      "end": 7217,
+      "typographic_alignment": false,
+      "original_quote": "flattened and sorted"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "fast approximate similarity searches",
+      "start": 7541,
+      "end": 7577,
+      "typographic_alignment": false,
+      "original_quote": "fast approximate similarity searches"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "monoatomic sub-lattices",
+      "start": 8221,
+      "end": 8244,
+      "typographic_alignment": false,
+      "original_quote": "monoatomic sub-lattices"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "13:43 and 12:44 ratios",
+      "start": 8306,
+      "end": 8328,
+      "typographic_alignment": false,
+      "original_quote": "13:43 and 12:44 ratios"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "small subsets",
+      "start": 8771,
+      "end": 8784,
+      "typographic_alignment": false,
+      "original_quote": "small subsets"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "COMPASSIII forcefield",
+      "start": 9043,
+      "end": 9064,
+      "typographic_alignment": false,
+      "original_quote": "COMPASSIII forcefield"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "scales linearly",
+      "start": 9373,
+      "end": 9388,
+      "typographic_alignment": false,
+      "original_quote": "scales linearly"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "CASTEP on-the-fly",
+      "start": 16038,
+      "end": 16055,
+      "typographic_alignment": false,
+      "original_quote": "CASTEP on-the-fly"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "geometry optimisation calculations",
+      "start": 11205,
+      "end": 11239,
+      "typographic_alignment": false,
+      "original_quote": "geometry optimisation calculations"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "BFGS",
+      "start": 18415,
+      "end": 18419,
+      "typographic_alignment": false,
+      "original_quote": "BFGS"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "0.9996",
+      "start": 10451,
+      "end": 10457,
+      "typographic_alignment": false,
+      "original_quote": "0.9996"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "5.8 eV",
+      "start": 10516,
+      "end": 10522,
+      "typographic_alignment": false,
+      "original_quote": "5.8 eV"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "19 out of the 20",
+      "start": 10555,
+      "end": 10571,
+      "typographic_alignment": false,
+      "original_quote": "19 out of the 20"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "9:47",
+      "start": 10664,
+      "end": 10668,
+      "typographic_alignment": false,
+      "original_quote": "9:47"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "1.47 eV",
+      "start": 10718,
+      "end": 10725,
+      "typographic_alignment": false,
+      "original_quote": "1.47 eV"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "increases with increasing 24d occupancy",
+      "start": 10801,
+      "end": 10840,
+      "typographic_alignment": false,
+      "original_quote": "increases with increasing 24d occupancy"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "avoid 24d occupation",
+      "start": 10880,
+      "end": 10900,
+      "typographic_alignment": false,
+      "original_quote": "avoid 24d occupation"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "0.026 eV",
+      "start": 10961,
+      "end": 10969,
+      "typographic_alignment": false,
+      "original_quote": "0.026 eV"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "very similar atomic coordinates",
+      "start": 11071,
+      "end": 11102,
+      "typographic_alignment": false,
+      "original_quote": "very similar atomic coordinates"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "same 24d configuration",
+      "start": 11117,
+      "end": 11139,
+      "typographic_alignment": false,
+      "original_quote": "same 24d configuration"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "slight variations in the 96h",
+      "start": 11150,
+      "end": 11178,
+      "typographic_alignment": false,
+      "original_quote": "slight variations in the 96h"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "energy gap between them narrows",
+      "start": 11282,
+      "end": 11313,
+      "typographic_alignment": false,
+      "original_quote": "energy gap between them narrows"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "not reflective of a real",
+      "start": 12373,
+      "end": 12397,
+      "typographic_alignment": false,
+      "original_quote": "not reflective of a real"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "lowest overall energy structure",
+      "start": 18654,
+      "end": 18685,
+      "typographic_alignment": false,
+      "original_quote": "lowest overall energy structure"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "0.58 eV lower",
+      "start": 18713,
+      "end": 18726,
+      "typographic_alignment": false,
+      "original_quote": "0.58 eV lower"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "isolation of low-energy structures",
+      "start": 645,
+      "end": 679,
+      "typographic_alignment": false,
+      "original_quote": "isolation of low-energy structures"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "may not be feasible",
+      "start": 1180,
+      "end": 1199,
+      "typographic_alignment": false,
+      "original_quote": "may not be feasible"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "extended to other ion conductors",
+      "start": 1246,
+      "end": 1278,
+      "typographic_alignment": false,
+      "original_quote": "extended to other ion conductors"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "improve accuracy and reproducibility",
+      "start": 1409,
+      "end": 1445,
+      "typographic_alignment": false,
+      "original_quote": "improve accuracy and reproducibility"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "not reflective of a real",
+      "start": 12373,
+      "end": 12397,
+      "typographic_alignment": false,
+      "original_quote": "not reflective of a real"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "fast evaluation procedure",
+      "start": 11990,
+      "end": 12015,
+      "typographic_alignment": false,
+      "original_quote": "fast evaluation procedure"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "does not include entropic contributions",
+      "start": 11595,
+      "end": 11634,
+      "typographic_alignment": false,
+      "original_quote": "does not include entropic contributions"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "retention of ordering",
+      "start": 11660,
+      "end": 11681,
+      "typographic_alignment": false,
+      "original_quote": "retention of ordering"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "outside the scope",
+      "start": 11919,
+      "end": 11936,
+      "typographic_alignment": false,
+      "original_quote": "outside the scope"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "limited to comparison of monoatomic",
+      "start": 8196,
+      "end": 8231,
+      "typographic_alignment": false,
+      "original_quote": "limited to comparison of monoatomic"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "high specificity of the method",
+      "start": 8136,
+      "end": 8166,
+      "typographic_alignment": false,
+      "original_quote": "high specificity of the method"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "more pronounced separation",
+      "start": 15589,
+      "end": 15615,
+      "typographic_alignment": false,
+      "original_quote": "more pronounced separation"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "too large to surmount",
+      "start": 15760,
+      "end": 15781,
+      "typographic_alignment": false,
+      "original_quote": "too large to surmount"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "mostly for convenience",
+      "start": 14246,
+      "end": 14268,
+      "typographic_alignment": false,
+      "original_quote": "mostly for convenience"
+    },
+    {
+      "path": "contradictions_and_limitations[8]",
+      "quote": "not sufficient to energetically order",
+      "start": 14456,
+      "end": 14493,
+      "typographic_alignment": false,
+      "original_quote": "not sufficient to energetically order"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "freely accessible database",
+      "start": 1366,
+      "end": 1392,
+      "typographic_alignment": false,
+      "original_quote": "freely accessible database"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "improve accuracy and reproducibility",
+      "start": 1409,
+      "end": 1445,
+      "typographic_alignment": false,
+      "original_quote": "improve accuracy and reproducibility"
+    },
+    {
+      "path": "data_and_code_availability[2]",
+      "quote": "Both scripts are provided",
+      "start": 17118,
+      "end": 17143,
+      "typographic_alignment": false,
+      "original_quote": "Both scripts are provided"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "validated this method",
+      "start": 8275,
+      "end": 8296,
+      "typographic_alignment": false,
+      "original_quote": "validated this method"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "same number of structures",
+      "start": 17057,
+      "end": 17082,
+      "typographic_alignment": false,
+      "original_quote": "same number of structures"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "negligible difference",
+      "start": 17996,
+      "end": 18017,
+      "typographic_alignment": false,
+      "original_quote": "negligible difference"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "20 structures",
+      "start": 11810,
+      "end": 11823,
+      "typographic_alignment": false,
+      "original_quote": "20 structures"
+    },
+    {
+      "path": "robustness_and_ablation_notes[4]",
+      "quote": "negative correlation",
+      "start": 18967,
+      "end": 18987,
+      "typographic_alignment": false,
+      "original_quote": "negative correlation"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "cannot exist without",
+      "start": 3025,
+      "end": 3045,
+      "typographic_alignment": false,
+      "original_quote": "cannot exist without"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Figure 2b",
+      "start": 10624,
+      "end": 10633,
+      "typographic_alignment": false,
+      "original_quote": "Figure 2b"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Figure 3",
+      "start": 11031,
+      "end": 11039,
+      "typographic_alignment": false,
+      "original_quote": "Figure 3"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Table 1",
+      "start": 6682,
+      "end": 6689,
+      "typographic_alignment": false,
+      "original_quote": "Table 1"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Figure S3",
+      "start": 15422,
+      "end": 15431,
+      "typographic_alignment": false,
+      "original_quote": "Figure S3"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "Figure S4",
+      "start": 16328,
+      "end": 16337,
+      "typographic_alignment": false,
+      "original_quote": "Figure S4"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "Figure S5",
+      "start": 17531,
+      "end": 17540,
+      "typographic_alignment": false,
+      "original_quote": "Figure S5"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "Viable Crystal Structures",
+      "start": 34,
+      "end": 59,
+      "typographic_alignment": false,
+      "original_quote": "Viable Crystal Structures"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "four structures, all 8:48",
+      "start": 10927,
+      "end": 10952,
+      "typographic_alignment": false,
+      "original_quote": "four structures, all 8:48"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "extended to other ion conductors",
+      "start": 1246,
+      "end": 1278,
+      "typographic_alignment": false,
+      "original_quote": "extended to other ion conductors"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "eliminating structures that involve",
+      "start": 741,
+      "end": 776,
+      "typographic_alignment": false,
+      "original_quote": "eliminating structures that involve"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "1.7 Å",
+      "start": 3470,
+      "end": 3475,
+      "typographic_alignment": false,
+      "original_quote": "1.7 Å"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "may not be feasible",
+      "start": 1180,
+      "end": 1199,
+      "typographic_alignment": false,
+      "original_quote": "may not be feasible"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "dopants on 24d sites",
+      "start": 2569,
+      "end": 2589,
+      "typographic_alignment": false,
+      "original_quote": "dopants on 24d sites"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "improve accuracy and reproducibility",
+      "start": 1409,
+      "end": 1445,
+      "typographic_alignment": false,
+      "original_quote": "improve accuracy and reproducibility"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "19 out of the 20",
+      "start": 10555,
+      "end": 10571,
+      "typographic_alignment": false,
+      "original_quote": "19 out of the 20"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "increases with increasing 24d occupancy",
+      "start": 10801,
+      "end": 10840,
+      "typographic_alignment": false,
+      "original_quote": "increases with increasing 24d occupancy"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "9:47",
+      "start": 10664,
+      "end": 10668,
+      "typographic_alignment": false,
+      "original_quote": "9:47"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "energetic preference to avoid 24d",
+      "start": 10856,
+      "end": 10889,
+      "typographic_alignment": false,
+      "original_quote": "energetic preference to avoid 24d"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"A Workflow for Identifying Viable Crystal Structures with Partially Occupied Sites Applied to Solid Electrolyte: Cubic Li 7 La 3 Zr 2 O 12\",\n  \"authors\": \"Julian Holland; Tom Demeyere; Arihant Bhandari; Felix Hanke; Victor Milman; Chris-Kriton Skylaris\",\n  \"field_subfield\": \"Materials Science; Solid State Chemistry\",\n  \"type_of_paper\": \"Computational Study / Methodology\",\n  \"executive_summary\": \"This study addresses the lack of consensus regarding the ground state configuration of cubic Li7La3Zr2O12 (c-LLZO), a prominent solid electrolyte candidate. Previous experimental and theoretical works have failed to identify the stable structure due to the vast combinatorial space of possible Li site occupancies. The authors present a novel methodology to identify energetically favorable configurations by systematically generating and ranking all possible structures. The workflow begins by eliminating physically impossible structures where Li atoms overlap, using a minimum Li-Li distance constraint of 1.7 Å. This geometric constraint significantly reduces the configuration space by limiting the possible 24d:96h site ratios. Further reduction is achieved by removing symmetry-equivalent duplicates using local sensitive hashing (LSH), which scales linearly with the number of structures. The remaining unique structures are then energetically ordered using a machine learning model, specifically a multiple linear regression (MLR) trained on Density Functional Theory (DFT) data. The DFT calculations were performed using the ONETEP code with the PBE functional. The study finds that the lowest energy structures predominantly feature an 8:48 ratio of 24d to 96h site occupancy. Four structures are identified within 0.026 eV of the global minimum energy. The authors demonstrate that a large portion of previously reported structures in the literature may not be feasible or stable due to violating the minimum Li-Li distance constraint. The generated structures are made available in a public database to improve reproducibility and accuracy in future c-LLZO research. This work provides a robust framework for identifying viable crystal structures in materials with partially occupied sites, extending beyond c-LLZO to other ion conductors.\",\n  \"research_context\": [\n    { \"Experimental and theoretical works have failed to uncover the ground state configuration of cubic Li7La3Zr2O12.\": \"unable to uncover\" },\n    { \"Computational studies typically rely on an initial low-energy structure as a reference point.\": \"initial low-energy structure\" },\n    { \"There is no consensus on the Li occupancy of c-LLZO in the literature.\": \"no consensus\" },\n    { \"Previous studies often use experimental values as starting points for idealised unit cells.\": \"starting point\" },\n    { \"The range of predicted structures indicates disagreement about the ground state.\": \"disagreement about the ground state\" },\n    { \"Without knowing if structures are close to the ground state, properties may not be well described.\": \"not be well described\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to find and rank all possible Li site occupancies for c-LLZO.\": \"find and rank\" },\n    { \"The authors intend to produce all possible structures of a c-LLZO unit cell.\": \"produce all possible structures\" },\n    { \"They seek to ascertain if there is a significant energy difference in structure choice.\": \"significant energy difference\" },\n    { \"The study hopes to elicit if structural properties like 24d:96h ratio indicate energy.\": \"indicative of a structure's energy\" },\n    { \"The methodology aims to identify energetically favourable configurations of c-LLZO.\": \"energetically favourable configurations\" },\n    { \"The method is designed to be extended to other ion conductors.\": \"extended to other ion conductors\" }\n  ],\n  \"methodological_details\": [\n    { \"The total number of ways to populate 120 sites with 56 Li is approximately 7.4 × 10^34.\": \"7.4 × 10 34\" },\n    { \"A brute-force combinatorial method is unviable due to this large number.\": \"brute-force combinatorial method\" },\n    { \"Structures with overlapping Li atoms are eliminated using a minimal Li-Li distance.\": \"eliminating all overlapping Li atoms\" },\n    { \"The chosen minimal Li-Li distance is 1.7 Å.\": \"1.7 Å\" },\n    { \"This distance is less than 2 times the ionic radius of a Li atom.\": \"2 times the ionic radius\" },\n    { \"The 48g site is neglected as it is not reported in most refinements.\": \"neglect to include the 48g site\" },\n    { \"The crystal structure sites reported by Buschmann et al. are used as the framework.\": \"Buschmann et al.\" },\n    { \"The total number of generated structures is approximately 2.3 × 10^8.\": \"2.3 × 10 8\" },\n    { \"Symmetry-equivalent duplicates are removed using local sensitive hashing (LSH).\": \"local sensitive hashing\" },\n    { \"LSH optimizes pairwise comparison from O(N^2) to O(N).\": \"O(N 2) to O(N)\" },\n    { \"Only approximately 1% of structures are symmetrically unique.\": \"approximately 1%\" },\n    { \"The configuration space is reduced to around 2 × 10^6 structures.\": \"2 × 10 6 structures\" },\n    { \"DFT calculations were performed on 1235 single point structures.\": \"1235 single point DFT\" },\n    { \"The first subset consisted of the 200 energetically lowest structures according to COMPASSIII.\": \"200 energetically lowest\" },\n    { \"The second subset was a random selection of approximately 1000 structures.\": \"random selection of approximately 1000\" },\n    { \"DFT calculations were performed with the ONETEP code.\": \"ONETEP code\" },\n    { \"The PBE GGA exchange correlation functional was used.\": \"PBE GGA\" },\n    { \"A kinetic energy cutoff of 830 eV was applied.\": \"830 eV\" },\n    { \"A multiple linear regression (MLR) model was fitted to the DFT energies.\": \"multiple linear regression\" },\n    { \"Structures were represented by a frequency occurrence list of Li-Li interactions.\": \"frequency occurrence list\" },\n    { \"Data were split into test and training sets with a 1:3 ratio.\": \"1:3 ratio\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"All possible 24d permutations are generated for a given 24d occupancy.\": \"generate all possible 24d permutations\" },\n    { \"Directly neighbouring 96h sites are eliminated from consideration.\": \"eliminating directly neighbouring 96h sites\" },\n    { \"Remaining 96h sites are populated such that no two nearest neighbours are occupied.\": \"no two nearest neighbours\" },\n    { \"An upper triangular connectivity matrix of the Li sub-lattice is constructed.\": \"upper triangular connectivity matrix\" },\n    { \"The matrix is flattened and sorted to ensure uniformity.\": \"flattened and sorted\" },\n    { \"LSH is used to perform fast approximate similarity searches.\": \"fast approximate similarity searches\" },\n    { \"The method is limited to comparison of monoatomic sub-lattices with predefined positions.\": \"monoatomic sub-lattices\" },\n    { \"The method was validated for 13:43 and 12:44 ratios.\": \"13:43 and 12:44 ratios\" },\n    { \"DFT calculations were performed on small subsets to fit the MLR model.\": \"small subsets\" },\n    { \"The COMPASSIII forcefield was used to pre-select the lowest energy structures.\": \"COMPASSIII forcefield\" },\n    { \"ONETEP was used for DFT calculations with linear scaling.\": \"scales linearly\" },\n    { \"CASTEP on-the-fly generated pseudopotentials were used.\": \"CASTEP on-the-fly\" },\n    { \"Geometry optimisation calculations were performed on the final four structures.\": \"geometry optimisation calculations\" },\n    { \"Broyder-Fletcher-Goldfarb-Shanno (BFGS) was used for geometry optimisation.\": \"BFGS\" }\n  ],\n  \"key_results\": [\n    { \"The MLR model achieved a correlation of 0.9996 on the test set.\": \"0.9996\" },\n    { \"All structures occur within a range of 5.8 eV of the lowest energy structure.\": \"5.8 eV\" },\n    { \"19 out of the 20 lowest energy structures have a ratio of 8:48.\": \"19 out of the 20\" },\n    { \"The 19th lowest energy structure has a ratio of 9:47.\": \"9:47\" },\n    { \"The average energy for all structures is 1.47 eV higher than the ground state.\": \"1.47 eV\" },\n    { \"The average energy for each ratio increases with increasing 24d occupancy.\": \"increases with increasing 24d occupancy\" },\n    { \"There is an energetic preference to avoid 24d occupation where possible.\": \"avoid 24d occupation\" },\n    { \"Four structures, all 8:48, are within 0.026 eV of the lowest energy structure.\": \"0.026 eV\" },\n    { \"The four lowest energy structures have very similar atomic coordinates.\": \"very similar atomic coordinates\" },\n    { \"All four lowest structures have the same 24d configuration.\": \"same 24d configuration\" },\n    { \"Only slight variations exist in the 96h configuration of the lowest structures.\": \"slight variations in the 96h\" },\n    { \"Geometry optimisation narrows the energy gap between the final four structures.\": \"energy gap between them narrows\" },\n    { \"A large proportion of experimental and theoretical literature structures are not feasible.\": \"not reflective of a real system\" },\n    { \"The 96h to 24d transition yielded the lowest overall energy structure.\": \"lowest overall energy structure\" },\n    { \"This lowest energy structure was 0.58 eV lower than the single point minimum.\": \"0.58 eV lower\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The methodology enables the isolation of low-energy structures for crystallographically predicted structures.\": \"isolation of low-energy structures\" },\n    { \"Geometrical constraints from the methodology determine that many reported structures may not be feasible.\": \"may not be feasible\" },\n    { \"The method can be extended to other ion conductors and partially occupied crystals.\": \"extended to other ion conductors\" },\n    { \"Providing all structures aims to improve accuracy and reproducibility in c-LLZO research.\": \"improve accuracy and reproducibility\" },\n    { \"The study highlights that a large portion of literature structures are not reflective of real systems.\": \"not reflective of a real system\" },\n    { \"The workflow provides a fast evaluation procedure for crystals with partially occupied sites.\": \"fast evaluation procedure\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The energetic ordering procedure does not include entropic contributions.\": \"does not include entropic contributions\" },\n    { \"The study assumes a reasonable retention of ordering upon geometry relaxation.\": \"retention of ordering\" },\n    { \"A large-scale energy prediction of geometry optimised structures is outside the scope.\": \"outside the scope\" },\n    { \"The LSH method is limited to monoatomic sub-lattices with predefined positions.\": \"limited to comparison of monoatomic\" },\n    { \"The trade-off for increased speed is the high specificity of the method.\": \"high specificity of the method\" },\n    { \"COMPASSIII predicts a more pronounced separation of energies than ONETEP.\": \"more pronounced separation\" },\n    { \"The issue with COMPASSIII was considered too large to surmount in this paper.\": \"too large to surmount\" },\n    { \"The choice of initial structure in previous studies was mostly for convenience.\": \"mostly for convenience\" },\n    { \"Coulombic forces alone are not sufficient to energetically order c-LLZO structures.\": \"not sufficient to energetically order\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"A significant portion of previously reported c-LLZO structures are not physically feasible due to Li-Li overlap.\",\n      \"supporting_evidence\": [\n        { \"The study eliminates structures involving overlapping Li atoms.\": \"eliminating structures that involve\" },\n        { \"A minimal Li-Li distance of 1.7 Å is imposed.\": \"1.7 Å\" },\n        { \"A large portion of literature structures may not be feasible.\": \"may not be feasible\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Some literature structures might be valid if dopants are considered.\": \"dopants on 24d sites\" }\n      ],\n      \"implications\": [\n        { \"Future research should verify structures against this geometric constraint.\": \"improve accuracy and reproducibility\" }\n      ]\n    },\n    {\n      \"description\": \"The 8:48 ratio of 24d to 96h site occupancy is energetically preferred.\",\n      \"supporting_evidence\": [\n        { \"19 of the 20 lowest energy structures have an 8:48 ratio.\": \"19 out of the 20\" },\n        { \"Average energy increases with increasing 24d occupancy.\": \"increases with increasing 24d occupancy\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"One of the lowest structures has a 9:47 ratio.\": \"9:47\" }\n      ],\n      \"implications\": [\n        { \"This ratio should be prioritized in future computational studies.\": \"energetic preference to avoid 24d\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"All structures generated are published in a freely accessible database.\": \"freely accessible database\" },\n    { \"The database aims to improve accuracy and reproducibility in c-LLZO research.\": \"improve accuracy and reproducibility\" },\n    { \"Scripts for symmetry checking are provided with the database.\": \"Both scripts are provided\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"The symmetry checking method was validated against ASE for 12:44 and 13:43 ratios.\": \"validated this method\" },\n    { \"The same number of structures were produced using both methods.\": \"same number of structures\" },\n    { \"Including symmetry in the MLR model made a negligible difference.\": \"negligible difference\" },\n    { \"Geometry relaxation was tested on a small dataset of 20 structures.\": \"20 structures\" },\n    { \"A negative correlation was found between distance moved and final energy.\": \"negative correlation\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 shows the 24d:96h ratios that cannot exist without Li-Li interaction.\": \"cannot exist without\" },\n    { \"Figure 2b shows the energy distribution of structures.\": \"Figure 2b\" },\n    { \"Figure 3 shows the workflow to find the 4 final structures.\": \"Figure 3\" },\n    { \"Table 1 gives the number of structures for each 24d:96h ratio.\": \"Table 1\" },\n    { \"Figure S3 compares DFT energies to COMPASSIII predictions.\": \"Figure S3\" },\n    { \"Figure S4 shows the energy of a Li Dimer with changing distance.\": \"Figure S4\" },\n    { \"Figure S5 plots MLR energies against space group order.\": \"Figure S5\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is a workflow to identify viable crystal structures with partially occupied sites.\": \"workflow to identify\" },\n    { \"2. The strongest evidence is the identification of four low-energy structures with an 8:48 ratio.\": \"four structures, all 8:48\" },\n    { \"3. The future path is the extension of this method to other ion conductors.\": \"extended to other ion conductors\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6864,
+        "total_tokens": 10663,
+        "completion_tokens": 3799,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6864,
+      "elapsed_seconds": 342.7466190084815,
+      "max_tokens": 16000,
+      "seed": 2029405669,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "24c2110aa3cea125a9a8933d8b92e9eb475ed488678671fb984f984f876507bb",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "Evidence must be a nonempty <=5-word quote: methodological_details[5]",
+        "key_results": "Evidence must be a nonempty <=5-word quote: key_results[12]",
+        "interpretation_and_theoretical_implications": "Evidence must be a nonempty <=5-word quote: interpretation_and_theoretical_implications[4]",
+        "three_takeaways": "evidence quote is not present in fulltext: workflow to identify"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The total number of ways to populate 120 sites with 56 Li is approximately 7.4 × 10^34.\": \"7.4 × 10 34\"\n    },\n    {\n      \"A brute-force combinatorial method is unviable due to this large number.\": \"brute-force combinatorial method\"\n    },\n    {\n      \"Structures with overlapping Li atoms are eliminated using a minimal Li-Li distance.\": \"eliminating all overlapping Li atoms\"\n    },\n    {\n      \"The chosen minimal Li-Li distance is 1.7 Å.\": \"1.7 Å\"\n    },\n    {\n      \"This distance is less than 2 times the ionic radius of a Li atom.\": \"2 times the ionic radius\"\n    },\n    {\n      \"The 48g site is neglected as it is not reported in most refinements.\": \"include the 48g site\"\n    },\n    {\n      \"The crystal structure sites reported by Buschmann et al. are used as the framework.\": \"Buschmann et al.\"\n    },\n    {\n      \"The total number of generated structures is approximately 2.3 × 10^8.\": \"2.3 × 10 8\"\n    },\n    {\n      \"Symmetry-equivalent duplicates are removed using local sensitive hashing (LSH).\": \"local sensitive hashing\"\n    },\n    {\n      \"LSH optimizes pairwise comparison from O(N^2) to O(N).\": \"O(N 2) to O(N)\"\n    },\n    {\n      \"Only approximately 1% of structures are symmetrically unique.\": \"approximately 1%\"\n    },\n    {\n      \"The configuration space is reduced to around 2 × 10^6 structures.\": \"2 × 10 6 structures\"\n    },\n    {\n      \"DFT calculations were performed on 1235 single point structures.\": \"1235 single point DFT\"\n    },\n    {\n      \"The first subset consisted of the 200 energetically lowest structures according to COMPASSIII.\": \"200 energetically lowest\"\n    },\n    {\n      \"The second subset was a random selection of approximately 1000 structures.\": \"random selection of approximately 1000\"\n    },\n    {\n      \"DFT calculations were performed with the ONETEP code.\": \"ONETEP code\"\n    },\n    {\n      \"The PBE GGA exchange correlation functional was used.\": \"PBE GGA\"\n    },\n    {\n      \"A kinetic energy cutoff of 830 eV was applied.\": \"830 eV\"\n    },\n    {\n      \"A multiple linear regression (MLR) model was fitted to the DFT energies.\": \"multiple linear regression\"\n    },\n    {\n      \"Structures were represented by a frequency occurrence list of Li-Li interactions.\": \"frequency occurrence list\"\n    },\n    {\n      \"Data were split into test and training sets with a 1:3 ratio.\": \"1:3 ratio\"\n    }\n  ],\n  \"key_results\": [\n    {\n      \"The MLR model achieved a correlation of 0.9996 on the test set.\": \"0.9996\"\n    },\n    {\n      \"All structures occur within a range of 5.8 eV of the lowest energy structure.\": \"5.8 eV\"\n    },\n    {\n      \"19 out of the 20 lowest energy structures have a ratio of 8:48.\": \"19 out of the 20\"\n    },\n    {\n      \"The 19th lowest energy structure has a ratio of 9:47.\": \"9:47\"\n    },\n    {\n      \"The average energy for all structures is 1.47 eV higher than the ground state.\": \"1.47 eV\"\n    },\n    {\n      \"The average energy for each ratio increases with increasing 24d occupancy.\": \"increases with increasing 24d occupancy\"\n    },\n    {\n      \"There is an energetic preference to avoid 24d occupation where possible.\": \"avoid 24d occupation\"\n    },\n    {\n      \"Four structures, all 8:48, are within 0.026 eV of the lowest energy structure.\": \"0.026 eV\"\n    },\n    {\n      \"The four lowest energy structures have very similar atomic coordinates.\": \"very similar atomic coordinates\"\n    },\n    {\n      \"All four lowest structures have the same 24d configuration.\": \"same 24d configuration\"\n    },\n    {\n      \"Only slight variations exist in the 96h configuration of the lowest structures.\": \"slight variations in the 96h\"\n    },\n    {\n      \"Geometry optimisation narrows the energy gap between the final four structures.\": \"energy gap between them narrows\"\n    },\n    {\n      \"A large proportion of experimental and theoretical literature structures are not feasible.\": \"not reflective of a real\"\n    },\n    {\n      \"The 96h to 24d transition yielded the lowest overall energy structure.\": \"lowest overall energy structure\"\n    },\n    {\n      \"This lowest energy structure was 0.58 eV lower than the single point minimum.\": \"0.58 eV lower\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The methodology enables the isolation of low-energy structures for crystallographically predicted structures.\": \"isolation of low-energy structures\"\n    },\n    {\n      \"Geometrical constraints from the methodology determine that many reported structures may not be feasible.\": \"may not be feasible\"\n    },\n    {\n      \"The method can be extended to other ion conductors and partially occupied crystals.\": \"extended to other ion conductors\"\n    },\n    {\n      \"Providing all structures aims to improve accuracy and reproducibility in c-LLZO research.\": \"improve accuracy and reproducibility\"\n    },\n    {\n      \"The study highlights that a large portion of literature structures are not reflective of real systems.\": \"not reflective of a real\"\n    },\n    {\n      \"The workflow provides a fast evaluation procedure for crystals with partially occupied sites.\": \"fast evaluation procedure\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is a workflow to identify viable crystal structures with partially occupied sites.\": \"identify Viable Crystal Structures\"\n    },\n    {\n      \"2. The strongest evidence is the identification of four low-energy structures with an 8:48 ratio.\": \"four structures, all 8:48\"\n    },\n    {\n      \"3. The future path is the extension of this method to other ion conductors.\": \"extended to other ion conductors\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6447,
+        "total_tokens": 8061,
+        "completion_tokens": 1614,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6447,
+      "elapsed_seconds": 147.30782375112176,
+      "max_tokens": 4096,
+      "seed": 2029405670,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6fe5dabc4e69b9cc1143023f2d2bd8eeffa8a54d4ce6585ca2977efead3f34b3",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "Aligned source quote exceeds five words: methodological_details[9]",
+        "three_takeaways": "evidence quote is not present in fulltext: identify Viable Crystal Structures"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The total number of ways to populate 120 sites with 56 Li is approximately 7.4 × 10^34.\": \"7.4 × 10 34\"\n    },\n    {\n      \"A brute-force combinatorial method is unviable due to this large number.\": \"brute-force combinatorial method\"\n    },\n    {\n      \"Structures with overlapping Li atoms are eliminated using a minimal Li-Li distance.\": \"eliminating all overlapping Li atoms\"\n    },\n    {\n      \"The chosen minimal Li-Li distance is 1.7 Å.\": \"1.7 Å\"\n    },\n    {\n      \"This distance is less than 2 times the ionic radius of a Li atom.\": \"2 times the ionic radius\"\n    },\n    {\n      \"The 48g site is neglected as it is not reported in most refinements.\": \"include the 48g site\"\n    },\n    {\n      \"The crystal structure sites reported by Buschmann et al. are used as the framework.\": \"Buschmann et al.\"\n    },\n    {\n      \"The total number of generated structures is approximately 2.3 × 10^8.\": \"2.3 × 10 8\"\n    },\n    {\n      \"Symmetry-equivalent duplicates are removed using local sensitive hashing (LSH).\": \"local sensitive hashing\"\n    },\n    {\n      \"LSH optimizes pairwise comparison from O(N^2) to O(N).\": \"O(N 2) to O(N)\"\n    },\n    {\n      \"Only approximately 1% of structures are symmetrically unique.\": \"approximately 1%\"\n    },\n    {\n      \"The configuration space is reduced to around 2 × 10^6 structures.\": \"2 × 10 6 structures\"\n    },\n    {\n      \"DFT calculations were performed on 1235 single point structures.\": \"1235 single point DFT\"\n    },\n    {\n      \"The first subset consisted of the 200 energetically lowest structures according to COMPASSIII.\": \"200 energetically lowest\"\n    },\n    {\n      \"The second subset was a random selection of approximately 1000 structures.\": \"random selection of approximately 1000\"\n    },\n    {\n      \"DFT calculations were performed with the ONETEP code.\": \"ONETEP code\"\n    },\n    {\n      \"The PBE GGA exchange correlation functional was used.\": \"PBE GGA\"\n    },\n    {\n      \"A kinetic energy cutoff of 830 eV was applied.\": \"830 eV\"\n    },\n    {\n      \"A multiple linear regression (MLR) model was fitted to the DFT energies.\": \"multiple linear regression\"\n    },\n    {\n      \"Structures were represented by a frequency occurrence list of Li-Li interactions.\": \"frequency occurrence list\"\n    },\n    {\n      \"Data were split into test and training sets with a 1:3 ratio.\": \"1:3 ratio\"\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is a workflow to identify viable crystal structures with partially occupied sites.\": \"Viable Crystal Structures\"\n    },\n    {\n      \"2. The strongest evidence is the identification of four low-energy structures with an 8:48 ratio.\": \"four structures, all 8:48\"\n    },\n    {\n      \"3. The future path is the extension of this method to other ion conductors.\": \"extended to other ion conductors\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5778,
+        "total_tokens": 6636,
+        "completion_tokens": 858,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5778,
+      "elapsed_seconds": 87.60980092734098,
+      "max_tokens": 4096,
+      "seed": 2029405671,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "b93a26f7c0a3717263c5eb60bc27f72f79071ac96bf9199ce38b6957688af0bc",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "Aligned source quote exceeds five words: methodological_details[9]"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The total number of ways to populate 120 sites with 56 Li is approximately 7.4 × 10^34.\": \"7.4 × 10 34\"\n    },\n    {\n      \"A brute-force combinatorial method is unviable due to this large number.\": \"brute-force combinatorial method\"\n    },\n    {\n      \"Structures with overlapping Li atoms are eliminated using a minimal Li-Li distance.\": \"eliminating all overlapping Li atoms\"\n    },\n    {\n      \"The chosen minimal Li-Li distance is 1.7 Å.\": \"1.7 Å\"\n    },\n    {\n      \"This distance is less than 2 times the ionic radius of a Li atom.\": \"2 times the ionic radius\"\n    },\n    {\n      \"The 48g site is neglected as it is not reported in most refinements.\": \"include the 48g site\"\n    },\n    {\n      \"The crystal structure sites reported by Buschmann et al. are used as the framework.\": \"Buschmann et al.\"\n    },\n    {\n      \"The total number of generated structures is approximately 2.3 × 10^8.\": \"2.3 × 10 8\"\n    },\n    {\n      \"Symmetry-equivalent duplicates are removed using local sensitive hashing (LSH).\": \"local sensitive hashing\"\n    },\n    {\n      \"LSH optimizes pairwise comparison from O(N^2) to O(N).\": \"O(N 2)\"\n    },\n    {\n      \"Only approximately 1% of structures are symmetrically unique.\": \"approximately 1%\"\n    },\n    {\n      \"The configuration space is reduced to around 2 × 10^6 structures.\": \"2 × 10 6 structures\"\n    },\n    {\n      \"DFT calculations were performed on 1235 single point structures.\": \"1235 single point DFT\"\n    },\n    {\n      \"The first subset consisted of the 200 energetically lowest structures according to COMPASSIII.\": \"200 energetically lowest\"\n    },\n    {\n      \"The second subset was a random selection of approximately 1000 structures.\": \"random selection of approximately 1000\"\n    },\n    {\n      \"DFT calculations were performed with the ONETEP code.\": \"ONETEP code\"\n    },\n    {\n      \"The PBE GGA exchange correlation functional was used.\": \"PBE GGA\"\n    },\n    {\n      \"A kinetic energy cutoff of 830 eV was applied.\": \"830 eV\"\n    },\n    {\n      \"A multiple linear regression (MLR) model was fitted to the DFT energies.\": \"multiple linear regression\"\n    },\n    {\n      \"Structures were represented by a frequency occurrence list of Li-Li interactions.\": \"frequency occurrence list\"\n    },\n    {\n      \"Data were split into test and training sets with a 1:3 ratio.\": \"1:3 ratio\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5641,
+        "total_tokens": 6372,
+        "completion_tokens": 731,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5641,
+      "elapsed_seconds": 64.19030553475022,
+      "max_tokens": 4096,
+      "seed": 2029405672,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "199ba92e3e59f3948dc5d3e9aed565c3e7c6ecbe977bd71c27961a2b778d4f5c",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6864,
+  "elapsed_seconds": 642.0139946043491,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

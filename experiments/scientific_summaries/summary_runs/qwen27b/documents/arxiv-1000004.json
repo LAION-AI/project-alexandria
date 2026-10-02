@@ -1,0 +1,1624 @@
+{
+  "document_id": "arxiv-1000004",
+  "fulltext_sha256": "17d72cf5012a446db91cee13599eb989610d1f655e1baf57d7fb98691bd0f20f",
+  "summary": {
+    "title": "BanStereoSet: A Dataset to Measure Stereotypical Social Biases in LLMs for Bangla",
+    "authors": "Mahammed Kamruzzaman, Abdullah Al Monsur, Shrabon Das, Enamul Hassan, Gene Louis Kim",
+    "field_subfield": "Natural Language Processing, Computational Social Science",
+    "type_of_paper": "Dataset Paper",
+    "executive_summary": "This paper introduces BanStereoSet, a fill-in-the-blank dataset designed to evaluate stereotypical social biases in multilingual Large Language Models (LLMs) specifically for the Bangla language. Addressing the gap in non-English bias research, the authors localized content from existing datasets (StereoSet, IndiBias, and GenAssocBias) and curated new regional data, resulting in 1,194 sentences across nine bias categories: race, profession, gender, ageism, beauty, beauty in profession, region, caste, and religion. The dataset creation involved GPT-4 translation followed by rigorous review by four native Bangla-speaking annotators to address linguistic nuances such as the lack of gendered pronouns and cultural name substitutions. The study evaluated four LLMs (GPT-4o, Mistral-7B, Llama3.1-70B, and Gemma2-27B) using three prompting templates. Results indicate significant biases across all models, with GPT-4o exhibiting the highest average stereotypical engagement in Bangla (73.78%) and Mistral-7B the lowest (55.41%). A comparative analysis with the English version of the dataset reveals that while overall bias levels are similar, specific cultural sensitivities, such as caste bias, are handled differently depending on the language. The findings underscore the necessity for culturally and linguistically adapted datasets to develop equitable language technologies in non-English contexts, particularly for under-resourced languages like Bangla.",
+    "research_context": [
+      {
+        "Recent studies have revealed undesirable biases in state-of-the-art multilingual LLMs.": "undesirable biases"
+      },
+      {
+        "Existing bias measurement datasets are predominantly focused on English.": "predominantly in English"
+      },
+      {
+        "Research on bias specific to the Bengali language remains sparse.": "remains sparse"
+      },
+      {
+        "Previous Bengali studies primarily addressed gender and religious biases.": "gender and religious biases"
+      },
+      {
+        "There is no dataset covering a broader spectrum of bias categories for Bengali.": "no dataset"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to measure stereotypical biases in Bangla LLMs.": "stereotypical social biases"
+      },
+      {
+        "The dataset is designed to capture biases prevalent in the Bangla-speaking community.": "Bangla-speaking"
+      },
+      {
+        "The authors hypothesize that LLMs exhibit significant biases in Bangla.": "significant biases"
+      },
+      {
+        "The study compares bias levels between Bangla and English contexts.": "Bangla and\nEnglish"
+      },
+      {
+        "The goal is to guide the development of equitable language technologies.": "equitable language technologies"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The dataset consists of 1,194 sentences spanning 9 categories of bias.": "1,194 sentences"
+      },
+      {
+        "GPT-4 was used for translation using few-shot learning.": "GPT-4"
+      },
+      {
+        "Four native Bangla-speaking annotators reviewed each translation for accuracy.": "four native Bangla-\nspeaking"
+      },
+      {
+        "Gender-specific phrases were added to address lack of gendered pronouns.": "gender-\nspecific phrases"
+      },
+      {
+        "English names were substituted with Bengali names for cultural relevance.": "Bengali names"
+      },
+      {
+        "US cities were replaced with Bangladeshi cities like Dhaka.": "Bangladeshi cities"
+      },
+      {
+        "Five pitfalls from StereoSet were addressed manually by annotators.": "five\npitfalls"
+      },
+      {
+        "Caste data was curated from IndiBias using sent-more and sent-less columns.": "sent-more"
+      },
+      {
+        "Regional data was generated using a human-LLM partnership with ChatGPT.": "human-LLM partnership"
+      },
+      {
+        "Race bias contains 241 examples in the final dataset.": "Race:\n241"
+      },
+      {
+        "Gender bias contains 178 examples in the final dataset.": "Gender: 178"
+      },
+      {
+        "Religion bias contains 56 examples in the final dataset.": "Religion: 56"
+      },
+      {
+        "Profession bias contains 206 examples in the final dataset.": "Profession: 206"
+      },
+      {
+        "Ageism bias contains 134 examples in the final dataset.": "Ageism: 134"
+      },
+      {
+        "Beauty bias contains 130 examples in the final dataset.": "Beauty: 130"
+      },
+      {
+        "Beauty Profession bias contains 126 examples in the final dataset.": "Beauty Profession: 126"
+      },
+      {
+        "Caste bias contains 60 examples in the final dataset.": "Caste: 60"
+      },
+      {
+        "Region bias contains 63 examples in the final dataset.": "Region: 63"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "Four multilingual LLMs were evaluated: GPT-4o, Mistral-7B, Llama3.1-70B, Gemma2-27B.": "GPT-4o, Mistral-7B"
+      },
+      {
+        "Three prompting templates were used: baseline and two paraphrases.": "three prompting templates"
+      },
+      {
+        "The baseline template instructed models to select the appropriate word.": "select the appropriate word"
+      },
+      {
+        "Results were averaged across all three prompting templates.": "averaged across all three"
+      },
+      {
+        "The English version of the dataset was also evaluated.": "English version"
+      },
+      {
+        "Zero-shot learning was used for the English evaluation.": "zero-\nshot learning"
+      },
+      {
+        "Stereotypical engagement rates were calculated excluding unrelated engagements.": "excluding unrelated engagements"
+      },
+      {
+        "A fair model's stereotypical engagement should ideally be close to 50%.": "close to 50%"
+      },
+      {
+        "StereoSet-derived categories should lean more towards 0% due to negative attributes.": "lean more towards 0%"
+      }
+    ],
+    "key_results": [
+      {
+        "GPT-4o exhibited the highest average stereotypical response rate in Bangla at 73.78%.": "73.78"
+      },
+      {
+        "Mistral-7B exhibited the lowest average stereotypical response rate in Bangla at 55.41%.": "55.41"
+      },
+      {
+        "Llama3.1-70B had an average stereotypical response rate of 64.09% in Bangla.": "64.09"
+      },
+      {
+        "Gemma2-27B had an average stereotypical response rate of 69.73% in Bangla.": "69.73"
+      },
+      {
+        "Mistral performed best on 7 of the 9 bias categories in Bangla.": "7 of the 9"
+      },
+      {
+        "GPT-4o had the highest gender bias rate in Bangla at 81.12%.": "81.12"
+      },
+      {
+        "Gemma2-27B had the highest race bias rate in Bangla at 65.57%.": "65.57"
+      },
+      {
+        "GPT-4o had the highest profession bias rate in Bangla at 75.55%.": "75.55"
+      },
+      {
+        "Mistral-7B had the lowest religion bias rate in Bangla at 45.09%.": "45.09"
+      },
+      {
+        "GPT-4o had the highest caste bias rate in Bangla at 67.79%.": "67.79"
+      },
+      {
+        "GPT-4o had the highest beauty bias rate in Bangla at 73.52%.": "73.52"
+      },
+      {
+        "Gemma2-27B had the highest beauty profession bias rate in Bangla at 72.04%.": "72.04"
+      },
+      {
+        "GPT-4o had the highest ageism bias rate in Bangla at 56.75%.": "56.75"
+      },
+      {
+        "GPT-4o had the highest region bias rate in Bangla at 81.48%.": "81.48"
+      },
+      {
+        "GPT-4o had the highest average stereotypical response rate in English at 63.77%.": "63.77"
+      },
+      {
+        "Mistral-7B had the lowest average stereotypical response rate in English at 59.94%.": "59.94"
+      },
+      {
+        "Llama3.1-70B had an average stereotypical response rate of 65.54% in English.": "65.54"
+      },
+      {
+        "Gemma2-27B had an average stereotypical response rate of 66.03% in English.": "66.03"
+      },
+      {
+        "Mistral handled caste bias better in Bangla than in English.": "handle Caste bias"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The results indicate significant biases in multilingual LLMs for Bangla.": "significant biases"
+      },
+      {
+        "Mistral-7B demonstrated the least bias among the tested models.": "least biased model"
+      },
+      {
+        "GPT-4o and Gemma were more biased in Bangla than English.": "more biased in Bangla"
+      },
+      {
+        "Mistral and Llama were more biased in English than Bangla.": "more biased in\nEnglish"
+      },
+      {
+        "There is no consistent major difference in overall bias between languages.": "sistent, major difference"
+      },
+      {
+        "Cultural sensitivity appears dependent on the language of communication.": "cultural sensitivity"
+      },
+      {
+        "The study underscores the need for culturally nuanced datasets.": "culturally nuanced datasets"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The dataset may not adequately represent regional variations in stereotypes.": "regional variations"
+      },
+      {
+        "The focus on binary gender restricts addressing non-binary identities.": "binary gender"
+      },
+      {
+        "Translation challenges may lead to inaccuracies or cultural mismatches.": "cultural\nmismatches"
+      },
+      {
+        "The small size of certain categories like region bias limits comprehensiveness.": "small size"
+      },
+      {
+        "Crucial categories like sexual orientation and disability were not included.": "sexual orientation"
+      },
+      {
+        "The dataset predominantly captures explicit biases, neglecting subtle ones.": "explicit biases"
+      },
+      {
+        "Models' limited proficiency in Bangla could compromise evaluation effectiveness.": "limited proficiency"
+      }
+    ],
+    "claims": [
+      {
+        "description": "BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.",
+        "supporting_evidence": [
+          {
+            "The dataset covers 9 categories of bias.": "9 categories"
+          },
+          {
+            "It includes 1,194 sentences.": "1,194 sentences"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "It does not include sexual orientation or disability.": "sexual orientation"
+          },
+          {
+            "It focuses on binary gender.": "binary gender"
+          }
+        ],
+        "implications": [
+          {
+            "It facilitates exploration of stereotypical bias in Bangla.": "exploration of stereotypical bias"
+          },
+          {
+            "It guides development of equitable language technologies.": "equitable language technologies"
+          }
+        ]
+      },
+      {
+        "description": "Multilingual LLMs exhibit significant stereotypical biases in Bangla.",
+        "supporting_evidence": [
+          {
+            "GPT-4o showed 73.78% average stereotypical engagement.": "73.78"
+          },
+          {
+            "All models showed high profession and region bias.": "high levels of profession"
+          },
+          {
+            "Biases were observed across all 9 categories.": "9 categories"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Mistral-7B showed the lowest bias at 55.41%.": "55.41"
+          },
+          {
+            "Religion bias was relatively low across models.": "low levels of religion"
+          }
+        ],
+        "implications": [
+          {
+            "Culturally adapted datasets are necessary.": "culturally"
+          },
+          {
+            "Bias research must extend beyond English.": "beyond English"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "Results were averaged across three prompting templates.": "averaged across all three"
+      },
+      {
+        "Pitfalls in StereoSet were manually corrected.": "manually"
+      },
+      {
+        "Consensus of at least three annotators was required.": "at least three\nannotators"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows an example of a completion task for race bias.": "race bias"
+      },
+      {
+        "Figure 2 illustrates translation modifications for gender, religion, and race.": "gender-\nspecific phrases"
+      },
+      {
+        "Figure 3 shows an example of caste bias data creation.": "caste bias"
+      },
+      {
+        "Table 1 presents bias analysis across models for Bangla and English.": "Bias analysis"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the BanStereoSet dataset for Bangla bias evaluation.": "BanStereoSet"
+      },
+      {
+        "2. The strongest evidence is the significant bias found in GPT-4o (73.78%).": "73.78"
+      },
+      {
+        "3. The future path involves developing culturally nuanced datasets for equitable AI.": "culturally nuanced datasets"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper introduces BanStereoSet, a fill-in-the-blank dataset designed to evaluate stereotypical social biases in multilingual Large Language Models (LLMs) specifically for the Bangla language. Addressing the gap in non-English bias research, the authors localized content from existing datasets (StereoSet, IndiBias, and GenAssocBias) and curated new regional data, resulting in 1,194 sentences across nine bias categories: race, profession, gender, ageism, beauty, beauty in profession, region, caste, and religion. The dataset creation involved GPT-4 translation followed by rigorous review by four native Bangla-speaking annotators to address linguistic nuances such as the lack of gendered pronouns and cultural name substitutions. The study evaluated four LLMs (GPT-4o, Mistral-7B, Llama3.1-70B, and Gemma2-27B) using three prompting templates. Results indicate significant biases across all models, with GPT-4o exhibiting the highest average stereotypical engagement in Bangla (73.78%) and Mistral-7B the lowest (55.41%). A comparative analysis with the English version of the dataset reveals that while overall bias levels are similar, specific cultural sensitivities, such as caste bias, are handled differently depending on the language. The findings underscore the necessity for culturally and linguistically adapted datasets to develop equitable language technologies in non-English contexts, particularly for under-resourced languages like Bangla.\n\nResearch Context\nRecent studies have revealed undesirable biases in state-of-the-art multilingual LLMs. Existing bias measurement datasets are predominantly focused on English. Research on bias specific to the Bengali language remains sparse. Previous Bengali studies primarily addressed gender and religious biases. There is no dataset covering a broader spectrum of bias categories for Bengali.\n\nResearch Question And Hypothesis\nThe study aims to measure stereotypical biases in Bangla LLMs. The dataset is designed to capture biases prevalent in the Bangla-speaking community. The authors hypothesize that LLMs exhibit significant biases in Bangla. The study compares bias levels between Bangla and English contexts. The goal is to guide the development of equitable language technologies.\n\nMethodological Details\nThe dataset consists of 1,194 sentences spanning 9 categories of bias. GPT-4 was used for translation using few-shot learning. Four native Bangla-speaking annotators reviewed each translation for accuracy. Gender-specific phrases were added to address lack of gendered pronouns. English names were substituted with Bengali names for cultural relevance. US cities were replaced with Bangladeshi cities like Dhaka. Five pitfalls from StereoSet were addressed manually by annotators. Caste data was curated from IndiBias using sent-more and sent-less columns. Regional data was generated using a human-LLM partnership with ChatGPT. Race bias contains 241 examples in the final dataset. Gender bias contains 178 examples in the final dataset. Religion bias contains 56 examples in the final dataset. Profession bias contains 206 examples in the final dataset. Ageism bias contains 134 examples in the final dataset. Beauty bias contains 130 examples in the final dataset. Beauty Profession bias contains 126 examples in the final dataset. Caste bias contains 60 examples in the final dataset. Region bias contains 63 examples in the final dataset.\n\nProcedures And Architectures\nFour multilingual LLMs were evaluated: GPT-4o, Mistral-7B, Llama3.1-70B, Gemma2-27B. Three prompting templates were used: baseline and two paraphrases. The baseline template instructed models to select the appropriate word. Results were averaged across all three prompting templates. The English version of the dataset was also evaluated. Zero-shot learning was used for the English evaluation. Stereotypical engagement rates were calculated excluding unrelated engagements. A fair model's stereotypical engagement should ideally be close to 50%. StereoSet-derived categories should lean more towards 0% due to negative attributes.\n\nKey Results\nGPT-4o exhibited the highest average stereotypical response rate in Bangla at 73.78%. Mistral-7B exhibited the lowest average stereotypical response rate in Bangla at 55.41%. Llama3.1-70B had an average stereotypical response rate of 64.09% in Bangla. Gemma2-27B had an average stereotypical response rate of 69.73% in Bangla. Mistral performed best on 7 of the 9 bias categories in Bangla. GPT-4o had the highest gender bias rate in Bangla at 81.12%. Gemma2-27B had the highest race bias rate in Bangla at 65.57%. GPT-4o had the highest profession bias rate in Bangla at 75.55%. Mistral-7B had the lowest religion bias rate in Bangla at 45.09%. GPT-4o had the highest caste bias rate in Bangla at 67.79%. GPT-4o had the highest beauty bias rate in Bangla at 73.52%. Gemma2-27B had the highest beauty profession bias rate in Bangla at 72.04%. GPT-4o had the highest ageism bias rate in Bangla at 56.75%. GPT-4o had the highest region bias rate in Bangla at 81.48%. GPT-4o had the highest average stereotypical response rate in English at 63.77%. Mistral-7B had the lowest average stereotypical response rate in English at 59.94%. Llama3.1-70B had an average stereotypical response rate of 65.54% in English. Gemma2-27B had an average stereotypical response rate of 66.03% in English. Mistral handled caste bias better in Bangla than in English.\n\nInterpretation And Theoretical Implications\nThe results indicate significant biases in multilingual LLMs for Bangla. Mistral-7B demonstrated the least bias among the tested models. GPT-4o and Gemma were more biased in Bangla than English. Mistral and Llama were more biased in English than Bangla. There is no consistent major difference in overall bias between languages. Cultural sensitivity appears dependent on the language of communication. The study underscores the need for culturally nuanced datasets.\n\nContradictions And Limitations\nThe dataset may not adequately represent regional variations in stereotypes. The focus on binary gender restricts addressing non-binary identities. Translation challenges may lead to inaccuracies or cultural mismatches. The small size of certain categories like region bias limits comprehensiveness. Crucial categories like sexual orientation and disability were not included. The dataset predominantly captures explicit biases, neglecting subtle ones. Models' limited proficiency in Bangla could compromise evaluation effectiveness.\n\nClaims\nBanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs. The dataset covers 9 categories of bias. It includes 1,194 sentences. It does not include sexual orientation or disability. It focuses on binary gender. It facilitates exploration of stereotypical bias in Bangla. It guides development of equitable language technologies.\nMultilingual LLMs exhibit significant stereotypical biases in Bangla. GPT-4o showed 73.78% average stereotypical engagement. All models showed high profession and region bias. Biases were observed across all 9 categories. Mistral-7B showed the lowest bias at 55.41%. Religion bias was relatively low across models. Culturally adapted datasets are necessary. Bias research must extend beyond English.\n\nRobustness And Ablation Notes\nResults were averaged across three prompting templates. Pitfalls in StereoSet were manually corrected. Consensus of at least three annotators was required.\n\nKey Figures Tables\nFigure 1 shows an example of a completion task for race bias. Figure 2 illustrates translation modifications for gender, religion, and race. Figure 3 shows an example of caste bias data creation. Table 1 presents bias analysis across models for Bangla and English.\n\nThree Takeaways\n1. The core contribution is the BanStereoSet dataset for Bangla bias evaluation. 2. The strongest evidence is the significant bias found in GPT-4o (73.78%). 3. The future path involves developing culturally nuanced datasets for equitable AI.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "undesirable biases",
+      "start": 1899,
+      "end": 1917,
+      "typographic_alignment": false,
+      "original_quote": "undesirable biases"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "predominantly in English",
+      "start": 2057,
+      "end": 2081,
+      "typographic_alignment": false,
+      "original_quote": "predominantly in English"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "remains sparse",
+      "start": 2842,
+      "end": 2856,
+      "typographic_alignment": false,
+      "original_quote": "remains sparse"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "gender and religious biases",
+      "start": 2999,
+      "end": 3026,
+      "typographic_alignment": false,
+      "original_quote": "gender and religious biases"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "no dataset",
+      "start": 3640,
+      "end": 3650,
+      "typographic_alignment": false,
+      "original_quote": "no dataset"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "stereotypical social biases",
+      "start": 384,
+      "end": 411,
+      "typographic_alignment": false,
+      "original_quote": "stereotypical social biases"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "Bangla-speaking",
+      "start": 719,
+      "end": 734,
+      "typographic_alignment": false,
+      "original_quote": "Bangla-speaking"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "significant biases",
+      "start": 1281,
+      "end": 1299,
+      "typographic_alignment": false,
+      "original_quote": "significant biases"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "Bangla and\nEnglish",
+      "start": 14033,
+      "end": 14051,
+      "typographic_alignment": true,
+      "original_quote": "Bangla and English"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "equitable language technologies",
+      "start": 1398,
+      "end": 1429,
+      "typographic_alignment": false,
+      "original_quote": "equitable language technologies"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "1,194 sentences",
+      "start": 785,
+      "end": 800,
+      "typographic_alignment": false,
+      "original_quote": "1,194 sentences"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "GPT-4",
+      "start": 5228,
+      "end": 5233,
+      "typographic_alignment": false,
+      "original_quote": "GPT-4"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "four native Bangla-\nspeaking",
+      "start": 5349,
+      "end": 5377,
+      "typographic_alignment": true,
+      "original_quote": "four native Bangla-speaking"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "gender-\nspecific phrases",
+      "start": 6101,
+      "end": 6125,
+      "typographic_alignment": true,
+      "original_quote": "gender-specific phrases"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "Bengali names",
+      "start": 6441,
+      "end": 6454,
+      "typographic_alignment": false,
+      "original_quote": "Bengali names"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "Bangladeshi cities",
+      "start": 6605,
+      "end": 6623,
+      "typographic_alignment": false,
+      "original_quote": "Bangladeshi cities"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "five\npitfalls",
+      "start": 6904,
+      "end": 6917,
+      "typographic_alignment": true,
+      "original_quote": "five pitfalls"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "sent-more",
+      "start": 7904,
+      "end": 7913,
+      "typographic_alignment": false,
+      "original_quote": "sent-more"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "human-LLM partnership",
+      "start": 8505,
+      "end": 8526,
+      "typographic_alignment": false,
+      "original_quote": "human-LLM partnership"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "Race:\n241",
+      "start": 11941,
+      "end": 11950,
+      "typographic_alignment": true,
+      "original_quote": "Race: 241"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "Gender: 178",
+      "start": 11952,
+      "end": 11963,
+      "typographic_alignment": false,
+      "original_quote": "Gender: 178"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "Religion: 56",
+      "start": 11965,
+      "end": 11977,
+      "typographic_alignment": false,
+      "original_quote": "Religion: 56"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "Profession: 206",
+      "start": 11979,
+      "end": 11994,
+      "typographic_alignment": false,
+      "original_quote": "Profession: 206"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "Ageism: 134",
+      "start": 11996,
+      "end": 12007,
+      "typographic_alignment": false,
+      "original_quote": "Ageism: 134"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "Beauty: 130",
+      "start": 12009,
+      "end": 12020,
+      "typographic_alignment": false,
+      "original_quote": "Beauty: 130"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "Beauty Profession: 126",
+      "start": 12022,
+      "end": 12044,
+      "typographic_alignment": false,
+      "original_quote": "Beauty Profession: 126"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "Caste: 60",
+      "start": 12046,
+      "end": 12055,
+      "typographic_alignment": false,
+      "original_quote": "Caste: 60"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "Region: 63",
+      "start": 12061,
+      "end": 12071,
+      "typographic_alignment": false,
+      "original_quote": "Region: 63"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "GPT-4o, Mistral-7B",
+      "start": 12158,
+      "end": 12176,
+      "typographic_alignment": false,
+      "original_quote": "GPT-4o, Mistral-7B"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "three prompting templates",
+      "start": 13425,
+      "end": 13450,
+      "typographic_alignment": false,
+      "original_quote": "three prompting templates"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "select the appropriate word",
+      "start": 12396,
+      "end": 12423,
+      "typographic_alignment": false,
+      "original_quote": "select the appropriate word"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "averaged across all three",
+      "start": 15269,
+      "end": 15294,
+      "typographic_alignment": false,
+      "original_quote": "averaged across all three"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "English version",
+      "start": 8898,
+      "end": 8913,
+      "typographic_alignment": false,
+      "original_quote": "English version"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "zero-\nshot learning",
+      "start": 13849,
+      "end": 13868,
+      "typographic_alignment": true,
+      "original_quote": "zero-shot learning"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "excluding unrelated engagements",
+      "start": 14208,
+      "end": 14239,
+      "typographic_alignment": false,
+      "original_quote": "excluding unrelated engagements"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "close to 50%",
+      "start": 16491,
+      "end": 16503,
+      "typographic_alignment": false,
+      "original_quote": "close to 50%"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "lean more towards 0%",
+      "start": 16562,
+      "end": 16582,
+      "typographic_alignment": false,
+      "original_quote": "lean more towards 0%"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "73.78",
+      "start": 15069,
+      "end": 15074,
+      "typographic_alignment": false,
+      "original_quote": "73.78"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "55.41",
+      "start": 15075,
+      "end": 15080,
+      "typographic_alignment": false,
+      "original_quote": "55.41"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "64.09",
+      "start": 15081,
+      "end": 15086,
+      "typographic_alignment": false,
+      "original_quote": "64.09"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "69.73",
+      "start": 15087,
+      "end": 15092,
+      "typographic_alignment": false,
+      "original_quote": "69.73"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "7 of the 9",
+      "start": 16854,
+      "end": 16864,
+      "typographic_alignment": false,
+      "original_quote": "7 of the 9"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "81.12",
+      "start": 14501,
+      "end": 14506,
+      "typographic_alignment": false,
+      "original_quote": "81.12"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "65.57",
+      "start": 14558,
+      "end": 14563,
+      "typographic_alignment": false,
+      "original_quote": "65.57"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "75.55",
+      "start": 14627,
+      "end": 14632,
+      "typographic_alignment": false,
+      "original_quote": "75.55"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "45.09",
+      "start": 14688,
+      "end": 14693,
+      "typographic_alignment": false,
+      "original_quote": "45.09"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "67.79",
+      "start": 14757,
+      "end": 14762,
+      "typographic_alignment": false,
+      "original_quote": "67.79"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "73.52",
+      "start": 14825,
+      "end": 14830,
+      "typographic_alignment": false,
+      "original_quote": "73.52"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "72.04",
+      "start": 14904,
+      "end": 14909,
+      "typographic_alignment": false,
+      "original_quote": "72.04"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "56.75",
+      "start": 14972,
+      "end": 14977,
+      "typographic_alignment": false,
+      "original_quote": "56.75"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "81.48",
+      "start": 15029,
+      "end": 15034,
+      "typographic_alignment": false,
+      "original_quote": "81.48"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "63.77",
+      "start": 15093,
+      "end": 15098,
+      "typographic_alignment": false,
+      "original_quote": "63.77"
+    },
+    {
+      "path": "key_results[15]",
+      "quote": "59.94",
+      "start": 15099,
+      "end": 15104,
+      "typographic_alignment": false,
+      "original_quote": "59.94"
+    },
+    {
+      "path": "key_results[16]",
+      "quote": "65.54",
+      "start": 15105,
+      "end": 15110,
+      "typographic_alignment": false,
+      "original_quote": "65.54"
+    },
+    {
+      "path": "key_results[17]",
+      "quote": "66.03",
+      "start": 15111,
+      "end": 15116,
+      "typographic_alignment": false,
+      "original_quote": "66.03"
+    },
+    {
+      "path": "key_results[18]",
+      "quote": "handle Caste bias",
+      "start": 17954,
+      "end": 17971,
+      "typographic_alignment": false,
+      "original_quote": "handle Caste bias"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "significant biases",
+      "start": 1281,
+      "end": 1299,
+      "typographic_alignment": false,
+      "original_quote": "significant biases"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "least biased model",
+      "start": 17370,
+      "end": 17388,
+      "typographic_alignment": false,
+      "original_quote": "least biased model"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "more biased in Bangla",
+      "start": 17722,
+      "end": 17743,
+      "typographic_alignment": false,
+      "original_quote": "more biased in Bangla"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "more biased in\nEnglish",
+      "start": 17782,
+      "end": 17804,
+      "typographic_alignment": true,
+      "original_quote": "more biased in English"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "sistent, major difference",
+      "start": 17849,
+      "end": 17874,
+      "typographic_alignment": false,
+      "original_quote": "sistent, major difference"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "cultural sensitivity",
+      "start": 18029,
+      "end": 18049,
+      "typographic_alignment": false,
+      "original_quote": "cultural sensitivity"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "culturally nuanced datasets",
+      "start": 18531,
+      "end": 18558,
+      "typographic_alignment": false,
+      "original_quote": "culturally nuanced datasets"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "regional variations",
+      "start": 19097,
+      "end": 19116,
+      "typographic_alignment": false,
+      "original_quote": "regional variations"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "binary gender",
+      "start": 19241,
+      "end": 19254,
+      "typographic_alignment": false,
+      "original_quote": "binary gender"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "cultural\nmismatches",
+      "start": 19483,
+      "end": 19502,
+      "typographic_alignment": true,
+      "original_quote": "cultural mismatches"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "small size",
+      "start": 19654,
+      "end": 19664,
+      "typographic_alignment": false,
+      "original_quote": "small size"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "sexual orientation",
+      "start": 19922,
+      "end": 19940,
+      "typographic_alignment": false,
+      "original_quote": "sexual orientation"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "explicit biases",
+      "start": 20018,
+      "end": 20033,
+      "typographic_alignment": false,
+      "original_quote": "explicit biases"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "limited proficiency",
+      "start": 20203,
+      "end": 20222,
+      "typographic_alignment": false,
+      "original_quote": "limited proficiency"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "averaged across all three",
+      "start": 15269,
+      "end": 15294,
+      "typographic_alignment": false,
+      "original_quote": "averaged across all three"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "manually",
+      "start": 7624,
+      "end": 7632,
+      "typographic_alignment": false,
+      "original_quote": "manually"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "at least three\nannotators",
+      "start": 7749,
+      "end": 7774,
+      "typographic_alignment": true,
+      "original_quote": "at least three annotators"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "race bias",
+      "start": 2551,
+      "end": 2560,
+      "typographic_alignment": false,
+      "original_quote": "race bias"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "gender-\nspecific phrases",
+      "start": 6101,
+      "end": 6125,
+      "typographic_alignment": true,
+      "original_quote": "gender-specific phrases"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "caste bias",
+      "start": 4589,
+      "end": 4599,
+      "typographic_alignment": false,
+      "original_quote": "caste bias"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Bias analysis",
+      "start": 15126,
+      "end": 15139,
+      "typographic_alignment": false,
+      "original_quote": "Bias analysis"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "BanStereoSet",
+      "start": 0,
+      "end": 12,
+      "typographic_alignment": false,
+      "original_quote": "BanStereoSet"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "73.78",
+      "start": 15069,
+      "end": 15074,
+      "typographic_alignment": false,
+      "original_quote": "73.78"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "culturally nuanced datasets",
+      "start": 18531,
+      "end": 18558,
+      "typographic_alignment": false,
+      "original_quote": "culturally nuanced datasets"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "9 categories",
+      "start": 810,
+      "end": 822,
+      "typographic_alignment": false,
+      "original_quote": "9 categories"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "1,194 sentences",
+      "start": 785,
+      "end": 800,
+      "typographic_alignment": false,
+      "original_quote": "1,194 sentences"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "sexual orientation",
+      "start": 19922,
+      "end": 19940,
+      "typographic_alignment": false,
+      "original_quote": "sexual orientation"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "binary gender",
+      "start": 19241,
+      "end": 19254,
+      "typographic_alignment": false,
+      "original_quote": "binary gender"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "exploration of stereotypical bias",
+      "start": 1037,
+      "end": 1070,
+      "typographic_alignment": false,
+      "original_quote": "exploration of stereotypical bias"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "equitable language technologies",
+      "start": 1398,
+      "end": 1429,
+      "typographic_alignment": false,
+      "original_quote": "equitable language technologies"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "73.78",
+      "start": 15069,
+      "end": 15074,
+      "typographic_alignment": false,
+      "original_quote": "73.78"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "high levels of profession",
+      "start": 16985,
+      "end": 17010,
+      "typographic_alignment": false,
+      "original_quote": "high levels of profession"
+    },
+    {
+      "path": "claims[1].supporting_evidence[2]",
+      "quote": "9 categories",
+      "start": 810,
+      "end": 822,
+      "typographic_alignment": false,
+      "original_quote": "9 categories"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "55.41",
+      "start": 15075,
+      "end": 15080,
+      "typographic_alignment": false,
+      "original_quote": "55.41"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[1]",
+      "quote": "low levels of religion",
+      "start": 17242,
+      "end": 17264,
+      "typographic_alignment": false,
+      "original_quote": "low levels of religion"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "culturally",
+      "start": 1333,
+      "end": 1343,
+      "typographic_alignment": false,
+      "original_quote": "culturally"
+    },
+    {
+      "path": "claims[1].implications[1]",
+      "quote": "beyond English",
+      "start": 508,
+      "end": 522,
+      "typographic_alignment": false,
+      "original_quote": "beyond English"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"BanStereoSet: A Dataset to Measure Stereotypical Social Biases in LLMs for Bangla\",\n  \"authors\": \"Mahammed Kamruzzaman, Abdullah Al Monsur, Shrabon Das, Enamul Hassan, Gene Louis Kim\",\n  \"field_subfield\": \"Natural Language Processing, Computational Social Science\",\n  \"type_of_paper\": \"Dataset Paper\",\n  \"executive_summary\": \"This paper introduces BanStereoSet, a fill-in-the-blank dataset designed to evaluate stereotypical social biases in multilingual Large Language Models (LLMs) specifically for the Bangla language. Addressing the gap in non-English bias research, the authors localized content from existing datasets (StereoSet, IndiBias, and GenAssocBias) and curated new regional data, resulting in 1,194 sentences across nine bias categories: race, profession, gender, ageism, beauty, beauty in profession, region, caste, and religion. The dataset creation involved GPT-4 translation followed by rigorous review by four native Bangla-speaking annotators to address linguistic nuances such as the lack of gendered pronouns and cultural name substitutions. The study evaluated four LLMs (GPT-4o, Mistral-7B, Llama3.1-70B, and Gemma2-27B) using three prompting templates. Results indicate significant biases across all models, with GPT-4o exhibiting the highest average stereotypical engagement in Bangla (73.78%) and Mistral-7B the lowest (55.41%). A comparative analysis with the English version of the dataset reveals that while overall bias levels are similar, specific cultural sensitivities, such as caste bias, are handled differently depending on the language. The findings underscore the necessity for culturally and linguistically adapted datasets to develop equitable language technologies in non-English contexts, particularly for under-resourced languages like Bangla.\",\n  \"research_context\": [\n    { \"Recent studies have revealed undesirable biases in state-of-the-art multilingual LLMs.\": \"undesirable biases\" },\n    { \"Existing bias measurement datasets are predominantly focused on English.\": \"predominantly in English\" },\n    { \"Research on bias specific to the Bengali language remains sparse.\": \"remains sparse\" },\n    { \"Previous Bengali studies primarily addressed gender and religious biases.\": \"gender and religious biases\" },\n    { \"There is no dataset covering a broader spectrum of bias categories for Bengali.\": \"no dataset\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to measure stereotypical biases in Bangla LLMs.\": \"measure stereotypical biases\" },\n    { \"The dataset is designed to capture biases prevalent in the Bangla-speaking community.\": \"Bangla-speaking community\" },\n    { \"The authors hypothesize that LLMs exhibit significant biases in Bangla.\": \"significant biases\" },\n    { \"The study compares bias levels between Bangla and English contexts.\": \"Bangla and English\" },\n    { \"The goal is to guide the development of equitable language technologies.\": \"equitable language technologies\" }\n  ],\n  \"methodological_details\": [\n    { \"The dataset consists of 1,194 sentences spanning 9 categories of bias.\": \"1,194 sentences\" },\n    { \"Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.\": \"StereoSet, IndiBias\" },\n    { \"GPT-4 was used for translation using few-shot learning.\": \"GPT-4\" },\n    { \"Four native Bangla-speaking annotators reviewed each translation for accuracy.\": \"four native Bangla-speaking\" },\n    { \"Gender-specific phrases were added to address lack of gendered pronouns.\": \"gender-specific phrases\" },\n    { \"English names were substituted with Bengali names for cultural relevance.\": \"Bengali names\" },\n    { \"US cities were replaced with Bangladeshi cities like Dhaka.\": \"Bangladeshi cities\" },\n    { \"Five pitfalls from StereoSet were addressed manually by annotators.\": \"five pitfalls\" },\n    { \"Caste data was curated from IndiBias using sent-more and sent-less columns.\": \"sent-more\" },\n    { \"Regional data was generated using a human-LLM partnership with ChatGPT.\": \"human-LLM partnership\" },\n    { \"Race bias contains 241 examples in the final dataset.\": \"Race: 241\" },\n    { \"Gender bias contains 178 examples in the final dataset.\": \"Gender: 178\" },\n    { \"Religion bias contains 56 examples in the final dataset.\": \"Religion: 56\" },\n    { \"Profession bias contains 206 examples in the final dataset.\": \"Profession: 206\" },\n    { \"Ageism bias contains 134 examples in the final dataset.\": \"Ageism: 134\" },\n    { \"Beauty bias contains 130 examples in the final dataset.\": \"Beauty: 130\" },\n    { \"Beauty Profession bias contains 126 examples in the final dataset.\": \"Beauty Profession: 126\" },\n    { \"Caste bias contains 60 examples in the final dataset.\": \"Caste: 60\" },\n    { \"Region bias contains 63 examples in the final dataset.\": \"Region: 63\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"Four multilingual LLMs were evaluated: GPT-4o, Mistral-7B, Llama3.1-70B, Gemma2-27B.\": \"GPT-4o, Mistral-7B\" },\n    { \"Three prompting templates were used: baseline and two paraphrases.\": \"three prompting templates\" },\n    { \"The baseline template instructed models to select the appropriate word.\": \"select the appropriate word\" },\n    { \"Results were averaged across all three prompting templates.\": \"averaged across all three\" },\n    { \"The English version of the dataset was also evaluated.\": \"English version\" },\n    { \"Zero-shot learning was used for the English evaluation.\": \"zero-shot learning\" },\n    { \"Stereotypical engagement rates were calculated excluding unrelated engagements.\": \"excluding unrelated engagements\" },\n    { \"A fair model's stereotypical engagement should ideally be close to 50%.\": \"close to 50%\" },\n    { \"StereoSet-derived categories should lean more towards 0% due to negative attributes.\": \"lean more towards 0%\" }\n  ],\n  \"key_results\": [\n    { \"GPT-4o exhibited the highest average stereotypical response rate in Bangla at 73.78%.\": \"73.78\" },\n    { \"Mistral-7B exhibited the lowest average stereotypical response rate in Bangla at 55.41%.\": \"55.41\" },\n    { \"Llama3.1-70B had an average stereotypical response rate of 64.09% in Bangla.\": \"64.09\" },\n    { \"Gemma2-27B had an average stereotypical response rate of 69.73% in Bangla.\": \"69.73\" },\n    { \"Mistral performed best on 7 of the 9 bias categories in Bangla.\": \"7 of the 9\" },\n    { \"GPT-4o had the highest gender bias rate in Bangla at 81.12%.\": \"81.12\" },\n    { \"Gemma2-27B had the highest race bias rate in Bangla at 65.57%.\": \"65.57\" },\n    { \"GPT-4o had the highest profession bias rate in Bangla at 75.55%.\": \"75.55\" },\n    { \"Mistral-7B had the lowest religion bias rate in Bangla at 45.09%.\": \"45.09\" },\n    { \"GPT-4o had the highest caste bias rate in Bangla at 67.79%.\": \"67.79\" },\n    { \"GPT-4o had the highest beauty bias rate in Bangla at 73.52%.\": \"73.52\" },\n    { \"Gemma2-27B had the highest beauty profession bias rate in Bangla at 72.04%.\": \"72.04\" },\n    { \"GPT-4o had the highest ageism bias rate in Bangla at 56.75%.\": \"56.75\" },\n    { \"GPT-4o had the highest region bias rate in Bangla at 81.48%.\": \"81.48\" },\n    { \"GPT-4o had the highest average stereotypical response rate in English at 63.77%.\": \"63.77\" },\n    { \"Mistral-7B had the lowest average stereotypical response rate in English at 59.94%.\": \"59.94\" },\n    { \"Llama3.1-70B had an average stereotypical response rate of 65.54% in English.\": \"65.54\" },\n    { \"Gemma2-27B had an average stereotypical response rate of 66.03% in English.\": \"66.03\" },\n    { \"Mistral handled caste bias better in Bangla than in English.\": \"handle Caste bias\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The results indicate significant biases in multilingual LLMs for Bangla.\": \"significant biases\" },\n    { \"Mistral-7B demonstrated the least bias among the tested models.\": \"least biased model\" },\n    { \"GPT-4o and Gemma were more biased in Bangla than English.\": \"more biased in Bangla\" },\n    { \"Mistral and Llama were more biased in English than Bangla.\": \"more biased in English\" },\n    { \"There is no consistent major difference in overall bias between languages.\": \"no consistent, major difference\" },\n    { \"Cultural sensitivity appears dependent on the language of communication.\": \"cultural sensitivity\" },\n    { \"The study underscores the need for culturally nuanced datasets.\": \"culturally nuanced datasets\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The dataset may not adequately represent regional variations in stereotypes.\": \"regional variations\" },\n    { \"The focus on binary gender restricts addressing non-binary identities.\": \"binary gender\" },\n    { \"Translation challenges may lead to inaccuracies or cultural mismatches.\": \"cultural mismatches\" },\n    { \"The small size of certain categories like region bias limits comprehensiveness.\": \"small size\" },\n    { \"Crucial categories like sexual orientation and disability were not included.\": \"sexual orientation\" },\n    { \"The dataset predominantly captures explicit biases, neglecting subtle ones.\": \"explicit biases\" },\n    { \"Models' limited proficiency in Bangla could compromise evaluation effectiveness.\": \"limited proficiency\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.\",\n      \"supporting_evidence\": [\n        { \"The dataset covers 9 categories of bias.\": \"9 categories\" },\n        { \"It includes 1,194 sentences.\": \"1,194 sentences\" },\n        { \"It was created using localized and curated data.\": \"localized the content\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"It does not include sexual orientation or disability.\": \"sexual orientation\" },\n        { \"It focuses on binary gender.\": \"binary gender\" }\n      ],\n      \"implications\": [\n        { \"It facilitates exploration of stereotypical bias in Bangla.\": \"exploration of stereotypical bias\" },\n        { \"It guides development of equitable language technologies.\": \"equitable language technologies\" }\n      ]\n    },\n    {\n      \"description\": \"Multilingual LLMs exhibit significant stereotypical biases in Bangla.\",\n      \"supporting_evidence\": [\n        { \"GPT-4o showed 73.78% average stereotypical engagement.\": \"73.78\" },\n        { \"All models showed high profession and region bias.\": \"high levels of profession\" },\n        { \"Biases were observed across all 9 categories.\": \"9 categories\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Mistral-7B showed the lowest bias at 55.41%.\": \"55.41\" },\n        { \"Religion bias was relatively low across models.\": \"low levels of religion\" }\n      ],\n      \"implications\": [\n        { \"Culturally adapted datasets are necessary.\": \"culturally and linguistically adapted\" },\n        { \"Bias research must extend beyond English.\": \"beyond English\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": \"\",\n  \"robustness_and_ablation_notes\": [\n    { \"Results were averaged across three prompting templates.\": \"averaged across all three\" },\n    { \"Pitfalls in StereoSet were manually corrected.\": \"manually\" },\n    { \"Consensus of at least three annotators was required.\": \"at least three annotators\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 shows an example of a completion task for race bias.\": \"race bias\" },\n    { \"Figure 2 illustrates translation modifications for gender, religion, and race.\": \"gender-specific phrases\" },\n    { \"Figure 3 shows an example of caste bias data creation.\": \"caste bias\" },\n    { \"Table 1 presents bias analysis across models for Bangla and English.\": \"bias analysis\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the BanStereoSet dataset for Bangla bias evaluation.\": \"BanStereoSet\" },\n    { \"2. The strongest evidence is the significant bias found in GPT-4o (73.78%).\": \"73.78\" },\n    { \"3. The future path involves developing culturally nuanced datasets for equitable AI.\": \"culturally nuanced datasets\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7712,
+        "total_tokens": 11009,
+        "completion_tokens": 3297,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7712,
+      "elapsed_seconds": 315.94565523788333,
+      "max_tokens": 16000,
+      "seed": 1203034743,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "44ee0ee23213c2bcdb3cc9fdb9abcb30fd910a003c5577bfc3dcbda390d4bb9e",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: measure stereotypical biases",
+        "methodological_details": "evidence quote is not present in fulltext: StereoSet, IndiBias",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: no consistent, major difference",
+        "claims": "evidence quote is not present in fulltext: localized the content",
+        "key_figures_tables": "evidence quote is not present in fulltext: bias analysis"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The study aims to measure stereotypical biases in Bangla LLMs.\": \"stereotypical social biases\"\n    },\n    {\n      \"The dataset is designed to capture biases prevalent in the Bangla-speaking community.\": \"Bangla-speaking community\"\n    },\n    {\n      \"The authors hypothesize that LLMs exhibit significant biases in Bangla.\": \"significant biases\"\n    },\n    {\n      \"The study compares bias levels between Bangla and English contexts.\": \"Bangla and English\"\n    },\n    {\n      \"The goal is to guide the development of equitable language technologies.\": \"equitable language technologies\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The dataset consists of 1,194 sentences spanning 9 categories of bias.\": \"1,194 sentences\"\n    },\n    {\n      \"Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.\": \"StereoSet, IndiBias, and\"\n    },\n    {\n      \"GPT-4 was used for translation using few-shot learning.\": \"GPT-4\"\n    },\n    {\n      \"Four native Bangla-speaking annotators reviewed each translation for accuracy.\": \"four native Bangla-speaking\"\n    },\n    {\n      \"Gender-specific phrases were added to address lack of gendered pronouns.\": \"gender-specific phrases\"\n    },\n    {\n      \"English names were substituted with Bengali names for cultural relevance.\": \"Bengali names\"\n    },\n    {\n      \"US cities were replaced with Bangladeshi cities like Dhaka.\": \"Bangladeshi cities\"\n    },\n    {\n      \"Five pitfalls from StereoSet were addressed manually by annotators.\": \"five pitfalls\"\n    },\n    {\n      \"Caste data was curated from IndiBias using sent-more and sent-less columns.\": \"sent-more\"\n    },\n    {\n      \"Regional data was generated using a human-LLM partnership with ChatGPT.\": \"human-LLM partnership\"\n    },\n    {\n      \"Race bias contains 241 examples in the final dataset.\": \"Race: 241\"\n    },\n    {\n      \"Gender bias contains 178 examples in the final dataset.\": \"Gender: 178\"\n    },\n    {\n      \"Religion bias contains 56 examples in the final dataset.\": \"Religion: 56\"\n    },\n    {\n      \"Profession bias contains 206 examples in the final dataset.\": \"Profession: 206\"\n    },\n    {\n      \"Ageism bias contains 134 examples in the final dataset.\": \"Ageism: 134\"\n    },\n    {\n      \"Beauty bias contains 130 examples in the final dataset.\": \"Beauty: 130\"\n    },\n    {\n      \"Beauty Profession bias contains 126 examples in the final dataset.\": \"Beauty Profession: 126\"\n    },\n    {\n      \"Caste bias contains 60 examples in the final dataset.\": \"Caste: 60\"\n    },\n    {\n      \"Region bias contains 63 examples in the final dataset.\": \"Region: 63\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results indicate significant biases in multilingual LLMs for Bangla.\": \"significant biases\"\n    },\n    {\n      \"Mistral-7B demonstrated the least bias among the tested models.\": \"least biased model\"\n    },\n    {\n      \"GPT-4o and Gemma were more biased in Bangla than English.\": \"more biased in Bangla\"\n    },\n    {\n      \"Mistral and Llama were more biased in English than Bangla.\": \"more biased in English\"\n    },\n    {\n      \"There is no consistent major difference in overall bias between languages.\": \"consistent, major difference\"\n    },\n    {\n      \"Cultural sensitivity appears dependent on the language of communication.\": \"cultural sensitivity\"\n    },\n    {\n      \"The study underscores the need for culturally nuanced datasets.\": \"culturally nuanced datasets\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.\",\n      \"supporting_evidence\": [\n        {\n          \"The dataset covers 9 categories of bias.\": \"9 categories\"\n        },\n        {\n          \"It includes 1,194 sentences.\": \"1,194 sentences\"\n        },\n        {\n          \"It was created using localized and curated data.\": \"localized the content\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"It does not include sexual orientation or disability.\": \"sexual orientation\"\n        },\n        {\n          \"It focuses on binary gender.\": \"binary gender\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"It facilitates exploration of stereotypical bias in Bangla.\": \"exploration of stereotypical bias\"\n        },\n        {\n          \"It guides development of equitable language technologies.\": \"equitable language technologies\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Multilingual LLMs exhibit significant stereotypical biases in Bangla.\",\n      \"supporting_evidence\": [\n        {\n          \"GPT-4o showed 73.78% average stereotypical engagement.\": \"73.78\"\n        },\n        {\n          \"All models showed high profession and region bias.\": \"high levels of profession\"\n        },\n        {\n          \"Biases were observed across all 9 categories.\": \"9 categories\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Mistral-7B showed the lowest bias at 55.41%.\": \"55.41\"\n        },\n        {\n          \"Religion bias was relatively low across models.\": \"low levels of religion\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Culturally adapted datasets are necessary.\": \"culturally and linguistically\"\n        },\n        {\n          \"Bias research must extend beyond English.\": \"beyond English\"\n        }\n      ]\n    }\n  ],\n  \"key_figures_tables\": [\n    {\n      \"Figure 1 shows an example of a completion task for race bias.\": \"race bias\"\n    },\n    {\n      \"Figure 2 illustrates translation modifications for gender, religion, and race.\": \"gender-specific phrases\"\n    },\n    {\n      \"Figure 3 shows an example of caste bias data creation.\": \"caste bias\"\n    },\n    {\n      \"Table 1 presents bias analysis across models for Bangla and English.\": \"bias analysis across\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7309,
+        "total_tokens": 8922,
+        "completion_tokens": 1613,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7309,
+      "elapsed_seconds": 144.93025032803416,
+      "max_tokens": 4096,
+      "seed": 1203034744,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "f3838ab11759134d5576759b87d3b444a3f2bd7f03bbb5ac17cd31b8865e6ed1",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims",
+        "key_figures_tables"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: Bangla-speaking community",
+        "methodological_details": "evidence quote is not present in fulltext: StereoSet, IndiBias, and",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: consistent, major difference",
+        "claims": "evidence quote is not present in fulltext: localized the content",
+        "key_figures_tables": "evidence quote is not present in fulltext: bias analysis across"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The study aims to measure stereotypical biases in Bangla LLMs.\": \"stereotypical social biases\"\n    },\n    {\n      \"The dataset is designed to capture biases prevalent in the Bangla-speaking community.\": \"Bangla-speaking community\"\n    },\n    {\n      \"The authors hypothesize that LLMs exhibit significant biases in Bangla.\": \"significant biases\"\n    },\n    {\n      \"The study compares bias levels between Bangla and English contexts.\": \"Bangla and English\"\n    },\n    {\n      \"The goal is to guide the development of equitable language technologies.\": \"equitable language technologies\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The dataset consists of 1,194 sentences spanning 9 categories of bias.\": \"1,194 sentences\"\n    },\n    {\n      \"Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.\": \"StereoSet, IndiBias, and\"\n    },\n    {\n      \"GPT-4 was used for translation using few-shot learning.\": \"GPT-4\"\n    },\n    {\n      \"Four native Bangla-speaking annotators reviewed each translation for accuracy.\": \"four native Bangla-speaking\"\n    },\n    {\n      \"Gender-specific phrases were added to address lack of gendered pronouns.\": \"gender-specific phrases\"\n    },\n    {\n      \"English names were substituted with Bengali names for cultural relevance.\": \"Bengali names\"\n    },\n    {\n      \"US cities were replaced with Bangladeshi cities like Dhaka.\": \"Bangladeshi cities\"\n    },\n    {\n      \"Five pitfalls from StereoSet were addressed manually by annotators.\": \"five pitfalls\"\n    },\n    {\n      \"Caste data was curated from IndiBias using sent-more and sent-less columns.\": \"sent-more\"\n    },\n    {\n      \"Regional data was generated using a human-LLM partnership with ChatGPT.\": \"human-LLM partnership\"\n    },\n    {\n      \"Race bias contains 241 examples in the final dataset.\": \"Race: 241\"\n    },\n    {\n      \"Gender bias contains 178 examples in the final dataset.\": \"Gender: 178\"\n    },\n    {\n      \"Religion bias contains 56 examples in the final dataset.\": \"Religion: 56\"\n    },\n    {\n      \"Profession bias contains 206 examples in the final dataset.\": \"Profession: 206\"\n    },\n    {\n      \"Ageism bias contains 134 examples in the final dataset.\": \"Ageism: 134\"\n    },\n    {\n      \"Beauty bias contains 130 examples in the final dataset.\": \"Beauty: 130\"\n    },\n    {\n      \"Beauty Profession bias contains 126 examples in the final dataset.\": \"Beauty Profession: 126\"\n    },\n    {\n      \"Caste bias contains 60 examples in the final dataset.\": \"Caste: 60\"\n    },\n    {\n      \"Region bias contains 63 examples in the final dataset.\": \"Region: 63\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results indicate significant biases in multilingual LLMs for Bangla.\": \"significant biases\"\n    },\n    {\n      \"Mistral-7B demonstrated the least bias among the tested models.\": \"least biased model\"\n    },\n    {\n      \"GPT-4o and Gemma were more biased in Bangla than English.\": \"more biased in Bangla\"\n    },\n    {\n      \"Mistral and Llama were more biased in English than Bangla.\": \"more biased in English\"\n    },\n    {\n      \"There is no consistent major difference in overall bias between languages.\": \"consistent, major difference\"\n    },\n    {\n      \"Cultural sensitivity appears dependent on the language of communication.\": \"cultural sensitivity\"\n    },\n    {\n      \"The study underscores the need for culturally nuanced datasets.\": \"culturally nuanced datasets\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.\",\n      \"supporting_evidence\": [\n        {\n          \"The dataset covers 9 categories of bias.\": \"9 categories\"\n        },\n        {\n          \"It includes 1,194 sentences.\": \"1,194 sentences\"\n        },\n        {\n          \"It was created using localized and curated data.\": \"localized the content\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"It does not include sexual orientation or disability.\": \"sexual orientation\"\n        },\n        {\n          \"It focuses on binary gender.\": \"binary gender\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"It facilitates exploration of stereotypical bias in Bangla.\": \"exploration of stereotypical bias\"\n        },\n        {\n          \"It guides development of equitable language technologies.\": \"equitable language technologies\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Multilingual LLMs exhibit significant stereotypical biases in Bangla.\",\n      \"supporting_evidence\": [\n        {\n          \"GPT-4o showed 73.78% average stereotypical engagement.\": \"73.78\"\n        },\n        {\n          \"All models showed high profession and region bias.\": \"high levels of profession\"\n        },\n        {\n          \"Biases were observed across all 9 categories.\": \"9 categories\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Mistral-7B showed the lowest bias at 55.41%.\": \"55.41\"\n        },\n        {\n          \"Religion bias was relatively low across models.\": \"low levels of religion\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Culturally adapted datasets are necessary.\": \"culturally and linguistically\"\n        },\n        {\n          \"Bias research must extend beyond English.\": \"beyond English\"\n        }\n      ]\n    }\n  ],\n  \"key_figures_tables\": [\n    {\n      \"Figure 1 shows an example of a completion task for race bias.\": \"race bias\"\n    },\n    {\n      \"Figure 2 illustrates translation modifications for gender, religion, and race.\": \"gender-specific phrases\"\n    },\n    {\n      \"Figure 3 shows an example of caste bias data creation.\": \"caste bias\"\n    },\n    {\n      \"Table 1 presents bias analysis across models for Bangla and English.\": \"bias analysis across\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7291,
+        "total_tokens": 8904,
+        "completion_tokens": 1613,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7291,
+      "elapsed_seconds": 143.23868688195944,
+      "max_tokens": 4096,
+      "seed": 1203034745,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6c871427b399ecf83fbf267ed3f561ce901d8aa0da6b17a07bbb3fc22db6908c",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims",
+        "key_figures_tables"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: Bangla-speaking community",
+        "methodological_details": "evidence quote is not present in fulltext: StereoSet, IndiBias, and",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: consistent, major difference",
+        "claims": "evidence quote is not present in fulltext: localized the content",
+        "key_figures_tables": "evidence quote is not present in fulltext: bias analysis across"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The study aims to measure stereotypical biases in Bangla LLMs.\": \"stereotypical social biases\"\n    },\n    {\n      \"The dataset is designed to capture biases prevalent in the Bangla-speaking community.\": \"Bangla-speaking community\"\n    },\n    {\n      \"The authors hypothesize that LLMs exhibit significant biases in Bangla.\": \"significant biases\"\n    },\n    {\n      \"The study compares bias levels between Bangla and English contexts.\": \"Bangla and English\"\n    },\n    {\n      \"The goal is to guide the development of equitable language technologies.\": \"equitable language technologies\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The dataset consists of 1,194 sentences spanning 9 categories of bias.\": \"1,194 sentences\"\n    },\n    {\n      \"Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.\": \"StereoSet, IndiBias, and\"\n    },\n    {\n      \"GPT-4 was used for translation using few-shot learning.\": \"GPT-4\"\n    },\n    {\n      \"Four native Bangla-speaking annotators reviewed each translation for accuracy.\": \"four native Bangla-speaking\"\n    },\n    {\n      \"Gender-specific phrases were added to address lack of gendered pronouns.\": \"gender-specific phrases\"\n    },\n    {\n      \"English names were substituted with Bengali names for cultural relevance.\": \"Bengali names\"\n    },\n    {\n      \"US cities were replaced with Bangladeshi cities like Dhaka.\": \"Bangladeshi cities\"\n    },\n    {\n      \"Five pitfalls from StereoSet were addressed manually by annotators.\": \"five pitfalls\"\n    },\n    {\n      \"Caste data was curated from IndiBias using sent-more and sent-less columns.\": \"sent-more\"\n    },\n    {\n      \"Regional data was generated using a human-LLM partnership with ChatGPT.\": \"human-LLM partnership\"\n    },\n    {\n      \"Race bias contains 241 examples in the final dataset.\": \"Race: 241\"\n    },\n    {\n      \"Gender bias contains 178 examples in the final dataset.\": \"Gender: 178\"\n    },\n    {\n      \"Religion bias contains 56 examples in the final dataset.\": \"Religion: 56\"\n    },\n    {\n      \"Profession bias contains 206 examples in the final dataset.\": \"Profession: 206\"\n    },\n    {\n      \"Ageism bias contains 134 examples in the final dataset.\": \"Ageism: 134\"\n    },\n    {\n      \"Beauty bias contains 130 examples in the final dataset.\": \"Beauty: 130\"\n    },\n    {\n      \"Beauty Profession bias contains 126 examples in the final dataset.\": \"Beauty Profession: 126\"\n    },\n    {\n      \"Caste bias contains 60 examples in the final dataset.\": \"Caste: 60\"\n    },\n    {\n      \"Region bias contains 63 examples in the final dataset.\": \"Region: 63\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results indicate significant biases in multilingual LLMs for Bangla.\": \"significant biases\"\n    },\n    {\n      \"Mistral-7B demonstrated the least bias among the tested models.\": \"least biased model\"\n    },\n    {\n      \"GPT-4o and Gemma were more biased in Bangla than English.\": \"more biased in Bangla\"\n    },\n    {\n      \"Mistral and Llama were more biased in English than Bangla.\": \"more biased in English\"\n    },\n    {\n      \"There is no consistent major difference in overall bias between languages.\": \"consistent, major difference\"\n    },\n    {\n      \"Cultural sensitivity appears dependent on the language of communication.\": \"cultural sensitivity\"\n    },\n    {\n      \"The study underscores the need for culturally nuanced datasets.\": \"culturally nuanced datasets\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.\",\n      \"supporting_evidence\": [\n        {\n          \"The dataset covers 9 categories of bias.\": \"9 categories\"\n        },\n        {\n          \"It includes 1,194 sentences.\": \"1,194 sentences\"\n        },\n        {\n          \"It was created using localized and curated data.\": \"localized the content\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"It does not include sexual orientation or disability.\": \"sexual orientation\"\n        },\n        {\n          \"It focuses on binary gender.\": \"binary gender\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"It facilitates exploration of stereotypical bias in Bangla.\": \"exploration of stereotypical bias\"\n        },\n        {\n          \"It guides development of equitable language technologies.\": \"equitable language technologies\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Multilingual LLMs exhibit significant stereotypical biases in Bangla.\",\n      \"supporting_evidence\": [\n        {\n          \"GPT-4o showed 73.78% average stereotypical engagement.\": \"73.78\"\n        },\n        {\n          \"All models showed high profession and region bias.\": \"high levels of profession\"\n        },\n        {\n          \"Biases were observed across all 9 categories.\": \"9 categories\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Mistral-7B showed the lowest bias at 55.41%.\": \"55.41\"\n        },\n        {\n          \"Religion bias was relatively low across models.\": \"low levels of religion\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Culturally adapted datasets are necessary.\": \"culturally and linguistically\"\n        },\n        {\n          \"Bias research must extend beyond English.\": \"beyond English\"\n        }\n      ]\n    }\n  ],\n  \"key_figures_tables\": [\n    {\n      \"Figure 1 shows an example of a completion task for race bias.\": \"race bias\"\n    },\n    {\n      \"Figure 2 illustrates translation modifications for gender, religion, and race.\": \"gender-specific phrases\"\n    },\n    {\n      \"Figure 3 shows an example of caste bias data creation.\": \"caste bias\"\n    },\n    {\n      \"Table 1 presents bias analysis across models for Bangla and English.\": \"bias analysis across\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7291,
+        "total_tokens": 8904,
+        "completion_tokens": 1613,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7291,
+      "elapsed_seconds": 130.34990667179227,
+      "max_tokens": 4096,
+      "seed": 1203034746,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6c871427b399ecf83fbf267ed3f561ce901d8aa0da6b17a07bbb3fc22db6908c",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims",
+        "key_figures_tables"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: Bangla-speaking community",
+        "methodological_details": "evidence quote is not present in fulltext: StereoSet, IndiBias, and",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: consistent, major difference",
+        "claims": "evidence quote is not present in fulltext: localized the content",
+        "key_figures_tables": "evidence quote is not present in fulltext: bias analysis across"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The study aims to measure stereotypical biases in Bangla LLMs.\": \"stereotypical social biases\"\n    },\n    {\n      \"The dataset is designed to capture biases prevalent in the Bangla-speaking community.\": \"Bangla-speaking\"\n    },\n    {\n      \"The authors hypothesize that LLMs exhibit significant biases in Bangla.\": \"significant biases\"\n    },\n    {\n      \"The study compares bias levels between Bangla and English contexts.\": \"Bangla and English\"\n    },\n    {\n      \"The goal is to guide the development of equitable language technologies.\": \"equitable language technologies\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The dataset consists of 1,194 sentences spanning 9 categories of bias.\": \"1,194 sentences\"\n    },\n    {\n      \"Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.\": \"StereoSet, IndiBias\"\n    },\n    {\n      \"GPT-4 was used for translation using few-shot learning.\": \"GPT-4\"\n    },\n    {\n      \"Four native Bangla-speaking annotators reviewed each translation for accuracy.\": \"four native Bangla-speaking\"\n    },\n    {\n      \"Gender-specific phrases were added to address lack of gendered pronouns.\": \"gender-specific phrases\"\n    },\n    {\n      \"English names were substituted with Bengali names for cultural relevance.\": \"Bengali names\"\n    },\n    {\n      \"US cities were replaced with Bangladeshi cities like Dhaka.\": \"Bangladeshi cities\"\n    },\n    {\n      \"Five pitfalls from StereoSet were addressed manually by annotators.\": \"five pitfalls\"\n    },\n    {\n      \"Caste data was curated from IndiBias using sent-more and sent-less columns.\": \"sent-more\"\n    },\n    {\n      \"Regional data was generated using a human-LLM partnership with ChatGPT.\": \"human-LLM partnership\"\n    },\n    {\n      \"Race bias contains 241 examples in the final dataset.\": \"Race: 241\"\n    },\n    {\n      \"Gender bias contains 178 examples in the final dataset.\": \"Gender: 178\"\n    },\n    {\n      \"Religion bias contains 56 examples in the final dataset.\": \"Religion: 56\"\n    },\n    {\n      \"Profession bias contains 206 examples in the final dataset.\": \"Profession: 206\"\n    },\n    {\n      \"Ageism bias contains 134 examples in the final dataset.\": \"Ageism: 134\"\n    },\n    {\n      \"Beauty bias contains 130 examples in the final dataset.\": \"Beauty: 130\"\n    },\n    {\n      \"Beauty Profession bias contains 126 examples in the final dataset.\": \"Beauty Profession: 126\"\n    },\n    {\n      \"Caste bias contains 60 examples in the final dataset.\": \"Caste: 60\"\n    },\n    {\n      \"Region bias contains 63 examples in the final dataset.\": \"Region: 63\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results indicate significant biases in multilingual LLMs for Bangla.\": \"significant biases\"\n    },\n    {\n      \"Mistral-7B demonstrated the least bias among the tested models.\": \"least biased model\"\n    },\n    {\n      \"GPT-4o and Gemma were more biased in Bangla than English.\": \"more biased in Bangla\"\n    },\n    {\n      \"Mistral and Llama were more biased in English than Bangla.\": \"more biased in English\"\n    },\n    {\n      \"There is no consistent major difference in overall bias between languages.\": \"consistent, major\"\n    },\n    {\n      \"Cultural sensitivity appears dependent on the language of communication.\": \"cultural sensitivity\"\n    },\n    {\n      \"The study underscores the need for culturally nuanced datasets.\": \"culturally nuanced datasets\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.\",\n      \"supporting_evidence\": [\n        {\n          \"The dataset covers 9 categories of bias.\": \"9 categories\"\n        },\n        {\n          \"It includes 1,194 sentences.\": \"1,194 sentences\"\n        },\n        {\n          \"It was created using localized and curated data.\": \"localized\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"It does not include sexual orientation or disability.\": \"sexual orientation\"\n        },\n        {\n          \"It focuses on binary gender.\": \"binary gender\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"It facilitates exploration of stereotypical bias in Bangla.\": \"exploration of stereotypical bias\"\n        },\n        {\n          \"It guides development of equitable language technologies.\": \"equitable language technologies\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Multilingual LLMs exhibit significant stereotypical biases in Bangla.\",\n      \"supporting_evidence\": [\n        {\n          \"GPT-4o showed 73.78% average stereotypical engagement.\": \"73.78\"\n        },\n        {\n          \"All models showed high profession and region bias.\": \"high levels of profession\"\n        },\n        {\n          \"Biases were observed across all 9 categories.\": \"9 categories\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Mistral-7B showed the lowest bias at 55.41%.\": \"55.41\"\n        },\n        {\n          \"Religion bias was relatively low across models.\": \"low levels of religion\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Culturally adapted datasets are necessary.\": \"culturally\"\n        },\n        {\n          \"Bias research must extend beyond English.\": \"beyond English\"\n        }\n      ]\n    }\n  ],\n  \"key_figures_tables\": [\n    {\n      \"Figure 1 shows an example of a completion task for race bias.\": \"race bias\"\n    },\n    {\n      \"Figure 2 illustrates translation modifications for gender, religion, and race.\": \"gender-specific phrases\"\n    },\n    {\n      \"Figure 3 shows an example of caste bias data creation.\": \"caste bias\"\n    },\n    {\n      \"Table 1 presents bias analysis across models for Bangla and English.\": \"bias analysis\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7291,
+        "total_tokens": 8894,
+        "completion_tokens": 1603,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7291,
+      "elapsed_seconds": 154.82024505734444,
+      "max_tokens": 4096,
+      "seed": 1203034747,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6c871427b399ecf83fbf267ed3f561ce901d8aa0da6b17a07bbb3fc22db6908c",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims",
+        "key_figures_tables"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: StereoSet, IndiBias",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: consistent, major",
+        "claims": "evidence quote is not present in fulltext: localized",
+        "key_figures_tables": "evidence quote is not present in fulltext: bias analysis"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The dataset consists of 1,194 sentences spanning 9 categories of bias.\": \"1,194 sentences\"\n    },\n    {\n      \"Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.\": \"StereoSet, IndiBias, and\"\n    },\n    {\n      \"GPT-4 was used for translation using few-shot learning.\": \"GPT-4\"\n    },\n    {\n      \"Four native Bangla-speaking annotators reviewed each translation for accuracy.\": \"four native Bangla-speaking\"\n    },\n    {\n      \"Gender-specific phrases were added to address lack of gendered pronouns.\": \"gender-specific phrases\"\n    },\n    {\n      \"English names were substituted with Bengali names for cultural relevance.\": \"Bengali names\"\n    },\n    {\n      \"US cities were replaced with Bangladeshi cities like Dhaka.\": \"Bangladeshi cities\"\n    },\n    {\n      \"Five pitfalls from StereoSet were addressed manually by annotators.\": \"five pitfalls\"\n    },\n    {\n      \"Caste data was curated from IndiBias using sent-more and sent-less columns.\": \"sent-more\"\n    },\n    {\n      \"Regional data was generated using a human-LLM partnership with ChatGPT.\": \"human-LLM partnership\"\n    },\n    {\n      \"Race bias contains 241 examples in the final dataset.\": \"Race: 241\"\n    },\n    {\n      \"Gender bias contains 178 examples in the final dataset.\": \"Gender: 178\"\n    },\n    {\n      \"Religion bias contains 56 examples in the final dataset.\": \"Religion: 56\"\n    },\n    {\n      \"Profession bias contains 206 examples in the final dataset.\": \"Profession: 206\"\n    },\n    {\n      \"Ageism bias contains 134 examples in the final dataset.\": \"Ageism: 134\"\n    },\n    {\n      \"Beauty bias contains 130 examples in the final dataset.\": \"Beauty: 130\"\n    },\n    {\n      \"Beauty Profession bias contains 126 examples in the final dataset.\": \"Beauty Profession: 126\"\n    },\n    {\n      \"Caste bias contains 60 examples in the final dataset.\": \"Caste: 60\"\n    },\n    {\n      \"Region bias contains 63 examples in the final dataset.\": \"Region: 63\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results indicate significant biases in multilingual LLMs for Bangla.\": \"significant biases\"\n    },\n    {\n      \"Mistral-7B demonstrated the least bias among the tested models.\": \"least biased model\"\n    },\n    {\n      \"GPT-4o and Gemma were more biased in Bangla than English.\": \"more biased in Bangla\"\n    },\n    {\n      \"Mistral and Llama were more biased in English than Bangla.\": \"more biased in English\"\n    },\n    {\n      \"There is no consistent major difference in overall bias between languages.\": \"consistent, major difference\"\n    },\n    {\n      \"Cultural sensitivity appears dependent on the language of communication.\": \"cultural sensitivity\"\n    },\n    {\n      \"The study underscores the need for culturally nuanced datasets.\": \"culturally nuanced datasets\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"BanStereoSet is a comprehensive dataset for measuring stereotypical biases in Bangla LLMs.\",\n      \"supporting_evidence\": [\n        {\n          \"The dataset covers 9 categories of bias.\": \"9 categories\"\n        },\n        {\n          \"It includes 1,194 sentences.\": \"1,194 sentences\"\n        },\n        {\n          \"It was created using localized and curated data.\": \"localized the content\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"It does not include sexual orientation or disability.\": \"sexual orientation\"\n        },\n        {\n          \"It focuses on binary gender.\": \"binary gender\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"It facilitates exploration of stereotypical bias in Bangla.\": \"exploration of stereotypical bias\"\n        },\n        {\n          \"It guides development of equitable language technologies.\": \"equitable language technologies\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Multilingual LLMs exhibit significant stereotypical biases in Bangla.\",\n      \"supporting_evidence\": [\n        {\n          \"GPT-4o showed 73.78% average stereotypical engagement.\": \"73.78\"\n        },\n        {\n          \"All models showed high profession and region bias.\": \"high levels of profession\"\n        },\n        {\n          \"Biases were observed across all 9 categories.\": \"9 categories\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Mistral-7B showed the lowest bias at 55.41%.\": \"55.41\"\n        },\n        {\n          \"Religion bias was relatively low across models.\": \"low levels of religion\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Culturally adapted datasets are necessary.\": \"culturally\"\n        },\n        {\n          \"Bias research must extend beyond English.\": \"beyond English\"\n        }\n      ]\n    }\n  ],\n  \"key_figures_tables\": [\n    {\n      \"Figure 1 shows an example of a completion task for race bias.\": \"race bias\"\n    },\n    {\n      \"Figure 2 illustrates translation modifications for gender, religion, and race.\": \"gender-specific phrases\"\n    },\n    {\n      \"Figure 3 shows an example of caste bias data creation.\": \"caste bias\"\n    },\n    {\n      \"Table 1 presents bias analysis across models for Bangla and English.\": \"Bias analysis\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7083,
+        "total_tokens": 8530,
+        "completion_tokens": 1447,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7083,
+      "elapsed_seconds": 125.68094302341342,
+      "max_tokens": 4096,
+      "seed": 1203034748,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "7c181651638123056f4ba84601293d0a5b8b25876f35d02156ef099f41b75972",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "interpretation_and_theoretical_implications",
+        "claims",
+        "key_figures_tables"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: StereoSet, IndiBias, and",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: consistent, major difference",
+        "claims": "evidence quote is not present in fulltext: localized the content"
+      }
+    },
+    {
+      "response": "{\n  \"q0\": \"drop\",\n  \"q1\": 13,\n  \"q2\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 7360,
+        "total_tokens": 7392,
+        "completion_tokens": 32,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 7360,
+      "elapsed_seconds": 7.093838021159172,
+      "max_tokens": 2048,
+      "seed": 1203034843,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "89fbf225e3ffaa80a068d7da115dfde59baf81da97c268ce804589853a006fbb",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "methodological_details",
+            1
+          ],
+          "narrative": "Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.",
+          "invalid_quote": "StereoSet, IndiBias, and",
+          "candidates": [
+            {
+              "quote": "data creation\nfrom IndiBias",
+              "start": 13005,
+              "end": 13032
+            },
+            {
+              "quote": "data creation\nfrom IndiBias dataset.",
+              "start": 13005,
+              "end": 13041
+            },
+            {
+              "quote": "categories data creation\nfrom IndiBias",
+              "start": 12994,
+              "end": 13032
+            },
+            {
+              "quote": "data collection\nAs the IndiBias",
+              "start": 7806,
+              "end": 7837
+            },
+            {
+              "quote": "IndiBias\n76.27\n48.27",
+              "start": 14730,
+              "end": 14750
+            },
+            {
+              "quote": "Caste\nIndiBias\n76.27",
+              "start": 14724,
+              "end": 14744
+            },
+            {
+              "quote": "49.98\nCaste\nIndiBias",
+              "start": 14718,
+              "end": 14738
+            },
+            {
+              "quote": "IndiBias dataset. Words",
+              "start": 13024,
+              "end": 13047
+            },
+            {
+              "quote": "from IndiBias dataset.",
+              "start": 13019,
+              "end": 13041
+            },
+            {
+              "quote": "creation\nfrom IndiBias",
+              "start": 13010,
+              "end": 13032
+            },
+            {
+              "quote": "IndiBias English Sentences",
+              "start": 12525,
+              "end": 12551
+            },
+            {
+              "quote": "Original IndiBias English",
+              "start": 12516,
+              "end": 12541
+            },
+            {
+              "quote": "order\n                                   Original IndiBias",
+              "start": 12475,
+              "end": 12533
+            },
+            {
+              "quote": "IndiBias dataset does",
+              "start": 7829,
+              "end": 7850
+            },
+            {
+              "quote": "the IndiBias dataset",
+              "start": 7825,
+              "end": 7845
+            },
+            {
+              "quote": "As the IndiBias",
+              "start": 7822,
+              "end": 7837
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "interpretation_and_theoretical_implications",
+            4
+          ],
+          "narrative": "There is no consistent major difference in overall bias between languages.",
+          "invalid_quote": "consistent, major difference",
+          "candidates": [
+            {
+              "quote": "bias between languages,",
+              "start": 18676,
+              "end": 18699
+            },
+            {
+              "quote": "bias between languages, emphasizing",
+              "start": 18676,
+              "end": 18711
+            },
+            {
+              "quote": "region bias between languages,",
+              "start": 18669,
+              "end": 18699
+            },
+            {
+              "quote": "bias between languages, emphasizing\nthe",
+              "start": 18676,
+              "end": 18715
+            },
+            {
+              "quote": "region bias between languages, emphasizing",
+              "start": 18669,
+              "end": 18711
+            },
+            {
+              "quote": "and region bias between languages,",
+              "start": 18665,
+              "end": 18699
+            },
+            {
+              "quote": "there is no",
+              "start": 3631,
+              "end": 3642
+            },
+            {
+              "quote": "there is no dataset",
+              "start": 3631,
+              "end": 3650
+            },
+            {
+              "quote": "knowledge, there is no",
+              "start": 3620,
+              "end": 3642
+            },
+            {
+              "quote": "there is no dataset\nthat",
+              "start": 3631,
+              "end": 3655
+            },
+            {
+              "quote": "knowledge, there is no dataset",
+              "start": 3620,
+              "end": 3650
+            },
+            {
+              "quote": "our knowledge, there is no",
+              "start": 3616,
+              "end": 3642
+            },
+            {
+              "quote": "major difference in",
+              "start": 17858,
+              "end": 17877
+            },
+            {
+              "quote": "sistent, major difference",
+              "start": 17849,
+              "end": 17874
+            },
+            {
+              "quote": "major difference in model",
+              "start": 17858,
+              "end": 17883
+            },
+            {
+              "quote": "sistent, major difference in",
+              "start": 17849,
+              "end": 17877
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "path": [
+            "claims",
+            0,
+            "supporting_evidence",
+            2
+          ],
+          "narrative": "It was created using localized and curated data.",
+          "invalid_quote": "localized the content",
+          "candidates": [
+            {
+              "quote": "curated region data.",
+              "start": 10437,
+              "end": 10457
+            },
+            {
+              "quote": "curated regional data",
+              "start": 8440,
+              "end": 8461
+            },
+            {
+              "quote": "curated the\ndata",
+              "start": 4680,
+              "end": 4696
+            },
+            {
+              "quote": "curated region data.\nFigure",
+              "start": 10437,
+              "end": 10464
+            },
+            {
+              "quote": "Newly curated region data.",
+              "start": 10431,
+              "end": 10457
+            },
+            {
+              "quote": "curated regional data\nWhen",
+              "start": 8440,
+              "end": 8466
+            },
+            {
+              "quote": "Newly curated regional data",
+              "start": 8434,
+              "end": 8461
+            },
+            {
+              "quote": "curated the\ndata for",
+              "start": 4680,
+              "end": 4700
+            },
+            {
+              "quote": "freshly curated the\ndata",
+              "start": 4672,
+              "end": 4696
+            },
+            {
+              "quote": "curated region data.\nFigure 2:",
+              "start": 10437,
+              "end": 10467
+            },
+            {
+              "quote": "Newly curated region data.\nFigure",
+              "start": 10431,
+              "end": 10464
+            },
+            {
+              "quote": "শান্ত/ব্যস্ত/িবিচত্র।\nNewly curated region data.",
+              "start": 10409,
+              "end": 10457
+            },
+            {
+              "quote": "curated regional data\nWhen curating",
+              "start": 8440,
+              "end": 8475
+            },
+            {
+              "quote": "Newly curated regional data\nWhen",
+              "start": 8434,
+              "end": 8466
+            },
+            {
+              "quote": "2.5\nNewly curated regional data",
+              "start": 8430,
+              "end": 8461
+            },
+            {
+              "quote": "curated the\ndata for our",
+              "start": 4680,
+              "end": 4704
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 7712,
+  "elapsed_seconds": 1022.8871061056852,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "claims",
+        0,
+        "supporting_evidence",
+        2
+      ],
+      "entry": {
+        "It was created using localized and curated data.": "localized the content"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "methodological_details",
+        1
+      ],
+      "entry": {
+        "Data was localized from StereoSet, IndiBias, and GenAssocBias datasets.": "StereoSet, IndiBias, and"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "interpretation_and_theoretical_implications",
+        4
+      ],
+      "quote": "sistent, major difference",
+      "start": 17849,
+      "end": 17874
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

@@ -1,0 +1,1081 @@
+{
+  "document_id": "arxiv-500028",
+  "fulltext_sha256": "081560f8dd75126479ea817a0aad4ef1f7c90b9becafc12485cc1ef16eb40dc7",
+  "summary": {
+    "title": "An algorithm for stress and mixed control in Galerkin based FFT homogenization",
+    "authors": "S. Lucarini, J. Segurado",
+    "field_subfield": "Computational Mechanics / Materials Science",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This paper proposes a novel algorithm to impose macroscopic stress or mixed stress/deformation gradient histories in non-linear Galerkin-based Fast Fourier Transform (FFT) homogenization. Traditional FFT methods typically impose strain control, requiring iterative corrections for stress or mixed loading, which increases computational cost. The authors introduce a modified projection operator where the null frequency enforces the specific control type (stress or strain) for each component of the macroscopic first Piola stress or deformation gradient. This modification allows the problem to be solved exactly as the original variational method without additional iterations in the linear solver or Newton scheme. The method is demonstrated through numerical examples involving a particle-reinforced hyperelastic material and a polycrystal. For the hyperelastic case, the algorithm shows identical convergence rates and simulation times compared to strain control. For the polycrystal, which exhibits rate-dependent behavior, the stress-controlled case is faster due to elastic increments, while the pseudo-uniaxial strain control yields inaccurate transverse stresses compared to true stress control. The study confirms that the proposed method preserves the computational efficiency of FFT homogenization while enabling accurate simulation of generic loading paths, including uniaxial tension and controlled triaxility, without the overhead of iterative load corrections.",
+    "research_context": [
+      {
+        "Computational homogenization simulates mechanical response in a periodic representative volume element.": "periodic representative volume"
+      },
+      {
+        "The finite element method traditionally solves boundary value problems with any load history.": "ﬁnite element method"
+      },
+      {
+        "FFT-based homogenization is a popular alternative due to computational performance.": "Fast Fourier transform"
+      },
+      {
+        "Imposing macroscopic stress or mixed loading is not direct in standard FFT.": "not a direct task"
+      },
+      {
+        "Classical schemes require a reference medium which affects convergence.": "reference medium"
+      },
+      {
+        "Iterative approaches for stress control significantly increase iteration counts.": "iterations per step"
+      },
+      {
+        "Galerkin-based FFT uses weak formulation and projection operators.": "weak formulation"
+      },
+      {
+        "Previous variational approaches only imposed macroscopic deformation gradient history.": "macroscopic deformation gradient"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to extend the variational algorithm for finite strains.": "extend the variational algorithm"
+      },
+      {
+        "The goal is to use stress and mixed control of macroscopic load.": "stress and mixed control"
+      },
+      {
+        "The method uses a direct approach based on a modified projection operator.": "modiﬁed project operator"
+      },
+      {
+        "The hypothesis is that computational performance of the original method is preserved.": "computational performance"
+      },
+      {
+        "The algorithm should not require additional iterations compared to strain control.": "additional iterations"
+      },
+      {
+        "The method applies to both linear iterative solvers and Newton schemes.": "Newton scheme"
+      },
+      {
+        "The approach allows solving problems with mixed boundary conditions efficiently.": "mixed boundary conditions"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The RVE is discretized in nx ny nz voxels.": "nx ny nz voxels"
+      },
+      {
+        "The linear momentum balance is imposed in its weak form.": "weak form"
+      },
+      {
+        "Test functions are virtual deformation gradients premultiplied by a projector.": "projector operator"
+      },
+      {
+        "The projection operator enforces compatibility of strain fields.": "compatibility of the strain"
+      },
+      {
+        "The Helmholtz decomposition splits tensor fields into compatible and incompatible parts.": "Helmholtz decomposition"
+      },
+      {
+        "The standard projection operator is zero at null and Nyquist frequencies.": "null and Nyquist"
+      },
+      {
+        "For stress control, a modified operator G* is defined.": "modiﬁed projection operator"
+      },
+      {
+        "The null frequency of G* is the fourth order identity tensor.": "fourth order identity"
+      },
+      {
+        "This enforces the average stress to equal the target macroscopic stress.": "target macroscopic stress"
+      },
+      {
+        "For mixed control, the operator varies by component direction.": "mixed control"
+      },
+      {
+        "Stress-controlled components use the identity tensor at null frequency.": "stress controled IJ"
+      },
+      {
+        "Strain-controlled components use zero tensor at null frequency.": "strain controlled ij"
+      },
+      {
+        "The non-linear system is solved using Newton iteration.": "Newton as in"
+      },
+      {
+        "The linear system is solved using the conjugate gradient method.": "conjugate gradient method"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The first benchmark is a particle reinforced hyperelastic matrix.": "hyperelastic matrix"
+      },
+      {
+        "The RVE contains 4 particles with a volume fraction of 0.2.": "volume\nfraction of 0.2"
+      },
+      {
+        "The domain is discretized using 643 voxels.": "643 voxels"
+      },
+      {
+        "The matrix follows a Saint Venant-Kirchhoff hyperelastic model.": "Saint Venant-Kirchhoﬀ"
+      },
+      {
+        "Matrix shear modulus is 28 Pa and bulk modulus is 46.67 Pa.": "28Pa"
+      },
+      {
+        "Particles are one order of magnitude stiffer than the matrix.": "10 times larger"
+      },
+      {
+        "The uniaxial tensile test reaches an elongation of 0.2.": "elongation of"
+      },
+      {
+        "Load is divided into 100 load increments.": "100\nload increments"
+      },
+      {
+        "Case 1 is mixed control with strain ramp in x direction.": "mixed control"
+      },
+      {
+        "Case 2 is full stress control with a linear ramp.": "full stress control"
+      },
+      {
+        "Case 3 is full strain control with a linear ramp.": "full strain control"
+      },
+      {
+        "The second benchmark is a polycrystal with 200 grains.": "200 randomly oriented"
+      },
+      {
+        "The polycrystal uses a crystal plasticity elasto-visco-plastic model.": "crystal plasticity"
+      },
+      {
+        "A final elongation of 0.02 is imposed in 200 seconds.": "200s"
+      },
+      {
+        "Time is discretized in 20 regular increments.": "20 regular increments"
+      },
+      {
+        "Case 4 is a pseudo-uniaxial test using full strain control.": "pseudo-uniaxial tensile test"
+      }
+    ],
+    "key_results": [
+      {
+        "In the hyperelastic case, cases 1 and 2 share the same path.": "share the path"
+      },
+      {
+        "Macroscopic stress for cases 1 and 2 are superposed.": "are superposed"
+      },
+      {
+        "Case 3 follows a slightly different path due to full strain control.": "slightly diﬀerent path"
+      },
+      {
+        "Transverse stresses are zero under stress and mixed control.": "transverse\nstresses are zero"
+      },
+      {
+        "Small compressive transverse stresses develop under strain control.": "compressive stresses are developed"
+      },
+      {
+        "Macroscopic and microscopic results at the endpoint are identical within accuracy.": "within the numerical accuracy"
+      },
+      {
+        "In the polycrystal, cases 1 and 2 are not exactly superposed.": "not exactly superposed"
+      },
+      {
+        "Differences arise due to strain rate effects in the visco-plastic model.": "strain rate"
+      },
+      {
+        "Case 4 pseudo-uniaxial test shows non-zero compressive transverse stresses.": "compressive transverse stresses"
+      },
+      {
+        "These transverse stresses grow with applied strain in case 4.": "grow with the applied"
+      },
+      {
+        "Stress and mixed controlled simulations took similar iterations to strain control.": "same number\nof iterations"
+      },
+      {
+        "Hyperelastic simulations needed almost identical times for every boundary condition.": "identical times"
+      },
+      {
+        "Polycrystal case 2 is faster due to elastic increments.": "clearly faster than"
+      },
+      {
+        "Convergence criteria for linear solver is L2 norm of residual.": "L2 norm"
+      },
+      {
+        "Tolerances are 10^-8 for linear and 10^-6 for Newton solvers.": "10−8"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The modified projection operator allows direct imposition of stress control.": "modiﬁed project operator"
+      },
+      {
+        "This avoids the iterative correction of strain in classical schemes.": "iterative approaches"
+      },
+      {
+        "The method preserves the efficiency of the Galerkin-based FFT framework.": "computational performance"
+      },
+      {
+        "It enables accurate simulation of uniaxial and mixed loading paths.": "uniaxial loading"
+      },
+      {
+        "The results show that pseudo-uniaxial strain control can be inaccurate.": "inaccurate results"
+      },
+      {
+        "True stress control is necessary for accurate transverse response in plastic materials.": "real uniaxial tensile"
+      },
+      {
+        "The algorithm is general and applicable to any material model.": "any material"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The method requires defining the modified operator for each control type.": "modiﬁed projection operator"
+      },
+      {
+        "For rate-dependent materials, stress control may lead to different paths.": "strain rate"
+      },
+      {
+        "The study uses fixed time steps, which may affect adaptive stepping.": "ﬁxed time step"
+      },
+      {
+        "The polycrystal example shows that pseudo-uniaxial strain control is inaccurate.": "inaccurate results"
+      },
+      {
+        "The method assumes periodic boundary conditions on the RVE.": "periodic RVE"
+      }
+    ],
+    "claims": [
+      {
+        "description": "The proposed algorithm imposes stress or mixed control without additional iterations.",
+        "supporting_evidence": [
+          {
+            "The method does not require additional iterations.": "additional iterations"
+          },
+          {
+            "Convergence rate is the same as the original scheme.": "same convergence rate"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Polycrystal case 2 is faster, but this is due to elastic steps.": "clearly faster than"
+          }
+        ],
+        "implications": [
+          {
+            "It allows efficient simulation of generic loading paths.": "generic loading path"
+          }
+        ]
+      },
+      {
+        "description": "Pseudo-uniaxial strain control leads to inaccurate transverse stresses in plastic materials.",
+        "supporting_evidence": [
+          {
+            "Compressive transverse stresses are not zero in case 4.": "compressive transverse stresses"
+          },
+          {
+            "These stresses grow with applied strain.": "grow with the applied"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "In hyperelastic materials, endpoint results are identical.": "within the numerical accuracy"
+          }
+        ],
+        "implications": [
+          {
+            "True stress control is required for accurate plastic response.": "real uniaxial tensile"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The method was tested on hyperelastic and crystal plasticity models.": "two types\nof constitutive"
+      },
+      {
+        "Performance was compared across strain, stress, and mixed control.": "Performance comparison"
+      },
+      {
+        "Convergence behavior was analyzed for each time increment.": "convergence for each"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the particle reinforced RVE and stress responses.": "Particle reinforced RVE"
+      },
+      {
+        "Figure 2 shows the polycrystalline RVE and stress responses.": "Polycrystalline RVE"
+      },
+      {
+        "Figure 3 compares convergence and simulation times.": "Comparative of convergence"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. A modified projection operator enables direct stress and mixed control in FFT homogenization.": "modiﬁed project operator"
+      },
+      {
+        "2. The method preserves computational efficiency, requiring no extra iterations.": "additional iterations"
+      },
+      {
+        "3. True stress control is essential for accurate simulation of plastic materials.": "inaccurate results"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper proposes a novel algorithm to impose macroscopic stress or mixed stress/deformation gradient histories in non-linear Galerkin-based Fast Fourier Transform (FFT) homogenization. Traditional FFT methods typically impose strain control, requiring iterative corrections for stress or mixed loading, which increases computational cost. The authors introduce a modified projection operator where the null frequency enforces the specific control type (stress or strain) for each component of the macroscopic first Piola stress or deformation gradient. This modification allows the problem to be solved exactly as the original variational method without additional iterations in the linear solver or Newton scheme. The method is demonstrated through numerical examples involving a particle-reinforced hyperelastic material and a polycrystal. For the hyperelastic case, the algorithm shows identical convergence rates and simulation times compared to strain control. For the polycrystal, which exhibits rate-dependent behavior, the stress-controlled case is faster due to elastic increments, while the pseudo-uniaxial strain control yields inaccurate transverse stresses compared to true stress control. The study confirms that the proposed method preserves the computational efficiency of FFT homogenization while enabling accurate simulation of generic loading paths, including uniaxial tension and controlled triaxility, without the overhead of iterative load corrections.\n\nResearch Context\nComputational homogenization simulates mechanical response in a periodic representative volume element. The finite element method traditionally solves boundary value problems with any load history. FFT-based homogenization is a popular alternative due to computational performance. Imposing macroscopic stress or mixed loading is not direct in standard FFT. Classical schemes require a reference medium which affects convergence. Iterative approaches for stress control significantly increase iteration counts. Galerkin-based FFT uses weak formulation and projection operators. Previous variational approaches only imposed macroscopic deformation gradient history.\n\nResearch Question And Hypothesis\nThe study aims to extend the variational algorithm for finite strains. The goal is to use stress and mixed control of macroscopic load. The method uses a direct approach based on a modified projection operator. The hypothesis is that computational performance of the original method is preserved. The algorithm should not require additional iterations compared to strain control. The method applies to both linear iterative solvers and Newton schemes. The approach allows solving problems with mixed boundary conditions efficiently.\n\nMethodological Details\nThe RVE is discretized in nx ny nz voxels. The linear momentum balance is imposed in its weak form. Test functions are virtual deformation gradients premultiplied by a projector. The projection operator enforces compatibility of strain fields. The Helmholtz decomposition splits tensor fields into compatible and incompatible parts. The standard projection operator is zero at null and Nyquist frequencies. For stress control, a modified operator G* is defined. The null frequency of G* is the fourth order identity tensor. This enforces the average stress to equal the target macroscopic stress. For mixed control, the operator varies by component direction. Stress-controlled components use the identity tensor at null frequency. Strain-controlled components use zero tensor at null frequency. The non-linear system is solved using Newton iteration. The linear system is solved using the conjugate gradient method.\n\nProcedures And Architectures\nThe first benchmark is a particle reinforced hyperelastic matrix. The RVE contains 4 particles with a volume fraction of 0.2. The domain is discretized using 643 voxels. The matrix follows a Saint Venant-Kirchhoff hyperelastic model. Matrix shear modulus is 28 Pa and bulk modulus is 46.67 Pa. Particles are one order of magnitude stiffer than the matrix. The uniaxial tensile test reaches an elongation of 0.2. Load is divided into 100 load increments. Case 1 is mixed control with strain ramp in x direction. Case 2 is full stress control with a linear ramp. Case 3 is full strain control with a linear ramp. The second benchmark is a polycrystal with 200 grains. The polycrystal uses a crystal plasticity elasto-visco-plastic model. A final elongation of 0.02 is imposed in 200 seconds. Time is discretized in 20 regular increments. Case 4 is a pseudo-uniaxial test using full strain control.\n\nKey Results\nIn the hyperelastic case, cases 1 and 2 share the same path. Macroscopic stress for cases 1 and 2 are superposed. Case 3 follows a slightly different path due to full strain control. Transverse stresses are zero under stress and mixed control. Small compressive transverse stresses develop under strain control. Macroscopic and microscopic results at the endpoint are identical within accuracy. In the polycrystal, cases 1 and 2 are not exactly superposed. Differences arise due to strain rate effects in the visco-plastic model. Case 4 pseudo-uniaxial test shows non-zero compressive transverse stresses. These transverse stresses grow with applied strain in case 4. Stress and mixed controlled simulations took similar iterations to strain control. Hyperelastic simulations needed almost identical times for every boundary condition. Polycrystal case 2 is faster due to elastic increments. Convergence criteria for linear solver is L2 norm of residual. Tolerances are 10^-8 for linear and 10^-6 for Newton solvers.\n\nInterpretation And Theoretical Implications\nThe modified projection operator allows direct imposition of stress control. This avoids the iterative correction of strain in classical schemes. The method preserves the efficiency of the Galerkin-based FFT framework. It enables accurate simulation of uniaxial and mixed loading paths. The results show that pseudo-uniaxial strain control can be inaccurate. True stress control is necessary for accurate transverse response in plastic materials. The algorithm is general and applicable to any material model.\n\nContradictions And Limitations\nThe method requires defining the modified operator for each control type. For rate-dependent materials, stress control may lead to different paths. The study uses fixed time steps, which may affect adaptive stepping. The polycrystal example shows that pseudo-uniaxial strain control is inaccurate. The method assumes periodic boundary conditions on the RVE.\n\nClaims\nThe proposed algorithm imposes stress or mixed control without additional iterations. The method does not require additional iterations. Convergence rate is the same as the original scheme. Polycrystal case 2 is faster, but this is due to elastic steps. It allows efficient simulation of generic loading paths.\nPseudo-uniaxial strain control leads to inaccurate transverse stresses in plastic materials. Compressive transverse stresses are not zero in case 4. These stresses grow with applied strain. In hyperelastic materials, endpoint results are identical. True stress control is required for accurate plastic response.\n\nRobustness And Ablation Notes\nThe method was tested on hyperelastic and crystal plasticity models. Performance was compared across strain, stress, and mixed control. Convergence behavior was analyzed for each time increment.\n\nKey Figures Tables\nFigure 1 shows the particle reinforced RVE and stress responses. Figure 2 shows the polycrystalline RVE and stress responses. Figure 3 compares convergence and simulation times.\n\nThree Takeaways\n1. A modified projection operator enables direct stress and mixed control in FFT homogenization. 2. The method preserves computational efficiency, requiring no extra iterations. 3. True stress control is essential for accurate simulation of plastic materials.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "periodic representative volume",
+      "start": 1509,
+      "end": 1539,
+      "typographic_alignment": false,
+      "original_quote": "periodic representative volume"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "ﬁnite element method",
+      "start": 1581,
+      "end": 1601,
+      "typographic_alignment": true,
+      "original_quote": "finite element method"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "Fast Fourier transform",
+      "start": 1804,
+      "end": 1826,
+      "typographic_alignment": false,
+      "original_quote": "Fast Fourier transform"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "not a direct task",
+      "start": 2290,
+      "end": 2307,
+      "typographic_alignment": false,
+      "original_quote": "not a direct task"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "reference medium",
+      "start": 4295,
+      "end": 4311,
+      "typographic_alignment": false,
+      "original_quote": "reference medium"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "iterations per step",
+      "start": 3756,
+      "end": 3775,
+      "typographic_alignment": false,
+      "original_quote": "iterations per step"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "weak formulation",
+      "start": 4480,
+      "end": 4496,
+      "typographic_alignment": false,
+      "original_quote": "weak formulation"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "macroscopic deformation gradient",
+      "start": 11253,
+      "end": 11285,
+      "typographic_alignment": false,
+      "original_quote": "macroscopic deformation gradient"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "extend the variational algorithm",
+      "start": 5129,
+      "end": 5161,
+      "typographic_alignment": false,
+      "original_quote": "extend the variational algorithm"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "stress and mixed control",
+      "start": 17,
+      "end": 41,
+      "typographic_alignment": false,
+      "original_quote": "stress and mixed control"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "modiﬁed project operator",
+      "start": 5299,
+      "end": 5323,
+      "typographic_alignment": true,
+      "original_quote": "modified project operator"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "computational performance",
+      "start": 2079,
+      "end": 2104,
+      "typographic_alignment": false,
+      "original_quote": "computational performance"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "additional iterations",
+      "start": 1018,
+      "end": 1039,
+      "typographic_alignment": false,
+      "original_quote": "additional iterations"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "Newton scheme",
+      "start": 1131,
+      "end": 1144,
+      "typographic_alignment": false,
+      "original_quote": "Newton scheme"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "mixed boundary conditions",
+      "start": 25635,
+      "end": 25660,
+      "typographic_alignment": false,
+      "original_quote": "mixed boundary conditions"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "nx ny nz voxels",
+      "start": 6154,
+      "end": 6169,
+      "typographic_alignment": false,
+      "original_quote": "nx ny nz voxels"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "weak form",
+      "start": 4480,
+      "end": 4489,
+      "typographic_alignment": false,
+      "original_quote": "weak form"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "projector operator",
+      "start": 10778,
+      "end": 10796,
+      "typographic_alignment": false,
+      "original_quote": "projector operator"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "compatibility of the strain",
+      "start": 4571,
+      "end": 4598,
+      "typographic_alignment": false,
+      "original_quote": "compatibility of the strain"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "Helmholtz decomposition",
+      "start": 9450,
+      "end": 9473,
+      "typographic_alignment": false,
+      "original_quote": "Helmholtz decomposition"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "null and Nyquist",
+      "start": 10830,
+      "end": 10846,
+      "typographic_alignment": false,
+      "original_quote": "null and Nyquist"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "modiﬁed projection operator",
+      "start": 722,
+      "end": 749,
+      "typographic_alignment": true,
+      "original_quote": "modified projection operator"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "fourth order identity",
+      "start": 13651,
+      "end": 13672,
+      "typographic_alignment": false,
+      "original_quote": "fourth order identity"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "target macroscopic stress",
+      "start": 12562,
+      "end": 12587,
+      "typographic_alignment": false,
+      "original_quote": "target macroscopic stress"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "mixed control",
+      "start": 28,
+      "end": 41,
+      "typographic_alignment": false,
+      "original_quote": "mixed control"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "stress controled IJ",
+      "start": 15697,
+      "end": 15716,
+      "typographic_alignment": false,
+      "original_quote": "stress controled IJ"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "strain controlled ij",
+      "start": 15742,
+      "end": 15762,
+      "typographic_alignment": false,
+      "original_quote": "strain controlled ij"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "Newton as in",
+      "start": 15968,
+      "end": 15980,
+      "typographic_alignment": false,
+      "original_quote": "Newton as in"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "conjugate gradient method",
+      "start": 8712,
+      "end": 8737,
+      "typographic_alignment": false,
+      "original_quote": "conjugate gradient method"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "hyperelastic matrix",
+      "start": 16065,
+      "end": 16084,
+      "typographic_alignment": false,
+      "original_quote": "hyperelastic matrix"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "volume\nfraction of 0.2",
+      "start": 16392,
+      "end": 16414,
+      "typographic_alignment": true,
+      "original_quote": "volume fraction of 0.2"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "643 voxels",
+      "start": 16451,
+      "end": 16461,
+      "typographic_alignment": false,
+      "original_quote": "643 voxels"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "Saint Venant-Kirchhoﬀ",
+      "start": 16529,
+      "end": 16550,
+      "typographic_alignment": true,
+      "original_quote": "Saint Venant-Kirchhoff"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "28Pa",
+      "start": 16651,
+      "end": 16655,
+      "typographic_alignment": false,
+      "original_quote": "28Pa"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "10 times larger",
+      "start": 16766,
+      "end": 16781,
+      "typographic_alignment": false,
+      "original_quote": "10 times larger"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "elongation of",
+      "start": 16842,
+      "end": 16855,
+      "typographic_alignment": false,
+      "original_quote": "elongation of"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "100\nload increments",
+      "start": 17146,
+      "end": 17165,
+      "typographic_alignment": true,
+      "original_quote": "100 load increments"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "mixed control",
+      "start": 28,
+      "end": 41,
+      "typographic_alignment": false,
+      "original_quote": "mixed control"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "full stress control",
+      "start": 17636,
+      "end": 17655,
+      "typographic_alignment": false,
+      "original_quote": "full stress control"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "full strain control",
+      "start": 17854,
+      "end": 17873,
+      "typographic_alignment": false,
+      "original_quote": "full strain control"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "200 randomly oriented",
+      "start": 19864,
+      "end": 19885,
+      "typographic_alignment": false,
+      "original_quote": "200 randomly oriented"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "crystal plasticity",
+      "start": 4939,
+      "end": 4957,
+      "typographic_alignment": false,
+      "original_quote": "crystal plasticity"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "200s",
+      "start": 20174,
+      "end": 20178,
+      "typographic_alignment": false,
+      "original_quote": "200s"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "20 regular increments",
+      "start": 20305,
+      "end": 20326,
+      "typographic_alignment": false,
+      "original_quote": "20 regular increments"
+    },
+    {
+      "path": "procedures_and_architectures[15]",
+      "quote": "pseudo-uniaxial tensile test",
+      "start": 20460,
+      "end": 20488,
+      "typographic_alignment": false,
+      "original_quote": "pseudo-uniaxial tensile test"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "share the path",
+      "start": 18688,
+      "end": 18702,
+      "typographic_alignment": false,
+      "original_quote": "share the path"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "are superposed",
+      "start": 18893,
+      "end": 18907,
+      "typographic_alignment": false,
+      "original_quote": "are superposed"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "slightly diﬀerent path",
+      "start": 18964,
+      "end": 18986,
+      "typographic_alignment": true,
+      "original_quote": "slightly different path"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "transverse\nstresses are zero",
+      "start": 19458,
+      "end": 19486,
+      "typographic_alignment": true,
+      "original_quote": "transverse stresses are zero"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "compressive stresses are developed",
+      "start": 19527,
+      "end": 19561,
+      "typographic_alignment": false,
+      "original_quote": "compressive stresses are developed"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "within the numerical accuracy",
+      "start": 19646,
+      "end": 19675,
+      "typographic_alignment": false,
+      "original_quote": "within the numerical accuracy"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "not exactly superposed",
+      "start": 21417,
+      "end": 21439,
+      "typographic_alignment": false,
+      "original_quote": "not exactly superposed"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "strain rate",
+      "start": 19765,
+      "end": 19776,
+      "typographic_alignment": false,
+      "original_quote": "strain rate"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "compressive transverse stresses",
+      "start": 22124,
+      "end": 22155,
+      "typographic_alignment": false,
+      "original_quote": "compressive transverse stresses"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "grow with the applied",
+      "start": 22173,
+      "end": 22194,
+      "typographic_alignment": false,
+      "original_quote": "grow with the applied"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "same number\nof iterations",
+      "start": 23123,
+      "end": 23148,
+      "typographic_alignment": true,
+      "original_quote": "same number of iterations"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "identical times",
+      "start": 24482,
+      "end": 24497,
+      "typographic_alignment": false,
+      "original_quote": "identical times"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "clearly faster than",
+      "start": 24914,
+      "end": 24933,
+      "typographic_alignment": false,
+      "original_quote": "clearly faster than"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "L2 norm",
+      "start": 22528,
+      "end": 22535,
+      "typographic_alignment": false,
+      "original_quote": "L2 norm"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "10−8",
+      "start": 22696,
+      "end": 22700,
+      "typographic_alignment": false,
+      "original_quote": "10−8"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "modiﬁed project operator",
+      "start": 5299,
+      "end": 5323,
+      "typographic_alignment": true,
+      "original_quote": "modified project operator"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "iterative approaches",
+      "start": 3341,
+      "end": 3361,
+      "typographic_alignment": false,
+      "original_quote": "iterative approaches"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "computational performance",
+      "start": 2079,
+      "end": 2104,
+      "typographic_alignment": false,
+      "original_quote": "computational performance"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "uniaxial loading",
+      "start": 2462,
+      "end": 2478,
+      "typographic_alignment": false,
+      "original_quote": "uniaxial loading"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "inaccurate results",
+      "start": 22325,
+      "end": 22343,
+      "typographic_alignment": false,
+      "original_quote": "inaccurate results"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "real uniaxial tensile",
+      "start": 21977,
+      "end": 21998,
+      "typographic_alignment": false,
+      "original_quote": "real uniaxial tensile"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "any material",
+      "start": 25475,
+      "end": 25487,
+      "typographic_alignment": false,
+      "original_quote": "any material"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "modiﬁed projection operator",
+      "start": 722,
+      "end": 749,
+      "typographic_alignment": true,
+      "original_quote": "modified projection operator"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "strain rate",
+      "start": 19765,
+      "end": 19776,
+      "typographic_alignment": false,
+      "original_quote": "strain rate"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "ﬁxed time step",
+      "start": 25001,
+      "end": 25015,
+      "typographic_alignment": true,
+      "original_quote": "fixed time step"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "inaccurate results",
+      "start": 22325,
+      "end": 22343,
+      "typographic_alignment": false,
+      "original_quote": "inaccurate results"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "periodic RVE",
+      "start": 5953,
+      "end": 5965,
+      "typographic_alignment": false,
+      "original_quote": "periodic RVE"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "two types\nof constitutive",
+      "start": 25421,
+      "end": 25446,
+      "typographic_alignment": true,
+      "original_quote": "two types of constitutive"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "Performance comparison",
+      "start": 22350,
+      "end": 22372,
+      "typographic_alignment": false,
+      "original_quote": "Performance comparison"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "convergence for each",
+      "start": 24233,
+      "end": 24253,
+      "typographic_alignment": false,
+      "original_quote": "convergence for each"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Particle reinforced RVE",
+      "start": 18450,
+      "end": 18473,
+      "typographic_alignment": false,
+      "original_quote": "Particle reinforced RVE"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Polycrystalline RVE",
+      "start": 21154,
+      "end": 21173,
+      "typographic_alignment": false,
+      "original_quote": "Polycrystalline RVE"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Comparative of convergence",
+      "start": 24218,
+      "end": 24244,
+      "typographic_alignment": false,
+      "original_quote": "Comparative of convergence"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "modiﬁed project operator",
+      "start": 5299,
+      "end": 5323,
+      "typographic_alignment": true,
+      "original_quote": "modified project operator"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "additional iterations",
+      "start": 1018,
+      "end": 1039,
+      "typographic_alignment": false,
+      "original_quote": "additional iterations"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "inaccurate results",
+      "start": 22325,
+      "end": 22343,
+      "typographic_alignment": false,
+      "original_quote": "inaccurate results"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "additional iterations",
+      "start": 1018,
+      "end": 1039,
+      "typographic_alignment": false,
+      "original_quote": "additional iterations"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "same convergence rate",
+      "start": 14511,
+      "end": 14532,
+      "typographic_alignment": false,
+      "original_quote": "same convergence rate"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "clearly faster than",
+      "start": 24914,
+      "end": 24933,
+      "typographic_alignment": false,
+      "original_quote": "clearly faster than"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "generic loading path",
+      "start": 2391,
+      "end": 2411,
+      "typographic_alignment": false,
+      "original_quote": "generic loading path"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "compressive transverse stresses",
+      "start": 22124,
+      "end": 22155,
+      "typographic_alignment": false,
+      "original_quote": "compressive transverse stresses"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "grow with the applied",
+      "start": 22173,
+      "end": 22194,
+      "typographic_alignment": false,
+      "original_quote": "grow with the applied"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "within the numerical accuracy",
+      "start": 19646,
+      "end": 19675,
+      "typographic_alignment": false,
+      "original_quote": "within the numerical accuracy"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "real uniaxial tensile",
+      "start": 21977,
+      "end": 21998,
+      "typographic_alignment": false,
+      "original_quote": "real uniaxial tensile"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"An algorithm for stress and mixed control in Galerkin based FFT homogenization\",\n  \"authors\": \"S. Lucarini, J. Segurado\",\n  \"field_subfield\": \"Computational Mechanics / Materials Science\",\n  \"type_of_paper\": \"Research Article\",\n  \"executive_summary\": \"This paper proposes a novel algorithm to impose macroscopic stress or mixed stress/deformation gradient histories in non-linear Galerkin-based Fast Fourier Transform (FFT) homogenization. Traditional FFT methods typically impose strain control, requiring iterative corrections for stress or mixed loading, which increases computational cost. The authors introduce a modified projection operator where the null frequency enforces the specific control type (stress or strain) for each component of the macroscopic first Piola stress or deformation gradient. This modification allows the problem to be solved exactly as the original variational method without additional iterations in the linear solver or Newton scheme. The method is demonstrated through numerical examples involving a particle-reinforced hyperelastic material and a polycrystal. For the hyperelastic case, the algorithm shows identical convergence rates and simulation times compared to strain control. For the polycrystal, which exhibits rate-dependent behavior, the stress-controlled case is faster due to elastic increments, while the pseudo-uniaxial strain control yields inaccurate transverse stresses compared to true stress control. The study confirms that the proposed method preserves the computational efficiency of FFT homogenization while enabling accurate simulation of generic loading paths, including uniaxial tension and controlled triaxility, without the overhead of iterative load corrections.\",\n  \"research_context\": [\n    { \"Computational homogenization simulates mechanical response in a periodic representative volume element.\": \"periodic representative volume\" },\n    { \"The finite element method traditionally solves boundary value problems with any load history.\": \"finite element method\" },\n    { \"FFT-based homogenization is a popular alternative due to computational performance.\": \"Fast Fourier transform\" },\n    { \"Imposing macroscopic stress or mixed loading is not direct in standard FFT.\": \"not a direct task\" },\n    { \"Classical schemes require a reference medium which affects convergence.\": \"reference medium\" },\n    { \"Iterative approaches for stress control significantly increase iteration counts.\": \"iterations per step\" },\n    { \"Galerkin-based FFT uses weak formulation and projection operators.\": \"weak formulation\" },\n    { \"Previous variational approaches only imposed macroscopic deformation gradient history.\": \"macroscopic deformation gradient\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to extend the variational algorithm for finite strains.\": \"extend the variational algorithm\" },\n    { \"The goal is to use stress and mixed control of macroscopic load.\": \"stress and mixed control\" },\n    { \"The method uses a direct approach based on a modified projection operator.\": \"modified project operator\" },\n    { \"The hypothesis is that computational performance of the original method is preserved.\": \"computational performance\" },\n    { \"The algorithm should not require additional iterations compared to strain control.\": \"additional iterations\" },\n    { \"The method applies to both linear iterative solvers and Newton schemes.\": \"Newton scheme\" },\n    { \"The approach allows solving problems with mixed boundary conditions efficiently.\": \"mixed boundary conditions\" }\n  ],\n  \"methodological_details\": [\n    { \"The RVE is discretized in nx ny nz voxels.\": \"nx ny nz voxels\" },\n    { \"The linear momentum balance is imposed in its weak form.\": \"weak form\" },\n    { \"Test functions are virtual deformation gradients premultiplied by a projector.\": \"projector operator\" },\n    { \"The projection operator enforces compatibility of strain fields.\": \"compatibility of the strain\" },\n    { \"The Helmholtz decomposition splits tensor fields into compatible and incompatible parts.\": \"Helmholtz decomposition\" },\n    { \"The standard projection operator is zero at null and Nyquist frequencies.\": \"null and Nyquist\" },\n    { \"For stress control, a modified operator G* is defined.\": \"modified projection operator\" },\n    { \"The null frequency of G* is the fourth order identity tensor.\": \"fourth order identity\" },\n    { \"This enforces the average stress to equal the target macroscopic stress.\": \"target macroscopic stress\" },\n    { \"For mixed control, the operator varies by component direction.\": \"mixed control\" },\n    { \"Stress-controlled components use the identity tensor at null frequency.\": \"stress controled IJ\" },\n    { \"Strain-controlled components use zero tensor at null frequency.\": \"strain controlled ij\" },\n    { \"The non-linear system is solved using Newton iteration.\": \"Newton as in\" },\n    { \"The linear system is solved using the conjugate gradient method.\": \"conjugate gradient method\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The first benchmark is a particle reinforced hyperelastic matrix.\": \"hyperelastic matrix\" },\n    { \"The RVE contains 4 particles with a volume fraction of 0.2.\": \"volume fraction of 0.2\" },\n    { \"The domain is discretized using 643 voxels.\": \"643 voxels\" },\n    { \"The matrix follows a Saint Venant-Kirchhoff hyperelastic model.\": \"Saint Venant-Kirchhoff\" },\n    { \"Matrix shear modulus is 28 Pa and bulk modulus is 46.67 Pa.\": \"28Pa\" },\n    { \"Particles are one order of magnitude stiffer than the matrix.\": \"10 times larger\" },\n    { \"The uniaxial tensile test reaches an elongation of 0.2.\": \"elongation of\" },\n    { \"Load is divided into 100 load increments.\": \"100 load increments\" },\n    { \"Case 1 is mixed control with strain ramp in x direction.\": \"mixed control\" },\n    { \"Case 2 is full stress control with a linear ramp.\": \"full stress control\" },\n    { \"Case 3 is full strain control with a linear ramp.\": \"full strain control\" },\n    { \"The second benchmark is a polycrystal with 200 grains.\": \"200 randomly oriented\" },\n    { \"The polycrystal uses a crystal plasticity elasto-visco-plastic model.\": \"crystal plasticity\" },\n    { \"A final elongation of 0.02 is imposed in 200 seconds.\": \"200s\" },\n    { \"Time is discretized in 20 regular increments.\": \"20 regular increments\" },\n    { \"Case 4 is a pseudo-uniaxial test using full strain control.\": \"pseudo-uniaxial tensile test\" }\n  ],\n  \"key_results\": [\n    { \"In the hyperelastic case, cases 1 and 2 share the same path.\": \"share the path\" },\n    { \"Macroscopic stress for cases 1 and 2 are superposed.\": \"are superposed\" },\n    { \"Case 3 follows a slightly different path due to full strain control.\": \"slightly different path\" },\n    { \"Transverse stresses are zero under stress and mixed control.\": \"transverse stresses are zero\" },\n    { \"Small compressive transverse stresses develop under strain control.\": \"compressive stresses are developed\" },\n    { \"Macroscopic and microscopic results at the endpoint are identical within accuracy.\": \"within the numerical accuracy\" },\n    { \"In the polycrystal, cases 1 and 2 are not exactly superposed.\": \"not exactly superposed\" },\n    { \"Differences arise due to strain rate effects in the visco-plastic model.\": \"strain rate\" },\n    { \"Case 4 pseudo-uniaxial test shows non-zero compressive transverse stresses.\": \"compressive transverse stresses\" },\n    { \"These transverse stresses grow with applied strain in case 4.\": \"grow with the applied\" },\n    { \"Stress and mixed controlled simulations took similar iterations to strain control.\": \"same number of iterations\" },\n    { \"Hyperelastic simulations needed almost identical times for every boundary condition.\": \"identical times\" },\n    { \"Polycrystal case 2 is faster due to elastic increments.\": \"clearly faster than\" },\n    { \"Convergence criteria for linear solver is L2 norm of residual.\": \"L2 norm\" },\n    { \"Tolerances are 10^-8 for linear and 10^-6 for Newton solvers.\": \"10−8\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The modified projection operator allows direct imposition of stress control.\": \"modified project operator\" },\n    { \"This avoids the iterative correction of strain in classical schemes.\": \"iterative approaches\" },\n    { \"The method preserves the efficiency of the Galerkin-based FFT framework.\": \"computational performance\" },\n    { \"It enables accurate simulation of uniaxial and mixed loading paths.\": \"uniaxial loading\" },\n    { \"The results show that pseudo-uniaxial strain control can be inaccurate.\": \"inaccurate results\" },\n    { \"True stress control is necessary for accurate transverse response in plastic materials.\": \"real uniaxial tensile\" },\n    { \"The algorithm is general and applicable to any material model.\": \"any material\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The method requires defining the modified operator for each control type.\": \"modified projection operator\" },\n    { \"For rate-dependent materials, stress control may lead to different paths.\": \"strain rate\" },\n    { \"The study uses fixed time steps, which may affect adaptive stepping.\": \"fixed time step\" },\n    { \"The polycrystal example shows that pseudo-uniaxial strain control is inaccurate.\": \"inaccurate results\" },\n    { \"The method assumes periodic boundary conditions on the RVE.\": \"periodic RVE\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed algorithm imposes stress or mixed control without additional iterations.\",\n      \"supporting_evidence\": [\n        { \"The method does not require additional iterations.\": \"additional iterations\" },\n        { \"Convergence rate is the same as the original scheme.\": \"same convergence rate\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Polycrystal case 2 is faster, but this is due to elastic steps.\": \"clearly faster than\" }\n      ],\n      \"implications\": [\n        { \"It allows efficient simulation of generic loading paths.\": \"generic loading path\" }\n      ]\n    },\n    {\n      \"description\": \"Pseudo-uniaxial strain control leads to inaccurate transverse stresses in plastic materials.\",\n      \"supporting_evidence\": [\n        { \"Compressive transverse stresses are not zero in case 4.\": \"compressive transverse stresses\" },\n        { \"These stresses grow with applied strain.\": \"grow with the applied\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"In hyperelastic materials, endpoint results are identical.\": \"within the numerical accuracy\" }\n      ],\n      \"implications\": [\n        { \"True stress control is required for accurate plastic response.\": \"real uniaxial tensile\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": \"\",\n  \"robustness_and_ablation_notes\": [\n    { \"The method was tested on hyperelastic and crystal plasticity models.\": \"two types of constitutive\" },\n    { \"Performance was compared across strain, stress, and mixed control.\": \"Performance comparison\" },\n    { \"Convergence behavior was analyzed for each time increment.\": \"convergence for each\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1 shows the particle reinforced RVE and stress responses.\": \"Particle reinforced RVE\" },\n    { \"Figure 2 shows the polycrystalline RVE and stress responses.\": \"Polycrystalline RVE\" },\n    { \"Figure 3 compares convergence and simulation times.\": \"Comparative of convergence\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. A modified projection operator enables direct stress and mixed control in FFT homogenization.\": \"modified project operator\" },\n    { \"2. The method preserves computational efficiency, requiring no extra iterations.\": \"additional iterations\" },\n    { \"3. True stress control is essential for accurate simulation of plastic materials.\": \"inaccurate results\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9432,
+        "total_tokens": 12279,
+        "completion_tokens": 2847,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9432,
+      "elapsed_seconds": 223.40239864960313,
+      "max_tokens": 16000,
+      "seed": 759825095,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "faed6a835cdf3ddc93f93dd92c2b6872cc43993b3f10b0b8b3614eb0af6e356e",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 9432,
+  "elapsed_seconds": 223.51952271908522,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

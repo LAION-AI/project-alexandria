@@ -1,0 +1,1055 @@
+{
+  "document_id": "bethgelab-10003",
+  "fulltext_sha256": "e7cd528ba416b11b6aab2a6fd81b6328a5833daeb921827420f580cb236ca865",
+  "summary": {
+    "title": "Machine learning force field ranking of candidate solid electrolyte interphase structures in Li-ion batteries",
+    "authors": "James M Stevenson; Garvit Agarwal; Leif D Jacobson",
+    "field_subfield": "Computational Chemistry / Battery Materials",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This study addresses the critical gap in understanding the Solid-Electrolyte Interphase (SEI) in lithium-ion batteries, a complex passivating layer that remains poorly characterized due to the limitations of existing simulation methods. Traditional Density Functional Theory (DFT) methods are too slow for the necessary length and time scales, while classical force fields lack the accuracy for complex redox reactions. The authors propose a novel approach using a multitask machine learning force field (MLFF) based on the QRNN architecture to simulate SEI formation and rank candidate structures by predicted energy.\n\nThe methodology involves a combination of classical sampling and active learning. Initial SEI candidate structures were generated using the Schrödinger SEI Simulator with OPLS4 molecular dynamics, starting with 1 M LiPF6 in ethylene carbonate (EC). These candidates were then annealed using a reactive QRNN model under extreme conditions (400 K, 1000 atm) to ensure stability and reaction completion. The model was trained on a diverse dataset including periodic and non-periodic systems, labeled with PBE-D3 and wB97X-D3BJ/def2-TZVPD levels of theory, as well as a supplemental SPICE dataset for general organic chemistry to shape the latent space.\n\nKey results demonstrate that the MLFF can stably simulate complex redox reactions, producing the first set of SEI candidate structures ranked by energy. Statistical analysis of the bonding in these structures reveals that P-F and Li-O bonds are associated with more stable configurations, while C-O and Li-F bonds correlate with less stability. The study validates the model against surface reaction energy barriers, showing reasonable accuracy. The authors conclude that this approach provides a quantitative foundation for understanding SEI chemistry and suggests future work on comparing multiple electrolyte formulations and applying other MLFF architectures like Nequip and MACE. This work represents a significant step toward using machine learning to model complex battery interphases, offering a pathway to optimize SEI composition for next-generation batteries.",
+    "research_context": [
+      {
+        "The Solid-Electrolyte Interphase (SEI) is a vital but poorly-understood material class in lithium-ion batteries.": "poorly-understood class"
+      },
+      {
+        "Key questions about SEIs, such as their amorphous or crystalline nature, remain unanswered.": "remain unanswered"
+      },
+      {
+        "Existing pure density functionals underestimate reaction barriers and are too slow for SEI scales.": "underestimate reaction barriers"
+      },
+      {
+        "Hybrid functionals struggle with metals and have poor computational scaling for periodic systems.": "struggle with metals"
+      },
+      {
+        "Machine learning force fields (MLFFs) promise DFT accuracy with classical force field speed.": "accuracy and wide applicability"
+      },
+      {
+        "Previous MLFFs have predicted properties of Li metal and organic liquids but not SEI interactions.": "predict the properties"
+      },
+      {
+        "Traditional force fields are difficult to fit for complex systems like the SEI.": "difficult to fit"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central research question is how to simulate and rank SEI candidate structures using machine learning.": "ranked by predicted energy"
+      },
+      {
+        "The hypothesis is that a multitask MLFF can model complex SEI reactions with sufficient accuracy.": "model the complex reactions"
+      },
+      {
+        "The study aims to produce the first set of SEI structures ranked by predicted energy.": "first set of SEI"
+      },
+      {
+        "It is hypothesized that specific bond types correlate with the energetic stability of SEI structures.": "associated with more stable"
+      },
+      {
+        "The authors predict that MLFFs can bridge the gap between DFT accuracy and classical speed.": "fast sampling of classical"
+      },
+      {
+        "The goal is to enable future machine learning applications and comparison with experimental results.": "compared to experimental results"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The reference level of theory for non-periodic systems is wB97X-D3BJ/def2-TZVPD.": "wB97X-D3BJ/def2-TZVPD"
+      },
+      {
+        "The reference level of theory for periodic systems is PBE-D3 in a plane wave basis.": "PBE-D3 in a plane"
+      },
+      {
+        "The study uses multiple rounds of active learning for data generation.": "active learning for data"
+      },
+      {
+        "Enhanced reaction sampling uses Artificial Force Induced Reactions (AFIR) and Nudged Elastic Band (NEB).": "Artificial Force Induced"
+      },
+      {
+        "A supplemental dataset of general organic chemistry, SPICE, was added to shape the latent space.": "general organic chemistry"
+      },
+      {
+        "The SPICE subset consists of elements H, Li, C, O, F, and P.": "H, Li, C, O"
+      },
+      {
+        "The hidden layers of the neural networks were doubled to increase model capacity.": "doubled the width"
+      },
+      {
+        "Initial SEI candidates were generated using the Schrödinger SEI Simulator with OPLS4 MD.": "SEI Simulator"
+      },
+      {
+        "Each system starts with 700 molecules of EC and 52 ions each of Li+ and PF6-.": "700 molecules of EC"
+      },
+      {
+        "The total number of atoms in each initial system is 7416.": "7416 total atoms"
+      },
+      {
+        "Four sets of candidates were defined with 5, 12, 23, and 33 added Li+ ions.": "5, 12, 23, and"
+      },
+      {
+        "Lithium oxide, carbonate, fluoride, and hydroxide were added to the training set.": "lithium oxide, lithium carbonate"
+      },
+      {
+        "Non-equilibrium geometries were sampled by adding Gaussian noise to Cartesian coordinates.": "Gaussian noise to the"
+      },
+      {
+        "Periodic DFT was performed using Quantum Espresso with PBE functional and D3 correction.": "Quantum Espresso"
+      },
+      {
+        "Gas-phase DFT was performed using Psi4 v1.6 with wB97X-D3BJ/def2-TZVPD.": "Psi4 v1.6"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The model architecture is a multitask QRNN with four output levels of theory.": "four output levels"
+      },
+      {
+        "The loss function includes energy, force, and charge mean squared error.": "mean squared error"
+      },
+      {
+        "The Adamax optimizer with decoupled weight decay was used for training.": "Adamax optimizer"
+      },
+      {
+        "The final model used a learning rate of 2e-3.": "learning rate of 2e-3"
+      },
+      {
+        "Hidden layers of size 256, 224, and 192 were used for all elements.": "256, 224, and 192"
+      },
+      {
+        "The batch size was set to 64.": "batch size was 64"
+      },
+      {
+        "A weight decay of 1e-3 was used for the final model.": "weight decay of 1e-3"
+      },
+      {
+        "The final model is an exponential moving average of training parameters.": "exponential moving average"
+      },
+      {
+        "Initial liquid geometries were equilibrated using NPT ensemble for 1 ns.": "NPT ensemble for 1"
+      },
+      {
+        "Solid-liquid interfaces started from a BCC lattice of lithium with optimized lattice constant.": "BCC lattice of lithium"
+      },
+      {
+        "Candidates were annealed using reactive QRNN MD at 400 K and 1000 atm for 100 ps.": "400 K and 1000"
+      },
+      {
+        "Structures were ranked by mean potential energy over a 20 ps MD trajectory at 300 K.": "20 ps length"
+      },
+      {
+        "Lewis structures were recalculated using Schrödinger Materials Science Suite for bond analysis.": "Schrodinger Materials Science"
+      }
+    ],
+    "key_results": [
+      {
+        "The QRNN models gave stable dynamics despite extreme conditions applied during annealing.": "stable dynamics"
+      },
+      {
+        "The study produced the first set of SEI candidate structures ranked by predicted energy.": "first set of SEI"
+      },
+      {
+        "P-F and Li-O bonds are associated with more stable structures.": "more stable structures"
+      },
+      {
+        "C-O and Li-F bonds are associated with less stable structures.": "less stable ones"
+      },
+      {
+        "Adding SPICE data resulted in only an 8% increase in hybrid-head RMSE.": "8% increase in hybrid"
+      },
+      {
+        "The model was validated against surface reaction energy barriers.": "surface reaction energy barriers"
+      },
+      {
+        "The lowest-energy SEI candidate from the 33 added Li subgroup was identified as the best.": "33 added Li atoms"
+      },
+      {
+        "The model does not have enough capacity to overfit, so early stopping had little effect.": "enough capacity to overfit"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The results suggest that specific bond types determine the energetic stability of SEI structures.": "energetically stable"
+      },
+      {
+        "Multitask training allows the model to handle diverse chemical systems without heavy capacity cost.": "did not impose a heavy"
+      },
+      {
+        "The latent space of MLFF models contains unused capacity for broadening chemical applicability.": "unused capacity"
+      },
+      {
+        "This work provides a quantitative foundation for understanding lithium-ion battery interphases.": "quantitative understanding"
+      },
+      {
+        "The approach enables the ranking of candidate SEI structures for future optimization.": "ranking of candidate SEI"
+      },
+      {
+        "The study demonstrates the feasibility of simulating complex redox reactive systems with MLFFs.": "complex redox reactive system"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The difficulty of characterizing the SEI experimentally is an obstacle to validation.": "obstacle to validation"
+      },
+      {
+        "Experimental values for density, diffusivity, viscosity, or elastic modulus do not exist for SEI.": "experiments do not exist"
+      },
+      {
+        "The model is not final, as its scope is still small compared to requirements.": "scope is still small"
+      },
+      {
+        "The study only used a single formulation of electrolyte, 1M LiPF6 in EC.": "single formulation of electrolyte"
+      },
+      {
+        "The probability of being proven wrong by future events is high.": "proven wrong by future"
+      },
+      {
+        "The model was not trained on DFT-generated MD, AFIR, or NEB geometries to avoid test set leakage.": "too close to training"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Multitask training with QRNN allows accurate simulation of complex SEI reactions.",
+        "supporting_evidence": [
+          {
+            "The model stably simulated extreme conditions and complex redox reactions.": "stable dynamics"
+          },
+          {
+            "The model produced ranked SEI structures with reasonable energy predictions.": "ranked by predicted energy"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The model's scope is limited and not yet final.": "scope is still small"
+          }
+        ],
+        "implications": [
+          {
+            "This enables quantitative understanding of SEI chemistry.": "quantitative understanding"
+          }
+        ]
+      },
+      {
+        "description": "Specific bond types correlate with SEI structural stability.",
+        "supporting_evidence": [
+          {
+            "P-F and Li-O bonds are associated with more stable structures.": "more stable structures"
+          },
+          {
+            "C-O and Li-F bonds are associated with less stable structures.": "less stable ones"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The correlation is based on predicted energies, not experimental validation.": "obstacle to validation"
+          }
+        ],
+        "implications": [
+          {
+            "This guides the design of more stable SEI formulations.": "optimization of SEI chemistry"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "The list of SEI candidate structures and energies is available on Figshare.": "figshare.com/s/e842ae88023902700e12"
+      },
+      {
+        "Plotting scripts and initial solution structures are also provided in the repository.": "plotting scripts"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "Adding SPICE data did not significantly increase PBE-head validation RMSE.": "no increase in PBE-head"
+      },
+      {
+        "Higher weight decay reduced reaction barrier heights, so a conventional value was used.": "reduced the height"
+      },
+      {
+        "The model was validated against surface reaction energy barriers.": "surface reaction energy barriers"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 4 shows bond counts with respect to total system energy for the most lithiated SEI set.": "Bond counts with respect"
+      },
+      {
+        "Table 1 validates the model against surface reaction energy barriers.": "surface reaction energy barriers"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the first MLFF-based ranking of SEI candidate structures.": "first set of SEI"
+      },
+      {
+        "2. The strongest evidence is the stable simulation of complex redox reactions and bond stability correlations.": "stable dynamics"
+      },
+      {
+        "3. The future path involves comparing multiple electrolyte formulations and applying other MLFF architectures.": "comparing multiple formulations"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis study addresses the critical gap in understanding the Solid-Electrolyte Interphase (SEI) in lithium-ion batteries, a complex passivating layer that remains poorly characterized due to the limitations of existing simulation methods. Traditional Density Functional Theory (DFT) methods are too slow for the necessary length and time scales, while classical force fields lack the accuracy for complex redox reactions. The authors propose a novel approach using a multitask machine learning force field (MLFF) based on the QRNN architecture to simulate SEI formation and rank candidate structures by predicted energy.\n\nThe methodology involves a combination of classical sampling and active learning. Initial SEI candidate structures were generated using the Schrödinger SEI Simulator with OPLS4 molecular dynamics, starting with 1 M LiPF6 in ethylene carbonate (EC). These candidates were then annealed using a reactive QRNN model under extreme conditions (400 K, 1000 atm) to ensure stability and reaction completion. The model was trained on a diverse dataset including periodic and non-periodic systems, labeled with PBE-D3 and wB97X-D3BJ/def2-TZVPD levels of theory, as well as a supplemental SPICE dataset for general organic chemistry to shape the latent space.\n\nKey results demonstrate that the MLFF can stably simulate complex redox reactions, producing the first set of SEI candidate structures ranked by energy. Statistical analysis of the bonding in these structures reveals that P-F and Li-O bonds are associated with more stable configurations, while C-O and Li-F bonds correlate with less stability. The study validates the model against surface reaction energy barriers, showing reasonable accuracy. The authors conclude that this approach provides a quantitative foundation for understanding SEI chemistry and suggests future work on comparing multiple electrolyte formulations and applying other MLFF architectures like Nequip and MACE. This work represents a significant step toward using machine learning to model complex battery interphases, offering a pathway to optimize SEI composition for next-generation batteries.\n\nResearch Context\nThe Solid-Electrolyte Interphase (SEI) is a vital but poorly-understood material class in lithium-ion batteries. Key questions about SEIs, such as their amorphous or crystalline nature, remain unanswered. Existing pure density functionals underestimate reaction barriers and are too slow for SEI scales. Hybrid functionals struggle with metals and have poor computational scaling for periodic systems. Machine learning force fields (MLFFs) promise DFT accuracy with classical force field speed. Previous MLFFs have predicted properties of Li metal and organic liquids but not SEI interactions. Traditional force fields are difficult to fit for complex systems like the SEI.\n\nResearch Question And Hypothesis\nThe central research question is how to simulate and rank SEI candidate structures using machine learning. The hypothesis is that a multitask MLFF can model complex SEI reactions with sufficient accuracy. The study aims to produce the first set of SEI structures ranked by predicted energy. It is hypothesized that specific bond types correlate with the energetic stability of SEI structures. The authors predict that MLFFs can bridge the gap between DFT accuracy and classical speed. The goal is to enable future machine learning applications and comparison with experimental results.\n\nMethodological Details\nThe reference level of theory for non-periodic systems is wB97X-D3BJ/def2-TZVPD. The reference level of theory for periodic systems is PBE-D3 in a plane wave basis. The study uses multiple rounds of active learning for data generation. Enhanced reaction sampling uses Artificial Force Induced Reactions (AFIR) and Nudged Elastic Band (NEB). A supplemental dataset of general organic chemistry, SPICE, was added to shape the latent space. The SPICE subset consists of elements H, Li, C, O, F, and P. The hidden layers of the neural networks were doubled to increase model capacity. Initial SEI candidates were generated using the Schrödinger SEI Simulator with OPLS4 MD. Each system starts with 700 molecules of EC and 52 ions each of Li+ and PF6-. The total number of atoms in each initial system is 7416. Four sets of candidates were defined with 5, 12, 23, and 33 added Li+ ions. Lithium oxide, carbonate, fluoride, and hydroxide were added to the training set. Non-equilibrium geometries were sampled by adding Gaussian noise to Cartesian coordinates. Periodic DFT was performed using Quantum Espresso with PBE functional and D3 correction. Gas-phase DFT was performed using Psi4 v1.6 with wB97X-D3BJ/def2-TZVPD.\n\nProcedures And Architectures\nThe model architecture is a multitask QRNN with four output levels of theory. The loss function includes energy, force, and charge mean squared error. The Adamax optimizer with decoupled weight decay was used for training. The final model used a learning rate of 2e-3. Hidden layers of size 256, 224, and 192 were used for all elements. The batch size was set to 64. A weight decay of 1e-3 was used for the final model. The final model is an exponential moving average of training parameters. Initial liquid geometries were equilibrated using NPT ensemble for 1 ns. Solid-liquid interfaces started from a BCC lattice of lithium with optimized lattice constant. Candidates were annealed using reactive QRNN MD at 400 K and 1000 atm for 100 ps. Structures were ranked by mean potential energy over a 20 ps MD trajectory at 300 K. Lewis structures were recalculated using Schrödinger Materials Science Suite for bond analysis.\n\nKey Results\nThe QRNN models gave stable dynamics despite extreme conditions applied during annealing. The study produced the first set of SEI candidate structures ranked by predicted energy. P-F and Li-O bonds are associated with more stable structures. C-O and Li-F bonds are associated with less stable structures. Adding SPICE data resulted in only an 8% increase in hybrid-head RMSE. The model was validated against surface reaction energy barriers. The lowest-energy SEI candidate from the 33 added Li subgroup was identified as the best. The model does not have enough capacity to overfit, so early stopping had little effect.\n\nInterpretation And Theoretical Implications\nThe results suggest that specific bond types determine the energetic stability of SEI structures. Multitask training allows the model to handle diverse chemical systems without heavy capacity cost. The latent space of MLFF models contains unused capacity for broadening chemical applicability. This work provides a quantitative foundation for understanding lithium-ion battery interphases. The approach enables the ranking of candidate SEI structures for future optimization. The study demonstrates the feasibility of simulating complex redox reactive systems with MLFFs.\n\nContradictions And Limitations\nThe difficulty of characterizing the SEI experimentally is an obstacle to validation. Experimental values for density, diffusivity, viscosity, or elastic modulus do not exist for SEI. The model is not final, as its scope is still small compared to requirements. The study only used a single formulation of electrolyte, 1M LiPF6 in EC. The probability of being proven wrong by future events is high. The model was not trained on DFT-generated MD, AFIR, or NEB geometries to avoid test set leakage.\n\nClaims\nMultitask training with QRNN allows accurate simulation of complex SEI reactions. The model stably simulated extreme conditions and complex redox reactions. The model produced ranked SEI structures with reasonable energy predictions. The model's scope is limited and not yet final. This enables quantitative understanding of SEI chemistry.\nSpecific bond types correlate with SEI structural stability. P-F and Li-O bonds are associated with more stable structures. C-O and Li-F bonds are associated with less stable structures. The correlation is based on predicted energies, not experimental validation. This guides the design of more stable SEI formulations.\n\nData And Code Availability\nThe list of SEI candidate structures and energies is available on Figshare. Plotting scripts and initial solution structures are also provided in the repository.\n\nRobustness And Ablation Notes\nAdding SPICE data did not significantly increase PBE-head validation RMSE. Higher weight decay reduced reaction barrier heights, so a conventional value was used. The model was validated against surface reaction energy barriers.\n\nKey Figures Tables\nFigure 4 shows bond counts with respect to total system energy for the most lithiated SEI set. Table 1 validates the model against surface reaction energy barriers.\n\nThree Takeaways\n1. The core contribution is the first MLFF-based ranking of SEI candidate structures. 2. The strongest evidence is the stable simulation of complex redox reactions and bond stability correlations. 3. The future path involves comparing multiple electrolyte formulations and applying other MLFF architectures.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "poorly-understood class",
+      "start": 274,
+      "end": 297,
+      "typographic_alignment": false,
+      "original_quote": "poorly-understood class"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "remain unanswered",
+      "start": 1410,
+      "end": 1427,
+      "typographic_alignment": false,
+      "original_quote": "remain unanswered"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "underestimate reaction barriers",
+      "start": 1801,
+      "end": 1832,
+      "typographic_alignment": false,
+      "original_quote": "underestimate reaction barriers"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "struggle with metals",
+      "start": 2059,
+      "end": 2079,
+      "typographic_alignment": false,
+      "original_quote": "struggle with metals"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "accuracy and wide applicability",
+      "start": 2245,
+      "end": 2276,
+      "typographic_alignment": false,
+      "original_quote": "accuracy and wide applicability"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "predict the properties",
+      "start": 2719,
+      "end": 2741,
+      "typographic_alignment": false,
+      "original_quote": "predict the properties"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "difficult to fit",
+      "start": 2515,
+      "end": 2531,
+      "typographic_alignment": false,
+      "original_quote": "difficult to fit"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "ranked by predicted energy",
+      "start": 587,
+      "end": 613,
+      "typographic_alignment": false,
+      "original_quote": "ranked by predicted energy"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "model the complex reactions",
+      "start": 9772,
+      "end": 9799,
+      "typographic_alignment": false,
+      "original_quote": "model the complex reactions"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "first set of SEI",
+      "start": 549,
+      "end": 565,
+      "typographic_alignment": false,
+      "original_quote": "first set of SEI"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "associated with more stable",
+      "start": 9310,
+      "end": 9337,
+      "typographic_alignment": false,
+      "original_quote": "associated with more stable"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "fast sampling of classical",
+      "start": 2298,
+      "end": 2324,
+      "typographic_alignment": false,
+      "original_quote": "fast sampling of classical"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "compared to experimental results",
+      "start": 670,
+      "end": 702,
+      "typographic_alignment": false,
+      "original_quote": "compared to experimental results"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "wB97X-D3BJ/def2-TZVPD",
+      "start": 3184,
+      "end": 3205,
+      "typographic_alignment": false,
+      "original_quote": "wB97X-D3BJ/def2-TZVPD"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "PBE-D3 in a plane",
+      "start": 3268,
+      "end": 3285,
+      "typographic_alignment": false,
+      "original_quote": "PBE-D3 in a plane"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "active learning for data",
+      "start": 4293,
+      "end": 4317,
+      "typographic_alignment": false,
+      "original_quote": "active learning for data"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "Artificial Force Induced",
+      "start": 4533,
+      "end": 4557,
+      "typographic_alignment": false,
+      "original_quote": "Artificial Force Induced"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "general organic chemistry",
+      "start": 4747,
+      "end": 4772,
+      "typographic_alignment": false,
+      "original_quote": "general organic chemistry"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "H, Li, C, O",
+      "start": 4833,
+      "end": 4844,
+      "typographic_alignment": false,
+      "original_quote": "H, Li, C, O"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "doubled the width",
+      "start": 5538,
+      "end": 5555,
+      "typographic_alignment": false,
+      "original_quote": "doubled the width"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "SEI Simulator",
+      "start": 6402,
+      "end": 6415,
+      "typographic_alignment": false,
+      "original_quote": "SEI Simulator"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "700 molecules of EC",
+      "start": 6524,
+      "end": 6543,
+      "typographic_alignment": false,
+      "original_quote": "700 molecules of EC"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "7416 total atoms",
+      "start": 6607,
+      "end": 6623,
+      "typographic_alignment": false,
+      "original_quote": "7416 total atoms"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "5, 12, 23, and",
+      "start": 7061,
+      "end": 7075,
+      "typographic_alignment": false,
+      "original_quote": "5, 12, 23, and"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "lithium oxide, lithium carbonate",
+      "start": 14007,
+      "end": 14039,
+      "typographic_alignment": false,
+      "original_quote": "lithium oxide, lithium carbonate"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "Gaussian noise to the",
+      "start": 14303,
+      "end": 14324,
+      "typographic_alignment": false,
+      "original_quote": "Gaussian noise to the"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "Quantum Espresso",
+      "start": 15243,
+      "end": 15259,
+      "typographic_alignment": false,
+      "original_quote": "Quantum Espresso"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "Psi4 v1.6",
+      "start": 15805,
+      "end": 15814,
+      "typographic_alignment": false,
+      "original_quote": "Psi4 v1.6"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "four output levels",
+      "start": 11918,
+      "end": 11936,
+      "typographic_alignment": false,
+      "original_quote": "four output levels"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "mean squared error",
+      "start": 11609,
+      "end": 11627,
+      "typographic_alignment": false,
+      "original_quote": "mean squared error"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "Adamax optimizer",
+      "start": 12268,
+      "end": 12284,
+      "typographic_alignment": false,
+      "original_quote": "Adamax optimizer"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "learning rate of 2e-3",
+      "start": 12433,
+      "end": 12454,
+      "typographic_alignment": false,
+      "original_quote": "learning rate of 2e-3"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "256, 224, and 192",
+      "start": 12709,
+      "end": 12726,
+      "typographic_alignment": false,
+      "original_quote": "256, 224, and 192"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "batch size was 64",
+      "start": 12749,
+      "end": 12766,
+      "typographic_alignment": false,
+      "original_quote": "batch size was 64"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "weight decay of 1e-3",
+      "start": 13165,
+      "end": 13185,
+      "typographic_alignment": false,
+      "original_quote": "weight decay of 1e-3"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "exponential moving average",
+      "start": 13210,
+      "end": 13236,
+      "typographic_alignment": false,
+      "original_quote": "exponential moving average"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "NPT ensemble for 1",
+      "start": 13462,
+      "end": 13480,
+      "typographic_alignment": false,
+      "original_quote": "NPT ensemble for 1"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "BCC lattice of lithium",
+      "start": 13588,
+      "end": 13610,
+      "typographic_alignment": false,
+      "original_quote": "BCC lattice of lithium"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "400 K and 1000",
+      "start": 7341,
+      "end": 7355,
+      "typographic_alignment": false,
+      "original_quote": "400 K and 1000"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "20 ps length",
+      "start": 7636,
+      "end": 7648,
+      "typographic_alignment": false,
+      "original_quote": "20 ps length"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "Schrodinger Materials Science",
+      "start": 9154,
+      "end": 9183,
+      "typographic_alignment": false,
+      "original_quote": "Schrodinger Materials Science"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "stable dynamics",
+      "start": 7410,
+      "end": 7425,
+      "typographic_alignment": false,
+      "original_quote": "stable dynamics"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "first set of SEI",
+      "start": 549,
+      "end": 565,
+      "typographic_alignment": false,
+      "original_quote": "first set of SEI"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "more stable structures",
+      "start": 9326,
+      "end": 9348,
+      "typographic_alignment": false,
+      "original_quote": "more stable structures"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "less stable ones",
+      "start": 9395,
+      "end": 9411,
+      "typographic_alignment": false,
+      "original_quote": "less stable ones"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "8% increase in hybrid",
+      "start": 5029,
+      "end": 5050,
+      "typographic_alignment": false,
+      "original_quote": "8% increase in hybrid"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "surface reaction energy barriers",
+      "start": 8236,
+      "end": 8268,
+      "typographic_alignment": false,
+      "original_quote": "surface reaction energy barriers"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "33 added Li atoms",
+      "start": 8882,
+      "end": 8899,
+      "typographic_alignment": false,
+      "original_quote": "33 added Li atoms"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "enough capacity to overfit",
+      "start": 12565,
+      "end": 12591,
+      "typographic_alignment": false,
+      "original_quote": "enough capacity to overfit"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "energetically stable",
+      "start": 10198,
+      "end": 10218,
+      "typographic_alignment": false,
+      "original_quote": "energetically stable"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "did not impose a heavy",
+      "start": 5116,
+      "end": 5138,
+      "typographic_alignment": false,
+      "original_quote": "did not impose a heavy"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "unused capacity",
+      "start": 5298,
+      "end": 5313,
+      "typographic_alignment": false,
+      "original_quote": "unused capacity"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "quantitative understanding",
+      "start": 755,
+      "end": 781,
+      "typographic_alignment": false,
+      "original_quote": "quantitative understanding"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "ranking of candidate SEI",
+      "start": 3032,
+      "end": 3056,
+      "typographic_alignment": false,
+      "original_quote": "ranking of candidate SEI"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "complex redox reactive system",
+      "start": 9861,
+      "end": 9890,
+      "typographic_alignment": false,
+      "original_quote": "complex redox reactive system"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "obstacle to validation",
+      "start": 7938,
+      "end": 7960,
+      "typographic_alignment": false,
+      "original_quote": "obstacle to validation"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "experiments do not exist",
+      "start": 8110,
+      "end": 8134,
+      "typographic_alignment": false,
+      "original_quote": "experiments do not exist"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "scope is still small",
+      "start": 17758,
+      "end": 17778,
+      "typographic_alignment": false,
+      "original_quote": "scope is still small"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "single formulation of electrolyte",
+      "start": 10008,
+      "end": 10041,
+      "typographic_alignment": false,
+      "original_quote": "single formulation of electrolyte"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "proven wrong by future",
+      "start": 11325,
+      "end": 11347,
+      "typographic_alignment": false,
+      "original_quote": "proven wrong by future"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "too close to training",
+      "start": 15067,
+      "end": 15088,
+      "typographic_alignment": false,
+      "original_quote": "too close to training"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "figshare.com/s/e842ae88023902700e12",
+      "start": 8750,
+      "end": 8785,
+      "typographic_alignment": false,
+      "original_quote": "figshare.com/s/e842ae88023902700e12"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "plotting scripts",
+      "start": 8697,
+      "end": 8713,
+      "typographic_alignment": false,
+      "original_quote": "plotting scripts"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "no increase in PBE-head",
+      "start": 4925,
+      "end": 4948,
+      "typographic_alignment": false,
+      "original_quote": "no increase in PBE-head"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "reduced the height",
+      "start": 13034,
+      "end": 13052,
+      "typographic_alignment": false,
+      "original_quote": "reduced the height"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "surface reaction energy barriers",
+      "start": 8236,
+      "end": 8268,
+      "typographic_alignment": false,
+      "original_quote": "surface reaction energy barriers"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Bond counts with respect",
+      "start": 9440,
+      "end": 9464,
+      "typographic_alignment": false,
+      "original_quote": "Bond counts with respect"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "surface reaction energy barriers",
+      "start": 8236,
+      "end": 8268,
+      "typographic_alignment": false,
+      "original_quote": "surface reaction energy barriers"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "first set of SEI",
+      "start": 549,
+      "end": 565,
+      "typographic_alignment": false,
+      "original_quote": "first set of SEI"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "stable dynamics",
+      "start": 7410,
+      "end": 7425,
+      "typographic_alignment": false,
+      "original_quote": "stable dynamics"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "comparing multiple formulations",
+      "start": 10277,
+      "end": 10308,
+      "typographic_alignment": false,
+      "original_quote": "comparing multiple formulations"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "stable dynamics",
+      "start": 7410,
+      "end": 7425,
+      "typographic_alignment": false,
+      "original_quote": "stable dynamics"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "ranked by predicted energy",
+      "start": 587,
+      "end": 613,
+      "typographic_alignment": false,
+      "original_quote": "ranked by predicted energy"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "scope is still small",
+      "start": 17758,
+      "end": 17778,
+      "typographic_alignment": false,
+      "original_quote": "scope is still small"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "quantitative understanding",
+      "start": 755,
+      "end": 781,
+      "typographic_alignment": false,
+      "original_quote": "quantitative understanding"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "more stable structures",
+      "start": 9326,
+      "end": 9348,
+      "typographic_alignment": false,
+      "original_quote": "more stable structures"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "less stable ones",
+      "start": 9395,
+      "end": 9411,
+      "typographic_alignment": false,
+      "original_quote": "less stable ones"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "obstacle to validation",
+      "start": 7938,
+      "end": 7960,
+      "typographic_alignment": false,
+      "original_quote": "obstacle to validation"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "optimization of SEI chemistry",
+      "start": 10523,
+      "end": 10552,
+      "typographic_alignment": false,
+      "original_quote": "optimization of SEI chemistry"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"Machine learning force field ranking of candidate solid electrolyte interphase structures in Li-ion batteries\",\n  \"authors\": \"James M Stevenson; Garvit Agarwal; Leif D Jacobson\",\n  \"field_subfield\": \"Computational Chemistry / Battery Materials\",\n  \"type_of_paper\": \"Research Article\",\n  \"executive_summary\": \"This study addresses the critical gap in understanding the Solid-Electrolyte Interphase (SEI) in lithium-ion batteries, a complex passivating layer that remains poorly characterized due to the limitations of existing simulation methods. Traditional Density Functional Theory (DFT) methods are too slow for the necessary length and time scales, while classical force fields lack the accuracy for complex redox reactions. The authors propose a novel approach using a multitask machine learning force field (MLFF) based on the QRNN architecture to simulate SEI formation and rank candidate structures by predicted energy.\\n\\nThe methodology involves a combination of classical sampling and active learning. Initial SEI candidate structures were generated using the Schrödinger SEI Simulator with OPLS4 molecular dynamics, starting with 1 M LiPF6 in ethylene carbonate (EC). These candidates were then annealed using a reactive QRNN model under extreme conditions (400 K, 1000 atm) to ensure stability and reaction completion. The model was trained on a diverse dataset including periodic and non-periodic systems, labeled with PBE-D3 and wB97X-D3BJ/def2-TZVPD levels of theory, as well as a supplemental SPICE dataset for general organic chemistry to shape the latent space.\\n\\nKey results demonstrate that the MLFF can stably simulate complex redox reactions, producing the first set of SEI candidate structures ranked by energy. Statistical analysis of the bonding in these structures reveals that P-F and Li-O bonds are associated with more stable configurations, while C-O and Li-F bonds correlate with less stability. The study validates the model against surface reaction energy barriers, showing reasonable accuracy. The authors conclude that this approach provides a quantitative foundation for understanding SEI chemistry and suggests future work on comparing multiple electrolyte formulations and applying other MLFF architectures like Nequip and MACE. This work represents a significant step toward using machine learning to model complex battery interphases, offering a pathway to optimize SEI composition for next-generation batteries.\",\n  \"research_context\": [\n    { \"The Solid-Electrolyte Interphase (SEI) is a vital but poorly-understood material class in lithium-ion batteries.\": \"poorly-understood class\" },\n    { \"Key questions about SEIs, such as their amorphous or crystalline nature, remain unanswered.\": \"remain unanswered\" },\n    { \"Existing pure density functionals underestimate reaction barriers and are too slow for SEI scales.\": \"underestimate reaction barriers\" },\n    { \"Hybrid functionals struggle with metals and have poor computational scaling for periodic systems.\": \"struggle with metals\" },\n    { \"Machine learning force fields (MLFFs) promise DFT accuracy with classical force field speed.\": \"accuracy and wide applicability\" },\n    { \"Previous MLFFs have predicted properties of Li metal and organic liquids but not SEI interactions.\": \"predict the properties\" },\n    { \"Traditional force fields are difficult to fit for complex systems like the SEI.\": \"difficult to fit\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The central research question is how to simulate and rank SEI candidate structures using machine learning.\": \"ranked by predicted energy\" },\n    { \"The hypothesis is that a multitask MLFF can model complex SEI reactions with sufficient accuracy.\": \"model the complex reactions\" },\n    { \"The study aims to produce the first set of SEI structures ranked by predicted energy.\": \"first set of SEI\" },\n    { \"It is hypothesized that specific bond types correlate with the energetic stability of SEI structures.\": \"associated with more stable\" },\n    { \"The authors predict that MLFFs can bridge the gap between DFT accuracy and classical speed.\": \"fast sampling of classical\" },\n    { \"The goal is to enable future machine learning applications and comparison with experimental results.\": \"compared to experimental results\" }\n  ],\n  \"methodological_details\": [\n    { \"The reference level of theory for non-periodic systems is wB97X-D3BJ/def2-TZVPD.\": \"wB97X-D3BJ/def2-TZVPD\" },\n    { \"The reference level of theory for periodic systems is PBE-D3 in a plane wave basis.\": \"PBE-D3 in a plane\" },\n    { \"The study uses multiple rounds of active learning for data generation.\": \"active learning for data\" },\n    { \"Enhanced reaction sampling uses Artificial Force Induced Reactions (AFIR) and Nudged Elastic Band (NEB).\": \"Artificial Force Induced\" },\n    { \"A supplemental dataset of general organic chemistry, SPICE, was added to shape the latent space.\": \"general organic chemistry\" },\n    { \"The SPICE subset consists of elements H, Li, C, O, F, and P.\": \"H, Li, C, O\" },\n    { \"The hidden layers of the neural networks were doubled to increase model capacity.\": \"doubled the width\" },\n    { \"Initial SEI candidates were generated using the Schrödinger SEI Simulator with OPLS4 MD.\": \"SEI Simulator\" },\n    { \"Each system starts with 700 molecules of EC and 52 ions each of Li+ and PF6-.\": \"700 molecules of EC\" },\n    { \"The total number of atoms in each initial system is 7416.\": \"7416 total atoms\" },\n    { \"Four sets of candidates were defined with 5, 12, 23, and 33 added Li+ ions.\": \"5, 12, 23, and\" },\n    { \"Lithium oxide, carbonate, fluoride, and hydroxide were added to the training set.\": \"lithium oxide, lithium carbonate\" },\n    { \"Non-equilibrium geometries were sampled by adding Gaussian noise to Cartesian coordinates.\": \"Gaussian noise to the\" },\n    { \"Periodic DFT was performed using Quantum Espresso with PBE functional and D3 correction.\": \"Quantum Espresso\" },\n    { \"Gas-phase DFT was performed using Psi4 v1.6 with wB97X-D3BJ/def2-TZVPD.\": \"Psi4 v1.6\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The model architecture is a multitask QRNN with four output levels of theory.\": \"four output levels\" },\n    { \"The loss function includes energy, force, and charge mean squared error.\": \"mean squared error\" },\n    { \"The Adamax optimizer with decoupled weight decay was used for training.\": \"Adamax optimizer\" },\n    { \"The final model used a learning rate of 2e-3.\": \"learning rate of 2e-3\" },\n    { \"Hidden layers of size 256, 224, and 192 were used for all elements.\": \"256, 224, and 192\" },\n    { \"The batch size was set to 64.\": \"batch size was 64\" },\n    { \"A weight decay of 1e-3 was used for the final model.\": \"weight decay of 1e-3\" },\n    { \"The final model is an exponential moving average of training parameters.\": \"exponential moving average\" },\n    { \"Initial liquid geometries were equilibrated using NPT ensemble for 1 ns.\": \"NPT ensemble for 1\" },\n    { \"Solid-liquid interfaces started from a BCC lattice of lithium with optimized lattice constant.\": \"BCC lattice of lithium\" },\n    { \"Candidates were annealed using reactive QRNN MD at 400 K and 1000 atm for 100 ps.\": \"400 K and 1000\" },\n    { \"Structures were ranked by mean potential energy over a 20 ps MD trajectory at 300 K.\": \"20 ps length\" },\n    { \"Lewis structures were recalculated using Schrödinger Materials Science Suite for bond analysis.\": \"Schrodinger Materials Science\" }\n  ],\n  \"key_results\": [\n    { \"The QRNN models gave stable dynamics despite extreme conditions applied during annealing.\": \"stable dynamics\" },\n    { \"The study produced the first set of SEI candidate structures ranked by predicted energy.\": \"first set of SEI\" },\n    { \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\" },\n    { \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\" },\n    { \"Adding SPICE data resulted in only an 8% increase in hybrid-head RMSE.\": \"8% increase in hybrid\" },\n    { \"The model was validated against surface reaction energy barriers.\": \"surface reaction energy barriers\" },\n    { \"The lowest-energy SEI candidate from the 33 added Li subgroup was identified as the best.\": \"33 added Li atoms\" },\n    { \"The model does not have enough capacity to overfit, so early stopping had little effect.\": \"not enough capacity\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The results suggest that specific bond types determine the energetic stability of SEI structures.\": \"determine the energetic stability\" },\n    { \"Multitask training allows the model to handle diverse chemical systems without heavy capacity cost.\": \"did not impose a heavy\" },\n    { \"The latent space of MLFF models contains unused capacity for broadening chemical applicability.\": \"unused capacity\" },\n    { \"This work provides a quantitative foundation for understanding lithium-ion battery interphases.\": \"quantitative understanding\" },\n    { \"The approach enables the ranking of candidate SEI structures for future optimization.\": \"ranking of candidate SEI\" },\n    { \"The study demonstrates the feasibility of simulating complex redox reactive systems with MLFFs.\": \"complex redox reactive system\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The difficulty of characterizing the SEI experimentally is an obstacle to validation.\": \"obstacle to validation\" },\n    { \"Experimental values for density, diffusivity, viscosity, or elastic modulus do not exist for SEI.\": \"experiments do not exist\" },\n    { \"The model is not final, as its scope is still small compared to requirements.\": \"scope is still small\" },\n    { \"The study only used a single formulation of electrolyte, 1M LiPF6 in EC.\": \"single formulation of electrolyte\" },\n    { \"The probability of being proven wrong by future events is high.\": \"proven wrong by future\" },\n    { \"The model was not trained on DFT-generated MD, AFIR, or NEB geometries to avoid test set leakage.\": \"too close to training\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Multitask training with QRNN allows accurate simulation of complex SEI reactions.\",\n      \"supporting_evidence\": [\n        { \"The model stably simulated extreme conditions and complex redox reactions.\": \"stable dynamics\" },\n        { \"The model produced ranked SEI structures with reasonable energy predictions.\": \"ranked by predicted energy\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The model's scope is limited and not yet final.\": \"scope is still small\" }\n      ],\n      \"implications\": [\n        { \"This enables quantitative understanding of SEI chemistry.\": \"quantitative understanding\" }\n      ]\n    },\n    {\n      \"description\": \"Specific bond types correlate with SEI structural stability.\",\n      \"supporting_evidence\": [\n        { \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\" },\n        { \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The correlation is based on predicted energies, not experimental validation.\": \"obstacle to validation\" }\n      ],\n      \"implications\": [\n        { \"This guides the design of more stable SEI formulations.\": \"optimize SEI chemistry\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"The list of SEI candidate structures and energies is available on Figshare.\": \"figshare.com/s/e842ae88023902700e12\" },\n    { \"Plotting scripts and initial solution structures are also provided in the repository.\": \"plotting scripts\" }\n  ],\n  \"robustness_and_ablation_notes\": [\n    { \"Adding SPICE data did not significantly increase PBE-head validation RMSE.\": \"no increase in PBE-head\" },\n    { \"Higher weight decay reduced reaction barrier heights, so a conventional value was used.\": \"reduced the height\" },\n    { \"The model was validated against surface reaction energy barriers.\": \"surface reaction energy barriers\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 4 shows bond counts with respect to total system energy for the most lithiated SEI set.\": \"Bond counts with respect\" },\n    { \"Table 1 validates the model against surface reaction energy barriers.\": \"surface reaction energy barriers\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is the first MLFF-based ranking of SEI candidate structures.\": \"first set of SEI\" },\n    { \"2. The strongest evidence is the stable simulation of complex redox reactions and bond stability correlations.\": \"stable dynamics\" },\n    { \"3. The future path involves comparing multiple electrolyte formulations and applying other MLFF architectures.\": \"comparing multiple formulations\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6273,
+        "total_tokens": 9434,
+        "completion_tokens": 3161,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6273,
+      "elapsed_seconds": 264.5690681152046,
+      "max_tokens": 16000,
+      "seed": 1941278388,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "939d05bd38227f6726f672c102592b2909ab8aa32b058a9d273c41353e857fcd",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: not enough capacity",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: determine the energetic stability",
+        "claims": "evidence quote is not present in fulltext: optimize SEI chemistry"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"The QRNN models gave stable dynamics despite extreme conditions applied during annealing.\": \"stable dynamics\"\n    },\n    {\n      \"The study produced the first set of SEI candidate structures ranked by predicted energy.\": \"first set of SEI\"\n    },\n    {\n      \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\"\n    },\n    {\n      \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\"\n    },\n    {\n      \"Adding SPICE data resulted in only an 8% increase in hybrid-head RMSE.\": \"8% increase in hybrid\"\n    },\n    {\n      \"The model was validated against surface reaction energy barriers.\": \"surface reaction energy barriers\"\n    },\n    {\n      \"The lowest-energy SEI candidate from the 33 added Li subgroup was identified as the best.\": \"33 added Li atoms\"\n    },\n    {\n      \"The model does not have enough capacity to overfit, so early stopping had little effect.\": \"not enough capacity\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results suggest that specific bond types determine the energetic stability of SEI structures.\": \"determine the energetic stability\"\n    },\n    {\n      \"Multitask training allows the model to handle diverse chemical systems without heavy capacity cost.\": \"did not impose a heavy\"\n    },\n    {\n      \"The latent space of MLFF models contains unused capacity for broadening chemical applicability.\": \"unused capacity\"\n    },\n    {\n      \"This work provides a quantitative foundation for understanding lithium-ion battery interphases.\": \"quantitative understanding\"\n    },\n    {\n      \"The approach enables the ranking of candidate SEI structures for future optimization.\": \"ranking of candidate SEI\"\n    },\n    {\n      \"The study demonstrates the feasibility of simulating complex redox reactive systems with MLFFs.\": \"complex redox reactive system\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Multitask training with QRNN allows accurate simulation of complex SEI reactions.\",\n      \"supporting_evidence\": [\n        {\n          \"The model stably simulated extreme conditions and complex redox reactions.\": \"stable dynamics\"\n        },\n        {\n          \"The model produced ranked SEI structures with reasonable energy predictions.\": \"ranked by predicted energy\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The model's scope is limited and not yet final.\": \"scope is still small\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This enables quantitative understanding of SEI chemistry.\": \"quantitative understanding\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Specific bond types correlate with SEI structural stability.\",\n      \"supporting_evidence\": [\n        {\n          \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\"\n        },\n        {\n          \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The correlation is based on predicted energies, not experimental validation.\": \"obstacle to validation\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This guides the design of more stable SEI formulations.\": \"optimize SEI chemistry\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5165,
+        "total_tokens": 5986,
+        "completion_tokens": 821,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5165,
+      "elapsed_seconds": 87.7833956964314,
+      "max_tokens": 4096,
+      "seed": 1941278389,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "5fc909501f29e3c15b852c07d0467a452111beb7ca9eab8544f4b5acd728be25",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: not enough capacity",
+        "interpretation_and_theoretical_implications": "evidence quote is not present in fulltext: determine the energetic stability",
+        "claims": "evidence quote is not present in fulltext: optimize SEI chemistry"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"The QRNN models gave stable dynamics despite extreme conditions applied during annealing.\": \"stable dynamics\"\n    },\n    {\n      \"The study produced the first set of SEI candidate structures ranked by predicted energy.\": \"first set of SEI\"\n    },\n    {\n      \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\"\n    },\n    {\n      \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\"\n    },\n    {\n      \"Adding SPICE data resulted in only an 8% increase in hybrid-head RMSE.\": \"8% increase in hybrid\"\n    },\n    {\n      \"The model was validated against surface reaction energy barriers.\": \"surface reaction energy barriers\"\n    },\n    {\n      \"The lowest-energy SEI candidate from the 33 added Li subgroup was identified as the best.\": \"33 added Li atoms\"\n    },\n    {\n      \"The model does not have enough capacity to overfit, so early stopping had little effect.\": \"not enough capacity to\"\n    }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    {\n      \"The results suggest that specific bond types determine the energetic stability of SEI structures.\": \"energetically stable\"\n    },\n    {\n      \"Multitask training allows the model to handle diverse chemical systems without heavy capacity cost.\": \"did not impose a heavy\"\n    },\n    {\n      \"The latent space of MLFF models contains unused capacity for broadening chemical applicability.\": \"unused capacity\"\n    },\n    {\n      \"This work provides a quantitative foundation for understanding lithium-ion battery interphases.\": \"quantitative understanding\"\n    },\n    {\n      \"The approach enables the ranking of candidate SEI structures for future optimization.\": \"ranking of candidate SEI\"\n    },\n    {\n      \"The study demonstrates the feasibility of simulating complex redox reactive systems with MLFFs.\": \"complex redox reactive system\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Multitask training with QRNN allows accurate simulation of complex SEI reactions.\",\n      \"supporting_evidence\": [\n        {\n          \"The model stably simulated extreme conditions and complex redox reactions.\": \"stable dynamics\"\n        },\n        {\n          \"The model produced ranked SEI structures with reasonable energy predictions.\": \"ranked by predicted energy\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The model's scope is limited and not yet final.\": \"scope is still small\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This enables quantitative understanding of SEI chemistry.\": \"quantitative understanding\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Specific bond types correlate with SEI structural stability.\",\n      \"supporting_evidence\": [\n        {\n          \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\"\n        },\n        {\n          \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The correlation is based on predicted energies, not experimental validation.\": \"obstacle to validation\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This guides the design of more stable SEI formulations.\": \"optimization of SEI chemistry\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5165,
+        "total_tokens": 5988,
+        "completion_tokens": 823,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5165,
+      "elapsed_seconds": 70.60008741915226,
+      "max_tokens": 4096,
+      "seed": 1941278390,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "5fc909501f29e3c15b852c07d0467a452111beb7ca9eab8544f4b5acd728be25",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "key_results": "evidence quote is not present in fulltext: not enough capacity to"
+      }
+    },
+    {
+      "response": "{\n  \"key_results\": [\n    {\n      \"The QRNN models gave stable dynamics despite extreme conditions applied during annealing.\": \"stable dynamics\"\n    },\n    {\n      \"The study produced the first set of SEI candidate structures ranked by predicted energy.\": \"first set of SEI\"\n    },\n    {\n      \"P-F and Li-O bonds are associated with more stable structures.\": \"more stable structures\"\n    },\n    {\n      \"C-O and Li-F bonds are associated with less stable structures.\": \"less stable ones\"\n    },\n    {\n      \"Adding SPICE data resulted in only an 8% increase in hybrid-head RMSE.\": \"8% increase in hybrid\"\n    },\n    {\n      \"The model was validated against surface reaction energy barriers.\": \"surface reaction energy barriers\"\n    },\n    {\n      \"The lowest-energy SEI candidate from the 33 added Li subgroup was identified as the best.\": \"33 added Li atoms\"\n    },\n    {\n      \"The model does not have enough capacity to overfit, so early stopping had little effect.\": \"enough capacity to overfit\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4687,
+        "total_tokens": 4953,
+        "completion_tokens": 266,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4687,
+      "elapsed_seconds": 26.674949284642935,
+      "max_tokens": 4096,
+      "seed": 1941278391,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "b7a0bde3d8848b6bf6dba75af20c4f710393f19d38ab5a2e13b22ab24939580f",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "key_results"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6273,
+  "elapsed_seconds": 449.7756783030927,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

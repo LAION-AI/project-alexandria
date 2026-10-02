@@ -1,0 +1,1064 @@
+{
+  "document_id": "bethgelab-100048",
+  "fulltext_sha256": "894ece07744c3dff9486aad1b6536dbe0bef2872acbdf6fa5c7a027af65b2b72",
+  "summary": {
+    "title": "SPOT-Contact-Single: Improving Single-Sequence-Based Prediction of Protein Contact Map using a Transformer Language Model",
+    "authors": "Jaspreet Singh, Thomas Litfin, Jaswinder Singh, Kuldip Paliwal, Yaoqi Zhou",
+    "field_subfield": "Bioinformatics, Protein Structure Prediction",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This paper introduces SPOT-Contact-Single, a novel method for predicting protein contact maps using single-sequence inputs, addressing the limitation of evolutionary-profile-based methods that require homologous sequences. The core innovation is the integration of attention maps from the pre-trained transformer language model ESM-1b as input features, combined with one-hot encoding and SPOT-1D-Single outputs. The model architecture consists of an ensemble of six 12-block ResNet models, trained using both direct contact prediction and distogram-based strategies. The study utilized a large training set of 34,691 proteins from the ProteinNet benchmark, with stringent independent test sets including SPOT-2018 (669 proteins) and CASP14-FM (15 targets). Results demonstrate significant improvements over existing single-sequence predictors like SSCpred, with a 15% improvement in F1-score on the CASP14-FM set. More notably, SPOT-Contact-Single outperforms evolutionary-profile-based methods TrRosetta and SPOT-Contact by 48.7% and 48.5% respectively in F1-score on proteins without homologs (Neff=1). The method is also computationally efficient, being 22 times faster than TrRosetta on CPU. These findings suggest that unsupervised learning features from language models can effectively replace evolutionary information for contact map prediction, particularly for proteins with few homologs, offering a scalable solution for large-scale genomic prediction.",
+    "research_context": [
+      {
+        "Protein contact map prediction is essential for structure and function prediction.": "contact-map prediction"
+      },
+      {
+        "Most existing methods rely on protein-sequence-evolutionary information.": "evolutionary information"
+      },
+      {
+        "Evolutionary profiles may not exist for many proteins.": "lack of naturally occurring"
+      },
+      {
+        "Generating evolutionary profiles is computationally intensive.": "computationally intensive"
+      },
+      {
+        "Single-sequence methods like SSCpred perform poorly compared to MSA-based techniques.": "relatively poorer"
+      },
+      {
+        "Unsupervised deep learning methods inspired by NLP language models have emerged.": "Natural Language Processing's"
+      },
+      {
+        "ESM-1b is an unsupervised method using a Transformer-34 model.": "Transformer-34 model"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to improve single-sequence-based contact map prediction.": "improve the contact-map prediction"
+      },
+      {
+        "The hypothesis is that ESM-1b attention maps can enhance prediction accuracy.": "attention map as an input"
+      },
+      {
+        "The method predicts contact maps without using homologous information.": "without using homologous information"
+      },
+      {
+        "The approach uses an ensemble of residual neural networks.": "ensemble of residual neural"
+      },
+      {
+        "The goal is to outperform single-sequence and MSA-based predictors for low Neff proteins.": "low effective number"
+      },
+      {
+        "The study examines the use of ESM-1b's attention map as a feature.": "ESM-1b's attention map"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The training dataset was curated from the ProteinNet benchmark.": "ProteinNet (AlQuraishi, 2019)"
+      },
+      {
+        "The dataset consists of 50,914 proteins with high-resolution structures.": "50914 proteins"
+      },
+      {
+        "Proteins were clustered at a 95% sequence identity cut-off.": "identity cut-off at 95%"
+      },
+      {
+        "100 proteins were separated for validation to minimize over-fitting.": "100 proteins"
+      },
+      {
+        "Homologs were removed using HHblits with an e-value cut-off of 0.1.": "e-value cut-off"
+      },
+      {
+        "The final training set contained 34,691 proteins.": "34691 and 88 proteins"
+      },
+      {
+        "The validation set contained 88 proteins.": "34691 and 88 proteins"
+      },
+      {
+        "The independent test set SPOT-2018 contains 669 proteins.": "669 proteins"
+      },
+      {
+        "A subset of 46 proteins with Neff=1 formed the Neff1-2018 set.": "46 proteins"
+      },
+      {
+        "The CASP14-FM test set includes 15 free modelling targets.": "15 free modelling targets"
+      },
+      {
+        "Input features included one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps.": "ESM-1b (Rao et al., 2020)"
+      },
+      {
+        "Attention maps were symmetrized and applied average product corrections.": "average product corrections (APC)"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The neural network architecture was inspired by ResNet.": "ResNet architecture"
+      },
+      {
+        "A 12-block ResNet was used as the maximum trainable depth.": "12 block ResNet"
+      },
+      {
+        "Convolutional layers had a channel size of 64 and kernel size of 3.": "channel size of 64"
+      },
+      {
+        "Six models were trained with different input feature combinations.": "six models"
+      },
+      {
+        "Three models predicted contacts as binary classification.": "binary classification"
+      },
+      {
+        "Three models predicted inter-residue distances as distance bins.": "distance bins"
+      },
+      {
+        "Direct contact models used Binary Cross-Entropy loss.": "Binary Cross-Entropy loss"
+      },
+      {
+        "Distogram-based models used Cross-Entropy loss.": "Cross-Entropy loss"
+      },
+      {
+        "The Adam optimizer was used with a learning rate of 0.001.": "learning rate of 0.001"
+      },
+      {
+        "The batch size was set to 1.": "batch size of 1"
+      },
+      {
+        "Early stopping was applied with a patience of 3.": "early stopping of 3"
+      },
+      {
+        "The ensemble was formed by taking the mean of individual models.": "mean of individual models"
+      }
+    ],
+    "key_results": [
+      {
+        "SPOT-Contact-Single improved F1-score by 15% over SSCpred on CASP14-FM.": "15% improvement"
+      },
+      {
+        "The method outperformed TrRosetta by 48.7% in F1-score on Neff=1 proteins.": "48.7% and 48.5%"
+      },
+      {
+        "The method outperformed SPOT-Contact by 48.5% in F1-score on Neff=1 proteins.": "48.7% and 48.5%"
+      },
+      {
+        "One-hot encoding alone yielded an F1-score of 0.15.": "F1-score of 0.15"
+      },
+      {
+        "Adding SPOT-1D-Single improved F1-score by 22.90%.": "22.90%"
+      },
+      {
+        "ESM-1b last-layer attention maps achieved an F1-score of 0.51.": "0.51, 0.50, 0.56"
+      },
+      {
+        "This represented a 242% improvement over one-hot encoding.": "242% and 178%"
+      },
+      {
+        "The ensemble achieved a 4% improvement over the second-best individual model.": "4% improvement"
+      },
+      {
+        "SPOT-Contact-Single achieved an F1-score of 0.32 on Neff=1 proteins.": "0.32"
+      },
+      {
+        "ESM-1b achieved an F1-score of about 0.22 on Neff=1 proteins.": "0.22"
+      },
+      {
+        "SPOT-Contact-Single was 22 times faster than TrRosetta on CPU.": "22 times faster"
+      },
+      {
+        "SPOT-Contact-Single was 42 times faster than TrRosetta on GPU.": "42 times slower"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "Unsupervised learning features from language models can replace evolutionary information.": "unsupervised learning features"
+      },
+      {
+        "The method is effective for proteins with few homologs.": "few homologs"
+      },
+      {
+        "SPOT-Contact-Single serves as a reasonably accurate screening tool.": "screening tool"
+      },
+      {
+        "The method is suitable for large-scale genomic prediction.": "genomic scale prediction"
+      },
+      {
+        "The use of ESM-1b limits prediction to proteins under 1024 amino acids.": "1024 amino acids"
+      },
+      {
+        "Future improvements may involve Transformer or Performer architectures.": "Transformer"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The method cannot directly predict contact maps for proteins over 1024 amino acids.": "1024 amino acids"
+      },
+      {
+        "SPOT-1D-Single is not yet as competitive as evolution-based methods for high Neff.": "not yet as competitive"
+      },
+      {
+        "The study relies on the ProteinNet benchmark for training data.": "ProteinNet (AlQuraishi, 2019)"
+      },
+      {
+        "The comparison with SSCpred was limited to the CASP14-FM dataset.": "CASP14-FM dataset"
+      },
+      {
+        "The method does not employ evolutionary information, limiting its use for high Neff proteins.": "without using evolutionary"
+      }
+    ],
+    "claims": [
+      {
+        "description": "SPOT-Contact-Single significantly improves single-sequence-based contact map prediction using ESM-1b attention maps.",
+        "supporting_evidence": [
+          {
+            "The method achieved a 15% improvement in F1-score over SSCpred.": "15% improvement"
+          },
+          {
+            "It outperformed TrRosetta by 48.7% on Neff=1 proteins.": "48.7% and 48.5%"
+          },
+          {
+            "ESM-1b attention maps boosted F1-score to 0.51.": "0.51, 0.50, 0.56"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The method is limited to proteins under 1024 amino acids.": "1024 amino acids"
+          },
+          {
+            "It is not as competitive as evolution-based methods for high Neff proteins.": "not yet as competitive"
+          }
+        ],
+        "implications": [
+          {
+            "The method offers a faster alternative to evolution-based methods.": "faster and reasonably accurate"
+          },
+          {
+            "It is useful for large-scale prediction.": "large-scale prediction"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "Ablation studies showed ESM-1b attention maps significantly boost performance.": "significantly boosted the performance"
+      },
+      {
+        "Direct contact prediction performed slightly better than distogram-based prediction.": "slightly better"
+      },
+      {
+        "The ensemble of six models improved over individual models.": "higher than all individual"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the neural network architecture.": "Fig. 1"
+      },
+      {
+        "Figure 2 shows precision for top predictions.": "Fig. 2"
+      },
+      {
+        "Figure 3 plots F1-score as a function of Neff.": "Fig. 3"
+      },
+      {
+        "Figure 4 shows native and predicted contact-maps.": "Fig. 4"
+      },
+      {
+        "Table 1 describes feature combinations for the ensemble.": "Table 1"
+      },
+      {
+        "Table 2 shows feature importance on the validation set.": "Table 2"
+      },
+      {
+        "Table 3 compares direct vs distance contact-map prediction.": "Table 3"
+      },
+      {
+        "Table 4 presents results of individual models and the ensemble.": "Table 4"
+      },
+      {
+        "Table 5 compares methods on proteins without homologs.": "Table 5"
+      },
+      {
+        "Table 6 compares SPOT-Contact-Single, SSCpred, and ESM-1b on CASP14-FM.": "Table 6"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a single-sequence contact map predictor using ESM-1b attention maps.": "ESM-1b (Rao et al., 2020)"
+      },
+      {
+        "2. The strongest evidence is the 48.7% F1-score improvement over TrRosetta on Neff=1 proteins.": "48.7% and 48.5%"
+      },
+      {
+        "3. The future path involves using more advanced architectures like Transformers.": "Transformer (Vaswani et al., 2017)"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper introduces SPOT-Contact-Single, a novel method for predicting protein contact maps using single-sequence inputs, addressing the limitation of evolutionary-profile-based methods that require homologous sequences. The core innovation is the integration of attention maps from the pre-trained transformer language model ESM-1b as input features, combined with one-hot encoding and SPOT-1D-Single outputs. The model architecture consists of an ensemble of six 12-block ResNet models, trained using both direct contact prediction and distogram-based strategies. The study utilized a large training set of 34,691 proteins from the ProteinNet benchmark, with stringent independent test sets including SPOT-2018 (669 proteins) and CASP14-FM (15 targets). Results demonstrate significant improvements over existing single-sequence predictors like SSCpred, with a 15% improvement in F1-score on the CASP14-FM set. More notably, SPOT-Contact-Single outperforms evolutionary-profile-based methods TrRosetta and SPOT-Contact by 48.7% and 48.5% respectively in F1-score on proteins without homologs (Neff=1). The method is also computationally efficient, being 22 times faster than TrRosetta on CPU. These findings suggest that unsupervised learning features from language models can effectively replace evolutionary information for contact map prediction, particularly for proteins with few homologs, offering a scalable solution for large-scale genomic prediction.\n\nResearch Context\nProtein contact map prediction is essential for structure and function prediction. Most existing methods rely on protein-sequence-evolutionary information. Evolutionary profiles may not exist for many proteins. Generating evolutionary profiles is computationally intensive. Single-sequence methods like SSCpred perform poorly compared to MSA-based techniques. Unsupervised deep learning methods inspired by NLP language models have emerged. ESM-1b is an unsupervised method using a Transformer-34 model.\n\nResearch Question And Hypothesis\nThe study aims to improve single-sequence-based contact map prediction. The hypothesis is that ESM-1b attention maps can enhance prediction accuracy. The method predicts contact maps without using homologous information. The approach uses an ensemble of residual neural networks. The goal is to outperform single-sequence and MSA-based predictors for low Neff proteins. The study examines the use of ESM-1b's attention map as a feature.\n\nMethodological Details\nThe training dataset was curated from the ProteinNet benchmark. The dataset consists of 50,914 proteins with high-resolution structures. Proteins were clustered at a 95% sequence identity cut-off. 100 proteins were separated for validation to minimize over-fitting. Homologs were removed using HHblits with an e-value cut-off of 0.1. The final training set contained 34,691 proteins. The validation set contained 88 proteins. The independent test set SPOT-2018 contains 669 proteins. A subset of 46 proteins with Neff=1 formed the Neff1-2018 set. The CASP14-FM test set includes 15 free modelling targets. Input features included one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps. Attention maps were symmetrized and applied average product corrections.\n\nProcedures And Architectures\nThe neural network architecture was inspired by ResNet. A 12-block ResNet was used as the maximum trainable depth. Convolutional layers had a channel size of 64 and kernel size of 3. Six models were trained with different input feature combinations. Three models predicted contacts as binary classification. Three models predicted inter-residue distances as distance bins. Direct contact models used Binary Cross-Entropy loss. Distogram-based models used Cross-Entropy loss. The Adam optimizer was used with a learning rate of 0.001. The batch size was set to 1. Early stopping was applied with a patience of 3. The ensemble was formed by taking the mean of individual models.\n\nKey Results\nSPOT-Contact-Single improved F1-score by 15% over SSCpred on CASP14-FM. The method outperformed TrRosetta by 48.7% in F1-score on Neff=1 proteins. The method outperformed SPOT-Contact by 48.5% in F1-score on Neff=1 proteins. One-hot encoding alone yielded an F1-score of 0.15. Adding SPOT-1D-Single improved F1-score by 22.90%. ESM-1b last-layer attention maps achieved an F1-score of 0.51. This represented a 242% improvement over one-hot encoding. The ensemble achieved a 4% improvement over the second-best individual model. SPOT-Contact-Single achieved an F1-score of 0.32 on Neff=1 proteins. ESM-1b achieved an F1-score of about 0.22 on Neff=1 proteins. SPOT-Contact-Single was 22 times faster than TrRosetta on CPU. SPOT-Contact-Single was 42 times faster than TrRosetta on GPU.\n\nInterpretation And Theoretical Implications\nUnsupervised learning features from language models can replace evolutionary information. The method is effective for proteins with few homologs. SPOT-Contact-Single serves as a reasonably accurate screening tool. The method is suitable for large-scale genomic prediction. The use of ESM-1b limits prediction to proteins under 1024 amino acids. Future improvements may involve Transformer or Performer architectures.\n\nContradictions And Limitations\nThe method cannot directly predict contact maps for proteins over 1024 amino acids. SPOT-1D-Single is not yet as competitive as evolution-based methods for high Neff. The study relies on the ProteinNet benchmark for training data. The comparison with SSCpred was limited to the CASP14-FM dataset. The method does not employ evolutionary information, limiting its use for high Neff proteins.\n\nClaims\nSPOT-Contact-Single significantly improves single-sequence-based contact map prediction using ESM-1b attention maps. The method achieved a 15% improvement in F1-score over SSCpred. It outperformed TrRosetta by 48.7% on Neff=1 proteins. ESM-1b attention maps boosted F1-score to 0.51. The method is limited to proteins under 1024 amino acids. It is not as competitive as evolution-based methods for high Neff proteins. The method offers a faster alternative to evolution-based methods. It is useful for large-scale prediction.\n\nRobustness And Ablation Notes\nAblation studies showed ESM-1b attention maps significantly boost performance. Direct contact prediction performed slightly better than distogram-based prediction. The ensemble of six models improved over individual models.\n\nKey Figures Tables\nFigure 1 shows the neural network architecture. Figure 2 shows precision for top predictions. Figure 3 plots F1-score as a function of Neff. Figure 4 shows native and predicted contact-maps. Table 1 describes feature combinations for the ensemble. Table 2 shows feature importance on the validation set. Table 3 compares direct vs distance contact-map prediction. Table 4 presents results of individual models and the ensemble. Table 5 compares methods on proteins without homologs. Table 6 compares SPOT-Contact-Single, SSCpred, and ESM-1b on CASP14-FM.\n\nThree Takeaways\n1. The core contribution is a single-sequence contact map predictor using ESM-1b attention maps. 2. The strongest evidence is the 48.7% F1-score improvement over TrRosetta on Neff=1 proteins. 3. The future path involves using more advanced architectures like Transformers.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "contact-map prediction",
+      "start": 4683,
+      "end": 4705,
+      "typographic_alignment": false,
+      "original_quote": "contact-map prediction"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "evolutionary information",
+      "start": 565,
+      "end": 589,
+      "typographic_alignment": false,
+      "original_quote": "evolutionary information"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "lack of naturally occurring",
+      "start": 636,
+      "end": 663,
+      "typographic_alignment": false,
+      "original_quote": "lack of naturally occurring"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "computationally intensive",
+      "start": 732,
+      "end": 757,
+      "typographic_alignment": false,
+      "original_quote": "computationally intensive"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "relatively poorer",
+      "start": 3494,
+      "end": 3511,
+      "typographic_alignment": false,
+      "original_quote": "relatively poorer"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "Natural Language Processing's",
+      "start": 4007,
+      "end": 4036,
+      "typographic_alignment": false,
+      "original_quote": "Natural Language Processing's"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "Transformer-34 model",
+      "start": 4459,
+      "end": 4479,
+      "typographic_alignment": false,
+      "original_quote": "Transformer-34 model"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "improve the contact-map prediction",
+      "start": 4671,
+      "end": 4705,
+      "typographic_alignment": false,
+      "original_quote": "improve the contact-map prediction"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "attention map as an input",
+      "start": 4621,
+      "end": 4646,
+      "typographic_alignment": false,
+      "original_quote": "attention map as an input"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "without using homologous information",
+      "start": 3084,
+      "end": 3120,
+      "typographic_alignment": false,
+      "original_quote": "without using homologous information"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "ensemble of residual neural",
+      "start": 913,
+      "end": 940,
+      "typographic_alignment": false,
+      "original_quote": "ensemble of residual neural"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "low effective number",
+      "start": 4974,
+      "end": 4994,
+      "typographic_alignment": false,
+      "original_quote": "low effective number"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "ESM-1b's attention map",
+      "start": 4612,
+      "end": 4634,
+      "typographic_alignment": false,
+      "original_quote": "ESM-1b's attention map"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "ProteinNet (AlQuraishi, 2019)",
+      "start": 5255,
+      "end": 5284,
+      "typographic_alignment": false,
+      "original_quote": "ProteinNet (AlQuraishi, 2019)"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "50914 proteins",
+      "start": 5302,
+      "end": 5316,
+      "typographic_alignment": false,
+      "original_quote": "50914 proteins"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "identity cut-off at 95%",
+      "start": 5421,
+      "end": 5444,
+      "typographic_alignment": false,
+      "original_quote": "identity cut-off at 95%"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "100 proteins",
+      "start": 5865,
+      "end": 5877,
+      "typographic_alignment": false,
+      "original_quote": "100 proteins"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "e-value cut-off",
+      "start": 6139,
+      "end": 6154,
+      "typographic_alignment": false,
+      "original_quote": "e-value cut-off"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "34691 and 88 proteins",
+      "start": 6396,
+      "end": 6417,
+      "typographic_alignment": false,
+      "original_quote": "34691 and 88 proteins"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "34691 and 88 proteins",
+      "start": 6396,
+      "end": 6417,
+      "typographic_alignment": false,
+      "original_quote": "34691 and 88 proteins"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "669 proteins",
+      "start": 6901,
+      "end": 6913,
+      "typographic_alignment": false,
+      "original_quote": "669 proteins"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "46 proteins",
+      "start": 7050,
+      "end": 7061,
+      "typographic_alignment": false,
+      "original_quote": "46 proteins"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "15 free modelling targets",
+      "start": 7500,
+      "end": 7525,
+      "typographic_alignment": false,
+      "original_quote": "15 free modelling targets"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "ESM-1b (Rao et al., 2020)",
+      "start": 4412,
+      "end": 4437,
+      "typographic_alignment": false,
+      "original_quote": "ESM-1b (Rao et al., 2020)"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "average product corrections (APC)",
+      "start": 8676,
+      "end": 8709,
+      "typographic_alignment": false,
+      "original_quote": "average product corrections (APC)"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "ResNet architecture",
+      "start": 9950,
+      "end": 9969,
+      "typographic_alignment": false,
+      "original_quote": "ResNet architecture"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "12 block ResNet",
+      "start": 10099,
+      "end": 10114,
+      "typographic_alignment": false,
+      "original_quote": "12 block ResNet"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "channel size of 64",
+      "start": 10574,
+      "end": 10592,
+      "typographic_alignment": false,
+      "original_quote": "channel size of 64"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "six models",
+      "start": 10626,
+      "end": 10636,
+      "typographic_alignment": false,
+      "original_quote": "six models"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "binary classification",
+      "start": 10837,
+      "end": 10858,
+      "typographic_alignment": false,
+      "original_quote": "binary classification"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "distance bins",
+      "start": 10933,
+      "end": 10946,
+      "typographic_alignment": false,
+      "original_quote": "distance bins"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "Binary Cross-Entropy loss",
+      "start": 11093,
+      "end": 11118,
+      "typographic_alignment": false,
+      "original_quote": "Binary Cross-Entropy loss"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "Cross-Entropy loss",
+      "start": 11100,
+      "end": 11118,
+      "typographic_alignment": false,
+      "original_quote": "Cross-Entropy loss"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "learning rate of 0.001",
+      "start": 11344,
+      "end": 11366,
+      "typographic_alignment": false,
+      "original_quote": "learning rate of 0.001"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "batch size of 1",
+      "start": 11373,
+      "end": 11388,
+      "typographic_alignment": false,
+      "original_quote": "batch size of 1"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "early stopping of 3",
+      "start": 11441,
+      "end": 11460,
+      "typographic_alignment": false,
+      "original_quote": "early stopping of 3"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "mean of individual models",
+      "start": 15421,
+      "end": 15446,
+      "typographic_alignment": false,
+      "original_quote": "mean of individual models"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "15% improvement",
+      "start": 1078,
+      "end": 1093,
+      "typographic_alignment": false,
+      "original_quote": "15% improvement"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "48.7% and 48.5%",
+      "start": 1237,
+      "end": 1252,
+      "typographic_alignment": false,
+      "original_quote": "48.7% and 48.5%"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "48.7% and 48.5%",
+      "start": 1237,
+      "end": 1252,
+      "typographic_alignment": false,
+      "original_quote": "48.7% and 48.5%"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "F1-score of 0.15",
+      "start": 13145,
+      "end": 13161,
+      "typographic_alignment": false,
+      "original_quote": "F1-score of 0.15"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "22.90%",
+      "start": 13299,
+      "end": 13305,
+      "typographic_alignment": false,
+      "original_quote": "22.90%"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "0.51, 0.50, 0.56",
+      "start": 13509,
+      "end": 13525,
+      "typographic_alignment": false,
+      "original_quote": "0.51, 0.50, 0.56"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "242% and 178%",
+      "start": 13603,
+      "end": 13616,
+      "typographic_alignment": false,
+      "original_quote": "242% and 178%"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "4% improvement",
+      "start": 15708,
+      "end": 15722,
+      "typographic_alignment": false,
+      "original_quote": "4% improvement"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "0.32",
+      "start": 16213,
+      "end": 16217,
+      "typographic_alignment": false,
+      "original_quote": "0.32"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "0.22",
+      "start": 16133,
+      "end": 16137,
+      "typographic_alignment": false,
+      "original_quote": "0.22"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "22 times faster",
+      "start": 19643,
+      "end": 19658,
+      "typographic_alignment": false,
+      "original_quote": "22 times faster"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "42 times slower",
+      "start": 19723,
+      "end": 19738,
+      "typographic_alignment": false,
+      "original_quote": "42 times slower"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "unsupervised learning features",
+      "start": 4763,
+      "end": 4793,
+      "typographic_alignment": false,
+      "original_quote": "unsupervised learning features"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "few homologs",
+      "start": 3477,
+      "end": 3489,
+      "typographic_alignment": false,
+      "original_quote": "few homologs"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "screening tool",
+      "start": 18973,
+      "end": 18987,
+      "typographic_alignment": false,
+      "original_quote": "screening tool"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "genomic scale prediction",
+      "start": 19898,
+      "end": 19922,
+      "typographic_alignment": false,
+      "original_quote": "genomic scale prediction"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "1024 amino acids",
+      "start": 19157,
+      "end": 19173,
+      "typographic_alignment": false,
+      "original_quote": "1024 amino acids"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "Transformer",
+      "start": 102,
+      "end": 113,
+      "typographic_alignment": false,
+      "original_quote": "Transformer"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "1024 amino acids",
+      "start": 19157,
+      "end": 19173,
+      "typographic_alignment": false,
+      "original_quote": "1024 amino acids"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "not yet as competitive",
+      "start": 16665,
+      "end": 16687,
+      "typographic_alignment": false,
+      "original_quote": "not yet as competitive"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "ProteinNet (AlQuraishi, 2019)",
+      "start": 5255,
+      "end": 5284,
+      "typographic_alignment": false,
+      "original_quote": "ProteinNet (AlQuraishi, 2019)"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "CASP14-FM dataset",
+      "start": 17530,
+      "end": 17547,
+      "typographic_alignment": false,
+      "original_quote": "CASP14-FM dataset"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "without using evolutionary",
+      "start": 19986,
+      "end": 20012,
+      "typographic_alignment": false,
+      "original_quote": "without using evolutionary"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "significantly boosted the performance",
+      "start": 13399,
+      "end": 13436,
+      "typographic_alignment": false,
+      "original_quote": "significantly boosted the performance"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "slightly better",
+      "start": 14947,
+      "end": 14962,
+      "typographic_alignment": false,
+      "original_quote": "slightly better"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "higher than all individual",
+      "start": 15668,
+      "end": 15694,
+      "typographic_alignment": false,
+      "original_quote": "higher than all individual"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Fig. 1",
+      "start": 10525,
+      "end": 10531,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 1"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Fig. 2",
+      "start": 16383,
+      "end": 16389,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 2"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Fig. 3",
+      "start": 16526,
+      "end": 16532,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 3"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Fig. 4",
+      "start": 17027,
+      "end": 17033,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 4"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Table 1",
+      "start": 10737,
+      "end": 10744,
+      "typographic_alignment": false,
+      "original_quote": "Table 1"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "Table 2",
+      "start": 13024,
+      "end": 13031,
+      "typographic_alignment": false,
+      "original_quote": "Table 2"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "Table 3",
+      "start": 14862,
+      "end": 14869,
+      "typographic_alignment": false,
+      "original_quote": "Table 3"
+    },
+    {
+      "path": "key_figures_tables[7]",
+      "quote": "Table 4",
+      "start": 15486,
+      "end": 15493,
+      "typographic_alignment": false,
+      "original_quote": "Table 4"
+    },
+    {
+      "path": "key_figures_tables[8]",
+      "quote": "Table 5",
+      "start": 16025,
+      "end": 16032,
+      "typographic_alignment": false,
+      "original_quote": "Table 5"
+    },
+    {
+      "path": "key_figures_tables[9]",
+      "quote": "Table 6",
+      "start": 17549,
+      "end": 17556,
+      "typographic_alignment": false,
+      "original_quote": "Table 6"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "ESM-1b (Rao et al., 2020)",
+      "start": 4412,
+      "end": 4437,
+      "typographic_alignment": false,
+      "original_quote": "ESM-1b (Rao et al., 2020)"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "48.7% and 48.5%",
+      "start": 1237,
+      "end": 1252,
+      "typographic_alignment": false,
+      "original_quote": "48.7% and 48.5%"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "Transformer (Vaswani et al., 2017)",
+      "start": 20177,
+      "end": 20211,
+      "typographic_alignment": false,
+      "original_quote": "Transformer (Vaswani et al., 2017)"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "15% improvement",
+      "start": 1078,
+      "end": 1093,
+      "typographic_alignment": false,
+      "original_quote": "15% improvement"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "48.7% and 48.5%",
+      "start": 1237,
+      "end": 1252,
+      "typographic_alignment": false,
+      "original_quote": "48.7% and 48.5%"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "0.51, 0.50, 0.56",
+      "start": 13509,
+      "end": 13525,
+      "typographic_alignment": false,
+      "original_quote": "0.51, 0.50, 0.56"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "1024 amino acids",
+      "start": 19157,
+      "end": 19173,
+      "typographic_alignment": false,
+      "original_quote": "1024 amino acids"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "not yet as competitive",
+      "start": 16665,
+      "end": 16687,
+      "typographic_alignment": false,
+      "original_quote": "not yet as competitive"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "faster and reasonably accurate",
+      "start": 1399,
+      "end": 1429,
+      "typographic_alignment": false,
+      "original_quote": "faster and reasonably accurate"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "large-scale prediction",
+      "start": 1481,
+      "end": 1503,
+      "typographic_alignment": false,
+      "original_quote": "large-scale prediction"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"SPOT-Contact-Single: Improving Single-Sequence-Based Prediction of Protein Contact Map using a Transformer Language Model\",\n\"authors\": \"Jaspreet Singh, Thomas Litfin, Jaswinder Singh, Kuldip Paliwal, Yaoqi Zhou\",\n\"field_subfield\": \"Bioinformatics, Protein Structure Prediction\",\n\"type_of_paper\": \"Research Article\",\n\"executive_summary\": \"This paper introduces SPOT-Contact-Single, a novel method for predicting protein contact maps using single-sequence inputs, addressing the limitation of evolutionary-profile-based methods that require homologous sequences. The core innovation is the integration of attention maps from the pre-trained transformer language model ESM-1b as input features, combined with one-hot encoding and SPOT-1D-Single outputs. The model architecture consists of an ensemble of six 12-block ResNet models, trained using both direct contact prediction and distogram-based strategies. The study utilized a large training set of 34,691 proteins from the ProteinNet benchmark, with stringent independent test sets including SPOT-2018 (669 proteins) and CASP14-FM (15 targets). Results demonstrate significant improvements over existing single-sequence predictors like SSCpred, with a 15% improvement in F1-score on the CASP14-FM set. More notably, SPOT-Contact-Single outperforms evolutionary-profile-based methods TrRosetta and SPOT-Contact by 48.7% and 48.5% respectively in F1-score on proteins without homologs (Neff=1). The method is also computationally efficient, being 22 times faster than TrRosetta on CPU. These findings suggest that unsupervised learning features from language models can effectively replace evolutionary information for contact map prediction, particularly for proteins with few homologs, offering a scalable solution for large-scale genomic prediction.\",\n\"research_context\": [\n  { \"Protein contact map prediction is essential for structure and function prediction.\": \"contact-map prediction\" },\n  { \"Most existing methods rely on protein-sequence-evolutionary information.\": \"evolutionary information\" },\n  { \"Evolutionary profiles may not exist for many proteins.\": \"lack of naturally occurring\" },\n  { \"Generating evolutionary profiles is computationally intensive.\": \"computationally intensive\" },\n  { \"Single-sequence methods like SSCpred perform poorly compared to MSA-based techniques.\": \"relatively poorer\" },\n  { \"Unsupervised deep learning methods inspired by NLP language models have emerged.\": \"Natural Language Processing's\" },\n  { \"ESM-1b is an unsupervised method using a Transformer-34 model.\": \"Transformer-34 model\" }\n],\n\"research_question_and_hypothesis\": [\n  { \"The study aims to improve single-sequence-based contact map prediction.\": \"improve the contact-map prediction\" },\n  { \"The hypothesis is that ESM-1b attention maps can enhance prediction accuracy.\": \"attention map as an input\" },\n  { \"The method predicts contact maps without using homologous information.\": \"without using homologous information\" },\n  { \"The approach uses an ensemble of residual neural networks.\": \"ensemble of residual neural\" },\n  { \"The goal is to outperform single-sequence and MSA-based predictors for low Neff proteins.\": \"low effective number\" },\n  { \"The study examines the use of ESM-1b's attention map as a feature.\": \"ESM-1b's attention map\" }\n],\n\"methodological_details\": [\n  { \"The training dataset was curated from the ProteinNet benchmark.\": \"ProteinNet benchmark\" },\n  { \"The dataset consists of 50,914 proteins with high-resolution structures.\": \"50914 proteins\" },\n  { \"Proteins were clustered at a 95% sequence identity cut-off.\": \"95% sequence identity\" },\n  { \"100 proteins were separated for validation to minimize over-fitting.\": \"100 proteins\" },\n  { \"Homologs were removed using HHblits with an e-value cut-off of 0.1.\": \"e-value cut-off\" },\n  { \"The final training set contained 34,691 proteins.\": \"34691 proteins\" },\n  { \"The validation set contained 88 proteins.\": \"88 proteins\" },\n  { \"The independent test set SPOT-2018 contains 669 proteins.\": \"669 proteins\" },\n  { \"A subset of 46 proteins with Neff=1 formed the Neff1-2018 set.\": \"46 proteins\" },\n  { \"The CASP14-FM test set includes 15 free modelling targets.\": \"15 free modelling\" },\n  { \"Input features included one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps.\": \"ESM-1b attention maps\" },\n  { \"Attention maps were symmetrized and applied average product corrections.\": \"average product corrections\" }\n],\n\"procedures_and_architectures\": [\n  { \"The neural network architecture was inspired by ResNet.\": \"ResNet architecture\" },\n  { \"A 12-block ResNet was used as the maximum trainable depth.\": \"12 block ResNet\" },\n  { \"Convolutional layers had a channel size of 64 and kernel size of 3.\": \"channel size of 64\" },\n  { \"Six models were trained with different input feature combinations.\": \"six models\" },\n  { \"Three models predicted contacts as binary classification.\": \"binary classification\" },\n  { \"Three models predicted inter-residue distances as distance bins.\": \"distance bins\" },\n  { \"Direct contact models used Binary Cross-Entropy loss.\": \"Binary Cross-Entropy loss\" },\n  { \"Distogram-based models used Cross-Entropy loss.\": \"Cross-Entropy loss\" },\n  { \"The Adam optimizer was used with a learning rate of 0.001.\": \"learning rate of 0.001\" },\n  { \"The batch size was set to 1.\": \"batch size of 1\" },\n  { \"Early stopping was applied with a patience of 3.\": \"early stopping of 3\" },\n  { \"The ensemble was formed by taking the mean of individual models.\": \"mean of individual models\" }\n],\n\"key_results\": [\n  { \"SPOT-Contact-Single improved F1-score by 15% over SSCpred on CASP14-FM.\": \"15% improvement\" },\n  { \"The method outperformed TrRosetta by 48.7% in F1-score on Neff=1 proteins.\": \"48.7% improvement\" },\n  { \"The method outperformed SPOT-Contact by 48.5% in F1-score on Neff=1 proteins.\": \"48.5% improvement\" },\n  { \"One-hot encoding alone yielded an F1-score of 0.15.\": \"F1-score of 0.15\" },\n  { \"Adding SPOT-1D-Single improved F1-score by 22.90%.\": \"22.90%\" },\n  { \"ESM-1b last-layer attention maps achieved an F1-score of 0.51.\": \"0.51\" },\n  { \"This represented a 242% improvement over one-hot encoding.\": \"242% improvement\" },\n  { \"The ensemble achieved a 4% improvement over the second-best individual model.\": \"4% improvement\" },\n  { \"SPOT-Contact-Single achieved an F1-score of 0.32 on Neff=1 proteins.\": \"0.32\" },\n  { \"ESM-1b achieved an F1-score of about 0.22 on Neff=1 proteins.\": \"0.22\" },\n  { \"SPOT-Contact-Single was 22 times faster than TrRosetta on CPU.\": \"22 times faster\" },\n  { \"SPOT-Contact-Single was 42 times faster than TrRosetta on GPU.\": \"42 times slower\" }\n],\n\"interpretation_and_theoretical_implications\": [\n  { \"Unsupervised learning features from language models can replace evolutionary information.\": \"unsupervised learning features\" },\n  { \"The method is effective for proteins with few homologs.\": \"few homologs\" },\n  { \"SPOT-Contact-Single serves as a reasonably accurate screening tool.\": \"screening tool\" },\n  { \"The method is suitable for large-scale genomic prediction.\": \"genomic scale prediction\" },\n  { \"The use of ESM-1b limits prediction to proteins under 1024 amino acids.\": \"1024 amino acids\" },\n  { \"Future improvements may involve Transformer or Performer architectures.\": \"Transformer\" }\n],\n\"contradictions_and_limitations\": [\n  { \"The method cannot directly predict contact maps for proteins over 1024 amino acids.\": \"1024 amino acids\" },\n  { \"SPOT-1D-Single is not yet as competitive as evolution-based methods for high Neff.\": \"not yet as competitive\" },\n  { \"The study relies on the ProteinNet benchmark for training data.\": \"ProteinNet benchmark\" },\n  { \"The comparison with SSCpred was limited to the CASP14-FM dataset.\": \"CASP14-FM dataset\" },\n  { \"The method does not employ evolutionary information, limiting its use for high Neff proteins.\": \"without using evolutionary\" }\n],\n\"claims\": [\n  {\n    \"description\": \"SPOT-Contact-Single significantly improves single-sequence-based contact map prediction using ESM-1b attention maps.\",\n    \"supporting_evidence\": [\n      { \"The method achieved a 15% improvement in F1-score over SSCpred.\": \"15% improvement\" },\n      { \"It outperformed TrRosetta by 48.7% on Neff=1 proteins.\": \"48.7% improvement\" },\n      { \"ESM-1b attention maps boosted F1-score to 0.51.\": \"0.51\" }\n    ],\n    \"contradicting_evidence\": [\n      { \"The method is limited to proteins under 1024 amino acids.\": \"1024 amino acids\" },\n      { \"It is not as competitive as evolution-based methods for high Neff proteins.\": \"not yet as competitive\" }\n    ],\n    \"implications\": [\n      { \"The method offers a faster alternative to evolution-based methods.\": \"faster and reasonably accurate\" },\n      { \"It is useful for large-scale prediction.\": \"large-scale prediction\" }\n    ]\n  }\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n  { \"Ablation studies showed ESM-1b attention maps significantly boost performance.\": \"significantly boosted the performance\" },\n  { \"Direct contact prediction performed slightly better than distogram-based prediction.\": \"slightly better\" },\n  { \"The ensemble of six models improved over individual models.\": \"higher than all individual\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n  { \"Figure 1 shows the neural network architecture.\": \"Fig. 1\" },\n  { \"Figure 2 shows precision for top predictions.\": \"Fig. 2\" },\n  { \"Figure 3 plots F1-score as a function of Neff.\": \"Fig. 3\" },\n  { \"Figure 4 shows native and predicted contact-maps.\": \"Fig. 4\" },\n  { \"Table 1 describes feature combinations for the ensemble.\": \"Table 1\" },\n  { \"Table 2 shows feature importance on the validation set.\": \"Table 2\" },\n  { \"Table 3 compares direct vs distance contact-map prediction.\": \"Table 3\" },\n  { \"Table 4 presents results of individual models and the ensemble.\": \"Table 4\" },\n  { \"Table 5 compares methods on proteins without homologs.\": \"Table 5\" },\n  { \"Table 6 compares SPOT-Contact-Single, SSCpred, and ESM-1b on CASP14-FM.\": \"Table 6\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n  { \"1. The core contribution is a single-sequence contact map predictor using ESM-1b attention maps.\": \"ESM-1b attention maps\" },\n  { \"2. The strongest evidence is the 48.7% F1-score improvement over TrRosetta on Neff=1 proteins.\": \"48.7% improvement\" },\n  { \"3. The future path involves using more advanced architectures like Transformers.\": \"Transformer\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6928,
+        "total_tokens": 9836,
+        "completion_tokens": 2908,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6928,
+      "elapsed_seconds": 252.14968369156122,
+      "max_tokens": 16000,
+      "seed": 1721623544,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "2bbef448790ff0473796206e45c2479a80ea756f3fa5c709b0d8c5e8d27ea36d",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: ProteinNet benchmark",
+        "key_results": "evidence quote is not present in fulltext: 48.7% improvement",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: ProteinNet benchmark",
+        "claims": "evidence quote is not present in fulltext: 48.7% improvement",
+        "three_takeaways": "evidence quote is not present in fulltext: 48.7% improvement"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The training dataset was curated from the ProteinNet benchmark.\": \"ProteinNet (AlQuraishi, 2019)\"\n    },\n    {\n      \"The dataset consists of 50,914 proteins with high-resolution structures.\": \"50914 proteins\"\n    },\n    {\n      \"Proteins were clustered at a 95% sequence identity cut-off.\": \"identity cut-off at 95%\"\n    },\n    {\n      \"100 proteins were separated for validation to minimize over-fitting.\": \"100 proteins\"\n    },\n    {\n      \"Homologs were removed using HHblits with an e-value cut-off of 0.1.\": \"e-value cut-off of 0.1\"\n    },\n    {\n      \"The final training set contained 34,691 proteins.\": \"34691 and 88 proteins\"\n    },\n    {\n      \"The validation set contained 88 proteins.\": \"34691 and 88 proteins\"\n    },\n    {\n      \"The independent test set SPOT-2018 contains 669 proteins.\": \"669 proteins\"\n    },\n    {\n      \"A subset of 46 proteins with Neff=1 formed the Neff1-2018 set.\": \"46 proteins\"\n    },\n    {\n      \"The CASP14-FM test set includes 15 free modelling targets.\": \"15 free modelling targets\"\n    },\n    {\n      \"Input features included one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps.\": \"ESM-1b (Rao et al., 2020)\"\n    },\n    {\n      \"Attention maps were symmetrized and applied average product corrections.\": \"average product corrections (APC)\"\n    }\n  ],\n  \"key_results\": [\n    {\n      \"SPOT-Contact-Single improved F1-score by 15% over SSCpred on CASP14-FM.\": \"15% improvement\"\n    },\n    {\n      \"The method outperformed TrRosetta by 48.7% in F1-score on Neff=1 proteins.\": \"48.7% and 48.5%\"\n    },\n    {\n      \"The method outperformed SPOT-Contact by 48.5% in F1-score on Neff=1 proteins.\": \"48.7% and 48.5%\"\n    },\n    {\n      \"One-hot encoding alone yielded an F1-score of 0.15.\": \"F1-score of 0.15\"\n    },\n    {\n      \"Adding SPOT-1D-Single improved F1-score by 22.90%.\": \"22.90%\"\n    },\n    {\n      \"ESM-1b last-layer attention maps achieved an F1-score of 0.51.\": \"0.51, 0.50, 0.56\"\n    },\n    {\n      \"This represented a 242% improvement over one-hot encoding.\": \"242% and 178%\"\n    },\n    {\n      \"The ensemble achieved a 4% improvement over the second-best individual model.\": \"4% improvement\"\n    },\n    {\n      \"SPOT-Contact-Single achieved an F1-score of 0.32 on Neff=1 proteins.\": \"0.32\"\n    },\n    {\n      \"ESM-1b achieved an F1-score of about 0.22 on Neff=1 proteins.\": \"0.22\"\n    },\n    {\n      \"SPOT-Contact-Single was 22 times faster than TrRosetta on CPU.\": \"22 times faster\"\n    },\n    {\n      \"SPOT-Contact-Single was 42 times faster than TrRosetta on GPU.\": \"42 times slower\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The method cannot directly predict contact maps for proteins over 1024 amino acids.\": \"1024 amino acids\"\n    },\n    {\n      \"SPOT-1D-Single is not yet as competitive as evolution-based methods for high Neff.\": \"not yet as competitive\"\n    },\n    {\n      \"The study relies on the ProteinNet benchmark for training data.\": \"ProteinNet (AlQuraishi, 2019)\"\n    },\n    {\n      \"The comparison with SSCpred was limited to the CASP14-FM dataset.\": \"CASP14-FM dataset\"\n    },\n    {\n      \"The method does not employ evolutionary information, limiting its use for high Neff proteins.\": \"without using evolutionary\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"SPOT-Contact-Single significantly improves single-sequence-based contact map prediction using ESM-1b attention maps.\",\n      \"supporting_evidence\": [\n        {\n          \"The method achieved a 15% improvement in F1-score over SSCpred.\": \"15% improvement\"\n        },\n        {\n          \"It outperformed TrRosetta by 48.7% on Neff=1 proteins.\": \"48.7% and 48.5%\"\n        },\n        {\n          \"ESM-1b attention maps boosted F1-score to 0.51.\": \"0.51, 0.50, 0.56\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The method is limited to proteins under 1024 amino acids.\": \"1024 amino acids\"\n        },\n        {\n          \"It is not as competitive as evolution-based methods for high Neff proteins.\": \"not yet as competitive\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"The method offers a faster alternative to evolution-based methods.\": \"faster and reasonably accurate\"\n        },\n        {\n          \"It is useful for large-scale prediction.\": \"large-scale prediction\"\n        }\n      ]\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is a single-sequence contact map predictor using ESM-1b attention maps.\": \"ESM-1b (Rao et al., 2020)\"\n    },\n    {\n      \"2. The strongest evidence is the 48.7% F1-score improvement over TrRosetta on Neff=1 proteins.\": \"48.7% and 48.5%\"\n    },\n    {\n      \"3. The future path involves using more advanced architectures like Transformers.\": \"Transformer (Vaswani et al., 2017)\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6546,
+        "total_tokens": 8150,
+        "completion_tokens": 1604,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6546,
+      "elapsed_seconds": 142.50812938436866,
+      "max_tokens": 4096,
+      "seed": 1721623545,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "a9d6e17eb53010c8d09e6e7868b0384ac66c1a08ccd60637952fe2c1bdffccbd",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "key_results",
+        "contradictions_and_limitations",
+        "claims",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: e-value cut-off of 0.1"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The training dataset was curated from the ProteinNet benchmark.\": \"ProteinNet (AlQuraishi, 2019)\"\n    },\n    {\n      \"The dataset consists of 50,914 proteins with high-resolution structures.\": \"50914 proteins\"\n    },\n    {\n      \"Proteins were clustered at a 95% sequence identity cut-off.\": \"identity cut-off at 95%\"\n    },\n    {\n      \"100 proteins were separated for validation to minimize over-fitting.\": \"100 proteins\"\n    },\n    {\n      \"Homologs were removed using HHblits with an e-value cut-off of 0.1.\": \"e-value cut-off\"\n    },\n    {\n      \"The final training set contained 34,691 proteins.\": \"34691 and 88 proteins\"\n    },\n    {\n      \"The validation set contained 88 proteins.\": \"34691 and 88 proteins\"\n    },\n    {\n      \"The independent test set SPOT-2018 contains 669 proteins.\": \"669 proteins\"\n    },\n    {\n      \"A subset of 46 proteins with Neff=1 formed the Neff1-2018 set.\": \"46 proteins\"\n    },\n    {\n      \"The CASP14-FM test set includes 15 free modelling targets.\": \"15 free modelling targets\"\n    },\n    {\n      \"Input features included one-hot encoding, SPOT-1D-Single outputs, and ESM-1b attention maps.\": \"ESM-1b (Rao et al., 2020)\"\n    },\n    {\n      \"Attention maps were symmetrized and applied average product corrections.\": \"average product corrections (APC)\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5514,
+        "total_tokens": 5961,
+        "completion_tokens": 447,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5514,
+      "elapsed_seconds": 36.29077212512493,
+      "max_tokens": 4096,
+      "seed": 1721623546,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "dcc97e12722797f5fd3ea147aa40e7e356882ea38c15676c72aa4c2ebc67d35d",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6928,
+  "elapsed_seconds": 431.0910998955369,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

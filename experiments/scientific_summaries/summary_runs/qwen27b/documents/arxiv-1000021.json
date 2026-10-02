@@ -1,0 +1,920 @@
+{
+  "document_id": "arxiv-1000021",
+  "fulltext_sha256": "bbd7b9c7bf14b8204fd51f7d0ec0ffb2c6fd246c6f7e3fb9721251f0aec47019",
+  "summary": {
+    "title": "Recurrent Interpolants for Probabilistic Time Series Prediction",
+    "authors": "Yu Chen, Marin Biloš, Sarthak Mittal, Wei Deng, Kashif Rasul, Anderson Schneider",
+    "field_subfield": "Machine Learning, Time Series Forecasting",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This paper addresses the scalability and modeling challenges of probabilistic time series forecasting by proposing a novel framework that blends the computational efficiency of recurrent neural networks (RNNs) with the high-quality probabilistic modeling of diffusion models. Traditional autoregressive models, such as RNNs and Transformers, are widely used but often rely on simple parametric output layers (e.g., Gaussian), limiting their ability to capture complex, high-dimensional distributions and cross-feature dependencies. While generative models like Diffusion Probabilistic Models (DDPM) and Flow Matching (FM) offer superior distributional modeling, they face scalability issues when applied to long time series windows due to the model size being proportional to both feature dimension and window length. The authors introduce a method based on Stochastic Interpolants (SI), extended to a conditional generation framework with additional control features. The core innovation is the use of an RNN to encode the historical context into a history prompt, which then conditions the SI module to predict the next time step. This approach avoids mapping from pure noise to data, instead mapping from the current time point to the next, leveraging the strong correlations between neighboring time points. Theoretical contributions include extending SI theory to arbitrary joint distributions and conditional generation. Empirically, the method is evaluated on synthetic datasets and four real-world multivariate time series datasets (Solar, Exchange, Traffic, Wiki). The proposed SI-based model outperforms or matches baselines (DDPM, SGM, FM, Vec-LSTM) on three out of four datasets in terms of CRPS-sum, demonstrating superior uncertainty quantification and predictive accuracy. The framework offers a computational-friendly alternative for large-scale generative time series prediction.",
+    "research_context": [
+      {
+        "Sequential models like RNNs and Transformers are standard for time series forecasting.": "go-to methods"
+      },
+      {
+        "These models capture dependencies but are limited by simple probabilistic output layers.": "simple probability family"
+      },
+      {
+        "Generative models using diffusion or flow-based methods address complex distribution modeling.": "generative modeling"
+      },
+      {
+        "However, these generative models face scalability issues with large time windows.": "scalability issues"
+      },
+      {
+        "A computational-friendly framework is needed for large-scale generative predictions.": "computational-friendly framework"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central question is how to combine RNN efficiency with diffusion model quality.": "efficiency of recurrent"
+      },
+      {
+        "The hypothesis is that mapping from current to future points is more effective than noise-to-data.": "more straightforward"
+      },
+      {
+        "The method relies on stochastic interpolants extended to conditional generation.": "stochastic interpolants"
+      },
+      {
+        "It is predicted that this approach will improve probabilistic forecasting performance.": "high quality modeling"
+      },
+      {
+        "The framework aims to address challenges in high-dimensional complex distributions.": "high-dimensional complex distributions"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study uses synthetic two-dimensional datasets for initial verification.": "two-dimensional datasets"
+      },
+      {
+        "Real-world datasets include Solar, Exchange, Traffic, and Wiki.": "Solar\n[Lai et al., 2018]"
+      },
+      {
+        "The model uses an RNN to encode context into a history prompt.": "history prompt"
+      },
+      {
+        "Stochastic Interpolants (SI) are used for the generative module.": "Stochastic Interpolants"
+      },
+      {
+        "The training uses importance sampling with a Beta distribution.": "Beta distribution"
+      },
+      {
+        "Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.": "CRPS-sum"
+      },
+      {
+        "Baselines include DDPM, SGM, FM, and Vec-LSTM.": "Vec-LSTM"
+      },
+      {
+        "The context window length P is a key parameter.": "context window"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The model architecture consists of an RNN and an SI module.": "RNN"
+      },
+      {
+        "The RNN encodes the past context into a history vector.": "encode\nthe context"
+      },
+      {
+        "The SI module performs conditional generation from current to next point.": "conditional generation"
+      },
+      {
+        "The velocity and score functions are modeled by neural networks.": "neural networks"
+      },
+      {
+        "Training minimizes mean squared error for velocity and score.": "mean squared error"
+      },
+      {
+        "Inference involves solving the forward SDE for the next time step.": "forward SDE"
+      },
+      {
+        "The method supports multi-step prediction via recursive step-by-step forecasting.": "recursively run"
+      },
+      {
+        "Hyperparameters were tuned using synthetic datasets first.": "hyperparameters"
+      }
+    ],
+    "key_results": [
+      {
+        "On the Solar dataset, SI achieved a CRPS-sum of 0.359.": "0.359"
+      },
+      {
+        "On the Exchange dataset, SI achieved a CRPS-sum of 0.007.": "0.007"
+      },
+      {
+        "On the Traffic dataset, FM outperformed SI with a CRPS-sum of 0.038.": "0.038"
+      },
+      {
+        "On the Wiki dataset, SI achieved a CRPS-sum of 0.080.": "0.080"
+      },
+      {
+        "SI outperformed or matched baselines on three out of four datasets.": "three out of four"
+      },
+      {
+        "The model captured uncertainty effectively on the Solar dataset.": "uncertainty"
+      },
+      {
+        "Wasserstein distance metrics confirmed good sample quality on synthetic data.": "Wasserstein distance"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The method demonstrates that mapping from current to future points is effective.": "more straightforward"
+      },
+      {
+        "It shows that careful probability distribution modeling is critical.": "critical for large"
+      },
+      {
+        "The extension of SI to conditional generation is a theoretical contribution.": "conditional generation"
+      },
+      {
+        "The approach bridges the gap between RNN efficiency and diffusion quality.": "merges the computational efficiency"
+      },
+      {
+        "It provides insights for future developments in generative time series models.": "future developments"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "FM performed better than SI on the Traffic dataset.": "Traffic FM model"
+      },
+      {
+        "FM failed to capture the data distribution on the Wiki dataset.": "cannot capture the data"
+      },
+      {
+        "The paper notes that loss values are larger near the ends of diffusion time.": "loss values become larger"
+      },
+      {
+        "The method requires recursive inference for multi-step predictions.": "recursively run"
+      },
+      {
+        "Code availability is pending for the camera-ready version.": "camera-ready version"
+      }
+    ],
+    "claims": [
+      {
+        "description": "The proposed SI-based framework outperforms or matches existing generative and recurrent baselines in probabilistic time series forecasting.",
+        "supporting_evidence": [
+          {
+            "SI achieved the best CRPS-sum on Solar and Exchange datasets.": "0.359"
+          },
+          {
+            "SI outperformed Vec-LSTM on all datasets.": "better performance"
+          },
+          {
+            "The model captured uncertainty well on Solar data.": "uncertainty"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "FM achieved a lower CRPS-sum on the Traffic dataset.": "0.038"
+          },
+          {
+            "FM failed on the Wiki dataset.": "cannot capture"
+          }
+        ],
+        "implications": [
+          {
+            "SI is a strong candidate for conditional generation in time series.": "strong candidate"
+          },
+          {
+            "The framework is suitable for large-scale applications.": "large scale"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "The code will be publicly available for the camera-ready version.": "publicly available"
+      },
+      {
+        "Real-world datasets are from public sources like UCI and GluonTS.": "publicly available"
+      }
+    ],
+    "robustness_and_ablation_notes": [
+      {
+        "Different schedulers for SI were tested on synthetic data.": "different schedulers"
+      },
+      {
+        "Most gamma-interpolant function combinations achieved good results.": "good results"
+      },
+      {
+        "Importance sampling was used to stabilize training.": "importance sampling"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 2 illustrates the model diagram with RNN and SI.": "Figure 2"
+      },
+      {
+        "Figure 3 shows generated samples for synthetic datasets.": "Figure 3"
+      },
+      {
+        "Figure 4 shows forecast paths on the Solar dataset.": "Figure 4"
+      },
+      {
+        "Table 1 reports Wasserstein distances for synthetic data.": "Table 1"
+      },
+      {
+        "Table 2 reports CRPS-sum metrics for real datasets.": "Table 2"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a framework blending RNNs and Stochastic Interpolants.": "efficiency of recurrent"
+      },
+      {
+        "2. The strongest evidence is superior CRPS-sum on three of four real datasets.": "three out of four"
+      },
+      {
+        "3. The future path involves further development of conditional generative models.": "future developments"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper addresses the scalability and modeling challenges of probabilistic time series forecasting by proposing a novel framework that blends the computational efficiency of recurrent neural networks (RNNs) with the high-quality probabilistic modeling of diffusion models. Traditional autoregressive models, such as RNNs and Transformers, are widely used but often rely on simple parametric output layers (e.g., Gaussian), limiting their ability to capture complex, high-dimensional distributions and cross-feature dependencies. While generative models like Diffusion Probabilistic Models (DDPM) and Flow Matching (FM) offer superior distributional modeling, they face scalability issues when applied to long time series windows due to the model size being proportional to both feature dimension and window length. The authors introduce a method based on Stochastic Interpolants (SI), extended to a conditional generation framework with additional control features. The core innovation is the use of an RNN to encode the historical context into a history prompt, which then conditions the SI module to predict the next time step. This approach avoids mapping from pure noise to data, instead mapping from the current time point to the next, leveraging the strong correlations between neighboring time points. Theoretical contributions include extending SI theory to arbitrary joint distributions and conditional generation. Empirically, the method is evaluated on synthetic datasets and four real-world multivariate time series datasets (Solar, Exchange, Traffic, Wiki). The proposed SI-based model outperforms or matches baselines (DDPM, SGM, FM, Vec-LSTM) on three out of four datasets in terms of CRPS-sum, demonstrating superior uncertainty quantification and predictive accuracy. The framework offers a computational-friendly alternative for large-scale generative time series prediction.\n\nResearch Context\nSequential models like RNNs and Transformers are standard for time series forecasting. These models capture dependencies but are limited by simple probabilistic output layers. Generative models using diffusion or flow-based methods address complex distribution modeling. However, these generative models face scalability issues with large time windows. A computational-friendly framework is needed for large-scale generative predictions.\n\nResearch Question And Hypothesis\nThe central question is how to combine RNN efficiency with diffusion model quality. The hypothesis is that mapping from current to future points is more effective than noise-to-data. The method relies on stochastic interpolants extended to conditional generation. It is predicted that this approach will improve probabilistic forecasting performance. The framework aims to address challenges in high-dimensional complex distributions.\n\nMethodological Details\nThe study uses synthetic two-dimensional datasets for initial verification. Real-world datasets include Solar, Exchange, Traffic, and Wiki. The model uses an RNN to encode context into a history prompt. Stochastic Interpolants (SI) are used for the generative module. The training uses importance sampling with a Beta distribution. Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance. Baselines include DDPM, SGM, FM, and Vec-LSTM. The context window length P is a key parameter.\n\nProcedures And Architectures\nThe model architecture consists of an RNN and an SI module. The RNN encodes the past context into a history vector. The SI module performs conditional generation from current to next point. The velocity and score functions are modeled by neural networks. Training minimizes mean squared error for velocity and score. Inference involves solving the forward SDE for the next time step. The method supports multi-step prediction via recursive step-by-step forecasting. Hyperparameters were tuned using synthetic datasets first.\n\nKey Results\nOn the Solar dataset, SI achieved a CRPS-sum of 0.359. On the Exchange dataset, SI achieved a CRPS-sum of 0.007. On the Traffic dataset, FM outperformed SI with a CRPS-sum of 0.038. On the Wiki dataset, SI achieved a CRPS-sum of 0.080. SI outperformed or matched baselines on three out of four datasets. The model captured uncertainty effectively on the Solar dataset. Wasserstein distance metrics confirmed good sample quality on synthetic data.\n\nInterpretation And Theoretical Implications\nThe method demonstrates that mapping from current to future points is effective. It shows that careful probability distribution modeling is critical. The extension of SI to conditional generation is a theoretical contribution. The approach bridges the gap between RNN efficiency and diffusion quality. It provides insights for future developments in generative time series models.\n\nContradictions And Limitations\nFM performed better than SI on the Traffic dataset. FM failed to capture the data distribution on the Wiki dataset. The paper notes that loss values are larger near the ends of diffusion time. The method requires recursive inference for multi-step predictions. Code availability is pending for the camera-ready version.\n\nClaims\nThe proposed SI-based framework outperforms or matches existing generative and recurrent baselines in probabilistic time series forecasting. SI achieved the best CRPS-sum on Solar and Exchange datasets. SI outperformed Vec-LSTM on all datasets. The model captured uncertainty well on Solar data. FM achieved a lower CRPS-sum on the Traffic dataset. FM failed on the Wiki dataset. SI is a strong candidate for conditional generation in time series. The framework is suitable for large-scale applications.\n\nData And Code Availability\nThe code will be publicly available for the camera-ready version. Real-world datasets are from public sources like UCI and GluonTS.\n\nRobustness And Ablation Notes\nDifferent schedulers for SI were tested on synthetic data. Most gamma-interpolant function combinations achieved good results. Importance sampling was used to stabilize training.\n\nKey Figures Tables\nFigure 2 illustrates the model diagram with RNN and SI. Figure 3 shows generated samples for synthetic datasets. Figure 4 shows forecast paths on the Solar dataset. Table 1 reports Wasserstein distances for synthetic data. Table 2 reports CRPS-sum metrics for real datasets.\n\nThree Takeaways\n1. The core contribution is a framework blending RNNs and Stochastic Interpolants. 2. The strongest evidence is superior CRPS-sum on three of four real datasets. 3. The future path involves further development of conditional generative models.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "go-to methods",
+      "start": 1926,
+      "end": 1939,
+      "typographic_alignment": false,
+      "original_quote": "go-to methods"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "simple probability family",
+      "start": 2566,
+      "end": 2591,
+      "typographic_alignment": false,
+      "original_quote": "simple probability family"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "generative modeling",
+      "start": 2910,
+      "end": 2929,
+      "typographic_alignment": false,
+      "original_quote": "generative modeling"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "scalability issues",
+      "start": 990,
+      "end": 1008,
+      "typographic_alignment": false,
+      "original_quote": "scalability issues"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "computational-friendly framework",
+      "start": 1023,
+      "end": 1055,
+      "typographic_alignment": false,
+      "original_quote": "computational-friendly framework"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "efficiency of recurrent",
+      "start": 1176,
+      "end": 1199,
+      "typographic_alignment": false,
+      "original_quote": "efficiency of recurrent"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "more straightforward",
+      "start": 5366,
+      "end": 5386,
+      "typographic_alignment": false,
+      "original_quote": "more straightforward"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "stochastic interpolants",
+      "start": 1427,
+      "end": 1450,
+      "typographic_alignment": false,
+      "original_quote": "stochastic interpolants"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "high quality modeling",
+      "start": 6150,
+      "end": 6171,
+      "typographic_alignment": false,
+      "original_quote": "high quality modeling"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "high-dimensional complex distributions",
+      "start": 619,
+      "end": 657,
+      "typographic_alignment": false,
+      "original_quote": "high-dimensional complex distributions"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "two-dimensional datasets",
+      "start": 14963,
+      "end": 14987,
+      "typographic_alignment": false,
+      "original_quote": "two-dimensional datasets"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "Solar\n[Lai et al., 2018]",
+      "start": 26162,
+      "end": 26186,
+      "typographic_alignment": true,
+      "original_quote": "Solar [Lai et al., 2018]"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "history prompt",
+      "start": 20922,
+      "end": 20936,
+      "typographic_alignment": false,
+      "original_quote": "history prompt"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "Stochastic Interpolants",
+      "start": 17237,
+      "end": 17260,
+      "typographic_alignment": false,
+      "original_quote": "Stochastic Interpolants"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "Beta distribution",
+      "start": 21431,
+      "end": 21448,
+      "typographic_alignment": false,
+      "original_quote": "Beta distribution"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "CRPS-sum",
+      "start": 24277,
+      "end": 24285,
+      "typographic_alignment": false,
+      "original_quote": "CRPS-sum"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "Vec-LSTM",
+      "start": 24004,
+      "end": 24012,
+      "typographic_alignment": false,
+      "original_quote": "Vec-LSTM"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "context window",
+      "start": 3712,
+      "end": 3726,
+      "typographic_alignment": false,
+      "original_quote": "context window"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "RNN",
+      "start": 12788,
+      "end": 12791,
+      "typographic_alignment": false,
+      "original_quote": "RNN"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "encode\nthe context",
+      "start": 20886,
+      "end": 20904,
+      "typographic_alignment": true,
+      "original_quote": "encode the context"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "conditional generation",
+      "start": 3815,
+      "end": 3837,
+      "typographic_alignment": false,
+      "original_quote": "conditional generation"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "neural networks",
+      "start": 1693,
+      "end": 1708,
+      "typographic_alignment": false,
+      "original_quote": "neural networks"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "mean squared error",
+      "start": 12428,
+      "end": 12446,
+      "typographic_alignment": false,
+      "original_quote": "mean squared error"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "forward SDE",
+      "start": 12871,
+      "end": 12882,
+      "typographic_alignment": false,
+      "original_quote": "forward SDE"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "recursively run",
+      "start": 21829,
+      "end": 21844,
+      "typographic_alignment": false,
+      "original_quote": "recursively run"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "hyperparameters",
+      "start": 23155,
+      "end": 23170,
+      "typographic_alignment": false,
+      "original_quote": "hyperparameters"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "0.359",
+      "start": 24078,
+      "end": 24083,
+      "typographic_alignment": false,
+      "original_quote": "0.359"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "0.007",
+      "start": 24221,
+      "end": 24226,
+      "typographic_alignment": false,
+      "original_quote": "0.007"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "0.038",
+      "start": 24141,
+      "end": 24146,
+      "typographic_alignment": false,
+      "original_quote": "0.038"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "0.080",
+      "start": 24256,
+      "end": 24261,
+      "typographic_alignment": false,
+      "original_quote": "0.080"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "three out of four",
+      "start": 27083,
+      "end": 27100,
+      "typographic_alignment": false,
+      "original_quote": "three out of four"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "uncertainty",
+      "start": 548,
+      "end": 559,
+      "typographic_alignment": false,
+      "original_quote": "uncertainty"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "Wasserstein distance",
+      "start": 18606,
+      "end": 18626,
+      "typographic_alignment": false,
+      "original_quote": "Wasserstein distance"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "more straightforward",
+      "start": 5366,
+      "end": 5386,
+      "typographic_alignment": false,
+      "original_quote": "more straightforward"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "critical for large",
+      "start": 27683,
+      "end": 27701,
+      "typographic_alignment": false,
+      "original_quote": "critical for large"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "conditional generation",
+      "start": 3815,
+      "end": 3837,
+      "typographic_alignment": false,
+      "original_quote": "conditional generation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "merges the computational efficiency",
+      "start": 28023,
+      "end": 28058,
+      "typographic_alignment": false,
+      "original_quote": "merges the computational efficiency"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "future developments",
+      "start": 1573,
+      "end": 1592,
+      "typographic_alignment": false,
+      "original_quote": "future developments"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "Traffic FM model",
+      "start": 27119,
+      "end": 27135,
+      "typographic_alignment": false,
+      "original_quote": "Traffic FM model"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "cannot capture the data",
+      "start": 27191,
+      "end": 27214,
+      "typographic_alignment": false,
+      "original_quote": "cannot capture the data"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "loss values become larger",
+      "start": 21186,
+      "end": 21211,
+      "typographic_alignment": false,
+      "original_quote": "loss values become larger"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "recursively run",
+      "start": 21829,
+      "end": 21844,
+      "typographic_alignment": false,
+      "original_quote": "recursively run"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "camera-ready version",
+      "start": 23946,
+      "end": 23966,
+      "typographic_alignment": false,
+      "original_quote": "camera-ready version"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "publicly available",
+      "start": 22691,
+      "end": 22709,
+      "typographic_alignment": false,
+      "original_quote": "publicly available"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "publicly available",
+      "start": 22691,
+      "end": 22709,
+      "typographic_alignment": false,
+      "original_quote": "publicly available"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "different schedulers",
+      "start": 24522,
+      "end": 24542,
+      "typographic_alignment": false,
+      "original_quote": "different schedulers"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "good results",
+      "start": 24866,
+      "end": 24878,
+      "typographic_alignment": false,
+      "original_quote": "good results"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "importance sampling",
+      "start": 21258,
+      "end": 21277,
+      "typographic_alignment": false,
+      "original_quote": "importance sampling"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Figure 2",
+      "start": 12804,
+      "end": 12812,
+      "typographic_alignment": false,
+      "original_quote": "Figure 2"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Figure 3",
+      "start": 14901,
+      "end": 14909,
+      "typographic_alignment": false,
+      "original_quote": "Figure 3"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Figure 4",
+      "start": 20657,
+      "end": 20665,
+      "typographic_alignment": false,
+      "original_quote": "Figure 4"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Table 1",
+      "start": 18597,
+      "end": 18604,
+      "typographic_alignment": false,
+      "original_quote": "Table 1"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Table 2",
+      "start": 24268,
+      "end": 24275,
+      "typographic_alignment": false,
+      "original_quote": "Table 2"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "efficiency of recurrent",
+      "start": 1176,
+      "end": 1199,
+      "typographic_alignment": false,
+      "original_quote": "efficiency of recurrent"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "three out of four",
+      "start": 27083,
+      "end": 27100,
+      "typographic_alignment": false,
+      "original_quote": "three out of four"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "future developments",
+      "start": 1573,
+      "end": 1592,
+      "typographic_alignment": false,
+      "original_quote": "future developments"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "0.359",
+      "start": 24078,
+      "end": 24083,
+      "typographic_alignment": false,
+      "original_quote": "0.359"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "better performance",
+      "start": 24363,
+      "end": 24381,
+      "typographic_alignment": false,
+      "original_quote": "better performance"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "uncertainty",
+      "start": 548,
+      "end": 559,
+      "typographic_alignment": false,
+      "original_quote": "uncertainty"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "0.038",
+      "start": 24141,
+      "end": 24146,
+      "typographic_alignment": false,
+      "original_quote": "0.038"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "cannot capture",
+      "start": 27191,
+      "end": 27205,
+      "typographic_alignment": false,
+      "original_quote": "cannot capture"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "strong candidate",
+      "start": 27388,
+      "end": 27404,
+      "typographic_alignment": false,
+      "original_quote": "strong candidate"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "large scale",
+      "start": 4319,
+      "end": 4330,
+      "typographic_alignment": false,
+      "original_quote": "large scale"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"Recurrent Interpolants for Probabilistic Time Series Prediction\",\n\"authors\": \"Yu Chen, Marin Biloš, Sarthak Mittal, Wei Deng, Kashif Rasul, Anderson Schneider\",\n\"field_subfield\": \"Machine Learning, Time Series Forecasting\",\n\"type_of_paper\": \"Research Article\",\n\"executive_summary\": \"This paper addresses the scalability and modeling challenges of probabilistic time series forecasting by proposing a novel framework that blends the computational efficiency of recurrent neural networks (RNNs) with the high-quality probabilistic modeling of diffusion models. Traditional autoregressive models, such as RNNs and Transformers, are widely used but often rely on simple parametric output layers (e.g., Gaussian), limiting their ability to capture complex, high-dimensional distributions and cross-feature dependencies. While generative models like Diffusion Probabilistic Models (DDPM) and Flow Matching (FM) offer superior distributional modeling, they face scalability issues when applied to long time series windows due to the model size being proportional to both feature dimension and window length. The authors introduce a method based on Stochastic Interpolants (SI), extended to a conditional generation framework with additional control features. The core innovation is the use of an RNN to encode the historical context into a history prompt, which then conditions the SI module to predict the next time step. This approach avoids mapping from pure noise to data, instead mapping from the current time point to the next, leveraging the strong correlations between neighboring time points. Theoretical contributions include extending SI theory to arbitrary joint distributions and conditional generation. Empirically, the method is evaluated on synthetic datasets and four real-world multivariate time series datasets (Solar, Exchange, Traffic, Wiki). The proposed SI-based model outperforms or matches baselines (DDPM, SGM, FM, Vec-LSTM) on three out of four datasets in terms of CRPS-sum, demonstrating superior uncertainty quantification and predictive accuracy. The framework offers a computational-friendly alternative for large-scale generative time series prediction.\",\n\"research_context\": [\n  { \"Sequential models like RNNs and Transformers are standard for time series forecasting.\": \"go-to methods\" },\n  { \"These models capture dependencies but are limited by simple probabilistic output layers.\": \"simple probability family\" },\n  { \"Generative models using diffusion or flow-based methods address complex distribution modeling.\": \"generative modeling\" },\n  { \"However, these generative models face scalability issues with large time windows.\": \"scalability issues\" },\n  { \"A computational-friendly framework is needed for large-scale generative predictions.\": \"computational-friendly framework\" }\n],\n\"research_question_and_hypothesis\": [\n  { \"The central question is how to combine RNN efficiency with diffusion model quality.\": \"blend the computational efficiency\" },\n  { \"The hypothesis is that mapping from current to future points is more effective than noise-to-data.\": \"more straightforward\" },\n  { \"The method relies on stochastic interpolants extended to conditional generation.\": \"stochastic interpolants\" },\n  { \"It is predicted that this approach will improve probabilistic forecasting performance.\": \"high quality modeling\" },\n  { \"The framework aims to address challenges in high-dimensional complex distributions.\": \"high-dimensional complex distributions\" }\n],\n\"methodological_details\": [\n  { \"The study uses synthetic two-dimensional datasets for initial verification.\": \"synthetic two-dimensional datasets\" },\n  { \"Real-world datasets include Solar, Exchange, Traffic, and Wiki.\": \"Solar, Exchange, Traffic\" },\n  { \"The model uses an RNN to encode context into a history prompt.\": \"history prompt\" },\n  { \"Stochastic Interpolants (SI) are used for the generative module.\": \"Stochastic Interpolants\" },\n  { \"The training uses importance sampling with a Beta distribution.\": \"Beta distribution\" },\n  { \"Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.\": \"CRPS-sum\" },\n  { \"Baselines include DDPM, SGM, FM, and Vec-LSTM.\": \"Vec-LSTM\" },\n  { \"The context window length P is a key parameter.\": \"context window\" }\n],\n\"procedures_and_architectures\": [\n  { \"The model architecture consists of an RNN and an SI module.\": \"RNN\" },\n  { \"The RNN encodes the past context into a history vector.\": \"encode the context\" },\n  { \"The SI module performs conditional generation from current to next point.\": \"conditional generation\" },\n  { \"The velocity and score functions are modeled by neural networks.\": \"neural networks\" },\n  { \"Training minimizes mean squared error for velocity and score.\": \"mean squared error\" },\n  { \"Inference involves solving the forward SDE for the next time step.\": \"forward SDE\" },\n  { \"The method supports multi-step prediction via recursive step-by-step forecasting.\": \"recursively run\" },\n  { \"Hyperparameters were tuned using synthetic datasets first.\": \"hyperparameters\" }\n],\n\"key_results\": [\n  { \"On the Solar dataset, SI achieved a CRPS-sum of 0.359.\": \"0.359\" },\n  { \"On the Exchange dataset, SI achieved a CRPS-sum of 0.007.\": \"0.007\" },\n  { \"On the Traffic dataset, FM outperformed SI with a CRPS-sum of 0.038.\": \"0.038\" },\n  { \"On the Wiki dataset, SI achieved a CRPS-sum of 0.080.\": \"0.080\" },\n  { \"SI outperformed or matched baselines on three out of four datasets.\": \"three out of four\" },\n  { \"The model captured uncertainty effectively on the Solar dataset.\": \"capture the uncertainty\" },\n  { \"Wasserstein distance metrics confirmed good sample quality on synthetic data.\": \"Wasserstein distance\" }\n],\n\"interpretation_and_theoretical_implications\": [\n  { \"The method demonstrates that mapping from current to future points is effective.\": \"more straightforward\" },\n  { \"It shows that careful probability distribution modeling is critical.\": \"critical for large\" },\n  { \"The extension of SI to conditional generation is a theoretical contribution.\": \"conditional generation\" },\n  { \"The approach bridges the gap between RNN efficiency and diffusion quality.\": \"merges the computational efficiency\" },\n  { \"It provides insights for future developments in generative time series models.\": \"future developments\" }\n],\n\"contradictions_and_limitations\": [\n  { \"FM performed better than SI on the Traffic dataset.\": \"Traffic FM model\" },\n  { \"FM failed to capture the data distribution on the Wiki dataset.\": \"cannot capture the data\" },\n  { \"The paper notes that loss values are larger near the ends of diffusion time.\": \"loss values become larger\" },\n  { \"The method requires recursive inference for multi-step predictions.\": \"recursively run\" },\n  { \"Code availability is pending for the camera-ready version.\": \"camera-ready version\" }\n],\n\"claims\": [\n  {\n    \"description\": \"The proposed SI-based framework outperforms or matches existing generative and recurrent baselines in probabilistic time series forecasting.\",\n    \"supporting_evidence\": [\n      { \"SI achieved the best CRPS-sum on Solar and Exchange datasets.\": \"0.359\" },\n      { \"SI outperformed Vec-LSTM on all datasets.\": \"better performance\" },\n      { \"The model captured uncertainty well on Solar data.\": \"capture the uncertainty\" }\n    ],\n    \"contradicting_evidence\": [\n      { \"FM achieved a lower CRPS-sum on the Traffic dataset.\": \"0.038\" },\n      { \"FM failed on the Wiki dataset.\": \"cannot capture\" }\n    ],\n    \"implications\": [\n      { \"SI is a strong candidate for conditional generation in time series.\": \"strong candidate\" },\n      { \"The framework is suitable for large-scale applications.\": \"large scale\" }\n    ]\n  }\n],\n\"data_and_code_availability\": [\n  { \"The code will be publicly available for the camera-ready version.\": \"publicly available\" },\n  { \"Real-world datasets are from public sources like UCI and GluonTS.\": \"publicly available\" }\n],\n\"robustness_and_ablation_notes\": [\n  { \"Different schedulers for SI were tested on synthetic data.\": \"different schedulers\" },\n  { \"Most gamma-interpolant function combinations achieved good results.\": \"good results\" },\n  { \"Importance sampling was used to stabilize training.\": \"importance sampling\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n  { \"Figure 2 illustrates the model diagram with RNN and SI.\": \"Figure 2\" },\n  { \"Figure 3 shows generated samples for synthetic datasets.\": \"Figure 3\" },\n  { \"Figure 4 shows forecast paths on the Solar dataset.\": \"Figure 4\" },\n  { \"Table 1 reports Wasserstein distances for synthetic data.\": \"Table 1\" },\n  { \"Table 2 reports CRPS-sum metrics for real datasets.\": \"Table 2\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n  { \"1. The core contribution is a framework blending RNNs and Stochastic Interpolants.\": \"blend the computational efficiency\" },\n  { \"2. The strongest evidence is superior CRPS-sum on three of four real datasets.\": \"three out of four\" },\n  { \"3. The future path involves further development of conditional generative models.\": \"future developments\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 10892,
+        "total_tokens": 13049,
+        "completion_tokens": 2157,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 10892,
+      "elapsed_seconds": 188.03747395426035,
+      "max_tokens": 16000,
+      "seed": 293819616,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "a1bcb7699e83ed2d597f460601a36bc85b4dd685a16c4e08c553845f85d3ff2f",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "research_question_and_hypothesis": "evidence quote is not present in fulltext: blend the computational efficiency",
+        "methodological_details": "evidence quote is not present in fulltext: synthetic two-dimensional datasets",
+        "key_results": "evidence quote is not present in fulltext: capture the uncertainty",
+        "claims": "evidence quote is not present in fulltext: capture the uncertainty",
+        "three_takeaways": "evidence quote is not present in fulltext: blend the computational efficiency"
+      }
+    },
+    {
+      "response": "{\n  \"research_question_and_hypothesis\": [\n    {\n      \"The central question is how to combine RNN efficiency with diffusion model quality.\": \"efficiency of recurrent\"\n    },\n    {\n      \"The hypothesis is that mapping from current to future points is more effective than noise-to-data.\": \"more straightforward\"\n    },\n    {\n      \"The method relies on stochastic interpolants extended to conditional generation.\": \"stochastic interpolants\"\n    },\n    {\n      \"It is predicted that this approach will improve probabilistic forecasting performance.\": \"high quality modeling\"\n    },\n    {\n      \"The framework aims to address challenges in high-dimensional complex distributions.\": \"high-dimensional complex distributions\"\n    }\n  ],\n  \"methodological_details\": [\n    {\n      \"The study uses synthetic two-dimensional datasets for initial verification.\": \"two-dimensional datasets\"\n    },\n    {\n      \"Real-world datasets include Solar, Exchange, Traffic, and Wiki.\": \"Solar, Exchange, Traffic\"\n    },\n    {\n      \"The model uses an RNN to encode context into a history prompt.\": \"history prompt\"\n    },\n    {\n      \"Stochastic Interpolants (SI) are used for the generative module.\": \"Stochastic Interpolants\"\n    },\n    {\n      \"The training uses importance sampling with a Beta distribution.\": \"Beta distribution\"\n    },\n    {\n      \"Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.\": \"CRPS-sum\"\n    },\n    {\n      \"Baselines include DDPM, SGM, FM, and Vec-LSTM.\": \"Vec-LSTM\"\n    },\n    {\n      \"The context window length P is a key parameter.\": \"context window\"\n    }\n  ],\n  \"key_results\": [\n    {\n      \"On the Solar dataset, SI achieved a CRPS-sum of 0.359.\": \"0.359\"\n    },\n    {\n      \"On the Exchange dataset, SI achieved a CRPS-sum of 0.007.\": \"0.007\"\n    },\n    {\n      \"On the Traffic dataset, FM outperformed SI with a CRPS-sum of 0.038.\": \"0.038\"\n    },\n    {\n      \"On the Wiki dataset, SI achieved a CRPS-sum of 0.080.\": \"0.080\"\n    },\n    {\n      \"SI outperformed or matched baselines on three out of four datasets.\": \"three out of four\"\n    },\n    {\n      \"The model captured uncertainty effectively on the Solar dataset.\": \"uncertainty\"\n    },\n    {\n      \"Wasserstein distance metrics confirmed good sample quality on synthetic data.\": \"Wasserstein distance\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed SI-based framework outperforms or matches existing generative and recurrent baselines in probabilistic time series forecasting.\",\n      \"supporting_evidence\": [\n        {\n          \"SI achieved the best CRPS-sum on Solar and Exchange datasets.\": \"0.359\"\n        },\n        {\n          \"SI outperformed Vec-LSTM on all datasets.\": \"better performance\"\n        },\n        {\n          \"The model captured uncertainty well on Solar data.\": \"uncertainty\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"FM achieved a lower CRPS-sum on the Traffic dataset.\": \"0.038\"\n        },\n        {\n          \"FM failed on the Wiki dataset.\": \"cannot capture\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"SI is a strong candidate for conditional generation in time series.\": \"strong candidate\"\n        },\n        {\n          \"The framework is suitable for large-scale applications.\": \"large scale\"\n        }\n      ]\n    }\n  ],\n  \"three_takeaways\": [\n    {\n      \"1. The core contribution is a framework blending RNNs and Stochastic Interpolants.\": \"efficiency of recurrent\"\n    },\n    {\n      \"2. The strongest evidence is superior CRPS-sum on three of four real datasets.\": \"three out of four\"\n    },\n    {\n      \"3. The future path involves further development of conditional generative models.\": \"future developments\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 10028,
+        "total_tokens": 11039,
+        "completion_tokens": 1011,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 10028,
+      "elapsed_seconds": 97.54848071932793,
+      "max_tokens": 4096,
+      "seed": 293819617,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "dea03cd49a9e9b7ee66031a453a622be6934f6d66fd756d346ba138952c20086",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "key_results",
+        "claims",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Solar, Exchange, Traffic"
+      }
+    },
+    {
+      "response": "{\n\"methodological_details\": [\n{\n\"The study uses synthetic two-dimensional datasets for initial verification.\": \"two-dimensional datasets\"\n},\n{\n\"Real-world datasets include Solar, Exchange, Traffic, and Wiki.\": \"Solar, Exchange, Traffic,\"\n},\n{\n\"The model uses an RNN to encode context into a history prompt.\": \"history prompt\"\n},\n{\n\"Stochastic Interpolants (SI) are used for the generative module.\": \"Stochastic Interpolants\"\n},\n{\n\"The training uses importance sampling with a Beta distribution.\": \"Beta distribution\"\n},\n{\n\"Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.\": \"CRPS-sum\"\n},\n{\n\"Baselines include DDPM, SGM, FM, and Vec-LSTM.\": \"Vec-LSTM\"\n},\n{\n\"The context window length P is a key parameter.\": \"context window\"\n}\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9289,
+        "total_tokens": 9502,
+        "completion_tokens": 213,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9289,
+      "elapsed_seconds": 16.609697572886944,
+      "max_tokens": 4096,
+      "seed": 293819618,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "9a9e5f3ebc98528b993567806d571f206bcd3d63f6f7feda670356c4893beff3",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Solar, Exchange, Traffic,"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses synthetic two-dimensional datasets for initial verification.\": \"two-dimensional datasets\"\n    },\n    {\n      \"Real-world datasets include Solar, Exchange, Traffic, and Wiki.\": \"Solar, Exchange, Traffic\"\n    },\n    {\n      \"The model uses an RNN to encode context into a history prompt.\": \"history prompt\"\n    },\n    {\n      \"Stochastic Interpolants (SI) are used for the generative module.\": \"Stochastic Interpolants\"\n    },\n    {\n      \"The training uses importance sampling with a Beta distribution.\": \"Beta distribution\"\n    },\n    {\n      \"Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.\": \"CRPS-sum\"\n    },\n    {\n      \"Baselines include DDPM, SGM, FM, and Vec-LSTM.\": \"Vec-LSTM\"\n    },\n    {\n      \"The context window length P is a key parameter.\": \"context window\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9292,
+        "total_tokens": 9535,
+        "completion_tokens": 243,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9292,
+      "elapsed_seconds": 18.1267343275249,
+      "max_tokens": 4096,
+      "seed": 293819619,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "eb50279b40ac3f9c97b2756346b17aa3e6c9a8fb5cccd7c9050f05f4c9c44784",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Solar, Exchange, Traffic"
+      }
+    },
+    {
+      "response": "{\n\"methodological_details\": [\n{\n\"The study uses synthetic two-dimensional datasets for initial verification.\": \"two-dimensional datasets\"\n},\n{\n\"Real-world datasets include Solar, Exchange, Traffic, and Wiki.\": \"Solar, Exchange, Traffic,\"\n},\n{\n\"The model uses an RNN to encode context into a history prompt.\": \"history prompt\"\n},\n{\n\"Stochastic Interpolants (SI) are used for the generative module.\": \"Stochastic Interpolants\"\n},\n{\n\"The training uses importance sampling with a Beta distribution.\": \"Beta distribution\"\n},\n{\n\"Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.\": \"CRPS-sum\"\n},\n{\n\"Baselines include DDPM, SGM, FM, and Vec-LSTM.\": \"Vec-LSTM\"\n},\n{\n\"The context window length P is a key parameter.\": \"context window\"\n}\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9289,
+        "total_tokens": 9502,
+        "completion_tokens": 213,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9289,
+      "elapsed_seconds": 25.312930520623922,
+      "max_tokens": 4096,
+      "seed": 293819620,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "9a9e5f3ebc98528b993567806d571f206bcd3d63f6f7feda670356c4893beff3",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Solar, Exchange, Traffic,"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study uses synthetic two-dimensional datasets for initial verification.\": \"two-dimensional datasets\"\n    },\n    {\n      \"Real-world datasets include Solar, Exchange, Traffic, and Wiki.\": \"Solar [Lai et al., 2018]\"\n    },\n    {\n      \"The model uses an RNN to encode context into a history prompt.\": \"history prompt\"\n    },\n    {\n      \"Stochastic Interpolants (SI) are used for the generative module.\": \"Stochastic Interpolants\"\n    },\n    {\n      \"The training uses importance sampling with a Beta distribution.\": \"Beta distribution\"\n    },\n    {\n      \"Evaluation metrics include CRPS-sum, NRMSE, and Normalized Deviance.\": \"CRPS-sum\"\n    },\n    {\n      \"Baselines include DDPM, SGM, FM, and Vec-LSTM.\": \"Vec-LSTM\"\n    },\n    {\n      \"The context window length P is a key parameter.\": \"context window\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9292,
+        "total_tokens": 9542,
+        "completion_tokens": 250,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9292,
+      "elapsed_seconds": 22.084783393889666,
+      "max_tokens": 4096,
+      "seed": 293819621,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "eb50279b40ac3f9c97b2756346b17aa3e6c9a8fb5cccd7c9050f05f4c9c44784",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 10892,
+  "elapsed_seconds": 368.01529762893915,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

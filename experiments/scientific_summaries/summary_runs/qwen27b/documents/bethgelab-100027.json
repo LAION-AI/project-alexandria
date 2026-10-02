@@ -1,0 +1,938 @@
+{
+  "document_id": "bethgelab-100027",
+  "fulltext_sha256": "d0a94ffc1733d8e398e0d039e28cff7e4b6cb5d0c12246b1bea4712d3ea0c6ac",
+  "summary": {
+    "title": "Robust Brain State Decoding using Bidirectional Long Short Term Memory Networks in functional MRI",
+    "authors": "Anant Mittal, Priya Aggarwal, Luiz Pessoa, Anubha Gupta",
+    "field_subfield": "Neuroscience / Machine Learning",
+    "type_of_paper": "Research Article",
+    "executive_summary": "This study addresses the challenge of decoding brain states from functional MRI (fMRI) data by leveraging temporal dynamics that are often obscured by the inherent latency of the Blood Oxygen Level Dependent (BOLD) response. Traditional approaches typically require manual delay adjustments to synchronize stimuli with BOLD peaks, assuming uniform latency across voxels, which may not hold true due to spatial and temporal variations. The authors propose a Bidirectional Long Short-Term Memory (bi-LSTM) network that explicitly models both past and future temporal contexts without requiring such delay adjustments. By processing fMRI time-series in both forward and reverse directions, the bi-LSTM captures the full dynamic profile of the BOLD response. The model was evaluated on working memory task data from the Human Connectome Project (HCP), involving 400 participants performing 2-back and 0-back tasks with various stimulus categories. The input features were derived from 360 cortical regions of interest (ROIs) averaged over 405 time-points. The bi-LSTM architecture, specifically the concatenation variant (bi-LSTM-c), outperformed the conventional unidirectional LSTM by 18% in classification accuracy, achieving 0.84 ± 0.02 compared to 0.66 ± 0.18. The study also compared performance against a feed-forward neural network, confirming the superiority of temporal modeling. Confusion matrix analysis revealed that while the model generally distinguished stimuli well, it occasionally confused 'body' and 'tools' categories or misclassified task conditions when stimuli were correctly identified. The results suggest that future temporal context is crucial for accurate brain state decoding, and that bi-LSTM networks provide a robust framework for this task without the need for heuristic delay corrections. Future work will focus on tuning window sizes and addressing class imbalance more sophisticatedly.",
+    "research_context": [
+      {
+        "Decoding brain states via discriminative features has gained interest in brain imaging.": "brain imaging studies"
+      },
+      {
+        "There is an impetus to encode brain dynamics using temporal fMRI information.": "temporal information"
+      },
+      {
+        "LSTMs are increasingly observed to perform well in dynamic temporal applications.": "dynamic temporal behavior"
+      },
+      {
+        "Conventional LSTM models do not encode or capture future temporal context.": "future temporal context"
+      },
+      {
+        "BOLD responses have inherent latency, making future context crucial.": "inherent latency"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central question is whether bidirectional LSTM can robustly decode brain states.": "robust brain state decoding"
+      },
+      {
+        "The hypothesis is that capturing past and future instances improves accuracy.": "past and future instances"
+      },
+      {
+        "The model aims to explicitly model BOLD dynamics without delay adjustment.": "without any delay adjustment"
+      },
+      {
+        "The study predicts bi-LSTM will outperform unidirectional LSTM counterparts.": "unidirectional counterpart"
+      },
+      {
+        "The framework utilizes information encapsulation from both time directions.": "information encapsulation"
+      }
+    ],
+    "methodological_details": [
+      {
+        "Data was sourced from the Human Connectome Project working memory task.": "Human Connectome Project"
+      },
+      {
+        "N = 400 participants were randomly selected from the N = 1200 release.": "N = 400 participants"
+      },
+      {
+        "Participants performed a 2-back task and a 0-back control condition.": "2-back"
+      },
+      {
+        "Stimuli included tools, places, faces, and body parts in separate blocks.": "tools, places, faces"
+      },
+      {
+        "Each scan consisted of a 405 time-points long sequence of fMRI volumes.": "405 time-points"
+      },
+      {
+        "Preprocessing included distortion correction, alignment, and intensity normalization.": "distortion correction"
+      },
+      {
+        "Motion-related variables and low-frequency signals were regressed out using AFNI.": "regressed-out"
+      },
+      {
+        "Cortical data was parcellated into 360 regions of interest (ROIs).": "360 cortical regions"
+      },
+      {
+        "Input features were structured as a 360 by 405 2D-tensor.": "360 by 405"
+      },
+      {
+        "No stimuli and brain-state synchronization was performed for delay adjustment.": "No stimuli"
+      },
+      {
+        "Time-points in task blocks were marked as specific brain states.": "marked as present"
+      },
+      {
+        "Fixation blocks were labelled as 'others', yielding S = 9 brain states.": "S = 9 brain states"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The model is a Bidirectional LSTM with forward and reverse hidden layers.": "Bidirectional LSTM"
+      },
+      {
+        "Forward hidden activation is computed using past temporal dependencies.": "forward hidden activation"
+      },
+      {
+        "Backward hidden activation is calculated using future temporal dependency.": "future temporal dependency"
+      },
+      {
+        "Activations are combined via concatenation, addition, or averaging.": "vector concatenation"
+      },
+      {
+        "The last layer is a fully-connected layer with softmax activation.": "softmax activation"
+      },
+      {
+        "The bi-LSTM architecture had two hidden layers with 256 hidden activations.": "256 hidden activations"
+      },
+      {
+        "A fully-connected layer with S = 9 neurons predicted the brain states.": "S = 9 neurons"
+      },
+      {
+        "Inter-subject 10-fold cross-validation was employed for evaluation.": "10-fold cross-validation"
+      },
+      {
+        "Data was split into 9 parts for development and 1 for testing.": "9 parts"
+      },
+      {
+        "The development set was split into 80-20 training-validation sets.": "80-20"
+      },
+      {
+        "Training data was windowed with size w = 40 and overlap of 10.": "w = 40"
+      },
+      {
+        "The model was implemented in the Keras deep learning framework.": "Keras"
+      },
+      {
+        "Training used a GeForce GTX 980 GPU with batch size 32.": "GeForce GTX 980"
+      },
+      {
+        "The ADAM optimizer was used with a learning rate of 0.001.": "learning rate of 0.001"
+      },
+      {
+        "The model was trained for 100 epochs without early stopping.": "100 epochs"
+      },
+      {
+        "A dropout of 0.3 was applied in LSTM layers to prevent over-fitting.": "dropout of 0.3"
+      },
+      {
+        "Class weights were estimated using Sklearn's compute_class_weight routine.": "compute_class_weight"
+      }
+    ],
+    "key_results": [
+      {
+        "The overall accuracy of the unidirectional LSTM model was 0.66 ± 0.18.": "0.66 ± 0.18"
+      },
+      {
+        "The classification accuracy of the bidirectional LSTM (bi-LSTM-c) was 0.84 ± 0.02.": "0.84 ± 0.02"
+      },
+      {
+        "The bi-LSTM performed 18% better than the unidirectional counterpart.": "18% better"
+      },
+      {
+        "LSTM models miss-classify to a larger extent compared to bi-LSTM-c.": "miss-classify to a larger"
+      },
+      {
+        "Misclassification was highest for both models to the 'Others' class.": "Others"
+      },
+      {
+        "Confusion occurred between 'faces' and 'places' stimuli with task conditions.": "faces"
+      },
+      {
+        "The model also gets confused between the stimuli 'body' and 'tools'.": "body"
+      },
+      {
+        "The bi-LSTM-c variant was used for the primary comparison.": "bi-LSTM-c"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The results demonstrate superior performance of Bi-LSTM over unidirectional LSTM.": "superior performance"
+      },
+      {
+        "The model works well without hard-coded delay adjustment.": "without any hard-coded"
+      },
+      {
+        "This emphasizes the availability of useful information in immediate future samples.": "immediate future samples"
+      },
+      {
+        "The framework explicitly models the dynamics of BOLD response.": "dynamics of BOLD"
+      },
+      {
+        "Future temporal context is crucial for capturing BOLD dynamics accurately.": "future temporal context"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The study used a fixed window length, which may not be optimal.": "fixed window length"
+      },
+      {
+        "Future work may involve tuning the window-size and overlap.": "tuning the window-size"
+      },
+      {
+        "The problem of class imbalance still requires more sophisticated handling.": "class imbalance"
+      },
+      {
+        "The model sometimes gets confused between 'body' and 'tools' stimuli.": "body"
+      },
+      {
+        "No early stopping was performed, relying on fixed epochs.": "no early stopping"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Bidirectional LSTM improves brain state decoding accuracy by capturing future temporal context.",
+        "supporting_evidence": [
+          {
+            "Bi-LSTM accuracy was 0.84 compared to LSTM's 0.66.": "0.84 ± 0.02"
+          },
+          {
+            "The improvement was 18% over the unidirectional counterpart.": "18% better"
+          },
+          {
+            "The model captures information from both past and future instances.": "past and future instances"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Confusion remains between specific stimuli like body and tools.": "body"
+          },
+          {
+            "Class imbalance issues persist despite weighting.": "class imbalance"
+          }
+        ],
+        "implications": [
+          {
+            "Future temporal context is essential for accurate BOLD modeling.": "future temporal context"
+          },
+          {
+            "Delay adjustment is not required for this framework.": "without any delay adjustment"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The study compared bi-LSTM with unidirectional LSTM and feed-forward NN.": "feed-forward Neural Network"
+      },
+      {
+        "Different bi-LSTM merging schemes were considered (concat, add, avg).": "element-wise vector addition"
+      },
+      {
+        "Class weights were applied to handle imbalanced classes.": "compute_class_weight"
+      },
+      {
+        "Dropout was used to prevent over-fitting during training.": "dropout of 0.3"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 provides a schematic illustration of the Bidirectional LSTM.": "Fig. 1"
+      },
+      {
+        "Figure 2 illustrates mean normalized confusion matrices for classification.": "Fig. 2"
+      },
+      {
+        "Confusion matrices compare miss-classifications of LSTM and bi-LSTM-c.": "miss-classifications"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a bi-LSTM model for robust brain state decoding.": "robust brain state decoding"
+      },
+      {
+        "2. The strongest evidence is the 18% accuracy improvement over unidirectional LSTM.": "18% better"
+      },
+      {
+        "3. The future path involves tuning window sizes and handling class imbalance.": "tuning the window-size"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis study addresses the challenge of decoding brain states from functional MRI (fMRI) data by leveraging temporal dynamics that are often obscured by the inherent latency of the Blood Oxygen Level Dependent (BOLD) response. Traditional approaches typically require manual delay adjustments to synchronize stimuli with BOLD peaks, assuming uniform latency across voxels, which may not hold true due to spatial and temporal variations. The authors propose a Bidirectional Long Short-Term Memory (bi-LSTM) network that explicitly models both past and future temporal contexts without requiring such delay adjustments. By processing fMRI time-series in both forward and reverse directions, the bi-LSTM captures the full dynamic profile of the BOLD response. The model was evaluated on working memory task data from the Human Connectome Project (HCP), involving 400 participants performing 2-back and 0-back tasks with various stimulus categories. The input features were derived from 360 cortical regions of interest (ROIs) averaged over 405 time-points. The bi-LSTM architecture, specifically the concatenation variant (bi-LSTM-c), outperformed the conventional unidirectional LSTM by 18% in classification accuracy, achieving 0.84 ± 0.02 compared to 0.66 ± 0.18. The study also compared performance against a feed-forward neural network, confirming the superiority of temporal modeling. Confusion matrix analysis revealed that while the model generally distinguished stimuli well, it occasionally confused 'body' and 'tools' categories or misclassified task conditions when stimuli were correctly identified. The results suggest that future temporal context is crucial for accurate brain state decoding, and that bi-LSTM networks provide a robust framework for this task without the need for heuristic delay corrections. Future work will focus on tuning window sizes and addressing class imbalance more sophisticatedly.\n\nResearch Context\nDecoding brain states via discriminative features has gained interest in brain imaging. There is an impetus to encode brain dynamics using temporal fMRI information. LSTMs are increasingly observed to perform well in dynamic temporal applications. Conventional LSTM models do not encode or capture future temporal context. BOLD responses have inherent latency, making future context crucial.\n\nResearch Question And Hypothesis\nThe central question is whether bidirectional LSTM can robustly decode brain states. The hypothesis is that capturing past and future instances improves accuracy. The model aims to explicitly model BOLD dynamics without delay adjustment. The study predicts bi-LSTM will outperform unidirectional LSTM counterparts. The framework utilizes information encapsulation from both time directions.\n\nMethodological Details\nData was sourced from the Human Connectome Project working memory task. N = 400 participants were randomly selected from the N = 1200 release. Participants performed a 2-back task and a 0-back control condition. Stimuli included tools, places, faces, and body parts in separate blocks. Each scan consisted of a 405 time-points long sequence of fMRI volumes. Preprocessing included distortion correction, alignment, and intensity normalization. Motion-related variables and low-frequency signals were regressed out using AFNI. Cortical data was parcellated into 360 regions of interest (ROIs). Input features were structured as a 360 by 405 2D-tensor. No stimuli and brain-state synchronization was performed for delay adjustment. Time-points in task blocks were marked as specific brain states. Fixation blocks were labelled as 'others', yielding S = 9 brain states.\n\nProcedures And Architectures\nThe model is a Bidirectional LSTM with forward and reverse hidden layers. Forward hidden activation is computed using past temporal dependencies. Backward hidden activation is calculated using future temporal dependency. Activations are combined via concatenation, addition, or averaging. The last layer is a fully-connected layer with softmax activation. The bi-LSTM architecture had two hidden layers with 256 hidden activations. A fully-connected layer with S = 9 neurons predicted the brain states. Inter-subject 10-fold cross-validation was employed for evaluation. Data was split into 9 parts for development and 1 for testing. The development set was split into 80-20 training-validation sets. Training data was windowed with size w = 40 and overlap of 10. The model was implemented in the Keras deep learning framework. Training used a GeForce GTX 980 GPU with batch size 32. The ADAM optimizer was used with a learning rate of 0.001. The model was trained for 100 epochs without early stopping. A dropout of 0.3 was applied in LSTM layers to prevent over-fitting. Class weights were estimated using Sklearn's compute_class_weight routine.\n\nKey Results\nThe overall accuracy of the unidirectional LSTM model was 0.66 ± 0.18. The classification accuracy of the bidirectional LSTM (bi-LSTM-c) was 0.84 ± 0.02. The bi-LSTM performed 18% better than the unidirectional counterpart. LSTM models miss-classify to a larger extent compared to bi-LSTM-c. Misclassification was highest for both models to the 'Others' class. Confusion occurred between 'faces' and 'places' stimuli with task conditions. The model also gets confused between the stimuli 'body' and 'tools'. The bi-LSTM-c variant was used for the primary comparison.\n\nInterpretation And Theoretical Implications\nThe results demonstrate superior performance of Bi-LSTM over unidirectional LSTM. The model works well without hard-coded delay adjustment. This emphasizes the availability of useful information in immediate future samples. The framework explicitly models the dynamics of BOLD response. Future temporal context is crucial for capturing BOLD dynamics accurately.\n\nContradictions And Limitations\nThe study used a fixed window length, which may not be optimal. Future work may involve tuning the window-size and overlap. The problem of class imbalance still requires more sophisticated handling. The model sometimes gets confused between 'body' and 'tools' stimuli. No early stopping was performed, relying on fixed epochs.\n\nClaims\nBidirectional LSTM improves brain state decoding accuracy by capturing future temporal context. Bi-LSTM accuracy was 0.84 compared to LSTM's 0.66. The improvement was 18% over the unidirectional counterpart. The model captures information from both past and future instances. Confusion remains between specific stimuli like body and tools. Class imbalance issues persist despite weighting. Future temporal context is essential for accurate BOLD modeling. Delay adjustment is not required for this framework.\n\nRobustness And Ablation Notes\nThe study compared bi-LSTM with unidirectional LSTM and feed-forward NN. Different bi-LSTM merging schemes were considered (concat, add, avg). Class weights were applied to handle imbalanced classes. Dropout was used to prevent over-fitting during training.\n\nKey Figures Tables\nFigure 1 provides a schematic illustration of the Bidirectional LSTM. Figure 2 illustrates mean normalized confusion matrices for classification. Confusion matrices compare miss-classifications of LSTM and bi-LSTM-c.\n\nThree Takeaways\n1. The core contribution is a bi-LSTM model for robust brain state decoding. 2. The strongest evidence is the 18% accuracy improvement over unidirectional LSTM. 3. The future path involves tuning window sizes and handling class imbalance.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "brain imaging studies",
+      "start": 486,
+      "end": 507,
+      "typographic_alignment": false,
+      "original_quote": "brain imaging studies"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "temporal information",
+      "start": 606,
+      "end": 626,
+      "typographic_alignment": false,
+      "original_quote": "temporal information"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "dynamic temporal behavior",
+      "start": 829,
+      "end": 854,
+      "typographic_alignment": false,
+      "original_quote": "dynamic temporal behavior"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "future temporal context",
+      "start": 957,
+      "end": 980,
+      "typographic_alignment": false,
+      "original_quote": "future temporal context"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "inherent latency",
+      "start": 916,
+      "end": 932,
+      "typographic_alignment": false,
+      "original_quote": "inherent latency"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "robust brain state decoding",
+      "start": 1089,
+      "end": 1116,
+      "typographic_alignment": false,
+      "original_quote": "robust brain state decoding"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "past and future instances",
+      "start": 1161,
+      "end": 1186,
+      "typographic_alignment": false,
+      "original_quote": "past and future instances"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "without any delay adjustment",
+      "start": 1291,
+      "end": 1319,
+      "typographic_alignment": false,
+      "original_quote": "without any delay adjustment"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "unidirectional counterpart",
+      "start": 1651,
+      "end": 1677,
+      "typographic_alignment": false,
+      "original_quote": "unidirectional counterpart"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "information encapsulation",
+      "start": 1121,
+      "end": 1146,
+      "typographic_alignment": false,
+      "original_quote": "information encapsulation"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "Human Connectome Project",
+      "start": 1544,
+      "end": 1568,
+      "typographic_alignment": false,
+      "original_quote": "Human Connectome Project"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "N = 400 participants",
+      "start": 5522,
+      "end": 5542,
+      "typographic_alignment": false,
+      "original_quote": "N = 400 participants"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "2-back",
+      "start": 5715,
+      "end": 5721,
+      "typographic_alignment": false,
+      "original_quote": "2-back"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "tools, places, faces",
+      "start": 5966,
+      "end": 5986,
+      "typographic_alignment": false,
+      "original_quote": "tools, places, faces"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "405 time-points",
+      "start": 6339,
+      "end": 6354,
+      "typographic_alignment": false,
+      "original_quote": "405 time-points"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "distortion correction",
+      "start": 6552,
+      "end": 6573,
+      "typographic_alignment": false,
+      "original_quote": "distortion correction"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "regressed-out",
+      "start": 6732,
+      "end": 6745,
+      "typographic_alignment": false,
+      "original_quote": "regressed-out"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "360 cortical regions",
+      "start": 7354,
+      "end": 7374,
+      "typographic_alignment": false,
+      "original_quote": "360 cortical regions"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "360 by 405",
+      "start": 7562,
+      "end": 7572,
+      "typographic_alignment": false,
+      "original_quote": "360 by 405"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "No stimuli",
+      "start": 7584,
+      "end": 7594,
+      "typographic_alignment": false,
+      "original_quote": "No stimuli"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "marked as present",
+      "start": 7737,
+      "end": 7754,
+      "typographic_alignment": false,
+      "original_quote": "marked as present"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "S = 9 brain states",
+      "start": 7900,
+      "end": 7918,
+      "typographic_alignment": false,
+      "original_quote": "S = 9 brain states"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "Bidirectional LSTM",
+      "start": 4608,
+      "end": 4626,
+      "typographic_alignment": false,
+      "original_quote": "Bidirectional LSTM"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "forward hidden activation",
+      "start": 9093,
+      "end": 9118,
+      "typographic_alignment": false,
+      "original_quote": "forward hidden activation"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "future temporal dependency",
+      "start": 9220,
+      "end": 9246,
+      "typographic_alignment": false,
+      "original_quote": "future temporal dependency"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "vector concatenation",
+      "start": 9476,
+      "end": 9496,
+      "typographic_alignment": false,
+      "original_quote": "vector concatenation"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "softmax activation",
+      "start": 9893,
+      "end": 9911,
+      "typographic_alignment": false,
+      "original_quote": "softmax activation"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "256 hidden activations",
+      "start": 10367,
+      "end": 10389,
+      "typographic_alignment": false,
+      "original_quote": "256 hidden activations"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "S = 9 neurons",
+      "start": 10482,
+      "end": 10495,
+      "typographic_alignment": false,
+      "original_quote": "S = 9 neurons"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "10-fold cross-validation",
+      "start": 10551,
+      "end": 10575,
+      "typographic_alignment": false,
+      "original_quote": "10-fold cross-validation"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "9 parts",
+      "start": 10644,
+      "end": 10651,
+      "typographic_alignment": false,
+      "original_quote": "9 parts"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "80-20",
+      "start": 10874,
+      "end": 10879,
+      "typographic_alignment": false,
+      "original_quote": "80-20"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "w = 40",
+      "start": 11215,
+      "end": 11221,
+      "typographic_alignment": false,
+      "original_quote": "w = 40"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "Keras",
+      "start": 11296,
+      "end": 11301,
+      "typographic_alignment": false,
+      "original_quote": "Keras"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "GeForce GTX 980",
+      "start": 11356,
+      "end": 11371,
+      "typographic_alignment": false,
+      "original_quote": "GeForce GTX 980"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "learning rate of 0.001",
+      "start": 11429,
+      "end": 11451,
+      "typographic_alignment": false,
+      "original_quote": "learning rate of 0.001"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "100 epochs",
+      "start": 11479,
+      "end": 11489,
+      "typographic_alignment": false,
+      "original_quote": "100 epochs"
+    },
+    {
+      "path": "procedures_and_architectures[15]",
+      "quote": "dropout of 0.3",
+      "start": 11569,
+      "end": 11583,
+      "typographic_alignment": false,
+      "original_quote": "dropout of 0.3"
+    },
+    {
+      "path": "procedures_and_architectures[16]",
+      "quote": "compute_class_weight",
+      "start": 11893,
+      "end": 11913,
+      "typographic_alignment": false,
+      "original_quote": "compute_class_weight"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "0.66 ± 0.18",
+      "start": 12735,
+      "end": 12746,
+      "typographic_alignment": false,
+      "original_quote": "0.66 ± 0.18"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "0.84 ± 0.02",
+      "start": 12826,
+      "end": 12837,
+      "typographic_alignment": false,
+      "original_quote": "0.84 ± 0.02"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "18% better",
+      "start": 1630,
+      "end": 1640,
+      "typographic_alignment": false,
+      "original_quote": "18% better"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "miss-classify to a larger",
+      "start": 12877,
+      "end": 12902,
+      "typographic_alignment": false,
+      "original_quote": "miss-classify to a larger"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "Others",
+      "start": 13013,
+      "end": 13019,
+      "typographic_alignment": false,
+      "original_quote": "Others"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "faces",
+      "start": 5981,
+      "end": 5986,
+      "typographic_alignment": false,
+      "original_quote": "faces"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "body",
+      "start": 5992,
+      "end": 5996,
+      "typographic_alignment": false,
+      "original_quote": "body"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "bi-LSTM-c",
+      "start": 9498,
+      "end": 9507,
+      "typographic_alignment": false,
+      "original_quote": "bi-LSTM-c"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "superior performance",
+      "start": 13577,
+      "end": 13597,
+      "typographic_alignment": false,
+      "original_quote": "superior performance"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "without any hard-coded",
+      "start": 13677,
+      "end": 13699,
+      "typographic_alignment": false,
+      "original_quote": "without any hard-coded"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "immediate future samples",
+      "start": 13776,
+      "end": 13800,
+      "typographic_alignment": false,
+      "original_quote": "immediate future samples"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "dynamics of BOLD",
+      "start": 1265,
+      "end": 1281,
+      "typographic_alignment": false,
+      "original_quote": "dynamics of BOLD"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "future temporal context",
+      "start": 957,
+      "end": 980,
+      "typographic_alignment": false,
+      "original_quote": "future temporal context"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "fixed window length",
+      "start": 13829,
+      "end": 13848,
+      "typographic_alignment": false,
+      "original_quote": "fixed window length"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "tuning the window-size",
+      "start": 13883,
+      "end": 13905,
+      "typographic_alignment": false,
+      "original_quote": "tuning the window-size"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "class imbalance",
+      "start": 13959,
+      "end": 13974,
+      "typographic_alignment": false,
+      "original_quote": "class imbalance"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "body",
+      "start": 5992,
+      "end": 5996,
+      "typographic_alignment": false,
+      "original_quote": "body"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "no early stopping",
+      "start": 11494,
+      "end": 11511,
+      "typographic_alignment": false,
+      "original_quote": "no early stopping"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "feed-forward Neural Network",
+      "start": 12194,
+      "end": 12221,
+      "typographic_alignment": false,
+      "original_quote": "feed-forward Neural Network"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "element-wise vector addition",
+      "start": 9510,
+      "end": 9538,
+      "typographic_alignment": false,
+      "original_quote": "element-wise vector addition"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "compute_class_weight",
+      "start": 11893,
+      "end": 11913,
+      "typographic_alignment": false,
+      "original_quote": "compute_class_weight"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "dropout of 0.3",
+      "start": 11569,
+      "end": 11583,
+      "typographic_alignment": false,
+      "original_quote": "dropout of 0.3"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Fig. 1",
+      "start": 8981,
+      "end": 8987,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 1"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Fig. 2",
+      "start": 12603,
+      "end": 12609,
+      "typographic_alignment": false,
+      "original_quote": "Fig. 2"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "miss-classifications",
+      "start": 12628,
+      "end": 12648,
+      "typographic_alignment": false,
+      "original_quote": "miss-classifications"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "robust brain state decoding",
+      "start": 1089,
+      "end": 1116,
+      "typographic_alignment": false,
+      "original_quote": "robust brain state decoding"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "18% better",
+      "start": 1630,
+      "end": 1640,
+      "typographic_alignment": false,
+      "original_quote": "18% better"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "tuning the window-size",
+      "start": 13883,
+      "end": 13905,
+      "typographic_alignment": false,
+      "original_quote": "tuning the window-size"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "0.84 ± 0.02",
+      "start": 12826,
+      "end": 12837,
+      "typographic_alignment": false,
+      "original_quote": "0.84 ± 0.02"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "18% better",
+      "start": 1630,
+      "end": 1640,
+      "typographic_alignment": false,
+      "original_quote": "18% better"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "past and future instances",
+      "start": 1161,
+      "end": 1186,
+      "typographic_alignment": false,
+      "original_quote": "past and future instances"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "body",
+      "start": 5992,
+      "end": 5996,
+      "typographic_alignment": false,
+      "original_quote": "body"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "class imbalance",
+      "start": 13959,
+      "end": 13974,
+      "typographic_alignment": false,
+      "original_quote": "class imbalance"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "future temporal context",
+      "start": 957,
+      "end": 980,
+      "typographic_alignment": false,
+      "original_quote": "future temporal context"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "without any delay adjustment",
+      "start": 1291,
+      "end": 1319,
+      "typographic_alignment": false,
+      "original_quote": "without any delay adjustment"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"Robust Brain State Decoding using Bidirectional Long Short Term Memory Networks in functional MRI\",\n\"authors\": \"Anant Mittal, Priya Aggarwal, Luiz Pessoa, Anubha Gupta\",\n\"field_subfield\": \"Neuroscience / Machine Learning\",\n\"type_of_paper\": \"Research Article\",\n\"executive_summary\": \"This study addresses the challenge of decoding brain states from functional MRI (fMRI) data by leveraging temporal dynamics that are often obscured by the inherent latency of the Blood Oxygen Level Dependent (BOLD) response. Traditional approaches typically require manual delay adjustments to synchronize stimuli with BOLD peaks, assuming uniform latency across voxels, which may not hold true due to spatial and temporal variations. The authors propose a Bidirectional Long Short-Term Memory (bi-LSTM) network that explicitly models both past and future temporal contexts without requiring such delay adjustments. By processing fMRI time-series in both forward and reverse directions, the bi-LSTM captures the full dynamic profile of the BOLD response. The model was evaluated on working memory task data from the Human Connectome Project (HCP), involving 400 participants performing 2-back and 0-back tasks with various stimulus categories. The input features were derived from 360 cortical regions of interest (ROIs) averaged over 405 time-points. The bi-LSTM architecture, specifically the concatenation variant (bi-LSTM-c), outperformed the conventional unidirectional LSTM by 18% in classification accuracy, achieving 0.84 ± 0.02 compared to 0.66 ± 0.18. The study also compared performance against a feed-forward neural network, confirming the superiority of temporal modeling. Confusion matrix analysis revealed that while the model generally distinguished stimuli well, it occasionally confused 'body' and 'tools' categories or misclassified task conditions when stimuli were correctly identified. The results suggest that future temporal context is crucial for accurate brain state decoding, and that bi-LSTM networks provide a robust framework for this task without the need for heuristic delay corrections. Future work will focus on tuning window sizes and addressing class imbalance more sophisticatedly.\",\n\"research_context\": [\n  { \"Decoding brain states via discriminative features has gained interest in brain imaging.\": \"brain imaging studies\" },\n  { \"There is an impetus to encode brain dynamics using temporal fMRI information.\": \"temporal information\" },\n  { \"LSTMs are increasingly observed to perform well in dynamic temporal applications.\": \"dynamic temporal behavior\" },\n  { \"Conventional LSTM models do not encode or capture future temporal context.\": \"future temporal context\" },\n  { \"BOLD responses have inherent latency, making future context crucial.\": \"inherent latency\" }\n],\n\"research_question_and_hypothesis\": [\n  { \"The central question is whether bidirectional LSTM can robustly decode brain states.\": \"robust brain state decoding\" },\n  { \"The hypothesis is that capturing past and future instances improves accuracy.\": \"past and future instances\" },\n  { \"The model aims to explicitly model BOLD dynamics without delay adjustment.\": \"without any delay adjustment\" },\n  { \"The study predicts bi-LSTM will outperform unidirectional LSTM counterparts.\": \"unidirectional counterpart\" },\n  { \"The framework utilizes information encapsulation from both time directions.\": \"information encapsulation\" }\n],\n\"methodological_details\": [\n  { \"Data was sourced from the Human Connectome Project working memory task.\": \"Human Connectome Project\" },\n  { \"N = 400 participants were randomly selected from the N = 1200 release.\": \"N = 400 participants\" },\n  { \"Participants performed a 2-back task and a 0-back control condition.\": \"2-back task\" },\n  { \"Stimuli included tools, places, faces, and body parts in separate blocks.\": \"tools, places, faces\" },\n  { \"Each scan consisted of a 405 time-points long sequence of fMRI volumes.\": \"405 time-points\" },\n  { \"Preprocessing included distortion correction, alignment, and intensity normalization.\": \"distortion correction\" },\n  { \"Motion-related variables and low-frequency signals were regressed out using AFNI.\": \"regressed-out\" },\n  { \"Cortical data was parcellated into 360 regions of interest (ROIs).\": \"360 cortical regions\" },\n  { \"Input features were structured as a 360 by 405 2D-tensor.\": \"360 by 405\" },\n  { \"No stimuli and brain-state synchronization was performed for delay adjustment.\": \"No stimuli\" },\n  { \"Time-points in task blocks were marked as specific brain states.\": \"marked as present\" },\n  { \"Fixation blocks were labelled as 'others', yielding S = 9 brain states.\": \"S = 9 brain states\" }\n],\n\"procedures_and_architectures\": [\n  { \"The model is a Bidirectional LSTM with forward and reverse hidden layers.\": \"Bidirectional LSTM\" },\n  { \"Forward hidden activation is computed using past temporal dependencies.\": \"forward hidden activation\" },\n  { \"Backward hidden activation is calculated using future temporal dependency.\": \"future temporal dependency\" },\n  { \"Activations are combined via concatenation, addition, or averaging.\": \"vector concatenation\" },\n  { \"The last layer is a fully-connected layer with softmax activation.\": \"softmax activation\" },\n  { \"The bi-LSTM architecture had two hidden layers with 256 hidden activations.\": \"256 hidden activations\" },\n  { \"A fully-connected layer with S = 9 neurons predicted the brain states.\": \"S = 9 neurons\" },\n  { \"Inter-subject 10-fold cross-validation was employed for evaluation.\": \"10-fold cross-validation\" },\n  { \"Data was split into 9 parts for development and 1 for testing.\": \"9 parts\" },\n  { \"The development set was split into 80-20 training-validation sets.\": \"80-20\" },\n  { \"Training data was windowed with size w = 40 and overlap of 10.\": \"w = 40\" },\n  { \"The model was implemented in the Keras deep learning framework.\": \"Keras\" },\n  { \"Training used a GeForce GTX 980 GPU with batch size 32.\": \"GeForce GTX 980\" },\n  { \"The ADAM optimizer was used with a learning rate of 0.001.\": \"learning rate of 0.001\" },\n  { \"The model was trained for 100 epochs without early stopping.\": \"100 epochs\" },\n  { \"A dropout of 0.3 was applied in LSTM layers to prevent over-fitting.\": \"dropout of 0.3\" },\n  { \"Class weights were estimated using Sklearn's compute_class_weight routine.\": \"compute_class_weight\" }\n],\n\"key_results\": [\n  { \"The overall accuracy of the unidirectional LSTM model was 0.66 ± 0.18.\": \"0.66 ± 0.18\" },\n  { \"The classification accuracy of the bidirectional LSTM (bi-LSTM-c) was 0.84 ± 0.02.\": \"0.84 ± 0.02\" },\n  { \"The bi-LSTM performed 18% better than the unidirectional counterpart.\": \"18% better\" },\n  { \"LSTM models miss-classify to a larger extent compared to bi-LSTM-c.\": \"miss-classify to a larger\" },\n  { \"Misclassification was highest for both models to the 'Others' class.\": \"'Others' class\" },\n  { \"Confusion occurred between 'faces' and 'places' stimuli with task conditions.\": \"'faces' and 'places'\" },\n  { \"The model also gets confused between the stimuli 'body' and 'tools'.\": \"'body' and 'tools'\" },\n  { \"The bi-LSTM-c variant was used for the primary comparison.\": \"bi-LSTM-c\" }\n],\n\"interpretation_and_theoretical_implications\": [\n  { \"The results demonstrate superior performance of Bi-LSTM over unidirectional LSTM.\": \"superior performance\" },\n  { \"The model works well without hard-coded delay adjustment.\": \"without any hard-coded\" },\n  { \"This emphasizes the availability of useful information in immediate future samples.\": \"immediate future samples\" },\n  { \"The framework explicitly models the dynamics of BOLD response.\": \"dynamics of BOLD\" },\n  { \"Future temporal context is crucial for capturing BOLD dynamics accurately.\": \"future temporal context\" }\n],\n\"contradictions_and_limitations\": [\n  { \"The study used a fixed window length, which may not be optimal.\": \"fixed window length\" },\n  { \"Future work may involve tuning the window-size and overlap.\": \"tuning the window-size\" },\n  { \"The problem of class imbalance still requires more sophisticated handling.\": \"class imbalance\" },\n  { \"The model sometimes gets confused between 'body' and 'tools' stimuli.\": \"'body' and 'tools'\" },\n  { \"No early stopping was performed, relying on fixed epochs.\": \"no early stopping\" }\n],\n\"claims\": [\n  {\n    \"description\": \"Bidirectional LSTM improves brain state decoding accuracy by capturing future temporal context.\",\n    \"supporting_evidence\": [\n      { \"Bi-LSTM accuracy was 0.84 compared to LSTM's 0.66.\": \"0.84 ± 0.02\" },\n      { \"The improvement was 18% over the unidirectional counterpart.\": \"18% better\" },\n      { \"The model captures information from both past and future instances.\": \"past and future instances\" }\n    ],\n    \"contradicting_evidence\": [\n      { \"Confusion remains between specific stimuli like body and tools.\": \"'body' and 'tools'\" },\n      { \"Class imbalance issues persist despite weighting.\": \"class imbalance\" }\n    ],\n    \"implications\": [\n      { \"Future temporal context is essential for accurate BOLD modeling.\": \"future temporal context\" },\n      { \"Delay adjustment is not required for this framework.\": \"without any delay adjustment\" }\n    ]\n  }\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n  { \"The study compared bi-LSTM with unidirectional LSTM and feed-forward NN.\": \"feed-forward Neural Network\" },\n  { \"Different bi-LSTM merging schemes were considered (concat, add, avg).\": \"element-wise vector addition\" },\n  { \"Class weights were applied to handle imbalanced classes.\": \"compute_class_weight\" },\n  { \"Dropout was used to prevent over-fitting during training.\": \"dropout of 0.3\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n  { \"Figure 1 provides a schematic illustration of the Bidirectional LSTM.\": \"Fig. 1\" },\n  { \"Figure 2 illustrates mean normalized confusion matrices for classification.\": \"Fig. 2\" },\n  { \"Confusion matrices compare miss-classifications of LSTM and bi-LSTM-c.\": \"miss-classifications\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n  { \"1. The core contribution is a bi-LSTM model for robust brain state decoding.\": \"robust brain state decoding\" },\n  { \"2. The strongest evidence is the 18% accuracy improvement over unidirectional LSTM.\": \"18% better\" },\n  { \"3. The future path involves tuning window sizes and handling class imbalance.\": \"tuning the window-size\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5020,
+        "total_tokens": 7646,
+        "completion_tokens": 2626,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5020,
+      "elapsed_seconds": 219.39904154464602,
+      "max_tokens": 16000,
+      "seed": 630505635,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "3c860a7e2f7db3905d9256fff4e25e24e2205a9cc885e55ab69cabe09dc02530",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: 2-back task",
+        "key_results": "evidence quote is not present in fulltext: 'Others' class",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: 'body' and 'tools'",
+        "claims": "evidence quote is not present in fulltext: 'body' and 'tools'"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"Data was sourced from the Human Connectome Project working memory task.\": \"Human Connectome Project\"\n    },\n    {\n      \"N = 400 participants were randomly selected from the N = 1200 release.\": \"N = 400 participants\"\n    },\n    {\n      \"Participants performed a 2-back task and a 0-back control condition.\": \"2-back\"\n    },\n    {\n      \"Stimuli included tools, places, faces, and body parts in separate blocks.\": \"tools, places, faces\"\n    },\n    {\n      \"Each scan consisted of a 405 time-points long sequence of fMRI volumes.\": \"405 time-points\"\n    },\n    {\n      \"Preprocessing included distortion correction, alignment, and intensity normalization.\": \"distortion correction\"\n    },\n    {\n      \"Motion-related variables and low-frequency signals were regressed out using AFNI.\": \"regressed-out\"\n    },\n    {\n      \"Cortical data was parcellated into 360 regions of interest (ROIs).\": \"360 cortical regions\"\n    },\n    {\n      \"Input features were structured as a 360 by 405 2D-tensor.\": \"360 by 405\"\n    },\n    {\n      \"No stimuli and brain-state synchronization was performed for delay adjustment.\": \"No stimuli\"\n    },\n    {\n      \"Time-points in task blocks were marked as specific brain states.\": \"marked as present\"\n    },\n    {\n      \"Fixation blocks were labelled as 'others', yielding S = 9 brain states.\": \"S = 9 brain states\"\n    }\n  ],\n  \"key_results\": [\n    {\n      \"The overall accuracy of the unidirectional LSTM model was 0.66 ± 0.18.\": \"0.66 ± 0.18\"\n    },\n    {\n      \"The classification accuracy of the bidirectional LSTM (bi-LSTM-c) was 0.84 ± 0.02.\": \"0.84 ± 0.02\"\n    },\n    {\n      \"The bi-LSTM performed 18% better than the unidirectional counterpart.\": \"18% better\"\n    },\n    {\n      \"LSTM models miss-classify to a larger extent compared to bi-LSTM-c.\": \"miss-classify to a larger\"\n    },\n    {\n      \"Misclassification was highest for both models to the 'Others' class.\": \"Others\"\n    },\n    {\n      \"Confusion occurred between 'faces' and 'places' stimuli with task conditions.\": \"faces\"\n    },\n    {\n      \"The model also gets confused between the stimuli 'body' and 'tools'.\": \"body\"\n    },\n    {\n      \"The bi-LSTM-c variant was used for the primary comparison.\": \"bi-LSTM-c\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The study used a fixed window length, which may not be optimal.\": \"fixed window length\"\n    },\n    {\n      \"Future work may involve tuning the window-size and overlap.\": \"tuning the window-size\"\n    },\n    {\n      \"The problem of class imbalance still requires more sophisticated handling.\": \"class imbalance\"\n    },\n    {\n      \"The model sometimes gets confused between 'body' and 'tools' stimuli.\": \"body\"\n    },\n    {\n      \"No early stopping was performed, relying on fixed epochs.\": \"no early stopping\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"Bidirectional LSTM improves brain state decoding accuracy by capturing future temporal context.\",\n      \"supporting_evidence\": [\n        {\n          \"Bi-LSTM accuracy was 0.84 compared to LSTM's 0.66.\": \"0.84 ± 0.02\"\n        },\n        {\n          \"The improvement was 18% over the unidirectional counterpart.\": \"18% better\"\n        },\n        {\n          \"The model captures information from both past and future instances.\": \"past and future instances\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Confusion remains between specific stimuli like body and tools.\": \"body\"\n        },\n        {\n          \"Class imbalance issues persist despite weighting.\": \"class imbalance\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Future temporal context is essential for accurate BOLD modeling.\": \"future temporal context\"\n        },\n        {\n          \"Delay adjustment is not required for this framework.\": \"without any delay adjustment\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4258,
+        "total_tokens": 5364,
+        "completion_tokens": 1106,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4258,
+      "elapsed_seconds": 102.55986822023988,
+      "max_tokens": 4096,
+      "seed": 630505636,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "cc0ffb5bb3c1444734dda1a21bb1eda11dc4c572f358af5cf59c366440a6206a",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "key_results",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 5020,
+  "elapsed_seconds": 322.0336157977581,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

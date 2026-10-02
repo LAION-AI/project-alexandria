@@ -1,0 +1,778 @@
+{
+  "document_id": "bethgelab-50015",
+  "fulltext_sha256": "0bf9b205e3a6d1c88f5d9b2acfe868ac55f05e758fba034533eae6c292c1adee",
+  "summary": {
+    "title": "ProNetView-ccRCC: A web-based portal to interactively explore clear cell renal cell carcinoma proteogenomics networks",
+    "authors": "Selim Kalayci; Francesca Petralia; Pei Wang; Zeynep H Gümüş",
+    "field_subfield": "Bioinformatics; Cancer Proteogenomics",
+    "type_of_paper": "Software/Tool Description",
+    "executive_summary": "The National Cancer Institute's Clinical Proteomics Tumor Analysis Consortium (CPTAC) has generated comprehensive proteogenomic data for various cancer types, including clear cell renal cell carcinoma (ccRCC). While gene/protein regulatory networks derived from these profiles offer system-level insights, visualizing and navigating these complex, high-dimensional networks remains a significant challenge. Existing tools often provide static 2D visualizations that are ill-suited for interactive exploration or integrating clinical metadata. To address this gap, the authors introduce ProNetView-ccRCC, an open-access, web-based portal designed for the intuitive visual exploration of ccRCC phosphopeptide co-expression networks. The portal features a 3D network exploration interface built on the Three.js framework, allowing users to rotate and zoom through a network comprising 3,614 genes and 30 functional pathway-enriched modules. Users can interactively query specific genes, such as the oncogene ERG, to view their connections, associated phosphopeptides, and correlations with clinical variables like tumor grade. The tool integrates metadata from CPTAC studies, including pathway enrichment results and clinical outcomes, enabling researchers to link molecular network structures with phenotypic data. By utilizing standard client-side libraries like D3.js and Bootstrap, ProNetView-ccRCC runs on modern web browsers without requiring additional plugins. This resource aims to facilitate hypothesis generation and data interpretation for the cancer research community by providing a centralized, interactive environment for exploring the complex regulatory factories underlying ccRCC.",
+    "research_context": [
+      {
+        "CPTAC has performed comprehensive proteogenomic characterizations of multiple cancer types.": "proteogenomic characterizations"
+      },
+      {
+        "Gene/protein regulatory networks derived from these profiles serve as useful tools for system-level understanding.": "system-level understanding"
+      },
+      {
+        "It remains a challenge to effectively visualize and navigate the resulting network models.": "challenge to effectively visualize"
+      },
+      {
+        "There is a pressing need for a new open community resource tool.": "pressing need"
+      },
+      {
+        "Current network visualization tools are mainly used for static 2D images.": "static 2D images"
+      },
+      {
+        "These tools are not well suited for user-initiated interactive network explorations.": "interactive network explorations"
+      },
+      {
+        "A centralized platform customized for CPTAC co-expression networks is necessary.": "centralized platform"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The study aims to provide an intuitive visual exploration tool for CPTAC ccRCC networks.": "intuitive visual exploration"
+      },
+      {
+        "The tool should allow users to navigate complex phosphopeptide co-expression networks.": "phosphopeptide co-expression network"
+      },
+      {
+        "Users need to query associations between phosphopeptide abundance and clinical variables.": "clinical variables"
+      },
+      {
+        "The portal must integrate functional pathway-enriched network modules with the main network.": "functional pathway-enriched"
+      },
+      {
+        "The system should enable quick, user-intuitive interactions with the network topology.": "user-intuitive visual interactions"
+      },
+      {
+        "The goal is to facilitate hypothesis generation for future studies.": "hypothesis generation"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The network characterizes co-expression patterns among 20,976 phosphopeptides in ccRCC.": "20,976 phosphopeptides"
+      },
+      {
+        "The network was derived using a random-forest based network construction algorithm.": "random-forest based"
+      },
+      {
+        "The data source includes phospho-peptide level data of 103 ccRCC samples.": "103 ccRCC samples"
+      },
+      {
+        "Two genes are connected if at least two phosphopeptides mapping to them are associated.": "at least two phosphopeptides"
+      },
+      {
+        "Network modules were derived using the Glay clustering algorithm.": "Glay [13] clustering"
+      },
+      {
+        "30 modules containing at least 20 genes were identified.": "30 modules"
+      },
+      {
+        "Pathway enrichment analysis was performed via Fisher Exact test.": "Fisher Exact test"
+      },
+      {
+        "The portal displays 3,614 genes in the co-expression network.": "3,614 genes"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The portal enables interactive explorations in 3D using the Three.js framework.": "Three.js framework"
+      },
+      {
+        "Network layouts were calculated using 3D layout algorithms within iCAVE.": "3D layout algorithms"
+      },
+      {
+        "Client-side Javascript libraries like D3.js and dataTables.js handle user interactions.": "D3.js"
+      },
+      {
+        "Bootstrap v3.3.7 is used for styling web interface elements.": "Bootstrap v3.3.7"
+      },
+      {
+        "The portal runs on all modern web browsers without additional plug-ins.": "modern web browsers"
+      },
+      {
+        "Users can rotate and zoom in/out the 3D view.": "rotating and zooming"
+      },
+      {
+        "Node sizes are proportional to the number of connections.": "proportional to the number"
+      },
+      {
+        "Clicking a node displays associated gene-level meta-data in a separate panel.": "gene-level meta-data"
+      }
+    ],
+    "key_results": [
+      {
+        "The portal displays a network comprised of 3,614 genes.": "3,614 genes"
+      },
+      {
+        "The network includes 30 functional pathway-enriched network modules.": "30 functional pathway-enriched"
+      },
+      {
+        "Six modules were significantly associated with biological pathways.": "Six modules"
+      },
+      {
+        "The oncogene ERG is associated with VEGF response.": "VEGF response"
+      },
+      {
+        "ERG shows an association with tumor grade with p-value 0.003.": "p-value: 0.003"
+      },
+      {
+        "The FDR for the ERG-tumor grade association is 0.118.": "FDR: 0.118"
+      },
+      {
+        "ERG is directly connected to 11 genes within the Angiogenesis module.": "11 genes"
+      },
+      {
+        "ERG maps to 5 different peptides.": "5 different peptides"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The tool helps understand the phosphopeptide network in the context of markers.": "context of markers"
+      },
+      {
+        "It guides hypothesis generation for future studies.": "hypothesis generation"
+      },
+      {
+        "The portal facilitates researchers with varying computational skill levels.": "computational skill levels"
+      },
+      {
+        "It allows sharing and communicating results effectively.": "share and communicate"
+      },
+      {
+        "The integration of clinical variables aids in interpreting molecular mechanisms.": "clinical variables"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The tool relies on standard libraries and does not require plug-ins.": "standard libraries"
+      },
+      {
+        "The network is based on phosphopeptide co-expression, which may not capture all regulatory mechanisms.": "phosphopeptide co-expression"
+      },
+      {
+        "The study focuses specifically on ccRCC, limiting generalizability to other cancer types.": "ccRCC"
+      }
+    ],
+    "claims": [
+      {
+        "description": "ProNetView-ccRCC provides an effective interactive environment for exploring complex proteogenomic networks.",
+        "supporting_evidence": [
+          {
+            "The portal enables quick, user-intuitive visual interactions.": "user-intuitive visual interactions"
+          },
+          {
+            "It allows querying for association between phosphopeptide abundance and clinical variables.": "clinical variables"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The tool is specific to ccRCC data.": "ccRCC"
+          }
+        ],
+        "implications": [
+          {
+            "It facilitates hypothesis generation for cancer research.": "hypothesis generation"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": [
+      {
+        "The portal is an open-access freely available resource.": "open-access freely available"
+      },
+      {
+        "The URL is http://ccrcc.cptac-network-view.org/.": "ccrcc.cptac-network-view.org"
+      }
+    ],
+    "robustness_and_ablation_notes": "",
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1A displays the global ccRCC tumor phosphoproteomics co-expression network.": "Figure 1A"
+      },
+      {
+        "Figure 1B links the network to functional network modules.": "Figure 1B"
+      },
+      {
+        "Figure 1C shows the query for the oncogene ERG.": "Figure 1C"
+      },
+      {
+        "Figure 2A displays the Angiogenesis enriched module network.": "Figure 2A"
+      },
+      {
+        "Figure 2B displays associated gene-level meta-data for a node.": "Figure 2B"
+      },
+      {
+        "Figure 3A displays the interactive table listing enriched pathways.": "Figure 3A"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is an interactive 3D web portal for ccRCC proteogenomic networks.": "interactive web-based"
+      },
+      {
+        "2. The strongest evidence is the integration of 3,614 genes and clinical metadata.": "3,614 genes"
+      },
+      {
+        "3. The future path is facilitating hypothesis generation for the research community.": "hypothesis generation"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThe National Cancer Institute's Clinical Proteomics Tumor Analysis Consortium (CPTAC) has generated comprehensive proteogenomic data for various cancer types, including clear cell renal cell carcinoma (ccRCC). While gene/protein regulatory networks derived from these profiles offer system-level insights, visualizing and navigating these complex, high-dimensional networks remains a significant challenge. Existing tools often provide static 2D visualizations that are ill-suited for interactive exploration or integrating clinical metadata. To address this gap, the authors introduce ProNetView-ccRCC, an open-access, web-based portal designed for the intuitive visual exploration of ccRCC phosphopeptide co-expression networks. The portal features a 3D network exploration interface built on the Three.js framework, allowing users to rotate and zoom through a network comprising 3,614 genes and 30 functional pathway-enriched modules. Users can interactively query specific genes, such as the oncogene ERG, to view their connections, associated phosphopeptides, and correlations with clinical variables like tumor grade. The tool integrates metadata from CPTAC studies, including pathway enrichment results and clinical outcomes, enabling researchers to link molecular network structures with phenotypic data. By utilizing standard client-side libraries like D3.js and Bootstrap, ProNetView-ccRCC runs on modern web browsers without requiring additional plugins. This resource aims to facilitate hypothesis generation and data interpretation for the cancer research community by providing a centralized, interactive environment for exploring the complex regulatory factories underlying ccRCC.\n\nResearch Context\nCPTAC has performed comprehensive proteogenomic characterizations of multiple cancer types. Gene/protein regulatory networks derived from these profiles serve as useful tools for system-level understanding. It remains a challenge to effectively visualize and navigate the resulting network models. There is a pressing need for a new open community resource tool. Current network visualization tools are mainly used for static 2D images. These tools are not well suited for user-initiated interactive network explorations. A centralized platform customized for CPTAC co-expression networks is necessary.\n\nResearch Question And Hypothesis\nThe study aims to provide an intuitive visual exploration tool for CPTAC ccRCC networks. The tool should allow users to navigate complex phosphopeptide co-expression networks. Users need to query associations between phosphopeptide abundance and clinical variables. The portal must integrate functional pathway-enriched network modules with the main network. The system should enable quick, user-intuitive interactions with the network topology. The goal is to facilitate hypothesis generation for future studies.\n\nMethodological Details\nThe network characterizes co-expression patterns among 20,976 phosphopeptides in ccRCC. The network was derived using a random-forest based network construction algorithm. The data source includes phospho-peptide level data of 103 ccRCC samples. Two genes are connected if at least two phosphopeptides mapping to them are associated. Network modules were derived using the Glay clustering algorithm. 30 modules containing at least 20 genes were identified. Pathway enrichment analysis was performed via Fisher Exact test. The portal displays 3,614 genes in the co-expression network.\n\nProcedures And Architectures\nThe portal enables interactive explorations in 3D using the Three.js framework. Network layouts were calculated using 3D layout algorithms within iCAVE. Client-side Javascript libraries like D3.js and dataTables.js handle user interactions. Bootstrap v3.3.7 is used for styling web interface elements. The portal runs on all modern web browsers without additional plug-ins. Users can rotate and zoom in/out the 3D view. Node sizes are proportional to the number of connections. Clicking a node displays associated gene-level meta-data in a separate panel.\n\nKey Results\nThe portal displays a network comprised of 3,614 genes. The network includes 30 functional pathway-enriched network modules. Six modules were significantly associated with biological pathways. The oncogene ERG is associated with VEGF response. ERG shows an association with tumor grade with p-value 0.003. The FDR for the ERG-tumor grade association is 0.118. ERG is directly connected to 11 genes within the Angiogenesis module. ERG maps to 5 different peptides.\n\nInterpretation And Theoretical Implications\nThe tool helps understand the phosphopeptide network in the context of markers. It guides hypothesis generation for future studies. The portal facilitates researchers with varying computational skill levels. It allows sharing and communicating results effectively. The integration of clinical variables aids in interpreting molecular mechanisms.\n\nContradictions And Limitations\nThe tool relies on standard libraries and does not require plug-ins. The network is based on phosphopeptide co-expression, which may not capture all regulatory mechanisms. The study focuses specifically on ccRCC, limiting generalizability to other cancer types.\n\nClaims\nProNetView-ccRCC provides an effective interactive environment for exploring complex proteogenomic networks. The portal enables quick, user-intuitive visual interactions. It allows querying for association between phosphopeptide abundance and clinical variables. The tool is specific to ccRCC data. It facilitates hypothesis generation for cancer research.\n\nData And Code Availability\nThe portal is an open-access freely available resource. The URL is http://ccrcc.cptac-network-view.org/.\n\nKey Figures Tables\nFigure 1A displays the global ccRCC tumor phosphoproteomics co-expression network. Figure 1B links the network to functional network modules. Figure 1C shows the query for the oncogene ERG. Figure 2A displays the Angiogenesis enriched module network. Figure 2B displays associated gene-level meta-data for a node. Figure 3A displays the interactive table listing enriched pathways.\n\nThree Takeaways\n1. The core contribution is an interactive 3D web portal for ccRCC proteogenomic networks. 2. The strongest evidence is the integration of 3,614 genes and clinical metadata. 3. The future path is facilitating hypothesis generation for the research community.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "proteogenomic characterizations",
+      "start": 367,
+      "end": 398,
+      "typographic_alignment": false,
+      "original_quote": "proteogenomic characterizations"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "system-level understanding",
+      "start": 563,
+      "end": 589,
+      "typographic_alignment": false,
+      "original_quote": "system-level understanding"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "challenge to effectively visualize",
+      "start": 685,
+      "end": 719,
+      "typographic_alignment": false,
+      "original_quote": "challenge to effectively visualize"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "pressing need",
+      "start": 843,
+      "end": 856,
+      "typographic_alignment": false,
+      "original_quote": "pressing need"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "static 2D images",
+      "start": 3339,
+      "end": 3355,
+      "typographic_alignment": false,
+      "original_quote": "static 2D images"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "interactive network explorations",
+      "start": 3492,
+      "end": 3524,
+      "typographic_alignment": false,
+      "original_quote": "interactive network explorations"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "centralized platform",
+      "start": 3702,
+      "end": 3722,
+      "typographic_alignment": false,
+      "original_quote": "centralized platform"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "intuitive visual exploration",
+      "start": 904,
+      "end": 932,
+      "typographic_alignment": false,
+      "original_quote": "intuitive visual exploration"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "phosphopeptide co-expression network",
+      "start": 1197,
+      "end": 1233,
+      "typographic_alignment": false,
+      "original_quote": "phosphopeptide co-expression network"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "clinical variables",
+      "start": 1682,
+      "end": 1700,
+      "typographic_alignment": false,
+      "original_quote": "clinical variables"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "functional pathway-enriched",
+      "start": 1491,
+      "end": 1518,
+      "typographic_alignment": false,
+      "original_quote": "functional pathway-enriched"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "user-intuitive visual interactions",
+      "start": 1358,
+      "end": 1392,
+      "typographic_alignment": false,
+      "original_quote": "user-intuitive visual interactions"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "hypothesis generation",
+      "start": 8022,
+      "end": 8043,
+      "typographic_alignment": false,
+      "original_quote": "hypothesis generation"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "20,976 phosphopeptides",
+      "start": 4876,
+      "end": 4898,
+      "typographic_alignment": false,
+      "original_quote": "20,976 phosphopeptides"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "random-forest based",
+      "start": 4932,
+      "end": 4951,
+      "typographic_alignment": false,
+      "original_quote": "random-forest based"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "103 ccRCC samples",
+      "start": 5027,
+      "end": 5044,
+      "typographic_alignment": false,
+      "original_quote": "103 ccRCC samples"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "at least two phosphopeptides",
+      "start": 5160,
+      "end": 5188,
+      "typographic_alignment": false,
+      "original_quote": "at least two phosphopeptides"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "Glay [13] clustering",
+      "start": 5421,
+      "end": 5441,
+      "typographic_alignment": false,
+      "original_quote": "Glay [13] clustering"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "30 modules",
+      "start": 5453,
+      "end": 5463,
+      "typographic_alignment": false,
+      "original_quote": "30 modules"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "Fisher Exact test",
+      "start": 5634,
+      "end": 5651,
+      "typographic_alignment": false,
+      "original_quote": "Fisher Exact test"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "3,614 genes",
+      "start": 1464,
+      "end": 1475,
+      "typographic_alignment": false,
+      "original_quote": "3,614 genes"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "Three.js framework",
+      "start": 5923,
+      "end": 5941,
+      "typographic_alignment": false,
+      "original_quote": "Three.js framework"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "3D layout algorithms",
+      "start": 6022,
+      "end": 6042,
+      "typographic_alignment": false,
+      "original_quote": "3D layout algorithms"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "D3.js",
+      "start": 6304,
+      "end": 6309,
+      "typographic_alignment": false,
+      "original_quote": "D3.js"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "Bootstrap v3.3.7",
+      "start": 6411,
+      "end": 6427,
+      "typographic_alignment": false,
+      "original_quote": "Bootstrap v3.3.7"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "modern web browsers",
+      "start": 6606,
+      "end": 6625,
+      "typographic_alignment": false,
+      "original_quote": "modern web browsers"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "rotating and zooming",
+      "start": 6982,
+      "end": 7002,
+      "typographic_alignment": false,
+      "original_quote": "rotating and zooming"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "proportional to the number",
+      "start": 8340,
+      "end": 8366,
+      "typographic_alignment": false,
+      "original_quote": "proportional to the number"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "gene-level meta-data",
+      "start": 8648,
+      "end": 8668,
+      "typographic_alignment": false,
+      "original_quote": "gene-level meta-data"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "3,614 genes",
+      "start": 1464,
+      "end": 1475,
+      "typographic_alignment": false,
+      "original_quote": "3,614 genes"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "30 functional pathway-enriched",
+      "start": 1488,
+      "end": 1518,
+      "typographic_alignment": false,
+      "original_quote": "30 functional pathway-enriched"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "Six modules",
+      "start": 7020,
+      "end": 7031,
+      "typographic_alignment": false,
+      "original_quote": "Six modules"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "VEGF response",
+      "start": 7363,
+      "end": 7376,
+      "typographic_alignment": false,
+      "original_quote": "VEGF response"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "p-value: 0.003",
+      "start": 7832,
+      "end": 7846,
+      "typographic_alignment": false,
+      "original_quote": "p-value: 0.003"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "FDR: 0.118",
+      "start": 7848,
+      "end": 7858,
+      "typographic_alignment": false,
+      "original_quote": "FDR: 0.118"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "11 genes",
+      "start": 8886,
+      "end": 8894,
+      "typographic_alignment": false,
+      "original_quote": "11 genes"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "5 different peptides",
+      "start": 8930,
+      "end": 8950,
+      "typographic_alignment": false,
+      "original_quote": "5 different peptides"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "context of markers",
+      "start": 7972,
+      "end": 7990,
+      "typographic_alignment": false,
+      "original_quote": "context of markers"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "hypothesis generation",
+      "start": 8022,
+      "end": 8043,
+      "typographic_alignment": false,
+      "original_quote": "hypothesis generation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "computational skill levels",
+      "start": 10569,
+      "end": 10595,
+      "typographic_alignment": false,
+      "original_quote": "computational skill levels"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "share and communicate",
+      "start": 10668,
+      "end": 10689,
+      "typographic_alignment": false,
+      "original_quote": "share and communicate"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "clinical variables",
+      "start": 1682,
+      "end": 1700,
+      "typographic_alignment": false,
+      "original_quote": "clinical variables"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "standard libraries",
+      "start": 6507,
+      "end": 6525,
+      "typographic_alignment": false,
+      "original_quote": "standard libraries"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "phosphopeptide co-expression",
+      "start": 1197,
+      "end": 1225,
+      "typographic_alignment": false,
+      "original_quote": "phosphopeptide co-expression"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "ccRCC",
+      "start": 18,
+      "end": 23,
+      "typographic_alignment": false,
+      "original_quote": "ccRCC"
+    },
+    {
+      "path": "data_and_code_availability[0]",
+      "quote": "open-access freely available",
+      "start": 4509,
+      "end": 4537,
+      "typographic_alignment": false,
+      "original_quote": "open-access freely available"
+    },
+    {
+      "path": "data_and_code_availability[1]",
+      "quote": "ccrcc.cptac-network-view.org",
+      "start": 1095,
+      "end": 1123,
+      "typographic_alignment": false,
+      "original_quote": "ccrcc.cptac-network-view.org"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Figure 1A",
+      "start": 6787,
+      "end": 6796,
+      "typographic_alignment": false,
+      "original_quote": "Figure 1A"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Figure 1B",
+      "start": 6843,
+      "end": 6852,
+      "typographic_alignment": false,
+      "original_quote": "Figure 1B"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Figure 1C",
+      "start": 7413,
+      "end": 7422,
+      "typographic_alignment": false,
+      "original_quote": "Figure 1C"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "Figure 2A",
+      "start": 8204,
+      "end": 8213,
+      "typographic_alignment": false,
+      "original_quote": "Figure 2A"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Figure 2B",
+      "start": 8690,
+      "end": 8699,
+      "typographic_alignment": false,
+      "original_quote": "Figure 2B"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "Figure 3A",
+      "start": 9745,
+      "end": 9754,
+      "typographic_alignment": false,
+      "original_quote": "Figure 3A"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "interactive web-based",
+      "start": 1130,
+      "end": 1151,
+      "typographic_alignment": false,
+      "original_quote": "interactive web-based"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "3,614 genes",
+      "start": 1464,
+      "end": 1475,
+      "typographic_alignment": false,
+      "original_quote": "3,614 genes"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "hypothesis generation",
+      "start": 8022,
+      "end": 8043,
+      "typographic_alignment": false,
+      "original_quote": "hypothesis generation"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "user-intuitive visual interactions",
+      "start": 1358,
+      "end": 1392,
+      "typographic_alignment": false,
+      "original_quote": "user-intuitive visual interactions"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "clinical variables",
+      "start": 1682,
+      "end": 1700,
+      "typographic_alignment": false,
+      "original_quote": "clinical variables"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "ccRCC",
+      "start": 18,
+      "end": 23,
+      "typographic_alignment": false,
+      "original_quote": "ccRCC"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "hypothesis generation",
+      "start": 8022,
+      "end": 8043,
+      "typographic_alignment": false,
+      "original_quote": "hypothesis generation"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n  \"title\": \"ProNetView-ccRCC: A web-based portal to interactively explore clear cell renal cell carcinoma proteogenomics networks\",\n  \"authors\": \"Selim Kalayci; Francesca Petralia; Pei Wang; Zeynep H Gümüş\",\n  \"field_subfield\": \"Bioinformatics; Cancer Proteogenomics\",\n  \"type_of_paper\": \"Software/Tool Description\",\n  \"executive_summary\": \"The National Cancer Institute's Clinical Proteomics Tumor Analysis Consortium (CPTAC) has generated comprehensive proteogenomic data for various cancer types, including clear cell renal cell carcinoma (ccRCC). While gene/protein regulatory networks derived from these profiles offer system-level insights, visualizing and navigating these complex, high-dimensional networks remains a significant challenge. Existing tools often provide static 2D visualizations that are ill-suited for interactive exploration or integrating clinical metadata. To address this gap, the authors introduce ProNetView-ccRCC, an open-access, web-based portal designed for the intuitive visual exploration of ccRCC phosphopeptide co-expression networks. The portal features a 3D network exploration interface built on the Three.js framework, allowing users to rotate and zoom through a network comprising 3,614 genes and 30 functional pathway-enriched modules. Users can interactively query specific genes, such as the oncogene ERG, to view their connections, associated phosphopeptides, and correlations with clinical variables like tumor grade. The tool integrates metadata from CPTAC studies, including pathway enrichment results and clinical outcomes, enabling researchers to link molecular network structures with phenotypic data. By utilizing standard client-side libraries like D3.js and Bootstrap, ProNetView-ccRCC runs on modern web browsers without requiring additional plugins. This resource aims to facilitate hypothesis generation and data interpretation for the cancer research community by providing a centralized, interactive environment for exploring the complex regulatory factories underlying ccRCC.\",\n  \"research_context\": [\n    { \"CPTAC has performed comprehensive proteogenomic characterizations of multiple cancer types.\": \"proteogenomic characterizations\" },\n    { \"Gene/protein regulatory networks derived from these profiles serve as useful tools for system-level understanding.\": \"system-level understanding\" },\n    { \"It remains a challenge to effectively visualize and navigate the resulting network models.\": \"challenge to effectively visualize\" },\n    { \"There is a pressing need for a new open community resource tool.\": \"pressing need\" },\n    { \"Current network visualization tools are mainly used for static 2D images.\": \"static 2D images\" },\n    { \"These tools are not well suited for user-initiated interactive network explorations.\": \"interactive network explorations\" },\n    { \"A centralized platform customized for CPTAC co-expression networks is necessary.\": \"centralized platform\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The study aims to provide an intuitive visual exploration tool for CPTAC ccRCC networks.\": \"intuitive visual exploration\" },\n    { \"The tool should allow users to navigate complex phosphopeptide co-expression networks.\": \"phosphopeptide co-expression network\" },\n    { \"Users need to query associations between phosphopeptide abundance and clinical variables.\": \"clinical variables\" },\n    { \"The portal must integrate functional pathway-enriched network modules with the main network.\": \"functional pathway-enriched\" },\n    { \"The system should enable quick, user-intuitive interactions with the network topology.\": \"user-intuitive visual interactions\" },\n    { \"The goal is to facilitate hypothesis generation for future studies.\": \"hypothesis generation\" }\n  ],\n  \"methodological_details\": [\n    { \"The network characterizes co-expression patterns among 20,976 phosphopeptides in ccRCC.\": \"20,976 phosphopeptides\" },\n    { \"The network was derived using a random-forest based network construction algorithm.\": \"random-forest based\" },\n    { \"The data source includes phospho-peptide level data of 103 ccRCC samples.\": \"103 ccRCC samples\" },\n    { \"Two genes are connected if at least two phosphopeptides mapping to them are associated.\": \"at least two phosphopeptides\" },\n    { \"Network modules were derived using the Glay clustering algorithm.\": \"Glay clustering algorithm\" },\n    { \"30 modules containing at least 20 genes were identified.\": \"30 modules\" },\n    { \"Pathway enrichment analysis was performed via Fisher Exact test.\": \"Fisher Exact test\" },\n    { \"The portal displays 3,614 genes in the co-expression network.\": \"3,614 genes\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The portal enables interactive explorations in 3D using the Three.js framework.\": \"Three.js framework\" },\n    { \"Network layouts were calculated using 3D layout algorithms within iCAVE.\": \"3D layout algorithms\" },\n    { \"Client-side Javascript libraries like D3.js and dataTables.js handle user interactions.\": \"D3.js\" },\n    { \"Bootstrap v3.3.7 is used for styling web interface elements.\": \"Bootstrap v3.3.7\" },\n    { \"The portal runs on all modern web browsers without additional plug-ins.\": \"modern web browsers\" },\n    { \"Users can rotate and zoom in/out the 3D view.\": \"rotating and zooming\" },\n    { \"Node sizes are proportional to the number of connections.\": \"proportional to the number\" },\n    { \"Clicking a node displays associated gene-level meta-data in a separate panel.\": \"gene-level meta-data\" }\n  ],\n  \"key_results\": [\n    { \"The portal displays a network comprised of 3,614 genes.\": \"3,614 genes\" },\n    { \"The network includes 30 functional pathway-enriched network modules.\": \"30 functional pathway-enriched\" },\n    { \"Six modules were significantly associated with biological pathways.\": \"Six modules\" },\n    { \"The oncogene ERG is associated with VEGF response.\": \"VEGF response\" },\n    { \"ERG shows an association with tumor grade with p-value 0.003.\": \"p-value: 0.003\" },\n    { \"The FDR for the ERG-tumor grade association is 0.118.\": \"FDR: 0.118\" },\n    { \"ERG is directly connected to 11 genes within the Angiogenesis module.\": \"11 genes\" },\n    { \"ERG maps to 5 different peptides.\": \"5 different peptides\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The tool helps understand the phosphopeptide network in the context of markers.\": \"context of markers\" },\n    { \"It guides hypothesis generation for future studies.\": \"hypothesis generation\" },\n    { \"The portal facilitates researchers with varying computational skill levels.\": \"computational skill levels\" },\n    { \"It allows sharing and communicating results effectively.\": \"share and communicate\" },\n    { \"The integration of clinical variables aids in interpreting molecular mechanisms.\": \"clinical variables\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The tool relies on standard libraries and does not require plug-ins.\": \"standard libraries\" },\n    { \"The network is based on phosphopeptide co-expression, which may not capture all regulatory mechanisms.\": \"phosphopeptide co-expression\" },\n    { \"The study focuses specifically on ccRCC, limiting generalizability to other cancer types.\": \"ccRCC\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"ProNetView-ccRCC provides an effective interactive environment for exploring complex proteogenomic networks.\",\n      \"supporting_evidence\": [\n        { \"The portal enables quick, user-intuitive visual interactions.\": \"user-intuitive visual interactions\" },\n        { \"It allows querying for association between phosphopeptide abundance and clinical variables.\": \"clinical variables\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The tool is specific to ccRCC data.\": \"ccRCC\" }\n      ],\n      \"implications\": [\n        { \"It facilitates hypothesis generation for cancer research.\": \"hypothesis generation\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": [\n    { \"The portal is an open-access freely available resource.\": \"open-access freely available\" },\n    { \"The URL is http://ccrcc.cptac-network-view.org/.\": \"ccrcc.cptac-network-view.org\" }\n  ],\n  \"robustness_and_ablation_notes\": \"\",\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1A displays the global ccRCC tumor phosphoproteomics co-expression network.\": \"Figure 1A\" },\n    { \"Figure 1B links the network to functional network modules.\": \"Figure 1B\" },\n    { \"Figure 1C shows the query for the oncogene ERG.\": \"Figure 1C\" },\n    { \"Figure 2A displays the Angiogenesis enriched module network.\": \"Figure 2A\" },\n    { \"Figure 2B displays associated gene-level meta-data for a node.\": \"Figure 2B\" },\n    { \"Figure 3A displays the interactive table listing enriched pathways.\": \"Figure 3A\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is an interactive 3D web portal for ccRCC proteogenomic networks.\": \"interactive web-based\" },\n    { \"2. The strongest evidence is the integration of 3,614 genes and clinical metadata.\": \"3,614 genes\" },\n    { \"3. The future path is facilitating hypothesis generation for the research community.\": \"hypothesis generation\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4291,
+        "total_tokens": 6532,
+        "completion_tokens": 2241,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4291,
+      "elapsed_seconds": 175.7032788209617,
+      "max_tokens": 16000,
+      "seed": 697829781,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "4e11e1f10de28a3529c2f48eda6baa36ce7487663127da2b5343236bb8541c45",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: Glay clustering algorithm"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The network characterizes co-expression patterns among 20,976 phosphopeptides in ccRCC.\": \"20,976 phosphopeptides\"\n    },\n    {\n      \"The network was derived using a random-forest based network construction algorithm.\": \"random-forest based\"\n    },\n    {\n      \"The data source includes phospho-peptide level data of 103 ccRCC samples.\": \"103 ccRCC samples\"\n    },\n    {\n      \"Two genes are connected if at least two phosphopeptides mapping to them are associated.\": \"at least two phosphopeptides\"\n    },\n    {\n      \"Network modules were derived using the Glay clustering algorithm.\": \"Glay [13] clustering\"\n    },\n    {\n      \"30 modules containing at least 20 genes were identified.\": \"30 modules\"\n    },\n    {\n      \"Pathway enrichment analysis was performed via Fisher Exact test.\": \"Fisher Exact test\"\n    },\n    {\n      \"The portal displays 3,614 genes in the co-expression network.\": \"3,614 genes\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 2722,
+        "total_tokens": 3004,
+        "completion_tokens": 282,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 2722,
+      "elapsed_seconds": 29.352314803749323,
+      "max_tokens": 4096,
+      "seed": 697829782,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "ef8893f14100a93e6aa8151ec31ba230bdf0315ffaf8c43c496111d3010c3f01",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details"
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 4291,
+  "elapsed_seconds": 205.10248382389545,
+  "repair_protocol": "field_local_strict_grounding_v2"
+}

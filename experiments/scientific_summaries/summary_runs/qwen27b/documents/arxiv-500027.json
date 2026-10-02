@@ -1,0 +1,1675 @@
+{
+  "document_id": "arxiv-500027",
+  "fulltext_sha256": "b665fc66e1cb91a50fcc5a4ed005b97e5e1f1e8b98558ac2502d4cfc41ac193f",
+  "summary": {
+    "title": "Comparative Performance Analysis of Image De-noising Techniques",
+    "authors": "Vivek Kumar, Pranay Yadav, Atul Samadhiya, Sandeep Jain, and Prayag Tiwari",
+    "field_subfield": "Computer Science / Image Processing",
+    "type_of_paper": "Conference Paper",
+    "executive_summary": "This paper presents a comprehensive review and comparative analysis of image denoising techniques, focusing on the preservation of textural information and structural features. The study begins by categorizing image noise into additive and multiplicative types, detailing Gaussian, Salt and Pepper, Speckle, and Brownian noise. It then classifies denoising algorithms into spatial filtering (linear and non-linear) and transform domain filtering (spatial-frequency and wavelet domain). The wavelet domain section is particularly detailed, discussing linear filters, non-linear thresholding (hard, soft, semi-soft, Garrote), non-orthogonal transforms (UDWT, SIWPD), and wavelet coefficient modeling (deterministic and statistical). The core contribution is a quantitative comparison of six specific denoising filters: Mean Filter (MF), Adaptive Mean Filter (AMF), Pixel-Specific Mean Filter (PSMF), Dual-Band Adaptive (DBA), Modified Dual-Band Adaptive (MDBA), and Modified Dual-Band Unsharp Masking Filter (MDBUTMF). These algorithms were tested on a grayscale Lena image with a high noise density of 90%. Performance was evaluated using Peak Signal-to-Noise Ratio (PSNR) and Image Enhancement Factor (IEF). The results indicate that while traditional filters like MF and AMF yield low PSNR values (6.5759 and 8.0603 respectively), the advanced adaptive filters DBA, MDBA, and MDBUTMF significantly outperform them, with MDBUTMF achieving the highest PSNR of 17.9865 and IEF of 16.2066. The paper concludes that the selection of a denoising algorithm is application-dependent and requires knowledge of the specific noise type present in the image. It highlights promising directions for future research in optimizing these adaptive techniques.",
+    "research_context": [
+      {
+        "Image restoration is a major component of digital image processing.": "image restoration"
+      },
+      {
+        "Degradation arises from blurring and noise due to electronic sources.": "electronic and \nphotometric"
+      },
+      {
+        "Blurring results from imperfect image formation processes.": "imperfect image \nformation"
+      },
+      {
+        "Noise is introduced during transmission and quantization.": "quantization of the data"
+      },
+      {
+        "Denoising is critical in astronomy, medical imaging, and forensics.": "medical imaging"
+      },
+      {
+        "Images are represented as 2D arrays of pixel data.": "2-dimensional array"
+      },
+      {
+        "Common image types include binary, gray-scale, and color.": "binary, gray-scale and color"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The objective is to present an account of noise types and removal algorithms.": "noise removal \nalgorithms"
+      },
+      {
+        "It is necessary to know the noise type to select the algorithm.": "select the \nappropriate"
+      },
+      {
+        "The paper classifies noises based on additive and multiplicative nature.": "additive and multiplicative"
+      },
+      {
+        "A precise classification of potential denoising algorithms is presented.": "classification and analysis"
+      },
+      {
+        "A comparative study of algorithms is conducted for performance evaluation.": "performance \nevaluation"
+      },
+      {
+        "The study aims to conclude with directions for future research.": "future research work"
+      }
+    ],
+    "methodological_details": [
+      {
+        "Gaussian noise is evenly distributed over the signal.": "evenly distributed"
+      },
+      {
+        "Gaussian noise follows a bell-shaped probability distribution.": "bell shaped"
+      },
+      {
+        "Salt and pepper noise is an impulse type of noise.": "impulse type"
+      },
+      {
+        "Salt and pepper noise is caused by data transmission errors.": "errors in data"
+      },
+      {
+        "Speckle noise is a multiplicative noise in coherent imaging.": "multiplicative noise"
+      },
+      {
+        "Speckle noise follows a gamma distribution.": "gamma distribution"
+      },
+      {
+        "Brownian noise is a fractal or 1/f noise.": "fractal or \n1/f"
+      },
+      {
+        "Brownian noise is obtained by integrating white noise.": "integrating white noise"
+      },
+      {
+        "Denoising approaches are divided into spatial and transform domain.": "spatial filtering methods"
+      },
+      {
+        "Spatial filters are classified into non-linear and linear filters.": "non-linear and linear"
+      },
+      {
+        "Non-linear filters remove noise without explicit identification.": "without any \nattempts"
+      },
+      {
+        "Linear filters tend to blur sharp edges and details.": "blur sharp edges"
+      },
+      {
+        "Wiener filtering requires information about noise and signal spectra.": "spectra of the noise"
+      },
+      {
+        "Wavelet based denoising was proposed by Donoho and Johnstone.": "Donoho \nand Johnstone"
+      },
+      {
+        "Spatial-frequency filtering uses low pass filters via FFT.": "Fast Fourier Transform"
+      },
+      {
+        "Wavelet domain filtering includes linear and nonlinear methods.": "linear and nonlinear"
+      },
+      {
+        "Non-linear thresholding exploits wavelet transform properties.": "non-linear coefficient"
+      },
+      {
+        "Hard thresholding removes small coefficients but creates artifacts.": "hard thresholding"
+      },
+      {
+        "Soft thresholding shrinks coefficients above the threshold.": "soft thresholding"
+      },
+      {
+        "VISU Shrink is a non-adaptive universal threshold.": "non-adaptive universal"
+      },
+      {
+        "SURE Shrink uses a hybrid of universal and SURE thresholds.": "SURE"
+      },
+      {
+        "Bayes Shrink minimizes the Bayes Risk Estimator function.": "Bayes‟ Risk Estimator"
+      },
+      {
+        "Cross Validation minimizes the generalized cross validation function.": "generalized cross validation"
+      },
+      {
+        "Un-decimated Wavelet Transform provides visually better solutions.": "visually better \nsolution"
+      },
+      {
+        "Multiwavelets possess short support and higher vanishing moments.": "higher order of"
+      },
+      {
+        "Deterministic modeling creates a tree structure of coefficients.": "tree structure"
+      },
+      {
+        "Statistical modeling focuses on multi-scale correlation properties.": "multi \nscale correlation"
+      },
+      {
+        "Performance was measured using PSNR and Image Enhancement Factor.": "peak \nsignal-to-noise"
+      },
+      {
+        "Algorithms were applied to a grayscale Lena image.": "gray scale image"
+      },
+      {
+        "The noise density used for testing was 90%.": "noise density of 90%"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "Gaussian noise is modeled with mean and standard deviation.": "mean or average"
+      },
+      {
+        "Salt and pepper noise sets pixels to min or max values.": "minimum \nor to"
+      },
+      {
+        "Speckle noise arises from random interference of coherent returns.": "random interference"
+      },
+      {
+        "Brownian noise is a non-stationary stochastic process.": "stochastic \nprocess"
+      },
+      {
+        "Spatial filters employ low pass filtering on pixel groups.": "low \npass filtering"
+      },
+      {
+        "Wiener filtering implements spatial smoothing via window size.": "spatial smoothing"
+      },
+      {
+        "Wavelet transform maps white noise to white noise in domain.": "white noise in"
+      },
+      {
+        "Signal energy concentrates in fewer coefficients in transform domain.": "fewer coefficients"
+      },
+      {
+        "Hard thresholding removes small coefficients while leaving others.": "small coefficients"
+      },
+      {
+        "Soft thresholding shrinks coefficients by the threshold value.": "shrunk by the"
+      },
+      {
+        "VISU Shrink threshold depends only on the number of data points.": "number of data"
+      },
+      {
+        "SURE Shrink performs better than VISU Shrink.": "better than VISU"
+      },
+      {
+        "Bayes Shrink assumes a generalized Gaussian prior.": "generalized Gaussian prior"
+      },
+      {
+        "Cross Validation replaces coefficients with weighted neighborhood averages.": "weighted average"
+      },
+      {
+        "UDWT is shift invariant and avoids pseudo-Gibbs phenomenon.": "pseudo-Gibbs phenomenon"
+      },
+      {
+        "Shift Invariant Wavelet Packet Decomposition finds the best basis.": "best basis function"
+      },
+      {
+        "Multiwavelets are obtained by applying more than one function.": "more than one"
+      },
+      {
+        "Deterministic modeling uses a hierarchical interpretation of decomposition.": "hierarchical interpretation"
+      },
+      {
+        "Statistical modeling exploits local correlation between neighborhood coefficients.": "local \ncorrelation"
+      },
+      {
+        "PSNR is calculated using Mean Square Error.": "mean square error"
+      },
+      {
+        "IEF represents the image enhancement factor.": "image enhancement factor"
+      }
+    ],
+    "key_results": [
+      {
+        "The Mean Filter (MF) achieved a PSNR of 6.5759.": "6.5759"
+      },
+      {
+        "The Mean Filter (MF) achieved an IEF of 1.1712.": "1.1712"
+      },
+      {
+        "The Adaptive Mean Filter (AMF) achieved a PSNR of 8.0603.": "8.0603"
+      },
+      {
+        "The Adaptive Mean Filter (AMF) achieved an IEF of 1.6499.": "1.6499"
+      },
+      {
+        "The Pixel-Specific Mean Filter (PSMF) achieved a PSNR of 6.7847.": "6.7847"
+      },
+      {
+        "The Pixel-Specific Mean Filter (PSMF) achieved an IEF of 1.2257.": "1.2257"
+      },
+      {
+        "The Dual-Band Adaptive (DBA) filter achieved a PSNR of 17.1205.": "17.1205"
+      },
+      {
+        "The Dual-Band Adaptive (DBA) filter achieved an IEF of 13.2768.": "13.2768"
+      },
+      {
+        "The Modified Dual-Band Adaptive (MDBA) filter achieved a PSNR of 17.2242.": "17.2242"
+      },
+      {
+        "The Modified Dual-Band Adaptive (MDBA) filter achieved an IEF of 13.5976.": "13.5976"
+      },
+      {
+        "The Modified Dual-Band Unsharp Masking Filter (MDBUTMF) achieved a PSNR of 17.9865.": "17.9865"
+      },
+      {
+        "The Modified Dual-Band Unsharp Masking Filter (MDBUTMF) achieved an IEF of 16.2066.": "16.2066"
+      },
+      {
+        "MDBUTMF outperformed all other tested filters in both metrics.": "17.9865"
+      },
+      {
+        "DBA and MDBA significantly outperformed MF, AMF, and PSMF.": "17.1205"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "Selection of denoising algorithm is application dependent.": "application dependent"
+      },
+      {
+        "Knowledge of noise type is necessary for algorithm selection.": "knowledge about the noise"
+      },
+      {
+        "Wavelet transform separates signal from noise via energy concentration.": "separation of signal"
+      },
+      {
+        "Adaptive thresholds generally outperform non-adaptive ones.": "outperforms SURE Shrink"
+      },
+      {
+        "Shift invariance reduces visual artifacts like pseudo-Gibbs.": "avoids visual \nartifacts"
+      },
+      {
+        "Multiwavelets enhance performance but increase computation complexity.": "increases the computation"
+      },
+      {
+        "Statistical modeling aims for exact modeling of image data.": "exact modeling"
+      },
+      {
+        "High noise levels require spatial configuration analysis.": "spatial configuration"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "Linear filters blur edges and destroy fine details.": "blur sharp edges"
+      },
+      {
+        "Spatial-frequency methods are time consuming.": "time consuming"
+      },
+      {
+        "Hard thresholding generates spurious blips or artifacts.": "spurious blips"
+      },
+      {
+        "VISU Shrink yields overly smoothed images.": "overly smoothed"
+      },
+      {
+        "UDWT adds a large overhead of computations.": "large overhead"
+      },
+      {
+        "Wavelet coefficient modeling is computationally expensive.": "computationally much more"
+      },
+      {
+        "The study only tested on a single Lena image.": "Lena \nimage"
+      },
+      {
+        "The noise density was fixed at 90%.": "noise density of 90%"
+      }
+    ],
+    "claims": [
+      {
+        "description": "Advanced adaptive filters like MDBUTMF significantly outperform traditional mean filters in denoising high-noise images.",
+        "supporting_evidence": [
+          {
+            "MDBUTMF achieved the highest PSNR of 17.9865.": "17.9865"
+          },
+          {
+            "MF achieved a low PSNR of 6.5759.": "6.5759"
+          },
+          {
+            "MDBUTMF achieved the highest IEF of 16.2066.": "16.2066"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The comparison is limited to a single image type.": "Lena \nimage"
+          }
+        ],
+        "implications": [
+          {
+            "Adaptive methods are preferred for high noise densities.": "application dependent"
+          }
+        ]
+      },
+      {
+        "description": "Wavelet-based methods offer superior noise-signal separation compared to spatial filtering.",
+        "supporting_evidence": [
+          {
+            "Wavelet transform maps noise to white noise in domain.": "white noise in"
+          },
+          {
+            "Signal energy concentrates in fewer coefficients.": "fewer coefficients"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Wavelet methods can be computationally expensive.": "computationally much more"
+          }
+        ],
+        "implications": [
+          {
+            "Trade-off exists between quality and computational cost.": "large overhead"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "Performance was evaluated at a specific noise density.": "noise density of 90%"
+      },
+      {
+        "No ablation on different noise types was provided in results.": "noise density of 90%"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1 shows the Gaussian distribution.": "Gaussian distribution"
+      },
+      {
+        "Figure 2 illustrates Gaussian noise with different variances.": "Gaussian noise"
+      },
+      {
+        "Figure 3 shows the PDF for salt and pepper noise.": "salt and pepper"
+      },
+      {
+        "Figure 4 illustrates salt and pepper noise.": "salt and pepper"
+      },
+      {
+        "Figure 5 shows the Gamma distribution.": "Gamma distribution"
+      },
+      {
+        "Figure 6 illustrates speckle noise.": "speckle noise"
+      },
+      {
+        "Figure 7 shows the Brownian noise distribution.": "Brownian noise"
+      },
+      {
+        "Figure 8 illustrates Brownian noise.": "Brownian noise"
+      },
+      {
+        "Figure 9 shows the expanded classification of denoising techniques.": "classification of Image"
+      },
+      {
+        "Table 1 compares PSNR and IEF for six filters.": "COMPARISON OF IMAGE"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a comparative analysis of six denoising filters.": "comparative study"
+      },
+      {
+        "2. The strongest evidence is MDBUTMF's superior PSNR of 17.9865.": "17.9865"
+      },
+      {
+        "3. The future path involves further research on adaptive algorithms.": "future research work"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper presents a comprehensive review and comparative analysis of image denoising techniques, focusing on the preservation of textural information and structural features. The study begins by categorizing image noise into additive and multiplicative types, detailing Gaussian, Salt and Pepper, Speckle, and Brownian noise. It then classifies denoising algorithms into spatial filtering (linear and non-linear) and transform domain filtering (spatial-frequency and wavelet domain). The wavelet domain section is particularly detailed, discussing linear filters, non-linear thresholding (hard, soft, semi-soft, Garrote), non-orthogonal transforms (UDWT, SIWPD), and wavelet coefficient modeling (deterministic and statistical). The core contribution is a quantitative comparison of six specific denoising filters: Mean Filter (MF), Adaptive Mean Filter (AMF), Pixel-Specific Mean Filter (PSMF), Dual-Band Adaptive (DBA), Modified Dual-Band Adaptive (MDBA), and Modified Dual-Band Unsharp Masking Filter (MDBUTMF). These algorithms were tested on a grayscale Lena image with a high noise density of 90%. Performance was evaluated using Peak Signal-to-Noise Ratio (PSNR) and Image Enhancement Factor (IEF). The results indicate that while traditional filters like MF and AMF yield low PSNR values (6.5759 and 8.0603 respectively), the advanced adaptive filters DBA, MDBA, and MDBUTMF significantly outperform them, with MDBUTMF achieving the highest PSNR of 17.9865 and IEF of 16.2066. The paper concludes that the selection of a denoising algorithm is application-dependent and requires knowledge of the specific noise type present in the image. It highlights promising directions for future research in optimizing these adaptive techniques.\n\nResearch Context\nImage restoration is a major component of digital image processing. Degradation arises from blurring and noise due to electronic sources. Blurring results from imperfect image formation processes. Noise is introduced during transmission and quantization. Denoising is critical in astronomy, medical imaging, and forensics. Images are represented as 2D arrays of pixel data. Common image types include binary, gray-scale, and color.\n\nResearch Question And Hypothesis\nThe objective is to present an account of noise types and removal algorithms. It is necessary to know the noise type to select the algorithm. The paper classifies noises based on additive and multiplicative nature. A precise classification of potential denoising algorithms is presented. A comparative study of algorithms is conducted for performance evaluation. The study aims to conclude with directions for future research.\n\nMethodological Details\nGaussian noise is evenly distributed over the signal. Gaussian noise follows a bell-shaped probability distribution. Salt and pepper noise is an impulse type of noise. Salt and pepper noise is caused by data transmission errors. Speckle noise is a multiplicative noise in coherent imaging. Speckle noise follows a gamma distribution. Brownian noise is a fractal or 1/f noise. Brownian noise is obtained by integrating white noise. Denoising approaches are divided into spatial and transform domain. Spatial filters are classified into non-linear and linear filters. Non-linear filters remove noise without explicit identification. Linear filters tend to blur sharp edges and details. Wiener filtering requires information about noise and signal spectra. Wavelet based denoising was proposed by Donoho and Johnstone. Spatial-frequency filtering uses low pass filters via FFT. Wavelet domain filtering includes linear and nonlinear methods. Non-linear thresholding exploits wavelet transform properties. Hard thresholding removes small coefficients but creates artifacts. Soft thresholding shrinks coefficients above the threshold. VISU Shrink is a non-adaptive universal threshold. SURE Shrink uses a hybrid of universal and SURE thresholds. Bayes Shrink minimizes the Bayes Risk Estimator function. Cross Validation minimizes the generalized cross validation function. Un-decimated Wavelet Transform provides visually better solutions. Multiwavelets possess short support and higher vanishing moments. Deterministic modeling creates a tree structure of coefficients. Statistical modeling focuses on multi-scale correlation properties. Performance was measured using PSNR and Image Enhancement Factor. Algorithms were applied to a grayscale Lena image. The noise density used for testing was 90%.\n\nProcedures And Architectures\nGaussian noise is modeled with mean and standard deviation. Salt and pepper noise sets pixels to min or max values. Speckle noise arises from random interference of coherent returns. Brownian noise is a non-stationary stochastic process. Spatial filters employ low pass filtering on pixel groups. Wiener filtering implements spatial smoothing via window size. Wavelet transform maps white noise to white noise in domain. Signal energy concentrates in fewer coefficients in transform domain. Hard thresholding removes small coefficients while leaving others. Soft thresholding shrinks coefficients by the threshold value. VISU Shrink threshold depends only on the number of data points. SURE Shrink performs better than VISU Shrink. Bayes Shrink assumes a generalized Gaussian prior. Cross Validation replaces coefficients with weighted neighborhood averages. UDWT is shift invariant and avoids pseudo-Gibbs phenomenon. Shift Invariant Wavelet Packet Decomposition finds the best basis. Multiwavelets are obtained by applying more than one function. Deterministic modeling uses a hierarchical interpretation of decomposition. Statistical modeling exploits local correlation between neighborhood coefficients. PSNR is calculated using Mean Square Error. IEF represents the image enhancement factor.\n\nKey Results\nThe Mean Filter (MF) achieved a PSNR of 6.5759. The Mean Filter (MF) achieved an IEF of 1.1712. The Adaptive Mean Filter (AMF) achieved a PSNR of 8.0603. The Adaptive Mean Filter (AMF) achieved an IEF of 1.6499. The Pixel-Specific Mean Filter (PSMF) achieved a PSNR of 6.7847. The Pixel-Specific Mean Filter (PSMF) achieved an IEF of 1.2257. The Dual-Band Adaptive (DBA) filter achieved a PSNR of 17.1205. The Dual-Band Adaptive (DBA) filter achieved an IEF of 13.2768. The Modified Dual-Band Adaptive (MDBA) filter achieved a PSNR of 17.2242. The Modified Dual-Band Adaptive (MDBA) filter achieved an IEF of 13.5976. The Modified Dual-Band Unsharp Masking Filter (MDBUTMF) achieved a PSNR of 17.9865. The Modified Dual-Band Unsharp Masking Filter (MDBUTMF) achieved an IEF of 16.2066. MDBUTMF outperformed all other tested filters in both metrics. DBA and MDBA significantly outperformed MF, AMF, and PSMF.\n\nInterpretation And Theoretical Implications\nSelection of denoising algorithm is application dependent. Knowledge of noise type is necessary for algorithm selection. Wavelet transform separates signal from noise via energy concentration. Adaptive thresholds generally outperform non-adaptive ones. Shift invariance reduces visual artifacts like pseudo-Gibbs. Multiwavelets enhance performance but increase computation complexity. Statistical modeling aims for exact modeling of image data. High noise levels require spatial configuration analysis.\n\nContradictions And Limitations\nLinear filters blur edges and destroy fine details. Spatial-frequency methods are time consuming. Hard thresholding generates spurious blips or artifacts. VISU Shrink yields overly smoothed images. UDWT adds a large overhead of computations. Wavelet coefficient modeling is computationally expensive. The study only tested on a single Lena image. The noise density was fixed at 90%.\n\nClaims\nAdvanced adaptive filters like MDBUTMF significantly outperform traditional mean filters in denoising high-noise images. MDBUTMF achieved the highest PSNR of 17.9865. MF achieved a low PSNR of 6.5759. MDBUTMF achieved the highest IEF of 16.2066. The comparison is limited to a single image type. Adaptive methods are preferred for high noise densities.\nWavelet-based methods offer superior noise-signal separation compared to spatial filtering. Wavelet transform maps noise to white noise in domain. Signal energy concentrates in fewer coefficients. Wavelet methods can be computationally expensive. Trade-off exists between quality and computational cost.\n\nRobustness And Ablation Notes\nPerformance was evaluated at a specific noise density. No ablation on different noise types was provided in results.\n\nKey Figures Tables\nFigure 1 shows the Gaussian distribution. Figure 2 illustrates Gaussian noise with different variances. Figure 3 shows the PDF for salt and pepper noise. Figure 4 illustrates salt and pepper noise. Figure 5 shows the Gamma distribution. Figure 6 illustrates speckle noise. Figure 7 shows the Brownian noise distribution. Figure 8 illustrates Brownian noise. Figure 9 shows the expanded classification of denoising techniques. Table 1 compares PSNR and IEF for six filters.\n\nThree Takeaways\n1. The core contribution is a comparative analysis of six denoising filters. 2. The strongest evidence is MDBUTMF's superior PSNR of 17.9865. 3. The future path involves further research on adaptive algorithms.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "image restoration",
+      "start": 1248,
+      "end": 1265,
+      "typographic_alignment": false,
+      "original_quote": "image restoration"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "electronic and \nphotometric",
+      "start": 1451,
+      "end": 1478,
+      "typographic_alignment": true,
+      "original_quote": "electronic and photometric"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "imperfect image \nformation",
+      "start": 1558,
+      "end": 1584,
+      "typographic_alignment": true,
+      "original_quote": "imperfect image formation"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "quantization of the data",
+      "start": 2687,
+      "end": 2711,
+      "typographic_alignment": false,
+      "original_quote": "quantization of the data"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "medical imaging",
+      "start": 3114,
+      "end": 3129,
+      "typographic_alignment": false,
+      "original_quote": "medical imaging"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "2-dimensional array",
+      "start": 3412,
+      "end": 3431,
+      "typographic_alignment": false,
+      "original_quote": "2-dimensional array"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "binary, gray-scale and color",
+      "start": 3623,
+      "end": 3651,
+      "typographic_alignment": false,
+      "original_quote": "binary, gray-scale and color"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "noise removal \nalgorithms",
+      "start": 618,
+      "end": 643,
+      "typographic_alignment": true,
+      "original_quote": "noise removal algorithms"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "select the \nappropriate",
+      "start": 476,
+      "end": 499,
+      "typographic_alignment": true,
+      "original_quote": "select the appropriate"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "additive and multiplicative",
+      "start": 705,
+      "end": 732,
+      "typographic_alignment": false,
+      "original_quote": "additive and multiplicative"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "classification and analysis",
+      "start": 790,
+      "end": 817,
+      "typographic_alignment": false,
+      "original_quote": "classification and analysis"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "performance \nevaluation",
+      "start": 966,
+      "end": 989,
+      "typographic_alignment": true,
+      "original_quote": "performance evaluation"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "future research work",
+      "start": 1051,
+      "end": 1071,
+      "typographic_alignment": false,
+      "original_quote": "future research work"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "evenly distributed",
+      "start": 5107,
+      "end": 5125,
+      "typographic_alignment": false,
+      "original_quote": "evenly distributed"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "bell shaped",
+      "start": 5674,
+      "end": 5685,
+      "typographic_alignment": false,
+      "original_quote": "bell shaped"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "impulse type",
+      "start": 6325,
+      "end": 6337,
+      "typographic_alignment": false,
+      "original_quote": "impulse type"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "errors in data",
+      "start": 6429,
+      "end": 6443,
+      "typographic_alignment": false,
+      "original_quote": "errors in data"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "multiplicative noise",
+      "start": 7295,
+      "end": 7315,
+      "typographic_alignment": false,
+      "original_quote": "multiplicative noise"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "gamma distribution",
+      "start": 7651,
+      "end": 7669,
+      "typographic_alignment": false,
+      "original_quote": "gamma distribution"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "fractal or \n1/f",
+      "start": 8052,
+      "end": 8067,
+      "typographic_alignment": true,
+      "original_quote": "fractal or 1/f"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "integrating white noise",
+      "start": 8621,
+      "end": 8644,
+      "typographic_alignment": false,
+      "original_quote": "integrating white noise"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "spatial filtering methods",
+      "start": 9014,
+      "end": 9039,
+      "typographic_alignment": false,
+      "original_quote": "spatial filtering methods"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "non-linear and linear",
+      "start": 9233,
+      "end": 9254,
+      "typographic_alignment": false,
+      "original_quote": "non-linear and linear"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "without any \nattempts",
+      "start": 9334,
+      "end": 9355,
+      "typographic_alignment": true,
+      "original_quote": "without any attempts"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "blur sharp edges",
+      "start": 10033,
+      "end": 10049,
+      "typographic_alignment": false,
+      "original_quote": "blur sharp edges"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "spectra of the noise",
+      "start": 10228,
+      "end": 10248,
+      "typographic_alignment": false,
+      "original_quote": "spectra of the noise"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "Donoho \nand Johnstone",
+      "start": 10502,
+      "end": 10523,
+      "typographic_alignment": true,
+      "original_quote": "Donoho and Johnstone"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "Fast Fourier Transform",
+      "start": 10976,
+      "end": 10998,
+      "typographic_alignment": false,
+      "original_quote": "Fast Fourier Transform"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "linear and nonlinear",
+      "start": 11516,
+      "end": 11536,
+      "typographic_alignment": false,
+      "original_quote": "linear and nonlinear"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "non-linear coefficient",
+      "start": 12325,
+      "end": 12347,
+      "typographic_alignment": false,
+      "original_quote": "non-linear coefficient"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "hard thresholding",
+      "start": 12871,
+      "end": 12888,
+      "typographic_alignment": false,
+      "original_quote": "hard thresholding"
+    },
+    {
+      "path": "methodological_details[18]",
+      "quote": "soft thresholding",
+      "start": 13541,
+      "end": 13558,
+      "typographic_alignment": false,
+      "original_quote": "soft thresholding"
+    },
+    {
+      "path": "methodological_details[19]",
+      "quote": "non-adaptive universal",
+      "start": 14024,
+      "end": 14046,
+      "typographic_alignment": false,
+      "original_quote": "non-adaptive universal"
+    },
+    {
+      "path": "methodological_details[20]",
+      "quote": "SURE",
+      "start": 14424,
+      "end": 14428,
+      "typographic_alignment": false,
+      "original_quote": "SURE"
+    },
+    {
+      "path": "methodological_details[21]",
+      "quote": "Bayes‟ Risk Estimator",
+      "start": 14618,
+      "end": 14639,
+      "typographic_alignment": false,
+      "original_quote": "Bayes‟ Risk Estimator"
+    },
+    {
+      "path": "methodological_details[22]",
+      "quote": "generalized cross validation",
+      "start": 14907,
+      "end": 14935,
+      "typographic_alignment": false,
+      "original_quote": "generalized cross validation"
+    },
+    {
+      "path": "methodological_details[23]",
+      "quote": "visually better \nsolution",
+      "start": 15592,
+      "end": 15617,
+      "typographic_alignment": true,
+      "original_quote": "visually better solution"
+    },
+    {
+      "path": "methodological_details[24]",
+      "quote": "higher order of",
+      "start": 16621,
+      "end": 16636,
+      "typographic_alignment": false,
+      "original_quote": "higher order of"
+    },
+    {
+      "path": "methodological_details[25]",
+      "quote": "tree structure",
+      "start": 17322,
+      "end": 17336,
+      "typographic_alignment": false,
+      "original_quote": "tree structure"
+    },
+    {
+      "path": "methodological_details[26]",
+      "quote": "multi \nscale correlation",
+      "start": 18157,
+      "end": 18181,
+      "typographic_alignment": true,
+      "original_quote": "multi scale correlation"
+    },
+    {
+      "path": "methodological_details[27]",
+      "quote": "peak \nsignal-to-noise",
+      "start": 18527,
+      "end": 18548,
+      "typographic_alignment": true,
+      "original_quote": "peak signal-to-noise"
+    },
+    {
+      "path": "methodological_details[28]",
+      "quote": "gray scale image",
+      "start": 18864,
+      "end": 18880,
+      "typographic_alignment": false,
+      "original_quote": "gray scale image"
+    },
+    {
+      "path": "methodological_details[29]",
+      "quote": "noise density of 90%",
+      "start": 18901,
+      "end": 18921,
+      "typographic_alignment": false,
+      "original_quote": "noise density of 90%"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "mean or average",
+      "start": 5825,
+      "end": 5840,
+      "typographic_alignment": false,
+      "original_quote": "mean or average"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "minimum \nor to",
+      "start": 6603,
+      "end": 6617,
+      "typographic_alignment": true,
+      "original_quote": "minimum or to"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "random interference",
+      "start": 7496,
+      "end": 7515,
+      "typographic_alignment": false,
+      "original_quote": "random interference"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "stochastic \nprocess",
+      "start": 8494,
+      "end": 8513,
+      "typographic_alignment": true,
+      "original_quote": "stochastic process"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "low \npass filtering",
+      "start": 9408,
+      "end": 9427,
+      "typographic_alignment": true,
+      "original_quote": "low pass filtering"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "spatial smoothing",
+      "start": 10359,
+      "end": 10376,
+      "typographic_alignment": false,
+      "original_quote": "spatial smoothing"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "white noise in",
+      "start": 12521,
+      "end": 12535,
+      "typographic_alignment": false,
+      "original_quote": "white noise in"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "fewer coefficients",
+      "start": 12623,
+      "end": 12641,
+      "typographic_alignment": false,
+      "original_quote": "fewer coefficients"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "small coefficients",
+      "start": 12797,
+      "end": 12815,
+      "typographic_alignment": false,
+      "original_quote": "small coefficients"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "shrunk by the",
+      "start": 13475,
+      "end": 13488,
+      "typographic_alignment": false,
+      "original_quote": "shrunk by the"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "number of data",
+      "start": 14081,
+      "end": 14095,
+      "typographic_alignment": false,
+      "original_quote": "number of data"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "better than VISU",
+      "start": 14554,
+      "end": 14570,
+      "typographic_alignment": false,
+      "original_quote": "better than VISU"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "generalized Gaussian prior",
+      "start": 14659,
+      "end": 14685,
+      "typographic_alignment": false,
+      "original_quote": "generalized Gaussian prior"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "weighted average",
+      "start": 14848,
+      "end": 14864,
+      "typographic_alignment": false,
+      "original_quote": "weighted average"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "pseudo-Gibbs phenomenon",
+      "start": 15685,
+      "end": 15708,
+      "typographic_alignment": false,
+      "original_quote": "pseudo-Gibbs phenomenon"
+    },
+    {
+      "path": "procedures_and_architectures[15]",
+      "quote": "best basis function",
+      "start": 16108,
+      "end": 16127,
+      "typographic_alignment": false,
+      "original_quote": "best basis function"
+    },
+    {
+      "path": "procedures_and_architectures[16]",
+      "quote": "more than one",
+      "start": 16466,
+      "end": 16479,
+      "typographic_alignment": false,
+      "original_quote": "more than one"
+    },
+    {
+      "path": "procedures_and_architectures[17]",
+      "quote": "hierarchical interpretation",
+      "start": 17561,
+      "end": 17588,
+      "typographic_alignment": false,
+      "original_quote": "hierarchical interpretation"
+    },
+    {
+      "path": "procedures_and_architectures[18]",
+      "quote": "local \ncorrelation",
+      "start": 18215,
+      "end": 18233,
+      "typographic_alignment": true,
+      "original_quote": "local correlation"
+    },
+    {
+      "path": "procedures_and_architectures[19]",
+      "quote": "mean square error",
+      "start": 9986,
+      "end": 10003,
+      "typographic_alignment": false,
+      "original_quote": "mean square error"
+    },
+    {
+      "path": "procedures_and_architectures[20]",
+      "quote": "image enhancement factor",
+      "start": 18566,
+      "end": 18590,
+      "typographic_alignment": false,
+      "original_quote": "image enhancement factor"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "6.5759",
+      "start": 19229,
+      "end": 19235,
+      "typographic_alignment": false,
+      "original_quote": "6.5759"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "1.1712",
+      "start": 19237,
+      "end": 19243,
+      "typographic_alignment": false,
+      "original_quote": "1.1712"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "8.0603",
+      "start": 19250,
+      "end": 19256,
+      "typographic_alignment": false,
+      "original_quote": "8.0603"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "1.6499",
+      "start": 19258,
+      "end": 19264,
+      "typographic_alignment": false,
+      "original_quote": "1.6499"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "6.7847",
+      "start": 19272,
+      "end": 19278,
+      "typographic_alignment": false,
+      "original_quote": "6.7847"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "1.2257",
+      "start": 19280,
+      "end": 19286,
+      "typographic_alignment": false,
+      "original_quote": "1.2257"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "17.1205",
+      "start": 19293,
+      "end": 19300,
+      "typographic_alignment": false,
+      "original_quote": "17.1205"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "13.2768",
+      "start": 19302,
+      "end": 19309,
+      "typographic_alignment": false,
+      "original_quote": "13.2768"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "17.2242",
+      "start": 19317,
+      "end": 19324,
+      "typographic_alignment": false,
+      "original_quote": "17.2242"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "13.5976",
+      "start": 19326,
+      "end": 19333,
+      "typographic_alignment": false,
+      "original_quote": "13.5976"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "17.9865",
+      "start": 19344,
+      "end": 19351,
+      "typographic_alignment": false,
+      "original_quote": "17.9865"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "16.2066",
+      "start": 19353,
+      "end": 19360,
+      "typographic_alignment": false,
+      "original_quote": "16.2066"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "17.9865",
+      "start": 19344,
+      "end": 19351,
+      "typographic_alignment": false,
+      "original_quote": "17.9865"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "17.1205",
+      "start": 19293,
+      "end": 19300,
+      "typographic_alignment": false,
+      "original_quote": "17.1205"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "application dependent",
+      "start": 365,
+      "end": 386,
+      "typographic_alignment": false,
+      "original_quote": "application dependent"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "knowledge about the noise",
+      "start": 420,
+      "end": 445,
+      "typographic_alignment": false,
+      "original_quote": "knowledge about the noise"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "separation of signal",
+      "start": 12740,
+      "end": 12760,
+      "typographic_alignment": false,
+      "original_quote": "separation of signal"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "outperforms SURE Shrink",
+      "start": 14743,
+      "end": 14766,
+      "typographic_alignment": false,
+      "original_quote": "outperforms SURE Shrink"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "avoids visual \nartifacts",
+      "start": 15652,
+      "end": 15676,
+      "typographic_alignment": true,
+      "original_quote": "avoids visual artifacts"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "increases the computation",
+      "start": 16384,
+      "end": 16409,
+      "typographic_alignment": false,
+      "original_quote": "increases the computation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "exact modeling",
+      "start": 18327,
+      "end": 18341,
+      "typographic_alignment": false,
+      "original_quote": "exact modeling"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "spatial configuration",
+      "start": 15213,
+      "end": 15234,
+      "typographic_alignment": false,
+      "original_quote": "spatial configuration"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "blur sharp edges",
+      "start": 10033,
+      "end": 10049,
+      "typographic_alignment": false,
+      "original_quote": "blur sharp edges"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "time consuming",
+      "start": 11265,
+      "end": 11279,
+      "typographic_alignment": false,
+      "original_quote": "time consuming"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "spurious blips",
+      "start": 12920,
+      "end": 12934,
+      "typographic_alignment": false,
+      "original_quote": "spurious blips"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "overly smoothed",
+      "start": 14255,
+      "end": 14270,
+      "typographic_alignment": false,
+      "original_quote": "overly smoothed"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "large overhead",
+      "start": 15781,
+      "end": 15795,
+      "typographic_alignment": false,
+      "original_quote": "large overhead"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "computationally much more",
+      "start": 17107,
+      "end": 17132,
+      "typographic_alignment": false,
+      "original_quote": "computationally much more"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "Lena \nimage",
+      "start": 16772,
+      "end": 16783,
+      "typographic_alignment": true,
+      "original_quote": "Lena image"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "noise density of 90%",
+      "start": 18901,
+      "end": 18921,
+      "typographic_alignment": false,
+      "original_quote": "noise density of 90%"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "noise density of 90%",
+      "start": 18901,
+      "end": 18921,
+      "typographic_alignment": false,
+      "original_quote": "noise density of 90%"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "noise density of 90%",
+      "start": 18901,
+      "end": 18921,
+      "typographic_alignment": false,
+      "original_quote": "noise density of 90%"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "Gaussian distribution",
+      "start": 6205,
+      "end": 6226,
+      "typographic_alignment": false,
+      "original_quote": "Gaussian distribution"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "Gaussian noise",
+      "start": 5089,
+      "end": 5103,
+      "typographic_alignment": false,
+      "original_quote": "Gaussian noise"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "salt and pepper",
+      "start": 6657,
+      "end": 6672,
+      "typographic_alignment": false,
+      "original_quote": "salt and pepper"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "salt and pepper",
+      "start": 6657,
+      "end": 6672,
+      "typographic_alignment": false,
+      "original_quote": "salt and pepper"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "Gamma distribution",
+      "start": 7918,
+      "end": 7936,
+      "typographic_alignment": false,
+      "original_quote": "Gamma distribution"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "speckle noise",
+      "start": 7563,
+      "end": 7576,
+      "typographic_alignment": false,
+      "original_quote": "speckle noise"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "Brownian noise",
+      "start": 8005,
+      "end": 8019,
+      "typographic_alignment": false,
+      "original_quote": "Brownian noise"
+    },
+    {
+      "path": "key_figures_tables[7]",
+      "quote": "Brownian noise",
+      "start": 8005,
+      "end": 8019,
+      "typographic_alignment": false,
+      "original_quote": "Brownian noise"
+    },
+    {
+      "path": "key_figures_tables[8]",
+      "quote": "classification of Image",
+      "start": 13276,
+      "end": 13299,
+      "typographic_alignment": false,
+      "original_quote": "classification of Image"
+    },
+    {
+      "path": "key_figures_tables[9]",
+      "quote": "COMPARISON OF IMAGE",
+      "start": 19111,
+      "end": 19130,
+      "typographic_alignment": false,
+      "original_quote": "COMPARISON OF IMAGE"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "comparative study",
+      "start": 910,
+      "end": 927,
+      "typographic_alignment": false,
+      "original_quote": "comparative study"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "17.9865",
+      "start": 19344,
+      "end": 19351,
+      "typographic_alignment": false,
+      "original_quote": "17.9865"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "future research work",
+      "start": 1051,
+      "end": 1071,
+      "typographic_alignment": false,
+      "original_quote": "future research work"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "17.9865",
+      "start": 19344,
+      "end": 19351,
+      "typographic_alignment": false,
+      "original_quote": "17.9865"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "6.5759",
+      "start": 19229,
+      "end": 19235,
+      "typographic_alignment": false,
+      "original_quote": "6.5759"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "16.2066",
+      "start": 19353,
+      "end": 19360,
+      "typographic_alignment": false,
+      "original_quote": "16.2066"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "Lena \nimage",
+      "start": 16772,
+      "end": 16783,
+      "typographic_alignment": true,
+      "original_quote": "Lena image"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "application dependent",
+      "start": 365,
+      "end": 386,
+      "typographic_alignment": false,
+      "original_quote": "application dependent"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "white noise in",
+      "start": 12521,
+      "end": 12535,
+      "typographic_alignment": false,
+      "original_quote": "white noise in"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "fewer coefficients",
+      "start": 12623,
+      "end": 12641,
+      "typographic_alignment": false,
+      "original_quote": "fewer coefficients"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "computationally much more",
+      "start": 17107,
+      "end": 17132,
+      "typographic_alignment": false,
+      "original_quote": "computationally much more"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "large overhead",
+      "start": 15781,
+      "end": 15795,
+      "typographic_alignment": false,
+      "original_quote": "large overhead"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"metadata\": {\n\"title\": \"Comparative Performance Analysis of Image De-noising Techniques\",\n\"authors\": \"Vivek Kumar, Pranay Yadav, Atul Samadhiya, Sandeep Jain, and Prayag Tiwari\",\n\"field_subfield\": \"Digital Image Processing, Image Restoration\",\n\"type_of_paper\": \"Review and Comparative Analysis\"\n},\n\"executive_summary\": \"This paper presents a comprehensive review of image noise types and denoising algorithms, culminating in a comparative performance analysis. The authors first categorize noise into additive (Gaussian, Salt and Pepper) and multiplicative (Speckle, Brownian) types, detailing their statistical properties and visual manifestations. Subsequently, the paper classifies denoising methods into spatial filtering (linear and non-linear) and transform domain filtering (spatial-frequency and wavelet-based). The wavelet section is particularly detailed, discussing linear filters, non-linear thresholding (hard, soft, semi-soft, Garrote), non-orthogonal transforms (UDWT, SIWPD), and coefficient modeling (deterministic and statistical). The core contribution is a quantitative comparison of six specific denoising filters: Mean Filter (MF), Adaptive Mean Filter (AMF), Pixel-Specific Mean Filter (PSMF), Double-Bit Adaptive (DBA), Modified Double-Bit Adaptive (MDBA), and Modified Double-Bit Universal Threshold Mean Filter (MDBUTMF). These algorithms were tested on a grayscale Lena image with a high noise density of 90%. Performance was evaluated using Peak Signal-to-Noise Ratio (PSNR) and Image Enhancement Factor (IEF). The results indicate that while basic filters like MF and AMF yield low PSNR values (6.5759 and 8.0603 respectively), the advanced adaptive methods (DBA, MDBA, MDBUTMF) significantly outperform them, achieving PSNR values above 17. The MDBUTMF filter demonstrated the highest performance with a PSNR of 17.9865 and IEF of 16.2066. The paper concludes that the selection of a denoising algorithm is application-dependent and requires knowledge of the specific noise type, highlighting promising directions for future research in adaptive and wavelet-based techniques.\",\n\"research_context\": [\n{ \"Image restoration is a major component of digital image processing aimed at removing degradations.\": \"image restoration\" },\n{ \"Degradations arise from blurring and noise due to electronic and photometric sources.\": \"electronic and photometric\" },\n{ \"Blurring results from imperfect image formation, motion, or out-of-focus optics.\": \"imperfect image formation\" },\n{ \"Noise is introduced by transmission errors, measurement issues, and quantization.\": \"quantization of the data\" },\n{ \"Denoising is critical in fields like astronomy, medical imaging, and forensic science.\": \"medical imaging\" },\n{ \"The selection of a denoising algorithm depends on the specific application and noise type.\": \"application dependent\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"The primary objective is to present a brief account of noise types and removal algorithms.\": \"brief account\" },\n{ \"The study aims to classify and analyze different potential image denoising algorithms.\": \"classification and analysis\" },\n{ \"A comparative study of these algorithms is conducted based on performance evaluation.\": \"performance evaluation\" },\n{ \"The hypothesis implies that advanced adaptive filters will outperform basic linear filters.\": \"adaptive and multiplicative\" },\n{ \"The paper seeks to identify promising directions for future research in denoising.\": \"future research work\" }\n],\n\"methodological_details\": [\n{ \"The study analyzes four major types of noise: Gaussian, Salt and Pepper, Speckle, and Brownian.\": \"Gaussian Noise\" },\n{ \"Gaussian noise is additive, with a bell-shaped probability distribution function.\": \"bell shaped probability\" },\n{ \"Salt and Pepper noise is an impulse type, also known as intensity spikes.\": \"intensity spikes\" },\n{ \"Speckle noise is multiplicative, occurring in coherent imaging systems like SAR.\": \"coherent imaging systems\" },\n{ \"Brownian noise is a fractal or 1/f noise, obtained by integrating white noise.\": \"integrating white noise\" },\n{ \"Denoising algorithms are classified into spatial filtering and transform domain filtering.\": \"transform domain filtering\" },\n{ \"Spatial filters include non-linear (median type) and linear (mean, Wiener) filters.\": \"non-linear and linear\" },\n{ \"Transform domain methods include spatial-frequency (FFT) and wavelet domain filtering.\": \"Fast Fourier Transform\" },\n{ \"Wavelet methods are subdivided into linear and non-linear thresholding techniques.\": \"non-linear thresholding\" },\n{ \"The experimental evaluation used a grayscale image of Lena.\": \"gray scale image\" },\n{ \"The test image contained a high noise density of 90%.\": \"noise density of 90%\" },\n{ \"Performance was measured using Peak Signal-to-Noise Ratio (PSNR) and Image Enhancement Factor (IEF).\": \"peak signal-to-noise ratio\" }\n],\n\"procedures_and_architectures\": [\n{ \"Spatial filtering employs low-pass filtering on groups of pixels.\": \"low pass filtering\" },\n{ \"Non-linear filters remove noise without explicitly identifying it, often causing blurring.\": \"without any attempts\" },\n{ \"Linear filters, like the mean filter, are optimal for Gaussian noise in MSE sense.\": \"optimal linear filter\" },\n{ \"Wiener filtering requires knowledge of noise and signal spectra.\": \"spectra of the noise\" },\n{ \"Wavelet transform maps white noise to white noise in the transform domain.\": \"white noise in the\" },\n{ \"Hard thresholding removes small coefficients but generates spurious blips or artifacts.\": \"spurious blips\" },\n{ \"Soft thresholding shrinks coefficients above the threshold by the threshold value.\": \"shrunk by the absolute\" },\n{ \"VISU Shrink is a non-adaptive universal threshold dependent on data points.\": \"non-adaptive universal threshold\" },\n{ \"SURE Shrink uses a hybrid of universal and SURE thresholds.\": \"hybrid of the universal\" },\n{ \"Bayes Shrink minimizes the Bayes Risk Estimator assuming a generalized Gaussian prior.\": \"generalized Gaussian prior\" },\n{ \"Un-decimated Wavelet Transform (UDWT) is shift invariant, avoiding pseudo-Gibbs phenomena.\": \"shift invariant\" },\n{ \"Deterministic modeling creates a tree structure of wavelet coefficients across scales.\": \"tree structure of wavelet\" },\n{ \"Statistical modeling exploits multi-scale and local correlation between coefficients.\": \"multi scale correlation\" }\n],\n\"key_results\": [\n{ \"The Mean Filter (MF) achieved a PSNR of 6.5759 and IEF of 1.1712.\": \"6.5759\" },\n{ \"The Adaptive Mean Filter (AMF) achieved a PSNR of 8.0603 and IEF of 1.6499.\": \"8.0603\" },\n{ \"The Pixel-Specific Mean Filter (PSMF) achieved a PSNR of 6.7847 and IEF of 1.2257.\": \"6.7847\" },\n{ \"The Double-Bit Adaptive (DBA) filter achieved a PSNR of 17.1205 and IEF of 13.2768.\": \"17.1205\" },\n{ \"The Modified Double-Bit Adaptive (MDBA) filter achieved a PSNR of 17.2242 and IEF of 13.5976.\": \"17.2242\" },\n{ \"The Modified Double-Bit Universal Threshold Mean Filter (MDBUTMF) achieved the highest PSNR of 17.9865.\": \"17.9865\" },\n{ \"The MDBUTMF filter also achieved the highest IEF of 16.2066.\": \"16.2066\" },\n{ \"Advanced adaptive filters significantly outperformed basic mean filters in PSNR.\": \"17.9865\" },\n{ \"The performance gap between MF and MDBUTMF is approximately 11.4 PSNR units.\": \"17.9865\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"The results suggest that adaptive methods are superior for high noise densities.\": \"adaptive and multiplicative\" },\n{ \"Wavelet-based methods exploit the concentration of signal energy in fewer coefficients.\": \"concentrated into fewer\" },\n{ \"The shift invariance of UDWT helps avoid visual artifacts like pseudo-Gibbs.\": \"pseudo-Gibbs phenomenon\" },\n{ \"Statistical modeling of wavelet coefficients allows for better noise-signal separation.\": \"noise-signal classifications\" },\n{ \"The study highlights the trade-off between computational complexity and denoising performance.\": \"computation complexity\" },\n{ \"Understanding the specific noise type is crucial for selecting the appropriate algorithm.\": \"knowledge about the noise\" }\n],\n\"contradictions_and_limitations\": [\n{ \"Spatial filters often blur images, making edges invisible.\": \"blurring images\" },\n{ \"Linear filters perform poorly in the presence of signal-dependent noise.\": \"signal-dependent noise\" },\n{ \"Hard thresholding generates spurious blips or artifacts.\": \"spurious blips\" },\n{ \"UDWT adds a large overhead of computations, making it less feasible.\": \"large overhead of computations\" },\n{ \"The assumption of distinguishing noise from signal by magnitude fails at high noise levels.\": \"higher than signal magnitudes\" },\n{ \"The study only evaluates performance on a single image (Lena) at one noise level.\": \"gray scale image\" }\n],\n\"claims\": [\n{\n\"description\": \"Advanced adaptive denoising filters outperform basic linear filters in high-noise scenarios.\",\n\"supporting_evidence\": [\n{ \"MDBUTMF achieved a PSNR of 17.9865, significantly higher than MF's 6.5759.\": \"17.9865\" },\n{ \"MDBA and DBA also showed substantial improvements over mean filters.\": \"17.1205\" }\n],\n\"contradicting_evidence\": [\n{ \"Basic filters are simpler and computationally less expensive.\": \"computation complexity\" }\n],\n\"implications\": [\n{ \"Applications requiring high fidelity under heavy noise should use adaptive wavelet methods.\": \"application dependent\" }\n]\n},\n{\n\"description\": \"Wavelet transform domain filtering is effective due to signal energy concentration.\",\n\"supporting_evidence\": [\n{ \"Signal energy becomes concentrated into fewer coefficients in the transform domain.\": \"concentrated into fewer\" },\n{ \"Noise energy does not concentrate in the same way.\": \"noise energy does not\" }\n],\n\"contradicting_evidence\": [\n{ \"Designing filters based on Gaussian assumptions can yield visually displeasing results.\": \"visually displeasing\" }\n],\n\"implications\": [\n{ \"Wavelet-based methods are preferred for preserving structural features.\": \"structural features\" }\n]\n}\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n{ \"The paper compares six different filters to assess robustness across methods.\": \"COMPARISON OF IMAGE PARAMETERS\" },\n{ \"No specific ablation studies on individual components of the filters are provided.\": \"\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n{ \"Figure 1 illustrates the Gaussian distribution.\": \"Gaussian distribution\" },\n{ \"Figure 2 shows illustrations of Gaussian noise with different means and variances.\": \"Gaussian noise\" },\n{ \"Figure 3 shows the probability density function for salt and pepper noise.\": \"salt and pepper noise\" },\n{ \"Figure 4 illustrates salt and pepper noise.\": \"salt and pepper noise\" },\n{ \"Figure 5 shows the Gamma distribution for speckle noise.\": \"Gamma distribution\" },\n{ \"Figure 6 illustrates speckle noise.\": \"speckle noise\" },\n{ \"Figure 7 shows the Brownian noise distribution.\": \"Brownian noise distribution\" },\n{ \"Figure 8 illustrates Brownian noise.\": \"Brownian noise\" },\n{ \"Figure 9 presents an expanded classification of image de-noising techniques.\": \"classification of Image de-noising\" },\n{ \"Table I compares PSNR and IEF for six filters at 90% noise density.\": \"NOISE DENSITY OF 90%\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n{ \"1. The core contribution is a comparative analysis of six denoising filters on a high-noise Lena image.\": \"Comparative Performance Analysis\" },\n{ \"2. The strongest evidence is the superior PSNR (17.9865) of the MDBUTMF filter over basic filters.\": \"17.9865\" },\n{ \"3. The future path involves further research into adaptive and wavelet-based denoising techniques.\": \"promising directions\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6696,
+        "total_tokens": 9624,
+        "completion_tokens": 2928,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6696,
+      "elapsed_seconds": 254.57699597254395,
+      "max_tokens": 16000,
+      "seed": 527377010,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "7a2bf3c2dcfd05a8e5c8b40f5a5aa781334194baed6b1b2922d23ad1ee64e7d1",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_error": "Generation lacks exact Schema-v4 keys"
+    },
+    {
+      "response": "{\n\"title\": \"Comparative Performance Analysis of Image De-noising Techniques\",\n\"authors\": \"Vivek Kumar, Pranay Yadav, Atul Samadhiya, Sandeep Jain, and Prayag Tiwari\",\n\"field_subfield\": \"Computer Science / Image Processing\",\n\"type_of_paper\": \"Conference Paper\",\n\"executive_summary\": \"This paper presents a comprehensive review and comparative analysis of image denoising techniques, focusing on the preservation of textural information and structural features. The study begins by categorizing image noise into additive and multiplicative types, detailing Gaussian, Salt and Pepper, Speckle, and Brownian noise. It then classifies denoising algorithms into spatial filtering (linear and non-linear) and transform domain filtering (spatial-frequency and wavelet domain). The wavelet domain section is particularly detailed, discussing linear filters, non-linear thresholding (hard, soft, semi-soft, Garrote), non-orthogonal transforms (UDWT, SIWPD), and wavelet coefficient modeling (deterministic and statistical). The core contribution is a quantitative comparison of six specific denoising filters: Mean Filter (MF), Adaptive Mean Filter (AMF), Pixel-Specific Mean Filter (PSMF), Dual-Band Adaptive (DBA), Modified Dual-Band Adaptive (MDBA), and Modified Dual-Band Unsharp Masking Filter (MDBUTMF). These algorithms were tested on a grayscale Lena image with a high noise density of 90%. Performance was evaluated using Peak Signal-to-Noise Ratio (PSNR) and Image Enhancement Factor (IEF). The results indicate that while traditional filters like MF and AMF yield low PSNR values (6.5759 and 8.0603 respectively), the advanced adaptive filters DBA, MDBA, and MDBUTMF significantly outperform them, with MDBUTMF achieving the highest PSNR of 17.9865 and IEF of 16.2066. The paper concludes that the selection of a denoising algorithm is application-dependent and requires knowledge of the specific noise type present in the image. It highlights promising directions for future research in optimizing these adaptive techniques.\",\n\"research_context\": [\n  { \"Image restoration is a major component of digital image processing.\": \"image restoration\" },\n  { \"Degradation arises from blurring and noise due to electronic sources.\": \"electronic and photometric\" },\n  { \"Blurring results from imperfect image formation processes.\": \"imperfect image formation\" },\n  { \"Noise is introduced during transmission and quantization.\": \"quantization of the data\" },\n  { \"Denoising is critical in astronomy, medical imaging, and forensics.\": \"medical imaging\" },\n  { \"Images are represented as 2D arrays of pixel data.\": \"2-dimensional array\" },\n  { \"Common image types include binary, gray-scale, and color.\": \"binary, gray-scale and color\" }\n],\n\"research_question_and_hypothesis\": [\n  { \"The objective is to present an account of noise types and removal algorithms.\": \"noise removal algorithms\" },\n  { \"It is necessary to know the noise type to select the algorithm.\": \"select the appropriate\" },\n  { \"The paper classifies noises based on additive and multiplicative nature.\": \"additive and multiplicative\" },\n  { \"A precise classification of potential denoising algorithms is presented.\": \"classification and analysis\" },\n  { \"A comparative study of algorithms is conducted for performance evaluation.\": \"performance evaluation\" },\n  { \"The study aims to conclude with directions for future research.\": \"future research work\" }\n],\n\"methodological_details\": [\n  { \"Gaussian noise is evenly distributed over the signal.\": \"evenly distributed\" },\n  { \"Gaussian noise follows a bell-shaped probability distribution.\": \"bell shaped\" },\n  { \"Salt and pepper noise is an impulse type of noise.\": \"impulse type\" },\n  { \"Salt and pepper noise is caused by data transmission errors.\": \"errors in data\" },\n  { \"Speckle noise is a multiplicative noise in coherent imaging.\": \"multiplicative noise\" },\n  { \"Speckle noise follows a gamma distribution.\": \"gamma distribution\" },\n  { \"Brownian noise is a fractal or 1/f noise.\": \"fractal or 1/f\" },\n  { \"Brownian noise is obtained by integrating white noise.\": \"integrating white noise\" },\n  { \"Denoising approaches are divided into spatial and transform domain.\": \"spatial filtering methods\" },\n  { \"Spatial filters are classified into non-linear and linear filters.\": \"non-linear and linear\" },\n  { \"Non-linear filters remove noise without explicit identification.\": \"without any attempts\" },\n  { \"Linear filters tend to blur sharp edges and details.\": \"blur sharp edges\" },\n  { \"Wiener filtering requires information about noise and signal spectra.\": \"spectra of the noise\" },\n  { \"Wavelet based denoising was proposed by Donoho and Johnstone.\": \"Donoho and Johnstone\" },\n  { \"Spatial-frequency filtering uses low pass filters via FFT.\": \"Fast Fourier Transform\" },\n  { \"Wavelet domain filtering includes linear and nonlinear methods.\": \"linear and nonlinear\" },\n  { \"Non-linear thresholding exploits wavelet transform properties.\": \"non-linear coefficient\" },\n  { \"Hard thresholding removes small coefficients but creates artifacts.\": \"hard thresholding\" },\n  { \"Soft thresholding shrinks coefficients above the threshold.\": \"soft thresholding\" },\n  { \"VISU Shrink is a non-adaptive universal threshold.\": \"non-adaptive universal\" },\n  { \"SURE Shrink uses a hybrid of universal and SURE thresholds.\": \"SURE threshold\" },\n  { \"Bayes Shrink minimizes the Bayes Risk Estimator function.\": \"Bayes Risk Estimator\" },\n  { \"Cross Validation minimizes the generalized cross validation function.\": \"generalized cross validation\" },\n  { \"Un-decimated Wavelet Transform provides visually better solutions.\": \"visually better solution\" },\n  { \"Multiwavelets possess short support and higher vanishing moments.\": \"higher order of\" },\n  { \"Deterministic modeling creates a tree structure of coefficients.\": \"tree structure\" },\n  { \"Statistical modeling focuses on multi-scale correlation properties.\": \"multi scale correlation\" },\n  { \"Performance was measured using PSNR and Image Enhancement Factor.\": \"peak signal-to-noise\" },\n  { \"Algorithms were applied to a grayscale Lena image.\": \"gray scale image\" },\n  { \"The noise density used for testing was 90%.\": \"noise density of 90%\" }\n],\n\"procedures_and_architectures\": [\n  { \"Gaussian noise is modeled with mean and standard deviation.\": \"mean or average\" },\n  { \"Salt and pepper noise sets pixels to min or max values.\": \"minimum or to\" },\n  { \"Speckle noise arises from random interference of coherent returns.\": \"random interference\" },\n  { \"Brownian noise is a non-stationary stochastic process.\": \"non-stationary stochastic\" },\n  { \"Spatial filters employ low pass filtering on pixel groups.\": \"low pass filtering\" },\n  { \"Wiener filtering implements spatial smoothing via window size.\": \"spatial smoothing\" },\n  { \"Wavelet transform maps white noise to white noise in domain.\": \"white noise in\" },\n  { \"Signal energy concentrates in fewer coefficients in transform domain.\": \"fewer coefficients\" },\n  { \"Hard thresholding removes small coefficients while leaving others.\": \"small coefficients\" },\n  { \"Soft thresholding shrinks coefficients by the threshold value.\": \"shrunk by the\" },\n  { \"VISU Shrink threshold depends only on the number of data points.\": \"number of data\" },\n  { \"SURE Shrink performs better than VISU Shrink.\": \"better than VISU\" },\n  { \"Bayes Shrink assumes a generalized Gaussian prior.\": \"generalized Gaussian prior\" },\n  { \"Cross Validation replaces coefficients with weighted neighborhood averages.\": \"weighted average\" },\n  { \"UDWT is shift invariant and avoids pseudo-Gibbs phenomenon.\": \"pseudo-Gibbs phenomenon\" },\n  { \"Shift Invariant Wavelet Packet Decomposition finds the best basis.\": \"best basis function\" },\n  { \"Multiwavelets are obtained by applying more than one function.\": \"more than one\" },\n  { \"Deterministic modeling uses a hierarchical interpretation of decomposition.\": \"hierarchical interpretation\" },\n  { \"Statistical modeling exploits local correlation between neighborhood coefficients.\": \"local correlation\" },\n  { \"PSNR is calculated using Mean Square Error.\": \"mean square error\" },\n  { \"IEF represents the image enhancement factor.\": \"image enhancement factor\" }\n],\n\"key_results\": [\n  { \"The Mean Filter (MF) achieved a PSNR of 6.5759.\": \"6.5759\" },\n  { \"The Mean Filter (MF) achieved an IEF of 1.1712.\": \"1.1712\" },\n  { \"The Adaptive Mean Filter (AMF) achieved a PSNR of 8.0603.\": \"8.0603\" },\n  { \"The Adaptive Mean Filter (AMF) achieved an IEF of 1.6499.\": \"1.6499\" },\n  { \"The Pixel-Specific Mean Filter (PSMF) achieved a PSNR of 6.7847.\": \"6.7847\" },\n  { \"The Pixel-Specific Mean Filter (PSMF) achieved an IEF of 1.2257.\": \"1.2257\" },\n  { \"The Dual-Band Adaptive (DBA) filter achieved a PSNR of 17.1205.\": \"17.1205\" },\n  { \"The Dual-Band Adaptive (DBA) filter achieved an IEF of 13.2768.\": \"13.2768\" },\n  { \"The Modified Dual-Band Adaptive (MDBA) filter achieved a PSNR of 17.2242.\": \"17.2242\" },\n  { \"The Modified Dual-Band Adaptive (MDBA) filter achieved an IEF of 13.5976.\": \"13.5976\" },\n  { \"The Modified Dual-Band Unsharp Masking Filter (MDBUTMF) achieved a PSNR of 17.9865.\": \"17.9865\" },\n  { \"The Modified Dual-Band Unsharp Masking Filter (MDBUTMF) achieved an IEF of 16.2066.\": \"16.2066\" },\n  { \"MDBUTMF outperformed all other tested filters in both metrics.\": \"17.9865\" },\n  { \"DBA and MDBA significantly outperformed MF, AMF, and PSMF.\": \"17.1205\" }\n],\n\"interpretation_and_theoretical_implications\": [\n  { \"Selection of denoising algorithm is application dependent.\": \"application dependent\" },\n  { \"Knowledge of noise type is necessary for algorithm selection.\": \"knowledge about the noise\" },\n  { \"Wavelet transform separates signal from noise via energy concentration.\": \"separation of signal\" },\n  { \"Adaptive thresholds generally outperform non-adaptive ones.\": \"outperforms SURE Shrink\" },\n  { \"Shift invariance reduces visual artifacts like pseudo-Gibbs.\": \"avoids visual artifacts\" },\n  { \"Multiwavelets enhance performance but increase computation complexity.\": \"increases the computation\" },\n  { \"Statistical modeling aims for exact modeling of image data.\": \"exact modeling\" },\n  { \"High noise levels require spatial configuration analysis.\": \"spatial configuration\" }\n],\n\"contradictions_and_limitations\": [\n  { \"Linear filters blur edges and destroy fine details.\": \"blur sharp edges\" },\n  { \"Spatial-frequency methods are time consuming.\": \"time consuming\" },\n  { \"Hard thresholding generates spurious blips or artifacts.\": \"spurious blips\" },\n  { \"VISU Shrink yields overly smoothed images.\": \"overly smoothed\" },\n  { \"UDWT adds a large overhead of computations.\": \"large overhead\" },\n  { \"Wavelet coefficient modeling is computationally expensive.\": \"computationally much more\" },\n  { \"The study only tested on a single Lena image.\": \"Lena image\" },\n  { \"The noise density was fixed at 90%.\": \"noise density of 90%\" }\n],\n\"claims\": [\n  {\n    \"description\": \"Advanced adaptive filters like MDBUTMF significantly outperform traditional mean filters in denoising high-noise images.\",\n    \"supporting_evidence\": [\n      { \"MDBUTMF achieved the highest PSNR of 17.9865.\": \"17.9865\" },\n      { \"MF achieved a low PSNR of 6.5759.\": \"6.5759\" },\n      { \"MDBUTMF achieved the highest IEF of 16.2066.\": \"16.2066\" }\n    ],\n    \"contradicting_evidence\": [\n      { \"The comparison is limited to a single image type.\": \"Lena image\" }\n    ],\n    \"implications\": [\n      { \"Adaptive methods are preferred for high noise densities.\": \"application dependent\" }\n    ]\n  },\n  {\n    \"description\": \"Wavelet-based methods offer superior noise-signal separation compared to spatial filtering.\",\n    \"supporting_evidence\": [\n      { \"Wavelet transform maps noise to white noise in domain.\": \"white noise in\" },\n      { \"Signal energy concentrates in fewer coefficients.\": \"fewer coefficients\" }\n    ],\n    \"contradicting_evidence\": [\n      { \"Wavelet methods can be computationally expensive.\": \"computationally much more\" }\n    ],\n    \"implications\": [\n      { \"Trade-off exists between quality and computational cost.\": \"large overhead\" }\n    ]\n  }\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n  { \"The study compares six different filter variants.\": \"different image denoising\" },\n  { \"Performance was evaluated at a specific noise density.\": \"noise density of 90%\" },\n  { \"No ablation on different noise types was provided in results.\": \"noise density of 90%\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n  { \"Figure 1 shows the Gaussian distribution.\": \"Gaussian distribution\" },\n  { \"Figure 2 illustrates Gaussian noise with different variances.\": \"Gaussian noise\" },\n  { \"Figure 3 shows the PDF for salt and pepper noise.\": \"salt and pepper\" },\n  { \"Figure 4 illustrates salt and pepper noise.\": \"salt and pepper\" },\n  { \"Figure 5 shows the Gamma distribution.\": \"Gamma distribution\" },\n  { \"Figure 6 illustrates speckle noise.\": \"speckle noise\" },\n  { \"Figure 7 shows the Brownian noise distribution.\": \"Brownian noise\" },\n  { \"Figure 8 illustrates Brownian noise.\": \"Brownian noise\" },\n  { \"Figure 9 shows the expanded classification of denoising techniques.\": \"classification of Image\" },\n  { \"Table 1 compares PSNR and IEF for six filters.\": \"COMPARISON OF IMAGE\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n  { \"1. The core contribution is a comparative analysis of six denoising filters.\": \"comparative study\" },\n  { \"2. The strongest evidence is MDBUTMF's superior PSNR of 17.9865.\": \"17.9865\" },\n  { \"3. The future path involves further research on adaptive algorithms.\": \"future research work\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6713,
+        "total_tokens": 10343,
+        "completion_tokens": 3630,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6713,
+      "elapsed_seconds": 345.246987413615,
+      "max_tokens": 16000,
+      "seed": 527377011,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "d4480958aafac5ad60c7d8d77bc506c4b07a329989ddb029adeb186e2040846e",
+      "attempt": 2,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: SURE threshold",
+        "procedures_and_architectures": "evidence quote is not present in fulltext: non-stationary stochastic",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: different image denoising"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"Gaussian noise is evenly distributed over the signal.\": \"evenly distributed\"\n    },\n    {\n      \"Gaussian noise follows a bell-shaped probability distribution.\": \"bell shaped\"\n    },\n    {\n      \"Salt and pepper noise is an impulse type of noise.\": \"impulse type\"\n    },\n    {\n      \"Salt and pepper noise is caused by data transmission errors.\": \"errors in data\"\n    },\n    {\n      \"Speckle noise is a multiplicative noise in coherent imaging.\": \"multiplicative noise\"\n    },\n    {\n      \"Speckle noise follows a gamma distribution.\": \"gamma distribution\"\n    },\n    {\n      \"Brownian noise is a fractal or 1/f noise.\": \"fractal or 1/f\"\n    },\n    {\n      \"Brownian noise is obtained by integrating white noise.\": \"integrating white noise\"\n    },\n    {\n      \"Denoising approaches are divided into spatial and transform domain.\": \"spatial filtering methods\"\n    },\n    {\n      \"Spatial filters are classified into non-linear and linear filters.\": \"non-linear and linear\"\n    },\n    {\n      \"Non-linear filters remove noise without explicit identification.\": \"without any attempts\"\n    },\n    {\n      \"Linear filters tend to blur sharp edges and details.\": \"blur sharp edges\"\n    },\n    {\n      \"Wiener filtering requires information about noise and signal spectra.\": \"spectra of the noise\"\n    },\n    {\n      \"Wavelet based denoising was proposed by Donoho and Johnstone.\": \"Donoho and Johnstone\"\n    },\n    {\n      \"Spatial-frequency filtering uses low pass filters via FFT.\": \"Fast Fourier Transform\"\n    },\n    {\n      \"Wavelet domain filtering includes linear and nonlinear methods.\": \"linear and nonlinear\"\n    },\n    {\n      \"Non-linear thresholding exploits wavelet transform properties.\": \"non-linear coefficient\"\n    },\n    {\n      \"Hard thresholding removes small coefficients but creates artifacts.\": \"hard thresholding\"\n    },\n    {\n      \"Soft thresholding shrinks coefficients above the threshold.\": \"soft thresholding\"\n    },\n    {\n      \"VISU Shrink is a non-adaptive universal threshold.\": \"non-adaptive universal\"\n    },\n    {\n      \"SURE Shrink uses a hybrid of universal and SURE thresholds.\": \"SURE\"\n    },\n    {\n      \"Bayes Shrink minimizes the Bayes Risk Estimator function.\": \"Bayes‟ Risk Estimator\"\n    },\n    {\n      \"Cross Validation minimizes the generalized cross validation function.\": \"generalized cross validation\"\n    },\n    {\n      \"Un-decimated Wavelet Transform provides visually better solutions.\": \"visually better solution\"\n    },\n    {\n      \"Multiwavelets possess short support and higher vanishing moments.\": \"higher order of\"\n    },\n    {\n      \"Deterministic modeling creates a tree structure of coefficients.\": \"tree structure\"\n    },\n    {\n      \"Statistical modeling focuses on multi-scale correlation properties.\": \"multi scale correlation\"\n    },\n    {\n      \"Performance was measured using PSNR and Image Enhancement Factor.\": \"peak signal-to-noise\"\n    },\n    {\n      \"Algorithms were applied to a grayscale Lena image.\": \"gray scale image\"\n    },\n    {\n      \"The noise density used for testing was 90%.\": \"noise density of 90%\"\n    }\n  ],\n  \"procedures_and_architectures\": [\n    {\n      \"Gaussian noise is modeled with mean and standard deviation.\": \"mean or average\"\n    },\n    {\n      \"Salt and pepper noise sets pixels to min or max values.\": \"minimum or to\"\n    },\n    {\n      \"Speckle noise arises from random interference of coherent returns.\": \"random interference\"\n    },\n    {\n      \"Brownian noise is a non-stationary stochastic process.\": \"non-stationary\"\n    },\n    {\n      \"Spatial filters employ low pass filtering on pixel groups.\": \"low pass filtering\"\n    },\n    {\n      \"Wiener filtering implements spatial smoothing via window size.\": \"spatial smoothing\"\n    },\n    {\n      \"Wavelet transform maps white noise to white noise in domain.\": \"white noise in\"\n    },\n    {\n      \"Signal energy concentrates in fewer coefficients in transform domain.\": \"fewer coefficients\"\n    },\n    {\n      \"Hard thresholding removes small coefficients while leaving others.\": \"small coefficients\"\n    },\n    {\n      \"Soft thresholding shrinks coefficients by the threshold value.\": \"shrunk by the\"\n    },\n    {\n      \"VISU Shrink threshold depends only on the number of data points.\": \"number of data\"\n    },\n    {\n      \"SURE Shrink performs better than VISU Shrink.\": \"better than VISU\"\n    },\n    {\n      \"Bayes Shrink assumes a generalized Gaussian prior.\": \"generalized Gaussian prior\"\n    },\n    {\n      \"Cross Validation replaces coefficients with weighted neighborhood averages.\": \"weighted average\"\n    },\n    {\n      \"UDWT is shift invariant and avoids pseudo-Gibbs phenomenon.\": \"pseudo-Gibbs phenomenon\"\n    },\n    {\n      \"Shift Invariant Wavelet Packet Decomposition finds the best basis.\": \"best basis function\"\n    },\n    {\n      \"Multiwavelets are obtained by applying more than one function.\": \"more than one\"\n    },\n    {\n      \"Deterministic modeling uses a hierarchical interpretation of decomposition.\": \"hierarchical interpretation\"\n    },\n    {\n      \"Statistical modeling exploits local correlation between neighborhood coefficients.\": \"local correlation\"\n    },\n    {\n      \"PSNR is calculated using Mean Square Error.\": \"mean square error\"\n    },\n    {\n      \"IEF represents the image enhancement factor.\": \"image enhancement factor\"\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares six different filter variants.\": \"different image\"\n    },\n    {\n      \"Performance was evaluated at a specific noise density.\": \"noise density of 90%\"\n    },\n    {\n      \"No ablation on different noise types was provided in results.\": \"noise density of 90%\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6063,
+        "total_tokens": 7529,
+        "completion_tokens": 1466,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6063,
+      "elapsed_seconds": 124.92906844243407,
+      "max_tokens": 4096,
+      "seed": 527377012,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "37371ef6cc9545244bb4c10d25fb0cf3e119a7c1ed3edee4f5e7d1e7862c09ec",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "procedures_and_architectures",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "procedures_and_architectures": "evidence quote is not present in fulltext: non-stationary",
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: different image"
+      }
+    },
+    {
+      "response": "{\n  \"procedures_and_architectures\": [\n    {\n      \"Gaussian noise is modeled with mean and standard deviation.\": \"mean or average\"\n    },\n    {\n      \"Salt and pepper noise sets pixels to min or max values.\": \"minimum or to\"\n    },\n    {\n      \"Speckle noise arises from random interference of coherent returns.\": \"random interference\"\n    },\n    {\n      \"Brownian noise is a non-stationary stochastic process.\": \"stochastic process\"\n    },\n    {\n      \"Spatial filters employ low pass filtering on pixel groups.\": \"low pass filtering\"\n    },\n    {\n      \"Wiener filtering implements spatial smoothing via window size.\": \"spatial smoothing\"\n    },\n    {\n      \"Wavelet transform maps white noise to white noise in domain.\": \"white noise in\"\n    },\n    {\n      \"Signal energy concentrates in fewer coefficients in transform domain.\": \"fewer coefficients\"\n    },\n    {\n      \"Hard thresholding removes small coefficients while leaving others.\": \"small coefficients\"\n    },\n    {\n      \"Soft thresholding shrinks coefficients by the threshold value.\": \"shrunk by the\"\n    },\n    {\n      \"VISU Shrink threshold depends only on the number of data points.\": \"number of data\"\n    },\n    {\n      \"SURE Shrink performs better than VISU Shrink.\": \"better than VISU\"\n    },\n    {\n      \"Bayes Shrink assumes a generalized Gaussian prior.\": \"generalized Gaussian prior\"\n    },\n    {\n      \"Cross Validation replaces coefficients with weighted neighborhood averages.\": \"weighted average\"\n    },\n    {\n      \"UDWT is shift invariant and avoids pseudo-Gibbs phenomenon.\": \"pseudo-Gibbs phenomenon\"\n    },\n    {\n      \"Shift Invariant Wavelet Packet Decomposition finds the best basis.\": \"best basis function\"\n    },\n    {\n      \"Multiwavelets are obtained by applying more than one function.\": \"more than one\"\n    },\n    {\n      \"Deterministic modeling uses a hierarchical interpretation of decomposition.\": \"hierarchical interpretation\"\n    },\n    {\n      \"Statistical modeling exploits local correlation between neighborhood coefficients.\": \"local correlation\"\n    },\n    {\n      \"PSNR is calculated using Mean Square Error.\": \"mean square error\"\n    },\n    {\n      \"IEF represents the image enhancement factor.\": \"image enhancement factor\"\n    }\n  ],\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares six different filter variants.\": \"different image\"\n    },\n    {\n      \"Performance was evaluated at a specific noise density.\": \"noise density of 90%\"\n    },\n    {\n      \"No ablation on different noise types was provided in results.\": \"noise density of 90%\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5426,
+        "total_tokens": 6083,
+        "completion_tokens": 657,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5426,
+      "elapsed_seconds": 67.8752946741879,
+      "max_tokens": 4096,
+      "seed": 527377013,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "0ff48b938de59306ef2effee1e71c26911f1a7fd865ace6fb50474618d7e5efa",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "procedures_and_architectures",
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: different image"
+      }
+    },
+    {
+      "response": "{\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares six different filter variants.\": \"different image denoising\"\n    },\n    {\n      \"Performance was evaluated at a specific noise density.\": \"noise density of 90%\"\n    },\n    {\n      \"No ablation on different noise types was provided in results.\": \"noise density of 90%\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 4992,
+        "total_tokens": 5093,
+        "completion_tokens": 101,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 4992,
+      "elapsed_seconds": 7.763406980782747,
+      "max_tokens": 4096,
+      "seed": 527377014,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "46676b0b7c1e1ad524c3fcf78180a91abb88b203322965dc3761fd23c6c10292",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: different image denoising"
+      }
+    },
+    {
+      "response": "{\n  \"robustness_and_ablation_notes\": [\n    {\n      \"The study compares six different filter variants.\": \"different image denoising filters\"\n    },\n    {\n      \"Performance was evaluated at a specific noise density.\": \"noise density of 90%\"\n    },\n    {\n      \"No ablation on different noise types was provided in results.\": \"noise density of 90%\"\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5001,
+        "total_tokens": 5103,
+        "completion_tokens": 102,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5001,
+      "elapsed_seconds": 12.455659043043852,
+      "max_tokens": 4096,
+      "seed": 527377015,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "bc7f1522e7bda5341eb407aa0ef2160bfe7a221d711a249f7a0d22050f4ff487",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "robustness_and_ablation_notes"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "robustness_and_ablation_notes": "evidence quote is not present in fulltext: different image denoising filters"
+      }
+    },
+    {
+      "response": "{\n\"q0\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5328,
+        "total_tokens": 5340,
+        "completion_tokens": 12,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5328,
+      "elapsed_seconds": 4.255052503198385,
+      "max_tokens": 2048,
+      "seed": 527377110,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "6a166808add24b213e7ddbb93380dd037924d563159637ec26e7eaa9a3c81d19",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "robustness_and_ablation_notes",
+            0
+          ],
+          "narrative": "The study compares six different filter variants.",
+          "invalid_quote": "different image denoising filters",
+          "candidates": [
+            {
+              "quote": "DIFFERENT IMAGE DENOISING \nFILTERS",
+              "start": 19146,
+              "end": 19180
+            },
+            {
+              "quote": "DIFFERENT IMAGE DENOISING \nFILTERS AT",
+              "start": 19146,
+              "end": 19183
+            },
+            {
+              "quote": "FOR DIFFERENT IMAGE DENOISING \nFILTERS",
+              "start": 19142,
+              "end": 19180
+            },
+            {
+              "quote": "DIFFERENT IMAGE DENOISING",
+              "start": 19146,
+              "end": 19171
+            },
+            {
+              "quote": "FOR DIFFERENT IMAGE DENOISING",
+              "start": 19142,
+              "end": 19171
+            },
+            {
+              "quote": "image.  The different denoising",
+              "start": 18804,
+              "end": 18835
+            },
+            {
+              "quote": "different potential \nimage denoising",
+              "start": 825,
+              "end": 861
+            },
+            {
+              "quote": "PARAMETERS FOR DIFFERENT IMAGE DENOISING",
+              "start": 19131,
+              "end": 19171
+            },
+            {
+              "quote": "image.  The different denoising \nalgorithms",
+              "start": 18804,
+              "end": 18847
+            },
+            {
+              "quote": "noisy image.  The different denoising",
+              "start": 18798,
+              "end": 18835
+            },
+            {
+              "quote": "different potential \nimage denoising algorithm",
+              "start": 825,
+              "end": 871
+            },
+            {
+              "quote": "the different potential \nimage denoising",
+              "start": 821,
+              "end": 861
+            },
+            {
+              "quote": "IMAGE DENOISING \nFILTERS",
+              "start": 19156,
+              "end": 19180
+            },
+            {
+              "quote": "IMAGE DENOISING \nFILTERS AT",
+              "start": 19156,
+              "end": 19183
+            },
+            {
+              "quote": "IMAGE DENOISING \nFILTERS AT NOISE",
+              "start": 19156,
+              "end": 19189
+            },
+            {
+              "quote": "Filters \nA mean filter",
+              "start": 9898,
+              "end": 9920
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6696,
+  "elapsed_seconds": 817.3440600633621,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "robustness_and_ablation_notes",
+        0
+      ],
+      "entry": {
+        "The study compares six different filter variants.": "different image denoising filters"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}
