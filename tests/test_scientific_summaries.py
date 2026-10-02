@@ -126,6 +126,57 @@ def summaries_module():
     return module
 
 
+def test_summary_queue_lock_excludes_duplicates_and_releases(tmp_path):
+    sys.path.insert(0, str(SCRIPT.parent))
+    from queue_control import AlreadyRunning, exclusive_lock
+    path = tmp_path / '.queue.lock'
+    with exclusive_lock(path):
+        with pytest.raises(AlreadyRunning):
+            with exclusive_lock(path):
+                pass
+    with exclusive_lock(path):
+        assert path.exists()
+
+
+def test_adopted_server_checks_model_identity_and_pid_reuse(monkeypatch):
+    sys.path.insert(0, str(SCRIPT.parent))
+    import queue_control
+    from types import SimpleNamespace
+    model = dict(model='pinned/model', revision='revision', alias='extractor')
+    arguments = ['python', '-m', 'vllm.entrypoints.openai.api_server',
+                 '--model', model['model'], '--revision', model['revision'],
+                 '--served-model-name', model['alias'], '--host', '127.0.0.1', '--port', '8010']
+
+    class ProcPath:
+        def __init__(self, path):
+            pass
+
+        def stat(self):
+            return SimpleNamespace(st_uid=123)
+
+        def joinpath(self, name):
+            return self
+
+        def read_bytes(self):
+            return ('\0'.join(arguments) + '\0').encode()
+
+    identity = ['S', '456']
+    monkeypatch.setattr(queue_control, 'Path', ProcPath)
+    monkeypatch.setattr(queue_control.os, 'getuid', lambda: 123)
+    monkeypatch.setattr(queue_control.os, 'getpgid', lambda pid: pid)
+    monkeypatch.setattr(queue_control, 'process_identity', lambda pid: tuple(identity))
+    server = queue_control.AdoptedServer(999, model)
+    assert server.poll() is None
+    server.assert_identity()
+    identity[1] = '457'
+    assert server.poll() == 0
+    with pytest.raises(RuntimeError):
+        server.assert_identity()
+    arguments[arguments.index('--model') + 1] = 'different/model'
+    with pytest.raises(ValueError):
+        queue_control.AdoptedServer(999, model)
+
+
 def test_summary_prompt_wrapper_is_literal_and_never_executed(tmp_path):
     module = summaries_module()
     path = tmp_path / 'prompt.txt'

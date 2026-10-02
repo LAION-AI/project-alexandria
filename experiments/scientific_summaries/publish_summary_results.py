@@ -9,6 +9,7 @@ from pathlib import Path
 
 from evaluate import ROOT, load
 from project_alexandria.io import write_json_atomic
+from queue_control import AlreadyRunning, exclusive_lock
 
 REPO = ROOT.parents[1]
 SECRET = re.compile(rb'gh[pousr]_[A-Za-z0-9]{20,}|hf_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9_-]{24,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----')
@@ -65,4 +66,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        with exclusive_lock(ROOT / '.summary_publisher.lock'):
+            main()
+    except AlreadyRunning as error:
+        print(str(error), flush=True)
+        raise SystemExit(2)

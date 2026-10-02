@@ -13,6 +13,7 @@ from pathlib import Path
 
 from evaluate import ROOT, load, questions_for, question_signature
 from project_alexandria.io import write_json_atomic
+from queue_control import AdoptedServer, AlreadyRunning, exclusive_lock
 
 MODELS = [
     dict(name='qwen27b', model='Pilcothink/Qwen3.8-27B-MixedInt4-AutoRound',
@@ -62,6 +63,8 @@ def free_gpus():
 
 def stop(process):
     if process.poll() is None:
+        if isinstance(process, AdoptedServer):
+            process.assert_identity()
         # Only a new session/process group created here is targeted, never arbitrary GPU PIDs.
         if os.getpgid(process.pid) != process.pid:
             raise RuntimeError('Owned server process-group identity changed')
@@ -69,6 +72,8 @@ def stop(process):
         try:
             process.wait(timeout=45)
         except subprocess.TimeoutExpired:
+            if isinstance(process, AdoptedServer):
+                process.assert_identity()
             os.killpg(process.pid, signal.SIGKILL)
             process.wait(timeout=15)
 
@@ -91,6 +96,8 @@ def main():
     parser.add_argument('--prompt', type=Path, default=ROOT / 'summary-systemprompt+.txt')
     parser.add_argument('--llama-server', default='/home/c4r33u19/moss15v2/llama.cpp/build/bin/llama-server')
     parser.add_argument('--smoke-only', action='store_true')
+    parser.add_argument('--reuse-qwen-server-pid', type=int,
+                        help='Adopt only this identity-checked orphaned pinned 27B server')
     args = parser.parse_args()
     papers = load(ROOT / 'data/papers.json')
     baseline_path = ROOT / 'pre_qwen_summary_results.json'
@@ -118,6 +125,10 @@ def main():
         protocol='field_local_strict_grounding_v2', attempts=6,
         comparison_note='Same source texts and MCQs; runtime, quantization and batch size differ.'))
     skip = [item for identifier in excluded for item in ('--skip-id', identifier)]
+    adopted = AdoptedServer(args.reuse_qwen_server_pid, MODELS[0]) if args.reuse_qwen_server_pid else None
+    if adopted:
+        ready(adopted, MODELS[0]['alias'])
+        status('adopting_existing_summary_server', model=MODELS[0]['name'], server_pid=adopted.pid)
     for model in MODELS:
         directory = ROOT / 'summary_runs' / model['name']
         directory.mkdir(parents=True, exist_ok=True)
@@ -143,10 +154,13 @@ def main():
         complete_ids = {d['document_id'] for d in load(cache)['documents']} if cache.exists() else set()
         with (directory / 'runtime.log').open('a', encoding='utf-8') as log:
             if not set(selected) <= complete_ids:
-                free_gpus()
-                status('loading_summary_model', model=model['name'], papers=len(selected))
-                server = subprocess.Popen(server_command, env=environment, stdout=log, stderr=log,
-                                          start_new_session=True)
+                if model['name'] == MODELS[0]['name'] and adopted:
+                    server = adopted
+                else:
+                    free_gpus()
+                    status('loading_summary_model', model=model['name'], papers=len(selected))
+                    server = subprocess.Popen(server_command, env=environment, stdout=log, stderr=log,
+                                              start_new_session=True)
                 try:
                     ready(server, model['alias'])
                     status('summary_smoke_test', model=model['name'], papers=len(selected))
@@ -162,6 +176,11 @@ def main():
                         subprocess.run(generation, stdout=log, stderr=log, check=True)
                 finally:
                     stop(server)
+                    if server is adopted:
+                        adopted = None
+            elif model['name'] == MODELS[0]['name'] and adopted:
+                stop(adopted)
+                adopted = None
             free_gpus()
             status('loading_fixed_student', model=model['name'])
             environment.update(ALEXANDRIA_JUDGE_GPU='0', ALEXANDRIA_JUDGE_MAX_LEN='32768',
@@ -186,7 +205,11 @@ def main():
 
 if __name__ == '__main__':
     try:
-        main()
+        with exclusive_lock(ROOT / '.summary_queue.lock'):
+            main()
+    except AlreadyRunning as error:
+        print(str(error), flush=True)
+        raise SystemExit(2)
     except Exception as error:
         status('failed', error=str(error))
         raise

@@ -39,12 +39,27 @@ preserved for diagnosis.
 
 ```bash
 # From the repository root, in the installed Alexandria Python environment:
-python experiments/scientific_summaries/run_summary_comparison.py
+python experiments/scientific_summaries/launch_summary_comparison.py
 # Render an audited progress/result dashboard without starting inference:
 python experiments/scientific_summaries/summary_comparison_report.py
 # Optional authorized GitHub publication after each audited model evaluation:
 python experiments/scientific_summaries/publish_summary_results.py --watch
 ```
+
+The launcher starts the queue in a new session with file-backed logs and no terminal
+input, so closing the interactive terminal does not terminate generation. Use
+`--publish` only when GitHub publication has been authorized. Queue and publisher
+each hold a non-blocking filesystem lock: a second invocation exits without changing
+the active run's status. Locks release automatically on exit; do not delete lock files.
+The queue log is `summary_queue.log`, publication log `summary_publication.log`.
+The foreground `run_summary_comparison.py` entry point remains available for debugging.
+
+If a previous queue exited but its Qwen server remains alive, the launcher accepts
+`--reuse-qwen-server-pid PID`. This is explicit adoption, not GPU-wide termination:
+the server must belong to the current user, lead its isolated process group, and
+have the exact pinned vLLM module/model/revision/alias/localhost port. Linux process
+starttime is retained to guard against PID reuse. The adopted server is stopped only
+when its generation stage finishes (or fails); other GPU jobs are never targeted.
 
 The queue waits for free GPUs, starts only its own local servers, and terminates only
 its own process groups. The default paths match this workstation; the llama.cpp
