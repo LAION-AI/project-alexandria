@@ -31,6 +31,17 @@ MODELS = [
          weights_sha256='809626574d0cb43d4becfa56169980da2bb448f2299270f7be443cb89d0a6ae4')]
 
 
+def selected_models(names=None):
+    """Allow an explicit subset without rewriting the comparison's model inventory."""
+    if not names:
+        return list(MODELS)
+    requested = set(names)
+    unknown = requested - {model['name'] for model in MODELS}
+    if unknown:
+        raise ValueError('Unknown summary model selection: ' + ', '.join(sorted(unknown)))
+    return [model for model in MODELS if model['name'] in requested]
+
+
 def status(phase, **fields):
     value = dict(phase=phase, updated_utc=datetime.now(timezone.utc).isoformat(), **fields)
     write_json_atomic(str(ROOT / 'summary_comparison_status.json'), value)
@@ -96,9 +107,17 @@ def main():
     parser.add_argument('--prompt', type=Path, default=ROOT / 'summary-systemprompt+.txt')
     parser.add_argument('--llama-server', default='/home/c4r33u19/moss15v2/llama.cpp/build/bin/llama-server')
     parser.add_argument('--smoke-only', action='store_true')
+    parser.add_argument('--only-model', action='append', choices=[m['name'] for m in MODELS],
+                        help='Run only the explicitly selected model(s), preserving all comparison artifacts')
     parser.add_argument('--reuse-qwen-server-pid', type=int,
                         help='Adopt only this identity-checked orphaned pinned 27B server')
     args = parser.parse_args()
+    models = selected_models(args.only_model)
+    if args.reuse_qwen_server_pid and not any(m['name'] == 'qwen27b' for m in models):
+        parser.error('--reuse-qwen-server-pid requires selecting qwen27b')
+    # Clear a prior terminal failure before slow cohort/result audits. Otherwise a
+    # simultaneously launched publisher mistakes the new queue for the old failure.
+    status('validating_resume_inputs', requested_models=[m['name'] for m in models])
     papers = load(ROOT / 'data/papers.json')
     baseline_path = ROOT / 'pre_qwen_summary_results.json'
     baseline = load(baseline_path)
@@ -129,7 +148,7 @@ def main():
     if adopted:
         ready(adopted, MODELS[0]['alias'])
         status('adopting_existing_summary_server', model=MODELS[0]['name'], server_pid=adopted.pid)
-    for model in MODELS:
+    for model in models:
         directory = ROOT / 'summary_runs' / model['name']
         directory.mkdir(parents=True, exist_ok=True)
         cache, result = directory / 'summaries.json', directory / 'results.json'
@@ -209,7 +228,8 @@ def main():
                                stdout=log, stderr=log, check=True)
             finally:
                 stop(judge)
-    status('complete', papers=len(selected), models=[m['name'] for m in MODELS],
+    status('complete', papers=len(selected), models=[m['name'] for m in models],
+           scope='selected_models' if args.only_model else 'all_models',
            report='summary_comparison.html')
 
 

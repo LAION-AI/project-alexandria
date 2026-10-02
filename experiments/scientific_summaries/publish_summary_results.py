@@ -60,7 +60,7 @@ def main():
             print('PUBLISHED_SUMMARY_RESULTS', names, ledger['commit'][:12], flush=True)
         phase_path = ROOT / 'summary_comparison_status.json'
         phase = load(phase_path)['phase'] if phase_path.exists() else None
-        if not args.watch or report.get('complete') or phase == 'failed':
+        if not args.watch or report.get('complete') or phase in ('failed', 'complete'):
             return
         time.sleep(30)
 
