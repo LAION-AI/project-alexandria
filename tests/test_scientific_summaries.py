@@ -151,6 +151,27 @@ def test_summary_progress_does_not_count_repaired_failures_as_unresolved():
     assert generation_progress(None)['validated_summaries'] == 0
 
 
+@pytest.mark.parametrize('runtime', ['vllm', 'llama.cpp'])
+def test_summary_transport_json_constraint_is_nonempty_for_llama(runtime):
+    summaries_module()
+    from summary_runtime import SummaryClient
+    client = SummaryClient('http://localhost:8010/v1', 'model', runtime)
+    client.token_count = lambda messages: 20
+    sent = []
+
+    def post(endpoint, payload):
+        sent.append(payload)
+        return {'choices': [{'message': {'content': '{"ok":true}'}, 'finish_reason': 'stop'}]}
+
+    client.post = post
+    record = client.generate('system', 'user', 100, 1)
+    expected = {'type': 'json_object'}
+    if runtime == 'llama.cpp':
+        expected['schema'] = {'type': 'object'}
+    assert sent[0]['response_format'] == expected
+    assert record['response_format'] == expected
+
+
 def test_adopted_server_checks_model_identity_and_pid_reuse(monkeypatch):
     sys.path.insert(0, str(SCRIPT.parent))
     import queue_control

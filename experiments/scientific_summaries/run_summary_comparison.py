@@ -133,6 +133,16 @@ def main():
         directory = ROOT / 'summary_runs' / model['name']
         directory.mkdir(parents=True, exist_ok=True)
         cache, result = directory / 'summaries.json', directory / 'results.json'
+        if cache.exists() and result.exists():
+            saved_result = load(result)
+            if 'summary' in saved_result and len(saved_result['documents']) == len(selected):
+                from summary_comparison_report import audit_run
+                audit_run(model, saved_result, load(cache), papers, baseline)
+                if model['name'] == MODELS[0]['name'] and adopted:
+                    stop(adopted)
+                    adopted = None
+                status('reusing_audited_completed_evaluation', model=model['name'])
+                continue
         generation = [sys.executable, str(ROOT / 'summarize.py'), '--prompt', str(args.prompt),
             '--output', str(cache), '--runtime', model['runtime'], '--alias', model['alias'],
             '--model', model['model'], '--revision', model['revision'], '--weights-sha256',

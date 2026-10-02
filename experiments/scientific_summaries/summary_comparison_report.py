@@ -200,6 +200,13 @@ body{font:16px/1.6 system-ui;color:#183342;background:#f5f8fa;margin:0}main{max-
         'Timing covers checkpointed active generation and repair intervals, not server startup or idle gaps between runs. '
         'Interrupted work since the last document checkpoint can be missing. GPU-hours are these intervals multiplied '
         'by configured GPU count: a proxy, not the full scheduler allocation bill or measured GH200/Jupiter timing.')
+    page = page.replace('<h2>Reproducibility</h2>',
+        '<p>The initial Ornith GPU smoke test failed because the installed llama.cpp treated '
+        'an empty JSON-object schema as no constraint; truncated/prose repair outputs were rejected. '
+        'Resumed GGUF requests explicitly supply a nonempty object schema and save the actual response-format payload. '
+        'Anchor candidates now have explicit zero-based indices. Failed journals remain preserved; '
+        'the completed vLLM 27B evaluation is reused unchanged. These transport/presentation fixes '
+        'do not change the user system prompt or fixed student; see the run instructions.</p><h2>Reproducibility</h2>')
     (ROOT / 'summary_comparison.html').write_text(page, encoding='utf-8')
     with (ROOT / 'summary_comparison.csv').open('w', newline='', encoding='utf-8') as handle:
         writer = csv.writer(handle)

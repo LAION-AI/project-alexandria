@@ -175,6 +175,9 @@ def repair_saved_document(paper, client, failure, max_attempts=6):
         tasks = quote_tasks(state, source)[:8]  # Bound repair inputs; never truncate the paper.
         if tasks:
             public_tasks = [{k: value for k, value in task.items() if k != 'path'} for task in tasks]
+            for task in public_tasks:
+                task['candidates'] = [dict(index=index, **candidate)
+                                      for index, candidate in enumerate(task['candidates'])]
             user = 'BEGIN_PAPER\n' + source + '\nEND_PAPER\n\nTASKS\n' + json.dumps(public_tasks, ensure_ascii=False)
             record = client.generate(ANCHOR_SYSTEM, user, 2048, seed + attempt)
             record.update(phase='source_anchor_selection', attempt=len(journal) + 1, tasks=tasks)
@@ -286,6 +289,9 @@ class SummaryClient:
             'response_format': {'type': 'json_object'}}
         if self.runtime == 'llama.cpp':
             payload.update(top_k=0, min_p=0.0, repeat_penalty=1.0)
+            # This llama.cpp build treats an empty {} schema as "no constraint".
+            # Make the intended JSON-object constraint explicit and nonempty.
+            payload['response_format']['schema'] = {'type': 'object'}
         started = time.monotonic()
         body = self.post('/v1/chat/completions', payload)
         choice = body['choices'][0]
@@ -295,7 +301,8 @@ class SummaryClient:
         return {'response': raw, 'finish_reason': choice.get('finish_reason'),
             'usage': body.get('usage', {}), 'input_tokens_preflight': tokens,
             'elapsed_seconds': time.monotonic() - started, 'max_tokens': max_tokens,
-            'seed': seed, 'system_prompt_sha256': digest(system), 'user_prompt_sha256': digest(user)}
+            'seed': seed, 'response_format': payload['response_format'],
+            'system_prompt_sha256': digest(system), 'user_prompt_sha256': digest(user)}
 
 
 def generate_document(paper, client, prompt, max_tokens, attempts):

@@ -85,6 +85,17 @@ Settings: temperature 0.2, top-p 0.95, thinking disabled, 16,000 output tokens,
 parser also recognizes a single enclosing Markdown fence and logs its removal;
 it never extracts arbitrary JSON from prose or accepts incomplete output.
 
+The first Ornith GPU smoke test exposed a transport bug in the installed llama.cpp:
+`response_format: {"type": "json_object"}` became an empty schema, which its template
+code treated as no constraint. Repairs therefore emitted prose or exhausted their
+token budgets. The resumed GGUF requests explicitly include the nonempty schema
+`{"type": "object"}`; each response journal records the actual response-format payload.
+The original failed journals are retained. Anchor candidate inventories now carry
+explicit zero-based `index` values instead of relying on implicit list positions.
+The already completed 27B predictions are not regenerated: its vLLM JSON constraint
+was active. These transport/presentation fixes are disclosed, not a user-prompt or
+fixed-student change. A resumed queue audits and reuses completed model evaluations.
+
 All 19 fields are independently validated. If a field fails, **only that field** is
 requested in a repair response, from the same model with the original source and a
 separately saved evidence-repair system prompt. Untargeted fields cannot change.
