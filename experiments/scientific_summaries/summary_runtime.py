@@ -103,13 +103,15 @@ def source_candidates(source, narrative, bad_quote, limit=16):
     return chosen
 
 
-def quote_tasks(summary, source):
+def quote_tasks(summary, source, limit=None, include_candidates=True):
     from summarize import GROUNDED, evidence_span
     tasks = []
     def sequence(value, path):
         if not isinstance(value, list):
             return
         for index, entry in enumerate(value):
+            if limit is not None and len(tasks) >= limit:
+                return
             if not isinstance(entry, dict) or len(entry) != 1:
                 continue
             narrative, quote = next(iter(entry.items()))
@@ -121,7 +123,8 @@ def quote_tasks(summary, source):
                     raise ValueError('aligned quote too long')
             except ValueError:
                 tasks.append(dict(id='q' + str(len(tasks)), path=path + [index], narrative=narrative,
-                    invalid_quote=quote, candidates=source_candidates(source, narrative, quote)))
+                    invalid_quote=quote, candidates=source_candidates(source, narrative, quote)
+                    if include_candidates else []))
     for field in GROUNDED:
         sequence(summary[field], [field])
     if isinstance(summary.get('claims'), list):
@@ -305,7 +308,7 @@ class SummaryClient:
             'system_prompt_sha256': digest(system), 'user_prompt_sha256': digest(user)}
 
 
-def generate_document(paper, client, prompt, max_tokens, attempts):
+def generate_document(paper, client, prompt, max_tokens, attempts, seed_offset=0):
     from summarize import KEYS, validate_summary, grounding_errors
     source = paper['fulltext']
     user = ('Apply the system prompt to the supplied dataset paper text only. The dataset may '
@@ -317,7 +320,7 @@ def generate_document(paper, client, prompt, max_tokens, attempts):
     state = None
     errors = {}
     started = time.monotonic()
-    seed = int(digest(paper['document_id'])[:8], 16) % 2147483000
+    seed = int(digest(paper['document_id'])[:8], 16) % 2147483000 + seed_offset
     for attempt in range(attempts):
         is_repair = state is not None
         if is_repair:

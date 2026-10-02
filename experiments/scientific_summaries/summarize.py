@@ -265,6 +265,26 @@ def generate_one(paper, backend, prompt, max_tokens, attempts, previous_failure=
             'elapsed_seconds': time.monotonic() - started}
 
 
+def recover_failed_checkpoint(config, path):
+    """Explicit version-changing recovery; never relabel already scored/valid output."""
+    prior = load(path)
+    if prior.get('documents') or not prior.get('failures'):
+        raise ValueError('Recovery requires a failed-only checkpoint with no valid documents')
+    old = prior['config']
+    identity = {k: v for k, v in config.items() if k != 'repair_implementation_sha256'}
+    old_identity = {k: v for k, v in old.items()
+                    if k not in ('repair_implementation_sha256', 'recovery')}
+    if old_identity != identity or config['repair_protocol'] != 'field_local_strict_grounding_v3':
+        raise ValueError('Recovery source/model/prompt/generation identity does not match')
+    updated = dict(config, recovery={
+        'checkpoint_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+        'prior_repair_implementation_sha256': old.get('repair_implementation_sha256'),
+        'prior_recovery': old.get('recovery'),
+        'historical_elapsed_seconds_included': prior.get('elapsed_seconds', 0.0)})
+    return dict(config=updated, documents=[], failures=prior['failures'],
+                elapsed_seconds=prior.get('elapsed_seconds', 0.0))
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--base-url', default='http://127.0.0.1:8010/v1')
@@ -281,6 +301,10 @@ def main():
     parser.add_argument('--revision', default=REVISION)
     parser.add_argument('--weights-sha256', default='')
     parser.add_argument('--allocated-gpus', type=int, default=2)
+    parser.add_argument('--repair-protocol', choices=('field_local_strict_grounding_v2',
+                        'field_local_strict_grounding_v3'), default='field_local_strict_grounding_v2')
+    parser.add_argument('--recover-failed-cache', type=Path,
+                        help='Explicitly reuse failed-only V3 drafts across an implementation change')
     args = parser.parse_args()
     if min(args.concurrency, args.max_tokens, args.attempts) < 1 or args.max_new_documents < 0:
         parser.error('Invalid generation settings')
@@ -292,23 +316,38 @@ def main():
               'concurrency': args.concurrency, 'attempts': args.attempts, 'context_limit': 32768,
               'runtime': args.runtime, 'weights_sha256': args.weights_sha256,
               'allocated_gpus': args.allocated_gpus,
-              'repair_protocol': 'field_local_strict_grounding_v2',
+              'repair_protocol': args.repair_protocol,
               'repair_system_prompt_sha256': hashlib.sha256(REPAIR_SYSTEM.encode()).hexdigest(),
               'student_input': 'all_substantive_narrative_fields_without_grounding_quotes_or_citation_rankings'}
+    if args.repair_protocol == 'field_local_strict_grounding_v3':
+        config['repair_implementation_sha256'] = hashlib.sha256(
+            (ROOT / 'summary_repair_v3.py').read_bytes()).hexdigest()
     path = args.output
     path.parent.mkdir(parents=True, exist_ok=True)
-    output = load(path) if path.exists() else {'config': config, 'documents': [], 'failures': [], 'elapsed_seconds': 0.0}
+    recovered = recover_failed_checkpoint(config, args.recover_failed_cache) if args.recover_failed_cache else None
+    if recovered:
+        config = recovered['config']
+    output = load(path) if path.exists() else (recovered or {'config': config, 'documents': [], 'failures': [], 'elapsed_seconds': 0.0})
     if output['config'] != config:
         raise ValueError('Summary checkpoint prompt/model/generation settings have changed')
-    write_json_atomic(str(path.parent / 'summary_prompt_snapshot.json'), {
+    snapshot = {
         'file_name': args.prompt.name, 'file_sha256': config['prompt_file_sha256'],
         'effective_prompt_sha256': config['system_prompt_sha256'], 'effective_system_prompt': prompt,
-        'repair_system_prompt': REPAIR_SYSTEM, 'anchor_selection_system_prompt': ANCHOR_SYSTEM})
+        'repair_system_prompt': REPAIR_SYSTEM, 'anchor_selection_system_prompt': ANCHOR_SYSTEM}
+    if args.repair_protocol == 'field_local_strict_grounding_v3':
+        from summary_repair_v3 import FIELD_USER_TEMPLATE, ANCHOR_USER_TEMPLATE, field_example
+        snapshot.update(repair_protocol=args.repair_protocol, field_user_template=FIELD_USER_TEMPLATE,
+                        anchor_user_template=ANCHOR_USER_TEMPLATE,
+                        field_shape_examples={k: field_example(k) for k in KEYS},
+                        repair_implementation_sha256=hashlib.sha256(
+                            (ROOT / 'summary_repair_v3.py').read_bytes()).hexdigest())
+    write_json_atomic(str(path.parent / 'summary_prompt_snapshot.json'), snapshot)
     papers = load(ROOT / 'data/papers.json')
     by_id = {p['document_id']: p for p in papers}
-    for document in output['documents']:
+    for document in output['documents'] + output['failures']:
         if (document['document_id'] not in by_id or
-                document['fulltext_sha256'] != by_id[document['document_id']]['fulltext_sha256']):
+                document.get('fulltext_sha256', by_id[document['document_id']]['fulltext_sha256']) !=
+                by_id[document['document_id']]['fulltext_sha256']):
             raise ValueError('Source changed after summary generation')
     done = {d['document_id'] for d in output['documents']}
     pending = [p for p in papers if p['document_id'] not in done | set(args.skip_id)]
@@ -320,6 +359,12 @@ def main():
     started = time.monotonic()
     previous_failures = {d['document_id']: d for d in output['failures']}
     def process(paper):
+        if args.repair_protocol == 'field_local_strict_grounding_v3':
+            from summary_repair_v3 import generate, repair_document
+            previous = previous_failures.get(paper['document_id'])
+            if previous and previous.get('attempts'):
+                return repair_document(paper, backend, previous)
+            return generate(paper, backend, prompt, args.max_tokens)
         previous = previous_failures.get(paper['document_id'])
         if previous and len(previous.get('attempts', [])) <= args.attempts:
             repaired = repair_saved_document(paper, backend, previous, args.attempts)

@@ -24,12 +24,15 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--reuse-qwen-server-pid', type=int)
     parser.add_argument('--only-model', action='append', choices=[m['name'] for m in MODELS])
+    parser.add_argument('--recover-failed-cache')
     parser.add_argument('--publish', action='store_true',
                         help='Publish audited results; use only with user authorization')
     args = parser.parse_args()
     forwarded = (['--reuse-qwen-server-pid', str(args.reuse_qwen_server_pid)]
                  if args.reuse_qwen_server_pid else [])
     forwarded += [argument for model in args.only_model or [] for argument in ('--only-model', model)]
+    if args.recover_failed_cache:
+        forwarded += ['--recover-failed-cache', args.recover_failed_cache]
     launch('run_summary_comparison.py', forwarded, 'summary_queue.log')
     if args.publish:
         launch('publish_summary_results.py', ['--watch'], 'summary_publication.log')

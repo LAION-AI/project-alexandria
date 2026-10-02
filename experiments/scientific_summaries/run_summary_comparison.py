@@ -109,10 +109,13 @@ def main():
     parser.add_argument('--smoke-only', action='store_true')
     parser.add_argument('--only-model', action='append', choices=[m['name'] for m in MODELS],
                         help='Run only the explicitly selected model(s), preserving all comparison artifacts')
+    parser.add_argument('--recover-failed-cache', type=Path)
     parser.add_argument('--reuse-qwen-server-pid', type=int,
                         help='Adopt only this identity-checked orphaned pinned 27B server')
     args = parser.parse_args()
     models = selected_models(args.only_model)
+    if args.recover_failed_cache and (len(models) != 1 or models[0]['runtime'] != 'llama.cpp'):
+        parser.error('Failed-cache recovery requires selecting exactly one GGUF model')
     if args.reuse_qwen_server_pid and not any(m['name'] == 'qwen27b' for m in models):
         parser.error('--reuse-qwen-server-pid requires selecting qwen27b')
     # Clear a prior terminal failure before slow cohort/result audits. Otherwise a
@@ -142,7 +145,9 @@ def main():
         prompt_file_sha256=hashlib.sha256(args.prompt.read_bytes()).hexdigest(),
         baseline_sha256=hashlib.sha256(baseline_path.read_bytes()).hexdigest(),
         protocol='field_local_strict_grounding_v2', attempts=6,
-        comparison_note='Same source texts and MCQs; runtime, quantization and batch size differ.'))
+        repair_protocols={m['name']: ('field_local_strict_grounding_v3' if m['runtime'] == 'llama.cpp'
+                          else 'field_local_strict_grounding_v2') for m in MODELS},
+        comparison_note='Same source texts, initial system prompt and MCQs; runtime, quantization, batching and repair version differ.'))
     skip = [item for identifier in excluded for item in ('--skip-id', identifier)]
     adopted = AdoptedServer(args.reuse_qwen_server_pid, MODELS[0]) if args.reuse_qwen_server_pid else None
     if adopted:
@@ -167,6 +172,10 @@ def main():
             '--model', model['model'], '--revision', model['revision'], '--weights-sha256',
             model['weights_sha256'], '--allocated-gpus', str(model['allocated_gpus']),
             '--concurrency', str(model['concurrency']), '--attempts', '6'] + skip
+        if model['runtime'] == 'llama.cpp':
+            generation += ['--repair-protocol', 'field_local_strict_grounding_v3']
+        if args.recover_failed_cache:
+            generation += ['--recover-failed-cache', str(args.recover_failed_cache.resolve())]
         environment = dict(os.environ)
         if model['runtime'] == 'vllm':
             server_command = ['bash', str(ROOT / 'serve_extractor.sh')]

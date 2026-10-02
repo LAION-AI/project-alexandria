@@ -1,0 +1,390 @@
+{
+  "as_of": "2026-10-02",
+  "code_reference_commit": "99e6c7e2a9b12f857dcedc52a6dd70145746330c",
+  "reference_note": "Input SHA-256 hashes are authoritative; current working-tree differences are disclosed.",
+  "modified_tracked_inputs": [
+    "summary_runtime.py",
+    "summarize.py",
+    "run_summary_comparison.py",
+    "summary_comparison_manifest.json"
+  ],
+  "measured_workload": {
+    "documents": 97,
+    "distinct_saved_calls": 451,
+    "initial_input_tokens": 8164.567010309278,
+    "initial_output_tokens": 3058.7938144329896,
+    "validated_input_tokens": 35361.37113402062,
+    "validated_output_tokens": 5943.773195876289,
+    "successful_journal_calls_per_paper": 4.525773195876289,
+    "source_words_mean": 3522.40206185567,
+    "narrative_words_mean": 1145.020618556701,
+    "checkpointed_active_wall_hours": 2.297685789304475,
+    "checkpointed_gpu_hours_proxy": 4.59537157860895,
+    "saved_failure_records": 11
+  },
+  "throughput_assumptions": {
+    "Qwen3.8-27B FP8": {
+      "fast": [
+        16000,
+        1500,
+        0.9
+      ],
+      "central": [
+        10000,
+        900,
+        0.85
+      ],
+      "slow": [
+        6000,
+        700,
+        0.8
+      ]
+    },
+    "Qwen3.5-9B FP8": {
+      "fast": [
+        40000,
+        4000,
+        0.9
+      ],
+      "central": [
+        25000,
+        2500,
+        0.85
+      ],
+      "slow": [
+        15000,
+        1500,
+        0.8
+      ]
+    }
+  },
+  "estimates": [
+    {
+      "model": "Qwen3.8-27B FP8",
+      "workload": "One generation per paper",
+      "papers": 60000000,
+      "gpu_hours": {
+        "fast": 47212.61693394425,
+        "central": 82649.34303618355,
+        "slow": 119384.72119947635
+      }
+    },
+    {
+      "model": "Qwen3.8-27B FP8",
+      "workload": "Observed validation + repair workload",
+      "papers": 60000000,
+      "gpu_hours": {
+        "fast": 114307.42888507064,
+        "central": 198829.9912404825,
+        "slow": 299680.5504418262
+      }
+    },
+    {
+      "model": "Qwen3.5-9B FP8",
+      "workload": "One generation per paper",
+      "papers": 60000000,
+      "gpu_hours": {
+        "fast": 17940.974608629247,
+        "central": 30394.121689913078,
+        "slow": 53822.923825887745
+      }
+    },
+    {
+      "model": "Qwen3.5-9B FP8",
+      "workload": "Observed validation + repair workload",
+      "papers": 60000000,
+      "gpu_hours": {
+        "fast": 43888.47365406644,
+        "central": 74352.2377198302,
+        "slow": 131665.42096219934
+      }
+    }
+  ],
+  "sources": {
+    "jupiter": "https://apps.fz-juelich.de/jsc/hps/jupiter/configuration.html",
+    "qwen27_recipe": "https://recipes.vllm.ai/Qwen/Qwen3.8-27B",
+    "qwen9_recipe": "https://recipes.vllm.ai/Qwen/Qwen3.5-9B",
+    "qwen9_benchmark": "https://docs.gpustack.ai/2.1/performance-lab/qwen3.5-9b/h100/",
+    "qwen27_benchmark": "https://www.reddit.com/r/openrouter/comments/1woqt5j/qwen3827b_on_1_h200_202_toks_at_low_concurrency/",
+    "prefill_benchmark": "https://sgl-project.github.io/SpecForge/recipes/qwen3.8-27b-dflash2-disaggregated.html",
+    "kv_cache": "https://docs.vllm.ai/en/latest/features/quantization/quantized_kvcache/",
+    "qwen27_fp8": "https://huggingface.co/Qwen/Qwen3.8-27B-FP8",
+    "qwen9_fp8": "https://huggingface.co/RedHatAI/Qwen3.5-9B-FP8-dynamic"
+  },
+  "input_sha256": {
+    "summary_runtime.py": "909451209ae3ed2f53764f6d936d510dd7ff8716289f8cc9a5e9254839c5081e",
+    "summarize.py": "81111fd8f7728fc751f061f5a181fb5f73d99ace315942ff5bf8f03f9e99fd1f",
+    "evaluate.py": "99a165cc0df0a4c1cbf576b78e261199b239b3567baca870d7cc0a21d6d5fed4",
+    "run_summary_comparison.py": "cc35563bafa51461201fe0b1b83bc2fbebdfa675381b02f21d23be0538a07fe3",
+    "serve_extractor.sh": "6fe1f6756c0d846ef41570d667e088c8087c5c30dfe1633a68ce236c45be60b9",
+    "serve_judge.sh": "6e93d03146dc7c77b43a482fb5201a69a647e9cd0b5b8995d90cbbd7d9c89c31",
+    "qa_authoring_prompt.txt": "7c42459c9ec6a0642afc07db3a233adba58866e94fc8abde2cc8fb60def57b0e",
+    "summary-systemprompt+.txt": "503a425c96ae5cce9d5e1d53635eaac25433e48d248e2c50cde560218aa54d70",
+    "summary_comparison_manifest.json": "3ab68c5cabc3f7f1c0f4b28860c3588fdd8d42062fdbf0e613f25199239dc352",
+    "summary_runtime_fingerprints.json": "90b49363d78f6ae40f40173733982b8c08b954542a4e576976592bbb30ca1796",
+    "judge_model_fingerprints.json": "e9875bdcf643a82afc373ca8abb1db39cd41ae8ea4d5c5ed43f3da9cd863078c",
+    "data/papers.json": "03e855c86cd93e440a21c744cee22f051ff4f387f15a8d3e261ed92f6f92134e",
+    "data/manifest.json": "79594a5eb24f503d6fdc8cc6e5d5da81921140d7dbccdeecbb8c1955d9075e31",
+    "kus.json": "d3c6e998592fe6673f4a093b6dbb10a6e6a6158e9e8a4ded80f03504b92cf1be",
+    "pre_qwen_summary_results.json": "1174998616900800663d756ced53a58d40959d0763852ccee17408436466fff7",
+    "summary_runs/qwen27b/summaries.json": "fd3b10f3d0e14e799bf8c9cdc428968bb1e094d1f64441b6f10ad1c8856bff37",
+    "summary_runs/qwen27b/results.json": "f6dd26581bf45165e6ff3a63bccf67eaec3adf8ff8e3fd069732ffb4bc048466",
+    "summary_runs/qwen27b/summary_prompt_snapshot.json": "21f297fdfd5170abf112828877e83e9c8099549ed7e5688c99af38bf83b8e05f",
+    "../../src/project_alexandria/experiments/mcq.py": "6f8f06dda7c8018b71f336de9758304ceedb6203dddffbda560b6ce7936107e9",
+    "../../src/project_alexandria/experiments/reproduce.py": "9760198eb1ba1040a48b567ddada4a0025779833926da8b5199c4f843e6f33ca",
+    "pipeline_report.py": "0885de535376f109304dbfe68ddd0933dc20d57b6ca5ade3721135a4d517ef29",
+    "pipeline_report.template.html": "8dc658a36d4c9b401a74014a742605e362b5832e3f5c841d0fef0369873794e2",
+    "summary_repair_v3.py": "46902c3f209e58648446917a96238d08542f1825aa0a29364f2d1f183b4db1e1",
+    "data/qa/arxiv-121.json": "f56b8d4ba5256161b35f90200e60ad1a05c1c2439e1a0d5069a43b214a701479",
+    "data/qa/arxiv-126.json": "76d12881705c1a1285b3d4d23b55b2bbf7263632dc266d6481ab72752f9bd4d7",
+    "data/qa/arxiv-107.json": "340148cde8d0c3d7cad643f77aad1770dcaa5f16836c2a07fb4886caedddac4f",
+    "data/qa/arxiv-102.json": "53dcd1788d1e2b57434e89e503d36f05546ef439683e0686ee20f0ad71af74e2",
+    "data/qa/arxiv-136.json": "94f4f49619bc3009fef674516bcb1cc930efeadc2035c099ce907c98e12ed9fa",
+    "data/qa/arxiv-149.json": "76eabd8bb74e6086fe6589a65b7063981377cc9829d5753c6f23043168b4bcfc",
+    "data/qa/arxiv-105.json": "6cbb5bd768936cd1e8c24397d7f731341b22235042f5d7cef17c24fd3b29b0a5",
+    "data/qa/arxiv-115.json": "6600e44f107e8b62fb1e53cf3507358313ee852be3634bbc0270fb94972de61a",
+    "data/qa/arxiv-109.json": "309d7153ded0ab3b43c0b762bde2a2af68bd351985889fe6d5fb5c2b98314850",
+    "data/qa/arxiv-140.json": "67f5b96bcb7014b01c2f2879818958cbec54c69c4f6fb974def37ddb55d1f466",
+    "data/qa/arxiv-10033.json": "3c2ab0c1794e7821dbc3ef0821904f4b8069677aa736b557c7c7ab3af53c71c9",
+    "data/qa/arxiv-10019.json": "2e772a40bb12e3b0f4c37801966223050aed72cec29d392a53c7e8734bf49b8f",
+    "data/qa/arxiv-10021.json": "57ca1e4d8a658fbb2ee437017dd837e25c7e83b44ff726a9dbb0c6a37a81ad27",
+    "data/qa/arxiv-10024.json": "2378b7f1edd4fc5bf7a0fff31db84cb2362b71d906001156b5655857a98e2805",
+    "data/qa/arxiv-10047.json": "f346a9da749411631ec9a54ce91082d0f078d66096461ac232378479c6e93df2",
+    "data/qa/arxiv-10038.json": "fb9471fb98e1d6bf1da826ba7d7a069783c2548ab7bbf9f720cad351886e6a7d",
+    "data/qa/arxiv-10037.json": "c778027ca1d8aa8a236a0c3af8ccc7f66c41db96b85146b134e4f94ba3527ef8",
+    "data/qa/arxiv-10035.json": "09fc569e74857baa79744e0c9f403ff8358cd6094d144c2992f226ad08bfaeed",
+    "data/qa/arxiv-10023.json": "3e5bf0d1bf5d7faa456833d463ba30425c5a1c8333466a0a863c2a4ba472b273",
+    "data/qa/arxiv-10040.json": "3d6e369ece4c5ea1320b68debbfb4c818ad7d4efd1896d2c340b3a96b4ccae7b",
+    "data/qa/arxiv-100022.json": "8aaa4bf02e95d7cae456f77bcc059737894db5f90c299d6a8a2b8c017d326a90",
+    "data/qa/arxiv-100005.json": "00c595ad4090760663338b141e58fa2760d5b4075f3873fe4ef104817a374740",
+    "data/qa/arxiv-100002.json": "a298c10e8924748e786b70148e086e4744e018f73ce6913334eb8f4499d167bc",
+    "data/qa/arxiv-100013.json": "1165fe7851f73701befefe3e9a619dcf0a1ba43ac623402686ddbe4ad4e7c195",
+    "data/qa/arxiv-100003.json": "c231553c1f483b2c2d26cf7ecb6df0b648586fe52d106c9ab47f842492142c78",
+    "data/qa/arxiv-100028.json": "c7ee3ac9b699e6c6a0927fc596012dfc497fd117c1181942ab6d310485a337d7",
+    "data/qa/arxiv-100047.json": "31c1db3668a5153a6c80d61e5cd12cf828ca7115a13b8fca734d492498a1cb84",
+    "data/qa/arxiv-100029.json": "a1748f6f9833098790a952727a765aa6818324e14892aad765c7663df2a151f5",
+    "data/qa/arxiv-100009.json": "d7e6ff739282fbd981ea91bea2790d3d32af1beee101169c608689a696297aaa",
+    "data/qa/arxiv-100036.json": "9141da127c3b7fbaecb28dcb28aa3463b4689709109a5b416e2f6ee920eee835",
+    "data/qa/arxiv-500031.json": "fa5ebd2010c33745d0383ef0ca2dce146ee5becb8f8cc6a875d7a30386adf7f9",
+    "data/qa/arxiv-500027.json": "aa533149e622de85fa832298c3185d6f777ac1dc59505126277a0a9e691aa609",
+    "data/qa/arxiv-500010.json": "e92c6fae51131d9745e2c335b6521a15242c0a3833b55680c1fa241c79eb46f8",
+    "data/qa/arxiv-500028.json": "1c31fbd18ba54100a04932b985b7212d33e4db02fb6b37911b57751d1884545b",
+    "data/qa/arxiv-500009.json": "a9cac4b761f42a9fd6f2c2edf61479504413be620ccb9b7a7528cf57af4f4127",
+    "data/qa/arxiv-500000.json": "e4d0f8b9c45c5aecbcdd4bd42c79d75c796cb37d160cffd51c7a5655c82810f2",
+    "data/qa/arxiv-500043.json": "8df76390ae56c7fd094d78a9d3d65e8776bb4b01e7cf872965d288851857b521",
+    "data/qa/arxiv-500047.json": "894fc775788a8924381e9878f4136302c8f33da230060925d009966d1c7ad82b",
+    "data/qa/arxiv-500036.json": "9fc05d435f435d38709203e354afe042220a93c7e33c550ccb0c95c111c8e8c4",
+    "data/qa/arxiv-500030.json": "64a9a1d9828fbda29216c62d20e82f680a38b0e545ab8ca56f2bf7b14270fea6",
+    "data/qa/arxiv-1000004.json": "15e24f2dabde55580802449bd412b22eed79efc4f307d3fe057d61886edc6d7f",
+    "data/qa/arxiv-1000037.json": "0745acb4e3787903a7ffbbfe2aa6081b2ab1a4b7d4d82de1f49f8957bc67bf2d",
+    "data/qa/arxiv-1000013.json": "cf0b9c0251b097c7aeb4b43f31660aae653139a92a682da27900367bf01f9a4a",
+    "data/qa/arxiv-1000041.json": "2306ef5dbc7939e360623816e0baa5ff5096721b3a2d4a111d9d2d09ed0502e2",
+    "data/qa/arxiv-1000016.json": "a0d23668af346021f9bbf295fce639ef3c11b6fd3b4b02ff5070b8428383d8ab",
+    "data/qa/arxiv-1000035.json": "cd5696918f122092d834cc186800971919383dd002c8fa1872e427c0efbaab45",
+    "data/qa/arxiv-1000024.json": "99c5557dffb0322b03dbafe9b6ea5ceab4975fcc941aa3d8b65f835c8a050d4e",
+    "data/qa/arxiv-1000038.json": "5f791df00de7e85742c4be5fa219093055b200af7c500c0bc119fe4d285e50d7",
+    "data/qa/arxiv-1000040.json": "c2d25e86271cd4278e00a40c347ebc90734042397980b7c7be84763b60ea4c57",
+    "data/qa/arxiv-1000021.json": "28c9f2e5900abcd221eaa12e38f8a5dee169d0858efee50e18644740a6aab939",
+    "data/qa/bethgelab-125.json": "c8ffa1abe9dbdc92ab41889c5121c37dd2d5631d67bfb0766bc49e7d5f9a5c4f",
+    "data/qa/bethgelab-102.json": "bbffa19fe1ae67280f7542725cd161fb33967d2a6d964ea36777faa50827c981",
+    "data/qa/bethgelab-108.json": "0b262e45ea046951d2f13dc0b005e17916ff57da67da450053b52c7ab53b37dc",
+    "data/qa/bethgelab-116.json": "bcff4eeb5f30c7912bc64fe6cba77381946b88707d07c4ded7477d6f26e1dca1",
+    "data/qa/bethgelab-128.json": "0b751bc3871b22005659971e3173ca549e8ac1f718ea7e6fad7d23d2982d5a82",
+    "data/qa/bethgelab-146.json": "7061273d06e238bb53a5a1829a18bffde185c7d37249141df2ab31c3e9e422d9",
+    "data/qa/bethgelab-112.json": "0628bc390857fc921fe7e921d9fd8aeefe041c0cfa8e8489a522566d920ccde6",
+    "data/qa/bethgelab-142.json": "49ca45100a328ba05877fdd6621fce004c2108c706c9cb983b3ef04155da75e7",
+    "data/qa/bethgelab-122.json": "1a0c1c58bf735a4ceeb10eb00e4aed4c035c8a6eb1d41efea74797ad3cbe82ff",
+    "data/qa/bethgelab-105.json": "5d82465ecec0c02955f919be999ba76edeb1828d52d62ad86234077875d45f2a",
+    "data/qa/bethgelab-10033.json": "bbbf10d4c3902ccafc5211490784cf3517d6a7f70b81ae9d177762383083e46d",
+    "data/qa/bethgelab-10019.json": "ec14dfa8e44f4a1a9293bfae8f41d9bf3d7d7ee4f0f28fb2ae154b24342f8a01",
+    "data/qa/bethgelab-10028.json": "7d32b550332cc7bc6213650707d3705cbd48960116600ccb66c2a0ac03d006e9",
+    "data/qa/bethgelab-10021.json": "14dcf4bf2d000323b2e13a10dca680387914d8fc0252299521d0a556b616863c",
+    "data/qa/bethgelab-10004.json": "471bdf95606d1496d298beab076cd0dd2b5f4a958980395cd4cfd769dae9c68a",
+    "data/qa/bethgelab-10047.json": "36e3cb03bb9adc2ae27aa21261d4a63520db4c4d504f84000a3d5c15d37eb37f",
+    "data/qa/bethgelab-10013.json": "3eb3f8102c7dc182b5da8a6ede3afaacecbb3eeeb88dcfd5d7afc3b992d7107b",
+    "data/qa/bethgelab-10038.json": "7892d2747a7452616644d7e8151f542260420bad97e87157477b417ad5dbe905",
+    "data/qa/bethgelab-10000.json": "a00dee7a35913247e9274a1f1432af2a8eddcd67a4d4127ffc0b714060049c85",
+    "data/qa/bethgelab-10003.json": "9f10d4ef2e56c3abaca34a27dafa0fa69039ab5100996732bda4ed2aaeaf71ba",
+    "data/qa/bethgelab-50039.json": "835627e06de67535fe1b787275edf7130029f51702b707c6988334e2b3d2e2b6",
+    "data/qa/bethgelab-50043.json": "1aa7808a50aa9c06cbcf4eb4d8bd3d87989f91011d5f15b76d798bc591e3acaf",
+    "data/qa/bethgelab-50033.json": "609f63ef5a51600b12e2e5b32ed24cb6e7d2ffffe6ad06a8f02ab889951d325f",
+    "data/qa/bethgelab-50037.json": "74c29d6d4fbd68cecd913e35c0255f58f193b29e146717e3b78dc9ba5aa6d7f1",
+    "data/qa/bethgelab-50047.json": "ca952c4e5f9f50f65d8f0ad0fd098d1d0e23d8d4a81ec880c3111167adb90378",
+    "data/qa/bethgelab-50013.json": "44140621f8b0e409674077230beedc8a882aafdeec969a9a9bf27a1b673b472e",
+    "data/qa/bethgelab-50009.json": "50cb9317cbc191c78431306edf86cdd9bd50160ab6993b7483632adcd963e4e9",
+    "data/qa/bethgelab-50015.json": "10424415ec18a482509bdab73cb90ac06c3b60541a37a9574d7ed7bba0ecac10",
+    "data/qa/bethgelab-50024.json": "87f44f2bce4e6f1edb4b6ef5f77df3ae2a574af516e5383a94d5df77fc63ecd4",
+    "data/qa/bethgelab-50028.json": "40274bb27149395adfce02a1b3555ddcd8a3f6cf25dc622562369ebc9ac7e6de",
+    "data/qa/bethgelab-100037.json": "36a067ba1f8236f012e484e7673e12035b9337a56c0483345b4405308ce83563",
+    "data/qa/bethgelab-100048.json": "a7cc3c20df1a4fabc712fd2e0463280397c50e683832acc665aefd4742736f64",
+    "data/qa/bethgelab-100002.json": "d218c285a3216d404fccc541c53859b3cc6e253866340c6ac40c5eb099c1eeec",
+    "data/qa/bethgelab-100001.json": "173b9e5d7f5b537b6dd3a0509ec67d7160bb3433827d89a81cf571bf09400a14",
+    "data/qa/bethgelab-100003.json": "b4bf7e443a3168ee9ab8aa6475b6a8a99aeeb4ee078db044e11108841add5e2a",
+    "data/qa/bethgelab-100040.json": "ebe1012fbcef220d1b9a5a2582601b36e19341ad97f3181508c55b5e548767cc",
+    "data/qa/bethgelab-100027.json": "984d9b547d1e6280a9bc73a0116a1d8938ad81f434bf7930cec6388428a255be",
+    "data/qa/bethgelab-100026.json": "22ecd36788fae3ce1fbbe00902e3294fe794fd61ad420ff30bac0abe6c7aca2e",
+    "data/qa/bethgelab-100015.json": "eed9ef86740c2e1a2fd50846968dc7ddeb742f7aeffd873a3e965652641e9d30",
+    "data/qa/bethgelab-200048.json": "9a4248b5ef983170ec870d71b87acf1fc69fc514991b4049a0d6c2dcb280c530",
+    "data/qa/bethgelab-200024.json": "3ae64f91c9bc2c6e9d53f6e78549731272916bcfc65308dcd540ff99fc347b7d",
+    "data/qa/bethgelab-200047.json": "7a0ea5717ba040620cc8b041d42c90094b04c7e02e94602c7b758a02a4d41dba",
+    "data/qa/bethgelab-200042.json": "7342b7444bef2a1dc2e268903a63f7c733365439343322933109d95e60288d43",
+    "data/qa/bethgelab-200004.json": "9f926b54b525db5c14b11a7448a3bfa836abe1e2a5b56e759a8d5296f71b4b5a",
+    "data/qa/bethgelab-200021.json": "9c895f183deb9198670ea1693279d0368eb8ce998139adfbf2913cce67fd9c40",
+    "data/qa/bethgelab-200016.json": "61cf043bf2b8f517304e2a256da23860d212d5be9164a37fe9f3b958a85cabcc",
+    "data/qa/bethgelab-200019.json": "9da867f532bfb703bbe8d4010ee48db98054d78edde275c6ead863e640963ce6"
+  },
+  "prompts": [
+    {
+      "id": "summary-system",
+      "title": "A1. Initial summary system prompt — exact effective text",
+      "text": "Prompt: Evidence-Grounded Scientific Distillation (Optimized JSON) — Schema v4\n\nRole\nYou are an expert scientific summarizer with cross-disciplinary methods literacy. Your goal is to produce a \"Grounded Distillation\" of the provided paper, where every narrative step is physically linked to a verbatim source fragment.\n\nGoal\nOutput a single valid JSON object. The content must be comprehensive, factual, and reproducible.\n\nCrucial Formatting Rule: The \"Grounded Sequence\"\nTo ensure every statement is supported by evidence while saving space, most fields (Context, Methods, Results, etc.) must be formatted as a List of Single-Entry Dictionaries.\n\nThe Key: The summary text (a narrative sentence or clause).\n\nThe Value: A verbatim quote (of 3-5 words, but not more than 5 words) from the source that proves the key.\n\nExample Structure:\n\ncode\nJSON\ndownload\ncontent_copy\nexpand_less\n\"methodological_details\": [\n  { \"The study recruited 500 participants from MTurk.\": \"500 participants\" },\n  { \"Participants were screened for color blindness using Ishihara plates.\": \"Ishihara plates\" },\n  { \"Data was analyzed using a mixed-effects logistic regression.\": \"logistic regression\" }\n]\n\nNarrative Flow: When the keys of the list are extracted and concatenated, they must form a coherent, flowing academic text (paragraphs), not a random list of facts.\n\nQuote Rules: The value must be an exact substring found in the text, length ≤ 5 words. Do not quote empty strings.\n\nFormatting & Validation Rules (must follow exactly)\n\nOutput only the JSON object. No markdown, no prose before/after, no comments.\n\nUse double quotes for all strings; no trailing commas; ensure valid JSON.\n\nPreserve the exact key order from the template. Do not add or rename keys.\n\nIf something is not reported or not applicable, set the value to the empty string \"\".\n\nInside long string values, use \\n\\n to separate paragraphs (not actual blank lines).\n\nWhen citing numbers, preserve all key values (sample sizes, metrics, CIs, p-values, effect sizes, deltas).\n\nWhen stating an improvement, include absolute and relative magnitudes** when available (e.g., “+2.3 F1 absolute; +4.5% relative”).\n\nEvidence & Rigor Requirements\n\nBe precise and comprehensive; do not speculate or invent facts beyond the paper.\n\nLink results back to the study design and hypotheses; explicitly state whether each hypothesis was supported, refuted, or nuanced.\n\nIf the paper reports multiple datasets, tasks, populations, or model variants, name them and keep their metrics disambiguated.\n\nIf a figure/table is central to a claim, mention it (e.g., “Figure 3,” “Table 2”) and extract the numbers that substantiate the claim.\n\nIf the paper contains ablations, sensitivity analyses, error analyses, or calibration checks, summarize the setups and the quantitative outcomes.\n\nIf a key detail is missing (e.g., random seed, train/test split, demographics), record the omission in the appropriate field as \"\" and note its importance under “contradictions_and_limitations”.\n\nContent Guidance & Length Targets\n\nmetadata (Standard Strings): title, authors, field_subfield, type_of_paper.\n\nexecutive_summary (String): A ~400-word high-level narrative overview. (This is the only narrative field that remains a simple string).\n\nresearch_context (Grounded Sequence): 150-200 words. Background gap, prior theories, and what is lacking.\n\nresearch_question_and_hypothesis (Grounded Sequence): 180-230 words. Central RQs, hypotheses, and predicted outcomes.\n\nmethodological_details (Grounded Sequence): ~500 words. Participants (N), data splits, materials, instruments. Every number and specific noun must be grounded.\n\nprocedures_and_architectures (Grounded Sequence): ~400 words. Model specs, hardware, hyperparameters, step-by-step procedures.\n\nkey_results (Grounded Sequence): ~500 words. Quantitative findings. The Key must state the result with context (e.g., \"Accuracy rose to 95%\"), the Value must quote the number/metric (e.g., \"95%\").\n\ninterpretation_and_theoretical_implications (Grounded Sequence): ~200 words. Mechanisms and meaning.\n\ncontradictions_and_limitations (Grounded Sequence): ~200 words. Internal conflicts, threats to validity.\n\nclaims (Array of Objects):\n\ndescription: String (The claim statement).\n\nsupporting_evidence: Grounded Sequence (Evidence supporting the claim).\n\ncontradicting_evidence: Grounded Sequence (Nuance/exceptions).\n\nimplications: Grounded Sequence (Consequences).\n\ndata_and_code_availability, robustness_and_ablation_notes, ethical_considerations, key_figures_tables: All must be Grounded Sequences.\n\ntop_influential_citations (List of Dictionaries): Identify the 5 cited works that most significantly shaped this study, ranked by influence. Exception to Grounded Sequence Rule:\n\nCitation Key: The exact name/citation of the paper as written in the bibliography.\n\nCitation Value: A detailed, generated one-sentence justification explaining how and why this paper influenced the current work.\n\n\"quotes\" Key: A List of Strings (each ≤ 5 words). These must be verbatim fragments from the text that prove the citation's influence (e.g., \"adapted from [12]\", \"following Smith\").\n\nthree_takeaways (Grounded Sequence):\n\nThe core contribution.\n\nThe strongest evidence.\n\nThe future path.\n\nProcess Checklist\n\nRead the paper to extract key facts.\n\nDraft the narrative sentences (Summary Keys).\n\nLocate the exact ≤5 word verification string for each sentence (Quote Values).\n\nAnalyze References: Identify the top 5 papers that drove the methodology or theory, write the justification sentences, and extract verifying fragments for the quotes list.\n\nConstruct the JSON lists, ensuring the keys flow logically when read in order.\n\nValidate valid JSON: double quotes, no trailing commas.\n\nSchema Output Template (Output only this JSON object):\n{\n\"title\": \"\",\n\"authors\": \"\",\n\"field_subfield\": \"\",\n\"type_of_paper\": \"\",\n\"executive_summary\": \"\",\n\"research_context\": [\n{ \"Summary sentence describing the background...\": \"short quote\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"Summary sentence defining the RQ...\": \"short quote\" }\n],\n\"methodological_details\": [\n{ \"Summary sentence detailing the design/sample...\": \"short quote\" }\n],\n\"procedures_and_architectures\": [\n{ \"Summary sentence explaining the model/procedure...\": \"short quote\" }\n],\n\"key_results\": [\n{ \"Summary sentence stating a result with numbers...\": \"short quote\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"Summary sentence on implications...\": \"short quote\" }\n],\n\"contradictions_and_limitations\": [\n{ \"Summary sentence on limitations...\": \"short quote\" }\n],\n\"claims\": [\n{\n\"description\": \"High-level claim string\",\n\"supporting_evidence\": [\n{ \"Evidence point...\": \"short quote\" }\n],\n\"contradicting_evidence\": [\n{ \"Counter-point...\": \"short quote\" }\n],\n\"implications\": [\n{ \"Implication...\": \"short quote\" }\n]\n}\n],\n\"data_and_code_availability\": [\n{ \"Statement on code/data...\": \"short quote\" }\n],\n\"robustness_and_ablation_notes\": [\n{ \"Statement on ablations...\": \"short quote\" }\n],\n\"ethical_considerations\": [\n{ \"Statement on ethics...\": \"short quote\" }\n],\n\"key_figures_tables\": [\n{ \"Description of Figure X...\": \"short quote\" }\n],\n\"top_influential_citations\": [\n{\n\"Exact Citation String (Rank 1)\": \"Detailed justification sentence explaining specific influence...\",\n\"quotes\": [\"verbatim fragment 1\", \"verbatim fragment 2\"]\n},\n{\n\"Exact Citation String (Rank 2)\": \"Detailed justification sentence explaining specific influence...\",\n\"quotes\": [\"verbatim fragment 1\", \"verbatim fragment 2\"]\n},\n{\n\"Exact Citation String (Rank 3)\": \"Detailed justification sentence explaining specific influence...\",\n\"quotes\": [\"verbatim fragment 1\", \"verbatim fragment 2\"]\n},\n{\n\"Exact Citation String (Rank 4)\": \"Detailed justification sentence explaining specific influence...\",\n\"quotes\": [\"verbatim fragment 1\", \"verbatim fragment 2\"]\n},\n{\n\"Exact Citation String (Rank 5)\": \"Detailed justification sentence explaining specific influence...\",\n\"quotes\": [\"verbatim fragment 1\", \"verbatim fragment 2\"]\n}\n],\n\"three_takeaways\": [\n{ \"1. The core contribution...\": \"short quote\" },\n{ \"2. The strongest evidence...\": \"short quote\" },\n{ \"3. The future path...\": \"short quote\" }\n]\n}\n",
+      "sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "source": "summary-systemprompt+.txt",
+      "note": "The literal Python assignment wrapper is not sent. UI-copy artifacts in the original prompt are intentionally retained."
+    },
+    {
+      "id": "summary-user",
+      "title": "A2. Initial summary user message",
+      "text": "Apply the system prompt to the supplied dataset paper text only. The dataset may omit the bibliography; if it does, top_influential_citations must be \"\". For unreported data/code or ethics, use \"\" for the entire field. Do not reproduce template placeholders. Copy proof quotes literally, including symbols.\n\nBEGIN_PAPER\n{paper_text}\nEND_PAPER",
+      "sha256": "876af231a32f627e07aaeee07ae3a594b239a10531f19ec1a64fdd10fafda45c",
+      "source": "summary_runtime.py",
+      "note": "Replace {paper_text} with the unchanged frozen dataset text."
+    },
+    {
+      "id": "summary-retry",
+      "title": "A3. Initial-generation format retry suffix",
+      "text": "\nReturn only a complete JSON object with all 19 fields in template order.",
+      "sha256": "33b6d236a50e77b5051bfa627ad97ec281e58790b084c7e25a74ffe4f568c9aa",
+      "source": "summary_runtime.py",
+      "note": "Appended to the current initial user message if no complete draft exists; repeated failures can append it again."
+    },
+    {
+      "id": "repair-system",
+      "title": "A4. Field-repair system prompt",
+      "text": "You repair evidence-grounded scientific JSON fields using only the supplied source. Return one JSON object mapping requested top-level field names to their corrected values. Do not return other fields, markdown, commentary, or the complete summary. Preserve supported narrative statements. Each grounded entry has exactly one narrative key and a nonempty literal source quote of at most five words as its value. Copy source spelling, mathematical symbols, punctuation and PDF typography literally. Do not invent proof fragments. Remove unsupported entries; if a field is not reported, return the empty string for the entire field, not a list containing empty quotes. Citation entries have exactly a literal citation key with a justification value and a quotes key with nonempty source quotes. Never retain template placeholders. If no bibliography is supplied, return an empty string for top_influential_citations. Claims have description, supporting_evidence, contradicting_evidence, implications, in that order; the latter three are grounded lists or empty strings. Never change scientific numbers to make a quote match. No outside knowledge is allowed.",
+      "sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "source": "summary_runtime.py",
+      "note": "Same generator model; distinct source-only repair instructions."
+    },
+    {
+      "id": "repair-user",
+      "title": "A5. Primary field-repair user message",
+      "text": "BEGIN_PAPER\n{paper_text}\nEND_PAPER\n\nFIELDS_TO_REPAIR\n{fields_to_repair_json}\n\nERRORS\n{errors_json}\n\nAll detected quote errors:\n{all_detected_quote_errors_joined_with_newlines}",
+      "sha256": "e201e9ce2f60c792c5010a50290291df090a0f12049a51d4efbd76bea5b3ec1d",
+      "source": "summary_runtime.py",
+      "note": "Insert Python json.dumps output for the requested fields/errors (ensure_ascii=False). The final error list is newline-joined grounding_errors output."
+    },
+    {
+      "id": "anchor-system",
+      "title": "A6. Source-anchor selection system prompt",
+      "text": "You verify scientific statements against the supplied source. For each requested task, choose one numbered candidate proof fragment ONLY if it supports the statement and its numbers/negations. Return a JSON object mapping every task ID to the integer candidate index, or to \"drop\" when no candidate adequately supports the statement. Do not invent quotes, rewrite statements, or use outside knowledge. Weak topical overlap is not proof. Dropping unsupported evidence is preferable to a false citation. Return JSON only.",
+      "sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "source": "summary_runtime.py",
+      "note": "The model chooses a provided candidate index or \"drop\"; it cannot supply a new quote."
+    },
+    {
+      "id": "anchor-user",
+      "title": "A7. Source-anchor selection user message",
+      "text": "BEGIN_PAPER\n{paper_text}\nEND_PAPER\n\nTASKS\n{tasks_json}",
+      "sha256": "245f32c077f0d3a94faa474dade880b5d0e04ffde298728d12852c8ce5f3444f",
+      "source": "summary_runtime.py",
+      "note": "tasks_json contains at most eight tasks, each with id, narrative, invalid_quote, and candidates with explicit index, quote, start, end. Internal path is not sent."
+    },
+    {
+      "id": "secondary-repair-user",
+      "title": "A8. Secondary-stage field-repair user message",
+      "text": "BEGIN_PAPER\n{paper_text}\nEND_PAPER\nFIELDS_TO_REPAIR\n{fields_to_repair_json}\nERRORS\n{errors_json}",
+      "sha256": "34cba629ea2dd5b3bd1ddf0dcb575760606ccd9d248968506c627da78666deb2",
+      "source": "summary_runtime.py",
+      "note": "Used for remaining non-quote/schema/citation errors; system prompt A4 is reused. errors_json uses json.dumps default ASCII escaping in this branch."
+    },
+    {
+      "id": "qa-authoring",
+      "title": "A9. QA-authoring protocol",
+      "text": "Scientific-Summaries QA authoring protocol (executed by three gpt-6-luna agents)\n\nRead the complete saved paper text assigned in your shard. Do not read its summary,\nother authors' questions, judge responses, or benchmark scores. Generate exactly\nten English multiple-choice questions per paper. Each has four choices A–D and\none unambiguous correct answer. Questions should be difficult and require specific\nknowledge from this paper, not general scientific trivia. Prefer quantitative\nresults, experimental/mathematical methods, interpretation, mechanisms, and caveats.\nUse plausible, specific distractors; do not add obviously absurd options.\n\nFor every question provide:\n- question and options {A, B, C, D}\n- answer: A, B, C, or D\n- rationale explaining why the gold answer follows from the paper\n- evidence_quote: a contiguous exact passage containing the supporting facts\n- evidence_start and evidence_end: null (filled by deterministic source alignment)\n- difficulty: hard\n- category: result, method, limitation, or mechanism\n\nSave one JSON file per document:\n{document_id, author_model: \"gpt-6-luna\", questions: [...]}\nUse only the saved fulltext as evidence. Quotes may retain PDF wrapping or ligatures;\nalignment allows whitespace and Unicode NFKC normalization, never fuzzy matching.\nEvidence must include the relevant numbers/formulas/facts, not just a sentence intro.\nFull sentences or paragraphs are acceptable. Validate all quotes with evidence_span\nfrom evaluate.py; repair any failure before considering a document complete.\n\nRoot assigns balanced gold positions deterministically without changing option\ncontent. Gold answers, evidence, and rationales are never included in judge prompts.\nJudge evaluation proceeds while authors are still producing other papers' questions.\nQuestion/option/gold changes invalidate that paper's checkpoint; evidence-only edits\ndo not change judge inputs and can be merged without repeating inference.\n",
+      "sha256": "7c42459c9ec6a0642afc07db3a233adba58866e94fc8abde2cc8fb60def57b0e",
+      "source": "qa_authoring_prompt.txt",
+      "note": "Saved task protocol for gpt-6-luna authors. Per-document assignments and subsequent review dialogue are not a fully archived agent transcript. Reuse frozen QA for exact comparison."
+    },
+    {
+      "id": "judge-system",
+      "title": "A10. Fixed-student system prompt",
+      "text": "You are a very smart very intelligence assistant who is very helpful.",
+      "sha256": "c86a9f305ae875fc970e7379d71958e88b69bfaf5ea65b2ff00208501f3c7832",
+      "source": "../../src/project_alexandria/experiments/reproduce.py",
+      "note": "Historical wording is retained exactly."
+    },
+    {
+      "id": "judge-user",
+      "title": "A11. Fixed-student user template — before historical sanitization",
+      "text": "Input: Context: This is a descriptive text or passage that provides background information necessary to understand the question. try your best to make good use of the following knowledge to answer the multiple choice question below if there is no useful information in the following context try to answer the question below as low as good as possible. if there is no useful information in this context to answer the question then just trust your gut feeling and your intuition.\n      Questions: these are questions that need to be answered. The answer choice should be clearly marked (e.g., ';A;').\n\n      Read the following context carefully:\n      CONTEXT:\n      {context}\n\n      Based on the context, answer the following question by providing the capitalized letter corresponding to the most appropriate answer choice:\n\n      {question}\n\n      Example context:\n\n      Today is Earth Day, a day dedicated to celebrating our planet and raising awareness about environmental issues.\n\n      Examplequestion:\n\n      A) Which of the following is NOT a renewable resource?\n      B) Coal\n      C) Solar energy\n      D) Wind power\n\n      Example output:\n\n      ;B;\n      Give your answer to the question. The answer choice should be clearly marked (e.g., ';A;').\n      if there is no useful info in the CONTEXT guess the right answer. In any case output a valid answer according to the output format with a semicolons surrounding the capital letter.\n      It is very important to me that you fulfill this task very accurately and intelligently.\n      If you perform well, I will tip you 100 billion dollars.\n      answer=",
+      "sha256": "4446d9283eca2b408b6256fe48e011b2dc56015222bca26bce5b947343b269ea",
+      "source": "../../src/project_alexandria/experiments/mcq.py",
+      "note": "Replace {context} and {question}, then apply historical_sanitize. Formatting retries send the same prompt, not a corrective prompt."
+    },
+    {
+      "id": "judge-sanitizer",
+      "title": "A12. Exact historical sanitizer and choice parser",
+      "text": "def historical_sanitize(value: str) -> str:\n    \"\"\"Reproduce the legacy ASCII filter applied by the MCQ answering wrapper.\"\"\"\n    allowed_special_chars = r\"\\.,\\-\\+\\\\/\\*%$!?[\\]\\(\\){}\"\n    pattern = r\"[^a-zA-Z0-9\\s{}]\".format(allowed_special_chars)\n    return re.sub(pattern, \"\", value)\n\ndef extract_historical_choice(response: str) -> Optional[str]:\n    \"\"\"Reproduce the paper evaluator's semicolon-split answer extraction.\n\n    The original implementation split the response on semicolons and selected\n    the first field whose stripped value was exactly A, B, C, or D. This also\n    accepts one-sided delimiters such as ``C;`` and ``;C`` without accepting a\n    letter embedded in free-form prose.\n    \"\"\"\n    for field in response.split(\";\"):\n        choice = field.strip()\n        if choice in {\"A\", \"B\", \"C\", \"D\"}:\n            return choice\n    return None",
+      "sha256": "9485641c7fa4d244d2249e232ef2f9a3b1ce49eb8a5cbffbca763107b5127d49",
+      "source": "../../src/project_alexandria/experiments/mcq.py",
+      "note": "Executable definitions, not model prompts. Included because punctuation removal changes the effective student input."
+    },
+    {
+      "id": "builder-12",
+      "title": "Primary initial message builder",
+      "text": "'Apply the system prompt to the supplied dataset paper text only. The dataset may '\n        'omit the bibliography; if it does, top_influential_citations must be \"\". '\n        'For unreported data/code or ethics, use \"\" for the entire field. '\n        'Do not reproduce template placeholders. Copy proof quotes literally, including symbols.\\n\\n'\n        'BEGIN_PAPER\\n' + source + '\\nEND_PAPER'",
+      "sha256": "062acd33a9400f44e801455c1ce98548b1be72bd35b40f57dcdb563dead3ef0c",
+      "source": "summary_runtime.py",
+      "note": "Exact expression from the implementation; use it to reproduce JSON escaping and whitespace."
+    },
+    {
+      "id": "builder-13",
+      "title": "Primary repair message builder",
+      "text": "'BEGIN_PAPER\\n' + source + '\\nEND_PAPER\\n\\nFIELDS_TO_REPAIR\\n'\n                + json.dumps(fields, ensure_ascii=False) + '\\n\\nERRORS\\n'\n                + json.dumps(errors, ensure_ascii=False) + '\\n\\nAll detected quote errors:\\n'\n                + '\\n'.join(grounding_errors(json.dumps(state, ensure_ascii=False), source))",
+      "sha256": "1d2286840e6de278f9b742fc84cb6bb634f30583eea9acde97c2349a98ab1036",
+      "source": "summary_runtime.py",
+      "note": "Exact expression from the implementation; use it to reproduce JSON escaping and whitespace."
+    },
+    {
+      "id": "builder-14",
+      "title": "Anchor message builder",
+      "text": "'BEGIN_PAPER\\n' + source + '\\nEND_PAPER\\n\\nTASKS\\n' + json.dumps(public_tasks, ensure_ascii=False)",
+      "sha256": "aeaed0c13d03d727cd3f70c5088b1f6e31d2046f3188153c45e2135a8d6bade8",
+      "source": "summary_runtime.py",
+      "note": "Exact expression from the implementation; use it to reproduce JSON escaping and whitespace."
+    },
+    {
+      "id": "builder-15",
+      "title": "Secondary field message builder",
+      "text": "'BEGIN_PAPER\\n' + source + '\\nEND_PAPER\\nFIELDS_TO_REPAIR\\n' + json.dumps(\n                {field: state[field] for field in errors}, ensure_ascii=False) + '\\nERRORS\\n' + json.dumps(errors)",
+      "sha256": "d84c3a9a32c71fad599e00cf28576b22a655da9f45aea853c20a669fac6d2665",
+      "source": "summary_runtime.py",
+      "note": "Exact expression from the implementation; use it to reproduce JSON escaping and whitespace."
+    },
+    {
+      "id": "v3-field-user",
+      "title": "A13. V3 single-field repair user template",
+      "text": "BEGIN_PAPER\n{source}\nEND_PAPER\n\nRepair ONLY the field named below. Preserve all supported narrative statements; do not replace a detailed field with a one-sentence stub. Remove unsupported entries. Unreported/inapplicable fields must be the empty string. The example demonstrates JSON shape only, not facts to copy. Do not use objects with narrative/source/evidence property names: a grounded entry has the actual statement as its single key and the quote as its value.\nFIELD\n{field}\nCURRENT_VALUE\n{value}\nERROR\n{error}\nEXACT_OUTPUT_SHAPE_EXAMPLE\n{example}\nReturn JSON with exactly this one top-level field. Copy only real source quotes of at most five words. For citation rankings, use only actual bibliography entries as citation keys, never a placeholder or a scientific statement. If no bibliography is present, return {{\"top_influential_citations\": \"\"}}; the empty citation example illustrates this absent-bibliography case.",
+      "sha256": "127c2194a930f312a84628b9cf54bb91a72bcbe6502c0332d82ca7b21cfa31d2",
+      "source": "summary_repair_v3.py",
+      "note": "Restarted 9B policy only. Fill source, field, value, error, and example. REPAIR_SYSTEM (A4) is unchanged."
+    },
+    {
+      "id": "v3-anchor-user",
+      "title": "A14. V3 source-anchor user template",
+      "text": "BEGIN_PAPER\n{source}\nEND_PAPER\n\nTASKS\n{tasks}",
+      "sha256": "4fec84241d2ff720bc6d157037e056741c6ab5c89f03a0991122c7247beaff39",
+      "source": "summary_repair_v3.py",
+      "note": "Restarted 9B policy only. The tasks also include candidate source_context. ANCHOR_SYSTEM (A6) is unchanged."
+    },
+    {
+      "id": "v3-field-examples",
+      "title": "A15. V3 exact field-shape example builder",
+      "text": "def field_example(field):\n    from summarize import GROUNDED\n    grounded = [{'A supported statement from the paper.': 'literal source quote'}]\n    if field in GROUNDED:\n        value = grounded\n    elif field == 'claims':\n        value = [{'description': 'A supported claim.', 'supporting_evidence': grounded,\n                  'contradicting_evidence': '', 'implications': ''}]\n    elif field == 'top_influential_citations':\n        value = ''\n    else:\n        value = 'Source-supported text.'\n    return {field: value}",
+      "sha256": "45ffc8d0ec6478f9bd1adb8f46e5e011727b39c475476e909e7b26374fd09715",
+      "source": "summary_repair_v3.py",
+      "note": "Produces the syntax-only example inserted in A13; concrete per-field examples are saved in V3 prompt snapshots."
+    }
+  ]
+}

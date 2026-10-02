@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="An auditable guide to Alexandria scientific summary generation, source validation, bounded repair, fixed-student evaluation, and GH200 GPU-hour planning.">
+<title>Alexandria — Scientific Summary Pipeline &amp; Reproduction Guide</title>
+<style>
+:root{--ink:#17273b;--muted:#526477;--paper:#f5f7fb;--line:#d9e2ed;--accent:#185a91;--mint:#e8f5ef;--amber:#fff4db}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--accent);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #d19c2c;outline-offset:4px}
+header{background:#132a43;color:#fff;padding:55px max(24px,calc((100vw - 1160px)/2));border-bottom:6px solid #63c4b2}header a{color:#bde4ff}.eyebrow{font:700 12px/1.4 system-ui;letter-spacing:.17em;text-transform:uppercase;color:#a8ddd2}h1{font-size:clamp(30px,5vw,51px);line-height:1.13;letter-spacing:-.035em;max-width:920px;margin:18px 0}header p{max-width:860px;color:#d9e5f2}main{max-width:1210px;padding:32px 25px 65px;margin:auto}.layout{display:grid;grid-template-columns:205px minmax(0,1fr);gap:36px}nav{align-self:start;position:sticky;top:22px;font-size:14px}nav strong{display:block;margin:0 0 12px}nav a{display:block;padding:6px 0;text-decoration:none}article{min-width:0}section{margin:0 0 44px}h2{font-size:27px;line-height:1.25;margin:0 0 16px;letter-spacing:-.02em}h3{font-size:20px;line-height:1.35;margin:27px 0 9px}p{margin:0 0 15px}li{margin:7px 0}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;margin:17px 0}.notice{border-left:5px solid #bc8b23;background:var(--amber)}.good{border-left:5px solid #388469;background:var(--mint)}.small{font-size:14px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}.number{font-size:35px;line-height:1.2;font-weight:750;letter-spacing:-.035em;display:block}.label{font-size:14px;color:var(--muted)}.flow{list-style:none;counter-reset:step;padding:0}.flow li{counter-increment:step;position:relative;padding:16px 17px 16px 61px;background:#fff;border:1px solid var(--line);border-radius:10px;margin:12px 0}.flow li:before{content:counter(step);position:absolute;left:17px;top:17px;background:var(--accent);color:#fff;width:29px;height:29px;text-align:center;border-radius:50%;font-size:15px;font-weight:700}.flow strong{display:block}.table-wrap{overflow-x:auto;margin:20px 0}table{width:100%;border-collapse:collapse;background:#fff;font-size:14px;text-align:left}th{background:#e9eff7;font-weight:700}th,td{padding:12px 13px;border:1px solid var(--line);vertical-align:top}td code{overflow-wrap:anywhere}tbody tr:nth-child(even){background:#f8fafd}code{font:13px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#14263b;color:#eaf1fa;padding:18px;border-radius:8px;margin:12px 0;font-size:13px}pre code{color:inherit}details{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;margin:15px 0}summary{cursor:pointer;font-weight:700;line-height:1.4}details p{margin-top:13px}.hash{font-size:12px;color:var(--muted)}.field-list{font-size:13px;line-height:2.2}footer{border-top:1px solid var(--line);padding-top:22px;font-size:14px;color:var(--muted)}.skip{position:absolute;left:-9999px}.skip:focus{left:15px;top:15px;background:white;padding:10px;z-index:2}
+@media(max-width:850px){.layout{grid-template-columns:1fr;gap:23px}nav{position:static;display:flex;flex-wrap:wrap;gap:7px 17px}nav strong{width:100%;margin:0}.cards{grid-template-columns:1fr}body{font-size:16px}main{padding:25px 17px}}
+@media print{body{background:#fff;font-size:10pt}header{background:#fff;color:#17273b;padding:15px 0;border-bottom:2px solid #17273b}header p,header a,.eyebrow{color:#17273b}main{padding:20px 0;max-width:none}.layout{display:block}nav,.skip{display:none}section{margin-bottom:25px}h2{font-size:18pt;break-after:avoid}pre{background:#f1f3f6;color:#17273b;font-size:9pt}.panel,.card,details{break-inside:auto;border-radius:0}.table-wrap{overflow:visible}table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}a{color:inherit}details>summary{list-style:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#overview">Skip to report</a>
+<header>
+<div class="eyebrow">Project Alexandria · Methods &amp; scaling</div>
+<h1>From scientific papers to auditable summaries</h1>
+<p>A plain-English guide to whole-document generation, literal-source checks, bounded correction, and knowledge-retention evaluation—with exact prompts and GPU-hour estimates for 60 million papers.</p>
+<p class="small" style="color:#c4d6e9">Evidence snapshot: @@AS_OF@@ · <a href="https://arxiv.org/html/2502.19413v2">Alexandria paper</a> · <a href="https://github.com/LAION-AI/project-alexandria">Reproduction repository</a></p>
+</header>
+<main class="layout">
+<nav aria-label="Report sections"><strong>In this report</strong>
+<a href="#overview">1. Overview</a><a href="#inputs">2. Data &amp; isolation</a><a href="#generation">3. Generation</a><a href="#validation">4. Source checks</a><a href="#repairs">5. Repairs &amp; failures</a><a href="#evaluation">6. Student evaluation</a><a href="#cost">7. GPU-hour estimates</a><a href="#reproduce">8. Reproduce the run</a><a href="#limitations">9. Interpretation</a><a href="#appendix">Appendix: all prompts</a><a href="#provenance">Hashes &amp; repositories</a>
+</nav>
+<article>
+<section id="overview">
+<h2>1. What this pipeline does</h2>
+<p>The pipeline asks a language model to turn the available text of a scientific paper into a structured summary. Most summary statements are paired with a short quotation from the paper. Software checks the structure and the existence of those quotations; the model is called again only when corrections are needed. A separate, fixed model then answers paper-specific questions using the summary, measuring how much useful knowledge survives compression.</p>
+<div class="cards"><div class="card"><span class="number">97 papers</span><span class="label">Frozen comparison cohort · 970 four-choice questions</span></div><div class="card"><span class="number">89.90%</span><span class="label">Completed Qwen3.8-27B summary QA accuracy · not a factuality score</span></div></div>
+<div class="panel notice"><strong>Measured versus projected.</strong> The completed experiment used a mixed-INT4 27B model on two RTX 3090s. The GH200 estimates below instead assume FP8 and optimized vLLM serving. They are planning extrapolations, not measurements on JUPITER. The requested local 9B runs use Q8_0/llama.cpp; no completed 9B summary score is claimed here.</div>
+<ol class="flow">
+<li><strong>Freeze the inputs</strong> Save the dataset paper texts, existing summaries, document IDs, questions, and content hashes.</li>
+<li><strong>Generate independently</strong> Send one whole paper per request. Batch requests from different papers; do not expose questions or answers to the generator.</li>
+<li><strong>Check structure and source spans</strong> Reject invalid JSON, missing fields, unfinished responses, or quotations absent from the frozen text.</li>
+<li><strong>Repair only failed parts</strong> Request field-local patches; if needed, select real source fragments or drop unsupported entries. Revalidate every edit.</li>
+<li><strong>Evaluate retained knowledge</strong> Give the fixed Qwen2.5-7B student the summary narrative and the same multiple-choice questions used for all controls.</li>
+<li><strong>Audit and publish artifacts</strong> Check source, prompt, question, and evidence consistency; preserve raw outputs, failures, seeds, and uncertainty intervals.</li>
+</ol>
+<p class="small">Terminology: a <em>token</em> is a unit of model text, not necessarily a word. <em>Prefill</em> reads the input; <em>decode</em> generates the output. One <em>GPU-hour</em> is one GPU allocated for one hour; 1,024 GPUs running for one hour consume 1,024 GPU-hours.</p>
+</section>
+
+<section id="inputs">
+<h2>2. Data, questions, and information isolation</h2>
+<p>The source is <a href="https://huggingface.co/datasets/laion/Scientific-Summaries">laion/Scientific-Summaries</a>. The frozen convenience sample contains 100 records: 50 from the arXiv configuration and 50 from Bethgelab. Selection used deterministic offset pools and a length filter, preferring body-text records over abstract-only entries. The main selection path requires 8,000–30,000 characters, at least 1,500 words, an existing summary of at least 2,000 characters, a title and key-results field, no reported retraction, and no duplicate text hash; its marker preference is not identical to the fallback selection path.</p>
+<p>The user approved proceeding with the <strong>97 papers with ready QA and preceding KU/control results</strong>. The excluded IDs are <code>@@EXCLUDED@@</code>. They were not excluded according to student scores. The dataset manifest records observed revision <code>232547b7b938a6588ce5d9d7faa96384860b7a16</code>, but the original viewer API calls were not revision-pinned. Therefore, reproduction must use the saved files and their hashes, not assume a fresh download will return identical rows.</p>
+<div class="panel notice"><strong>“Paper text” does not guarantee a complete publisher PDF.</strong> These are the available dataset texts. Missing bibliographies or other sections were not independently restored. A conclusion marker and a length threshold do not prove completeness. The experiment measures retention of the supplied text, not of unseen sections.</div>
+<p>Luna agents authored ten difficult, four-choice questions per ready paper using only its saved source text. Each question includes a correct answer, plausible distractors, rationale, and a source passage. The question validator checks schema and literal evidence alignment, not independent semantic correctness of every gold answer. The saved authoring protocol is in Appendix A9; frozen questions are the exact reproduction input.</p>
+<ul><li><strong>Generator and repair calls:</strong> source text, summary instructions, and—when repairing—failed fields/errors or source-candidate tasks. Never questions, gold answers, existing summaries, KUs, or student scores.</li><li><strong>Student calls:</strong> one context condition plus a question and options. Never gold answers, evidence passages, or rationales.</li><li><strong>Offline scoring:</strong> compare the parsed student choice with the frozen gold label. Deterministically balance answer positions and shuffle distractors with seed <code>250219413</code>.</li></ul>
+<p>Saved inputs: <a href="data/papers.json">papers and dataset summaries</a>, <a href="data/manifest.json">dataset manifest</a>, <a href="https://github.com/LAION-AI/project-alexandria/tree/@@COMMIT@@/experiments/scientific_summaries/data/qa">authored QA</a>, and <a href="summary_comparison_manifest.json">comparison cohort</a>. The dataset declares CC-BY-4.0; retain its attribution and source identifiers. This report is not a blanket legal assessment of all original publisher material.</p>
+</section>
+
+<section id="generation">
+<h2>3. Whole-paper generation and batching</h2>
+<p><strong>This is not the chunked KU pipeline.</strong> A summary request contains the entire frozen paper text. Papers run independently in parallel; corrections within an individual paper depend on its previous draft. The queue processes models in order—27B generation, fixed-student evaluation, Ornith generation/evaluation, then Qwen3.5-9B generation/evaluation—not all models simultaneously.</p>
+@@MODELS@@
+<p>The measured workstation has two 24-GB RTX 3090s. The 27B model spans both GPUs (tensor parallelism 2), with eight concurrent requests continuously batched by vLLM. Each local 9B GGUF uses one GPU and four llama.cpp slots, with Q8_0 weights and Q8_0 K/V cache. A total context allocation of 131,072 tokens is divided across four slots, yielding 32,768 tokens per request.</p>
+<div class="panel"><strong>Common generation settings:</strong> temperature 0.2; top-p 0.95; thinking disabled; maximum 16,000 output tokens; 32,768-token input-plus-output context limit. The maximum is a budget, not the observed output length. Initial seeds are <code>int(SHA256(document_id)[:8], 16) % 2147483000</code>, incremented with attempt number. The secondary stage starts at that seed plus 100. The GGUF client explicitly sets top-k 0, min-p 0, and repeat penalty 1.</div>
+<p>Before each request the serving tokenizer counts the chat input. If the input plus requested output budget exceeds the context limit, the request is rejected; <strong>the source is never silently truncated</strong>. This protects comparability but means longer papers need a separately specified larger-context protocol.</p>
+<p>JSON-object constrained decoding is requested. For vLLM the payload uses <code>{"type":"json_object"}</code>. The installed llama.cpp transport additionally needs the nonempty schema <code>{"type":"json_object","schema":{"type":"object"}}</code>; an empty schema had disabled its constraint. This is a JSON syntax constraint, not a guarantee of the 19-field schema or scientific accuracy. The transport fix and explicit zero-based candidate indices are disclosed in the repository.</p>
+<p>The unchanged Schema-v4 system prompt requests the following fields:</p><p class="field-list">@@FIELDS@@</p>
+<p>Most content fields are ordered lists of single-entry objects: the key is a narrative statement and the value is a literal proof quotation. The executive summary remains a free-text string. Claims and citations have their own nested structures. Unreported or inapplicable fields must be empty strings, not fabricated filler. Word targets in the prompt are aspirational; measured outputs are substantially shorter than their combined targets.</p>
+<pre><code>{
+  "key_results": [
+    {"The paper reports accuracy of 95% on its stated test set.": "accuracy of 95%"}
+  ]
+}</code></pre>
+<p class="small">Illustration only—not a result from the cohort. A real output must include all 19 fields and its quote must exist in its own source.</p>
+</section>
+
+<section id="validation">
+<h2>4. What the source checks actually establish</h2>
+<p>Validation is primarily deterministic software, not another GPU model. It checks complete parseable JSON, duplicate keys, the prescribed field structure and types, grounded-entry shapes, citation shapes, and a nonempty usable executive summary. Root field order can be restored and logged before final validation. An enclosing Markdown fence can be removed and logged, but arbitrary prose is not searched for a partial JSON fragment. A response ending because its output budget was exhausted is rejected.</p>
+<p>For every retained proof quote, the validator requires nonempty text of at most five whitespace-delimited words and locates it in the frozen source. Exact matching is tried first, followed by whitespace alignment and Unicode NFKC/ligature alignment. The stored ledger contains the <strong>actual source substring, character offsets, field path, original quote, and alignment flag</strong>. No approximate semantic match or invented replacement is accepted. Bibliographic citation keys must also be locatable in the source.</p>
+<div class="panel notice"><strong>Existence is not entailment.</strong> A quotation can be present while supporting a different method, population, direction of effect, or number than the attached statement. Five-word fragments often omit the context needed to establish a claim. Passing this check does not prove scientific factuality, completeness, faithful interpretation, correct citation influence, or correctness of every metadata field.</div>
+<p>In particular, the executive-summary text and claim descriptions are not exhaustively checked sentence by sentence for semantic support. The validator does not comprehensively detect every template placeholder or unsupported ethics claim by meaning; the prompts instruct the model not to retain these, and nonexistent citation/quote strings fail the literal checks. The distinction between an instruction and an enforced check matters.</p>
+<p>Implementation: <a href="summarize.py">validate_summary and narrative_context</a>, <a href="evaluate.py">evidence_span</a>, and <a href="summary_runtime.py">independent field validation</a>. The appendix preserves the exact prompts rather than describing them as a stronger verifier than they are.</p>
+</section>
+
+<section id="repairs">
+<h2>5. Bounded corrections, recovery, and failure handling</h2>
+<div class="panel notice"><strong>Repair versions are not interchangeable.</strong> The measured, completed 27B run uses V2 (described in the next two subsections). Restarted 9B runs use V3 after their V2 smoke tests failed. Their initial system prompt, source texts, and final validator remain unchanged, but the repair policy and additional repair user messages differ. This must be disclosed when comparing results or extrapolating repair costs.</div>
+<h3>Stage 1 — generate, then patch only invalid fields</h3>
+<p>The queue explicitly allows <strong>six calls in the primary stage, including initial generation</strong>. If a complete draft exists, all 19 fields are validated independently. The same generator receives the original source, only the invalid fields, and the detected errors. It must return exactly those requested top-level fields. Untargeted fields cannot change. Repair outputs are capped at 4,096 tokens; supported statements should be preserved, unsupported entries removed, and absent fields left empty. If there is no parseable complete draft, a format reminder is appended and initial generation is retried.</p>
+<h3>Stage 2 — choose real source anchors or drop entries</h3>
+<p>Persistent quote errors can trigger up to six additional calls. Software proposes up to 16 literal 3–5-word fragments for an invalid entry using lexical overlap with its narrative and erroneous quote, weighted toward rare terms. This retrieval is only a candidate proposal mechanism. Each call handles at most eight entries and includes the whole source. The same model selects a zero-based candidate index only if it supports the statement, including its numbers and negations, or returns <code>"drop"</code> if none does.</p>
+<p>All choices are checked before any edit is applied. Selecting a candidate replaces the quotation with that real source span while retaining the narrative; choosing “drop” removes the entry. Candidates, choices, offsets, and removals are saved. Remaining schema/citation errors use field-only patches. The final edit is always revalidated. This model-based selection examines support for the repair tasks, <strong>not all statements in all summaries</strong>, and it can still make semantic mistakes.</p>
+<h3>V3 — restarted 9B repair policy</h3>
+<p>The failures exposed a mismatch between the requested single-entry objects and conventional <code>{narrative,evidence}</code> objects, output-budget exhaustion when many fields were rewritten together, and more invalid quotes than six batches could handle. V3 losslessly rewraps only unambiguous alias pairs; narrative and quote strings are unchanged, and each transformation is logged. For old repair protocols it prefers the original detailed generation over a shortened repair draft. For already repaired V3 drafts it preserves the repaired narrative, source selections and audit history and revalidates all fields. Initial generation has at most two independently seeded attempts.</p>
+<p>Malformed fields are patched individually with an explicit shape-only example (at most two calls per field, 4,096 output tokens each). Quote-only problems are then processed in batches of eight. The call limit is twice the required initial quote-batch count plus two, bounded below by four and above by 64. Each provided candidate includes a short surrounding source context. All index selections are checked atomically, unsupported drops are recorded, and the original final literal-source validator is mandatory. This avoids treating format alignment as evidence validation. The new templates and field examples are in Appendix A13–A15 and in each V3 run snapshot; an implementation hash prevents silently changing a resumed checkpoint.</p>
+<p>The citation shape example is an empty string for an absent bibliography, avoiding a fictitious citation key that the model could copy. Actual bibliography citations remain allowed and subject to the same validation. After a diagnosed implementation change, explicit <code>--recover-failed-cache</code> recovery permits only a failed-only V3 checkpoint with unchanged model/weights, source, prompts and generation settings. It records the prior checkpoint and implementation hashes; historical saved elapsed time is included. This is an auditable repair continuation, not a new independent generation experiment.</p>
+<pre><code>Complete draft → independent field checks
+  ├─ all pass → final evidence ledger → save summary
+  └─ failures → field-only patch → recheck
+       └─ persistent quote failures → propose actual source fragments
+            ├─ supporting candidate chosen → retain statement + real quote
+            └─ "drop" → remove entry
+       └─ still invalid after bounded attempts → save failure; stop before scoring</code></pre>
+<h3>Operational robustness</h3>
+<p>Requests retry transient transport/server errors up to three times with backoff; nontransient summary HTTP errors are not blindly repeated. Atomic checkpoints are saved after completed documents. A resumed run verifies source and configuration hashes and skips valid completed documents. A failed cohort pass may be retried once for missing papers, so actual journals can exceed a single six-call limit. Persistent failures remain visible and stop the queue instead of silently changing the evaluation denominator.</p>
+<p>The detached launcher survives a terminal closing. Queue and publisher locks prevent duplicate invocations; locks are not deleted while running. The runner waits for free GPUs and only stops its own isolated server process groups. Explicit server adoption verifies process identity. These safeguards do not imply that interrupted, uncheckpointed work is recoverable or that all hardware/server failures disappear.</p>
+<div class="panel good"><strong>Why retain the checks?</strong> Cheap deterministic checks and traceable evidence prevent unusable outputs and make errors inspectable. The expensive repair loops are a separate policy choice. At large scale, compare bounded repair against one-pass generation with the same QA and semantic spot checks, reporting removals, lost coverage, failure rate, and cost. Do not silently change the protocol and present it as the same experiment.</div>
+</section>
+
+<section id="evaluation">
+<h2>6. Evaluation with the unchanged fixed student</h2>
+<p>The “judge” here is a <strong>question-answering student</strong>, <a href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct">Qwen/Qwen2.5-7B-Instruct</a>. It is not an independent claim-by-claim factuality judge. For each question it sees no context, the frozen source, the existing dataset summary, the preceding KU representation, or the newly generated summary. The newly generated context concatenates substantive narrative fields, including claims and takeaways, but excludes metadata, proof quotes, and citation rankings.</p>
+<p>The exact historical system and user prompts are preserved in Appendix A10–A12, including their unusual wording. The historical ASCII sanitizer is applied after substituting the context and question; it can remove scientific Unicode and punctuation. The parser splits the response on semicolons and accepts the first stripped field exactly equal to A, B, C, or D, without case conversion. Up to five total formatting attempts use the same prompt. Final invalid answers count as wrong.</p>
+<p><strong>Student settings:</strong> BF16; tensor parallelism 1; vLLM 0.27.1; temperature 0.5; top-p 0.95; maximum 100 output tokens; frequency and presence penalties 1.05; four concurrent requests; 32,768-token current context cap. Input tokens plus the 100-token output allowance are preflighted. Student requests have no explicit random seed, so exact rerun predictions are not guaranteed. Previously frozen controls are reused only when the questions/options/gold and effective prompt hashes match.</p>
+<p>Completed 27B result: <a href="summary_runs/qwen27b/results.json">raw scores and student responses</a>. The intervals resample documents—not individual questions—10,000 times with seed <code>250219413</code>, keeping each paper’s ten questions together. These are sampling-uncertainty intervals, not guarantees about rerun variance or all scientific literature.</p>
+@@SCORES@@
+<p>The new summary is useful to this student, but it retains less answerable information than the original text. The score cannot establish that every summary claim is correct or that all omitted knowledge is unimportant. Runtime/quantization differ across generators, so model comparisons measure complete representation pipelines rather than a weight-only ablation.</p>
+<p><a href="summary_comparison.html">Current comparison dashboard</a> · <a href="pre_qwen_summary_results.json">Frozen preceding controls</a> · <a href="summary_runs/qwen27b/qa_evaluated.json">Exact evaluated questions and permutations</a></p>
+</section>
+
+<section id="cost">
+<h2>7. GPU-hour planning for 60 million papers</h2>
+<p>JUPITER’s standard accelerated node contains four GH200 superchips; each GPU has 96 GB HBM3 with 4 TB/s bandwidth. These specifications must not be confused with the larger-memory H200 used in some published benchmarks. <a href="@@SOURCE_JUPITER@@">JSC hardware documentation</a></p>
+<h3>Measured workload, not guessed summary lengths</h3>
+@@WORKLOAD@@
+<p>The initial output count includes structured JSON and proof quotes, not only the free narrative. The validated-workload estimate includes all distinct saved calls across successful and failed journals. Copied historical attempts are deduplicated by document, phase, seed, prompt hashes, response hash, and recorded duration. It does not recover calls lost before checkpointing. The successful-journal mean is about 4.5 calls per paper; the saved-call aggregate is slightly larger.</p>
+<p>The local GPU-hour number is a <strong>checkpointed active-time proxy</strong>: two allocated GPUs times saved generation/repair wall time. It excludes startup, idle gaps, and possibly uncheckpointed interrupted intervals. It is not a scheduler billing total and is not converted to GH200 hours using an unsupported hardware multiplier.</p>
+<h3>Research anchors and explicit assumptions</h3>
+<p>A self-reported operator result for Qwen3.8-27B on one H200 reports about 1,394 aggregate output tokens/s using SGLang and MTP speculative decoding. It is not a matched vLLM/GH200 scientific-summary measurement. <a href="@@SOURCE_QWEN27_BENCHMARK@@">Operator benchmark</a>. A separate Qwen3.8 FP8 H200 capture workload reports 4.4 prompts/s at roughly 4,000 tokens per conversation; this is prefill/hidden-state capture, not autoregressive summary generation. <a href="@@SOURCE_PREFILL_BENCHMARK@@">SpecForge measurement</a></p>
+<p>For Qwen3.5-9B, GPUStack reports about 5,200 aggregate output tokens/s on an H100 in its short-context ShareGPT profile. Its long-context and generation-heavy profiles use different request patterns; total tokens/s must not be mistaken for output tokens/s. These measurements do not establish FP8/GH200 performance at our approximately 8,165-input/3,059-output workload. <a href="@@SOURCE_QWEN9_BENCHMARK@@">GPUStack benchmark and settings</a></p>
+<div class="panel notice"><strong>No directly matched benchmark was found.</strong> The rates below are our planning assumptions informed by these reference measurements, not published GH200 results or demonstrated optimal settings. The range varies throughput and utilization; it is not a statistical confidence interval.</div>
+@@RATES@@
+<pre><code>GPU_hours = N / 3600 × (I / P + O / D) / η
+
+N = number of papers
+I, O = mean input/output tokens per paper, summed over all included calls
+P, D = phase-specific aggregate prefill/decode tokens per second per GPU
+η = effective utilization, including ordinary operational losses
+
+Important: P and D are phase capacities. Do not substitute an already
+end-to-end measured decode rate and then count its prefill cost again.</code></pre>
+<p>Fast/central/slow assumptions are explicit in <a href="summary_pipeline.json">the machine-readable companion</a>. For 27B they use P = 16,000/10,000/6,000, D = 1,500/900/700, η = 0.90/0.85/0.80. For 9B they use P = 40,000/25,000/15,000, D = 4,000/2,500/1,500 with the same utilization values. The model approximates additive phase costs; scheduling, cache reuse, batching, and longer-context attention can change actual cost.</p>
+@@COSTS@@
+<p>Rounded central headlines are <strong>80,000 GPU-h for one-pass 27B and 200,000 GPU-h with its observed repairs; 30,000 GPU-h for one-pass 9B and 75,000 GPU-h with the same assumed repair burden</strong>. The 9B validated estimate borrows the 27B call/token distribution; its actual repair rate and output length are not yet measured here. Smaller-model speed does not guarantee equal scientific coverage or QA performance.</p>
+@@WALL@@
+<p>Wall times divide central GPU-hours by GPU count, assuming near-linear independent-paper scaling and adequate data supply. They exclude queue waiting. Costs exclude PDF parsing/OCR, QA authorship, fixed-student evaluation, and archival storage. The cohort averages about 3,500 source words; a 60-million-paper corpus with longer full texts, larger outputs, or thinking enabled needs a new workload estimate. FP8 may also change output quality and repair rates relative to the measured mixed-INT4 run.</p>
+<h3>Proposed GH200 deployment—not an implemented JUPITER benchmark</h3>
+<p>Start with one FP8 replica per GPU (four per node), continuous batching, length buckets, chunked prefill, and GPU-resident caches. Tune concurrent requests and batched-token limits; retain CUDA graphs where supported. Benchmark FP8 KV cache for both throughput and quality rather than assuming it automatically doubles speed. MTP is optional and no speculative-decoding gain is included in the central estimates. These are deployment hypotheses to test, not a claim of a global optimum. <a href="@@SOURCE_QWEN27_RECIPE@@">27B vLLM recipe</a>, <a href="@@SOURCE_QWEN9_RECIPE@@">9B vLLM recipe</a>, <a href="@@SOURCE_KV_CACHE@@">FP8 KV-cache documentation</a></p>
+<p>Use <a href="@@SOURCE_QWEN27_FP8@@">Qwen/Qwen3.8-27B-FP8</a> or <a href="@@SOURCE_QWEN9_FP8@@">RedHatAI/Qwen3.5-9B-FP8-dynamic</a>, not GGUF files, for this proposed native vLLM FP8 deployment. Pin new model revisions, tokenizer hashes, container digest, ARM64/CUDA build, and cache configuration. The workstation queue is <strong>not</strong> a ready-made Slurm/JUPITER launcher: a distributed shard scheduler and restart-safe aggregation must be separately implemented and verified.</p>
+<p><strong>Before allocating the full job:</strong> benchmark 1,000 representative papers on one four-GH200 node, including warmup, real repairs, failure rates, and token-length tails. Allow roughly 1–2 hours for the pilot and tuning, then replace assumptions with measured end-to-end papers/GPU-hour. For large-scale planning, also benchmark storage and data-loader throughput and semantic quality.</p>
+</section>
+
+<section id="reproduce">
+<h2>8. Reproduce the experiment without changing its inputs</h2>
+<p>Repository reference: <a href="@@CODE_URL@@"><code>@@COMMIT@@</code></a>. Exact input hashes are listed below and in <a href="summary_pipeline.json">the companion JSON</a>. Tracked input files differing from this commit when the report was built: <code>@@MODIFIED@@</code>. A working-tree snapshot is not automatically the same as an upstream release.</p>
+<h3>8.1 Obtain and audit the frozen release</h3>
+<pre><code>git clone https://github.com/LAION-AI/project-alexandria.git
+cd project-alexandria
+git checkout @@COMMIT@@
+python -m venv .venv-docs
+.venv-docs/bin/python -m pip install -e '.[dev]' huggingface_hub
+.venv-docs/bin/python -m pytest -q tests/test_scientific_summaries.py
+.venv-docs/bin/python experiments/scientific_summaries/validate.py --partial
+
+# Check the original publication checksum list from its own directory:
+cd experiments/scientific_summaries
+sha256sum --check summary_comparison.SHA256SUMS</code></pre>
+<p>Use a fresh clone or worktree for new outputs. Do not overwrite published checkpoints to force a rerun. The pinned commit contains the experiment implementation; if this methods report is not yet committed there, obtain its companion generator/template from the report delivery. Once available, build it from the repository root with <code>python experiments/scientific_summaries/pipeline_report.py</code>. Its offline tests are in <code>tests/test_summary_pipeline_report.py</code>.</p>
+<h3>8.2 Install the serving runtimes and verify weights</h3>
+<p>The measured serving fingerprint is vLLM <code>0.27.1+cu129</code>; the package metadata alone is not a complete environment lock. Use a separate compatible CUDA-enabled environment for inference and record Python, PyTorch, driver, wheel/container hashes, and architecture. The repository’s generic vLLM extra does not pin this experiment. For GGUF reproduction, build <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> at the recorded build revision and compare behavior; a locally rebuilt binary will generally not share the original binary hash.</p>
+<pre><code># Example inference environment, subject to matching CUDA/platform wheels:
+python3.13 -m venv .venv-inference
+.venv-inference/bin/python -m pip install 'vllm==0.27.1' huggingface_hub
+
+# Run from the repository root; use absolute paths appropriate to your host:
+export ALEXANDRIA_EXTRACTOR_PYTHON=/absolute/path/to/.venv-inference/bin/python
+export ALEXANDRIA_JUDGE_PYTHON=/absolute/path/to/.venv-inference/bin/python
+export ALEXANDRIA_JUDGE_WEIGHTS=/absolute/path/to/verified/Qwen2.5-7B-Instruct</code></pre>
+<p>Download generator weights at the exact revisions in the model table; verify the two GGUF SHA-256s and judge-file fingerprints in Appendix B. The 27B model is pinned by repository revision rather than a complete weight-file checksum list. The judge’s upstream revision was not recorded; its actual served files were hashed, so compare those hashes rather than claiming an unrecorded commit. The queue’s GGUF download directory and default llama.cpp path are workstation-specific. For another host, use the direct commands below or explicitly configure the foreground runner’s <code>--llama-server</code> and download/cache paths.</p>
+<h3>8.3 Regenerate 27B summaries in a new output directory</h3>
+<p>In terminal A, start <code>bash experiments/scientific_summaries/serve_extractor.sh</code> using the environment above. The script pins model revision, alias <code>qwen38</code>, TP2, two GPUs, and port 8010. In terminal B, from the repository root:</p>
+<pre><code>.venv-docs/bin/python experiments/scientific_summaries/summarize.py \
+  --base-url http://127.0.0.1:8010/v1 --runtime vllm --alias qwen38 \
+  --model Pilcothink/Qwen3.8-27B-MixedInt4-AutoRound \
+  --revision 4756e3e4871aefd8d7cd5b0f6155ae5490451c1e \
+  --prompt experiments/scientific_summaries/summary-systemprompt+.txt \
+  --output experiments/scientific_summaries/reproduction/qwen27b/summaries.json \
+  --allocated-gpus 2 --concurrency 8 --attempts 6 --max-tokens 16000 \
+  --skip-id bethgelab-100035 --skip-id bethgelab-200029 --skip-id bethgelab-200013</code></pre>
+<p>A two-paper smoke test adds <code>--max-new-documents 2</code>; after success, rerun the same command without that flag. Completed documents are reused. Explicitly use <code>--attempts 6</code>: the direct script’s default is three, while the comparison queue specifies six. An unresolved smoke failure must be diagnosed before scaling up.</p>
+<h3>8.4 Reproduce a local GGUF run</h3>
+<p>Download the pinned GGUF into a chosen directory and check its SHA-256. On the measured build, a single-GPU server uses:</p>
+<pre><code>CUDA_VISIBLE_DEVICES=0 /absolute/path/to/llama-server \
+  --model /absolute/path/to/Qwen3.5-9B-Q8_0.gguf --alias summary-model \
+  --host 127.0.0.1 --port 8010 --gpu-layers 999 \
+  --ctx-size 131072 --parallel 4 --flash-attn on \
+  --cache-type-k q8_0 --cache-type-v q8_0 --jinja --reasoning off \
+  --chat-template-kwargs '{"enable_thinking":false}' --threads 8 --threads-batch 16</code></pre>
+<p>Use the generation command above with runtime <code>llama.cpp</code>, alias <code>summary-model</code>, one allocated GPU, concurrency four, the matching model/revision/weight hash, and a new model-specific output directory. For Qwen3.5-9B, use model <code>unsloth/Qwen3.5-9B-GGUF</code>, revision <code>3885219b6810b007914f3a7950a8d1b469d598a5</code>, and <code>--weights-sha256 809626574d0cb43d4becfa56169980da2bb448f2299270f7be443cb89d0a6ae4</code>. For Ornith, substitute its model, revision, filename, and checksum from Appendix B. Retain identical source and skip IDs.</p>
+<h3>8.5 Evaluate with the fixed student</h3>
+<p>Stop only your own generator server before reusing port 8010. In terminal A, run the judge with the same verified BF16 weights:</p>
+<pre><code>ALEXANDRIA_JUDGE_GPU=0 ALEXANDRIA_JUDGE_MAX_LEN=32768 \
+ALEXANDRIA_JUDGE_GPU_UTIL=0.90 \
+bash experiments/scientific_summaries/serve_judge.sh</code></pre>
+<p>In terminal B:</p>
+<pre><code>.venv-docs/bin/python experiments/scientific_summaries/evaluate.py \
+  --with-kus --with-qwen-summaries --context-limit 32768 \
+  --summary-cache experiments/scientific_summaries/reproduction/qwen27b/summaries.json \
+  --output experiments/scientific_summaries/reproduction/qwen27b/results.json \
+  --baseline-checkpoint experiments/scientific_summaries/pre_qwen_summary_results.json \
+  --skip-id bethgelab-100035 --skip-id bethgelab-200029 --skip-id bethgelab-200013</code></pre>
+<p>Frozen controls are intentionally reused when hashes agree; only the generated-summary condition needs new student calls. The ten-question requests for one document run concurrently, but the current evaluator iterates documents sequentially. This is not a fully saturated multi-node judge scheduler. To rerun controls independently, use a new results file without the baseline option and retain all other settings.</p>
+<h3>8.6 Use the existing queue and audit tools</h3>
+<p>On the original workstation, <code>python experiments/scientific_summaries/launch_summary_comparison.py</code> resumes the model queue; completed audited 27B results are reused rather than recomputed. Use <code>--only-model qwen35_9b</code> to bypass Ornith and run Qwen3.5 directly. The foreground runner accepts a configurable llama-server path. The queue stops on unresolved smoke failures, so its ordered design does not imply all three runs have succeeded. Restarted GGUF runs use V3; to use it with the direct generation command above, add <code>--repair-protocol field_local_strict_grounding_v3</code> and start with a fresh V3 output directory. <code>summary_comparison_report.py</code> audits the standard model directories and rebuilds their result dashboard; it does not automatically read the separate reproduction directories above.</p>
+<p>Retain source bytes and hashes, all author/gold questions, final structured summaries, student-facing contexts, raw generation and student responses, token usage, attempt seeds, evidence ledgers, failures/removals, model/runtime fingerprints, manifests, and checksum lists. Keep API keys out of files, commands, logs, and HTML. Local public-weight inference requires no hosted API key. Git publication is an optional separately authorized step, not required for local reproduction.</p>
+</section>
+
+<section id="limitations">
+<h2>9. What conclusions are justified?</h2>
+<p><strong>Supported:</strong> on this fixed 97-paper/970-question convenience cohort, the completed grounded-summary pipeline makes substantially more paper-specific questions answerable than no context, while the full supplied source performs better. The output can be inspected against saved source spans, and every recorded correction can be audited.</p>
+<p><strong>Not established:</strong> universal summary factuality; complete publisher-PDF coverage; correctness of every authored gold answer; the importance of all omitted knowledge; identical quality for FP8 versus mixed-INT4; equal repair rates for 9B; or the actual optimal throughput of this workload on JUPITER. GPU-hour planning ranges are not scientific confidence intervals. Stochastic generation, runtime versions, and batching can change outputs even with some fixed seeds.</p>
+<p><strong>Recommended scale-up gate:</strong> retain cheap deterministic validation, benchmark the cost and benefit of repair policies, review random and high-risk samples against full source passages, and report factual support and knowledge coverage separately. A semantic verifier would be an additional experiment—not a feature already guaranteed by the current quote-existence checks.</p>
+</section>
+
+<section id="appendix">
+<h2>Appendix A — Complete prompt inventory</h2>
+<p>The effective summary and repair system prompts are copied from the completed-run snapshot and checked against the current literal definitions. User-message templates are extracted from the implementation, preserving literal whitespace; placeholders identify data inserted at runtime. Exact builder expressions are included to disambiguate serialization. Every displayed text has its own SHA-256 and is also included in <a href="summary_pipeline.json">the companion JSON</a>. Browser rendering may visually normalize whitespace; use that JSON or the original files for byte-level reproduction.</p>
+<p>This inventory covers the current summary workflow, repairs, frozen-QA authoring protocol, and fixed-student evaluation. It is not a complete transcript of historical agent interactions, nor an inventory of unused legacy summarizers. The preceding KU control is reused from its frozen artifact; its independent generation implementation and prompts are linked in Appendix C.</p>
+@@APPENDIX@@
+</section>
+
+<section id="provenance">
+<h2>Appendix B — Runtime fingerprints and input hashes</h2>
+<details open><summary>Recorded workstation and GGUF fingerprints</summary><pre><code>@@FINGERPRINTS@@</code></pre></details>
+<details><summary>Actual served fixed-student file fingerprints</summary><pre><code>@@JUDGE_FINGERPRINTS@@</code></pre></details>
+@@PROVENANCE@@
+<p>All 97 individual QA-file hashes are recorded in the companion JSON. The report’s own HTML/JSON hashes are in <a href="summary_pipeline.SHA256SUMS">summary_pipeline.SHA256SUMS</a>. To verify these two files, run <code>sha256sum --check summary_pipeline.SHA256SUMS</code> from this directory. Regeneration reads frozen evidence and writes only the three dedicated report outputs; it does not start model servers or modify inference checkpoints.</p>
+<h2>Appendix C — Repositories, artifacts, and primary references</h2>
+<ul>
+<li><a href="https://arxiv.org/html/2502.19413v2">Project Alexandria paper, arXiv v2</a>; <a href="https://github.com/LAION-AI/project-alexandria">current reproducible project</a>; <a href="https://github.com/christophschuhmann/Alexandria">historical Alexandria repository</a>.</li>
+<li><a href="https://huggingface.co/datasets/laion/Scientific-Summaries">Scientific-Summaries dataset</a>; <a href="data/manifest.json">frozen dataset manifest</a>; <a href="summary_comparison_manifest.json">comparison/model manifest</a>.</li>
+<li><a href="https://github.com/vllm-project/vllm">vLLM</a>; <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a>; <a href="@@SOURCE_QWEN27_RECIPE@@">27B recipe</a>; <a href="@@SOURCE_QWEN9_RECIPE@@">9B recipe</a>.</li>
+<li><a href="https://huggingface.co/Pilcothink/Qwen3.8-27B-MixedInt4-AutoRound">measured 27B weights</a>; <a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B-GGUF">Ornith GGUF</a>; <a href="https://huggingface.co/unsloth/Qwen3.5-9B-GGUF">local Qwen3.5-9B GGUF</a>; <a href="https://huggingface.co/Qwen/Qwen2.5-7B-Instruct">fixed student</a>.</li>
+<li><a href="@@SOURCE_QWEN27_FP8@@">projected 27B FP8 weights</a>; <a href="@@SOURCE_QWEN9_FP8@@">projected 9B FP8 weights</a>; <a href="@@SOURCE_JUPITER@@">JUPITER configuration</a>.</li>
+<li><a href="summary_runs/qwen27b/summaries.json">completed 27B summaries/raw journals</a>; <a href="summary_runs/qwen27b/results.json">completed student predictions</a>; <a href="summary_comparison.html">comparison dashboard</a>; <a href="README.md">experiment documentation</a>.</li>
+<li>Separate preceding KU baseline: <a href="extract.py">extraction script</a>, <a href="../../src/project_alexandria/prompts.py">few-shot extraction prompts</a>, <a href="../../src/project_alexandria/pipeline.py">chunk batching</a>, <a href="../../src/project_alexandria/canonicalize.py">entity canonicalization</a>, and <a href="kus.json">frozen KU output</a>. These are not extra calls included in the summary GPU-hour estimates.</li>
+</ul>
+</section>
+<footer>This is a standalone English methods report, generated from repository artifacts without model inference. Its companion JSON makes assumptions and prompt text inspectable. It documents an experiment and a planning model—not a guarantee of factuality, licensing clearance, or supercomputer performance.</footer>
+</article>
+</main>
+</body>
+</html>

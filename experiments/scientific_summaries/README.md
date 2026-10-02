@@ -8,6 +8,19 @@ Open [the English comparison dashboard](summary_comparison.html) locally. Pendin
 models are labelled pending, never zero. The previously completed four-condition
 97-paper comparison remains in [report.partial.html](report.partial.html).
 
+For an outsider-readable explanation of the complete summary workflow, open the
+[standalone English methods and scaling report](summary_pipeline.html). It includes
+the exact prompt inventory, source-check limitations, repair/recovery behavior,
+fixed-student scoring, reproduction commands, model/runtime fingerprints, and
+60-million-paper GH200 planning estimates for 27B and 9B FP8. These estimates are
+explicitly not measured JUPITER performance. The companion `summary_pipeline.json`
+contains prompt text, workload statistics, throughput assumptions, and input hashes.
+Regenerate the report without inference using the standard-library-only command:
+
+```bash
+python experiments/scientific_summaries/pipeline_report.py
+```
+
 ## Cohort and inputs
 
 - `data/papers.json`: 100 frozen dataset records, source metadata, available paper texts,
@@ -40,6 +53,8 @@ preserved for diagnosis.
 ```bash
 # From the repository root, in the installed Alexandria Python environment:
 python experiments/scientific_summaries/launch_summary_comparison.py
+# Explicitly bypass another model's failed stage without changing the protocol:
+python experiments/scientific_summaries/launch_summary_comparison.py --only-model qwen35_9b
 # Render an audited progress/result dashboard without starting inference:
 python experiments/scientific_summaries/summary_comparison_report.py
 # Optional authorized GitHub publication after each audited model evaluation:
@@ -53,6 +68,11 @@ each hold a non-blocking filesystem lock: a second invocation exits without chan
 the active run's status. Locks release automatically on exit; do not delete lock files.
 The queue log is `summary_queue.log`, publication log `summary_publication.log`.
 The foreground `run_summary_comparison.py` entry point remains available for debugging.
+Both entry points accept repeated `--only-model` selections. The comparison manifest
+retains all three model definitions and previous artifacts; completion status names
+only the selected models. An unselected model is not represented as completed, and
+the same two-paper smoke test, bounded repair protocol, and fixed-student evaluation
+still apply. The publication watcher exits when the selected queue finishes.
 
 If a previous queue exited but its Qwen server remains alive, the launcher accepts
 `--reuse-qwen-server-pid PID`. This is explicit adoption, not GPU-wide termination:
@@ -68,6 +88,46 @@ can be configured using the existing `ALEXANDRIA_EXTRACTOR_*` / `ALEXANDRIA_JUDG
 variables. No hosted API key is needed.
 
 ## Parallel generation and strict, bounded repair
+
+### Versioned 9B restart (V3)
+
+Citation repair examples use an empty string for the absent-bibliography case,
+not a fictitious citation key that a small model could copy. Bibliography entries
+are still allowed when actually present and must pass the unchanged validator.
+Already repaired V3 drafts can resume without regenerating their narratives;
+previous anchor selections, removals, transformations and raw calls are retained.
+V2 recovery still starts from its original detailed generation, not a shortened
+repair draft.
+
+For an explicitly diagnosed implementation change, archive the failed run directory
+and use `--only-model qwen35_9b --recover-failed-cache /absolute/path/to/archived/summaries.json`
+with the detached launcher. Recovery accepts only failed-only V3 checkpoints with
+identical model, pinned weights, source hashes, initial/repair system prompts and
+generation settings. The new config records the archived checkpoint checksum,
+previous implementation checksum and historical elapsed time; timing includes that
+saved history. Ordinary resumes still reject implementation changes. Do not pass
+an untrusted or actively changing checkpoint, or a completed/partly valid run.
+
+The completed 27B run stays on V2 and is not regenerated. Restarted GGUF runs use
+`--repair-protocol field_local_strict_grounding_v3` with the same initial system
+prompt, source text, final validator, and fixed student. V3 does not spend five
+4,096-token calls rewriting every failed field together. Instead it losslessly
+rewraps only unambiguous `{narrative,evidence/source/quote}` entries, records those
+shape edits, patches one malformed field at a time with an explicit shape example
+(two attempts per field), and selects actual source quotes in batches of eight.
+The anchor-call bound scales with the initial invalid-quote inventory (twice the
+required batch count plus two, capped at 64), not a fixed six batches even when
+more than 100 quotes need correction. Candidate source context is provided. No
+quote is accepted merely because it was rewrapped; final literal alignment and
+the <=5-word requirement remain unchanged. Unsupported drops stay auditable.
+
+The original detailed generation is preferred over a shortened old repair draft.
+Initial generation has at most two attempts with different recorded seeds. The
+new templates, field examples and implementation hash are saved in each V3 prompt
+snapshot/config. Checkpoints reject version/implementation changes. Failed V2
+smoke artifacts are archived separately before a fresh V3 run. V2 mechanics below
+describe the completed 27B run, not the restarted 9B policy; differences must be
+disclosed in model comparisons and new cost estimates.
 
 Each document is independent. Qwen27B has eight concurrent requests continuously
 batched by vLLM across two RTX 3090s. Each 9B model has four llama.cpp slots on one
