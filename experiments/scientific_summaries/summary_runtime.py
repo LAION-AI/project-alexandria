@@ -352,6 +352,8 @@ def generate_document(paper, client, prompt, max_tokens, attempts):
             summary, narrative, spans = validate_summary(json.dumps(state, ensure_ascii=False), source)
         except (ValueError, TypeError, KeyError) as error:
             record['validation_error'] = str(error)
+            print('SUMMARY_VALIDATION_RETRY', paper['document_id'], attempt + 1,
+                  str(error)[:180], flush=True)
             if state is None:
                 user += '\nReturn only a complete JSON object with all 19 fields in template order.'
             continue

@@ -135,8 +135,11 @@ keeping a paper's ten questions together, seed 250219413.
 quantization, batching and KV cache therefore differ. Results measure the complete
 representation pipelines, not a controlled weight-only ablation. Prompt word targets
 are not guaranteed: median narrative length, repair rates and timing are disclosed.
-Generation wall time includes repairs but excludes server startup. Allocated RTX
-3090 GPU-hours are **not** measured GH200/Jupiter performance.
+Checkpointed active generation wall time includes repairs but excludes server
+startup and idle gaps between runs. An interruption before the next completed
+document checkpoint can also lose an uncheckpointed time interval. Multiplying
+these saved intervals by the configured GPU count is a GPU-hours proxy, not a full
+scheduler allocation bill and **not** measured GH200/Jupiter performance.
 
 ## Initial failure diagnosis
 

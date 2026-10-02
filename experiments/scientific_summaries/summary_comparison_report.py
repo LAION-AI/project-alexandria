@@ -151,7 +151,7 @@ def main():
             result = pct(item['accuracy'])
             table_rows.append(f'<tr><td>{esc(model["model"])}</td><td>{result}</td><td>{item["correct"]}/970</td>'
                 f'<td>{pct(item["ci95"][0])}–{pct(item["ci95"][1])}</td><td>Summary</td></tr>')
-            info = f'{hours:.2f} generation wall-hours / {hours * model["allocated_gpus"]:.2f} allocated GPU-hours; median {words:,.0f} narrative words; {repaired}/97 papers repaired.'
+            info = f'{hours:.2f} checkpointed active wall-hours / {hours * model["allocated_gpus"]:.2f} GPU-hours proxy; median {words:,.0f} narrative words; {repaired}/97 papers repaired.'
             method_rows.append(f'<tr><td>{esc(name)}</td><td>{esc(model["runtime"])}</td><td>{esc(info)}</td></tr>')
         else:
             result = 'Pending'
@@ -196,6 +196,10 @@ body{font:16px/1.6 system-ui;color:#183342;background:#f5f8fa;margin:0}main{max-
         '__METHODS__': ''.join(method_rows), '__QUESTIONS__': ''.join(questions)}
     for key, value in replacements.items():
         page = page.replace(key, value)
+    page = page.replace('Timing includes generation and repair attempts, excludes server startup, and allocated GPU-hours are not measured GH200/Jupiter timings.',
+        'Timing covers checkpointed active generation and repair intervals, not server startup or idle gaps between runs. '
+        'Interrupted work since the last document checkpoint can be missing. GPU-hours are these intervals multiplied '
+        'by configured GPU count: a proxy, not the full scheduler allocation bill or measured GH200/Jupiter timing.')
     (ROOT / 'summary_comparison.html').write_text(page, encoding='utf-8')
     with (ROOT / 'summary_comparison.csv').open('w', newline='', encoding='utf-8') as handle:
         writer = csv.writer(handle)
