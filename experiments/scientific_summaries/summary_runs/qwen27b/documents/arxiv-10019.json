@@ -1,0 +1,1925 @@
+{
+  "document_id": "arxiv-10019",
+  "fulltext_sha256": "e417f9d8113e4f9e3d4d71d407c61db9b570026bd9f7b6668fc1e8c16d596cf1",
+  "summary": {
+    "title": "Estimating the size of the solution space of metabolic networks",
+    "authors": "Alfredo Braunstein, Roberto Mulet, Andrea Pagnani",
+    "field_subfield": "Computational Biology / Statistical Physics",
+    "type_of_paper": "Algorithmic/Methodological Research",
+    "executive_summary": "This paper addresses the challenge of characterizing the global functional behavior of metabolic networks, specifically the size and shape of the affine space of steady-state flux distributions. While Flux Balance Analysis (FBA) and extreme pathway calculations are powerful, they often rely on optimization assumptions that may not hold universally, and exact enumeration of the solution space is computationally intractable for large networks due to the #P-hard nature of vertex enumeration. The authors propose a novel algorithmic strategy derived from statistical physics and information theory, specifically utilizing the Bethe approximation (Belief Propagation), to estimate the volume of the non-full-dimensional convex polytope defined by stoichiometric constraints. The method recasts the continuous volume calculation into a discrete combinatorial optimization problem by discretizing flux values, allowing for polynomial-time computation. The algorithm was validated against exact algorithms (LRS) on low-dimensional random stoichiometric matrices, showing good agreement and superior scaling behavior. It was then applied to the Red Blood Cell metabolic network, reproducing Monte Carlo results in minutes rather than weeks. Furthermore, the method was used to analyze the E. coli metabolic network, revealing a power-law distribution of average fluxes and identifying reactions with low topological redundancy (such as those in glycolysis and the Krebs cycle) as having the most significant impact on the solution space volume upon gene knock-out. The study demonstrates that this approach provides an efficient tool for analyzing large biological systems where traditional methods fail due to algorithmic time explosion.",
+    "research_context": [
+      {
+        "Cellular metabolism is a complex biological problem viewed as a chemical engine.": "chemical engine"
+      },
+      {
+        "Topological properties are well characterized, but global functional behavior is poorly understood.": "global functional behavior"
+      },
+      {
+        "Existing methods like FBA rely on the hypothesis that organisms maximize an objective function.": "maximizes an\nobjective function"
+      },
+      {
+        "This optimization law only holds under specific biological conditions, such as E. coli growth.": "maximization of biomass"
+      },
+      {
+        "Characterizing the whole space of phenotypic solutions has remained an elusive task.": "elusive task"
+      },
+      {
+        "Previous attempts relied on Monte Carlo sampling, which is computationally expensive.": "Monte Carlo sampling"
+      },
+      {
+        "Monte Carlo methods are unsuitable for very large metabolic networks.": "unsuitable for very large"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central research question is how to efficiently characterize the size and shape of the metabolic solution space.": "characterize the whole set"
+      },
+      {
+        "The hypothesis is that techniques from statistical physics can estimate the volume of the flux polytope.": "statistical physics and information"
+      },
+      {
+        "The authors propose a stochastic algorithm based on the Bethe approximation.": "Bethe approximation"
+      },
+      {
+        "It is predicted that this algorithm will compute the volume in polynomial time.": "polynomial time"
+      },
+      {
+        "The method is expected to handle non-full-dimensional convex polytopes in high dimensions.": "non full-dimensional convex"
+      },
+      {
+        "The study aims to test the effect of gene knock-outs on the solution space size.": "eﬀect of gene knock-outs"
+      },
+      {
+        "The hypothesis suggests that reactions with low redundancy will have a larger impact on volume.": "little\nredundancy"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The mathematical model is based on the dynamic mass balance equation.": "dynamic mass balance"
+      },
+      {
+        "Steady-state conditions imply that metabolite concentrations are constant.": "steady-state cellular properties"
+      },
+      {
+        "The problem is described by the linear system S · ν = b.": "linear system of equations"
+      },
+      {
+        "The stoichiometric matrix S is assumed to have full row rank.": "full rows rank"
+      },
+      {
+        "Fluxes are constrained by positivity and maximum values, defining a convex polytope.": "convex polytope"
+      },
+      {
+        "The volume is computed using a probabilistic framework with a uniform probability density.": "probability density P"
+      },
+      {
+        "The algorithm uses a discretization of flux values into integer bins.": "integer solutions"
+      },
+      {
+        "The volume estimation is recast as a discrete combinatorial optimization problem.": "volume\nhas been recast into"
+      },
+      {
+        "Belief Propagation is used to compute marginal probability distributions.": "Belief Propagation"
+      },
+      {
+        "The method relies on the sparsity of metabolic networks and large loop lengths.": "metabolic networks\nare sparse"
+      },
+      {
+        "A refinement strategy for the discretization parameter qmax improves convergence.": "reﬁnement strategy"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The algorithm maps the continuous problem to a discrete grid of side epsilon.": "regular orthogonal\ngrid"
+      },
+      {
+        "The number of grid cells intersecting the polytope is proportional to the volume.": "number of\ncells"
+      },
+      {
+        "The bipartite graph consists of variable nodes (fluxes) and factor nodes (reactions).": "bipartite graph"
+      },
+      {
+        "Messages are exchanged between variable and factor nodes iteratively.": "messages exchanged"
+      },
+      {
+        "The entropy is calculated from the marginal probability distributions.": "entropy that can be expressed"
+      },
+      {
+        "The recursion for message passing scales linearly with the sum of qmax values.": "scales just as"
+      },
+      {
+        "Discrete Fourier transforms can further accelerate computations for large reaction degrees.": "discrete Fourier transforms"
+      },
+      {
+        "The simulation starts with small qmax and increases it after convergence.": "increased after convergence"
+      },
+      {
+        "The algorithm was implemented to run on standard laptop hardware.": "standard laptop"
+      },
+      {
+        "The exact algorithm used for comparison is LRS based on reverse search.": "reverse search algorithm"
+      }
+    ],
+    "key_results": [
+      {
+        "On low-dimensional benchmarks, the BP algorithm's error decreases with finer discretization.": "ﬁner binning"
+      },
+      {
+        "The BP algorithm maintains almost-linear running time as N increases.": "almost-linear behavior"
+      },
+      {
+        "The LRS algorithm's running time explodes exponentially for N greater than 12.": "explodes exponentially"
+      },
+      {
+        "For the Red Blood Cell network, BP results matched Monte Carlo distributions.": "almost identical"
+      },
+      {
+        "The BP algorithm converged in minutes, whereas Monte Carlo took one week.": "couple of minutes"
+      },
+      {
+        "The E. coli network analysis yielded a power-law distribution of average fluxes.": "power law"
+      },
+      {
+        "The power-law exponent was close to 1.": "exponent close\nto 1"
+      },
+      {
+        "A clear jump in the integrated distribution was observed at nu approx 0.5.": "jump appears"
+      },
+      {
+        "Most reaction knock-outs resulted in an entropy change greater than -3.": "∆S > −3"
+      },
+      {
+        "A relevant fraction of knock-outs had an entropy change less than -3.": "∆S < −3"
+      },
+      {
+        "Reactions with large entropy changes were associated with glycolysis and the Krebs cycle.": "glycolysis pathway"
+      },
+      {
+        "A threshold at nu approx 0.6 separated two regimes of correlation between flux and entropy change.": "threshold at ν"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The method provides an efficient way to characterize the global functional behavior of metabolism.": "global functional behavior"
+      },
+      {
+        "The power-law distribution suggests a universal statistical property of metabolic networks.": "power law"
+      },
+      {
+        "Reactions with low topological redundancy are critical for maintaining the solution space volume.": "little\nredundancy"
+      },
+      {
+        "The correlation between wild-type flux values and knockout impact highlights the importance of fast-flux reactions.": "fast-ﬂux reactions"
+      },
+      {
+        "The approach can potentially be extended to non-linear constraints, such as thermodynamics.": "second low\nof thermodynamics"
+      },
+      {
+        "The study bridges statistical physics and systems biology by applying Bethe approximation to metabolic constraints.": "Bethe approximation"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The algorithm currently cannot handle reactions with fractional stoichiometric indexes.": "with frac-\ntional stoichiometric indexes,"
+      },
+      {
+        "Metabolites with high connectivity were removed to improve sparsity, potentially altering the network.": "connectivity larger than 40"
+      },
+      {
+        "The assumption of independent knock-outs ignores that some reactions share enzymes.": "knock-outs introduced below,"
+      },
+      {
+        "The origin of the jumps in the integrated distribution at specific flux values is unknown.": "not yet known"
+      },
+      {
+        "The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.": "locally tree-like"
+      }
+    ],
+    "claims": [
+      {
+        "description": "The proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time.",
+        "supporting_evidence": [
+          {
+            "The algorithm maintains almost-linear behavior as network size increases.": "almost-linear behavior"
+          },
+          {
+            "It converged in minutes for the Red Blood Cell network.": "couple of minutes"
+          },
+          {
+            "It handles networks with up to 120 reactions on a standard laptop.": "standard laptop"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "The approximation is not exact for graphs with short loops.": "locally tree-like"
+          },
+          {
+            "Fractional stoichiometric coefficients are not supported.": "with frac-\ntional stoichiometric indexes,"
+          }
+        ],
+        "implications": [
+          {
+            "This enables the analysis of large metabolic networks previously intractable by exact methods.": "large biological systems"
+          },
+          {
+            "It provides a tool for studying the global properties of metabolic phenotypes.": "global functional behavior"
+          }
+        ]
+      },
+      {
+        "description": "Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.",
+        "supporting_evidence": [
+          {
+            "Reactions in glycolysis and the Krebs cycle showed large entropy changes.": "glycolysis pathway"
+          },
+          {
+            "These reactions show little redundancy in the network topology.": "little\nredundancy"
+          },
+          {
+            "There is a strong correlation between high wild-type flux and large entropy change.": "strong correlations"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Most reactions had a small impact on the solution space size.": "∆S > −3"
+          }
+        ],
+        "implications": [
+          {
+            "Identifying these critical reactions helps understand metabolic robustness and fragility.": "metabolic capacities"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The algorithm's accuracy improves with finer discretization of flux values.": "ﬁner binning"
+      },
+      {
+        "A refinement strategy for qmax improves convergence speed.": "reﬁnement strategy"
+      },
+      {
+        "Discrete Fourier transforms accelerate message passing for high-degree reactions.": "discrete Fourier transforms"
+      },
+      {
+        "The method was tested on random diluted stoichiometric matrices for benchmarking.": "random diluted stoichiometric"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Figure 1.1 displays the running time of LRS and BP as a function of N.": "running time"
+      },
+      {
+        "Figure 1.2 shows the histogram of relative differences between BP and LRS entropies.": "relative diﬀerences"
+      },
+      {
+        "Figure 1.3 presents the flux distributions for the Red Blood Cell network.": "Red Blood Cell"
+      },
+      {
+        "Figure 1.4 shows the probability distribution function of average fluxes in E. coli.": "probability distribution function"
+      },
+      {
+        "Figure 1.5 presents the integrated distribution function of average fluxes.": "integrated distribution\nfunction"
+      },
+      {
+        "Figure 1.6 displays the entropy changes for different reaction knock-outs.": "entropy change"
+      },
+      {
+        "Figure 1.7 displays correlations between entropy changes and flux values.": "correlations"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is a polynomial-time algorithm using Belief Propagation to estimate the volume of the metabolic solution space.": "Bethe approximation"
+      },
+      {
+        "2. The strongest evidence is the reproduction of Monte Carlo results for the Red Blood Cell network in minutes and the identification of critical low-redundancy reactions in E. coli.": "couple of minutes"
+      },
+      {
+        "3. The future path involves extending the method to non-linear constraints, such as thermodynamic inequalities.": "second low\nof thermodynamics"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper addresses the challenge of characterizing the global functional behavior of metabolic networks, specifically the size and shape of the affine space of steady-state flux distributions. While Flux Balance Analysis (FBA) and extreme pathway calculations are powerful, they often rely on optimization assumptions that may not hold universally, and exact enumeration of the solution space is computationally intractable for large networks due to the #P-hard nature of vertex enumeration. The authors propose a novel algorithmic strategy derived from statistical physics and information theory, specifically utilizing the Bethe approximation (Belief Propagation), to estimate the volume of the non-full-dimensional convex polytope defined by stoichiometric constraints. The method recasts the continuous volume calculation into a discrete combinatorial optimization problem by discretizing flux values, allowing for polynomial-time computation. The algorithm was validated against exact algorithms (LRS) on low-dimensional random stoichiometric matrices, showing good agreement and superior scaling behavior. It was then applied to the Red Blood Cell metabolic network, reproducing Monte Carlo results in minutes rather than weeks. Furthermore, the method was used to analyze the E. coli metabolic network, revealing a power-law distribution of average fluxes and identifying reactions with low topological redundancy (such as those in glycolysis and the Krebs cycle) as having the most significant impact on the solution space volume upon gene knock-out. The study demonstrates that this approach provides an efficient tool for analyzing large biological systems where traditional methods fail due to algorithmic time explosion.\n\nResearch Context\nCellular metabolism is a complex biological problem viewed as a chemical engine. Topological properties are well characterized, but global functional behavior is poorly understood. Existing methods like FBA rely on the hypothesis that organisms maximize an objective function. This optimization law only holds under specific biological conditions, such as E. coli growth. Characterizing the whole space of phenotypic solutions has remained an elusive task. Previous attempts relied on Monte Carlo sampling, which is computationally expensive. Monte Carlo methods are unsuitable for very large metabolic networks.\n\nResearch Question And Hypothesis\nThe central research question is how to efficiently characterize the size and shape of the metabolic solution space. The hypothesis is that techniques from statistical physics can estimate the volume of the flux polytope. The authors propose a stochastic algorithm based on the Bethe approximation. It is predicted that this algorithm will compute the volume in polynomial time. The method is expected to handle non-full-dimensional convex polytopes in high dimensions. The study aims to test the effect of gene knock-outs on the solution space size. The hypothesis suggests that reactions with low redundancy will have a larger impact on volume.\n\nMethodological Details\nThe mathematical model is based on the dynamic mass balance equation. Steady-state conditions imply that metabolite concentrations are constant. The problem is described by the linear system S · ν = b. The stoichiometric matrix S is assumed to have full row rank. Fluxes are constrained by positivity and maximum values, defining a convex polytope. The volume is computed using a probabilistic framework with a uniform probability density. The algorithm uses a discretization of flux values into integer bins. The volume estimation is recast as a discrete combinatorial optimization problem. Belief Propagation is used to compute marginal probability distributions. The method relies on the sparsity of metabolic networks and large loop lengths. A refinement strategy for the discretization parameter qmax improves convergence.\n\nProcedures And Architectures\nThe algorithm maps the continuous problem to a discrete grid of side epsilon. The number of grid cells intersecting the polytope is proportional to the volume. The bipartite graph consists of variable nodes (fluxes) and factor nodes (reactions). Messages are exchanged between variable and factor nodes iteratively. The entropy is calculated from the marginal probability distributions. The recursion for message passing scales linearly with the sum of qmax values. Discrete Fourier transforms can further accelerate computations for large reaction degrees. The simulation starts with small qmax and increases it after convergence. The algorithm was implemented to run on standard laptop hardware. The exact algorithm used for comparison is LRS based on reverse search.\n\nKey Results\nOn low-dimensional benchmarks, the BP algorithm's error decreases with finer discretization. The BP algorithm maintains almost-linear running time as N increases. The LRS algorithm's running time explodes exponentially for N greater than 12. For the Red Blood Cell network, BP results matched Monte Carlo distributions. The BP algorithm converged in minutes, whereas Monte Carlo took one week. The E. coli network analysis yielded a power-law distribution of average fluxes. The power-law exponent was close to 1. A clear jump in the integrated distribution was observed at nu approx 0.5. Most reaction knock-outs resulted in an entropy change greater than -3. A relevant fraction of knock-outs had an entropy change less than -3. Reactions with large entropy changes were associated with glycolysis and the Krebs cycle. A threshold at nu approx 0.6 separated two regimes of correlation between flux and entropy change.\n\nInterpretation And Theoretical Implications\nThe method provides an efficient way to characterize the global functional behavior of metabolism. The power-law distribution suggests a universal statistical property of metabolic networks. Reactions with low topological redundancy are critical for maintaining the solution space volume. The correlation between wild-type flux values and knockout impact highlights the importance of fast-flux reactions. The approach can potentially be extended to non-linear constraints, such as thermodynamics. The study bridges statistical physics and systems biology by applying Bethe approximation to metabolic constraints.\n\nContradictions And Limitations\nThe algorithm currently cannot handle reactions with fractional stoichiometric indexes. Metabolites with high connectivity were removed to improve sparsity, potentially altering the network. The assumption of independent knock-outs ignores that some reactions share enzymes. The origin of the jumps in the integrated distribution at specific flux values is unknown. The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.\n\nClaims\nThe proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time. The algorithm maintains almost-linear behavior as network size increases. It converged in minutes for the Red Blood Cell network. It handles networks with up to 120 reactions on a standard laptop. The approximation is not exact for graphs with short loops. Fractional stoichiometric coefficients are not supported. This enables the analysis of large metabolic networks previously intractable by exact methods. It provides a tool for studying the global properties of metabolic phenotypes.\nReactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout. Reactions in glycolysis and the Krebs cycle showed large entropy changes. These reactions show little redundancy in the network topology. There is a strong correlation between high wild-type flux and large entropy change. Most reactions had a small impact on the solution space size. Identifying these critical reactions helps understand metabolic robustness and fragility.\n\nRobustness And Ablation Notes\nThe algorithm's accuracy improves with finer discretization of flux values. A refinement strategy for qmax improves convergence speed. Discrete Fourier transforms accelerate message passing for high-degree reactions. The method was tested on random diluted stoichiometric matrices for benchmarking.\n\nKey Figures Tables\nFigure 1.1 displays the running time of LRS and BP as a function of N. Figure 1.2 shows the histogram of relative differences between BP and LRS entropies. Figure 1.3 presents the flux distributions for the Red Blood Cell network. Figure 1.4 shows the probability distribution function of average fluxes in E. coli. Figure 1.5 presents the integrated distribution function of average fluxes. Figure 1.6 displays the entropy changes for different reaction knock-outs. Figure 1.7 displays correlations between entropy changes and flux values.\n\nThree Takeaways\n1. The core contribution is a polynomial-time algorithm using Belief Propagation to estimate the volume of the metabolic solution space. 2. The strongest evidence is the reproduction of Monte Carlo results for the Red Blood Cell network in minutes and the identification of critical low-redundancy reactions in E. coli. 3. The future path involves extending the method to non-linear constraints, such as thermodynamic inequalities.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "chemical engine",
+      "start": 3149,
+      "end": 3164,
+      "typographic_alignment": false,
+      "original_quote": "chemical engine"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "global functional behavior",
+      "start": 839,
+      "end": 865,
+      "typographic_alignment": false,
+      "original_quote": "global functional behavior"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "maximizes an\nobjective function",
+      "start": 1125,
+      "end": 1156,
+      "typographic_alignment": true,
+      "original_quote": "maximizes an objective function"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "maximization of biomass",
+      "start": 1218,
+      "end": 1241,
+      "typographic_alignment": false,
+      "original_quote": "maximization of biomass"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "elusive task",
+      "start": 1386,
+      "end": 1398,
+      "typographic_alignment": false,
+      "original_quote": "elusive task"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "Monte Carlo sampling",
+      "start": 5379,
+      "end": 5399,
+      "typographic_alignment": false,
+      "original_quote": "Monte Carlo sampling"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "unsuitable for very large",
+      "start": 5535,
+      "end": 5560,
+      "typographic_alignment": false,
+      "original_quote": "unsuitable for very large"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "characterize the whole set",
+      "start": 5729,
+      "end": 5755,
+      "typographic_alignment": false,
+      "original_quote": "characterize the whole set"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "statistical physics and information",
+      "start": 1685,
+      "end": 1720,
+      "typographic_alignment": false,
+      "original_quote": "statistical physics and information"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "Bethe approximation",
+      "start": 1919,
+      "end": 1938,
+      "typographic_alignment": false,
+      "original_quote": "Bethe approximation"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "polynomial time",
+      "start": 1966,
+      "end": 1981,
+      "typographic_alignment": false,
+      "original_quote": "polynomial time"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "non full-dimensional convex",
+      "start": 2661,
+      "end": 2688,
+      "typographic_alignment": false,
+      "original_quote": "non full-dimensional convex"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "eﬀect of gene knock-outs",
+      "start": 2453,
+      "end": 2477,
+      "typographic_alignment": true,
+      "original_quote": "effect of gene knock-outs"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "little\nredundancy",
+      "start": 17212,
+      "end": 17229,
+      "typographic_alignment": true,
+      "original_quote": "little redundancy"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "dynamic mass balance",
+      "start": 6265,
+      "end": 6285,
+      "typographic_alignment": false,
+      "original_quote": "dynamic mass balance"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "steady-state cellular properties",
+      "start": 6658,
+      "end": 6690,
+      "typographic_alignment": false,
+      "original_quote": "steady-state cellular properties"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "linear system of equations",
+      "start": 7102,
+      "end": 7128,
+      "typographic_alignment": false,
+      "original_quote": "linear system of equations"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "full rows rank",
+      "start": 7279,
+      "end": 7293,
+      "typographic_alignment": false,
+      "original_quote": "full rows rank"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "convex polytope",
+      "start": 2022,
+      "end": 2037,
+      "typographic_alignment": false,
+      "original_quote": "convex polytope"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "probability density P",
+      "start": 9472,
+      "end": 9493,
+      "typographic_alignment": false,
+      "original_quote": "probability density P"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "integer solutions",
+      "start": 22453,
+      "end": 22470,
+      "typographic_alignment": false,
+      "original_quote": "integer solutions"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "volume\nhas been recast into",
+      "start": 22726,
+      "end": 22753,
+      "typographic_alignment": false,
+      "original_quote": "volume\nhas been recast into"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "Belief Propagation",
+      "start": 23050,
+      "end": 23068,
+      "typographic_alignment": false,
+      "original_quote": "Belief Propagation"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "metabolic networks\nare sparse",
+      "start": 24995,
+      "end": 25024,
+      "typographic_alignment": true,
+      "original_quote": "metabolic networks are sparse"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "reﬁnement strategy",
+      "start": 27125,
+      "end": 27143,
+      "typographic_alignment": true,
+      "original_quote": "refinement strategy"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "regular orthogonal\ngrid",
+      "start": 21513,
+      "end": 21536,
+      "typographic_alignment": true,
+      "original_quote": "regular orthogonal grid"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "number of\ncells",
+      "start": 21625,
+      "end": 21640,
+      "typographic_alignment": true,
+      "original_quote": "number of cells"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "bipartite graph",
+      "start": 23603,
+      "end": 23618,
+      "typographic_alignment": false,
+      "original_quote": "bipartite graph"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "messages exchanged",
+      "start": 25399,
+      "end": 25417,
+      "typographic_alignment": false,
+      "original_quote": "messages exchanged"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "entropy that can be expressed",
+      "start": 24697,
+      "end": 24726,
+      "typographic_alignment": false,
+      "original_quote": "entropy that can be expressed"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "scales just as",
+      "start": 27036,
+      "end": 27050,
+      "typographic_alignment": false,
+      "original_quote": "scales just as"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "discrete Fourier transforms",
+      "start": 27740,
+      "end": 27767,
+      "typographic_alignment": false,
+      "original_quote": "discrete Fourier transforms"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "increased after convergence",
+      "start": 27333,
+      "end": 27360,
+      "typographic_alignment": false,
+      "original_quote": "increased after convergence"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "standard laptop",
+      "start": 27600,
+      "end": 27615,
+      "typographic_alignment": false,
+      "original_quote": "standard laptop"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "reverse search algorithm",
+      "start": 10211,
+      "end": 10235,
+      "typographic_alignment": false,
+      "original_quote": "reverse search algorithm"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "ﬁner binning",
+      "start": 11616,
+      "end": 11628,
+      "typographic_alignment": true,
+      "original_quote": "finer binning"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "almost-linear behavior",
+      "start": 12713,
+      "end": 12735,
+      "typographic_alignment": false,
+      "original_quote": "almost-linear behavior"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "explodes exponentially",
+      "start": 12662,
+      "end": 12684,
+      "typographic_alignment": false,
+      "original_quote": "explodes exponentially"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "almost identical",
+      "start": 13180,
+      "end": 13196,
+      "typographic_alignment": false,
+      "original_quote": "almost identical"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": "couple of minutes",
+      "start": 13536,
+      "end": 13553,
+      "typographic_alignment": false,
+      "original_quote": "couple of minutes"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "power law",
+      "start": 14640,
+      "end": 14649,
+      "typographic_alignment": false,
+      "original_quote": "power law"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "exponent close\nto 1",
+      "start": 14655,
+      "end": 14674,
+      "typographic_alignment": true,
+      "original_quote": "exponent close to 1"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "jump appears",
+      "start": 15087,
+      "end": 15099,
+      "typographic_alignment": false,
+      "original_quote": "jump appears"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "∆S > −3",
+      "start": 16578,
+      "end": 16585,
+      "typographic_alignment": false,
+      "original_quote": "∆S > −3"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "∆S < −3",
+      "start": 16688,
+      "end": 16695,
+      "typographic_alignment": false,
+      "original_quote": "∆S < −3"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "glycolysis pathway",
+      "start": 17115,
+      "end": 17133,
+      "typographic_alignment": false,
+      "original_quote": "glycolysis pathway"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "threshold at ν",
+      "start": 17669,
+      "end": 17683,
+      "typographic_alignment": false,
+      "original_quote": "threshold at ν"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "global functional behavior",
+      "start": 839,
+      "end": 865,
+      "typographic_alignment": false,
+      "original_quote": "global functional behavior"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "power law",
+      "start": 14640,
+      "end": 14649,
+      "typographic_alignment": false,
+      "original_quote": "power law"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "little\nredundancy",
+      "start": 17212,
+      "end": 17229,
+      "typographic_alignment": true,
+      "original_quote": "little redundancy"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "fast-ﬂux reactions",
+      "start": 18072,
+      "end": 18090,
+      "typographic_alignment": true,
+      "original_quote": "fast-flux reactions"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "second low\nof thermodynamics",
+      "start": 20093,
+      "end": 20121,
+      "typographic_alignment": true,
+      "original_quote": "second low of thermodynamics"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "Bethe approximation",
+      "start": 1919,
+      "end": 1938,
+      "typographic_alignment": false,
+      "original_quote": "Bethe approximation"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "with frac-\ntional stoichiometric indexes,",
+      "start": 13879,
+      "end": 13920,
+      "typographic_alignment": false,
+      "original_quote": "with frac-\ntional stoichiometric indexes,"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "connectivity larger than 40",
+      "start": 14021,
+      "end": 14048,
+      "typographic_alignment": false,
+      "original_quote": "connectivity larger than 40"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "knock-outs introduced below,",
+      "start": 21277,
+      "end": 21305,
+      "typographic_alignment": false,
+      "original_quote": "knock-outs introduced below,"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "not yet known",
+      "start": 15396,
+      "end": 15409,
+      "typographic_alignment": false,
+      "original_quote": "not yet known"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "locally tree-like",
+      "start": 24552,
+      "end": 24569,
+      "typographic_alignment": false,
+      "original_quote": "locally tree-like"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "ﬁner binning",
+      "start": 11616,
+      "end": 11628,
+      "typographic_alignment": true,
+      "original_quote": "finer binning"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "reﬁnement strategy",
+      "start": 27125,
+      "end": 27143,
+      "typographic_alignment": true,
+      "original_quote": "refinement strategy"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "discrete Fourier transforms",
+      "start": 27740,
+      "end": 27767,
+      "typographic_alignment": false,
+      "original_quote": "discrete Fourier transforms"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "random diluted stoichiometric",
+      "start": 10590,
+      "end": 10619,
+      "typographic_alignment": false,
+      "original_quote": "random diluted stoichiometric"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "running time",
+      "start": 12642,
+      "end": 12654,
+      "typographic_alignment": false,
+      "original_quote": "running time"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "relative diﬀerences",
+      "start": 11485,
+      "end": 11504,
+      "typographic_alignment": true,
+      "original_quote": "relative differences"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "Red Blood Cell",
+      "start": 2272,
+      "end": 2286,
+      "typographic_alignment": false,
+      "original_quote": "Red Blood Cell"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "probability distribution function",
+      "start": 14480,
+      "end": 14513,
+      "typographic_alignment": false,
+      "original_quote": "probability distribution function"
+    },
+    {
+      "path": "key_figures_tables[4]",
+      "quote": "integrated distribution\nfunction",
+      "start": 15004,
+      "end": 15036,
+      "typographic_alignment": true,
+      "original_quote": "integrated distribution function"
+    },
+    {
+      "path": "key_figures_tables[5]",
+      "quote": "entropy change",
+      "start": 16416,
+      "end": 16430,
+      "typographic_alignment": false,
+      "original_quote": "entropy change"
+    },
+    {
+      "path": "key_figures_tables[6]",
+      "quote": "correlations",
+      "start": 17434,
+      "end": 17446,
+      "typographic_alignment": false,
+      "original_quote": "correlations"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "Bethe approximation",
+      "start": 1919,
+      "end": 1938,
+      "typographic_alignment": false,
+      "original_quote": "Bethe approximation"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": "couple of minutes",
+      "start": 13536,
+      "end": 13553,
+      "typographic_alignment": false,
+      "original_quote": "couple of minutes"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "second low\nof thermodynamics",
+      "start": 20093,
+      "end": 20121,
+      "typographic_alignment": true,
+      "original_quote": "second low of thermodynamics"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "almost-linear behavior",
+      "start": 12713,
+      "end": 12735,
+      "typographic_alignment": false,
+      "original_quote": "almost-linear behavior"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "couple of minutes",
+      "start": 13536,
+      "end": 13553,
+      "typographic_alignment": false,
+      "original_quote": "couple of minutes"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "standard laptop",
+      "start": 27600,
+      "end": 27615,
+      "typographic_alignment": false,
+      "original_quote": "standard laptop"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "locally tree-like",
+      "start": 24552,
+      "end": 24569,
+      "typographic_alignment": false,
+      "original_quote": "locally tree-like"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "with frac-\ntional stoichiometric indexes,",
+      "start": 13879,
+      "end": 13920,
+      "typographic_alignment": false,
+      "original_quote": "with frac-\ntional stoichiometric indexes,"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "large biological systems",
+      "start": 2907,
+      "end": 2931,
+      "typographic_alignment": false,
+      "original_quote": "large biological systems"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "global functional behavior",
+      "start": 839,
+      "end": 865,
+      "typographic_alignment": false,
+      "original_quote": "global functional behavior"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "glycolysis pathway",
+      "start": 17115,
+      "end": 17133,
+      "typographic_alignment": false,
+      "original_quote": "glycolysis pathway"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "little\nredundancy",
+      "start": 17212,
+      "end": 17229,
+      "typographic_alignment": true,
+      "original_quote": "little redundancy"
+    },
+    {
+      "path": "claims[1].supporting_evidence[2]",
+      "quote": "strong correlations",
+      "start": 19623,
+      "end": 19642,
+      "typographic_alignment": false,
+      "original_quote": "strong correlations"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "∆S > −3",
+      "start": 16578,
+      "end": 16585,
+      "typographic_alignment": false,
+      "original_quote": "∆S > −3"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "metabolic capacities",
+      "start": 18182,
+      "end": 18202,
+      "typographic_alignment": false,
+      "original_quote": "metabolic capacities"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"metadata\": {\n\"title\": \"Estimating the size of the solution space of metabolic networks\",\n\"authors\": \"Alfredo Braunstein, Roberto Mulet, Andrea Pagnani\",\n\"field_subfield\": \"Computational Biology / Statistical Physics\",\n\"type_of_paper\": \"Research Article\"\n},\n\"executive_summary\": \"This paper addresses the challenge of characterizing the global functional behavior of metabolic networks, specifically the size and shape of the affine space of steady-state flux distributions. While Flux Balance Analysis (FBA) and extreme pathway calculations are powerful, they rely on optimization assumptions that do not always hold, and exact enumeration of the solution space is computationally intractable for large networks due to #P-hard complexity. The authors propose a novel algorithmic strategy derived from statistical physics and information theory, specifically using the Bethe approximation (Belief Propagation), to estimate the volume of the non-full-dimensional convex polytope defined by stoichiometric constraints. The method recasts the continuous volume computation into a discrete combinatorial optimization problem by discretizing flux values. The algorithm was validated against exact algorithms (LRS) on low-dimensional random networks, showing good agreement and significantly better scaling behavior (polynomial vs. exponential). It was then applied to the Red Blood Cell metabolic network, reproducing Monte Carlo results in minutes rather than weeks. Furthermore, the method was used to analyze the E. coli metabolic network, revealing a power-law distribution of average fluxes and identifying reactions with low topological redundancy (such as those in glycolysis and the Krebs cycle) as having the most significant impact on the solution space size upon gene knockout. The study demonstrates that this approach provides an efficient tool for analyzing large biological systems where traditional methods fail.\",\n\"research_context\": [\n{ \"Cellular metabolism is a complex biological problem involving the transformation of raw materials into energy or building blocks.\": \"complex biological problem\" },\n{ \"While topological properties are well characterized, the cooperative role of pathways is hard to comprehend due to large network sizes.\": \"hard to comprehend\" },\n{ \"Flux Balance Analysis (FBA) predicts phenotypic states by maximizing a linear function subject to constraints.\": \"maximizes a linear function\" },\n{ \"However, cells with knockouts or without evolutionary pressure may not optimize growth, making general characterization elusive.\": \"characterization has remained an elusive task\" },\n{ \"Previous attempts to characterize the flux space relied on expensive Monte Carlo sampling unsuitable for large networks.\": \"Monte Carlo sampling\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"The central research question is how to efficiently characterize the whole set of stable fluxes compatible with metabolic constraints without assuming extremization.\": \"characterize the whole set of stable fluxes\" },\n{ \"The authors hypothesize that a technique derived from statistical physics and information theory can efficiently estimate the size of the affine space.\": \"statistical physics and information theory\" },\n{ \"They propose that the Bethe approximation allows for the computation of the volume of a non-full-dimensional convex polytope in polynomial time.\": \"Bethe approximation\" },\n{ \"The hypothesis is that this algorithm will match exact algorithms on small systems and provide insights into large networks like E. coli.\": \"match closely the prediction\" },\n{ \"It is predicted that reactions with little topological redundancy will have a larger impact on the solution space size upon knockout.\": \"little redundancy in the topology\" }\n],\n\"methodological_details\": [\n{ \"The study uses a stochastic algorithm based on the Bethe approximation to estimate the volume of the flux space.\": \"Bethe approximation\" },\n{ \"The metabolic network is modeled by the dynamic mass balance equation and steady-state linear constraints.\": \"dynamic mass balance equation\" },\n{ \"The solution space is defined as a convex polytope within an affine subspace of dimension N-M.\": \"convex polytope\" },\n{ \"The volume computation is recast into a discrete combinatorial optimization problem by discretizing flux values.\": \"discrete combinatorial optimization problem\" },\n{ \"For benchmarking, 1000 realizations of random stoichiometric matrices with N=12 and M=4 were generated.\": \"N = 12, M = 4\" },\n{ \"The Red Blood Cell network contained 46 reactions and 34 metabolites.\": \"46 reactions and 34 metabolites\" },\n{ \"The E. coli network originally had 1035 reactions and 626 metabolites, reduced to 1005 reactions and 560 metabolites for analysis.\": \"1005 reactions and 560 metabolites\" },\n{ \"For the E. coli central metabolism analysis, the network had 40 metabolites, 74 internal reactions, and 10 external fluxes.\": \"40 metabolites, 74 internal reactions\" },\n{ \"Knockout simulations assumed a reduction of the maximum permitted flux to 0.25 of the original value.\": \"0.25 of the original value\" }\n],\n\"procedures_and_architectures\": [\n{ \"The algorithm uses a bipartite graph representation with variable nodes for fluxes and factor nodes for mass conservation.\": \"bipartite graph\" },\n{ \"Belief Propagation (BP) is used to compute marginal probability distributions, which is exact on trees and approximate on locally tree-like structures.\": \"Belief Propagation (BP)\" },\n{ \"The entropy of the solution space is expressed in terms of flux marginals to estimate the volume.\": \"entropy that can be expressed\" },\n{ \"Messages are exchanged between variable and factor nodes to solve the functional equations iteratively.\": \"messages exchanged from variable nodes\" },\n{ \"A recursion is used to efficiently solve the convolution product in the message passing equations.\": \"efficiently solved with a recursion\" },\n{ \"A refinement strategy is employed where the discretization granularity qmax is increased after convergence to improve accuracy.\": \"refinement strategy in the variable\" },\n{ \"Discrete Fourier transforms are used to speed up computations for large numbers of fluxes in a reaction.\": \"discrete Fourier transforms\" },\n{ \"The algorithm maintains a polynomial behavior for sizes as large as N=120, unlike exact algorithms which explode exponentially.\": \"polynomial behavior for sizes\" }\n],\n\"key_results\": [\n{ \"On low-dimensional benchmarks, the BP algorithm's results compared very well with the exact LRS algorithm.\": \"compare very well\" },\n{ \"The running time of the BP algorithm maintains an almost-linear behavior, while LRS explodes exponentially for N > 12.\": \"almost-linear behavior\" },\n{ \"For the Red Blood Cell network, the BP distributions were almost identical to Monte Carlo results.\": \"almost identical to those\" },\n{ \"The BP algorithm converged in a couple of minutes, whereas Monte Carlo required one week of computation.\": \"couple of minutes of computation\" },\n{ \"In the E. coli network, the distribution of average fluxes could be fitted with a power law with exponent close to 1.\": \"power law with exponent\" },\n{ \"A clear jump appears in the integrated distribution function of average fluxes for nu approx 0.5.\": \"clear jump appears\" },\n{ \"Most reactions in the E. coli central metabolism showed entropy change delta S > -3 upon knockout.\": \"delta S > -3\" },\n{ \"A relevant fraction of reactions showed delta S < -3, indicating a significant impact on the solution space size.\": \"delta S < -3\" },\n{ \"Reactions with large entropy change were associated with glycolysis and the Krebs cycle, showing little pathway redundancy.\": \"little pathway redundancy\" },\n{ \"Correlations between entropy change and flux values show a threshold at nu approx 0.6.\": \"threshold at nu approx 0.6\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"The method provides a novel efficient algorithmic strategy to estimate the size and shape of the affine space of metabolic networks.\": \"novel efficient algorithmic strategy\" },\n{ \"The results suggest that reactions with little topological redundancy are critical for the metabolic capacity of the network.\": \"little redundancy in the topology\" },\n{ \"The power-law distribution of fluxes is consistent with previous simulations and theoretical approaches in complex networks.\": \"consistent with previous simulations\" },\n{ \"The threshold in flux correlations indicates that fast-flux reactions in linear and circular pathways are highly sensitive to knockouts.\": \"fast-flux reactions\" },\n{ \"The approach can potentially be extended to handle non-linear constraints, such as those enforcing the second law of thermodynamics.\": \"second low of thermodynamics\" }\n],\n\"contradictions_and_limitations\": [\n{ \"The algorithm is unable to deal with reactions having fractional stoichiometric indexes, which were eliminated from the E. coli network.\": \"fractional stoichiometric indexes\" },\n{ \"Metabolites with connectivity larger than 40 were eliminated to sparsify the matrix, which may affect the biological realism of the model.\": \"connectivity larger than 40\" },\n{ \"The assumption that each reaction is knocked out independently ignores that some reactions are associated with the same enzyme.\": \"associated with the same enzyme\" },\n{ \"The jumps in the integrated distribution function for nu approx 0.5, 0.4, and 0.6 are not yet understood biologically.\": \"not yet known\" },\n{ \"The Bethe approximation is exact only on trees and approximate on locally tree-like structures, which may introduce errors in highly connected networks.\": \"locally tree-like structures\" }\n],\n\"claims\": [\n{\n\"description\": \"The proposed Bethe approximation algorithm efficiently estimates the volume of the metabolic flux space for large networks.\",\n\"supporting_evidence\": [\n{ \"The algorithm maintains a polynomial behavior for sizes as large as N=120.\": \"polynomial behavior for sizes\" },\n{ \"It converged in minutes for the Red Blood Cell network, compared to weeks for Monte Carlo.\": \"couple of minutes of computation\" }\n],\n\"contradicting_evidence\": [\n{ \"The algorithm cannot handle fractional stoichiometric coefficients.\": \"fractional stoichiometric indexes\" }\n],\n\"implications\": [\n{ \"This allows for the analysis of large biological systems where exact methods fail.\": \"large biological systems\" }\n]\n},\n{\n\"description\": \"Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.\",\n\"supporting_evidence\": [\n{ \"Reactions with delta S < -3 are associated with glycolysis and the Krebs cycle.\": \"associated with the glycolysis pathway\" },\n{ \"These reactions show little pathway redundancy in the network.\": \"little pathway redundancy\" }\n],\n\"contradicting_evidence\": [\n{ \"Most reactions show little impact (delta S > -3).\": \"delta S > -3\" }\n],\n\"implications\": [\n{ \"Identifying these critical reactions can help in understanding metabolic robustness and vulnerability.\": \"metabolic capacities of the network\" }\n]\n}\n],\n\"data_and_code_availability\": [\n{ \"The paper does not explicitly state the availability of code or data in a standard repository.\": \"\" }\n],\n\"robustness_and_ablation_notes\": [\n{ \"The algorithm was tested on random diluted stoichiometric matrices to validate its performance against exact algorithms.\": \"random diluted stoichiometric matrices\" },\n{ \"A refinement strategy for the discretization granularity qmax was used to improve convergence and accuracy.\": \"refinement strategy in the variable\" },\n{ \"Discrete Fourier transforms were used to speed up computations for large reaction degrees.\": \"discrete Fourier transforms\" }\n],\n\"ethical_considerations\": [\n{ \"No ethical considerations are reported as the study involves computational modeling of existing biological data.\": \"\" }\n],\n\"key_figures_tables\": [\n{ \"Figure 1.1 displays the running time of LRS and BP as a function of the number of fluxes N.\": \"running time of both LRS\" },\n{ \"Figure 1.2 shows the histogram of relative differences between BP and LRS entropy with increasing discretization.\": \"histogram of the relative differences\" },\n{ \"Figure 1.3 presents the distribution of flux values for the Red Blood Cell metabolism.\": \"distribution of flux values\" },\n{ \"Figure 1.4 shows the probability distribution function of average fluxes in the E. coli network.\": \"probability distribution function\" },\n{ \"Figure 1.5 presents the integrated distribution function of average fluxes, showing a jump at nu approx 0.5.\": \"integrated distribution function\" },\n{ \"Figure 1.6 displays the changes in entropy for different reaction knockouts in the E. coli central metabolism.\": \"changes in S for the different\" },\n{ \"Figure 1.7 displays correlations between entropy changes and flux values, showing a threshold at nu approx 0.6.\": \"correlations between the changes\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n{ \"1. The core contribution is a novel algorithm using the Bethe approximation to efficiently estimate the volume of the metabolic flux space.\": \"Bethe approximation\" },\n{ \"2. The strongest evidence is the algorithm's ability to reproduce Monte Carlo results for the Red Blood Cell network in minutes and analyze the E. coli network.\": \"couple of minutes of computation\" },\n{ \"3. The future path involves extending the approach to handle non-linear constraints, such as those enforcing the second law of thermodynamics.\": \"second low of thermodynamics\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9763,
+        "total_tokens": 12736,
+        "completion_tokens": 2973,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9763,
+      "elapsed_seconds": 257.4174687936902,
+      "max_tokens": 16000,
+      "seed": 283867249,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "b6fac3f155ec06bb90af3fc2057eb8912789d57a4b197a9e4ea9449c162da6b3",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_error": "Generation lacks exact Schema-v4 keys"
+    },
+    {
+      "response": "{\n  \"title\": \"Estimating the size of the solution space of metabolic networks\",\n  \"authors\": \"Alfredo Braunstein, Roberto Mulet, Andrea Pagnani\",\n  \"field_subfield\": \"Computational Biology / Statistical Physics\",\n  \"type_of_paper\": \"Algorithmic/Methodological Research\",\n  \"executive_summary\": \"This paper addresses the challenge of characterizing the global functional behavior of metabolic networks, specifically the size and shape of the affine space of steady-state flux distributions. While Flux Balance Analysis (FBA) and extreme pathway calculations are powerful, they often rely on optimization assumptions that may not hold universally, and exact enumeration of the solution space is computationally intractable for large networks due to the #P-hard nature of vertex enumeration. The authors propose a novel algorithmic strategy derived from statistical physics and information theory, specifically utilizing the Bethe approximation (Belief Propagation), to estimate the volume of the non-full-dimensional convex polytope defined by stoichiometric constraints. The method recasts the continuous volume calculation into a discrete combinatorial optimization problem by discretizing flux values, allowing for polynomial-time computation. The algorithm was validated against exact algorithms (LRS) on low-dimensional random stoichiometric matrices, showing good agreement and superior scaling behavior. It was then applied to the Red Blood Cell metabolic network, reproducing Monte Carlo results in minutes rather than weeks. Furthermore, the method was used to analyze the E. coli metabolic network, revealing a power-law distribution of average fluxes and identifying reactions with low topological redundancy (such as those in glycolysis and the Krebs cycle) as having the most significant impact on the solution space volume upon gene knock-out. The study demonstrates that this approach provides an efficient tool for analyzing large biological systems where traditional methods fail due to algorithmic time explosion.\",\n  \"research_context\": [\n    { \"Cellular metabolism is a complex biological problem viewed as a chemical engine.\": \"chemical engine\" },\n    { \"Topological properties are well characterized, but global functional behavior is poorly understood.\": \"global functional behavior\" },\n    { \"Existing methods like FBA rely on the hypothesis that organisms maximize an objective function.\": \"maximizes an objective function\" },\n    { \"This optimization law only holds under specific biological conditions, such as E. coli growth.\": \"maximization of biomass\" },\n    { \"Characterizing the whole space of phenotypic solutions has remained an elusive task.\": \"elusive task\" },\n    { \"Previous attempts relied on Monte Carlo sampling, which is computationally expensive.\": \"Monte Carlo sampling\" },\n    { \"Monte Carlo methods are unsuitable for very large metabolic networks.\": \"unsuitable for very large\" }\n  ],\n  \"research_question_and_hypothesis\": [\n    { \"The central research question is how to efficiently characterize the size and shape of the metabolic solution space.\": \"characterize the whole set\" },\n    { \"The hypothesis is that techniques from statistical physics can estimate the volume of the flux polytope.\": \"statistical physics and information\" },\n    { \"The authors propose a stochastic algorithm based on the Bethe approximation.\": \"Bethe approximation\" },\n    { \"It is predicted that this algorithm will compute the volume in polynomial time.\": \"polynomial time\" },\n    { \"The method is expected to handle non-full-dimensional convex polytopes in high dimensions.\": \"non full-dimensional convex\" },\n    { \"The study aims to test the effect of gene knock-outs on the solution space size.\": \"effect of gene knock-outs\" },\n    { \"The hypothesis suggests that reactions with low redundancy will have a larger impact on volume.\": \"little redundancy\" }\n  ],\n  \"methodological_details\": [\n    { \"The mathematical model is based on the dynamic mass balance equation.\": \"dynamic mass balance\" },\n    { \"Steady-state conditions imply that metabolite concentrations are constant.\": \"metabolites (quasi) stationarity\" },\n    { \"The problem is described by the linear system S · ν = b.\": \"linear system of equations\" },\n    { \"The stoichiometric matrix S is assumed to have full row rank.\": \"full rows rank\" },\n    { \"Fluxes are constrained by positivity and maximum values, defining a convex polytope.\": \"convex polytope\" },\n    { \"The volume is computed using a probabilistic framework with a uniform probability density.\": \"probability density P\" },\n    { \"The algorithm uses a discretization of flux values into integer bins.\": \"integer solutions\" },\n    { \"The volume estimation is recast as a discrete combinatorial optimization problem.\": \"combinatorial optimization problem\" },\n    { \"Belief Propagation is used to compute marginal probability distributions.\": \"Belief Propagation\" },\n    { \"The method relies on the sparsity of metabolic networks and large loop lengths.\": \"metabolic networks are sparse\" },\n    { \"A recursive convolution method is used to speed up message passing.\": \"recursive convolution\" },\n    { \"A refinement strategy for the discretization parameter qmax improves convergence.\": \"refinement strategy\" }\n  ],\n  \"procedures_and_architectures\": [\n    { \"The algorithm maps the continuous problem to a discrete grid of side epsilon.\": \"regular orthogonal grid\" },\n    { \"The number of grid cells intersecting the polytope is proportional to the volume.\": \"number of cells\" },\n    { \"The bipartite graph consists of variable nodes (fluxes) and factor nodes (reactions).\": \"bipartite graph\" },\n    { \"Messages are exchanged between variable and factor nodes iteratively.\": \"messages exchanged\" },\n    { \"The entropy is calculated from the marginal probability distributions.\": \"entropy that can be expressed\" },\n    { \"The recursion for message passing scales linearly with the sum of qmax values.\": \"scales just as\" },\n    { \"Discrete Fourier transforms can further accelerate computations for large reaction degrees.\": \"discrete Fourier transforms\" },\n    { \"The simulation starts with small qmax and increases it after convergence.\": \"increased after convergence\" },\n    { \"The algorithm was implemented to run on standard laptop hardware.\": \"standard laptop\" },\n    { \"The exact algorithm used for comparison is LRS based on reverse search.\": \"reverse search algorithm\" }\n  ],\n  \"key_results\": [\n    { \"On low-dimensional benchmarks, the BP algorithm's error decreases with finer discretization.\": \"finer binning\" },\n    { \"The BP algorithm maintains almost-linear running time as N increases.\": \"almost-linear behavior\" },\n    { \"The LRS algorithm's running time explodes exponentially for N greater than 12.\": \"explodes exponentially\" },\n    { \"For the Red Blood Cell network, BP results matched Monte Carlo distributions.\": \"almost identical\" },\n    { \"The BP algorithm converged in minutes, whereas Monte Carlo took one week.\": \"couple of minutes\" },\n    { \"The E. coli network analysis yielded a power-law distribution of average fluxes.\": \"power law\" },\n    { \"The power-law exponent was close to 1.\": \"exponent close to 1\" },\n    { \"A clear jump in the integrated distribution was observed at nu approx 0.5.\": \"jump appears\" },\n    { \"Most reaction knock-outs resulted in an entropy change greater than -3.\": \"delta S > -3\" },\n    { \"A relevant fraction of knock-outs had an entropy change less than -3.\": \"delta S < -3\" },\n    { \"Reactions with large entropy changes were associated with glycolysis and the Krebs cycle.\": \"glycolysis pathway\" },\n    { \"A threshold at nu approx 0.6 separated two regimes of correlation between flux and entropy change.\": \"threshold at nu\" }\n  ],\n  \"interpretation_and_theoretical_implications\": [\n    { \"The method provides an efficient way to characterize the global functional behavior of metabolism.\": \"global functional behavior\" },\n    { \"The power-law distribution suggests a universal statistical property of metabolic networks.\": \"power law\" },\n    { \"Reactions with low topological redundancy are critical for maintaining the solution space volume.\": \"little redundancy\" },\n    { \"The correlation between wild-type flux values and knockout impact highlights the importance of fast-flux reactions.\": \"fast-flux reactions\" },\n    { \"The approach can potentially be extended to non-linear constraints, such as thermodynamics.\": \"second low of thermodynamics\" },\n    { \"The study bridges statistical physics and systems biology by applying Bethe approximation to metabolic constraints.\": \"Bethe approximation\" }\n  ],\n  \"contradictions_and_limitations\": [\n    { \"The algorithm currently cannot handle reactions with fractional stoichiometric indexes.\": \"fractional stoichiometric indexes\" },\n    { \"Metabolites with high connectivity were removed to improve sparsity, potentially altering the network.\": \"connectivity larger than 40\" },\n    { \"The assumption of independent knock-outs ignores that some reactions share enzymes.\": \"associated with the same enzyme\" },\n    { \"The origin of the jumps in the integrated distribution at specific flux values is unknown.\": \"not yet known\" },\n    { \"The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.\": \"locally tree-like\" },\n    { \"The study does not report specific random seeds or detailed train/test splits for the benchmark generation.\": \"\" }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time.\",\n      \"supporting_evidence\": [\n        { \"The algorithm maintains almost-linear behavior as network size increases.\": \"almost-linear behavior\" },\n        { \"It converged in minutes for the Red Blood Cell network.\": \"couple of minutes\" },\n        { \"It handles networks with up to 120 reactions on a standard laptop.\": \"standard laptop\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"The approximation is not exact for graphs with short loops.\": \"locally tree-like\" },\n        { \"Fractional stoichiometric coefficients are not supported.\": \"fractional stoichiometric indexes\" }\n      ],\n      \"implications\": [\n        { \"This enables the analysis of large metabolic networks previously intractable by exact methods.\": \"large biological systems\" },\n        { \"It provides a tool for studying the global properties of metabolic phenotypes.\": \"global functional behavior\" }\n      ]\n    },\n    {\n      \"description\": \"Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.\",\n      \"supporting_evidence\": [\n        { \"Reactions in glycolysis and the Krebs cycle showed large entropy changes.\": \"glycolysis pathway\" },\n        { \"These reactions show little redundancy in the network topology.\": \"little redundancy\" },\n        { \"There is a strong correlation between high wild-type flux and large entropy change.\": \"strong correlations\" }\n      ],\n      \"contradicting_evidence\": [\n        { \"Most reactions had a small impact on the solution space size.\": \"delta S > -3\" }\n      ],\n      \"implications\": [\n        { \"Identifying these critical reactions helps understand metabolic robustness and fragility.\": \"metabolic capacities\" },\n        { \"It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.\": \"evolutionary pressure\" }\n      ]\n    }\n  ],\n  \"data_and_code_availability\": \"\",\n  \"robustness_and_ablation_notes\": [\n    { \"The algorithm's accuracy improves with finer discretization of flux values.\": \"finer binning\" },\n    { \"A refinement strategy for qmax improves convergence speed.\": \"refinement strategy\" },\n    { \"Discrete Fourier transforms accelerate message passing for high-degree reactions.\": \"discrete Fourier transforms\" },\n    { \"The method was tested on random diluted stoichiometric matrices for benchmarking.\": \"random diluted stoichiometric\" }\n  ],\n  \"ethical_considerations\": \"\",\n  \"key_figures_tables\": [\n    { \"Figure 1.1 displays the running time of LRS and BP as a function of N.\": \"running time\" },\n    { \"Figure 1.2 shows the histogram of relative differences between BP and LRS entropies.\": \"relative differences\" },\n    { \"Figure 1.3 presents the flux distributions for the Red Blood Cell network.\": \"Red Blood Cell\" },\n    { \"Figure 1.4 shows the probability distribution function of average fluxes in E. coli.\": \"probability distribution function\" },\n    { \"Figure 1.5 presents the integrated distribution function of average fluxes.\": \"integrated distribution function\" },\n    { \"Figure 1.6 displays the entropy changes for different reaction knock-outs.\": \"entropy change\" },\n    { \"Figure 1.7 displays correlations between entropy changes and flux values.\": \"correlations\" }\n  ],\n  \"top_influential_citations\": \"\",\n  \"three_takeaways\": [\n    { \"1. The core contribution is a polynomial-time algorithm using Belief Propagation to estimate the volume of the metabolic solution space.\": \"Bethe approximation\" },\n    { \"2. The strongest evidence is the reproduction of Monte Carlo results for the Red Blood Cell network in minutes and the identification of critical low-redundancy reactions in E. coli.\": \"couple of minutes\" },\n    { \"3. The future path involves extending the method to non-linear constraints, such as thermodynamic inequalities.\": \"second low of thermodynamics\" }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9780,
+        "total_tokens": 12796,
+        "completion_tokens": 3016,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9780,
+      "elapsed_seconds": 280.863883394748,
+      "max_tokens": 16000,
+      "seed": 283867250,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "28cb4e31390def825cef1d071f84c3f1a0c43bde71a30bd8a9d744f5881fdaa9",
+      "attempt": 2,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: metabolites (quasi) stationarity",
+        "key_results": "evidence quote is not present in fulltext: delta S > -3",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: fractional stoichiometric indexes",
+        "claims": "evidence quote is not present in fulltext: fractional stoichiometric indexes"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The mathematical model is based on the dynamic mass balance equation.\": \"dynamic mass balance\"\n    },\n    {\n      \"Steady-state conditions imply that metabolite concentrations are constant.\": \"metabolites (quasi) stationarity\"\n    },\n    {\n      \"The problem is described by the linear system S · ν = b.\": \"linear system of equations\"\n    },\n    {\n      \"The stoichiometric matrix S is assumed to have full row rank.\": \"full rows rank\"\n    },\n    {\n      \"Fluxes are constrained by positivity and maximum values, defining a convex polytope.\": \"convex polytope\"\n    },\n    {\n      \"The volume is computed using a probabilistic framework with a uniform probability density.\": \"probability density P\"\n    },\n    {\n      \"The algorithm uses a discretization of flux values into integer bins.\": \"integer solutions\"\n    },\n    {\n      \"The volume estimation is recast as a discrete combinatorial optimization problem.\": \"combinatorial optimization problem\"\n    },\n    {\n      \"Belief Propagation is used to compute marginal probability distributions.\": \"Belief Propagation\"\n    },\n    {\n      \"The method relies on the sparsity of metabolic networks and large loop lengths.\": \"metabolic networks are sparse\"\n    },\n    {\n      \"A recursive convolution method is used to speed up message passing.\": \"recursive convolution\"\n    },\n    {\n      \"A refinement strategy for the discretization parameter qmax improves convergence.\": \"refinement strategy\"\n    }\n  ],\n  \"key_results\": [\n    {\n      \"On low-dimensional benchmarks, the BP algorithm's error decreases with finer discretization.\": \"finer binning\"\n    },\n    {\n      \"The BP algorithm maintains almost-linear running time as N increases.\": \"almost-linear behavior\"\n    },\n    {\n      \"The LRS algorithm's running time explodes exponentially for N greater than 12.\": \"explodes exponentially\"\n    },\n    {\n      \"For the Red Blood Cell network, BP results matched Monte Carlo distributions.\": \"almost identical\"\n    },\n    {\n      \"The BP algorithm converged in minutes, whereas Monte Carlo took one week.\": \"couple of minutes\"\n    },\n    {\n      \"The E. coli network analysis yielded a power-law distribution of average fluxes.\": \"power law\"\n    },\n    {\n      \"The power-law exponent was close to 1.\": \"exponent close to 1\"\n    },\n    {\n      \"A clear jump in the integrated distribution was observed at nu approx 0.5.\": \"jump appears\"\n    },\n    {\n      \"Most reaction knock-outs resulted in an entropy change greater than -3.\": \"∆S > −3\"\n    },\n    {\n      \"A relevant fraction of knock-outs had an entropy change less than -3.\": \"∆S < −3\"\n    },\n    {\n      \"Reactions with large entropy changes were associated with glycolysis and the Krebs cycle.\": \"glycolysis pathway\"\n    },\n    {\n      \"A threshold at nu approx 0.6 separated two regimes of correlation between flux and entropy change.\": \"threshold at ν\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The algorithm currently cannot handle reactions with fractional stoichiometric indexes.\": \"fractional stoichiometric indexes\"\n    },\n    {\n      \"Metabolites with high connectivity were removed to improve sparsity, potentially altering the network.\": \"connectivity larger than 40\"\n    },\n    {\n      \"The assumption of independent knock-outs ignores that some reactions share enzymes.\": \"associated with the same enzyme\"\n    },\n    {\n      \"The origin of the jumps in the integrated distribution at specific flux values is unknown.\": \"not yet known\"\n    },\n    {\n      \"The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.\": \"locally tree-like\"\n    },\n    \"\"\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time.\",\n      \"supporting_evidence\": [\n        {\n          \"The algorithm maintains almost-linear behavior as network size increases.\": \"almost-linear behavior\"\n        },\n        {\n          \"It converged in minutes for the Red Blood Cell network.\": \"couple of minutes\"\n        },\n        {\n          \"It handles networks with up to 120 reactions on a standard laptop.\": \"standard laptop\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The approximation is not exact for graphs with short loops.\": \"locally tree-like\"\n        },\n        {\n          \"Fractional stoichiometric coefficients are not supported.\": \"fractional stoichiometric indexes\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This enables the analysis of large metabolic networks previously intractable by exact methods.\": \"large biological systems\"\n        },\n        {\n          \"It provides a tool for studying the global properties of metabolic phenotypes.\": \"global functional behavior\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.\",\n      \"supporting_evidence\": [\n        {\n          \"Reactions in glycolysis and the Krebs cycle showed large entropy changes.\": \"glycolysis pathway\"\n        },\n        {\n          \"These reactions show little redundancy in the network topology.\": \"little redundancy\"\n        },\n        {\n          \"There is a strong correlation between high wild-type flux and large entropy change.\": \"strong correlations\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Most reactions had a small impact on the solution space size.\": \"∆S > −3\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Identifying these critical reactions helps understand metabolic robustness and fragility.\": \"metabolic capacities\"\n        },\n        {\n          \"It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.\": \"evolutionary pressure\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 9368,
+        "total_tokens": 10826,
+        "completion_tokens": 1458,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 9368,
+      "elapsed_seconds": 133.64485379308462,
+      "max_tokens": 4096,
+      "seed": 283867251,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "53948ca8f0988719c36ef6311dd80d16c83c5a5675eedc33ad2b219622836714",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "key_results",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: metabolites (quasi) stationarity",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: fractional stoichiometric indexes",
+        "claims": "evidence quote is not present in fulltext: fractional stoichiometric indexes"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The mathematical model is based on the dynamic mass balance equation.\": \"dynamic mass balance\"\n    },\n    {\n      \"Steady-state conditions imply that metabolite concentrations are constant.\": \"metabolites (quasi) stationarity\"\n    },\n    {\n      \"The problem is described by the linear system S · ν = b.\": \"linear system of equations\"\n    },\n    {\n      \"The stoichiometric matrix S is assumed to have full row rank.\": \"full rows rank\"\n    },\n    {\n      \"Fluxes are constrained by positivity and maximum values, defining a convex polytope.\": \"convex polytope\"\n    },\n    {\n      \"The volume is computed using a probabilistic framework with a uniform probability density.\": \"probability density P\"\n    },\n    {\n      \"The algorithm uses a discretization of flux values into integer bins.\": \"integer solutions\"\n    },\n    {\n      \"The volume estimation is recast as a discrete combinatorial optimization problem.\": \"combinatorial optimization problem\"\n    },\n    {\n      \"Belief Propagation is used to compute marginal probability distributions.\": \"Belief Propagation\"\n    },\n    {\n      \"The method relies on the sparsity of metabolic networks and large loop lengths.\": \"metabolic networks are sparse\"\n    },\n    {\n      \"A recursive convolution method is used to speed up message passing.\": \"recursive convolution\"\n    },\n    {\n      \"A refinement strategy for the discretization parameter qmax improves convergence.\": \"refinement strategy\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The algorithm currently cannot handle reactions with fractional stoichiometric indexes.\": \"fractional stoichiometric indexes\"\n    },\n    {\n      \"Metabolites with high connectivity were removed to improve sparsity, potentially altering the network.\": \"connectivity larger than 40\"\n    },\n    {\n      \"The assumption of independent knock-outs ignores that some reactions share enzymes.\": \"associated with the same enzyme\"\n    },\n    {\n      \"The origin of the jumps in the integrated distribution at specific flux values is unknown.\": \"not yet known\"\n    },\n    {\n      \"The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.\": \"locally tree-like\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time.\",\n      \"supporting_evidence\": [\n        {\n          \"The algorithm maintains almost-linear behavior as network size increases.\": \"almost-linear behavior\"\n        },\n        {\n          \"It converged in minutes for the Red Blood Cell network.\": \"couple of minutes\"\n        },\n        {\n          \"It handles networks with up to 120 reactions on a standard laptop.\": \"standard laptop\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The approximation is not exact for graphs with short loops.\": \"locally tree-like\"\n        },\n        {\n          \"Fractional stoichiometric coefficients are not supported.\": \"fractional stoichiometric indexes\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This enables the analysis of large metabolic networks previously intractable by exact methods.\": \"large biological systems\"\n        },\n        {\n          \"It provides a tool for studying the global properties of metabolic phenotypes.\": \"global functional behavior\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.\",\n      \"supporting_evidence\": [\n        {\n          \"Reactions in glycolysis and the Krebs cycle showed large entropy changes.\": \"glycolysis pathway\"\n        },\n        {\n          \"These reactions show little redundancy in the network topology.\": \"little redundancy\"\n        },\n        {\n          \"There is a strong correlation between high wild-type flux and large entropy change.\": \"strong correlations\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Most reactions had a small impact on the solution space size.\": \"∆S > −3\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Identifying these critical reactions helps understand metabolic robustness and fragility.\": \"metabolic capacities\"\n        },\n        {\n          \"It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.\": \"evolutionary pressure\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8948,
+        "total_tokens": 10022,
+        "completion_tokens": 1074,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8948,
+      "elapsed_seconds": 91.61351120844483,
+      "max_tokens": 4096,
+      "seed": 283867252,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "603bd6e4c6ebabe3ddc4053f6df9b71f70c2e58467f336b6d71fe0b407d3b7df",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: metabolites (quasi) stationarity",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: fractional stoichiometric indexes",
+        "claims": "evidence quote is not present in fulltext: fractional stoichiometric indexes"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The mathematical model is based on the dynamic mass balance equation.\": \"dynamic mass balance\"\n    },\n    {\n      \"Steady-state conditions imply that metabolite concentrations are constant.\": \"metabolites (quasi) stationarity\"\n    },\n    {\n      \"The problem is described by the linear system S · ν = b.\": \"linear system of equations\"\n    },\n    {\n      \"The stoichiometric matrix S is assumed to have full row rank.\": \"full rows rank\"\n    },\n    {\n      \"Fluxes are constrained by positivity and maximum values, defining a convex polytope.\": \"convex polytope\"\n    },\n    {\n      \"The volume is computed using a probabilistic framework with a uniform probability density.\": \"probability density P\"\n    },\n    {\n      \"The algorithm uses a discretization of flux values into integer bins.\": \"integer solutions\"\n    },\n    {\n      \"The volume estimation is recast as a discrete combinatorial optimization problem.\": \"combinatorial optimization problem\"\n    },\n    {\n      \"Belief Propagation is used to compute marginal probability distributions.\": \"Belief Propagation\"\n    },\n    {\n      \"The method relies on the sparsity of metabolic networks and large loop lengths.\": \"metabolic networks are sparse\"\n    },\n    {\n      \"A recursive convolution method is used to speed up message passing.\": \"recursive convolution\"\n    },\n    {\n      \"A refinement strategy for the discretization parameter qmax improves convergence.\": \"refinement strategy\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The algorithm currently cannot handle reactions with fractional stoichiometric indexes.\": \"fractional stoichiometric indexes\"\n    },\n    {\n      \"Metabolites with high connectivity were removed to improve sparsity, potentially altering the network.\": \"connectivity larger than 40\"\n    },\n    {\n      \"The assumption of independent knock-outs ignores that some reactions share enzymes.\": \"associated with the same enzyme\"\n    },\n    {\n      \"The origin of the jumps in the integrated distribution at specific flux values is unknown.\": \"not yet known\"\n    },\n    {\n      \"The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.\": \"locally tree-like\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time.\",\n      \"supporting_evidence\": [\n        {\n          \"The algorithm maintains almost-linear behavior as network size increases.\": \"almost-linear behavior\"\n        },\n        {\n          \"It converged in minutes for the Red Blood Cell network.\": \"couple of minutes\"\n        },\n        {\n          \"It handles networks with up to 120 reactions on a standard laptop.\": \"standard laptop\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The approximation is not exact for graphs with short loops.\": \"locally tree-like\"\n        },\n        {\n          \"Fractional stoichiometric coefficients are not supported.\": \"fractional stoichiometric indexes\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This enables the analysis of large metabolic networks previously intractable by exact methods.\": \"large biological systems\"\n        },\n        {\n          \"It provides a tool for studying the global properties of metabolic phenotypes.\": \"global functional behavior\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.\",\n      \"supporting_evidence\": [\n        {\n          \"Reactions in glycolysis and the Krebs cycle showed large entropy changes.\": \"glycolysis pathway\"\n        },\n        {\n          \"These reactions show little redundancy in the network topology.\": \"little redundancy\"\n        },\n        {\n          \"There is a strong correlation between high wild-type flux and large entropy change.\": \"strong correlations\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Most reactions had a small impact on the solution space size.\": \"∆S > −3\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Identifying these critical reactions helps understand metabolic robustness and fragility.\": \"metabolic capacities\"\n        },\n        {\n          \"It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.\": \"evolutionary pressure\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8947,
+        "total_tokens": 10021,
+        "completion_tokens": 1074,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8947,
+      "elapsed_seconds": 108.74193827062845,
+      "max_tokens": 4096,
+      "seed": 283867253,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6621ae560faf0f033838f92488413e86e985cc42bf8a1cca6f2f9918cf512698",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: metabolites (quasi) stationarity",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: fractional stoichiometric indexes",
+        "claims": "evidence quote is not present in fulltext: fractional stoichiometric indexes"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The mathematical model is based on the dynamic mass balance equation.\": \"dynamic mass balance\"\n    },\n    {\n      \"Steady-state conditions imply that metabolite concentrations are constant.\": \"metabolites (quasi) stationarity\"\n    },\n    {\n      \"The problem is described by the linear system S · ν = b.\": \"linear system of equations\"\n    },\n    {\n      \"The stoichiometric matrix S is assumed to have full row rank.\": \"full rows rank\"\n    },\n    {\n      \"Fluxes are constrained by positivity and maximum values, defining a convex polytope.\": \"convex polytope\"\n    },\n    {\n      \"The volume is computed using a probabilistic framework with a uniform probability density.\": \"probability density P\"\n    },\n    {\n      \"The algorithm uses a discretization of flux values into integer bins.\": \"integer solutions\"\n    },\n    {\n      \"The volume estimation is recast as a discrete combinatorial optimization problem.\": \"combinatorial optimization problem\"\n    },\n    {\n      \"Belief Propagation is used to compute marginal probability distributions.\": \"Belief Propagation\"\n    },\n    {\n      \"The method relies on the sparsity of metabolic networks and large loop lengths.\": \"metabolic networks are sparse\"\n    },\n    {\n      \"A recursive convolution method is used to speed up message passing.\": \"recursive convolution\"\n    },\n    {\n      \"A refinement strategy for the discretization parameter qmax improves convergence.\": \"refinement strategy\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The algorithm currently cannot handle reactions with fractional stoichiometric indexes.\": \"fractional stoichiometric indexes\"\n    },\n    {\n      \"Metabolites with high connectivity were removed to improve sparsity, potentially altering the network.\": \"connectivity larger than 40\"\n    },\n    {\n      \"The assumption of independent knock-outs ignores that some reactions share enzymes.\": \"associated with the same enzyme\"\n    },\n    {\n      \"The origin of the jumps in the integrated distribution at specific flux values is unknown.\": \"not yet known\"\n    },\n    {\n      \"The Bethe approximation is exact only on trees, though it works well on locally tree-like structures.\": \"locally tree-like\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"The proposed Belief Propagation algorithm efficiently estimates the volume of the metabolic solution space in polynomial time.\",\n      \"supporting_evidence\": [\n        {\n          \"The algorithm maintains almost-linear behavior as network size increases.\": \"almost-linear behavior\"\n        },\n        {\n          \"It converged in minutes for the Red Blood Cell network.\": \"couple of minutes\"\n        },\n        {\n          \"It handles networks with up to 120 reactions on a standard laptop.\": \"standard laptop\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"The approximation is not exact for graphs with short loops.\": \"locally tree-like\"\n        },\n        {\n          \"Fractional stoichiometric coefficients are not supported.\": \"fractional stoichiometric indexes\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This enables the analysis of large metabolic networks previously intractable by exact methods.\": \"large biological systems\"\n        },\n        {\n          \"It provides a tool for studying the global properties of metabolic phenotypes.\": \"global functional behavior\"\n        }\n      ]\n    },\n    {\n      \"description\": \"Reactions with low topological redundancy have a disproportionate impact on the size of the solution space upon knockout.\",\n      \"supporting_evidence\": [\n        {\n          \"Reactions in glycolysis and the Krebs cycle showed large entropy changes.\": \"glycolysis pathway\"\n        },\n        {\n          \"These reactions show little redundancy in the network topology.\": \"little redundancy\"\n        },\n        {\n          \"There is a strong correlation between high wild-type flux and large entropy change.\": \"strong correlations\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Most reactions had a small impact on the solution space size.\": \"∆S > −3\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"Identifying these critical reactions helps understand metabolic robustness and fragility.\": \"metabolic capacities\"\n        },\n        {\n          \"It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.\": \"evolutionary pressure\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 8947,
+        "total_tokens": 10021,
+        "completion_tokens": 1074,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 8947,
+      "elapsed_seconds": 95.97516599670053,
+      "max_tokens": 4096,
+      "seed": 283867254,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "6621ae560faf0f033838f92488413e86e985cc42bf8a1cca6f2f9918cf512698",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: metabolites (quasi) stationarity",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: fractional stoichiometric indexes",
+        "claims": "evidence quote is not present in fulltext: fractional stoichiometric indexes"
+      }
+    },
+    {
+      "response": "{\n  \"q0\": 9,\n  \"q1\": 14,\n  \"q2\": \"drop\",\n  \"q3\": 8,\n  \"q4\": 9,\n  \"q5\": 8,\n  \"q6\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 11700,
+        "total_tokens": 11768,
+        "completion_tokens": 68,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 11700,
+      "elapsed_seconds": 88.06161461025476,
+      "max_tokens": 2048,
+      "seed": 283867349,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "98f6c1720694f783811e282db0fd77ca8a5567cc3ed6023b0a280a6e7844d085",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "methodological_details",
+            1
+          ],
+          "narrative": "Steady-state conditions imply that metabolite concentrations are constant.",
+          "invalid_quote": "metabolites (quasi) stationarity",
+          "candidates": [
+            {
+              "quote": "(quasi) stationarity and",
+              "start": 6903,
+              "end": 6927
+            },
+            {
+              "quote": "lites (quasi) stationarity",
+              "start": 6897,
+              "end": 6923
+            },
+            {
+              "quote": "(quasi) stationarity and consequently",
+              "start": 6903,
+              "end": 6940
+            },
+            {
+              "quote": "lites (quasi) stationarity and",
+              "start": 6897,
+              "end": 6927
+            },
+            {
+              "quote": "metabo-\nlites (quasi) stationarity",
+              "start": 6889,
+              "end": 6923
+            },
+            {
+              "quote": "(quasi) stationarity and consequently the",
+              "start": 6903,
+              "end": 6944
+            },
+            {
+              "quote": "lites (quasi) stationarity and consequently",
+              "start": 6897,
+              "end": 6940
+            },
+            {
+              "quote": "metabo-\nlites (quasi) stationarity and",
+              "start": 6889,
+              "end": 6927
+            },
+            {
+              "quote": "assume metabo-\nlites (quasi) stationarity",
+              "start": 6882,
+              "end": 6923
+            },
+            {
+              "quote": "steady-state cellular properties",
+              "start": 6658,
+              "end": 6690
+            },
+            {
+              "quote": "just steady-state cellular",
+              "start": 6653,
+              "end": 6679
+            },
+            {
+              "quote": "as just steady-state",
+              "start": 6650,
+              "end": 6670
+            },
+            {
+              "quote": "steady-\nstate ﬂux",
+              "start": 5407,
+              "end": 5424
+            },
+            {
+              "quote": "the steady-\nstate",
+              "start": 5403,
+              "end": 5420
+            },
+            {
+              "quote": "steady-state ﬂux distributions",
+              "start": 1826,
+              "end": 1856
+            },
+            {
+              "quote": "possible steady-state ﬂux",
+              "start": 1817,
+              "end": 1842
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "methodological_details",
+            7
+          ],
+          "narrative": "The volume estimation is recast as a discrete combinatorial optimization problem.",
+          "invalid_quote": "combinatorial optimization problem",
+          "candidates": [
+            {
+              "quote": "recast into a discrete combinatorial",
+              "start": 22742,
+              "end": 22778
+            },
+            {
+              "quote": "discrete combinatorial opti-\nmization problem",
+              "start": 22756,
+              "end": 22801
+            },
+            {
+              "quote": "discrete combinatorial opti-",
+              "start": 22756,
+              "end": 22784
+            },
+            {
+              "quote": "a discrete combinatorial",
+              "start": 22754,
+              "end": 22778
+            },
+            {
+              "quote": "discrete combinatorial opti-\nmization",
+              "start": 22756,
+              "end": 22793
+            },
+            {
+              "quote": "a discrete combinatorial opti-",
+              "start": 22754,
+              "end": 22784
+            },
+            {
+              "quote": "into a discrete combinatorial",
+              "start": 22749,
+              "end": 22778
+            },
+            {
+              "quote": "recast into a discrete",
+              "start": 22742,
+              "end": 22764
+            },
+            {
+              "quote": "a discrete combinatorial opti-\nmization",
+              "start": 22754,
+              "end": 22793
+            },
+            {
+              "quote": "into a discrete combinatorial opti-",
+              "start": 22749,
+              "end": 22784
+            },
+            {
+              "quote": "been recast into a discrete",
+              "start": 22737,
+              "end": 22764
+            },
+            {
+              "quote": "combinatorial opti-\nmization problem",
+              "start": 22765,
+              "end": 22801
+            },
+            {
+              "quote": "combinatorial opti-\nmization problem that",
+              "start": 22765,
+              "end": 22806
+            },
+            {
+              "quote": "volume\nhas been recast",
+              "start": 22726,
+              "end": 22748
+            },
+            {
+              "quote": "volume\nhas been recast into",
+              "start": 22726,
+              "end": 22753
+            },
+            {
+              "quote": "the volume\nhas been recast",
+              "start": 22722,
+              "end": 22748
+            }
+          ]
+        },
+        {
+          "id": "q2",
+          "path": [
+            "methodological_details",
+            10
+          ],
+          "narrative": "A recursive convolution method is used to speed up message passing.",
+          "invalid_quote": "recursive convolution",
+          "candidates": [
+            {
+              "quote": "speed-up in the",
+              "start": 26426,
+              "end": 26441
+            },
+            {
+              "quote": "evant speed-up in",
+              "start": 26420,
+              "end": 26437
+            },
+            {
+              "quote": "rel-\nevant speed-up",
+              "start": 26415,
+              "end": 26434
+            },
+            {
+              "quote": "speed-up in the convergence",
+              "start": 26426,
+              "end": 26453
+            },
+            {
+              "quote": "evant speed-up in the",
+              "start": 26420,
+              "end": 26441
+            },
+            {
+              "quote": "rel-\nevant speed-up in",
+              "start": 26415,
+              "end": 26437
+            },
+            {
+              "quote": "A rel-\nevant speed-up",
+              "start": 26413,
+              "end": 26434
+            },
+            {
+              "quote": "speed-up in the convergence of",
+              "start": 26426,
+              "end": 26456
+            },
+            {
+              "quote": "evant speed-up in the convergence",
+              "start": 26420,
+              "end": 26453
+            },
+            {
+              "quote": "rel-\nevant speed-up in the",
+              "start": 26415,
+              "end": 26441
+            },
+            {
+              "quote": "A rel-\nevant speed-up in",
+              "start": 26413,
+              "end": 26437
+            },
+            {
+              "quote": "equation. A rel-\nevant speed-up",
+              "start": 26403,
+              "end": 26434
+            },
+            {
+              "quote": "convolution\nproduct in",
+              "start": 26510,
+              "end": 26532
+            },
+            {
+              "quote": "the convolution\nproduct",
+              "start": 26506,
+              "end": 26529
+            },
+            {
+              "quote": "that the convolution",
+              "start": 26501,
+              "end": 26521
+            },
+            {
+              "quote": "convolution\nproduct in 11",
+              "start": 26510,
+              "end": 26535
+            }
+          ]
+        },
+        {
+          "id": "q3",
+          "path": [
+            "contradictions_and_limitations",
+            0
+          ],
+          "narrative": "The algorithm currently cannot handle reactions with fractional stoichiometric indexes.",
+          "invalid_quote": "fractional stoichiometric indexes",
+          "candidates": [
+            {
+              "quote": "stoichiometric indexes, since our algorithm",
+              "start": 13897,
+              "end": 13940
+            },
+            {
+              "quote": "stoichiometric indexes, since",
+              "start": 13897,
+              "end": 13926
+            },
+            {
+              "quote": "tional stoichiometric indexes,",
+              "start": 13890,
+              "end": 13920
+            },
+            {
+              "quote": "stoichiometric indexes, since our",
+              "start": 13897,
+              "end": 13930
+            },
+            {
+              "quote": "tional stoichiometric indexes, since",
+              "start": 13890,
+              "end": 13926
+            },
+            {
+              "quote": "frac-\ntional stoichiometric indexes,",
+              "start": 13884,
+              "end": 13920
+            },
+            {
+              "quote": "tional stoichiometric indexes, since our",
+              "start": 13890,
+              "end": 13930
+            },
+            {
+              "quote": "frac-\ntional stoichiometric indexes, since",
+              "start": 13884,
+              "end": 13926
+            },
+            {
+              "quote": "with frac-\ntional stoichiometric indexes,",
+              "start": 13879,
+              "end": 13920
+            },
+            {
+              "quote": "indexes, since our algorithm",
+              "start": 13912,
+              "end": 13940
+            },
+            {
+              "quote": "indexes, since our algorithm in",
+              "start": 13912,
+              "end": 13943
+            },
+            {
+              "quote": "reactions with frac-\ntional stoichiometric",
+              "start": 13869,
+              "end": 13911
+            },
+            {
+              "quote": "indexes, since our",
+              "start": 13912,
+              "end": 13930
+            },
+            {
+              "quote": "stoichiometric coeﬃcients diﬀerent",
+              "start": 23429,
+              "end": 23463
+            },
+            {
+              "quote": "having\nstoichiometric coeﬃcients",
+              "start": 23422,
+              "end": 23454
+            },
+            {
+              "quote": "equation having\nstoichiometric",
+              "start": 23413,
+              "end": 23443
+            }
+          ]
+        },
+        {
+          "id": "q4",
+          "path": [
+            "contradictions_and_limitations",
+            2
+          ],
+          "narrative": "The assumption of independent knock-outs ignores that some reactions share enzymes.",
+          "invalid_quote": "associated with the same enzyme",
+          "candidates": [
+            {
+              "quote": "same enzyme.\nThe",
+              "start": 16383,
+              "end": 16399
+            },
+            {
+              "quote": "the same enzyme.",
+              "start": 16379,
+              "end": 16395
+            },
+            {
+              "quote": "same enzyme.\nThe distribution",
+              "start": 16383,
+              "end": 16412
+            },
+            {
+              "quote": "the same enzyme.\nThe",
+              "start": 16379,
+              "end": 16399
+            },
+            {
+              "quote": "with the same enzyme.",
+              "start": 16374,
+              "end": 16395
+            },
+            {
+              "quote": "same enzyme.\nThe distribution of",
+              "start": 16383,
+              "end": 16415
+            },
+            {
+              "quote": "the same enzyme.\nThe distribution",
+              "start": 16379,
+              "end": 16412
+            },
+            {
+              "quote": "with the same enzyme.\nThe",
+              "start": 16374,
+              "end": 16399
+            },
+            {
+              "quote": "ated with the same enzyme.",
+              "start": 16369,
+              "end": 16395
+            },
+            {
+              "quote": "knock-outs introduced below,",
+              "start": 21277,
+              "end": 21305
+            },
+            {
+              "quote": "ﬂux knock-outs introduced",
+              "start": 21273,
+              "end": 21298
+            },
+            {
+              "quote": "silico ﬂux knock-outs",
+              "start": 21266,
+              "end": 21287
+            },
+            {
+              "quote": "knock-outs.\nLet us",
+              "start": 19788,
+              "end": 19806
+            },
+            {
+              "quote": "reaction knock-outs.\nLet",
+              "start": 19779,
+              "end": 19803
+            },
+            {
+              "quote": "after\nreaction knock-outs.",
+              "start": 19773,
+              "end": 19799
+            },
+            {
+              "quote": "knock-outs and the",
+              "start": 17506,
+              "end": 17524
+            }
+          ]
+        },
+        {
+          "id": "q5",
+          "path": [
+            "claims",
+            0,
+            "contradicting_evidence",
+            1
+          ],
+          "narrative": "Fractional stoichiometric coefficients are not supported.",
+          "invalid_quote": "fractional stoichiometric indexes",
+          "candidates": [
+            {
+              "quote": "stoichiometric indexes, since",
+              "start": 13897,
+              "end": 13926
+            },
+            {
+              "quote": "tional stoichiometric indexes,",
+              "start": 13890,
+              "end": 13920
+            },
+            {
+              "quote": "stoichiometric indexes, since our",
+              "start": 13897,
+              "end": 13930
+            },
+            {
+              "quote": "tional stoichiometric indexes, since",
+              "start": 13890,
+              "end": 13926
+            },
+            {
+              "quote": "frac-\ntional stoichiometric indexes,",
+              "start": 13884,
+              "end": 13920
+            },
+            {
+              "quote": "stoichiometric indexes, since our algorithm",
+              "start": 13897,
+              "end": 13940
+            },
+            {
+              "quote": "tional stoichiometric indexes, since our",
+              "start": 13890,
+              "end": 13930
+            },
+            {
+              "quote": "frac-\ntional stoichiometric indexes, since",
+              "start": 13884,
+              "end": 13926
+            },
+            {
+              "quote": "with frac-\ntional stoichiometric indexes,",
+              "start": 13879,
+              "end": 13920
+            },
+            {
+              "quote": "stoichiometric coeﬃcients diﬀerent",
+              "start": 23429,
+              "end": 23463
+            },
+            {
+              "quote": "having\nstoichiometric coeﬃcients",
+              "start": 23422,
+              "end": 23454
+            },
+            {
+              "quote": "stoichiometric coeﬃcients diﬀerent from",
+              "start": 23429,
+              "end": 23468
+            },
+            {
+              "quote": "having\nstoichiometric coeﬃcients diﬀerent",
+              "start": 23422,
+              "end": 23463
+            },
+            {
+              "quote": "equation having\nstoichiometric coeﬃcients",
+              "start": 23413,
+              "end": 23454
+            },
+            {
+              "quote": "stoichiometric coeﬃcients diﬀerent from zero.",
+              "start": 23429,
+              "end": 23474
+            },
+            {
+              "quote": "having\nstoichiometric coeﬃcients diﬀerent from",
+              "start": 23422,
+              "end": 23468
+            }
+          ]
+        },
+        {
+          "id": "q6",
+          "path": [
+            "claims",
+            1,
+            "implications",
+            1
+          ],
+          "narrative": "It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.",
+          "invalid_quote": "evolutionary pressure",
+          "candidates": [
+            {
+              "quote": "these\npathways is",
+              "start": 3783,
+              "end": 3800
+            },
+            {
+              "quote": "of these\npathways",
+              "start": 3780,
+              "end": 3797
+            },
+            {
+              "quote": "these\npathways is hard",
+              "start": 3783,
+              "end": 3805
+            },
+            {
+              "quote": "of these\npathways is",
+              "start": 3780,
+              "end": 3800
+            },
+            {
+              "quote": "role of these\npathways",
+              "start": 3775,
+              "end": 3797
+            },
+            {
+              "quote": "these\npathways is hard to",
+              "start": 3783,
+              "end": 3808
+            },
+            {
+              "quote": "of these\npathways is hard",
+              "start": 3780,
+              "end": 3805
+            },
+            {
+              "quote": "role of these\npathways is",
+              "start": 3775,
+              "end": 3800
+            },
+            {
+              "quote": "cooperative role of these\npathways",
+              "start": 3763,
+              "end": 3797
+            },
+            {
+              "quote": "pathways calculation and ﬂux-balance",
+              "start": 987,
+              "end": 1023
+            },
+            {
+              "quote": "pathways calculation and ﬂux-balance analysis",
+              "start": 987,
+              "end": 1032
+            },
+            {
+              "quote": "extreme pathways calculation and ﬂux-balance",
+              "start": 979,
+              "end": 1023
+            },
+            {
+              "quote": "optimize their growth.",
+              "start": 4809,
+              "end": 4831
+            },
+            {
+              "quote": "to optimize their",
+              "start": 4806,
+              "end": 4823
+            },
+            {
+              "quote": "not to optimize",
+              "start": 4802,
+              "end": 4817
+            },
+            {
+              "quote": "pressure, prokaryotes cells",
+              "start": 4271,
+              "end": 4298
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 9763,
+  "elapsed_seconds": 1058.4995970502496,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "claims",
+        1,
+        "implications",
+        1
+      ],
+      "entry": {
+        "It suggests that evolutionary pressure may optimize these high-flux, low-redundancy pathways.": "evolutionary pressure"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    },
+    {
+      "path": [
+        "methodological_details",
+        10
+      ],
+      "entry": {
+        "A recursive convolution method is used to speed up message passing.": "recursive convolution"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "claims",
+        0,
+        "contradicting_evidence",
+        1
+      ],
+      "quote": "with frac-\ntional stoichiometric indexes,",
+      "start": 13879,
+      "end": 13920
+    },
+    {
+      "path": [
+        "contradictions_and_limitations",
+        2
+      ],
+      "quote": "knock-outs introduced below,",
+      "start": 21277,
+      "end": 21305
+    },
+    {
+      "path": [
+        "contradictions_and_limitations",
+        0
+      ],
+      "quote": "with frac-\ntional stoichiometric indexes,",
+      "start": 13879,
+      "end": 13920
+    },
+    {
+      "path": [
+        "methodological_details",
+        7
+      ],
+      "quote": "volume\nhas been recast into",
+      "start": 22726,
+      "end": 22753
+    },
+    {
+      "path": [
+        "methodological_details",
+        1
+      ],
+      "quote": "steady-state cellular properties",
+      "start": 6658,
+      "end": 6690
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

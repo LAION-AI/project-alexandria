@@ -1,0 +1,1841 @@
+{
+  "document_id": "arxiv-136",
+  "fulltext_sha256": "675c74bc3e304a4e6d1d06fd23fa795e5096b7bc80ba498817dfc0d663e7a07e",
+  "summary": {
+    "title": "QED⊗QCD Resummation and Shower/ME Matching for LHC Physics",
+    "authors": "B.F.L. Ward and S.A. Yost",
+    "field_subfield": "High Energy Physics - Phenomenology (hep-ph)",
+    "type_of_paper": "Theoretical Physics / Conference Proceedings",
+    "executive_summary": "This paper presents a theoretical framework for the simultaneous resummation of Quantum Electrodynamics (QED) and Quantum Chromodynamics (QCD) effects, termed QED⊗QCD resummation, aimed at achieving high-precision predictions for LHC luminosity processes. The authors argue that to match the expected 2% experimental luminosity precision, theoretical predictions for single heavy gauge boson production (W, Z) must reach a 0.67% precision level. This requires controlling multiple gluon and photon radiative effects. The study extends the Yennie-Frautschi-Suura (YFS) exponentiation theory, originally for QED, to non-Abelian QCD, and further to the combined QED⊗QCD sector. The core contribution is an exact rearrangement of the perturbative series that allows for the simultaneous resummation of soft and collinear divergences in both αs and α without double-counting. The authors demonstrate how this exact resummation can be matched with standard parton shower Monte Carlo generators like HERWIG and PYTHIA. They propose two matching strategies: a standard pT matching and a more precise 'shower-subtracted' residual method. Using semi-analytical methods and structure functions, the paper calculates threshold corrections for heavy gauge boson production at the LHC and Tevatron. The results show that QED effects contribute approximately 0.3% to the cross-section ratio relative to the Born level, which is significant for the targeted 1% theoretical precision. The QCD effects are larger, with the total ratio (QCD+QED) being 1.1901 at the LHC compared to 1.1872 for QCD alone. The paper concludes that QED effects are essential for precision LHC physics and outlines the path toward full Monte Carlo realization of these exact results.",
+    "research_context": [
+      {
+        "The LHC environment requires theoretical precision tags of 0.67% for luminosity processes.": "0.67% level"
+      },
+      {
+        "This precision is necessary to avoid compromising the overall LHC luminosity determinations.": "luminosity determinations"
+      },
+      {
+        "Multiple gluon and photon radiative effects must be controlled at this precision.": "radiative eﬀects"
+      },
+      {
+        "Previous studies showed QED contributions in structure functions are around 0.3%.": "∼0.3%"
+      },
+      {
+        "This magnitude is significant relative to the desired error budget.": "error budget"
+      },
+      {
+        "Existing resummation theories like SCET treat soft-collinear effects but are approximate.": "soft-collinear eﬀective theory"
+      },
+      {
+        "The authors propose an exact rearrangement of the perturbative series.": "exact rearrangement"
+      },
+      {
+        "This approach avoids the approximations found in other resummation frameworks.": "are approximate"
+      }
+    ],
+    "research_question_and_hypothesis": [
+      {
+        "The central question is how to achieve 0.67% theoretical precision for LHC luminosity processes.": "0.67% level"
+      },
+      {
+        "The hypothesis is that simultaneous QED and QCD resummation is required.": "simultaneous resummation"
+      },
+      {
+        "The authors predict that QED effects are non-negligible at the 0.3% level.": "∼0.3%"
+      },
+      {
+        "They hypothesize that an exact YFS-style resummation can be matched to parton showers.": "shower/ME matching"
+      },
+      {
+        "The predicted outcome is a framework that avoids double-counting of effects.": "double-counting"
+      },
+      {
+        "The theory aims to be valid to all orders in αs and α.": "all orders"
+      },
+      {
+        "The authors expect the QED contribution to be stable under scale variations.": "scale variations"
+      },
+      {
+        "They anticipate that QED effects are similar in size to structure function results.": "structure function results"
+      }
+    ],
+    "methodological_details": [
+      {
+        "The study focuses on single heavy gauge boson production at hadron colliders.": "single heavy gauge boson"
+      },
+      {
+        "The process considered is q + q' -> V + n(g) + X.": "q + ¯q′"
+      },
+      {
+        "The vector boson V can be W± or Z.": "V = W ±"
+      },
+      {
+        "The leptons ℓ and ℓ' depend on the boson type.": "ℓ=\ne, µ"
+      },
+      {
+        "The cross-section is expressed using an exponentiated form with residuals.": "dˆσexp"
+      },
+      {
+        "The residuals β~n are free of infrared divergences to all orders.": "free of all"
+      },
+      {
+        "The QED⊗QCD theory is obtained by simultaneously exponentiating IR terms.": "simultaneously exponentiating"
+      },
+      {
+        "The new residuals β~n,m include n hard gluons and m hard photons.": "n hard\ngluons"
+      },
+      {
+        "The functions SUMIR and D are modified to include QED contributions.": "SUMIR(QCED)"
+      },
+      {
+        "The average Bjorken x values indicate QCD corrections happen earlier.": "QCD dominant"
+      },
+      {
+        "The leading β~0,0 level provides a good estimate of the interplay.": "β0,0-level"
+      },
+      {
+        "The hadronic cross-section is constructed using standard convolution formulas.": "usual formula"
+      },
+      {
+        "Structure functions from Ref. [23] are used for semi-analytical calculations.": "structure functions"
+      },
+      {
+        "The factorization scale µ is the largest pT of gluon emission.": "largest pT"
+      },
+      {
+        "Collinear singularities are factorized to ensure convergence.": "collinear singularities"
+      },
+      {
+        "The calculation uses the narrow resonance approximation is not used.": "narrow resonance"
+      },
+      {
+        "The ratio rexp = σexp/σBorn is computed with and without QED.": "σexp/σBorn"
+      },
+      {
+        "The QED⊗QCD exponent γQCED combines QED and QCD contributions.": "γQCED"
+      },
+      {
+        "The function FYFS and δYFS are well-known YFS functions.": "FYFS(γQCED)"
+      },
+      {
+        "The calculation includes the Riemann zeta function ζ(2).": "ζ(2)"
+      },
+      {
+        "Euler's constant γE is included in the exponentiation.": "Euler’s constant"
+      }
+    ],
+    "procedures_and_architectures": [
+      {
+        "The procedure involves combining exact YFS resummation with HERWIG or PYTHIA.": "HERWIG and/or\nPYTHIA"
+      },
+      {
+        "The parton shower is generated from the initial (x1, x2) point.": "initial (x1, x2)"
+      },
+      {
+        "The factorization scale µ is provided by the structure functions.": "factorization scale µ"
+      },
+      {
+        "The combination can be improved with exact fully exclusive results.": "fully exclusive results"
+      },
+      {
+        "The current state of the art combines O(αs) corrections with HERWIG.": "O(αs) correction"
+      },
+      {
+        "The resummation is valid over the entire phase space.": "entire phase space"
+      },
+      {
+        "DGLAP evolution factorizes terms involving powers of the big log.": "DGLAP"
+      },
+      {
+        "The evolved structure function sums leading big logs.": "leading big logs"
+      },
+      {
+        "The result is independent of the quark mass mq as mq -> 0.": "mq ↓0"
+      },
+      {
+        "In the residuals, gluon radiation below scale µ is omitted.": "scales below µ"
+      },
+      {
+        "This is achieved by replacing Ls with Lnls in most cases.": "Lnls"
+      },
+      {
+        "The pT in gluon emission is limited to avoid double counting.": "double count"
+      },
+      {
+        "The standard Les Houches procedure is used for showering.": "Les Houches procedure"
+      },
+      {
+        "Backward evolution of initial partons is employed.": "backward evolution"
+      },
+      {
+        "A more accurate method uses shower-subtracted residuals.": "shower subtracted"
+      },
+      {
+        "The shower formula is expanded to match exact perturbative results.": "perturbative expansion"
+      },
+      {
+        "New residuals are calculated for the entire gluon pT phase space.": "entire gluon pT"
+      },
+      {
+        "This approach improves accuracy compared to the first matching procedure.": "improved compared"
+      },
+      {
+        "The shower-subtracted residuals were realized for Bhabha scattering.": "Bhabha process"
+      },
+      {
+        "The calculation uses semi-analytical methods for threshold corrections.": "semi-analytical methods"
+      },
+      {
+        "The Monte Carlo realization is planned for future work.": "Monte Carlo realization"
+      }
+    ],
+    "key_results": [
+      {
+        "The ratio rexp for QCED at the LHC is 1.1901.": "1.1901"
+      },
+      {
+        "The ratio rexp for QCD only at the LHC is 1.1872.": "1.1872"
+      },
+      {
+        "The ratio rexp for QCED at the Tevatron is 1.1911.": "1.1911"
+      },
+      {
+        "The ratio rexp for QCD only at the Tevatron is 1.1879.": "1.1879"
+      },
+      {
+        "The QED effect is at the level of 0.3% at both LHC and FNAL.": ".3%"
+      },
+      {
+        "The QED effect is stable under scale variations.": "scale variations"
+      },
+      {
+        "The results agree with previous literature on QED and QCD sizes.": "Refs. [15,16,18–20]"
+      },
+      {
+        "The QED effect is similar in size to structure function results.": "structure function results"
+      },
+      {
+        "The QCD dominant corrections happen an order of magnitude earlier.": "order of magnitude"
+      },
+      {
+        "The leading β~0,0 level gives a good estimate of the interplay.": "β0,0-level"
+      },
+      {
+        "The QED contribution is necessary for LHC theory predictions at ≲1%.": "≲1%"
+      },
+      {
+        "The analysis of W production is in progress.": "W production"
+      },
+      {
+        "The framework allows for full MC event generator realization.": "full MC event"
+      },
+      {
+        "The combination with HERWIG and PYTHIA is possible in principle.": "HERWIG and PYTHIA"
+      },
+      {
+        "The semi-analytical results for QED threshold effects agree with Z production literature.": "Z production"
+      }
+    ],
+    "interpretation_and_theoretical_implications": [
+      {
+        "The theory provides an exact rearrangement of the perturbative series.": "exact rearrangement"
+      },
+      {
+        "This allows for systematic improvement without double-counting.": "double-counting"
+      },
+      {
+        "The framework opens the way to desired theoretical precision tags.": "theoretical precision tag"
+      },
+      {
+        "QED effects are significant enough to require inclusion in precision studies.": "∼0.3%"
+      },
+      {
+        "The method is applicable to an exact treatment of the phase space.": "exact treatment"
+      },
+      {
+        "The approach is more convergent than analogs in LEP physics.": "much more convergent"
+      },
+      {
+        "The theory supports the realization of complete O(α2s, ααs, α2) results.": "O(α2\ns, ααs, α2)"
+      },
+      {
+        "This is crucial for FNAL, LHC, RHIC, and ILC physics.": "FNAL/LHC/RHIC/ILC"
+      },
+      {
+        "The exactness of the result distinguishes it from approximate resummations.": "exact result"
+      },
+      {
+        "The compensation between IR singularities is essential for QCD.": "compensation"
+      },
+      {
+        "The method allows for event-by-event realization in MC methods.": "event-by-event basis"
+      },
+      {
+        "The theory is based on the N=1 term in the exponent.": "N = 1 term"
+      },
+      {
+        "The residuals account for remaining contributions exactly to all orders.": "all orders in αs"
+      },
+      {
+        "The framework is robust against regulator choices.": "independent of this regulator"
+      }
+    ],
+    "contradictions_and_limitations": [
+      {
+        "The paper notes that the exactness of the result is sometimes confused.": "confusion seems to exist"
+      },
+      {
+        "The result does not show an explicit ordered exponential operator.": "show explicitly an ordered ex-"
+      },
+      {
+        "The matrix elements of operators are evaluated and written as residuals.": "matrix elements"
+      },
+      {
+        "The current state of the art averages the gluon azimuthal angle.": "azimuthal angle is averaged"
+      },
+      {
+        "The Monte Carlo realization is not yet complete and will appear elsewhere.": "appear elsewhere"
+      },
+      {
+        "The analysis of W production is still in progress.": "in progress"
+      },
+      {
+        "The paper relies on structure functions from a specific reference.": "Ref. [23]"
+      },
+      {
+        "The semi-analytical methods are used instead of full MC for now.": "semi-analytical methods"
+      },
+      {
+        "The double counting issue is addressed by pT matching or subtraction.": "double counting"
+      },
+      {
+        "The exactness depends on the correct isolation of residuals.": "isolate ˜¯βj"
+      },
+      {
+        "The framework assumes the validity of the YFS exponentiation.": "YFS theory"
+      },
+      {
+        "The paper does not provide a full numerical MC implementation.": "Monte Carlo realization"
+      }
+    ],
+    "claims": [
+      {
+        "description": "QED effects are significant for LHC luminosity precision.",
+        "supporting_evidence": [
+          {
+            "QED contributions are at the 0.3% level.": "∼0.3%"
+          },
+          {
+            "This is almost half of the error budget.": "error budget"
+          },
+          {
+            "QED is needed for predictions at ≲1%.": "≲1%"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Some might argue QED is negligible compared to QCD.": "QCD dominant"
+          },
+          {
+            "However, the precision requirement makes it necessary.": "0.67% level"
+          }
+        ],
+        "implications": [
+          {
+            "LHC luminosity determinations require QED resummation.": "luminosity determinations"
+          },
+          {
+            "Future MC generators must include QED⊗QCD effects.": "MC methods"
+          }
+        ]
+      },
+      {
+        "description": "The proposed resummation is exact and avoids double-counting.",
+        "supporting_evidence": [
+          {
+            "The result is an exact rearrangement of the series.": "exact rearrangement"
+          },
+          {
+            "Residuals are free of infrared divergences.": "free of all"
+          },
+          {
+            "The method avoids double-counting of effects.": "double-counting"
+          }
+        ],
+        "contradicting_evidence": [
+          {
+            "Other resummation theories are approximate.": "are approximate"
+          }
+        ],
+        "implications": [
+          {
+            "This allows for systematic improvement to all orders.": "all orders"
+          },
+          {
+            "It provides a firm theoretical basis for precision physics.": "theoretical basis"
+          }
+        ]
+      }
+    ],
+    "data_and_code_availability": "",
+    "robustness_and_ablation_notes": [
+      {
+        "The QED effect is stable under scale variations.": "scale variations"
+      },
+      {
+        "The result is independent of the mass regulator.": "independent of this regulator"
+      },
+      {
+        "The shower-subtracted residuals improve accuracy.": "improved compared"
+      },
+      {
+        "The method is valid over the entire phase space.": "entire phase space"
+      },
+      {
+        "The compensation between IR singularities ensures exactness.": "compensation"
+      }
+    ],
+    "ethical_considerations": "",
+    "key_figures_tables": [
+      {
+        "Equation (1) presents the QCD resummation formula.": "dˆσexp"
+      },
+      {
+        "Equation (2) presents the QED⊗QCD resummation formula.": "dˆσexp"
+      },
+      {
+        "Equation (6) defines the QED⊗QCD exponent γQCED.": "γQCED"
+      },
+      {
+        "Equation (8) lists the numerical results for rexp.": "1.1901"
+      }
+    ],
+    "top_influential_citations": "",
+    "three_takeaways": [
+      {
+        "1. The core contribution is the exact QED⊗QCD resummation theory.": "QED⊗QCD resummation"
+      },
+      {
+        "2. The strongest evidence is the 0.3% QED effect at LHC.": ".3%"
+      },
+      {
+        "3. The future path is full MC realization with HERWIG/PYTHIA.": "HERWIG and PYTHIA"
+      }
+    ]
+  },
+  "judge_context": "Executive Summary\nThis paper presents a theoretical framework for the simultaneous resummation of Quantum Electrodynamics (QED) and Quantum Chromodynamics (QCD) effects, termed QED⊗QCD resummation, aimed at achieving high-precision predictions for LHC luminosity processes. The authors argue that to match the expected 2% experimental luminosity precision, theoretical predictions for single heavy gauge boson production (W, Z) must reach a 0.67% precision level. This requires controlling multiple gluon and photon radiative effects. The study extends the Yennie-Frautschi-Suura (YFS) exponentiation theory, originally for QED, to non-Abelian QCD, and further to the combined QED⊗QCD sector. The core contribution is an exact rearrangement of the perturbative series that allows for the simultaneous resummation of soft and collinear divergences in both αs and α without double-counting. The authors demonstrate how this exact resummation can be matched with standard parton shower Monte Carlo generators like HERWIG and PYTHIA. They propose two matching strategies: a standard pT matching and a more precise 'shower-subtracted' residual method. Using semi-analytical methods and structure functions, the paper calculates threshold corrections for heavy gauge boson production at the LHC and Tevatron. The results show that QED effects contribute approximately 0.3% to the cross-section ratio relative to the Born level, which is significant for the targeted 1% theoretical precision. The QCD effects are larger, with the total ratio (QCD+QED) being 1.1901 at the LHC compared to 1.1872 for QCD alone. The paper concludes that QED effects are essential for precision LHC physics and outlines the path toward full Monte Carlo realization of these exact results.\n\nResearch Context\nThe LHC environment requires theoretical precision tags of 0.67% for luminosity processes. This precision is necessary to avoid compromising the overall LHC luminosity determinations. Multiple gluon and photon radiative effects must be controlled at this precision. Previous studies showed QED contributions in structure functions are around 0.3%. This magnitude is significant relative to the desired error budget. Existing resummation theories like SCET treat soft-collinear effects but are approximate. The authors propose an exact rearrangement of the perturbative series. This approach avoids the approximations found in other resummation frameworks.\n\nResearch Question And Hypothesis\nThe central question is how to achieve 0.67% theoretical precision for LHC luminosity processes. The hypothesis is that simultaneous QED and QCD resummation is required. The authors predict that QED effects are non-negligible at the 0.3% level. They hypothesize that an exact YFS-style resummation can be matched to parton showers. The predicted outcome is a framework that avoids double-counting of effects. The theory aims to be valid to all orders in αs and α. The authors expect the QED contribution to be stable under scale variations. They anticipate that QED effects are similar in size to structure function results.\n\nMethodological Details\nThe study focuses on single heavy gauge boson production at hadron colliders. The process considered is q + q' -> V + n(g) + X. The vector boson V can be W± or Z. The leptons ℓ and ℓ' depend on the boson type. The cross-section is expressed using an exponentiated form with residuals. The residuals β~n are free of infrared divergences to all orders. The QED⊗QCD theory is obtained by simultaneously exponentiating IR terms. The new residuals β~n,m include n hard gluons and m hard photons. The functions SUMIR and D are modified to include QED contributions. The average Bjorken x values indicate QCD corrections happen earlier. The leading β~0,0 level provides a good estimate of the interplay. The hadronic cross-section is constructed using standard convolution formulas. Structure functions from Ref. [23] are used for semi-analytical calculations. The factorization scale µ is the largest pT of gluon emission. Collinear singularities are factorized to ensure convergence. The calculation uses the narrow resonance approximation is not used. The ratio rexp = σexp/σBorn is computed with and without QED. The QED⊗QCD exponent γQCED combines QED and QCD contributions. The function FYFS and δYFS are well-known YFS functions. The calculation includes the Riemann zeta function ζ(2). Euler's constant γE is included in the exponentiation.\n\nProcedures And Architectures\nThe procedure involves combining exact YFS resummation with HERWIG or PYTHIA. The parton shower is generated from the initial (x1, x2) point. The factorization scale µ is provided by the structure functions. The combination can be improved with exact fully exclusive results. The current state of the art combines O(αs) corrections with HERWIG. The resummation is valid over the entire phase space. DGLAP evolution factorizes terms involving powers of the big log. The evolved structure function sums leading big logs. The result is independent of the quark mass mq as mq -> 0. In the residuals, gluon radiation below scale µ is omitted. This is achieved by replacing Ls with Lnls in most cases. The pT in gluon emission is limited to avoid double counting. The standard Les Houches procedure is used for showering. Backward evolution of initial partons is employed. A more accurate method uses shower-subtracted residuals. The shower formula is expanded to match exact perturbative results. New residuals are calculated for the entire gluon pT phase space. This approach improves accuracy compared to the first matching procedure. The shower-subtracted residuals were realized for Bhabha scattering. The calculation uses semi-analytical methods for threshold corrections. The Monte Carlo realization is planned for future work.\n\nKey Results\nThe ratio rexp for QCED at the LHC is 1.1901. The ratio rexp for QCD only at the LHC is 1.1872. The ratio rexp for QCED at the Tevatron is 1.1911. The ratio rexp for QCD only at the Tevatron is 1.1879. The QED effect is at the level of 0.3% at both LHC and FNAL. The QED effect is stable under scale variations. The results agree with previous literature on QED and QCD sizes. The QED effect is similar in size to structure function results. The QCD dominant corrections happen an order of magnitude earlier. The leading β~0,0 level gives a good estimate of the interplay. The QED contribution is necessary for LHC theory predictions at ≲1%. The analysis of W production is in progress. The framework allows for full MC event generator realization. The combination with HERWIG and PYTHIA is possible in principle. The semi-analytical results for QED threshold effects agree with Z production literature.\n\nInterpretation And Theoretical Implications\nThe theory provides an exact rearrangement of the perturbative series. This allows for systematic improvement without double-counting. The framework opens the way to desired theoretical precision tags. QED effects are significant enough to require inclusion in precision studies. The method is applicable to an exact treatment of the phase space. The approach is more convergent than analogs in LEP physics. The theory supports the realization of complete O(α2s, ααs, α2) results. This is crucial for FNAL, LHC, RHIC, and ILC physics. The exactness of the result distinguishes it from approximate resummations. The compensation between IR singularities is essential for QCD. The method allows for event-by-event realization in MC methods. The theory is based on the N=1 term in the exponent. The residuals account for remaining contributions exactly to all orders. The framework is robust against regulator choices.\n\nContradictions And Limitations\nThe paper notes that the exactness of the result is sometimes confused. The result does not show an explicit ordered exponential operator. The matrix elements of operators are evaluated and written as residuals. The current state of the art averages the gluon azimuthal angle. The Monte Carlo realization is not yet complete and will appear elsewhere. The analysis of W production is still in progress. The paper relies on structure functions from a specific reference. The semi-analytical methods are used instead of full MC for now. The double counting issue is addressed by pT matching or subtraction. The exactness depends on the correct isolation of residuals. The framework assumes the validity of the YFS exponentiation. The paper does not provide a full numerical MC implementation.\n\nClaims\nQED effects are significant for LHC luminosity precision. QED contributions are at the 0.3% level. This is almost half of the error budget. QED is needed for predictions at ≲1%. Some might argue QED is negligible compared to QCD. However, the precision requirement makes it necessary. LHC luminosity determinations require QED resummation. Future MC generators must include QED⊗QCD effects.\nThe proposed resummation is exact and avoids double-counting. The result is an exact rearrangement of the series. Residuals are free of infrared divergences. The method avoids double-counting of effects. Other resummation theories are approximate. This allows for systematic improvement to all orders. It provides a firm theoretical basis for precision physics.\n\nRobustness And Ablation Notes\nThe QED effect is stable under scale variations. The result is independent of the mass regulator. The shower-subtracted residuals improve accuracy. The method is valid over the entire phase space. The compensation between IR singularities ensures exactness.\n\nKey Figures Tables\nEquation (1) presents the QCD resummation formula. Equation (2) presents the QED⊗QCD resummation formula. Equation (6) defines the QED⊗QCD exponent γQCED. Equation (8) lists the numerical results for rexp.\n\nThree Takeaways\n1. The core contribution is the exact QED⊗QCD resummation theory. 2. The strongest evidence is the 0.3% QED effect at LHC. 3. The future path is full MC realization with HERWIG/PYTHIA.",
+  "evidence_spans": [
+    {
+      "path": "research_context[0]",
+      "quote": "0.67% level",
+      "start": 950,
+      "end": 961,
+      "typographic_alignment": false,
+      "original_quote": "0.67% level"
+    },
+    {
+      "path": "research_context[1]",
+      "quote": "luminosity determinations",
+      "start": 1050,
+      "end": 1075,
+      "typographic_alignment": false,
+      "original_quote": "luminosity determinations"
+    },
+    {
+      "path": "research_context[2]",
+      "quote": "radiative eﬀects",
+      "start": 1124,
+      "end": 1140,
+      "typographic_alignment": false,
+      "original_quote": "radiative eﬀects"
+    },
+    {
+      "path": "research_context[3]",
+      "quote": "∼0.3%",
+      "start": 3130,
+      "end": 3135,
+      "typographic_alignment": false,
+      "original_quote": "∼0.3%"
+    },
+    {
+      "path": "research_context[4]",
+      "quote": "error budget",
+      "start": 3164,
+      "end": 3176,
+      "typographic_alignment": false,
+      "original_quote": "error budget"
+    },
+    {
+      "path": "research_context[5]",
+      "quote": "soft-collinear eﬀective theory",
+      "start": 2419,
+      "end": 2449,
+      "typographic_alignment": false,
+      "original_quote": "soft-collinear eﬀective theory"
+    },
+    {
+      "path": "research_context[6]",
+      "quote": "exact rearrangement",
+      "start": 1877,
+      "end": 1896,
+      "typographic_alignment": false,
+      "original_quote": "exact rearrangement"
+    },
+    {
+      "path": "research_context[7]",
+      "quote": "are approximate",
+      "start": 2353,
+      "end": 2368,
+      "typographic_alignment": false,
+      "original_quote": "are approximate"
+    },
+    {
+      "path": "research_question_and_hypothesis[0]",
+      "quote": "0.67% level",
+      "start": 950,
+      "end": 961,
+      "typographic_alignment": false,
+      "original_quote": "0.67% level"
+    },
+    {
+      "path": "research_question_and_hypothesis[1]",
+      "quote": "simultaneous resummation",
+      "start": 1242,
+      "end": 1266,
+      "typographic_alignment": false,
+      "original_quote": "simultaneous resummation"
+    },
+    {
+      "path": "research_question_and_hypothesis[2]",
+      "quote": "∼0.3%",
+      "start": 3130,
+      "end": 3135,
+      "typographic_alignment": false,
+      "original_quote": "∼0.3%"
+    },
+    {
+      "path": "research_question_and_hypothesis[3]",
+      "quote": "shower/ME matching",
+      "start": 3672,
+      "end": 3690,
+      "typographic_alignment": false,
+      "original_quote": "shower/ME matching"
+    },
+    {
+      "path": "research_question_and_hypothesis[4]",
+      "quote": "double-counting",
+      "start": 1550,
+      "end": 1565,
+      "typographic_alignment": false,
+      "original_quote": "double-counting"
+    },
+    {
+      "path": "research_question_and_hypothesis[5]",
+      "quote": "all orders",
+      "start": 1593,
+      "end": 1603,
+      "typographic_alignment": false,
+      "original_quote": "all orders"
+    },
+    {
+      "path": "research_question_and_hypothesis[6]",
+      "quote": "scale variations",
+      "start": 14622,
+      "end": 14638,
+      "typographic_alignment": false,
+      "original_quote": "scale variations"
+    },
+    {
+      "path": "research_question_and_hypothesis[7]",
+      "quote": "structure function results",
+      "start": 14801,
+      "end": 14827,
+      "typographic_alignment": false,
+      "original_quote": "structure function results"
+    },
+    {
+      "path": "methodological_details[0]",
+      "quote": "single heavy gauge boson",
+      "start": 391,
+      "end": 415,
+      "typographic_alignment": false,
+      "original_quote": "single heavy gauge boson"
+    },
+    {
+      "path": "methodological_details[1]",
+      "quote": "q + ¯q′",
+      "start": 3842,
+      "end": 3849,
+      "typographic_alignment": false,
+      "original_quote": "q + ¯q′"
+    },
+    {
+      "path": "methodological_details[2]",
+      "quote": "V = W ±",
+      "start": 3888,
+      "end": 3895,
+      "typographic_alignment": false,
+      "original_quote": "V = W ±"
+    },
+    {
+      "path": "methodological_details[3]",
+      "quote": "ℓ=\ne, µ",
+      "start": 3904,
+      "end": 3911,
+      "typographic_alignment": true,
+      "original_quote": "ℓ= e, µ"
+    },
+    {
+      "path": "methodological_details[4]",
+      "quote": "dˆσexp",
+      "start": 4082,
+      "end": 4088,
+      "typographic_alignment": false,
+      "original_quote": "dˆσexp"
+    },
+    {
+      "path": "methodological_details[5]",
+      "quote": "free of all",
+      "start": 4295,
+      "end": 4306,
+      "typographic_alignment": false,
+      "original_quote": "free of all"
+    },
+    {
+      "path": "methodological_details[6]",
+      "quote": "simultaneously exponentiating",
+      "start": 5554,
+      "end": 5583,
+      "typographic_alignment": false,
+      "original_quote": "simultaneously exponentiating"
+    },
+    {
+      "path": "methodological_details[7]",
+      "quote": "n hard\ngluons",
+      "start": 5964,
+      "end": 5977,
+      "typographic_alignment": true,
+      "original_quote": "n hard gluons"
+    },
+    {
+      "path": "methodological_details[8]",
+      "quote": "SUMIR(QCED)",
+      "start": 5697,
+      "end": 5708,
+      "typographic_alignment": false,
+      "original_quote": "SUMIR(QCED)"
+    },
+    {
+      "path": "methodological_details[9]",
+      "quote": "QCD dominant",
+      "start": 7362,
+      "end": 7374,
+      "typographic_alignment": false,
+      "original_quote": "QCD dominant"
+    },
+    {
+      "path": "methodological_details[10]",
+      "quote": "β0,0-level",
+      "start": 7474,
+      "end": 7484,
+      "typographic_alignment": false,
+      "original_quote": "β0,0-level"
+    },
+    {
+      "path": "methodological_details[11]",
+      "quote": "usual formula",
+      "start": 7916,
+      "end": 7929,
+      "typographic_alignment": false,
+      "original_quote": "usual formula"
+    },
+    {
+      "path": "methodological_details[12]",
+      "quote": "structure functions",
+      "start": 3039,
+      "end": 3058,
+      "typographic_alignment": false,
+      "original_quote": "structure functions"
+    },
+    {
+      "path": "methodological_details[13]",
+      "quote": "largest pT",
+      "start": 10083,
+      "end": 10093,
+      "typographic_alignment": false,
+      "original_quote": "largest pT"
+    },
+    {
+      "path": "methodological_details[14]",
+      "quote": "collinear singularities",
+      "start": 11327,
+      "end": 11350,
+      "typographic_alignment": false,
+      "original_quote": "collinear singularities"
+    },
+    {
+      "path": "methodological_details[15]",
+      "quote": "narrow resonance",
+      "start": 13325,
+      "end": 13341,
+      "typographic_alignment": false,
+      "original_quote": "narrow resonance"
+    },
+    {
+      "path": "methodological_details[16]",
+      "quote": "σexp/σBorn",
+      "start": 13289,
+      "end": 13299,
+      "typographic_alignment": false,
+      "original_quote": "σexp/σBorn"
+    },
+    {
+      "path": "methodological_details[17]",
+      "quote": "γQCED",
+      "start": 13686,
+      "end": 13691,
+      "typographic_alignment": false,
+      "original_quote": "γQCED"
+    },
+    {
+      "path": "methodological_details[18]",
+      "quote": "FYFS(γQCED)",
+      "start": 13700,
+      "end": 13711,
+      "typographic_alignment": false,
+      "original_quote": "FYFS(γQCED)"
+    },
+    {
+      "path": "methodological_details[19]",
+      "quote": "ζ(2)",
+      "start": 14221,
+      "end": 14225,
+      "typographic_alignment": false,
+      "original_quote": "ζ(2)"
+    },
+    {
+      "path": "methodological_details[20]",
+      "quote": "Euler’s constant",
+      "start": 14314,
+      "end": 14330,
+      "typographic_alignment": false,
+      "original_quote": "Euler’s constant"
+    },
+    {
+      "path": "procedures_and_architectures[0]",
+      "quote": "HERWIG and/or\nPYTHIA",
+      "start": 8592,
+      "end": 8612,
+      "typographic_alignment": true,
+      "original_quote": "HERWIG and/or PYTHIA"
+    },
+    {
+      "path": "procedures_and_architectures[1]",
+      "quote": "initial (x1, x2)",
+      "start": 8679,
+      "end": 8695,
+      "typographic_alignment": false,
+      "original_quote": "initial (x1, x2)"
+    },
+    {
+      "path": "procedures_and_architectures[2]",
+      "quote": "factorization scale µ",
+      "start": 8705,
+      "end": 8726,
+      "typographic_alignment": false,
+      "original_quote": "factorization scale µ"
+    },
+    {
+      "path": "procedures_and_architectures[3]",
+      "quote": "fully exclusive results",
+      "start": 8855,
+      "end": 8878,
+      "typographic_alignment": false,
+      "original_quote": "fully exclusive results"
+    },
+    {
+      "path": "procedures_and_architectures[4]",
+      "quote": "O(αs) correction",
+      "start": 9034,
+      "end": 9050,
+      "typographic_alignment": false,
+      "original_quote": "O(αs) correction"
+    },
+    {
+      "path": "procedures_and_architectures[5]",
+      "quote": "entire phase space",
+      "start": 9345,
+      "end": 9363,
+      "typographic_alignment": false,
+      "original_quote": "entire phase space"
+    },
+    {
+      "path": "procedures_and_architectures[6]",
+      "quote": "DGLAP",
+      "start": 9654,
+      "end": 9659,
+      "typographic_alignment": false,
+      "original_quote": "DGLAP"
+    },
+    {
+      "path": "procedures_and_architectures[7]",
+      "quote": "leading big logs",
+      "start": 9878,
+      "end": 9894,
+      "typographic_alignment": false,
+      "original_quote": "leading big logs"
+    },
+    {
+      "path": "procedures_and_architectures[8]",
+      "quote": "mq ↓0",
+      "start": 10014,
+      "end": 10019,
+      "typographic_alignment": false,
+      "original_quote": "mq ↓0"
+    },
+    {
+      "path": "procedures_and_architectures[9]",
+      "quote": "scales below µ",
+      "start": 10336,
+      "end": 10350,
+      "typographic_alignment": false,
+      "original_quote": "scales below µ"
+    },
+    {
+      "path": "procedures_and_architectures[10]",
+      "quote": "Lnls",
+      "start": 10427,
+      "end": 10431,
+      "typographic_alignment": false,
+      "original_quote": "Lnls"
+    },
+    {
+      "path": "procedures_and_architectures[11]",
+      "quote": "double count",
+      "start": 6938,
+      "end": 6950,
+      "typographic_alignment": false,
+      "original_quote": "double count"
+    },
+    {
+      "path": "procedures_and_architectures[12]",
+      "quote": "Les Houches procedure",
+      "start": 11481,
+      "end": 11502,
+      "typographic_alignment": false,
+      "original_quote": "Les Houches procedure"
+    },
+    {
+      "path": "procedures_and_architectures[13]",
+      "quote": "backward evolution",
+      "start": 11574,
+      "end": 11592,
+      "typographic_alignment": false,
+      "original_quote": "backward evolution"
+    },
+    {
+      "path": "procedures_and_architectures[14]",
+      "quote": "shower subtracted",
+      "start": 12640,
+      "end": 12657,
+      "typographic_alignment": false,
+      "original_quote": "shower subtracted"
+    },
+    {
+      "path": "procedures_and_architectures[15]",
+      "quote": "perturbative expansion",
+      "start": 12358,
+      "end": 12380,
+      "typographic_alignment": false,
+      "original_quote": "perturbative expansion"
+    },
+    {
+      "path": "procedures_and_architectures[16]",
+      "quote": "entire gluon pT",
+      "start": 12756,
+      "end": 12771,
+      "typographic_alignment": false,
+      "original_quote": "entire gluon pT"
+    },
+    {
+      "path": "procedures_and_architectures[17]",
+      "quote": "improved compared",
+      "start": 12850,
+      "end": 12867,
+      "typographic_alignment": false,
+      "original_quote": "improved compared"
+    },
+    {
+      "path": "procedures_and_architectures[18]",
+      "quote": "Bhabha process",
+      "start": 13138,
+      "end": 13152,
+      "typographic_alignment": false,
+      "original_quote": "Bhabha process"
+    },
+    {
+      "path": "procedures_and_architectures[19]",
+      "quote": "semi-analytical methods",
+      "start": 8083,
+      "end": 8106,
+      "typographic_alignment": false,
+      "original_quote": "semi-analytical methods"
+    },
+    {
+      "path": "procedures_and_architectures[20]",
+      "quote": "Monte Carlo realization",
+      "start": 8202,
+      "end": 8225,
+      "typographic_alignment": false,
+      "original_quote": "Monte Carlo realization"
+    },
+    {
+      "path": "key_results[0]",
+      "quote": "1.1901",
+      "start": 14430,
+      "end": 14436,
+      "typographic_alignment": false,
+      "original_quote": "1.1901"
+    },
+    {
+      "path": "key_results[1]",
+      "quote": "1.1872",
+      "start": 14458,
+      "end": 14464,
+      "typographic_alignment": false,
+      "original_quote": "1.1872"
+    },
+    {
+      "path": "key_results[2]",
+      "quote": "1.1911",
+      "start": 14476,
+      "end": 14482,
+      "typographic_alignment": false,
+      "original_quote": "1.1911"
+    },
+    {
+      "path": "key_results[3]",
+      "quote": "1.1879",
+      "start": 14509,
+      "end": 14515,
+      "typographic_alignment": false,
+      "original_quote": "1.1879"
+    },
+    {
+      "path": "key_results[4]",
+      "quote": ".3%",
+      "start": 3132,
+      "end": 3135,
+      "typographic_alignment": false,
+      "original_quote": ".3%"
+    },
+    {
+      "path": "key_results[5]",
+      "quote": "scale variations",
+      "start": 14622,
+      "end": 14638,
+      "typographic_alignment": false,
+      "original_quote": "scale variations"
+    },
+    {
+      "path": "key_results[6]",
+      "quote": "Refs. [15,16,18–20]",
+      "start": 14673,
+      "end": 14692,
+      "typographic_alignment": false,
+      "original_quote": "Refs. [15,16,18–20]"
+    },
+    {
+      "path": "key_results[7]",
+      "quote": "structure function results",
+      "start": 14801,
+      "end": 14827,
+      "typographic_alignment": false,
+      "original_quote": "structure function results"
+    },
+    {
+      "path": "key_results[8]",
+      "quote": "order of magnitude",
+      "start": 7397,
+      "end": 7415,
+      "typographic_alignment": false,
+      "original_quote": "order of magnitude"
+    },
+    {
+      "path": "key_results[9]",
+      "quote": "β0,0-level",
+      "start": 7474,
+      "end": 7484,
+      "typographic_alignment": false,
+      "original_quote": "β0,0-level"
+    },
+    {
+      "path": "key_results[10]",
+      "quote": "≲1%",
+      "start": 15344,
+      "end": 15347,
+      "typographic_alignment": false,
+      "original_quote": "≲1%"
+    },
+    {
+      "path": "key_results[11]",
+      "quote": "W production",
+      "start": 15385,
+      "end": 15397,
+      "typographic_alignment": false,
+      "original_quote": "W production"
+    },
+    {
+      "path": "key_results[12]",
+      "quote": "full MC event",
+      "start": 15054,
+      "end": 15067,
+      "typographic_alignment": false,
+      "original_quote": "full MC event"
+    },
+    {
+      "path": "key_results[13]",
+      "quote": "HERWIG and PYTHIA",
+      "start": 15143,
+      "end": 15160,
+      "typographic_alignment": false,
+      "original_quote": "HERWIG and PYTHIA"
+    },
+    {
+      "path": "key_results[14]",
+      "quote": "Z production",
+      "start": 869,
+      "end": 881,
+      "typographic_alignment": false,
+      "original_quote": "Z production"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[0]",
+      "quote": "exact rearrangement",
+      "start": 1877,
+      "end": 1896,
+      "typographic_alignment": false,
+      "original_quote": "exact rearrangement"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[1]",
+      "quote": "double-counting",
+      "start": 1550,
+      "end": 1565,
+      "typographic_alignment": false,
+      "original_quote": "double-counting"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[2]",
+      "quote": "theoretical precision tag",
+      "start": 782,
+      "end": 807,
+      "typographic_alignment": false,
+      "original_quote": "theoretical precision tag"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[3]",
+      "quote": "∼0.3%",
+      "start": 3130,
+      "end": 3135,
+      "typographic_alignment": false,
+      "original_quote": "∼0.3%"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[4]",
+      "quote": "exact treatment",
+      "start": 9402,
+      "end": 9417,
+      "typographic_alignment": false,
+      "original_quote": "exact treatment"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[5]",
+      "quote": "much more convergent",
+      "start": 11376,
+      "end": 11396,
+      "typographic_alignment": false,
+      "original_quote": "much more convergent"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[6]",
+      "quote": "O(α2\ns, ααs, α2)",
+      "start": 15494,
+      "end": 15510,
+      "typographic_alignment": true,
+      "original_quote": "O(α2s, ααs, α2)"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[7]",
+      "quote": "FNAL/LHC/RHIC/ILC",
+      "start": 15536,
+      "end": 15553,
+      "typographic_alignment": false,
+      "original_quote": "FNAL/LHC/RHIC/ILC"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[8]",
+      "quote": "exact result",
+      "start": 2272,
+      "end": 2284,
+      "typographic_alignment": false,
+      "original_quote": "exact result"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[9]",
+      "quote": "compensation",
+      "start": 4528,
+      "end": 4540,
+      "typographic_alignment": false,
+      "original_quote": "compensation"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[10]",
+      "quote": "event-by-event basis",
+      "start": 1396,
+      "end": 1416,
+      "typographic_alignment": false,
+      "original_quote": "event-by-event basis"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[11]",
+      "quote": "N = 1 term",
+      "start": 1941,
+      "end": 1951,
+      "typographic_alignment": false,
+      "original_quote": "N = 1 term"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[12]",
+      "quote": "all orders in αs",
+      "start": 2232,
+      "end": 2248,
+      "typographic_alignment": false,
+      "original_quote": "all orders in αs"
+    },
+    {
+      "path": "interpretation_and_theoretical_implications[13]",
+      "quote": "independent of this regulator",
+      "start": 10847,
+      "end": 10876,
+      "typographic_alignment": false,
+      "original_quote": "independent of this regulator"
+    },
+    {
+      "path": "contradictions_and_limitations[0]",
+      "quote": "confusion seems to exist",
+      "start": 5069,
+      "end": 5093,
+      "typographic_alignment": false,
+      "original_quote": "confusion seems to exist"
+    },
+    {
+      "path": "contradictions_and_limitations[1]",
+      "quote": "show explicitly an ordered ex-",
+      "start": 5114,
+      "end": 5144,
+      "typographic_alignment": false,
+      "original_quote": "show explicitly an ordered ex-"
+    },
+    {
+      "path": "contradictions_and_limitations[2]",
+      "quote": "matrix elements",
+      "start": 5298,
+      "end": 5313,
+      "typographic_alignment": false,
+      "original_quote": "matrix elements"
+    },
+    {
+      "path": "contradictions_and_limitations[3]",
+      "quote": "azimuthal angle is averaged",
+      "start": 9080,
+      "end": 9107,
+      "typographic_alignment": false,
+      "original_quote": "azimuthal angle is averaged"
+    },
+    {
+      "path": "contradictions_and_limitations[4]",
+      "quote": "appear elsewhere",
+      "start": 8231,
+      "end": 8247,
+      "typographic_alignment": false,
+      "original_quote": "appear elsewhere"
+    },
+    {
+      "path": "contradictions_and_limitations[5]",
+      "quote": "in progress",
+      "start": 15401,
+      "end": 15412,
+      "typographic_alignment": false,
+      "original_quote": "in progress"
+    },
+    {
+      "path": "contradictions_and_limitations[6]",
+      "quote": "Ref. [23]",
+      "start": 8136,
+      "end": 8145,
+      "typographic_alignment": false,
+      "original_quote": "Ref. [23]"
+    },
+    {
+      "path": "contradictions_and_limitations[7]",
+      "quote": "semi-analytical methods",
+      "start": 8083,
+      "end": 8106,
+      "typographic_alignment": false,
+      "original_quote": "semi-analytical methods"
+    },
+    {
+      "path": "contradictions_and_limitations[8]",
+      "quote": "double counting",
+      "start": 6938,
+      "end": 6953,
+      "typographic_alignment": false,
+      "original_quote": "double counting"
+    },
+    {
+      "path": "contradictions_and_limitations[9]",
+      "quote": "isolate ˜¯βj",
+      "start": 4702,
+      "end": 4714,
+      "typographic_alignment": false,
+      "original_quote": "isolate ˜¯βj"
+    },
+    {
+      "path": "contradictions_and_limitations[10]",
+      "quote": "YFS theory",
+      "start": 3466,
+      "end": 3476,
+      "typographic_alignment": false,
+      "original_quote": "YFS theory"
+    },
+    {
+      "path": "contradictions_and_limitations[11]",
+      "quote": "Monte Carlo realization",
+      "start": 8202,
+      "end": 8225,
+      "typographic_alignment": false,
+      "original_quote": "Monte Carlo realization"
+    },
+    {
+      "path": "robustness_and_ablation_notes[0]",
+      "quote": "scale variations",
+      "start": 14622,
+      "end": 14638,
+      "typographic_alignment": false,
+      "original_quote": "scale variations"
+    },
+    {
+      "path": "robustness_and_ablation_notes[1]",
+      "quote": "independent of this regulator",
+      "start": 10847,
+      "end": 10876,
+      "typographic_alignment": false,
+      "original_quote": "independent of this regulator"
+    },
+    {
+      "path": "robustness_and_ablation_notes[2]",
+      "quote": "improved compared",
+      "start": 12850,
+      "end": 12867,
+      "typographic_alignment": false,
+      "original_quote": "improved compared"
+    },
+    {
+      "path": "robustness_and_ablation_notes[3]",
+      "quote": "entire phase space",
+      "start": 9345,
+      "end": 9363,
+      "typographic_alignment": false,
+      "original_quote": "entire phase space"
+    },
+    {
+      "path": "robustness_and_ablation_notes[4]",
+      "quote": "compensation",
+      "start": 4528,
+      "end": 4540,
+      "typographic_alignment": false,
+      "original_quote": "compensation"
+    },
+    {
+      "path": "key_figures_tables[0]",
+      "quote": "dˆσexp",
+      "start": 4082,
+      "end": 4088,
+      "typographic_alignment": false,
+      "original_quote": "dˆσexp"
+    },
+    {
+      "path": "key_figures_tables[1]",
+      "quote": "dˆσexp",
+      "start": 4082,
+      "end": 4088,
+      "typographic_alignment": false,
+      "original_quote": "dˆσexp"
+    },
+    {
+      "path": "key_figures_tables[2]",
+      "quote": "γQCED",
+      "start": 13686,
+      "end": 13691,
+      "typographic_alignment": false,
+      "original_quote": "γQCED"
+    },
+    {
+      "path": "key_figures_tables[3]",
+      "quote": "1.1901",
+      "start": 14430,
+      "end": 14436,
+      "typographic_alignment": false,
+      "original_quote": "1.1901"
+    },
+    {
+      "path": "three_takeaways[0]",
+      "quote": "QED⊗QCD resummation",
+      "start": 248,
+      "end": 267,
+      "typographic_alignment": false,
+      "original_quote": "QED⊗QCD resummation"
+    },
+    {
+      "path": "three_takeaways[1]",
+      "quote": ".3%",
+      "start": 3132,
+      "end": 3135,
+      "typographic_alignment": false,
+      "original_quote": ".3%"
+    },
+    {
+      "path": "three_takeaways[2]",
+      "quote": "HERWIG and PYTHIA",
+      "start": 15143,
+      "end": 15160,
+      "typographic_alignment": false,
+      "original_quote": "HERWIG and PYTHIA"
+    },
+    {
+      "path": "claims[0].supporting_evidence[0]",
+      "quote": "∼0.3%",
+      "start": 3130,
+      "end": 3135,
+      "typographic_alignment": false,
+      "original_quote": "∼0.3%"
+    },
+    {
+      "path": "claims[0].supporting_evidence[1]",
+      "quote": "error budget",
+      "start": 3164,
+      "end": 3176,
+      "typographic_alignment": false,
+      "original_quote": "error budget"
+    },
+    {
+      "path": "claims[0].supporting_evidence[2]",
+      "quote": "≲1%",
+      "start": 15344,
+      "end": 15347,
+      "typographic_alignment": false,
+      "original_quote": "≲1%"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[0]",
+      "quote": "QCD dominant",
+      "start": 7362,
+      "end": 7374,
+      "typographic_alignment": false,
+      "original_quote": "QCD dominant"
+    },
+    {
+      "path": "claims[0].contradicting_evidence[1]",
+      "quote": "0.67% level",
+      "start": 950,
+      "end": 961,
+      "typographic_alignment": false,
+      "original_quote": "0.67% level"
+    },
+    {
+      "path": "claims[0].implications[0]",
+      "quote": "luminosity determinations",
+      "start": 1050,
+      "end": 1075,
+      "typographic_alignment": false,
+      "original_quote": "luminosity determinations"
+    },
+    {
+      "path": "claims[0].implications[1]",
+      "quote": "MC methods",
+      "start": 9474,
+      "end": 9484,
+      "typographic_alignment": false,
+      "original_quote": "MC methods"
+    },
+    {
+      "path": "claims[1].supporting_evidence[0]",
+      "quote": "exact rearrangement",
+      "start": 1877,
+      "end": 1896,
+      "typographic_alignment": false,
+      "original_quote": "exact rearrangement"
+    },
+    {
+      "path": "claims[1].supporting_evidence[1]",
+      "quote": "free of all",
+      "start": 4295,
+      "end": 4306,
+      "typographic_alignment": false,
+      "original_quote": "free of all"
+    },
+    {
+      "path": "claims[1].supporting_evidence[2]",
+      "quote": "double-counting",
+      "start": 1550,
+      "end": 1565,
+      "typographic_alignment": false,
+      "original_quote": "double-counting"
+    },
+    {
+      "path": "claims[1].contradicting_evidence[0]",
+      "quote": "are approximate",
+      "start": 2353,
+      "end": 2368,
+      "typographic_alignment": false,
+      "original_quote": "are approximate"
+    },
+    {
+      "path": "claims[1].implications[0]",
+      "quote": "all orders",
+      "start": 1593,
+      "end": 1603,
+      "typographic_alignment": false,
+      "original_quote": "all orders"
+    },
+    {
+      "path": "claims[1].implications[1]",
+      "quote": "theoretical basis",
+      "start": 15440,
+      "end": 15457,
+      "typographic_alignment": false,
+      "original_quote": "theoretical basis"
+    }
+  ],
+  "attempts": [
+    {
+      "response": "{\n\"title\": \"QED⊗QCD Resummation and Shower/ME Matching for LHC Physics\",\n\"authors\": \"B.F.L. Ward and S.A. Yost\",\n\"field_subfield\": \"High Energy Physics - Phenomenology (hep-ph)\",\n\"type_of_paper\": \"Theoretical Physics / Conference Proceedings\",\n\"executive_summary\": \"This paper presents a theoretical framework for the simultaneous resummation of Quantum Electrodynamics (QED) and Quantum Chromodynamics (QCD) effects, termed QED⊗QCD resummation, aimed at achieving high-precision predictions for LHC luminosity processes. The authors argue that to match the expected 2% experimental luminosity precision, theoretical predictions for single heavy gauge boson production (W, Z) must reach a 0.67% precision level. This requires controlling multiple gluon and photon radiative effects. The study extends the Yennie-Frautschi-Suura (YFS) exponentiation theory, originally for QED, to non-Abelian QCD, and further to the combined QED⊗QCD sector. The core contribution is an exact rearrangement of the perturbative series that allows for the simultaneous resummation of soft and collinear divergences in both αs and α without double-counting. The authors demonstrate how this exact resummation can be matched with standard parton shower Monte Carlo generators like HERWIG and PYTHIA. They propose two matching strategies: a standard pT matching and a more precise 'shower-subtracted' residual method. Using semi-analytical methods and structure functions, the paper calculates threshold corrections for heavy gauge boson production at the LHC and Tevatron. The results show that QED effects contribute approximately 0.3% to the cross-section ratio relative to the Born level, which is significant for the targeted 1% theoretical precision. The QCD effects are larger, with the total ratio (QCD+QED) being 1.1901 at the LHC compared to 1.1872 for QCD alone. The paper concludes that QED effects are essential for precision LHC physics and outlines the path toward full Monte Carlo realization of these exact results.\",\n\"research_context\": [\n{ \"The LHC environment requires theoretical precision tags of 0.67% for luminosity processes.\": \"0.67% level\" },\n{ \"This precision is necessary to avoid compromising the overall LHC luminosity determinations.\": \"luminosity determinations\" },\n{ \"Multiple gluon and photon radiative effects must be controlled at this precision.\": \"radiative eﬀects\" },\n{ \"Previous studies showed QED contributions in structure functions are around 0.3%.\": \"∼0.3%\" },\n{ \"This magnitude is significant relative to the desired error budget.\": \"error budget\" },\n{ \"Existing resummation theories like SCET treat soft-collinear effects but are approximate.\": \"soft-collinear eﬀective theory\" },\n{ \"The authors propose an exact rearrangement of the perturbative series.\": \"exact rearrangement\" },\n{ \"This approach avoids the approximations found in other resummation frameworks.\": \"are approximate\" }\n],\n\"research_question_and_hypothesis\": [\n{ \"The central question is how to achieve 0.67% theoretical precision for LHC luminosity processes.\": \"0.67% level\" },\n{ \"The hypothesis is that simultaneous QED and QCD resummation is required.\": \"simultaneous resummation\" },\n{ \"The authors predict that QED effects are non-negligible at the 0.3% level.\": \"∼0.3%\" },\n{ \"They hypothesize that an exact YFS-style resummation can be matched to parton showers.\": \"shower/ME matching\" },\n{ \"The predicted outcome is a framework that avoids double-counting of effects.\": \"double-counting\" },\n{ \"The theory aims to be valid to all orders in αs and α.\": \"all orders\" },\n{ \"The authors expect the QED contribution to be stable under scale variations.\": \"scale variations\" },\n{ \"They anticipate that QED effects are similar in size to structure function results.\": \"structure function results\" }\n],\n\"methodological_details\": [\n{ \"The study focuses on single heavy gauge boson production at hadron colliders.\": \"single heavy gauge boson\" },\n{ \"The process considered is q + q' -> V + n(g) + X.\": \"q + ¯q′\" },\n{ \"The vector boson V can be W± or Z.\": \"V = W ±\" },\n{ \"The leptons ℓ and ℓ' depend on the boson type.\": \"ℓ= e, µ\" },\n{ \"The cross-section is expressed using an exponentiated form with residuals.\": \"dˆσexp\" },\n{ \"The residuals β~n are free of infrared divergences to all orders.\": \"infrared divergences\" },\n{ \"The QED⊗QCD theory is obtained by simultaneously exponentiating IR terms.\": \"simultaneously exponentiating\" },\n{ \"The new residuals β~n,m include n hard gluons and m hard photons.\": \"n hard gluons\" },\n{ \"The functions SUMIR and D are modified to include QED contributions.\": \"SUMIR(QCED)\" },\n{ \"The average Bjorken x values indicate QCD corrections happen earlier.\": \"QCD dominant\" },\n{ \"The leading β~0,0 level provides a good estimate of the interplay.\": \"β0,0-level\" },\n{ \"The hadronic cross-section is constructed using standard convolution formulas.\": \"usual formula\" },\n{ \"Structure functions from Ref. [23] are used for semi-analytical calculations.\": \"structure functions\" },\n{ \"The factorization scale µ is the largest pT of gluon emission.\": \"largest pT\" },\n{ \"Collinear singularities are factorized to ensure convergence.\": \"collinear singularities\" },\n{ \"The calculation uses the narrow resonance approximation is not used.\": \"narrow resonance\" },\n{ \"The ratio rexp = σexp/σBorn is computed with and without QED.\": \"σexp/σBorn\" },\n{ \"The QED⊗QCD exponent γQCED combines QED and QCD contributions.\": \"γQCED\" },\n{ \"The function FYFS and δYFS are well-known YFS functions.\": \"FYFS(γQCED)\" },\n{ \"The calculation includes the Riemann zeta function ζ(2).\": \"ζ(2)\" },\n{ \"Euler's constant γE is included in the exponentiation.\": \"Euler’s constant\" }\n],\n\"procedures_and_architectures\": [\n{ \"The procedure involves combining exact YFS resummation with HERWIG or PYTHIA.\": \"HERWIG and/or PYTHIA\" },\n{ \"The parton shower is generated from the initial (x1, x2) point.\": \"initial (x1, x2)\" },\n{ \"The factorization scale µ is provided by the structure functions.\": \"factorization scale µ\" },\n{ \"The combination can be improved with exact fully exclusive results.\": \"fully exclusive results\" },\n{ \"The current state of the art combines O(αs) corrections with HERWIG.\": \"O(αs) correction\" },\n{ \"The resummation is valid over the entire phase space.\": \"entire phase space\" },\n{ \"DGLAP evolution factorizes terms involving powers of the big log.\": \"DGLAP\" },\n{ \"The evolved structure function sums leading big logs.\": \"leading big logs\" },\n{ \"The result is independent of the quark mass mq as mq -> 0.\": \"mq ↓0\" },\n{ \"In the residuals, gluon radiation below scale µ is omitted.\": \"scales below µ\" },\n{ \"This is achieved by replacing Ls with Lnls in most cases.\": \"Lnls\" },\n{ \"The pT in gluon emission is limited to avoid double counting.\": \"double count\" },\n{ \"The standard Les Houches procedure is used for showering.\": \"Les Houches procedure\" },\n{ \"Backward evolution of initial partons is employed.\": \"backward evolution\" },\n{ \"A more accurate method uses shower-subtracted residuals.\": \"shower subtracted\" },\n{ \"The shower formula is expanded to match exact perturbative results.\": \"perturbative expansion\" },\n{ \"New residuals are calculated for the entire gluon pT phase space.\": \"entire gluon pT\" },\n{ \"This approach improves accuracy compared to the first matching procedure.\": \"improved compared\" },\n{ \"The shower-subtracted residuals were realized for Bhabha scattering.\": \"Bhabha process\" },\n{ \"The calculation uses semi-analytical methods for threshold corrections.\": \"semi-analytical methods\" },\n{ \"The Monte Carlo realization is planned for future work.\": \"Monte Carlo realization\" }\n],\n\"key_results\": [\n{ \"The ratio rexp for QCED at the LHC is 1.1901.\": \"1.1901\" },\n{ \"The ratio rexp for QCD only at the LHC is 1.1872.\": \"1.1872\" },\n{ \"The ratio rexp for QCED at the Tevatron is 1.1911.\": \"1.1911\" },\n{ \"The ratio rexp for QCD only at the Tevatron is 1.1879.\": \"1.1879\" },\n{ \"The QED effect is at the level of 0.3% at both LHC and FNAL.\": \".3%\" },\n{ \"The QED effect is stable under scale variations.\": \"scale variations\" },\n{ \"The results agree with previous literature on QED and QCD sizes.\": \"Refs. [15,16,18–20]\" },\n{ \"The QED effect is similar in size to structure function results.\": \"structure function results\" },\n{ \"The QCD dominant corrections happen an order of magnitude earlier.\": \"order of magnitude\" },\n{ \"The leading β~0,0 level gives a good estimate of the interplay.\": \"β0,0-level\" },\n{ \"The QED contribution is necessary for LHC theory predictions at ≲1%.\": \"≲1%\" },\n{ \"The analysis of W production is in progress.\": \"W production\" },\n{ \"The framework allows for full MC event generator realization.\": \"full MC event\" },\n{ \"The combination with HERWIG and PYTHIA is possible in principle.\": \"HERWIG and PYTHIA\" },\n{ \"The semi-analytical results for QED threshold effects agree with Z production literature.\": \"Z production\" }\n],\n\"interpretation_and_theoretical_implications\": [\n{ \"The theory provides an exact rearrangement of the perturbative series.\": \"exact rearrangement\" },\n{ \"This allows for systematic improvement without double-counting.\": \"double-counting\" },\n{ \"The framework opens the way to desired theoretical precision tags.\": \"theoretical precision tag\" },\n{ \"QED effects are significant enough to require inclusion in precision studies.\": \"∼0.3%\" },\n{ \"The method is applicable to an exact treatment of the phase space.\": \"exact treatment\" },\n{ \"The approach is more convergent than analogs in LEP physics.\": \"much more convergent\" },\n{ \"The theory supports the realization of complete O(α2s, ααs, α2) results.\": \"O(α2s, ααs, α2)\" },\n{ \"This is crucial for FNAL, LHC, RHIC, and ILC physics.\": \"FNAL/LHC/RHIC/ILC\" },\n{ \"The exactness of the result distinguishes it from approximate resummations.\": \"exact result\" },\n{ \"The compensation between IR singularities is essential for QCD.\": \"compensation\" },\n{ \"The method allows for event-by-event realization in MC methods.\": \"event-by-event basis\" },\n{ \"The theory is based on the N=1 term in the exponent.\": \"N = 1 term\" },\n{ \"The residuals account for remaining contributions exactly to all orders.\": \"all orders in αs\" },\n{ \"The framework is robust against regulator choices.\": \"independent of this regulator\" }\n],\n\"contradictions_and_limitations\": [\n{ \"The paper notes that the exactness of the result is sometimes confused.\": \"confusion seems to exist\" },\n{ \"The result does not show an explicit ordered exponential operator.\": \"ordered exponential operator\" },\n{ \"The matrix elements of operators are evaluated and written as residuals.\": \"matrix elements\" },\n{ \"The current state of the art averages the gluon azimuthal angle.\": \"azimuthal angle is averaged\" },\n{ \"The Monte Carlo realization is not yet complete and will appear elsewhere.\": \"appear elsewhere\" },\n{ \"The analysis of W production is still in progress.\": \"in progress\" },\n{ \"The paper relies on structure functions from a specific reference.\": \"Ref. [23]\" },\n{ \"The semi-analytical methods are used instead of full MC for now.\": \"semi-analytical methods\" },\n{ \"The double counting issue is addressed by pT matching or subtraction.\": \"double counting\" },\n{ \"The exactness depends on the correct isolation of residuals.\": \"isolate ˜¯βj\" },\n{ \"The framework assumes the validity of the YFS exponentiation.\": \"YFS theory\" },\n{ \"The paper does not provide a full numerical MC implementation.\": \"Monte Carlo realization\" }\n],\n\"claims\": [\n{\n\"description\": \"QED effects are significant for LHC luminosity precision.\",\n\"supporting_evidence\": [\n{ \"QED contributions are at the 0.3% level.\": \"∼0.3%\" },\n{ \"This is almost half of the error budget.\": \"error budget\" },\n{ \"QED is needed for predictions at ≲1%.\": \"≲1%\" }\n],\n\"contradicting_evidence\": [\n{ \"Some might argue QED is negligible compared to QCD.\": \"QCD dominant\" },\n{ \"However, the precision requirement makes it necessary.\": \"0.67% level\" }\n],\n\"implications\": [\n{ \"LHC luminosity determinations require QED resummation.\": \"luminosity determinations\" },\n{ \"Future MC generators must include QED⊗QCD effects.\": \"MC methods\" }\n]\n},\n{\n\"description\": \"The proposed resummation is exact and avoids double-counting.\",\n\"supporting_evidence\": [\n{ \"The result is an exact rearrangement of the series.\": \"exact rearrangement\" },\n{ \"Residuals are free of infrared divergences.\": \"infrared divergences\" },\n{ \"The method avoids double-counting of effects.\": \"double-counting\" }\n],\n\"contradicting_evidence\": [\n{ \"Other resummation theories are approximate.\": \"are approximate\" },\n{ \"The exactness is not explicitly shown as an operator.\": \"ordered exponential\" }\n],\n\"implications\": [\n{ \"This allows for systematic improvement to all orders.\": \"all orders\" },\n{ \"It provides a firm theoretical basis for precision physics.\": \"theoretical basis\" }\n]\n}\n],\n\"data_and_code_availability\": \"\",\n\"robustness_and_ablation_notes\": [\n{ \"The QED effect is stable under scale variations.\": \"scale variations\" },\n{ \"The result is independent of the mass regulator.\": \"independent of this regulator\" },\n{ \"The shower-subtracted residuals improve accuracy.\": \"improved compared\" },\n{ \"The method is valid over the entire phase space.\": \"entire phase space\" },\n{ \"The compensation between IR singularities ensures exactness.\": \"compensation\" }\n],\n\"ethical_considerations\": \"\",\n\"key_figures_tables\": [\n{ \"Equation (1) presents the QCD resummation formula.\": \"dˆσexp\" },\n{ \"Equation (2) presents the QED⊗QCD resummation formula.\": \"dˆσexp\" },\n{ \"Equation (6) defines the QED⊗QCD exponent γQCED.\": \"γQCED\" },\n{ \"Equation (8) lists the numerical results for rexp.\": \"1.1901\" }\n],\n\"top_influential_citations\": \"\",\n\"three_takeaways\": [\n{ \"1. The core contribution is the exact QED⊗QCD resummation theory.\": \"QED⊗QCD resummation\" },\n{ \"2. The strongest evidence is the 0.3% QED effect at LHC.\": \".3%\" },\n{ \"3. The future path is full MC realization with HERWIG/PYTHIA.\": \"HERWIG and PYTHIA\" }\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6977,
+        "total_tokens": 10834,
+        "completion_tokens": 3857,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6977,
+      "elapsed_seconds": 355.7110123075545,
+      "max_tokens": 16000,
+      "seed": 367999436,
+      "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+      "user_prompt_sha256": "ac6825f00acb82981eb7d95632741f456eb879f092de81400c8d15351f9d8d81",
+      "attempt": 1,
+      "phase": "generation",
+      "requested_fields": [
+        "title",
+        "authors",
+        "field_subfield",
+        "type_of_paper",
+        "executive_summary",
+        "research_context",
+        "research_question_and_hypothesis",
+        "methodological_details",
+        "procedures_and_architectures",
+        "key_results",
+        "interpretation_and_theoretical_implications",
+        "contradictions_and_limitations",
+        "claims",
+        "data_and_code_availability",
+        "robustness_and_ablation_notes",
+        "ethical_considerations",
+        "key_figures_tables",
+        "top_influential_citations",
+        "three_takeaways"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: infrared divergences",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: ordered exponential operator",
+        "claims": "evidence quote is not present in fulltext: infrared divergences"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study focuses on single heavy gauge boson production at hadron colliders.\": \"single heavy gauge boson\"\n    },\n    {\n      \"The process considered is q + q' -> V + n(g) + X.\": \"q + ¯q′\"\n    },\n    {\n      \"The vector boson V can be W± or Z.\": \"V = W ±\"\n    },\n    {\n      \"The leptons ℓ and ℓ' depend on the boson type.\": \"ℓ= e, µ\"\n    },\n    {\n      \"The cross-section is expressed using an exponentiated form with residuals.\": \"dˆσexp\"\n    },\n    {\n      \"The residuals β~n are free of infrared divergences to all orders.\": \"infrared divergences\"\n    },\n    {\n      \"The QED⊗QCD theory is obtained by simultaneously exponentiating IR terms.\": \"simultaneously exponentiating\"\n    },\n    {\n      \"The new residuals β~n,m include n hard gluons and m hard photons.\": \"n hard gluons\"\n    },\n    {\n      \"The functions SUMIR and D are modified to include QED contributions.\": \"SUMIR(QCED)\"\n    },\n    {\n      \"The average Bjorken x values indicate QCD corrections happen earlier.\": \"QCD dominant\"\n    },\n    {\n      \"The leading β~0,0 level provides a good estimate of the interplay.\": \"β0,0-level\"\n    },\n    {\n      \"The hadronic cross-section is constructed using standard convolution formulas.\": \"usual formula\"\n    },\n    {\n      \"Structure functions from Ref. [23] are used for semi-analytical calculations.\": \"structure functions\"\n    },\n    {\n      \"The factorization scale µ is the largest pT of gluon emission.\": \"largest pT\"\n    },\n    {\n      \"Collinear singularities are factorized to ensure convergence.\": \"collinear singularities\"\n    },\n    {\n      \"The calculation uses the narrow resonance approximation is not used.\": \"narrow resonance\"\n    },\n    {\n      \"The ratio rexp = σexp/σBorn is computed with and without QED.\": \"σexp/σBorn\"\n    },\n    {\n      \"The QED⊗QCD exponent γQCED combines QED and QCD contributions.\": \"γQCED\"\n    },\n    {\n      \"The function FYFS and δYFS are well-known YFS functions.\": \"FYFS(γQCED)\"\n    },\n    {\n      \"The calculation includes the Riemann zeta function ζ(2).\": \"ζ(2)\"\n    },\n    {\n      \"Euler's constant γE is included in the exponentiation.\": \"Euler’s constant\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The paper notes that the exactness of the result is sometimes confused.\": \"confusion seems to exist\"\n    },\n    {\n      \"The result does not show an explicit ordered exponential operator.\": \"ordered exponential operator\"\n    },\n    {\n      \"The matrix elements of operators are evaluated and written as residuals.\": \"matrix elements\"\n    },\n    {\n      \"The current state of the art averages the gluon azimuthal angle.\": \"azimuthal angle is averaged\"\n    },\n    {\n      \"The Monte Carlo realization is not yet complete and will appear elsewhere.\": \"appear elsewhere\"\n    },\n    {\n      \"The analysis of W production is still in progress.\": \"in progress\"\n    },\n    {\n      \"The paper relies on structure functions from a specific reference.\": \"Ref. [23]\"\n    },\n    {\n      \"The semi-analytical methods are used instead of full MC for now.\": \"semi-analytical methods\"\n    },\n    {\n      \"The double counting issue is addressed by pT matching or subtraction.\": \"double counting\"\n    },\n    {\n      \"The exactness depends on the correct isolation of residuals.\": \"isolate ˜¯βj\"\n    },\n    {\n      \"The framework assumes the validity of the YFS exponentiation.\": \"YFS theory\"\n    },\n    {\n      \"The paper does not provide a full numerical MC implementation.\": \"Monte Carlo realization\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"QED effects are significant for LHC luminosity precision.\",\n      \"supporting_evidence\": [\n        {\n          \"QED contributions are at the 0.3% level.\": \"∼0.3%\"\n        },\n        {\n          \"This is almost half of the error budget.\": \"error budget\"\n        },\n        {\n          \"QED is needed for predictions at ≲1%.\": \"≲1%\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Some might argue QED is negligible compared to QCD.\": \"QCD dominant\"\n        },\n        {\n          \"However, the precision requirement makes it necessary.\": \"0.67% level\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"LHC luminosity determinations require QED resummation.\": \"luminosity determinations\"\n        },\n        {\n          \"Future MC generators must include QED⊗QCD effects.\": \"MC methods\"\n        }\n      ]\n    },\n    {\n      \"description\": \"The proposed resummation is exact and avoids double-counting.\",\n      \"supporting_evidence\": [\n        {\n          \"The result is an exact rearrangement of the series.\": \"exact rearrangement\"\n        },\n        {\n          \"Residuals are free of infrared divergences.\": \"infrared divergences\"\n        },\n        {\n          \"The method avoids double-counting of effects.\": \"double-counting\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Other resummation theories are approximate.\": \"are approximate\"\n        },\n        {\n          \"The exactness is not explicitly shown as an operator.\": \"ordered exponential\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This allows for systematic improvement to all orders.\": \"all orders\"\n        },\n        {\n          \"It provides a firm theoretical basis for precision physics.\": \"theoretical basis\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6398,
+        "total_tokens": 7915,
+        "completion_tokens": 1517,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6398,
+      "elapsed_seconds": 145.3646659590304,
+      "max_tokens": 4096,
+      "seed": 367999437,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "022c2ac70b2a4bef8ef2a7b8a707aa0876e8efdcc25eb7afe2d508a6a7466e21",
+      "attempt": 2,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: infrared divergences",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: ordered exponential operator",
+        "claims": "evidence quote is not present in fulltext: infrared divergences"
+      }
+    },
+    {
+      "response": "{\n  \"methodological_details\": [\n    {\n      \"The study focuses on single heavy gauge boson production at hadron colliders.\": \"single heavy gauge boson\"\n    },\n    {\n      \"The process considered is q + q' -> V + n(g) + X.\": \"q + ¯q′\"\n    },\n    {\n      \"The vector boson V can be W± or Z.\": \"V = W ±\"\n    },\n    {\n      \"The leptons ℓ and ℓ' depend on the boson type.\": \"ℓ= e, µ\"\n    },\n    {\n      \"The cross-section is expressed using an exponentiated form with residuals.\": \"dˆσexp\"\n    },\n    {\n      \"The residuals β~n are free of infrared divergences to all orders.\": \"infrared divergences to\"\n    },\n    {\n      \"The QED⊗QCD theory is obtained by simultaneously exponentiating IR terms.\": \"simultaneously exponentiating\"\n    },\n    {\n      \"The new residuals β~n,m include n hard gluons and m hard photons.\": \"n hard gluons\"\n    },\n    {\n      \"The functions SUMIR and D are modified to include QED contributions.\": \"SUMIR(QCED)\"\n    },\n    {\n      \"The average Bjorken x values indicate QCD corrections happen earlier.\": \"QCD dominant\"\n    },\n    {\n      \"The leading β~0,0 level provides a good estimate of the interplay.\": \"β0,0-level\"\n    },\n    {\n      \"The hadronic cross-section is constructed using standard convolution formulas.\": \"usual formula\"\n    },\n    {\n      \"Structure functions from Ref. [23] are used for semi-analytical calculations.\": \"structure functions\"\n    },\n    {\n      \"The factorization scale µ is the largest pT of gluon emission.\": \"largest pT\"\n    },\n    {\n      \"Collinear singularities are factorized to ensure convergence.\": \"collinear singularities\"\n    },\n    {\n      \"The calculation uses the narrow resonance approximation is not used.\": \"narrow resonance\"\n    },\n    {\n      \"The ratio rexp = σexp/σBorn is computed with and without QED.\": \"σexp/σBorn\"\n    },\n    {\n      \"The QED⊗QCD exponent γQCED combines QED and QCD contributions.\": \"γQCED\"\n    },\n    {\n      \"The function FYFS and δYFS are well-known YFS functions.\": \"FYFS(γQCED)\"\n    },\n    {\n      \"The calculation includes the Riemann zeta function ζ(2).\": \"ζ(2)\"\n    },\n    {\n      \"Euler's constant γE is included in the exponentiation.\": \"Euler’s constant\"\n    }\n  ],\n  \"contradictions_and_limitations\": [\n    {\n      \"The paper notes that the exactness of the result is sometimes confused.\": \"confusion seems to exist\"\n    },\n    {\n      \"The result does not show an explicit ordered exponential operator.\": \"ordered exponential\"\n    },\n    {\n      \"The matrix elements of operators are evaluated and written as residuals.\": \"matrix elements\"\n    },\n    {\n      \"The current state of the art averages the gluon azimuthal angle.\": \"azimuthal angle is averaged\"\n    },\n    {\n      \"The Monte Carlo realization is not yet complete and will appear elsewhere.\": \"appear elsewhere\"\n    },\n    {\n      \"The analysis of W production is still in progress.\": \"in progress\"\n    },\n    {\n      \"The paper relies on structure functions from a specific reference.\": \"Ref. [23]\"\n    },\n    {\n      \"The semi-analytical methods are used instead of full MC for now.\": \"semi-analytical methods\"\n    },\n    {\n      \"The double counting issue is addressed by pT matching or subtraction.\": \"double counting\"\n    },\n    {\n      \"The exactness depends on the correct isolation of residuals.\": \"isolate ˜¯βj\"\n    },\n    {\n      \"The framework assumes the validity of the YFS exponentiation.\": \"YFS theory\"\n    },\n    {\n      \"The paper does not provide a full numerical MC implementation.\": \"Monte Carlo realization\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"QED effects are significant for LHC luminosity precision.\",\n      \"supporting_evidence\": [\n        {\n          \"QED contributions are at the 0.3% level.\": \"∼0.3%\"\n        },\n        {\n          \"This is almost half of the error budget.\": \"error budget\"\n        },\n        {\n          \"QED is needed for predictions at ≲1%.\": \"≲1%\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Some might argue QED is negligible compared to QCD.\": \"QCD dominant\"\n        },\n        {\n          \"However, the precision requirement makes it necessary.\": \"0.67% level\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"LHC luminosity determinations require QED resummation.\": \"luminosity determinations\"\n        },\n        {\n          \"Future MC generators must include QED⊗QCD effects.\": \"MC methods\"\n        }\n      ]\n    },\n    {\n      \"description\": \"The proposed resummation is exact and avoids double-counting.\",\n      \"supporting_evidence\": [\n        {\n          \"The result is an exact rearrangement of the series.\": \"exact rearrangement\"\n        },\n        {\n          \"Residuals are free of infrared divergences.\": \"infrared divergences to\"\n        },\n        {\n          \"The method avoids double-counting of effects.\": \"double-counting\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Other resummation theories are approximate.\": \"are approximate\"\n        },\n        {\n          \"The exactness is not explicitly shown as an operator.\": \"ordered exponential\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This allows for systematic improvement to all orders.\": \"all orders\"\n        },\n        {\n          \"It provides a firm theoretical basis for precision physics.\": \"theoretical basis\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6398,
+        "total_tokens": 7916,
+        "completion_tokens": 1518,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6398,
+      "elapsed_seconds": 120.68673764169216,
+      "max_tokens": 4096,
+      "seed": 367999438,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "022c2ac70b2a4bef8ef2a7b8a707aa0876e8efdcc25eb7afe2d508a6a7466e21",
+      "attempt": 3,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "methodological_details": "evidence quote is not present in fulltext: infrared divergences to",
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: ordered exponential",
+        "claims": "evidence quote is not present in fulltext: infrared divergences to"
+      }
+    },
+    {
+      "response": "{\n\"methodological_details\": [\n{\"The study focuses on single heavy gauge boson production at hadron colliders.\": \"single heavy gauge boson\"},\n{\"The process considered is q + q' -> V + n(g) + X.\": \"q + ¯q′\"},\n{\"The vector boson V can be W± or Z.\": \"V = W ±\"},\n{\"The leptons ℓ and ℓ' depend on the boson type.\": \"ℓ= e, µ\"},\n{\"The cross-section is expressed using an exponentiated form with residuals.\": \"dˆσexp\"},\n{\"The residuals β~n are free of infrared divergences to all orders.\": \"free of all\"},\n{\"The QED⊗QCD theory is obtained by simultaneously exponentiating IR terms.\": \"simultaneously exponentiating\"},\n{\"The new residuals β~n,m include n hard gluons and m hard photons.\": \"n hard gluons\"},\n{\"The functions SUMIR and D are modified to include QED contributions.\": \"SUMIR(QCED)\"},\n{\"The average Bjorken x values indicate QCD corrections happen earlier.\": \"QCD dominant\"},\n{\"The leading β~0,0 level provides a good estimate of the interplay.\": \"β0,0-level\"},\n{\"The hadronic cross-section is constructed using standard convolution formulas.\": \"usual formula\"},\n{\"Structure functions from Ref. [23] are used for semi-analytical calculations.\": \"structure functions\"},\n{\"The factorization scale µ is the largest pT of gluon emission.\": \"largest pT\"},\n{\"Collinear singularities are factorized to ensure convergence.\": \"collinear singularities\"},\n{\"The calculation uses the narrow resonance approximation is not used.\": \"narrow resonance\"},\n{\"The ratio rexp = σexp/σBorn is computed with and without QED.\": \"σexp/σBorn\"},\n{\"The QED⊗QCD exponent γQCED combines QED and QCD contributions.\": \"γQCED\"},\n{\"The function FYFS and δYFS are well-known YFS functions.\": \"FYFS(γQCED)\"},\n{\"The calculation includes the Riemann zeta function ζ(2).\": \"ζ(2)\"},\n{\"Euler's constant γE is included in the exponentiation.\": \"Euler’s constant\"}\n],\n\"contradictions_and_limitations\": [\n{\"The paper notes that the exactness of the result is sometimes confused.\": \"confusion seems to exist\"},\n{\"The result does not show an explicit ordered exponential operator.\": \"exponential operator\"},\n{\"The matrix elements of operators are evaluated and written as residuals.\": \"matrix elements\"},\n{\"The current state of the art averages the gluon azimuthal angle.\": \"azimuthal angle is averaged\"},\n{\"The Monte Carlo realization is not yet complete and will appear elsewhere.\": \"appear elsewhere\"},\n{\"The analysis of W production is still in progress.\": \"in progress\"},\n{\"The paper relies on structure functions from a specific reference.\": \"Ref. [23]\"},\n{\"The semi-analytical methods are used instead of full MC for now.\": \"semi-analytical methods\"},\n{\"The double counting issue is addressed by pT matching or subtraction.\": \"double counting\"},\n{\"The exactness depends on the correct isolation of residuals.\": \"isolate ˜¯βj\"},\n{\"The framework assumes the validity of the YFS exponentiation.\": \"YFS theory\"},\n{\"The paper does not provide a full numerical MC implementation.\": \"Monte Carlo realization\"}\n],\n\"claims\": [\n{\n\"description\": \"QED effects are significant for LHC luminosity precision.\",\n\"supporting_evidence\": [\n{\"QED contributions are at the 0.3% level.\": \"∼0.3%\"},\n{\"This is almost half of the error budget.\": \"error budget\"},\n{\"QED is needed for predictions at ≲1%.\": \"≲1%\"}\n],\n\"contradicting_evidence\": [\n{\"Some might argue QED is negligible compared to QCD.\": \"QCD dominant\"},\n{\"However, the precision requirement makes it necessary.\": \"0.67% level\"}\n],\n\"implications\": [\n{\"LHC luminosity determinations require QED resummation.\": \"luminosity determinations\"},\n{\"Future MC generators must include QED⊗QCD effects.\": \"MC methods\"}\n]\n},\n{\n\"description\": \"The proposed resummation is exact and avoids double-counting.\",\n\"supporting_evidence\": [\n{\"The result is an exact rearrangement of the series.\": \"exact rearrangement\"},\n{\"Residuals are free of infrared divergences.\": \"free of all\"},\n{\"The method avoids double-counting of effects.\": \"double-counting\"}\n],\n\"contradicting_evidence\": [\n{\"Other resummation theories are approximate.\": \"are approximate\"},\n{\"The exactness is not explicitly shown as an operator.\": \"exponential operator\"}\n],\n\"implications\": [\n{\"This allows for systematic improvement to all orders.\": \"all orders\"},\n{\"It provides a firm theoretical basis for precision physics.\": \"theoretical basis\"}\n]\n}\n]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 6401,
+        "total_tokens": 7566,
+        "completion_tokens": 1165,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 6401,
+      "elapsed_seconds": 105.61561470851302,
+      "max_tokens": 4096,
+      "seed": 367999439,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "baa1f0c82dcb0e4c021f5702f698e6a950911bf8a792cb10d92b07c9fe2259e7",
+      "attempt": 4,
+      "phase": "field_repair",
+      "requested_fields": [
+        "methodological_details",
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: exponential operator",
+        "claims": "evidence quote is not present in fulltext: exponential operator"
+      }
+    },
+    {
+      "response": "{\n  \"contradictions_and_limitations\": [\n    {\n      \"The paper notes that the exactness of the result is sometimes confused.\": \"confusion seems to exist\"\n    },\n    {\n      \"The result does not show an explicit ordered exponential operator.\": \"ordered exponential operator\"\n    },\n    {\n      \"The matrix elements of operators are evaluated and written as residuals.\": \"matrix elements\"\n    },\n    {\n      \"The current state of the art averages the gluon azimuthal angle.\": \"azimuthal angle is averaged\"\n    },\n    {\n      \"The Monte Carlo realization is not yet complete and will appear elsewhere.\": \"appear elsewhere\"\n    },\n    {\n      \"The analysis of W production is still in progress.\": \"in progress\"\n    },\n    {\n      \"The paper relies on structure functions from a specific reference.\": \"Ref. [23]\"\n    },\n    {\n      \"The semi-analytical methods are used instead of full MC for now.\": \"semi-analytical methods\"\n    },\n    {\n      \"The double counting issue is addressed by pT matching or subtraction.\": \"double counting\"\n    },\n    {\n      \"The exactness depends on the correct isolation of residuals.\": \"isolate ˜¯βj\"\n    },\n    {\n      \"The framework assumes the validity of the YFS exponentiation.\": \"YFS theory\"\n    },\n    {\n      \"The paper does not provide a full numerical MC implementation.\": \"Monte Carlo realization\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"QED effects are significant for LHC luminosity precision.\",\n      \"supporting_evidence\": [\n        {\n          \"QED contributions are at the 0.3% level.\": \"∼0.3%\"\n        },\n        {\n          \"This is almost half of the error budget.\": \"error budget\"\n        },\n        {\n          \"QED is needed for predictions at ≲1%.\": \"≲1%\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Some might argue QED is negligible compared to QCD.\": \"QCD dominant\"\n        },\n        {\n          \"However, the precision requirement makes it necessary.\": \"0.67% level\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"LHC luminosity determinations require QED resummation.\": \"luminosity determinations\"\n        },\n        {\n          \"Future MC generators must include QED⊗QCD effects.\": \"MC methods\"\n        }\n      ]\n    },\n    {\n      \"description\": \"The proposed resummation is exact and avoids double-counting.\",\n      \"supporting_evidence\": [\n        {\n          \"The result is an exact rearrangement of the series.\": \"exact rearrangement\"\n        },\n        {\n          \"Residuals are free of infrared divergences.\": \"free of all\"\n        },\n        {\n          \"The method avoids double-counting of effects.\": \"double-counting\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Other resummation theories are approximate.\": \"are approximate\"\n        },\n        {\n          \"The exactness is not explicitly shown as an operator.\": \"ordered exponential operator\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This allows for systematic improvement to all orders.\": \"all orders\"\n        },\n        {\n          \"It provides a firm theoretical basis for precision physics.\": \"theoretical basis\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5829,
+        "total_tokens": 6677,
+        "completion_tokens": 848,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5829,
+      "elapsed_seconds": 78.12433185428381,
+      "max_tokens": 4096,
+      "seed": 367999440,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "c1fc44550bd7fee388460b5cabf9e4ecf2c241f388c79db5ed86d9cb40bff549",
+      "attempt": 5,
+      "phase": "field_repair",
+      "requested_fields": [
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: ordered exponential operator",
+        "claims": "evidence quote is not present in fulltext: ordered exponential operator"
+      }
+    },
+    {
+      "response": "{\n  \"contradictions_and_limitations\": [\n    {\n      \"The paper notes that the exactness of the result is sometimes confused.\": \"confusion seems to exist\"\n    },\n    {\n      \"The result does not show an explicit ordered exponential operator.\": \"exponential operator\"\n    },\n    {\n      \"The matrix elements of operators are evaluated and written as residuals.\": \"matrix elements\"\n    },\n    {\n      \"The current state of the art averages the gluon azimuthal angle.\": \"azimuthal angle is averaged\"\n    },\n    {\n      \"The Monte Carlo realization is not yet complete and will appear elsewhere.\": \"appear elsewhere\"\n    },\n    {\n      \"The analysis of W production is still in progress.\": \"in progress\"\n    },\n    {\n      \"The paper relies on structure functions from a specific reference.\": \"Ref. [23]\"\n    },\n    {\n      \"The semi-analytical methods are used instead of full MC for now.\": \"semi-analytical methods\"\n    },\n    {\n      \"The double counting issue is addressed by pT matching or subtraction.\": \"double counting\"\n    },\n    {\n      \"The exactness depends on the correct isolation of residuals.\": \"isolate ˜¯βj\"\n    },\n    {\n      \"The framework assumes the validity of the YFS exponentiation.\": \"YFS theory\"\n    },\n    {\n      \"The paper does not provide a full numerical MC implementation.\": \"Monte Carlo realization\"\n    }\n  ],\n  \"claims\": [\n    {\n      \"description\": \"QED effects are significant for LHC luminosity precision.\",\n      \"supporting_evidence\": [\n        {\n          \"QED contributions are at the 0.3% level.\": \"∼0.3%\"\n        },\n        {\n          \"This is almost half of the error budget.\": \"error budget\"\n        },\n        {\n          \"QED is needed for predictions at ≲1%.\": \"≲1%\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Some might argue QED is negligible compared to QCD.\": \"QCD dominant\"\n        },\n        {\n          \"However, the precision requirement makes it necessary.\": \"0.67% level\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"LHC luminosity determinations require QED resummation.\": \"luminosity determinations\"\n        },\n        {\n          \"Future MC generators must include QED⊗QCD effects.\": \"MC methods\"\n        }\n      ]\n    },\n    {\n      \"description\": \"The proposed resummation is exact and avoids double-counting.\",\n      \"supporting_evidence\": [\n        {\n          \"The result is an exact rearrangement of the series.\": \"exact rearrangement\"\n        },\n        {\n          \"Residuals are free of infrared divergences.\": \"free of all\"\n        },\n        {\n          \"The method avoids double-counting of effects.\": \"double-counting\"\n        }\n      ],\n      \"contradicting_evidence\": [\n        {\n          \"Other resummation theories are approximate.\": \"are approximate\"\n        },\n        {\n          \"The exactness is not explicitly shown as an operator.\": \"exponential operator\"\n        }\n      ],\n      \"implications\": [\n        {\n          \"This allows for systematic improvement to all orders.\": \"all orders\"\n        },\n        {\n          \"It provides a firm theoretical basis for precision physics.\": \"theoretical basis\"\n        }\n      ]\n    }\n  ]\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5833,
+        "total_tokens": 6681,
+        "completion_tokens": 848,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5833,
+      "elapsed_seconds": 81.27469212561846,
+      "max_tokens": 4096,
+      "seed": 367999441,
+      "system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+      "user_prompt_sha256": "48bf65d29667f85dbec55565e6ad98214ddf7100390f72e192fd4c1581397ba2",
+      "attempt": 6,
+      "phase": "field_repair",
+      "requested_fields": [
+        "contradictions_and_limitations",
+        "claims"
+      ],
+      "normalizations": [],
+      "validation_errors": {
+        "contradictions_and_limitations": "evidence quote is not present in fulltext: exponential operator",
+        "claims": "evidence quote is not present in fulltext: exponential operator"
+      }
+    },
+    {
+      "response": "{\n\"q0\": 10,\n\"q1\": \"drop\"\n}",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 5988,
+        "total_tokens": 6009,
+        "completion_tokens": 21,
+        "prompt_tokens_details": null
+      },
+      "input_tokens_preflight": 5988,
+      "elapsed_seconds": 52.641266614198685,
+      "max_tokens": 2048,
+      "seed": 367999536,
+      "system_prompt_sha256": "d7e4eab1acee568b9833ed80a7248984eea1c910e045cb1c389f0e4e4eb45544",
+      "user_prompt_sha256": "57c3e9369995618a2f8aa61d4857b5cbd95e2fb4e5450bc1cab7888ce40a3dd9",
+      "phase": "source_anchor_selection",
+      "attempt": 7,
+      "tasks": [
+        {
+          "id": "q0",
+          "path": [
+            "contradictions_and_limitations",
+            1
+          ],
+          "narrative": "The result does not show an explicit ordered exponential operator.",
+          "invalid_quote": "exponential operator",
+          "candidates": [
+            {
+              "quote": "does not show",
+              "start": 5105,
+              "end": 5118
+            },
+            {
+              "quote": "does not show explicitly",
+              "start": 5105,
+              "end": 5129
+            },
+            {
+              "quote": "it does not show",
+              "start": 5102,
+              "end": 5118
+            },
+            {
+              "quote": "does not show explicitly an",
+              "start": 5105,
+              "end": 5132
+            },
+            {
+              "quote": "it does not show explicitly",
+              "start": 5102,
+              "end": 5129
+            },
+            {
+              "quote": "because it does not show",
+              "start": 5094,
+              "end": 5118
+            },
+            {
+              "quote": "ordered ex-\nponential operator",
+              "start": 5133,
+              "end": 5163
+            },
+            {
+              "quote": "show explicitly an ordered",
+              "start": 5114,
+              "end": 5140
+            },
+            {
+              "quote": "ordered ex-\nponential operator for",
+              "start": 5133,
+              "end": 5167
+            },
+            {
+              "quote": "an ordered ex-\nponential operator",
+              "start": 5130,
+              "end": 5163
+            },
+            {
+              "quote": "show explicitly an ordered ex-",
+              "start": 5114,
+              "end": 5144
+            },
+            {
+              "quote": "not show explicitly an ordered",
+              "start": 5110,
+              "end": 5140
+            },
+            {
+              "quote": "operator for an",
+              "start": 5155,
+              "end": 5170
+            },
+            {
+              "quote": "ponential operator for",
+              "start": 5145,
+              "end": 5167
+            },
+            {
+              "quote": "ex-\nponential operator",
+              "start": 5141,
+              "end": 5163
+            },
+            {
+              "quote": "show explicitly an",
+              "start": 5114,
+              "end": 5132
+            }
+          ]
+        },
+        {
+          "id": "q1",
+          "path": [
+            "claims",
+            1,
+            "contradicting_evidence",
+            1
+          ],
+          "narrative": "The exactness is not explicitly shown as an operator.",
+          "invalid_quote": "exponential operator",
+          "candidates": [
+            {
+              "quote": "operator for an",
+              "start": 5155,
+              "end": 5170
+            },
+            {
+              "quote": "ponential operator for",
+              "start": 5145,
+              "end": 5167
+            },
+            {
+              "quote": "ex-\nponential operator",
+              "start": 5141,
+              "end": 5163
+            },
+            {
+              "quote": "explicitly an ordered",
+              "start": 5119,
+              "end": 5140
+            },
+            {
+              "quote": "show explicitly an",
+              "start": 5114,
+              "end": 5132
+            },
+            {
+              "quote": "not show explicitly",
+              "start": 5110,
+              "end": 5129
+            },
+            {
+              "quote": "exponential\nis augmented",
+              "start": 2093,
+              "end": 2117
+            },
+            {
+              "quote": "This exponential\nis",
+              "start": 2088,
+              "end": 2107
+            },
+            {
+              "quote": "[4]. This exponential",
+              "start": 2083,
+              "end": 2104
+            },
+            {
+              "quote": "operator for an appropriate",
+              "start": 5155,
+              "end": 5182
+            },
+            {
+              "quote": "ponential operator for an",
+              "start": 5145,
+              "end": 5170
+            },
+            {
+              "quote": "ex-\nponential operator for",
+              "start": 5141,
+              "end": 5167
+            },
+            {
+              "quote": "ordered ex-\nponential operator",
+              "start": 5133,
+              "end": 5163
+            },
+            {
+              "quote": "explicitly an ordered ex-",
+              "start": 5119,
+              "end": 5144
+            },
+            {
+              "quote": "show explicitly an ordered",
+              "start": 5114,
+              "end": 5140
+            },
+            {
+              "quote": "not show explicitly an",
+              "start": 5110,
+              "end": 5132
+            }
+          ]
+        }
+      ],
+      "normalizations": []
+    }
+  ],
+  "input_tokens": 6977,
+  "elapsed_seconds": 940.4445773549378,
+  "removed_unsupported_entries": [
+    {
+      "path": [
+        "claims",
+        1,
+        "contradicting_evidence",
+        1
+      ],
+      "entry": {
+        "The exactness is not explicitly shown as an operator.": "exponential operator"
+      },
+      "reason": "model_found_no_supporting_candidate"
+    }
+  ],
+  "selected_source_anchors": [
+    {
+      "path": [
+        "contradictions_and_limitations",
+        1
+      ],
+      "quote": "show explicitly an ordered ex-",
+      "start": 5114,
+      "end": 5144
+    }
+  ],
+  "repair_protocol": "field_local_strict_grounding_v2_with_anchored_retry"
+}

@@ -86,6 +86,16 @@ def paired(left, right):
     return {'difference': sum(differences) / (10 * len(differences)), 'ci95': [values[249], values[9749]]}
 
 
+def generation_progress(cache):
+    documents = cache['documents'] if cache else []
+    failures = cache['failures'] if cache else []
+    completed = {d['document_id'] for d in documents}
+    failed = {d['document_id'] for d in failures}
+    return {'validated_summaries': len(documents), 'failed_generation_records': len(failures),
+            'resolved_failure_ids': sorted(failed & completed),
+            'unresolved_failure_ids': sorted(failed - completed), 'evaluated': False}
+
+
 def main():
     manifest = load(ROOT / 'summary_comparison_manifest.json')
     papers = load(ROOT / 'data/papers.json')
@@ -97,8 +107,7 @@ def main():
         directory = ROOT / 'summary_runs' / model['name']
         cache_path, result_path = directory / 'summaries.json', directory / 'results.json'
         cache = load(cache_path) if cache_path.exists() else None
-        progress[model['name']] = {'validated_summaries': len(cache['documents']) if cache else 0,
-            'failed_generation_records': len(cache['failures']) if cache else 0, 'evaluated': False}
+        progress[model['name']] = generation_progress(cache)
         if result_path.exists():
             results = load(result_path)
             if 'summary' not in results or len(results['documents']) != 97:
@@ -146,7 +155,10 @@ def main():
             method_rows.append(f'<tr><td>{esc(name)}</td><td>{esc(model["runtime"])}</td><td>{esc(info)}</td></tr>')
         else:
             result = 'Pending'
-        cards.append(f'<section><h3>{esc(name)}</h3><strong>{result}</strong><p>{progress[name]["validated_summaries"]}/97 validated summaries</p></section>')
+        cards.append(f'<section><h3>{esc(name)}</h3><strong>{result}</strong><p>{progress[name]["validated_summaries"]}/97 validated summaries</p>'
+            f'<small>{len(progress[name]["unresolved_failure_ids"])} unresolved failed documents; '
+            f'{len(progress[name]["resolved_failure_ids"])} previously failed documents recovered. '
+            'Failure journals are retained, not current failure counts.</small></section>')
     pair_rows = ''.join(f'<tr><td>{esc(name)}</td><td>{100*item["difference"]:+.2f} pp</td>'
         f'<td>{100*item["ci95"][0]:+.2f} to {100*item["ci95"][1]:+.2f} pp</td></tr>' for name, item in comparisons.items())
     questions = []
@@ -177,7 +189,7 @@ body{font:16px/1.6 system-ui;color:#183342;background:#f5f8fa;margin:0}main{max-
 <p>27B uses mixed-INT4 weights on two RTX 3090s with vLLM and eight concurrent requests. Both requested 9B GGUFs use Q8_0 weights with llama.cpp on one RTX 3090 and four concurrent slots; KV cache is Q8_0. GGUF revisions and SHA-256 hashes are pinned in the manifest. Runtime, quantization, and batching differ; this is an end-to-end representation comparison, not an isolated model-weight ablation. Word targets in the prompt are not guaranteed; observed narrative lengths and repair rates are disclosed. Timing includes generation and repair attempts, excludes server startup, and allocated GPU-hours are not measured GH200/Jupiter timings.</p>
 <p>Uncertainty uses 10,000 paired document-cluster bootstrap samples, seed 250219413, keeping each paper’s ten questions together. Differences within those intervals are not established improvements. This 97-paper convenience cohort and Luna-authored questions differ from the previous Physics/Medical benchmark.</p></div>
 <table><tr><th>Model</th><th>Runtime</th><th>Measured generation</th></tr>__METHODS__</table>
-<h2>Reproducibility</h2><p><a href="summary_comparison_manifest.json">Pinned cohort and model manifest</a> · <a href="summary_comparison.json">Aggregate results and progress</a> · <a href="summary_comparison.csv">CSV</a> · <a href="summary_comparison.SHA256SUMS">Checksums</a> · <a href="summary_runtime_fingerprints.json">Runtime and GGUF fingerprints</a> · <a href="gguf_smoke_results.json">CPU-only GGUF transport checks</a> · <a href="pre_qwen_summary_results.json">Frozen four-condition controls</a> · <a href="data/papers.json">Corpus and existing summaries</a> · <a href="https://arxiv.org/html/2502.19413v2">Alexandria paper</a></p><p>Resume from the repository root: <code>python experiments/scientific_summaries/run_summary_comparison.py</code>. Each model has separate summaries, source-only prompt snapshots, raw responses, token usage, student attempts and audited results under <code>summary_runs/</code>. Dataset: <a href="https://huggingface.co/datasets/laion/Scientific-Summaries">laion/Scientific-Summaries</a>, declared CC-BY-4.0; source metadata remain saved. Model cards: <a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B-GGUF">Ornith</a>, <a href="https://huggingface.co/unsloth/Qwen3.5-9B-GGUF">Qwen3.5</a>.</p>
+<h2>Reproducibility</h2><p><a href="summary_comparison_manifest.json">Pinned cohort and model manifest</a> · <a href="summary_comparison.json">Aggregate results and progress</a> · <a href="summary_comparison.csv">CSV</a> · <a href="summary_comparison.SHA256SUMS">Checksums</a> · <a href="summary_runtime_fingerprints.json">Runtime and GGUF fingerprints</a> · <a href="gguf_smoke_results.json">CPU-only GGUF transport checks</a> · <a href="pre_qwen_summary_results.json">Frozen four-condition controls</a> · <a href="data/papers.json">Corpus and existing summaries</a> · <a href="https://arxiv.org/html/2502.19413v2">Alexandria paper</a></p><p>Resume from the repository root: <code>python experiments/scientific_summaries/launch_summary_comparison.py</code>. The detached queue survives terminal closure, rejects duplicate queues, and supports explicit identity-checked adoption of an orphaned Qwen server; see <a href="README.md">the run instructions</a>. Each model has separate summaries, source-only prompt snapshots, raw responses, token usage, student attempts and audited results under <code>summary_runs/</code>. Dataset: <a href="https://huggingface.co/datasets/laion/Scientific-Summaries">laion/Scientific-Summaries</a>, declared CC-BY-4.0; source metadata remain saved. Model cards: <a href="https://huggingface.co/ornith-ai/Ornith-1.5-9B-GGUF">Ornith</a>, <a href="https://huggingface.co/unsloth/Qwen3.5-9B-GGUF">Qwen3.5</a>.</p>
 <h2>All questions, source evidence, and per-model predictions</h2>__QUESTIONS__</main></html>'''
     replacements = {'__DATE__': esc(output['updated_utc']), '__STATE__': 'Complete.' if output['complete'] else 'Work in progress; pending scores are not reported as zero.',
         '__CARDS__': ''.join(cards), '__ROWS__': ''.join(table_rows), '__PAIRS__': pair_rows,
@@ -197,7 +209,8 @@ body{font:16px/1.6 system-ui;color:#183342;background:#f5f8fa;margin:0}main{max-
         'data/manifest.json', 'pre_qwen_summary_results.json', 'judge_model_fingerprints.json',
         'summary_runtime.py', 'summarize.py', 'evaluate.py', 'run_summary_comparison.py',
         'summary_comparison_report.py', 'summary_runtime_fingerprints.json', 'gguf_smoke_results.json',
-        'capture_summary_runtime.py', 'publish_summary_results.py', 'README.md']
+        'capture_summary_runtime.py', 'publish_summary_results.py', 'README.md',
+        'launch_summary_comparison.py', 'queue_control.py']
     for name in evaluated:
         paths += ['summary_runs/' + name + '/' + file for file in
             ('summaries.json', 'results.json', 'qa_evaluated.json', 'summary_prompt_snapshot.json')]

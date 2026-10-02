@@ -138,6 +138,19 @@ def test_summary_queue_lock_excludes_duplicates_and_releases(tmp_path):
         assert path.exists()
 
 
+def test_summary_progress_does_not_count_repaired_failures_as_unresolved():
+    sys.path.insert(0, str(SCRIPT.parent))
+    from summary_comparison_report import generation_progress
+    cache = {'documents': [{'document_id': 'recovered'}],
+             'failures': [{'document_id': 'recovered'}, {'document_id': 'pending'},
+                          {'document_id': 'pending'}]}
+    progress = generation_progress(cache)
+    assert progress['failed_generation_records'] == 3
+    assert progress['unresolved_failure_ids'] == ['pending']
+    assert progress['resolved_failure_ids'] == ['recovered']
+    assert generation_progress(None)['validated_summaries'] == 0
+
+
 def test_adopted_server_checks_model_identity_and_pid_reuse(monkeypatch):
     sys.path.insert(0, str(SCRIPT.parent))
     import queue_control
