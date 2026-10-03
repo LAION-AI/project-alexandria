@@ -23,6 +23,11 @@ python experiments/scientific_summaries/pipeline_report.py
 
 ## Cohort and inputs
 
+Download the [ready-to-use frozen test set and usage instructions](data/README.md).
+`data/testset.json` contains exactly the 97 tested papers and 970 MCQs with the
+**evaluated** option order; `data/testset_manifest.json` records IDs and input
+hashes. Verify without GPU/network using `python experiments/scientific_summaries/export_testset.py --check`.
+
 - `data/papers.json`: 100 frozen dataset records, source metadata, available paper texts,
   existing summaries, and content hashes. Fifty arXiv and fifty Bethgelab entries.
 - `data/qa/`: ten source-only, Luna-authored four-choice questions per ready paper.
@@ -39,6 +44,20 @@ a length threshold do **not** establish completeness. All conditions retain the 
 frozen source text; missing sections are not silently fetched or substituted.
 
 ## Run order
+
+**Fast Ornith run:** `python experiments/scientific_summaries/run_ornith9b.py`
+uses two independent, pinned Q8_0 replicas (one per GPU), four 64k-context slots
+per replica and eight concurrent paper requests. It must pass the two-paper smoke
+test before scaling to the frozen 97-paper cohort. Original failed V2 outputs are
+preserved under `summary_runs/ornith15_9b/v2_failed_archive/`; detailed initial
+generations are recovered instead of shortened repair drafts. V3 shape/anchor
+repairs are reused, with the Qwen completion's explicit bare-claim normalization:
+narratives become unverified empty-quote entries, never automatically valid proof.
+Initial prompt, full source text, 16k output budget and fixed-student decoding stay
+unchanged. Context/batching/repair policy differ from earlier models and are saved
+in the run config/snapshot. After all summaries validate, the owned replicas stop
+and the same BF16 Qwen2.5-7B student evaluates only the new summaries, reusing
+hash-checked frozen controls. The shared lock prevents overlapping queues.
 
 1. Qwen3.8-27B MixedInt4 AutoRound: generate all 97 summaries, then fixed-student evaluation.
 2. [Ornith-1.5-9B-GGUF](https://huggingface.co/ornith-ai/Ornith-1.5-9B-GGUF), Q8_0: same procedure.

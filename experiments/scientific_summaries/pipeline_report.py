@@ -261,6 +261,8 @@ def build():
         inputs.append('summary_repair_v3.py')
     if (ROOT / 'finish_qwen9b.py').exists():
         inputs.append('finish_qwen9b.py')
+    if (ROOT / 'run_ornith9b.py').exists():
+        inputs.append('run_ornith9b.py')
     fingerprints = {path: sha((ROOT / path).read_bytes()) for path in inputs}
     # Individual QA files are part of the reproducibility record, not just aggregate results.
     for identifier in manifest['documents']:
