@@ -121,3 +121,5 @@ policies.
 
 The software in this repository is released under the [Apache License 2.0](LICENSE). Source
 documents and third-party datasets/models retain their own terms and are not relicensed here.
+
+- [Gemma 4 E4B IT / 12B IT: 97-paper QA and GH200 throughput](experiments/scientific_summaries/gemma4_97/README.md)

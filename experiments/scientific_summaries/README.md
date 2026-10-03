@@ -1,4 +1,8 @@
-# Scientific summaries: frozen cohort and three-model comparison
+# Scientific summaries: frozen cohort and model comparisons
+
+## Completed Gemma 4 E4B IT / 12B IT results
+
+The [English Gemma findings/results](gemma4_97/README.md) cover both models on the same 97 papers / 970 MCQs, raw and corrected summaries, all 14 comparison scores, 48 batch throughput probes, paired confidence intervals, full traces and scheduler times. E4B scores **85.15% raw** / **84.64% corrected**; 12B scores **86.60% raw** / **86.80% corrected**. See the [shared GH200 comparison](ORNITH_DFLASH_GH200_RESULTS.md).
 
 ## Completed JUPITER Ornith + DFlash results (2026-10-03)
 

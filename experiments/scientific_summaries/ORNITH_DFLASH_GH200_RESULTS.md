@@ -1,4 +1,4 @@
-# Ornith DFlash: measured GH200 accuracy and throughput
+# Scientific summaries: measured GH200 accuracy and throughput
 
 Frozen 97 papers / 970 MCQs per condition; fixed BF16 Qwen2.5-7B student. No LoRA. Full protocols, evidence and limitations: [9B](ornith_dflash_97/README.md), [35B-A3B](ornith35_dflash_97/README.md).
 
@@ -33,3 +33,14 @@ Cold-source generation and repeat-input correction, 512-token probes on non-hold
 Source-only correction can change question-answerability and factual reliability differently. Output lengths are not matched; model sizes, architectures and precision differ. Self-audits are not independent human labels. Prior eight-condition QA is reused only after exact source/question/context/prompt validation. See complete reports for all confidence intervals, invalids, timing, recovery and allocation hours. The existing [60M 9B planning estimate](ornith_dflash_97/SCALING_60M.md) remains a 9B estimate; it is not silently relabelled as a measured 35B cost.
 
 **35B throughput finding:** best DFlash4 reaches 51.8% of best AR generation throughput and 49.8% of best repeat-input correction throughput. The 35B experiment provides no measured DFlash speedup. Its raw and corrected QA differences versus 9B both have paired confidence intervals crossing zero.
+
+## Gemma 4 E4B IT and 12B IT
+
+Same frozen 97 papers, fixed student and initial source-only generation/correction protocol; Gemma adds documented finite-schema rescue after common-protocol failures. [Full English findings and evidence](gemma4_97/README.md). BF16, autoregressive decoding, no LoRA.
+
+| Model | Raw QA | Corrected QA | Mean words raw / corrected | Cold generation tok/s (batch) | Repeat correction tok/s (batch) |
+| --- | --- | --- | --- | --- | --- |
+| Gemma 4 E4B IT | 826/970 · 85.15% | 821/970 · 84.64% | 775 / 759 | 1376.85 (64) | 2425.43 (64) |
+| Gemma 4 12B IT | 840/970 · 86.60% | 842/970 · 86.80% | 918 / 914 | 691.32 (64) | 1818.44 (64) |
+
+The small checkpoint is **E4B** (4.5B effective / approximately 8B including embeddings). Probe throughput is measured separately from complete-output timings. The Gemma report includes paired confidence intervals against each Ornith model and Qwen27B, all batch observations, self-audit failures and complete scheduler GPU-hours. Previous ten QA conditions are reused only after exact immutable source/question/context/prompt/protocol validation.
