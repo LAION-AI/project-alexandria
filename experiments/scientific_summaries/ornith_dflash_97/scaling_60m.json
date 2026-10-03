@@ -1,0 +1,94 @@
+{
+  "assumptions": {
+    "papers": 60000000,
+    "precision": "BF16 Ornith target and draft",
+    "prefill_tokens_per_second": 25000,
+    "useful_capacity": 0.85,
+    "cache_fraction_of_post_generation_prompt_tokens": 0.75,
+    "fast": {
+      "prefill_tokens_per_second": 40000,
+      "useful_capacity": 0.9,
+      "post_input_cache_fraction": 0.9,
+      "throughput_factor": 1.0
+    },
+    "cautious": {
+      "prefill_tokens_per_second": 15000,
+      "useful_capacity": 0.8,
+      "post_input_cache_fraction": 0.0,
+      "throughput_factor": 0.65
+    }
+  },
+  "observed_workload": {
+    "source_papers": 97,
+    "generation_calls": 164,
+    "generation_input_tokens_per_paper": 13662.958762886597,
+    "generation_output_tokens_per_paper": 19221.443298969072,
+    "post_generation_input_tokens_per_paper": 464505.92783505155,
+    "post_generation_output_tokens_per_paper": 12215.082474226803,
+    "all_pipeline_calls": 3597,
+    "full_input_tokens_per_paper": 478168.88659793814,
+    "full_output_tokens_per_paper": 31436.525773195877
+  },
+  "estimates": [
+    {
+      "runtime": "ar",
+      "workflow": "generation only",
+      "corrected": false,
+      "generation_batch": 64,
+      "correction_batch": 64,
+      "generation_tokens_per_second": 1029.1063496110867,
+      "post_generation_tokens_per_second": 2084.9983322799812,
+      "central_cache75_gpu_hours": 366231.38630935206,
+      "central_no_post_input_cache_gpu_hours": 366231.38630935206,
+      "fast_scenario_gpu_hours": 345885.1981810547,
+      "cautious_scenario_gpu_hours": 598647.4583902869
+    },
+    {
+      "runtime": "ar",
+      "workflow": "generation + audit/correction/repair",
+      "corrected": true,
+      "generation_batch": 64,
+      "correction_batch": 64,
+      "generation_tokens_per_second": 1029.1063496110867,
+      "post_generation_tokens_per_second": 2084.9983322799812,
+      "central_cache75_gpu_hours": 572184.6551297888,
+      "central_no_post_input_cache_gpu_hours": 845423.4362092308,
+      "fast_scenario_gpu_hours": 475881.9065343766,
+      "cautious_scenario_gpu_hours": 1431568.8570337906
+    },
+    {
+      "runtime": "dflash4",
+      "workflow": "generation only",
+      "corrected": false,
+      "generation_batch": 64,
+      "correction_batch": 32,
+      "generation_tokens_per_second": 1027.6101859241282,
+      "post_generation_tokens_per_second": 2672.5105777717836,
+      "central_cache75_gpu_hours": 366764.6061126646,
+      "central_no_post_input_cache_gpu_hours": 366764.6061126646,
+      "fast_scenario_gpu_hours": 346388.794661961,
+      "cautious_scenario_gpu_hours": 599519.0676841632
+    },
+    {
+      "runtime": "dflash4",
+      "workflow": "generation + audit/correction/repair",
+      "corrected": true,
+      "generation_batch": 64,
+      "correction_batch": 32,
+      "generation_tokens_per_second": 1027.6101859241282,
+      "post_generation_tokens_per_second": 2672.5105777717836,
+      "central_cache75_gpu_hours": 547464.5826231418,
+      "central_no_post_input_cache_gpu_hours": 820703.363702584,
+      "fast_scenario_gpu_hours": 452535.17138921015,
+      "cautious_scenario_gpu_hours": 1391161.046205618
+    }
+  ],
+  "interpretation": "Planning scenarios, not measured 60M-paper performance or statistical confidence intervals.",
+  "caveats": [
+    "All post-generation phases share the warm correction decode rate as a planning proxy.",
+    "Prefill rate and cache fractions are assumptions, not measured full-pipeline capacities.",
+    "Cold 512-token generation rate embeds a higher prefill/output ratio than complete summaries.",
+    "AR reuses the observed DFlash8 token/retry workload; no complete AR workload was evaluated.",
+    "Longer sources, repetition, small repair-call latency and cache eviction can change the result."
+  ]
+}

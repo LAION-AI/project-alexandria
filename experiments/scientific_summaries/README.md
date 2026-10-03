@@ -1,5 +1,22 @@
 # Scientific summaries: frozen cohort and three-model comparison
 
+## Completed JUPITER Ornith + DFlash results (2026-10-03)
+
+The [complete English findings/results report](ornith_dflash_97/README.md) covers
+all 97 papers and 970 MCQs, raw and corrected Ornith-1.5-9B BF16 + DFlash and
+Qwen3.8-27B FP8 summaries, all eight QA conditions, paired confidence intervals,
+standalone/DFlash throughput at every measured batch, complete-output request
+times, self-audit failures, source recovery and scheduler GPU-hours. It includes
+all per-paper traces, QA responses and checksums. Raw Ornith scores **93.81%**;
+corrected Ornith **93.20%**. The small correction difference is statistically
+uncertain, and Ornith summaries are longer than the new Qwen summaries.
+
+See the [60-million-summary JUPITER GPU-hour estimate](ornith_dflash_97/SCALING_60M.md)
+for an English table with and without correction, cache assumptions and scenario
+ranges. These are planning estimates, not measurements at production scale.
+This new GH200 BF16 experiment is separate from the earlier Q8 workstation
+comparison and the 20-paper RTX3090 DFlash pilot described below.
+
 This experiment compares existing `laion/Scientific-Summaries` summaries, Qwen3.8-27B
 Knowledge Units, and new evidence-grounded summaries with the identical fixed
 `Qwen/Qwen2.5-7B-Instruct` student. See the [Alexandria paper](https://arxiv.org/html/2502.19413v2).
