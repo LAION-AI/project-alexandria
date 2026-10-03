@@ -91,6 +91,27 @@ variables. No hosted API key is needed.
 
 ### Versioned 9B restart (V3)
 
+The final Qwen3.5-9B completion uses `finish_qwen9b.py`: it validates and preserves
+all 94 already completed documents, backs up the checkpoint and prompt snapshot,
+and processes only the three missing papers. Bare narrative strings inside claim
+evidence/implications are rewrapped as entries with **unverified empty quotes**;
+they cannot pass validation until the same model selects supporting source spans,
+or explicitly drops unsupported statements. This is a logged shape repair, not
+automatic evidence acceptance. The three remaining papers use a 65,536-token
+context per slot (four slots, 262,144 total); the original full source and 16,000
+output-token limit are preserved. Their context exception, policy, code checksum,
+prior checkpoint checksum and affected IDs are recorded in `completion_recovery`.
+The original 94 documents and their original V3 implementation hash are retained.
+This heterogeneous completion policy must be disclosed with the resulting score.
+
+Run `python experiments/scientific_summaries/finish_qwen9b.py` to resume this
+workstation-specific completion. It holds the same queue lock, checkpoints each
+finished document, and warms the unchanged BF16 fixed student on GPU 1/port 8011
+while Qwen extracts on GPU 0/port 8010. The port can now be selected through
+`ALEXANDRIA_JUDGE_PORT`; default remains 8010. Evaluation starts only when all 97
+summaries validate. Only newly generated summary predictions are evaluated; frozen
+controls, questions, option permutations and student decoding remain unchanged.
+
 Citation repair examples use an empty string for the absent-bibliography case,
 not a fictitious citation key that a small model could copy. Bibliography entries
 are still allowed when actually present and must pass the unchanged validator.
