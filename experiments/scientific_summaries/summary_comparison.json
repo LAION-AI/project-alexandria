@@ -1,8 +1,8 @@
 {
-  "updated_utc": "2026-10-03T08:07:41.659706+00:00",
+  "updated_utc": "2026-10-03T15:14:20.781029+00:00",
   "papers": 97,
   "questions": 970,
-  "complete": false,
+  "complete": true,
   "progress": {
     "qwen27b": {
       "validated_summaries": 97,
@@ -24,14 +24,24 @@
       "evaluated": true
     },
     "ornith15_9b": {
-      "validated_summaries": 0,
-      "failed_generation_records": 4,
-      "resolved_failure_ids": [],
-      "unresolved_failure_ids": [
+      "validated_summaries": 97,
+      "failed_generation_records": 17,
+      "resolved_failure_ids": [
+        "arxiv-100002",
+        "arxiv-10021",
         "arxiv-121",
-        "arxiv-126"
+        "arxiv-126",
+        "arxiv-500028",
+        "arxiv-500036",
+        "arxiv-500043",
+        "bethgelab-100048",
+        "bethgelab-142",
+        "bethgelab-200019",
+        "bethgelab-200042",
+        "bethgelab-50009"
       ],
-      "evaluated": false
+      "unresolved_failure_ids": [],
+      "evaluated": true
     },
     "qwen35_9b": {
       "validated_summaries": 97,
@@ -419,6 +429,331 @@
         }
       }
     },
+    "ornith15_9b": {
+      "config": {
+        "model": "ornith-ai/Ornith-1.5-9B-GGUF",
+        "revision": "abdd624b12ebf020b767fff532ff44fe552b28c3",
+        "weights_sha256": "22086870b009dbe9815ee752c48a82de930118a7c5ce5599590892ae03b8b010",
+        "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+        "prompt_file_sha256": "503a425c96ae5cce9d5e1d53635eaac25433e48d248e2c50cde560218aa54d70",
+        "runtime": "llama.cpp",
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "thinking": false,
+        "max_tokens": 16000,
+        "context_limit": 65536,
+        "concurrency": 8,
+        "allocated_gpus": 2,
+        "repair_protocol": "field_local_strict_grounding_v3",
+        "cohort_policy": "ornith_v3_claim_shapes_64k_two_replicas_v1",
+        "cohort_implementation_sha256": "8dcc784bcc30734501efa5f4080d632d89c24ce3732959dccae47c32d7965996",
+        "repair_implementation_sha256": "46902c3f209e58648446917a96238d08542f1825aa0a29364f2d1f183b4db1e1",
+        "claim_shape_implementation_sha256": "1d8e31de2776fa7fa642da16df3764c5a14ef4aefd10f4687db3738e98ef343c",
+        "student_input": "all_substantive_narrative_fields_without_grounding_quotes_or_citation_rankings",
+        "recovery_checkpoint_sha256": "ea08a468f462c015c5922824a0f7b5bd7e92c5b70fa77c18b80d18af46d301cc",
+        "historical_elapsed_seconds_included": 1276.1311513856053,
+        "completion_recovery": {
+          "policy": "ornith_missing_only_exact_schema_anchor_ids_v1",
+          "implementation_sha256": "b9ce1a2ed3f80127a1fb470b3b1b091b2d845338b47b7c19c837a25504a28c21",
+          "affected_document_ids": [
+            "arxiv-100002",
+            "bethgelab-142",
+            "bethgelab-100048"
+          ],
+          "original_documents_preserved": 94,
+          "allocated_gpus": 1,
+          "elapsed_seconds": 367.0599965006113,
+          "source_checkpoint_sha256": "90f15cf0425173cbdc36a8832f3ab2ba28787ae9de317502743862b0e11bceda",
+          "context_limit": 65536,
+          "note": "Exact 19-field decoding; at most 12 entries per grounded field and six claims for the three recovery papers; exact allowed anchor IDs/indices; unchanged final validator."
+        }
+      },
+      "elapsed_seconds": 13651.260087668896,
+      "summary": {
+        "no_context": {
+          "correct": 600,
+          "total": 970,
+          "invalid": 3,
+          "accuracy": 0.6185567010309279,
+          "ci95": [
+            0.5835051546391753,
+            0.6525773195876289
+          ]
+        },
+        "original": {
+          "correct": 942,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9711340206185567,
+          "ci95": [
+            0.9587628865979382,
+            0.9814432989690721
+          ]
+        },
+        "summary": {
+          "correct": 833,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.8587628865979381,
+          "ci95": [
+            0.8340206185567011,
+            0.8814432989690721
+          ]
+        },
+        "knowledge_units": {
+          "correct": 896,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9237113402061856,
+          "ci95": [
+            0.9041237113402062,
+            0.9412371134020618
+          ]
+        },
+        "qwen_summary": {
+          "correct": 899,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9268041237113402,
+          "ci95": [
+            0.9061855670103093,
+            0.945360824742268
+          ]
+        },
+        "summary_minus_original": {
+          "accuracy": -0.1123711340206186,
+          "ci95": [
+            -0.13505154639175254,
+            -0.0907216494845361
+          ]
+        },
+        "knowledge_units_minus_original": {
+          "accuracy": -0.04742268041237108,
+          "ci95": [
+            -0.06391752577319587,
+            -0.031958762886597936
+          ]
+        },
+        "knowledge_units_minus_summary": {
+          "accuracy": 0.06494845360824753,
+          "ci95": [
+            0.04536082474226799,
+            0.08556701030927838
+          ]
+        },
+        "qwen_summary_minus_original": {
+          "accuracy": -0.04432989690721645,
+          "ci95": [
+            -0.061855670103092786,
+            -0.027835051546391765
+          ]
+        },
+        "qwen_summary_minus_summary": {
+          "accuracy": 0.06804123711340215,
+          "ci95": [
+            0.04845360824742262,
+            0.08762886597938147
+          ]
+        },
+        "qwen_summary_minus_knowledge_units": {
+          "accuracy": 0.003092783505154628,
+          "ci95": [
+            -0.015463917525773141,
+            0.020618556701030966
+          ]
+        }
+      },
+      "subsets": {
+        "arxiv": {
+          "no_context": {
+            "correct": 295,
+            "total": 500,
+            "invalid": 3,
+            "accuracy": 0.59,
+            "ci95": [
+              0.54,
+              0.64
+            ]
+          },
+          "original": {
+            "correct": 480,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.96,
+            "ci95": [
+              0.94,
+              0.976
+            ]
+          },
+          "summary": {
+            "correct": 413,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.826,
+            "ci95": [
+              0.79,
+              0.86
+            ]
+          },
+          "knowledge_units": {
+            "correct": 451,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.902,
+            "ci95": [
+              0.87,
+              0.93
+            ]
+          },
+          "qwen_summary": {
+            "correct": 446,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.892,
+            "ci95": [
+              0.86,
+              0.922
+            ]
+          },
+          "summary_minus_original": {
+            "accuracy": -0.134,
+            "ci95": [
+              -0.16799999999999993,
+              -0.09999999999999998
+            ]
+          },
+          "knowledge_units_minus_original": {
+            "accuracy": -0.05799999999999994,
+            "ci95": [
+              -0.08599999999999997,
+              -0.03199999999999992
+            ]
+          },
+          "knowledge_units_minus_summary": {
+            "accuracy": 0.07600000000000007,
+            "ci95": [
+              0.04600000000000004,
+              0.10599999999999998
+            ]
+          },
+          "qwen_summary_minus_original": {
+            "accuracy": -0.06799999999999995,
+            "ci95": [
+              -0.09799999999999998,
+              -0.039999999999999925
+            ]
+          },
+          "qwen_summary_minus_summary": {
+            "accuracy": 0.06600000000000006,
+            "ci95": [
+              0.03400000000000003,
+              0.09799999999999998
+            ]
+          },
+          "qwen_summary_minus_knowledge_units": {
+            "accuracy": -0.010000000000000009,
+            "ci95": [
+              -0.038000000000000034,
+              0.018000000000000016
+            ]
+          }
+        },
+        "bethgelab": {
+          "no_context": {
+            "correct": 305,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.648936170212766,
+            "ci95": [
+              0.6042553191489362,
+              0.6936170212765957
+            ]
+          },
+          "original": {
+            "correct": 462,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9829787234042553,
+            "ci95": [
+              0.9723404255319149,
+              0.9936170212765958
+            ]
+          },
+          "summary": {
+            "correct": 420,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.8936170212765957,
+            "ci95": [
+              0.8638297872340426,
+              0.9212765957446809
+            ]
+          },
+          "knowledge_units": {
+            "correct": 445,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9468085106382979,
+            "ci95": [
+              0.925531914893617,
+              0.9659574468085106
+            ]
+          },
+          "qwen_summary": {
+            "correct": 453,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9638297872340426,
+            "ci95": [
+              0.9446808510638298,
+              0.9787234042553191
+            ]
+          },
+          "summary_minus_original": {
+            "accuracy": -0.08936170212765959,
+            "ci95": [
+              -0.11489361702127665,
+              -0.06382978723404253
+            ]
+          },
+          "knowledge_units_minus_original": {
+            "accuracy": -0.036170212765957444,
+            "ci95": [
+              -0.05319148936170215,
+              -0.021276595744680882
+            ]
+          },
+          "knowledge_units_minus_summary": {
+            "accuracy": 0.05319148936170215,
+            "ci95": [
+              0.02765957446808509,
+              0.07872340425531921
+            ]
+          },
+          "qwen_summary_minus_original": {
+            "accuracy": -0.019148936170212738,
+            "ci95": [
+              -0.0340425531914893,
+              -0.006382978723404209
+            ]
+          },
+          "qwen_summary_minus_summary": {
+            "accuracy": 0.07021276595744685,
+            "ci95": [
+              0.04680851063829783,
+              0.09148936170212774
+            ]
+          },
+          "qwen_summary_minus_knowledge_units": {
+            "accuracy": 0.017021276595744705,
+            "ci95": [
+              -0.0021276595744681437,
+              0.036170212765957444
+            ]
+          }
+        }
+      }
+    },
     "qwen35_9b": {
       "config": {
         "model": "unsloth/Qwen3.5-9B-GGUF",
@@ -747,11 +1082,25 @@
     }
   },
   "paired_model_differences": {
+    "ornith15_9b_minus_qwen27b": {
+      "difference": 0.027835051546391754,
+      "ci95": [
+        0.007216494845360825,
+        0.049484536082474224
+      ]
+    },
     "qwen35_9b_minus_qwen27b": {
       "difference": -0.020618556701030927,
       "ci95": [
         -0.04020618556701031,
         -0.0010309278350515464
+      ]
+    },
+    "qwen35_9b_minus_ornith15_9b": {
+      "difference": -0.04845360824742268,
+      "ci95": [
+        -0.06804123711340206,
+        -0.0288659793814433
       ]
     }
   }
