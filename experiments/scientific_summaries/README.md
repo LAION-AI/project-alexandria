@@ -59,6 +59,26 @@ in the run config/snapshot. After all summaries validate, the owned replicas sto
 and the same BF16 Qwen2.5-7B student evaluates only the new summaries, reusing
 hash-checked frozen controls. The shared lock prevents overlapping queues.
 
+**Final Ornith recovery:** `python experiments/scientific_summaries/finish_ornith9b.py`
+preserves the original 94 completed representations and repairs only the three
+missing records. Anchor decoding requires exactly the requested task IDs, with
+only supplied candidate indices or `"drop"`; an invented `q8` can no longer block
+the batch. Initial/field decoding requires the requested Schema-v4 keys, and bounds
+grounded lists to 12 entries and claims to six to stop repetitive output loops.
+These additional decoder constraints apply only to the recovery papers and are
+disclosed under `completion_recovery` and `completion_schema_snapshot.json`.
+The initial system prompt, 16k output limit, source text, scientific values and
+strict final source validator are unchanged. The same fixed student warms up on
+GPU 1 while recovery uses GPU 0; its evaluation starts automatically after 97/97
+validate. Checkpointed recovery wall time is counted with one GPU, not two.
+
+Full raw calls are preserved in `documents/` and `failure_journals/`, each referenced
+and SHA-256-checked from the summary cache. The lean `summaries.json` retains every
+attempt's metadata but avoids duplicating responses/tasks, because the original
+monolithic Ornith cache exceeded GitHub's 100-MiB file limit. Model/source/student
+contexts and proof spans are preserved. Publication verifies all referenced raw
+journals and includes the decoder-schema snapshot; no raw responses are discarded.
+
 1. Qwen3.8-27B MixedInt4 AutoRound: generate all 97 summaries, then fixed-student evaluation.
 2. [Ornith-1.5-9B-GGUF](https://huggingface.co/ornith-ai/Ornith-1.5-9B-GGUF), Q8_0: same procedure.
 3. [Qwen3.5-9B-GGUF](https://huggingface.co/unsloth/Qwen3.5-9B-GGUF), Q8_0: same procedure.

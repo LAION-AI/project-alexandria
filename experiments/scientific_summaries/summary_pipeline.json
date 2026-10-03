@@ -1,6 +1,6 @@
 {
   "as_of": "2026-10-02",
-  "code_reference_commit": "117c2c6e2c7fb6cc54e024a1b70e64ecd496e286",
+  "code_reference_commit": "5aac4b5ba2a78b20637e8ab960fe79d01ecd769a",
   "reference_note": "Input SHA-256 hashes are authoritative; current working-tree differences are disclosed.",
   "modified_tracked_inputs": [
     "pipeline_report.py",
@@ -130,11 +130,12 @@
     "summary_runs/qwen27b/summary_prompt_snapshot.json": "21f297fdfd5170abf112828877e83e9c8099549ed7e5688c99af38bf83b8e05f",
     "../../src/project_alexandria/experiments/mcq.py": "6f8f06dda7c8018b71f336de9758304ceedb6203dddffbda560b6ce7936107e9",
     "../../src/project_alexandria/experiments/reproduce.py": "9760198eb1ba1040a48b567ddada4a0025779833926da8b5199c4f843e6f33ca",
-    "pipeline_report.py": "3b0bfc5deda7237ec87ae5c1bbc857820b6de496db67f358a8fc72ec62e43cd5",
-    "pipeline_report.template.html": "42ff4862e48760328b20269f169621632a30e2f9617788b92008694af51f60cd",
+    "pipeline_report.py": "0ddfe5ecdaae320b01390b91add3ac30ee7f13227802a3a90bd1eb91b88be8e5",
+    "pipeline_report.template.html": "6df33e854623aaec3cc2aa15e783d36aac51e3d6e3e381e33de6001826615396",
     "summary_repair_v3.py": "46902c3f209e58648446917a96238d08542f1825aa0a29364f2d1f183b4db1e1",
     "finish_qwen9b.py": "1d8e31de2776fa7fa642da16df3764c5a14ef4aefd10f4687db3738e98ef343c",
     "run_ornith9b.py": "8dcc784bcc30734501efa5f4080d632d89c24ce3732959dccae47c32d7965996",
+    "finish_ornith9b.py": "b9ce1a2ed3f80127a1fb470b3b1b091b2d845338b47b7c19c837a25504a28c21",
     "data/qa/arxiv-121.json": "f56b8d4ba5256161b35f90200e60ad1a05c1c2439e1a0d5069a43b214a701479",
     "data/qa/arxiv-126.json": "76d12881705c1a1285b3d4d23b55b2bbf7263632dc266d6481ab72752f9bd4d7",
     "data/qa/arxiv-107.json": "340148cde8d0c3d7cad643f77aad1770dcaa5f16836c2a07fb4886caedddac4f",
@@ -385,6 +386,14 @@
       "sha256": "45ffc8d0ec6478f9bd1adb8f46e5e011727b39c475476e909e7b26374fd09715",
       "source": "summary_repair_v3.py",
       "note": "Produces the syntax-only example inserted in A13; concrete per-field examples are saved in V3 prompt snapshots."
+    },
+    {
+      "id": "ornith-decoder-schemas",
+      "title": "A16. Ornith final-three decoder schema builders",
+      "text": "def field_schema(field):\n    text = {'type': 'string'}\n    absent = {'type': 'string', 'enum': ['']}\n    entry = dict(type='object', minProperties=1, maxProperties=1, additionalProperties=text)\n    sequence = {'anyOf': [absent, dict(type='array', minItems=1, maxItems=12, items=entry)]}\n    if field in GROUNDED:\n        return sequence\n    if field == 'claims':\n        properties = dict(description=text, supporting_evidence=sequence,\n                          contradicting_evidence=sequence, implications=sequence)\n        claim = dict(type='object', properties=properties, required=list(properties), additionalProperties=False)\n        return {'anyOf': [absent, dict(type='array', minItems=1, maxItems=6, items=claim)]}\n    if field == 'top_influential_citations':\n        citation = dict(type='object', minProperties=2, maxProperties=2,\n            properties={'quotes': dict(type='array', minItems=1, maxItems=5, items=text)},\n            required=['quotes'], additionalProperties=text)\n        return {'anyOf': [absent, dict(type='array', minItems=1, maxItems=5, items=citation)]}\n    return text\n\ndef output_schema(messages):\n    system, user = messages[0]['content'], messages[1]['content']\n    if system == ANCHOR_SYSTEM:\n        tasks = json.loads(user.split('\\n\\nTASKS\\n', 1)[1])\n        properties = {t['id']: {'enum': list(range(len(t['candidates']))) + ['drop']} for t in tasks}\n    elif system == REPAIR_SYSTEM:\n        field = user.split('\\nFIELD\\n', 1)[1].split('\\n', 1)[0]\n        properties = {field: field_schema(field)}\n    else:\n        properties = {k: field_schema(k) for k in KEYS}\n    return dict(type='object', properties=properties, required=list(properties), additionalProperties=False)",
+      "sha256": "243634a00a2d9be1e6e6dc84a97de58cd936bffbedb35a2516eb552758c9a53b",
+      "source": "finish_ornith9b.py",
+      "note": "Decoder constraints, not changed system prompts. Concrete generation schema is saved in completion_schema_snapshot.json."
     }
   ]
 }

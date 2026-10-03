@@ -1,5 +1,6 @@
 """Publish audited completed model results, without staging unrelated work or secrets."""
 import argparse
+import hashlib
 import json
 import re
 import subprocess
@@ -42,11 +43,24 @@ def main():
                 directory = ROOT / 'summary_runs' / name
                 paths += [directory / item for item in ('summaries.json', 'results.json',
                     'qa_evaluated.json', 'summary_prompt_snapshot.json', 'documents')]
+                for item in ('failure_journals', 'completion_schema_snapshot.json'):
+                    if (directory / item).exists():
+                        paths.append(directory / item)
+                cache = load(directory / 'summaries.json')
+                for record in cache['documents'] + cache.get('failures', []):
+                    if record.get('raw_journal_file'):
+                        journal = (directory / record['raw_journal_file']).resolve()
+                        journal.relative_to(directory.resolve())
+                        if hashlib.sha256(journal.read_bytes()).hexdigest() != record['raw_journal_sha256']:
+                            raise ValueError('Raw journal hash changed; publication stopped')
             for path in paths:
                 files = path.rglob('*') if path.is_dir() else [path]
                 for file in files:
                     if file.is_file() and SECRET.search(file.read_bytes()):
                         raise ValueError('Potential secret; publication stopped, file: ' + str(file.relative_to(REPO)))
+                    if file.is_file() and file.stat().st_size > 100 * 1024 * 1024:
+                        raise ValueError('File exceeds GitHub limit; preserve raw calls in smaller shards: '
+                                         + str(file.relative_to(REPO)))
             targets = [str(path.relative_to(REPO)) for path in paths]
             git(['add', '--'] + targets)
             changed = subprocess.run(['git', 'diff', '--cached', '--quiet', '--'] + targets, cwd=str(REPO))

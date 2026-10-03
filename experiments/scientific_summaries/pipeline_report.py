@@ -155,6 +155,12 @@ def prompt_inventory():
              ast.get_source_segment(v3.read_text(encoding='utf-8'), function(v3, 'field_example')[1]),
              'summary_repair_v3.py', 'Produces the syntax-only example inserted in A13; concrete per-field examples are saved in V3 prompt snapshots.'),
         ])
+    completion = ROOT / 'finish_ornith9b.py'
+    if completion.exists():
+        items.append(('ornith-decoder-schemas', 'A16. Ornith final-three decoder schema builders',
+            '\n\n'.join(ast.get_source_segment(completion.read_text(encoding='utf-8'), function(completion, n)[1])
+                         for n in ('field_schema', 'output_schema')),
+            'finish_ornith9b.py', 'Decoder constraints, not changed system prompts. Concrete generation schema is saved in completion_schema_snapshot.json.'))
     return items
 
 
@@ -263,6 +269,8 @@ def build():
         inputs.append('finish_qwen9b.py')
     if (ROOT / 'run_ornith9b.py').exists():
         inputs.append('run_ornith9b.py')
+    if (ROOT / 'finish_ornith9b.py').exists():
+        inputs.append('finish_ornith9b.py')
     fingerprints = {path: sha((ROOT / path).read_bytes()) for path in inputs}
     # Individual QA files are part of the reproducibility record, not just aggregate results.
     for identifier in manifest['documents']:
