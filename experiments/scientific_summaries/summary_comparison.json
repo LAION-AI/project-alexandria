@@ -1,5 +1,5 @@
 {
-  "updated_utc": "2026-10-02T06:57:17.664426+00:00",
+  "updated_utc": "2026-10-03T08:07:41.659706+00:00",
   "papers": 97,
   "questions": 970,
   "complete": false,
@@ -25,17 +25,28 @@
     },
     "ornith15_9b": {
       "validated_summaries": 0,
-      "failed_generation_records": 0,
+      "failed_generation_records": 4,
       "resolved_failure_ids": [],
-      "unresolved_failure_ids": [],
+      "unresolved_failure_ids": [
+        "arxiv-121",
+        "arxiv-126"
+      ],
       "evaluated": false
     },
     "qwen35_9b": {
-      "validated_summaries": 0,
-      "failed_generation_records": 0,
-      "resolved_failure_ids": [],
+      "validated_summaries": 97,
+      "failed_generation_records": 10,
+      "resolved_failure_ids": [
+        "arxiv-10040",
+        "arxiv-121",
+        "arxiv-126",
+        "arxiv-136",
+        "arxiv-500036",
+        "bethgelab-50028",
+        "bethgelab-50043"
+      ],
       "unresolved_failure_ids": [],
-      "evaluated": false
+      "evaluated": true
     }
   },
   "baseline": {
@@ -407,7 +418,341 @@
           }
         }
       }
+    },
+    "qwen35_9b": {
+      "config": {
+        "model": "unsloth/Qwen3.5-9B-GGUF",
+        "revision": "3885219b6810b007914f3a7950a8d1b469d598a5",
+        "system_prompt_sha256": "3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed",
+        "prompt_file_sha256": "503a425c96ae5cce9d5e1d53635eaac25433e48d248e2c50cde560218aa54d70",
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "thinking": false,
+        "max_tokens": 16000,
+        "concurrency": 4,
+        "attempts": 6,
+        "context_limit": 32768,
+        "runtime": "llama.cpp",
+        "weights_sha256": "809626574d0cb43d4becfa56169980da2bb448f2299270f7be443cb89d0a6ae4",
+        "allocated_gpus": 1,
+        "repair_protocol": "field_local_strict_grounding_v3",
+        "repair_system_prompt_sha256": "707e28652feefba83ffc78cdbad49e7ab88bbba3eb78c95efd76e611196368f3",
+        "student_input": "all_substantive_narrative_fields_without_grounding_quotes_or_citation_rankings",
+        "repair_implementation_sha256": "46902c3f209e58648446917a96238d08542f1825aa0a29364f2d1f183b4db1e1",
+        "recovery": {
+          "checkpoint_sha256": "a0a48e97b8b2c936fc133a46860bf7711235ba920fd3a5da1df83f4e1e8255bd",
+          "prior_repair_implementation_sha256": "4d5e0aa060694d2af7deb208a2c1202dc7515ef40beef16404937a852576a975",
+          "prior_recovery": null,
+          "historical_elapsed_seconds_included": 201.46694354712963
+        },
+        "completion_recovery": {
+          "policy": "missing_only_v3_claim_shapes_context64k_v1",
+          "implementation_sha256": "1d8e31de2776fa7fa642da16df3764c5a14ef4aefd10f4687db3738e98ef343c",
+          "original_checkpoint_sha256": "9e1e0135aec5a36fa2063f6184f2f395eecdee204eb15a4ffdcecdbce0b4fc2b",
+          "original_documents_preserved": 94,
+          "context_limit": 65536,
+          "affected_document_ids": [
+            "arxiv-136",
+            "arxiv-500036",
+            "bethgelab-50043"
+          ],
+          "explanation": "Only missing papers: rewrap bare claim narratives with unverified empty quotes; same-model anchors or audited drops; 64k context without source truncation."
+        }
+      },
+      "elapsed_seconds": 8362.173221159726,
+      "summary": {
+        "no_context": {
+          "correct": 600,
+          "total": 970,
+          "invalid": 3,
+          "accuracy": 0.6185567010309279,
+          "ci95": [
+            0.5835051546391753,
+            0.6525773195876289
+          ]
+        },
+        "original": {
+          "correct": 942,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9711340206185567,
+          "ci95": [
+            0.9587628865979382,
+            0.9814432989690721
+          ]
+        },
+        "summary": {
+          "correct": 833,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.8587628865979381,
+          "ci95": [
+            0.8340206185567011,
+            0.8814432989690721
+          ]
+        },
+        "knowledge_units": {
+          "correct": 896,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.9237113402061856,
+          "ci95": [
+            0.9041237113402062,
+            0.9412371134020618
+          ]
+        },
+        "qwen_summary": {
+          "correct": 852,
+          "total": 970,
+          "invalid": 0,
+          "accuracy": 0.8783505154639175,
+          "ci95": [
+            0.8546391752577319,
+            0.9010309278350516
+          ]
+        },
+        "summary_minus_original": {
+          "accuracy": -0.1123711340206186,
+          "ci95": [
+            -0.13505154639175254,
+            -0.0907216494845361
+          ]
+        },
+        "knowledge_units_minus_original": {
+          "accuracy": -0.04742268041237108,
+          "ci95": [
+            -0.06391752577319587,
+            -0.031958762886597936
+          ]
+        },
+        "knowledge_units_minus_summary": {
+          "accuracy": 0.06494845360824753,
+          "ci95": [
+            0.04536082474226799,
+            0.08556701030927838
+          ]
+        },
+        "qwen_summary_minus_original": {
+          "accuracy": -0.09278350515463918,
+          "ci95": [
+            -0.11443298969072158,
+            -0.07319587628865976
+          ]
+        },
+        "qwen_summary_minus_summary": {
+          "accuracy": 0.019587628865979423,
+          "ci95": [
+            -0.003092783505154628,
+            0.042268041237113474
+          ]
+        },
+        "qwen_summary_minus_knowledge_units": {
+          "accuracy": -0.0453608247422681,
+          "ci95": [
+            -0.0670103092783505,
+            -0.023711340206185594
+          ]
+        }
+      },
+      "subsets": {
+        "arxiv": {
+          "no_context": {
+            "correct": 295,
+            "total": 500,
+            "invalid": 3,
+            "accuracy": 0.59,
+            "ci95": [
+              0.54,
+              0.64
+            ]
+          },
+          "original": {
+            "correct": 480,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.96,
+            "ci95": [
+              0.94,
+              0.976
+            ]
+          },
+          "summary": {
+            "correct": 413,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.826,
+            "ci95": [
+              0.79,
+              0.86
+            ]
+          },
+          "knowledge_units": {
+            "correct": 451,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.902,
+            "ci95": [
+              0.87,
+              0.93
+            ]
+          },
+          "qwen_summary": {
+            "correct": 429,
+            "total": 500,
+            "invalid": 0,
+            "accuracy": 0.858,
+            "ci95": [
+              0.824,
+              0.89
+            ]
+          },
+          "summary_minus_original": {
+            "accuracy": -0.134,
+            "ci95": [
+              -0.16799999999999993,
+              -0.09999999999999998
+            ]
+          },
+          "knowledge_units_minus_original": {
+            "accuracy": -0.05799999999999994,
+            "ci95": [
+              -0.08599999999999997,
+              -0.03199999999999992
+            ]
+          },
+          "knowledge_units_minus_summary": {
+            "accuracy": 0.07600000000000007,
+            "ci95": [
+              0.04600000000000004,
+              0.10599999999999998
+            ]
+          },
+          "qwen_summary_minus_original": {
+            "accuracy": -0.10199999999999998,
+            "ci95": [
+              -0.134,
+              -0.07199999999999995
+            ]
+          },
+          "qwen_summary_minus_summary": {
+            "accuracy": 0.03200000000000003,
+            "ci95": [
+              0.0,
+              0.061999999999999944
+            ]
+          },
+          "qwen_summary_minus_knowledge_units": {
+            "accuracy": -0.04400000000000004,
+            "ci95": [
+              -0.07400000000000007,
+              -0.014000000000000012
+            ]
+          }
+        },
+        "bethgelab": {
+          "no_context": {
+            "correct": 305,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.648936170212766,
+            "ci95": [
+              0.6042553191489362,
+              0.6936170212765957
+            ]
+          },
+          "original": {
+            "correct": 462,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9829787234042553,
+            "ci95": [
+              0.9723404255319149,
+              0.9936170212765958
+            ]
+          },
+          "summary": {
+            "correct": 420,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.8936170212765957,
+            "ci95": [
+              0.8638297872340426,
+              0.9212765957446809
+            ]
+          },
+          "knowledge_units": {
+            "correct": 445,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9468085106382979,
+            "ci95": [
+              0.925531914893617,
+              0.9659574468085106
+            ]
+          },
+          "qwen_summary": {
+            "correct": 423,
+            "total": 470,
+            "invalid": 0,
+            "accuracy": 0.9,
+            "ci95": [
+              0.8702127659574468,
+              0.9276595744680851
+            ]
+          },
+          "summary_minus_original": {
+            "accuracy": -0.08936170212765959,
+            "ci95": [
+              -0.11489361702127665,
+              -0.06382978723404253
+            ]
+          },
+          "knowledge_units_minus_original": {
+            "accuracy": -0.036170212765957444,
+            "ci95": [
+              -0.05319148936170215,
+              -0.021276595744680882
+            ]
+          },
+          "knowledge_units_minus_summary": {
+            "accuracy": 0.05319148936170215,
+            "ci95": [
+              0.02765957446808509,
+              0.07872340425531921
+            ]
+          },
+          "qwen_summary_minus_original": {
+            "accuracy": -0.08297872340425527,
+            "ci95": [
+              -0.11063829787234047,
+              -0.057446808510638325
+            ]
+          },
+          "qwen_summary_minus_summary": {
+            "accuracy": 0.00638297872340432,
+            "ci95": [
+              -0.02765957446808509,
+              0.04042553191489362
+            ]
+          },
+          "qwen_summary_minus_knowledge_units": {
+            "accuracy": -0.04680851063829783,
+            "ci95": [
+              -0.07872340425531921,
+              -0.014893617021276673
+            ]
+          }
+        }
+      }
     }
   },
-  "paired_model_differences": {}
+  "paired_model_differences": {
+    "qwen35_9b_minus_qwen27b": {
+      "difference": -0.020618556701030927,
+      "ci95": [
+        -0.04020618556701031,
+        -0.0010309278350515464
+      ]
+    }
+  }
 }
