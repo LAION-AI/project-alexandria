@@ -4,6 +4,8 @@
 and [60-million-summary GPU-hour planning table](ornith_dflash_97/SCALING_60M.md).
 They include raw/corrected QA, throughput, complete-output timings and allocation
 accounting. The 20-paper RTX3090 pilot below remains a separate experiment.
+The [9B / 35B-A3B GH200 comparison](ORNITH_DFLASH_GH200_RESULTS.md) links the new
+35B-A3B benchmark and clearly marks any results still pending.
 
 This experiment repeats **20 of the published 97 papers**, with their unchanged
 200 multiple-choice questions and the same Qwen2.5-7B-Instruct BF16 fixed student.

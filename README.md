@@ -108,6 +108,7 @@ documented in [running Qwen3.8-27B](docs/running-qwen38.md).
 - [MCQ reproduction and historical judge](docs/reproducing-mcq.md)
 - [Throughput and JUPITER planning estimates](docs/scaling-estimates.md)
 - [97-paper Ornith + DFlash findings, QA results and measured GH200 performance](experiments/scientific_summaries/ornith_dflash_97/README.md)
+- [Ornith 9B / 35B-A3B GH200 accuracy and throughput comparison](experiments/scientific_summaries/ORNITH_DFLASH_GH200_RESULTS.md)
 - [60-million-summary JUPITER GPU-hour estimate, with and without correction](experiments/scientific_summaries/ornith_dflash_97/SCALING_60M.md)
 
 ## Scope and legal caution

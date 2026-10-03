@@ -2,6 +2,12 @@
 
 ## Completed JUPITER Ornith + DFlash results (2026-10-03)
 
+The [combined 9B / 35B-A3B GH200 comparison](ORNITH_DFLASH_GH200_RESULTS.md)
+links both experiments. The [35B-A3B run](ornith35_dflash_97/README.md) uses the
+same frozen test set and fixed student: **92.47% raw**, **92.68% corrected**,
+with all 97 papers and all 9,700 combined QA answers validated. On the measured
+35B workload, DFlash is slower than standalone autoregressive decoding.
+
 The [complete English findings/results report](ornith_dflash_97/README.md) covers
 all 97 papers and 970 MCQs, raw and corrected Ornith-1.5-9B BF16 + DFlash and
 Qwen3.8-27B FP8 summaries, all eight QA conditions, paired confidence intervals,
