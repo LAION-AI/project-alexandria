@@ -259,6 +259,8 @@ def build():
               'pipeline_report.py', 'pipeline_report.template.html']
     if (ROOT / 'summary_repair_v3.py').exists():
         inputs.append('summary_repair_v3.py')
+    if (ROOT / 'finish_qwen9b.py').exists():
+        inputs.append('finish_qwen9b.py')
     fingerprints = {path: sha((ROOT / path).read_bytes()) for path in inputs}
     # Individual QA files are part of the reproducibility record, not just aggregate results.
     for identifier in manifest['documents']:
