@@ -88,3 +88,58 @@ that results already exist.
 - [Draft model and serving instructions](https://huggingface.co/ornith-ai/Ornith-1.5-9B-DFlash)
 - [Project repository](https://github.com/LAION-AI/project-alexandria)
 - [Alexandria paper](https://arxiv.org/html/2502.19413v2)
+
+## Separate planning estimate: 60 million papers on JUPITER GH200
+
+This is an **extrapolation**, not a benchmark. JUPITER standard accelerated nodes
+have four GH200s, each with 96GB HBM3 (4TB/s), per the
+[JSC configuration documentation](https://apps.fz-juelich.de/jsc/hps/jupiter/configuration.html).
+Ornith uses the Qwen3.5-9B architecture. Related
+[GPUStack H100 serving benchmarks](https://docs.gpustack.ai/2.1/performance-lab/qwen3.5-9b/h100/)
+inform a wide planning range; they are not measurements of Ornith FP8 or this
+long-output repair workflow. Total input+output TPS must not be mistaken for
+output-token throughput.
+
+Auditing and deduplicating the published 97-paper journals gives 2,218 actual
+calls: 171 generation, 106 field repair, 1,941 anchor-selection calls. Initial
+generation averages 8,166 input and 9,609 output tokens per paper. Everything
+after that, **including failed-generation retries**, averages 398,434 input and
+10,340 output tokens. The total is 406,600 input / 19,949 output tokens per paper.
+These texts average about 3,522 words: extrapolating to longer full papers changes
+the workload. Recorded cached input averages 64,030 tokens per paper in total;
+this llama.cpp cache accounting is only a proxy, not proven vLLM cache reuse.
+
+For well-batched FP8 deployment, the **assumed**, aggregate per-GPU capacities are:
+
+| Scenario | Prefill tokens/s | Output tokens/s | Useful capacity |
+|---|---:|---:|---:|
+| Optimistic | 40,000 | 4,000 | 90% |
+| Central | 25,000 | 2,500 | 85% |
+| Cautious | 15,000 | 1,500 | 80% |
+
+Use `GPUh = (60M / 3600 / useful_capacity) × (input_tokens_per_paper / prefill_rate
++ output_tokens_per_paper / output_rate)`. Subtract cached input only in the
+explicit cache-proxy scenario. This additive equivalent-work approximation
+reserves overhead; it is not a claim that both capacities are reached concurrently.
+
+| Phase | Central, observed-cache proxy | Central, no cache |
+|---|---:|---:|
+| First generation | ~82,000 GPUh | ~82,000 GPUh |
+| Corrections + generation retries | ~344,000 GPUh | ~394,000 GPUh |
+| Total | **~425,000 GPUh** | **~475,000 GPUh** |
+
+The full fast-to-cautious envelope is approximately **250,000–842,000 GPUh**,
+combining throughput assumptions with the cache/no-cache variants. A practical
+initial budget is around **half a million GPU hours** for the historical repair
+volume. QA evaluation, PDF extraction, CPU validation, storage and scheduler queue
+waiting are excluded. Optimal batching does not remove the token work of repair
+calls. Enforcing exact schemas for all papers or reducing anchor prompt size may
+lower costs materially, but no reduced-cost quality-equivalent result is measured
+yet. Likewise FP8 accuracy must be rechecked; the published Q8 score is not an FP8
+score. No prospective DFlash acceleration is included in these numbers.
+
+Recompute all workload counts, formulas and scenarios from the committed raw files:
+
+```bash
+python experiments/scientific_summaries/estimate_ornith_gpu_hours.py --papers 60000000
+```

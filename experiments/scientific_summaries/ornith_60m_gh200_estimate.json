@@ -1,0 +1,92 @@
+{
+  "corpus_papers": 60000000,
+  "measured_token_workload": {
+    "papers": 97,
+    "phase_calls": {
+      "generation": 171,
+      "field_repair": 106,
+      "source_anchor_selection": 1941
+    },
+    "initial_generation": {
+      "calls": 97,
+      "prompt_tokens": 792067,
+      "output_tokens": 932048,
+      "cached_input_tokens": 17856
+    },
+    "correction_including_regeneration": {
+      "calls": 2121,
+      "prompt_tokens": 38648140,
+      "output_tokens": 1003017,
+      "cached_input_tokens": 6193089
+    },
+    "total": {
+      "calls": 2218,
+      "prompt_tokens": 39440207,
+      "output_tokens": 1935065,
+      "cached_input_tokens": 6210945
+    }
+  },
+  "scenarios": {
+    "optimistic": {
+      "assumed_prefill_tokens_per_second_per_gpu": 40000,
+      "assumed_output_tokens_per_second_per_gpu": 4000,
+      "useful_capacity_fraction": 0.9,
+      "observed_cache_proxy": {
+        "initial_generation": 48180.083046964486,
+        "correction_including_regeneration": 202774.0597556319,
+        "total": 250954.1428025964
+      },
+      "no_prefix_cache": {
+        "initial_generation": 48265.30641466208,
+        "correction_including_regeneration": 232332.52195494462,
+        "total": 280597.8283696067
+      }
+    },
+    "central": {
+      "assumed_prefill_tokens_per_second_per_gpu": 25000,
+      "assumed_output_tokens_per_second_per_gpu": 2500,
+      "useful_capacity_fraction": 0.85,
+      "observed_cache_proxy": {
+        "initial_generation": 81622.72892662219,
+        "correction_including_regeneration": 343523.11299777636,
+        "total": 425145.8419243986
+      },
+      "no_prefix_cache": {
+        "initial_generation": 81767.10733778047,
+        "correction_including_regeneration": 393598.62542955327,
+        "total": 475365.7327673337
+      }
+    },
+    "cautious": {
+      "assumed_prefill_tokens_per_second_per_gpu": 15000,
+      "assumed_output_tokens_per_second_per_gpu": 1500,
+      "useful_capacity_fraction": 0.8,
+      "observed_cache_proxy": {
+        "initial_generation": 144540.24914089343,
+        "correction_including_regeneration": 608322.1792668956,
+        "total": 752862.4284077891
+      },
+      "no_prefix_cache": {
+        "initial_generation": 144795.91924398622,
+        "correction_including_regeneration": 696997.5658648338,
+        "total": 841793.48510882
+      }
+    }
+  },
+  "measurement": "97-paper RTX3090 llama.cpp Q8 run, including failures and successful retries; raw calls deduplicated across copied journals",
+  "assumptions": [
+    "Rates are hypothetical aggregate per-GPU serving capacities, not Ornith GH200 measurements.",
+    "FP8 target, TP=1 per GH200, well-filled continuous batches, optimized runtime assumed.",
+    "Additive prefill/decode equivalent-work model; useful-capacity factor reserves overhead.",
+    "Observed llama.cpp cached tokens are only a cache proxy, not verified vLLM hybrid-state reuse.",
+    "60M documents assumed to have the same length, output and repair distribution as this small cohort.",
+    "QA student, PDF extraction, CPU validation, storage and queue waiting excluded.",
+    "Historical pathological retries retained; improving repair policy requires a fresh quality benchmark.",
+    "No DFlash speedup assumed; pilot and GH200 high-batch performance must be measured separately."
+  ],
+  "references": {
+    "jupiter": "https://apps.fz-juelich.de/jsc/hps/jupiter/configuration.html",
+    "related_architecture_h100": "https://docs.gpustack.ai/2.1/performance-lab/qwen3.5-9b/h100/",
+    "model": "https://huggingface.co/ornith-ai/Ornith-1.5-9B"
+  }
+}
