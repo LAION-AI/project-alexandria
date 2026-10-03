@@ -1,0 +1,313 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Ornith DFlash paired pilot</title><style>body{font:17px system-ui;max-width:1000px;margin:40px auto;padding:20px}td,th{padding:12px;border-bottom:1px solid #ccc}pre{white-space:pre-wrap}</style><h1>Ornith DFlash: paired 20-paper pilot</h1><p>Identical frozen papers, 200 MCQs, Qwen2.5-7B BF16 fixed student; 10 arxiv and 10 bethgelab papers.</p><table><tr><th>Arm</th><th>QA accuracy</th><th>Generation + correction</th><th>GPU hours</th></tr><tr><td>baseline</td><td>94.00%</td><td>27.4 min</td><td>0.913</td></tr><tr><td>dflash</td><td>95.00%</td><td>20.1 min</td><td>0.669</td></tr></table><p>Measured end-to-end speedup: 1.366×.</p><h2>Limitations</h2><ul><li>20 documents / 200 MCQs is a pilot, not a new 97-paper result.</li><li>New arms use the same BF16 target, TP=2, exact schema and eager serving.</li><li>Historical reference used Q8 GGUF, llama.cpp and mixed repair decoder policies.</li><li>Speedup is warmed generation + repair wall time, excludes loading and QA.</li><li>Stochastic decoding is not expected to be byte-identical; QA CI is paper-bootstrap.</li><li>Local RTX3090 speedup is not a GH200 optimal-batching benchmark.</li></ul><h2>Complete metrics and provenance</h2><pre>{
+  &quot;manifest&quot;: {
+    &quot;policy&quot;: &quot;paired_bf16_exact_schema_v3_grounding_dflash_20_v1&quot;,
+    &quot;documents&quot;: [
+      {
+        &quot;document_id&quot;: &quot;arxiv-121&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;d3a694eff94f3b4b16cb0b402152cc9c29d7beea9452d1d41f2e94d279cf97fc&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-10019&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;3fab7067baa7f63946ebe47561ff1d1ce3e60d0971119fc5f58ab5c877f3b5c9&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-10038&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;24a37c6b6db0ee62ff090f572c9194655408da9a292e549fdc74619fc8b81100&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-10013&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;e463ec5d1757c1fef5033ed44eafb650345ebd9f4b11f8f485ea18b3146d9bc9&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-500043&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;5395e7bceb485d4a9d02119c58850809aa9a6b719e5777744ca5bd0dcbacbc79&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-50047&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;9d6e795b20211d71799050c9282d0c0b9c3838aa8232d78b803accb410b2d33d&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-100013&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;a09d3a64f663c1d4bba2d15747baec32ba117644925ac104850214037c68ac77&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-50033&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;bf799d730709e4d61998cf1d6c35cf9885ada8045ad414d9e196fb4bf044922a&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-500027&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;b665fc66e1cb91a50fcc5a4ed005b97e5e1f1e8b98558ac2502d4cfc41ac193f&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-10004&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;532e636d9c400b73e899230f07b83f2e3d63e833cdff05dfcaf20da104624d78&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-100005&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;c99c8ef8d540f2442ee1cc38b65eb306ffc9147b2f33ae5af536c20bbfcef5df&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-125&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;a313ac394757590d277b3d77643cb08a1e94d16cda563a2bc487e49d750aa0d1&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-10019&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;e417f9d8113e4f9e3d4d71d407c61db9b570026bd9f7b6668fc1e8c16d596cf1&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-200024&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;88a116c99d1eea1a867a05ba40ecabf52cfe821203f2034181a21d74d59d63c8&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-10040&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;82667fc126300ebcdfcd41e1d482add7d0306db9ccf1f24ee5893398882f0f5d&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-142&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;830533425e592db6ae69cda4bfdb7398a3102bbfa4953317c0543f0bf6970206&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-10035&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;576e1d1a7a5d04977a3ea5472092f893edc8b9cd3f962da42c568548c54287e9&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-105&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;d1ec0b551238dc7b332ba8c3fe0cb88f73a421e70e4d348a65a49b63bf7de3bb&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;arxiv-1000035&quot;,
+        &quot;source&quot;: &quot;arxiv&quot;,
+        &quot;fulltext_sha256&quot;: &quot;1f0cd82fa179996cf6211f5cafa614d12406a9b9ad999aea9e5c982c6e9ebd7a&quot;
+      },
+      {
+        &quot;document_id&quot;: &quot;bethgelab-10021&quot;,
+        &quot;source&quot;: &quot;bethgelab&quot;,
+        &quot;fulltext_sha256&quot;: &quot;2446e0dd5be16da1204fedf141879b6bdebf78065b128fc9678b60c6503d9536&quot;
+      }
+    ],
+    &quot;selection&quot;: &quot;10 per dataset source, ascending SHA256(dflash20-v1:document_id), interleaved&quot;,
+    &quot;target&quot;: &quot;ornith-ai/Ornith-1.5-9B&quot;,
+    &quot;target_revision&quot;: &quot;489cb97981b8654bcfcf30ce1f94ed1b62e07b53&quot;,
+    &quot;draft&quot;: &quot;ornith-ai/Ornith-1.5-9B-DFlash&quot;,
+    &quot;draft_revision&quot;: &quot;21be3446a606afa67e20c33e68ca37396499248f&quot;
+  },
+  &quot;arms&quot;: {
+    &quot;baseline&quot;: {
+      &quot;qa&quot;: {
+        &quot;correct&quot;: 188,
+        &quot;total&quot;: 200,
+        &quot;invalid&quot;: 0,
+        &quot;accuracy&quot;: 0.94,
+        &quot;ci95&quot;: [
+          0.91,
+          0.965
+        ]
+      },
+      &quot;wall_seconds&quot;: 1644.077464018017,
+      &quot;gpu_hours&quot;: 0.9133763688988984,
+      &quot;calls&quot;: 245,
+      &quot;prompt_tokens&quot;: 4098079,
+      &quot;output_tokens&quot;: 121899,
+      &quot;metrics_sessions&quot;: [
+        {
+          &quot;wall_seconds&quot;: 1644.168770287186,
+          &quot;speculative_counters&quot;: {}
+        }
+      ],
+      &quot;config&quot;: {
+        &quot;model&quot;: &quot;ornith-ai/Ornith-1.5-9B&quot;,
+        &quot;revision&quot;: &quot;489cb97981b8654bcfcf30ce1f94ed1b62e07b53&quot;,
+        &quot;draft_model&quot;: null,
+        &quot;draft_revision&quot;: null,
+        &quot;policy&quot;: &quot;paired_bf16_exact_schema_v3_grounding_dflash_20_v1&quot;,
+        &quot;manifest_sha256&quot;: &quot;c46c79826fe669488457a474f4b1ea186358435da8378f3c2756bd4b06dc8f33&quot;,
+        &quot;runtime&quot;: &quot;vLLM 0.27.1&quot;,
+        &quot;precision&quot;: &quot;BF16&quot;,
+        &quot;tensor_parallel_size&quot;: 2,
+        &quot;allocated_gpus&quot;: 2,
+        &quot;concurrency&quot;: 4,
+        &quot;context_limit&quot;: 65536,
+        &quot;max_tokens&quot;: 16000,
+        &quot;temperature&quot;: 0.2,
+        &quot;top_p&quot;: 0.95,
+        &quot;thinking&quot;: false,
+        &quot;system_prompt_sha256&quot;: &quot;3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed&quot;,
+        &quot;num_speculative_tokens&quot;: 0,
+        &quot;structured_output&quot;: &quot;same exact 19-field schema in both arms; unchanged final validator&quot;,
+        &quot;server_command&quot;: [
+          &quot;/home/rvv/llm-inference/.venv27/bin/python&quot;,
+          &quot;-m&quot;,
+          &quot;vllm.entrypoints.openai.api_server&quot;,
+          &quot;--model&quot;,
+          &quot;ornith-ai/Ornith-1.5-9B&quot;,
+          &quot;--revision&quot;,
+          &quot;489cb97981b8654bcfcf30ce1f94ed1b62e07b53&quot;,
+          &quot;--download-dir&quot;,
+          &quot;/mnt/nvme/alexandria-hf&quot;,
+          &quot;--served-model-name&quot;,
+          &quot;ornith-paired&quot;,
+          &quot;--host&quot;,
+          &quot;127.0.0.1&quot;,
+          &quot;--port&quot;,
+          &quot;8020&quot;,
+          &quot;--tensor-parallel-size&quot;,
+          &quot;2&quot;,
+          &quot;--dtype&quot;,
+          &quot;bfloat16&quot;,
+          &quot;--max-model-len&quot;,
+          &quot;65536&quot;,
+          &quot;--max-num-seqs&quot;,
+          &quot;4&quot;,
+          &quot;--max-num-batched-tokens&quot;,
+          &quot;4096&quot;,
+          &quot;--gpu-memory-utilization&quot;,
+          &quot;0.90&quot;,
+          &quot;--attention-backend&quot;,
+          &quot;FLASH_ATTN&quot;,
+          &quot;--language-model-only&quot;,
+          &quot;--enable-prefix-caching&quot;,
+          &quot;--enforce-eager&quot;,
+          &quot;--no-enable-log-requests&quot;,
+          &quot;--generation-config&quot;,
+          &quot;vllm&quot;
+        ],
+        &quot;implementation_sha256&quot;: &quot;5c7b914ba78b98cdb8ea29c59dd0d539921689b23754cc03263b0f957962deca&quot;
+      }
+    },
+    &quot;dflash&quot;: {
+      &quot;qa&quot;: {
+        &quot;correct&quot;: 190,
+        &quot;total&quot;: 200,
+        &quot;invalid&quot;: 0,
+        &quot;accuracy&quot;: 0.95,
+        &quot;ci95&quot;: [
+          0.915,
+          0.98
+        ]
+      },
+      &quot;wall_seconds&quot;: 1203.9463718011975,
+      &quot;gpu_hours&quot;: 0.6688590954451097,
+      &quot;calls&quot;: 277,
+      &quot;prompt_tokens&quot;: 4819622,
+      &quot;output_tokens&quot;: 138884,
+      &quot;metrics_sessions&quot;: [
+        {
+          &quot;wall_seconds&quot;: 1204.0527014620602,
+          &quot;speculative_counters&quot;: {
+            &quot;vllm:spec_decode_num_drafts_total&quot;: 28986.0,
+            &quot;vllm:spec_decode_num_draft_tokens_total&quot;: 211615.0,
+            &quot;vllm:spec_decode_num_accepted_tokens_total&quot;: 109993.0,
+            &quot;vllm:spec_decode_num_accepted_tokens_per_pos_total&quot;: 109993.0
+          }
+        }
+      ],
+      &quot;config&quot;: {
+        &quot;model&quot;: &quot;ornith-ai/Ornith-1.5-9B&quot;,
+        &quot;revision&quot;: &quot;489cb97981b8654bcfcf30ce1f94ed1b62e07b53&quot;,
+        &quot;draft_model&quot;: &quot;ornith-ai/Ornith-1.5-9B-DFlash&quot;,
+        &quot;draft_revision&quot;: &quot;21be3446a606afa67e20c33e68ca37396499248f&quot;,
+        &quot;policy&quot;: &quot;paired_bf16_exact_schema_v3_grounding_dflash_20_v1&quot;,
+        &quot;manifest_sha256&quot;: &quot;c46c79826fe669488457a474f4b1ea186358435da8378f3c2756bd4b06dc8f33&quot;,
+        &quot;runtime&quot;: &quot;vLLM 0.27.1&quot;,
+        &quot;precision&quot;: &quot;BF16&quot;,
+        &quot;tensor_parallel_size&quot;: 2,
+        &quot;allocated_gpus&quot;: 2,
+        &quot;concurrency&quot;: 4,
+        &quot;context_limit&quot;: 65536,
+        &quot;max_tokens&quot;: 16000,
+        &quot;temperature&quot;: 0.2,
+        &quot;top_p&quot;: 0.95,
+        &quot;thinking&quot;: false,
+        &quot;system_prompt_sha256&quot;: &quot;3643ce1ef340c4e63f451b85f9db75e8203bfc691e315e47523b3d08077b9bed&quot;,
+        &quot;num_speculative_tokens&quot;: 8,
+        &quot;structured_output&quot;: &quot;same exact 19-field schema in both arms; unchanged final validator&quot;,
+        &quot;server_command&quot;: [
+          &quot;/home/rvv/llm-inference/.venv27/bin/python&quot;,
+          &quot;-m&quot;,
+          &quot;vllm.entrypoints.openai.api_server&quot;,
+          &quot;--model&quot;,
+          &quot;ornith-ai/Ornith-1.5-9B&quot;,
+          &quot;--revision&quot;,
+          &quot;489cb97981b8654bcfcf30ce1f94ed1b62e07b53&quot;,
+          &quot;--download-dir&quot;,
+          &quot;/mnt/nvme/alexandria-hf&quot;,
+          &quot;--served-model-name&quot;,
+          &quot;ornith-paired&quot;,
+          &quot;--host&quot;,
+          &quot;127.0.0.1&quot;,
+          &quot;--port&quot;,
+          &quot;8020&quot;,
+          &quot;--tensor-parallel-size&quot;,
+          &quot;2&quot;,
+          &quot;--dtype&quot;,
+          &quot;bfloat16&quot;,
+          &quot;--max-model-len&quot;,
+          &quot;65536&quot;,
+          &quot;--max-num-seqs&quot;,
+          &quot;4&quot;,
+          &quot;--max-num-batched-tokens&quot;,
+          &quot;4096&quot;,
+          &quot;--gpu-memory-utilization&quot;,
+          &quot;0.90&quot;,
+          &quot;--attention-backend&quot;,
+          &quot;FLASH_ATTN&quot;,
+          &quot;--language-model-only&quot;,
+          &quot;--enable-prefix-caching&quot;,
+          &quot;--enforce-eager&quot;,
+          &quot;--no-enable-log-requests&quot;,
+          &quot;--generation-config&quot;,
+          &quot;vllm&quot;,
+          &quot;--speculative-config&quot;,
+          &quot;{\&quot;method\&quot;: \&quot;dflash\&quot;, \&quot;model\&quot;: \&quot;ornith-ai/Ornith-1.5-9B-DFlash\&quot;, \&quot;revision\&quot;: \&quot;21be3446a606afa67e20c33e68ca37396499248f\&quot;, \&quot;num_speculative_tokens\&quot;: 8, \&quot;draft_tensor_parallel_size\&quot;: 2, \&quot;attention_backend\&quot;: \&quot;FLASH_ATTN\&quot;}&quot;
+        ],
+        &quot;implementation_sha256&quot;: &quot;5c7b914ba78b98cdb8ea29c59dd0d539921689b23754cc03263b0f957962deca&quot;
+      }
+    }
+  },
+  &quot;end_to_end_speedup&quot;: 1.3655736688323992,
+  &quot;dflash_minus_same_precision_baseline&quot;: {
+    &quot;difference&quot;: 0.01,
+    &quot;ci95&quot;: [
+      -0.015,
+      0.035
+    ]
+  },
+  &quot;dflash_minus_historical_q8&quot;: {
+    &quot;difference&quot;: -0.01,
+    &quot;ci95&quot;: [
+      -0.035,
+      0.015
+    ]
+  },
+  &quot;historical_q8&quot;: {
+    &quot;correct&quot;: 192,
+    &quot;total&quot;: 200,
+    &quot;accuracy&quot;: 0.96
+  },
+  &quot;caveats&quot;: [
+    &quot;20 documents / 200 MCQs is a pilot, not a new 97-paper result.&quot;,
+    &quot;New arms use the same BF16 target, TP=2, exact schema and eager serving.&quot;,
+    &quot;Historical reference used Q8 GGUF, llama.cpp and mixed repair decoder policies.&quot;,
+    &quot;Speedup is warmed generation + repair wall time, excludes loading and QA.&quot;,
+    &quot;Stochastic decoding is not expected to be byte-identical; QA CI is paper-bootstrap.&quot;,
+    &quot;Local RTX3090 speedup is not a GH200 optimal-batching benchmark.&quot;
+  ]
+}</pre></html>
