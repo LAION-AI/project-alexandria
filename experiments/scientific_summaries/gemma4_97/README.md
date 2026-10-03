@@ -206,6 +206,12 @@ All four new cohorts contain 97 outputs each. Final audit verifies **13,580 QA p
 
 **Gemma 4 12B IT:** raw 840/970 (86.60%); corrected 842/970 (86.80%). Best cold-generation probe 691.32 tok/s (batch 64); best repeat-input correction 1818.44 tok/s (batch 64).
 
+On this QA-retention metric, **Ornith 9B remains ahead of both Gemma pipelines**: 93.81% raw / 93.20% corrected versus E4B 85.15% / 84.64% and 12B 86.60% / 86.80%. Each paired Gemma-minus-Ornith-9B confidence interval is below zero. This is not a length-controlled model-capability comparison: mean raw narratives contain 775 words for E4B, 918 for 12B and 2,548 for Ornith 9B. Gemma also uses the documented additional schema rescue.
+
+Neither Gemma correction arm shows a clear QA improvement: E4B changes by −0.52 percentage points (paired CI −1.75 to +0.72), and 12B by +0.21 (−0.31 to +0.82). The 12B-minus-E4B raw difference is +1.44 points (−0.93 to +3.71), so this sample does not establish a clear ordering between the two Gemma pipelines. These conclusions concern answerability under the fixed student and synthetic questions; they do not establish human factual superiority.
+
+E4B has the highest cold-generation probe rate among the measured single-target AR arms, but large batches do not prevent schema/quote failures or long retries. The full source-only trace spans are approximately 53.5 minutes for E4B and 50.6 minutes for 12B, including the original unsuccessful recovery and final reconciliation. The entire two-model experiment uses 4.6689 allocated GPU-hours. Starting with finite schemas may reduce these recovery costs, but a complete fresh cohort under that revised recipe has not been timed.
+
 Compare paired confidence intervals, narrative lengths, invalids and self-audit failure rates before choosing a deployment. Correction can change answerability and factual reliability differently. These complete deployed pipelines are not length-matched, and no independent human faithfulness study or trained-LoRA gain is established. See the [combined GH200 comparison](../ORNITH_DFLASH_GH200_RESULTS.md).
 
 ## Files and verification

@@ -263,6 +263,22 @@ def main():
         f"{best[m]['generation']['output_tokens_per_second']:.2f} tok/s (batch {best[m]['generation']['concurrency']}); "
         f"best repeat-input correction {best[m]['correction']['output_tokens_per_second']:.2f} tok/s "
         f"(batch {best[m]['correction']['concurrency']})." for m in MODELS),
+        'On this QA-retention metric, **Ornith 9B remains ahead of both Gemma pipelines**: '
+        '93.81% raw / 93.20% corrected versus E4B 85.15% / 84.64% and 12B 86.60% / 86.80%. '
+        'Each paired Gemma-minus-Ornith-9B confidence interval is below zero. This is not a '
+        'length-controlled model-capability comparison: mean raw narratives contain 775 words for E4B, '
+        '918 for 12B and 2,548 for Ornith 9B. Gemma also uses the documented additional schema rescue.',
+        'Neither Gemma correction arm shows a clear QA improvement: E4B changes by −0.52 percentage '
+        'points (paired CI −1.75 to +0.72), and 12B by +0.21 (−0.31 to +0.82). The 12B-minus-E4B '
+        'raw difference is +1.44 points (−0.93 to +3.71), so this sample does not establish a clear '
+        'ordering between the two Gemma pipelines. These conclusions concern answerability under '
+        'the fixed student and synthetic questions; they do not establish human factual superiority.',
+        'E4B has the highest cold-generation probe rate among the measured single-target AR arms, '
+        'but large batches do not prevent schema/quote failures or long retries. The full source-only '
+        'trace spans are approximately 53.5 minutes for E4B and 50.6 minutes for 12B, including the '
+        'original unsuccessful recovery and final reconciliation. The entire two-model experiment '
+        'uses 4.6689 allocated GPU-hours. Starting with finite schemas may reduce these recovery '
+        'costs, but a complete fresh cohort under that revised recipe has not been timed.',
         'Compare paired confidence intervals, narrative lengths, invalids and self-audit failure rates before '
         'choosing a deployment. Correction can change answerability and factual reliability differently. '
         'These complete deployed pipelines are not length-matched, and no independent human faithfulness '
@@ -283,6 +299,25 @@ def main():
     overview=HERE.parent/'ORNITH_DFLASH_GH200_RESULTS.md'
     base=overview.read_text().split('\n## Gemma 4 E4B IT and 12B IT')[0]
     base=base.replace('# Ornith DFlash: measured GH200 accuracy and throughput','# Scientific summaries: measured GH200 accuracy and throughput')
+    base=base.replace('[35B-A3B](ornith35_dflash_97/README.md).',
+        '[35B-A3B](ornith35_dflash_97/README.md), [Gemma E4B / 12B](gemma4_97/README.md).')
+    base=base.replace('QA DFlash configuration','QA decoding')
+    lines=base.splitlines();position=next(i for i,line in enumerate(lines) if line.startswith('| Generator |'))+2
+    while position<len(lines) and lines[position].startswith('| '):position+=1
+    rows=[]
+    for m in MODELS:
+        a=report['models'][m+'_raw'];b=report['models'][m+'_corrected']
+        rows.append(f"| {NAMES[m]} | BF16 | {a['correct']}/970 · {100*a['accuracy']:.2f}% | "
+            f"{b['correct']}/970 · {100*b['accuracy']:.2f}% | {report['summary_lengths'][m+'_raw']['mean_words']:.0f} / "
+            f"{report['summary_lengths'][m+'_corrected']['mean_words']:.0f} | ar |")
+    lines=[line for line in lines[:position] if not any(line.startswith('| '+NAMES[m]+' | BF16 |') for m in MODELS)]+rows+lines[position:]
+    position=next(i for i,line in enumerate(lines) if line.startswith('| Target | Runtime |'))+2
+    while position<len(lines) and lines[position].startswith('| '):position+=1
+    rows=[f"| {NAMES[m]} | ar | {best[m]['generation']['output_tokens_per_second']:.2f} | "
+          f"{best[m]['generation']['concurrency']} | {best[m]['correction']['output_tokens_per_second']:.2f} | "
+          f"{best[m]['correction']['concurrency']} |" for m in MODELS]
+    lines=[line for line in lines[:position] if not any(line.startswith('| '+NAMES[m]+' | ar |') for m in MODELS)]+rows+lines[position:]
+    base='\n'.join(lines)
     extra=['## Gemma 4 E4B IT and 12B IT','',
         'Same frozen 97 papers, fixed student and initial source-only generation/correction protocol; '
         'Gemma adds documented finite-schema rescue after common-protocol failures. '
@@ -298,6 +333,16 @@ def main():
         'paired confidence intervals against each Ornith model and Qwen27B, all batch observations, '
         'self-audit failures and complete scheduler GPU-hours. Previous ten QA conditions are reused only '
         'after exact immutable source/question/context/prompt/protocol validation.']
+    extra+=['','## Findings across all five pipelines','',
+        '**Ornith 9B leads both Gemma pipelines on raw and corrected QA retention**, with paired confidence '
+        'intervals below zero for each Gemma-minus-9B comparison. Gemma narratives are substantially shorter '
+        '(775 / 918 mean raw words versus 2,548 for Ornith 9B), and Gemma uses an additional source-only '
+        'finite-schema fallback after format failures. These are complete-pipeline results, not a '
+        'length-matched capability comparison.','',
+        'Neither Gemma correction change has a paired interval excluding zero. E4B has stronger measured '
+        'AR cold-generation throughput, while 9B DFlash4 retains the strongest repeat-input correction '
+        'probe rate. Token rates alone do not capture retry and repair costs. The Gemma experiment costs '
+        '4.6689 allocated GPU-hours including its failed original controller and successful QA resumption.']
     overview.write_text(base.rstrip()+'\n\n'+'\n'.join(extra)+'\n')
     paths=sorted(p for p in HERE.rglob('*') if p.is_file() and p.name!='SHA256SUMS' and '__pycache__' not in p.parts)
     (HERE/'SHA256SUMS').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+str(p.relative_to(HERE))+'\n' for p in paths))
