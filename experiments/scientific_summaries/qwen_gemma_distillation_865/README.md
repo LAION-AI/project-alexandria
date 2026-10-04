@@ -171,3 +171,11 @@ settings and is not the matched no-LoRA control. Historical Ornith 9B raw QA was
 The workflow monitor is a local process with its exact host/PID in `monitor_process.json`.
 Training and evaluation execute independently in Slurm. Hugging Face upload uses the
 standard local HF login and never saves credentials in this dataset or repository.
+
+## Large-scale generation estimate
+
+The thinking-enabled rank-128 capacity estimate for 38M and 60M papers is in
+[`SCALING_38M_60M_R128.md`](SCALING_38M_60M_R128.md), with exact machine-readable
+inputs in `scaling_38m_60m_rank128.json`. Approximately 562k / 888k GPU-hours are
+planned at 85% useful capacity and the observed 95/97 successful-generation yield.
+These generation-only estimates exclude semantic correction and QA.

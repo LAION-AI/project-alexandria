@@ -1,0 +1,55 @@
+{
+  "model": "google/gemma-4-12B-it",
+  "model_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+  "lora_rank": 128,
+  "lora_teacher": "Qwen/Qwen3.8-27B-FP8",
+  "training_papers": 865,
+  "epochs": 1,
+  "hardware": "NVIDIA GH200 on JUPITER",
+  "precision": "BF16",
+  "speculative_decoding": false,
+  "scope": "source-only summary generation with thinking and bounded format retries; no semantic QC or correction",
+  "benchmark_papers": 97,
+  "successful_generation_papers": 95,
+  "generation_failed_papers": 2,
+  "generation_gpu_seconds": 4302.443625141983,
+  "measured_completion_tokens_per_second_per_gpu": 500.8897705031248,
+  "completion_tokens_all_attempts": 2155050,
+  "mean_completion_tokens_per_attempted_paper": 22217.01030927835,
+  "mean_native_narrative_tokens_all_paper_slots": 3753.103092783505,
+  "mean_narrative_words_all_paper_slots": 2468.865979381443,
+  "useful_capacity_assumption": 0.85,
+  "benchmark_success_fraction": 0.979381443298969,
+  "benchmark_report_sha256": "a710e94141b6e2319373521065f961312daa9d178d9e14340d106ff9c8472e69",
+  "estimates": [
+    {
+      "papers": 38000000,
+      "planning_gpu_hours_at_85_percent_capacity": 550814.8297129417,
+      "yield_normalized_gpu_hours_at_85_percent_capacity": 562410.9313911089,
+      "measured_gpu_hours": 468192.6052560004
+    },
+    {
+      "papers": 60000000,
+      "planning_gpu_hours_at_85_percent_capacity": 869707.6258625396,
+      "yield_normalized_gpu_hours_at_85_percent_capacity": 888017.2600912246,
+      "measured_gpu_hours": 739251.4819831586
+    },
+    {
+      "papers": 98000000,
+      "planning_gpu_hours_at_85_percent_capacity": 1420522.4555754813,
+      "yield_normalized_gpu_hours_at_85_percent_capacity": 1450428.1914823332,
+      "measured_gpu_hours": 1207444.087239159
+    }
+  ],
+  "assumptions": [
+    "Same source length, output length and retry distribution as the 97-paper benchmark.",
+    "All four GPUs of each allocated node run independent replicas; no fourfold charge for leaving three GPUs idle.",
+    "85% useful capacity is a planning assumption and not a measured production utilization rate.",
+    "Yield normalization assumes future work retains the observed 95/97 success fraction; it does not guarantee the hardest failed sources can be recovered.",
+    "Throughput includes full input prefill, emitted reasoning/JSON, returned format attempts and tokenizer requests; startup, QA, training, semantic correction, acquisition/OCR and CPU orchestration are excluded.",
+    "The historical untrained no-thinking Gemma estimate uses a different recipe and cannot be substituted here.",
+    "The Ornith-trained rank-128 adapter has no measured inference throughput yet."
+  ],
+  "created_at": "2026-10-04T17:33:52.712745+00:00",
+  "measured_gpu_hours_per_attempted_paper": 0.012320858033052643
+}
