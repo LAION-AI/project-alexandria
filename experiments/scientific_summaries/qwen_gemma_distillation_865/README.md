@@ -51,8 +51,8 @@ Original prompts and per-call payloads are authoritative.
 | --- | --- | --- | --- |
 | Gemma generator LoRA rank 64 | 2171847 | 2 nodes / 8 GH200 GPUs | 1 epoch, alpha 128, dropout 0.05 |
 | Gemma generator LoRA rank 128 | 2171848 | 2 nodes / 8 GH200 GPUs | 1 epoch, alpha 256, dropout 0.05 |
-| Ornith same-paper generation | 2171849 | 2 nodes / 8 GH200 GPUs | Native AR BF16, no DFlash, 16 concurrent papers/GPU |
-| Matched external evaluation | 2171850 | 1 node / 4 GH200 GPUs | Runs automatically after both LoRAs |
+| Ornith same-paper generation | 2175758 (resume) | 2 nodes / 8 GH200 GPUs | Native AR BF16, no DFlash, 16 concurrent papers/GPU; 736 valid outputs retained |
+| Matched external evaluation | 2171850 | 1 node / 4 GH200 GPUs | Complete: all 2,910 QA answers audited |
 
 Training base: `google/gemma-4-12B-it`, pinned revision
 `707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7`.
@@ -79,6 +79,37 @@ Ornith model: `ornith-ai/Ornith-1.5-9B`, pinned revision
 Qwen-generation prompts are used, with thinking enabled and no semantic correction.
 All failed paper identifiers remain in outputs. No Ornith outputs enter Qwen-trained LoRAs.
 
+## Training completion and Ornith resumption (2026-10-04)
+
+Both generator adapters completed the requested one epoch on all 865 source papers.
+
+| Rank | Updates | Training compute minutes | Compute GPU-hours (8 GPUs) | Final-batch loss |
+| --- | ---: | ---: | ---: | ---: |
+| 64 | 109 | 44.21 | 5.90 | 0.3460 |
+| 128 | 109 | 44.81 | 5.97 | 0.3296 |
+
+Both adapters are saved and copied to Data1. Final-batch training loss is not a QA
+score and the two values use the same final batch. Slurm allocation time additionally
+includes startup/cleanup; cancelled runs are recorded separately.
+
+The matched evaluation is complete. The allocation and unused rescue job were
+cancelled deliberately only after all 2,910 answers passed the audit and the final
+report was written. Their cancelled Slurm states do not indicate missing evaluation.
+
+Ornith generation was subsequently stopped by the user at **736 successful summaries**.
+The queued rest-run 2175758 was cancelled before starting. The remaining 129 failed
+or unfinished papers are excluded from the frozen Ornith collection. Its 111 initial
+uncapped-thinking and 625 thinking-budget-16,384 outputs retain their actual recipes.
+All 736 outputs have readable narratives and actual reasoning, but none passes the
+stricter source-evidence schema check. No semantic QC/correction was run on Ornith.
+
+The user requested an independent Ornith Hugging Face dataset and generator-only
+Gemma 4 12B IT ranks 64/128, one epoch each, followed automatically by the same
+held-out evaluation. That study is documented in
+[`../ornith_gemma_distillation_736/README.md`](../ornith_gemma_distillation_736/README.md).
+All preserved earlier returned attempts remain archived. The Qwen dataset and its
+completed evaluation remain frozen; no further teacher generation is authorized.
+
 ## Matched evaluation
 
 Three conditions: untrained Gemma 12B, rank 64, rank 128. All use exactly the same
@@ -92,11 +123,40 @@ count as ten wrong answers. Paper-cluster bootstrap and paired differences use
 10,000 draws with a fixed seed. Test questions/gold answers never enter training
 or generation. No test-set checkpoint selection is performed.
 
+### Final results
+
+| Gemma 4 12B IT condition | Correct / 970 | QA accuracy | Failed generation papers | Mean summary words | Mean native summary tokens |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Untrained, thinking enabled | 850 | 87.63% | 0 | 1,070 | 1,539 |
+| Rank 64, one epoch | 853 | 87.94% | 7 | 2,198 | 3,345 |
+| Rank 128, one epoch | 897 | 92.47% | 2 | 2,469 | 3,753 |
+
+Means cover all 97 paper slots; failed outputs contribute zero words/tokens.
+Every failed generation contributes ten wrong answers to the primary QA score.
+Rank 64 improves by **0.31 percentage points**, with a paired 95% paper-bootstrap
+interval of **−5.36 to +5.46 points**: no clear overall gain.
+Rank 128 improves by **4.85 points**, with a paired interval of **+0.93 to +8.14**.
+The longer summaries are a material confound: rank 128 produces about 2.31 times
+as many narrative words as the matched baseline. This experiment supports better
+QA answerability for rank 128 under the stated recipe; it does not isolate gains
+at a fixed summary length or establish independent human factual correctness.
+
+Generation time was 26.00 / 86.36 / 71.71 minutes for baseline / rank 64 / rank 128
+on one active GPU each, including returned thinking, JSON and format retries but
+excluding server startup and QA. Completion throughput was 638.1 / 491.7 / 500.9
+tokens/s/GPU; these are completion tokens, not narrative-only tokens.
+Successful training allocations cost 6.30 GPU-hours (rank 64) and 6.40 (rank 128),
+including startup/cleanup; pure training compute was 5.90 and 5.97 GPU-hours.
+The cancelled initial training attempts cost another 1.73 GPU-hours each.
+The shared generation-plus-QA allocation used 6.36 GPU-hours in total.
+Full metrics, per-paper outputs, immutable QA records and timings are in
+[`evaluation/RESULTS.md`](evaluation/RESULTS.md) and `evaluation/report.json` in
+the repository; local originals are in `outputs/evaluation/`.
+
 The historical Gemma 12B raw QA accuracy of 86.60% used different generation
-settings and is not the matched no-LoRA control. No adapter improvement is claimed
-until the new evaluation finishes. QA measures answerability, not independent
-human factual correctness. Native summary-token lengths, real throughput,
-training compute and full Slurm allocation GPU-hours are recorded separately.
+settings and is not the matched no-LoRA control. Historical Ornith 9B raw QA was
+93.81% on the same questions but a different generation recipe; the current
+865-paper Ornith collection is training-cohort data and has no new held-out QA score.
 
 ## Artifacts and monitoring
 

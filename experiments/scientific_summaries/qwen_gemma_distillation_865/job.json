@@ -11,12 +11,48 @@
   "restart_reason": "Rank-128 loss diverged at lr=1e-4. Restart both ranks from base at lr=2e-5 for matched training hyperparameters. Ornith startup PATH corrected for installed ninja.",
   "train_rank64_job": "2171847",
   "train_rank128_job": "2171848",
-  "ornith_job": "2171849",
-  "evaluation_job": "2171850",
-  "updated_at": "2026-10-04T08:29:46.783118+00:00",
+  "ornith_job": "2175758",
+  "evaluation_job": "2173191",
+  "updated_at": "2026-10-04T13:59:14.777556+00:00",
   "hf_upload_job": "2171977",
   "hf_upload_execution": "login_process",
   "hf_upload_pid": 2142390,
   "hf_upload_host": "jpbl-s03-01",
-  "hf_compute_failure": "Compute node outbound network unavailable; upload moved to login node."
+  "hf_compute_failure": "Compute node outbound network unavailable; upload moved to login node.",
+  "failed_ornith_resume_job": "2171849",
+  "ornith_resume_reason": "Invalid narrative field structure previously killed worker. Format error is now bounded/retried; native thinking is capped at 16,384 tokens inside the 24,576 output budget. Retain 111 completed summaries, preserve failed/interrupted traces separately; no semantic correction.",
+  "failed_ornith_resume_jobs": [
+    "2171849",
+    "2172606",
+    "2173009"
+  ],
+  "ornith_cache_fix": "Native FlashInfer sampling library in shared HOME cache had an incompatible ABI. Each owned server now uses FLASHINFER_WORKSPACE_BASE under its own run cache, matching the earlier proven benchmark setup.",
+  "evaluation_generation_job": "2171850",
+  "qa_parallelization": "Two pinned BF16 QA replicas on the existing generation allocation: GPU 0 retired after all baseline summaries completed, GPU 3 previously unused. Same prompts and decoding parameters; matched paper triples scored concurrently with LoRA generation. Job 2173191 is a checkpoint rescue only after the generation allocation ends.",
+  "qa_on_existing_allocation": true,
+  "qa_gpu_indices": [
+    0,
+    3
+  ],
+  "qa_step_submitter_pid": 2308709,
+  "qa_step_submitter_host": "jpbl-s03-01",
+  "qa_startup_fix": "Pinned evaluator token counting requires served model alias qwen25; tokenizer and chat endpoints now share that historical alias.",
+  "old_eval_stopped_after_generation": true,
+  "old_eval_stop_reason": "All 2910 QA answers audited and final report saved by concurrent QA on the existing allocation; stop former sequential orchestration and unused rescue job.",
+  "ornith_resume_20261004": {
+    "previous_job": "2173009",
+    "retained_generated": 736,
+    "pending": 129,
+    "archived_incomplete_folders": 86,
+    "archive": "/e/fscratch/reformo/schuhmann1/scientific-distillation-865-20261004/outputs/ornith_resume_attempts/2173009",
+    "thinking_token_budget": 16384,
+    "format_retry_thinking_budget": 12288,
+    "max_calls_per_remaining_paper": 9,
+    "attempt_offset": 3,
+    "reason": "Handle stop response with absent answer text as a format failure instead of terminating all workers; preserve all earlier attempts.",
+    "updated_at": "2026-10-04T13:59:14.536242+00:00"
+  },
+  "ornith_stopped_by_user": true,
+  "ornith_frozen_generated_papers": 736,
+  "ornith_next_study": "/e/fscratch/reformo/schuhmann1/ornith-distillation-736-20261004"
 }

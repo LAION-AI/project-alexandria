@@ -14,8 +14,8 @@ module load Stages/2026 Python/3.13.5 CUDA/13
 RUN=/e/fscratch/reformo/schuhmann1/scientific-distillation-865-20261004
 PY=/e/fscratch/reformo/schuhmann1/scientific-distillation-1000/env/bin/python
 export PYTHONUNBUFFERED=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS=8
-"$PY" "$RUN/code/prepare_release.py" --archive-only &
-archive_pid=$!
+if [ ! -f "$RUN/outputs/release_ready.json" ]; then
+  "$PY" "$RUN/code/prepare_release.py" --archive-only
+fi
 srun --ntasks=8 --ntasks-per-node=4 --gpus-per-task=1 --kill-on-bad-exit=1 "$PY" "$RUN/code/ornith_worker.py"
-wait "$archive_pid"
 "$PY" "$RUN/code/finish_ornith.py"

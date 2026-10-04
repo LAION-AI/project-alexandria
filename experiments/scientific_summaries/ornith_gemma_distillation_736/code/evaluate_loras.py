@@ -23,8 +23,8 @@ import evaluate
 from project_alexandria.backends import OpenAICompatibleBackend
 
 LABELS={'gemma12_base':'Gemma 4 12B IT / no LoRA, thinking enabled',
-        'gemma12_r64':'Gemma 4 12B IT / rank 64, one epoch',
-        'gemma12_r128':'Gemma 4 12B IT / rank 128, one epoch'}
+        'gemma12_r64':'Gemma 4 12B IT / Ornith-distilled rank 64, one epoch',
+        'gemma12_r128':'Gemma 4 12B IT / Ornith-distilled rank 128, one epoch'}
 
 
 def sha_text(text):return hashlib.sha256(text.encode()).hexdigest()
@@ -104,8 +104,8 @@ def finalize(results,papers,contexts,output):
                 verified_prompt_hashes=2910-sum(v['failed_generation_papers']*10 for v in scores.values()),
                 actual_condition_answers=2910,external_training_overlap=0)
     write(output/'report.json',report)
-    lines=['# Gemma 4 12B IT: Qwen generator-reasoning distillation','',
-        '865 training papers; ranks 64 and 128, one epoch each. Summary generation only. '
+    lines=['# Gemma 4 12B IT: Ornith generator-reasoning distillation','',
+        '736 training papers; ranks 64 and 128, one epoch each. Summary generation only. '
         'Matched untrained baseline uses exactly the same prompt, thinking mode and sampling. '
         '97 frozen evaluation papers / 970 immutable MCQs per condition.','',
         '| Model | Correct / 970 | QA accuracy | 95% paper-bootstrap CI | Failed generation papers | Mean narrative words |',
@@ -120,94 +120,104 @@ def finalize(results,papers,contexts,output):
         lines.append(f"| {LABELS[label]} | {v['elapsed_seconds']:.1f} | {v['output_tokens_per_second']:.1f} | {v['mean_native_narrative_tokens']:.1f} | {v['api_calls']} |")
     lines+=['','Completion throughput includes actual thinking and JSON output from all format attempts. '
         'Time includes generator requests and tokenization, excluding server startup and QA. '
-        'Three model servers run concurrently on three GPUs; Slurm allocates one four-GPU node.','',
+        'The baseline output and QA responses are reused verbatim from the audited matched Qwen study. Two LoRA generators and two QA replicas share one four-GPU node; the baseline generation time is historical, not newly billed.','',
         '## One-epoch training','',
         '| Rank | Peak learning rate | Trainable parameters | Compute seconds | Worker seconds including setup/save | Compute GPU-hours (8 GPUs) |',
         '| --- | ---: | ---: | ---: | ---: | ---: |']
     for r,v in training.items():
         lines.append(f"| {r} | {v['learning_rate']} | {v['trainable_parameters']:,} | {v['compute_seconds']:.1f} | {v['total_worker_seconds']:.1f} | {8*v['compute_seconds']/3600:.2f} |")
-    lines+=['','Both ranks were restarted from the base checkpoint at the same 2e-5 learning rate '
-        'after rank 128 diverged during an initial 1e-4 attempt. Cancelled-attempt GPU time is '
+    lines+=['','Both ranks train from the same base checkpoint at a 2e-5 peak learning rate. '
+        'The earlier Qwen-teacher experiment had a cancelled 1e-4 attempt; it is not part of this Ornith study. GPU time is '
         'recorded separately in the allocation accounting; it is not hidden in successful compute time.']
-    lines+=['','The targets are original source-only Qwen generator outputs and their actual reasoning, '
+    lines+=['','The targets are original source-only Ornith generator outputs and their actual reasoning, '
         'not corrected final summaries with mismatched reasoning. The earlier 86.60% Gemma raw score '
         'used different prompt/thinking/sampling settings and is a historical reference, not the matched '
         'no-LoRA control. QA measures answerability under the fixed student and synthetic MCQs; it '
-        'does not establish independent human factual superiority. Every paper and failed output is retained.','']
+        'does not establish independent human factual superiority. Every paper and failed output is retained. These targets are unreviewed raw Ornith outputs: all 736 failed the stricter source-evidence schema check. Summary length and failure rates must be considered alongside QA accuracy.','']
     (output/'RESULTS.md').write_text('\n'.join(lines))
     write(output/'complete.json',dict(job_id=os.environ['SLURM_JOB_ID'],papers=97,conditions=3,scored_answers=2910,
          report=str(output/'RESULTS.md'),audit_passed=True))
 
 
 def main():
+    import shutil
+    import signal
+    import subprocess
+    reference=Path('/e/fscratch/reformo/schuhmann1/scientific-distillation-865-20261004')
     path=VENDOR/'data/testset.json'
     assert digest(path)=='a0d5e5f99a0025c6cd8a5140a39a07a220ded6f37f04994500549886ffd83261'
     papers=load(path)['papers'];assert len(papers)==97
     original=load(VENDOR/'data/papers.json')
     training_ids={p['document_id'] for p in load(ROOT/'inputs/frozen_cohort.json')['papers']}
-    assert not training_ids & {p['document_id'] for p in papers}
+    assert len(training_ids)==736 and not training_ids & {p['document_id'] for p in papers}
     for paper in papers:
         assert sha_text(paper['fulltext'])==paper['fulltext_sha256']
         assert evaluate.question_signature(evaluate.questions_for(original[paper['original_paper_index']],paper['original_paper_index']))==evaluate.question_signature(paper['questions'])
     for r in [64,128]:
         trained=load(ROOT/'outputs'/('train-r'+str(r))/'result.json')
-        assert trained['completed_epochs']==1 and trained['source_papers']==865 and trained['lora_rank']==r
+        assert trained['completed_epochs']==1 and trained['source_papers']==736 and trained['lora_rank']==r
+        assert trained['teacher']['model']=='ornith-ai/Ornith-1.5-9B'
     output=ROOT/'outputs/evaluation';output.mkdir(exist_ok=True)
-    write(output/'protocol.json',dict(frozen_testset_sha256=digest(path),papers=97,questions_per_condition=970,
+    protocol=dict(frozen_testset_sha256=digest(path),papers=97,questions_per_condition=970,
         generator_prompt_sha256=sha_text(summary_system(load(ROOT/'inputs/reference_prompts.json'))),
         thinking=True,generation_temperature=1.0,generation_top_p=.95,generation_top_k=20,
         generation_max_tokens=24576,format_attempts=3,semantic_correction=False,
-        primary_comparison='matched same-prompt same-thinking untrained Gemma versus each LoRA',
+        primary_comparison='matched same-prompt same-thinking untrained Gemma versus each Ornith-trained LoRA',
         historical_gemma86_60_not_a_matched_control=True,
         judge='Qwen/Qwen2.5-7B-Instruct',judge_revision='a09a35458c702b33eeacc393d103063234e8bc28',
         judge_dtype='BF16',judge_temperature=.5,judge_top_p=.95,judge_max_tokens=100,
         judge_frequency_penalty=1.05,judge_presence_penalty=1.05,judge_thinking=False,
-        generation_failures_count_as_ten_wrong_answers=True,bootstrap_draws=10000,bootstrap_seed=250219413))
-    servers=[]
-    contexts={}
+        generation_failures_count_as_ten_wrong_answers=True,bootstrap_draws=10000,bootstrap_seed=250219413,
+        reused_baseline=True,baseline_reference=str(reference/'outputs/evaluation'),
+        baseline_qa_sha256=digest(reference/'outputs/evaluation/qa-results.json'),
+        teacher='ornith-ai/Ornith-1.5-9B',training_papers=736)
+    old_protocol=load(reference/'outputs/evaluation/protocol.json')
+    for key in ['frozen_testset_sha256','generator_prompt_sha256','thinking','generation_temperature',
+                'generation_top_p','generation_top_k','generation_max_tokens','format_attempts',
+                'semantic_correction','judge','judge_revision','judge_dtype','judge_temperature',
+                'judge_top_p','judge_max_tokens','judge_frequency_penalty','judge_presence_penalty','judge_thinking']:
+        assert protocol[key]==old_protocol[key], 'Cached baseline must use identical evaluation settings'
+    assert load(reference/'outputs/evaluation/complete.json')['audit_passed']
+    write(output/'protocol.json',protocol)
+    for paper in papers:
+        folder=output/'generation/gemma12_base'/paper['document_id'];folder.mkdir(parents=True,exist_ok=True)
+        shutil.copy2(reference/'outputs/evaluation/generation/gemma12_base'/paper['document_id']/'result.json',folder/'result.json')
+    shutil.copy2(reference/'outputs/evaluation/gemma12_base-summaries.jsonl',output/'gemma12_base-summaries.jsonl')
+    base_perf=load(reference/'outputs/evaluation/gemma12_base-generation-performance.json')
+    base_perf.update(reused_baseline=True,baseline_generation_not_billed_in_this_study=True)
+    write(output/'gemma12_base-generation-performance.json',base_perf)
+    checkpoint=output/'qa-live-results.json'
+    if not checkpoint.exists():
+        old_qa=load(reference/'outputs/evaluation/qa-results.json')
+        results=dict(labels=LABELS,documents=[dict(document_id=d['document_id'],fulltext_sha256=d['fulltext_sha256'],
+            questions=d['questions'],conditions={'gemma12_base':d['conditions']['gemma12_base']}) for d in old_qa['documents']])
+        write(checkpoint,results)
+    servers=[];qa=None
+    qa_log=(ROOT/'logs/qa-'+os.environ['SLURM_JOB_ID']+'.log').open('a')
     try:
+        env=dict(os.environ,QA_GPU_INDICES='0,3')
+        qa=subprocess.Popen([sys.executable,str(ROOT/'code/live_qa.py')],env=env,stdout=qa_log,stderr=qa_log,start_new_session=True)
         def start(index):
-            label=list(LABELS)[index]
-            adapter=None if index==0 else ROOT/'outputs'/('train-r'+str([64,128][index-1]))/'adapter'
-            return Server(ROOT/'models/gemma-4-12b-it',19200+index,'eval-'+label,parser='gemma4',gpu=index,adapter=adapter)
-        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-            servers=list(pool.map(start,range(3)))
-            futures={label:pool.submit(cohort,server,label,papers) for label,server in zip(LABELS,servers)}
-            contexts={label:future.result() for label,future in futures.items()}
+            label=['gemma12_r64','gemma12_r128'][index]
+            adapter=ROOT/'outputs'/('train-r'+str([64,128][index]))/'adapter'
+            return Server(ROOT/'models/gemma-4-12b-it',19201+index,'eval-'+label,parser='gemma4',gpu=1+index,adapter=adapter)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+            for future in [pool.submit(start,i) for i in range(2)]:servers.append(future.result())
+            futures=[pool.submit(cohort,server,label,papers) for server,label in zip(servers,['gemma12_r64','gemma12_r128'])]
+            for future in futures:future.result()
+        for server in servers:server.close()
+        servers=[]
+        assert qa.wait(timeout=7200)==0, 'QA worker failed; inspect the owned QA log'
+        complete=load(output/'complete.json')
+        assert complete['audit_passed'] and complete['scored_answers']==2910
     finally:
         for server in servers:server.close()
-    qa_path=output/'qa-results.json'
-    results=load(qa_path) if qa_path.exists() else dict(labels=LABELS,documents=[dict(document_id=p['document_id'],
-        fulltext_sha256=p['fulltext_sha256'],questions=p['questions'],conditions={}) for p in papers])
-    validate(results,papers,contexts)
-    judge=Server(ROOT/'models/Qwen2.5-7B-Instruct',19203,'eval-fixed-judge',gpu=0,judge=True)
-    try:
-        backend=OpenAICompatibleBackend('qwen25',base_url=judge.endpoint+'/v1',api_key='',max_tokens=100,
-            temperature=.5,concurrency=4,thinking=False,frequency_penalty=1.05,presence_penalty=1.05,timeout=600)
-        evaluate.CONDITIONS=('qwen_summary',)
-        by_id={d['document_id']:d for d in results['documents']}
-        for paper in papers:
-            document=by_id[paper['document_id']]
-            for label in LABELS:
-                if label in document['conditions']:continue
-                generated=contexts[label][paper['document_id']]
-                context=generated['judge_context'];tick=time.monotonic()
-                if generated['status']=='generated':
-                    proxy=dict(document_id=paper['document_id'],viewer_config=paper['source']['viewer_config'],
-                        fulltext=paper['fulltext'],existing_summary=paper['existing_summary'],qwen_summary=context)
-                    value=evaluate.run_document(proxy,paper['questions'],backend,context_limit=32768)
-                    value['generation_failed']=False
-                else:
-                    value=dict(generation_failed=True,rows=[dict(question_index=q['question_index'],gold=q['answer'],
-                        predictions={'qwen_summary':None},responses={'qwen_summary':dict(generation_failed=True,
-                            error=generated.get('error'),prompt_sha256=sha_text(evaluate.historical_answer_prompt(q['formatted_question'],'')))})
-                        for q in paper['questions']])
-                value['context_sha256']=sha_text(context);value['elapsed_seconds']=time.monotonic()-tick
-                document['conditions'][label]=value
-                write(qa_path,results)
-                print('QA',paper['document_id'],label,flush=True)
-    finally:judge.close()
-    finalize(results,papers,contexts,output)
+        if qa and qa.poll() is None:
+            os.killpg(qa.pid,signal.SIGTERM)
+            try:qa.wait(timeout=30)
+            except subprocess.TimeoutExpired:
+                os.killpg(qa.pid,signal.SIGKILL);qa.wait(timeout=10)
+        qa_log.close()
 
 
 if __name__=='__main__':main()

@@ -50,12 +50,29 @@ def persist():
 
 def track():
     metadata=load(ROOT/'job.json')
+    generation_job=metadata.get('evaluation_generation_job')
+    labels=['gemma12_base','gemma12_r64','gemma12_r128']
+    if generation_job and not metadata.get('old_eval_stopped_after_generation'):
+        complete=all((ROOT/'outputs/evaluation'/(label+'-generation-performance.json')).exists() for label in labels)
+        qa_complete=(ROOT/'outputs/evaluation/complete.json').exists()
+        if complete and (qa_complete or not metadata.get('qa_on_existing_allocation')):
+            subprocess.run(['scancel',generation_job],check=True)
+            metadata['old_eval_stopped_after_generation']=True
+            metadata['old_eval_stop_reason']='All three 97-paper generator cohorts are saved. Dedicated concurrent QA continues; avoid duplicate QA in the former sequential process.'
+            if metadata.get('qa_on_existing_allocation'):
+                subprocess.run(['scancel',metadata['evaluation_job']],check=True)
+                metadata['old_eval_stop_reason']='All 2910 QA answers audited and final report saved by concurrent QA on the existing allocation; stop former sequential orchestration and unused rescue job.'
+            write(ROOT/'job.json',metadata)
     keys=['train_rank64_job','train_rank128_job','ornith_job','evaluation_job']
     ids=[metadata[k] for k in keys]
     queue=subprocess.run(['squeue','-h','-j',','.join(ids),'-o','%i|%T|%M|%R'],text=True,capture_output=True,check=True)
     live={row.split('|')[0]:row.split('|')[1:] for row in queue.stdout.splitlines()}
     jobs={key:dict(id=metadata[key],live=live.get(metadata[key])) for key in keys}
     accounting_ids=ids+['2171755','2171756','2171770','2158056','2167404']
+    if generation_job:accounting_ids.append(generation_job)
+    if metadata.get('failed_ornith_resume_job'):accounting_ids.append(metadata['failed_ornith_resume_job'])
+    accounting_ids+=metadata.get('failed_ornith_resume_jobs',[])
+    accounting_ids=list(dict.fromkeys(accounting_ids))
     if metadata.get('hf_upload_job'):accounting_ids.append(metadata['hf_upload_job'])
     accounting=subprocess.check_output(['sacct','-n','-X','-j',','.join(accounting_ids),
                     '--format=JobID,JobName,State,ElapsedRaw,AllocTRES','--parsable2'],text=True)
@@ -83,7 +100,10 @@ def track():
                 except json.JSONDecodeError:pass
         progress[str(rank)]=dict(latest_step=last,result=optional(folder/'result.json'))
     ornith_results=list((ROOT/'outputs/ornith/documents').glob('*/result.json'))
+    ornith_generated=sum(load(path)['status']=='generated' for path in ornith_results)
     ornith=dict(attempted_papers=len(ornith_results),target_papers=865,
+                generated_papers=ornith_generated,failed_papers=len(ornith_results)-ornith_generated,
+                missing_papers=865-len(ornith_results),
                 complete=optional(ROOT/'outputs/ornith/complete.json'))
     ready=optional(ROOT/'outputs/release_ready.json')
     hf=optional(ROOT/'outputs/hf_upload.json') or dict(status='awaiting_hf_login')
@@ -105,21 +125,36 @@ def track():
                 hf.update(status='failed',slurm_state=accounting)
                 write(ROOT/'outputs/hf_upload.json',hf)
     evaluation=optional(ROOT/'outputs/evaluation/complete.json')
+    qa_checkpoint=optional(ROOT/'outputs/evaluation/qa-live-results.json')
+    qa_progress=dict(matched_papers=0,scored_answers=0,target_answers=2910,models={})
+    if qa_checkpoint:
+        qa_progress['matched_papers']=sum(len(d['conditions'])==3 for d in qa_checkpoint['documents'])
+        for document in qa_checkpoint['documents']:
+            for label,condition in document['conditions'].items():
+                score=qa_progress['models'].setdefault(label,dict(correct=0,total=0))
+                for row in condition['rows']:
+                    score['total']+=1
+                    score['correct']+=next(iter(row['predictions'].values()))==row['gold']
+        qa_progress['scored_answers']=sum(v['total'] for v in qa_progress['models'].values())
     gpu_done=all(v['result'] and v['result']['status']=='complete' for v in progress.values()) and bool(ornith['complete']) and bool(evaluation)
-    failure=any(v.get('accounting_state','').startswith(('FAILED','CANCELLED','TIMEOUT','OUT_OF_MEMORY')) for v in jobs.values())
+    failure=any(v.get('accounting_state','').startswith(('FAILED','CANCELLED','TIMEOUT','OUT_OF_MEMORY'))
+                and not (key=='evaluation_job' and evaluation) for key,v in jobs.items())
     state='complete' if gpu_done and hf.get('status')=='complete' else 'gpu_work_complete_awaiting_hf' if gpu_done else 'requires_attention' if failure else 'running'
     snapshot=dict(state=state,updated_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),
                   teacher_stopped=True,training_papers=865,external_test_papers=97,external_test_mcqs=970,
                   generator_only=True,epochs=1,peak_learning_rate=2e-5,jobs=jobs,
                   training=progress,ornith=ornith,release=ready,huggingface=hf,evaluation=evaluation,
+                  qa_progress=qa_progress,
                   monitor_host=socket.gethostname(),monitor_pid=os.getpid())
     write(ROOT/'STATUS.json',snapshot)
     rows=[]
     for rank,v in progress.items():
         step=v['latest_step'] or {}
         rows.append(f"<tr><td>Gemma 12B rank {rank}</td><td>{step.get('step',0)}/109</td><td>{step.get('loss','—')}</td><td>{round(step.get('remaining_compute_seconds',0)/60,1)} min remaining compute</td></tr>")
-    rows.append(f"<tr><td>Ornith 9B native AR</td><td>{ornith['attempted_papers']}/865</td><td>no DFlash</td><td>{'complete' if ornith['complete'] else 'pending/running'}</td></tr>")
-    rows.append(f"<tr><td>97-paper evaluation</td><td>2910 answers across 3 conditions</td><td>matched baseline/r64/r128</td><td>{'complete' if evaluation else 'after training'}</td></tr>")
+    ornith_state=jobs['ornith_job'].get('live')
+    ornith_state=ornith_state[0] if ornith_state else jobs['ornith_job'].get('accounting_state','unknown')
+    rows.append(f"<tr><td>Ornith 9B native AR</td><td>{ornith_generated}/865 generated; {ornith['failed_papers']} failed; {ornith['missing_papers']} pending results</td><td>no DFlash</td><td>{'complete' if ornith['complete'] else ornith_state}</td></tr>")
+    rows.append(f"<tr><td>97-paper evaluation</td><td>{qa_progress['scored_answers']}/2910 answers; {qa_progress['matched_papers']}/97 matched papers</td><td>matched baseline/r64/r128</td><td>{'complete' if evaluation else 'concurrent QA / remaining generation'}</td></tr>")
     rows.append(f"<tr><td>HF dataset</td><td>865 papers</td><td>{html.escape(hf['status'])}</td><td>{html.escape(hf.get('url','Login required'))}</td></tr>")
     (ROOT/'MONITOR.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta http-equiv="refresh" content="30"><title>865-paper generator distillation</title><style>body{font:16px system-ui;margin:30px;color:#16212b}table{border-collapse:collapse}td,th{padding:12px;border:1px solid #ccd4da;text-align:left}code{font-size:12px}</style><h1>865-paper Qwen → Gemma generator distillation</h1><p>Updated '+html.escape(snapshot['updated_at'])+'</p><p>Teacher stopped. One epoch, rank 64 and 128, generator only. Peak LR 2e-5 after initial rank-128 divergence at 1e-4.</p><table><tr><th>Task</th><th>Progress</th><th>Details</th><th>Status</th></tr>'+''.join(rows)+'</table><p>Training: genuine source-only generator reasoning and matching original answer; corrected final summaries and correction traces are published separately. Frozen test: 97 papers/970 MCQs, zero training overlap.</p><pre>'+html.escape(json.dumps(jobs,indent=2))+'</pre></html>')
     return state
