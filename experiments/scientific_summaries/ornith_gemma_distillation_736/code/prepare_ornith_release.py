@@ -1,4 +1,5 @@
 """Release frozen native-AR Ornith outputs and render their exact generator SFT targets."""
+import argparse
 import collections
 import concurrent.futures
 import hashlib
@@ -22,14 +23,20 @@ SECRET=re.compile(rb'gh[pousr]_[A-Za-z0-9]{20,}|hf_[A-Za-z0-9]{20,}|sk-[A-Za-z0-
 TEACHER=dict(model='ornith-ai/Ornith-1.5-9B',revision='489cb97981b8654bcfcf30ce1f94ed1b62e07b53',precision='BF16',speculative_decoding=False)
 
 
-def main():
+def release_only():
     cohort=load(ROOT/'inputs/frozen_cohort.json');assert cohort['generated_papers']==736
     sources={p['document_id']:p for p in load(SOURCE/'inputs/papers.json')}
     prompts=load(ROOT/'inputs/reference_prompts.json')
     selected=[sources[p['document_id']] for p in cohort['papers']]
-    audit=Guard().require_disjoint(selected)
+    # The frozen subset uses identical source bytes from the already audited 865 cohort.
+    original_cohort=load(ORIGIN/'inputs/frozen_cohort.json')
+    original_by_id={p['document_id']:p for p in original_cohort['papers']}
+    assert all(original_by_id[p['document_id']]['source_sha256']==p['source_sha256'] for p in cohort['papers'])
+    audit=load(ORIGIN/'release/evaluation_overlap_audit.json')
+    audit=dict(audit,subset_papers=736,subset_original_papers=865,
+               subset_audit_method='Exact frozen source-hash subset of the previously audited zero-overlap collection',
+               original_audit_sha256=digest(ORIGIN/'release/evaluation_overlap_audit.json'))
     write(ROOT/'release/evaluation_overlap_audit.json',audit)
-    tokenizer=AutoTokenizer.from_pretrained(ROOT/'models/gemma-4-12b-it',local_files_only=True)
     counts=[];rows=[];conversations=[];native=[];budgets=collections.Counter();schema=collections.Counter()
     for item in cohort['papers']:
         source=sources[item['document_id']];path=Path(item['generation_result_path'])
@@ -57,15 +64,6 @@ def main():
             semantic_correction=False,strict_source_schema_validation_passed=result['strict_source_schema_validation_passed'],
             messages=messages+[dict(role='assistant',content=assistant['content'],reasoning_content=reasoning)])
         conversations.append(conversation)
-        text,prefix,transformation=render(tokenizer,conversation['messages'])
-        encoded=tokenizer(text,add_special_tokens=False,return_offsets_mapping=True);ids=encoded['input_ids']
-        assert len(ids)<=65536, 'Full untruncated native example exceeds the training context'
-        labels=[token if start>=len(prefix) and end>start else -100 for token,(start,end) in zip(ids,encoded['offset_mapping'])]
-        assert any(v!=-100 for v in labels)
-        native.append(dict(document_id=item['document_id'],domain=item['domain'],input_ids=ids,labels=labels,
-            reasoning_in_target=True,prompt_characters=len(prefix),template_transformation=transformation,
-            teacher_call_id=conversation['call_id']))
-        counts.append(dict(document_id=item['document_id'],tokens=len(ids),target_tokens=sum(v!=-100 for v in labels)))
         rows.append(dict(document_id=item['document_id'],domain=item['domain'],split='train',
             source_sha256=item['source_sha256'],fulltext=source['fulltext'],source_metadata_json=json.dumps(source,ensure_ascii=False),
             teacher_model=TEACHER['model'],teacher_revision=TEACHER['revision'],teacher_precision='BF16',
@@ -78,15 +76,6 @@ def main():
             generation_result_json=json.dumps(result,ensure_ascii=False)))
     jsonl(ROOT/'release/data/train.jsonl',rows)
     jsonl(ROOT/'release/conversations/generation_reasoning.jsonl',conversations)
-    training_path=ROOT/'training/gemma12_generation_reasoning.jsonl';jsonl(training_path,native)
-    training=dict(examples=736,papers=736,path=str(training_path),sha256=digest(training_path),max_length=65536,
-        truncation=False,assistant_only=True,reasoning_supervised=True,all_papers_used_once_per_epoch=True,
-        min_tokens=min(r['tokens'] for r in counts),max_tokens=max(r['tokens'] for r in counts),
-        mean_tokens=statistics.mean(r['tokens'] for r in counts),total_tokens=sum(r['tokens'] for r in counts),
-        target_tokens=sum(r['target_tokens'] for r in counts),examples_by_length=counts,
-        tokenizer_model='google/gemma-4-12B-it',tokenizer_revision='707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7',
-        tokenizer_sha256=digest(ROOT/'models/gemma-4-12b-it/tokenizer.json'),teacher=TEACHER)
-    write(ROOT/'training/manifest.json',training)
     release=ROOT/'release';provenance=release/'provenance';provenance.mkdir(exist_ok=True)
     for name in ['frozen_cohort.json','reference_prompts.json','selection_manifest.json']:
         shutil.copy2(ROOT/'inputs'/name,provenance/name)
@@ -104,16 +93,19 @@ def main():
             if folder.is_dir() and folder.name in archives:
                 archives[folder.name].append(('earlier_attempts/'+name+'/'+str(folder.relative_to(base)),folder))
     def archive(item):
-        target=release/'traces'/(item['document_id']+'.tar.gz');target.parent.mkdir(exist_ok=True)
-        temporary=target.with_suffix('.tmp')
-        with tarfile.open(temporary,'w:gz',compresslevel=3) as handle:
-            for prefix,folder in archives[item['document_id']]:
-                for path in sorted(folder.rglob('*')):
-                    if path.is_file() and not path.name.endswith('.tmp'):
-                        assert not SECRET.search(path.read_bytes()), 'Potential credential in raw trace'
-                        handle.add(path,arcname=prefix+'/'+str(path.relative_to(folder)),recursive=False)
-        temporary.replace(target)
-        return dict(document_id=item['document_id'],file=str(target.relative_to(release)),bytes=target.stat().st_size,sha256=digest(target))
+        target=release/'traces'/(item['document_id']+'.jsonl');target.parent.mkdir(exist_ok=True)
+        members=[]
+        for prefix,folder in archives[item['document_id']]:
+            for path in sorted(folder.rglob('*')):
+                if path.is_file() and not path.name.endswith('.tmp'):
+                    payload=path.read_bytes()
+                    assert not SECRET.search(payload), 'Potential credential in raw trace'
+                    members.append(dict(path=prefix+'/'+str(path.relative_to(folder)),
+                        sha256=hashlib.sha256(payload).hexdigest(),content=payload.decode('utf-8')))
+        jsonl(target,members)
+        return dict(document_id=item['document_id'],file=str(target.relative_to(release)),
+            format='uncompressed JSONL archive: original UTF-8 content and each member SHA256',
+            bytes=target.stat().st_size,sha256=digest(target))
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:trace_index=list(pool.map(archive,cohort['papers']))
     jsonl(release/'trace_archives.jsonl',trace_index)
     manifest=dict(status='complete_frozen_collection',generated_papers=736,original_target_papers=865,
@@ -122,7 +114,7 @@ def main():
         targets='actual raw source-only generator answer plus its matching emitted reasoning',
         external_evaluation=audit,dataset_attribution=load(ROOT/'inputs/selection_manifest.json')['attribution'],
         dataset_license='CC-BY-4.0; underlying source-paper rights remain with their authors',
-        native_training_summary={k:v for k,v in training.items() if k!='examples_by_length'},trace_archives=736,
+        native_training_preparation='Prepared separately on a compute node using this frozen conversation view; published targets are unchanged',trace_archives=736,trace_archive_format='jsonl',
         mean_narrative_words=statistics.mean(len(r['summary_narrative'].split()) for r in rows))
     write(release/'manifest.json',manifest)
     card='''---
@@ -198,12 +190,12 @@ Reviewer and corrector adapters are not trained.
 - `data/train.jsonl`: full source, original summary/reasoning, narrative, actual request
   and response, model identity, thinking budget and source-validation result.
 - `conversations/generation_reasoning.jsonl`: genuine generator SFT conversations.
-- `traces/*.tar.gz`: successful generation plus all preserved earlier returned attempts
+- `traces/*.jsonl`: original file paths, UTF-8 content and member hashes for successful generation plus all preserved earlier returned attempts
   for each included source paper. Interrupted in-flight requests may have no returned
   response or usage record and are not reconstructed.
 - `provenance/`: verbatim prompts, frozen hashes/identities, source selection and code.
 - `manifest.json`, `evaluation_overlap_audit.json`, `trace_archives.jsonl`, `SHA256SUMS`:
-  collection counts, native training token counts, holdout audit and file checksums.
+  collection counts, source subset holdout audit and file checksums. Native training lengths are recorded separately in the training workflow.
 
 No aggregate throughput is claimed for this mixed, resumed collection. Failed/startup
 allocations and interrupted calls prevent inferring end-to-end throughput from retained
@@ -221,9 +213,50 @@ publisher PDF completeness is not guaranteed.
     for path in paths:
         if path.suffix!='.gz':assert not SECRET.search(path.read_bytes()), 'Potential credential in release'
     (release/'SHA256SUMS').write_text(''.join(digest(p)+'  '+str(p.relative_to(release))+'\n' for p in paths))
-    write(ROOT/'outputs/core_ready.json',dict(papers=736,manifest_sha256=digest(release/'manifest.json'),training_manifest_sha256=digest(ROOT/'training/manifest.json')))
     write(ROOT/'outputs/release_ready.json',dict(papers=736,trace_archives=736,manifest_sha256=digest(release/'manifest.json'),checksums_sha256=digest(release/'SHA256SUMS'),bytes=sum(p.stat().st_size for p in paths)))
-    print(json.dumps({'phase':'release_ready','papers':736,'training_tokens':training['total_tokens'],'supervised_tokens':training['target_tokens'],'max_native_length':training['max_tokens']}),flush=True)
+    print(json.dumps({'phase':'release_ready','papers':736,'bytes':sum(p.stat().st_size for p in paths)}),flush=True)
 
 
-if __name__=='__main__':main()
+def native_only():
+    cohort=load(ROOT/'inputs/frozen_cohort.json')
+    sources={p['document_id']:p for p in load(SOURCE/'inputs/papers.json')}
+    # Repeat the complete holdout guard on the compute node without modifying the published release.
+    audit=Guard().require_disjoint([sources[p['document_id']] for p in cohort['papers']])
+    write(ROOT/'training/evaluation_overlap_audit.json',audit)
+    ready=load(ROOT/'outputs/release_ready.json')
+    assert digest(ROOT/'release/manifest.json')==ready['manifest_sha256']
+    rows=[json.loads(line) for line in (ROOT/'release/conversations/generation_reasoning.jsonl').read_text().splitlines()]
+    assert len(rows)==len({r['document_id'] for r in rows})==736
+    tokenizer=AutoTokenizer.from_pretrained(ROOT/'models/gemma-4-12b-it',local_files_only=True)
+    counts=[];native=[]
+    for row in rows:
+        text,prefix,transformation=render(tokenizer,row['messages'])
+        encoded=tokenizer(text,add_special_tokens=False,return_offsets_mapping=True);ids=encoded['input_ids']
+        assert len(ids)<=65536, 'Full untruncated native example exceeds the training context'
+        labels=[token if start>=len(prefix) and end>start else -100 for token,(start,end) in zip(ids,encoded['offset_mapping'])]
+        assert any(v!=-100 for v in labels)
+        native.append(dict(document_id=row['document_id'],domain=row['domain'],input_ids=ids,labels=labels,
+            reasoning_in_target=True,prompt_characters=len(prefix),template_transformation=transformation,
+            teacher_call_id=row['call_id']))
+        counts.append(dict(document_id=row['document_id'],tokens=len(ids),target_tokens=sum(v!=-100 for v in labels)))
+    path=ROOT/'training/gemma12_generation_reasoning.jsonl';jsonl(path,native)
+    manifest=dict(examples=736,papers=736,path=str(path),sha256=digest(path),max_length=65536,
+        truncation=False,assistant_only=True,reasoning_supervised=True,all_papers_used_once_per_epoch=True,
+        min_tokens=min(r['tokens'] for r in counts),max_tokens=max(r['tokens'] for r in counts),
+        mean_tokens=statistics.mean(r['tokens'] for r in counts),total_tokens=sum(r['tokens'] for r in counts),
+        target_tokens=sum(r['target_tokens'] for r in counts),examples_by_length=counts,
+        tokenizer_model='google/gemma-4-12B-it',tokenizer_revision='707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7',
+        tokenizer_sha256=digest(ROOT/'models/gemma-4-12b-it/tokenizer.json'),teacher=TEACHER,
+        frozen_conversations_sha256=digest(ROOT/'release/conversations/generation_reasoning.jsonl'))
+    write(ROOT/'training/manifest.json',manifest)
+    write(ROOT/'outputs/core_ready.json',dict(papers=736,manifest_sha256=digest(ROOT/'release/manifest.json'),training_manifest_sha256=digest(ROOT/'training/manifest.json')))
+    print(json.dumps({'phase':'core_ready','papers':736,'training_tokens':manifest['total_tokens'],'supervised_tokens':manifest['target_tokens'],'max_native_length':manifest['max_tokens']}),flush=True)
+
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--release-only',action='store_true')
+    args=parser.parse_args()
+    if args.release_only:release_only()
+    else:
+        while not (ROOT/'outputs/release_ready.json').exists():__import__('time').sleep(2)
+        native_only()

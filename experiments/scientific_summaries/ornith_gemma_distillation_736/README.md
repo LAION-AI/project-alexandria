@@ -6,9 +6,13 @@ the original 865-paper source cohort are excluded from this frozen collection.
 
 ## Frozen targets and publication
 
-An independent Hugging Face dataset is prepared at:
+The independent Hugging Face dataset is **published and fully verified**:
 
-`ChristophSchuhmann/scientific-summary-distillation-Ornith-1.5-9B-736-20261004`
+[ChristophSchuhmann/scientific-summary-distillation-Ornith-1.5-9B-736-20261004](https://huggingface.co/datasets/ChristophSchuhmann/scientific-summary-distillation-Ornith-1.5-9B-736-20261004)
+
+Pinned revision: `1ab11230eb1928c790a9f8e0a13ec2563565dc82`. All 778 release files match their remote
+content hashes (LFS SHA256 or Git blob hashes) and sizes. The release contains
+736 uncompressed JSONL trace archives with original file content and member hashes.
 
 `outputs/hf_upload.json` is authoritative for publication status, verified file
 counts and the pinned published revision. The local release contains full sources,
@@ -33,6 +37,12 @@ The 97 held-out evaluation papers and their 970 MCQs are excluded from training
 by identities, normalized titles, source hashes and substantial text overlap.
 Their questions and gold answers are never included in the published train split.
 The 736 sources cover ten domains, with frozen source and output SHA256 hashes.
+
+Native training data is complete: **22,549,953 tokens**, including **15,333,192
+supervised reasoning/answer tokens**; 11,742–49,505 tokens/example, mean 30,638.52.
+The one-epoch sequence contains exactly 736 unique papers and 92 optimizer updates.
+Training file SHA256: `7c946c2fea57388cdb048c09f3d84ca34057402c9089ac8b242231c40aa656f5`.
+Preparation job 2175810 completed in 3 minutes 6 seconds.
 
 ## Training and automatically chained evaluation
 

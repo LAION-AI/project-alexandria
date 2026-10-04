@@ -6,7 +6,7 @@
 #SBATCH --ntasks-per-node=4
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=24
-#SBATCH --time=02:00:00
+#SBATCH --time=01:30:00
 #SBATCH --output=/e/fscratch/reformo/schuhmann1/ornith-distillation-736-20261004/logs/train-%j.out
 #SBATCH --error=/e/fscratch/reformo/schuhmann1/ornith-distillation-736-20261004/logs/train-%j.err
 set -euo pipefail

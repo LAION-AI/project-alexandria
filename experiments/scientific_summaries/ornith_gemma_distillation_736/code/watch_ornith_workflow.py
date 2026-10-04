@@ -59,7 +59,8 @@ def track():
                 meta['hf_upload_attempts']=tries+1;write(ROOT/'job.json',meta)
                 try:upload()
                 except Exception as e:
-                    hf=dict(status='failed',error_type=type(e).__name__,attempt=tries+1)
+                    hf=optional(ROOT/'outputs/hf_upload.json') or {}
+                    hf.update(status='failed',error_type=type(e).__name__,attempt=tries+1)
                     write(ROOT/'outputs/hf_upload.json',hf)
                 else:hf=load(ROOT/'outputs/hf_upload.json')
     evaluation=optional(ROOT/'outputs/evaluation/complete.json')
