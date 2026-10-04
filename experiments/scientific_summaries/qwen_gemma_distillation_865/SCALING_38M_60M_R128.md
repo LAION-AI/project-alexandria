@@ -2,6 +2,8 @@
 
 English capacity planning estimate for the completed **Qwen-distilled rank-128** adapter. BF16 on JUPITER GH200, native autoregressive decoding, thinking enabled, source-only generation, no semantic correction. The future Ornith-distilled adapter has not been benchmarked.
 
+The matched no-thinking experiment, deployment optimization protocol and explicitly provisional token-proportional scenario are documented in [Gemma rank-128 no-thinking](../gemma_r128_no_thinking_97/README.md). Its complete-generation costs and QA are pending the new benchmark; the figures below remain the measured thinking reference.
+
 | Papers | Measured GPU-hours, per attempted paper | Planning GPU-hours, 85% useful capacity | Planning GPU-hours, 85% capacity and observed successful yield |
 | --- | ---: | ---: | ---: |
 | 38,000,000 | 468,193 | 550,815 | 562,411 |
