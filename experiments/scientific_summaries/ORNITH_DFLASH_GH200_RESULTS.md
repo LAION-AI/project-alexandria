@@ -49,6 +49,8 @@ Same frozen 97 papers, fixed student and initial source-only generation/correcti
 
 The small checkpoint is **E4B** (4.5B effective / approximately 8B including embeddings). Probe throughput is measured separately from complete-output timings. The Gemma report includes paired confidence intervals against each Ornith model and Qwen27B, all batch observations, self-audit failures and complete scheduler GPU-hours. Previous ten QA conditions are reused only after exact immutable source/question/context/prompt/protocol validation.
 
+[Gemma 60M GPU-hour estimates and average summary token lengths](gemma4_97/SCALING_60M.md). The estimate includes observed retries; E4B has more retry work despite its higher generation token rate.
+
 ## Findings across all five pipelines
 
 **Ornith 9B leads both Gemma pipelines on raw and corrected QA retention**, with paired confidence intervals below zero for each Gemma-minus-9B comparison. Gemma narratives are substantially shorter (775 / 918 mean raw words versus 2,548 for Ornith 9B), and Gemma uses an additional source-only finite-schema fallback after format failures. These are complete-pipeline results, not a length-matched capability comparison.

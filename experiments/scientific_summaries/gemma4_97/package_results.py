@@ -295,6 +295,14 @@ def main():
         'Rebuild with `package_results.py --run-dir /path/to/run`. All packaged files have SHA256 checksums. '
         'Upstream model/source attribution and terms remain unchanged.'
     ]
+    planning=HERE/'SCALING_60M.md'
+    if planning.is_file():
+        summary=planning.read_text().split('## Summary lengths and central GPU-hour estimates\n',1)[1].split('## Final artifact lengths\n',1)[0].strip()
+        position=sections.index('## Files and verification')
+        sections[position:position]=['## Planning: 60 million summaries',summary,
+            'See [the English 60M planning table](SCALING_60M.md) for measured native-token lengths, '
+            'full JSON lengths, retry work, wider scenarios, formulas and explicit assumptions. '
+            'These are estimates, not measurements at production scale.']
     (HERE/'README.md').write_text('\n\n'.join(sections)+'\n')
     overview=HERE.parent/'ORNITH_DFLASH_GH200_RESULTS.md'
     base=overview.read_text().split('\n## Gemma 4 E4B IT and 12B IT')[0]
@@ -333,6 +341,9 @@ def main():
         'paired confidence intervals against each Ornith model and Qwen27B, all batch observations, '
         'self-audit failures and complete scheduler GPU-hours. Previous ten QA conditions are reused only '
         'after exact immutable source/question/context/prompt/protocol validation.']
+    if planning.is_file():
+        extra+=['','[Gemma 60M GPU-hour estimates and average summary token lengths](gemma4_97/SCALING_60M.md). '
+            'The estimate includes observed retries; E4B has more retry work despite its higher generation token rate.']
     extra+=['','## Findings across all five pipelines','',
         '**Ornith 9B leads both Gemma pipelines on raw and corrected QA retention**, with paired confidence '
         'intervals below zero for each Gemma-minus-9B comparison. Gemma narratives are substantially shorter '

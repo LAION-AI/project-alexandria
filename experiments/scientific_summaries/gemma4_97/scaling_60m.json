@@ -1,0 +1,210 @@
+{
+  "papers": 60000000,
+  "hardware": "JUPITER GH200, one BF16 Gemma target per GPU, native AR",
+  "assumptions": {
+    "central": {
+      "useful_capacity": 0.85,
+      "additional_uncached_prefill_tokens_per_second": 25000,
+      "post_input_cache_fractions": [
+        0.75,
+        0
+      ],
+      "throughput_factor": 1.0
+    },
+    "fast": {
+      "useful_capacity": 0.9,
+      "additional_uncached_prefill_tokens_per_second": 40000,
+      "post_input_cache_fraction": 0.9,
+      "throughput_factor": 1.0
+    },
+    "cautious": {
+      "useful_capacity": 0.8,
+      "additional_uncached_prefill_tokens_per_second": 15000,
+      "post_input_cache_fraction": 0,
+      "throughput_factor": 0.65
+    }
+  },
+  "measured_rates": {
+    "gemma4_e4b": {
+      "generation": {
+        "tokens_per_second": 1376.8474179016312,
+        "batch": 64,
+        "cache_state": "cold"
+      },
+      "correction": {
+        "tokens_per_second": 2425.4327560379147,
+        "batch": 64,
+        "cache_state": "warm"
+      }
+    },
+    "gemma4_12b": {
+      "generation": {
+        "tokens_per_second": 691.3171471055491,
+        "batch": 64,
+        "cache_state": "cold"
+      },
+      "correction": {
+        "tokens_per_second": 1818.4442964474142,
+        "batch": 64,
+        "cache_state": "warm"
+      }
+    }
+  },
+  "observed_workload": {
+    "gemma4_e4b": {
+      "source_papers": 97,
+      "generation_calls": 182,
+      "post_generation_calls": 3094,
+      "generation_input_tokens_per_paper": 15163.752577319588,
+      "generation_output_tokens_per_paper": 14746.639175257733,
+      "post_generation_input_tokens_per_paper": 307450.1855670103,
+      "post_generation_output_tokens_per_paper": 5919.371134020618
+    },
+    "gemma4_12b": {
+      "source_papers": 97,
+      "generation_calls": 101,
+      "post_generation_calls": 609,
+      "generation_input_tokens_per_paper": 8427.257731958764,
+      "generation_output_tokens_per_paper": 2992.360824742268,
+      "post_generation_input_tokens_per_paper": 61657.35051546392,
+      "post_generation_output_tokens_per_paper": 6154.80412371134
+    }
+  },
+  "summary_lengths": {
+    "gemma4_e4b_raw": {
+      "papers": 97,
+      "narrative_tokens": {
+        "mean": 1128.3711340206185,
+        "median": 1078,
+        "minimum": 718,
+        "maximum": 1960,
+        "total": 109452
+      },
+      "summary_json_tokens": {
+        "mean": 2544.175257731959,
+        "median": 2434,
+        "minimum": 1600,
+        "maximum": 4732,
+        "total": 246785
+      },
+      "narrative_words": {
+        "mean": 775.4639175257732,
+        "median": 753,
+        "minimum": 569,
+        "maximum": 1106,
+        "total": 75220
+      }
+    },
+    "gemma4_e4b_corrected": {
+      "papers": 97,
+      "narrative_tokens": {
+        "mean": 1105.4432989690722,
+        "median": 1071,
+        "minimum": 692,
+        "maximum": 1956,
+        "total": 107228
+      },
+      "summary_json_tokens": {
+        "mean": 2009.0618556701031,
+        "median": 1988,
+        "minimum": 1411,
+        "maximum": 3137,
+        "total": 194879
+      },
+      "narrative_words": {
+        "mean": 759.2989690721649,
+        "median": 729,
+        "minimum": 566,
+        "maximum": 1071,
+        "total": 73652
+      }
+    },
+    "gemma4_12b_raw": {
+      "papers": 97,
+      "narrative_tokens": {
+        "mean": 1330.4226804123712,
+        "median": 1319,
+        "minimum": 927,
+        "maximum": 1738,
+        "total": 129051
+      },
+      "summary_json_tokens": {
+        "mean": 2198.494845360825,
+        "median": 2191,
+        "minimum": 1593,
+        "maximum": 2783,
+        "total": 213254
+      },
+      "narrative_words": {
+        "mean": 918.2577319587629,
+        "median": 906,
+        "minimum": 617,
+        "maximum": 1211,
+        "total": 89071
+      }
+    },
+    "gemma4_12b_corrected": {
+      "papers": 97,
+      "narrative_tokens": {
+        "mean": 1324.3505154639174,
+        "median": 1298,
+        "minimum": 927,
+        "maximum": 1738,
+        "total": 128462
+      },
+      "summary_json_tokens": {
+        "mean": 2047.0618556701031,
+        "median": 2024,
+        "minimum": 1448,
+        "maximum": 2703,
+        "total": 198565
+      },
+      "narrative_words": {
+        "mean": 914.4329896907217,
+        "median": 896,
+        "minimum": 617,
+        "maximum": 1211,
+        "total": 88700
+      }
+    }
+  },
+  "estimates": [
+    {
+      "model": "gemma4_e4b",
+      "workflow": "generation only",
+      "corrected": false,
+      "central_cache75_gpu_hours": 210008.59208555377,
+      "central_no_post_input_cache_gpu_hours": 210008.59208555377,
+      "fast_scenario_gpu_hours": 198341.44808080076,
+      "cautious_scenario_gpu_hours": 343283.27552446286
+    },
+    {
+      "model": "gemma4_e4b",
+      "workflow": "generation + audits/correction/repairs",
+      "corrected": true,
+      "central_cache75_gpu_hours": 318146.711953133,
+      "central_no_post_input_cache_gpu_hours": 498999.7622866685,
+      "fast_scenario_gpu_hours": 257770.4799603186,
+      "cautious_scenario_gpu_hours": 848519.9304009656
+    },
+    {
+      "model": "gemma4_12b",
+      "workflow": "generation only",
+      "corrected": false,
+      "central_cache75_gpu_hours": 84872.39454029468,
+      "central_no_post_input_cache_gpu_hours": 84872.39454029468,
+      "fast_scenario_gpu_hours": 80157.26151027832,
+      "cautious_scenario_gpu_hours": 138733.72184471242
+    },
+    {
+      "model": "gemma4_12b",
+      "workflow": "generation + audits/correction/repairs",
+      "corrected": true,
+      "central_cache75_gpu_hours": 163327.82893804312,
+      "central_no_post_input_cache_gpu_hours": 199596.8586530219,
+      "fast_scenario_gpu_hours": 145690.53975878182,
+      "cautious_scenario_gpu_hours": 332851.41964815144
+    }
+  ],
+  "interpretation": "Planning sensitivity scenarios, not measurements at 60M scale or confidence intervals."
+}

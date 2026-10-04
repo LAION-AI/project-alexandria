@@ -214,6 +214,17 @@ E4B has the highest cold-generation probe rate among the measured single-target 
 
 Compare paired confidence intervals, narrative lengths, invalids and self-audit failure rates before choosing a deployment. Correction can change answerability and factual reliability differently. These complete deployed pipelines are not length-matched, and no independent human faithfulness study or trained-LoRA gain is established. See the [combined GH200 comparison](../ORNITH_DFLASH_GH200_RESULTS.md).
 
+## Planning: 60 million summaries
+
+| Model | Mean final narrative tokens: raw | Mean final narrative tokens: corrected | 60M summaries only: GPU-hours | 60M summaries + full correction: GPU-hours |
+| --- | --- | --- | --- | --- |
+| Gemma 4 E4B IT | 1,128 | 1,105 | 210,000 | 318,000–499,000 |
+| Gemma 4 12B IT | 1,330 | 1,324 | 85,000 | 163,000–200,000 |
+
+The full-correction interval uses central assumptions with **75% to 0% post-generation input reuse**; it is a cache sensitivity range, not a statistical interval. All central figures reserve 15% of modeled capacity for overhead and imperfect utilization. Generation-only costs include the recorded failed-generation retries and generation recovery. Full correction also includes both source-only self-audits, semantic correction, quote/field repairs, failed attempts and finite-schema rescue.
+
+See [the English 60M planning table](SCALING_60M.md) for measured native-token lengths, full JSON lengths, retry work, wider scenarios, formulas and explicit assumptions. These are estimates, not measurements at production scale.
+
 ## Files and verification
 
 `scores.csv` contains fourteen scores; `paper_scores.csv` contains every paper/condition and time; `throughput.csv` contains 48 probes; `phase_timings.csv` contains all full-output phase aggregates; `self_audit_scores.csv` includes 388 valid/failed audits; `paper_names.tsv` identifies all 97 papers. All 194 per-model paper archives retain raw/corrected summaries, audit findings, correction proposals, actual requests/responses, emitted reasoning fields and failed attempts/recovery. Full QA, runtime logs, metrics, code/model fingerprints and accounting are preserved. Weights/caches are excluded. Machine-specific HPC paths in snapshots require adaptation before reproducing inference elsewhere.
