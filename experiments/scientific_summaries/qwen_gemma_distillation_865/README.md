@@ -14,10 +14,16 @@ full source text, original generator summaries and actual emitted reasoning,
 corrected accepted summaries, source-based quality assessments, and all preserved
 raw calls/journals for each accepted paper in 865 compressed archives.
 The release totals 4,299,248,730 bytes before upload metadata, with SHA256 checksums.
-Hugging Face publication is prepared and awaits a Hugging Face login. A GitHub token
-cannot authenticate a Hugging Face upload. The monitor submits the upload after login;
-by default it creates a new dataset repository under the authenticated personal account.
-Set `inputs/hf_target.json` to `{"namespace":"authorized-account-or-organization"}` to choose a namespace.
+The dataset is **published on Hugging Face**:
+
+[ChristophSchuhmann/scientific-summary-distillation-Qwen3.8-27B-865-20261004](https://huggingface.co/datasets/ChristophSchuhmann/scientific-summary-distillation-Qwen3.8-27B-865-20261004)
+
+Pinned published revision: `9f572fb367865b7eaf7dca37b5cb269558b84026`.
+All 930 release files were verified by remote presence and byte size;
+the remote checksum index, dataset card, manifest and overlap audit match the local release exactly.
+The first upload attempt on a compute node could not reach the external network.
+The upload was completed from login host `jpbl-s03-01` using the standard HF credential
+cache outside the dataset and repository. Credentials are excluded from release artifacts.
 
 ## Exact generator target and reasoning provenance
 

@@ -93,7 +93,11 @@ def track():
         write(ROOT/'job.json',metadata)
         hf=dict(status='queued',job_id=job)
         write(ROOT/'outputs/hf_upload.json',hf)
-    if metadata.get('hf_upload_job') and hf.get('status') not in ['complete','failed']:
+    if metadata.get('hf_upload_execution')=='login_process' and hf.get('status') not in ['complete','failed']:
+        if not Path('/proc/'+str(metadata['hf_upload_pid'])).exists():
+            hf.update(status='failed',error='Owned login upload process ended before completion')
+            write(ROOT/'outputs/hf_upload.json',hf)
+    elif metadata.get('hf_upload_job') and hf.get('status') not in ['complete','failed']:
         active=subprocess.check_output(['squeue','-h','-j',metadata['hf_upload_job'],'-o','%T'],text=True).strip()
         if not active:
             accounting=subprocess.check_output(['sacct','-n','-X','-j',metadata['hf_upload_job'],'--format=State','--parsable2'],text=True).strip()

@@ -2,6 +2,7 @@
 import datetime
 import json
 import os
+import socket
 from pathlib import Path
 
 from huggingface_hub import HfApi, get_token, hf_hub_download
@@ -17,10 +18,13 @@ def main():
     release=ROOT/'release'
     assert ready['papers']==ready['trace_archives']==865
     assert ready['checksums_sha256']==digest(release/'SHA256SUMS')
+    expected_files={}
     for line in (release/'SHA256SUMS').read_text().splitlines():
         expected,name=line.split('  ',1)
-        path=release/name
+        path=(release/name).resolve()
         assert path.is_relative_to(release) and path.is_file() and digest(path)==expected
+        expected_files[name]=path.stat().st_size
+    expected_files['SHA256SUMS']=(release/'SHA256SUMS').stat().st_size
     api=HfApi(token=token)
     identity=api.whoami()
     request=load(ROOT/'inputs/hf_target.json') if (ROOT/'inputs/hf_target.json').exists() else {}
@@ -36,7 +40,8 @@ def main():
     state=dict(status='uploading',repo_id=repo_id,created_repo_id=repo_id,
                url='https://huggingface.co/datasets/'+repo_id,
                release_manifest_sha256=digest(release/'manifest.json'),credentials_saved=False,
-               job_id=os.environ.get('SLURM_JOB_ID'),started_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
+               job_id=os.environ.get('SLURM_JOB_ID'),host=socket.gethostname(),pid=os.getpid(),
+               started_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
     write(receipt,state)
     api.upload_large_folder(repo_id,release,repo_type='dataset',num_workers=4,
                             ignore_patterns=['.cache/**','**/__pycache__/**','**/*.pyc','**/*.tmp'],
@@ -44,7 +49,10 @@ def main():
     remote=Path(hf_hub_download(repo_id,'SHA256SUMS',repo_type='dataset',token=token,force_download=True))
     assert digest(remote)==ready['checksums_sha256']
     info=api.dataset_info(repo_id)
-    state.update(status='complete',revision=info.sha,papers=865,
+    remote_files={item.path:item.size for item in api.list_repo_tree(repo_id,repo_type='dataset',revision=info.sha,recursive=True)
+                  if hasattr(item,'size')}
+    assert all(remote_files.get(name)==size for name,size in expected_files.items()), 'Remote release file missing or wrong size'
+    state.update(status='complete',revision=info.sha,papers=865,verified_remote_files=len(expected_files),
                  completed_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
     write(receipt,state)
     print(json.dumps({k:v for k,v in state.items() if k in ['status','url','revision','papers']}),flush=True)
