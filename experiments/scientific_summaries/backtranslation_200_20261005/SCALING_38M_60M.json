@@ -1,0 +1,127 @@
+{
+  "created_utc": "2026-10-05T11:05:16.734484+00:00",
+  "kind": "benchmark-derived planning extrapolation, not a new production-scale measurement",
+  "generator": "Gemma 4 12B IT with Qwen3.8-27B-distilled rank-128 LoRA, merged FP8 weights, BF16 KV cache, thinking disabled",
+  "repair": "TranslateGemma 4B BF16, greedy EN-DE-EN on selected narrative copy windows, one round, batch 512",
+  "quality": "Critical signatures, source-copy checks and bidirectional DeBERTa NLI at fixed entailment cutoff 0.90; reject or retain original text",
+  "useful_capacity_factor": 0.85,
+  "formula": "count * single-GPU stage seconds / cohort summary versions / 3600 / useful capacity",
+  "measured_single_gpu_seconds_per_summary": {
+    "generation": 5.622309094577543,
+    "roundtrip_translation": 0.17255856341000025,
+    "bidirectional_nli": 0.042298702890111596,
+    "whole_quality_worker": 0.14210551925498294
+  },
+  "source_files": [
+    {
+      "path": "gemma_r128_fp8_97/evaluation/no_thinking_fp8-generation-performance.json",
+      "sha256": "068b86ce0398fce91cfd1d3777471aabcd17baf4fb0b9057559484062b1328b3"
+    },
+    {
+      "path": "backtranslation_200_20261005/report.json",
+      "sha256": "49fa52ba71a678660eea87a5e2d6891865d558cdaefe55194b6fb141e6857cc9"
+    },
+    {
+      "path": "gemma_r128_fp8_97/server_commands/no_thinking_fp8.json",
+      "sha256": "20b2a3992e34df84ccd2151cb2d0301344122f5bd4ecf3bb4e43bfeffa7d2e10"
+    },
+    {
+      "path": "backtranslation_200_20261005/code/quality.py",
+      "sha256": "f8ecb01bd204bd1b39048099a0b78f790fe018e2ba90c956d1565f4d01ea30b3"
+    }
+  ],
+  "rows": [
+    {
+      "summaries": 38000000,
+      "measured_rate_gpu_hours": {
+        "generation": 59346.59599831851,
+        "roundtrip_translation": 1821.4515026611139,
+        "bidirectional_nli": 446.4863082845113,
+        "whole_quality_worker": 1500.002703247042,
+        "optimized_total": 61614.53380926413,
+        "quality_worker_reserved_total": 62668.05020422666
+      },
+      "planning_gpu_hours": {
+        "generation": 69819.52470390413,
+        "roundtrip_translation": 2142.884120777781,
+        "bidirectional_nli": 525.2780097464839,
+        "whole_quality_worker": 1764.709062643579,
+        "optimized_total": 72487.6868344284,
+        "quality_worker_reserved_total": 73727.1178873255
+      }
+    },
+    {
+      "summaries": 60000000,
+      "measured_rate_gpu_hours": {
+        "generation": 93705.15157629238,
+        "roundtrip_translation": 2875.9760568333377,
+        "bidirectional_nli": 704.97838150186,
+        "whole_quality_worker": 2368.425320916382,
+        "optimized_total": 97286.10601462758,
+        "quality_worker_reserved_total": 98949.55295404211
+      },
+      "planning_gpu_hours": {
+        "generation": 110241.3547956381,
+        "roundtrip_translation": 3383.5012433333386,
+        "bidirectional_nli": 829.3863311786588,
+        "whole_quality_worker": 2786.3827304898614,
+        "optimized_total": 114454.24237015008,
+        "quality_worker_reserved_total": 116411.23876946128
+      }
+    },
+    {
+      "summaries": 98000000,
+      "measured_rate_gpu_hours": {
+        "generation": 153051.74757461087,
+        "roundtrip_translation": 4697.427559494452,
+        "bidirectional_nli": 1151.464689786371,
+        "whole_quality_worker": 3868.428024163424,
+        "optimized_total": 158900.6398238917,
+        "quality_worker_reserved_total": 161617.60315826873
+      },
+      "planning_gpu_hours": {
+        "generation": 180060.8794995422,
+        "roundtrip_translation": 5526.38536411112,
+        "bidirectional_nli": 1354.6643409251426,
+        "whole_quality_worker": 4551.091793133441,
+        "optimized_total": 186941.92920457848,
+        "quality_worker_reserved_total": 190138.35665678678
+      }
+    }
+  ],
+  "generation_sample": {
+    "unique_papers": 97,
+    "successful_papers": 97,
+    "seconds": 545.3639821740217,
+    "mean_narrative_tokens": 3096.742268041237,
+    "includes_bounded_format_retries": true
+  },
+  "translation_sample": {
+    "summary_versions": 200,
+    "unique_papers": 97,
+    "windows": 6379,
+    "seconds": 34.51171268200005,
+    "mean_windows_per_version": 31.895
+  },
+  "assumptions": [
+    "Comparable future paper length, summary length and copy-window density; repair sample mixes FP8/BF16 no-thinking versions.",
+    "Optimized stage pools amortize model loading/compilation and decouple CPU-only matching/signatures/assembly from GPU NLI; this production scheduling is not benchmarked end to end.",
+    "NLI phase wall time is charged as one-GPU time, including its tokenization; CPU-only checks have nonzero CPU/I/O cost and are not counted as GPU inference.",
+    "The 85% useful-capacity factor is a planning assumption, not a measured utilization confidence bound.",
+    "Use all four Jupiter GH200 GPUs through independent replicas or balanced stage workers; avoid unused exclusive-node GPUs."
+  ],
+  "exclusions": [
+    "Full QA on all production summaries",
+    "Training",
+    "Paper acquisition/OCR",
+    "CPU/storage/IO billing",
+    "Repeated repair rounds and strict five-word-compliance enforcement",
+    "New corpus distribution shifts"
+  ],
+  "compliance": {
+    "strict_five_word_pass": 0,
+    "tested_summary_versions": 200,
+    "single_round_does_not_produce_strictly_compliant_summaries": true
+  },
+  "correction_overhead_fraction": 0.03821512881732734
+}

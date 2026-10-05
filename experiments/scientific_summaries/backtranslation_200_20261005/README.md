@@ -50,3 +50,7 @@ Durable complete source/input, raw translations, numerical/formula checks, NLI, 
 Implementation: [code](code). Sixteen targeted numerical/formula/patch checks passed before execution, including compound units, leading decimals, subtraction terms and mathematical functions. Runtime compatibility is checked by the warm-up and disjoint batch sweep on compute. Batch selection prioritizes complete round trips, then speed; unfinished outputs cannot win through early termination.
 
 Critical guard v1.1 additionally preserves proportionality and solar-unit markers. Earlier Windy guard outputs are archived and recomputed from the unchanged raw translations before QA; no QA scores were viewed or used for this change. Successful raw translation results are reused.
+
+## Large-scale GPU-hour estimate
+
+[Speed-optimized Qwen-distilled rank-128 generation plus one guarded TranslateGemma repair round: 38M and 60M summaries](SCALING_38M_60M.md). This extrapolation does not imply strict five-word compliance.
