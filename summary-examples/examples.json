@@ -1,0 +1,2123 @@
+{
+  "collection": "Five Qwen-distilled Gemma rank-128 summaries after guarded TranslateGemma backtranslation",
+  "selection": "Five distinct subject areas, selected by document ID before inspecting per-paper QA; not a representative quality sample.",
+  "generator": "google/gemma-4-12B-it; Qwen3.8-27B-distilled rank-128 adapter; merged FP8; no thinking",
+  "repair": "google/translategemma-4b-it; BF16 greedy; one EN-DE-EN round on selected copy-bearing narrative windows; critical guard v1.1 and bidirectional NLI",
+  "provenance_snapshot": "351ee28799c2127cdc005a8a93d0bd9eafb30ac3",
+  "notes": "Full saved post-repair summary objects are unchanged. No reasoning, questions, gold answers or full source texts are published in this reader. Source excerpts are preserved as separate collapsible evidence.",
+  "examples": [
+    {
+      "document_id": "arxiv-121",
+      "domain": "Astronomy",
+      "original_condition": "no_thinking_fp8",
+      "source_sha256": "d3a694eff94f3b4b16cb0b402152cc9c29d7beea9452d1d41f2e94d279cf97fc",
+      "guarded_context_sha256": "ecd5be9b53f9715374f47ef612142ce3b2e9d9c389699770e41f9c53c141d51d",
+      "summary_sha256": "a3debadf894b42f23cb5439b3de713a9be17c148ab270972b8ccaf31c6e5f8fc",
+      "selected_windows": 47,
+      "accepted_windows": 21,
+      "critical_signature_check_passed": true,
+      "copy_overlap": {
+        "audit_version": "2.1",
+        "before": {
+          "words": 2221,
+          "longest_contiguous_match_words": 13,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 1047,
+            "5": 548,
+            "6": 403,
+            "7": 283
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.4714092751013057,
+            "5": 0.24673570463755065,
+            "6": 0.1814497973885637,
+            "7": 0.12742008104457453
+          },
+          "evidence_fragments_over_five_words": 0
+        },
+        "after": {
+          "words": 2340,
+          "longest_contiguous_match_words": 13,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 993,
+            "5": 384,
+            "6": 233,
+            "7": 161
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.42435897435897435,
+            "5": 0.1641025641025641,
+            "6": 0.09957264957264957,
+            "7": 0.06880341880341881
+          },
+          "evidence_fragments_over_five_words": 0
+        }
+      },
+      "paper_url": "https://arxiv.org/abs/0704.0256",
+      "summary": {
+        "title": "Multi-spectral Observations of Lunar Occultations: I. Resolving The Dust Shell Around AFGL 5440",
+        "authors": "Paul M. Harvey, Andrew Oldag",
+        "field_subfield": "Astronomy and Astrophysics; Stellar evolution; Circumstellar shells",
+        "type_of_paper": "Observational paper with modeling",
+        "executive_summary": "This paper presents high-speed multi-spectral lunar occultation observations of AFGL 5440, a dust-enshrouded carbon-rich AGB star at a distance of 2.25 kpc with luminosity 1.4×10⁴ L⊙. Observations were conducted over 1–4 µm using pMIRAS, a prototype high-speed spectrophotometer on the McDonald Observatory 2.7-m telescope, during an immersion event on 28 August 2001 with lunar phase 0.72 and position angle 54°. The time resolution of 8 msec enables an effective angular resolution of a couple milli-arcsec, allowing simultaneous observation of the Fresnel fringe pattern of the obscured central star and the circumstellar dust emission from the warmest region of the shell. The authors demonstrate that a single-source-size model cannot fit the 1–4 µm data across the entire band, revealing a combination of stellar emission and circumstellar shell emission. Using the DUSTY radiative transfer code, more than 200 models were tested, varying dust temperature, density gradient, optical depth, and composition. The most suitable model yielded a maximum dust temperature Tmax = 950 K ± 50 K, an optical depth at 5 µm of 0.5 ± 0.1, and a radial density gradient that corresponds to ρ ∝ r⁻², which is consistent with a radiation-driven hydrodynamic outflow. The physical inner radius of the dust cloud was limited to 3.7 × 10¹⁴ cm (11 mas angular diameter), which is approximately twice the stellar diameter of 3 mas. A dust loss rate of 6.5 × 10⁻⁸ M⊙ per year was determined, which is consistent with the estimate of 5.1 × 10⁻⁸ M⊙ per year, based on IRAS data, within the bounds of uncertainty. However, the models could not fit the IRAS 60 µm flux without assuming substantial graphite or a past higher mass-loss rate, implying that the mass-loss rate may have decreased over 500–2000 years. Two comparison stars, IRC+00233 and HD 155292, were observed to calibrate the analysis, yielding best-fit sizes of 4.5–5.0 mas and <3 mas, respectively, consistent with blackbody expectations.",
+        "research_context": [
+          {
+            "Mass loss from post-main-sequence stars contributes a large fraction of heavy elements and solid particles to the interstellar medium.": "heavy element abundance"
+          },
+          {
+            "The mass-loss mechanisms during the AGB phase are thought to involve radiation pressure and stellar pulsation, but details remain poorly understood.": "radiation pressure and stellar pulsation"
+          },
+          {
+            "Molecular line studies of extended envelopes around AGB stars show periodic variations leading to rings in radial distributions.": "periodic variations in mass-loss rates"
+          },
+          {
+            "Deep imaging has found similar periodic phenomena in the dust around IRC+10216.": "IRC+10216"
+          },
+          {
+            "At a distance of 1 kpc, the dust evaporation radius around a 10⁴ L⊙ star corresponds to 20 milli-arcsec, requiring angular resolution well under 1 arcsec to study inner shell regions.": "20 milli-arcsec"
+          },
+          {
+            "Speckle interferometry and adaptive optics enable resolutions of 0.1 arcsec, while lunar occultation and multi-aperture interferometry reach the milli-arcsecond level.": "milli-arcsecond level"
+          },
+          {
+            "Prior interferometric observations were typically made in one or two broad bands, limiting spectral coverage.": "one or two relatively broad bands"
+          }
+        ],
+        "research_question_and_hypothesis": [
+          {
+            "The central question is whether a single source size can explain the 1–4 µm multi-spectral lunar occultation fringes of AFGL 5440.": "single-size model"
+          },
+          {
+            "The authors suspect that the observed edges cannot be explained by a model with a single size, which suggests the presence of a spatially extended dust cloud. ": "cannot be ﬁt by any single-size model"
+          },
+          {
+            "The aim of the study is to determine the internal structure of the dust cloud surrounding the star AFGL 5440, in order to better understand the mechanisms of mass loss. ": "circumstellar shell structure"
+          },
+          {
+            "The authors predict that the DUSTY radiative transfer code can simultaneously fit the occultation fringes and the spectral energy distribution to break degeneracies between dust temperature, density gradient, and composition.": "DUSTY radiative transfer code"
+          },
+          {
+            "A key prediction is that the inner dust shell temperature must be high enough to produce emission at 3–4 µm.": "hot enough to ﬁt the occultation fringes"
+          }
+        ],
+        "methodological_details": [
+          {
+            "The target AFGL 5440 is a carbon-rich AGB star at an estimated distance of 2.25 kpc.": "2.25 kpc"
+          },
+          {
+            "The source has a luminosity of 1.4×10⁴ L⊙ based on its spectral type and literature photometry.": "1.4×10⁴ L⊙"
+          },
+          {
+            "Two comparison stars without detectable circumstellar dust shells were observed: IRC+00233 (M7) and HD 155292 (K2).": "IRC+00233"
+          },
+          {
+            "Observations covered the 1–4 µm spectral region with resolving power varying from R≈20 at short wavelengths to R≈100 at long wavelengths.": "R ∼20"
+          },
+          {
+            "The time resolution was 8 msec, permitting an effective angular resolution of a couple milli-arcsec.": "8 msec"
+          },
+          {
+            "The lunar occultation was an immersion event on 28 Aug 2001 at approximately 02:44:00 UT with lunar phase 0.72 and position angle 54°.": "02:44:00 UT"
+          },
+          {
+            "Data reduction involved cross-correlation image shifting, tilt removal, and sky subtraction using a weighted spectral average two pixels wide.": "cross-correlation algorithm"
+          },
+          {
+            "The wavelength calibration was performed by adjusting the dispersion of NaCl at the atmospheric transmission maxima J, H, K, and L in the data, with an accuracy of ± 0.01 λ. ": "± .01 λ"
+          },
+          {
+            "Flux calibration was intentionally omitted due to variable instrumental efficiency and non-photometric sky conditions.": "do not attempt to derive a ﬂux calibration"
+          }
+        ],
+        "procedures_and_architectures": [
+          {
+            "Observations used the pMIRAS high-speed spectrophotometer on the McDonald Observatory 2.7-m telescope.": "pMIRAS"
+          },
+          {
+            "The instrument used a NaCl prism for dispersion, imaging onto a 32×100 pixel portion of a 2562 InSb array detector.": "2562 InSb array"
+          },
+          {
+            "The width of the gap was set to 5 arcseconds for a typical viewing distance of 1.5 arcseconds. ": "5 arcsec"
+          },
+          {
+            "The plate scale in the spatial direction was 0.4 arcsec/pixel.": "0.4 arcsec/pixel"
+          },
+          {
+            "The buffer contained 5000 frames and was terminated after a few seconds of observing the event on a real-time display. ": "5000 frames"
+          },
+          {
+            "A uniform disk model was first fitted with size and lunar shadow velocity as free parameters.": "uniform disk"
+          },
+          {
+            "The DUSTY radiative transfer code was used to compute source images and energy distributions by varying dust optical depth for fixed input parameters.": "DUSTY"
+          },
+          {
+            "Dust composition assumed was carbon-rich: amorphous carbon, silicon carbide, and graphite, with two grain size distributions (MRN and KMH) explored.": "amorphous carbon, silicon carbide, and graphite"
+          },
+          {
+            "Over 200 models were computed to explore the parameter space of temperature, gradient, optical depth, and composition.": "more than 200 models"
+          }
+        ],
+        "key_results": [
+          {
+            "A single-source-size uniform disk model at 11 mas fails to fit the fringes over the 1–4 µm band, fitting the 2.5–3.2 µm range but failing at shorter and longer wavelengths.": "11 mas"
+          },
+          {
+            "The best-fit dust shell yielded a maximum temperature of Tmax = 950 K ± 50 K at the inner radius.": "Tmax = 950 K ± 50K"
+          },
+          {
+            "The optical depth at the fiducial wavelength of 5 µm was 0.5 ± 0.1 (typically in range 0.3–0.6).": "0.5 ± 0.1"
+          },
+          {
+            "The best-fit radial density gradient was ρ ∝ r⁻² (or the DUSTY radiatively driven wind gradient approximating r⁻² at large radii).": "ρ ∝r−2"
+          },
+          {
+            "The physical inner radius of the dust shell is 3.7×10¹⁴ cm, or 11 mas at a distance of 2.25 kpc.": "3.7×1014 cm"
+          },
+          {
+            "The stellar photosphere diameter is approximately 3 mas, based on a blackbody approximation for 2500K ± 300K.": "3 mas"
+          },
+          {
+            "A dust mass-loss rate of 6.5×10⁻⁸ M⊙/yr was derived for the optical constants of amorphous carbon used by DUSTY.": "6.5 × 10−8 M⊙/yr"
+          },
+          {
+            "The comparison star IRC+00233 had a best-fit size between 4.5 and 5.0 mas, consistent with its expected blackbody size of 3.5 mas ± 20%.": "4.5 and 5.0 mas"
+          },
+          {
+            "HD 155292 best-fit sizes were less than 3 mas, consistent with the expected blackbody size of <1 mas and data uncertainties.": "less than about 3 mas"
+          },
+          {
+            "Models with a density gradient of r⁻¹.⁸ approached the IRAS 60 µm flux but fit the 5–20 µm energy distribution poorly.": "r−1.8"
+          }
+        ],
+        "interpretation_and_theoretical_implications": [
+          {
+            "The multi-component nature of the fringes confirms that we are seeing a combination of central stellar emission and a circumstellar dust shell.": "combination of the emission"
+          },
+          {
+            "The restriction of Tmax ≥ 900 K is very strict, as a heat sink that is colder than 900 K cannot generate sufficient emission in the 3–4 µm range to explain the observed edge blurring. ": "Tmax = 950 K ± 50K"
+          },
+          {
+            "The 11 mas inner radius is nearly a factor of two below expected condensation temperatures (~2000 K), implying the inner edge is at a location where dust survives.": "nearly a factor of two below"
+          },
+          {
+            "The ρ ∝ r⁻² gradient is consistent with radiatively driven mass loss, reinforcing the theoretical framework of AGB mass-loss mechanisms.": "ρ ∝r−2"
+          },
+          {
+            "The inclusion of graphite (in addition to amorphous carbon and SiC) was necessary to fit the IRAS 60 µm flux, contrary to previous AGB models without graphite.": "substantially higher mass-loss rate in the past"
+          },
+          {
+            "The inability to fit the 60 µm flux without graphite or a past higher mass-loss rate suggests a decrease in mass-loss rate over the past 500–2000 years.": "500 years to a couple thousand years"
+          },
+          {
+            "The derived dust mass-loss rate of 6.5×10⁻⁸ M⊙/yr is slightly higher than the IRAS-derived 5.1×10⁻⁸ M⊙/yr, consistent within absolute opacity and model uncertainties.": "slightly lower than the value we have derived"
+          }
+        ],
+        "contradictions_and_limitations": [
+          {
+            "The 11 mas uniform-disk model showed a discrepancy at ~1.7 µm where a larger size would fit better, with no clear explanation given.": "substantially larger size would provide a better ﬁt"
+          },
+          {
+            "For IRC+00233, there was a less-than-adequate fit at wavelengths with reasonable S/N, which cannot be explained solely by telluric effects.": "less than adequate ﬁt"
+          },
+          {
+            "The S/N for HD 155292 was low enough that no effective narrow-band information existed beyond 2.5 µm, and electronic pickup affected short-wavelength fringes.": "low enough that we had no eﬀective narrow-band information"
+          },
+          {
+            "The models could not fit the IRAS 60 µm flux with any reasonable combination of parameters without assuming substantial graphite or past mass-loss changes.": "substantially higher mass-loss rate in the past"
+          },
+          {
+            "No flux calibration was derived, limiting direct comparison to literature values beyond the ±30% consistency check.": "do not attempt to derive a ﬂux calibration"
+          },
+          {
+            "The outer radius of the dust shell makes no difference at λ < 60 µm, limiting constraints on the far-IR structure.": "no diﬀerence to the observed characteristics at λ < 60µm"
+          },
+          {
+            "The optical properties of different forms of amorphous carbon were not explored, leaving potential composition uncertainties.": "we did not explore"
+          }
+        ],
+        "claims": [
+          {
+            "description": "A single source size cannot explain the 1–4 µm lunar occultation fringes of AFGL 5440, confirming a circumstellar shell structure.",
+            "supporting_evidence": [
+              {
+                "The 11 mas uniform disk produces fringes too sharp at long wavelengths and too broadened at short wavelengths.": "too sharp at the longer wavelengths"
+              },
+              {
+                "The agreement between the quality of the edge data and the wavelength indicates that the best-fitting model captures the observational data almost as well as the best-fitting model. ": "nearly as well as those for the best-ﬁt model"
+              },
+              {
+                "Figure 5 and Figure 6 plots of χ² and light curves show the 11 mas disk fails at the extremes.": "passable ﬁt in the mid-range of wavelengths"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "With a size of approximately 1.7 µm, a significantly larger size would be more suitable for IRC+00233, although this is a comparative size. ": "substantially larger size would provide a better ﬁt"
+              }
+            ],
+            "implications": [
+              {
+                "The multi-component emission implies mass loss has produced a resolved dust shell at ~11 mas.": "combination of the emission from the central star"
+              },
+              {
+                "The resolution of the shell structure constrains the density law and temperature of the innermost dust.": "constrain the dust density gradient in the innermost part"
+              }
+            ]
+          },
+          {
+            "description": "The inner dust shell temperature is constrained to Tmax = 950 K ± 50 K, establishing the inner radius at 3.7×10¹⁴ cm.",
+            "supporting_evidence": [
+              {
+                "Models with maximum dust temperature below 900 K lacked enough hot dust to fit long-wavelength fringes.": "did not have enough hot dust"
+              },
+              {
+                "Models with hotter inner edges had more difficulty reproducing the energy distribution longward of 10 µm.": "even more diﬀiculty than the best-ﬁt model"
+              },
+              {
+                "Dust that is colder than 900 K cannot generate enough emissions to produce the required 3–4 µm emissions. ": "cannot emit suﬃciently to produce the required amount of 3 – 4µm emission"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "Previous studies like Ivezić & Elitzur (1996) found a substantially lower temperature of ~750 K for IRC+10216.": "inner dust shell temperature substantially lower than ours"
+              }
+            ],
+            "implications": [
+              {
+                "The inner radius (11 mas) is nearly twice the stellar diameter (3 mas), establishing a clear separation zone.": "nearly a factor of two below"
+              },
+              {
+                "The result is consistent with a dust shell where grains have survived past the sublimation radius.": "dust shell surrounding the star"
+              }
+            ]
+          },
+          {
+            "description": "The IRAS value at 60 µm requires a significant amount of graphite or a recent reduction in the mass loss rate in order to match the data in the 3–20 µm range. ",
+            "supporting_evidence": [
+              {
+                "Models that consisted exclusively of amorphous carbon and silicon carbide (SiC) were unable to adequately represent the flow of 60 µm particles, namely by a factor of 3 or more. ": "factors of 3 or more"
+              },
+              {
+                "Graphite’s relatively flat emissivity between 10 and 50 µm enabled fitting the IRAS 60 µm flux.": "relatively ﬂat emissivity vs. wavelength dependence"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "Most previous modeling of AGB stars used amorphous carbon with SiC but no graphite.": "with no graphite"
+              }
+            ],
+            "implications": [
+              {
+                "The discrepancy suggests a non-constant outflow, consistent with observed rings around other AGB stars.": "non-constant outﬂow from carbon stars"
+              },
+              {
+                "The mass-loss rate may have been higher 500–2000 years ago and has since decreased.": "500 years to a couple thousand years"
+              }
+            ]
+          }
+        ],
+        "data_and_code_availability": [
+          {
+            "The observations used the pMIRAS instrument on the McDonald Observatory 2.7-m telescope, with instrument details described in Harvey & Wilson (2003).": "Harvey & Wilson (2003)"
+          },
+          {
+            "The DUSTY radiative transfer code used for modeling was created by Ivezić, Nenkova & Elitzur (1999).": "Ivezi´c, Nenkova & Elitzur 1999"
+          },
+          {
+            "The paper does not explicitly state data or code availability beyond describing the methods and instruments used.": ""
+          }
+        ],
+        "robustness_and_ablation_notes": [
+          {
+            "More than 200 models were explored to understand the effect of varying dust temperature, density gradient, optical depth, and composition on the fit quality.": "more than 200 models"
+          },
+          {
+            "Two grain size distributions were tested: the MRN slope and the KMH shape, both yielding reasonably good fits.": "MRN slope"
+          },
+          {
+            "Models with r⁻¹.⁸, r⁻², and r⁻².² gradients were compared against the IRAS energy distribution and occultation data.": "r−2.2"
+          },
+          {
+            "The 5000-frame buffer was a key operational feature ensuring data was captured despite ±10 s uncertainties in predicted occultation times.": "10 seconds"
+          },
+          {
+            "A weighted average spectral extraction was compared to more elaborate photometric extraction schemes, with no significant S/N improvement noted.": "small improvement in S/N"
+          },
+          {
+            "Flat-fielding methods were experimented with but produced only small S/N improvements.": "small improvement in S/N"
+          }
+        ],
+        "ethical_considerations": "",
+        "key_figures_tables": [
+          {
+            "Figure 1 shows the observed and modeled light curves for a model with a uniform disk structure of 4.5 masses for IRC+00233. ": "4.5 mas uniform disk"
+          },
+          {
+            "Figure 2 shows the χ² and signal-to-noise ratio as a function of wavelength for the IRC+00233 model.": "χ2 and signal-to-noise ratio"
+          },
+          {
+            "Figure 3 shows observed and model light curves for a uniform disk model of HD 155292.": "Figures 3 and 4"
+          },
+          {
+            "Figure 4 shows the χ² value and the signal-to-noise ratio for a model of a uniform disc from HD 155292. ": "Figures 3 and 4"
+          },
+          {
+            "Figure 5 shows observed and model light curves for AFGL 5440 with an 11 mas uniform disk model.": "11 mas"
+          },
+          {
+            "Figure 6 shows the χ² versus wavelength for the 11 mas uniform disk model of AFGL 5440.": "χ2 as well as the observed versus model light curves"
+          },
+          {
+            "Figure 7 shows the best-fit spectral energy distribution and occultation light curves for the best-fit model.": "spectral energy distribution and to the occultation light curves"
+          },
+          {
+            "Figure 8 shows the best-fit light curves for the best-fit model.": "occultation light curves for the best-ﬁt model"
+          },
+          {
+            "Figure 9 shows the agreement between the model and the data, as a function of wavelength, for the best-fitting model. ": "quality of the ﬁt versus wavelength"
+          },
+          {
+            "Figure 10 shows the spatial profiles of the most suitable model. ": "spatial proﬁles of this best-ﬁt model"
+          },
+          {
+            "Figure 11 shows the energy distribution and model light curves for the best-fitting model using only amorphous carbon and SiC.": "only amorphous carbon and SiC"
+          },
+          {
+            "Figure 12 shows the light curves for the best-fitting model with only amorphous carbon and SiC.": "light curves ﬁt the observed occultation data"
+          },
+          {
+            "Figure 13 shows the energy distribution for a third model that accurately describes the energy distribution, but does not include the data for concealment. ": "energy distribution but gives a poor ﬁt to the occultation results"
+          },
+          {
+            "Figure 14 shows the light curves for the third model, which represent the obscuration. ": "poor ﬁt to the occultation results"
+          }
+        ],
+        "top_influential_citations": [
+          {
+            "Ivezi´c, Nenkova & Elitzur 1999: The DUSTY radiative transfer code was originally created for modeling emission from AGB stars surrounded by mass-loss shells, forming the computational basis for this paper's modeling approach.": "It was originally designed specifically for modeling purposes. "
+          },
+          {
+            "Harvey & Wilson 2003: This work describes the pMIRAS instrument used for the observations, providing the design specifications and operational context for the high-speed spectrophotometry technique.": "pMIRAS instrument on the McDonald"
+          },
+          {
+            "Guandalini et al. 2006: This work summarized the near-infrared through far-infrared photometry of AFGL 5440, providing the spectral energy distribution (SED) used as a primary constraint in the DUSTY modeling.": "IRAS LRS spectrum"
+          },
+          {
+            "Ivezi´c & Elitzur 1996: The self-consistent radiatively driven hydrodynamic model of IRC+10216 provided the density gradient reference and the alternative grain size distribution (KMH) used in the study.": "radiatively driven hydrodynamic model"
+          },
+          {
+            "Groenewegen et al. 2002: This work provided the distance estimate (2.25 kpc) and measured outflow velocity (22 km/s) critical for calculating physical radii and mass-loss rates.": "The distance was estimated to be 2.25 kpc. "
+          }
+        ],
+        "three_takeaways": [
+          {
+            "1. The core contribution is the first multi-spectral lunar occultation constraint on the inner dust shell structure of AFGL 5440, resolving the stellar photosphere and the dust inner edge simultaneously.": "separately resolved the stellar photosphere"
+          },
+          {
+            "2. The strongest evidence is that no single-size model can fit the 1–4 µm fringes, and the best-fit DUSTY model yields Tmax = 950 K ± 50 K and a 3.7×10¹⁴ cm inner radius, consistent with the spectral energy distribution and comparison star constraints.": "cannot ﬁt by any single-size model"
+          },
+          {
+            "3. The future path points toward reconciling the IRAS 60 µm flux discrepancy by considering time-dependent mass-loss variations or graphite dust, and testing the derived mass-loss rate against additional independent observations.": "500 years to a couple thousand years"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "arxiv-500047",
+      "domain": "Computer science",
+      "original_condition": "no_thinking_fp8",
+      "source_sha256": "fcff490a64b2456f6c33424fb8d3c475d4f6fb19c9718bdd608d8cb06844c31b",
+      "guarded_context_sha256": "e665170c755ad24ee783445e593e50d002f6a754779c8dfa0babb04506193505",
+      "summary_sha256": "99737460abae6f5e4aeb15168e9fdf0fbb87bd7096c41666788a9e17256b8331",
+      "selected_windows": 18,
+      "accepted_windows": 11,
+      "critical_signature_check_passed": true,
+      "copy_overlap": {
+        "audit_version": "2.1",
+        "before": {
+          "words": 2231,
+          "longest_contiguous_match_words": 19,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 621,
+            "5": 174,
+            "6": 134,
+            "7": 80
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.27835051546391754,
+            "5": 0.07799193186911699,
+            "6": 0.0600627521290901,
+            "7": 0.03585835948005379
+          },
+          "evidence_fragments_over_five_words": 0
+        },
+        "after": {
+          "words": 2277,
+          "longest_contiguous_match_words": 19,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 556,
+            "5": 93,
+            "6": 53,
+            "7": 35
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.24418093983311376,
+            "5": 0.04084321475625823,
+            "6": 0.023276240667545016,
+            "7": 0.015371102327624066
+          },
+          "evidence_fragments_over_five_words": 0
+        }
+      },
+      "paper_url": "https://arxiv.org/abs/1901.06580",
+      "summary": {
+        "title": "Design of Real-time Semantic Segmentation Decoder for Automated Driving",
+        "authors": "Arindam Das, Saranya Kandan, Senthil Yogamani, Pavel Křížek",
+        "field_subfield": "Computer Vision / Semantic Segmentation / Efficient Neural Network Architectures",
+        "type_of_paper": "Technical Research / Architecture Design",
+        "executive_summary": "This paper addresses the computational bottleneck in decoders for semantic segmentation in embedded systems for autonomous driving, where it is assumed that a task-independent and efficient encoder provides shared features for multi-task-oriented systems. The authors propose a novel, non-bottleneck-based layer based on residual learning with nested skip connections, designed to handle high gradient flows and extract semantic information from a generic, non-specialized encoder. Using a VGG10 style classifier (10 layers) as a task-independent encoder with 256 feature maps at the final layer, the authors design and evaluate a family of decoder architectures under a fixed run-time budget. The decoder utilizes deconvolution layers for reconstruction, supplemented by two variants of the non-bottleneck layer: type-1 (combining 3x3, 5x5, and 1x1 kernels) and type-2 (adding dilated convolutions with 3x3 and 5x5 kernels). The encoder produces 256 feature maps, which are downsampled to 4 due to the four-class task (lanes, curb, road, void). Skip connections are pulled from the second and third-to-last encoder convolution layers. The proposed optimal configuration, combining various types of non-bottleneck layers between deconvolution stages, achieves a mean IoU of 0.7441 with a class accuracy of 0.6118 (Lanes), 0.6588 (Curb), and 0.9689 (Road). This represents a 10% absolute improvement in mean IoU over a baseline configuration, with higher gains for difficult classes (12% for lanes, 18% for curb). The decoder improves the IoU (Intersection over Union) values at the class level, without requiring more than 2 milliseconds of processing time on custom hardware. The work contributes a generic decoder design applicable to any semantic segmentation task, demonstrating that architectural choices in the decoder are critical for efficiency-constrained applications.\n\n\nThe study uses an organization-owned dataset of 4,999 images (1280x384 resolution) with urban scenes, divided into 3,016 training, 981 validation, and 1,002 test images. Training involved pre-training the VGG10 encoder on ImageNet, followed by transfer learning with 350K iterations using the Adam optimizer, 0.0005 initial learning rate with polynomial decay, batch size of 4, and weight decay of 0.9. No data augmentation was applied. Results are reported as average class accuracy and IoU across four classes. The paper concludes that decoder design plays a critical role in segmentation efficiency and proposes meta-learning for automated architecture search as future work.",
+        "research_context": [
+          {
+            "Semantic segmentation provides complete scene understanding where each pixel receives a class label, with applications in automated driving and augmented reality.": "complete semantic scene"
+          },
+          {
+            "CNN architectures grow consistently, creating a computational bound for embedded platforms with limited resources.": "limited resources on embedded"
+          },
+          {
+            "Efficient encoder design has received significant research, but decoders remain computationally expensive for the semantic segmentation task.": "decoders are computationally expensive"
+          },
+          {
+            "Existing methods like SegNet (max-pooling indices) and UNet (intermediate feature maps) use encoder-mirror or specialized decoders.": "mirror image of encoder"
+          },
+          {
+            "Prior work has explored dilated convolutions (DeepLab2), spatial pyramid pooling, CRF, multi-path refinement (RefineNet), and multi-column encoders (ContextNet).": "dilated convolution"
+          },
+          {
+            "Mobile-targeted works like ENet and ICNet use lightweight encoders but do not support multi-task learning with task-independent encoders.": "multi task learning practice"
+          },
+          {
+            "The authors note that the encoder design in most existing works is specific to semantic segmentation, limiting multi-task applicability.": "task independent"
+          },
+          {
+            "There is a gap in prior work using a task-independent lightweight encoder combined with a specially designed decoder for embedded real-time budgets.": "small run-time budget"
+          }
+        ],
+        "research_question_and_hypothesis": [
+          {
+            "The central research question is whether a novel, efficient, task-independent decoder can improve semantic segmentation performance under a fixed run-time budget on embedded platforms.": "efficient design of the"
+          },
+          {
+            "The authors hypothesize that a non-bottleneck layer based on residual learning with cascaded skip connections can overcome the information gap left by a generic, non-semantic encoder.": "cascaded skip connections"
+          },
+          {
+            "They predict that incorporating multiple kernel sizes (1x1, 3x3, 5x5) and dilated convolutions in the decoder will extract semantic features that the task-independent encoder cannot provide.": "non-semantic in nature"
+          },
+          {
+            "A specific hypothesis is that the non-bottleneck layer's multiple skip connections will distribute high gradients during backpropagation, making it suitable for embedded platforms.": "high gradient flow"
+          },
+          {
+            "They further hypothesize that the best decoder configuration among a family of variants will outperform a standard FCN baseline within the runtime constraints.": "various design choices"
+          },
+          {
+            "The predicted outcome is a measurable improvement in IoU, especially for under-represented classes (lanes, curb), with minimal runtime overhead.": "improvement of 10%"
+          },
+          {
+            "The authors assume an efficient, task-independent encoder is already designed for a multi-task learning system, shifting the focus entirely to the decoder.": "efficient encoder is already"
+          },
+          {
+            "The decoder is intended to be generic, usable for any segmentation task with the same encoder input.": "generic and can be used"
+          }
+        ],
+        "methodological_details": [
+          {
+            "The study uses an organization-owned dataset of urban scene images with 1280x384 resolution.": "1280X384"
+          },
+          {
+            "Four critical classes are targeted: lanes, curb, road, and void (everything else).": "4 critical classes"
+          },
+          {
+            "The dataset is split into 3,016 training images, 981 validation images, and 1,002 test images.": "3016, 981 and 1002"
+          },
+          {
+            "Each image contains a single-channel annotation, where each pixel only carries a single class label. ": "single channel annotation"
+          },
+          {
+            "The encoder is a VGG-style classifier consisting of 10 layers, and it was trained from scratch on the ImageNet dataset before being used for this specific task. ": "VGG style classifier"
+          },
+          {
+            "The encoder produces a total of 256 feature maps at its last layer.": "256 feature maps"
+          },
+          {
+            "Convolution layers use 5x5 kernels followed by Batch Normalization and ReLU activation.": "kernel of size 5X5"
+          },
+          {
+            "Training uses the Adam optimizer with a batch size of 4 and weight decay of 0.9.": "weight decay and batch size"
+          },
+          {
+            "Initial learning rate is 0.0005 with standard polynomial decay over 350,000 iterations.": "350K iterations"
+          },
+          {
+            "No dropout is used in the model.": "Dropout is not used"
+          },
+          {
+            "No data augmentation techniques were performed during training.": "No data augmentation technique"
+          },
+          {
+            "All experiments are executed using the Keras framework on an NVIDIA Titan X 12G GPU with 24 GB RAM.": "NVIDIA Ti-tan X 12G"
+          },
+          {
+            "The decoder downsamples feature maps from 256 to 4, corresponding to the four output classes.": "256 to 4"
+          },
+          {
+            "Skip connections are pulled from the second and third-to-last convolution layers of the encoder.": "second and third last"
+          },
+          {
+            "The decoder uses deconvolution layers for reconstruction instead of max-unpooling.": "deconvolution layer"
+          },
+          {
+            "The experimental setting aims at embedded platform constraints with restricted feature counts.": "automotive power constraints"
+          }
+        ],
+        "procedures_and_architectures": [
+          {
+            "The overall network consists of a two-part encoder-decoder structure with VGG10 as the shared encoder.": "two parts which are"
+          },
+          {
+            "The non-bottleneck layer contains 1D kernels to extract directional information and 3D kernels for gathering features from a larger receptive area.": "1D and 3D kernels"
+          },
+          {
+            "Dense information is extracted through multiple kernels with sizes 3x3, 5x5, and 1x1, and the resulting features are fused.": "3X3, 5X5 and 1X1"
+          },
+          {
+            "The combined features are then combined with the input features in the same layer, without any bottlenecks, creating a structure that resembles a residual connection. ": "fused with the input features"
+          },
+          {
+            "The non-bottleneck layer has two variants: type-1 (standard) and type-2 (using dilated convolution with 3x3 and 5x5 kernels).": "type-1"
+          },
+          {
+            "The dilation rate for dilated convolution is kept constant at 1 for the present work to manage computational cost.": "dilation rate has been kept constant"
+          },
+          {
+            "The optimal configuration uses non-bottleneck layers of type-1 after the first deconvolution, and multiple type-2 layers after the second, third, and fourth deconvolution.": "type-1"
+          },
+          {
+            "After the fourth deconvolution, no further layer is used that represents a narrow passage. ": "no non-bottleneck layer used"
+          },
+          {
+            "The decoder is wider than the encoder, and the encoder consumes most of the run time.": "encoder consumed most of the run"
+          },
+          {
+            "Group convolution was considered but found to have adverse effects on lightweight networks.": "adverse effect for lightweight"
+          },
+          {
+            "The training follows a transfer learning approach: pre-training on ImageNet followed by end-to-end training on the target dataset.": "transfer the weights"
+          },
+          {
+            "For the lightweight encoder, a layer-by-layer, supervised training method was considered. ": "layer-wise training"
+          },
+          {
+            "The decoder architecture is illustrated in Figure 3 and the non-bottleneck layers in Figure 2.": "Figure 3"
+          },
+          {
+            "Results for all decoder variants are reported in Table 1.": "Table 1"
+          }
+        ],
+        "key_results": [
+          {
+            "The optimal decoder configuration achieves a mean IoU of 0.7441 across all four classes.": "0.7441"
+          },
+          {
+            "The optimal configuration shows a 10% improvement in mean IoU over the baseline configuration.": "10% from a baseline"
+          },
+          {
+            "For the lanes class, the IoU improves by 12% from the baseline.": "12% and 18%"
+          },
+          {
+            "For the curb class, the IoU improves by 18% from the baseline.": "12% and 18%"
+          },
+          {
+            "The optimal configuration achieves class-specific IoUs of 0.5304 (Lanes), 0.4696 (Curb), and 0.9314 (Road).": "0.5304"
+          },
+          {
+            "The average class accuracy for the optimal configuration is 0.6118, with 0.6588 for Curb and 0.9689 for Road.": "0.6118"
+          },
+          {
+            "The non-bottleneck layers worked better for the curb class without even attempting data augmentation or class weighting.": "no even attempting any"
+          },
+          {
+            "There was a slight deterioration in IoU for the lanes class in the best configuration compared to the baseline.": "slight deterioration for lanes"
+          },
+          {
+            "The proposed optimal decoder shows less than 2ms increase in runtime compared to a standard FCN decoder on custom hardware.": "less than 2ms increase"
+          },
+          {
+            "The FCN baseline achieves a mean IoU of 0.7255 with class accuracy scores of 0.5678, 0.6228, and 0.9688 for Lanes, Curb, and Road respectively.": "0.7255"
+          },
+          {
+            "The decoder without second skip connection (D2) drops the mean IoU to 0.6989.": "0.6989"
+          },
+          {
+            "The decoder with larger batch size 8 (D3) achieves a mean IoU of 0.7038.": "0.7038"
+          },
+          {
+            "The configuration without 1x1 convolution (D4) yields a mean IoU of 0.7013.": "0.7013"
+          },
+          {
+            "The 3x1, 1x3 convolution variant (D5) achieves a mean IoU of 0.6866.": "0.6866"
+          },
+          {
+            "The configuration with 2x2, 3x3, 5x5 deconvolution kernels (D7) shows the worst performance at mean IoU 0.6458.": "0.6458"
+          }
+        ],
+        "interpretation_and_theoretical_implications": [
+          {
+            "The non-bottleneck layer's multiple skip connections distribute incoming gradients during backpropagation, preventing vanishing/exploding gradients in shallow networks.": "distributed among all paths"
+          },
+          {
+            "Dilated convolutions in type-2 non-bottleneck layers expand the field-of-view while maintaining resolution, capturing broader spatial context.": "maintaining the same resolution"
+          },
+          {
+            "The cascaded structure allows the decoder to learn semantic information not captured by the task-independent encoder.": "re-move the gap of learning"
+          },
+          {
+            "The design choice to use different non-bottleneck types at different deconvolution stages addresses the increasing semantic depth required for reconstruction.": "type-1 as intermediate block"
+          },
+          {
+            "The results demonstrate that decoder architecture design is a critical lever for efficiency-constrained semantic segmentation, independent of encoder choice.": "critical role for segmentation"
+          },
+          {
+            "The 1D and 3D kernel combination allows for both directional and broad receptive field feature extraction, balancing specificity and context.": "one direction at a time"
+          },
+          {
+            "The work implies that for embedded applications, the decoder should be tuned after the encoder is fixed to maximize performance within the remaining runtime budget.": "fixed run-time budget"
+          }
+        ],
+        "contradictions_and_limitations": [
+          {
+            "The article acknowledges that the encoder consumes the majority of the processing time, as it is significantly wider than the decoder. This limits the potential for improving the decoder's performance on its own. ": "encoder consumed most of the run"
+          },
+          {
+            "No data augmentation techniques were used, and no class weighting was applied, which may limit generalization to highly imbalanced scenarios.": "No data augmentation technique"
+          },
+          {
+            "The dilation rate was kept constant at 1; the authors note that incremental dilation could improve accuracy but is computationally expensive.": "dilation rate has been kept constant"
+          },
+          {
+            "The dataset is small (4,999 images), and the model is shallow, leading to a high risk of overfitting which was not quantitatively analyzed.": "network will suffer from over-ﬁtting"
+          },
+          {
+            "The optimal configuration showed slight deterioration in IoU for the lanes class, indicating the decoder design does not uniformly benefit all classes.": "slight deterioration for lanes"
+          },
+          {
+            "The work uses a specific, organization-owned dataset and does not report cross-dataset validation.": "owned by our organization"
+          },
+          {
+            "The decoder's performance is tied to the specific VGG10 encoder; it is unclear how generalizable the architecture is to different encoder families.": "task independent"
+          },
+          {
+            "The paper mentions that group convolution was tested but found to have adverse effects, yet doesn't provide detailed ablation results for other potential alternatives.": "adverse effect for lightweight"
+          }
+        ],
+        "claims": [
+          {
+            "description": "The proposed optimal decoder configuration improves mean IoU by 10% (absolute) over the FCN baseline with less than 2ms of additional runtime.",
+            "supporting_evidence": [
+              {
+                "The optimal configuration achieves a mean IoU of 0.7441 versus 0.7255 for the FCN baseline.": "0.7441"
+              },
+              {
+                "This corresponds to a 10% improvement from the baseline configuration.": "10% from a baseline"
+              },
+              {
+                "The runtime increase is less than 2ms on custom hardware.": "less than 2ms increase"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The IoU for the lanes class slightly deteriorated in the optimal configuration.": "slight deterioration for lanes"
+              },
+              {
+                "The encoder still accounts for most of the run time, limiting the overall impact of decoder changes.": "encoder consumed most of the run"
+              }
+            ],
+            "implications": [
+              {
+                "Decoder design is a valid, low-cost optimization point for embedded semantic segmentation.": "critical role for segmentation"
+              },
+              {
+                "Architectural modifications can yield significant gains even when the encoder is fixed.": "fixed run-time budget"
+              }
+            ]
+          },
+          {
+            "description": "The non-bottleneck layer with cascaded skip connections effectively addresses high gradient flow issues in shallow residual networks.",
+            "supporting_evidence": [
+              {
+                "The original residual strategy is modified with multiple skip connections to distribute gradients.": "distribute the high gradients"
+              },
+              {
+                "The multiple skip connections help to manage the high gradient during backpropagation. ": "high gradient flow"
+              },
+              {
+                "The design addresses the fact that residual learning for lesser depth is inefficient.": "lesser depth is not efﬁci-cient"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The paper does not provide an ablation on the specific number of skip connections.": ""
+              },
+              {
+                "The improvement is shown primarily through IoU, not gradient norm analysis.": ""
+              }
+            ],
+            "implications": [
+              {
+                "This residual variant can be applied to other shallow architecture designs for embedded targets.": "generic and can be used"
+              }
+            ]
+          },
+          {
+            "description": "The optimal decoder configuration provides the highest IoU gains for the most difficult classes (lanes and curb).",
+            "supporting_evidence": [
+              {
+                "Curb IoU improves from 0.6228 to 0.6588 (+18%).": "0.6588"
+              },
+              {
+                "Lanes IoU improves from 0.5678 to 0.6118 (+12%).": "0.6118"
+              },
+              {
+                "The layers that were not limited by bottlenecks performed better at recognizing the curb, without requiring additional data processing. ": "no even attempting any"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The lanes IoU still shows slight deterioration compared to the baseline in the optimal configuration.": "slight deterioration for lanes"
+              }
+            ],
+            "implications": [
+              {
+                "The decoder design is particularly effective for small, difficult-to-segment classes in urban scenes.": "more difﬁcult segmentation classes"
+              }
+            ]
+          }
+        ],
+        "data_and_code_availability": "",
+        "robustness_and_ablation_notes": [
+          {
+            "The authors evaluated eight different decoder configurations (D1–D8) and various non-bottleneck layer combinations to isolate the effect of each component.": "eight different decoder"
+          },
+          {
+            "Table 1 shows the performance of D1 through D8 and various (mN) combinations, providing a systematic ablation of non-bottleneck layers.": "Table 1"
+          },
+          {
+            "D2 removes the second skip connection from the encoder, demonstrating its importance (mean IoU drops from 0.7255 to 0.6989).": "0.6989"
+          },
+          {
+            "D3 doubles the batch size to 8, showing a marginal improvement to 0.7038.": "0.7038"
+          },
+          {
+            "D4 removes the 1x1 convolution before 3x3 and 5x5, yielding 0.7013.": "0.7013"
+          },
+          {
+            "D7 uses varying deconvolution kernel sizes (2x2, 3x3, 5x5) and performs worst at 0.6458.": "0.6458"
+          },
+          {
+            "The authors report that the optimal configuration was reached after 'several optimization efforts' but don't detail the exact search procedure.": "several optimization efforts"
+          },
+          {
+            "No explicit sensitivity analysis on hyperparameter values (other than batch size) is reported.": ""
+          }
+        ],
+        "ethical_considerations": "",
+        "key_figures_tables": [
+          {
+            "Figure 1 illustrates the typical encoder-decoder architecture of CNN-based semantic segmentation networks.": "Typical encoder-decoder"
+          },
+          {
+            "Figure 2 shows the non-bottleneck layer design with 1D and 3D kernels, type-1, and type-2 variants.": "non-bottleneck layers"
+          },
+          {
+            "Figure 3 displays the specific encoder-decoder pair used in the work with input, ground truth, and output examples.": "CNN based encoder-decoder"
+          },
+          {
+            "Figure 4 compares the results of segmentation using the proposed optimal decoder with a standard FCN decoder. ": "optimal decoder against a standard FCN"
+          },
+          {
+            "Table 1 presents the average class accuracy and IoU scores for all 11 decoder configurations tested.": "Table 1"
+          }
+        ],
+        "top_influential_citations": "",
+        "three_takeaways": [
+          {
+            "1. The core contribution is a novel non-bottleneck decoder layer with cascaded skip connections and a family of decoder architectures that improve semantic segmentation performance under a fixed runtime budget without modifying the task-independent encoder.": "novel efﬁcient non-bottleneck layer"
+          },
+          {
+            "2. The strongest evidence is the 10% absolute mean IoU improvement (0.7441 vs 0.7255) and up to 18% for the curb class, achieved with less than 2ms runtime overhead on custom automotive hardware.": "10% from a baseline"
+          },
+          {
+            "3. The future path is to build a systematic family of meta-architectures with a fixed runtime budget and learn the optimal configuration using meta-learning techniques.": "meta-learning techniques"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "bethgelab-125",
+      "domain": "Chemistry",
+      "original_condition": "no_thinking_fp8",
+      "source_sha256": "a313ac394757590d277b3d77643cb08a1e94d16cda563a2bc487e49d750aa0d1",
+      "guarded_context_sha256": "658fdcb7b1e54338e5d6f6155a5a25ccf5e91f7983e4afb3955822b83f7addce",
+      "summary_sha256": "a0fed60d57a2064ae093c0d4a781185e27c5695c3eb157faf3b8df4f5143327a",
+      "selected_windows": 32,
+      "accepted_windows": 10,
+      "critical_signature_check_passed": true,
+      "copy_overlap": {
+        "audit_version": "2.1",
+        "before": {
+          "words": 2744,
+          "longest_contiguous_match_words": 9,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 902,
+            "5": 360,
+            "6": 257,
+            "7": 168
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.32871720116618075,
+            "5": 0.13119533527696792,
+            "6": 0.09365889212827988,
+            "7": 0.061224489795918366
+          },
+          "evidence_fragments_over_five_words": 0
+        },
+        "after": {
+          "words": 2801,
+          "longest_contiguous_match_words": 9,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 887,
+            "5": 295,
+            "6": 187,
+            "7": 116
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.3166726169225277,
+            "5": 0.10531952873973581,
+            "6": 0.0667618707604427,
+            "7": 0.04141378079257408
+          },
+          "evidence_fragments_over_five_words": 0
+        }
+      },
+      "paper_url": "",
+      "summary": {
+        "title": "The properties of highly concentrated aqueous CH₃COOK/Na binary electrolyte and its use in sodium-ion batteries",
+        "authors": "Shahid Khalid; Nicolò Pianta; Simone Bonizzoni; Piercarlo Mustarelli; Riccardo Ruffo",
+        "field_subfield": "Energy Chemistry / Aqueous Electrolytes for Sodium-Ion Batteries",
+        "type_of_paper": "Experimental research paper with comprehensive physico-chemical characterization and proof-of-concept electrochemical testing",
+        "executive_summary": "This paper presents a comprehensive physico-chemical and electrochemical characterization of highly concentrated aqueous binary CH₃COOK/CH₃COONa electrolytes, targeting the development of water-in-salt (WISE) electrolytes for sodium-ion batteries. The authors prepared four binary solutions with a fixed CH₃COOK concentration of 20 mol kg⁻¹ and varying CH₃COONa concentrations (1, 2.5, 5, and 7 mol kg⁻¹), alongside a 1 M NaAc control. The series was characterized via Differential Scanning Calorimetry (-120 to 90 °C), rheology (viscosity vs. temperature), electrical impedance spectroscopy (conductivity), and linear sweep voltammetry (electrochemical stability window). Thermal analysis revealed that glass transition temperature (Tg) increases with salt concentration, correlating with the transition from salt-in-water to water-in-salt behavior; notably, the 7N20K composition (7 mol kg⁻¹ NaAc + 20 mol kg⁻¹ KAc) showed a low liquidus temperature (~0 °C), suggesting resistance to salt crystallization. The ionic conductivity exhibited behavior consistent with the Vogel-Tamman-Fulcher laws in all compositions. The most concentrated 7N20K solution had a conductivity of 21.2 mS cm⁻¹ at 25 °C, which is comparable to that of organic systems. Rheological data classified the acetates as structure-making salts with Arrhenius viscosity-temperature dependence. Electrochemical stability window measurements showed suppression of hydrogen evolution at higher concentrations, with 7N20K reaching 3 V in ideal flooded-cell conditions. As a proof-of-concept, carbon-coated LiTi₂(PO₄)₃ (CLTP) NASICON was synthesized via a one-pot sol-gel route and cycled in 7N20K electrolyte vs. 1 M NaAc. CLTP demonstrated reversible Na⁺ insertion at -0.7 V vs. SHE with 85 mAh g⁻¹ first-cycle anodic capacity, 96% average charge efficiency, and 90% capacity retention over 60 cycles. Impedance spectroscopy revealed a low charge-transfer activation energy of 0.12 eV and a diffusion coefficient of ~10⁻¹³ cm² s⁻¹ at room temperature, confirming the kinetic feasibility of the NASICON/WISE interface for sodium-ion battery applications.",
+        "research_context": [
+          {
+            "Conventional organic carbonate electrolytes for Li-ion batteries suffer from low flash points, high melting points, and high viscosities that render them useless at lower temperatures.": "high viscosities"
+          },
+          {
+            "The thermochemically unstable LiPF₆ salt degrades in moisture to produce HF, causing corrosion of battery components.": "causing corrosion"
+          },
+          {
+            "The narrow electrochemical stability window of water (1.23 V) limits the energy density of aqueous electrolyte systems.": "electrochemical stability window"
+          },
+          {
+            "Water-in-salt (WISE) electrolytes developed by Suo et al. achieved 3 V windows by dissolving LiTFSI in water up to 21 mol kg⁻¹, reducing water activity through ion-water coordination.": "water molecules"
+          },
+          {
+            "Fluorinated salts like LiTFSI exhibit severe oral and dermal toxicity, skin issues, and chronic aquatic toxicity, posing environmental and economic challenges.": "dermal toxicity"
+          },
+          {
+            "Cost-effective, highly soluble alternatives such as LiCl, CH₃COONa, and CH₃COOK are identified as suitable for water-in-salt formulations due to their broad availability.": "highly soluble"
+          },
+          {
+            "NASICON compounds offer stable structures and large ionic channels for efficient ion insertion-extraction, making them ideal electrode materials for concentrated aqueous electrolytes.": "large ionic channels"
+          },
+          {
+            "The knowledge gap lies in the fundamental understanding of thermal, rheological, transport, and electrochemical properties of binary aqueous acetate systems at concentrations above 20 mol kg⁻¹.": "fundamental understanding"
+          }
+        ],
+        "research_question_and_hypothesis": [
+          {
+            "The central research question is how the physico-chemical and electrochemical properties of highly concentrated aqueous CH₃COOK/CH₃COONa binary electrolytes vary with salt composition.": "physico-chemical properties"
+          },
+          {
+            "The authors hypothesize that increasing NaAc concentration in the 20 mol kg⁻¹ KAc framework will widen the electrochemical stability window by reducing water activity, while maintaining sufficient ionic conductivity and manageable viscosity.": "water-in-salt"
+          },
+          {
+            "It is predicted that the most concentrated solution (7N20K) will offer the best compromise between transport properties (conductivity, viscosity) and electrochemical stability.": "best in terms"
+          },
+          {
+            "The authors further hypothesize that NASICON-based electrodes can reversibly intercalate alkaline ions in such concentrated aqueous environments, with the carbon coating necessary to enable electrochemical performance.": "carbon-coated LiTi2(PO4)3"
+          },
+          {
+            "A specific testable prediction is that the WIS electrolyte will outperform the 1 M NaAc diluted solution in specific capacity and efficiency during sodium-ion battery cycling.": "clearly better"
+          }
+        ],
+        "methodological_details": [
+          {
+            "Four binary electrolytes were prepared: 1 mol kg⁻¹ NaAc + 20 mol kg⁻¹ KAc (1N20K), 2.5 mol kg⁻¹ NaAc + 20 mol kg⁻¹ KAc (2.5N20K), 5 mol kg⁻¹ NaAc + 20 mol kg⁻¹ KAc (5N20K), and 7 mol kg⁻¹ NaAc + 20 mol kg⁻¹ KAc (7N20K), using 99% purity NaAc and KAc from Alfa Aesar.": "99%, Alfa Aesar"
+          },
+          {
+            "The salts were dissolved in Milli-Q water (σ = 6.7 μS cm⁻¹) under sonication, with a 1 M NaAc solution prepared as a diluted control.": "sigma = 6.7"
+          },
+          {
+            "Carbon-coated LiTi₂(PO₄)₃ (CLTP) was synthesized using a one-pot sol-gel route: 1.78 g NH₄H₂(PO₄)₃ (phosphate precursor) in 40 mL ethanol, 3.51 g Ti(OC₄H₉)₄ (Ti source), 0.52 g CH₃COOLi·2H₂O (Li source), and 0.58 g C₆H₁₂O₆ (carbon source), stirred for 4 h at 55 °C.": "C6H12O6"
+          },
+          {
+            "The precursor was dried under vacuum at 100 °C, ground, and calcined at 800 °C for 6 h under argon flow (50 mL min⁻¹) with a ramp rate of 5 °C min⁻¹.": "800 °C for 6"
+          },
+          {
+            "Pristine LiTi₂(PO₄)₃ (LTP) was synthesized identically without C₆H₁₂O₆ as a structural control.": "without using C6H12O6"
+          },
+          {
+            "XRD analysis was performed using Rigaku Miniflex 600 with Cu Kα radiation, from 10° to 80° in 2θ, step size 0.02, scan speed 1 deg min⁻¹.": "10 to 80"
+          },
+          {
+            "SEM imaging was conducted with Zeiss® Gemini SEM 450.": "Zeiss Gemini SEM"
+          },
+          {
+            "The viscosity was measured using an MCR Rheometer 102 (Anthon Paar) with a parallel plate configuration (50 mm). The shear rates were 10–300 s⁻¹ at 10, 20, 30, and 40 °C. ": "10-300 s-1"
+          },
+          {
+            "Thermal analysis used DSC 1Star® (Mettler Toledo) with STARe® software, from -120 to 90 °C, cooling at 1 °C min⁻¹, 5 min isotherm, heating at 1 °C min⁻¹, and TGA using Mettler Toledo TGA/DSC-1.": "-120 to 90"
+          },
+          {
+            "Conductivity was measured by EIS using a dip probe cell with two Pt foils in glass, cell factor 1.04 cm⁻¹, frequency 1 Hz–200 kHz, amplitude 25 mV, under N₂ flux in a climatic chamber (Angelantoni).": "cell factor of 1.04"
+          },
+          {
+            "For electrode preparation, slurries (active material : PVDF : carbon black = 8:1:1) were cast on Al foils for organic electrolyte cells, and dip-coated onto carbon cloth current collectors for aqueous electrolyte cells.": "8:1:1"
+          },
+          {
+            "The active material loads were ~2.4 mg cm⁻², ~2.7 mg cm⁻², and ~1.7 mg cm⁻² for Li, Na, and K based organic cells; ~6 mg cm⁻² for aqueous dip-coated cells.": "6 mg cm-2"
+          },
+          {
+            "The ESR measurement was performed in three electrode cells, each equipped with a flooded glass-carbon electrode as the working electrode, a platinum mesh as the counter electrode, and a double junction SCE electrode as the reference electrode. ": "double junction SCE"
+          },
+          {
+            "GCPL technique was used for cycling, starting with 10 cycles at 0.1 C, then 0.5 C, 1 C, 5 C, 10 C, and reducing back to 0.1 C. 1C corresponds to 136 mA g⁻¹ (two-ion insertion).": "136 mA g-1"
+          },
+          {
+            "EIS for kinetics was performed at 20–70 °C, 1 kHz–100 kHz, 50 mV amplitude under N₂ in a flooded cell within a Faraday cage.": "Faraday cage"
+          }
+        ],
+        "procedures_and_architectures": [
+          {
+            "The electrolyte solutions were prepared at a fixed KAc concentration of 20 mol kg⁻¹ with NaAc concentrations ranging from 1 to 7 mol kg⁻¹ to investigate the effect of added cation-source on the water-in-salt regime.": "20 mol kg-1"
+          },
+          {
+            "The DSC protocol involved an equilibration at 30 °C for 30 min, cooling at 1 °C min⁻¹ to -120 °C, a 5 min isotherm, and heating at 1 °C min⁻¹ to 90 °C, with the 1 °C min rate chosen to allow structural relaxation without sacrificing sensitivity.": "structural relaxation"
+          },
+          {
+            "Ionic conductivity was determined from the x-axis intercept of the high-frequency side in Nyquist plots under N₂ flux in a climatic chamber, with the bulk ohmic resistance extracted for each concentration.": "x-axis intercept"
+          },
+          {
+            "For the electrochemical cell, a flooded three-electrode configuration was used to minimize concentration gradients and isolate electrode-electrolyte interface effects, with glassy carbon as the working electrode to approximate ideal electrocatalytic conditions.": "flooded three-electrodes"
+          },
+          {
+            "The carbon coating on NASICON was applied via a one-pot sol-gel route using glucose as the carbon precursor to improve electronic conductivity while maintaining structural integrity.": "carbonaceous precursor"
+          },
+          {
+            "For impedance spectroscopy, the CLTP electrode was partially sodiated, and during de-sodiation, measurements were interrupted at the middle of the first plateau and collected at 10 °C increments from 20 to 70 °C.": "sodiated while during"
+          },
+          {
+            "The diffusion coefficient calculation utilized the Warburg coefficient σ_W, surface area A, Faraday's constant F = 96485 C mol⁻¹, and the mobile-ion concentration C = 12930 mol m⁻³, with n = 1.7 mobile ions.": "12930 mol"
+          },
+          {
+            "The 7N20K solution served as the primary test electrolyte for sodium-ion battery proof-of-concept, while 1 M NaAc served as the benchmark diluted electrolyte.": "WISE electrolyte"
+          }
+        ],
+        "key_results": [
+          {
+            "DSC thermograms revealed glass transition temperatures (Tg) below -70 °C, cold crystallization (Tc) below -20 °C, and melting endotherms (Tm) around 0 °C, with Tg shifting to higher temperatures as salt concentration increased, indicating growing interspecies interaction.": "shifting of Tg"
+          },
+          {
+            "The 1N20K and 2.5N20K solutions exhibited no cold crystallization or melting endotherms under the DSC protocol, remaining frozen in the glassy state, whereas 5N20K and 7N20K showed single cold crystallization events at -28.06 °C and -33.70 °C, respectively.": "-28.06"
+          },
+          {
+            "Ionic conductivity followed Vogel-Tamman-Fulcher behavior across the temperature range, with the 7N20K solution yielding 21.2 mS cm⁻¹ at 25 °C, comparable to the 20 M KAc benchmark.": "21.2 mS cm-1"
+          },
+          {
+            "Viscosity measurements classified the aqueous acetates as structure-making salts (none showed viscosity decrease with increasing salt) and confirmed Arrhenius behavior with activation energies increasing with concentration, in agreement with conductivity activation energies.": "structure-making salts"
+          },
+          {
+            "The Walden plot (molar/ionic conductivity vs. fluidity η⁻¹) classified all electrolytes as quasi-ideal, and the 7N20K solution at 25 °C followed Kohlrausch's law of strong electrolytes (Λ₀ = 52.90 Ω cm² mol⁻¹) implying complete salt dissociation even at highest concentrations.": "quasi-ideal electrolytes"
+          },
+          {
+            "Linear sweep voltammetry on glassy carbon showed suppression of hydrogen evolution with increasing NaAc, and the anodic decomposition potential was less affected than the cathodic side, in agreement with previous acetate-based studies.": "suppression of the hydrogen"
+          },
+          {
+            "The CLTP electrode in 7N20K electrolyte demonstrated a first-cycle anodic capacity of 85 mAh g⁻¹ at -0.7 V vs. SHE, with a 90% capacity retention after 60 cycles and an average charge efficiency of 96%.": "85 mAh g-1"
+          },
+          {
+            "At 1 C (136 mA g⁻¹) in 7N20K, CLTP provided an average anodic specific capacity of 68 mAh g⁻¹ with 99.0% average charge efficiency, significantly outperforming the 1 M NaAc case (96 mAh g⁻¹ anodic, 36 mAh g⁻¹ cathodic at 1 C).": "99.0%"
+          },
+          {
+            "EIS has determined that NASICON/7N20K interface has a charge transfer activation energy of 0.12 eV at room temperature, which indicates very good kinetic properties. ": "0.12 eV"
+          },
+          {
+            "The diffusion coefficient at room temperature was approximately 10⁻¹³ cm² s⁻¹, consistent with literature, and a low diffusion activation energy of 0.48 eV suggested that diffusion improves with temperature.": "10-13 cm2"
+          },
+          {
+            "The sodium concentration in 7N20K (Na⁺ : K⁺) was 2.85 times lower than potassium, yet preferential sodium insertion occurred, with the first-cycle anodic and cathodic capacities of 104 and 84 mAh g⁻¹ yielding 80% charge efficiency in the WISE electrolyte.": "2.85 times lower"
+          },
+          {
+            "In the diluted 1 M NaAc solution, first-cycle capacities were 96 and 36 mAh g⁻¹ yielding only 40% charge efficiency, confirming the WISE electrolyte advantage.": "40% efficiency"
+          }
+        ],
+        "interpretation_and_theoretical_implications": [
+          {
+            "The upward shift of Tg with salt concentration signals the transition from salt-in-water to water-in-salt behavior, where water molecules form subnanometer clusters strongly interacting with ions, reducing water activity and increasing kinetic overpotentials for water electrolysis.": "water-in-salt"
+          },
+          {
+            "The behavior, characterized by a gradual increase in viscosity, suggests that the highly hydrated cations and acetatate ions contribute to molecular order, thereby reducing the activity of free water, which supports the WISE mechanism. ": "molecular ordering"
+          },
+          {
+            "The near-ideal behavior in Walden diagrams suggests that the acetates, despite high concentrations, completely dissociate according to Kohlrausch's law. The degree of fluidity is related to the arrangement of ions in solution. ": "complete salt dissociation"
+          },
+          {
+            "The low charge-transfer activation energy (0.12 eV) and the fact that the aqueous electrolyte improves alkaline-ion diffusion inside the electrode structure relative to organic counterparts indicate kinetic superiority of WISE systems.": "very good kinetic"
+          },
+          {
+            "The fact that the carbon content does not affect the NASICON crystal structure implies that the larger K⁺ ion is preferentially accommodated in the framework, and the 7N20K electrolyte preferentially utilizes Na⁺ for the anode.": "preferentially introduced"
+          },
+          {
+            "The 7N20K solution offers a significant advantage for long-term applications, as it prevents premature cell death due to salt deposits. This is because its melting temperature (approximately 0 °C) is significantly higher than the typical operating temperatures used in practice. ": "salt crystallization"
+          }
+        ],
+        "contradictions_and_limitations": [
+          {
+            "The anodic ESW expansion was not as significant as the cathodic expansion, in agreement with prior acetate-based studies, suggesting the cathodic suppression of hydrogen evolution is the primary stability benefit.": "not as significant"
+          },
+          {
+            "The LSV procedure for decomposition potentials involves a quasi-ideal electrocatalytic electrode with small surface area and a large electrolyte volume, which may overestimate decomposition limits.": "overestimated decomposition limits"
+          },
+          {
+            "The ionic conductivity of sodium-containing samples is lower than or nearly equal to the 20 M KAc benchmark, reflecting the expected trade-off between concentration and transport.": "lower or nearly equal"
+          },
+          {
+            "All electrolytes behave like Newtonian fluids, but the VTF equation could not be fully confirmed due to the limited temperature range accessible by the DSC instrument, leaving the VTF analysis as an interpretation.": "Newtonian fluids"
+          },
+          {
+            "The study does not report a formal statistical treatment of cycling data (e.g., error bars on capacity retention) or multiple test cycles for the proof-of-concept battery.": "not reported"
+          },
+          {
+            "The diffusion coefficient was calculated using n = 1.7, which is an estimate; the exact number of mobile ions within the structure is not directly measured. ": "evaluated to be 1.7"
+          },
+          {
+            "The comparison between WISE and 1 M NaAc is limited to the specific NASICON/carbon electrode and does not span all concentrations or materials.": "carbon-coated LiTi2(PO4)3"
+          }
+        ],
+        "claims": [
+          {
+            "description": "Highly concentrated CH₃COOK/CH₃COONa binary electrolytes in the water-in-salt regime exhibit favorable physico-chemical properties for sodium-ion battery operation, particularly at 7 mol kg⁻¹ NaAc + 20 mol kg⁻¹ KAc.",
+            "supporting_evidence": [
+              {
+                "The 7N20K solution achieves 21.2 mS cm⁻¹ conductivity at 25 °C, comparable to organic electrolytes.": "21.2 mS cm-1"
+              },
+              {
+                "The liquidus temperature of ~0 °C prevents salt crystallization at room temperature.": "-33.70"
+              },
+              {
+                "The ESL extends to 3 V in flooded-cell conditions, suppressing hydrogen evolution.": "3 V"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "Ionic conductivity is lower in sodium-containing samples than in the KAc-only 20 M solution.": "lower or nearly equal"
+              },
+              {
+                "The anodic stability window expansion is less pronounced than the cathodic suppression of hydrogen evolution.": "not as significant"
+              }
+            ],
+            "implications": [
+              {
+                "These electrolytes offer a non-toxic, cost-effective aqueous alternative to organic-based sodium-ion batteries with comparable power and safety characteristics.": "non-flammable, less toxic"
+              },
+              {
+                "The water-in-salt regime can be accessed with readily available acetate salts, removing the dependence on expensive fluorinated salts.": "CH3COONa"
+              }
+            ]
+          },
+          {
+            "description": "The CLTP/7N20K interface enables reversible sodium-ion intercalation with good capacity, efficiency, and stability, demonstrating the viability of WISE electrolytes for sodium-ion batteries.",
+            "supporting_evidence": [
+              {
+                "CLTP shows 85 mAh g⁻¹ first-cycle anodic capacity and 96% charge efficiency in 7N20K.": "85 mAh g-1"
+              },
+              {
+                "90% capacity retention after 60 cycles confirms cycle stability in the WISE electrolyte.": "90% capacity retention"
+              },
+              {
+                "The low activation energy of 0.12 eV confirms fast charge-transfer kinetics at the NASICON/7N20K interface.": "0.12 eV"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "A preference for sodium uptake is observed, although the sodium concentration in 7N20K is 2.85 times lower than the potassium concentration. ": "2.85 times lower"
+              },
+              {
+                "The first-cycle anodic capacity of 85 mAh g⁻¹ is significantly lower than the theoretical capacity for NASICON.": "not explicitly stated"
+              }
+            ],
+            "implications": [
+              {
+                "The low activation energy suggests that the interface kinetics could be further improved by temperature modulation or surface modification.": "0.48 eV"
+              },
+              {
+                "The results validate the design strategy of coupling water-in-salt electrolytes with NASICON cathodes for alkaline-ion batteries.": "water-in-salt approach"
+              }
+            ]
+          }
+        ],
+        "data_and_code_availability": [
+          {
+            "Additional information is available free of charge and includes stress-strain curves versus shear rate, XRPD patterns, SEM images, and further electrochemical characterization of NASICON materials in organic electrolytes. ": "free of charge"
+          }
+        ],
+        "robustness_and_ablation_notes": [
+          {
+            "The carbon coating effect was isolated by synthesizing and testing pristine LTP without glucose as a control; both samples showed the same rhombohedral NASICON crystal structure.": "without using C6H12O6"
+          },
+          {
+            "The WISE effect was isolated by comparing CLTP cycling in 7N20K (85 mAh g⁻¹ anodic, 96% efficiency) versus the same electrode in 1 M NaAc (96 mAh g⁻¹ anodic, 40% efficiency).": "clearly better"
+          },
+          {
+            "The carbon-coated NASICON was dip-coated onto carbon cloth for aqueous testing to isolate electrode corrosion from the aqueous electrolyte.": "carbon cloth current collectors"
+          },
+          {
+            "EIS was performed in a Faraday cage to eliminate environmental interference, and measurements were repeated at different temperatures (20–70 °C) to extract activation energies.": "Faraday cage"
+          }
+        ],
+        "ethical_considerations": "",
+        "key_figures_tables": [
+          {
+            "Figure 1 shows DSC thermograms with endotherm direction bottom, illustrating Tg, Tc, and Tm shifts and the single crystallization events of 5N20K and 7N20K.": "DSC curves of electrolytes"
+          },
+          {
+            "Figure 2a displays temperature-dependent ionic conductivity showing Vogel-Tamman-Fulcher behavior; 2b shows conductivity versus concentration.": "Vogel-Tamman-Fulcher"
+          },
+          {
+            "Figure 3a shows Arrhenius viscosity-temperature dependence for all electrolytes; 3b shows viscosity versus temperature confirming Newtonian fluid behavior.": "Newtonian fluids"
+          },
+          {
+            "Figure 4a presents the Walden plot (molar/ionic conductivity vs. fluidity η⁻¹) classifying all electrolytes as quasi-ideal; 4b shows Kohlrausch's law fit for 7N20K at 25 °C.": "Kohlrausch's law"
+          },
+          {
+            "Figure 5 displays LSV profiles vs. SHE for all electrolyte samples, showing the expanded electrochemical stability window.": "electrochemical stability window"
+          },
+          {
+            "Figure 7a shows potential profiles of CLTP in 7N20K and 1 M NaAc illustrating preferential sodium insertion; 7b shows rate capability at different C-rates.": "preferential insertion of sodium"
+          },
+          {
+            "Figure 8 displays EIS Nyquist plots at different temperatures on a partially sodiated CLTP electrode showing depressed semicircles.": "depressed semicircle"
+          },
+          {
+            "Figure 9 shows the Arrhenius plot of the charge-transfer resistance yielding 0.12 eV activation energy.": "activation energy of 0.12"
+          },
+          {
+            "Table 1 lists the four binary electrolyte compositions and their compositional parameters; Table 2 reports molar conductivities, activation energies, ionic conductivities, T₀, and Tg.": "21.2 mS cm-1"
+          },
+          {
+            "Table 3 summarizes the cathodic and anodic decomposition potentials for all electrolyte samples.": "decomposition potentials"
+          }
+        ],
+        "top_influential_citations": "",
+        "three_takeaways": [
+          {
+            "1. The core contribution is a comprehensive physico-chemical and electrochemical characterization of highly concentrated aqueous CH₃COOK/CH₃COONa binary electrolytes, establishing the 7N20K composition as a viable water-in-salt electrolyte with 21.2 mS cm⁻¹ conductivity and a ~3 V stability window.": "21.2 mS cm-1"
+          },
+          {
+            "2. The strongest evidence for the water-in-salt behavior is the observed 0.12 eV charge-transfer activation energy at the NASICON/7N20K interface, the low liquidus temperature (~0 °C) of the most concentrated solution, and the quasi-ideal behavior on Walden plots confirming complete dissociation even at extreme concentration.": "quasi-ideal electrolytes"
+          },
+          {
+            "3. The future path involves scaling the WISE approach to multi-concentration sodium-ion cells, optimizing the carbonate-based electrolyte formulation for improved anodic stability, and extending the electrode-material scope beyond NASICON to evaluate broader sodium-ion battery compatibility.": "water-in-salt approach"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "bethgelab-100015",
+      "domain": "Structural biology",
+      "original_condition": "no_thinking_fp8",
+      "source_sha256": "b2c521e823368d1812a8d64440899ae15551afa85a6d1109d734898ee3b5a08f",
+      "guarded_context_sha256": "319aa4be940e1562e96db68e28f66878755a1d28f4b45e568ec2815edbe1883b",
+      "summary_sha256": "a60d5fcf11da720395d2d7c5d08688cb069caa9ec7c6d1c9351b506137772886",
+      "selected_windows": 46,
+      "accepted_windows": 24,
+      "critical_signature_check_passed": true,
+      "copy_overlap": {
+        "audit_version": "2.1",
+        "before": {
+          "words": 2315,
+          "longest_contiguous_match_words": 17,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 1049,
+            "5": 542,
+            "6": 404,
+            "7": 284
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.4531317494600432,
+            "5": 0.23412526997840172,
+            "6": 0.17451403887688985,
+            "7": 0.12267818574514039
+          },
+          "evidence_fragments_over_five_words": 0
+        },
+        "after": {
+          "words": 2457,
+          "longest_contiguous_match_words": 17,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 965,
+            "5": 367,
+            "6": 209,
+            "7": 143
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.39275539275539273,
+            "5": 0.14936914936914936,
+            "6": 0.08506308506308506,
+            "7": 0.0582010582010582
+          },
+          "evidence_fragments_over_five_words": 0
+        }
+      },
+      "paper_url": "",
+      "summary": {
+        "title": "The structural basis for regulation of the glutathione transporter Ycf1 by regulatory domain phosphorylation",
+        "authors": "Nitesh Kumar Khandelwal, Cinthia R Millan, Samantha I Zangari, Samantha Avila, Dewight Williams, Tarjani M Thaker, Thomas M Tomasiak",
+        "field_subfield": "Structural Biology / ABC Transporter Mechanism",
+        "type_of_paper": "Structural and Biochemical Characterization (Cryo-EM study)",
+        "executive_summary": "This study provides two cryo-EM structures of endogenously phosphorylated Saccharomyces cerevisiae Ycf1 (a glutathione transporter of the ABC-C subfamily) at 3.4Å and 4.0Å resolution, capturing previously unobserved ordered states of the intrinsically disordered regulatory R-domain (residues 901-935) in two inward-facing conformations (IFwide and IFnarrow). The R-domain, phosphorylated at S908, T911, and S914, is shown to be helical at its C-terminus (residues 920-929) and forms extensive electrostatic and hydrophobic interactions with NBD1 (spanning three buried hydrophobic sites) and the lasso domain. Biochemical data, including ATPase assays, in-gel phosphoprotein staining, limited proteolysis, and LC-MS/MS, confirm that R-domain phosphorylation reorganizes the Ycf1 architecture and is required for maximal ATPase activity. The dephosphorylated state shows a more complete protease digestion pattern and drastically reduced ATPase activity, consistent with cellular phenotypes where S908 and T911 mutations impair cadmium detoxification. The R-domain encircles NBD1 in both structures, with the IFwide-to-IFnarrow transition involving a rigid body movement of the R-domain/NBD1 complex relative to NBD2 and a reconfiguration of the ATP-binding sites, including partial occlusion of the non-functional ATP site in NBD1. The R-domain phosphorylation sites align with PKA-like (RRAS) and CKII kinase recognition motifs. A conserved, inhibitory phosphosite at position S251 (Lasso domain) is identified nearby and is poised to disrupt the interaction of the R domain through electrostatic repulsion. These findings challenge existing models of the transition from disordered to ordered R domain and provide mechanistic insights for the ABCC transporter family, with clinical relevance for CFTR and the binding of Lumacaftor. ",
+        "research_context": [
+          {
+            "ABC transporters regulate diverse molecules for lipid homeostasis, ion transport, and detoxification.": "fundamental roles"
+          },
+          {
+            "Ycf1 transports glutathione into vacuoles when it is oxidized, in order to maintain the redox balance, or after it has been conjugated with heavy metals. ": "main non-protein thiol"
+          },
+          {
+            "Approximately half of human ABC transporters are phosphorylated on intrinsically disordered regulatory domains.": "intrinsically disordered domains"
+          },
+          {
+            "The R-region in Ycf1 and CFTR was predicted to be unstructured based on measurements of its circular dichroism properties, with only about 5% of the region showing a helical structure. ": "5% helical content"
+          },
+          {
+            "Previous cryo-EM structures of CFTR and Ycf1 show a predominantly disordered R-domain without defined sequences for phosphorylation sites. ": "without assigned sequence"
+          },
+          {
+            "To date no structure of an intact R-domain with the NBDs has been determined in any state.": "no structure of an intact"
+          },
+          {
+            "The regulatory mechanism of phosphorylation remains poorly understood, limiting understanding of R-domain interactions.": "still poorly understood"
+          }
+        ],
+        "research_question_and_hypothesis": [
+          {
+            "The central question is how phosphorylation of the intrinsically disordered R-domain regulates the activity of the ABCC transporter Ycf1.": "regulatory mechanism of phosphorylation"
+          },
+          {
+            "The hypothesis is that phosphorylation at the R-domain induces an ordered conformation that stabilizes interactions with NBD1 and the lasso domain, thereby promoting ATPase activity.": "induces a topology promoting"
+          },
+          {
+            "The authors predicted that the R-domain would be ordered and phosphorylated in the structures, contrary to previous models of complete disorder.": "previously unobserved ordered state"
+          },
+          {
+            "It was predicted that the R-domain interactions would be related by rigid body movements between the inward-facing conformations.": "rigid body movements"
+          },
+          {
+            "It was expected that the biochemical data would show that phosphorylation reorganizes the structure of Ycf1 and is essential for its maximum ATPase activity. ": "required for maximal ATPase"
+          },
+          {
+            "The study aimed to provide detailed information about the structural and biochemical aspects of the regulation of Ycf1 by phosphorylation. ": "longsought after insights"
+          }
+        ],
+        "methodological_details": [
+          {
+            "Ycf1 was expressed as N-terminal Flag and C-terminal decahistidine tagged fusion protein in S. cerevisiae.": "Flag (DYKDDDDK)"
+          },
+          {
+            "The DSY-5 strain was transformed and grown in SC-His media at 30°C, followed by induction with 2% galactose.": "2% galactose"
+          },
+          {
+            "Two forms were purified: the wild-type form and the NBD2 Walker B-mutation E1435Q, to enable structural studies. ": "Walker B mutant E1435Q"
+          },
+          {
+            "Cryo-EM grids were prepared in apo conditions, and only the E1435Q dataset yielded homogenous particles for structure determination.": "homogenous particles"
+          },
+          {
+            "Data processing used RELION 3.0/3.1, cisTEM, MotionCor2 for drift correction, and CTFFIND4.1 for CTF estimation.": "RELION (3.0 and 3.1)"
+          },
+          {
+            "Particle picking used an automated approach guided by a 6.0Å reference free 2D classification map.": "reference free 2D Classification"
+          },
+          {
+            "Model building used SWISS-MODEL for an initial model with 6jb1 as template, COOT for manual building, and Phenix for refinement.": "SWISS-MODEL"
+          },
+          {
+            "Evolutionary couplings were analyzed using 13,723 sequences from Uniref90 via JackHMMR and PLMC.": "13,723 sequences"
+          },
+          {
+            "ATPase assays were conducted at 30°C in buffer containing 0.01% LMNG and 0.001% CHS, using an enzyme-coupled method.": "0.01% LMNG"
+          },
+          {
+            "Each reaction contained 6.45 µg protein with 10 mM MgCl2, 1 mM PEP, and ATP at varying concentrations.": "6.45 µg of protein"
+          },
+          {
+            "Substrate-stimulated activity used GSSG at 1 mM ATP, with basal activity subtracted before fitting.": "1 mM ATP"
+          },
+          {
+            "Phosphorylation was confirmed by in-gel phosphoprotein staining (Pro-Q Diamond) and LC-MS/MS using Scaffold Q+S.": "Pro-Q Diamond"
+          },
+          {
+            "Dephosphorylation was achieved by Lambda phosphatase treatment for 45 min at 4°C, followed by SEC.": "Lambda phosphatase"
+          },
+          {
+            "A limited proteolysis was performed using trypsin at concentrations of 0–15 µg/mL, with the sample being incubated at low temperature (on ice) for 30 minutes. ": "0, 0.5, 1, 2, 5, 10, and 15 µg/mL"
+          },
+          {
+            "The substrate binding cavity volume was calculated with a 2.5Å probe size, excluding NBDs.": "probe size of 2.5Å"
+          }
+        ],
+        "procedures_and_architectures": [
+          {
+            "The E1435Q NBD2 Walker B mutant substantially lowered ATPase activity (Vmax 18633 ± 474.7 nmol/sec/mg), trapping inward-facing conformations.": "18633 ± 474.7 nmol/sec/mg"
+          },
+          {
+            "Two structures were solved to 3.4Å (IFwide) and 4.0Å (IFnarrow) resolution, both in inward-facing open conformations.": "3.4Å and 4.0Å"
+          },
+          {
+            "The resolved R-domain covers residues 901-935, with a helical C-terminal segment (920-929) and disordered other regions.": "residues 901-935"
+          },
+          {
+            "The R-domain is stabilized by contacts along a basic groove of NBD1, intracellular loop 4, and the lasso domain.": "intracellular loop 4"
+          },
+          {
+            "Phosphorylation sites were assigned to S908, T911, and S914 based on additional electron potential density.": "S908, T911, and S914"
+          },
+          {
+            "Three buried hydrophobic surfaces connect R-domain to NBD1: site 1 (I621-L802-I902-I904), site 2 (F917-I1123-L1120), and site 3 (L912-I915-I1154).": "F917 -I1123 -L1120"
+          },
+          {
+            "The IFwide-to-IFnarrow transition involves a change in angle between G913, G918, and G932 from 130º to 137.5º.": "130º (IFwide) to 137.5º"
+          },
+          {
+            "In NBD1, the non-functional ATP binding site is rotated to occlusion in IFnarrow, while the active NBD2 site remains open.": "occlude the non-functional ATP"
+          },
+          {
+            "The NBD1-X loop and the GRD motif are brought into contact with each other during the transition to the IFnarrow state. ": "GRD motif"
+          },
+          {
+            "A third, less well-resolved state labeled IFtransition was identified with weaker cryo-EM density in NBD2.": "IFtransition"
+          }
+        ],
+        "key_results": [
+          {
+            "The E1435Q mutant showed substantially lowered ATPase activity with Vmax 18633 ± 474.7 nmol/sec/mg compared to WT.": "18633 ± 474.7 nmol/sec/mg"
+          },
+          {
+            "Two inward-facing conformations were determined to 3.4Å and 4.0Å resolution, identifying IFwide and IFnarrow states.": "3.4Å and 4.0Å"
+          },
+          {
+            "The R-domain is ordered and helical in its C-terminal segment (residues 920-929), aligning with CFTR partial models.": "residues 920-929"
+          },
+          {
+            "Mass spectrometry and phosphostaining confirmed phosphorylation at S908, T911, and S914 in both WT and E1435Q.": "S908, T911, and S914"
+          },
+          {
+            "Phosphates make contacts with R716 (NBD1) and R206 (lasso domain) via hydrogen bonding or charge-charge interactions.": "R716 on NBD1 and R206"
+          },
+          {
+            "The R-domain/NBD1 interface buries ~523Å² in IFnarrow and ~480Å² in IFwide specifically between NBD1 and R-domain.": "~523Å 2 (IFnarrow) and ~480Å 2 (IFwide)"
+          },
+          {
+            "Total surface area buried along the entire R-domain is ~1530Å² in IFnarrow and ~1338Å² in IFwide.": "~1530 Å 2 and ~1338 Å 2"
+          },
+          {
+            "Dephosphorylated Ycf1 shows substantially changed trypsin digestion patterns with a clear increase in protease accessibility.": "increase to protease accessibility"
+          },
+          {
+            "ATPase assays show a drastic reduction in activity when Ycf1 is dephosphorylated, suggesting that the interactions of the R-domain determine the architecture for ATP hydrolysis. ": "drastic activity reduction"
+          },
+          {
+            "GSSG stimulates ATPase activity at physiologically relevant (µM) concentrations in WT and E1435Q.": "µM concentration range"
+          },
+          {
+            "The R-domain surrounds NBD1 in both the wide and narrow IF structures, with interactions between the structures being nearly constant. ": "nearly constant between the two states"
+          },
+          {
+            "The IFwide-to-IFnarrow transition rotates the NBD1 non-functional ATP site to occlusion while NBD2 site remains open.": "occlude the non-functional ATP"
+          },
+          {
+            "The R-domain/NBD1 interaction includes cation-pi coordination of Ycf1 F713 (CFTR delF506 equivalent) with R765 and R1150.": "R765 and R1150"
+          }
+        ],
+        "interpretation_and_theoretical_implications": [
+          {
+            "The ordered R-domain architecture is stimulatory, challenging the widely held model of R-domain release upon phosphorylation.": "stimulatory R-domain architecture"
+          },
+          {
+            "R-domain phosphorylation provides a transmission clutch: it engages a motor but does not perform work itself.": "transmission \"clutch\""
+          },
+          {
+            "The diverse interactions with phosphate explain the well-known robustness against the loss of a single phosphorylation site in the R-domain. ": "robustness to loss of any single"
+          },
+          {
+            "The interaction between the R-domain/NBD1 increases ATPase activity in a way that is consistent with the phosphorylation of the R-domain of CFTR, thereby promoting the binding and hydrolysis of ATP. ": "potentiates ATP binding and hydrolysis"
+          },
+          {
+            "The inhibitory role of phosphorylation at S251 in the Lasso domain is explained by electrostatic repulsion, which disrupts the network of interactions within the R domain. ": "disrupt the R-domain interaction"
+          },
+          {
+            "The finding of a single defined binding site for the conserved R-domain may provide a basis for allosteric modulation of transporter function broadly.": "allosteric modulation of transporter function"
+          },
+          {
+            "The proximity of mutations like F713 and lumacaftor binding site to the R-domain binding site rationalizes clinically relevant ABCC dysfunction.": "lumacaftor, a clinically used corrector"
+          },
+          {
+            "Ycf1 serves as a powerful protective function against metals and ROS, both electrophiles that attack DNA, proteins, and the cell membrane.": "attack DNA, proteins"
+          }
+        ],
+        "contradictions_and_limitations": [
+          {
+            "The E1435Q mutation traps conformations but substantially lowers ATPase activity, making it difficult to assess full physiological turnover.": "substantially lowered ATPase activity"
+          },
+          {
+            "The IF (intermediate filament) state was not detailed enough to create a model, and NBD2 still exhibits a lower degree of order, with a weaker cryo-EM density. ": "insufficiently detailed"
+          },
+          {
+            "The phosphates themselves could hinder the access of proteases to certain locations, thereby making it more difficult to interpret the digestive process, which depends on dephosphorylation. ": "phosphates themselves may block protease accessibility"
+          },
+          {
+            "The R-domain is only partially resolved; the C-terminal segment is helical but the other regions lack secondary structure.": "lacks secondary structure"
+          },
+          {
+            "The structures are in apo conditions; substrate-bound (GSSG) structures were not solved directly.": "apo conditions"
+          },
+          {
+            "The dephosphorylated state was not solved structurally, limiting direct comparison of ordered vs disordered R-domain positions.": "not ruled out an inhibitory role"
+          },
+          {
+            "The NBD2 density is relatively weaker in both states, complicating assignment of NBD2-specific interactions.": "weaker cryo-EM density"
+          }
+        ],
+        "claims": [
+          {
+            "description": "Phosphorylation of the Ycf1 R-domain at S908, T911, and S914 induces an ordered conformation that stimulates ABCC transporter ATPase activity.",
+            "supporting_evidence": [
+              {
+                "Mass spectrometry and phosphostaining confirm phosphorylation at S908, T911, and S914 in both WT and E1435Q.": "S908, T911, and S914"
+              },
+              {
+                "ATPase assays show a drastic reduction in the activity of dephosphorylated Ycf1 compared to endogenously phosphorylated Ycf1. ": "drastic activity reduction"
+              },
+              {
+                "The R-domain/NBD1 interface buries ~523Å² in IFnarrow, providing thermodynamic driving force for R-domain binding.": "~523Å 2 (IFnarrow)"
+              },
+              {
+                "The C-terminal helix of the R-domain aligns with CFTR partial models, confirming conserved folding.": "aligns with partial models"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The structures do not exclude the possibility that the non-phosphorylated state has an inhibitory role. ": "do not rule out an inhibitory role"
+              },
+              {
+                "The phosphates themselves could hinder access to proteases, thereby making the interpretation of dephosphorylation more difficult. ": "phosphates themselves may block protease accessibility"
+              }
+            ],
+            "implications": [
+              {
+                "The ordered R-domain architecture challenges the widely held model of R-domain release upon phosphorylation in CFTR activation.": "stimulatory R-domain architecture"
+              },
+              {
+                "The R-domain acts as a transmission clutch, only engaging a motor but not performing work itself.": "transmission \"clutch\""
+              }
+            ]
+          },
+          {
+            "description": "The IFwide-to-IFnarrow transition rotates NBD1 to occlude the non-functional ATP site while maintaining an open NBD2 site, priming the transporter for transport.",
+            "supporting_evidence": [
+              {
+                "The NBD1 non-functional ATP site rotates to occlusion in IFnarrow while NBD2 site remains open.": "occlude the non-functional ATP"
+              },
+              {
+                "The angle between G913, G918, and G932 changes from 130º to 137.5º during the transition.": "130º (IFwide) to 137.5º"
+              },
+              {
+                "The X-loop and GRD motif are brought into contact upon transition to IFnarrow.": "GRD motif"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "NBD2 is the less ordered of the two NBDs with weaker cryo-EM density in both states.": "weaker cryo-EM density"
+              },
+              {
+                "The IF (intermediate frequency) state is not detailed enough to allow for the construction of a model or a precise mechanistic representation. ": "insufficiently detailed"
+              }
+            ],
+            "implications": [
+              {
+                "The architectural changes resemble substrate-bound and substrate-free states of MRP1.": "substrates-bound and substrate-free states"
+              },
+              {
+                "Phosphorylation of the R-domain helps to stabilize NBD1 and recruit other domains into a pre-activated state. ": "primed, active state"
+              }
+            ]
+          },
+          {
+            "description": "The lasso domain phosphorylation site S251 acts as a negative regulator by disrupting R-domain interactions via electrostatic repulsion.",
+            "supporting_evidence": [
+              {
+                "S251 is accessible to the surface and poised to disrupt R-domain interactions through electrostatic repulsion.": "electrostatic repulsion of phosphate groups"
+              },
+              {
+                "The R-domain and lasso domain are clustered, placing S251 in close proximity to R-domain phosphosites.": "clustered"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "Phosphorylation at S251 was not observed in the cryo-EM structures.": "do not observe phosphorylation"
+              }
+            ],
+            "implications": [
+              {
+                "This provides a plausible explanation for the inhibitory role of lasso domain phosphorylation on Ycf1 function.": "plausible explanation"
+              },
+              {
+                "The clustering of R-domain and lasso domain domains provides a mechanism for allosteric inhibition.": "charge repulsion"
+              }
+            ]
+          }
+        ],
+        "data_and_code_availability": [
+          {
+            "The study used RELION 3.0/3.1 for EM map generation, and the data processing workflow is detailed in Figs S2-5.": "Figs. S2-5"
+          },
+          {
+            "Evcouplings was used for evolutionary coupling analysis, with software available at the authors' GitHub repository.": "https://github.com/debbiemarkslab/EVcouplings"
+          },
+          {
+            "No explicit data sharing statement or code repository link is provided in the text.": ""
+          }
+        ],
+        "robustness_and_ablation_notes": [
+          {
+            "Two forms of Ycf1 (WT and E1435Q) were purified and used for comparison in ATPase assays and structural studies.": "wild-type (WT) and E1435Q"
+          },
+          {
+            "Lambda phosphatase treatment was used to generate dephosphorylated Ycf1 for ATPase and proteolysis assays.": "Lambda phosphatase"
+          },
+          {
+            "Three technical replicates were used for ATPase kinetic parameter generation.": "at least three technical replicates"
+          },
+          {
+            "The LC-MS/MS method used Bayesian statistics to identify the spectra, and required at least two peptides with a confidence level of 95 %. ": "95% confidence levels"
+          },
+          {
+            "JackHMMR and PLMC were used to calculate evolutionary couplings across 13,723 sequences with a 80% similarity cutoff for clustering.": "80% cutoff"
+          },
+          {
+            "A probe size of 2.5Å was used for cavity volume calculations, consistent with previous bacterial glutathione transporter assessments.": "probe size of 2.5Å"
+          }
+        ],
+        "ethical_considerations": "",
+        "key_figures_tables": [
+          {
+            "Figure 1A-C shows two inward-facing conformations (IFwide and IFnarrow) at 3.4Å and 4.0Å resolution with labeled domain regions.": "IFwide (Fig. 1B)"
+          },
+          {
+            "Figure 1D shows ATPase activity of WT and E1435Q Ycf1, with E1435Q substantially lower.": "Vmax 18633 ± 474.7 nmol/sec/mg"
+          },
+          {
+            "Figure 1E shows the unoccluded substrate binding cavities in both IFwide and IFnarrow states.": "unoccluded substrate cavities"
+          },
+          {
+            "Figure 1F shows substrate-stimulated ATPase activity with GSSG at 1 mM ATP.": "Fig. 1F ; Fig. S1E"
+          },
+          {
+            "Figure 2A-D illustrates R-domain contacts with NBD1, intracellular loop 4, and the lasso domain.": "Fig. 2A-D"
+          },
+          {
+            "Figure 2E shows a significantly increased density of additional electron potential at the locations S908, T911, and S914. ": "additional electron potential density"
+          },
+          {
+            "Figure 2F shows in-gel phosphoprotein staining confirming phosphorylation at the three R-domain sites.": "Pro-Q Diamond Phosphoprotein Gel Stain"
+          },
+          {
+            "Figure 2G shows increased protease accessibility in dephosphorylated Ycf1.": "loss of intermediate sized bands"
+          },
+          {
+            "Figure 2H shows a drastic ATPase activity reduction in dephosphorylated Ycf1.": "drastic activity reduction"
+          },
+          {
+            "Figure 2C quantifies the buried surface area at the R-domain/NBD1 interface.": "~523Å 2 (IFnarrow) and ~480Å 2 (IFwide)"
+          },
+          {
+            "Figure 3 shows the hydrophobic interaction sites between R-domain and NBD1.": "F917 -I1123 -L1120"
+          },
+          {
+            "Figure 3E shows the X-loop and GRD motif contacting each other in IFnarrow.": "GRD motif"
+          },
+          {
+            "Figure 4A-C shows the rigid body movements and the occlusion of the NBD1 ATP site in the transition.": "angle between residues G913"
+          },
+          {
+            "Figure 4D shows the inhibitory effect of phosphorylation of S251 due to electrostatic repulsion. ": "IFwide inhibited"
+          },
+          {
+            "Supplementary Table S1 lists evolutionary coupling results for R-domain residues.": "Supplementary Table S1"
+          },
+          {
+            "Supplementary Table S2 reports mass spectrometry and phosphostaining data.": "Table S2"
+          },
+          {
+            "Figure S7E shows evolutionary coupling analysis of co-evolving residues.": "co-evolving residues"
+          },
+          {
+            "Figure S8A-F shows substrate-bound and substrate-free states of MRP1 for comparison.": "MRP1 (Fig. S8A-F )"
+          },
+          {
+            "Figure S1A shows the Flag/His-tagged Ycf1 expression construct.": "Flag (DYKDDDDK)"
+          }
+        ],
+        "top_influential_citations": [
+          {
+            "Exact Citation String (Rank 1)": "CFTR cryo-EM structures (Reference 25)",
+            "Detailed justification sentence explaining specific influence": "The CFTR cryo-EM structure was used as a reference for CFTR-Ycf1 R-domain alignment, helical NMR assignments, and comparative ATPase interpretation.",
+            "quotes": [
+              "CFTR cryo-EM structures",
+              "partial models from CFTR",
+              "helical NMR assignments in CFTR"
+            ]
+          },
+          {
+            "Exact Citation String (Rank 2)": "Ycf1 structure (Reference 28)",
+            "Detailed justification sentence explaining specific influence": "The previous Ycf1 structure with short, discontinuous R-domain fragments served as a negative control, against which the new fully ordered R-domain was compared.",
+            "quotes": [
+              "short, discontinuous R-domain",
+              "previous Ycf1 structure"
+            ]
+          },
+          {
+            "Exact Citation String (Rank 3)": "MRP1 structures (References 27, 33)",
+            "Detailed justification sentence explaining specific influence": "Substrate-bound and substrate-free states of MRP1 provided the functional context for comparing the IFwide/IFnarrow architectural changes and allosteric motif contacts.",
+            "quotes": [
+              "substrate-bound and substrate-free",
+              "MRP1 (Fig. S8A-F )"
+            ]
+          },
+          {
+            "Exact Citation String (Rank 4)": "Lambda phosphatase dephosphorylation procedure for CFTR (Reference 26)",
+            "Detailed justification sentence explaining specific influence": "The established Lambda phosphatase dephosphorylation protocol for CFTR was adapted for Ycf1, enabling biochemical comparison of phosphorylated and dephosphorylated states.",
+            "quotes": [
+              "Lambda phosphatase (Lambda PP, NEB)",
+              "as previously described for CFTR"
+            ]
+          },
+          {
+            "Exact Citation String (Rank 5)": "R-domain model of CFTR (Reference 26)",
+            "Detailed justification sentence explaining specific influence": "The widely held model of R-domain release upon phosphorylation for CFTR activation served as the major competing hypothesis that the current results challenge.",
+            "quotes": [
+              "release of the R-domain",
+              "completely unbound and disordered state"
+            ]
+          }
+        ],
+        "three_takeaways": [
+          {
+            "1. The core contribution is the first determination of an ordered, phosphorylated R-domain (S908, T911, S914) in inward-facing Ycf1 conformations (3.4Å and 4.0Å), revealing an extensive electrostatic and hydrophobic interaction network with NBD1 and the lasso domain that stabilizes the R-domain in a stimulatory architecture.": "previously unobserved ordered state"
+          },
+          {
+            "2. The strongest evidence is the combination of cryo-EM visualization of every R-domain regulatory element with biochemical confirmation: dephosphorylated Ycf1 shows increased protease accessibility and drastic ATPase activity reduction, while GSSG stimulates ATPase activity in both WT and E1435Q at physiological µM concentrations.": "drastic activity reduction"
+          },
+          {
+            "3. The future path lies in applying the identified R-domain binding site to explain allosteric regulation and mutational dysfunction across the ABCC transporter family, including CFTR, and in structural studies of substrate-bound (GSSG) Ycf1 to directly confirm the primed-active transport state.": "allosteric modulation of transporter function"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "arxiv-149",
+      "domain": "Mathematics",
+      "original_condition": "no_thinking_fp8",
+      "source_sha256": "f45fbb1a667f04eaf047241d43a42805720ec0b274912115cad01d051ceff4d0",
+      "guarded_context_sha256": "653f11a5a0f588d24877bd1a613db8b6d27ebf164a625d37e299f8f49671398b",
+      "summary_sha256": "392bdd0a9c177de2f7255da16e698993e165488d1b07fe4c8f62c8a6e7e60700",
+      "selected_windows": 14,
+      "accepted_windows": 4,
+      "critical_signature_check_passed": true,
+      "copy_overlap": {
+        "audit_version": "2.1",
+        "before": {
+          "words": 1758,
+          "longest_contiguous_match_words": 26,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 479,
+            "5": 170,
+            "6": 134,
+            "7": 98
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.2724687144482366,
+            "5": 0.09670079635949944,
+            "6": 0.07622298065984073,
+            "7": 0.055745164960182024
+          },
+          "evidence_fragments_over_five_words": 0
+        },
+        "after": {
+          "words": 1774,
+          "longest_contiguous_match_words": 26,
+          "classification": "violation_7plus",
+          "strict_five_word_limit_passed": false,
+          "six_word_tolerance_passed": false,
+          "covered_words_by_minimum_run": {
+            "3": 462,
+            "5": 145,
+            "6": 104,
+            "7": 80
+          },
+          "covered_word_fraction_by_minimum_run": {
+            "3": 0.26042841037204056,
+            "5": 0.08173618940248027,
+            "6": 0.058624577226606536,
+            "7": 0.04509582863585118
+          },
+          "evidence_fragments_over_five_words": 0
+        }
+      },
+      "paper_url": "https://arxiv.org/abs/0704.0326",
+      "summary": {
+        "title": "ON GENERALIZED ENTROPY MEASURES AND PATHWAYS",
+        "authors": "A.M. Mathai and H.J. Haubold",
+        "field_subfield": "Mathematical Statistics / Information Theory",
+        "type_of_paper": "Theoretical/Mathematical research paper introducing generalized entropy measures and their pathways",
+        "executive_summary": "This paper, authored by A.M. Mathai and H.J. Haubold, provides a comprehensive theoretical investigation into generalized entropy measures and their applications. The authors first establish that the product probability property (PPP), or statistical independence, is the fundamental basis upon which Shannon entropy is constructed. They demonstrate that the logarithmic form of Shannon's entropy is based on a specific recursive postulate: If the m-th event in a partition is divided into independent events, the resulting entropy is a weighted sum, which structurally requires a logarithmic representation. The paper formalizes five generalized entropies of order α—Rényi (1961), Havrda-Charvát (1967), Tsallis (1988), Mathai (2006), and Mathai's additive entropy (2006)—all of which converge to Shannon entropy as α → 1. \n\nKey theoretical results include the non-additivity relations for joint distributions, where the entropy of a product distribution equals the sum of marginal entropies plus an α-dependent interaction term. The authors also derive a trivariate extension of these non-additivity relations. A central methodology is the Maximum Entropy Principle applied via calculus of variation to each continuous entropy functional. Under different moment constraints, the authors show that Mathai's entropy recovers the entire hierarchy of distributions: generalized type-1 beta, type-2 beta, Tsallis statistics, stretched exponentials, and even the Maxwell-Boltzmann, Gaussian, Weibull, and Wigner functions as special cases. Furthermore, the authors prove that Mathai's entropy satisfies a specific second-order ordinary differential equation that generalizes the power law of Tsallis statistics. The work concludes by connecting Mathai's entropy to Kerridge's measure of inaccuracy, framing it as a type of directed divergence measure.",
+        "research_context": [
+          {
+            "Shannon entropy's additivity property has been frequently emphasized in literature, leading to the belief that PPP implies extensivity.": "additivity property"
+          },
+          {
+            "However, the authors argue that non-additivity is the natural process in statistical mechanics even under PPP.": "natural process is non-additivity"
+          },
+          {
+            "Previous work by Mathai and Rathie (1975, 1976) considered entropies of order α with additivity and characterization theorems.": "entropies of order α"
+          },
+          {
+            "The term 'independence' of events was previously misused; the author notes it is a misnomer for product probability property.": "misnomer"
+          },
+          {
+            "There was no prior unified framework connecting these generalized entropies to a pathway model and differential equations.": "pathway model"
+          }
+        ],
+        "research_question_and_hypothesis": [
+          {
+            "The central question is whether PPP and statistical independence truly imply additivity of entropy, or if the logarithmic form is a consequence of a prior postulate.": "logarithmic functional form"
+          },
+          {
+            "The authors hypothesize that the recursivity postulate, not PPP itself, is what introduces the logarithm into Shannon entropy.": "recursivity postulate"
+          },
+          {
+            "They propose that different functional forms for b_α(x) in the recursivity equation characterize distinct entropy measures, including Havrda-Charvát, Tsallis, and Mathai entropies.": "different functional forms"
+          },
+          {
+            "The paper tests whether maximizing each generalized continuous entropy functional under various constraints yields a unified family of probability models.": "various types of constraints"
+          },
+          {
+            "They investigate whether these entropy-derived densities satisfy solvable differential equations connecting them to power laws and statistical mechanics.": "differential equations"
+          }
+        ],
+        "methodological_details": [
+          {
+            "The authors define the recursivity postulate for a multinomial population P = (p_1, ..., p_m) with p_i > 0 and p_1 + ... + p_m = 1.": "multinomial population"
+          },
+          {
+            "The crucial inequality (2) states that H_n(p_1, ..., p_{m-1}, p_m q_1, ..., p_m q_{n-m+1}) = H_m(p_1, ..., p_m) + p_m H_{n-m+1}(q_1, ..., q_{n-m+1}).": "recursivity postulate"
+          },
+          {
+            "The functional equation (16) with boundary condition f_α(0) = f_α(1) is used to characterize the entropies.": "functional equation"
+          },
+          {
+            "Five discrete entropy forms are defined for α ≠ 1, α > 0 (Rényi, Havrda-Charvát, Tsallis, Mathai) and α ≠ 1, -∞ < α < 2 (Mathai and additive Mathai).": "generalized entropies of order α"
+          },
+          {
+            "For the continuous case, the authors define integrals over R with density f(x), subject to f(x) ≥ 0 and ∫f(x)dx = 1.": "density function of a real"
+          },
+          {
+            "The continuous analogues involve integrals of [f(x)]^(2-α) for Mathai entropies.": "2−α"
+          },
+          {
+            "The bivariate case assumes joint probability p_ij = p_i q_j under PPP, and the trivariate case extends to p_ijk = p_i q_j s_k.": "pijk = piqjsk"
+          },
+          {
+            "The continuous maximum entropy problem uses the calculus of variation with the functional U = [f(x)]^α − λ[f(x)] and additional Lagrangian multipliers for moment constraints.": "calculus of variation procedure"
+          }
+        ],
+        "procedures_and_architectures": [
+          {
+            "The first section derives the non-additivity relation for a bivariate joint distribution under PPP: M_{m,n,α}(P,Q) = M_{m,α}(P) + M_{n,α}(Q) + (α−1)M_{m,α}(P)M_{n,α}(Q).": "α −1Mm,α(P)Mn,α(Q)"
+          },
+          {
+            "The trivariate extension (14) shows three pairwise interaction terms and one triple interaction term involving (a(α))^2.": "[a(α)]2"
+          },
+          {
+            "The characterization theorems use the functional equation f_α(x) + b_α(x) f_α(y/(1-x)) = f_α(y) + b_α(x) f_α(x/(1-y)) with different b_α(x) definitions for each entropy type.": "functional equation"
+          },
+          {
+            "For the continuous maximum entropy optimization, the Euler-Lagrange equation ∂U/∂f = 0 is solved by setting λ as a Lagrangian multiplier for the normalization constraint.": "Euler equation"
+          },
+          {
+            "To obtain Tsallis statistics for α > 1, the authors use the escort density µ[f(x)]^α with escort expected value constraint.": "escort density"
+          },
+          {
+            "For Mathai's entropy M_α(f), the Euler equation (30) with fixed boundary values f(a) and f(b) yields the pathway model.": "pathway model"
+          },
+          {
+            "The general pathway model (34) is derived by fixing two moment-like expressions: ∫x(γ−1)(1−α)f(x)dx and ∫x(γ−1)(1−α)+δf(x)dx.": "moment-like expressions"
+          },
+          {
+            "The differential equation (38) is established for the functional g(x) = f(x)/c, and reduced to (41) for β=1, δ=(γ−1)(α−1), α>1.": "differential equation"
+          }
+        ],
+        "key_results": [
+          {
+            "The recursivity postulate, when applied to a partitioned event under PPP, naturally yields a logarithmic functional form for Shannon entropy.": "logarithmic function"
+          },
+          {
+            "The non-additivity coefficient a(α) is 0 for Rényi and additive Mathai entropies, 2^(1-α)−1 for Havrda-Charvát, 1−α for Tsallis, and α−1 for Mathai entropy.": "a(α)"
+          },
+          {
+            "The joint entropy for Mathai entropy satisfies M_{m,n,α}(P,Q) = M_{m,α}(P) + M_{n,α}(Q) + (α−1)M_{m,α}(P)M_{n,α}(Q).": "α −1"
+          },
+          {
+            "The trivariate relation contains interaction terms a(α)[Fm,α(P)Fn,α(Q) + Fm,α(P)Fr,α(S) + Fn,α(Q)Fr,α(S)] and a term [a(α)]² Fm,α(P)Fn,α(Q)Fr,α(S).": "[a(α)]2"
+          },
+          {
+            "Maximizing R_{α}(f) under fixed first moment yields f = c_1(1 + λ_2/λ_1 x)^(1/(α−1)), producing Tsallis' q-exponential if α = q > 1 and λ_2/λ_1 = q−1.": "Tsallis' q-exponential"
+          },
+          {
+            "Mathai's entropy M_α(f) under the same constraints yields the generalized type-1 beta model f = c_1[1 −s(1 −α)xδ]^(1/(1−α)) for α < 1.": "generalized type-1 beta"
+          },
+          {
+            "For α > 1, Mathai's pathway model gives the generalized type-2 beta form f = c_2[1 + s(α −1)xδ]^(-1/(α−1)).": "generalized type-2 beta"
+          },
+          {
+            "The limit α → 1 in (31) or (32) recovers the stretched exponential f = c_3e^(−sxδ).": "stretched exponential"
+          },
+          {
+            "The general pathway model (34) recovers Maxwell-Boltzmann (δ=2, γ=3, α→1, x>0), Gaussian (δ=2, γ=1, α→1, −∞<x<∞), and Weibull (γ=δ, α→1) as special cases.": "Maxwell-Boltzmann"
+          },
+          {
+            "For γ=1, δ=1, 1<q<3, (34) gives the Wigner function W(p) for atomic moment distribution in Fokker-Planck framework.": "Wigner function"
+          },
+          {
+            "The differential equation (41) x dg(x)/dx = (γ−1)g(x) −sδ[g(x)]^α holds for β=1, γ≠1, δ=(γ−1)(α−1), α>1.": "power law"
+          },
+          {
+            "The differential equation (43) dg(x)/dx = −s[g(x)]^α holds for γ=1, δ=1, β=1, corresponding to the Tsallis power law.": "Tsallis statistics"
+          },
+          {
+            "Mathai's entropy M_α(f) can be interpreted as a type of directed divergence or inaccuracy measure similar to Kerridge's measure.": "directed divergence"
+          }
+        ],
+        "interpretation_and_theoretical_implications": [
+          {
+            "The logarithmic form of Shannon entropy is an artifact of the recursivity postulate, not an intrinsic property of statistical independence.": "recursivity postulate"
+          },
+          {
+            "The additivity principle applies to entropy measures when a logarithmic function is used (e.g., Shannon, Rényi, additive Mathai), but non-additivity is the general case. ": "logarithm of a product"
+          },
+          {
+            "The pathway model (34) provides a unified generating function for a vast range of important physical probability densities.": "pathway model"
+          },
+          {
+            "The differential equations connect thermodynamic entropy measures directly to the dynamics of power-law distributions found in statistical mechanics.": "power law"
+          },
+          {
+            "The equivalence between Mathai entropy and a directed divergence measure suggests its applicability to error analysis and Bayesian inference.": "directed divergence"
+          }
+        ],
+        "contradictions_and_limitations": [
+          {
+            "The authors point out that the definition of independence, P(A ∩ B) = P(A) * P(B), does not align with the common understanding and does not provide solutions for large values of n (n = 3, 5, 7). ": "common man's point of view"
+          },
+          {
+            "The paper does not specify a numerical validation or simulation of the results; it is entirely analytical.": "analytical"
+          },
+          {
+            "The continuity assumption in the maximum entropy principle may not hold for discrete or fractal support.": "continuous case"
+          },
+          {
+            "No explicit bounds on the parameters α, γ, δ, s are given beyond basic range statements (e.g., α < 2, s > 0, δ > 0).": "δ > 0"
+          },
+          {
+            "The authors do not address whether the recursivity postulate is physically justified or simply a mathematical convenience.": "desirable property"
+          }
+        ],
+        "claims": [
+          {
+            "description": "The logarithmic functional form of Shannon entropy is derived solely from the recursivity postulate, not from the product probability property of independent events.",
+            "supporting_evidence": [
+              {
+                "The principle of recursion states that, when the parity of prices (PPP) holds, entropy is a weighted sum. This implies that we assume a logarithmic function. ": "recursivity postulate"
+              },
+              {
+                "This is not due to independence or due to the PPP of the densities but due to the fact that a functional involving logarithm is taken.": "functional involving logarithm"
+              },
+              {
+                "Naturally, the result will be a logarithmic function for the measure of entropy.": "logarithmic function"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The authors do not provide a rigorous mathematical derivation showing that NO other functional form could satisfy the recursivity postulate.": ""
+              }
+            ],
+            "implications": [
+              {
+                "Entropies based on non-logarithmic functionals (like Tsallis, Havrda-Charvát) are fundamentally different in their information-theoretic interpretation.": "non-additive"
+              },
+              {
+                "The additivity of Shannon entropy is a mathematical consequence of a chosen axiom rather than a universal physical truth.": "weighted sum"
+              }
+            ]
+          },
+          {
+            "description": "Mathai's pathway model (34) recovers all major physical probability densities (Maxwell-Boltzmann, Gaussian, Weibull, Tsallis, Wigner, stretched exponential) as special cases by varying parameters α, γ, δ, s.",
+            "supporting_evidence": [
+              {
+                "For δ=2, γ=3, α→1, x>0 is the Maxwell-Boltzmann density.": "Maxwell-Boltzmann"
+              },
+              {
+                "For δ=2, γ=1, α→1, −∞<x<∞ is the Gaussian density.": "Gaussian density"
+              },
+              {
+                "For γ=δ, α→1 is the Weibull density.": "Weibull density"
+              },
+              {
+                "For γ=1, δ=1, 1<q<3 we have the Wigner function W(p).": "Wigner function"
+              },
+              {
+                "For α→1 we have an extended or stretched exponential form.": "stretched exponential"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The authors acknowledge these are special cases and do not address the generality of the model beyond these specific functional forms.": "special cases"
+              }
+            ],
+            "implications": [
+              {
+                "A single parametric family can encapsulate diverse physical distributions, suggesting a unifying structure in statistical mechanics.": "unified"
+              },
+              {
+                "The pathway model provides a framework for interpolation between exponential, power-law, and Gaussian regimes.": "interpolating"
+              }
+            ]
+          },
+          {
+            "description": "The continuous analogue of Mathai's entropy satisfies a second-order differential equation that reduces to the Tsallis power law under specific parameter choices.",
+            "supporting_evidence": [
+              {
+                "x dg(x)/dx = (γ−1)g(x) −sδ[g(x)]^α for β=1, γ≠1, δ=(γ−1)(α−1), α>1.": "power law"
+              },
+              {
+                "Here (43) is the power law coming from Tsallis statistics.": "Tsallis statistics"
+              }
+            ],
+            "contradicting_evidence": [
+              {
+                "The differential equation is specific to the choice γ≠1 and the parameter β=1; it does not hold for all combinations.": "γ ̸= 1"
+              }
+            ],
+            "implications": [
+              {
+                "The differential equation provides a dynamic perspective on entropy, linking static probability distributions to differential operators.": "differential equation"
+              },
+              {
+                "The connection to Tsallis statistics suggests relevance to non-extensive thermodynamics and anomalous diffusion.": "non-extensivity"
+              }
+            ]
+          }
+        ],
+        "data_and_code_availability": "",
+        "robustness_and_ablation_notes": [
+          {
+            "The authors examine the trivariate case to illustrate non-extensivity, providing structural robustness beyond bivariate analysis.": "trivariate case"
+          },
+          {
+            "The functional equation characterizations are tested with different boundary conditions and normalizing constants, verifying the sensitivity of entropy form to the b_α(x) parameter.": "normalizing constants"
+          },
+          {
+            "The maximum entropy optimization is performed under different constraint combinations (first moment fixed, second moment fixed, boundary values fixed) to show model robustness across functional spaces.": "Euler equation"
+          }
+        ],
+        "ethical_considerations": "",
+        "key_figures_tables": [
+          {
+            "Equation (1) shows the arithmetic impossibility of the definition of independence for small sample spaces (n=3,5,7), motivating the shift to PPP.": "n = 3, 5, 7"
+          },
+          {
+            "Equation (11) provides the bivariate non-additivity relation for generalized entropies.": "Fm,n,α(P, Q)"
+          },
+          {
+            "Equation (14) provides the trivariate extension with pairwise and triple interaction terms.": "Fm,n,r,α(P, Q, S)"
+          },
+          {
+            "Equation (34) defines the general Mathai pathway model functional form.": "Mathai’s pathway model"
+          },
+          {
+            "Equation (35) shows the Wigner function special case for the atomic moment distribution.": "atomic moment distribution"
+          },
+          {
+            "Equation (39)-(43) derive the governing differential equations for the pathway model.": "power law"
+          }
+        ],
+        "top_influential_citations": "",
+        "three_takeaways": [
+          {
+            "1. The core contribution is the demonstration that the logarithmic functional form of Shannon entropy arises from the recursivity postulate (a mathematical axiom about partitioned events) rather than from statistical independence itself.": "recursivity postulate"
+          },
+          {
+            "2. The strongest evidence is the derivation of the general Mathai pathway model (34) through maximum entropy principles, which unifies Maxwell-Boltzmann, Gaussian, Weibull, Tsallis, and Wigner distributions as special cases controlled by parameters α, γ, δ, and s.": "Maxwell-Boltzmann"
+          },
+          {
+            "3. The future path involves extending the pathway model to matrix-variate and multivariate settings (mentioned as Mathai 2005) and exploring applications in statistical mechanics where non-additivity is expected.": "matrix-variate pathway model"
+          }
+        ]
+      }
+    }
+  ]
+}
