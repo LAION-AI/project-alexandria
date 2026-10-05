@@ -20,6 +20,8 @@ def main():
           packages={k:importlib.metadata.version(k) for k in ['torch','transformers','vllm','tokenizers','huggingface_hub']},
           provision_seconds=time.monotonic()-start))
     write(ROOT/'inputs/job_history.json',load(ROOT/'job.json'))
+    snapshot=ROOT/'inputs/executed_code';snapshot.mkdir(exist_ok=True)
+    for file in (ROOT/'code').glob('*.py'):shutil.copy2(file,snapshot/file.name)
     # Archive earlier guard outputs before workers start, so QA never races stale acceptance.
     quality=ROOT/'outputs/quality'
     if quality.exists():
@@ -29,6 +31,14 @@ def main():
                 dest=ROOT/'outputs/history'/('quality-before-'+CRITICAL_VERSION)/folder.name
                 dest.parent.mkdir(parents=True,exist_ok=True)
                 assert not dest.exists()
+                shutil.move(str(folder),str(dest))
+    qa=ROOT/'outputs/qa'
+    if qa.exists():
+        for folder in qa.iterdir():
+            marker=folder/'complete.json'
+            if folder.is_dir() and (not marker.exists() or load(marker).get('critical_values_version')!=CRITICAL_VERSION):
+                dest=ROOT/'outputs/history'/('qa-before-'+CRITICAL_VERSION)/folder.name
+                dest.parent.mkdir(parents=True,exist_ok=True);assert not dest.exists()
                 shutil.move(str(folder),str(dest))
     prepare()
     write(ROOT/'outputs/provision_complete.json',dict(complete=True,elapsed_seconds=time.monotonic()-start))

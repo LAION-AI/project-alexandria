@@ -10,6 +10,7 @@ import shutil
 import statistics
 import time
 from common import ROOT, ARMS, NAMES, load, read_jsonl, write
+from critical_values import VERSION as CRITICAL_VERSION
 
 REPO=Path('/e/home/jusers/schuhmann1/jupiter/project-alexandria/experiments/scientific_summaries/backtranslation_200_20261005')
 DURABLE=Path('/e/data1/datasets/playground/mmlaion/schuhmann1/scientific-backtranslation-200-20261005')
@@ -44,6 +45,8 @@ def main():
     for arm in ARMS:
         perf=load(ROOT/'outputs/translation'/arm/'performance.json')
         quality=load(ROOT/'outputs/quality'/arm/'report.json')
+        assert quality['critical_values_version']==CRITICAL_VERSION
+        assert load(ROOT/'outputs/qa'/arm/'complete.json')['critical_values_version']==CRITICAL_VERSION
         qa=load(ROOT/'outputs/qa'/arm/'qa-results.json');documents=qa['documents']
         assert len(documents)==200 and len({d['document_id'] for d in documents})==97
         original=sum(correct(d['original']) for d in documents);after=sum(correct(d['repaired']) for d in documents)

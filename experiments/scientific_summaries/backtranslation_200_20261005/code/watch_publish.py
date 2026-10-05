@@ -7,13 +7,14 @@ from pathlib import Path
 import subprocess
 import time
 from common import ROOT,load,write
+from critical_values import VERSION as CRITICAL_VERSION
 
 REPO=Path('/e/home/jusers/schuhmann1/jupiter/project-alexandria')
 SCOPE='experiments/scientific_summaries/backtranslation_200_20261005'
 
 def main():
     token=getpass.getpass('GitHub token (hidden): ')
-    while not (ROOT/'outputs/complete.json').exists():
+    while not (ROOT/'outputs/complete.json').exists() or load(ROOT/'outputs/complete.json').get('critical_values_version')!=CRITICAL_VERSION:
         write(ROOT/'publish_watch.json',dict(state='waiting_for_complete_results',
               updated_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
               credential_storage='RAM only; not written to files',

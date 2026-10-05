@@ -63,10 +63,12 @@ def main():
     while pending:
         for arm in pending[:]:
             output=ROOT/'outputs/qa'/arm
-            if (output/'complete.json').exists(): pending.remove(arm);continue
+            if (output/'complete.json').exists() and load(output/'complete.json').get('critical_values_version')==CRITICAL_VERSION: pending.remove(arm);continue
             quality=ROOT/'outputs/quality'/arm
             if not (quality/'complete.json').exists() or load(quality/'complete.json').get('critical_values_version')!=CRITICAL_VERSION: continue
             tick=time.monotonic();repaired={r['uid']:r for r in read_jsonl(quality/'summaries.jsonl')}
+            prior_path=ROOT/'outputs/history'/('qa-before-'+CRITICAL_VERSION)/arm/'qa-results.json'
+            prior={d['uid']:d for d in load(prior_path)['documents']} if prior_path.exists() else {}
             documents=[];slots=[];prompts=[]
             for c in cohort:
                 p=test[c['document_id']];r=repaired[c['uid']]
@@ -76,12 +78,19 @@ def main():
                     assert row['gold']==q['answer'] and row['question_index']==q['question_index']
                     assert row['responses']['qwen_summary']['prompt_sha256']==sha(historical_answer_prompt(q['formatted_question'],c['judge_context']))
                 unchanged=sha(r['judge_context'])==sha(c['judge_context'])
+                prior_same=not unchanged and c['uid'] in prior and prior[c['uid']]['guarded_context_sha256']==sha(r['judge_context'])
+                if prior_same:
+                    previous=prior[c['uid']]['repaired']
+                    for row,q in zip(previous['rows'],p['questions']):
+                        assert row['gold']==q['answer'] and row['question_index']==q['question_index']
+                        assert row['responses']['qwen_summary']['prompt_sha256']==sha(historical_answer_prompt(q['formatted_question'],r['judge_context']))
                 doc=dict(uid=c['uid'],document_id=c['document_id'],original_condition=c['original_condition'],
                          source_sha256=c['source_sha256'],original=baseline,
-                         repaired=copy.deepcopy(baseline) if unchanged else None,
+                         repaired=copy.deepcopy(baseline) if unchanged else copy.deepcopy(previous) if prior_same else None,
                          unchanged_context_reused=unchanged,guarded_context_sha256=sha(r['judge_context']))
+                doc['exact_prior_guard_context_reused']=prior_same
                 documents.append(doc)
-                if not unchanged:
+                if not unchanged and not prior_same:
                     for q in p['questions']:
                         prompts.append(historical_answer_prompt(q['formatted_question'],r['judge_context']))
                         slots.append((len(documents)-1,q))
@@ -99,10 +108,13 @@ def main():
                         predictions={'qwen_summary':record['prediction']},responses={'qwen_summary':record}))
             for d in documents:
                 assert len(d['repaired']['rows'])==10
-            write(output/'qa-results.json',dict(arm=arm,documents=documents))
+            write(output/'qa-results.json',dict(arm=arm,documents=documents,critical_values_version=CRITICAL_VERSION))
             write(output/'complete.json',dict(complete=True,summary_versions=200,unique_papers=97,
                 evaluated_questions=2000,new_question_requests=len(prompts),
-                reused_question_responses=2000-len(prompts),seconds=time.monotonic()-tick))
+                reused_question_responses=2000-len(prompts),
+                original_baseline_responses_reused=sum(d['unchanged_context_reused'] for d in documents)*10,
+                earlier_guard_exact_context_responses_reused=sum(d['exact_prior_guard_context_reused'] for d in documents)*10,
+                critical_values_version=CRITICAL_VERSION,seconds=time.monotonic()-tick))
             print('QA COMPLETE',arm,len(prompts),'new questions',flush=True);pending.remove(arm)
         if pending:time.sleep(2)
 

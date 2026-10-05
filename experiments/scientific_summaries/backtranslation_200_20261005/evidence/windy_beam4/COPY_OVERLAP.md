@@ -6,6 +6,6 @@ Exact normalized contiguous word overlap against each complete paper source. Fiv
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | original | 200 | 0 | 0 | 200 | 34 | 15.40% | 74 |
 | raw_backtranslation | 200 | 0 | 1 | 199 | 22 | 7.04% | 74 |
-| guarded_backtranslation | 200 | 0 | 0 | 200 | 34 | 11.29% | 74 |
+| guarded_backtranslation | 200 | 0 | 0 | 200 | 34 | 11.30% | 74 |
 
 Primary counts use whitespace-delimited words after Unicode normalization and punctuation stripping; mathematical expressions, decimal numbers and hyphenated terms are not split into artificial extra words. A separate punctuation-split diagnostic is retained in the JSONL. NFKC normalization, casefolding, soft-hyphen removal and PDF line-end word joining are used. Offsets refer to normalized text and word positions. Technical names and ordinary scientific phrases can match literally; lexical overlap alone does not establish plagiarism. All output flags remain visible and no paper is removed from QA. Reasoning traces, instructions and reviewer verdicts are not summary prose. Bibliographic names and titles are included in the metadata diagnostics, not silently mixed into paraphrase statistics.

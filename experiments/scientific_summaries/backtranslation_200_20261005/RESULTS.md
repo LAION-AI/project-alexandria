@@ -18,9 +18,9 @@ Times include tokenization, both translation directions and complete outputs for
 
 | Arm | Numeric windows | Suspect numeric changes | Suspect unit changes | Formula windows | Suspect formula/variable changes | Raw summaries with suspect changes | Guarded summaries with suspect changes |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| WindyTranslate EN→DE→EN / greedy | 2961 | 471 | 222 | 2089 | 452 | 170 | 0 |
-| WindyTranslate EN→DE→EN / beam 4 | 2979 | 399 | 196 | 2108 | 459 | 166 | 0 |
-| TranslateGemma 4B EN→DE→EN / greedy | 2993 | 281 | 139 | 2125 | 279 | 168 | 0 |
+| WindyTranslate EN→DE→EN / greedy | 2961 | 471 | 222 | 2177 | 521 | 170 | 0 |
+| WindyTranslate EN→DE→EN / beam 4 | 2979 | 399 | 196 | 2198 | 525 | 167 | 0 |
+| TranslateGemma 4B EN→DE→EN / greedy | 2993 | 281 | 139 | 2216 | 325 | 171 | 0 |
 
 Critical signatures preserve numeric signs, decimal/scientific values, associated units, superscripts/subscripts, Greek variable names, detected mathematical expressions and inequalities. Cosmetic spacing, trailing decimal zeros and supported Unicode/LaTeX variants are normalized. General algebraic equivalence, unit conversions, spelled-out numbers and all possible scientific notation are not fully parsed. A signature mismatch is a conservative review flag, not a human-labeled error. Zero suspect changes in guarded outputs is guaranteed by rejecting/rolling back mismatching candidates; it does not mean the translator itself preserved everything. Original scientific claims are not independently certified by this check.
 
@@ -28,9 +28,9 @@ Critical signatures preserve numeric signs, decimal/scientific values, associate
 
 | Arm | Selected windows | Accepted windows inserted | Changed summaries | Global rollbacks | NLI below cutoff | QC seconds |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| WindyTranslate EN→DE→EN / greedy | 6379 | 1987 | 199 | 0 | 1986 | 28.59 |
-| WindyTranslate EN→DE→EN / beam 4 | 6379 | 1972 | 199 | 0 | 1777 | 29.51 |
-| TranslateGemma 4B EN→DE→EN / greedy | 6379 | 2398 | 198 | 0 | 2250 | 30.03 |
+| WindyTranslate EN→DE→EN / greedy | 6379 | 1985 | 199 | 0 | 1986 | 28.17 |
+| WindyTranslate EN→DE→EN / beam 4 | 6379 | 1971 | 199 | 0 | 1777 | 27.55 |
+| TranslateGemma 4B EN→DE→EN / greedy | 6379 | 2389 | 198 | 0 | 2250 | 28.42 |
 
 Acceptance was fixed before QA: successful generation, unchanged critical signatures, bidirectional NLI entailment of at least 0.90, and no candidate-window source run above five words. Full assembled narratives are checked again. Rejected passages retain their original text and copy flags. NLI compares original and repaired summary passages; it is a heuristic, not a proof of scientific equivalence or source grounding. Overlength NLI pairs are rejected rather than truncated. The small positive/negative control set is diagnostic and not a scientific-domain accuracy estimate.
 
@@ -40,13 +40,13 @@ Acceptance was fixed before QA: successful generation, unchanged critical signat
 | --- | ---: | ---: | ---: | ---: | ---: |
 | WindyTranslate EN→DE→EN / greedy / original | 0 | 0 | 200 | 34 | 15.403% |
 | WindyTranslate EN→DE→EN / greedy / raw_backtranslation | 0 | 0 | 200 | 22 | 6.478% |
-| WindyTranslate EN→DE→EN / greedy / guarded_backtranslation | 0 | 0 | 200 | 34 | 11.156% |
+| WindyTranslate EN→DE→EN / greedy / guarded_backtranslation | 0 | 0 | 200 | 34 | 11.162% |
 | WindyTranslate EN→DE→EN / beam 4 / original | 0 | 0 | 200 | 34 | 15.403% |
 | WindyTranslate EN→DE→EN / beam 4 / raw_backtranslation | 0 | 1 | 199 | 22 | 7.043% |
-| WindyTranslate EN→DE→EN / beam 4 / guarded_backtranslation | 0 | 0 | 200 | 34 | 11.291% |
+| WindyTranslate EN→DE→EN / beam 4 / guarded_backtranslation | 0 | 0 | 200 | 34 | 11.295% |
 | TranslateGemma 4B EN→DE→EN / greedy / original | 0 | 0 | 200 | 34 | 15.403% |
 | TranslateGemma 4B EN→DE→EN / greedy / raw_backtranslation | 0 | 2 | 198 | 25 | 4.339% |
-| TranslateGemma 4B EN→DE→EN / greedy / guarded_backtranslation | 0 | 0 | 200 | 34 | 9.819% |
+| TranslateGemma 4B EN→DE→EN / greedy / guarded_backtranslation | 0 | 0 | 200 | 34 | 9.849% |
 
 Audit 2.1 uses normalized whitespace-delimited words against each paper’s complete untruncated source. Five is allowed, six borderline, seven or more flagged. Expanded punctuation-token diagnostics, cumulative coverage, metadata and evidence-quote checks are retained in the evidence. No paper is removed for overlap.
 
@@ -62,7 +62,7 @@ The pinned 97-paper/970-MCQ test set, historical ASCII prompt and answer parser 
 
 ## Conclusions
 
-TranslateGemma 4B EN→DE→EN / greedy inserted the most guarded repair windows (2398). Speed alone is insufficient: raw signature failures, acceptance coverage, residual whole-summary copying and QA must be considered together.
+TranslateGemma 4B EN→DE→EN / greedy inserted the most guarded repair windows (2389). Speed alone is insufficient: raw signature failures, acceptance coverage, residual whole-summary copying and QA must be considered together.
 WindyTranslate EN→DE→EN / greedy leaves 200/200 narratives with runs of at least seven words; 0/200 meet the strict narrative five-word limit.
 WindyTranslate EN→DE→EN / beam 4 leaves 200/200 narratives with runs of at least seven words; 0/200 meet the strict narrative five-word limit.
 TranslateGemma 4B EN→DE→EN / greedy leaves 200/200 narratives with runs of at least seven words; 0/200 meet the strict narrative five-word limit.

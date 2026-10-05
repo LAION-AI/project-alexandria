@@ -1,5 +1,6 @@
 """Run four owned GPU workers, preserve failures, publish complete local evidence."""
 import datetime
+import argparse
 import hashlib
 import os
 from pathlib import Path
@@ -9,8 +10,10 @@ import sys
 import time
 from common import ROOT,write,load
 from provision import main as provision
+from critical_values import VERSION as CRITICAL_VERSION
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--quality-only',action='store_true');args=parser.parse_args()
     os.environ['PATH']=str(Path(sys.executable).parent)+os.pathsep+os.environ.get('PATH','')
     tick=time.monotonic();provision()
     workers=[]
@@ -24,6 +27,12 @@ def main():
                         (1,'qa-beam4',['qa.py','--arms','windy_beam4']),
                         (2,'quality',['quality.py']),
                         (3,'qa',['qa.py','--arms','windy_greedy','translategemma'])]
+    if args.quality_only:
+        os.environ['QA_WORKERS']='3'
+        specifications=[(0,'qa-translategemma',['qa.py','--arms','translategemma']),
+                        (1,'qa-beam4',['qa.py','--arms','windy_beam4']),
+                        (2,'quality',['quality.py']),
+                        (3,'qa',['qa.py','--arms','windy_greedy'])]
     try:
         for gpu,label,args in specifications:
             cache=ROOT/'cache'/label;cache.mkdir(parents=True,exist_ok=True)
@@ -47,7 +56,8 @@ def main():
         node_seconds=time.time()-int(slurm_start) if slurm_start else main_seconds
         failed=load(ROOT/'job.json').get('failed_benchmark_jobs',[])
         failed_gpu_hours=sum(j.get('allocated_gpu_hours',0) for j in failed)
-        accounting=dict(complete=True,audit_passed=True,summary_versions=200,
+        previous=load(ROOT/'job.json').get('completed_generation_job',{})
+        accounting=dict(complete=True,audit_passed=True,critical_values_version=CRITICAL_VERSION,summary_versions=200,
             unique_papers=97,arms=3,job_id=os.environ.get('SLURM_JOB_ID'),
             main_process_elapsed_seconds=main_seconds,node_elapsed_seconds=node_seconds,allocated_gpus=4,
             measured_node_gpu_hours=node_seconds*4/3600,
@@ -55,7 +65,8 @@ def main():
             completed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
             failed_initial_provision_job=2181277,failed_initial_provision_gpu_hours=74*4/3600,
             failed_benchmark_jobs=failed,failed_benchmark_gpu_hours=failed_gpu_hours,
-            total_measured_and_failed_gpu_hours=node_seconds*4/3600+74*4/3600+failed_gpu_hours)
+            completed_generation_job=previous,
+            total_measured_and_failed_gpu_hours=node_seconds*4/3600+74*4/3600+failed_gpu_hours+previous.get('allocated_gpu_hours',0))
         write(REPO/'allocation_accounting.json',accounting)
         write(DURABLE/'outputs/complete.json',accounting)
         file=DURABLE/'outputs/complete.json'
