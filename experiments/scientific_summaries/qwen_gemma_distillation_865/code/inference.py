@@ -15,6 +15,7 @@ from common import ROOT, SOURCE, write
 sys.path.insert(0, str(SOURCE / 'code'))
 from run import json_object
 from reference_validator import KEYS, narrative_context, validate_summary
+from ngram_overlap import audit_summary
 
 
 def post(endpoint, route, payload, timeout=1800):
@@ -72,10 +73,21 @@ class Server:
         self.log.close()
 
 
+def record_copy_overlap(folder,paper,result):
+    assert result['document_id']==paper['document_id']
+    if result.get('source_sha256'):
+        assert result['source_sha256']==hashlib.sha256(paper['fulltext'].encode()).hexdigest()
+    audit=audit_summary(paper['fulltext'],result.get('summary'),result.get('judge_context')) if result.get('summary') else dict(status='not_applicable_generation_failed',generation_or_qa_filtering=False)
+    write(folder/'copy-overlap.json',audit)
+
+
 def generate_paper(endpoint,paper,system,user,folder,model='summary-model',thinking=True,thinking_token_budget=None,attempt_offset=0):
     folder.mkdir(parents=True,exist_ok=True)
     target=folder/'result.json'
-    if target.exists():return json.loads(target.read_text())
+    if target.exists():
+        existing=json.loads(target.read_text())
+        if not (folder/'copy-overlap.json').exists():record_copy_overlap(folder,paper,existing)
+        return existing
     start=time.monotonic()
     base_user=user
     error=''
@@ -98,6 +110,13 @@ def generate_paper(endpoint,paper,system,user,folder,model='summary-model',think
         record=dict(request=payload,response=response,seconds=time.monotonic()-tick,input_tokens_preflight=count,
                     job_id=os.environ.get('SLURM_JOB_ID'),generation_attempt=attempt+attempt_offset)
         write(folder/('attempt'+str(attempt)+'.json'),record)
+        returned=response['choices'][0]['message'].get('content')
+        if isinstance(returned,str) and returned.strip():
+            try:overlap_payload=json_object(returned)
+            except (ValueError,TypeError):overlap_payload=returned
+            copy_audit=audit_summary(paper['fulltext'],overlap_payload)
+            copy_audit['finish_reason']=response['choices'][0]['finish_reason']
+            write(folder/('attempt'+str(attempt)+'.copy-overlap.json'),copy_audit)
         choice=response['choices'][0];message=choice['message']
         try:
             if choice['finish_reason']!='stop':raise ValueError('Generation did not finish: '+str(choice['finish_reason']))
@@ -123,6 +142,7 @@ def generate_paper(endpoint,paper,system,user,folder,model='summary-model',think
                         thinking_token_budget=thinking_token_budget,
                         job_id=os.environ.get('SLURM_JOB_ID'),attempt_offset=attempt_offset,
                         elapsed_seconds=time.monotonic()-start,semantic_correction=False)
+            record_copy_overlap(folder,paper,result)
             write(target,result)
             return result
         except (ValueError,KeyError,TypeError) as e:error=str(e)
@@ -130,5 +150,6 @@ def generate_paper(endpoint,paper,system,user,folder,model='summary-model',think
                 error=error,judge_context='',elapsed_seconds=time.monotonic()-start,attempts=3,
                 job_id=os.environ.get('SLURM_JOB_ID'),thinking_token_budget=thinking_token_budget,
                 attempt_offset=attempt_offset)
+    record_copy_overlap(folder,paper,result)
     write(target,result)
     return result

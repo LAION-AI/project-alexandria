@@ -26,7 +26,7 @@ def track():
     queue=subprocess.check_output(['squeue','-h','-j',','.join(ids),'-o','%i|%T|%M|%R'],text=True)
     live={line.split('|')[0]:line.split('|')[1:] for line in queue.splitlines()}
     jobs={key:dict(id=meta[key],live=live.get(meta[key])) for key in keys}
-    accounting_ids=ids+meta['original_generation_jobs']
+    accounting_ids=list(dict.fromkeys(ids+meta['original_generation_jobs']+meta.get('evaluation_attempt_jobs',[])))
     accounting=subprocess.check_output(['sacct','-n','-X','-j',','.join(accounting_ids),
         '--format=JobID,JobName,State,ElapsedRaw,AllocTRES','--parsable2'],text=True)
     records=[]
@@ -101,6 +101,8 @@ def persist():
             write(GIT/('training-r'+str(rank)+'.json'),result);shutil.copy2(folder/'timings.jsonl',GIT/('training-r'+str(rank)+'-timings.jsonl'))
     folder=ROOT/'outputs/evaluation'
     if (folder/'complete.json').exists():
+        from postprocess_copy_overlap import update
+        update(ROOT)
         target=DEST/'outputs/evaluation'
         if not (target/'complete.json').exists():
             subprocess.run(['rsync','-a','--exclude=*.tmp',str(folder)+'/',str(target)+'/'],check=True,stdout=subprocess.DEVNULL)

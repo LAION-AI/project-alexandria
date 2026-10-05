@@ -10,6 +10,9 @@ REPO=Path('/e/home/jusers/schuhmann1/jupiter/project-alexandria/experiments/scie
 
 def publish():
     DEST.mkdir(parents=True,exist_ok=True);REPO.mkdir(parents=True,exist_ok=True)
+    if (ROOT/'outputs/evaluation/complete.json').exists():
+        from postprocess_copy_overlap import update
+        update(ROOT)
     for name in ['code','inputs','outputs']:
         # No original model files, adapted/merged model weights, or compilation caches.
         subprocess.run(['rsync','-a','--exclude=__pycache__/','--exclude=*.tmp',str(ROOT/name)+'/',str(DEST/name)+'/'],check=True)
@@ -36,7 +39,7 @@ def publish():
     if (output/'protocol.json').exists():shutil.copy2(output/'protocol.json',target/'protocol.json')
     if (output/'complete.json').exists():
         for p in output.iterdir():
-            if p.is_file() and p.suffix in ['.json','.jsonl','.md']:shutil.copy2(p,target/p.name)
+            if p.is_file() and p.suffix in ['.json','.jsonl','.md','.csv']:shutil.copy2(p,target/p.name)
 
 
 if __name__=='__main__':publish()

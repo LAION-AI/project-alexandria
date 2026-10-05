@@ -51,7 +51,11 @@ Preparation job 2175810 completed in 3 minutes 6 seconds.
 | Release and native training data preparation | 2175810 | 1 node | Holdout audit, exact template rendering, trace archives/checksums |
 | Gemma 4 12B IT rank 64 | 2175811 | 2 nodes / 8 GH200 GPUs | One epoch, alpha 128, dropout 0.05, starts after preparation |
 | Gemma 4 12B IT rank 128 | 2175812 | 2 nodes / 8 GH200 GPUs | One epoch, alpha 256, dropout 0.05, starts after preparation |
-| Held-out evaluation | 2175820 | 1 node / 4 GH200 GPUs | Starts automatically after both trainings succeed |
+| Held-out evaluation retry | 2180154 | 1 node / 4 GH200 GPUs | Running; original 2175820 failed on a Python Path/string construction and was repaired |
+
+Both training jobs completed on 2026-10-05. Rank 64: **3,401 allocation seconds / 7.5578 billed GPU-hours**, 3,177.35 training seconds. Rank 128: **3,424 allocation seconds / 7.6089 billed GPU-hours**, 3,194.61 training seconds. Each completed all 92 optimizer steps and one epoch.
+
+The new source-copy audit flags **734/736** Ornith raw training narratives at seven or more words (maximum 195; mean coverage in runs ≥6: 16.32%). The remaining two have a six-word longest match. The frozen dataset remains unchanged. [Complete overlap findings](../copy_overlap_audit_20261005/README.md). Final QA publication includes the mandatory audit of all 97 paper slots per condition.
 
 Student: `google/gemma-4-12B-it`, revision
 `707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7`. Train only language-layer q/k/v/o

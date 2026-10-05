@@ -1,6 +1,6 @@
 # Gemma 4 12B IT rank-128: no-thinking QA and inference optimization
 
-Status: benchmark prepared; no new quality or throughput results are claimed until `evaluation/complete.json` is audited.
+Status: completed and audited (job 2176677). Live BF16 no-thinking: **906/970 = 93.40%**; tuned merged BF16: **911/970 = 93.92%**. Both generate 97/97 papers. [The isolated FP8 repeat](../gemma_r128_fp8_97/evaluation/RESULTS.md) is also complete: **914/970 = 94.23%**.
 
 The user requested the previously trained Qwen-distilled rank-128 adapter with thinking disabled, a matched quality comparison, GPU-hour estimates for 38M and 60M papers, and reasonable inference optimization on Jupiter.
 
@@ -43,19 +43,13 @@ For `N` attempted papers:
 
 Planning for successful outputs uses `measured / 0.85 × 97 / successful_papers`. The 85% useful-capacity factor is an explicit assumption. Output-yield normalization assumes a comparable future paper mix; it cannot guarantee recovery of difficult failures. Costs include full outputs, prefill, tokenization and format retries. They exclude QA, training, startup, semantic correction, OCR and source acquisition. Production should run four independent replicas per Jupiter node because allocations are billed per complete four-GPU node.
 
-The audited thinking reference gives approximately **562,411 GPU-hours for 38M** and **888,017 GPU-hours for 60M** successful outputs under these planning assumptions. No-thinking costs and quality are pending measured results.
+The audited thinking reference gives approximately **562,411 GPU-hours for 38M** and **888,017 GPU-hours for 60M** successful outputs under these planning assumptions. Measured no-thinking planning costs are **178,874 / 282,433 GPU-hours** for the live BF16 adapter and **95,495 / 150,782** for tuned merged BF16 at 38M / 60M outputs. The isolated FP8 repeat gives **69,820 / 110,241**.
 
-### Preliminary token-proportional scenario (not a measured no-thinking result)
+### Source-copy compliance and interpretation
 
-The existing thinking run emitted 2,155,050 completion tokens across 132 calls. The API reports 1,527,331 reasoning tokens and 627,719 other completion tokens. Removing the reported reasoning leaves **29.13%** of the current completion volume.
+The preliminary token-proportional estimate has been superseded by full-generation measurements. Tuned BF16 uses FlashAttention 4, 16,384 batched tokens and concurrency 64. The first FP8 attempt was unmeasured because its server port collided with the QA server; an isolated repeat with disjoint ports completed successfully using FP8 weights and BF16 KV cache.
 
-| Papers | Thinking planning GPU-hours, measured reference rate | No-thinking illustrative planning GPU-hours |
-| --- | ---: | ---: |
-| 38,000,000 | 562,411 | 163,818 |
-| 60,000,000 | 888,017 | 258,660 |
-| 98,000,000 | 1,450,428 | 422,478 |
-
-This scenario simply multiplies the thinking estimate by 0.291278. It assumes unchanged answer volume, token throughput, retry behavior and output yield, while ignoring fixed prefill/tokenization costs. Disabling thinking and optimizing deployment can change all of these. This is neither a bound nor a guaranteed 3.43x speedup. No-thinking QA is unknown until the 970-question evaluation finishes. The complete-generation benchmark will replace this scenario with measured estimates.
+**Every no-thinking narrative contains a source match of at least seven words:** 97/97 live BF16 (maximum 61 words), 97/97 merged BF16 (maximum 34), and 97/97 FP8 (maximum 32). These costs count structurally finished outputs and do not yet estimate the cost of five-word-compliant paraphrases. [Systematic overlap findings](../copy_overlap_audit_20261005/README.md) include all previous runs and the exact distillation targets. No held-out paper or QA response is removed.
 
 QA measures answerability under a fixed model and synthetic MCQs, not independent human factuality. Narrative lengths, failure rates, paired paper-bootstrap confidence intervals and runtime are reported together.
 

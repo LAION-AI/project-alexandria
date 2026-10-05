@@ -11,6 +11,7 @@ import time
 
 from common import ROOT, SOURCE, load, write, digest, jsonl
 from inference import Server, generate_paper
+from copy_overlap_eval import audit_conditions
 
 sys.path.insert(0,str(SOURCE/'code'))
 from run import summary_system
@@ -53,7 +54,7 @@ def cohort(server,label,papers):
     attempts=[]
     for paper in papers:
         for path in (ROOT/'outputs/evaluation/generation'/label/paper['document_id']).glob('attempt*.json'):
-            attempts.append(load(path))
+            if '.copy-overlap.' not in path.name:attempts.append(load(path))
     complete_tokens=sum(a['response'].get('usage',{}).get('completion_tokens',0) for a in attempts)
     prompt_tokens=sum(a['response'].get('usage',{}).get('prompt_tokens',0) for a in attempts)
     write(ROOT/'outputs/evaluation'/(label+'-generation-performance.json'),dict(
@@ -135,6 +136,8 @@ def finalize(results,papers,contexts,output):
         'no-LoRA control. QA measures answerability under the fixed student and synthetic MCQs; it '
         'does not establish independent human factual superiority. Every paper and failed output is retained.','']
     (output/'RESULTS.md').write_text('\n'.join(lines))
+    report['copy_overlap']=audit_conditions(papers,contexts,output)
+    write(output/'report.json',report)
     write(output/'complete.json',dict(job_id=os.environ['SLURM_JOB_ID'],papers=97,conditions=3,scored_answers=2910,
          report=str(output/'RESULTS.md'),audit_passed=True))
 

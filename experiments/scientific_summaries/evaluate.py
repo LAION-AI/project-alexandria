@@ -14,6 +14,10 @@ from project_alexandria.backends import OpenAICompatibleBackend
 from project_alexandria.experiments.mcq import historical_answer_prompt, extract_historical_choice
 from project_alexandria.experiments.reproduce import JUDGE_SYSTEM_PROMPT
 from project_alexandria.io import write_json_atomic
+try:
+    from .copy_overlap_eval import audit_conditions
+except ImportError:
+    from copy_overlap_eval import audit_conditions
 
 CONDITIONS = ('no_context', 'original', 'summary')
 SEED = 250219413
@@ -235,6 +239,7 @@ def main():
             if entry['fulltext_sha256'] != paper['fulltext_sha256']:
                 raise ValueError('Summary source mismatch: ' + paper['document_id'])
             paper['qwen_summary'] = entry['judge_context']
+            paper['qwen_summary_object'] = entry.get('summary')
     result_path = args.output
     result_path.parent.mkdir(parents=True, exist_ok=True)
     seed_path = result_path if result_path.exists() else args.baseline_checkpoint
@@ -308,6 +313,16 @@ def main():
     results['subsets'] = {source: statistics([d for d in results['documents']
                                             if d['rows'][0]['source'] == source])
                           for source in ('arxiv', 'bethgelab')}
+    evaluated_ids={d['document_id'] for d in results['documents']}
+    overlap_papers=[p for p in papers if p['document_id'] in evaluated_ids]
+    overlap_contexts={}
+    for condition,key in [('summary','existing_summary'),('qwen_summary','qwen_summary')]:
+        if condition not in CONDITIONS:continue
+        overlap_contexts[condition]={p['document_id']:dict(status='generated' if p.get(key) else 'empty_summary',
+            summary=p.get('qwen_summary_object') if condition=='qwen_summary' else None,
+            judge_context=p.get(key,'')) for p in overlap_papers}
+    if overlap_papers and overlap_contexts:
+        results['copy_overlap']=audit_conditions(overlap_papers,overlap_contexts,result_path.parent)
     write_json_atomic(str(result_path), results)
     qas = [{'document_id': d['document_id'], 'author_model': d['author_model'],
             'questions': d['questions']} for d in results['documents']]

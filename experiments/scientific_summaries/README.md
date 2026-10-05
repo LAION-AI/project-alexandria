@@ -310,3 +310,7 @@ rewrote whole summaries and, after seeing code fences, lost the remaining ground
 errors; three retry responses were byte-identical. All generation HTTP requests
 returned 200; there was no logged OOM. The pipeline itself shut down the server after
 the failed smoke test. These journals remain available, rather than being erased.
+
+## Source-copy audit (2026-10-05)
+
+[Systematic English findings](copy_overlap_audit_20261005/README.md): more than 24,000 preserved summary versions audited, including the exact Qwen/Ornith training targets. All 291 no-thinking summaries exceed the six-word narrative overlap tolerance. The check is mandatory in future evaluations. [Completed FP8 quality, throughput and GPU-hour estimates](gemma_r128_fp8_97/evaluation/RESULTS.md) are reported alongside copy-compliance flags.
