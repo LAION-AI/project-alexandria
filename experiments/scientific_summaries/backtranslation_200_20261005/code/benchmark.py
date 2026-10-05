@@ -1,20 +1,29 @@
 """Run four owned GPU workers, preserve failures, publish complete local evidence."""
 import datetime
+import hashlib
 import os
 from pathlib import Path
 import signal
 import subprocess
 import sys
 import time
-from common import ROOT,write
+from common import ROOT,write,load
 from provision import main as provision
 
 def main():
+    os.environ['PATH']=str(Path(sys.executable).parent)+os.pathsep+os.environ.get('PATH','')
     tick=time.monotonic();provision()
     workers=[]
     specifications=[(0,'translategemma',['translate.py','--family','translategemma']),
                     (1,'windy',['translate.py','--family','windy']),
                     (2,'quality',['quality.py']), (3,'qa',['qa.py'])]
+    if all((ROOT/'outputs/translation'/arm/'complete.json').exists() for arm in ['windy_greedy','windy_beam4']):
+        # Reuse immutable completed translations; give the free GPU to a second judge.
+        os.environ['QA_WORKERS']='2'
+        specifications=[(0,'translategemma',['translate.py','--family','translategemma']),
+                        (1,'qa-beam4',['qa.py','--arms','windy_beam4']),
+                        (2,'quality',['quality.py']),
+                        (3,'qa',['qa.py','--arms','windy_greedy','translategemma'])]
     try:
         for gpu,label,args in specifications:
             cache=ROOT/'cache'/label;cache.mkdir(parents=True,exist_ok=True)
@@ -31,20 +40,42 @@ def main():
                   elapsed_seconds=time.monotonic()-tick,workers={l:dict(pid=p.pid,exit_code=p.poll()) for l,p,_ in workers}))
             if failed:raise RuntimeError('Worker failure: '+str(failed))
             time.sleep(5)
-        from finalize import main as finalize
+        from finalize import main as finalize, REPO, DURABLE
         finalize()
-        write(ROOT/'outputs/complete.json',dict(complete=True,audit_passed=True,summary_versions=200,
+        main_seconds=time.monotonic()-tick
+        slurm_start=os.environ.get('SLURM_JOB_START_TIME')
+        node_seconds=time.time()-int(slurm_start) if slurm_start else main_seconds
+        failed=load(ROOT/'job.json').get('failed_benchmark_jobs',[])
+        failed_gpu_hours=sum(j.get('allocated_gpu_hours',0) for j in failed)
+        accounting=dict(complete=True,audit_passed=True,summary_versions=200,
             unique_papers=97,arms=3,job_id=os.environ.get('SLURM_JOB_ID'),
-            node_elapsed_seconds=time.monotonic()-tick,allocated_gpus=4,
-            measured_node_gpu_hours=(time.monotonic()-tick)*4/3600,
-            completed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()))
+            main_process_elapsed_seconds=main_seconds,node_elapsed_seconds=node_seconds,allocated_gpus=4,
+            measured_node_gpu_hours=node_seconds*4/3600,
+            node_time_includes_module_startup_when_slurm_start_epoch_available=bool(slurm_start),
+            completed_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            failed_initial_provision_job=2181277,failed_initial_provision_gpu_hours=74*4/3600,
+            failed_benchmark_jobs=failed,failed_benchmark_gpu_hours=failed_gpu_hours,
+            total_measured_and_failed_gpu_hours=node_seconds*4/3600+74*4/3600+failed_gpu_hours)
+        write(REPO/'allocation_accounting.json',accounting)
+        write(DURABLE/'outputs/complete.json',accounting)
+        file=DURABLE/'outputs/complete.json'
+        manifest=load(ROOT/'outputs/evidence_manifest.json')
+        manifest['files']=[v for v in manifest['files'] if v['path']!='outputs/complete.json']
+        manifest['files'].append(dict(path='outputs/complete.json',bytes=file.stat().st_size,
+            sha256=hashlib.sha256(file.read_bytes()).hexdigest()))
+        for path in [ROOT/'outputs/evidence_manifest.json',DURABLE/'evidence_manifest.json',REPO/'evidence_manifest.json']:
+            write(path,manifest)
+        # Readiness marker is last: the publisher cannot race the evidence export.
+        write(ROOT/'outputs/complete.json',accounting)
     except Exception as e:
         write(ROOT/'outputs/failure.json',dict(error=repr(e),job_id=os.environ.get('SLURM_JOB_ID')))
         raise
     finally:
         for _,p,log in workers:
+            # The owned worker's process group can outlive an exited parent.
+            try:os.killpg(p.pid,signal.SIGTERM)
+            except ProcessLookupError:pass
             if p.poll() is None:
-                os.killpg(p.pid,signal.SIGTERM)
                 try:p.wait(timeout=20)
                 except subprocess.TimeoutExpired:os.killpg(p.pid,signal.SIGKILL);p.wait()
             log.close()

@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import random
+import re
 import shutil
 import statistics
 import time
@@ -137,6 +138,11 @@ def main():
     write(ROOT/'outputs/evidence_manifest.json',dict(files=manifest))
     shutil.copy2(ROOT/'outputs/evidence_manifest.json',DURABLE/'evidence_manifest.json')
     REPO.mkdir(parents=True,exist_ok=True);(REPO/'RESULTS.md').write_text(results)
+    readme=REPO/'README.md'
+    if readme.exists():
+        readme.write_text(re.sub(r'^Status:.*$',
+            'Status: all three arms completed on 200 summary versions; see [RESULTS.md](RESULTS.md) for measured throughput, fidelity, overlap and QA.',
+            readme.read_text(),count=1,flags=re.M))
     for name in ['model_pins.json','protocol.json','runtime.json']:
         shutil.copy2(ROOT/'inputs'/name,REPO/name)
     for name in ['report.json','evidence_manifest.json','nli_control_examples.json','qa_protocol.json']:

@@ -9,13 +9,15 @@ from decimal import Decimal, InvalidOperation
 import re
 import unicodedata
 
+VERSION = '1.1'
+
 SUP = str.maketrans('⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾', '0123456789+-=()')
 SUB = str.maketrans('₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎', '0123456789+-=()')
 GREEK = {'alpha':'α','beta':'β','gamma':'γ','delta':'δ','epsilon':'ε','theta':'θ',
          'lambda':'λ','mu':'μ','nu':'ν','pi':'π','rho':'ρ','sigma':'σ','tau':'τ',
          'phi':'φ','omega':'ω','Delta':'Δ','Sigma':'Σ','Omega':'Ω'}
-NUMBER = re.compile(r'(?<![\w.])[-+]?\d+(?:,\d{3})*(?:\.\d+)?(?:[eE][-+]?\d+)?(?!\w|\.\d)')
-RAW_NUMBER = re.compile(r'[-+]?\d+(?:,\d{3})*(?:\.\d+)?(?:[eE][-+]?\d+)?')
+NUMBER = re.compile(r'(?<![\w.])[-+]?(?:\d+(?:,\d{3})*(?:\.\d+)?|\.\d+)(?:[eE][-+]?\d+)?(?!\w|\.\d)')
+RAW_NUMBER = re.compile(r'[-+]?(?:\d+(?:,\d{3})*(?:\.\d+)?|\.\d+)(?:[eE][-+]?\d+)?')
 SCI = re.compile(r'([-+]?\d+(?:\.\d+)?)\s*[*]\s*10\s*\^\s*([-+]?\d+)')
 UNITS = {'percent':'%','percentage':'%','metres':'m','meters':'m','metre':'m','meter':'m',
          'seconds':'s','second':'s','sec':'s','secs':'s','milliseconds':'ms','millisecond':'ms',
@@ -23,13 +25,15 @@ UNITS = {'percent':'%','percentage':'%','metres':'m','meters':'m','metre':'m','m
          'degrees':'degrees','patients':'patients','participants':'participants'}
 UNIT_PATTERN = re.compile(r'^\s*(?:[-–]\s*)?(%|°[CF]|[μnmkMG]?eV|[μnmcdk]?m(?:\^\{?[-+]?\d+\}?)?|'
                           r'[μnmck]?g|[μnm]?s|Hz|kHz|MHz|GHz|Pa|kPa|MPa|GPa|K|W|kW|'
-                          r'J|kJ|mL|μL|L|mol|mmol|M|mM|μM|percent|percentage|metres?|meters?|'
-                          r'seconds?|secs?|milliseconds?|grams?|kilograms?|[Kk]elvin)(?![\w])')
+                          r'J|kJ|mL|μL|L|mol|mmol|M|mM|μM|Å|mV|V|mA|A|mT|T|N|percent|percentage|metres?|meters?|'
+                          r'seconds?|secs?|milliseconds?|grams?|kilograms?|[Kk]elvin)'
+                          r'(?:\s*/\s*(?:kg|mg|g|km|cm|mm|m|ms|s|h|mL|μL|L|mol))*(?![\w])')
 VAR = r'(?:[A-Za-zα-ωΑ-Ω](?:_\{[\w+\-]+\}|_[\w]+)?(?:\^\{?[-+\d]+\}?)?)'
-NUM = r'(?:[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?)'
+NUM = r'(?:[-+]?(?:\d+(?:\.\d+)?|\.\d+)(?:[eE][-+]?\d+)?)'
 ATOM = '(?:' + VAR + '|' + NUM + ')'
 RELATION = re.compile(ATOM + r'\s*(?:<=|>=|!=|[=<>≤≥≠≈])\s*' + ATOM)
-OPERATION = re.compile(ATOM + r'\s*[+*/^]\s*' + ATOM)
+OPERATION = re.compile(r'(?<![\w])'+ATOM+r'(?:\s*[-+*/^]\s*'+ATOM+r')+(?![\w])')
+FUNCTION = re.compile(r'(?<![\w])(?:[A-Za-zα-ωΑ-Ω]|log|ln|exp|sin|cos|tan|sqrt|arcsin|erf|Pr|Var|Cov)\s*\([^()\n]{1,100}\)')
 LATEX = re.compile(r'\$\$.*?\$\$|\$[^$\n]+\$|\\\(.*?\\\)|\\\[.*?\\\]', re.S)
 CHEMICAL = re.compile(r'\b(?:[A-Z][a-z]?\d*){1,8}\b')
 
@@ -42,7 +46,8 @@ def notation(text):
     for name, symbol in GREEK.items():
         text = re.sub(r'\\'+name+r'\b', lambda m:symbol, text)
     for old, new in [(r'\cdot','*'),(r'\times','*'),(r'\leq','≤'),(r'\geq','≥'),
-                     (r'\neq','≠'),(r'\approx','≈'),(r'\pm','±')]:
+                     (r'\neq','≠'),(r'\approx','≈'),(r'\pm','±'),(r'\propto','∝'),
+                     (r'\odot','⊙'),(r'\oplus','⊕')]:
         text = text.replace(old,new)
     text = re.sub(r'(?<=\d)[–-](?=\d)', ' to ', text)
     text = re.sub(r'\^\{([^{}]+)\}', r'^\1', text)
@@ -76,13 +81,13 @@ def signature(text):
     for match in matches:
         unit = UNIT_PATTERN.match(normalized[match.end():])
         if unit:
-            value = unit.group(1)
+            value = re.sub(r'\s+', '', unit.group().strip().lstrip('-–'))
             quantities.append((decimal(match.group()), UNITS.get(value,value)))
     formulas = [canonical_math(m.group()) for m in LATEX.finditer(text)]
-    formulas += [canonical_math(m.group()) for pattern in [RELATION,OPERATION] for m in pattern.finditer(normalized)]
+    formulas += [canonical_math(m.group()) for pattern in [RELATION,OPERATION,FUNCTION] for m in pattern.finditer(normalized)]
     formulas += ['chemical:'+m.group() for m in CHEMICAL.finditer(normalized) if any(c.isdigit() for c in m.group())]
     variables = re.findall(r'[α-ωΑ-Ω]|[A-Za-z]_\{[\w+\-]+\}|[A-Za-z]_[\w]+', normalized)
-    operators = re.findall(r'<=|>=|!=|[<>≤≥≠±≈]', normalized)
+    operators = re.findall(r'<=|>=|!=|[=<>≤≥≠±≈∫∑∏√∂∞∇∈∉⊂⊆∪∩∝⊙⊕⊗∘→↔⇄⇒⇌]', normalized)
     return dict(numbers=numbers, quantities=quantities, formulas=sorted(formulas),
                 mathematical_variables=sorted(variables), operators=operators)
 
@@ -92,6 +97,6 @@ def check(before, after):
     flags = {key:old[key]==new[key] for key in old}
     return dict(passed=all(flags.values()), checks=flags, before=old, after=new,
                 numeric_content_present=bool(old['numbers']),
-                formula_content_present=bool(old['formulas'] or old['mathematical_variables']),
+                formula_content_present=bool(old['formulas'] or old['mathematical_variables'] or old['operators']),
                 exact_text_unchanged=before==after,
                 interpretation='Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions')

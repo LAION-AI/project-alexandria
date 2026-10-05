@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --gres=gpu:4
 #SBATCH --cpus-per-task=128
-#SBATCH --time=01:00:00
+#SBATCH --time=00:30:00
 #SBATCH --output=/e/fscratch/reformo/schuhmann1/scientific-backtranslation-200-20261005/logs/benchmark-%j.out
 #SBATCH --error=/e/fscratch/reformo/schuhmann1/scientific-backtranslation-200-20261005/logs/benchmark-%j.err
 set -euo pipefail

@@ -4,7 +4,7 @@ import json
 import os
 import time
 from common import ROOT,ARMS,load,read_jsonl,write,jsonl,sha
-from critical_values import check
+from critical_values import check,VERSION as CRITICAL_VERSION
 from passages import assemble
 from ngram_overlap import SourceIndex,audit_summary,fragments
 from copy_overlap_eval import audit_conditions
@@ -56,7 +56,7 @@ def calibration(nli):
 
 def evaluate_arm(arm,nli):
     output=ROOT/'outputs/quality'/arm;output.mkdir(parents=True,exist_ok=True)
-    if (output/'complete.json').exists():return
+    if (output/'complete.json').exists() and load(output/'complete.json').get('critical_values_version')==CRITICAL_VERSION:return
     tick=time.monotonic();cohort=read_jsonl(ROOT/'inputs/cohort.jsonl');windows=read_jsonl(ROOT/'inputs/windows.jsonl')
     candidates=read_jsonl(ROOT/'outputs/translation'/arm/'roundtrip.jsonl')
     assert [r['window_id'] for r in candidates]==[w['window_id'] for w in windows]
@@ -111,14 +111,14 @@ def evaluate_arm(arm,nli):
     attempted=[r for r in details if r['translation_status']=='translated']
     numerical=[r for r in attempted if r['critical_values']['numeric_content_present']]
     mathematical=[r for r in attempted if r['critical_values']['formula_content_present']]
-    metric=dict(arm=arm,summary_versions=len(summaries),unique_papers=len({r['document_id'] for r in summaries}),
+    metric=dict(arm=arm,critical_values_version=CRITICAL_VERSION,summary_versions=len(summaries),unique_papers=len({r['document_id'] for r in summaries}),
                 selected_windows=len(details),translated_windows=len(attempted),accepted_windows=sum(r['accepted'] for r in details),
                 actually_inserted_windows=sum(r['accepted_window_count'] for r in summaries),
                 changed_summaries=sum(r['guarded_context_sha256']!=r['original_context_sha256'] for r in summaries),
                 rolled_back_summaries=sum(r['summary_rolled_back'] for r in summaries),
                 numeric_windows=len(numerical),numeric_signature_changed=sum(not r['critical_values']['checks']['numbers'] for r in numerical),
                 unit_signature_changed=sum(not r['critical_values']['checks']['quantities'] for r in attempted),
-                formula_windows=len(mathematical),formula_signature_changed=sum(not r['critical_values']['checks']['formulas'] or not r['critical_values']['checks']['mathematical_variables'] for r in mathematical),
+                formula_windows=len(mathematical),formula_signature_changed=sum(not r['critical_values']['checks']['formulas'] or not r['critical_values']['checks']['mathematical_variables'] or not r['critical_values']['checks']['operators'] for r in mathematical),
                 raw_summaries_with_suspect_critical_change=sum(not r['raw_global_critical_values']['passed'] for r in summaries),
                 guarded_summaries_with_suspect_critical_change=sum(not r['guarded_global_critical_values']['passed'] for r in summaries),
                 nli_pairwise_below_cutoff=sum(r['nli_forward'] and r['nli_backward'] and min(r['nli_forward']['entailment'],r['nli_backward']['entailment'])<.9 or False for r in attempted),
@@ -126,7 +126,7 @@ def evaluate_arm(arm,nli):
                 nli_performance=performance,total_quality_seconds=time.monotonic()-tick,copy_overlap=overlap,
                 critical_change_flags_are_conservative_not_human_error_labels=True,
                 no_question_or_gold_used_for_repair_acceptance=True)
-    write(output/'report.json',metric);write(output/'complete.json',dict(complete=True,arm=arm,summary_versions=200))
+    write(output/'report.json',metric);write(output/'complete.json',dict(complete=True,arm=arm,summary_versions=200,critical_values_version=CRITICAL_VERSION))
     print('QUALITY COMPLETE',arm,metric['changed_summaries'],'changed summaries;',metric['actually_inserted_windows'],'accepted windows',flush=True)
 
 

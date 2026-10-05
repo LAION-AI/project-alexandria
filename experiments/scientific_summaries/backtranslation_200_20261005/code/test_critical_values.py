@@ -29,4 +29,18 @@ class CriticalValuesTests(unittest.TestCase):
         self.assertFalse(check('CO2 was detected.','CO3 was detected.')['passed'])
 
 
+class AdditionalScientificCases(unittest.TestCase):
+    def test_subtraction_terms(self):
+        self.assertFalse(check('The expression is x-y.', 'The expression is x-z.')['passed'])
+    def test_leading_decimal(self):
+        self.assertFalse(check('p < .05', 'p < .5')['passed'])
+    def test_compound_units(self):
+        self.assertFalse(check('The dose was 5 mg/kg.', 'The dose was 5 mg/g.')['passed'])
+    def test_function_identity(self):
+        self.assertFalse(check('The function sin(x) was used.', 'The function cos(x) was used.')['passed'])
+    def test_solar_unit_marker(self):
+        self.assertFalse(check('The luminosity is 5 L⊙.', 'The luminosity is 5 L.')['passed'])
+    def test_proportionality(self):
+        self.assertFalse(check('The density satisfies ρ ∝ r^-2.', 'The density satisfies ρ r^-2.')['passed'])
+
 if __name__=='__main__':unittest.main()

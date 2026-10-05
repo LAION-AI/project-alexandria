@@ -1,6 +1,6 @@
 # Back-translation repair benchmark: 200 no-thinking summary versions
 
-Status: pinned weights staged; Jupiter booster job **2181423** submitted on 2026-10-05. Results are written after translation, quality checks and QA finish. No throughput or accuracy is claimed before the run completes.
+Status: all three arms completed on 200 summary versions; see [RESULTS.md](RESULTS.md) for measured throughput, fidelity, overlap and QA.
 
 ## Models and fixed comparison
 
@@ -22,7 +22,7 @@ TranslateGemma uses the checkpoint's exact chat template with this single messag
 [{"role":"user","content":[{"type":"text","source_lang_code":"en","target_lang_code":"de","text":"<complete selected narrative window>"}]}]
 ```
 
-There is no system message and no question/gold/reasoning in translation inputs. Native vLLM sampling uses `temperature=0`, `max_tokens=768`, `seed=20261005`.
+There is no system message and no question/gold/reasoning in translation inputs. Native vLLM sampling uses `temperature=0`, `max_tokens=768`, `seed=20261005`, with the checkpoint's EOS/end-of-turn IDs `[1,106]` as explicit stop tokens. Tokenized chat templates explicitly request `return_dict=False` for integer ID lists under Transformers 5.18.
 
 Batch sizes 64, 128, 256 and 512 are compared using 512 copy-bearing windows from teacher training papers disjoint from all 97 evaluation papers. Selection maximizes complete round-trip native output tokens/second, never QA accuracy. Complete cohort throughput includes both directions and tokenization, excludes setup/tuning/QC/QA, and reports window and summary-version rates alongside tokenizer-specific native token rates.
 
@@ -45,4 +45,6 @@ Scratch: `/e/fscratch/reformo/schuhmann1/scientific-backtranslation-200-20261005
 
 Durable complete source/input, raw translations, numerical/formula checks, NLI, QA and overlap evidence: `/e/data1/datasets/playground/mmlaion/schuhmann1/scientific-backtranslation-200-20261005` (created at completion). Compact results and compressed evaluation evidence are exported here. Credentials and model weights are excluded.
 
-Implementation: [code](code). Ten targeted numerical/formula/patch checks passed before submission. Runtime compatibility is checked by the warm-up and disjoint batch sweep on compute.
+Implementation: [code](code). Sixteen targeted numerical/formula/patch checks passed before execution, including compound units, leading decimals, subtraction terms and mathematical functions. Runtime compatibility is checked by the warm-up and disjoint batch sweep on compute. Batch selection prioritizes complete round trips, then speed; unfinished outputs cannot win through early termination.
+
+Critical guard v1.1 additionally preserves proportionality and solar-unit markers. Earlier Windy guard outputs are archived and recomputed from the unchanged raw translations before QA; no QA scores were viewed or used for this change. Successful raw translation results are reused.

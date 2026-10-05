@@ -58,6 +58,7 @@ class TranslateGemma:
         self.SamplingParams=SamplingParams
         path=ROOT/'models/translategemma'
         self.tokenizer=AutoTokenizer.from_pretrained(path,local_files_only=True)
+        self.stop_ids=load(path/'generation_config.json')['eos_token_id']
         self.model=LLM(model=str(path),dtype='bfloat16',tensor_parallel_size=1,max_model_len=2048,
             max_num_seqs=512,max_num_batched_tokens=16384,gpu_memory_utilization=.88,
             enable_prefix_caching=True,enable_chunked_prefill=True,language_model_only=True,
@@ -70,14 +71,16 @@ class TranslateGemma:
         tick=time.monotonic();source,target=direction.split('_');rows=[None]*len(texts);prompts=[];valid=[]
         for i,text in enumerate(texts):
             messages=[dict(role='user',content=[dict(type='text',source_lang_code=source,target_lang_code=target,text=text)])]
-            ids=self.tokenizer.apply_chat_template(messages,tokenize=True,add_generation_prompt=True)
+            ids=self.tokenizer.apply_chat_template(messages,tokenize=True,add_generation_prompt=True,return_dict=False)
+            assert isinstance(ids,list) and all(isinstance(t,int) for t in ids), 'Need integer prompt token IDs'
             if len(ids)+768>2048:rows[i]=dict(text=text,status='input_overflow_not_translated',input_tokens=len(ids),output_tokens=0)
             else:valid.append((i,ids))
         valid.sort(key=lambda x:len(x[1]))
         for start in range(0,len(valid),batch):
             group=valid[start:start+batch]
             results=self.model.generate([dict(prompt_token_ids=ids) for _,ids in group],
-                sampling_params=self.SamplingParams(temperature=0,max_tokens=768,seed=20261005),use_tqdm=False)
+                sampling_params=self.SamplingParams(temperature=0,max_tokens=768,seed=20261005,
+                                                     stop_token_ids=self.stop_ids),use_tqdm=False)
             for (i,ids),result in zip(group,results):
                 emitted=result.outputs[0]
                 rows[i]=dict(text=emitted.text,status='translated' if emitted.finish_reason=='stop' and emitted.text.strip() else 'output_length_or_empty',
@@ -159,4 +162,11 @@ def main():
     else:run_arm(engine,'translategemma',1)
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except BaseException:
+        import traceback
+        traceback.print_exc()
+        # An unhandled exception can otherwise wait indefinitely for vLLM children.
+        import sys
+        sys.stdout.flush();sys.stderr.flush();os._exit(1)

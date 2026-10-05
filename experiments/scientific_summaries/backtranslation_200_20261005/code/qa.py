@@ -1,9 +1,11 @@
 """Fixed historical MCQ prompts/parser; continuous batching without repair feedback."""
 import copy
+import argparse
 import os
 import sys
 import time
 from common import ROOT, PINNED, REFERENCE, ARMS, load, read_jsonl, write, sha
+from critical_values import VERSION as CRITICAL_VERSION
 sys.path.insert(0, str(PINNED.parents[1] / 'src'))
 from project_alexandria.experiments.mcq import historical_answer_prompt, extract_historical_choice
 from project_alexandria.experiments.reproduce import JUDGE_SYSTEM_PROMPT
@@ -24,7 +26,8 @@ class Judge:
     def answer(self, prompts):
         ids = [self.tokenizer.apply_chat_template([
             dict(role='system', content=JUDGE_SYSTEM_PROMPT), dict(role='user', content=p)],
-            tokenize=True, add_generation_prompt=True) for p in prompts]
+            tokenize=True, add_generation_prompt=True, return_dict=False) for p in prompts]
+        assert all(isinstance(p,list) and all(isinstance(t,int) for t in p) for p in ids)
         assert all(len(p)+100 <= 32768 for p in ids), 'Judge context overflow: no truncation allowed'
         rows = [dict(prompt_sha256=sha(p), prompt_tokens=len(t), attempts=[], prediction=None,
                      context_limit=32768) for p,t in zip(prompts,ids)]
@@ -43,23 +46,26 @@ class Judge:
         return rows
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--arms',nargs='+',choices=ARMS,default=ARMS)
+    selected=parser.parse_args().arms
     cohort=read_jsonl(ROOT/'inputs/cohort.jsonl')
     test={p['document_id']:p for p in load(PINNED/'data/testset.json')['papers']}
     cached={d['document_id']:d for d in load(REFERENCE/'outputs/evaluation/qa-results.json')['documents']}
-    judge=None;pending=list(ARMS)
+    judge=None;pending=list(selected)
     write(ROOT/'outputs/qa_protocol.json',dict(judge_model='Qwen/Qwen2.5-7B-Instruct',
         temperature=.5,top_p=.95,max_tokens=100,frequency_penalty=1.05,presence_penalty=1.05,
         historical_prompt_and_parser=True,invalid_answer_retries=4,max_num_seqs=64,
         max_num_batched_tokens=16384,context_limit=32768,source_and_summary_truncation=False,
         unchanged_contexts_reuse_exact_cached_responses=True,qa_does_not_control_repairs=True,
         native_vllm_batching=True,sampling_schedule_differs_from_previous_http_concurrency4=True,
-        sampled_judge_results_have_sampling_noise=True))
+        sampled_judge_results_have_sampling_noise=True,
+        parallel_judge_workers=int(os.environ.get('QA_WORKERS','1'))))
     while pending:
         for arm in pending[:]:
             output=ROOT/'outputs/qa'/arm
             if (output/'complete.json').exists(): pending.remove(arm);continue
             quality=ROOT/'outputs/quality'/arm
-            if not (quality/'complete.json').exists(): continue
+            if not (quality/'complete.json').exists() or load(quality/'complete.json').get('critical_values_version')!=CRITICAL_VERSION: continue
             tick=time.monotonic();repaired={r['uid']:r for r in read_jsonl(quality/'summaries.jsonl')}
             documents=[];slots=[];prompts=[]
             for c in cohort:
@@ -82,7 +88,8 @@ def main():
             if prompts:
                 if judge is None:
                     setup=time.monotonic();judge=Judge()
-                    write(ROOT/'outputs/setup/judge.json',dict(model_load_seconds=time.monotonic()-setup))
+                    write(ROOT/'outputs/setup'/('judge-'+str(os.environ.get('CUDA_VISIBLE_DEVICES','cpu'))+'.json'),
+                          dict(model_load_seconds=time.monotonic()-setup,arms=selected))
                 records=judge.answer(prompts)
                 for (index,q),record in zip(slots,records):
                     doc=documents[index]
@@ -99,4 +106,9 @@ def main():
             print('QA COMPLETE',arm,len(prompts),'new questions',flush=True);pending.remove(arm)
         if pending:time.sleep(2)
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except BaseException:
+        import traceback
+        traceback.print_exc()
+        sys.stdout.flush();sys.stderr.flush();os._exit(1)

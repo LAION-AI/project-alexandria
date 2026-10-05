@@ -2,8 +2,10 @@
 import importlib.metadata
 import platform
 import time
+import shutil
 from common import ROOT,load,write
 from prepare import main as prepare
+from critical_values import VERSION as CRITICAL_VERSION
 
 
 def main():
@@ -17,6 +19,17 @@ def main():
     write(ROOT/'inputs/runtime.json',dict(platform=platform.machine(),
           packages={k:importlib.metadata.version(k) for k in ['torch','transformers','vllm','tokenizers','huggingface_hub']},
           provision_seconds=time.monotonic()-start))
+    write(ROOT/'inputs/job_history.json',load(ROOT/'job.json'))
+    # Archive earlier guard outputs before workers start, so QA never races stale acceptance.
+    quality=ROOT/'outputs/quality'
+    if quality.exists():
+        for folder in quality.iterdir():
+            marker=folder/'complete.json'
+            if folder.is_dir() and (not marker.exists() or load(marker).get('critical_values_version')!=CRITICAL_VERSION):
+                dest=ROOT/'outputs/history'/('quality-before-'+CRITICAL_VERSION)/folder.name
+                dest.parent.mkdir(parents=True,exist_ok=True)
+                assert not dest.exists()
+                shutil.move(str(folder),str(dest))
     prepare()
     write(ROOT/'outputs/provision_complete.json',dict(complete=True,elapsed_seconds=time.monotonic()-start))
 
