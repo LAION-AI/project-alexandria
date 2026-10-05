@@ -2,6 +2,8 @@
 
 Status: all three arms completed on 200 summary versions; see [RESULTS.md](RESULTS.md) for measured throughput, fidelity, overlap and QA.
 
+See [FINDINGS.md](FINDINGS.md) for the comparative conclusions and final Slurm accounting; [RESULTS.md](RESULTS.md) contains detailed tables and confidence intervals.
+
 ## Models and fixed comparison
 
 - [WindyTranslate/translate-de-en](https://huggingface.co/WindyTranslate/translate-de-en), revision `fb6f91ba4c16c3c3e1778633d1a6c1cd6be4d0ca`, paired with [WindyTranslate/translate-en-de](https://huggingface.co/WindyTranslate/translate-en-de), revision `751ef3680a3c312229aa73a0176a228f0c233b6a`. Both greedy and beam-four round trips are measured using the same windows. Marian, FP16, PyTorch SDPA, length sorting and dynamic padding.
