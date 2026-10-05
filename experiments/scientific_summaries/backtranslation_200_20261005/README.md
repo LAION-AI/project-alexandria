@@ -2,6 +2,8 @@
 
 Status: all three arms completed on 200 summary versions; see [RESULTS.md](RESULTS.md) for measured throughput, fidelity, overlap and QA.
 
+Read [five complete Gemma rank-128 summaries after guarded backtranslation](https://projects.laion.ai/project-alexandria/summary-examples/) on the HTTPS example page. [Reader data and provenance](reader/README.md) are versioned here.
+
 See [FINDINGS.md](FINDINGS.md) for the comparative conclusions and final Slurm accounting; [RESULTS.md](RESULTS.md) contains detailed tables and confidence intervals.
 
 ## Models and fixed comparison
