@@ -43,6 +43,39 @@ Server startup/compilation should be amortized by long-running workers. The 1.54
 
 ## Quality and copy constraint
 
+### QA and compute together: each deployment on the same 97 papers
+
+The following table aggregates the preserved TranslateGemma QA traces by
+`original_condition`, with 970 immutable MCQs for each complete deployment.
+The earlier 93.70% guarded QA figure pools 200 correlated FP8/BF16/live-BF16
+versions; it is not the FP8-only score. No new model calls were made for this
+aggregation. The model is Gemma 4 12B IT with the Qwen-distilled rank-128 LoRA,
+thinking disabled, without an LLM critique or semantic-correction stage.
+
+| Deployment | Pipeline | Correct / 970 | QA accuracy | Mean narrative copy coverage in runs ≥6 | Planning GPU-hours for 38M |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Merged FP8 | Direct generation | 914 | 94.23% | 15.23% | 69,820 |
+| Merged FP8 | Generation + guarded TranslateGemma EN-DE-EN | 905 | 93.30% | 9.69% | 72,488 |
+| Merged BF16 | Direct generation | 911 | 93.92% | 15.74% | 95,495 |
+| Merged BF16 | Generation + guarded TranslateGemma EN-DE-EN | 913 | 94.12% | 10.10% | 98,163 |
+
+The BF16 combined estimate uses its measured complete-generation rate plus
+the same mixed-cohort translation/NLI rates used in the existing FP8 scaling
+table. Neither is a fresh deployment-specific production repair benchmark.
+Both estimates assume 85% useful GPU capacity and a comparable corpus. The
+FP8 combined budget rounds to 75,000 GPU-hours; the BF16 combined budget rounds
+to 100,000. Numerical/formula and NLI acceptance checks select translated
+passages; they do not invoke a separate semantic-correction generator.
+
+All 97 guarded narratives in each deployment still exceed the strict five-word
+copy limit. These costs are for one partial guarded paraphrasing round. The
+QA changes are observed point estimates under the historical stochastic
+answerer, not proof that translation improves or damages scientific accuracy.
+Per-deployment counts and exact calculations are preserved in
+[QA_AND_SCALING_38M.json](QA_AND_SCALING_38M.json), derived from
+[the saved QA traces](evidence/translategemma/qa-results.json.gz) and
+[overlap evidence](evidence/translategemma/copy_overlap.csv).
+
 This is **one partial repair round**, not an estimate for enforcing strict five-word compliance. All 200 guarded summaries still contain a source-copy run of at least seven words; **0/200 pass the strict five-word narrative rule**. TranslateGemma lowers mean copied-word coverage from 15.40% to 9.85%, with pooled QA 93.70% versus 94.10% before repair. Those pooled QA scores refer to correlated mixed summary versions, not a new FP8-only QA evaluation.
 
 Number/formula signature and meaning filters reject suspect candidates and retain the original text. Zero detected critical-signature drift in accepted summaries does not certify every possible mathematical expression or scientific claim. Additional rounds, fallback rewriting and guaranteed-compliance costs remain unmeasured and are excluded here.

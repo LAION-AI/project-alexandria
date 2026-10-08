@@ -1,0 +1,67 @@
+{
+  "model": "Gemma 4 12B IT, Qwen3.8-27B-distilled rank-128 LoRA",
+  "thinking": false,
+  "semantic_correction": false,
+  "repair": "One guarded TranslateGemma 4B BF16 EN-DE-EN round on flagged narrative windows",
+  "rows": [
+    {
+      "deployment": "no_thinking_fp8",
+      "pipeline": "Direct generation",
+      "unique_papers": 97,
+      "correct": 914,
+      "questions": 970,
+      "qa_accuracy_percent": 94.22680412371135,
+      "mean_narrative_copy_coverage_6plus_percent": 15.22742847059499,
+      "gpu_hours_for_38m_at_85_percent_capacity": 69819.52470390413,
+      "copy_strict_passes": 0
+    },
+    {
+      "deployment": "no_thinking_fp8",
+      "pipeline": "Generation + guarded TranslateGemma EN-DE-EN",
+      "unique_papers": 97,
+      "correct": 905,
+      "questions": 970,
+      "qa_accuracy_percent": 93.29896907216495,
+      "mean_narrative_copy_coverage_6plus_percent": 9.687216550824017,
+      "gpu_hours_for_38m_at_85_percent_capacity": 72487.68683442839,
+      "copy_strict_passes": 0
+    },
+    {
+      "deployment": "no_thinking_merged",
+      "pipeline": "Direct generation",
+      "unique_papers": 97,
+      "correct": 911,
+      "questions": 970,
+      "qa_accuracy_percent": 93.91752577319588,
+      "mean_narrative_copy_coverage_6plus_percent": 15.741801995036223,
+      "gpu_hours_for_38m_at_85_percent_capacity": 95495.03631653562,
+      "copy_strict_passes": 0
+    },
+    {
+      "deployment": "no_thinking_merged",
+      "pipeline": "Generation + guarded TranslateGemma EN-DE-EN",
+      "unique_papers": 97,
+      "correct": 913,
+      "questions": 970,
+      "qa_accuracy_percent": 94.12371134020619,
+      "mean_narrative_copy_coverage_6plus_percent": 10.09776363413431,
+      "gpu_hours_for_38m_at_85_percent_capacity": 98163.19844705988,
+      "copy_strict_passes": 0
+    }
+  ],
+  "fp8_stage_gpu_hours": {
+    "generation": 69819.52470390413,
+    "roundtrip_translation": 2142.884120777781,
+    "bidirectional_nli": 525.2780097464839,
+    "whole_quality_worker": 1764.709062643579,
+    "optimized_total": 72487.6868344284,
+    "quality_worker_reserved_total": 73727.1178873255
+  },
+  "cautions": [
+    "200 repair versions of 97 unique papers provide mixed-deployment repair rates; FP8/BF16 QA is separately aggregated on each full 97-paper cohort.",
+    "Costs assume comparable documents and 85% useful GPU capacity.",
+    "One guarded round does not meet the whole-summary five-word copy limit."
+  ],
+  "qa_input_sha256": "950900e5679f20cda432d90a62de172b6092d26ab5d8717e80504d69563b2fb3",
+  "provenance": "Existing frozen 97-paper QA and copy-overlap artifacts; grouped by deployment without new generation or judging."
+}
