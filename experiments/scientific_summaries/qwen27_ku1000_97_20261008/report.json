@@ -1,0 +1,356 @@
+{
+  "complete": true,
+  "protocol": {
+    "created_unix": 1791468359.540802,
+    "paper": "https://arxiv.org/html/2502.19413v2",
+    "repository_snapshot_commit": "23dbebc499547138a2c678022717cf3b8add254b",
+    "testset_sha256": "a0d5e5f99a0025c6cd8a5140a39a07a220ded6f37f04994500549886ffd83261",
+    "paper_count": 97,
+    "questions_per_condition": 970,
+    "source_words": 341673,
+    "chunks": 391,
+    "target_max_words": 1000,
+    "mode": "sequential",
+    "previous_units": 10,
+    "extra_source_context_words": 0,
+    "canonicalization": false,
+    "generation_format_retry_budgets": [
+      8192,
+      16384
+    ],
+    "thinking": false,
+    "QA_feedback_to_extraction": false,
+    "heldout_training": false,
+    "extractor": {
+      "model": "Qwen/Qwen3.8-27B-FP8",
+      "revision": "017b9c7af6b5689d5dd426a76e0bc077eb5ca20a",
+      "local_path": "/e/fscratch/reformo/schuhmann1/scientific-distillation-1000/models/Qwen3.8-27B-FP8",
+      "temperature": 0.1,
+      "top_p": 0.95,
+      "precision": "upstream FP8 weights; BF16 activations/KV",
+      "replicas": 3,
+      "active_documents_per_replica": 16
+    },
+    "judge": {
+      "model": "Qwen/Qwen2.5-7B-Instruct",
+      "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "local_path": "/e/fscratch/reformo/schuhmann1/scientific-ornith-dflash-eval-97/models/Qwen2.5-7B-Instruct",
+      "temperature": 0.5,
+      "top_p": 0.95,
+      "max_output_tokens": 100,
+      "frequency_penalty": 1.05,
+      "presence_penalty": 1.05,
+      "invalid_answer_retries": 4,
+      "concurrency": 4,
+      "context_limit": 32768,
+      "legacy_ascii_sanitizer": true,
+      "historical_prompt_and_parser": true,
+      "fresh_judging_all_conditions": true
+    },
+    "input_sha256": {
+      "inputs/sources_only.json": "8ae8e725f220fbcc7bf4f97e4537fae97cf3cafa40dd8cfe5ceab47c5fad1320",
+      "inputs/testset.json": "a0d5e5f99a0025c6cd8a5140a39a07a220ded6f37f04994500549886ffd83261",
+      "inputs/gemma_fp8_baseline.json": "89dace69a106e8d4b6d2a0732ed13333c6dcb323db213c3f25a0b258ed7e142c"
+    },
+    "vendor_sha256": {
+      "vendor/audit/copy_overlap_eval.py": "ebed83735ebb3ab957d0f66bbbf77ad87a68cf47858e91bc8c1fc6385a1db906",
+      "vendor/audit/ngram_overlap.py": "01320a9e1c423dc4cc17215ce6927db907278a900e44a5b7c153ef6795eeab38",
+      "vendor/src/project_alexandria/pipeline.py": "2813c7e10ec6871ca800ee6a46da4ffeff5e9e11cfcbfbba72cc4d6fed06570b",
+      "vendor/src/project_alexandria/cli.py": "49676bf75b6d33a97318175e27c79bc9f48ab0ba5a5dbc5df4b727c5cfdea7be",
+      "vendor/src/project_alexandria/io.py": "da97499ec97a48357da249d82ef2de7b129a27c3864f27147b210ffbd26e9b7d",
+      "vendor/src/project_alexandria/prompts.py": "743800e51c268e492c97492f8d18dfac5f273be2a63682438001494c9bf205ca",
+      "vendor/src/project_alexandria/canonicalize.py": "6095849bf56c990d45448a11720a4c05fe4ec6ad480aedd9ac27949c48247f01",
+      "vendor/src/project_alexandria/__init__.py": "f2b8977dcfa2d4b90a5f02c1b6d9bdb32fa89388d6aeb172c6534969a458a4b5",
+      "vendor/src/project_alexandria/chunking.py": "4119f213d397f8f10633b4a4cb10fe8240c09868953164c7b8e94b961ea63905",
+      "vendor/src/project_alexandria/schema.py": "19e5aed694e0d2049e9ef105a6971c016e3846546a06f7be9c2b0da446095cbb",
+      "vendor/src/project_alexandria/parsing.py": "7f81fc44c5c98c449f344c9ac602c1d616e69c276301abe2710accfaa0d66fd4",
+      "vendor/src/project_alexandria/fingerprints.py": "be20f839909206d2a12daac5e8e43dff347790cef53ec68c7e9915f7d4a10a29",
+      "vendor/src/project_alexandria/backends.py": "73ccdf2b1e79c29bd1dd9479801c683080c893c563b151eace5f2e86d8a156c7",
+      "vendor/src/project_alexandria/experiments/quality.py": "9cf5f50aba7a9b78b58ddbe5358608e8a2b979e1a6e7abd77ce2a2bb48acec19",
+      "vendor/src/project_alexandria/experiments/__init__.py": "8f0e2e8a2971d639ecfa08d8ca98de56b1c6af7856369666462deedf456fc642",
+      "vendor/src/project_alexandria/experiments/overlap.py": "0d211e1f433a9f55c828b2b7358974eb9dd620d9f26f4bf20ac77b144055148b",
+      "vendor/src/project_alexandria/experiments/similarity.py": "c70920f4e124453090044f0cb500b41a9ddd5b0fc74c88ce63ffdbdaa2718ecb",
+      "vendor/src/project_alexandria/experiments/datasets.py": "57efdd1c1a1e598f72b123d7883a58de926fde26d50b64865832960f760c7d9c",
+      "vendor/src/project_alexandria/experiments/mcq.py": "6f8f06dda7c8018b71f336de9758304ceedb6203dddffbda560b6ce7936107e9",
+      "vendor/src/project_alexandria/experiments/reproduce.py": "9760198eb1ba1040a48b567ddada4a0025779833926da8b5199c4f843e6f33ca"
+    },
+    "generation_inputs_contain_questions_or_gold": false,
+    "preflight": {
+      "python_syntax": "passed",
+      "complete_frozen_cohort": "passed",
+      "all_source_words_covered_once": "passed",
+      "max_1000_words": "passed",
+      "truncated_json_rejected": "passed"
+    }
+  },
+  "scores": {
+    "no_context": {
+      "correct": 603,
+      "total": 970,
+      "accuracy": 0.6216494845360825,
+      "invalid": 4,
+      "confidence_interval_95": [
+        0.5845360824742267,
+        0.6577319587628866
+      ]
+    },
+    "original": {
+      "correct": 941,
+      "total": 970,
+      "accuracy": 0.9701030927835051,
+      "invalid": 0,
+      "confidence_interval_95": [
+        0.9587628865979381,
+        0.9804123711340207
+      ]
+    },
+    "knowledge_units_1000": {
+      "correct": 879,
+      "total": 970,
+      "accuracy": 0.9061855670103093,
+      "invalid": 0,
+      "confidence_interval_95": [
+        0.88659793814433,
+        0.924742268041237
+      ]
+    },
+    "gemma_r128_fp8_summary": {
+      "correct": 912,
+      "total": 970,
+      "accuracy": 0.9402061855670103,
+      "invalid": 0,
+      "confidence_interval_95": [
+        0.922680412371134,
+        0.956701030927835
+      ]
+    }
+  },
+  "paired_paper_bootstrap": {
+    "knowledge_units_1000_minus_no_context": {
+      "point": 0.2845360824742268,
+      "confidence_interval_95": [
+        0.24948453608247423,
+        0.320618556701031
+      ]
+    },
+    "knowledge_units_1000_minus_original": {
+      "point": -0.06391752577319587,
+      "confidence_interval_95": [
+        -0.08041237113402044,
+        -0.04845360824742262
+      ]
+    },
+    "knowledge_units_1000_minus_gemma_r128_fp8_summary": {
+      "point": -0.03402061855670102,
+      "confidence_interval_95": [
+        -0.05257731958762879,
+        -0.015463917525773252
+      ]
+    }
+  },
+  "extraction": {
+    "papers": 97,
+    "source_words": 341673,
+    "chunks_expected": 391,
+    "chunks_generated": 391,
+    "failed_papers": 0,
+    "mean_chunks": 4.030927835051546,
+    "prompt_tokens": 993941,
+    "completion_tokens": 512647
+  },
+  "overlap": {
+    "audit_version": "2.1",
+    "complete": true,
+    "allowed_consecutive_words": 5,
+    "borderline_consecutive_words": 6,
+    "violation_from_consecutive_words": 7,
+    "conditions": {
+      "knowledge_units_1000": {
+        "paper_slots": 97,
+        "audited_generated_outputs": 97,
+        "generation_failures_or_empty_outputs": 0,
+        "all_fields_strict_five_word_pass": 0,
+        "all_fields_six_word_tolerance_pass": 0,
+        "narrative": {
+          "strict_five_word_pass": 0,
+          "borderline_six_only": 1,
+          "violation_seven_plus": 96,
+          "maximum_contiguous_match_words": 24,
+          "mean_longest_match_words": 11.360824742268042,
+          "mean_covered_fraction_six_plus": 0.09559682770725948,
+          "mean_covered_fraction_seven_plus": 0.06381531352808785,
+          "pooled_covered_fraction_six_plus": 0.09724345610377577,
+          "pooled_covered_fraction_seven_plus": 0.06600880240908039,
+          "evidence_fragments_over_five_words": 0
+        },
+        "evidence": {
+          "strict_five_word_pass": 97,
+          "borderline_six_only": 0,
+          "violation_seven_plus": 0,
+          "maximum_contiguous_match_words": 0,
+          "mean_longest_match_words": 0,
+          "mean_covered_fraction_six_plus": 0,
+          "mean_covered_fraction_seven_plus": 0,
+          "pooled_covered_fraction_six_plus": 0.0,
+          "pooled_covered_fraction_seven_plus": 0.0,
+          "evidence_fragments_over_five_words": 0
+        },
+        "metadata": {
+          "strict_five_word_pass": 6,
+          "borderline_six_only": 9,
+          "violation_seven_plus": 82,
+          "maximum_contiguous_match_words": 29,
+          "mean_longest_match_words": 11.43298969072165,
+          "mean_covered_fraction_six_plus": 0.9194743400928967,
+          "mean_covered_fraction_seven_plus": 0.8352819002303539,
+          "pooled_covered_fraction_six_plus": 0.9449781659388646,
+          "pooled_covered_fraction_seven_plus": 0.8978165938864628,
+          "evidence_fragments_over_five_words": 0
+        }
+      }
+    },
+    "generation_failed_papers": 0,
+    "mean_jaccard": {
+      "5": 0.013999013438547163,
+      "7": 0.004739016015214275,
+      "11": 0.0006736154529614363
+    },
+    "fragmentation": "Each KU context summary/name/attribute label/value/relation predicate/target is separate; bibliographic title is metadata.",
+    "no_cross_fragment_grams": true,
+    "qa_filtering": false,
+    "sources_untruncated": true
+  },
+  "qa": {
+    "complete": true,
+    "papers": 97,
+    "questions_per_condition": 970,
+    "conditions": [
+      "no_context",
+      "original",
+      "knowledge_units_1000",
+      "gemma_r128_fp8_summary"
+    ],
+    "elapsed_seconds": 235.841768690967,
+    "fresh_judging_all_conditions": true,
+    "historical_prompt_and_parser": true,
+    "no_qa_feedback_into_extraction": true
+  },
+  "generation_metrics": [
+    {
+      "replica": 0,
+      "documents": 33,
+      "successful_documents": 33,
+      "elapsed_seconds": 234.3787822079612,
+      "completion_tokens": 174164,
+      "prompt_tokens": 342126,
+      "newly_resumed_output_note": "Token totals include saved attempts; phase elapsed may exclude prior allocations."
+    },
+    {
+      "replica": 1,
+      "documents": 32,
+      "successful_documents": 32,
+      "elapsed_seconds": 222.13032532599755,
+      "completion_tokens": 172088,
+      "prompt_tokens": 331026,
+      "newly_resumed_output_note": "Token totals include saved attempts; phase elapsed may exclude prior allocations."
+    },
+    {
+      "replica": 2,
+      "documents": 32,
+      "successful_documents": 32,
+      "elapsed_seconds": 229.6316578279948,
+      "completion_tokens": 166395,
+      "prompt_tokens": 320789,
+      "newly_resumed_output_note": "Token totals include saved attempts; phase elapsed may exclude prior allocations."
+    }
+  ],
+  "no_qa_feedback_into_extraction": true,
+  "performance": {
+    "all_chunks_generated": true,
+    "format_retries": 0,
+    "source_words": 341673,
+    "completion_tokens": 512647,
+    "completion_tokens_per_paper_mean": 5285.020618556701,
+    "completion_tokens_per_chunk_mean": 1311.1176470588234,
+    "extraction_active_replica_seconds_sum": 686.1407653619535,
+    "extraction_active_replica_gpu_hours": 0.1905946570449871,
+    "extraction_makespan_seconds": 234.3787822079612,
+    "extractor_completion_tokens_per_active_gpu_second": 747.1455215600956,
+    "extractor_aggregate_completion_tokens_per_wall_second": 2187.258569955087,
+    "papers_per_active_gpu_hour": 508.93346909039826,
+    "qa_document_seconds_sum": 131.2913393721683,
+    "qa_phase_seconds_including_wait_for_extraction": 235.841768690967,
+    "entities": 3428,
+    "attributes": 8686,
+    "relationships": 5344,
+    "no_thinking_completion_reasoning_tokens": 0,
+    "mean_qa_prompt_tokens": {
+      "no_context": 423.340206185567,
+      "original": 6040.257731958763,
+      "knowledge_units_1000": 3450.494845360825,
+      "gemma_r128_fp8_summary": 3515.0309278350514
+    },
+    "notes": [
+      "Active extractor phase time is a per-replica wall interval; it includes tokenize, prefill, decode, client/checkpoint overhead and sequential dependencies.",
+      "QA phase includes waiting for complete KU papers; per-document wall intervals sum to the fresh four-condition scoring work.",
+      "No inherited checkpoints or previous generation allocations contributed to this run."
+    ]
+  },
+  "allocation_accounting": {
+    "job_id": "2231833",
+    "nodes": 1,
+    "allocated_gpus": 4,
+    "orchestrator_elapsed_seconds": 946.3733475059271,
+    "orchestrator_allocated_gpu_hours": 1.0515259416732523,
+    "slurm_final_elapsed_pending": false,
+    "note": "Allocation-based accounting: one exclusive four-GH200 node. Count only top-level job records; do not add batch or step records again. These are reserved GPU-hours, not an invoice or measured kernel utilization. Queue waiting is excluded.",
+    "slurm_top_level_allocations": [
+      {
+        "state": "REQUEUED",
+        "start": "2026-10-08T16:12:37",
+        "end": "2026-10-08T16:14:03",
+        "elapsed_seconds": 86,
+        "allocated_gpus": 4,
+        "allocated_gpu_hours": 0.09555555555555556,
+        "allocation_tres": "billing=288,cpu=288,gres/gpu:gh200=4,gres/gpu=4,node=1",
+        "exit_code": "0:0"
+      },
+      {
+        "state": "COMPLETED",
+        "start": "2026-10-08T16:25:45",
+        "end": "2026-10-08T16:43:51",
+        "elapsed_seconds": 1086,
+        "allocated_gpus": 4,
+        "allocated_gpu_hours": 1.2066666666666668,
+        "allocation_tres": "billing=288,cpu=288,gres/gpu:gh200=4,gres/gpu=4,node=1",
+        "exit_code": "0:0"
+      }
+    ],
+    "completed_allocation_gpu_hours": 1.2066666666666668,
+    "requeued_prolog_gpu_hours": 0.09555555555555556,
+    "total_allocated_gpu_hours_including_requeued_prolog": 1.3022222222222224,
+    "cancelled_preparation_job": {
+      "job_id": "2231823",
+      "state": "CANCELLED",
+      "elapsed_seconds": 0,
+      "allocated_gpu_hours": 0
+    }
+  },
+  "runtime": {
+    "python": "CPython 3.11 / aarch64 (venv metadata)",
+    "hardware": "four NVIDIA GH200 120GB on one JUPITER Booster node",
+    "vllm": "0.30.0",
+    "torch": "2.13.0",
+    "transformers": "5.18.0",
+    "numpy": "2.3.5",
+    "versions_source": "installed dist-info metadata; vLLM version also in server startup logs",
+    "module_setup": "Stages/2026 Python/3.13.5 CUDA/13; the selected production venv executes its own CPython 3.11 interpreter"
+  },
+  "conclusions": [
+    "The 1000-word KU extension improves QA over no context by 28.45 percentage points, but scores 3.40 points below the direct Gemma rank-128 FP8 summaries in the same fresh evaluation.",
+    "The paper-cluster bootstrap interval for the KU-minus-summary gap is [-5.26,-1.55] percentage points; this interval does not include zero. This is one stochastic judge run, not independent human factuality.",
+    "The measured active extraction is fast with three batched single-GH200 replicas, but startup and the failed first prolog dominate this small benchmark allocation.",
+    "The KU outputs do not meet the requested five-word limit: 0/97 pass, one is six-word borderline, and 96 contain at least seven consecutive source words. Graph structure does not remove the need for overlap control.",
+    "These results evaluate a larger-chunk extension of the 200-word Alexandria setup; they do not isolate chunk size as the cause of the QA gap. No extraction was changed after QA."
+  ]
+}

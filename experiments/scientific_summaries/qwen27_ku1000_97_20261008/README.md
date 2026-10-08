@@ -80,5 +80,37 @@ Code: [common.py](common.py), [extract.py](extract.py),
 [evaluate.py](evaluate.py), [report.py](report.py),
 [orchestrate.py](orchestrate.py), [run.sbatch](run.sbatch).
 
-Full-cohort completion and QA results are pending until the owned Slurm job
-finishes. This README is the recorded protocol, not a claim of completed results.
+## Completed results
+
+The full 97-paper run completed successfully on 8 October 2026:
+**391/391 chunks**, zero extraction failures and zero format retries.
+[Results, comparisons, timings and conclusions](RESULTS.md) include:
+
+| Context | Correct / 970 | Fresh QA accuracy |
+| --- | ---: | ---: |
+| No context | 603 | 62.16% |
+| Complete original source | 941 | 97.01% |
+| Qwen27 KUs, 1,000-word chunks | 879 | 90.62% |
+| Direct Gemma rank-128 FP8 summaries | 912 | 94.02% |
+
+The KU-minus-summary gap is **−3.40 percentage points** (95% paired
+paper-bootstrap interval −5.26 to −1.55). The KUs improve answerability over
+no context but do not outperform these summaries in this run. All four
+conditions were freshly judged; the fixed stochastic answerer explains small
+differences from earlier evaluations of the same summary texts.
+
+Active extraction took **3.91 minutes** across three GPUs, or **0.1906 active
+extractor GPU-hours**. The complete cold-start benchmark allocation took
+**1.2067 reserved GPU-hours**, or **1.3022 including the first node's failed
+filesystem-healthcheck allocation**. The complete-source overlap audit found
+0/97 strict five-word passes; 96/97 contain a run of seven or more words,
+maximum 24. Mean factual-fragment coverage in runs ≥6 words is 9.56%.
+
+Machine-readable evidence: [report.json](report.json),
+[QA predictions/responses](qa-results.json.gz),
+[generated Knowledge Units](knowledge_units.jsonl.gz),
+[copy audit](copy_overlap.json), [copy CSV](copy_overlap.csv),
+[copy details](copy_overlap_details.jsonl.gz),
+[performance](performance.json), [GPU accounting](allocation_accounting.json),
+[runtime](runtime.json) and [artifact manifest](artifact_manifest.json).
+Full source-containing request traces are preserved outside GitHub.

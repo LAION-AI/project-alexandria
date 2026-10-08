@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/e/fscratch/reformo/schuhmann1/scientific-distillation-1000/env/bin/python",
+    "-m",
+    "vllm.entrypoints.openai.api_server",
+    "--model",
+    "/e/fscratch/reformo/schuhmann1/scientific-ornith-dflash-eval-97/models/Qwen2.5-7B-Instruct",
+    "--served-model-name",
+    "qwen25",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "20383",
+    "--tensor-parallel-size",
+    "1",
+    "--max-model-len",
+    "32768",
+    "--max-num-seqs",
+    "4",
+    "--max-num-batched-tokens",
+    "8192",
+    "--gpu-memory-utilization",
+    ".90",
+    "--generation-config",
+    "vllm",
+    "--enable-prefix-caching",
+    "--enable-chunked-prefill"
+  ],
+  "gpu": 3,
+  "kind": "judge",
+  "pid": 1926619,
+  "job_id": "2231833"
+}
