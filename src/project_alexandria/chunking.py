@@ -28,7 +28,19 @@ def _sentences(text: str) -> List[str]:
     normalized = re.sub(r"\s+", " ", text).strip()
     if not normalized:
         return []
-    return [part.strip() for part in _SENTENCE_BOUNDARY.split(normalized) if part.strip()]
+    # The separator consumes any closing quotes/brackets before whitespace.
+    # Slicing retains those characters in the preceding sentence; re.split
+    # discarded them, including closing parentheses in scientific notation.
+    parts = []
+    cursor = 0
+    for boundary in _SENTENCE_BOUNDARY.finditer(normalized):
+        end = boundary.start() + len(boundary.group().rstrip())
+        if normalized[cursor:end].strip():
+            parts.append(normalized[cursor:end].strip())
+        cursor = boundary.end()
+    if normalized[cursor:].strip():
+        parts.append(normalized[cursor:].strip())
+    return parts
 
 
 def split_text(text: str, target_words: int = 500) -> List[TextChunk]:
