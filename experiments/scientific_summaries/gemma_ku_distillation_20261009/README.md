@@ -2,6 +2,8 @@
 
 **Results completed:** 9 October 2026. **Overview updated:** 10 October 2026. All accuracies below are measured results from that completed run.
 
+**Completed 500-word Gemma follow-up:** [Full 500/1,000-word KU table with base models, adapters and original-paper controls](ku500_followup_20261010/README.md). It freshly judges all contexts on the same frozen 20-paper cohort.
+
 ## What this experiment measures
 
 A Knowledge Unit (KU) is a structured record of facts from a paper: a short contextual description plus entities, attributes and relationships. A paper is processed in consecutive chunks, and its KUs are combined into a factual context for a separate question-answering model. A summary is a prose-oriented representation of the same paper.
@@ -40,7 +42,7 @@ The new cohort has ten questions per paper. Qwen27 authors the questions from so
 
 One Gemma12 base KU paper has a failed extraction chunk; all ten QA slots for that paper remain wrong/invalid in the primary 200-question denominator. Both new KU adapters generate complete outputs for all 20 papers. The four invalid no-context answers are also retained as wrong.
 
-**Coverage of chunk-size experiments:** Qwen27 has measured 500-word and 1,000-word conditions. Gemma E4B, Gemma12 and both new KU adapters have measured **1,000-word conditions only**. Their 500-word conditions are **not evaluated**; no missing score is imputed from another model or chunk size.
+**Coverage of chunk-size experiments:** Qwen27 has measured 500-word and 1,000-word conditions. Gemma E4B, Gemma12 and both new KU adapters have measured **1,000-word conditions only**. At the time of this initial run their 500-word conditions were **not evaluated**. The linked follow-up now supplies those measurements; no score was imputed.
 
 ### Summary references on the same 20 papers
 
@@ -55,7 +57,7 @@ One Gemma12 base KU paper has a failed extraction chunk; all ten QA slots for th
 
 The E4B base and E4B KU-LoRA summary conditions each have two generation failures, accounting for 20 wrong/invalid slots per condition. No failed outputs are discarded or regenerated after observing QA scores. These summary calls use the existing full-paper summary prompt; the new adapters were trained for KU generation, not specifically for summary generation.
 
-**Follow-up status (10 October):** The four missing Gemma 500-word KU conditions (E4B and 12B, each base and rank-128 adapter) are being prepared on the same frozen 20 papers / 200 questions. They use the existing adapters trained on 1,000-word chunks; no retraining is needed for this chunk-size test.
+**Follow-up completed:** All four Gemma 500-word conditions are now measured in the [matched comparison](ku500_followup_20261010/README.md).
 
 ## 2. Original benchmark: 97 papers, 970 questions
 

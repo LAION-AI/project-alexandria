@@ -2,6 +2,8 @@
 
 ## Knowledge Units: chunk sizes and Gemma LoRA adapters
 
+The [completed 500-word Gemma follow-up](gemma_ku_distillation_20261009/ku500_followup_20261010/README.md) adds all missing base/adapter conditions and freshly judges both chunk sizes on the same 20 papers.
+
 The [English KU comparison](gemma_ku_distillation_20261009/README.md) brings together
 Qwen 27B with 500-word and 1,000-word source chunks, Gemma E4B / 12B base models
 and their rank-128 KU adapters, original-paper baselines and summary references.
