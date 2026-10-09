@@ -1,5 +1,15 @@
 # Scientific summaries: frozen cohort and model comparisons
 
+## Knowledge Units: chunk sizes and Gemma LoRA adapters
+
+The [English KU comparison](gemma_ku_distillation_20261009/README.md) brings together
+Qwen 27B with 500-word and 1,000-word source chunks, Gemma E4B / 12B base models
+and their rank-128 KU adapters, original-paper baselines and summary references.
+It separates the disjoint 20-paper adapter evaluation from the original 97-paper
+teacher benchmark, and includes confidence intervals, failed outputs, copy audits
+and measured allocation costs. On the fresh papers, E4B improves from **65.50% to
+81.00%** and 12B from **63.50% to 85.00%** with the 1,000-word KU adapters.
+
 ## Completed Gemma 4 E4B IT / 12B IT results
 
 The [English Gemma findings/results](gemma4_97/README.md) cover both models on the same 97 papers / 970 MCQs, raw and corrected summaries, all 14 comparison scores, 48 batch throughput probes, paired confidence intervals, full traces and scheduler times. E4B scores **85.15% raw** / **84.64% corrected**; 12B scores **86.60% raw** / **86.80% corrected**. See the [shared GH200 comparison](ORNITH_DFLASH_GH200_RESULTS.md).
