@@ -130,6 +130,10 @@ def main():
     for docid,versions in bypaper.items():
         default=next(e for e in versions if e['condition']=='gemma12_r128_ku500_bt');source=default['source_metadata'];body += f'<article class="panel paper-card"><span class="eyebrow">{escape(docid)}</span><h3>{escape(source["title"])}</h3><p class="muted">{escape("; ".join(source["authors"]))}</p><p class="muted">{len(default["result"]["knowledge_units"])} sequential KUs at 500 words · six model/chunk views</p><a class="button" href="{docid}/{slug(default["condition"])}.html">Read complete Knowledge Units →</a></article>'
     body += '</div><h2>Downloads and reproducibility</h2><p>'+link('evaluation.pdf','Evaluation PDF')+' · '+link('examples.pdf','Complete Gemma12 examples PDF')+' · '+link('metrics.json','All QA scores and protocol')+' · '+link('copy_overlap.json','Copy audit')+' · '+link('manifest.json','Example inventory and checksums')+'</p><p class="note">'+link('https://arxiv.org/abs/2502.19413v2','Project Alexandria paper')+' · '+link('https://github.com/LAION-AI/project-alexandria','Code and evaluation repository')+'. Demo KUs preserve saved outputs without editorial rewriting. Original paper bodies, source-containing prompts, model reasoning and MCQs are not included in this reader.</p>'
+    if (ROOT/'outputs/bibliographic_copy_diagnostic.json').exists():
+        diag=load(ROOT/'outputs/bibliographic_copy_diagnostic.json')
+        write(SITE/'bibliographic_copy_diagnostic.json',diag)
+        body+='<p class="note">Embedded author/title/citation attributes and exact document-title strings are also measured as metadata in a '+link('bibliographic_copy_diagnostic.json','separate bibliographic copying diagnostic')+'. The historical primary all-factual-string audit above remains unchanged; this additional classification does not change repairs or QA scores.</p>'
     (SITE/'index.html').write_text(page('Knowledge Unit pipeline, back-translation and QA',body))
     write(SITE/'metrics.json',metrics);write(SITE/'copy_overlap.json',copy)
     write(SITE/'manifest.json',dict(demo_papers=5,views=len(manifest),examples=manifest,

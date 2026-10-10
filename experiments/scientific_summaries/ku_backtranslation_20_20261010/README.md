@@ -89,6 +89,7 @@ Whole experiment: **405 allocated seconds × four GH200 GPUs = 0.4500 reserved G
 - [qa_predictions.jsonl.gz](qa_predictions.jsonl.gz): all 560 paper-condition records and 5,600 primary QA slots, without source prompts.
 - [evaluation_questions.json](evaluation_questions.json): frozen questions, options and gold labels without source evidence quotes or rationales.
 - [copy_overlap.json](copy_overlap.json), [CSV](copy_overlap.csv), [detailed audit](copy_overlap_details.jsonl.gz).
+- [Bibliographic copy diagnostic](bibliographic_copy_diagnostic.json): author/title/citation attributes and exact document-title strings separated as metadata using the already recorded per-fragment matches. Historical primary totals and QA stay unchanged.
 - [window_quality.jsonl.gz](window_quality.jsonl.gz): every candidate, acceptance and fidelity check; [document checks](document_quality.jsonl.gz).
 - [Five-paper factual outputs](public_demo_examples.jsonl.gz), [reader inventory](reader/manifest.json), and [code](code/).
 - Put local source/question arrays in inputs/, configure ALEXANDRIA_KU_DISTILL_RUN, obtain pinned models in models/ and provide cached contexts under the documented sibling run folders. Source bodies and complete source-containing traces remain in experiment storage rather than GitHub.
