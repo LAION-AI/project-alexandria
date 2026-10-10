@@ -1,5 +1,7 @@
 # Qwen3.8-27B → Gemma 4 12B IT: 865-paper generator distillation
 
+**Wording-repair advice:** [Measured translation/targeted-edit results and recommendations](../backtranslation_repair_search_20261010/RECOMMENDATIONS.md), with [38M/60M cost scenarios](../backtranslation_repair_search_20261010/SCALING.md). Qwen rank128 FP8 summary throughput is measured; direct Gemma summary repair is not.
+
 ## Frozen collection
 
 The Qwen teacher collection was stopped at the user request on 2026-10-04.

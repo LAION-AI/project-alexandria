@@ -2,6 +2,8 @@
 
 These are planning estimates on Jupiter GH200 GPUs, derived from complete measured outputs. The generator is **Gemma 4 12B IT with the Qwen3.8-27B-distilled rank-128 LoRA**. Thinking is disabled. The repair is one guarded EN→DE→EN round on selected narrative copy windows using TranslateGemma 4B.
 
+**Later KU repair and summary advice:** [Repair recommendations](../backtranslation_repair_search_20261010/RECOMMENDATIONS.md) and [direct-Gemma cost scenarios](../backtranslation_repair_search_20261010/SCALING.md). The new targeted-edit measurements use KU residuals; their application to summaries is hypothetical. Existing one-round summary translation scores below remain the measured reference and have zero strict five-word passes.
+
 ## Planning GPU hours
 
 **85% useful capacity** is assumed for every GPU stage. It is an allowance for scheduling and service overhead, not a statistically estimated uncertainty interval.

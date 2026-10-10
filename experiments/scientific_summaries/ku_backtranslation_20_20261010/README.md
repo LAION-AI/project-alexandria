@@ -2,6 +2,8 @@
 
 Completed on 10 October 2026. [Live static reader](https://projects.laion.ai/project-alexandria/ku-examples/) · [Evaluation PDF](reader/evaluation.pdf) · [Complete five-paper Gemma12 examples PDF](reader/examples.pdf).
 
+**Later targeted-repair search:** [44 conditions and 8,800 QA answers](../backtranslation_repair_search_20261010/README.md), including temperature/seed variants, bounded local Qwen/Gemma edits, [recommendations](../backtranslation_repair_search_20261010/RECOMMENDATIONS.md) and [scaling](../backtranslation_repair_search_20261010/SCALING.md). This follow-up still does not achieve zero violations.
+
 ## What this experiment measures
 
 The same 20 disjoint papers and 200 frozen four-choice questions from the KU distillation follow-up are reused. This study applies TranslateGemma 4B English → German → English paraphrasing to copied descriptive passages in ten existing KU conditions. All eighteen raw/reference contexts and ten guarded contexts are freshly answered by the same Qwen2.5-7B-Instruct judge: **28 conditions / 5,600 primary QA slots**. No training, source regeneration, question changes or QA-guided repair selection occurs.

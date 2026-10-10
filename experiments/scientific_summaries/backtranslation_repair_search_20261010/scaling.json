@@ -1,0 +1,146 @@
+{
+  "gpu": "GH200",
+  "useful_capacity_factor": 0.85,
+  "seconds_per_paper": {
+    "summary_generation": 5.622309094577543,
+    "ku500_generation": 15.577895930048545,
+    "gemma_residual_repair_proxy": 3.1295673074549994
+  },
+  "gpu_hours": {
+    "38000000": {
+      "summary_generation": 69819.52470390413,
+      "ku500_generation": 193450.99520975316,
+      "gemma_residual_repair_proxy": 38863.90773963725,
+      "summary_plus_gemma_proxy": 108683.43244354139,
+      "ku500_plus_gemma_proxy": 232314.9029493904
+    },
+    "60000000": {
+      "summary_generation": 110241.3547956381,
+      "ku500_generation": 305448.93980487343,
+      "gemma_residual_repair_proxy": 61364.06485205881,
+      "summary_plus_gemma_proxy": 171605.4196476969,
+      "ku500_plus_gemma_proxy": 366813.00465693226
+    }
+  },
+  "editing_measurements": {
+    "500": {
+      "phases": {
+        "hybrid": {
+          "active_loop_seconds": 28.223117658868432,
+          "setup_seconds": 188.1594666900346
+        },
+        "localedit": {
+          "active_loop_seconds": 34.38691079278942,
+          "setup_seconds": 127.70756867097225
+        },
+        "gemmaedit": {
+          "active_loop_seconds": 35.118515659240074,
+          "setup_seconds": 186.61609917099122
+        },
+        "iterative": {
+          "active_loop_seconds": 27.472830489859916,
+          "setup_seconds": 108.7930581739638
+        }
+      },
+      "gemma_seconds_20_papers": 62.59134614909999,
+      "gemma_gpu_hours_20_papers": 0.017386485041416665,
+      "all_qwen_and_gemma_edit_seconds_20_papers": 125.20137460075784
+    },
+    "1000": {
+      "phases": {
+        "hybrid": {
+          "active_loop_seconds": 22.47220401512459,
+          "setup_seconds": 239.6855728039518
+        },
+        "localedit": {
+          "active_loop_seconds": 26.595057867001742,
+          "setup_seconds": 128.66582575102802
+        },
+        "gemmaedit": {
+          "active_loop_seconds": 27.123271908028983,
+          "setup_seconds": 187.57130144897383
+        },
+        "iterative": {
+          "active_loop_seconds": 20.270689279190265,
+          "setup_seconds": 109.77034369297326
+        }
+      },
+      "gemma_seconds_20_papers": 47.39396118721925,
+      "gemma_gpu_hours_20_papers": 0.013164989218672013,
+      "all_qwen_and_gemma_edit_seconds_20_papers": 96.46122306934558
+    }
+  },
+  "generation_sample": {
+    "summary_papers": 97,
+    "ku500_papers": 20
+  },
+  "direct_gemma_only_repair_measured": false,
+  "summary_gemma_repair_measured": false,
+  "historical_summary_translation_planning_rows": [
+    {
+      "summaries": 38000000,
+      "measured_rate_gpu_hours": {
+        "generation": 59346.59599831851,
+        "roundtrip_translation": 1821.4515026611139,
+        "bidirectional_nli": 446.4863082845113,
+        "whole_quality_worker": 1500.002703247042,
+        "optimized_total": 61614.53380926413,
+        "quality_worker_reserved_total": 62668.05020422666
+      },
+      "planning_gpu_hours": {
+        "generation": 69819.52470390413,
+        "roundtrip_translation": 2142.884120777781,
+        "bidirectional_nli": 525.2780097464839,
+        "whole_quality_worker": 1764.709062643579,
+        "optimized_total": 72487.6868344284,
+        "quality_worker_reserved_total": 73727.1178873255
+      }
+    },
+    {
+      "summaries": 60000000,
+      "measured_rate_gpu_hours": {
+        "generation": 93705.15157629238,
+        "roundtrip_translation": 2875.9760568333377,
+        "bidirectional_nli": 704.97838150186,
+        "whole_quality_worker": 2368.425320916382,
+        "optimized_total": 97286.10601462758,
+        "quality_worker_reserved_total": 98949.55295404211
+      },
+      "planning_gpu_hours": {
+        "generation": 110241.3547956381,
+        "roundtrip_translation": 3383.5012433333386,
+        "bidirectional_nli": 829.3863311786588,
+        "whole_quality_worker": 2786.3827304898614,
+        "optimized_total": 114454.24237015008,
+        "quality_worker_reserved_total": 116411.23876946128
+      }
+    },
+    {
+      "summaries": 98000000,
+      "measured_rate_gpu_hours": {
+        "generation": 153051.74757461087,
+        "roundtrip_translation": 4697.427559494452,
+        "bidirectional_nli": 1151.464689786371,
+        "whole_quality_worker": 3868.428024163424,
+        "optimized_total": 158900.6398238917,
+        "quality_worker_reserved_total": 161617.60315826873
+      },
+      "planning_gpu_hours": {
+        "generation": 180060.8794995422,
+        "roundtrip_translation": 5526.38536411112,
+        "bidirectional_nli": 1354.6643409251426,
+        "whole_quality_worker": 4551.091793133441,
+        "optimized_total": 186941.92920457848,
+        "quality_worker_reserved_total": 190138.35665678678
+      }
+    }
+  ],
+  "exclusions": [
+    "QA",
+    "training",
+    "cold startup",
+    "source acquisition",
+    "CPU/storage billing"
+  ],
+  "warning": "Gemma-only figures reuse timings of residual KU repairs after translation and Qwen editing. Applying this timing to summaries is hypothetical. It is not a measured direct repair rate, proven lower bound, guaranteed cost cap or zero-copy-compliance estimate."
+}

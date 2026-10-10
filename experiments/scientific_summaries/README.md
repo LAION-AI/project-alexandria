@@ -1,5 +1,9 @@
 # Scientific summaries: frozen cohort and model comparisons
 
+## Wording repair: back-translation, targeted edits and scaling
+
+The [completed 44-condition search](backtranslation_repair_search_20261010/README.md) reports all 8,800 QA slots, 500/1000-word KU profiles, full-source overlap, [repair recommendations](backtranslation_repair_search_20261010/RECOMMENDATIONS.md), and [38M/60M compute scenarios](backtranslation_repair_search_20261010/SCALING.md). No setting eliminates all five-word violations; direct Gemma-only costs are unconfirmed residual-timing proxies.
+
 ## Knowledge Units: chunk sizes and Gemma LoRA adapters
 
 The [completed 500-word Gemma follow-up](gemma_ku_distillation_20261009/ku500_followup_20261010/README.md) adds all missing base/adapter conditions and freshly judges both chunk sizes on the same 20 papers.

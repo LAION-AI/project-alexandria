@@ -4,6 +4,8 @@
 
 **Completed 500-word Gemma follow-up:** [Full 500/1,000-word KU table with base models, adapters and original-paper controls](ku500_followup_20261010/README.md). It freshly judges all contexts on the same frozen 20-paper cohort.
 
+**New repair results:** [Back-translation search, targeted Qwen/Gemma edits and both chunk profiles](../backtranslation_repair_search_20261010/README.md). [Repair recommendations](../backtranslation_repair_search_20261010/RECOMMENDATIONS.md) and [compute scenarios](../backtranslation_repair_search_20261010/SCALING.md) distinguish measured combined repair from unmeasured direct Gemma-only deployment.
+
 ## What this experiment measures
 
 A Knowledge Unit (KU) is a structured record of facts from a paper: a short contextual description plus entities, attributes and relationships. A paper is processed in consecutive chunks, and its KUs are combined into a factual context for a separate question-answering model. A summary is a prose-oriented representation of the same paper.

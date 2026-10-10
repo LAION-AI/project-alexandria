@@ -4,6 +4,8 @@ The user froze Ornith generation at **736 successful summaries** on 2026-10-04.
 The queued rest-run 2175758 was cancelled before starting; the remaining 129 of
 the original 865-paper source cohort are excluded from this frozen collection.
 
+**Wording-repair advice:** [Recommendations for summaries and KUs](../backtranslation_repair_search_20261010/RECOMMENDATIONS.md), with [scope and compute assumptions](../backtranslation_repair_search_20261010/SCALING.md). The Qwen-rank128 summary repair/scaling measurements are an external reference, not measurements of these Ornith-distilled adapters.
+
 ## Frozen targets and publication
 
 The independent Hugging Face dataset is **published and fully verified**:
