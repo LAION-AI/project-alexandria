@@ -1,0 +1,4662 @@
+{
+  "document_id": "fresh-bethgelab-298331",
+  "source_sha256": "b7eff773bb1f99e0ec70566688feff4ba5a0189784a14a115bf01994215833e7",
+  "kind": "ku",
+  "status": "generated",
+  "result": {
+    "schema_version": "1.0",
+    "title": "A six-month periodic fasting reduces microalbuminuria and improves metabolic control in patients with type 2 diabetes and diabetic nephropathy: a randomized controlled study",
+    "abstract_sha256": "",
+    "mode": "sequential",
+    "model": "base",
+    "config": {
+      "mode": "sequential",
+      "chunk_words": 500,
+      "context_words": 0,
+      "previous_units": 10,
+      "canonicalize": false,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 4096,
+      "parse_retries": 0
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "A randomized controlled study evaluated the impact of a six-month fasting-mimicking diet on metabolic markers and albuminuria in patients with type 2 diabetes and diabetic nephropathy. The intervention group showed significant improvements in microalbuminuria and insulin resistance compared to a Mediterranean diet control group, although these benefits were not sustained at the three-month follow-up. The study suggests that the lack of change in DNA damage and dicarbonyl detoxification markers may contribute to the relapse of albuminuria.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "duration": "six months",
+              "intervention_type": "dietary modification"
+            },
+            "relationships": [
+              {
+                "predicate": "reduces",
+                "target": "microalbuminuria",
+                "attributes": {
+                  "magnitude": "-30.3mg/g",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduces",
+                "target": "HOMA-IR",
+                "attributes": {
+                  "magnitude": "-3.8",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduces",
+                "target": "suPAR",
+                "attributes": {
+                  "magnitude": "-156.6pg/ml",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "no_change_observed_in",
+                "target": "markers of dicarbonyl detoxification",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "no_change_observed_in",
+                "target": "DNA-damage/repair markers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mediterranean diet",
+            "entity_id": "mediterranean_diet",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "role": "control group intervention",
+              "duration": "six months"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Type 2 diabetes patients with diabetic nephropathy",
+            "entity_id": "type_2_diabetes_patients_with_diabetic_nephropathy",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "sample_size": 40,
+              "baseline_hba1c": "7.8±0.2% (62.1±2.3 mmol/mol)",
+              "baseline_condition": "increased albumin-to-creatinine ratio (ACR)",
+              "model_entity_type": "population"
+            },
+            "relationships": [
+              {
+                "predicate": "randomized_to",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {
+                  "n": 21
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "randomized_to",
+                "target": "Mediterranean diet",
+                "attributes": {
+                  "n": 19
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Albumin-to-creatinine ratio (ACR)",
+            "entity_id": "albumin_to_creatinine_ratio_acr",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "role": "primary endpoint"
+            },
+            "relationships": [
+              {
+                "predicate": "difference_of_change_between_groups_all_patients",
+                "target": "110.3mg/g",
+                "attributes": {
+                  "ci": "99.2, 121.5mg/g",
+                  "p_value": "0.45"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "difference_of_change_microalbuminuria_subgroup",
+                "target": "-30.3mg/g",
+                "attributes": {
+                  "ci": "-35.7, -24.9mg/g",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "difference_of_change_macroalbuminuria_subgroup",
+                "target": "434.0mg/g",
+                "attributes": {
+                  "ci": "404.7, 463.4mg/g",
+                  "p_value": "0.23"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOMA-IR",
+            "entity_id": "homa_ir",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "role": "secondary endpoint"
+            },
+            "relationships": [
+              {
+                "predicate": "sustained_reduction_at_follow_up",
+                "target": "-1.9",
+                "attributes": {
+                  "ci": "-3.7, -0.1",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "suPAR",
+            "entity_id": "supar",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "role": "secondary endpoint",
+              "marker_for": "senescence"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Markers of dicarbonyl detoxification",
+            "entity_id": "markers_of_dicarbonyl_detoxification",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "specific_markers": "MG-H1, glyoxalase-1, hydroxyacetone"
+            },
+            "relationships": [
+              {
+                "predicate": "no_change_observed",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DNA-damage/repair markers",
+            "entity_id": "dna_damage_repair_markers",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "specific_marker": "yH2Ax"
+            },
+            "relationships": [
+              {
+                "predicate": "no_change_observed",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Diabetic nephropathy",
+            "entity_id": "diabetic_nephropathy",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "clinical_significance": "The most common cause of terminal kidney disease ",
+              "model_entity_type": "condition"
+            },
+            "relationships": [
+              {
+                "predicate": "treatment_options_limited_to",
+                "target": "control of glycemia, lipidemia and blood pressure",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SGLT2 inhibitors",
+            "entity_id": "sglt2_inhibitors",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "effect": "nephroprotection"
+            },
+            "relationships": [
+              {
+                "predicate": "renal_benefits_not_explained_by",
+                "target": "modest improvements in glycemic, blood pressure and lipid control",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 493,
+          "word_count": 493,
+          "sha256": "e46273c5dcc068c6e94680280cec983098372c485a7786046a95e278ea16ecbf",
+          "sentence_minhash": [
+            6510041791773535,
+            211045936105277080,
+            12309405932600981,
+            201948566748835051,
+            31941388625203915,
+            99098051124777616,
+            110722415692105071,
+            84916492449827032,
+            164501479184262938,
+            2607707833378508,
+            6226213327830117,
+            95656761971753031,
+            21933493368060407,
+            906306679132868,
+            192943377640405015,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'population' for 'Type 2 diabetes patients with diabetic nephropathy'",
+          "normalized unsupported entity type 'condition' for 'Diabetic nephropathy'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The text describes the pathophysiology of diabetic kidney disease and links hyperglycemia with fibrosis through specific metabolic pathways and oxidative stress. It presents a randomized, controlled study at the University Hospital in Heidelberg, which aims to investigate whether a fasting-like diet reduces albuminuria and alters markers for DNA damage and senescence. The study protocol involves six monthly diet cycles with specific refeeding assessments and adherence monitoring via ketone levels.",
+        "entities": [
+          {
+            "name": "diabetic kidney disease (DKD)",
+            "entity_id": "diabetic_kidney_disease_dkd",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "treatment_status": "Only progression can be slowed; long-lasting remission therapies are lacking"
+            },
+            "relationships": [
+              {
+                "predicate": "caused_by",
+                "target": "hyperglycemia",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with",
+                "target": "fibrosis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "hyperglycemia",
+            "entity_id": "hyperglycemia",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "leads_to",
+                "target": "decline in renal function",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "activates",
+                "target": "sorbitol pathway",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "activates",
+                "target": "hexosamine pathway",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increases",
+                "target": "oxidative stress",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "dicarbonyl stress",
+            "entity_id": "dicarbonyl_stress",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "implicated_in",
+                "target": "development of diabetic complications and DKD",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "AGE",
+            "entity_id": "age",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "implicated_in",
+                "target": "development of diabetic complications and DKD",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DNA-damage",
+            "entity_id": "dna_damage",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "described_in",
+                "target": "type 2 diabetes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "senescence",
+            "entity_id": "senescence",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "described_in",
+                "target": "type 2 diabetes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "nuclear phosphomimetic RAGE",
+            "entity_id": "nuclear_phosphomimetic_rage",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "mechanism": "overexpression"
+            },
+            "relationships": [
+              {
+                "predicate": "restores",
+                "target": "DNA-repair",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduces",
+                "target": "DNA-damage",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduces",
+                "target": "inflammation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "might_improve",
+                "target": "renal function",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "periodic fasting",
+            "entity_id": "periodic_fasting",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reduces",
+                "target": "oxidative damage",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduces",
+                "target": "inflammation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "supports",
+                "target": "cellular protection",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "activates",
+                "target": "lipolysis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "SGLT-2 inhibitors",
+            "entity_id": "sglt_2_inhibitors",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "enhance",
+                "target": "ketogenesis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shift_metabolism_from",
+                "target": "glucose oxidation",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "shift_metabolism_to",
+                "target": "fat and ketone body utilization (ketolysis)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "kidney metabolism",
+            "entity_id": "kidney_metabolism",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "relies_on",
+                "target": "lipolysis",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "relies_on",
+                "target": "ketone bodies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "randomized controlled open study",
+            "entity_id": "randomized_controlled_open_study",
+            "entity_type": "event",
+            "aliases": [],
+            "attributes": {
+              "location": "Hospitals specializing in endocrinology, diabetes, metabolism, and clinical chemistry, Heidelberg University Hospital ",
+              "ethics_approval": "Ethic-Nr. S-682/2016",
+              "registration": "DRKS00014287"
+            },
+            "relationships": [
+              {
+                "predicate": "primary_aim",
+                "target": "test if periodic fasting-mimicking diet (FMD) reduces ACR",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "secondary_aim",
+                "target": "investigate relation between ACR reduction and changes in dicarbonyl detoxification, fatty acid oxidation, DNA-damage/repair, and senescence markers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "study participants",
+            "entity_id": "study_participants",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "condition": "Type 2 diabetes with good blood sugar and blood pressure control. ",
+              "treatment_status": "optimized according to current guidelines",
+              "inclusion_criterion": "increased albumin-to-creatinine ratio (ACR) from two consecutive spot urine samples per KDIGO guidelines"
+            },
+            "relationships": [
+              {
+                "predicate": "received",
+                "target": "individual dietary counseling before baseline",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "underwent",
+                "target": "six diet cycles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "study protocol",
+            "entity_id": "study_protocol",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "diet_cycles": "six",
+              "cycle_duration": "five-day diet intervention",
+              "assessment_timing": "baseline, monthly after each cycle (day 6), and refeeding timepoints (one week after 3rd and 6th cycles)"
+            },
+            "relationships": [
+              {
+                "predicate": "assesses_adherence_via",
+                "target": "dietary protocols",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "assesses_adherence_via",
+                "target": "measurement of ketone bodies in blood and urine",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 493,
+          "end_word": 987,
+          "word_count": 494,
+          "sha256": "3ccf13bd243f38dd2c5b30e398ee2fd220ea214699f1caa9ce7a147a59705b05",
+          "sentence_minhash": [
+            103524869278618013,
+            7605519510423274,
+            14512286676696481,
+            61919449716151556,
+            133839408494452977,
+            62667647458868521,
+            23718652799488495,
+            83575544965282909,
+            130591936822558120,
+            243945572124720763,
+            10770288728711951,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            73860429008392155,
+            4555549854558376
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The study utilized a stratified randomization procedure based on BMI and HbA1c to assign participants to fasting-mimicking or Mediterranean diet groups. Specific caloric and macronutrient protocols were defined for the fasting intervention, alongside strict guidelines for medication adjustment and glycemic monitoring. Blood samples were processed under standardized conditions to measure beta-hydroxybutyrate levels.",
+        "entities": [
+          {
+            "name": "Randomization procedure",
+            "entity_id": "randomization_procedure",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "software": "Randomizer Version 2.0.3",
+              "stratification_factors": [
+                "BMI (cut-off 30.0 kg/m²)",
+                "HbA1c (cut-off 7.0%)"
+              ],
+              "access_control": "Accessible only to assigned randomization list managers"
+            },
+            "relationships": [
+              {
+                "predicate": "assigned_participants_to",
+                "target": "intervention or control group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "duration": "5 consecutive days each month",
+              "frequency": "Cycles initiated approximately 25 days apart",
+              "day_1_calories": "4600 kJ",
+              "day_1_macronutrients": "11% protein, 46% fat, 43% carbohydrates",
+              "days_2_to_5_calories": "3000 kJ per day",
+              "days_2_to_5_macronutrients": "9% protein, 44% fat, 47% carbohydrate",
+              "dietary_basis": "Plant-based",
+              "physiological_effect": "Mimics fasting-like effects on glucose and ketone bodies"
+            },
+            "relationships": [
+              {
+                "predicate": "assigned_to",
+                "target": "intervention group",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_insulin_adjustment",
+                "target": "Discontinue short-acting insulin; reduce long-acting insulin by 50%",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_medication_discontinuation",
+                "target": "Oral antidiabetic therapy",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mediterranean Diet (M-Diet)",
+            "entity_id": "mediterranean_diet_m_diet",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "duration": "5 consecutive days each month",
+              "frequency": "Cycles initiated approximately 25 days apart",
+              "caloric_intake": "No change compared to pre-study diet",
+              "adaptation_standard": "Mediterranean Diet Score (MDS)"
+            },
+            "relationships": [
+              {
+                "predicate": "assigned_to",
+                "target": "control group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Glycemic monitoring protocol",
+            "entity_id": "glycemic_monitoring_protocol",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "device": "Accu-Check Guide (Roche)",
+              "measurement_frequency": "At least 4 measurements daily",
+              "measurement_types": [
+                "Fasting",
+                "2-hour postprandial"
+              ],
+              "support_system": "24-hour telephone platform for reporting hypo- or hyperglycemic episodes"
+            },
+            "relationships": [
+              {
+                "predicate": "triggers_medication_reduction_if",
+                "target": "Fasting plasma glucose reduction >20% compared to previous measurement",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Blood pressure management protocol",
+            "entity_id": "blood_pressure_management_protocol",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "hypotension_threshold_systolic": "<100 mmHg",
+              "hypotension_threshold_diastolic": "<60 mmHg"
+            },
+            "relationships": [
+              {
+                "predicate": "triggers_medication_reduction_if",
+                "target": "Participant reports hypotension",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Beta-hydroxybutyrate measurement",
+            "entity_id": "beta_hydroxybutyrate_measurement",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "sample_type": "Venous blood",
+              "timing": "Each visit",
+              "device": "StatStrip Glucose/Ketone Measurement System (Nova Biomedical) ",
+              "processing_location": "Central laboratory of the Heidelberg University Hospital ",
+              "processing_conditions": "Standardized, immediate processing after fasting draw"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Study participants",
+            "entity_id": "study_participants",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "weight_loss_limit": "<10% accepted",
+              "physical_activity_instruction": "Avoid excessive activity during diet cycles; return to normal afterwards",
+              "documentation_requirement": "Create personalized nutrition and training plans. ",
+              "model_entity_type": "group"
+            },
+            "relationships": [
+              {
+                "predicate": "assessed_with",
+                "target": "SF-12 questionnaire",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "assessed_with",
+                "target": "Patient Health Questionnaire (PHQ)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 987,
+          "end_word": 1439,
+          "word_count": 452,
+          "sha256": "5470261db13a29a53beed762cbe5a0102549c991fec870ca5448ea4d18d6edf1",
+          "sentence_minhash": [
+            78394354238995921,
+            18551641988871988,
+            298143106562491488,
+            61919449716151556,
+            50154285776315358,
+            62667647458868521,
+            22742697865333914,
+            83575544965282909,
+            64333332902950267,
+            9462436175016187,
+            10770288728711951,
+            95656761971753031,
+            79488634481212582,
+            906306679132868,
+            161357415568664162,
+            3126852891561233
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'group' for 'Study participants'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The study defined its primary endpoint as the difference in ACR change between diet groups after six cycles, with secondary endpoints covering metabolic and DNA damage markers. A sample size of 40 was calculated to detect a 30% reduction in ACR, and 41 patients were randomized between March 2018 and May 2020. The statistical analysis included an ANCOVA and a hierarchical test. 38 patients completed three cycles, while 33 patients completed the entire study. ",
+        "entities": [
+          {
+            "name": "Primary endpoint",
+            "entity_id": "primary_endpoint",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "definition": "Absolute difference of change of ACR from baseline to after six diet cycles between FMD and M-Diet group"
+            },
+            "relationships": [
+              {
+                "predicate": "subgroup_analysis_performed_for",
+                "target": "micro-versus macroalbuminuria levels at baseline",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Secondary endpoints",
+            "entity_id": "secondary_endpoints",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "components": [
+                "ACR change after three cycles",
+                "HOMA-IR change after three and six cycles",
+                "Plasma MG-H1",
+                "Plasma MG",
+                "Glo-1 activity",
+                "pGlo-1 expression in WBC",
+                "Hydroxyacetone in RBC",
+                "Plasma AC profile",
+                "yH2Ax expression in WBC",
+                "suPAR"
+              ]
+            },
+            "relationships": [
+              {
+                "predicate": "markers_of_dicarbonyl_detoxification",
+                "target": "Hydroxyacetone in RBC, Plasma MG-H1, Plasma MG, Glo-1 activity, pGlo-1 expression",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "marker_of_fatty_acid_oxidation",
+                "target": "Plasma AC profile",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "marker_of_dna_damage_repair",
+                "target": "yH2Ax expression in WBC",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "marker_of_kidney_injury_and_senescence",
+                "target": "suPAR",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Safety monitoring",
+            "entity_id": "safety_monitoring",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "methods": [
+                "Vital signs assessment",
+                "Physical examination",
+                "Electrocardiogram",
+                "Adverse events assessment (CTCAE v4.0)",
+                "Laboratory results"
+              ]
+            },
+            "relationships": []
+          },
+          {
+            "name": "Power calculation",
+            "entity_id": "power_calculation",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "target_reduction": "A 30% decrease in ACR compared to the initial value. ",
+              "assumed_standard_deviation": "30% for both groups",
+              "significance_level": "5% two-sided",
+              "power": "at least 80%",
+              "estimated_dropout_rate": "15%",
+              "calculated_sample_size": "40 participants",
+              "software": "PASS 16.0.12"
+            },
+            "relationships": [
+              {
+                "predicate": "based_on_clinical_relevance_threshold",
+                "target": "30% reduction of albuminuria",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Statistical analysis",
+            "entity_id": "statistical_analysis",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "population": "Intention-to-treat",
+              "missing_data_handling": "Not imputed; available-case analysis",
+              "primary_comparison_method": "ANCOVA was adjusted to account for age, gender, weight loss, and the initial value. ",
+              "multiple_testing_correction": "Hierarchical test procedure for secondary endpoints",
+              "software": "R version 3.6.1"
+            },
+            "relationships": [
+              {
+                "predicate": "visualization_tools",
+                "target": "R core packages, tiduverse, pheatmap, GraphPad Prism version 5.00",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Study enrollment",
+            "entity_id": "study_enrollment",
+            "entity_type": "event",
+            "aliases": [],
+            "attributes": {
+              "start_date": "March 2018",
+              "end_date": "May 2020",
+              "total_randomized": "41 patients",
+              "FMD_group_size": "21",
+              "M_Diet_group_size": "20"
+            },
+            "relationships": [
+              {
+                "predicate": "excluded_patient",
+                "target": "1 patient from M-Diet group due to erysipelas",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "completed_three_cycles",
+                "target": "38 patients (95%)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "completed_study",
+                "target": "33 patients (83%)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "follow_up_attendance",
+                "target": "31 patients (78%)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "mean_follow_up_time",
+                "target": "112±31 days",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 1439,
+          "end_word": 1932,
+          "word_count": 493,
+          "sha256": "0635085d24fe345380e5f09e70331157570e5370693183d6494a604ae7ea3ce8",
+          "sentence_minhash": [
+            143470254565919416,
+            60625189416255572,
+            13745959893517690,
+            148613333131239159,
+            31941388625203915,
+            62667647458868521,
+            99359698575653691,
+            40361113771795953,
+            166844233492045914,
+            9462436175016187,
+            42389510456722272,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            29116561381011342,
+            489599467541456454
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 4,
+        "context_summary": "The study reports that the restrictions imposed during the pandemic were the main reason for participants dropping out after the third dietary cycle. Although the initial characteristics were similar, the fasting-like diet (FMD) showed significant advantages over the Mediterranean diet in certain subgroups, particularly in individuals with microalbuminuria, especially regarding the albumin-to-creatinine ratio (ACR) and metabolic markers. FMD also resulted in reduced urea levels, preserved eGFR, and decreased suPAR and HOMA-IR values, though lipid profiles remained unchanged.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "intervention_duration": "six diet cycles",
+              "comparison_group": "Mediterranean diet (M-Diet)"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_acr_in_subgroup",
+                "target": "patients with microalbuminuria",
+                "attributes": {
+                  "six_cycle_reduction": "54%",
+                  "three_cycle_reduction": "37%"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_urea_levels",
+                "target": "urea",
+                "attributes": {
+                  "three_cycle_change": "-11.8mg/dl",
+                  "six_cycle_change": "-17.9mg/dl"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "preserved_egfr",
+                "target": "eGFR based on cystatin C",
+                "attributes": {
+                  "six_cycle_difference": "8.3ml/min/1,73m²",
+                  "three_cycle_difference": "2.4ml/min/1,73m²"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_spar",
+                "target": "suPAR",
+                "attributes": {
+                  "three_cycle_difference": "-214.8pg/ml",
+                  "six_cycle_difference": "-156.6pg/ml"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_hba1c",
+                "target": "HbA1c",
+                "attributes": {
+                  "six_cycle_reduction": "17%",
+                  "three_cycle_change": "none"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_homa_ir",
+                "target": "HOMA-IR",
+                "attributes": {
+                  "six_cycle_reduction": "60%",
+                  "participant_subgroup": "non-insulin treated"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "no_change_in_lipids",
+                "target": "LDL, HDL, or triglyceride levels",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mediterranean diet (M-Diet)",
+            "entity_id": "mediterranean_diet_m_diet",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "role": "control_group"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_against",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Albumin-to-creatinine ratio (ACR)",
+            "entity_id": "albumin_to_creatinine_ratio_acr",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "unit": "mg/g"
+            },
+            "relationships": [
+              {
+                "predicate": "six_cycle_all_patients_difference",
+                "target": "110.3mg/g",
+                "attributes": {
+                  "p_value": "0.45"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "six_cycle_microalbuminuria_difference",
+                "target": "-30.3mg/g",
+                "attributes": {
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "six_cycle_macroalbuminuria_difference",
+                "target": "434.0mg/g",
+                "attributes": {
+                  "p_value": "0.23"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "three_cycle_all_patients_difference",
+                "target": "-62.5mg/g",
+                "attributes": {
+                  "p_value": "0.45"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "three_cycle_microalbuminuria_difference",
+                "target": "-23.7mg/g",
+                "attributes": {
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "three_cycle_macroalbuminuria_difference",
+                "target": "-176.2mg/g",
+                "attributes": {
+                  "p_value": "0.47"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Urea",
+            "entity_id": "urea",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "unit": "mg/dl"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "eGFR based on cystatin C",
+            "entity_id": "egfr_based_on_cystatin_c",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "unit": "ml/min/1,73m²"
+            },
+            "relationships": [
+              {
+                "predicate": "preserved_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "suPAR",
+            "entity_id": "supar",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "unit": "pg/ml"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HbA1c",
+            "entity_id": "hba1c",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "unit": "%"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOMA-IR",
+            "entity_id": "homa_ir",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reduced_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Lipid levels",
+            "entity_id": "lipid_levels",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "components": "LDL, HDL, triglycerides"
+            },
+            "relationships": [
+              {
+                "predicate": "unchanged_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Study withdrawal",
+            "entity_id": "study_withdrawal",
+            "entity_type": "event",
+            "aliases": [],
+            "attributes": {
+              "timing": "after third diet cycle and at follow-up"
+            },
+            "relationships": [
+              {
+                "predicate": "caused_by",
+                "target": "restrictions related to the Covid-19 pandemic",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 4,
+          "start_word": 1932,
+          "end_word": 2387,
+          "word_count": 455,
+          "sha256": "e1d37a9a844d3015c7d18e20b7f3373ad64aa9a97ed85d08a19568155cf6265d",
+          "sentence_minhash": [
+            6919897742352966,
+            60625189416255572,
+            40863640610520970,
+            22894168227513268,
+            117184690827267154,
+            39127440086368283,
+            99359698575653691,
+            341714292460901511,
+            149650309763788182,
+            2607707833378508,
+            104535835787444099,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            98254322503569589,
+            240807075185782334
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 5,
+        "context_summary": "The fasting-mimicking diet group achieved significant weight loss compared to the Mediterranean diet group, though body composition remained unchanged between groups. A 62% reduction in plasma MG-H1 was observed after three cycles, but this did not correlate with changes in albumin-to-creatinine ratio. Responders in the FMD group showed distinct acetylcarnitine levels, and only the reduction in HOMA-IR was sustained at follow-up.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD) group",
+            "entity_id": "fasting_mimicking_diet_fmd_group",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "weight_loss_after_3_cycles": "-5.6kg (-5.9%)",
+              "weight_loss_after_6_cycles": "-7.2kg (-7.5%)",
+              "male_participant_percentage": "71%",
+              "plasma_MG-H1_reduction_after_3_cycles": "62%",
+              "model_entity_type": "study_group"
+            },
+            "relationships": [
+              {
+                "predicate": "showed_significant_weight_loss",
+                "target": "compared to M-Diet group",
+                "attributes": {
+                  "p_value_3_cycles": "<=0.001",
+                  "p_value_6_cycles": "<=0.001"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "no_change_in_body_composition",
+                "target": "fat and fat-free mass",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "sustained_reduction_in",
+                "target": "HOMA-IR",
+                "attributes": {
+                  "change": "-1.9",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mediterranean diet (M-Diet) group",
+            "entity_id": "mediterranean_diet_m_diet_group",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "weight_loss_after_3_cycles": "-0.7kg (-0.8%)",
+              "weight_loss_after_6_cycles": "-1.1kg (-1.2%)",
+              "male_participant_percentage": "74%",
+              "model_entity_type": "study_group"
+            },
+            "relationships": [
+              {
+                "predicate": "no_significant_weight_loss_difference",
+                "target": "FMD group",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "no_change_in_body_composition",
+                "target": "fat and fat-free mass",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Plasma MG-H1",
+            "entity_id": "plasma_mg_h1",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "biomarker"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_by",
+                "target": "62%",
+                "attributes": {
+                  "timepoint": "after three diet cycles",
+                  "group": "FMD"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "no_association_with",
+                "target": "change in ACR",
+                "attributes": {
+                  "groups": "M-Diet and FMD"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Acetylcarnitine (C2)",
+            "entity_id": "acetylcarnitine_c2",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "metabolite"
+            },
+            "relationships": [
+              {
+                "predicate": "increased_in",
+                "target": "FMD responders",
+                "attributes": {
+                  "timepoint": "after three diet cycles"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "distinct_response_in",
+                "target": "FMD responders vs non-responders",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "FMD responders",
+            "entity_id": "fmd_responders",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "definition": "Participants with at least 30% improvement in ACR",
+              "baseline_ACR": "85.7mg/g",
+              "model_entity_type": "subgroup"
+            },
+            "relationships": [
+              {
+                "predicate": "lower_baseline_ACR_than",
+                "target": "FMD non-responders",
+                "attributes": {
+                  "non_responder_baseline_ACR": "271mg/g",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "M-Diet responders",
+            "entity_id": "m_diet_responders",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "definition": "Participants with at least 30% improvement in ACR",
+              "baseline_ACR": "55.5mg/g",
+              "model_entity_type": "subgroup"
+            },
+            "relationships": [
+              {
+                "predicate": "lower_baseline_ACR_than",
+                "target": "M-Diet non-responders",
+                "attributes": {
+                  "non_responder_baseline_ACR": "563.0mg/g",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "HOMA-IR",
+            "entity_id": "homa_ir",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "sustained_reduction_at_follow_up",
+                "target": "FMD group",
+                "attributes": {
+                  "change": "-1.9",
+                  "p_value": "<=0.05"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Antihyperglycemic medication",
+            "entity_id": "antihyperglycemic_medication",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "intervention"
+            },
+            "relationships": [
+              {
+                "predicate": "increased_in",
+                "target": "all participants except three FMD participants",
+                "attributes": {
+                  "timepoint": "follow-up"
+                },
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 5,
+          "start_word": 2387,
+          "end_word": 2864,
+          "word_count": 477,
+          "sha256": "ac7403a5bc713946b85e663e8b2362b98033e2fc0998eaeb4af1e7a98ef0e4c9",
+          "sentence_minhash": [
+            123739674064968645,
+            76987600409896885,
+            153262400589127199,
+            10004148275772588,
+            31941388625203915,
+            62667647458868521,
+            89633613770379075,
+            85390325476433150,
+            34383880606747972,
+            2607707833378508,
+            104535835787444099,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            95169533629451962,
+            109206766937244242
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'study_group' for 'Fasting-mimicking diet (FMD) group'",
+          "normalized unsupported entity type 'study_group' for 'Mediterranean diet (M-Diet) group'",
+          "normalized unsupported entity type 'biomarker' for 'Plasma MG-H1'",
+          "normalized unsupported entity type 'metabolite' for 'Acetylcarnitine (C2)'",
+          "normalized unsupported entity type 'subgroup' for 'FMD responders'",
+          "normalized unsupported entity type 'subgroup' for 'M-Diet responders'",
+          "normalized unsupported entity type 'intervention' for 'Antihyperglycemic medication'"
+        ]
+      },
+      {
+        "chunk_index": 6,
+        "context_summary": "The study reports that metabolic and renal improvements from the fasting-mimicking diet (FMD) reversed to baseline at follow-up, while the intervention remained safe with no severe adverse events. FMD allowed for greater reductions in antihyperglycemic and antihypertensive medications compared to the Mediterranean diet control group. The discussion highlights that FMD safely improves glycemic control and HOMA-IR, with distinct fatty acid oxidation responses in patients who showed reduced albuminuria.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "safety_profile": "well tolerated",
+              "adverse_event_rate": "71 to 95% of participants reported no adverse effects",
+              "common_symptoms": "weakness, muscle pain, dizziness, headache (grade 1 or 2)",
+              "severe_adverse_events": "none reported (grade 3 or higher)"
+            },
+            "relationships": [
+              {
+                "predicate": "reversed_to_baseline_at_follow_up",
+                "target": "ACR, MG-H1 plasma levels, and AC plasma profile",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_antihyperglycemic_medication_in",
+                "target": "57% of participants after three cycles; 67% after six cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_antihypertensive_medication_in",
+                "target": "10% of participants after three and six cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increased_blood_ketones",
+                "target": "3-fold after three and six cycles (0.50 mmol)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with_sustained_improvement_in",
+                "target": "HOMA-IR",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "showed_distinct_response_in",
+                "target": "markers of fatty acid oxidation in plasma",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Mediterranean diet (M-Diet)",
+            "entity_id": "mediterranean_diet_m_diet",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "compliance_indicator": "High MDS reported (6.1 MDS after three and six cycles)"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_antihyperglycemic_medication_in",
+                "target": "32% of participants after three cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increased_antihyperglycemic_medication_in",
+                "target": "5% of participants after three cycles; 21% after six cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduced_antihypertensive_medication_in",
+                "target": "5% of participants after three and six cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "increased_antihypertensive_medication_in",
+                "target": "5% of participants after three cycles; 10% after six cycles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Hypoglycemic episodes",
+            "entity_id": "hypoglycemic_episodes",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "grade_1_incidence": "10% (FMD) vs 11% (M-Diet)",
+              "grade_2_incidence": "5% (FMD) vs 11% (M-Diet)"
+            },
+            "relationships": [
+              {
+                "predicate": "no_significant_difference_between_groups",
+                "target": "FMD and M-Diet",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Blood ketones",
+            "entity_id": "blood_ketones",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "fmd_level_after_3_cycles": "0.50 mmol [0.32, 0.68]",
+              "fmd_level_after_6_cycles": "0.50 mmol [0.25, 0.75]",
+              "statistical_significance": "P≤0.001"
+            },
+            "relationships": [
+              {
+                "predicate": "increased_in",
+                "target": "FMD group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MDS",
+            "entity_id": "mds",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "m_diet_value_after_3_cycles": "6.1 [5.5, 6.7]",
+              "m_diet_value_after_6_cycles": "6.1 [5.4, 6.7]",
+              "interpretation": "sign of good compliance"
+            },
+            "relationships": [
+              {
+                "predicate": "reported_in",
+                "target": "M-Diet group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Subjective health status",
+            "entity_id": "subjective_health_status",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "components": "somatic and depression symptoms"
+            },
+            "relationships": [
+              {
+                "predicate": "no_difference_between_groups",
+                "target": "FMD and M-Diet",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MG-H1",
+            "entity_id": "mg_h1",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "origin": "dicarbonyl-derived"
+            },
+            "relationships": [
+              {
+                "predicate": "showed_transient_reduction",
+                "target": "FMD group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "suPAR",
+            "entity_id": "supar",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "classification": "senescence marker"
+            },
+            "relationships": [
+              {
+                "predicate": "showed_transient_reduction",
+                "target": "FMD group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Dicarbonyl detoxification and DNA-damage/repair markers",
+            "entity_id": "dicarbonyl_detoxification_and_dna_damage_repair_markers",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "no_difference_observed",
+                "target": "FMD group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 6,
+          "start_word": 2864,
+          "end_word": 3363,
+          "word_count": 499,
+          "sha256": "d7704b202ad10d8b841117183b3a73ade4e887ce7803ccd67b62181f560ab0e2",
+          "sentence_minhash": [
+            228487063155910791,
+            18551641988871988,
+            153262400589127199,
+            61919449716151556,
+            439990425904285965,
+            99436724310786061,
+            134854053530791596,
+            84916492449827032,
+            149650309763788182,
+            316267458192039586,
+            128047967744972732,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            161357415568664162,
+            187819574551997385
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 7,
+        "context_summary": "The study found that fasting-mimicking diet (FMD) reduced microalbuminuria only in patients with pre-existing microalbuminuria, with effects reversing after refeeding. Metabolic improvements were linked to reduced medication use and specific metabolic markers like acetylcarnitine and glycine, which distinguished responders from non-responders. The authors suggest that FMD's nephroprotective effects may involve ketogenesis and fatty acid oxidation, similar to SGLT-2 inhibitors, but do not prevent progression in macroalbuminuria.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "effect_on_overall_group": "No change in ACR levels",
+              "effect_on_microalbuminuria_patients": "Reduction in ACR",
+              "effect_on_macroalbuminuria_patients": "No difference in ACR",
+              "sustained_effect": "No sustained effect on albuminuria at follow-up",
+              "mechanism_hypothesis": "Induction of mild ketogenesis and shift to ketolysis"
+            },
+            "relationships": [
+              {
+                "predicate": "reverses_after",
+                "target": "refeeding",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with_reduction_in",
+                "target": "antihyperglycemic and antihypertensive medication",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "compared_to",
+                "target": "SGLT-2 inhibitors",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Microalbuminuria",
+            "entity_id": "microalbuminuria",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "pathogenic_targets": "vasculature, glomerulus, and tubular cells",
+              "response_to_fmd": "Reduced in FMD group",
+              "model_entity_type": "condition"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_by",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Macroalbuminuria",
+            "entity_id": "macroalbuminuria",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "response_to_fmd": "No difference in ACR",
+              "implication": "This suggests that FMD (Focal Segmental Glomerulosclerosis) does not offer any protection once fibrosis and a loss of kidney structure have already occurred. ",
+              "model_entity_type": "condition"
+            },
+            "relationships": []
+          },
+          {
+            "name": "SGLT-2 inhibitors",
+            "entity_id": "sglt_2_inhibitors",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "effect_on_microalbuminuria": "Reduction comparable to FMD",
+              "nephroprotective_mechanism": "Induction of mild ketogenesis shifting energy metabolism to ketolysis",
+              "model_entity_type": "medication_class"
+            },
+            "relationships": [
+              {
+                "predicate": "compared_with",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Acetylcarnitine",
+            "entity_id": "acetylcarnitine",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "role_in_study": "Discriminated between responders and non-responders regarding ACR improvement",
+              "increase_cause": "Likely due to a pronounced activation of lipolysis during a prolonged fasting period. ",
+              "uncertainty": "Unclear if it is a marker of compliance or a substrate for renal metabolism affecting microalbuminuria response",
+              "model_entity_type": "metabolite"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "FMD responders",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "linked_to",
+                "target": "circulating short-chain fatty acids",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Glycine",
+            "entity_id": "glycine",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "observation_in_study": "Increased concentration in responders",
+              "known_effects": "Protective effects on renal tubular injury in experimental models",
+              "potential_mechanism": "May enhance Glo-1 function and restore antioxidant defense in kidney",
+              "model_entity_type": "amino_acid"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "FMD responders",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "may_enhance",
+                "target": "Glo-1 activity",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Antihyperglycemic and antihypertensive medication",
+            "entity_id": "antihyperglycemic_and_antihypertensive_medication",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "change_in_fmd_group": "Strong reduction over time",
+              "attribution": "Attributed to diet intervention reflecting improved metabolic control",
+              "model_entity_type": "medication"
+            },
+            "relationships": [
+              {
+                "predicate": "reduced_in",
+                "target": "Fasting-mimicking diet (FMD) group",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Kidney metabolism",
+            "entity_id": "kidney_metabolism",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "reliance": "Highly relies on lipolysis and ketone bodies",
+              "model_entity_type": "biological_process"
+            },
+            "relationships": [
+              {
+                "predicate": "supports",
+                "target": "nephroprotective effects of fatty acid oxidation and ketogenesis",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 7,
+          "start_word": 3363,
+          "end_word": 3841,
+          "word_count": 478,
+          "sha256": "8c2e53af3f854057bb85e4f6276b64f7bcff92197731782168ab54778ab415ec",
+          "sentence_minhash": [
+            14279474218976588,
+            18551641988871988,
+            12309405932600981,
+            78327297244480524,
+            117184690827267154,
+            276121774265279552,
+            23718652799488495,
+            83575544965282909,
+            96635883400075078,
+            341344229639597412,
+            19416574622547768,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            95169533629451962,
+            109206766937244242
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'condition' for 'Microalbuminuria'",
+          "normalized unsupported entity type 'condition' for 'Macroalbuminuria'",
+          "normalized unsupported entity type 'medication_class' for 'SGLT-2 inhibitors'",
+          "normalized unsupported entity type 'metabolite' for 'Acetylcarnitine'",
+          "normalized unsupported entity type 'amino_acid' for 'Glycine'",
+          "normalized unsupported entity type 'medication' for 'Antihyperglycemic and antihypertensive medication'",
+          "normalized unsupported entity type 'biological_process' for 'Kidney metabolism'"
+        ]
+      },
+      {
+        "chunk_index": 8,
+        "context_summary": "The study found that fasting-mimicking diet (FMD) did not activate dicarbonyl detoxification or DNA repair pathways, which may explain the rapid return of albuminuria after the intervention. The authors suggest that longer FMD periods might be necessary for nephropathy reversal, while noting that metabolic changes likely involve sustained metabolic redirection rather than just caloric restriction. Limitations include the caloric restriction in the FMD group compared to the isocaloric control, though statistical adjustments and strict glycemic control were applied.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "duration_tested": "six cycles",
+              "metabolic_effect": "sustained redirection of metabolism",
+              "safety_profile": "no severe hypoglycemia or hypotension"
+            },
+            "relationships": [
+              {
+                "predicate": "failed_to_activate",
+                "target": "dicarbonyl detoxification pathways",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "failed_to_reconstitute",
+                "target": "DNA-damage/repair",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with_rapid_increase_in",
+                "target": "ACR after termination",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "associated_with_rapid_increase_in",
+                "target": "suPAR after termination",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_longer_period_for",
+                "target": "nephropathy reversal",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "involves_caloric_restriction",
+                "target": "true",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Dicarbonyl detoxification pathways",
+            "entity_id": "dicarbonyl_detoxification_pathways",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "status_in_study": "not activated or reconstituted",
+              "model_entity_type": "biological_process"
+            },
+            "relationships": [
+              {
+                "predicate": "indicated_by_lack_of_change_in",
+                "target": "plasma methylglyoxal",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "indicated_by_lack_of_increase_in",
+                "target": "Glo-1 activity",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "indicated_by_lack_of_increase_in",
+                "target": "pGlo-1 expression in WBC",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "indicated_by_no_change_in",
+                "target": "hydroxyacetone in RBC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "DNA-damage/repair",
+            "entity_id": "dna_damage_repair",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "status_in_study": "not reconstituted during FMD",
+              "model_entity_type": "biological_process"
+            },
+            "relationships": [
+              {
+                "predicate": "lack_of_reconstitution_interpreted_as_explanation_for",
+                "target": "rapid increase of ACR after FMD termination",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "suPAR",
+            "entity_id": "supar",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "biological_role": "Indicator of accelerated aging and senescence "
+            },
+            "relationships": [
+              {
+                "predicate": "showed_fast_increase_after",
+                "target": "FMD termination",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Methylglyoxal (MG)",
+            "entity_id": "methylglyoxal_mg",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "showed_lack_of_change_in_plasma",
+                "target": "true",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Glo-1",
+            "entity_id": "glo_1",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "enzyme"
+            },
+            "relationships": [
+              {
+                "predicate": "activity_did_not_increase_in",
+                "target": "WBC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "pGlo-1",
+            "entity_id": "pglo_1",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "protein"
+            },
+            "relationships": [
+              {
+                "predicate": "expression_did_not_increase_in",
+                "target": "WBC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Hydroxyacetone",
+            "entity_id": "hydroxyacetone",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "role": "reflects alternative MG detoxification pathways such as aldo-keto reductase",
+              "model_entity_type": "molecule"
+            },
+            "relationships": [
+              {
+                "predicate": "showed_no_change_in",
+                "target": "RBC",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "MG-H1",
+            "entity_id": "mg_h1",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "reduction_observed_after",
+                "target": "three FMD cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduction_not_observed_after",
+                "target": "six FMD cycles",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "suggests_changes_are_unlikely_due_only_to",
+                "target": "reduced energy intake",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Control group diet",
+            "entity_id": "control_group_diet",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "caloric_status": "isocaloric",
+              "weight_loss": "mild"
+            },
+            "relationships": [
+              {
+                "predicate": "contrasted_with",
+                "target": "caloric restriction of FMD",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Statistical analysis",
+            "entity_id": "statistical_analysis",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "adjusted_for",
+                "target": "weight loss",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Albuminuria",
+            "entity_id": "albuminuria",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "clinical_condition"
+            },
+            "relationships": [
+              {
+                "predicate": "reduction_less_likely_affected_by",
+                "target": "weight loss",
+                "attributes": {
+                  "reason": "weight loss persists at refeeding while albuminuria increases"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "significant_reduction_observed_in_subgroup_of",
+                "target": "patients with microalbuminuria",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Baseline albuminuria levels",
+            "entity_id": "baseline_albuminuria_levels",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "are_predictors_of",
+                "target": "development of diabetic nephropathy in type 2 diabetes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 8,
+          "start_word": 3841,
+          "end_word": 4333,
+          "word_count": 492,
+          "sha256": "08156e3519dadfe820ed0612bab0b444df52b71928cb959c74ffbc6573a9d23b",
+          "sentence_minhash": [
+            147519523736366927,
+            1306423125707224,
+            153262400589127199,
+            125075598868273132,
+            26384097017582652,
+            99436724310786061,
+            23718652799488495,
+            85390325476433150,
+            96635883400075078,
+            17444917348060025,
+            67831053780325945,
+            53801230756016856,
+            38129318889309710,
+            906306679132868,
+            95169533629451962,
+            285412106277652386
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'biological_process' for 'Dicarbonyl detoxification pathways'",
+          "normalized unsupported entity type 'biological_process' for 'DNA-damage/repair'",
+          "normalized unsupported entity type 'molecule' for 'Methylglyoxal (MG)'",
+          "normalized unsupported entity type 'enzyme' for 'Glo-1'",
+          "normalized unsupported entity type 'protein' for 'pGlo-1'",
+          "normalized unsupported entity type 'molecule' for 'Hydroxyacetone'",
+          "normalized unsupported entity type 'clinical_condition' for 'Albuminuria'"
+        ]
+      },
+      {
+        "chunk_index": 9,
+        "context_summary": "The study concludes that fasting-mimicking diet (FMD) cycles, when combined with intensive diabetes care, can reduce albuminuria and improve metabolic control in type 2 diabetes patients with microalbuminuria. Limitations include a small sample size and the absence of kidney biopsies, which restricted the exploration of renal cell metabolism. The authors suggest that continued FMD cycles may be necessary to sustain benefits, as the lack of changes in DNA repair and dicarbonyl detoxification markers may explain the relapse of albuminuria.",
+        "entities": [
+          {
+            "name": "Fasting-mimicking diet (FMD)",
+            "entity_id": "fasting_mimicking_diet_fmd",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "clinical_integration": "In addition to the current guidelines, when used in conjunction with intensive diabetes management. ",
+              "duration_suggestion": "They could potentially be continued for an extended period. "
+            },
+            "relationships": [
+              {
+                "predicate": "reduces",
+                "target": "ACR in type 2 diabetes patients with microalbuminuria",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "improves",
+                "target": "glycemic and blood pressure control",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "reduces",
+                "target": "insulin resistance (sustained, adjusted for weight loss)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "affects",
+                "target": "markers of incomplete lipid oxidation in patients with improved albuminuria",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Type 2 diabetes patients with microalbuminuria",
+            "entity_id": "type_2_diabetes_patients_with_microalbuminuria",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "model_entity_type": "population"
+            },
+            "relationships": [
+              {
+                "predicate": "benefits_from",
+                "target": "Fasting-mimicking diet (FMD)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Study limitations",
+            "entity_id": "study_limitations",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "sample_size": "small",
+              "data_collection_gap": "kidney biopsies not collected"
+            },
+            "relationships": [
+              {
+                "predicate": "limits_exploration_of",
+                "target": "renal cell metabolism",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires_future_studies_to_address",
+                "target": "generalizability in larger cohorts",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Markers of dicarbonyl detoxification and DNA-damage/repair",
+            "entity_id": "markers_of_dicarbonyl_detoxification_and_dna_damage_repair",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "observed_change": "lack of changes"
+            },
+            "relationships": [
+              {
+                "predicate": "may_explain",
+                "target": "relapse of albuminuria after six FMD cycles",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Markers of incomplete lipid oxidation",
+            "entity_id": "markers_of_incomplete_lipid_oxidation",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {},
+            "relationships": [
+              {
+                "predicate": "show_distinct_effects_in",
+                "target": "patients showing improvement of albuminuria",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "potential_use",
+                "target": "development of new therapeutic strategies",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 9,
+          "start_word": 4333,
+          "end_word": 4701,
+          "word_count": 368,
+          "sha256": "0271f0dbe51e1cd1447c560755caaba3232fe41cbdfc9f6cbf72b3d916959a18",
+          "sentence_minhash": [
+            147519523736366927,
+            1306423125707224,
+            263266681512727230,
+            37498130448765965,
+            60043449279178472,
+            99436724310786061,
+            134854053530791596,
+            47615437990415314,
+            266927695903760850,
+            67885135535576213,
+            141479479946104613,
+            95656761971753031,
+            38129318889309710,
+            906306679132868,
+            320556702413602850,
+            285412106277652386
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'population' for 'Type 2 diabetes patients with microalbuminuria'"
+        ]
+      }
+    ],
+    "canonical_entities": []
+  },
+  "chunks_expected": 10,
+  "chunks_generated": 10,
+  "failed_chunks": [],
+  "repair": {
+    "accepted_windows": 16,
+    "rolled_back": false,
+    "original_context_sha256": "254bedf444def8ab6a9b2f3fb46cbdffa09552e317a75fabc1c7eb7515993b5d",
+    "final_context_sha256": "5b7b5fa61d190ef05a16c2ed6a785c124df67dcc751a4791d9eda2fbac4c8762",
+    "critical_values": {
+      "passed": true,
+      "checks": {
+        "numbers": true,
+        "quantities": true,
+        "formulas": true,
+        "mathematical_variables": true,
+        "operators": true
+      },
+      "before": {
+        "numbers": [
+          "2",
+          "-30.3",
+          "0.05",
+          "-3.8",
+          "0.05",
+          "0.05",
+          "2",
+          "4E+1",
+          "7.8",
+          "0.2",
+          "62.1",
+          "2.3",
+          "21",
+          "19",
+          "110.3",
+          "99.2",
+          "121.5",
+          "0.45",
+          "-30.3",
+          "-35.7",
+          "-24.9",
+          "0.05",
+          "434",
+          "404.7",
+          "463.4",
+          "0.23",
+          "-1.9",
+          "-3.7",
+          "-0.1",
+          "0.05",
+          "1",
+          "2",
+          "2",
+          "2",
+          "682",
+          "2016",
+          "2",
+          "6",
+          "3E+1",
+          "2",
+          "7",
+          "5",
+          "25",
+          "4.6E+3",
+          "11",
+          "46",
+          "43",
+          "3E+3",
+          "9",
+          "44",
+          "47",
+          "5E+1",
+          "5",
+          "25",
+          "4",
+          "2",
+          "24",
+          "2E+1",
+          "1E+2",
+          "6E+1",
+          "1E+1",
+          "12",
+          "4E+1",
+          "3E+1",
+          "41",
+          "2018",
+          "2.02E+3",
+          "38",
+          "33",
+          "1",
+          "1",
+          "1",
+          "1",
+          "3E+1",
+          "3E+1",
+          "5",
+          "8E+1",
+          "15",
+          "4E+1",
+          "3E+1",
+          "5",
+          "2018",
+          "2.02E+3",
+          "41",
+          "21",
+          "2E+1",
+          "1",
+          "38",
+          "95",
+          "33",
+          "83",
+          "31",
+          "78",
+          "112",
+          "31",
+          "54",
+          "37",
+          "-11.8",
+          "-17.9",
+          "1",
+          "73",
+          "2",
+          "1",
+          "73",
+          "2",
+          "17",
+          "6E+1",
+          "110.3",
+          "0.45",
+          "-30.3",
+          "0.05",
+          "434",
+          "0.23",
+          "-62.5",
+          "0.45",
+          "-23.7",
+          "0.05",
+          "-176.2",
+          "0.47",
+          "1",
+          "73",
+          "2",
+          "19",
+          "62",
+          "-5.6",
+          "-5.9",
+          "-7.2",
+          "-7.5",
+          "71",
+          "62",
+          "0.001",
+          "0.001",
+          "-1.9",
+          "0.05",
+          "-0.7",
+          "-0.8",
+          "-1.1",
+          "-1.2",
+          "74",
+          "62",
+          "3E+1",
+          "85.7",
+          "271",
+          "0.05",
+          "3E+1",
+          "55.5",
+          "563",
+          "0.05",
+          "-1.9",
+          "0.05",
+          "71",
+          "95",
+          "1",
+          "2",
+          "3",
+          "57",
+          "67",
+          "1E+1",
+          "3",
+          "0.5",
+          "6.1",
+          "32",
+          "5",
+          "21",
+          "5",
+          "5",
+          "1E+1",
+          "1E+1",
+          "11",
+          "5",
+          "11",
+          "0.5",
+          "0.32",
+          "0.68",
+          "0.5",
+          "0.25",
+          "0.75",
+          "0.001",
+          "6.1",
+          "5.5",
+          "6.7",
+          "6.1",
+          "5.4",
+          "6.7",
+          "2",
+          "2",
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "quantities": [
+          [
+            "-30.3",
+            "mg/g"
+          ],
+          [
+            "0.2",
+            "%"
+          ],
+          [
+            "2.3",
+            "mmol/mol"
+          ],
+          [
+            "110.3",
+            "mg/g"
+          ],
+          [
+            "121.5",
+            "mg/g"
+          ],
+          [
+            "-30.3",
+            "mg/g"
+          ],
+          [
+            "-24.9",
+            "mg/g"
+          ],
+          [
+            "434",
+            "mg/g"
+          ],
+          [
+            "463.4",
+            "mg/g"
+          ],
+          [
+            "3E+1",
+            "kg/m"
+          ],
+          [
+            "7",
+            "%"
+          ],
+          [
+            "4.6E+3",
+            "kJ"
+          ],
+          [
+            "11",
+            "%"
+          ],
+          [
+            "46",
+            "%"
+          ],
+          [
+            "43",
+            "%"
+          ],
+          [
+            "3E+3",
+            "kJ"
+          ],
+          [
+            "9",
+            "%"
+          ],
+          [
+            "44",
+            "%"
+          ],
+          [
+            "47",
+            "%"
+          ],
+          [
+            "5E+1",
+            "%"
+          ],
+          [
+            "2E+1",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "8E+1",
+            "%"
+          ],
+          [
+            "15",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "95",
+            "%"
+          ],
+          [
+            "83",
+            "%"
+          ],
+          [
+            "78",
+            "%"
+          ],
+          [
+            "54",
+            "%"
+          ],
+          [
+            "37",
+            "%"
+          ],
+          [
+            "-11.8",
+            "mg"
+          ],
+          [
+            "-17.9",
+            "mg"
+          ],
+          [
+            "73",
+            "m^2"
+          ],
+          [
+            "73",
+            "m^2"
+          ],
+          [
+            "17",
+            "%"
+          ],
+          [
+            "6E+1",
+            "%"
+          ],
+          [
+            "110.3",
+            "mg/g"
+          ],
+          [
+            "-30.3",
+            "mg/g"
+          ],
+          [
+            "434",
+            "mg/g"
+          ],
+          [
+            "-62.5",
+            "mg/g"
+          ],
+          [
+            "-23.7",
+            "mg/g"
+          ],
+          [
+            "-176.2",
+            "mg/g"
+          ],
+          [
+            "73",
+            "m^2"
+          ],
+          [
+            "62",
+            "%"
+          ],
+          [
+            "-5.6",
+            "kg"
+          ],
+          [
+            "-5.9",
+            "%"
+          ],
+          [
+            "-7.2",
+            "kg"
+          ],
+          [
+            "-7.5",
+            "%"
+          ],
+          [
+            "71",
+            "%"
+          ],
+          [
+            "62",
+            "%"
+          ],
+          [
+            "-0.7",
+            "kg"
+          ],
+          [
+            "-0.8",
+            "%"
+          ],
+          [
+            "-1.1",
+            "kg"
+          ],
+          [
+            "-1.2",
+            "%"
+          ],
+          [
+            "74",
+            "%"
+          ],
+          [
+            "62",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "85.7",
+            "mg/g"
+          ],
+          [
+            "271",
+            "mg/g"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "55.5",
+            "mg/g"
+          ],
+          [
+            "563",
+            "mg/g"
+          ],
+          [
+            "95",
+            "%"
+          ],
+          [
+            "57",
+            "%"
+          ],
+          [
+            "67",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "0.5",
+            "mmol"
+          ],
+          [
+            "32",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "21",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "11",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "11",
+            "%"
+          ],
+          [
+            "0.5",
+            "mmol"
+          ],
+          [
+            "0.5",
+            "mmol"
+          ]
+        ],
+        "formulas": [
+          "P≤0.001",
+          "S-682/2016",
+          "chemical:C2",
+          "chemical:DRKS00014287",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:SGLT2",
+          "m^2",
+          "m^2",
+          "m^2",
+          "m^2",
+          "n>2E+1"
+        ],
+        "mathematical_variables": [
+          "D_group_size",
+          "M_Diet_group_size",
+          "a_MG",
+          "a_collection_gap",
+          "c_effect",
+          "c_intake",
+          "c_marker",
+          "c_markers",
+          "c_status",
+          "c_targets",
+          "d_acr_in_subgroup",
+          "d_against",
+          "d_antihyperglycemic_medication_in",
+          "d_antihyperglycemic_medication_in",
+          "d_antihyperglycemic_medication_in",
+          "d_antihypertensive_medication_in",
+          "d_antihypertensive_medication_in",
+          "d_antihypertensive_medication_in",
+          "d_blood_ketones",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by_lack_of_change_in",
+          "d_by_lack_of_increase_in",
+          "d_by_lack_of_increase_in",
+          "d_by_no_change_in",
+          "d_change",
+          "d_date",
+          "d_distinct_response_in",
+          "d_dropout_rate",
+          "d_effect",
+          "d_egfr",
+          "d_fast_increase_after",
+          "d_for",
+          "d_hba1c",
+          "d_homa_ir",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_lack_of_change_in_plasma",
+          "d_level_after_3_cycles",
+          "d_level_after_6_cycles",
+          "d_no_change_in",
+          "d_on_clinical_relevance_threshold",
+          "d_participants_to",
+          "d_patient",
+          "d_reduction_at_follow_up",
+          "d_reduction_at_follow_up",
+          "d_reduction_in",
+          "d_sample_size",
+          "d_significant_weight_loss",
+          "d_spar",
+          "d_standard_deviation",
+          "d_study",
+          "d_three_cycles",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to_activate",
+          "d_to_baseline_at_follow_up",
+          "d_to_reconstitute",
+          "d_transient_reduction",
+          "d_transient_reduction",
+          "d_urea_levels",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with_rapid_increase_in",
+          "d_with_rapid_increase_in",
+          "d_with_reduction_in",
+          "d_with_sustained_improvement_in",
+          "e_1_incidence",
+          "e_2_incidence",
+          "e_ACR",
+          "e_ACR",
+          "e_adverse_events",
+          "e_cause",
+          "e_condition",
+          "e_cycle_all_patients_difference",
+          "e_cycle_change",
+          "e_cycle_change",
+          "e_cycle_difference",
+          "e_cycle_difference",
+          "e_cycle_macroalbuminuria_difference",
+          "e_cycle_microalbuminuria_difference",
+          "e_cycle_reduction",
+          "e_duration",
+          "e_event_rate",
+          "e_hba1c",
+          "e_in_fmd_group",
+          "e_in_study",
+          "e_indicator",
+          "e_level",
+          "e_mechanism",
+          "e_of_change_between_groups_all_patients",
+          "e_of_change_macroalbuminuria_subgroup",
+          "e_of_change_microalbuminuria_subgroup",
+          "e_participant_percentage",
+          "e_participant_percentage",
+          "e_predictors_of",
+          "e_size",
+          "e_size",
+          "e_testing_correction",
+          "e_to_fmd",
+          "e_to_fmd",
+          "e_type",
+          "g_conditions",
+          "g_data_handling",
+          "g_location",
+          "k_of_reconstitution_interpreted_as_explanation_for",
+          "l_activity_instruction",
+          "l_benefits_not_explained_by",
+          "l_condition",
+          "l_effect",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_group",
+          "l_integration",
+          "l_mechanism",
+          "l_process",
+          "l_process",
+          "l_process",
+          "l_randomized",
+          "l_role",
+          "l_significance",
+          "l_significance",
+          "l_use",
+          "m_diet_value_after_3_cycles",
+          "m_diet_value_after_6_cycles",
+          "m_hypothesis",
+          "n_after_3_cycles",
+          "n_class",
+          "n_criterion",
+          "n_did_not_increase_in",
+          "n_duration",
+          "n_effects",
+          "n_factors",
+          "n_follow_up_time",
+          "n_group",
+          "n_in_study",
+          "n_less_likely_affected_by",
+          "n_not_observed_after",
+          "n_observed_after",
+          "n_requirement",
+          "n_responder_baseline_ACR",
+          "n_responder_baseline_ACR",
+          "n_standard",
+          "n_suggestion",
+          "n_symptoms",
+          "n_tested",
+          "n_threshold_diastolic",
+          "n_threshold_systolic",
+          "n_tools",
+          "n_type",
+          "o_acid",
+          "o_association_with",
+          "o_change_in_body_composition",
+          "o_change_in_body_composition",
+          "o_change_in_lipids",
+          "o_change_observed",
+          "o_change_observed",
+          "o_change_observed_in",
+          "o_change_observed_in",
+          "o_difference_between_groups",
+          "o_difference_observed",
+          "o_significant_difference_between_groups",
+          "o_significant_weight_loss_difference",
+          "p_analysis_performed_for",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value_3_cycles",
+          "p_value_6_cycles",
+          "r_baseline_ACR_than",
+          "r_baseline_ACR_than",
+          "r_for",
+          "r_of_dna_damage_repair",
+          "r_of_fatty_acid_oxidation",
+          "r_of_kidney_injury_and_senescence",
+          "s_2_to_5_calories",
+          "s_2_to_5_macronutrients",
+          "s_adherence_via",
+          "s_adherence_via",
+          "s_after",
+          "s_approval",
+          "s_caloric_restriction",
+          "s_changes_are_unlikely_due_only_to",
+          "s_control",
+          "s_exploration_of",
+          "s_from",
+          "s_future_studies_to_address",
+          "s_in_study",
+          "s_in_study",
+          "s_insulin_adjustment",
+          "s_longer_period_for",
+          "s_medication_discontinuation",
+          "s_medication_reduction_if",
+          "s_medication_reduction_if",
+          "s_of_dicarbonyl_detoxification",
+          "s_on",
+          "s_on",
+          "s_to",
+          "t_cycles",
+          "t_date",
+          "t_frequency",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_improve",
+          "t_loss",
+          "t_loss_after_3_cycles",
+          "t_loss_after_3_cycles",
+          "t_loss_after_6_cycles",
+          "t_loss_after_6_cycles",
+          "t_loss_limit",
+          "t_metabolism_from",
+          "t_metabolism_to",
+          "t_on_macroalbuminuria_patients",
+          "t_on_microalbuminuria",
+          "t_on_microalbuminuria_patients",
+          "t_on_overall_group",
+          "t_options_limited_to",
+          "t_reduction",
+          "t_reduction_observed_in_subgroup_of",
+          "t_response_in",
+          "t_status",
+          "t_status",
+          "t_subgroup",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_system",
+          "t_timing",
+          "t_types",
+          "w_distinct_effects_in",
+          "w_up_attendance",
+          "x_cycle_all_patients_difference",
+          "x_cycle_change",
+          "x_cycle_difference",
+          "x_cycle_difference",
+          "x_cycle_macroalbuminuria_difference",
+          "x_cycle_microalbuminuria_difference",
+          "x_cycle_reduction",
+          "x_cycle_reduction",
+          "x_cycle_reduction",
+          "y_1_calories",
+          "y_1_macronutrients",
+          "y_aim",
+          "y_aim",
+          "y_basis",
+          "y_comparison_method",
+          "y_did_not_increase_in",
+          "y_enhance",
+          "y_explain",
+          "y_group",
+          "y_group",
+          "y_profile",
+          "y_profile"
+        ],
+        "operators": [
+          "<=",
+          "<=",
+          "<=",
+          "±",
+          "±",
+          "<=",
+          "<=",
+          ">",
+          "<",
+          "<",
+          "<",
+          "±",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "≤"
+        ]
+      },
+      "after": {
+        "numbers": [
+          "2",
+          "-30.3",
+          "0.05",
+          "-3.8",
+          "0.05",
+          "0.05",
+          "2",
+          "4E+1",
+          "7.8",
+          "0.2",
+          "62.1",
+          "2.3",
+          "21",
+          "19",
+          "110.3",
+          "99.2",
+          "121.5",
+          "0.45",
+          "-30.3",
+          "-35.7",
+          "-24.9",
+          "0.05",
+          "434",
+          "404.7",
+          "463.4",
+          "0.23",
+          "-1.9",
+          "-3.7",
+          "-0.1",
+          "0.05",
+          "1",
+          "2",
+          "2",
+          "2",
+          "682",
+          "2016",
+          "2",
+          "6",
+          "3E+1",
+          "2",
+          "7",
+          "5",
+          "25",
+          "4.6E+3",
+          "11",
+          "46",
+          "43",
+          "3E+3",
+          "9",
+          "44",
+          "47",
+          "5E+1",
+          "5",
+          "25",
+          "4",
+          "2",
+          "24",
+          "2E+1",
+          "1E+2",
+          "6E+1",
+          "1E+1",
+          "12",
+          "4E+1",
+          "3E+1",
+          "41",
+          "2018",
+          "2.02E+3",
+          "38",
+          "33",
+          "1",
+          "1",
+          "1",
+          "1",
+          "3E+1",
+          "3E+1",
+          "5",
+          "8E+1",
+          "15",
+          "4E+1",
+          "3E+1",
+          "5",
+          "2018",
+          "2.02E+3",
+          "41",
+          "21",
+          "2E+1",
+          "1",
+          "38",
+          "95",
+          "33",
+          "83",
+          "31",
+          "78",
+          "112",
+          "31",
+          "54",
+          "37",
+          "-11.8",
+          "-17.9",
+          "1",
+          "73",
+          "2",
+          "1",
+          "73",
+          "2",
+          "17",
+          "6E+1",
+          "110.3",
+          "0.45",
+          "-30.3",
+          "0.05",
+          "434",
+          "0.23",
+          "-62.5",
+          "0.45",
+          "-23.7",
+          "0.05",
+          "-176.2",
+          "0.47",
+          "1",
+          "73",
+          "2",
+          "19",
+          "62",
+          "-5.6",
+          "-5.9",
+          "-7.2",
+          "-7.5",
+          "71",
+          "62",
+          "0.001",
+          "0.001",
+          "-1.9",
+          "0.05",
+          "-0.7",
+          "-0.8",
+          "-1.1",
+          "-1.2",
+          "74",
+          "62",
+          "3E+1",
+          "85.7",
+          "271",
+          "0.05",
+          "3E+1",
+          "55.5",
+          "563",
+          "0.05",
+          "-1.9",
+          "0.05",
+          "71",
+          "95",
+          "1",
+          "2",
+          "3",
+          "57",
+          "67",
+          "1E+1",
+          "3",
+          "0.5",
+          "6.1",
+          "32",
+          "5",
+          "21",
+          "5",
+          "5",
+          "1E+1",
+          "1E+1",
+          "11",
+          "5",
+          "11",
+          "0.5",
+          "0.32",
+          "0.68",
+          "0.5",
+          "0.25",
+          "0.75",
+          "0.001",
+          "6.1",
+          "5.5",
+          "6.7",
+          "6.1",
+          "5.4",
+          "6.7",
+          "2",
+          "2",
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "quantities": [
+          [
+            "-30.3",
+            "mg/g"
+          ],
+          [
+            "0.2",
+            "%"
+          ],
+          [
+            "2.3",
+            "mmol/mol"
+          ],
+          [
+            "110.3",
+            "mg/g"
+          ],
+          [
+            "121.5",
+            "mg/g"
+          ],
+          [
+            "-30.3",
+            "mg/g"
+          ],
+          [
+            "-24.9",
+            "mg/g"
+          ],
+          [
+            "434",
+            "mg/g"
+          ],
+          [
+            "463.4",
+            "mg/g"
+          ],
+          [
+            "3E+1",
+            "kg/m"
+          ],
+          [
+            "7",
+            "%"
+          ],
+          [
+            "4.6E+3",
+            "kJ"
+          ],
+          [
+            "11",
+            "%"
+          ],
+          [
+            "46",
+            "%"
+          ],
+          [
+            "43",
+            "%"
+          ],
+          [
+            "3E+3",
+            "kJ"
+          ],
+          [
+            "9",
+            "%"
+          ],
+          [
+            "44",
+            "%"
+          ],
+          [
+            "47",
+            "%"
+          ],
+          [
+            "5E+1",
+            "%"
+          ],
+          [
+            "2E+1",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "8E+1",
+            "%"
+          ],
+          [
+            "15",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "95",
+            "%"
+          ],
+          [
+            "83",
+            "%"
+          ],
+          [
+            "78",
+            "%"
+          ],
+          [
+            "54",
+            "%"
+          ],
+          [
+            "37",
+            "%"
+          ],
+          [
+            "-11.8",
+            "mg"
+          ],
+          [
+            "-17.9",
+            "mg"
+          ],
+          [
+            "73",
+            "m^2"
+          ],
+          [
+            "73",
+            "m^2"
+          ],
+          [
+            "17",
+            "%"
+          ],
+          [
+            "6E+1",
+            "%"
+          ],
+          [
+            "110.3",
+            "mg/g"
+          ],
+          [
+            "-30.3",
+            "mg/g"
+          ],
+          [
+            "434",
+            "mg/g"
+          ],
+          [
+            "-62.5",
+            "mg/g"
+          ],
+          [
+            "-23.7",
+            "mg/g"
+          ],
+          [
+            "-176.2",
+            "mg/g"
+          ],
+          [
+            "73",
+            "m^2"
+          ],
+          [
+            "62",
+            "%"
+          ],
+          [
+            "-5.6",
+            "kg"
+          ],
+          [
+            "-5.9",
+            "%"
+          ],
+          [
+            "-7.2",
+            "kg"
+          ],
+          [
+            "-7.5",
+            "%"
+          ],
+          [
+            "71",
+            "%"
+          ],
+          [
+            "62",
+            "%"
+          ],
+          [
+            "-0.7",
+            "kg"
+          ],
+          [
+            "-0.8",
+            "%"
+          ],
+          [
+            "-1.1",
+            "kg"
+          ],
+          [
+            "-1.2",
+            "%"
+          ],
+          [
+            "74",
+            "%"
+          ],
+          [
+            "62",
+            "%"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "85.7",
+            "mg/g"
+          ],
+          [
+            "271",
+            "mg/g"
+          ],
+          [
+            "3E+1",
+            "%"
+          ],
+          [
+            "55.5",
+            "mg/g"
+          ],
+          [
+            "563",
+            "mg/g"
+          ],
+          [
+            "95",
+            "%"
+          ],
+          [
+            "57",
+            "%"
+          ],
+          [
+            "67",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "0.5",
+            "mmol"
+          ],
+          [
+            "32",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "21",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "1E+1",
+            "%"
+          ],
+          [
+            "11",
+            "%"
+          ],
+          [
+            "5",
+            "%"
+          ],
+          [
+            "11",
+            "%"
+          ],
+          [
+            "0.5",
+            "mmol"
+          ],
+          [
+            "0.5",
+            "mmol"
+          ]
+        ],
+        "formulas": [
+          "P≤0.001",
+          "S-682/2016",
+          "chemical:C2",
+          "chemical:DRKS00014287",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:H1",
+          "chemical:SGLT2",
+          "m^2",
+          "m^2",
+          "m^2",
+          "m^2",
+          "n>2E+1"
+        ],
+        "mathematical_variables": [
+          "D_group_size",
+          "M_Diet_group_size",
+          "a_MG",
+          "a_collection_gap",
+          "c_effect",
+          "c_intake",
+          "c_marker",
+          "c_markers",
+          "c_status",
+          "c_targets",
+          "d_acr_in_subgroup",
+          "d_against",
+          "d_antihyperglycemic_medication_in",
+          "d_antihyperglycemic_medication_in",
+          "d_antihyperglycemic_medication_in",
+          "d_antihypertensive_medication_in",
+          "d_antihypertensive_medication_in",
+          "d_antihypertensive_medication_in",
+          "d_blood_ketones",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by_lack_of_change_in",
+          "d_by_lack_of_increase_in",
+          "d_by_lack_of_increase_in",
+          "d_by_no_change_in",
+          "d_change",
+          "d_date",
+          "d_distinct_response_in",
+          "d_dropout_rate",
+          "d_effect",
+          "d_egfr",
+          "d_fast_increase_after",
+          "d_for",
+          "d_hba1c",
+          "d_homa_ir",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_lack_of_change_in_plasma",
+          "d_level_after_3_cycles",
+          "d_level_after_6_cycles",
+          "d_no_change_in",
+          "d_on_clinical_relevance_threshold",
+          "d_participants_to",
+          "d_patient",
+          "d_reduction_at_follow_up",
+          "d_reduction_at_follow_up",
+          "d_reduction_in",
+          "d_sample_size",
+          "d_significant_weight_loss",
+          "d_spar",
+          "d_standard_deviation",
+          "d_study",
+          "d_three_cycles",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to_activate",
+          "d_to_baseline_at_follow_up",
+          "d_to_reconstitute",
+          "d_transient_reduction",
+          "d_transient_reduction",
+          "d_urea_levels",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with",
+          "d_with_rapid_increase_in",
+          "d_with_rapid_increase_in",
+          "d_with_reduction_in",
+          "d_with_sustained_improvement_in",
+          "e_1_incidence",
+          "e_2_incidence",
+          "e_ACR",
+          "e_ACR",
+          "e_adverse_events",
+          "e_cause",
+          "e_condition",
+          "e_cycle_all_patients_difference",
+          "e_cycle_change",
+          "e_cycle_change",
+          "e_cycle_difference",
+          "e_cycle_difference",
+          "e_cycle_macroalbuminuria_difference",
+          "e_cycle_microalbuminuria_difference",
+          "e_cycle_reduction",
+          "e_duration",
+          "e_event_rate",
+          "e_hba1c",
+          "e_in_fmd_group",
+          "e_in_study",
+          "e_indicator",
+          "e_level",
+          "e_mechanism",
+          "e_of_change_between_groups_all_patients",
+          "e_of_change_macroalbuminuria_subgroup",
+          "e_of_change_microalbuminuria_subgroup",
+          "e_participant_percentage",
+          "e_participant_percentage",
+          "e_predictors_of",
+          "e_size",
+          "e_size",
+          "e_testing_correction",
+          "e_to_fmd",
+          "e_to_fmd",
+          "e_type",
+          "g_conditions",
+          "g_data_handling",
+          "g_location",
+          "k_of_reconstitution_interpreted_as_explanation_for",
+          "l_activity_instruction",
+          "l_benefits_not_explained_by",
+          "l_condition",
+          "l_effect",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_group",
+          "l_integration",
+          "l_mechanism",
+          "l_process",
+          "l_process",
+          "l_process",
+          "l_randomized",
+          "l_role",
+          "l_significance",
+          "l_significance",
+          "l_use",
+          "m_diet_value_after_3_cycles",
+          "m_diet_value_after_6_cycles",
+          "m_hypothesis",
+          "n_after_3_cycles",
+          "n_class",
+          "n_criterion",
+          "n_did_not_increase_in",
+          "n_duration",
+          "n_effects",
+          "n_factors",
+          "n_follow_up_time",
+          "n_group",
+          "n_in_study",
+          "n_less_likely_affected_by",
+          "n_not_observed_after",
+          "n_observed_after",
+          "n_requirement",
+          "n_responder_baseline_ACR",
+          "n_responder_baseline_ACR",
+          "n_standard",
+          "n_suggestion",
+          "n_symptoms",
+          "n_tested",
+          "n_threshold_diastolic",
+          "n_threshold_systolic",
+          "n_tools",
+          "n_type",
+          "o_acid",
+          "o_association_with",
+          "o_change_in_body_composition",
+          "o_change_in_body_composition",
+          "o_change_in_lipids",
+          "o_change_observed",
+          "o_change_observed",
+          "o_change_observed_in",
+          "o_change_observed_in",
+          "o_difference_between_groups",
+          "o_difference_observed",
+          "o_significant_difference_between_groups",
+          "o_significant_weight_loss_difference",
+          "p_analysis_performed_for",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value",
+          "p_value_3_cycles",
+          "p_value_6_cycles",
+          "r_baseline_ACR_than",
+          "r_baseline_ACR_than",
+          "r_for",
+          "r_of_dna_damage_repair",
+          "r_of_fatty_acid_oxidation",
+          "r_of_kidney_injury_and_senescence",
+          "s_2_to_5_calories",
+          "s_2_to_5_macronutrients",
+          "s_adherence_via",
+          "s_adherence_via",
+          "s_after",
+          "s_approval",
+          "s_caloric_restriction",
+          "s_changes_are_unlikely_due_only_to",
+          "s_control",
+          "s_exploration_of",
+          "s_from",
+          "s_future_studies_to_address",
+          "s_in_study",
+          "s_in_study",
+          "s_insulin_adjustment",
+          "s_longer_period_for",
+          "s_medication_discontinuation",
+          "s_medication_reduction_if",
+          "s_medication_reduction_if",
+          "s_of_dicarbonyl_detoxification",
+          "s_on",
+          "s_on",
+          "s_to",
+          "t_cycles",
+          "t_date",
+          "t_frequency",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_improve",
+          "t_loss",
+          "t_loss_after_3_cycles",
+          "t_loss_after_3_cycles",
+          "t_loss_after_6_cycles",
+          "t_loss_after_6_cycles",
+          "t_loss_limit",
+          "t_metabolism_from",
+          "t_metabolism_to",
+          "t_on_macroalbuminuria_patients",
+          "t_on_microalbuminuria",
+          "t_on_microalbuminuria_patients",
+          "t_on_overall_group",
+          "t_options_limited_to",
+          "t_reduction",
+          "t_reduction_observed_in_subgroup_of",
+          "t_response_in",
+          "t_status",
+          "t_status",
+          "t_subgroup",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_system",
+          "t_timing",
+          "t_types",
+          "w_distinct_effects_in",
+          "w_up_attendance",
+          "x_cycle_all_patients_difference",
+          "x_cycle_change",
+          "x_cycle_difference",
+          "x_cycle_difference",
+          "x_cycle_macroalbuminuria_difference",
+          "x_cycle_microalbuminuria_difference",
+          "x_cycle_reduction",
+          "x_cycle_reduction",
+          "x_cycle_reduction",
+          "y_1_calories",
+          "y_1_macronutrients",
+          "y_aim",
+          "y_aim",
+          "y_basis",
+          "y_comparison_method",
+          "y_did_not_increase_in",
+          "y_enhance",
+          "y_explain",
+          "y_group",
+          "y_group",
+          "y_profile",
+          "y_profile"
+        ],
+        "operators": [
+          "<=",
+          "<=",
+          "<=",
+          "±",
+          "±",
+          "<=",
+          "<=",
+          ">",
+          "<",
+          "<",
+          "<",
+          "±",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "<=",
+          "≤"
+        ]
+      },
+      "numeric_content_present": true,
+      "formula_content_present": true,
+      "exact_text_unchanged": false,
+      "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+    }
+  },
+  "condition": "qwen_ku500_bt",
+  "source_metadata": {
+    "title": "A six-month periodic fasting reduces microalbuminuria and improves metabolic control in patients with type 2 diabetes and diabetic nephropathy: a randomized controlled study",
+    "authors": [
+      "Alba Sulaj",
+      "Stefan Kopf",
+      "Ekaterina Von Rauchhaupt",
+      "Elisabeth Kliemank",
+      "Maik Brune",
+      "Zoltan Kender",
+      "Hannelore Bartl",
+      "Fabiola Garcia Cortizo",
+      "Katarina Klepac",
+      "Zhe Han",
+      "Varun Kumar",
+      "Valter Longo",
+      "Aurelio Teleman",
+      "Jürgen G Okun",
+      "Jakob Morgenstern",
+      "Thomas Fleming",
+      "Julia Szendroedi",
+      "Stephan Herzig",
+      "Peter P Nawroth"
+    ],
+    "doi": "",
+    "year": "",
+    "openalex_id": "",
+    "origin": "Existing disjoint 20-paper benchmark cohort",
+    "metadata_added_for_attribution_only": true,
+    "metadata_not_used_to_change_QA_context": true
+  }
+}

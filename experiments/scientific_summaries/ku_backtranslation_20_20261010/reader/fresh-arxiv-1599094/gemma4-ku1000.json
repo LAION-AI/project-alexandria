@@ -1,0 +1,2660 @@
+{
+  "document_id": "fresh-arxiv-1599094",
+  "source_sha256": "3f0f749365b45fbd1d9c3e2b1403c5416db6eae6d607388eb54cb3e3bf5bb327",
+  "kind": "ku",
+  "status": "generated",
+  "result": {
+    "schema_version": "1.0",
+    "title": "THE 2-ADIC VALUATION OF STIRLING NUMBERS",
+    "abstract_sha256": "",
+    "mode": "sequential",
+    "model": "trained",
+    "config": {
+      "mode": "sequential",
+      "chunk_words": 1000,
+      "context_words": 0,
+      "previous_units": 10,
+      "canonicalize": false,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 4096,
+      "parse_retries": 0
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper analyzes the 2-adic valuations of Stirling numbers of the second kind, building upon established results for factorials and other integer sequences. It defines the 2-adic valuation and the p-adic metric, and introduces a main conjecture regarding the function ν 2 (S(n, k)).",
+        "entities": [
+          {
+            "name": "Tewodros Amdeberhan",
+            "entity_id": "tewodros_amdeberhan",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "author"
+            },
+            "relationships": [
+              {
+                "predicate": "authored",
+                "target": "The 2-Adic Valuation of Stirling Numbers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Dante V Manna",
+            "entity_id": "dante_v_manna",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "author"
+            },
+            "relationships": [
+              {
+                "predicate": "authored",
+                "target": "The 2-Adic Valuation of Stirling Numbers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Victor H Moll",
+            "entity_id": "victor_h_moll",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "author"
+            },
+            "relationships": [
+              {
+                "predicate": "authored",
+                "target": "The 2-Adic Valuation of Stirling Numbers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "2-adic valuation",
+            "entity_id": "2_adic_valuation",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "The highest power of 2 that divides an integer m",
+              "notation": "ν 2 (m)"
+            },
+            "relationships": [
+              {
+                "predicate": "defined_by",
+                "target": "p-adic valuation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "p-adic valuation",
+            "entity_id": "p_adic_valuation",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "The exponent n such that m = a * p^n, where a is not divisible by p",
+              "notation": "ν p (m)"
+            },
+            "relationships": [
+              {
+                "predicate": "extended_to",
+                "target": "Q",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Legendre's formula",
+            "entity_id": "legendre_s_formula",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "formula": "ν p (m!) = m - s_p (m) / (p - 1)",
+              "specific_case": "ν 2 (m!) = m - s_2 (m)"
+            },
+            "relationships": [
+              {
+                "predicate": "established_by",
+                "target": "Legendre",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "s_p (m)",
+            "entity_id": "s_p_m",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "The sum of the base digits of m "
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Legendre's formula",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "p-adic metric",
+            "entity_id": "p_adic_metric",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "|r|_p := p^(-ν_p(r)) for r in Q",
+              "property": "satisfies ultrametric inequality"
+            },
+            "relationships": [
+              {
+                "predicate": "defined_on",
+                "target": "Q",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "p-adic numbers",
+            "entity_id": "p_adic_numbers",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "notation": "Q_p",
+              "definition": "Completion of Q under the p-adic metric"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "p-adic integers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "p-adic integers",
+            "entity_id": "p_adic_integers",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "notation": "Z_p",
+              "definition": "Set of x in Q_p such that |x|_p <= 1"
+            },
+            "relationships": [
+              {
+                "predicate": "role",
+                "target": "Z inside Q_p",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stirling numbers of the second kind",
+            "entity_id": "stirling_numbers_of_the_second_kind",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "notation": "S(n, k)",
+              "definition": "Number of ways to partition a set of n elements into exactly k nonempty subsets"
+            },
+            "relationships": [
+              {
+                "predicate": "analyzed_by",
+                "target": "The 2-Adic Valuation of Stirling Numbers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "A_l,m",
+            "entity_id": "a_l_m",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "l! m! / 2^(m-l) * b_l,m",
+              "structure": "Sum of terms involving alpha_l(m) and beta_l(m)"
+            },
+            "relationships": [
+              {
+                "predicate": "related_to",
+                "target": "b_l,m",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "b_l,m",
+            "entity_id": "b_l_m",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "Summation involving 2^k and m-k",
+              "context": "Appeared in evaluation of definite integral"
+            },
+            "relationships": [
+              {
+                "predicate": "related_to",
+                "target": "A_l,m",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "J. Little",
+            "entity_id": "j_little",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "researcher"
+            },
+            "relationships": [
+              {
+                "predicate": "established",
+                "target": "Corollary 1.3",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Corollary 1.3",
+            "entity_id": "corollary_1_3",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (A_l,m) = 3l - s_2 (m + l) + s_2 (m - l)",
+              "model_entity_type": "theorem"
+            },
+            "relationships": [
+              {
+                "predicate": "established_by",
+                "target": "J. Little",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "H. Cohen",
+            "entity_id": "h_cohen",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "researcher"
+            },
+            "relationships": [
+              {
+                "predicate": "studied",
+                "target": "partial sums of polylogarithmic series",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "L_k(n)",
+            "entity_id": "l_k_n",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "Summation of 1/j^k for j from 1 to n",
+              "notation": "L_k(n)"
+            },
+            "relationships": [
+              {
+                "predicate": "studied_by",
+                "target": "H. Cohen",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Main conjecture",
+            "entity_id": "main_conjecture",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "description": "Describes an algorithm to determine ν 2 (S(n, k))",
+              "model_entity_type": "theorem"
+            },
+            "relationships": [
+              {
+                "predicate": "established_for",
+                "target": "k = 5",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 978,
+          "word_count": 978,
+          "sha256": "6b838938ab71be91ad1bea519883c0a2d6d010303c1059bcbbde3463e8a04736",
+          "sentence_minhash": [
+            84989070151237717,
+            1306423125707224,
+            132898077708225042,
+            53442166147602330,
+            148925132169520149,
+            139865850146007968,
+            149017575652778032,
+            34584616103928807,
+            21579496338166870,
+            76931577636070685,
+            78280491562202942,
+            171596837418463449,
+            12488864069851856,
+            58558631451210278,
+            303264414993015767,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'theorem' for 'Corollary 1.3'",
+          "normalized unsupported entity type 'theorem' for 'Main conjecture'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The text introduces the concept of m-level classes for Stirling numbers of the second kind, defining a main conjecture regarding the 2-adic valuation of these numbers. It provides explicit formulas and recurrence relations for Stirling numbers, and establishes specific results for the 2-adic valuation of S(2n, k) and S(2n+1, k+1).",
+        "entities": [
+          {
+            "name": "2-adic valuation of Stirling numbers of the second kind",
+            "entity_id": "2_adic_valuation_of_stirling_numbers_of_the_second_kind",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "notation": "ν 2 (S(n, k))",
+              "definition": "The 2-adic valuation of Stirling numbers of the second kind",
+              "main_conjecture": "The first index for which there is a constant class is m0 - 1, where 2^(m0-1) < k <= 2^m0. For m >= m0, the m-level consists of 2^(m0-2) classes, each producing a single non-constant class for the (m+1)-level."
+            },
+            "relationships": [
+              {
+                "predicate": "defined_by",
+                "target": "classes C m,j",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "related_to",
+                "target": "m-level",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "m-level",
+            "entity_id": "m_level",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "A partition of {n in N : n >= k} into classes modulo 2^m",
+              "structure": "Each class C m-1,ij is divided into two classes modulo 2^m: C m,ij and C m,ij + 2^(m-1). "
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "classes C m,j",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "constant class",
+            "entity_id": "constant_class",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "A class C m,j, where ν 2 (C m,j) represents a single value. ",
+              "constant_value": "The single value in ν 2 (C m,j)"
+            },
+            "relationships": [
+              {
+                "predicate": "first_occurrence_at",
+                "target": "m0 - 1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "m0",
+            "entity_id": "m0",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "definition": "The smallest integer such that 2^(m0-1) < k <= 2^m0."
+            },
+            "relationships": [
+              {
+                "predicate": "determines",
+                "target": "m0 - 1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stirling numbers of the second kind",
+            "entity_id": "stirling_numbers_of_the_second_kind",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "notation": "S(n, k)",
+              "generating_function": "1 / ((1-x)(1-2x)...(1-kx)) = sum_{n=1}^infinity S(n, k)x^n",
+              "recurrence_relation": "S(n, k) = S(n-1, k-1) + kS(n-1, k)",
+              "explicit_formula": "S(n, k) = 1/k! * sum_{i=0}^{k-1} (-1)^i * C(k, i) * (k-i)^n",
+              "model_entity_type": "mathematical_object"
+            },
+            "relationships": [
+              {
+                "predicate": "has_2-adic_valuation",
+                "target": "ν 2 (S(n, k))",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Legendre's result",
+            "entity_id": "legendre_s_result",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (S(2n, k)) = ν 2 ((2k-1)/k!)",
+              "model_entity_type": "theorem"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "Legendre's formula",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Legyel's conjecture",
+            "entity_id": "legyel_s_conjecture",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (S(2n, k)) = s_2(k) - 1, independently of n.",
+              "model_entity_type": "theorem"
+            },
+            "relationships": [
+              {
+                "predicate": "proved_by",
+                "target": "De Wannemacker",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "De Wannemacker's inequality",
+            "entity_id": "de_wannemacker_s_inequality",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (S(n, k)) >= s_2(k) - s_2(n), for 0 <= k <= n.",
+              "model_entity_type": "theorem"
+            },
+            "relationships": [
+              {
+                "predicate": "established_by",
+                "target": "De Wannemacker",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "s_2(k)",
+            "entity_id": "s_2_k",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "definition": "The sum of the binary digits of k."
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "ν 2 (S(2n, k))",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "S(n, 3)",
+            "entity_id": "s_n_3",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "formula": "1/2^(3n-1-2n+1)",
+              "2-adic_valuation": "0 if n is odd, 1 if n is even.",
+              "model_entity_type": "mathematical_object"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "recurrence relation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 978,
+          "end_word": 1977,
+          "word_count": 999,
+          "sha256": "662c917d0dcd810271149f29681749e3f16fc7e8e9ea6278305ee9fb43f8b06b",
+          "sentence_minhash": [
+            315931021563575867,
+            1306423125707224,
+            23103724853578534,
+            141557533923110381,
+            146627570953161212,
+            428209587723997907,
+            149017575652778032,
+            113181735942458166,
+            228439795799410229,
+            76931577636070685,
+            78280491562202942,
+            139309872259060027,
+            154708990195788138,
+            906306679132868,
+            139254418913316130,
+            37319280976767778
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'mathematical_object' for 'Stirling numbers of the second kind'",
+          "normalized unsupported entity type 'theorem' for \"Legendre's result\"",
+          "normalized unsupported entity type 'theorem' for \"Legyel's conjecture\"",
+          "normalized unsupported entity type 'theorem' for \"De Wannemacker's inequality\"",
+          "normalized unsupported entity type 'mathematical_object' for 'S(n, 3)'"
+        ]
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text provides a second proof for the 2-adic valuation of S(n, 3) using the ultrametric inequality, establishing that ν 2 (S(n, 3)) is 1 when n is even. It then presents explicit formulas and valuation results for S(n, 4) and S(n, 5), noting that S(n, 5) exhibits complex behavior with exceptional indices where the 2-adic valuations differ.",
+        "entities": [
+          {
+            "name": "2-adic valuation of S(n, 3)",
+            "entity_id": "2_adic_valuation_of_s_n_3",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "n_odd": "0",
+              "n_even": "1"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "ultrametric inequality",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ultrametric inequality",
+            "entity_id": "ultrametric_inequality",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "form": "ν 2 (x 1 + x 2 ) ≥ Min {ν 2 (x 1 ), ν 2 (x 2 ) }",
+              "strictness_condition": "ν 2 (x 1 ) ≠ ν 2 (x 2 )"
+            },
+            "relationships": [
+              {
+                "predicate": "equivalent_to",
+                "target": "1.6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "powers of 3 modulo 8",
+            "entity_id": "powers_of_3_modulo_8",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "formula": "3^m + 1 ≡ 2 + (-1)^(m+1) mod 8",
+              "basis": "3^(2k) ≡ 1 mod 8",
+              "model_entity_type": "mathematical_property"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "2-adic valuation of S(n, 3)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "2-adic valuation of S(n, 4)",
+            "entity_id": "2_adic_valuation_of_s_n_4",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "n_odd": "1",
+              "n_even": "0"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "recurrence relation 1.29 with k=4",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Stirling numbers of order 5",
+            "entity_id": "stirling_numbers_of_order_5",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "explicit_formula": "S(n, 5) = 1/24 * (5^n - 4^n + 2*3^n - 2^(n+1) + 1)",
+              "valuation_behavior": "Complex, defined by m-levels",
+              "model_entity_type": "mathematical_sequence"
+            },
+            "relationships": [
+              {
+                "predicate": "has_m_level_structure",
+                "target": "2-level {C 2,0, C 2,3}",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "m-level classes for S(n, 5)",
+            "entity_id": "m_level_classes_for_s_n_5",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "1-level_classes": "{C 1,0, C 1,1}",
+              "2-level_classes": "{C 2,0, C 2,3}",
+              "constant_classes": "C 2,1 and C 2,2"
+            },
+            "relationships": [
+              {
+                "predicate": "defines",
+                "target": "m0 = 3",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "exceptional index for S(n, 5)",
+            "entity_id": "exceptional_index_for_s_n_5",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "definition": "i such that q(4i) = q(4i+3)",
+              "first_example": "i = 7 (q(28)=6, q(31)=7)",
+              "model_entity_type": "mathematical_property"
+            },
+            "relationships": [
+              {
+                "predicate": "list_continues_with",
+                "target": "{7, 39, 71, 103, ...}",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "2-adic valuation of S(8i, 5)",
+            "entity_id": "2_adic_valuation_of_s_8i_5",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "value": "1",
+              "condition": "i ≥ 1"
+            },
+            "relationships": [
+              {
+                "predicate": "derived_from",
+                "target": "identity 3.14 modulo 32",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 1977,
+          "end_word": 2971,
+          "word_count": 994,
+          "sha256": "a7cfe97cca0170a66906ec3b15975b627583225344bbe3e9c875ea5c29b75502",
+          "sentence_minhash": [
+            21703368277289870,
+            18551641988871988,
+            69729176314767099,
+            208823991573236229,
+            148925132169520149,
+            428209587723997907,
+            84576184460003765,
+            63183425104977485,
+            113198931733945138,
+            76931577636070685,
+            78280491562202942,
+            221655330234976794,
+            12488864069851856,
+            906306679132868,
+            303264414993015767,
+            112183611702210919
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'mathematical_property' for 'powers of 3 modulo 8'",
+          "normalized unsupported entity type 'mathematical_sequence' for 'Stirling numbers of order 5'",
+          "normalized unsupported entity type 'mathematical_property' for 'exceptional index for S(n, 5)'"
+        ]
+      },
+      {
+        "chunk_index": 3,
+        "context_summary": "The text proves that the 2-adic valuation of Stirling numbers of the second kind, S(n, 5), is at least 2 for specific indices, and establishes a main conjecture for k=5. It introduces a theorem linking the 2-adic valuation of S(n, 5) to the zeros of a specific polynomial in the 2-adic integers, under the assumption of a related conjecture. The text also presents empirical approximations and visual data illustrating the complex behavior of these valuations.",
+        "entities": [
+          {
+            "name": "Proposition 3.6",
+            "entity_id": "proposition_3_6",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (S(8i + 4, 5)) ≥ 2 for all i ≥ 1",
+              "model_entity_type": "proposition"
+            },
+            "relationships": [
+              {
+                "predicate": "applies_to",
+                "target": "Stirling numbers of order 5",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Identity (3.17)",
+            "entity_id": "identity_3_17",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "form": "24S(8i + 4, 5) = 5 8i+3 -4 8i+4 + 2 • 3 8i+4 -2 8i+5 + 1 modulo 32",
+              "model_entity_type": "mathematical_identity"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_prove",
+                "target": "Proposition 3.6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Proposition 3.5",
+            "entity_id": "proposition_3_5",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (S(n, 5)) = 1 for n = a2 q and q ≥ 3, where n = 8a • 2 q-3",
+              "model_entity_type": "proposition"
+            },
+            "relationships": [
+              {
+                "predicate": "includes",
+                "target": "values of n from Proposition 3.6",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Proposition 3.7",
+            "entity_id": "proposition_3_7",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "statement": "ν 2 (S(8i + 3, 5)) = 1 and ν 2 (S(8i + 7, 5)) ≥ 2",
+              "model_entity_type": "proposition"
+            },
+            "relationships": [
+              {
+                "predicate": "part_of",
+                "target": "3-level classes",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "3-level classes",
+            "entity_id": "3_level_classes",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "elements": "C 3,4 and C 3,7"
+            },
+            "relationships": [
+              {
+                "predicate": "illustrates",
+                "target": "main conjecture",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "C 3,4",
+            "entity_id": "c_3_4",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "splitting": "C 4,4 and C 4,12",
+              "model_entity_type": "class"
+            },
+            "relationships": [
+              {
+                "predicate": "splits_into",
+                "target": "C 4,4 and C 4,12",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Congruence (3.26)",
+            "entity_id": "congruence_3_26",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "form": "24S(2 m i + j, 5) ≡ 5 2 m i+j-1 -4 2 m i+j + 2 • 3 2 m i+j -2 2 m i+j+1 + 1 mod 2 m+2",
+              "model_entity_type": "mathematical_identity"
+            },
+            "relationships": [
+              {
+                "predicate": "used_to_prove",
+                "target": "main conjecture for k=5",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Lundell [11]",
+            "entity_id": "lundell_11",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "contribution": "Studied Stirling-like numbers T p (n, k)"
+            },
+            "relationships": [
+              {
+                "predicate": "defined",
+                "target": "Stirling-like numbers T p (n, k)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Clarke [5]",
+            "entity_id": "clarke_5",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "contribution": "Conjectured ν p (k! S(n, k)) = ν p (T (n, k))"
+            },
+            "relationships": [
+              {
+                "predicate": "derived",
+                "target": "expression for ν 2 (S(n, 5))",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Theorem 3.8",
+            "entity_id": "theorem_3_8",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "condition": "Assumption that conjecture (3.28) holds",
+              "result": "ν 2 (S(n, 5)) = -1 + ν 2 (n -u 0 ) if n is even, -1 + ν 2 (n -u 1 ) if n is odd",
+              "model_entity_type": "theorem"
+            },
+            "relationships": [
+              {
+                "predicate": "relies_on",
+                "target": "conjecture (3.28)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "f 0,5(x)",
+            "entity_id": "f_0_5_x",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "form": "5 + 10 • 3 x + 5 x",
+              "model_entity_type": "mathematical_function"
+            },
+            "relationships": [
+              {
+                "predicate": "has_zeros",
+                "target": "u 0 and u 1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "u 0",
+            "entity_id": "u_0",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "property": "Unique zero of f 0,5 satisfying u 0 ∈ 2Z 2",
+              "model_entity_type": "mathematical_constant"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Theorem 3.8",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "u 1",
+            "entity_id": "u_1",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "property": "Other zero of f 0,5 satisfying u 1 ∈ 1 + 2Z 2",
+              "model_entity_type": "mathematical_constant"
+            },
+            "relationships": [
+              {
+                "predicate": "used_in",
+                "target": "Theorem 3.8",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "f 0,6(x)",
+            "entity_id": "f_0_6_x",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "form": "-6 -20 • 3 x -6 • 5 x",
+              "model_entity_type": "mathematical_function"
+            },
+            "relationships": [
+              {
+                "predicate": "has_zeros",
+                "target": "related to ν 2 (S(n, 6))",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "f 0,7(x)",
+            "entity_id": "f_0_7_x",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "form": "7 + 35 • 3 x + 21 • 5 x + 7 x",
+              "model_entity_type": "mathematical_function"
+            },
+            "relationships": [
+              {
+                "predicate": "has_zeros",
+                "target": "related to ν 2 (S(n, 7))",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "I 1",
+            "entity_id": "i_1",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "definition": "I 1 = {x 1 (m) : m ≥ 0}",
+              "model_entity_type": "set"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "exceptions to ν 2 (S(m, 5)) = ν 2 (f 1 (m))",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Approximations",
+            "entity_id": "approximations",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "basis": "Empirically derived",
+              "goal": "Approximating ν 2 (S(n, 5))"
+            },
+            "relationships": [
+              {
+                "predicate": "supported_by",
+                "target": "visual data",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 3,
+          "start_word": 2971,
+          "end_word": 3926,
+          "word_count": 955,
+          "sha256": "f93cd1e57deb21c5150220aa5b7975014fa38823c9e286f9d55725340a234e4b",
+          "sentence_minhash": [
+            21703368277289870,
+            1306423125707224,
+            229329608839330056,
+            53442166147602330,
+            148925132169520149,
+            62667647458868521,
+            12025634198112669,
+            96292850158067112,
+            121868570449012213,
+            92715222163426349,
+            78280491562202942,
+            139309872259060027,
+            8649321992247620,
+            58558631451210278,
+            194885768149381016,
+            69242845566341429
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'proposition' for 'Proposition 3.6'",
+          "normalized unsupported entity type 'mathematical_identity' for 'Identity (3.17)'",
+          "normalized unsupported entity type 'proposition' for 'Proposition 3.5'",
+          "normalized unsupported entity type 'proposition' for 'Proposition 3.7'",
+          "normalized unsupported entity type 'class' for 'C 3,4'",
+          "normalized unsupported entity type 'mathematical_identity' for 'Congruence (3.26)'",
+          "normalized unsupported entity type 'theorem' for 'Theorem 3.8'",
+          "normalized unsupported entity type 'mathematical_function' for 'f 0,5(x)'",
+          "normalized unsupported entity type 'mathematical_constant' for 'u 0'",
+          "normalized unsupported entity type 'mathematical_constant' for 'u 1'",
+          "normalized unsupported entity type 'mathematical_function' for 'f 0,6(x)'",
+          "normalized unsupported entity type 'mathematical_function' for 'f 0,7(x)'",
+          "normalized unsupported entity type 'set' for 'I 1'"
+        ]
+      }
+    ],
+    "canonical_entities": []
+  },
+  "chunks_expected": 4,
+  "chunks_generated": 4,
+  "failed_chunks": [],
+  "repair": {
+    "accepted_windows": 3,
+    "rolled_back": false,
+    "original_context_sha256": "3205b6d709f64b5b74e2d6d7ef8d0a774963a5754e6c9d7fd7f9094e554d94b3",
+    "final_context_sha256": "dbaf9c861e7c4a49dde164f0928fd17bcb21235382a7b63b5070003f906c3e98",
+    "critical_values": {
+      "passed": true,
+      "checks": {
+        "numbers": true,
+        "quantities": true,
+        "formulas": true,
+        "mathematical_variables": true,
+        "operators": true
+      },
+      "before": {
+        "numbers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1.3",
+          "1.3",
+          "2",
+          "1",
+          "1",
+          "2",
+          "5",
+          "2",
+          "2",
+          "1",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "1",
+          "-1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "0",
+          "2",
+          "3",
+          "1",
+          "2",
+          "1",
+          "1",
+          "2",
+          "0",
+          "1",
+          "2",
+          "3",
+          "2",
+          "3",
+          "1",
+          "4",
+          "5",
+          "5",
+          "2",
+          "2",
+          "3",
+          "0",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1.6",
+          "3",
+          "8",
+          "3",
+          "1",
+          "2",
+          "-1",
+          "1",
+          "8",
+          "3",
+          "1",
+          "8",
+          "2",
+          "3",
+          "2",
+          "4",
+          "1",
+          "0",
+          "1.29",
+          "4",
+          "5",
+          "5",
+          "1",
+          "24",
+          "5",
+          "4",
+          "2",
+          "3",
+          "2",
+          "1",
+          "1",
+          "2",
+          "2",
+          "0",
+          "2",
+          "3",
+          "5",
+          "1",
+          "1",
+          "0",
+          "1",
+          "1",
+          "2",
+          "2",
+          "0",
+          "2",
+          "3",
+          "2",
+          "1",
+          "2",
+          "2",
+          "3",
+          "5",
+          "3",
+          "7",
+          "28",
+          "6",
+          "31",
+          "7",
+          "7",
+          "39",
+          "71",
+          "103",
+          "2",
+          "5",
+          "1",
+          "1",
+          "3.14",
+          "32",
+          "2",
+          "5",
+          "2",
+          "5",
+          "2",
+          "5",
+          "2",
+          "3.6",
+          "2",
+          "4",
+          "5",
+          "2",
+          "1",
+          "5",
+          "3.17",
+          "4",
+          "5",
+          "5",
+          "3",
+          "-4",
+          "4",
+          "2",
+          "3",
+          "4",
+          "-2",
+          "5",
+          "1",
+          "32",
+          "3.6",
+          "3.5",
+          "2",
+          "5",
+          "1",
+          "3",
+          "2",
+          "3",
+          "3.6",
+          "3.7",
+          "2",
+          "3",
+          "5",
+          "1",
+          "2",
+          "7",
+          "5",
+          "2",
+          "3",
+          "3",
+          "3",
+          "4",
+          "3",
+          "7",
+          "3",
+          "4",
+          "4",
+          "4",
+          "4",
+          "12",
+          "4",
+          "4",
+          "4",
+          "12",
+          "3.26",
+          "2",
+          "5",
+          "5",
+          "2",
+          "1",
+          "-4",
+          "2",
+          "2",
+          "3",
+          "2",
+          "-2",
+          "2",
+          "1",
+          "1",
+          "2",
+          "2",
+          "5",
+          "11",
+          "5",
+          "2",
+          "5",
+          "3.8",
+          "3.28",
+          "2",
+          "5",
+          "-1",
+          "2",
+          "0",
+          "-1",
+          "2",
+          "1",
+          "3.28",
+          "0",
+          "5",
+          "5",
+          "1E+1",
+          "3",
+          "5",
+          "0",
+          "1",
+          "0",
+          "0",
+          "5",
+          "0",
+          "2",
+          "3.8",
+          "1",
+          "0",
+          "5",
+          "1",
+          "1",
+          "2",
+          "3.8",
+          "0",
+          "6",
+          "-6",
+          "-2E+1",
+          "3",
+          "-6",
+          "5",
+          "2",
+          "6",
+          "0",
+          "7",
+          "7",
+          "35",
+          "3",
+          "21",
+          "5",
+          "7",
+          "2",
+          "7",
+          "1",
+          "1",
+          "1",
+          "0",
+          "2",
+          "5",
+          "2",
+          "1",
+          "2",
+          "5"
+        ],
+        "quantities": [
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ]
+        ],
+        "formulas": [
+          "-1+ν",
+          "-1+ν",
+          "-6-2E+1",
+          "0=3",
+          "0≤k",
+          "1+x",
+          "1-x",
+          "1/2",
+          "1/24",
+          "1/j^k",
+          "1/k",
+          "2^k",
+          "2^m",
+          "2^m",
+          "3-4",
+          "3^m1",
+          "4-2",
+          "42",
+          "51",
+          "51E+1",
+          "5^n-4^n2*3^n-2",
+          "735",
+          "C(k,i)",
+          "S(2n,k)",
+          "S(2n,k)",
+          "S(2n,k)",
+          "S(2n,k)",
+          "S(2n1,k1)",
+          "S(8i,5)",
+          "S(8i3,5)",
+          "S(8i4,5)",
+          "S(8i7,5)",
+          "S(m,5)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,4)",
+          "S(n,4)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,6)",
+          "S(n,7)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n-1,k-1)",
+          "T(n,k)",
+          "a*p^n",
+          "i*C",
+          "i+j",
+          "i+j-1-4",
+          "i+j-2",
+          "i+j11",
+          "i+j2",
+          "i=0",
+          "i=7",
+          "i≥1",
+          "i≥1",
+          "k-1",
+          "k-1",
+          "k-i",
+          "k1",
+          "k=4",
+          "k=5",
+          "k=5",
+          "k=5",
+          "k≤2",
+          "k≤2",
+          "m+l",
+          "m-1",
+          "m-1",
+          "m-k",
+          "m-l",
+          "m-l",
+          "m-s_2",
+          "m-s_p",
+          "m1",
+          "m1",
+          "m2",
+          "m=a",
+          "m≥0",
+          "m≥m",
+          "n-1",
+          "n-1",
+          "n-u",
+          "n-u",
+          "n1",
+          "n=1",
+          "n=8",
+          "n=a",
+          "n≥k",
+          "p(m!)",
+          "p(m)",
+          "p(n,k)",
+          "p(n,k)",
+          "p-1",
+          "p≤1",
+          "q(28)",
+          "q(31)",
+          "q(4i)",
+          "q(4i3)",
+          "q-3",
+          "q≥3",
+          "x-6",
+          "x21",
+          "x5",
+          "x7",
+          "x^n"
+        ],
+        "mathematical_variables": [
+          "A_l",
+          "A_l",
+          "A_l",
+          "L_k",
+          "L_k",
+          "Q_p",
+          "Q_p",
+          "Q_p",
+          "Z_p",
+          "a_l",
+          "a_l",
+          "b_l",
+          "b_l",
+          "b_l",
+          "c_case",
+          "c_valuation",
+          "c_valuation",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_for",
+          "d_from",
+          "d_from",
+          "d_from",
+          "d_from",
+          "d_from",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_on",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to_prove",
+          "d_to_prove",
+          "e_relation",
+          "g_function",
+          "l_classes",
+          "l_classes",
+          "l_constant",
+          "l_constant",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_function",
+          "l_function",
+          "l_function",
+          "l_identity",
+          "l_identity",
+          "l_object",
+          "l_object",
+          "l_property",
+          "l_property",
+          "l_sequence",
+          "n_behavior",
+          "n_conjecture",
+          "n_even",
+          "n_even",
+          "n_odd",
+          "n_odd",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_condition",
+          "s_into",
+          "s_m_level_structure",
+          "s_on",
+          "s_p",
+          "s_p",
+          "s_to",
+          "s_zeros",
+          "s_zeros",
+          "s_zeros",
+          "t_classes",
+          "t_continues_with",
+          "t_example",
+          "t_formula",
+          "t_formula",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_occurrence_at",
+          "t_of",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_to",
+          "t_value",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν"
+        ],
+        "operators": [
+          "=",
+          "=",
+          "=",
+          "=",
+          "<=",
+          "=",
+          "=",
+          "<",
+          "<=",
+          ">=",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          ">=",
+          "<=",
+          "<=",
+          "≥",
+          "≠",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "≥",
+          "=",
+          "≥",
+          "≥",
+          "=",
+          "=",
+          "=",
+          "≥",
+          "=",
+          "=",
+          "≥",
+          "=",
+          "=",
+          "=",
+          "∈",
+          "∈",
+          "=",
+          "≥",
+          "="
+        ]
+      },
+      "after": {
+        "numbers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1.3",
+          "1.3",
+          "2",
+          "1",
+          "1",
+          "2",
+          "5",
+          "2",
+          "2",
+          "1",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "1",
+          "-1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "1",
+          "2",
+          "0",
+          "2",
+          "3",
+          "1",
+          "2",
+          "1",
+          "1",
+          "2",
+          "0",
+          "1",
+          "2",
+          "3",
+          "2",
+          "3",
+          "1",
+          "4",
+          "5",
+          "5",
+          "2",
+          "2",
+          "3",
+          "0",
+          "1",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "1.6",
+          "3",
+          "8",
+          "3",
+          "1",
+          "2",
+          "-1",
+          "1",
+          "8",
+          "3",
+          "1",
+          "8",
+          "2",
+          "3",
+          "2",
+          "4",
+          "1",
+          "0",
+          "1.29",
+          "4",
+          "5",
+          "5",
+          "1",
+          "24",
+          "5",
+          "4",
+          "2",
+          "3",
+          "2",
+          "1",
+          "1",
+          "2",
+          "2",
+          "0",
+          "2",
+          "3",
+          "5",
+          "1",
+          "1",
+          "0",
+          "1",
+          "1",
+          "2",
+          "2",
+          "0",
+          "2",
+          "3",
+          "2",
+          "1",
+          "2",
+          "2",
+          "3",
+          "5",
+          "3",
+          "7",
+          "28",
+          "6",
+          "31",
+          "7",
+          "7",
+          "39",
+          "71",
+          "103",
+          "2",
+          "5",
+          "1",
+          "1",
+          "3.14",
+          "32",
+          "2",
+          "5",
+          "2",
+          "5",
+          "2",
+          "5",
+          "2",
+          "3.6",
+          "2",
+          "4",
+          "5",
+          "2",
+          "1",
+          "5",
+          "3.17",
+          "4",
+          "5",
+          "5",
+          "3",
+          "-4",
+          "4",
+          "2",
+          "3",
+          "4",
+          "-2",
+          "5",
+          "1",
+          "32",
+          "3.6",
+          "3.5",
+          "2",
+          "5",
+          "1",
+          "3",
+          "2",
+          "3",
+          "3.6",
+          "3.7",
+          "2",
+          "3",
+          "5",
+          "1",
+          "2",
+          "7",
+          "5",
+          "2",
+          "3",
+          "3",
+          "3",
+          "4",
+          "3",
+          "7",
+          "3",
+          "4",
+          "4",
+          "4",
+          "4",
+          "12",
+          "4",
+          "4",
+          "4",
+          "12",
+          "3.26",
+          "2",
+          "5",
+          "5",
+          "2",
+          "1",
+          "-4",
+          "2",
+          "2",
+          "3",
+          "2",
+          "-2",
+          "2",
+          "1",
+          "1",
+          "2",
+          "2",
+          "5",
+          "11",
+          "5",
+          "2",
+          "5",
+          "3.8",
+          "3.28",
+          "2",
+          "5",
+          "-1",
+          "2",
+          "0",
+          "-1",
+          "2",
+          "1",
+          "3.28",
+          "0",
+          "5",
+          "5",
+          "1E+1",
+          "3",
+          "5",
+          "0",
+          "1",
+          "0",
+          "0",
+          "5",
+          "0",
+          "2",
+          "3.8",
+          "1",
+          "0",
+          "5",
+          "1",
+          "1",
+          "2",
+          "3.8",
+          "0",
+          "6",
+          "-6",
+          "-2E+1",
+          "3",
+          "-6",
+          "5",
+          "2",
+          "6",
+          "0",
+          "7",
+          "7",
+          "35",
+          "3",
+          "21",
+          "5",
+          "7",
+          "2",
+          "7",
+          "1",
+          "1",
+          "1",
+          "0",
+          "2",
+          "5",
+          "2",
+          "1",
+          "2",
+          "5"
+        ],
+        "quantities": [
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ],
+          [
+            "2",
+            "m"
+          ]
+        ],
+        "formulas": [
+          "-1+ν",
+          "-1+ν",
+          "-6-2E+1",
+          "0=3",
+          "0≤k",
+          "1+x",
+          "1-x",
+          "1/2",
+          "1/24",
+          "1/j^k",
+          "1/k",
+          "2^k",
+          "2^m",
+          "2^m",
+          "3-4",
+          "3^m1",
+          "4-2",
+          "42",
+          "51",
+          "51E+1",
+          "5^n-4^n2*3^n-2",
+          "735",
+          "C(k,i)",
+          "S(2n,k)",
+          "S(2n,k)",
+          "S(2n,k)",
+          "S(2n,k)",
+          "S(2n1,k1)",
+          "S(8i,5)",
+          "S(8i3,5)",
+          "S(8i4,5)",
+          "S(8i7,5)",
+          "S(m,5)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,3)",
+          "S(n,4)",
+          "S(n,4)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,5)",
+          "S(n,6)",
+          "S(n,7)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n,k)",
+          "S(n-1,k-1)",
+          "T(n,k)",
+          "a*p^n",
+          "i*C",
+          "i+j",
+          "i+j-1-4",
+          "i+j-2",
+          "i+j11",
+          "i+j2",
+          "i=0",
+          "i=7",
+          "i≥1",
+          "i≥1",
+          "k-1",
+          "k-1",
+          "k-i",
+          "k1",
+          "k=4",
+          "k=5",
+          "k=5",
+          "k=5",
+          "k≤2",
+          "k≤2",
+          "m+l",
+          "m-1",
+          "m-1",
+          "m-k",
+          "m-l",
+          "m-l",
+          "m-s_2",
+          "m-s_p",
+          "m1",
+          "m1",
+          "m2",
+          "m=a",
+          "m≥0",
+          "m≥m",
+          "n-1",
+          "n-1",
+          "n-u",
+          "n-u",
+          "n1",
+          "n=1",
+          "n=8",
+          "n=a",
+          "n≥k",
+          "p(m!)",
+          "p(m)",
+          "p(n,k)",
+          "p(n,k)",
+          "p-1",
+          "p≤1",
+          "q(28)",
+          "q(31)",
+          "q(4i)",
+          "q(4i3)",
+          "q-3",
+          "q≥3",
+          "x-6",
+          "x21",
+          "x5",
+          "x7",
+          "x^n"
+        ],
+        "mathematical_variables": [
+          "A_l",
+          "A_l",
+          "A_l",
+          "L_k",
+          "L_k",
+          "Q_p",
+          "Q_p",
+          "Q_p",
+          "Z_p",
+          "a_l",
+          "a_l",
+          "b_l",
+          "b_l",
+          "b_l",
+          "c_case",
+          "c_valuation",
+          "c_valuation",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_for",
+          "d_from",
+          "d_from",
+          "d_from",
+          "d_from",
+          "d_from",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_in",
+          "d_on",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to",
+          "d_to_prove",
+          "d_to_prove",
+          "e_relation",
+          "g_function",
+          "l_classes",
+          "l_classes",
+          "l_constant",
+          "l_constant",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_function",
+          "l_function",
+          "l_function",
+          "l_identity",
+          "l_identity",
+          "l_object",
+          "l_object",
+          "l_property",
+          "l_property",
+          "l_sequence",
+          "n_behavior",
+          "n_conjecture",
+          "n_even",
+          "n_even",
+          "n_odd",
+          "n_odd",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_2",
+          "s_condition",
+          "s_into",
+          "s_m_level_structure",
+          "s_on",
+          "s_p",
+          "s_p",
+          "s_to",
+          "s_zeros",
+          "s_zeros",
+          "s_zeros",
+          "t_classes",
+          "t_continues_with",
+          "t_example",
+          "t_formula",
+          "t_formula",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_occurrence_at",
+          "t_of",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_to",
+          "t_value",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν",
+          "ν"
+        ],
+        "operators": [
+          "=",
+          "=",
+          "=",
+          "=",
+          "<=",
+          "=",
+          "=",
+          "<",
+          "<=",
+          ">=",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          ">=",
+          "<=",
+          "<=",
+          "≥",
+          "≠",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "≥",
+          "=",
+          "≥",
+          "≥",
+          "=",
+          "=",
+          "=",
+          "≥",
+          "=",
+          "=",
+          "≥",
+          "=",
+          "=",
+          "=",
+          "∈",
+          "∈",
+          "=",
+          "≥",
+          "="
+        ]
+      },
+      "numeric_content_present": true,
+      "formula_content_present": true,
+      "exact_text_unchanged": false,
+      "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+    }
+  },
+  "condition": "gemma4_r128_ku1000_bt",
+  "source_metadata": {
+    "title": "THE 2-ADIC VALUATION OF STIRLING NUMBERS",
+    "authors": [
+      "Tewodros Amdeberhan",
+      "Dante V Manna",
+      "Victor H Moll"
+    ],
+    "doi": "10.1080/10586458.2008.10129026",
+    "year": "",
+    "openalex_id": "https://openalex.org/W2044773284",
+    "origin": "Existing disjoint 20-paper benchmark cohort",
+    "metadata_added_for_attribution_only": true,
+    "metadata_not_used_to_change_QA_context": true
+  }
+}

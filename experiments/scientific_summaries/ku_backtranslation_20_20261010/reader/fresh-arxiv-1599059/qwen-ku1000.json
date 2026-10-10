@@ -1,0 +1,1171 @@
+{
+  "document_id": "fresh-arxiv-1599059",
+  "source_sha256": "978fab3d0eab3ab39b2d03c4ed801eb64741b9abd4c2f231e188fb5dbc5a6dd0",
+  "kind": "ku",
+  "status": "generated",
+  "result": {
+    "schema_version": "1.0",
+    "title": "Adiabatic quantum search with atoms in a cavity driven by lasers",
+    "abstract_sha256": "",
+    "mode": "sequential",
+    "model": "base",
+    "config": {
+      "mode": "sequential",
+      "chunk_words": 1000,
+      "context_words": 0,
+      "previous_units": 10,
+      "canonicalize": false,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 4096,
+      "parse_retries": 0
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper proposes a scalable physical implementation of the adiabatic Grover search algorithm using atoms in a cavity. The system utilizes an ensemble of three-level atoms where a marked atom is distinguished by an energy shift. The process, termed inverse fractional STIRAP, achieves the search with a time scaling of the square root of the database size.",
+        "entities": [
+          {
+            "name": "Adiabatic quantum search implementation",
+            "entity_id": "adiabatic_quantum_search_implementation",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "system": "cavity-laser-atom system",
+              "scalability": "in principle scalable",
+              "novelty": "first proposed implementation of the adiabatic Grover algorithm"
+            },
+            "relationships": [
+              {
+                "predicate": "implements",
+                "target": "adiabatic Grover algorithm",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "ensemble of N identical three-level atoms",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "uses",
+                "target": "single-mode cavity",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "driven_by",
+                "target": "two lasers",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "ensemble of N identical three-level atoms",
+            "entity_id": "ensemble_of_n_identical_three_level_atoms",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "level_configuration": "Lambda configuration",
+              "ground_states": [
+                "|g",
+                "|g'"
+              ],
+              "excited_state": "|e",
+              "trapped_in": "single-mode cavity",
+              "model_entity_type": "physical_system"
+            },
+            "relationships": [
+              {
+                "predicate": "coupled_to_excited_state_by",
+                "target": "cavity and two lasers",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "database_entries_represented_by",
+                "target": "state |g'",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "includes",
+                "target": "marked atom",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "marked atom",
+            "entity_id": "marked_atom",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "tag": "N",
+              "energy_shift": "delta",
+              "reference_energy": "0 for unmarked atoms",
+              "model_entity_type": "physical_component"
+            },
+            "relationships": [
+              {
+                "predicate": "distinguished_by",
+                "target": "energy gap between ground states",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "target_state",
+                "target": "|g'_N, 0",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "inverse fractional stimulated Raman adiabatic passage (if-STIRAP)",
+            "entity_id": "inverse_fractional_stimulated_raman_adiabatic_passage_if_stirap",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "definition": "time inversion of fractional STIRAP",
+              "process": "drives population from entangled state to single marked state",
+              "laser_sequence": "switch on Omega and Omega' together, then switch off Omega' before Omega"
+            },
+            "relationships": [
+              {
+                "predicate": "transfers_population_from",
+                "target": "entangled state |w",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "transfers_population_to",
+                "target": "marked state |g'_N, 0",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "time_scaling",
+                "target": "sqrt(N)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "entangled state |w",
+            "entity_id": "entangled_state_w",
+            "entity_type": "other",
+            "aliases": [],
+            "attributes": {
+              "notation": "|g', 0",
+              "composition": "collective single-photon atomic excitation",
+              "superposition": "marked state |m and unmarked collective state |g'_u, 0",
+              "model_entity_type": "quantum_state"
+            },
+            "relationships": [
+              {
+                "predicate": "prepared_by",
+                "target": "stimulated Raman adiabatic passage (STIRAP)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "initial_state_for",
+                "target": "inverse fractional stimulated Raman adiabatic passage (if-STIRAP)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Grover speedup",
+            "entity_id": "grover_speedup",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "scaling": "quadratic",
+              "time_complexity": "sqrt(N)"
+            },
+            "relationships": [
+              {
+                "predicate": "exhibited_by",
+                "target": "Adiabatic quantum search implementation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 988,
+          "word_count": 988,
+          "sha256": "b84f557aa8aebda25163bae0bcef3c058f26ff9e8b0cdc801d37aa7fca62a025",
+          "sentence_minhash": [
+            115938774645118459,
+            1306423125707224,
+            89450601222235340,
+            36933355719166269,
+            19381575336107373,
+            20257807012622824,
+            23718652799488495,
+            3589767170616667,
+            64333332902950267,
+            9462436175016187,
+            67831053780325945,
+            199161640674279394,
+            11381971713110011,
+            58558631451210278,
+            47189708136034628,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": [
+          "normalized unsupported entity type 'physical_system' for 'ensemble of N identical three-level atoms'",
+          "normalized unsupported entity type 'physical_component' for 'marked atom'",
+          "normalized unsupported entity type 'quantum_state' for 'entangled state |w'"
+        ]
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The system's Hamiltonian is block-diagonal based on photon number, with the single-photon subspace enabling adiabatic Grover search. A unitary transformation groups unmarked atoms into a collective state to simplify the Hamiltonian. The resonant approximation and adiabatic elimination yield an effective Hamiltonian valid under specific scaling conditions.",
+        "entities": [
+          {
+            "name": "System Hamiltonian",
+            "entity_id": "system_hamiltonian",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "structure": "photonic block diagonal",
+              "block_label": "number of photons k in cavity when atoms are in ground state |g>"
+            },
+            "relationships": [
+              {
+                "predicate": "decomposes_into",
+                "target": "subspaces P_k",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "focuses_on",
+                "target": "single photon block P_1 H P_1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Cavity mode",
+            "entity_id": "cavity_mode",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "frequency": "ω",
+              "coupling_strength": "G"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Laser fields",
+            "entity_id": "laser_fields",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "frequencies": "ω, ω-δ",
+              "pulse_shapes": "Ω(t), Ω'(t)",
+              "scaling": "do not grow with N"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Single photon subspace",
+            "entity_id": "single_photon_subspace",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "photon_count": 1,
+              "function": "implements adiabatic Grover search algorithm"
+            },
+            "relationships": [
+              {
+                "predicate": "connects",
+                "target": "state |g, 1>",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "connects_to",
+                "target": "excited state |e_j, 0>",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "connects_to",
+                "target": "ground state |g'_j, 0>",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Resonant transformation R",
+            "entity_id": "resonant_transformation_r",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "purpose": "remove oscillatory time dependence introduced by laser",
+              "definition": "dresses atomic states with laser and cavity photons"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Unitary transformation W",
+            "entity_id": "unitary_transformation_w",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "purpose": "rewrite Hamiltonian in basis featuring uniform superpositions of unmarked ground and excited states",
+              "constraint": "U is an arbitrary unitary matrix, where (N-1) elements of a column are equal. "
+            },
+            "relationships": [
+              {
+                "predicate": "defines_basis_states",
+                "target": "|g'_u, 0>, |e_u, 0>",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Unmarked atoms",
+            "entity_id": "unmarked_atoms",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "count": "N-1",
+              "role": "collectively labeled with subscript u",
+              "status": "none plays a privileged role"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Marked atom",
+            "entity_id": "marked_atom",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "index": "N",
+              "state": "|g'_N, 0>"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Resonant approximation",
+            "entity_id": "resonant_approximation",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "condition": "time evolution of non-resonant components is much faster than Ω and Ω' (T >> δ^-1)",
+              "result": "Σ ≃ Ω and Σ' ≃ Ω'"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Effective Hamiltonian H_eff",
+            "entity_id": "effective_hamiltonian_h_eff",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "derivation": "adiabatic elimination",
+              "formula": "A - B C^-1 B^†",
+              "accuracy": "contains contributions up to order (Ω_peak / N G)^4",
+              "condition": "Ω_peak / N G << 1"
+            },
+            "relationships": []
+          },
+          {
+            "name": "Eigenvalues of V_c",
+            "entity_id": "eigenvalues_of_v_c",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "values": "γ_0 = 0, γ_± = ±√N G"
+            },
+            "relationships": []
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 988,
+          "end_word": 1986,
+          "word_count": 998,
+          "sha256": "b0c8218e6b7b3263e16c713ad59bab45edb0b991f4734a384ba52bff6d39a42e",
+          "sentence_minhash": [
+            87042938965968753,
+            18551641988871988,
+            23103724853578534,
+            53442166147602330,
+            148925132169520149,
+            20257807012622824,
+            175774020269814206,
+            63183425104977485,
+            96635883400075078,
+            104074491380294736,
+            53901033911654042,
+            7735249562228291,
+            11610845633202285,
+            84690670495521798,
+            98254322503569589,
+            778033808000220760
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The text details the adiabatic population transfer mechanism in a cavity-atom system, defining the effective Hamiltonian and instantaneous eigenstates. It establishes a specific pulse constraint to ensure the process duration scales as the square root of the database size N. Numerical simulations confirm the efficiency of the transfer and the robustness of the scaling for various pulse shapes.",
+        "entities": [
+          {
+            "name": "Effective Hamiltonian H_eff",
+            "entity_id": "effective_hamiltonian_h_eff",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "basis": "|g' N, 0, |γ 0, |g' u, 0",
+              "representation": "Adiabatic representation"
+            },
+            "relationships": [
+              {
+                "predicate": "has_instantaneous_eigenstates",
+                "target": "Instantaneous eigenstates |±(t)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "has_eigenvalues",
+                "target": "0 and ±Λ(t)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Instantaneous eigenstates |±(t)",
+            "entity_id": "instantaneous_eigenstates_t",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "definition": "1/√2 (sin θ(t) |g' N, 0 + cos θ(t) |g' u, 0 ± |γ 0)",
+              "eigenvalues": "0 and ±Λ(t)"
+            },
+            "relationships": [
+              {
+                "predicate": "coincides_with_initial_state",
+                "target": "Uniform superposition |w",
+                "attributes": {
+                  "time": "t_i"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "coincides_with_final_state",
+                "target": "Marked state |g' N, 0",
+                "attributes": {
+                  "time": "t_f"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Adiabatic condition constraint",
+            "entity_id": "adiabatic_condition_constraint",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "requirement": "θ and Λ maintain a constant small ratio ε",
+              "purpose": "Allow analytical determination of √N scaling",
+              "robustness": "Preserved for wide range of N"
+            },
+            "relationships": [
+              {
+                "predicate": "determines_pulse_relation",
+                "target": "Differential equation for tan θ (Ω'/Ω)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "ensures_population_transfer_probability",
+                "target": "> 1 - ε²",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Pulse Ω",
+            "entity_id": "pulse",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "shape": "Gaussian (in simulation)",
+              "average_amplitude_scaling": "Constant or √N",
+              "total_area": "A(T) = Ω̄ T"
+            },
+            "relationships": [
+              {
+                "predicate": "switched_on_simultaneously_with",
+                "target": "Pulse Ω'",
+                "attributes": {
+                  "time": "t_i"
+                },
+                "target_id": null
+              },
+              {
+                "predicate": "switched_off_after",
+                "target": "Pulse Ω'",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Pulse Ω'",
+            "entity_id": "pulse",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "shape": "Smooth bell-shaped",
+              "peak_area_scaling": "O(N⁰) (almost constant)"
+            },
+            "relationships": [
+              {
+                "predicate": "determined_by",
+                "target": "Differential equation for tan θ",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Process duration T",
+            "entity_id": "process_duration_t",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "scaling": "√N",
+              "definition": "t_f - t_i"
+            },
+            "relationships": [
+              {
+                "predicate": "depends_on",
+                "target": "Average amplitude of Pulse Ω",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Numerical simulation results",
+            "entity_id": "numerical_simulation_results",
+            "entity_type": "event",
+            "aliases": [],
+            "attributes": {
+              "parameters": "N=8, ε=0.05",
+              "observation": "Very efficient transfer to marked state",
+              "transient_population": "Very low in excited states"
+            },
+            "relationships": [
+              {
+                "predicate": "validates",
+                "target": "Adiabatic Grover search implementation",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Adiabatic Grover search implementation",
+            "entity_id": "adiabatic_grover_search_implementation",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "system": "Cavity-laser-atom system",
+              "status": "First physical implementation proposed"
+            },
+            "relationships": [
+              {
+                "predicate": "supported_by",
+                "target": "EU projects COVAQIAL and QAP",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "supported_by",
+                "target": "Belgian government programme IUAP (grant V-18)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "supported_by",
+                "target": "Conseil Régional de Bourgogne",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 1986,
+          "end_word": 2832,
+          "word_count": 846,
+          "sha256": "284e8e2a73b1cec33f97bad7cc827248088cb34c3fa5d61feb36b2f31c056cac",
+          "sentence_minhash": [
+            175406989424540837,
+            1306423125707224,
+            40863640610520970,
+            131409577653329195,
+            10333787564937573,
+            20257807012622824,
+            23718652799488495,
+            1125529973969978,
+            64333332902950267,
+            92715222163426349,
+            72067118342250724,
+            34538575912147783,
+            21933493368060407,
+            906306679132868,
+            37122965930226008,
+            69242845566341429
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": []
+  },
+  "chunks_expected": 3,
+  "chunks_generated": 3,
+  "failed_chunks": [],
+  "repair": {
+    "accepted_windows": 1,
+    "rolled_back": false,
+    "original_context_sha256": "027d893fd5bf55f02d2489529d365b0f3375fc6ea14824f383afde9959baa319",
+    "final_context_sha256": "a6ce5e22c6e81782a69dcb2101c0c8fb8d2ccdf206da097bd68ead08dbf894dd",
+    "critical_values": {
+      "passed": true,
+      "checks": {
+        "numbers": true,
+        "quantities": true,
+        "formulas": true,
+        "mathematical_variables": true,
+        "operators": true
+      },
+      "before": {
+        "numbers": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "1",
+          "0",
+          "-1",
+          "-1",
+          "4",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "2",
+          "0",
+          "8",
+          "0.05",
+          "18"
+        ],
+        "quantities": [],
+        "formulas": [
+          "1-ε^2",
+          "A(T)",
+          "A-B",
+          "C^-1",
+          "N-1",
+          "N-1",
+          "N=8",
+          "N^0",
+          "O(N^0)",
+          "V-18",
+          "sqrt(N)",
+          "sqrt(N)",
+          "t_f-t_i",
+          "Λ(t)",
+          "Λ(t)",
+          "Ω(t)",
+          "Ω_peak/N",
+          "Ω_peak/N",
+          "γ_0=0",
+          "δ^-1",
+          "ε=0.05",
+          "θ(t)",
+          "θ(t)",
+          "θ(Ω'/Ω)",
+          "ω-δ"
+        ],
+        "mathematical_variables": [
+          "H_eff",
+          "H_eff",
+          "P_1",
+          "P_1",
+          "P_k",
+          "V_c",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_in",
+          "d_off_after",
+          "d_on_simultaneously_with",
+          "d_state",
+          "d_states",
+          "d_to_excited_state_by",
+          "e_amplitude_scaling",
+          "e_complexity",
+          "e_energy",
+          "e_entries_represented_by",
+          "e_j",
+          "e_scaling",
+          "e_shapes",
+          "e_u",
+          "g_strength",
+          "k_area_scaling",
+          "k_label",
+          "l_area",
+          "l_component",
+          "l_configuration",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_state_for",
+          "l_system",
+          "m_state",
+          "n_by",
+          "n_count",
+          "r_sequence",
+          "s_basis_states",
+          "s_eigenvalues",
+          "s_instantaneous_eigenstates",
+          "s_into",
+          "s_on",
+          "s_on",
+          "s_population_from",
+          "s_population_to",
+          "s_population_transfer_probability",
+          "s_pulse_relation",
+          "s_to",
+          "s_to",
+          "s_with_final_state",
+          "s_with_initial_state",
+          "t_f",
+          "t_f",
+          "t_i",
+          "t_i",
+          "t_i",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_population",
+          "t_state",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "y_shift",
+          "Λ",
+          "Λ",
+          "Λ",
+          "Σ",
+          "Σ",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "γ",
+          "γ",
+          "γ",
+          "γ",
+          "δ",
+          "δ",
+          "ε",
+          "ε",
+          "ε",
+          "θ",
+          "θ",
+          "θ",
+          "θ",
+          "θ",
+          "ω",
+          "ω",
+          "ω"
+        ],
+        "operators": [
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          "<",
+          "<",
+          "=",
+          "±",
+          "=",
+          "±",
+          "√",
+          "±",
+          "±",
+          "±",
+          "√",
+          "±",
+          "±",
+          "√",
+          ">",
+          "√",
+          "=",
+          "√",
+          "=",
+          "="
+        ]
+      },
+      "after": {
+        "numbers": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "1",
+          "0",
+          "-1",
+          "-1",
+          "4",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "2",
+          "0",
+          "8",
+          "0.05",
+          "18"
+        ],
+        "quantities": [],
+        "formulas": [
+          "1-ε^2",
+          "A(T)",
+          "A-B",
+          "C^-1",
+          "N-1",
+          "N-1",
+          "N=8",
+          "N^0",
+          "O(N^0)",
+          "V-18",
+          "sqrt(N)",
+          "sqrt(N)",
+          "t_f-t_i",
+          "Λ(t)",
+          "Λ(t)",
+          "Ω(t)",
+          "Ω_peak/N",
+          "Ω_peak/N",
+          "γ_0=0",
+          "δ^-1",
+          "ε=0.05",
+          "θ(t)",
+          "θ(t)",
+          "θ(Ω'/Ω)",
+          "ω-δ"
+        ],
+        "mathematical_variables": [
+          "H_eff",
+          "H_eff",
+          "P_1",
+          "P_1",
+          "P_k",
+          "V_c",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_in",
+          "d_off_after",
+          "d_on_simultaneously_with",
+          "d_state",
+          "d_states",
+          "d_to_excited_state_by",
+          "e_amplitude_scaling",
+          "e_complexity",
+          "e_energy",
+          "e_entries_represented_by",
+          "e_j",
+          "e_scaling",
+          "e_shapes",
+          "e_u",
+          "g_strength",
+          "k_area_scaling",
+          "k_label",
+          "l_area",
+          "l_component",
+          "l_configuration",
+          "l_entity_type",
+          "l_entity_type",
+          "l_entity_type",
+          "l_state_for",
+          "l_system",
+          "m_state",
+          "n_by",
+          "n_count",
+          "r_sequence",
+          "s_basis_states",
+          "s_eigenvalues",
+          "s_instantaneous_eigenstates",
+          "s_into",
+          "s_on",
+          "s_on",
+          "s_population_from",
+          "s_population_to",
+          "s_population_transfer_probability",
+          "s_pulse_relation",
+          "s_to",
+          "s_to",
+          "s_with_final_state",
+          "s_with_initial_state",
+          "t_f",
+          "t_f",
+          "t_i",
+          "t_i",
+          "t_i",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_population",
+          "t_state",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "y_shift",
+          "Λ",
+          "Λ",
+          "Λ",
+          "Σ",
+          "Σ",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "γ",
+          "γ",
+          "γ",
+          "γ",
+          "δ",
+          "δ",
+          "ε",
+          "ε",
+          "ε",
+          "θ",
+          "θ",
+          "θ",
+          "θ",
+          "θ",
+          "ω",
+          "ω",
+          "ω"
+        ],
+        "operators": [
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          "<",
+          "<",
+          "=",
+          "±",
+          "=",
+          "±",
+          "√",
+          "±",
+          "±",
+          "±",
+          "√",
+          "±",
+          "±",
+          "√",
+          ">",
+          "√",
+          "=",
+          "√",
+          "=",
+          "="
+        ]
+      },
+      "numeric_content_present": true,
+      "formula_content_present": true,
+      "exact_text_unchanged": false,
+      "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+    }
+  },
+  "condition": "qwen_ku1000_bt",
+  "source_metadata": {
+    "title": "Adiabatic quantum search with atoms in a cavity driven by lasers",
+    "authors": [
+      "D Daems",
+      "S Guérin"
+    ],
+    "doi": "10.48550/arxiv.0707.3054",
+    "year": "",
+    "openalex_id": "https://openalex.org/W6966772245",
+    "origin": "Existing disjoint 20-paper benchmark cohort",
+    "metadata_added_for_attribution_only": true,
+    "metadata_not_used_to_change_QA_context": true
+  }
+}
