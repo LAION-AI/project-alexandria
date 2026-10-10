@@ -1,0 +1,1276 @@
+{
+  "document_id": "fresh-arxiv-1599059",
+  "source_sha256": "978fab3d0eab3ab39b2d03c4ed801eb64741b9abd4c2f231e188fb5dbc5a6dd0",
+  "kind": "ku",
+  "status": "generated",
+  "result": {
+    "schema_version": "1.0",
+    "title": "Adiabatic quantum search with atoms in a cavity driven by lasers",
+    "abstract_sha256": "",
+    "mode": "sequential",
+    "model": "trained",
+    "config": {
+      "mode": "sequential",
+      "chunk_words": 1000,
+      "context_words": 0,
+      "previous_units": 10,
+      "canonicalize": false,
+      "minhash_permutations": 16,
+      "canonicalization_max_tokens": 4096,
+      "parse_retries": 0
+    },
+    "knowledge_units": [
+      {
+        "chunk_index": 0,
+        "context_summary": "The paper proposes an implementation of the adiabatic quantum search algorithm using a cavity-laser-atom system. It employs an arrangement of three atomic layers within a single-mode chamber, where the marked state is identified by an energy difference between the ground states. The process, known as inverse, fractional, stimulated Raman Adiabatic Transition (if-STIRAP), transforms the system from an initial entangled state into the single marked state within a time proportional to the square root of N. ",
+        "entities": [
+          {
+            "name": "adiabatic quantum search",
+            "entity_id": "adiabatic_quantum_search",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "goal": "Search for a marked element in an unordered list with N elements. ",
+              "speedup": "Grover speedup of sqrt(N)",
+              "implementation_type": "Adiabatic passage in a cavitation laser-atom system "
+            },
+            "relationships": [
+              {
+                "predicate": "achieves_speedup_over",
+                "target": "classical algorithm",
+                "attributes": {
+                  "classical_time_complexity": "N/2 calls"
+                },
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "cavity-laser-atom system",
+            "entity_id": "cavity_laser_atom_system",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "components": "A group of N identical, three-level atoms, single-mode cavity, two lasers ",
+              "atomic_configuration": "Lambda configuration (Λ)",
+              "atomic_levels": "two ground states (|g, |g') and one excited state (|e)",
+              "coupling_mechanism": "Exchanging a single photon with the chamber "
+            },
+            "relationships": [
+              {
+                "predicate": "implements",
+                "target": "adiabatic quantum search",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "inverse fractional stimulated Raman adiabatic passage (if-STIRAP)",
+            "entity_id": "inverse_fractional_stimulated_raman_adiabatic_passage_if_stirap",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "purpose": "drive population from entangled state to single marked state",
+              "time_complexity": "grows as sqrt(N)",
+              "implementation_sequence": "switch on Omega and Omega' together, then switch off Omega'"
+            },
+            "relationships": [
+              {
+                "predicate": "is_time_inversion_of",
+                "target": "fractional STIRAP (f-STIRAP)",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Grover algorithm",
+            "entity_id": "grover_algorithm",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "mechanism": "A series of quantum gate operations applied to a quantum register. ",
+              "oracle_function": "checks if input is marked state, returns 1 or 0",
+              "time_complexity": "N^(1/2) steps"
+            },
+            "relationships": [
+              {
+                "predicate": "achieves_quadratic_speedup_over",
+                "target": "classical algorithm",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Fahri and Gutmann proposal",
+            "entity_id": "fahri_and_gutmann_proposal",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "approach": "time continuous version of Grover algorithm",
+              "marking_mechanism": "energy E for marked state, energy 0 for others",
+              "driving_hamiltonian": "V = E|w w| to drive H0 = E|m m|"
+            },
+            "relationships": [
+              {
+                "predicate": "shows_time_complexity",
+                "target": "N^(1/2)/E",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "NMR experimental realization",
+            "entity_id": "nmr_experimental_realization",
+            "entity_type": "event",
+            "aliases": [],
+            "attributes": {
+              "database_size": "N=4",
+              "qubit_system": "spin 3/2 nucleus with quadrupolar coupling"
+            },
+            "relationships": [
+              {
+                "predicate": "tested",
+                "target": "quantum circuit algorithm",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "cavity QED proposals",
+            "entity_id": "cavity_qed_proposals",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "gate_dynamics": "cavity-assisted collision or strong resonant classical field"
+            },
+            "relationships": [
+              {
+                "predicate": "proposes_implementation_of",
+                "target": "quantum gate dynamics",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "adiabatic Grover algorithm implementation",
+            "entity_id": "adiabatic_grover_algorithm_implementation",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "status": "first proposed implementation of this type",
+              "scalability": "in principle scalable",
+              "hamiltonian_form": "H = H0 + V(t)",
+              "adiabatic_condition": "instantaneous eigenvector adiabatically connects initial superposition to marked state"
+            },
+            "relationships": [
+              {
+                "predicate": "uses",
+                "target": "cavity-laser-atom system",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 0,
+          "start_word": 0,
+          "end_word": 988,
+          "word_count": 988,
+          "sha256": "b84f557aa8aebda25163bae0bcef3c058f26ff9e8b0cdc801d37aa7fca62a025",
+          "sentence_minhash": [
+            115938774645118459,
+            1306423125707224,
+            89450601222235340,
+            36933355719166269,
+            19381575336107373,
+            20257807012622824,
+            23718652799488495,
+            3589767170616667,
+            64333332902950267,
+            9462436175016187,
+            67831053780325945,
+            199161640674279394,
+            11381971713110011,
+            58558631451210278,
+            47189708136034628,
+            658790404649858
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 1,
+        "context_summary": "The system Hamiltonian is block diagonal based on the number of photons, focusing on the single-photon block to implement adiabatic Grover search. The system is transformed into a basis featuring uniform superpositions of unmarked and marked states, leading to an effective Hamiltonian. This effective Hamiltonian is derived using resonant and adiabatic approximations, resulting in a structure that allows for the implementation of the search algorithm.",
+        "entities": [
+          {
+            "name": "system Hamiltonian",
+            "entity_id": "system_hamiltonian",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "structure": "photonic block diagonal",
+              "blocks": "labeled by number k of photons in cavity when N atoms are in ground state |g>"
+            },
+            "relationships": [
+              {
+                "predicate": "decouples_into",
+                "target": "P_k H_k P_k",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "focuses_on",
+                "target": "P_1 H_1 P_1",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "single-photon block",
+            "entity_id": "single_photon_block",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "associated_state": "|g, 1>",
+              "implementation_goal": "adiabatic Grover search algorithm"
+            },
+            "relationships": [
+              {
+                "predicate": "connected_to",
+                "target": "two families of states",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "dressed atomic states",
+            "entity_id": "dressed_atomic_states",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "purpose": "remove oscillatory time dependence introduced by laser",
+              "transformation": "R = exp(-i delta t |g'_N, 0><g'_N, 0| + exp(-i omega t) |g, 1><g, 1| + sum_{j=1}^N |g'_j, 0><g'_j, 0| + exp(-i omega t) |e_j, 0><e_j, 0|)"
+            },
+            "relationships": [
+              {
+                "predicate": "relevant_states",
+                "target": "N-1 unmarked states |g'_j, 0>",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "relevant_states",
+                "target": "marked state |g'_N, 0>",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "uniform superposition basis",
+            "entity_id": "uniform_superposition_basis",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "transformation": "W",
+              "components": "uniform superposition of unmarked ground states and uniform superposition of excited states associated with unmarked atoms"
+            },
+            "relationships": [
+              {
+                "predicate": "decouples_subspace",
+                "target": "subspace spanned by |g'_u, 0>, |g'_N, 0>, |g, 1>, |e_u, 0>, |e_N, 0>",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "effective Hamiltonian",
+            "entity_id": "effective_hamiltonian",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "derivation": "adiabatic elimination of fast components",
+              "order_of_approximation": "(Omega_peak / N G)^4"
+            },
+            "relationships": [
+              {
+                "predicate": "contains",
+                "target": "all contributions up to order (Omega_peak / N G)^4",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "resonant approximation",
+            "entity_id": "resonant_approximation",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "condition": "time scale T >> delta^-1",
+              "replacement": "sum_{j=1}^N |g'_j, 0><g'_j, 0| + exp(-i delta t) |g, 1><g, 1| + exp(-i omega t) |e_j, 0><e_j, 0|"
+            },
+            "relationships": [
+              {
+                "predicate": "justified_by",
+                "target": "time evolution of non-resonant components being much faster than evolution of Omega and Omega' over time scale T",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "adiabatic elimination",
+            "entity_id": "adiabatic_elimination",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "condition": "Omega_peak / N G << 1",
+              "result": "effective Hamiltonian H_eff = A - B C^-1 B^dagger"
+            },
+            "relationships": [
+              {
+                "predicate": "justified_by",
+                "target": "unitary evolution of C being much faster than that of A",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "eigenvalues of V_c",
+            "entity_id": "eigenvalues_of_v_c",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "values": "gamma_0 = 0, gamma_plus = +sqrt(N)G, gamma_minus = -sqrt(N)G"
+            },
+            "relationships": [
+              {
+                "predicate": "associated_with",
+                "target": "unitary transformation T",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 1,
+          "start_word": 988,
+          "end_word": 1986,
+          "word_count": 998,
+          "sha256": "b0c8218e6b7b3263e16c713ad59bab45edb0b991f4734a384ba52bff6d39a42e",
+          "sentence_minhash": [
+            87042938965968753,
+            18551641988871988,
+            23103724853578534,
+            53442166147602330,
+            148925132169520149,
+            20257807012622824,
+            175774020269814206,
+            63183425104977485,
+            96635883400075078,
+            104074491380294736,
+            53901033911654042,
+            7735249562228291,
+            11610845633202285,
+            84690670495521798,
+            98254322503569589,
+            778033808000220760
+          ]
+        },
+        "extraction_warnings": []
+      },
+      {
+        "chunk_index": 2,
+        "context_summary": "The paper details the implementation of adiabatic quantum search using a cavity-laser-atom system, employing inverse fractional stimulated Raman adiabatic passage (if-STIRAP). The process transfers population from a uniform superposition to the marked state in a time scaling as the square root of the number of atoms, N. The authors derive the required laser pulse shapes to maintain adiabaticity and demonstrate the robustness of the $\\sqrt{N}$ scaling.",
+        "entities": [
+          {
+            "name": "adiabatic quantum search",
+            "entity_id": "adiabatic_quantum_search",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "implementation": "cavity-laser-atom system",
+              "mechanism": "inverse fractional stimulated Raman adiabatic passage (if-STIRAP)",
+              "time_scaling": "proportional to the square root of N"
+            },
+            "relationships": [
+              {
+                "predicate": "transfers_population_from",
+                "target": "uniform superposition",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "transfers_population_to",
+                "target": "marked state",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "inverse fractional stimulated Raman adiabatic passage (if-STIRAP)",
+            "entity_id": "inverse_fractional_stimulated_raman_adiabatic_passage_if_stirap",
+            "entity_type": "method",
+            "aliases": [],
+            "attributes": {
+              "purpose": "population transfer in adiabatic quantum search",
+              "pulse_constraint": "constant ratio $\\epsilon$ between $\\theta$ and $\\Lambda$"
+            },
+            "relationships": [
+              {
+                "predicate": "requires",
+                "target": "simultaneous switching of pulses $\\Omega'$ and $\\Omega$",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "requires",
+                "target": "turning off pulse $\\Omega'$ before $\\Omega$",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "adiabatic regime",
+            "entity_id": "adiabatic_regime",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "condition": "Hamiltonian varies sufficiently slowly in time",
+              "mathematical_condition": "$\\theta \\ll \\Lambda$"
+            },
+            "relationships": [
+              {
+                "predicate": "ensures",
+                "target": "negligible transitions between instantaneous eigenstates",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "pulse constraint $\\epsilon$",
+            "entity_id": "pulse_constraint_epsilon",
+            "entity_type": "concept",
+            "aliases": [],
+            "attributes": {
+              "value": "constant (small) ratio",
+              "mathematical_form": "$\\theta / \\Lambda = \\epsilon$"
+            },
+            "relationships": [
+              {
+                "predicate": "allows_for",
+                "target": "analytical determination of $\\sqrt{N}$ scaling",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "ensures",
+                "target": "transfer efficiency greater than $1 - \\epsilon^2$",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "pulse $\\Omega'$",
+            "entity_id": "pulse_omega",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "role": "controls population transfer",
+              "shape": "simple smooth bell-shaped pulse (for $\\epsilon=0.05, N=8$)"
+            },
+            "relationships": [
+              {
+                "predicate": "scales_as",
+                "target": "O(N^0)",
+                "attributes": {},
+                "target_id": null
+              },
+              {
+                "predicate": "determined_by",
+                "target": "laser pulse $\\Omega$",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "pulse $\\Omega$",
+            "entity_id": "pulse_omega",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "role": "driving laser pulse",
+              "shape": "Gaussian pulse (for $\\epsilon=0.05, N=8$)"
+            },
+            "relationships": [
+              {
+                "predicate": "scales_as",
+                "target": "$\\sqrt{N}$",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "process duration T",
+            "entity_id": "process_duration_t",
+            "entity_type": "measurement",
+            "aliases": [],
+            "attributes": {
+              "scaling": "$\\sqrt{N}$ for constant average amplitude $\\Omega$",
+              "implicit_determination": "when ratio on left side of (17) vanishes at $t_f$"
+            },
+            "relationships": [
+              {
+                "predicate": "determined_by",
+                "target": "total area of pulse $\\Omega$",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "N. J. Cerf",
+            "entity_id": "n_j_cerf",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "contributor"
+            },
+            "relationships": [
+              {
+                "predicate": "provided",
+                "target": "useful discussions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "H.-R. Jauslin",
+            "entity_id": "h_r_jauslin",
+            "entity_type": "person",
+            "aliases": [],
+            "attributes": {
+              "role": "contributor"
+            },
+            "relationships": [
+              {
+                "predicate": "provided",
+                "target": "useful discussions",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "EU projects COVAQIAL and QAP",
+            "entity_id": "eu_projects_covaqial_and_qap",
+            "entity_type": "organization",
+            "aliases": [],
+            "attributes": {
+              "role": "funding source"
+            },
+            "relationships": [
+              {
+                "predicate": "supported",
+                "target": "research",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Belgian government programme IUAP",
+            "entity_id": "belgian_government_programme_iuap",
+            "entity_type": "organization",
+            "aliases": [],
+            "attributes": {
+              "grant_id": "V-18",
+              "role": "funding source"
+            },
+            "relationships": [
+              {
+                "predicate": "supported",
+                "target": "research",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          },
+          {
+            "name": "Conseil Régional de Bourgogne",
+            "entity_id": "conseil_regional_de_bourgogne",
+            "entity_type": "organization",
+            "aliases": [],
+            "attributes": {
+              "role": "funding source"
+            },
+            "relationships": [
+              {
+                "predicate": "supported",
+                "target": "research",
+                "attributes": {},
+                "target_id": null
+              }
+            ]
+          }
+        ],
+        "source": {
+          "chunk_index": 2,
+          "start_word": 1986,
+          "end_word": 2832,
+          "word_count": 846,
+          "sha256": "284e8e2a73b1cec33f97bad7cc827248088cb34c3fa5d61feb36b2f31c056cac",
+          "sentence_minhash": [
+            175406989424540837,
+            1306423125707224,
+            40863640610520970,
+            131409577653329195,
+            10333787564937573,
+            20257807012622824,
+            23718652799488495,
+            1125529973969978,
+            64333332902950267,
+            92715222163426349,
+            72067118342250724,
+            34538575912147783,
+            21933493368060407,
+            906306679132868,
+            37122965930226008,
+            69242845566341429
+          ]
+        },
+        "extraction_warnings": []
+      }
+    ],
+    "canonical_entities": []
+  },
+  "chunks_expected": 3,
+  "chunks_generated": 3,
+  "failed_chunks": [],
+  "repair": {
+    "accepted_windows": 6,
+    "rolled_back": false,
+    "original_context_sha256": "f3ec80942ab38cf099eb6e49e75f6aaf64a826c0bdd87b26eda5ae9310a62156",
+    "final_context_sha256": "357c5eb510b57411497fec6d3117dd906dc043cfcc50706a6f7093f8d0d8c1f6",
+    "critical_values": {
+      "passed": true,
+      "checks": {
+        "numbers": true,
+        "quantities": true,
+        "formulas": true,
+        "mathematical_variables": true,
+        "operators": true
+      },
+      "before": {
+        "numbers": [
+          "2",
+          "1",
+          "0",
+          "1",
+          "2",
+          "0",
+          "1",
+          "2",
+          "4",
+          "3",
+          "2",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "4",
+          "4",
+          "-1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "-1",
+          "0",
+          "1",
+          "2",
+          "0.05",
+          "8",
+          "0",
+          "0.05",
+          "8",
+          "17",
+          "18"
+        ],
+        "quantities": [],
+        "formulas": [
+          "0=E",
+          "1-\\ε^2",
+          "1/2",
+          "1/2",
+          "3/2",
+          "A-B",
+          "C^-1",
+          "H=H",
+          "H_eff=A",
+          "N-1",
+          "N/2",
+          "N=4",
+          "N=8",
+          "N=8",
+          "N^0",
+          "O(N^0)",
+          "R=e",
+          "V(t)",
+          "V-18",
+          "V=E",
+          "\\\\Lambda",
+          "\\\\sqrt{N}",
+          "\\\\sqrt{N}",
+          "\\\\sqrt{N}",
+          "\\\\sqrt{N}",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω'",
+          "\\Ω'",
+          "\\Ω'",
+          "\\ε",
+          "\\ε",
+          "\\ε=0.05,N=8",
+          "\\ε=0.05,N=8",
+          "\\θ",
+          "\\θ/\\\\Lambda=\\ε",
+          "\\θ\\\\ll\\\\Lambda",
+          "a_0=0",
+          "chemical:H0",
+          "chemical:H0",
+          "exp(-ideltat)",
+          "exp(-iomegat)",
+          "exp(-iomegat)",
+          "exp(-iomegat)",
+          "j=1",
+          "j=1",
+          "sqrt(N)",
+          "sqrt(N)",
+          "sqrt(N)",
+          "sqrt(N)",
+          "t_f",
+          "ε=0.05",
+          "ε=0.05",
+          "ε^2"
+        ],
+        "mathematical_variables": [
+          "H_1",
+          "H_eff",
+          "H_k",
+          "P_1",
+          "P_1",
+          "P_k",
+          "P_k",
+          "V_c",
+          "a_0",
+          "a_minus",
+          "a_peak",
+          "a_peak",
+          "a_peak",
+          "a_plus",
+          "c_condition",
+          "c_configuration",
+          "c_levels",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_state",
+          "d_to",
+          "d_with",
+          "e_N",
+          "e_complexity",
+          "e_complexity",
+          "e_constraint",
+          "e_dynamics",
+          "e_function",
+          "e_j",
+          "e_j",
+          "e_j",
+          "e_j",
+          "e_scaling",
+          "e_size",
+          "e_u",
+          "g_hamiltonian",
+          "g_mechanism",
+          "g_mechanism",
+          "l_condition",
+          "l_form",
+          "l_time_complexity",
+          "n_form",
+          "n_goal",
+          "n_sequence",
+          "n_type",
+          "r_of_approximation",
+          "s_as",
+          "s_as",
+          "s_for",
+          "s_implementation_of",
+          "s_into",
+          "s_on",
+          "s_population_from",
+          "s_population_to",
+          "s_quadratic_speedup_over",
+          "s_speedup_over",
+          "s_subspace",
+          "s_time_complexity",
+          "s_time_inversion_of",
+          "t_determination",
+          "t_f",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_states",
+          "t_states",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_system",
+          "Λ",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "ε",
+          "ε",
+          "ε",
+          "ε",
+          "ε",
+          "ε",
+          "θ",
+          "θ",
+          "θ"
+        ],
+        "operators": [
+          "=",
+          "=",
+          "=",
+          "=",
+          ">",
+          ">",
+          "=",
+          ">",
+          "<",
+          ">",
+          "<",
+          "=",
+          ">",
+          "<",
+          ">",
+          "<",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          "=",
+          ">",
+          "<",
+          ">",
+          "<",
+          ">",
+          "<",
+          "<",
+          "<",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "="
+        ]
+      },
+      "after": {
+        "numbers": [
+          "2",
+          "1",
+          "0",
+          "1",
+          "2",
+          "0",
+          "1",
+          "2",
+          "4",
+          "3",
+          "2",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "4",
+          "4",
+          "-1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "1",
+          "0",
+          "0",
+          "1",
+          "-1",
+          "0",
+          "1",
+          "2",
+          "0.05",
+          "8",
+          "0",
+          "0.05",
+          "8",
+          "17",
+          "18"
+        ],
+        "quantities": [],
+        "formulas": [
+          "0=E",
+          "1-\\ε^2",
+          "1/2",
+          "1/2",
+          "3/2",
+          "A-B",
+          "C^-1",
+          "H=H",
+          "H_eff=A",
+          "N-1",
+          "N/2",
+          "N=4",
+          "N=8",
+          "N=8",
+          "N^0",
+          "O(N^0)",
+          "R=e",
+          "V(t)",
+          "V-18",
+          "V=E",
+          "\\\\Lambda",
+          "\\\\sqrt{N}",
+          "\\\\sqrt{N}",
+          "\\\\sqrt{N}",
+          "\\\\sqrt{N}",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω",
+          "\\Ω'",
+          "\\Ω'",
+          "\\Ω'",
+          "\\ε",
+          "\\ε",
+          "\\ε=0.05,N=8",
+          "\\ε=0.05,N=8",
+          "\\θ",
+          "\\θ/\\\\Lambda=\\ε",
+          "\\θ\\\\ll\\\\Lambda",
+          "a_0=0",
+          "chemical:H0",
+          "chemical:H0",
+          "exp(-ideltat)",
+          "exp(-iomegat)",
+          "exp(-iomegat)",
+          "exp(-iomegat)",
+          "j=1",
+          "j=1",
+          "sqrt(N)",
+          "sqrt(N)",
+          "sqrt(N)",
+          "sqrt(N)",
+          "t_f",
+          "ε=0.05",
+          "ε=0.05",
+          "ε^2"
+        ],
+        "mathematical_variables": [
+          "H_1",
+          "H_eff",
+          "H_k",
+          "P_1",
+          "P_1",
+          "P_k",
+          "P_k",
+          "V_c",
+          "a_0",
+          "a_minus",
+          "a_peak",
+          "a_peak",
+          "a_peak",
+          "a_plus",
+          "c_condition",
+          "c_configuration",
+          "c_levels",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_by",
+          "d_state",
+          "d_to",
+          "d_with",
+          "e_N",
+          "e_complexity",
+          "e_complexity",
+          "e_constraint",
+          "e_dynamics",
+          "e_function",
+          "e_j",
+          "e_j",
+          "e_j",
+          "e_j",
+          "e_scaling",
+          "e_size",
+          "e_u",
+          "g_hamiltonian",
+          "g_mechanism",
+          "g_mechanism",
+          "l_condition",
+          "l_form",
+          "l_time_complexity",
+          "n_form",
+          "n_goal",
+          "n_sequence",
+          "n_type",
+          "r_of_approximation",
+          "s_as",
+          "s_as",
+          "s_for",
+          "s_implementation_of",
+          "s_into",
+          "s_on",
+          "s_population_from",
+          "s_population_to",
+          "s_quadratic_speedup_over",
+          "s_speedup_over",
+          "s_subspace",
+          "s_time_complexity",
+          "s_time_inversion_of",
+          "t_determination",
+          "t_f",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_id",
+          "t_states",
+          "t_states",
+          "t_summary",
+          "t_summary",
+          "t_summary",
+          "t_system",
+          "Λ",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "Ω",
+          "ε",
+          "ε",
+          "ε",
+          "ε",
+          "ε",
+          "ε",
+          "θ",
+          "θ",
+          "θ"
+        ],
+        "operators": [
+          "=",
+          "=",
+          "=",
+          "=",
+          ">",
+          ">",
+          "=",
+          ">",
+          "<",
+          ">",
+          "<",
+          "=",
+          ">",
+          "<",
+          ">",
+          "<",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          ">",
+          "=",
+          ">",
+          "<",
+          ">",
+          "<",
+          ">",
+          "<",
+          "<",
+          "<",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "=",
+          "="
+        ]
+      },
+      "numeric_content_present": true,
+      "formula_content_present": true,
+      "exact_text_unchanged": false,
+      "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+    }
+  },
+  "condition": "gemma4_r128_ku1000_bt",
+  "source_metadata": {
+    "title": "Adiabatic quantum search with atoms in a cavity driven by lasers",
+    "authors": [
+      "D Daems",
+      "S Guérin"
+    ],
+    "doi": "10.48550/arxiv.0707.3054",
+    "year": "",
+    "openalex_id": "https://openalex.org/W6966772245",
+    "origin": "Existing disjoint 20-paper benchmark cohort",
+    "metadata_added_for_attribution_only": true,
+    "metadata_not_used_to_change_QA_context": true
+  }
+}
