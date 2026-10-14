@@ -1,0 +1,401 @@
+{
+  "updated": "2026-10-14",
+  "public_dataset": "https://huggingface.co/datasets/laion/Scientific-Summaries",
+  "dataset_size_display": "22M+ summary entries",
+  "dataset_generator": "Gemini 2.0 Flash Lite",
+  "dataset_summary_fields": [
+    "summary_title",
+    "summary_authors",
+    "field_subfield",
+    "type_of_paper",
+    "executive_summary",
+    "research_context",
+    "research_question_hypothesis",
+    "methodological_details",
+    "procedures_architectures",
+    "key_results",
+    "interpretation_implications",
+    "contradictions_limitations",
+    "claims",
+    "data_code_availability",
+    "robustness_ablation_notes",
+    "ethical_considerations",
+    "key_figures_tables",
+    "three_takeaways"
+  ],
+  "benchmark_summary_schema_keys": 19,
+  "benchmark_extra_section": "top_influential_citations",
+  "judge": {
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "max_output_tokens": 100,
+    "presence_penalty": 1.05,
+    "frequency_penalty": 1.05,
+    "max_format_attempts": 5
+  },
+  "shared_97": {
+    "date": "2026-10-09",
+    "papers": 97,
+    "questions": 970,
+    "scores": {
+      "no_context": {
+        "correct": 599,
+        "total": 970,
+        "accuracy": 0.6175257731958763,
+        "invalid": 3,
+        "confidence_interval_95": [
+          0.5814432989690721,
+          0.6525773195876289
+        ]
+      },
+      "original": {
+        "correct": 938,
+        "total": 970,
+        "accuracy": 0.9670103092783505,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9556701030927834,
+          0.9783505154639176
+        ]
+      },
+      "qwen_ku1000": {
+        "correct": 878,
+        "total": 970,
+        "accuracy": 0.9051546391752577,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.88659793814433,
+          0.9237113402061855
+        ]
+      },
+      "qwen_ku500": {
+        "correct": 898,
+        "total": 970,
+        "accuracy": 0.9257731958762887,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9072164948453608,
+          0.9432989690721649
+        ]
+      },
+      "gemma_previous_summary": {
+        "correct": 913,
+        "total": 970,
+        "accuracy": 0.9412371134020618,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9237113402061855,
+          0.9577319587628865
+        ]
+      }
+    },
+    "source": "https://github.com/LAION-AI/project-alexandria/blob/a07dcf807e066ee612c4f206b726b663601de76e/experiments/scientific_summaries/gemma_ku_distillation_20261009/metrics.json"
+  },
+  "matched_summary_training": {
+    "papers": 865,
+    "epochs": 1,
+    "teacher": "Qwen/Qwen3.8-27B-FP8",
+    "scores": {
+      "gemma12_base": {
+        "name": "Gemma 4 12B IT / no LoRA, thinking enabled",
+        "correct": 850,
+        "total": 970,
+        "invalid": 0,
+        "accuracy": 0.8762886597938144,
+        "ci95": [
+          0.8525773195876288,
+          0.8989690721649485
+        ],
+        "failed_generation_papers": 0,
+        "mean_narrative_words": 1069.6907216494844
+      },
+      "gemma12_r64": {
+        "name": "Gemma 4 12B IT / rank 64, one epoch",
+        "correct": 853,
+        "total": 970,
+        "invalid": 70,
+        "accuracy": 0.8793814432989691,
+        "ci95": [
+          0.8268041237113402,
+          0.9268041237113402
+        ],
+        "failed_generation_papers": 7,
+        "mean_narrative_words": 2198.061855670103
+      },
+      "gemma12_r128": {
+        "name": "Gemma 4 12B IT / rank 128, one epoch",
+        "correct": 897,
+        "total": 970,
+        "invalid": 20,
+        "accuracy": 0.9247422680412372,
+        "ci95": [
+          0.8907216494845361,
+          0.9515463917525773
+        ],
+        "failed_generation_papers": 2,
+        "mean_narrative_words": 2468.865979381443
+      }
+    },
+    "source": "https://github.com/LAION-AI/project-alexandria/blob/a07dcf807e066ee612c4f206b726b663601de76e/experiments/scientific_summaries/qwen_gemma_distillation_865/evaluation/report.json"
+  },
+  "heldout_20": {
+    "date": "2026-10-10",
+    "papers": 20,
+    "questions": 200,
+    "scores": {
+      "no_context": {
+        "correct": 89,
+        "total": 200,
+        "accuracy": 0.445,
+        "invalid": 5,
+        "confidence_interval_95": [
+          0.40499999999999997,
+          0.49000000000000005
+        ]
+      },
+      "original": {
+        "correct": 182,
+        "total": 200,
+        "accuracy": 0.91,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.875,
+          0.945
+        ]
+      },
+      "qwen_ku1000": {
+        "correct": 176,
+        "total": 200,
+        "accuracy": 0.88,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.85,
+          0.915
+        ]
+      },
+      "qwen_ku500": {
+        "correct": 179,
+        "total": 200,
+        "accuracy": 0.895,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.8699999999999999,
+          0.9199999999999999
+        ]
+      },
+      "qwen_summary": {
+        "correct": 164,
+        "total": 200,
+        "accuracy": 0.82,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.76,
+          0.875
+        ]
+      },
+      "gemma4_base_ku1000": {
+        "correct": 129,
+        "total": 200,
+        "accuracy": 0.645,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.5700000000000001,
+          0.72
+        ]
+      },
+      "gemma4_r128_ku1000": {
+        "correct": 160,
+        "total": 200,
+        "accuracy": 0.8,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.73,
+          0.86
+        ]
+      },
+      "gemma4_base_summary": {
+        "correct": 126,
+        "total": 200,
+        "accuracy": 0.63,
+        "invalid": 20,
+        "confidence_interval_95": [
+          0.505,
+          0.74
+        ]
+      },
+      "gemma4_r128_summary": {
+        "correct": 135,
+        "total": 200,
+        "accuracy": 0.675,
+        "invalid": 20,
+        "confidence_interval_95": [
+          0.54,
+          0.795
+        ]
+      },
+      "gemma12_base_ku1000": {
+        "correct": 127,
+        "total": 200,
+        "accuracy": 0.635,
+        "invalid": 10,
+        "confidence_interval_95": [
+          0.54,
+          0.7150000000000001
+        ]
+      },
+      "gemma12_r128_ku1000": {
+        "correct": 170,
+        "total": 200,
+        "accuracy": 0.85,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.805,
+          0.89
+        ]
+      },
+      "gemma12_base_summary": {
+        "correct": 148,
+        "total": 200,
+        "accuracy": 0.74,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.6799999999999999,
+          0.795
+        ]
+      },
+      "gemma12_r128_summary": {
+        "correct": 161,
+        "total": 200,
+        "accuracy": 0.805,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.74,
+          0.865
+        ]
+      },
+      "gemma12_previous_summary_lora": {
+        "correct": 178,
+        "total": 200,
+        "accuracy": 0.89,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.835,
+          0.9349999999999999
+        ]
+      },
+      "gemma4_base_ku500": {
+        "correct": 151,
+        "total": 200,
+        "accuracy": 0.755,
+        "invalid": 10,
+        "confidence_interval_95": [
+          0.655,
+          0.8300000000000001
+        ]
+      },
+      "gemma4_r128_ku500": {
+        "correct": 165,
+        "total": 200,
+        "accuracy": 0.825,
+        "invalid": 10,
+        "confidence_interval_95": [
+          0.7150000000000001,
+          0.9099999999999999
+        ]
+      },
+      "gemma12_base_ku500": {
+        "correct": 150,
+        "total": 200,
+        "accuracy": 0.75,
+        "invalid": 10,
+        "confidence_interval_95": [
+          0.645,
+          0.8400000000000001
+        ]
+      },
+      "gemma12_r128_ku500": {
+        "correct": 177,
+        "total": 200,
+        "accuracy": 0.885,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.8400000000000001,
+          0.9199999999999999
+        ]
+      }
+    },
+    "source": "https://github.com/LAION-AI/project-alexandria/blob/a07dcf807e066ee612c4f206b726b663601de76e/experiments/scientific_summaries/gemma_ku_distillation_20261009/ku500_followup_20261010/metrics.json"
+  },
+  "procedural_repair_97": {
+    "date": "2026-10-13",
+    "papers": 97,
+    "questions": 970,
+    "source_copy_audit_version": "2.1",
+    "source_untruncated": true,
+    "scores": {
+      "raw": {
+        "correct": 914,
+        "total": 970,
+        "invalid": 0,
+        "accuracy": 0.9422680412371134,
+        "difference_vs_fresh_raw_pp": 0.0,
+        "paper_bootstrap_95ci": [
+          0.9257731958762887,
+          0.9577319587628865
+        ],
+        "paired_difference_95ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "creative": {
+        "correct": 908,
+        "total": 970,
+        "invalid": 0,
+        "accuracy": 0.9360824742268041,
+        "difference_vs_fresh_raw_pp": -0.6185567010309279,
+        "paper_bootstrap_95ci": [
+          0.9185567010309278,
+          0.9525773195876288
+        ],
+        "paired_difference_95ci_pp": [
+          -1.134020618556697,
+          -0.20618556701030855
+        ]
+      },
+      "v3_composed": {
+        "correct": 913,
+        "total": 970,
+        "invalid": 0,
+        "accuracy": 0.9412371134020618,
+        "difference_vs_fresh_raw_pp": -0.10309278350515463,
+        "paper_bootstrap_95ci": [
+          0.924742268041237,
+          0.956701030927835
+        ],
+        "paired_difference_95ci_pp": [
+          -0.7216494845360799,
+          0.6185567010309256
+        ]
+      }
+    },
+    "copying": {
+      "raw": {
+        "mean_narrative_covered_fraction_6plus": 0.15227428470594992,
+        "strict_narrative_5_word_passes": 0
+      },
+      "creative": {
+        "mean_narrative_covered_fraction_6plus": 0.11529329991740252,
+        "strict_narrative_5_word_passes": 0
+      },
+      "v3_composed": {
+        "mean_narrative_covered_fraction_6plus": 0.09246545426676192,
+        "strict_narrative_5_word_passes": 0
+      }
+    },
+    "guard": "Numbers, units, formulas, logical qualifiers and named tokens; failed edits retain originals",
+    "limitations": "Same repeatedly used synthetic benchmark; no independent human factuality guarantee"
+  }
+}
