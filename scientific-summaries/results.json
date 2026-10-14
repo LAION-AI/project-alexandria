@@ -397,5 +397,267 @@
     },
     "guard": "Numbers, units, formulas, logical qualifiers and named tokens; failed edits retain originals",
     "limitations": "Same repeatedly used synthetic benchmark; no independent human factuality guarantee"
+  },
+  "repair_comparison_97": {
+    "date": "2026-10-12",
+    "benchmark_id": "summary_bt_two_attempts_97_20261012",
+    "papers": 97,
+    "questions_per_condition": 970,
+    "generator": "Gemma 4 12B IT · Qwen-distilled rank 128 · merged FP8 · no thinking",
+    "scores": {
+      "raw": {
+        "correct": 913,
+        "total": 970,
+        "accuracy": 0.9412371134020618,
+        "invalid": 0,
+        "difference_vs_raw_pp": 0.0,
+        "paired_difference_95ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "bt_t035_attempt1": {
+        "correct": 906,
+        "total": 970,
+        "accuracy": 0.934020618556701,
+        "invalid": 0,
+        "difference_vs_raw_pp": -0.7216494845360825,
+        "paired_difference_95ci_pp": [
+          -1.546391752577314,
+          0.0
+        ]
+      },
+      "bt_t035_max2": {
+        "correct": 903,
+        "total": 970,
+        "accuracy": 0.9309278350515464,
+        "invalid": 0,
+        "difference_vs_raw_pp": -1.0309278350515463,
+        "paired_difference_95ci_pp": [
+          -1.855670103092788,
+          -0.20618556701030855
+        ]
+      },
+      "backtranslation_reference": {
+        "correct": 910,
+        "total": 970,
+        "accuracy": 0.9381443298969072,
+        "invalid": 0,
+        "difference_vs_raw_pp": -0.30927835051546393,
+        "paired_difference_95ci_pp": [
+          -1.0309278350515427,
+          0.3092783505154628
+        ]
+      },
+      "gemma_one_pass": {
+        "correct": 910,
+        "total": 970,
+        "accuracy": 0.9381443298969072,
+        "invalid": 0,
+        "difference_vs_raw_pp": -0.30927835051546393,
+        "paired_difference_95ci_pp": [
+          -1.0309278350515427,
+          0.4123711340206171
+        ]
+      },
+      "gemma_iterative": {
+        "correct": 910,
+        "total": 970,
+        "accuracy": 0.9381443298969072,
+        "invalid": 0,
+        "difference_vs_raw_pp": -0.30927835051546393,
+        "paired_difference_95ci_pp": [
+          -1.134020618556708,
+          0.5154639175257714
+        ]
+      }
+    },
+    "copying": {
+      "raw": {
+        "audited_summaries": 97,
+        "mean_narrative_covered_fraction_6plus": 0.15227428470594992,
+        "strict_narrative_5_word_passes": 0,
+        "maximum_narrative_contiguous_match_words": 32,
+        "evidence_summaries_with_match_7plus": 34
+      },
+      "backtranslation_reference": {
+        "audited_summaries": 97,
+        "mean_narrative_covered_fraction_6plus": 0.09687216550824017,
+        "strict_narrative_5_word_passes": 0,
+        "maximum_narrative_contiguous_match_words": 32,
+        "evidence_summaries_with_match_7plus": 34
+      },
+      "bt_t035_attempt1": {
+        "audited_summaries": 97,
+        "mean_narrative_covered_fraction_6plus": 0.09603412618266728,
+        "strict_narrative_5_word_passes": 0,
+        "maximum_narrative_contiguous_match_words": 32,
+        "evidence_summaries_with_match_7plus": 34
+      },
+      "bt_t035_max2": {
+        "audited_summaries": 97,
+        "mean_narrative_covered_fraction_6plus": 0.09086464919063313,
+        "strict_narrative_5_word_passes": 0,
+        "maximum_narrative_contiguous_match_words": 32,
+        "evidence_summaries_with_match_7plus": 34
+      },
+      "gemma_one_pass": {
+        "audited_summaries": 97,
+        "mean_narrative_covered_fraction_6plus": 0.12590384779468475,
+        "strict_narrative_5_word_passes": 0,
+        "maximum_narrative_contiguous_match_words": 32,
+        "evidence_summaries_with_match_7plus": 34
+      },
+      "gemma_iterative": {
+        "audited_summaries": 97,
+        "mean_narrative_covered_fraction_6plus": 0.07712999844449578,
+        "strict_narrative_5_word_passes": 0,
+        "maximum_narrative_contiguous_match_words": 26,
+        "evidence_summaries_with_match_7plus": 34
+      }
+    },
+    "source_copy_audit_version": "2.1",
+    "source_untruncated": true,
+    "coverage_definition": "For each summary, the fraction of narrative words covered by contiguous source matches of at least six normalized whitespace words; count each word once, then average across papers. Do not join separate fragments.",
+    "backtranslation_model": {
+      "id": "google/translategemma-4b-it",
+      "revision": "10042cb0e6e7fdce748996a71dc3dc432a4e0c89",
+      "dtype": "BF16",
+      "temperature": 0.35,
+      "top_p": 0.95,
+      "seeds": [
+        2026101237,
+        2026102246
+      ],
+      "return_seed_offset": 41,
+      "max_model_len": 2048,
+      "max_output_tokens": 768,
+      "batch_size": 512,
+      "max_num_batched_tokens": 16384
+    },
+    "backtranslation_attempt_policy": "At most two EN-DE-EN round trips. Attempt 2 is applied only to windows failing attempt 1. Every attempt starts from immutable original English, never from the previous return. The first fully valid candidate is selected; no QA is consulted.",
+    "backtranslation_acceptance": "Completed translation in both directions; critical numeric/unit/formula signatures unchanged vs original; candidate max source overlap <=5; bidirectional NLI entailment >=.90. Retain original after two failed attempts; never accept partial progress.",
+    "direct_gemma_editor": {
+      "model": "google/gemma-4-E4B-it",
+      "revision": "ee0ef6023621cff504d758262d4e04895a5af4a2",
+      "precision": "BF16",
+      "enable_thinking": false,
+      "temperatures": [
+        0.35,
+        0.65,
+        0.95
+      ],
+      "top_p": 0.95,
+      "seed_base": 2026101237,
+      "seed_increment": 1009,
+      "max_attempts": 20,
+      "max_output_tokens": 768,
+      "max_model_len": 4096,
+      "max_num_seqs": 128,
+      "max_num_batched_tokens": 8192
+    },
+    "direct_gemma_acceptance": "Critical signatures unchanged versus immutable original window; bidirectional NLI >=0.90; coverage in runs >=6 decreases without a longer maximum. Accept safe partial progress; retain unresolved outputs after 20 attempts.",
+    "nli": {
+      "id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+      "revision": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
+      "threshold": 0.9,
+      "batch_size": 32,
+      "no_input_truncation": true
+    },
+    "qa_blind_repair": true,
+    "new_summary_generation": false,
+    "reference_policy": "Previously frozen exact same-paper greedy BT and direct Gemma repairs. Fresh Qwen2.5 QA for every distinct context; identical contexts reuse answers from the first freshly judged condition.",
+    "protected_scope": "Evidence quotations and bibliographic metadata are unchanged and audited separately. No extra exemption for scientific terminology or formulas in narrative compliance.",
+    "retained_critical_signature_flags": 0,
+    "limitations": [
+      "Previously reused synthetic benchmark, not independent validation.",
+      "NLI and numeric/unit/formula signatures cannot prove scientific equivalence.",
+      "Every condition has zero strict narrative five-word passes. QA intervals containing zero do not establish equivalence."
+    ]
+  },
+  "direct_gemma_repair_first_qa_97": {
+    "date": "2026-10-12",
+    "benchmark_id": "gemma_only_summary_repair_1000_20261012",
+    "papers": 97,
+    "questions_per_condition": 970,
+    "scores": {
+      "raw": {
+        "correct": 913,
+        "total": 970,
+        "accuracy": 0.9412371134020618,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.924742268041237,
+          0.956701030927835
+        ],
+        "difference_vs_raw_pp": 0.0,
+        "paired_difference_95ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "gemma_one_pass": {
+        "correct": 913,
+        "total": 970,
+        "accuracy": 0.9412371134020618,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.924742268041237,
+          0.956701030927835
+        ],
+        "difference_vs_raw_pp": 0.0,
+        "paired_difference_95ci_pp": [
+          -0.5154639175257825,
+          0.5154639175257714
+        ]
+      },
+      "gemma_iterative": {
+        "correct": 911,
+        "total": 970,
+        "accuracy": 0.9391752577319588,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9216494845360824,
+          0.9556701030927834
+        ],
+        "difference_vs_raw_pp": -0.2061855670103093,
+        "paired_difference_95ci_pp": [
+          -0.9278350515463996,
+          0.5154639175257714
+        ]
+      },
+      "backtranslation_reference": {
+        "correct": 907,
+        "total": 970,
+        "accuracy": 0.9350515463917526,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9175257731958762,
+          0.9515463917525773
+        ],
+        "difference_vs_raw_pp": -0.6185567010309279,
+        "paired_difference_95ci_pp": [
+          -1.2371134020618513,
+          -0.10309278350515427
+        ]
+      }
+    },
+    "same_frozen_contexts_as_later_comparison": true,
+    "stress_test": {
+      "summary_versions": 1000,
+      "unique_papers": 962,
+      "auditable_versions": 999,
+      "one_unparseable_input_retained": true,
+      "whole_document_rollbacks": {
+        "output_variants": 33,
+        "unique_summary_uids": 19,
+        "counts_by_condition": {
+          "gemma_one_pass": 14,
+          "gemma_iterative": 19
+        },
+        "scope": "Variants rolled back to their original summary when assembled-document guards failed; a UID can appear in both conditions."
+      }
+    },
+    "limitations": "Separate QA run. Do not pool repeated versions or treat repeated scoring as additional independent papers."
   }
 }
