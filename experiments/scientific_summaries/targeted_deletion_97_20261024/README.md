@@ -1,5 +1,10 @@
 # Cheap CPU edits for scientific summaries: results, failures and reproduction
 
+The subsequent [complete insertion study](../procedural_insertions_97_20261024/README.md)
+starts after the combined grammar/unit baseline reported here. Its final guarded
+version reaches 4.8566% mean coverage and 913/970 QA; the evidence also retains
+the rejected variants and sentence-level meaning flags.
+
 Completed 24 October 2026. This is an additional experiment on **97 fixed papers
 and 970 original MCQs**. It starts from saved summaries after one Gemma E2B repair
 and the [frozen contextual CPU phrase bank](../contextual_procedural_repair_97_20261024/README.md).
@@ -17,7 +22,29 @@ Download/open the HTML files locally, or serve this directory with
 `python -m http.server 8000`. They require no external JavaScript, APIs or fonts.
 GitHub's normal HTML file view shows the source; it is not a separate live deployment.
 
-## What the results say
+## Latest follow-up: the three proposed rules are now tested
+
+| Condition | Mean copied words ≥6 | Mean copied words ≥7 | QA correct | Major/unintelligible new windows |
+|---|---:|---:|---:|---:|
+| Previous guarded numeric pipeline | 5.4027% | 3.2910% | 912/970 | — |
+| Added instrument/model identifier protection | 5.4052% | 3.2910% | 912/970 | 0/1 |
+| ID protection + optional reporting-that | 5.4027% | 3.2910% | 912/970 | 0/2 |
+| ID protection + exact unit aliases | 5.4022% | 3.2876% | 912/970 | 0/3 |
+| ID protection + both grammar and units | 5.3997% | 3.2876% | 912/970 | 0/4 |
+
+The new combination reaches **5.3997%**, versus 5.4027% before it:
+only **0.0029 percentage points** better. QA remains **912/970**.
+One optional “that” deletion and two exact unit expansions pass all guards.
+The instrument-ID fix preserves **LAXPC 20**. These rules **do not reach 5%**.
+All four distinct actual changed sentences receive automatic equivalent labels;
+this small delta is not a safety certificate for earlier edits.
+
+See [full follow-up, cost and reproduction](GRAMMAR_UNITS_RESULTS.md), including
+the preserved initial review-pairing bug and its verified metadata-only correction.
+The combined CPU stages project to roughly **2,662 CPU core-hours /38M**
+and add **zero deployed GPU-hours** when overlapped with generation/repair.
+
+## Earlier conditions, preserved
 
 | Treatment | Mean copied words ≥6 | Mean copied words ≥7 | QA correct | Major / unintelligible new windows | Unparsed judgments |
 |---|---:|---:|---:|---:|---:|
@@ -152,7 +179,7 @@ held-out set before claiming generalization. Preserve the original 97 results.
 
 The new deployed stages use **0 additional GPU-hours**, assuming their CPU work
 overlaps the existing GPU generation/repair. Protected articles plus
-the guarded numeric stage extrapolate to roughly **1,682 CPU core-hours for
+the earlier guarded numeric stage extrapolate to roughly **1,682 CPU core-hours for
 38M papers**. This is warm compute including source indexing, candidate search,
 POS/guards and primary audits; worker startup is amortized and bulk I/O is outside
 the measurement. Reuse indexes and batch POS work in production. Small differences
@@ -163,18 +190,11 @@ estimate of **73,699 GH200 GPUh /38M**, with 85% useful capacity. CPU-only here
 describes the **additional** stage. Offline QA/reviewer allocations are reported
 separately in the saved allocation accounting, including whole-node reservations.
 
-Promising **unmeasured next CPU experiments**:
-
-1. Remove grammatically optional *that* only in specific reporting-verb frames;
-   preserve the reporting verb and an explicit clause subject. Test narrow *of*
-   removal in phrases such as “all of the samples”→“all the samples”.
-2. Use a tiny exact unit map, such as *mg*↔*milligrams*, only next to quantities
-   outside formulas. Do not apply unrestricted technical synonyms.
-3. Protect paper-declared abbreviations and use domain-specific rule exclusions.
-   Derive and validate new phrase rules on the training cohort before freezing.
-4. Rank the unresolved sentences by copied-word reduction per safe edit. Cache
-   source indexes; call a small model only for a limited high-yield remainder if
-   CPU rules are insufficient. No GPU saving is claimed until measured.
+The optional reporting-“that”, exact-unit and identifier proposals have now been
+implemented and measured in the [follow-up](GRAMMAR_UNITS_RESULTS.md). Narrow
+“of” removal and new phrase rules remain unmeasured; develop them on the training
+cohort before another held-out evaluation. Cache source indexes and POS work,
+and reserve model calls for the high-yield unresolved remainder.
 
 ## Reproduce saved results without GPUs
 
@@ -184,9 +204,9 @@ python replay.py --out /scratch/alexandria-deletion-evidence
 
 Hash-checked bundles contain the original 97 full sources, testset, all repaired
 summaries, edit traces, every QA response and raw judgment, complete primary and
-punctuation-split overlap evidence, protocols and timing files. **13,580 raw QA
-slots** across five saved experiments include repeated baselines; the combined
-table has **10 distinct named conditions**. Replay verifies every source hash,
+punctuation-split overlap evidence, protocols and timing files. **18,430 raw QA
+slots** across six saved experiments include repeated baselines; the combined
+table has **14 distinct named conditions**. Replay verifies every source hash,
 gold answer, evaluated context hash, QA count and mean covered-word fraction.
 The small saved NLTK English tagger/Punkt assets are included with file hashes.
 

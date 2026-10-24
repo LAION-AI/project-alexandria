@@ -1,0 +1,52 @@
+{
+  "experiment": "Identifier-safe numeric spelling plus reporting-that deletion and exact unit aliases",
+  "papers": 97,
+  "mcqs_per_condition": 970,
+  "conditions": [
+    "baseline",
+    "identifier_guard",
+    "optional_that",
+    "unit_aliases",
+    "combined"
+  ],
+  "baseline": "Frozen prior guarded numeric condition: 912/970 QA; 5.402683215834474% mean narrative copied-word coverage >=6",
+  "arms": {
+    "identifier_guard": "Recompute numeric stage from protected-article summaries with acronym/model-adjacent number guard.",
+    "optional_that": "Identifier-safe numeric stage + optional that after finite reporting verbs with explicit subject/finite embedded clause.",
+    "unit_aliases": "Identifier-safe numeric stage + exact case-sensitive same-magnitude unit spelling aliases.",
+    "combined": "Identifier-safe numeric stage + both grammar and unit edits."
+  },
+  "protection": "Exact Decimal value/sign/precision at numeric stage; no scale conversions; no formula or compound-unit rewriting; unchanged evidence/metadata; modal and negation preservation; exact edit provenance.",
+  "selection": "Rules respond to earlier automatic meaning failures and user proposals. Exploratory test-informed extension, not independent validation. Freeze code before any new QA. No question/gold based edit or selection.",
+  "cache": "Exact doc/question/context hash only for QA; exact before/after pair hash only for meaning review.",
+  "code_sha256": {
+    "common.py": "fa3df7f6fd818165169e25b2073e70e492f1d8fc271a30dc8a08a0e46c188ada",
+    "evaluate.py": "19522f38dda5ed7e63a75c765efaa696522eb6b9d7213e3ae6d0dae614579753",
+    "finish.py": "11c26e04e95befa4b7edf6efd87f3d24da14d07f404c8c346f867269fcd1f856",
+    "grammar_units.py": "eb4bf64b48ce63b6bba1fbb411db3ca30efc8ff632f6c07109cdc302bcd6cb67",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "number_style.py": "a59bbd699ad73d2bad5cabd935b091fcd4828af7799b17b4826e3cb21d224b09",
+    "postprocess.py": "d906a3d87e3614d5d6891b83a8e6212bff738b769302ecba04ba9106036579c7",
+    "review.py": "4272b188d9cd1b43da1b01b9d638f63e8700fb1978a3711b1f538f1bf7b4c993",
+    "smoke.py": "663ca43c7896982d50767850ac6dd80d19f20176db36743cc0ff2308b767f83f",
+    "supervisor.py": "ab0e08e6014ccb23b23bac67987d912867705d05a48e94d4b4d5cfababd2460c"
+  },
+  "smoke_checks": 24,
+  "review_pairing_correction": {
+    "scope": "Review metadata only; no summary/QA/audit changes, no new GPU calls.",
+    "frozen_original_protocol": "outputs/diagnostics/review_alignment_initial/inputs_protocol.json",
+    "corrected_code_sha256": {
+      "common.py": "fa3df7f6fd818165169e25b2073e70e492f1d8fc271a30dc8a08a0e46c188ada",
+      "correct_review_alignment.py": "b9568836f16bd91ffccd1845768bed8ed89500cf3ad70ae92b76344c34c5c970",
+      "evaluate.py": "19522f38dda5ed7e63a75c765efaa696522eb6b9d7213e3ae6d0dae614579753",
+      "finish.py": "e53bed47208842c328eef27335d1830993953093dc2e61ad8048b5184efee441",
+      "grammar_units.py": "eb4bf64b48ce63b6bba1fbb411db3ca30efc8ff632f6c07109cdc302bcd6cb67",
+      "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+      "number_style.py": "a59bbd699ad73d2bad5cabd935b091fcd4828af7799b17b4826e3cb21d224b09",
+      "postprocess.py": "fa1db207e87b14bb32cd10dea01f680ecec6b86f73520115c7522b38b6097e8e",
+      "review.py": "4272b188d9cd1b43da1b01b9d638f63e8700fb1978a3711b1f538f1bf7b4c993",
+      "smoke.py": "663ca43c7896982d50767850ac6dd80d19f20176db36743cc0ff2308b767f83f",
+      "supervisor.py": "ab0e08e6014ccb23b23bac67987d912867705d05a48e94d4b4d5cfababd2460c"
+    }
+  }
+}

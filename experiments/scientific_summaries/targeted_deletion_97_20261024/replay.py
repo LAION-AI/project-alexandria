@@ -22,7 +22,7 @@ def main():
     for row in rows:assert hashlib.sha256(row['fulltext'].encode()).hexdigest()==row['source_sha256']
     gold={(p['document_id'],q['question_index']):q['answer'] for p in json.loads((root/'common/testset.json').read_text())['papers'] for q in p['questions']}
     checks=[];slots=0
-    for run in ['initial','case_guard','modifiers_only','numbers','numbers_guarded']:
+    for run in manifest['runs']:
         base=root/run;qa=json.loads((base/'outputs/qa_results.json').read_text())
         for condition,score in qa['scores'].items():
             answers=json.loads((base/f'outputs/qa/{condition}.json').read_text())

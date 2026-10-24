@@ -1,0 +1,53 @@
+{
+  "experiment": "Scope-guarded optional insertions with whole-paper baseline rollback",
+  "papers": 97,
+  "mcqs_per_condition": 970,
+  "conditions": [
+    "baseline",
+    "grammar_insert",
+    "expanded_insert"
+  ],
+  "baseline": "Saved combined ID-safe numeric + grammar/unit output, 5.399738905338293% mean copied words>=6, 912/970 QA.",
+  "rules": {
+    "grammar_insert": [
+      "reporting_complementizer_that",
+      "object_relative_that",
+      "quantifier_of",
+      "method_by_using",
+      "purpose_in_order",
+      "explicit_duration_period",
+      "explicit_temperature",
+      "explicit_calendar_year"
+    ],
+    "expanded_insert": [
+      "all grammar_insert rules",
+      "deictic_particular",
+      "redundant_example_cue"
+    ]
+  },
+  "protection": "Strict character insertions only; all original normalized words retained in order; exact numeric/unit/math, acronym, modal and negation signature unchanged. No possibility, probability, frequency or strength modifiers.3% whole-summary added-word cap.",
+  "acceptance": "Every edit must lower absolute copied original words, absolute total copied words, six-gram hits and covered fraction. Report original fixed-denominator coverage to separate actual string breakage from padding.",
+  "meaning": "Review every final visibly changed sentence/window with pinned27B teacher and instructions to check added certainty, scope, emphasis and meaning. No old prompt judgments reused. Exact before/after pairs deduplicated across arms.",
+  "evaluation": "All original970 slots with frozen student, prompts/parser/sampling and paired seeds; exact-context cache only; no question/gold-based rewriting or selection. Full-source primary and punctuation-split audits on compute node.",
+  "limitation": "Reused97-paper exploratory benchmark. Grammar rules and exact signatures do not prove equivalence. Inserting words is surface rewriting, not an independent conceptual paraphrase.",
+  "smoke_checks": 46,
+  "code_sha256": {
+    "common.py": "b13d0ef53d99ebb6509d04a0e15511da376c749eae94570464535f7bd060e04b",
+    "cpu_driver.py": "c31f25d9ae3766a06beb39a1af5fd8ebe4366ef9e4f55d23c7c20cd0fe39f790",
+    "evaluate.py": "19522f38dda5ed7e63a75c765efaa696522eb6b9d7213e3ae6d0dae614579753",
+    "finish.py": "b25222a6fcd222080a8fba7533bb9a347aca98f13d0d6b4badc5fbc68a92b2a1",
+    "grammar_units.py": "eb4bf64b48ce63b6bba1fbb411db3ca30efc8ff632f6c07109cdc302bcd6cb67",
+    "insertions.py": "28e61d0bd3608551529849999c40ca4b17176b5cc1e9dc0545e411165f376ffa",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "number_style.py": "a59bbd699ad73d2bad5cabd935b091fcd4828af7799b17b4826e3cb21d224b09",
+    "postprocess.py": "e2d5ff7dc604a64b677d65ac33438fa9c31f7c6c6c584b2b6702578bddb633ac",
+    "repair_saved.py": "da0f6683d2877b56db8b06822b81cefe6a6e8fa748cf7ac9ed4290484b28ad17",
+    "review.py": "31dbbda9cac8ebebe7bde5f7cc397cf51a057597248d01c6b6682438d03795ea",
+    "score_cached.py": "9b0fc96e28dab3c69f2d35ea53b28aab27524b4b2f4fd6eea600d0f02ee98865",
+    "smoke.py": "22a3b45f797895283f32c8390ecf8dea655504e2fd4634f4f3e3aec5ca5abb25",
+    "supervisor.py": "ab0e08e6014ccb23b23bac67987d912867705d05a48e94d4b4d5cfababd2460c"
+  },
+  "freeze_note": "General dimensional-scope guard responds to inspected text, not QA gold. Frozen before revised compute run. No summary regeneration; all final contexts are exact prior evaluated outputs or baseline. Unknown QA context/pair causes failure, never imputation.",
+  "meaning_controls": "9 positive/adversarial controls, including added maybe/clearly, removed may/negation, changed scope and changed quantity. Controls never enter summary/QA/copy audit.",
+  "guard_revision": "An insertion of temperature of must not capture a pressure/field/etc. in a shared-preposition coordination. Entire affected paper falls back to frozen baseline; retain every initial output/QA/meaning judgment."
+}

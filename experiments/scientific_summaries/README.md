@@ -1,5 +1,18 @@
 # Scientific summaries: frozen cohort and model comparisons
 
+## Procedural insertions: under 5% mean copying with explicit meaning checks
+
+The [complete insertion study](procedural_insertions_97_20261024/README.md) adds
+all eight new experiments, a [readable English dashboard](procedural_insertions_97_20261024/index.html),
+portable CPU code and hash-verified evidence. Final v6 reaches **4.8566%** mean
+narrative coverage in contiguous source matches of at least six words,
+**4.8682%** with original denominators, and **913/970 QA**. Its automatic reviewer
+labels 180/185 changed windows equivalent and five minor; a rejected earlier
+version and its invalid clinical rewrite remain visible. This is surface
+elaboration, not independent conceptual paraphrasing; **0/97** summaries eliminate
+every long match. A [fresh 10k validation plan](procedural_insertions_97_20261024/HOLDOUT_10K_PLAN.md)
+is documented as **proposed, not run**.
+
 ## CPU deletion and numeric spelling: complete results and readable views
 
 The [targeted CPU-edit study](targeted_deletion_97_20261024/README.md) compares articles, adjectives/adverbs alone and together, percent notation, and guarded number spelling on all 97 papers/970 MCQs. It includes an [English dashboard](targeted_deletion_97_20261024/index.html), an [interactive before/after reader](targeted_deletion_97_20261024/examples.html), portable CPU code and hash-verified saved evidence. Protected articles plus guarded quantity formatting reach **5.40% mean copied coverage ≥6** and **912/970 QA**. Adjectives/adverbs alone reach **909/970**, with many meaning-audit failures. The lower-overlap original numeric prototype is retained with its technical-notation failures.
