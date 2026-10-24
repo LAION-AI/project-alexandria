@@ -1,0 +1,821 @@
+{
+  "version": 2,
+  "purpose": "Candidate-only additions for parent-side enumeration and semantic review. No fixed97 run. Patterns are Python re expressions using flags and replacement backreferences.",
+  "provenance": {
+    "training_evidence": "Examples were extracted from the first 30 released records in release/papers_and_traces.jsonl, each with split=train and a teacher summary. They show source frame occurrence only, not candidate equivalence.",
+    "naive_failure_evidence": "97-test-paper semantic_naive.jsonl; failures describe why broad lexical substitutions are unsafe and are used only to define blacklists/guards.",
+    "1000_artifacts": "1000 inputs/papers.json and outputs/documents/*/final.json are accessible; candidate list is grounded in 865 released training examples inspected here. No separate 1000 failure set was used."
+  },
+  "rules": [
+    {
+      "id": "v2_01",
+      "replacement": "\\1 presents",
+      "precondition": "Only when immediate figure complement is a visual object/result description. Do not apply to numeric trends, causal/qualitative conclusions, significance, or comparisons.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "Figure 1 shows the ARCTIC/APO photometric transit of TRAPPIST-1b on 2020 September 5 with HPF data."
+      },
+      "pattern": "\\b(Figure\\s+\\d+(?:\\([a-z]\\))?[a-z]?) shows\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ],
+      "required_context_regex": "(?i)^\\s+(?:the\\s+)?(?:[A-Za-z-]+\\s+){0,2}(?:crystal structure|hypergraph|manifold|architecture|diagram|scheme|histogram|image|schematic)\\b"
+    },
+    {
+      "id": "v2_02",
+      "replacement": "\\1 depicts",
+      "precondition": "Only with an image-like complement (structure, hypergraph, manifold, architecture, diagram, scheme); never a quantitative result sentence.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "Figure 1 shows the ARCTIC/APO photometric transit of TRAPPIST-1b on 2020 September 5 with HPF data."
+      },
+      "pattern": "\\b(Figure\\s+\\d+(?:\\([a-z]\\))?[a-z]?) shows\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ],
+      "required_context_regex": "(?i)^\\s+(?:the\\s+)?(?:[A-Za-z-]+\\s+){0,2}(?:crystal structure|hypergraph|manifold|architecture|diagram|scheme|image|schematic)\\b"
+    },
+    {
+      "id": "v2_03",
+      "replacement": "\\1 were acquired with",
+      "precondition": "Noun head must be observations/spectra; retain instrument complement exactly.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "High-resolution spectroscopic observations were obtained with the Infrared Doppler (IRD) instrument on the Subaru 8.2-m telescope."
+      },
+      "pattern": "\\b(high-resolution spectroscopic observations) were obtained with\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_04",
+      "replacement": "with \\2",
+      "precondition": "Only the local instrument adjunct after “spectra during transits”; leave instrument name intact.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The authors obtained high-resolution spectra during transits using the Infrared Doppler (IRD) spectrograph."
+      },
+      "pattern": "\\b(using) (the Infrared Doppler \\(IRD\\) spectrograph)\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_05",
+      "replacement": "\\1 acquired \\2",
+      "precondition": "Object must be spectra/data/measurements/observations (never results, limits, evidence, or parameters).",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The authors obtained high-resolution spectra during transits using the Infrared Doppler (IRD) spectrograph."
+      },
+      "pattern": "\\b(authors) obtained (high-resolution spectra)\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_06",
+      "replacement": "\\1 of \\2 were acquired on",
+      "precondition": "Fixed temporal/instrument acquisition frame; date and all numeric detail immutable.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "HPF observations of TRAPPIST-1b transits were obtained on UT 2018 October 2, 2019 July 31, and 2020 September 5."
+      },
+      "pattern": "\\b(HPF observations) of ([^,.;]{1,40}) were obtained on\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_08",
+      "replacement": "\\1 examined",
+      "precondition": "Subject must be “the study”; only an entity/population as object, never outcome/mechanism/parameter.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The study targeted the ultra-cool M-dwarf TRAPPIST-1 and its planets b, e, and f."
+      },
+      "pattern": "\\b(the study) targeted\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_09",
+      "replacement": "\\1 evaluated \\2 against predictions",
+      "precondition": "Only explicit comparison of empirical upper limits with model predictions; retain all quantifiers and direction.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The authors compared these upper limits to predictions from an isothermal Parker wind model assuming solar composition."
+      },
+      "pattern": "\\b(the authors) compared ([^.;]{1,80}) to predictions\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_12",
+      "replacement": "By examining \\2",
+      "precondition": "Only this descriptive action on the named triplet; do not apply to statistical analysis, calculation, fitting, or interpretation.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "By analyzing the He I triplet at 10830 Å, the authors placed 95% confidence upper limits."
+      },
+      "pattern": "\\b(By analyzing) (the He I triplet)\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_13",
+      "replacement": "\\1 of \\2 took place on",
+      "precondition": "Subject must be a dated observation/event, not an experiment or analysis; preserve date verbatim.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The Subaru/IRD transit observation of TRAPPIST-1b was conducted on UT 2020 September 17."
+      },
+      "pattern": "\\b(The Subaru/IRD transit observation) of ([^,.;]{1,50}) was conducted on\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_16",
+      "replacement": "\\1 set \\2",
+      "precondition": "Only if exact confidence level and target remain unchanged; number/unit signature must pass.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The authors placed 95% confidence upper limits on the equivalent widths of any transit-associated absorption."
+      },
+      "pattern": "\\b(the authors) placed ((?:95% confidence )?upper limits on)\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_19",
+      "replacement": "\\1 state that",
+      "precondition": "Only an explicitly attributed limitation/observation; block claims of uncertain or modal strength and any disagreement attribution.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The authors note that small features observed in the region of interest may be stellar in origin."
+      },
+      "pattern": "\\b(the authors) note that\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_20",
+      "replacement": "in agreement with \\1",
+      "precondition": "Exact comparison of derived transit timing/period to named TTV ephemeris, with stated tolerance unchanged. Prohibit models, hypotheses, significance tests, and causal/association contexts.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The derived mid-transit time and period are consistent with the TTV ephemeris within 10 seconds."
+      },
+      "pattern": "\\bconsistent with (the TTV ephemeris)\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_21",
+      "replacement": "\\1 with \\2",
+      "precondition": "Only literal software/tool adjunct after “reduced”; do not change the reduction method or claim.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "IRD raw data were reduced using IRAF software, followed by wavelength calibration based on Laser-Frequency Comb spectra."
+      },
+      "pattern": "\\b(reduced) using (IRAF software)\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_22",
+      "replacement": "\\1 were processed with",
+      "precondition": "Only software/pipeline immediately follows; proper names unchanged.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "HPF 1D spectra were processed using the HPF pipeline with algorithms from Ninan et al. (2018)."
+      },
+      "pattern": "\\b(HPF 1D spectra) were processed using\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_23",
+      "replacement": "\\1 were set to",
+      "precondition": "Only explicitly fixed model/software parameters; values and parameter names immutable.",
+      "forbidden_local_patterns": [
+        "(?i)\\b(?:significant|significance|p\\s*[=<]|confidence interval|odds ratio|risk|correlation|causal|associated with|due to|because|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:model|framework|function|map|parameter|variable|equation|hypothesis|theorem|approximation|state|phase|density|concentration|energy|power|mass|force|luminosity|resolution|reaction plane|structure function|final state|hard gluon)\\b",
+        "(?i)(?:\\d|[=<>±×/\\\\]|\\b(?:Fig(?:ure)?\\.?|Table|Eq(?:uation)?\\.?|Ref(?:erence)?\\.?)\\s*\\d)",
+        "(?i)\\b[A-Z][A-Z0-9-]{1,}\\b"
+      ],
+      "confidence": "low",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "evidence": {
+        "origin": "865 training release, split=train; context example demonstrates source construction only, not candidate equivalence.",
+        "split": "train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "Limb-darkening parameters were fixed to q1 = 0.42 and q2 = 0.23 for the SDSS i′ filter."
+      },
+      "pattern": "\\b(parameters) were fixed to\\b",
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_25",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(IXS experiments) were conducted\\b",
+      "replacement": "\\1 were performed",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only named experimental action; do not change descriptors, measurement conditions, or apparatus.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1048",
+        "text": "The IXS experiments were conducted at the HERIX spectrometer (Sector 30, Advanced Photon Source, Argonne National Laboratory).",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_26",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(ablation experiments) were conducted\\b",
+      "replacement": "\\1 were performed",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only experiment-action predicate; block result/comparison modifiers and named protocol phrase.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1057",
+        "text": "These ablation experiments were conducted on one of the five validation splits according to Section 4.3.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_27",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(Experiments) are conducted on\\b",
+      "replacement": "\\1 are performed on",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only generic experiments-on-datasets construction; preserve dataset counts, names, and scope.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1071",
+        "text": "Experiments are conducted on three face age estimation datasets: AFAD, UTKFace, and Morph.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_29",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(correlated noise) was modeled with\\b",
+      "replacement": "\\1 was represented with",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only this named statistical-noise representation construction; prohibit any model family or kernel change.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "Limb-darkening parameters were fixed to q1 = 0.42 and q2 = 0.23 for the SDSS i′ filter, and correlated noise was modeled with a Matern-3/2 kernel in the celerite package.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_30",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(The paper) notes that\\b",
+      "replacement": "\\1 remarks that",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only metadiscursive statement about paper contents; reject uncertainty, limitation, contrast, or modal cues.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1047",
+        "text": "The paper notes that handling singularities in the measurement covariance is acknowledged but explicitly left for future work.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_31",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(The authors) note that\\b",
+      "replacement": "\\1 mention that",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only attributed discussion of non-claim information; do not apply to results, caveats, uncertainty, or recommendations.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1013",
+        "text": "The authors note that deployment of text-to-SQL parsers requires safeguards so users understand generated queries.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ]
+    },
+    {
+      "id": "v2_35",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(Additional IRD data) .*? were included\\b",
+      "replacement": "\\1 were incorporated",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Only when exact “additional data included” clause; retain cited provenance and covered transit targets unchanged. Context whitelist is mandatory.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "Additional IRD data from Hirano et al. (2020b) covering transits of TRAPPIST-1b, e, and f were included.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ],
+      "required_context_regex": "(?i)^Additional IRD data\\b"
+    },
+    {
+      "id": "v2_36",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(The 2019 HPF transit data) .*? were excluded from analysis due to\\b",
+      "replacement": "\\1 were omitted from analysis due to",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Exact data-screening frame with reason kept; no reported cohort/result statement. Context whitelist is mandatory.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1007",
+        "text": "The 2019 HPF transit data (S/N = 14) were excluded from analysis due to bad weather.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ],
+      "required_context_regex": "(?i)^The 2019 HPF transit data\\b"
+    },
+    {
+      "id": "v2_37",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(Figure\\s+\\d+(?:\\([a-z]\\))?[a-z]?) shows\\b",
+      "replacement": "\\1 depicts",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Whitelist visual complements only; no quantitative plot/axes/trends/claims.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1048",
+        "text": "Figure 1 shows the Bi2201 crystal structure with unit cell parameters a≃5.436 Å, b≃5.502 Å, c≃24.15 Å.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ],
+      "required_context_regex": "(?i)^\\s+(?:the\\s+)?(?:[A-Za-z-]+\\s+){0,2}(?:crystal structure|hypergraph|manifold|architecture|diagram|scheme|histogram|image|schematic)\\b"
+    },
+    {
+      "id": "v2_38",
+      "flags": [
+        "IGNORECASE"
+      ],
+      "pattern": "\\b(Figure\\s+\\d+(?:\\([a-z]\\))?[a-z]?) shows\\b",
+      "replacement": "\\1 presents",
+      "blocked_context_regex": [
+        "(?i)\\b(?:significant|significance|statistically|p\\s*[=<]|confidence interval|odds ratio|correlation|causal|associated with|may|might|could|would|should|must|not|never|no|without)\\b",
+        "(?i)\\b(?:null hypothesis|uncertainty|uncertain|robustness|sensitivity|specificity)\\b"
+      ],
+      "precondition": "Whitelist visual complements only; keep all labels and structure names exactly.",
+      "confidence": "low",
+      "evidence": {
+        "origin": "865 training release, split=train",
+        "document_id": "arxiv-new_00338-1108",
+        "text": "Figure 2(a) shows an oriented hypergraph with 4 nodes and 3 hyperedges, with input/output classification.",
+        "interpretation": "Occurrence of original frame in teacher summary only; does not validate replacement."
+      },
+      "preserve_invariants": [
+        "all digits and numeric values",
+        "units and inequality operators",
+        "negation and modal auxiliaries",
+        "named entities/acronyms/citations",
+        "scientific object terms outside the exact matched phrase"
+      ],
+      "required_context_regex": "(?i)^\\s+(?:the\\s+)?(?:[A-Za-z-]+\\s+){0,2}(?:crystal structure|hypergraph|manifold|architecture|diagram|scheme|histogram|image|schematic)\\b"
+    }
+  ],
+  "global_execution_guards": [
+    "Use full-match boundaries and each rule precondition; do not apply a free content-word substitution.",
+    "Check blocked_context_regex in a narrow local window around the matched phrase; preserve_invariants apply to the entire edited sentence.",
+    "If local context is ambiguous, leave sentence unchanged.",
+    "Run candidate edits through independent source-grounded semantic review before acceptance."
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "artifact_status": "proposal_for_independent_named_experiment; not deployed; training-only reasoning; no fixed97 outputs inspected",
+  "scope": "Review of static-property genitive and finite-auxiliary adverb-order alternations requested by root.",
+  "genitive_property_reorder": {
+    "source_form": "the {property} of the {entity}",
+    "target_form": "the {entity}'s {property}",
+    "recommended_property_whitelist": [
+      "property",
+      "properties",
+      "geometry",
+      "shape",
+      "size",
+      "length",
+      "width",
+      "height",
+      "volume",
+      "mass",
+      "density",
+      "temperature",
+      "pressure",
+      "velocity",
+      "frequency",
+      "composition",
+      "structure",
+      "color",
+      "colour",
+      "surface",
+      "conductivity",
+      "permittivity",
+      "strength",
+      "stability",
+      "durability",
+      "performance",
+      "behavior",
+      "behaviour",
+      "response",
+      "capacity"
+    ],
+    "recommended_entity_whitelist": [
+      "model",
+      "method",
+      "system",
+      "material",
+      "sample",
+      "particle",
+      "star",
+      "planet",
+      "network",
+      "algorithm",
+      "galaxy",
+      "molecule",
+      "device",
+      "protein",
+      "gene",
+      "signal",
+      "parameter",
+      "distribution",
+      "process"
+    ],
+    "entity_pattern_guard": "Require a simple definite singular NP: the/this/that + [zero to two non-coordinated adjectives] + whitelisted singular entity; do not cross punctuation, parentheses, brackets, math, hyphens, or coordination. Require the entire complement after 'of' to be this NP, with only sentence punctuation after the property noun. Preserve capitalization, articles/demonstratives, modifiers, possessive apostrophe, and number.",
+    "blocked_property_regex": [
+      "(?i)\\b(?:analysis|number|function|control|measurement|observation|prediction|estimate|calculation|classification|detection|identification|selection|distribution|effect|role|use|application|implementation|representation|definition|interpretation|cause|result|outcome|consequence|history|evolution|development|formation|growth|decay|change|variation|dependence|relationship|correlation|comparison|description|evaluation|assessment|derivation|proof|solution|optimization|training|testing|validation|synthesis|fabrication|processing|treatment|exposure|response|interaction|binding|expression|activation|inhibition|degradation|conversion|translation|transfer|transport|flow|motion|movement|production|consumption|emission|absorption|scattering|reflection|transmission)\\b"
+    ],
+    "blocked_entity_regex": [
+      "(?i)\\b(?:study|paper|author|researcher|experiment|measurement|observation|prediction|calculation|result|effect|response|reaction|patient|participant|subject|operator|user|controller|detector|estimator|classifier|predictor|generator|source|cause|target|input|output|data|evidence|claim|theory|hypothesis|equation|function|program|code)\\b"
+    ],
+    "additional_blocks": [
+      "Possessive conversion may assign agent/possessor incorrectly: e.g. 'the analysis of the model' can mean analysis performed on the model, while 'the model's analysis' can mean analysis performed by/owned by the model. Therefore analysis and other event/action nouns remain excluded even when a noun happens to be on an entity whitelist.",
+      "Block when the of-phrase is plural, proper-named, pronominal, coordinated, nested, quantified, appositive, or contains a restrictive relative clause; block 'of' used for content/material/part-whole/comparison unless the relation is clearly an inherent attribute.",
+      "Block any occurrence adjacent to formulae, subscripts, measurements, citations, acronyms, or technical compound boundaries; do not partially capture multiword property nouns or noun compounds."
+    ],
+    "safe_examples": [
+      {
+        "before": "The temperature of this sample increased by 3 K.",
+        "after": "This sample's temperature increased by 3 K.",
+        "note": "Retain the exact measurement and direction; apply only if the entity NP is fully captured and this is the sample's measured attribute."
+      },
+      {
+        "before": "The properties of the material were measured at room temperature.",
+        "after": "The material's properties were measured at room temperature.",
+        "note": "Simple inherent property relation; plural properties retained."
+      },
+      {
+        "before": "The geometry of the particle remains unchanged.",
+        "after": "The particle's geometry remains unchanged.",
+        "note": "Static intrinsic property."
+      }
+    ],
+    "unsafe_examples": [
+      {
+        "before": "The analysis of the model uses 500 samples.",
+        "after": "The model's analysis uses 500 samples.",
+        "reason": "Changes possible patient/theme relation into a possible agent/possessor relation."
+      },
+      {
+        "before": "The number of particles increased by 4.",
+        "after": "The particles' number increased by 4.",
+        "reason": "Awkward and can alter the quantified set or count interpretation; block number/count nouns."
+      },
+      {
+        "before": "The function of the gene is unknown.",
+        "after": "The gene's function is unknown.",
+        "reason": "Grammatical but materially shifts a relation that may mean biological role; function is explicitly excluded."
+      }
+    ]
+  },
+  "finite_auxiliary_adverb_reorder": {
+    "source_forms": [
+      "is also",
+      "are also",
+      "was also",
+      "were also",
+      "is therefore",
+      "are therefore",
+      "was therefore",
+      "were therefore"
+    ],
+    "target_forms": [
+      "also is",
+      "also are",
+      "also was",
+      "also were",
+      "therefore is",
+      "therefore are",
+      "therefore was",
+      "therefore were"
+    ],
+    "allowed_clause_shape": "Only a positive declarative independent clause where the matched finite be-form is the sole auxiliary before a simple predicative complement; do not match be as a lexical verb in a progressive/passive chain. The adverb must be immediately adjacent to the finite be-form, and the clause must have no preceding focus particle, negation, modal, or auxiliary.",
+    "blocked_context_regex": [
+      "(?i)\\b(?:not|never|hardly|scarcely|only|just|even|still|already|merely|exactly|almost|nearly|probably|possibly|certainly|necessarily|always|usually|often|sometimes|rarely|seldom|perhaps|maybe)\\s+(?:is|are|was|were)\\s+(?:also|therefore)\\b",
+      "(?i)\\b(?:can|could|may|might|must|shall|should|will|would|do|does|did|has|have|had|being|been)\\s+(?:also|therefore)\\s+(?:is|are|was|were)\\b",
+      "(?i)\\b(?:is|are|was|were)\\s+(?:also|therefore)\\s+(?:being|been|going|likely|unlikely|not|never)\\b",
+      "(?i)\\b(?:if|whether|although|though|because|while|when|where|unless|until|since)\\b[^.!?;]{0,100}\\b(?:is|are|was|were)\\s+(?:also|therefore)\\b",
+      "(?i)\\b(?:is|are|was|were)\\s+(?:also|therefore)\\s+(?:a|an|the|not|never|only)\\b[^.!?;]{0,80},\\s*(?:which|that|because|although|while)\\b"
+    ],
+    "semantic_cautions": [
+      "‘Also’ can associate with a focused constituent rather than the whole predicate. Moving it before the finite auxiliary may change contrastive focus; exclude sentences containing focus-sensitive particles and require a simple non-coordinated clause.",
+      "‘Therefore’ signals an inference. Its placement can alter whether it scopes over the proposition or only the predicate; allow only uncomplicated declaratives, with no negation, conditionals, contrast, quotation, or clause embedding. Preserve the same clause and punctuation.",
+      "Do not reorder across negation, a modal, another auxiliary, a coordination boundary, an introductory clause, or a sentence boundary. Do not treat this as a blanket grammar rule: the moved order can sound emphatic/marked, so fluency review is still required."
+    ],
+    "examples": [
+      {
+        "before": "The material is also stable at this pressure.",
+        "after": "The material also is stable at this pressure.",
+        "note": "Proposition preserved, but target order is emphatic; use only if the style gate accepts it."
+      },
+      {
+        "before": "The estimate was therefore higher in this condition.",
+        "after": "The estimate therefore was higher in this condition.",
+        "note": "Inference relation and predicate are retained in a simple positive declarative."
+      },
+      {
+        "before": "The sample is not also stable at high temperature.",
+        "after": "BLOCK",
+        "note": "Negation and also have scope/focus interaction."
+      },
+      {
+        "before": "The system may also be unstable.",
+        "after": "BLOCK",
+        "note": "Do not move across modal or multi-auxiliary chain."
+      }
+    ]
+  },
+  "evidence_and_validation": {
+    "training_review": "Only local training artifact structure was checked in this turn; tokenized records were observed to contain input_ids/labels and no directly readable text. These examples are linguistic illustrations, not extracted training quotations.",
+    "test_origin": "No test or fixed97 data inspected.",
+    "status": "Guard proposal only; root should mine training text and evaluate independent derivation and dev cases before any application."
+  }
+}

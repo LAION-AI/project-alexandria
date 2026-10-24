@@ -1,5 +1,10 @@
 # Scientific summaries: frozen cohort and model comparisons
 
+## Context-sensitive procedural repair after Gemma
+
+The [two training-driven dictionary experiments](contextual_procedural_repair_97_20261024/README.md) include failure cases, Luna proposals, deployed CPU rules, all97-paper QA and full-source copying evidence. The extra safe-rule gain is small:9.0724% to9.0380% mean copied coverage.
+
+
 ## Small-model hybrid repair: complete 97-paper benchmark
 
 The [Qwen 0.8B versus Gemma E2B study](hybrid_small_editors_97_20261023/README.md) includes all six conditions, full 970-question QA per condition, complete automatic meaning audits, copying evidence, 38M/60M cost projections and hash-verified reproduction bundles. One Gemma round reduces mean copied coverage from 15.23% to 9.07%; no condition meets the strict five-word limit.

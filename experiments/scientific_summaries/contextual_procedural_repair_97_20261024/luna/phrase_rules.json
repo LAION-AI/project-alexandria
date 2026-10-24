@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "scope": "candidate guarded phrase rules; not run or validated on fixed97",
+  "rules": [
+    {"id":"for_example_instance", "from":"for example", "to":"for instance", "allow_when":"standalone discourse phrase, preserve following punctuation", "block_when":"inside quotation, code, title, or technical label"},
+    {"id":"with_regard_regarding", "from":"with regard to", "to":"regarding", "allow_when":"referential/topic framing only", "block_when":"comparison, robustness, dependence, sensitivity, or quantitative relationship (e.g. 'robust with respect to', 'with respect to pp')"},
+    {"id":"prior_before", "from":"prior to", "to":"before", "allow_when":"ordinary temporal clause and no fixed name/quoted string", "block_when":"technical named entity or phrase where prior status is substantive"},
+    {"id":"subsequent_after", "from":"subsequent to", "to":"after", "allow_when":"ordinary temporal clause", "block_when":"technical named entity or quoted string"}
+  ],
+  "global_guards": ["require token-boundary match and exact preservation of case/punctuation", "never edit within math, citations, code, quoted text, named entities, units, numbers, acronyms, or chemical/genetic identifiers", "never substitute content words from WordNet/embedding lists", "block sentence if it includes statistical significance/p-value/CI, quantity/comparison, polarity/negation, causal/modal strength, or technical entity near target unless rule explicitly supports that relation", "require immutable signature of all numerals, operators, units, negators, modal verbs, and named-entity-like strings", "require source-anchored meaning review; overlap reduction alone is not acceptance"]
+}
