@@ -1,0 +1,26 @@
+{
+  "experiment": "Adjective/adverb deletion only, separate from article deletion",
+  "papers": 97,
+  "mcqs_per_condition": 970,
+  "conditions": [
+    "baseline",
+    "delete_adjective_adverb_only"
+  ],
+  "baseline": "Identical saved97 post-Gemma E2B + structural lexicon v2 summaries; QA915/970",
+  "treatment": "Same broad JJ/RB candidate set and scientific/scope guards as earlier combined arm, but all articles and filler phrases remain. No noun/proper-noun, comparative/superlative, negation/modal/number/formula changes allowed by the existing guards. POS errors and unprotected technical modifiers remain possible.",
+  "evaluation": "User-requested prospective separate arm; rules frozen before new QA. Same original970 slots/prompts/parser/sampling/seeds; all full sources retained. Reuse only exact-context QA and exact original/edited-pair judgments. All original combined/guarded article results preserved.",
+  "limits": "Repeated exploratory97 benchmark; automatic meaning reviewer has known undercalled control errors. No claim of independent held-out performance or universal safe POS deletion.",
+  "parent_combined_run": "/e/scratch/reformo/schuhmann1/scientific-post-gemma-deletion-97-20261024",
+  "code_sha256": {
+    "review.py": "4272b188d9cd1b43da1b01b9d638f63e8700fb1978a3711b1f538f1bf7b4c993",
+    "supervisor.py": "ab0e08e6014ccb23b23bac67987d912867705d05a48e94d4b4d5cfababd2460c",
+    "finish.py": "cb83280a18a6ed5f1beac97d97e51c2a4b16c27bbe13027bf003b849d3fb93ee",
+    "procedural.py": "1189c5bc892e0063fdb29435bc7e2576dbbff0255c3b5592b6a631930e82cce9",
+    "common.py": "744224def084699a2d17e44c34aeb837046b504fd06b4cf3ea2f20cc511e5e6e",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "evaluate.py": "19522f38dda5ed7e63a75c765efaa696522eb6b9d7213e3ae6d0dae614579753",
+    "postprocess.py": "21f9325098bd8e113416741eb8487aaac6525e994df59c94ea9baa7834c2e387",
+    "deletion.py": "20a53f7ab5ede2860ea3b7fc1d1f8255b39fc57de45e12d2d81c76ad58b29725",
+    "lexicon.py": "d7a90bff8f91a490e83586a787a6d9dcbe53bd0d1fb08c82b0ef338356717d97"
+  }
+}

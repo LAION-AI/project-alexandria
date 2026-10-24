@@ -1,0 +1,60 @@
+{
+  "complete": true,
+  "papers": 97,
+  "questions_per_condition": 970,
+  "scores": {
+    "baseline": {
+      "correct": 915,
+      "total": 970,
+      "accuracy": 0.9432989690721649,
+      "invalid": 0,
+      "confidence_interval_95": [
+        0.9268041237113402,
+        0.9587628865979381
+      ],
+      "difference_vs_raw_pp": 0.0,
+      "paired_difference_vs_raw_95ci_pp": [
+        0.0,
+        0.0
+      ],
+      "difference_vs_safe_pp": 0.2061855670103093,
+      "paired_difference_vs_safe_95ci_pp": [
+        -0.4123711340206171,
+        0.9278350515463885
+      ]
+    },
+    "delete_articles_case_guard": {
+      "correct": 913,
+      "total": 970,
+      "accuracy": 0.9412371134020618,
+      "invalid": 0,
+      "confidence_interval_95": [
+        0.922680412371134,
+        0.9577319587628865
+      ],
+      "difference_vs_raw_pp": -0.2061855670103093,
+      "paired_difference_vs_raw_95ci_pp": [
+        -0.9278350515463885,
+        0.4123711340206171
+      ],
+      "difference_vs_safe_pp": 0.0,
+      "paired_difference_vs_safe_95ci_pp": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "unique_calls": 560,
+  "protocol": "All original970 slots; same historical prompts/parser/sampling/seeds. Frozen baseline and exact paper/question/context prediction cache from preserved previous run. All new contexts evaluated. No QA-based output selection.",
+  "temperature": 0.5,
+  "top_p": 0.95,
+  "presence_penalty": 1.05,
+  "frequency_penalty": 1.05,
+  "max_tokens": 100,
+  "format_attempts": 5,
+  "bootstrap": "10,000 whole-paper resamples",
+  "inherited_statistic_key_mapping": {
+    "vs_raw": "vs baseline",
+    "vs_safe": "vs delete_articles_case_guard (second condition)"
+  }
+}

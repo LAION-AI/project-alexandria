@@ -1,0 +1,51 @@
+{
+  "experiment": "Targeted deletion of source-overlap words, frozen 97-paper comparison",
+  "baseline": "Saved post-Gemma E2B + structural lexicon v2 outputs; QA915/970",
+  "parent_run": "/e/scratch/reformo/schuhmann1/scientific-post-gemma-structural-20261024",
+  "papers": 97,
+  "questions": 970,
+  "conditions": [
+    "baseline",
+    "delete_fillers",
+    "delete_articles",
+    "delete_soft_modifiers",
+    "delete_pos_guarded"
+  ],
+  "selection": "Rules fixed before all new QA. All conditions use same saved97 summaries, full sources, original970 MCQs, gold answers and paired seeds. No model-driven repair or rejection based on QA.",
+  "limits": "Exploratory repeatedly used benchmark. Automatic meaning reviews are not human truth; no general safe-adjective claim. Any wider POS deletion is a diagnostic.",
+  "deployment": "CPU-only deletion; offline meaning/QA models only. Source-copy >=6 normalized whitespace-word audit, expanded diagnostic, evidence/metadata separated.",
+  "code_sha256": {
+    "review.py": "cf0c7fc3f239d8c228d83e8002c430674f08bb0f1eb14c48fb0f7c9d8946946b",
+    "supervisor.py": "aee361e007eabe3d33b736fa48346f86e728cc932c628c932ad371e99f776c4d",
+    "finish.py": "2a4b0ce52377d2798c3d471a92ab3731de7a77de9cbd67aaaeee8b0305aa8472",
+    "procedural.py": "1189c5bc892e0063fdb29435bc7e2576dbbff0255c3b5592b6a631930e82cce9",
+    "common.py": "ead941ae6b7f22da220d4630270990bba11c58b6f56ee901ea3d40dd3bdb56e4",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "evaluate.py": "985669aaa455cd9524ddea5123482e882e7e48878eb89c9859cc997e618f2cee",
+    "postprocess.py": "c341f87fb6e70a67ef24ffb0a52c239bed6499048e28b2424541b25eae65c758",
+    "verify_replay.py": "0171c87125020e454e97972377403a4423e07ccae2f20d74dee76f015b0cd18e",
+    "deletion.py": "2cb18ab4681a94c6e1332f6f46f9a714bdd14768cb957e5814e92d24e77a2c09",
+    "lexicon.py": "d7a90bff8f91a490e83586a787a6d9dcbe53bd0d1fb08c82b0ef338356717d97"
+  },
+  "audit_note": "Final deletion.py matches original executed CPU revision. All485 records and traces checked by read-only exact replay before reporting.",
+  "final_code_sha256": {
+    "review.py": "cf0c7fc3f239d8c228d83e8002c430674f08bb0f1eb14c48fb0f7c9d8946946b",
+    "supervisor.py": "aee361e007eabe3d33b736fa48346f86e728cc932c628c932ad371e99f776c4d",
+    "finish.py": "963b5340383445ab9bcf24dbb55fe1ea91a8a72bbc9212520e2accd58a867220",
+    "procedural.py": "1189c5bc892e0063fdb29435bc7e2576dbbff0255c3b5592b6a631930e82cce9",
+    "common.py": "ead941ae6b7f22da220d4630270990bba11c58b6f56ee901ea3d40dd3bdb56e4",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "evaluate.py": "985669aaa455cd9524ddea5123482e882e7e48878eb89c9859cc997e618f2cee",
+    "postprocess.py": "c341f87fb6e70a67ef24ffb0a52c239bed6499048e28b2424541b25eae65c758",
+    "verify_replay.py": "0171c87125020e454e97972377403a4423e07ccae2f20d74dee76f015b0cd18e",
+    "deletion.py": "2cb18ab4681a94c6e1332f6f46f9a714bdd14768cb957e5814e92d24e77a2c09",
+    "lexicon.py": "d7a90bff8f91a490e83586a787a6d9dcbe53bd0d1fb08c82b0ef338356717d97"
+  },
+  "reporting_code_revision_note": "finish.py received a metadata-only QA protocol correction and duplicate-key report-construction fix before it executed. Deletion rules, QA engine and reviewer code are unchanged from their recorded hashes. All485 saved summary records/traces passed exact replay.",
+  "changed_support_code_hashes": {
+    "finish.py": {
+      "earlier": "2a4b0ce52377d2798c3d471a92ab3731de7a77de9cbd67aaaeee8b0305aa8472",
+      "final": "963b5340383445ab9bcf24dbb55fe1ea91a8a72bbc9212520e2accd58a867220"
+    }
+  }
+}

@@ -1,8 +1,12 @@
 # Scientific summaries: frozen cohort and model comparisons
 
+## CPU deletion and numeric spelling: complete results and readable views
+
+The [targeted CPU-edit study](targeted_deletion_97_20261024/README.md) compares articles, adjectives/adverbs alone and together, percent notation, and guarded number spelling on all 97 papers/970 MCQs. It includes an [English dashboard](targeted_deletion_97_20261024/index.html), an [interactive before/after reader](targeted_deletion_97_20261024/examples.html), portable CPU code and hash-verified saved evidence. Protected articles plus guarded quantity formatting reach **5.40% mean copied coverage ≥6** and **912/970 QA**. Adjectives/adverbs alone reach **909/970**, with many meaning-audit failures. The lower-overlap original numeric prototype is retained with its technical-notation failures.
+
 ## Context-sensitive procedural repair after Gemma
 
-The [two training-driven dictionary experiments](contextual_procedural_repair_97_20261024/README.md) include failure cases, Luna proposals, deployed CPU rules, all97-paper QA and full-source copying evidence. The extra safe-rule gain is small:9.0724% to9.0380% mean copied coverage.
+The [two training-driven dictionary experiments](contextual_procedural_repair_97_20261024/README.md) include failure cases, Luna proposals, deployed CPU rules, all 97-paper QA and full-source copying evidence. The extra safe-rule gain is small:9.0724% to9.0380% mean copied coverage.
 
 
 ## Small-model hybrid repair: complete 97-paper benchmark

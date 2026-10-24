@@ -134,3 +134,7 @@ production rule deployment and saved-evidence replay use the Python standard lib
 
 All judgments remain available. No claim of zero meaning errors, human-reviewed
 sentence accuracy, or elimination of all copying is made.
+
+## Follow-up: deleting words and changing numeric notation
+
+The [completed CPU-edit follow-up](../targeted_deletion_97_20261024/README.md) adds a readable dashboard, full-summary reader, separate adjective/adverb-only QA, article identifier protection, and two numeric-formatting prototypes. All preceding results are preserved.

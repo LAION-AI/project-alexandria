@@ -1,0 +1,27 @@
+{
+  "experiment": "Numeric and percent spelling after protected article deletion",
+  "papers": 97,
+  "mcqs_per_condition": 970,
+  "baseline": "Saved guarded article-deletion summaries, QA913/970; no fresh generation",
+  "conditions": [
+    "baseline",
+    "percent_only",
+    "numbers_percent"
+  ],
+  "treatments": "percent_only swaps percent notation after quantities; numbers_percent additionally swaps supported digits and English cardinal forms. Only residual source matches >=6 words may be edited. Absolute copied words and coverage fraction must decrease.",
+  "preservation": "Exact Decimal value and decimal-place/sign roundtrip; supported English grammar; protected formula/operator/LaTex/code spans and identifier/reference exclusions. Digit/word changes deliberately require an extended numeric-preservation audit rather than the old digit-only signature.",
+  "scope": "Controlled supported cardinals up to999999999999 and at most6 decimal places/12 output words. Ambiguous word numbers require noun/quantity context. No ordinals or scientific notation conversion.",
+  "evaluation": "Same original970 MCQs, prompts, parser, sampling and paired seeds. All final narratives audited against full original sources with separate expanded diagnostic. All changed visible sentences reviewed; no QA-driven output selection.",
+  "interpretation": "Notation changes reduce literal matches but are not independent semantic paraphrases. Report absolute coverage and narrative length to expose denominator effects.",
+  "code_sha256": {
+    "review.py": "4272b188d9cd1b43da1b01b9d638f63e8700fb1978a3711b1f538f1bf7b4c993",
+    "supervisor.py": "ab0e08e6014ccb23b23bac67987d912867705d05a48e94d4b4d5cfababd2460c",
+    "finish.py": "0b593667fcc0f8cca505c2f992c714e03d342d112f6fabdb126662caf289f651",
+    "common.py": "d20c446aafe782d05d23f60408b6622fc4763825b58caa1137b8b4f3818a4d11",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "number_style.py": "008aad54d73d349821e4cbfb19f36513c323db102492beaa5b1879fb65e5cd48",
+    "evaluate.py": "19522f38dda5ed7e63a75c765efaa696522eb6b9d7213e3ae6d0dae614579753",
+    "postprocess.py": "3561755e6a4a845fb66f284f2bf70c8f0606214c97e6b157d28cdf06d8da54bc"
+  },
+  "percent_grammar": "Numeric spelling changes replace a complete percentage quantity, e.g.25% to twenty-five percent and five percent to5%; never five% or twenty-five%. Unit-only swaps apply to digit quantities."
+}

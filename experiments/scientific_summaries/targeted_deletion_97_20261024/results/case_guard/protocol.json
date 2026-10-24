@@ -1,0 +1,27 @@
+{
+  "experiment": "Case-aware article deletion; correction of a POS tagger scientific-name failure",
+  "parent_run": "/e/scratch/reformo/schuhmann1/scientific-post-gemma-deletion-97-20261024",
+  "papers": 97,
+  "mcqs_per_condition": 970,
+  "conditions": [
+    "baseline",
+    "delete_articles_case_guard"
+  ],
+  "baseline": "Saved post-Gemma E2B plus structural lexicon v2; QA915/970",
+  "guard": "Only lowercase articles, or sentence-initial capitalized articles before a noun/adjective. This preserves mid-sentence An chemical identifiers. No adjective deletion. All original protections retained.",
+  "selection": "General orthographic/grammar guard added after automatic meaning review identified9 An identifier deletions in1 paper. Test-informed exploratory correction, not blind validation; QA was not used to select edits. Earlier97 outputs and all scores preserved. No MCQ or gold changes.",
+  "caches": "Earlier predictions reused only by exact paper/question/context hash; sentence judgments reused only by exact original/edited pair hash. New contexts and pairs are evaluated.",
+  "code_sha256": {
+    "review.py": "4272b188d9cd1b43da1b01b9d638f63e8700fb1978a3711b1f538f1bf7b4c993",
+    "supervisor.py": "ab0e08e6014ccb23b23bac67987d912867705d05a48e94d4b4d5cfababd2460c",
+    "finish.py": "7228676de954399b3bb4d01cdf9466e4c8ad055327d8e2447fdfc6d79371f14f",
+    "procedural.py": "1189c5bc892e0063fdb29435bc7e2576dbbff0255c3b5592b6a631930e82cce9",
+    "common.py": "bc796caee519605fd6b4498a28f60462890b950c3ac40064ba76c748260e2aba",
+    "node_cache_launch.py": "bf2c52ecd75822fd3ca86099f2eb05336e215fb34d636dc8960e09337e351e89",
+    "evaluate.py": "19522f38dda5ed7e63a75c765efaa696522eb6b9d7213e3ae6d0dae614579753",
+    "postprocess.py": "2880f33aec13c40a50d3c032efa0044bb03414717d8dcd973a540f9ad8856c3a",
+    "verify_replay.py": "8529cf36819f01c6917ac55db977f6d3aefb108ec0d0956b4a692c19ca7fe780",
+    "deletion.py": "20884cb8be4199462db7b6c42640e9fa3e51bb0e277cd8d420881c6296a8bbe7",
+    "lexicon.py": "d7a90bff8f91a490e83586a787a6d9dcbe53bd0d1fb08c82b0ef338356717d97"
+  }
+}
