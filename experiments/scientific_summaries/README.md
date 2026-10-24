@@ -1,5 +1,10 @@
 # Scientific summaries: frozen cohort and model comparisons
 
+## Small-model hybrid repair: complete 97-paper benchmark
+
+The [Qwen 0.8B versus Gemma E2B study](hybrid_small_editors_97_20261023/README.md) includes all six conditions, full 970-question QA per condition, complete automatic meaning audits, copying evidence, 38M/60M cost projections and hash-verified reproduction bundles. One Gemma round reduces mean copied coverage from 15.23% to 9.07%; no condition meets the strict five-word limit.
+
+
 ## Wording repair: back-translation, targeted edits and scaling
 
 The [completed 44-condition search](backtranslation_repair_search_20261010/README.md) reports all 8,800 QA slots, 500/1000-word KU profiles, full-source overlap, [repair recommendations](backtranslation_repair_search_20261010/RECOMMENDATIONS.md), and [38M/60M compute scenarios](backtranslation_repair_search_20261010/SCALING.md). No setting eliminates all five-word violations; direct Gemma-only costs are unconfirmed residual-timing proxies.

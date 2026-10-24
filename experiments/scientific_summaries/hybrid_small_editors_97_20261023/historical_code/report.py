@@ -1,0 +1,82 @@
+"""Local benchmark report and transparent 38M/60M projections."""
+import html,json,statistics,shutil,datetime
+from pathlib import Path
+from common import ROOT,CONDITIONS,load,write,read_jsonl
+OUT=Path('/e/home/jusers/schuhmann1/jupiter/HYBRID_REPAIR_QWEN08_GEMMA_E2B_97_2026-10-23.html')
+NOTES=Path('/e/home/jusers/schuhmann1/jupiter/local_pipeline_notes/hybrid_qwen08_gemma_e2b_97_20261023')
+NAMES={'raw':'Gemma 12B r128 · no repair','safe_rules':'Safe CPU rules only','hybrid_qwen08_r1':'Safe rules + Qwen 0.8B · 1 attempt',
+ 'hybrid_qwen08_r3':'Safe rules + Qwen 0.8B · up to 3 attempts','hybrid_gemma_e2b_r1':'Safe rules + Gemma E2B · 1 attempt','hybrid_gemma_e2b_r3':'Safe rules + Gemma E2B · up to 3 attempts'}
+def optional(p):return load(p) if p.exists() else None
+def pct(v):return 'pending' if v is None else f'{100*v:.2f}%'
+def esc(v):return html.escape(str(v))
+def main():
+ NOTES.mkdir(parents=True,exist_ok=True);qa=optional(ROOT/'outputs/qa_results.json');sem=optional(ROOT/'outputs/semantic_results.json');status=optional(ROOT/'outputs/status.json') or {'phase':'prepared'}
+ data={};table='';timing='';generation=69819.52470390413
+ surface=optional(ROOT/'outputs/surface_diagnostic.json');expanded=optional(ROOT/'outputs/expanded_diagnostic_summary.json');accounting=optional(ROOT/'outputs/allocation_accounting.json')
+ for c in CONDITIONS:
+  result=optional(ROOT/f'outputs/{c}_complete.json');performance=optional(ROOT/f'outputs/{c}_performance.json');score=qa['scores'].get(c) if qa else None
+  if score is None and (ROOT/f'outputs/qa/{c}.json').exists():
+   predictions=load(ROOT/f'outputs/qa/{c}.json');correct=sum(r['prediction']==r['gold'] for r in predictions);score=dict(correct=correct,total=len(predictions),accuracy=correct/max(1,len(predictions)))
+  review=sem.get('conditions',{}).get(c) if sem else None
+  repair=performance['warm_gpu_worker_seconds']/97*38_000_000/3600/.85 if performance else 0 if c in ['raw','safe_rules'] else None
+  data[c]=dict(overlap=result,qa=score,semantic=review,performance=performance,repair_gpu_hours_38m=repair,total_gpu_hours_38m=generation+repair if repair is not None else None,
+   repair_gpu_hours_60m=repair*60/38 if repair is not None else None,total_gpu_hours_60m=(generation+repair)*60/38 if repair is not None else None)
+  if surface:data[c]['surface_diagnostic']=surface['conditions'].get(c)
+  if expanded:data[c]['expanded_diagnostic']=expanded.get(c)
+  count=result.get('narrative_passages_6plus','pending') if result else 'pending';coverage=pct(result['mean_coverage']) if result else 'pending'
+  strict=f'{result["strict_passes"]}/97' if result else 'pending';accuracy=f'{score["correct"]}/970 · {pct(score["accuracy"])}' if score else 'pending'
+  meaning='pending'
+  if c in ['raw','safe_rules']:meaning='baseline'
+  elif review:
+   co=review['counts'];bad=co.get('major_meaning_change',0)+co.get('unintelligible',0);meaning=f'{bad}/{review["total"]} major; {co.get("minor_meaning_change",0)} minor; {co.get("unparsed",0)} unparsed'
+  cost=f'{repair:,.0f}' if repair is not None else 'pending';total=f'{generation+repair:,.0f}' if repair is not None else 'pending'
+  table+=f'<tr><th>{NAMES[c]}</th><td>{count}</td><td>{coverage}</td><td>{strict}</td><td>{accuracy}</td><td>{esc(meaning)}</td><td>{cost}</td><td>{total}</td></tr>'
+  if performance:
+   tokens=sum(r['output_tokens'] for r in performance['rounds']);seconds=performance['generation_seconds'];rate=tokens/seconds if seconds else 0
+   timing+=f'<tr><th>{NAMES[c]}</th><td>{performance["warm_gpu_worker_seconds"]:.2f}</td><td>{seconds:.2f}</td><td>{performance["nli_seconds"]:.2f}</td><td>{performance["setup_seconds"]:.2f}</td><td>{tokens:,}</td><td>{rate:,.0f}</td></tr>'
+ projection=dict(papers=38_000_000,hardware='NVIDIA GH200',capacity_factor=.85,generation=dict(model='Gemma 4 12B IT, Qwen-teacher-distilled rank-128 LoRA, merged FP8, no thinking',gpu_hours_38m=generation,measured_seconds_97=545.3639821740217),conditions=data,
+  interpretation='Repair costs use measured warm single-GPU worker wall time including request preparation, generation and candidate checks/NLI, excluding one-time setup, separate CPU final assembly/full-source audits, final QA, and the independent 27B evaluation reviewer. CPU rules/audits must overlap generation in production. Linear extrapolation assumes comparable sources and residual-window density.',
+  timing_limit='One-time model/engine initialization is excluded. The first large inference batch still includes compilation of previously unseen sampling-kernel shapes; measured-loop projections are conservative relative to a continuously warm service.',
+  quality_limit='Repeated synthetic 97-paper exploratory benchmark. Automatic meaning judgments and QA are not independent human truth labels; any unchanged/rolled-back summary remains in every denominator.',
+  allocation_accounting=accounting,status=status,generated_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+ write(ROOT/'outputs/comparison_and_scaling.json',projection);write(NOTES/'comparison_and_scaling.json',projection)
+ body=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hybrid repair: Qwen 0.8B versus Gemma E2B</title><style>
+ body{{font:16px/1.7 system-ui,sans-serif;background:#f5f5ed;color:#193c36;margin:0}}main{{max-width:1450px;margin:auto;padding:45px 25px}}h1,h2{{font-family:Georgia,serif;font-weight:400;line-height:1.2}}h1{{font-size:3rem;max-width:1000px}}h2{{margin-top:45px}}.table{{overflow:auto;border:1px solid #d6dfd3;border-radius:8px;background:white}}table{{border-collapse:collapse;width:100%;font-size:14px;min-width:1050px}}th,td{{padding:15px;border-bottom:1px solid #d6dfd3;text-align:left;vertical-align:top}}thead{{background:#e8eedf}}.note{{background:#e6eddb;border-left:4px solid #8aa67c;padding:18px 23px;margin:25px 0}}a{{color:#28674d}}code{{overflow-wrap:anywhere}}li{{margin-bottom:8px}}footer{{border-top:1px solid #ccd7cb;margin-top:45px;padding-top:20px;font-size:13px}}@media(max-width:700px){{main{{padding:25px 16px}}h1{{font-size:2.2rem}}}}</style><main>
+ <p>Alexandria · local benchmark · 23 October 2026</p><h1>Safe word replacements, then a small model for the remaining copied passages</h1>
+ <p>Same 97 saved no-thinking Gemma-12B-r128 FP8 summaries, same full paper sources, same 970 MCQs. Qwen3.5-0.8B and <a href="https://huggingface.co/google/gemma-4-E2B-it">Gemma 4 E2B IT</a> receive exactly the same residual windows after a conservative CPU preprocessing stage.</p>
+ <div class="note"><strong>Status: {esc(status['phase'])}.</strong> Independent conditions checkpoint as soon as they finish. Pending values are not zero. GPU-hour projections describe a comparable production workload, not guaranteed cost caps or strict-copy compliance.</div>
+ <h2>Results and 38-million-paper estimates</h2><div class="table"><table><thead><tr><th>Pipeline</th><th>Narrative source-match passages ≥6 words</th><th>Mean copied word coverage</th><th>Entire narrative ≤5</th><th>Fresh QA</th><th>Automatic scientific-meaning review</th><th>Extra repair GPUh / 38M</th><th>Generation + repair GPUh / 38M</th></tr></thead><tbody>{table}</tbody></table></div>
+ <p>Passages use longest-first, non-overlapping maximal normalized source matches. Coverage counts each covered word once. Counts may split when a long passage is broken into shorter surviving passages. Evidence quotes and bibliographic metadata remain untouched and are separately audited in the machine-readable results.</p>
+ <h2>Measured performance</h2><div class="table"><table><thead><tr><th>Pipeline</th><th>Warm worker s / 97</th><th>Generation s</th><th>NLI s</th><th>One-time setup s</th><th>Output tokens, all attempts</th><th>Output tokens / generation s</th></tr></thead><tbody>{timing}</tbody></table></div>
+ <p>Each editor uses one GH200, BF16, no thinking, continuous batching up to 256 sequences, 16,384 batched tokens, prefix caching and chunked prefill. The initial eight-request functional probe is included in round-one time and its outputs are reused. Only unresolved windows receive another attempt. One- and three-attempt outputs share the first round; they are not independent repeated runs. Native output-token counts are tokenizer-dependent, so compare wall time per complete 97-paper workload too.</p>
+ <h2>What is fixed and what is checked</h2><ol><li>CPU preprocessing is the previously defined conservative connectives/contractions/preposition recipe, with unchanged scientific nouns, numbers, units, formulas and protected evidence. No noun/adjective dictionary replacement or broad coordination rule is used.</li>
+ <li>Both editors use the same source-only task, temperatures 0.35/0.65/0.95, top-p 0.95, top-k 64, up to 384 output tokens, at most three attempts and question-independent per-window seeds. Current source-copy six-word strings receive bounded decoder bans; technical terms themselves are allowed. Every request has at most 256 conservatively counted mask tokens, preventing the previous backend mask overflow.</li>
+ <li>Every candidate must finish, remain within 0.75–1.35 of original word count, retain number/unit/formula signatures, retain detected acronyms/chemical identifiers and negation count, reduce absolute source-copied words without increasing the longest match, and reach bidirectional DeBERTa entailment ≥0.95. These guards are imperfect and can reject valid paraphrases or miss scientific errors.</li>
+ <li>Assembled summaries receive schema/signature/evidence guards and document rollback. An independent frozen 27B FP8 model then reviews every final visible edited window, after rollback, with diagnostic controls. These are automatic window-level judgments, not a certified sentence-level human error rate. The CPU baseline's earlier automatic review classified 104/104 changed units as equivalent.</li>
+ <li>QA uses Qwen2.5-7B-Instruct, original historical prompts/parser, all 970 original questions, temperature 0.5, top-p 0.95, frequency/presence penalties 1.05, max 100 output tokens and five format attempts. This run uses fresh matched raw/rules baselines, paired question-specific seeds, identical-context answer reuse, and 10,000 whole-paper bootstrap resamples. Gold answers never guide repairs or condition selection.</li></ol>
+ <h2>Cost scope</h2><p>GPUh = papers × measured warm single-GPU worker seconds / 97 / 3600 / 0.85. Generation-only reference: 545.363982 seconds / 97 complete summaries, or 69,819.52 GH200 GPU-hours / 38M at 85% useful capacity. Keep workers loaded and independently pipeline CPU indexing/audits. One-time engine/model setup, this benchmark's QA and 27B evaluation reviewer, corpus acquisition, training, and bulk storage/I/O are excluded from production inference projections. The first large inference batch still includes compilation of previously unseen sampling-kernel shapes; these measured-loop estimates are conservative relative to a continuously warm service. The actual full-node benchmark allocation is separately saved.</p>
+ <h2>Evidence</h2><p>Scratch root: <code>{ROOT}</code>. Protocol: <code>inputs/protocol.json</code>; inputs and source hashes: <code>inputs/cohort97.jsonl</code>; candidate/rejection traces: <code>traces/</code>; QA: <code>outputs/qa/</code>; final-edit reviews: <code>outputs/semantic/</code>; overlap JSON/CSV and punctuation-split diagnostics: <code>outputs/overlap/</code>; costs: <code>outputs/comparison_and_scaling.json</code>.</p>
+ <footer>Local report; no GitHub publication. Repeated use of these synthetic questions makes this an exploratory comparison, not a new blind test. Report updated {esc(projection['generated_at_utc'])}.</footer></main></html>'''
+ conclusion='<h2>Interpretation</h2><p>The strongest measured cost/QA tradeoff is one Gemma E2B repair attempt after the conservative CPU rules: mean primary source-copy coverage falls from 15.23% to 9.07% (about 40% relative reduction), with 916/970 correct QA answers versus 911/970 for the fresh unrepaired baseline. The +0.52 percentage-point QA difference is uncertain: the paired paper-bootstrap 95% interval is −0.21 to +1.24 points. This does not establish a quality improvement.</p><p>Three Gemma attempts lower copying further to 7.43%, but cost more and yield 910/970 correct answers, six fewer than one attempt. Every condition still has at least one narrative source match longer than five words in all 97 summaries. None achieves complete five-word compliance or the desired below-5% mean copied coverage. These are paraphrasing diagnostics, not legal determinations.</p>'
+ if not sem or not sem.get('complete'):
+  conclusion+='<p>The complete final-edit meaning audit is still pending for some conditions. Qwen one-attempt outputs have been reviewed: 22/1,136 edited windows were automatically judged major meaning changes or unintelligible. This is a window-level automatic diagnosis, not a human error rate. The Gemma preference remains provisional until the remaining edit reviews finish.</p>'
+ if accounting:
+  conclusion+=f'<p>Completed benchmark/review allocations so far reserved {accounting["completed_allocation_gpu_hours"]:.3f} GPU-hours, including startup and an interrupted review-only allocation. A further four-GPU review job is recorded separately. This actual benchmark reservation is distinct from the warm production projections above.</p>'
+ body=body.replace('<h2>Measured performance</h2>',conclusion+'<h2>Measured performance</h2>')
+ if surface:
+  sr=''
+  for c,s in surface['conditions'].items():
+   co=s['counts'];sr+=f'<tr><th>{NAMES[c]}</th><td>{s["final_edited_windows"]}</td><td>{co.get("identical_punctuation_split_word_sequence",0)}</td><td>{co.get("new_unlisted_word_one_character_from_original",0)}</td></tr>'
+  section='<h2>Surface changes can make the copying metric look better</h2><p>A separate post-run diagnostic found accepted outputs that only changed word boundaries/hyphens, plus suspicious one-character spellings such as <em>germinate → germinat</em>. These are not reliable scientific paraphrases. They remain in the original QA and copying results; no output was silently corrected or removed after QA.</p><div class="table"><table><thead><tr><th>Pipeline</th><th>Final edited windows</th><th>Identical punctuation-split word sequence</th><th>Probable one-character spelling flags</th></tr></thead><tbody>'+sr+'</tbody></table></div><p>The spelling heuristic requires an original word with wordfreq Zipf ≥2 and a new one-character variant or adjacent transposition with zero wordfreq frequency. It can flag valid rare terminology and miss other errors. Orthographic-only edits have exactly the same punctuation-split normalized token sequence; their lower primary overlap does not establish a substantive paraphrase. A deployment gate should reject these cases and then be evaluated as a new, separately named condition.</p>'
+  body=body.replace('<h2>Cost scope</h2>',section+'<h2>Cost scope</h2>')
+ if expanded:
+  er=''.join(f'<tr><th>{NAMES[c]}</th><td>{pct(r["mean_expanded_coverage_6plus"])}</td></tr>' for c,r in expanded.items())
+  section='<h2>Separate punctuation-split diagnostic</h2><div class="table"><table><thead><tr><th>Pipeline</th><th>Mean source-copy coverage ≥6 under expanded tokenization</th></tr></thead><tbody>'+er+'</tbody></table></div><p>This diagnostic splits punctuation, compounds and mathematical expressions into additional tokens. It is intentionally separate from the primary whitespace-word project rule, and its percentages use a different word denominator. It exposes additional copying but must not turn the components of one formula into several natural-language words for the primary decision.</p>'
+  body=body.replace('<h2>Cost scope</h2>',section+'<h2>Cost scope</h2>')
+ tmp=OUT.with_suffix('.html.tmp');tmp.write_text(body);tmp.replace(OUT)
+ for name in ['protocol.json','gemma_model_metadata.json']:
+  if (ROOT/'inputs'/name).exists():shutil.copy2(ROOT/'inputs'/name,NOTES/name)
+ for name in ['qa_results.json','semantic_results.json','status.json','surface_diagnostic.json','expanded_diagnostic_summary.json','integrity_checks.json','additional_paired_qa_comparisons.json','allocation_accounting.json']:
+  if (ROOT/'outputs'/name).exists():shutil.copy2(ROOT/'outputs'/name,NOTES/name)
+ print('LOCAL_REPORT_UPDATED',status['phase'],flush=True)
+if __name__=='__main__':main()

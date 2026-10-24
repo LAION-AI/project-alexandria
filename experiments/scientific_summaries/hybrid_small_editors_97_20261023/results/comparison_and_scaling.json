@@ -1,0 +1,653 @@
+{
+  "papers": 38000000,
+  "hardware": "NVIDIA GH200",
+  "capacity_factor": 0.85,
+  "generation": {
+    "model": "Gemma 4 12B IT, Qwen-teacher-distilled rank-128 LoRA, merged FP8, no thinking",
+    "gpu_hours_38m": 69819.52470390413,
+    "measured_seconds_97": 545.3639821740217
+  },
+  "conditions": {
+    "raw": {
+      "overlap": {
+        "complete": true,
+        "papers": 97,
+        "condition": "raw",
+        "mean_coverage": 0.15227428470594992,
+        "strict_passes": 0,
+        "narrative_passages_6plus": 3508,
+        "mean_passages_per_summary": 36.16494845360825,
+        "mean_passage_length_words": 8.328392246294184,
+        "changed_from_raw": 0,
+        "rollbacks": 0
+      },
+      "qa": {
+        "correct": 911,
+        "total": 970,
+        "accuracy": 0.9391752577319588,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9206185567010309,
+          0.956701030927835
+        ],
+        "difference_vs_raw_pp": 0.0,
+        "paired_difference_vs_raw_95ci_pp": [
+          0.0,
+          0.0
+        ],
+        "difference_vs_safe_pp": 0.10309278350515465,
+        "paired_difference_vs_safe_95ci_pp": [
+          -0.3092783505154739,
+          0.5154639175257716
+        ]
+      },
+      "semantic": null,
+      "performance": null,
+      "repair_gpu_hours_38m": 0,
+      "total_gpu_hours_38m": 69819.52470390413,
+      "repair_gpu_hours_60m": 0.0,
+      "total_gpu_hours_60m": 110241.3547956381,
+      "surface_diagnostic": null,
+      "expanded_diagnostic": {
+        "papers": 97,
+        "mean_expanded_coverage_6plus": 0.18272998928710005
+      }
+    },
+    "safe_rules": {
+      "overlap": {
+        "complete": true,
+        "papers": 97,
+        "condition": "safe_rules",
+        "mean_coverage": 0.14925120822971924,
+        "strict_passes": 0,
+        "narrative_passages_6plus": 3460,
+        "mean_passages_per_summary": 35.670103092783506,
+        "mean_passage_length_words": 8.28121387283237,
+        "changed_from_raw": 57,
+        "rollbacks": 0
+      },
+      "qa": {
+        "correct": 910,
+        "total": 970,
+        "accuracy": 0.9381443298969072,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9195876288659793,
+          0.9546391752577319
+        ],
+        "difference_vs_raw_pp": -0.10309278350515465,
+        "paired_difference_vs_raw_95ci_pp": [
+          -0.5154639175257716,
+          0.3092783505154739
+        ],
+        "difference_vs_safe_pp": 0.0,
+        "paired_difference_vs_safe_95ci_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      "semantic": null,
+      "performance": null,
+      "repair_gpu_hours_38m": 0,
+      "total_gpu_hours_38m": 69819.52470390413,
+      "repair_gpu_hours_60m": 0.0,
+      "total_gpu_hours_60m": 110241.3547956381,
+      "surface_diagnostic": null,
+      "expanded_diagnostic": {
+        "papers": 97,
+        "mean_expanded_coverage_6plus": 0.17993295920611987
+      }
+    },
+    "hybrid_qwen08_r1": {
+      "overlap": {
+        "complete": true,
+        "condition": "hybrid_qwen08_r1",
+        "papers": 97,
+        "mean_coverage": 0.10610084447099392,
+        "strict_passes": 0,
+        "narrative_passages_6plus": 2585,
+        "mean_passages_per_summary": 26.649484536082475,
+        "mean_passage_length_words": 7.940038684719536,
+        "changed_from_safe": 94,
+        "rollbacks": 0,
+        "final_edited_windows": 1136,
+        "finalization_seconds": 6.661456780042499
+      },
+      "qa": {
+        "correct": 910,
+        "total": 970,
+        "accuracy": 0.9381443298969072,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9206185567010309,
+          0.9546391752577319
+        ],
+        "difference_vs_raw_pp": -0.10309278350515465,
+        "paired_difference_vs_raw_95ci_pp": [
+          -0.8247422680412342,
+          0.6185567010309256
+        ],
+        "difference_vs_safe_pp": 0.0,
+        "paired_difference_vs_safe_95ci_pp": [
+          -0.6211340206185629,
+          0.6185567010309256
+        ]
+      },
+      "semantic": {
+        "total": 1136,
+        "counts": {
+          "unchanged_or_equivalent": 935,
+          "minor_meaning_change": 146,
+          "major_meaning_change": 21,
+          "awkward_only": 33,
+          "unintelligible": 1
+        },
+        "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+      },
+      "performance": {
+        "complete": true,
+        "setup_seconds": 217.92039539001416,
+        "rounds": [
+          {
+            "round": 1,
+            "requests": 2954,
+            "accepted": 1136,
+            "generation_seconds": 32.83505515794968,
+            "assess_seconds": 6.0283687190385535,
+            "nli": {
+              "seconds": 5.19832409999799,
+              "pairs": 3126,
+              "scored_pairs": 3126,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 621186,
+            "output_tokens": 116757,
+            "wall_seconds": 41.70058914099354,
+            "rejections": {
+              "no_safe_absolute_copy_reduction": 1023,
+              "bidirectional_entailment_below_0.95": 427,
+              "acronym_or_chemical_identifier_change": 69,
+              "critical_values": 327,
+              "length_ratio": 138,
+              "negation_count_changed": 47,
+              "unfinished_or_empty": 6
+            }
+          }
+        ],
+        "warm_gpu_worker_seconds": 41.70058914099354,
+        "generation_seconds": 32.83505515794968,
+        "nli_seconds": 5.19832409999799,
+        "max_concurrent_sequences": 256,
+        "max_batched_tokens": 16384,
+        "all_per_request_mask_tokens_at_most": 256,
+        "scope": "Warm single-GH200 repair worker, including prompt preparation, generation and candidate guards; final assembly/source audits and one-time model setup recorded separately."
+      },
+      "repair_gpu_hours_38m": 5338.6644678854345,
+      "total_gpu_hours_38m": 75158.18917178956,
+      "repair_gpu_hours_60m": 8429.470212450686,
+      "total_gpu_hours_60m": 118670.82500808877,
+      "surface_diagnostic": {
+        "final_edited_windows": 1136,
+        "flagged_windows": 36,
+        "counts": {
+          "identical_punctuation_split_word_sequence": 21,
+          "new_unlisted_word_one_character_from_original": 15
+        }
+      },
+      "expanded_diagnostic": {
+        "papers": 97,
+        "mean_expanded_coverage_6plus": 0.14262364883569184
+      }
+    },
+    "hybrid_qwen08_r3": {
+      "overlap": {
+        "complete": true,
+        "condition": "hybrid_qwen08_r3",
+        "papers": 97,
+        "mean_coverage": 0.07907741105670263,
+        "strict_passes": 0,
+        "narrative_passages_6plus": 1996,
+        "mean_passages_per_summary": 20.577319587628867,
+        "mean_passage_length_words": 7.690380761523046,
+        "changed_from_safe": 95,
+        "rollbacks": 0,
+        "final_edited_windows": 1679,
+        "finalization_seconds": 7.422149204998277
+      },
+      "qa": {
+        "correct": 909,
+        "total": 970,
+        "accuracy": 0.9371134020618557,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9195876288659793,
+          0.9536082474226804
+        ],
+        "difference_vs_raw_pp": -0.2061855670103093,
+        "paired_difference_vs_raw_95ci_pp": [
+          -0.9278350515463885,
+          0.5154639175257714
+        ],
+        "difference_vs_safe_pp": -0.10309278350515465,
+        "paired_difference_vs_safe_95ci_pp": [
+          -0.7216494845360799,
+          0.5154639175257714
+        ]
+      },
+      "semantic": {
+        "total": 1679,
+        "counts": {
+          "unchanged_or_equivalent": 1289,
+          "unintelligible": 7,
+          "minor_meaning_change": 289,
+          "major_meaning_change": 53,
+          "awkward_only": 40,
+          "unparsed": 1
+        },
+        "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+      },
+      "performance": {
+        "complete": true,
+        "setup_seconds": 217.92039539001416,
+        "rounds": [
+          {
+            "round": 1,
+            "requests": 2954,
+            "accepted": 1136,
+            "generation_seconds": 32.83505515794968,
+            "assess_seconds": 6.0283687190385535,
+            "nli": {
+              "seconds": 5.19832409999799,
+              "pairs": 3126,
+              "scored_pairs": 3126,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 621186,
+            "output_tokens": 116757,
+            "wall_seconds": 41.70058914099354,
+            "rejections": {
+              "no_safe_absolute_copy_reduction": 1023,
+              "bidirectional_entailment_below_0.95": 427,
+              "acronym_or_chemical_identifier_change": 69,
+              "critical_values": 327,
+              "length_ratio": 138,
+              "negation_count_changed": 47,
+              "unfinished_or_empty": 6
+            }
+          },
+          {
+            "round": 2,
+            "requests": 2214,
+            "accepted": 412,
+            "generation_seconds": 15.24952559999656,
+            "assess_seconds": 1.6440207610139623,
+            "nli": {
+              "seconds": 1.0021732110180892,
+              "pairs": 1436,
+              "scored_pairs": 1436,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 467151,
+            "output_tokens": 93743,
+            "wall_seconds": 19.21138549403986,
+            "rejections": {
+              "critical_values": 385,
+              "no_safe_absolute_copy_reduction": 1088,
+              "bidirectional_entailment_below_0.95": 306,
+              "length_ratio": 191,
+              "negation_count_changed": 60,
+              "acronym_or_chemical_identifier_change": 93,
+              "unfinished_or_empty": 3
+            }
+          },
+          {
+            "round": 3,
+            "requests": 1963,
+            "accepted": 336,
+            "generation_seconds": 14.53029784199316,
+            "assess_seconds": 1.4250983559759334,
+            "nli": {
+              "seconds": 0.8295312869595364,
+              "pairs": 1156,
+              "scored_pairs": 1156,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 413457,
+            "output_tokens": 90566,
+            "wall_seconds": 18.0280027060071,
+            "rejections": {
+              "no_safe_absolute_copy_reduction": 816,
+              "critical_values": 484,
+              "bidirectional_entailment_below_0.95": 242,
+              "length_ratio": 341,
+              "acronym_or_chemical_identifier_change": 178,
+              "negation_count_changed": 85,
+              "unfinished_or_empty": 2
+            }
+          }
+        ],
+        "warm_gpu_worker_seconds": 78.9399773410405,
+        "generation_seconds": 62.6148785999394,
+        "nli_seconds": 7.030028597975615,
+        "max_concurrent_sequences": 256,
+        "max_batched_tokens": 16384,
+        "all_per_request_mask_tokens_at_most": 256,
+        "scope": "Warm single-GH200 repair worker, including prompt preparation, generation and candidate guards; final assembly/source audits and one-time model setup recorded separately."
+      },
+      "repair_gpu_hours_38m": 10106.189404216491,
+      "total_gpu_hours_38m": 79925.71410812062,
+      "repair_gpu_hours_60m": 15957.141164552357,
+      "total_gpu_hours_60m": 126198.49596019046,
+      "surface_diagnostic": {
+        "final_edited_windows": 1679,
+        "flagged_windows": 42,
+        "counts": {
+          "new_unlisted_word_one_character_from_original": 20,
+          "identical_punctuation_split_word_sequence": 22
+        }
+      },
+      "expanded_diagnostic": {
+        "papers": 97,
+        "mean_expanded_coverage_6plus": 0.11872866670984654
+      }
+    },
+    "hybrid_gemma_e2b_r1": {
+      "overlap": {
+        "complete": true,
+        "condition": "hybrid_gemma_e2b_r1",
+        "papers": 97,
+        "mean_coverage": 0.09072396450086637,
+        "strict_passes": 0,
+        "narrative_passages_6plus": 2295,
+        "mean_passages_per_summary": 23.65979381443299,
+        "mean_passage_length_words": 7.678867102396514,
+        "changed_from_safe": 95,
+        "rollbacks": 1,
+        "final_edited_windows": 1450,
+        "finalization_seconds": 6.339381347002927
+      },
+      "qa": {
+        "correct": 916,
+        "total": 970,
+        "accuracy": 0.9443298969072165,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9278350515463918,
+          0.9597938144329896
+        ],
+        "difference_vs_raw_pp": 0.5154639175257731,
+        "paired_difference_vs_raw_95ci_pp": [
+          -0.20618556701030855,
+          1.2371134020618513
+        ],
+        "difference_vs_safe_pp": 0.6185567010309279,
+        "paired_difference_vs_safe_95ci_pp": [
+          0.0,
+          1.2371134020618513
+        ]
+      },
+      "semantic": {
+        "total": 1450,
+        "counts": {
+          "minor_meaning_change": 160,
+          "unchanged_or_equivalent": 1245,
+          "awkward_only": 7,
+          "major_meaning_change": 32,
+          "unintelligible": 4,
+          "unparsed": 2
+        },
+        "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+      },
+      "performance": {
+        "complete": true,
+        "setup_seconds": 261.2357866819948,
+        "rounds": [
+          {
+            "round": 1,
+            "requests": 2954,
+            "accepted": 1475,
+            "generation_seconds": 23.749518818047363,
+            "assess_seconds": 3.9361634899978526,
+            "nli": {
+              "seconds": 2.721114099957049,
+              "pairs": 3334,
+              "scored_pairs": 3334,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 599200,
+            "output_tokens": 111325,
+            "wall_seconds": 30.303513783961535,
+            "rejections": {
+              "critical_values": 720,
+              "no_safe_absolute_copy_reduction": 616,
+              "negation_count_changed": 74,
+              "bidirectional_entailment_below_0.95": 192,
+              "length_ratio": 114,
+              "acronym_or_chemical_identifier_change": 76,
+              "unfinished_or_empty": 1
+            }
+          }
+        ],
+        "warm_gpu_worker_seconds": 30.303513783961535,
+        "generation_seconds": 23.749518818047363,
+        "nli_seconds": 2.721114099957049,
+        "max_concurrent_sequences": 256,
+        "max_batched_tokens": 16384,
+        "all_per_request_mask_tokens_at_most": 256,
+        "scope": "Warm single-GH200 repair worker, including prompt preparation, generation and candidate guards; final assembly/source audits and one-time model setup recorded separately."
+      },
+      "repair_gpu_hours_38m": 3879.5685054596674,
+      "total_gpu_hours_38m": 73699.0932093638,
+      "repair_gpu_hours_60m": 6125.6344823047375,
+      "total_gpu_hours_60m": 116366.98927794285,
+      "surface_diagnostic": {
+        "final_edited_windows": 1450,
+        "flagged_windows": 7,
+        "counts": {
+          "new_unlisted_word_one_character_from_original": 7
+        }
+      },
+      "expanded_diagnostic": {
+        "papers": 97,
+        "mean_expanded_coverage_6plus": 0.12764994246218764
+      }
+    },
+    "hybrid_gemma_e2b_r3": {
+      "overlap": {
+        "complete": true,
+        "condition": "hybrid_gemma_e2b_r3",
+        "papers": 97,
+        "mean_coverage": 0.07427228156248974,
+        "strict_passes": 0,
+        "narrative_passages_6plus": 1900,
+        "mean_passages_per_summary": 19.587628865979383,
+        "mean_passage_length_words": 7.615263157894737,
+        "changed_from_safe": 95,
+        "rollbacks": 1,
+        "final_edited_windows": 1706,
+        "finalization_seconds": 6.331318193988409
+      },
+      "qa": {
+        "correct": 910,
+        "total": 970,
+        "accuracy": 0.9381443298969072,
+        "invalid": 0,
+        "confidence_interval_95": [
+          0.9206185567010309,
+          0.9546391752577319
+        ],
+        "difference_vs_raw_pp": -0.10309278350515465,
+        "paired_difference_vs_raw_95ci_pp": [
+          -0.9278350515463885,
+          0.7216494845360799
+        ],
+        "difference_vs_safe_pp": 0.0,
+        "paired_difference_vs_safe_95ci_pp": [
+          -0.7216494845360799,
+          0.7216494845360799
+        ]
+      },
+      "semantic": {
+        "total": 1706,
+        "counts": {
+          "minor_meaning_change": 220,
+          "unchanged_or_equivalent": 1419,
+          "awkward_only": 11,
+          "major_meaning_change": 50,
+          "unintelligible": 4,
+          "unparsed": 2
+        },
+        "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+      },
+      "performance": {
+        "complete": true,
+        "setup_seconds": 261.2357866819948,
+        "rounds": [
+          {
+            "round": 1,
+            "requests": 2954,
+            "accepted": 1475,
+            "generation_seconds": 23.749518818047363,
+            "assess_seconds": 3.9361634899978526,
+            "nli": {
+              "seconds": 2.721114099957049,
+              "pairs": 3334,
+              "scored_pairs": 3334,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 599200,
+            "output_tokens": 111325,
+            "wall_seconds": 30.303513783961535,
+            "rejections": {
+              "critical_values": 720,
+              "no_safe_absolute_copy_reduction": 616,
+              "negation_count_changed": 74,
+              "bidirectional_entailment_below_0.95": 192,
+              "length_ratio": 114,
+              "acronym_or_chemical_identifier_change": 76,
+              "unfinished_or_empty": 1
+            }
+          },
+          {
+            "round": 2,
+            "requests": 1960,
+            "accepted": 276,
+            "generation_seconds": 7.400263838004321,
+            "assess_seconds": 1.2133116929908283,
+            "nli": {
+              "seconds": 0.6253825339954346,
+              "pairs": 856,
+              "scored_pairs": 856,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 399268,
+            "output_tokens": 81684,
+            "wall_seconds": 10.365121306967922,
+            "rejections": {
+              "critical_values": 729,
+              "no_safe_absolute_copy_reduction": 860,
+              "negation_count_changed": 87,
+              "bidirectional_entailment_below_0.95": 152,
+              "acronym_or_chemical_identifier_change": 84,
+              "length_ratio": 130
+            }
+          },
+          {
+            "round": 3,
+            "requests": 1761,
+            "accepted": 189,
+            "generation_seconds": 6.455609273980372,
+            "assess_seconds": 1.0052328680176288,
+            "nli": {
+              "seconds": 0.4479257829952985,
+              "pairs": 608,
+              "scored_pairs": 608,
+              "overlength_pairs_not_truncated": 0,
+              "batch_size": 32
+            },
+            "input_tokens": 360916,
+            "output_tokens": 75676,
+            "wall_seconds": 9.077764927002136,
+            "rejections": {
+              "critical_values": 691,
+              "no_safe_absolute_copy_reduction": 820,
+              "negation_count_changed": 89,
+              "bidirectional_entailment_below_0.95": 115,
+              "length_ratio": 120,
+              "acronym_or_chemical_identifier_change": 83,
+              "unfinished_or_empty": 1
+            }
+          }
+        ],
+        "warm_gpu_worker_seconds": 49.74640001793159,
+        "generation_seconds": 37.605391930032056,
+        "nli_seconds": 3.794422416947782,
+        "max_concurrent_sequences": 256,
+        "max_batched_tokens": 16384,
+        "all_per_request_mask_tokens_at_most": 256,
+        "scope": "Warm single-GH200 repair worker, including prompt preparation, generation and candidate guards; final assembly/source audits and one-time model setup recorded separately."
+      },
+      "repair_gpu_hours_38m": 6368.719091305845,
+      "total_gpu_hours_38m": 76188.24379520997,
+      "repair_gpu_hours_60m": 10055.872249430282,
+      "total_gpu_hours_60m": 120297.22704506837,
+      "surface_diagnostic": {
+        "final_edited_windows": 1706,
+        "flagged_windows": 7,
+        "counts": {
+          "new_unlisted_word_one_character_from_original": 7
+        }
+      },
+      "expanded_diagnostic": {
+        "papers": 97,
+        "mean_expanded_coverage_6plus": 0.11270622191049007
+      }
+    }
+  },
+  "interpretation": "Repair costs use measured warm single-GPU worker wall time including request preparation, generation and candidate checks/NLI, excluding one-time setup, separate CPU final assembly/full-source audits, final QA, and the independent 27B evaluation reviewer. CPU rules/audits must overlap generation in production. Linear extrapolation assumes comparable sources and residual-window density.",
+  "timing_limit": "One-time model/engine initialization is excluded. The first large inference batch still includes compilation of previously unseen sampling-kernel shapes; measured-loop projections are conservative relative to a continuously warm service.",
+  "quality_limit": "Repeated synthetic 97-paper exploratory benchmark. Automatic meaning judgments and QA are not independent human truth labels; any unchanged/rolled-back summary remains in every denominator.",
+  "allocation_accounting": {
+    "allocations": [
+      {
+        "job_id": "2468981",
+        "state": "TIMEOUT",
+        "allocated_gpu_count": 4,
+        "allocation_seconds": 668,
+        "allocated_gpu_hours": 0.7422222222222222,
+        "completed": "All repairs, all QA, one condition semantic review."
+      },
+      {
+        "job_id": "2469526",
+        "state": "TIMEOUT",
+        "allocated_gpu_count": 4,
+        "allocation_seconds": 361,
+        "allocated_gpu_hours": 0.4011111111111111,
+        "completed": "No new semantic chunks; cold Python imports exhausted shortened allocation."
+      },
+      {
+        "job_id": "2471215",
+        "state_at_recording": "PENDING",
+        "allocated_gpu_count_requested": 4,
+        "time_requested_seconds": 900,
+        "purpose": "Only missing semantic review; no regeneration or QA rerun."
+      }
+    ],
+    "completed_allocation_gpu_hours": 1.1433333333333333,
+    "note": "Reserved GPU allocation time, not GPU utilization or production throughput. Production projections separately exclude one-time startup and benchmark evaluation."
+  },
+  "status": {
+    "phase": "complete",
+    "job_id": "2471215",
+    "initial_benchmark_job": "2468981",
+    "note": "All editor/QA results reused. Remaining automatic meanings reviewed in four balanced shards, then complete-source overlap evidence written."
+  },
+  "generated_at_utc": "2026-10-23T12:55:11.604991+00:00"
+}

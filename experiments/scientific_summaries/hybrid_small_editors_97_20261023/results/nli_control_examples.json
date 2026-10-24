@@ -1,0 +1,155 @@
+{
+  "cutoff": 0.95,
+  "performance": {
+    "seconds": 0.40189371403539553,
+    "pairs": 6,
+    "scored_pairs": 6,
+    "overlength_pairs_not_truncated": 0,
+    "batch_size": 32
+  },
+  "cases": [
+    {
+      "before": "The result was not statistically significant.",
+      "after": "The result was statistically significant.",
+      "critical": {
+        "passed": true,
+        "checks": {
+          "numbers": true,
+          "quantities": true,
+          "formulas": true,
+          "mathematical_variables": true,
+          "operators": true
+        },
+        "before": {
+          "numbers": [],
+          "quantities": [],
+          "formulas": [],
+          "mathematical_variables": [],
+          "operators": []
+        },
+        "after": {
+          "numbers": [],
+          "quantities": [],
+          "formulas": [],
+          "mathematical_variables": [],
+          "operators": []
+        },
+        "numeric_content_present": false,
+        "formula_content_present": false,
+        "exact_text_unchanged": false,
+        "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+      },
+      "scores": [
+        {
+          "entailment": 0.00019861436157952994,
+          "contradiction": 0.999292254447937
+        },
+        {
+          "entailment": 0.0004448189865797758,
+          "contradiction": 0.9989542961120605
+        }
+      ],
+      "nli_accepts": false
+    },
+    {
+      "before": "The mass was 5 mg.",
+      "after": "The mass was 5 g.",
+      "critical": {
+        "passed": false,
+        "checks": {
+          "numbers": true,
+          "quantities": false,
+          "formulas": true,
+          "mathematical_variables": true,
+          "operators": true
+        },
+        "before": {
+          "numbers": [
+            "5"
+          ],
+          "quantities": [
+            [
+              "5",
+              "mg"
+            ]
+          ],
+          "formulas": [],
+          "mathematical_variables": [],
+          "operators": []
+        },
+        "after": {
+          "numbers": [
+            "5"
+          ],
+          "quantities": [
+            [
+              "5",
+              "g"
+            ]
+          ],
+          "formulas": [],
+          "mathematical_variables": [],
+          "operators": []
+        },
+        "numeric_content_present": true,
+        "formula_content_present": false,
+        "exact_text_unchanged": false,
+        "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+      },
+      "scores": [
+        {
+          "entailment": 0.001224227831698954,
+          "contradiction": 0.9976826906204224
+        },
+        {
+          "entailment": 0.0016207648441195488,
+          "contradiction": 0.9970223307609558
+        }
+      ],
+      "nli_accepts": false
+    },
+    {
+      "before": "The treatment reduced mortality.",
+      "after": "Mortality decreased following the treatment.",
+      "critical": {
+        "passed": true,
+        "checks": {
+          "numbers": true,
+          "quantities": true,
+          "formulas": true,
+          "mathematical_variables": true,
+          "operators": true
+        },
+        "before": {
+          "numbers": [],
+          "quantities": [],
+          "formulas": [],
+          "mathematical_variables": [],
+          "operators": []
+        },
+        "after": {
+          "numbers": [],
+          "quantities": [],
+          "formulas": [],
+          "mathematical_variables": [],
+          "operators": []
+        },
+        "numeric_content_present": false,
+        "formula_content_present": false,
+        "exact_text_unchanged": false,
+        "interpretation": "Conservative preservation filter; changed signatures require review and can include harmless reordering or equivalent unit/algebra conversions"
+      },
+      "scores": [
+        {
+          "entailment": 0.9918272495269775,
+          "contradiction": 0.00035211045178584754
+        },
+        {
+          "entailment": 0.9961662292480469,
+          "contradiction": 0.0003447844064794481
+        }
+      ],
+      "nli_accepts": true
+    }
+  ]
+}

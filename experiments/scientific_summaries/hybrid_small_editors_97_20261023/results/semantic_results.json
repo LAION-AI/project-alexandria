@@ -1,0 +1,139 @@
+{
+  "complete": true,
+  "conditions": {
+    "hybrid_qwen08_r1": {
+      "total": 1136,
+      "counts": {
+        "unchanged_or_equivalent": 935,
+        "minor_meaning_change": 146,
+        "major_meaning_change": 21,
+        "awkward_only": 33,
+        "unintelligible": 1
+      },
+      "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+    },
+    "hybrid_qwen08_r3": {
+      "total": 1679,
+      "counts": {
+        "unchanged_or_equivalent": 1289,
+        "unintelligible": 7,
+        "minor_meaning_change": 289,
+        "major_meaning_change": 53,
+        "awkward_only": 40,
+        "unparsed": 1
+      },
+      "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+    },
+    "hybrid_gemma_e2b_r1": {
+      "total": 1450,
+      "counts": {
+        "minor_meaning_change": 160,
+        "unchanged_or_equivalent": 1245,
+        "awkward_only": 7,
+        "major_meaning_change": 32,
+        "unintelligible": 4,
+        "unparsed": 2
+      },
+      "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+    },
+    "hybrid_gemma_e2b_r3": {
+      "total": 1706,
+      "counts": {
+        "minor_meaning_change": 220,
+        "unchanged_or_equivalent": 1419,
+        "awkward_only": 11,
+        "major_meaning_change": 50,
+        "unintelligible": 4,
+        "unparsed": 2
+      },
+      "scope": "All final visible model-edited windows after document rollback; identical A/B pairs reuse judgments."
+    }
+  },
+  "controls": [
+    {
+      "pair_id": "e6c9977a98473058e22d975249a48b6e5e796e738fea5654c0b6e7250dbb475e",
+      "before": "The result was not statistically significant.",
+      "after": "The result was statistically significant.",
+      "expected": "major_meaning_change",
+      "judgment": {
+        "severity": "major_meaning_change",
+        "reason": "The word 'not' was removed, completely reversing the statistical conclusion from non-significant to significant."
+      },
+      "raw_judgment": "{\n\"severity\": \"major_meaning_change\",\n\"reason\": \"The word 'not' was removed, completely reversing the statistical conclusion from non-significant to significant.\"\n}"
+    },
+    {
+      "pair_id": "e14acc0d02e114622f4d19bb2cef27b5292ccd7f4938eadb23dd22f738f60c6d",
+      "before": "The mass was 5 mg.",
+      "after": "The mass was 5 g.",
+      "expected": "major_meaning_change",
+      "judgment": {
+        "severity": "major_meaning_change",
+        "reason": "The unit of mass was changed from milligrams (mg) to grams (g), altering the quantity by a factor of 1000."
+      },
+      "raw_judgment": "{\n  \"severity\": \"major_meaning_change\",\n  \"reason\": \"The unit of mass was changed from milligrams (mg) to grams (g), altering the quantity by a factor of 1000.\"\n}"
+    },
+    {
+      "pair_id": "0dbc8bc8b4f6b56beb2edcca028492efca46119ad86951661c62d950db356770",
+      "before": "The sample contained 20 patients.",
+      "after": "The sample contained 200 patients.",
+      "expected": "major_meaning_change",
+      "judgment": {
+        "severity": "major_meaning_change",
+        "reason": "The sample size was changed from 20 to 200, which is a tenfold difference in quantity."
+      },
+      "raw_judgment": "{\n\"severity\": \"major_meaning_change\",\n\"reason\": \"The sample size was changed from 20 to 200, which is a tenfold difference in quantity.\"\n}"
+    },
+    {
+      "pair_id": "c746e8d6749d07260498d7973107463f8d785e9a6d7deb0d20659b116bebef6e",
+      "before": "The study suggests an association.",
+      "after": "The study proves a causal relationship.",
+      "expected": "major_meaning_change",
+      "judgment": {
+        "severity": "major_meaning_change",
+        "reason": "Text B changes the strength of the claim from a non-deterministic 'association' to a definitive 'causal relationship' and 'proves', which is a materially different scientific conclusion."
+      },
+      "raw_judgment": "{\n\"severity\": \"major_meaning_change\",\n\"reason\": \"Text B changes the strength of the claim from a non-deterministic 'association' to a definitive 'causal relationship' and 'proves', which is a materially different scientific conclusion.\"\n}"
+    },
+    {
+      "pair_id": "f044df03b52ac5ab8dab91faaf1568956a60025749a1a35f6f36264450ff8243",
+      "before": "The result was statistically significant.",
+      "after": "The result was statistically important.",
+      "expected": "major_meaning_change",
+      "judgment": {
+        "severity": "minor_meaning_change",
+        "reason": "Statistical significance is a specific technical term defined by p-values, whereas statistical importance is not a standard term and implies a different concept (often conflating with practical significance or effect size)."
+      },
+      "raw_judgment": "{\n\"severity\": \"minor_meaning_change\",\n\"reason\": \"Statistical significance is a specific technical term defined by p-values, whereas statistical importance is not a standard term and implies a different concept (often conflating with practical significance or effect size).\"\n}"
+    },
+    {
+      "pair_id": "fbff149b799cc1f9dd5f9d7aa94baf2dfa44b8b7864c333fc2b208144491f738",
+      "before": "The intervention reduced mortality.",
+      "after": "Mortality decreased following the intervention.",
+      "expected": "unchanged_or_equivalent",
+      "judgment": {
+        "severity": "unchanged_or_equivalent",
+        "reason": "Both sentences convey the identical causal relationship and outcome: the intervention led to a reduction in mortality."
+      },
+      "raw_judgment": "{\n  \"severity\": \"unchanged_or_equivalent\",\n  \"reason\": \"Both sentences convey the identical causal relationship and outcome: the intervention led to a reduction in mortality.\"\n}"
+    }
+  ],
+  "reviewer": "Frozen 27B FP8 teacher checkpoint, thinking disabled; independent from both small editors, automatic judgments only.",
+  "safe_rules_baseline": "Previously reviewed 104/104 changed sentence units equivalent under the same frozen automatic reviewer; not independent human labels.",
+  "resume_plan": {
+    "unique_pending": 2586,
+    "previously_cached": 1132,
+    "shards": [
+      646,
+      647,
+      647,
+      646
+    ],
+    "character_loads": [
+      200312,
+      200389,
+      200377,
+      200312
+    ],
+    "policy": "Only missing unique A/B pairs; largest-first balanced assignment; checkpoint every 128 judgments. No editor or QA model is started."
+  }
+}

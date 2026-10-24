@@ -1,0 +1,151 @@
+{
+  "created_at_utc": "2026-10-23T09:16:51.663070+00:00",
+  "cohort_sha256": "6f7dfcbff290b649f976e2c24394c8ce00bc6b12b2f7eb640ae1cb5b20696de0",
+  "papers": 97,
+  "immutable_mcqs": 970,
+  "conditions": [
+    "raw",
+    "safe_rules",
+    "hybrid_qwen08_r1",
+    "hybrid_qwen08_r3",
+    "hybrid_gemma_e2b_r1",
+    "hybrid_gemma_e2b_r3"
+  ],
+  "preprocessing": {
+    "recipe": "function_prepositions",
+    "saved_baseline": "/e/scratch/reformo/schuhmann1/scientific-unrepaired-audit-qwen08-20261023/outputs/repaired/function_prepositions",
+    "previous_automatic_review": {
+      "equivalent": 104,
+      "total": 104,
+      "independent_human_labels": false
+    },
+    "broad_coordination_rules": false
+  },
+  "models": {
+    "qwen08": {
+      "id": "Qwen/Qwen3.5-0.8B",
+      "revision": "2fc06364715b967f1860aea9cf38778875588b17"
+    },
+    "gemma_e2b": {
+      "id": "google/gemma-4-E2B-it",
+      "revision": "3e22461f65e89153144f8adb70e3b8c2cc9845a7"
+    }
+  },
+  "common_generation": {
+    "thinking": false,
+    "dtype": "BF16",
+    "max_attempts": 3,
+    "saved_endpoints": [
+      1,
+      3
+    ],
+    "temperatures": [
+      0.35,
+      0.65,
+      0.95
+    ],
+    "top_p": 0.95,
+    "top_k": 64,
+    "output_cap": 384,
+    "max_model_len": 4096,
+    "max_num_seqs": 256,
+    "max_batched_tokens": 16384,
+    "bounded_ban_token_upper_limit": 256,
+    "vllm_mask_capacity": 512,
+    "per_window_seed": true,
+    "retry_residuals_only": true,
+    "reuse_first_round_for_three_attempt_condition": true
+  },
+  "acceptance": {
+    "bidirectional_nli_cutoff": 0.95,
+    "critical_value_signatures": true,
+    "detected_acronyms_and_chemical_identifiers_unchanged": true,
+    "negation_count_unchanged": true,
+    "word_length_ratio": [
+      0.75,
+      1.35
+    ],
+    "absolute_source_copy_words_must_decrease": true,
+    "longest_source_match_must_not_increase": true,
+    "schema_evidence_metadata_guards": true,
+    "document_rollback": true
+  },
+  "qa": {
+    "student": "Qwen2.5-7B-Instruct",
+    "fresh_raw_and_rules_baselines": true,
+    "historical_prompts_and_parser": true,
+    "paired_question_seeds": true,
+    "reuse_identical_context_answers": true,
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "presence_penalty": 1.05,
+    "frequency_penalty": 1.05,
+    "max_output_tokens": 100,
+    "max_format_attempts": 5,
+    "bootstrap_replicates": 10000,
+    "gold_guides_repair": false
+  },
+  "meaning_review": {
+    "model": "Frozen existing 27B FP8 teacher checkpoint",
+    "thinking": false,
+    "coverage": "Every final visible model-edited window after document rollback; identical A/B pairs cached; diagnostic controls. Automatic judgments only.",
+    "continuation_optimization": {
+      "missing_unique_pairs": 2586,
+      "balanced_shards": 4,
+      "question_and_editor_outputs_reused": true,
+      "local_ram_python_import_cache": true,
+      "in_process_offline_engines": true,
+      "safetensors_load_strategy": "prefetch",
+      "evaluation_reviewer_enforce_eager": true,
+      "checkpoint_every_pairs": 128,
+      "generation_model_and_qa_settings_unchanged": true,
+      "note": "Same frozen reviewer weights, prompts and greedy decoding; eager execution may cause small numerical differences relative to the first compiled review batch."
+    },
+    "continuation_job_id": "2469526",
+    "continuation_requested_maximum_minutes": 6,
+    "continuation_requested_minimum_backfill_minutes": 4,
+    "continuation_history": [
+      {
+        "job_id": "2469526",
+        "state": "TIMEOUT",
+        "elapsed_seconds": 361
+      },
+      {
+        "job_id": "2471215",
+        "state": "COMPLETED",
+        "elapsed_seconds": 444,
+        "requested_minutes": 15,
+        "minimum_minutes": 15
+      }
+    ]
+  },
+  "generation_reference": {
+    "single_gpu_seconds_97": 545.3639821740217,
+    "papers_38m": 38000000,
+    "generation_gpu_hours_38m_at_85pct": 69819.52470390413,
+    "hardware": "GH200",
+    "deployment": "Gemma12B rank128 merged FP8 without thinking"
+  },
+  "allocation": {
+    "nodes": 1,
+    "gpus": 4,
+    "maximum_minutes": 10,
+    "minimum_backfill_minutes": 6,
+    "roles": [
+      "qwen08",
+      "gemma_e2b",
+      "qa",
+      "review"
+    ],
+    "separate_model_download_before_allocation": true,
+    "independent_worker_failure_isolation": true,
+    "job_id": "2468981",
+    "runtime_requested_maximum_minutes": 12,
+    "runtime_adjustment_reason": "Cold shared-filesystem Python imports took about 4 minutes before engine workers started. Extend the cap to avoid repeating all cold starts; the job exits as soon as evaluation completes.",
+    "runtime_extension_accepted": false,
+    "actual_maximum_minutes": 10,
+    "runtime_extension_result": "Slurm denied extending the running allocation; saved per-round and per-condition checkpoints remain available."
+  },
+  "publication": "User authorized GitHub publication of this benchmark and code on 2026-10-24; unrelated local corpus tasks are excluded.",
+  "publication_at_creation": "Local Scratch + local_pipeline_notes + local HTML only; no GitHub changes."
+}
